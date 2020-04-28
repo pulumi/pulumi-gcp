@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Dns.Inputs
 
     public sealed class ManagedZonePeeringConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network with which to peer.  Structure is documented below.
+        /// </summary>
         [Input("targetNetwork", required: true)]
         public Input<Inputs.ManagedZonePeeringConfigTargetNetworkArgs> TargetNetwork { get; set; } = null!;
 

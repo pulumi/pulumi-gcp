@@ -65,8 +65,9 @@ namespace Pulumi.Gcp.GameServices
         public Output<string> RealmId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
-        /// zone database: https://www.iana.org/time-zones.
+        /// Required. Time zone where all realm-specific policies are evaluated. The value of
+        /// this field must be from the IANA time zone database:
+        /// https://www.iana.org/time-zones.
         /// </summary>
         [Output("timeZone")]
         public Output<string> TimeZone { get; private set; } = null!;
@@ -155,8 +156,9 @@ namespace Pulumi.Gcp.GameServices
         public Input<string> RealmId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
-        /// zone database: https://www.iana.org/time-zones.
+        /// Required. Time zone where all realm-specific policies are evaluated. The value of
+        /// this field must be from the IANA time zone database:
+        /// https://www.iana.org/time-zones.
         /// </summary>
         [Input("timeZone", required: true)]
         public Input<string> TimeZone { get; set; } = null!;
@@ -219,8 +221,9 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? RealmId { get; set; }
 
         /// <summary>
-        /// Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA time
-        /// zone database: https://www.iana.org/time-zones.
+        /// Required. Time zone where all realm-specific policies are evaluated. The value of
+        /// this field must be from the IANA time zone database:
+        /// https://www.iana.org/time-zones.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }

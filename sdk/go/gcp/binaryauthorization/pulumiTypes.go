@@ -11,9 +11,33 @@ import (
 )
 
 type AttestorAttestationAuthorityNote struct {
-	DelegationServiceAccountEmail *string                                     `pulumi:"delegationServiceAccountEmail"`
-	NoteReference                 string                                      `pulumi:"noteReference"`
-	PublicKeys                    []AttestorAttestationAuthorityNotePublicKey `pulumi:"publicKeys"`
+	// -
+	// This field will contain the service account email address that
+	// this Attestor will use as the principal when querying Container
+	// Analysis. Attestor administrators must grant this service account
+	// the IAM role needed to read attestations from the noteReference in
+	// Container Analysis (containeranalysis.notes.occurrences.viewer).
+	// This email address is fixed for the lifetime of the Attestor, but
+	// callers should not make any other assumptions about the service
+	// account email; future versions may use an email based on a
+	// different naming pattern.
+	DelegationServiceAccountEmail *string `pulumi:"delegationServiceAccountEmail"`
+	// The resource name of a ATTESTATION_AUTHORITY Note, created by the
+	// user. If the Note is in a different project from the Attestor, it
+	// should be specified in the format `projects/*/notes/*` (or the legacy
+	// `providers/*/notes/*`). This field may not be updated.
+	// An attestation by this attestor is stored as a Container Analysis
+	// ATTESTATION_AUTHORITY Occurrence that names a container image
+	// and that links to this Note.
+	NoteReference string `pulumi:"noteReference"`
+	// Public keys that verify attestations signed by this attestor. This
+	// field may be updated.
+	// If this field is non-empty, one of the specified public keys must
+	// verify that an attestation was signed by this attestor for the
+	// image specified in the admission request.
+	// If this field is empty, this attestor always returns that no valid
+	// attestations exist.  Structure is documented below.
+	PublicKeys []AttestorAttestationAuthorityNotePublicKey `pulumi:"publicKeys"`
 }
 
 // AttestorAttestationAuthorityNoteInput is an input type that accepts AttestorAttestationAuthorityNoteArgs and AttestorAttestationAuthorityNoteOutput values.
@@ -29,9 +53,33 @@ type AttestorAttestationAuthorityNoteInput interface {
 }
 
 type AttestorAttestationAuthorityNoteArgs struct {
-	DelegationServiceAccountEmail pulumi.StringPtrInput                               `pulumi:"delegationServiceAccountEmail"`
-	NoteReference                 pulumi.StringInput                                  `pulumi:"noteReference"`
-	PublicKeys                    AttestorAttestationAuthorityNotePublicKeyArrayInput `pulumi:"publicKeys"`
+	// -
+	// This field will contain the service account email address that
+	// this Attestor will use as the principal when querying Container
+	// Analysis. Attestor administrators must grant this service account
+	// the IAM role needed to read attestations from the noteReference in
+	// Container Analysis (containeranalysis.notes.occurrences.viewer).
+	// This email address is fixed for the lifetime of the Attestor, but
+	// callers should not make any other assumptions about the service
+	// account email; future versions may use an email based on a
+	// different naming pattern.
+	DelegationServiceAccountEmail pulumi.StringPtrInput `pulumi:"delegationServiceAccountEmail"`
+	// The resource name of a ATTESTATION_AUTHORITY Note, created by the
+	// user. If the Note is in a different project from the Attestor, it
+	// should be specified in the format `projects/*/notes/*` (or the legacy
+	// `providers/*/notes/*`). This field may not be updated.
+	// An attestation by this attestor is stored as a Container Analysis
+	// ATTESTATION_AUTHORITY Occurrence that names a container image
+	// and that links to this Note.
+	NoteReference pulumi.StringInput `pulumi:"noteReference"`
+	// Public keys that verify attestations signed by this attestor. This
+	// field may be updated.
+	// If this field is non-empty, one of the specified public keys must
+	// verify that an attestation was signed by this attestor for the
+	// image specified in the admission request.
+	// If this field is empty, this attestor always returns that no valid
+	// attestations exist.  Structure is documented below.
+	PublicKeys AttestorAttestationAuthorityNotePublicKeyArrayInput `pulumi:"publicKeys"`
 }
 
 func (AttestorAttestationAuthorityNoteArgs) ElementType() reflect.Type {
@@ -111,14 +159,39 @@ func (o AttestorAttestationAuthorityNoteOutput) ToAttestorAttestationAuthorityNo
 		return &v
 	}).(AttestorAttestationAuthorityNotePtrOutput)
 }
+
+// -
+// This field will contain the service account email address that
+// this Attestor will use as the principal when querying Container
+// Analysis. Attestor administrators must grant this service account
+// the IAM role needed to read attestations from the noteReference in
+// Container Analysis (containeranalysis.notes.occurrences.viewer).
+// This email address is fixed for the lifetime of the Attestor, but
+// callers should not make any other assumptions about the service
+// account email; future versions may use an email based on a
+// different naming pattern.
 func (o AttestorAttestationAuthorityNoteOutput) DelegationServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNote) *string { return v.DelegationServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
+// The resource name of a ATTESTATION_AUTHORITY Note, created by the
+// user. If the Note is in a different project from the Attestor, it
+// should be specified in the format `projects/*/notes/*` (or the legacy
+// `providers/*/notes/*`). This field may not be updated.
+// An attestation by this attestor is stored as a Container Analysis
+// ATTESTATION_AUTHORITY Occurrence that names a container image
+// and that links to this Note.
 func (o AttestorAttestationAuthorityNoteOutput) NoteReference() pulumi.StringOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNote) string { return v.NoteReference }).(pulumi.StringOutput)
 }
 
+// Public keys that verify attestations signed by this attestor. This
+// field may be updated.
+// If this field is non-empty, one of the specified public keys must
+// verify that an attestation was signed by this attestor for the
+// image specified in the admission request.
+// If this field is empty, this attestor always returns that no valid
+// attestations exist.  Structure is documented below.
 func (o AttestorAttestationAuthorityNoteOutput) PublicKeys() AttestorAttestationAuthorityNotePublicKeyArrayOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNote) []AttestorAttestationAuthorityNotePublicKey {
 		return v.PublicKeys
@@ -143,25 +216,82 @@ func (o AttestorAttestationAuthorityNotePtrOutput) Elem() AttestorAttestationAut
 	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) AttestorAttestationAuthorityNote { return *v }).(AttestorAttestationAuthorityNoteOutput)
 }
 
+// -
+// This field will contain the service account email address that
+// this Attestor will use as the principal when querying Container
+// Analysis. Attestor administrators must grant this service account
+// the IAM role needed to read attestations from the noteReference in
+// Container Analysis (containeranalysis.notes.occurrences.viewer).
+// This email address is fixed for the lifetime of the Attestor, but
+// callers should not make any other assumptions about the service
+// account email; future versions may use an email based on a
+// different naming pattern.
 func (o AttestorAttestationAuthorityNotePtrOutput) DelegationServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AttestorAttestationAuthorityNote) *string { return v.DelegationServiceAccountEmail }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DelegationServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o AttestorAttestationAuthorityNotePtrOutput) NoteReference() pulumi.StringOutput {
-	return o.ApplyT(func(v AttestorAttestationAuthorityNote) string { return v.NoteReference }).(pulumi.StringOutput)
+// The resource name of a ATTESTATION_AUTHORITY Note, created by the
+// user. If the Note is in a different project from the Attestor, it
+// should be specified in the format `projects/*/notes/*` (or the legacy
+// `providers/*/notes/*`). This field may not be updated.
+// An attestation by this attestor is stored as a Container Analysis
+// ATTESTATION_AUTHORITY Occurrence that names a container image
+// and that links to this Note.
+func (o AttestorAttestationAuthorityNotePtrOutput) NoteReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NoteReference
+	}).(pulumi.StringPtrOutput)
 }
 
+// Public keys that verify attestations signed by this attestor. This
+// field may be updated.
+// If this field is non-empty, one of the specified public keys must
+// verify that an attestation was signed by this attestor for the
+// image specified in the admission request.
+// If this field is empty, this attestor always returns that no valid
+// attestations exist.  Structure is documented below.
 func (o AttestorAttestationAuthorityNotePtrOutput) PublicKeys() AttestorAttestationAuthorityNotePublicKeyArrayOutput {
-	return o.ApplyT(func(v AttestorAttestationAuthorityNote) []AttestorAttestationAuthorityNotePublicKey {
+	return o.ApplyT(func(v *AttestorAttestationAuthorityNote) []AttestorAttestationAuthorityNotePublicKey {
+		if v == nil {
+			return nil
+		}
 		return v.PublicKeys
 	}).(AttestorAttestationAuthorityNotePublicKeyArrayOutput)
 }
 
 type AttestorAttestationAuthorityNotePublicKey struct {
+	// ASCII-armored representation of a PGP public key, as the
+	// entire output by the command
+	// `gpg --export --armor foo@example.com` (either LF or CRLF
+	// line endings). When using this field, id should be left
+	// blank. The BinAuthz API handlers will calculate the ID
+	// and fill it in automatically. BinAuthz computes this ID
+	// as the OpenPGP RFC4880 V4 fingerprint, represented as
+	// upper-case hex. If id is provided by the caller, it will
+	// be overwritten by the API-calculated ID.
 	AsciiArmoredPgpPublicKey *string `pulumi:"asciiArmoredPgpPublicKey"`
-	Comment                  *string `pulumi:"comment"`
-	// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
-	Id            *string                                                 `pulumi:"id"`
+	// A descriptive comment. This field may be updated.
+	Comment *string `pulumi:"comment"`
+	// The ID of this public key. Signatures verified by BinAuthz
+	// must include the ID of the public key that can be used to
+	// verify them, and that ID must match the contents of this
+	// field exactly. Additional restrictions on this field can
+	// be imposed based on which public key type is encapsulated.
+	// See the documentation on publicKey cases below for details.
+	Id *string `pulumi:"id"`
+	// A raw PKIX SubjectPublicKeyInfo format public key.
+	// NOTE: id may be explicitly provided by the caller when using this
+	// type of public key, but it MUST be a valid RFC3986 URI. If id is left
+	// blank, a default one will be computed based on the digest of the DER
+	// encoding of the public key.  Structure is documented below.
 	PkixPublicKey *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey `pulumi:"pkixPublicKey"`
 }
 
@@ -178,10 +308,30 @@ type AttestorAttestationAuthorityNotePublicKeyInput interface {
 }
 
 type AttestorAttestationAuthorityNotePublicKeyArgs struct {
+	// ASCII-armored representation of a PGP public key, as the
+	// entire output by the command
+	// `gpg --export --armor foo@example.com` (either LF or CRLF
+	// line endings). When using this field, id should be left
+	// blank. The BinAuthz API handlers will calculate the ID
+	// and fill it in automatically. BinAuthz computes this ID
+	// as the OpenPGP RFC4880 V4 fingerprint, represented as
+	// upper-case hex. If id is provided by the caller, it will
+	// be overwritten by the API-calculated ID.
 	AsciiArmoredPgpPublicKey pulumi.StringPtrInput `pulumi:"asciiArmoredPgpPublicKey"`
-	Comment                  pulumi.StringPtrInput `pulumi:"comment"`
-	// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
-	Id            pulumi.StringPtrInput                                          `pulumi:"id"`
+	// A descriptive comment. This field may be updated.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// The ID of this public key. Signatures verified by BinAuthz
+	// must include the ID of the public key that can be used to
+	// verify them, and that ID must match the contents of this
+	// field exactly. Additional restrictions on this field can
+	// be imposed based on which public key type is encapsulated.
+	// See the documentation on publicKey cases below for details.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// A raw PKIX SubjectPublicKeyInfo format public key.
+	// NOTE: id may be explicitly provided by the caller when using this
+	// type of public key, but it MUST be a valid RFC3986 URI. If id is left
+	// blank, a default one will be computed based on the digest of the DER
+	// encoding of the public key.  Structure is documented below.
 	PkixPublicKey AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrInput `pulumi:"pkixPublicKey"`
 }
 
@@ -237,19 +387,39 @@ func (o AttestorAttestationAuthorityNotePublicKeyOutput) ToAttestorAttestationAu
 	return o
 }
 
+// ASCII-armored representation of a PGP public key, as the
+// entire output by the command
+// `gpg --export --armor foo@example.com` (either LF or CRLF
+// line endings). When using this field, id should be left
+// blank. The BinAuthz API handlers will calculate the ID
+// and fill it in automatically. BinAuthz computes this ID
+// as the OpenPGP RFC4880 V4 fingerprint, represented as
+// upper-case hex. If id is provided by the caller, it will
+// be overwritten by the API-calculated ID.
 func (o AttestorAttestationAuthorityNotePublicKeyOutput) AsciiArmoredPgpPublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKey) *string { return v.AsciiArmoredPgpPublicKey }).(pulumi.StringPtrOutput)
 }
 
+// A descriptive comment. This field may be updated.
 func (o AttestorAttestationAuthorityNotePublicKeyOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKey) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+// The ID of this public key. Signatures verified by BinAuthz
+// must include the ID of the public key that can be used to
+// verify them, and that ID must match the contents of this
+// field exactly. Additional restrictions on this field can
+// be imposed based on which public key type is encapsulated.
+// See the documentation on publicKey cases below for details.
 func (o AttestorAttestationAuthorityNotePublicKeyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKey) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// A raw PKIX SubjectPublicKeyInfo format public key.
+// NOTE: id may be explicitly provided by the caller when using this
+// type of public key, but it MUST be a valid RFC3986 URI. If id is left
+// blank, a default one will be computed based on the digest of the DER
+// encoding of the public key.  Structure is documented below.
 func (o AttestorAttestationAuthorityNotePublicKeyOutput) PkixPublicKey() AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKey) *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
 		return v.PkixPublicKey
@@ -277,7 +447,14 @@ func (o AttestorAttestationAuthorityNotePublicKeyArrayOutput) Index(i pulumi.Int
 }
 
 type AttestorAttestationAuthorityNotePublicKeyPkixPublicKey struct {
-	PublicKeyPem       *string `pulumi:"publicKeyPem"`
+	// A PEM-encoded public key, as described in
+	// `https://tools.ietf.org/html/rfc7468#section-13`
+	PublicKeyPem *string `pulumi:"publicKeyPem"`
+	// The signature algorithm used to verify a message against
+	// a signature using this key. These signature algorithm must
+	// match the structure and any object identifiers encoded in
+	// publicKeyPem (i.e. this algorithm must match that of the
+	// public key).
 	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
 }
 
@@ -294,7 +471,14 @@ type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyInput interface {
 }
 
 type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs struct {
-	PublicKeyPem       pulumi.StringPtrInput `pulumi:"publicKeyPem"`
+	// A PEM-encoded public key, as described in
+	// `https://tools.ietf.org/html/rfc7468#section-13`
+	PublicKeyPem pulumi.StringPtrInput `pulumi:"publicKeyPem"`
+	// The signature algorithm used to verify a message against
+	// a signature using this key. These signature algorithm must
+	// match the structure and any object identifiers encoded in
+	// publicKeyPem (i.e. this algorithm must match that of the
+	// public key).
 	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
 }
 
@@ -375,10 +559,18 @@ func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) ToAttestor
 		return &v
 	}).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput)
 }
+
+// A PEM-encoded public key, as described in
+// `https://tools.ietf.org/html/rfc7468#section-13`
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) PublicKeyPem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.PublicKeyPem }).(pulumi.StringPtrOutput)
 }
 
+// The signature algorithm used to verify a message against
+// a signature using this key. These signature algorithm must
+// match the structure and any object identifiers encoded in
+// publicKeyPem (i.e. this algorithm must match that of the
+// public key).
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
 }
@@ -403,12 +595,29 @@ func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) Elem() 
 	}).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput)
 }
 
+// A PEM-encoded public key, as described in
+// `https://tools.ietf.org/html/rfc7468#section-13`
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) PublicKeyPem() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.PublicKeyPem }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeyPem
+	}).(pulumi.StringPtrOutput)
 }
 
+// The signature algorithm used to verify a message against
+// a signature using this key. These signature algorithm must
+// match the structure and any object identifiers encoded in
+// publicKeyPem (i.e. this algorithm must match that of the
+// public key).
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignatureAlgorithm
+	}).(pulumi.StringPtrOutput)
 }
 
 type AttestorIamBindingCondition struct {
@@ -543,15 +752,30 @@ func (o AttestorIamBindingConditionPtrOutput) Elem() AttestorIamBindingCondition
 }
 
 func (o AttestorIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AttestorIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AttestorIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o AttestorIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v AttestorIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o AttestorIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttestorIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o AttestorIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v AttestorIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o AttestorIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttestorIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type AttestorIamMemberCondition struct {
@@ -686,18 +910,37 @@ func (o AttestorIamMemberConditionPtrOutput) Elem() AttestorIamMemberConditionOu
 }
 
 func (o AttestorIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AttestorIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AttestorIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o AttestorIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v AttestorIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o AttestorIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttestorIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o AttestorIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v AttestorIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o AttestorIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttestorIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type PolicyAdmissionWhitelistPattern struct {
+	// An image name pattern to whitelist, in the form
+	// `registry/path/to/image`. This supports a trailing * as a
+	// wildcard, but this is allowed only in text after the registry/
+	// part.
 	NamePattern string `pulumi:"namePattern"`
 }
 
@@ -714,6 +957,10 @@ type PolicyAdmissionWhitelistPatternInput interface {
 }
 
 type PolicyAdmissionWhitelistPatternArgs struct {
+	// An image name pattern to whitelist, in the form
+	// `registry/path/to/image`. This supports a trailing * as a
+	// wildcard, but this is allowed only in text after the registry/
+	// part.
 	NamePattern pulumi.StringInput `pulumi:"namePattern"`
 }
 
@@ -769,6 +1016,10 @@ func (o PolicyAdmissionWhitelistPatternOutput) ToPolicyAdmissionWhitelistPattern
 	return o
 }
 
+// An image name pattern to whitelist, in the form
+// `registry/path/to/image`. This supports a trailing * as a
+// wildcard, but this is allowed only in text after the registry/
+// part.
 func (o PolicyAdmissionWhitelistPatternOutput) NamePattern() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyAdmissionWhitelistPattern) string { return v.NamePattern }).(pulumi.StringOutput)
 }
@@ -795,9 +1046,19 @@ func (o PolicyAdmissionWhitelistPatternArrayOutput) Index(i pulumi.IntInput) Pol
 
 type PolicyClusterAdmissionRule struct {
 	// The identifier for this object. Format specified above.
-	Cluster                 string   `pulumi:"cluster"`
-	EnforcementMode         string   `pulumi:"enforcementMode"`
-	EvaluationMode          string   `pulumi:"evaluationMode"`
+	Cluster string `pulumi:"cluster"`
+	// The action when a pod creation is denied by the admission rule.
+	EnforcementMode string `pulumi:"enforcementMode"`
+	// How this admission rule will be evaluated.
+	EvaluationMode string `pulumi:"evaluationMode"`
+	// The resource names of the attestors that must attest to a
+	// container image. If the attestor is in a different project from the
+	// policy, it should be specified in the format `projects/*/attestors/*`.
+	// Each attestor must exist before a policy can reference it. To add an
+	// attestor to a policy the principal issuing the policy change
+	// request must be able to read the attestor resource.
+	// Note: this field must be non-empty when the evaluationMode field
+	// specifies REQUIRE_ATTESTATION, otherwise it must be empty.
 	RequireAttestationsBies []string `pulumi:"requireAttestationsBies"`
 }
 
@@ -815,9 +1076,19 @@ type PolicyClusterAdmissionRuleInput interface {
 
 type PolicyClusterAdmissionRuleArgs struct {
 	// The identifier for this object. Format specified above.
-	Cluster                 pulumi.StringInput      `pulumi:"cluster"`
-	EnforcementMode         pulumi.StringInput      `pulumi:"enforcementMode"`
-	EvaluationMode          pulumi.StringInput      `pulumi:"evaluationMode"`
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// The action when a pod creation is denied by the admission rule.
+	EnforcementMode pulumi.StringInput `pulumi:"enforcementMode"`
+	// How this admission rule will be evaluated.
+	EvaluationMode pulumi.StringInput `pulumi:"evaluationMode"`
+	// The resource names of the attestors that must attest to a
+	// container image. If the attestor is in a different project from the
+	// policy, it should be specified in the format `projects/*/attestors/*`.
+	// Each attestor must exist before a policy can reference it. To add an
+	// attestor to a policy the principal issuing the policy change
+	// request must be able to read the attestor resource.
+	// Note: this field must be non-empty when the evaluationMode field
+	// specifies REQUIRE_ATTESTATION, otherwise it must be empty.
 	RequireAttestationsBies pulumi.StringArrayInput `pulumi:"requireAttestationsBies"`
 }
 
@@ -878,14 +1149,24 @@ func (o PolicyClusterAdmissionRuleOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyClusterAdmissionRule) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
+// The action when a pod creation is denied by the admission rule.
 func (o PolicyClusterAdmissionRuleOutput) EnforcementMode() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyClusterAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
 }
 
+// How this admission rule will be evaluated.
 func (o PolicyClusterAdmissionRuleOutput) EvaluationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyClusterAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
 
+// The resource names of the attestors that must attest to a
+// container image. If the attestor is in a different project from the
+// policy, it should be specified in the format `projects/*/attestors/*`.
+// Each attestor must exist before a policy can reference it. To add an
+// attestor to a policy the principal issuing the policy change
+// request must be able to read the attestor resource.
+// Note: this field must be non-empty when the evaluationMode field
+// specifies REQUIRE_ATTESTATION, otherwise it must be empty.
 func (o PolicyClusterAdmissionRuleOutput) RequireAttestationsBies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyClusterAdmissionRule) []string { return v.RequireAttestationsBies }).(pulumi.StringArrayOutput)
 }
@@ -911,8 +1192,18 @@ func (o PolicyClusterAdmissionRuleArrayOutput) Index(i pulumi.IntInput) PolicyCl
 }
 
 type PolicyDefaultAdmissionRule struct {
-	EnforcementMode         string   `pulumi:"enforcementMode"`
-	EvaluationMode          string   `pulumi:"evaluationMode"`
+	// The action when a pod creation is denied by the admission rule.
+	EnforcementMode string `pulumi:"enforcementMode"`
+	// How this admission rule will be evaluated.
+	EvaluationMode string `pulumi:"evaluationMode"`
+	// The resource names of the attestors that must attest to a
+	// container image. If the attestor is in a different project from the
+	// policy, it should be specified in the format `projects/*/attestors/*`.
+	// Each attestor must exist before a policy can reference it. To add an
+	// attestor to a policy the principal issuing the policy change
+	// request must be able to read the attestor resource.
+	// Note: this field must be non-empty when the evaluationMode field
+	// specifies REQUIRE_ATTESTATION, otherwise it must be empty.
 	RequireAttestationsBies []string `pulumi:"requireAttestationsBies"`
 }
 
@@ -929,8 +1220,18 @@ type PolicyDefaultAdmissionRuleInput interface {
 }
 
 type PolicyDefaultAdmissionRuleArgs struct {
-	EnforcementMode         pulumi.StringInput      `pulumi:"enforcementMode"`
-	EvaluationMode          pulumi.StringInput      `pulumi:"evaluationMode"`
+	// The action when a pod creation is denied by the admission rule.
+	EnforcementMode pulumi.StringInput `pulumi:"enforcementMode"`
+	// How this admission rule will be evaluated.
+	EvaluationMode pulumi.StringInput `pulumi:"evaluationMode"`
+	// The resource names of the attestors that must attest to a
+	// container image. If the attestor is in a different project from the
+	// policy, it should be specified in the format `projects/*/attestors/*`.
+	// Each attestor must exist before a policy can reference it. To add an
+	// attestor to a policy the principal issuing the policy change
+	// request must be able to read the attestor resource.
+	// Note: this field must be non-empty when the evaluationMode field
+	// specifies REQUIRE_ATTESTATION, otherwise it must be empty.
 	RequireAttestationsBies pulumi.StringArrayInput `pulumi:"requireAttestationsBies"`
 }
 
@@ -1011,14 +1312,25 @@ func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRulePtrOutputW
 		return &v
 	}).(PolicyDefaultAdmissionRulePtrOutput)
 }
+
+// The action when a pod creation is denied by the admission rule.
 func (o PolicyDefaultAdmissionRuleOutput) EnforcementMode() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
 }
 
+// How this admission rule will be evaluated.
 func (o PolicyDefaultAdmissionRuleOutput) EvaluationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
 
+// The resource names of the attestors that must attest to a
+// container image. If the attestor is in a different project from the
+// policy, it should be specified in the format `projects/*/attestors/*`.
+// Each attestor must exist before a policy can reference it. To add an
+// attestor to a policy the principal issuing the policy change
+// request must be able to read the attestor resource.
+// Note: this field must be non-empty when the evaluationMode field
+// specifies REQUIRE_ATTESTATION, otherwise it must be empty.
 func (o PolicyDefaultAdmissionRuleOutput) RequireAttestationsBies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyDefaultAdmissionRule) []string { return v.RequireAttestationsBies }).(pulumi.StringArrayOutput)
 }
@@ -1041,16 +1353,41 @@ func (o PolicyDefaultAdmissionRulePtrOutput) Elem() PolicyDefaultAdmissionRuleOu
 	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) PolicyDefaultAdmissionRule { return *v }).(PolicyDefaultAdmissionRuleOutput)
 }
 
-func (o PolicyDefaultAdmissionRulePtrOutput) EnforcementMode() pulumi.StringOutput {
-	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
+// The action when a pod creation is denied by the admission rule.
+func (o PolicyDefaultAdmissionRulePtrOutput) EnforcementMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EnforcementMode
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o PolicyDefaultAdmissionRulePtrOutput) EvaluationMode() pulumi.StringOutput {
-	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
+// How this admission rule will be evaluated.
+func (o PolicyDefaultAdmissionRulePtrOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EvaluationMode
+	}).(pulumi.StringPtrOutput)
 }
 
+// The resource names of the attestors that must attest to a
+// container image. If the attestor is in a different project from the
+// policy, it should be specified in the format `projects/*/attestors/*`.
+// Each attestor must exist before a policy can reference it. To add an
+// attestor to a policy the principal issuing the policy change
+// request must be able to read the attestor resource.
+// Note: this field must be non-empty when the evaluationMode field
+// specifies REQUIRE_ATTESTATION, otherwise it must be empty.
 func (o PolicyDefaultAdmissionRulePtrOutput) RequireAttestationsBies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PolicyDefaultAdmissionRule) []string { return v.RequireAttestationsBies }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequireAttestationsBies
+	}).(pulumi.StringArrayOutput)
 }
 
 func init() {

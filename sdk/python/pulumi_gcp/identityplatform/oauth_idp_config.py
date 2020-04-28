@@ -32,7 +32,7 @@ class OauthIdpConfig(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name of the OauthIdpConfig. Must start with 'oidc.'.
+    The name of the OauthIdpConfig. Must start with `oidc.`.
     """
     project: pulumi.Output[str]
     """
@@ -54,7 +54,7 @@ class OauthIdpConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Human friendly display name.
         :param pulumi.Input[bool] enabled: If this config allows users to sign in with the provider.
         :param pulumi.Input[str] issuer: For OIDC Idps, the issuer identifier.
-        :param pulumi.Input[str] name: The name of the OauthIdpConfig. Must start with 'oidc.'.
+        :param pulumi.Input[str] name: The name of the OauthIdpConfig. Must start with `oidc.`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -106,7 +106,7 @@ class OauthIdpConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Human friendly display name.
         :param pulumi.Input[bool] enabled: If this config allows users to sign in with the provider.
         :param pulumi.Input[str] issuer: For OIDC Idps, the issuer identifier.
-        :param pulumi.Input[str] name: The name of the OauthIdpConfig. Must start with 'oidc.'.
+        :param pulumi.Input[str] name: The name of the OauthIdpConfig. Must start with `oidc.`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """

@@ -25,8 +25,12 @@ type Variable struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project pulumi.StringOutput    `pulumi:"project"`
-	Text    pulumi.StringPtrOutput `pulumi:"text"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// or `value` - (Required) The content to associate with the variable.
+	// Exactly one of `text` or `variable` must be specified. If `text` is specified,
+	// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+	// is specified, it must be base64 encoded and less than 4096 bytes in length.
+	Text pulumi.StringPtrOutput `pulumi:"text"`
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds, representing when the variable was last updated.
 	// Example: "2016-10-09T12:33:37.578138407Z".
@@ -74,7 +78,11 @@ type variableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Text    *string `pulumi:"text"`
+	// or `value` - (Required) The content to associate with the variable.
+	// Exactly one of `text` or `variable` must be specified. If `text` is specified,
+	// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+	// is specified, it must be base64 encoded and less than 4096 bytes in length.
+	Text *string `pulumi:"text"`
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds, representing when the variable was last updated.
 	// Example: "2016-10-09T12:33:37.578138407Z".
@@ -92,7 +100,11 @@ type VariableState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	Text    pulumi.StringPtrInput
+	// or `value` - (Required) The content to associate with the variable.
+	// Exactly one of `text` or `variable` must be specified. If `text` is specified,
+	// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+	// is specified, it must be base64 encoded and less than 4096 bytes in length.
+	Text pulumi.StringPtrInput
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds, representing when the variable was last updated.
 	// Example: "2016-10-09T12:33:37.578138407Z".
@@ -114,8 +126,12 @@ type variableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Text    *string `pulumi:"text"`
-	Value   *string `pulumi:"value"`
+	// or `value` - (Required) The content to associate with the variable.
+	// Exactly one of `text` or `variable` must be specified. If `text` is specified,
+	// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+	// is specified, it must be base64 encoded and less than 4096 bytes in length.
+	Text  *string `pulumi:"text"`
+	Value *string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a Variable resource.
@@ -129,8 +145,12 @@ type VariableArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	Text    pulumi.StringPtrInput
-	Value   pulumi.StringPtrInput
+	// or `value` - (Required) The content to associate with the variable.
+	// Exactly one of `text` or `variable` must be specified. If `text` is specified,
+	// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
+	// is specified, it must be base64 encoded and less than 4096 bytes in length.
+	Text  pulumi.StringPtrInput
+	Value pulumi.StringPtrInput
 }
 
 func (VariableArgs) ElementType() reflect.Type {

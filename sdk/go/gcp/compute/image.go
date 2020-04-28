@@ -39,15 +39,19 @@ type Image struct {
 	ArchiveSizeBytes pulumi.IntOutput `pulumi:"archiveSizeBytes"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.IntOutput `pulumi:"diskSizeGb"`
-	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of
-	// a specific image name. The image family always returns its latest image that is not deprecated. The name of the image
-	// family must comply with RFC1035.
+	// The name of the image family to which this image belongs. You can
+	// create disks by specifying an image family instead of a specific
+	// image name. The image family always returns its latest image that is
+	// not deprecated. The name of the image family must comply with
+	// RFC1035.
 	Family pulumi.StringPtrOutput `pulumi:"family"`
-	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable images.  Structure is documented below.
 	GuestOsFeatures ImageGuestOsFeatureArrayOutput `pulumi:"guestOsFeatures"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -55,20 +59,24 @@ type Image struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayOutput `pulumi:"licenses"`
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and
+	// match the regular expression `a-z?` which means
+	// the first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the
+	// last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The parameters of the raw disk image.
+	// The parameters of the raw disk image.  Structure is documented below.
 	RawDisk ImageRawDiskPtrOutput `pulumi:"rawDisk"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The source disk to create this image based on. You must provide either this property or the rawDisk.source property but
-	// not both to create an image.
+	// The source disk to create this image based on.
+	// You must provide either this property or the
+	// rawDisk.source property but not both to create an image.
 	SourceDisk pulumi.StringPtrOutput `pulumi:"sourceDisk"`
 }
 
@@ -104,15 +112,19 @@ type imageState struct {
 	ArchiveSizeBytes *int `pulumi:"archiveSizeBytes"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description *string `pulumi:"description"`
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of
-	// a specific image name. The image family always returns its latest image that is not deprecated. The name of the image
-	// family must comply with RFC1035.
+	// The name of the image family to which this image belongs. You can
+	// create disks by specifying an image family instead of a specific
+	// image name. The image family always returns its latest image that is
+	// not deprecated. The name of the image family must comply with
+	// RFC1035.
 	Family *string `pulumi:"family"`
-	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable images.  Structure is documented below.
 	GuestOsFeatures []ImageGuestOsFeature `pulumi:"guestOsFeatures"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -120,20 +132,24 @@ type imageState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Any applicable license URI.
 	Licenses []string `pulumi:"licenses"`
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and
+	// match the regular expression `a-z?` which means
+	// the first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the
+	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The parameters of the raw disk image.
+	// The parameters of the raw disk image.  Structure is documented below.
 	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The source disk to create this image based on. You must provide either this property or the rawDisk.source property but
-	// not both to create an image.
+	// The source disk to create this image based on.
+	// You must provide either this property or the
+	// rawDisk.source property but not both to create an image.
 	SourceDisk *string `pulumi:"sourceDisk"`
 }
 
@@ -142,15 +158,19 @@ type ImageState struct {
 	ArchiveSizeBytes pulumi.IntPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrInput
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.IntPtrInput
-	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of
-	// a specific image name. The image family always returns its latest image that is not deprecated. The name of the image
-	// family must comply with RFC1035.
+	// The name of the image family to which this image belongs. You can
+	// create disks by specifying an image family instead of a specific
+	// image name. The image family always returns its latest image that is
+	// not deprecated. The name of the image family must comply with
+	// RFC1035.
 	Family pulumi.StringPtrInput
-	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable images.  Structure is documented below.
 	GuestOsFeatures ImageGuestOsFeatureArrayInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -158,20 +178,24 @@ type ImageState struct {
 	Labels pulumi.StringMapInput
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayInput
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and
+	// match the regular expression `a-z?` which means
+	// the first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the
+	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The parameters of the raw disk image.
+	// The parameters of the raw disk image.  Structure is documented below.
 	RawDisk ImageRawDiskPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The source disk to create this image based on. You must provide either this property or the rawDisk.source property but
-	// not both to create an image.
+	// The source disk to create this image based on.
+	// You must provide either this property or the
+	// rawDisk.source property but not both to create an image.
 	SourceDisk pulumi.StringPtrInput
 }
 
@@ -180,63 +204,79 @@ func (ImageState) ElementType() reflect.Type {
 }
 
 type imageArgs struct {
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description *string `pulumi:"description"`
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of
-	// a specific image name. The image family always returns its latest image that is not deprecated. The name of the image
-	// family must comply with RFC1035.
+	// The name of the image family to which this image belongs. You can
+	// create disks by specifying an image family instead of a specific
+	// image name. The image family always returns its latest image that is
+	// not deprecated. The name of the image family must comply with
+	// RFC1035.
 	Family *string `pulumi:"family"`
-	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable images.  Structure is documented below.
 	GuestOsFeatures []ImageGuestOsFeature `pulumi:"guestOsFeatures"`
 	// Labels to apply to this Image.
 	Labels map[string]string `pulumi:"labels"`
 	// Any applicable license URI.
 	Licenses []string `pulumi:"licenses"`
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and
+	// match the regular expression `a-z?` which means
+	// the first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the
+	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The parameters of the raw disk image.
+	// The parameters of the raw disk image.  Structure is documented below.
 	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
-	// The source disk to create this image based on. You must provide either this property or the rawDisk.source property but
-	// not both to create an image.
+	// The source disk to create this image based on.
+	// You must provide either this property or the
+	// rawDisk.source property but not both to create an image.
 	SourceDisk *string `pulumi:"sourceDisk"`
 }
 
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
-	// An optional description of this resource. Provide this property when you create the resource.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrInput
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.IntPtrInput
-	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of
-	// a specific image name. The image family always returns its latest image that is not deprecated. The name of the image
-	// family must comply with RFC1035.
+	// The name of the image family to which this image belongs. You can
+	// create disks by specifying an image family instead of a specific
+	// image name. The image family always returns its latest image that is
+	// not deprecated. The name of the image family must comply with
+	// RFC1035.
 	Family pulumi.StringPtrInput
-	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable images.  Structure is documented below.
 	GuestOsFeatures ImageGuestOsFeatureArrayInput
 	// Labels to apply to this Image.
 	Labels pulumi.StringMapInput
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayInput
-	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and
+	// match the regular expression `a-z?` which means
+	// the first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the
+	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The parameters of the raw disk image.
+	// The parameters of the raw disk image.  Structure is documented below.
 	RawDisk ImageRawDiskPtrInput
-	// The source disk to create this image based on. You must provide either this property or the rawDisk.source property but
-	// not both to create an image.
+	// The source disk to create this image based on.
+	// You must provide either this property or the
+	// rawDisk.source property but not both to create an image.
 	SourceDisk pulumi.StringPtrInput
 }
 

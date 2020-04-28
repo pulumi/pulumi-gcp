@@ -38,7 +38,7 @@ type LookupBackendBucketResult struct {
 	Description string `pulumi:"description"`
 	// Whether Cloud CDN is enabled for this BackendBucket.
 	EnableCdn bool `pulumi:"enableCdn"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id      string  `pulumi:"id"`
 	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`

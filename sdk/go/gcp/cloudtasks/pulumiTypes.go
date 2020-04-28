@@ -11,10 +11,18 @@ import (
 )
 
 type QueueAppEngineRoutingOverride struct {
-	Host     *string `pulumi:"host"`
+	// -
+	// The host that the task is sent to.
+	Host *string `pulumi:"host"`
+	// App instance.
+	// By default, the task is sent to an instance which is available when the task is attempted.
 	Instance *string `pulumi:"instance"`
-	Service  *string `pulumi:"service"`
-	Version  *string `pulumi:"version"`
+	// App service.
+	// By default, the task is sent to the service which is the default service when the task is attempted.
+	Service *string `pulumi:"service"`
+	// App version.
+	// By default, the task is sent to the version which is the default version when the task is attempted.
+	Version *string `pulumi:"version"`
 }
 
 // QueueAppEngineRoutingOverrideInput is an input type that accepts QueueAppEngineRoutingOverrideArgs and QueueAppEngineRoutingOverrideOutput values.
@@ -30,10 +38,18 @@ type QueueAppEngineRoutingOverrideInput interface {
 }
 
 type QueueAppEngineRoutingOverrideArgs struct {
-	Host     pulumi.StringPtrInput `pulumi:"host"`
+	// -
+	// The host that the task is sent to.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// App instance.
+	// By default, the task is sent to an instance which is available when the task is attempted.
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
-	Service  pulumi.StringPtrInput `pulumi:"service"`
-	Version  pulumi.StringPtrInput `pulumi:"version"`
+	// App service.
+	// By default, the task is sent to the service which is the default service when the task is attempted.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// App version.
+	// By default, the task is sent to the version which is the default version when the task is attempted.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (QueueAppEngineRoutingOverrideArgs) ElementType() reflect.Type {
@@ -113,18 +129,27 @@ func (o QueueAppEngineRoutingOverrideOutput) ToQueueAppEngineRoutingOverridePtrO
 		return &v
 	}).(QueueAppEngineRoutingOverridePtrOutput)
 }
+
+// -
+// The host that the task is sent to.
 func (o QueueAppEngineRoutingOverrideOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// App instance.
+// By default, the task is sent to an instance which is available when the task is attempted.
 func (o QueueAppEngineRoutingOverrideOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
+// App service.
+// By default, the task is sent to the service which is the default service when the task is attempted.
 func (o QueueAppEngineRoutingOverrideOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
+// App version.
+// By default, the task is sent to the version which is the default version when the task is attempted.
 func (o QueueAppEngineRoutingOverrideOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -147,26 +172,66 @@ func (o QueueAppEngineRoutingOverridePtrOutput) Elem() QueueAppEngineRoutingOver
 	return o.ApplyT(func(v *QueueAppEngineRoutingOverride) QueueAppEngineRoutingOverride { return *v }).(QueueAppEngineRoutingOverrideOutput)
 }
 
+// -
+// The host that the task is sent to.
 func (o QueueAppEngineRoutingOverridePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *QueueAppEngineRoutingOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
 }
 
+// App instance.
+// By default, the task is sent to an instance which is available when the task is attempted.
 func (o QueueAppEngineRoutingOverridePtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Instance }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *QueueAppEngineRoutingOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Instance
+	}).(pulumi.StringPtrOutput)
 }
 
+// App service.
+// By default, the task is sent to the service which is the default service when the task is attempted.
 func (o QueueAppEngineRoutingOverridePtrOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Service }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *QueueAppEngineRoutingOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
 }
 
+// App version.
+// By default, the task is sent to the version which is the default version when the task is attempted.
 func (o QueueAppEngineRoutingOverridePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Version }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *QueueAppEngineRoutingOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 type QueueRateLimits struct {
-	MaxBurstSize            *int     `pulumi:"maxBurstSize"`
-	MaxConcurrentDispatches *int     `pulumi:"maxConcurrentDispatches"`
-	MaxDispatchesPerSecond  *float64 `pulumi:"maxDispatchesPerSecond"`
+	// -
+	// The max burst size.
+	// Max burst size limits how fast tasks in queue are processed when many tasks are
+	// in the queue and the rate is high. This field allows the queue to have a high
+	// rate so processing starts shortly after a task is enqueued, but still limits
+	// resource usage when many tasks are enqueued in a short period of time.
+	MaxBurstSize *int `pulumi:"maxBurstSize"`
+	// The maximum number of concurrent tasks that Cloud Tasks allows to
+	// be dispatched for this queue. After this threshold has been
+	// reached, Cloud Tasks stops dispatching tasks until the number of
+	// concurrent requests decreases.
+	MaxConcurrentDispatches *int `pulumi:"maxConcurrentDispatches"`
+	// The maximum rate at which tasks are dispatched from this queue.
+	// If unspecified when the queue is created, Cloud Tasks will pick the default.
+	MaxDispatchesPerSecond *float64 `pulumi:"maxDispatchesPerSecond"`
 }
 
 // QueueRateLimitsInput is an input type that accepts QueueRateLimitsArgs and QueueRateLimitsOutput values.
@@ -182,9 +247,21 @@ type QueueRateLimitsInput interface {
 }
 
 type QueueRateLimitsArgs struct {
-	MaxBurstSize            pulumi.IntPtrInput     `pulumi:"maxBurstSize"`
-	MaxConcurrentDispatches pulumi.IntPtrInput     `pulumi:"maxConcurrentDispatches"`
-	MaxDispatchesPerSecond  pulumi.Float64PtrInput `pulumi:"maxDispatchesPerSecond"`
+	// -
+	// The max burst size.
+	// Max burst size limits how fast tasks in queue are processed when many tasks are
+	// in the queue and the rate is high. This field allows the queue to have a high
+	// rate so processing starts shortly after a task is enqueued, but still limits
+	// resource usage when many tasks are enqueued in a short period of time.
+	MaxBurstSize pulumi.IntPtrInput `pulumi:"maxBurstSize"`
+	// The maximum number of concurrent tasks that Cloud Tasks allows to
+	// be dispatched for this queue. After this threshold has been
+	// reached, Cloud Tasks stops dispatching tasks until the number of
+	// concurrent requests decreases.
+	MaxConcurrentDispatches pulumi.IntPtrInput `pulumi:"maxConcurrentDispatches"`
+	// The maximum rate at which tasks are dispatched from this queue.
+	// If unspecified when the queue is created, Cloud Tasks will pick the default.
+	MaxDispatchesPerSecond pulumi.Float64PtrInput `pulumi:"maxDispatchesPerSecond"`
 }
 
 func (QueueRateLimitsArgs) ElementType() reflect.Type {
@@ -264,14 +341,27 @@ func (o QueueRateLimitsOutput) ToQueueRateLimitsPtrOutputWithContext(ctx context
 		return &v
 	}).(QueueRateLimitsPtrOutput)
 }
+
+// -
+// The max burst size.
+// Max burst size limits how fast tasks in queue are processed when many tasks are
+// in the queue and the rate is high. This field allows the queue to have a high
+// rate so processing starts shortly after a task is enqueued, but still limits
+// resource usage when many tasks are enqueued in a short period of time.
 func (o QueueRateLimitsOutput) MaxBurstSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QueueRateLimits) *int { return v.MaxBurstSize }).(pulumi.IntPtrOutput)
 }
 
+// The maximum number of concurrent tasks that Cloud Tasks allows to
+// be dispatched for this queue. After this threshold has been
+// reached, Cloud Tasks stops dispatching tasks until the number of
+// concurrent requests decreases.
 func (o QueueRateLimitsOutput) MaxConcurrentDispatches() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QueueRateLimits) *int { return v.MaxConcurrentDispatches }).(pulumi.IntPtrOutput)
 }
 
+// The maximum rate at which tasks are dispatched from this queue.
+// If unspecified when the queue is created, Cloud Tasks will pick the default.
 func (o QueueRateLimitsOutput) MaxDispatchesPerSecond() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v QueueRateLimits) *float64 { return v.MaxDispatchesPerSecond }).(pulumi.Float64PtrOutput)
 }
@@ -294,24 +384,74 @@ func (o QueueRateLimitsPtrOutput) Elem() QueueRateLimitsOutput {
 	return o.ApplyT(func(v *QueueRateLimits) QueueRateLimits { return *v }).(QueueRateLimitsOutput)
 }
 
+// -
+// The max burst size.
+// Max burst size limits how fast tasks in queue are processed when many tasks are
+// in the queue and the rate is high. This field allows the queue to have a high
+// rate so processing starts shortly after a task is enqueued, but still limits
+// resource usage when many tasks are enqueued in a short period of time.
 func (o QueueRateLimitsPtrOutput) MaxBurstSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v QueueRateLimits) *int { return v.MaxBurstSize }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *QueueRateLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBurstSize
+	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum number of concurrent tasks that Cloud Tasks allows to
+// be dispatched for this queue. After this threshold has been
+// reached, Cloud Tasks stops dispatching tasks until the number of
+// concurrent requests decreases.
 func (o QueueRateLimitsPtrOutput) MaxConcurrentDispatches() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v QueueRateLimits) *int { return v.MaxConcurrentDispatches }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *QueueRateLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentDispatches
+	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum rate at which tasks are dispatched from this queue.
+// If unspecified when the queue is created, Cloud Tasks will pick the default.
 func (o QueueRateLimitsPtrOutput) MaxDispatchesPerSecond() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v QueueRateLimits) *float64 { return v.MaxDispatchesPerSecond }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *QueueRateLimits) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDispatchesPerSecond
+	}).(pulumi.Float64PtrOutput)
 }
 
 type QueueRetryConfig struct {
-	MaxAttempts      *int    `pulumi:"maxAttempts"`
-	MaxBackoff       *string `pulumi:"maxBackoff"`
-	MaxDoublings     *int    `pulumi:"maxDoublings"`
+	// Number of attempts per task.
+	// Cloud Tasks will attempt the task maxAttempts times (that is, if
+	// the first attempt fails, then there will be maxAttempts - 1
+	// retries). Must be >= -1.
+	// If unspecified when the queue is created, Cloud Tasks will pick
+	// the default.
+	// -1 indicates unlimited attempts.
+	MaxAttempts *int `pulumi:"maxAttempts"`
+	// A task will be scheduled for retry between minBackoff and
+	// maxBackoff duration after it fails, if the queue's RetryConfig
+	// specifies that the task should be retried.
+	MaxBackoff *string `pulumi:"maxBackoff"`
+	// The time between retries will double maxDoublings times.
+	// A task's retry interval starts at minBackoff, then doubles maxDoublings times,
+	// then increases linearly, and finally retries retries at intervals of maxBackoff
+	// up to maxAttempts times.
+	MaxDoublings *int `pulumi:"maxDoublings"`
+	// If positive, maxRetryDuration specifies the time limit for
+	// retrying a failed task, measured from when the task was first
+	// attempted. Once maxRetryDuration time has passed and the task has
+	// been attempted maxAttempts times, no further attempts will be
+	// made and the task will be deleted.
+	// If zero, then the task age is unlimited.
 	MaxRetryDuration *string `pulumi:"maxRetryDuration"`
-	MinBackoff       *string `pulumi:"minBackoff"`
+	// A task will be scheduled for retry between minBackoff and
+	// maxBackoff duration after it fails, if the queue's RetryConfig
+	// specifies that the task should be retried.
+	MinBackoff *string `pulumi:"minBackoff"`
 }
 
 // QueueRetryConfigInput is an input type that accepts QueueRetryConfigArgs and QueueRetryConfigOutput values.
@@ -327,11 +467,34 @@ type QueueRetryConfigInput interface {
 }
 
 type QueueRetryConfigArgs struct {
-	MaxAttempts      pulumi.IntPtrInput    `pulumi:"maxAttempts"`
-	MaxBackoff       pulumi.StringPtrInput `pulumi:"maxBackoff"`
-	MaxDoublings     pulumi.IntPtrInput    `pulumi:"maxDoublings"`
+	// Number of attempts per task.
+	// Cloud Tasks will attempt the task maxAttempts times (that is, if
+	// the first attempt fails, then there will be maxAttempts - 1
+	// retries). Must be >= -1.
+	// If unspecified when the queue is created, Cloud Tasks will pick
+	// the default.
+	// -1 indicates unlimited attempts.
+	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
+	// A task will be scheduled for retry between minBackoff and
+	// maxBackoff duration after it fails, if the queue's RetryConfig
+	// specifies that the task should be retried.
+	MaxBackoff pulumi.StringPtrInput `pulumi:"maxBackoff"`
+	// The time between retries will double maxDoublings times.
+	// A task's retry interval starts at minBackoff, then doubles maxDoublings times,
+	// then increases linearly, and finally retries retries at intervals of maxBackoff
+	// up to maxAttempts times.
+	MaxDoublings pulumi.IntPtrInput `pulumi:"maxDoublings"`
+	// If positive, maxRetryDuration specifies the time limit for
+	// retrying a failed task, measured from when the task was first
+	// attempted. Once maxRetryDuration time has passed and the task has
+	// been attempted maxAttempts times, no further attempts will be
+	// made and the task will be deleted.
+	// If zero, then the task age is unlimited.
 	MaxRetryDuration pulumi.StringPtrInput `pulumi:"maxRetryDuration"`
-	MinBackoff       pulumi.StringPtrInput `pulumi:"minBackoff"`
+	// A task will be scheduled for retry between minBackoff and
+	// maxBackoff duration after it fails, if the queue's RetryConfig
+	// specifies that the task should be retried.
+	MinBackoff pulumi.StringPtrInput `pulumi:"minBackoff"`
 }
 
 func (QueueRetryConfigArgs) ElementType() reflect.Type {
@@ -411,22 +574,46 @@ func (o QueueRetryConfigOutput) ToQueueRetryConfigPtrOutputWithContext(ctx conte
 		return &v
 	}).(QueueRetryConfigPtrOutput)
 }
+
+// Number of attempts per task.
+// Cloud Tasks will attempt the task maxAttempts times (that is, if
+// the first attempt fails, then there will be maxAttempts - 1
+// retries). Must be >= -1.
+// If unspecified when the queue is created, Cloud Tasks will pick
+// the default.
+// -1 indicates unlimited attempts.
 func (o QueueRetryConfigOutput) MaxAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QueueRetryConfig) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
 }
 
+// A task will be scheduled for retry between minBackoff and
+// maxBackoff duration after it fails, if the queue's RetryConfig
+// specifies that the task should be retried.
 func (o QueueRetryConfigOutput) MaxBackoff() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MaxBackoff }).(pulumi.StringPtrOutput)
 }
 
+// The time between retries will double maxDoublings times.
+// A task's retry interval starts at minBackoff, then doubles maxDoublings times,
+// then increases linearly, and finally retries retries at intervals of maxBackoff
+// up to maxAttempts times.
 func (o QueueRetryConfigOutput) MaxDoublings() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v QueueRetryConfig) *int { return v.MaxDoublings }).(pulumi.IntPtrOutput)
 }
 
+// If positive, maxRetryDuration specifies the time limit for
+// retrying a failed task, measured from when the task was first
+// attempted. Once maxRetryDuration time has passed and the task has
+// been attempted maxAttempts times, no further attempts will be
+// made and the task will be deleted.
+// If zero, then the task age is unlimited.
 func (o QueueRetryConfigOutput) MaxRetryDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MaxRetryDuration }).(pulumi.StringPtrOutput)
 }
 
+// A task will be scheduled for retry between minBackoff and
+// maxBackoff duration after it fails, if the queue's RetryConfig
+// specifies that the task should be retried.
 func (o QueueRetryConfigOutput) MinBackoff() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MinBackoff }).(pulumi.StringPtrOutput)
 }
@@ -449,24 +636,72 @@ func (o QueueRetryConfigPtrOutput) Elem() QueueRetryConfigOutput {
 	return o.ApplyT(func(v *QueueRetryConfig) QueueRetryConfig { return *v }).(QueueRetryConfigOutput)
 }
 
+// Number of attempts per task.
+// Cloud Tasks will attempt the task maxAttempts times (that is, if
+// the first attempt fails, then there will be maxAttempts - 1
+// retries). Must be >= -1.
+// If unspecified when the queue is created, Cloud Tasks will pick
+// the default.
+// -1 indicates unlimited attempts.
 func (o QueueRetryConfigPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v QueueRetryConfig) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *QueueRetryConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAttempts
+	}).(pulumi.IntPtrOutput)
 }
 
+// A task will be scheduled for retry between minBackoff and
+// maxBackoff duration after it fails, if the queue's RetryConfig
+// specifies that the task should be retried.
 func (o QueueRetryConfigPtrOutput) MaxBackoff() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MaxBackoff }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *QueueRetryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBackoff
+	}).(pulumi.StringPtrOutput)
 }
 
+// The time between retries will double maxDoublings times.
+// A task's retry interval starts at minBackoff, then doubles maxDoublings times,
+// then increases linearly, and finally retries retries at intervals of maxBackoff
+// up to maxAttempts times.
 func (o QueueRetryConfigPtrOutput) MaxDoublings() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v QueueRetryConfig) *int { return v.MaxDoublings }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *QueueRetryConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDoublings
+	}).(pulumi.IntPtrOutput)
 }
 
+// If positive, maxRetryDuration specifies the time limit for
+// retrying a failed task, measured from when the task was first
+// attempted. Once maxRetryDuration time has passed and the task has
+// been attempted maxAttempts times, no further attempts will be
+// made and the task will be deleted.
+// If zero, then the task age is unlimited.
 func (o QueueRetryConfigPtrOutput) MaxRetryDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MaxRetryDuration }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *QueueRetryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetryDuration
+	}).(pulumi.StringPtrOutput)
 }
 
+// A task will be scheduled for retry between minBackoff and
+// maxBackoff duration after it fails, if the queue's RetryConfig
+// specifies that the task should be retried.
 func (o QueueRetryConfigPtrOutput) MinBackoff() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QueueRetryConfig) *string { return v.MinBackoff }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *QueueRetryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinBackoff
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

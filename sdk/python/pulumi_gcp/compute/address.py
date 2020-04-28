@@ -12,12 +12,15 @@ from .. import utilities, tables
 class Address(pulumi.CustomResource):
     address: pulumi.Output[str]
     """
-    The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-    for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
+    The static external IP address represented by this resource. Only
+    IPv4 is supported. An address may only be specified for INTERNAL
+    address types. The IP address must be inside the specified subnetwork,
+    if any.
     """
     address_type: pulumi.Output[str]
     """
-    The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+    The type of address to reserve, either INTERNAL or EXTERNAL.
+    If unspecified, defaults to EXTERNAL.
     """
     creation_timestamp: pulumi.Output[str]
     """
@@ -37,15 +40,18 @@ class Address(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-    1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-    be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-    character, which cannot be a dash.
+    Name of the resource. The name must be 1-63 characters long, and
+    comply with RFC1035. Specifically, the name must be 1-63 characters
+    long and match the regular expression `a-z?`
+    which means the first character must be a lowercase letter, and all
+    following characters must be a dash, lowercase letter, or digit,
+    except the last character, which cannot be a dash.
     """
     network_tier: pulumi.Output[str]
     """
-    The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-    this field is not specified, it is assumed to be PREMIUM.
+    The networking tier used for configuring this address. This field can
+    take the following values: PREMIUM or STANDARD. If this field is not
+    specified, it is assumed to be PREMIUM.
     """
     project: pulumi.Output[str]
     """
@@ -54,13 +60,14 @@ class Address(pulumi.CustomResource):
     """
     purpose: pulumi.Output[str]
     """
-    The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-    instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-    Internal address.
+    The purpose of this resource, which can be one of the following values:
+    - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+    This should only be set when using an Internal address.
     """
     region: pulumi.Output[str]
     """
-    The Region in which the created address should reside. If it is not provided, the provider region is used.
+    The Region in which the created address should reside.
+    If it is not provided, the provider region is used.
     """
     self_link: pulumi.Output[str]
     """
@@ -68,8 +75,10 @@ class Address(pulumi.CustomResource):
     """
     subnetwork: pulumi.Output[str]
     """
-    The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-    subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+    The URL of the subnetwork in which to reserve the address. If an IP
+    address is specified, it must be within the subnetwork's IP range.
+    This field can only be used with INTERNAL type with
+    GCE_ENDPOINT/DNS_RESOLVER purposes.
     """
     users: pulumi.Output[list]
     """
@@ -101,25 +110,34 @@ class Address(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-               for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
-        :param pulumi.Input[str] address_type: The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
+               IPv4 is supported. An address may only be specified for INTERNAL
+               address types. The IP address must be inside the specified subnetwork,
+               if any.
+        :param pulumi.Input[str] address_type: The type of address to reserve, either INTERNAL or EXTERNAL.
+               If unspecified, defaults to EXTERNAL.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[dict] labels: Labels to apply to this address. A list of key->value pairs.
-        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-               1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-               be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-               character, which cannot be a dash.
-        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-               this field is not specified, it is assumed to be PREMIUM.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?`
+               which means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. This field can
+               take the following values: PREMIUM or STANDARD. If this field is not
+               specified, it is assumed to be PREMIUM.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-               instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-               Internal address.
-        :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
-        :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-               subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+        :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
+               - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+               This should only be set when using an Internal address.
+        :param pulumi.Input[str] region: The Region in which the created address should reside.
+               If it is not provided, the provider region is used.
+        :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP
+               address is specified, it must be within the subnetwork's IP range.
+               This field can only be used with INTERNAL type with
+               GCE_ENDPOINT/DNS_RESOLVER purposes.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -167,28 +185,37 @@ class Address(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-               for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
-        :param pulumi.Input[str] address_type: The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
+               IPv4 is supported. An address may only be specified for INTERNAL
+               address types. The IP address must be inside the specified subnetwork,
+               if any.
+        :param pulumi.Input[str] address_type: The type of address to reserve, either INTERNAL or EXTERNAL.
+               If unspecified, defaults to EXTERNAL.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[dict] labels: Labels to apply to this address. A list of key->value pairs.
-        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-               1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-               be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-               character, which cannot be a dash.
-        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-               this field is not specified, it is assumed to be PREMIUM.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
+               comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?`
+               which means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. This field can
+               take the following values: PREMIUM or STANDARD. If this field is not
+               specified, it is assumed to be PREMIUM.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-               instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-               Internal address.
-        :param pulumi.Input[str] region: The Region in which the created address should reside. If it is not provided, the provider region is used.
+        :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
+               - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+               This should only be set when using an Internal address.
+        :param pulumi.Input[str] region: The Region in which the created address should reside.
+               If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-               subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+        :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP
+               address is specified, it must be within the subnetwork's IP range.
+               This field can only be used with INTERNAL type with
+               GCE_ENDPOINT/DNS_RESOLVER purposes.
         :param pulumi.Input[list] users: The URLs of the resources that are using this address.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

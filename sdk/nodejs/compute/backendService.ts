@@ -51,17 +51,19 @@ export class BackendService extends pulumi.CustomResource {
     }
 
     /**
-     * Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent
-     * and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.
+     * Lifetime of cookies in seconds if sessionAffinity is
+     * GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+     * only until the end of the browser session (or equivalent). The
+     * maximum allowed value for TTL is one day.
      * When the load balancing scheme is INTERNAL, this field is not used.
      */
     public readonly affinityCookieTtlSec!: pulumi.Output<number | undefined>;
     /**
-     * The set of backends that serve this BackendService.
+     * The set of backends that serve this BackendService.  Structure is documented below.
      */
     public readonly backends!: pulumi.Output<outputs.compute.BackendServiceBackend[] | undefined>;
     /**
-     * Cloud CDN configuration for this BackendService.
+     * Cloud CDN configuration for this BackendService.  Structure is documented below.
      */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendServiceCdnPolicy>;
     /**
@@ -70,7 +72,8 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly circuitBreakers!: pulumi.Output<outputs.compute.BackendServiceCircuitBreakers | undefined>;
     /**
-     * Time for which instance will be drained (not accept new connections, but still work to finish started).
+     * Time for which instance will be drained (not accept new
+     * connections, but still work to finish started).
      */
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
     /**
@@ -91,6 +94,7 @@ export class BackendService extends pulumi.CustomResource {
     public readonly customRequestHeaders!: pulumi.Output<string[] | undefined>;
     /**
      * An optional description of this resource.
+     * Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -103,19 +107,21 @@ export class BackendService extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService.
-     * Currently at most one health check can be specified, and a health check is required. For internal load balancing, a
-     * URL to a HealthCheck resource must be specified instead.
+     * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+     * for health checking this BackendService. Currently at most one health
+     * check can be specified, and a health check is required.
+     * For internal load balancing, a URL to a HealthCheck resource must be specified instead.
      */
     public readonly healthChecks!: pulumi.Output<string>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
      */
     public readonly iap!: pulumi.Output<outputs.compute.BackendServiceIap | undefined>;
     /**
-     * Indicates whether the backend service will be used with internal or external load balancing. A backend service
-     * created for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED'
-     * for a global backend service. Defaults to 'EXTERNAL'.
+     * Indicates whether the backend service will be used with internal or
+     * external load balancing. A backend service created for one type of
+     * load balancing cannot be used with the other. Must be `EXTERNAL` or
+     * `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -138,10 +144,7 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.BackendServiceLogConfig>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the cookie.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -150,8 +153,9 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.BackendServiceOutlierDetection | undefined>;
     /**
-     * Name of backend port. The same name should appear in the instance groups referenced by this service. Required when
-     * the load balancing scheme is EXTERNAL.
+     * Name of backend port. The same name should appear in the instance
+     * groups referenced by this service. Required when the load balancing
+     * scheme is EXTERNAL.
      */
     public readonly portName!: pulumi.Output<string>;
     /**
@@ -160,9 +164,10 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-     * SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors
-     * if used with the GA API.
+     * The protocol this BackendService uses to communicate with backends.
+     * Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+     * HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+     * types and may result in errors if used with the GA API.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -174,12 +179,13 @@ export class BackendService extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+     * Type of session affinity to use. The default is NONE. Session affinity is
+     * not applicable if the protocol is UDP.
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
     /**
-     * How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range
-     * is [1, 86400].
+     * How many seconds to wait for the backend before considering it a
+     * failed request. Default is 30 seconds. Valid range is [1, 86400].
      */
     public readonly timeoutSec!: pulumi.Output<number>;
 
@@ -267,17 +273,19 @@ export class BackendService extends pulumi.CustomResource {
  */
 export interface BackendServiceState {
     /**
-     * Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent
-     * and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.
+     * Lifetime of cookies in seconds if sessionAffinity is
+     * GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+     * only until the end of the browser session (or equivalent). The
+     * maximum allowed value for TTL is one day.
      * When the load balancing scheme is INTERNAL, this field is not used.
      */
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
     /**
-     * The set of backends that serve this BackendService.
+     * The set of backends that serve this BackendService.  Structure is documented below.
      */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceBackend>[]>;
     /**
-     * Cloud CDN configuration for this BackendService.
+     * Cloud CDN configuration for this BackendService.  Structure is documented below.
      */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicy>;
     /**
@@ -286,7 +294,8 @@ export interface BackendServiceState {
      */
     readonly circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
     /**
-     * Time for which instance will be drained (not accept new connections, but still work to finish started).
+     * Time for which instance will be drained (not accept new
+     * connections, but still work to finish started).
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
@@ -307,6 +316,7 @@ export interface BackendServiceState {
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional description of this resource.
+     * Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -319,19 +329,21 @@ export interface BackendServiceState {
      */
     readonly fingerprint?: pulumi.Input<string>;
     /**
-     * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService.
-     * Currently at most one health check can be specified, and a health check is required. For internal load balancing, a
-     * URL to a HealthCheck resource must be specified instead.
+     * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+     * for health checking this BackendService. Currently at most one health
+     * check can be specified, and a health check is required.
+     * For internal load balancing, a URL to a HealthCheck resource must be specified instead.
      */
     readonly healthChecks?: pulumi.Input<string>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
      */
     readonly iap?: pulumi.Input<inputs.compute.BackendServiceIap>;
     /**
-     * Indicates whether the backend service will be used with internal or external load balancing. A backend service
-     * created for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED'
-     * for a global backend service. Defaults to 'EXTERNAL'.
+     * Indicates whether the backend service will be used with internal or
+     * external load balancing. A backend service created for one type of
+     * load balancing cannot be used with the other. Must be `EXTERNAL` or
+     * `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -354,10 +366,7 @@ export interface BackendServiceState {
      */
     readonly logConfig?: pulumi.Input<inputs.compute.BackendServiceLogConfig>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the cookie.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -366,8 +375,9 @@ export interface BackendServiceState {
      */
     readonly outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
     /**
-     * Name of backend port. The same name should appear in the instance groups referenced by this service. Required when
-     * the load balancing scheme is EXTERNAL.
+     * Name of backend port. The same name should appear in the instance
+     * groups referenced by this service. Required when the load balancing
+     * scheme is EXTERNAL.
      */
     readonly portName?: pulumi.Input<string>;
     /**
@@ -376,9 +386,10 @@ export interface BackendServiceState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-     * SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors
-     * if used with the GA API.
+     * The protocol this BackendService uses to communicate with backends.
+     * Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+     * HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+     * types and may result in errors if used with the GA API.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -390,12 +401,13 @@ export interface BackendServiceState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+     * Type of session affinity to use. The default is NONE. Session affinity is
+     * not applicable if the protocol is UDP.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**
-     * How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range
-     * is [1, 86400].
+     * How many seconds to wait for the backend before considering it a
+     * failed request. Default is 30 seconds. Valid range is [1, 86400].
      */
     readonly timeoutSec?: pulumi.Input<number>;
 }
@@ -405,17 +417,19 @@ export interface BackendServiceState {
  */
 export interface BackendServiceArgs {
     /**
-     * Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent
-     * and lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day.
+     * Lifetime of cookies in seconds if sessionAffinity is
+     * GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+     * only until the end of the browser session (or equivalent). The
+     * maximum allowed value for TTL is one day.
      * When the load balancing scheme is INTERNAL, this field is not used.
      */
     readonly affinityCookieTtlSec?: pulumi.Input<number>;
     /**
-     * The set of backends that serve this BackendService.
+     * The set of backends that serve this BackendService.  Structure is documented below.
      */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceBackend>[]>;
     /**
-     * Cloud CDN configuration for this BackendService.
+     * Cloud CDN configuration for this BackendService.  Structure is documented below.
      */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicy>;
     /**
@@ -424,7 +438,8 @@ export interface BackendServiceArgs {
      */
     readonly circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
     /**
-     * Time for which instance will be drained (not accept new connections, but still work to finish started).
+     * Time for which instance will be drained (not accept new
+     * connections, but still work to finish started).
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
@@ -441,6 +456,7 @@ export interface BackendServiceArgs {
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional description of this resource.
+     * Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -448,19 +464,21 @@ export interface BackendServiceArgs {
      */
     readonly enableCdn?: pulumi.Input<boolean>;
     /**
-     * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService.
-     * Currently at most one health check can be specified, and a health check is required. For internal load balancing, a
-     * URL to a HealthCheck resource must be specified instead.
+     * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+     * for health checking this BackendService. Currently at most one health
+     * check can be specified, and a health check is required.
+     * For internal load balancing, a URL to a HealthCheck resource must be specified instead.
      */
     readonly healthChecks: pulumi.Input<string>;
     /**
-     * Settings for enabling Cloud Identity Aware Proxy
+     * Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
      */
     readonly iap?: pulumi.Input<inputs.compute.BackendServiceIap>;
     /**
-     * Indicates whether the backend service will be used with internal or external load balancing. A backend service
-     * created for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED'
-     * for a global backend service. Defaults to 'EXTERNAL'.
+     * Indicates whether the backend service will be used with internal or
+     * external load balancing. A backend service created for one type of
+     * load balancing cannot be used with the other. Must be `EXTERNAL` or
+     * `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -483,10 +501,7 @@ export interface BackendServiceArgs {
      */
     readonly logConfig?: pulumi.Input<inputs.compute.BackendServiceLogConfig>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the cookie.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -495,8 +510,9 @@ export interface BackendServiceArgs {
      */
     readonly outlierDetection?: pulumi.Input<inputs.compute.BackendServiceOutlierDetection>;
     /**
-     * Name of backend port. The same name should appear in the instance groups referenced by this service. Required when
-     * the load balancing scheme is EXTERNAL.
+     * Name of backend port. The same name should appear in the instance
+     * groups referenced by this service. Required when the load balancing
+     * scheme is EXTERNAL.
      */
     readonly portName?: pulumi.Input<string>;
     /**
@@ -505,9 +521,10 @@ export interface BackendServiceArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-     * SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors
-     * if used with the GA API.
+     * The protocol this BackendService uses to communicate with backends.
+     * Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+     * HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+     * types and may result in errors if used with the GA API.
      */
     readonly protocol?: pulumi.Input<string>;
     /**
@@ -515,12 +532,13 @@ export interface BackendServiceArgs {
      */
     readonly securityPolicy?: pulumi.Input<string>;
     /**
-     * Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+     * Type of session affinity to use. The default is NONE. Session affinity is
+     * not applicable if the protocol is UDP.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**
-     * How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range
-     * is [1, 86400].
+     * How many seconds to wait for the backend before considering it a
+     * failed request. Default is 30 seconds. Valid range is [1, 86400].
      */
     readonly timeoutSec?: pulumi.Input<number>;
 }

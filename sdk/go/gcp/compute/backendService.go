@@ -26,18 +26,21 @@ import (
 type BackendService struct {
 	pulumi.CustomResourceState
 
-	// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
-	// lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
-	// load balancing scheme is INTERNAL, this field is not used.
+	// Lifetime of cookies in seconds if sessionAffinity is
+	// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+	// only until the end of the browser session (or equivalent). The
+	// maximum allowed value for TTL is one day.
+	// When the load balancing scheme is INTERNAL, this field is not used.
 	AffinityCookieTtlSec pulumi.IntPtrOutput `pulumi:"affinityCookieTtlSec"`
-	// The set of backends that serve this BackendService.
+	// The set of backends that serve this BackendService.  Structure is documented below.
 	Backends BackendServiceBackendArrayOutput `pulumi:"backends"`
-	// Cloud CDN configuration for this BackendService.
+	// Cloud CDN configuration for this BackendService.  Structure is documented below.
 	CdnPolicy BackendServiceCdnPolicyOutput `pulumi:"cdnPolicy"`
 	// Settings controlling the volume of connections to a backend service. This field is applicable only when the
 	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 	CircuitBreakers BackendServiceCircuitBreakersPtrOutput `pulumi:"circuitBreakers"`
-	// Time for which instance will be drained (not accept new connections, but still work to finish started).
+	// Time for which instance will be drained (not accept new
+	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrOutput `pulumi:"connectionDrainingTimeoutSec"`
 	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
 	// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
@@ -50,20 +53,23 @@ type BackendService struct {
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders pulumi.StringArrayOutput `pulumi:"customRequestHeaders"`
 	// An optional description of this resource.
+	// Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If true, enable Cloud CDN for this BackendService.
 	EnableCdn pulumi.BoolPtrOutput `pulumi:"enableCdn"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently
-	// at most one health check can be specified, and a health check is required. For internal load balancing, a URL to a
-	// HealthCheck resource must be specified instead.
+	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+	// for health checking this BackendService. Currently at most one health
+	// check can be specified, and a health check is required.
+	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks pulumi.StringOutput `pulumi:"healthChecks"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
 	Iap BackendServiceIapPtrOutput `pulumi:"iap"`
-	// Indicates whether the backend service will be used with internal or external load balancing. A backend service created
-	// for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED' for a global
-	// backend service. Defaults to 'EXTERNAL'.
+	// Indicates whether the backend service will be used with internal or
+	// external load balancing. A backend service created for one type of
+	// load balancing cannot be used with the other. Must be `EXTERNAL` or
+	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
 	// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
@@ -80,32 +86,32 @@ type BackendService struct {
 	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
 	// enabled, logs will be exported to Stackdriver.
 	LogConfig BackendServiceLogConfigOutput `pulumi:"logConfig"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the cookie.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
 	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 	OutlierDetection BackendServiceOutlierDetectionPtrOutput `pulumi:"outlierDetection"`
-	// Name of backend port. The same name should appear in the instance groups referenced by this service. Required when the
-	// load balancing scheme is EXTERNAL.
+	// Name of backend port. The same name should appear in the instance
+	// groups referenced by this service. Required when the load balancing
+	// scheme is EXTERNAL.
 	PortName pulumi.StringOutput `pulumi:"portName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-	// SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if
-	// used with the GA API.
+	// The protocol this BackendService uses to communicate with backends.
+	// Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// types and may result in errors if used with the GA API.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+	// Type of session affinity to use. The default is NONE. Session affinity is
+	// not applicable if the protocol is UDP.
 	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
-	// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
-	// [1, 86400].
+	// How many seconds to wait for the backend before considering it a
+	// failed request. Default is 30 seconds. Valid range is [1, 86400].
 	TimeoutSec pulumi.IntOutput `pulumi:"timeoutSec"`
 }
 
@@ -140,18 +146,21 @@ func GetBackendService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackendService resources.
 type backendServiceState struct {
-	// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
-	// lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
-	// load balancing scheme is INTERNAL, this field is not used.
+	// Lifetime of cookies in seconds if sessionAffinity is
+	// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+	// only until the end of the browser session (or equivalent). The
+	// maximum allowed value for TTL is one day.
+	// When the load balancing scheme is INTERNAL, this field is not used.
 	AffinityCookieTtlSec *int `pulumi:"affinityCookieTtlSec"`
-	// The set of backends that serve this BackendService.
+	// The set of backends that serve this BackendService.  Structure is documented below.
 	Backends []BackendServiceBackend `pulumi:"backends"`
-	// Cloud CDN configuration for this BackendService.
+	// Cloud CDN configuration for this BackendService.  Structure is documented below.
 	CdnPolicy *BackendServiceCdnPolicy `pulumi:"cdnPolicy"`
 	// Settings controlling the volume of connections to a backend service. This field is applicable only when the
 	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 	CircuitBreakers *BackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
-	// Time for which instance will be drained (not accept new connections, but still work to finish started).
+	// Time for which instance will be drained (not accept new
+	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
 	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
 	// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
@@ -164,20 +173,23 @@ type backendServiceState struct {
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
 	// An optional description of this resource.
+	// Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// If true, enable Cloud CDN for this BackendService.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint *string `pulumi:"fingerprint"`
-	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently
-	// at most one health check can be specified, and a health check is required. For internal load balancing, a URL to a
-	// HealthCheck resource must be specified instead.
+	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+	// for health checking this BackendService. Currently at most one health
+	// check can be specified, and a health check is required.
+	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks *string `pulumi:"healthChecks"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
 	Iap *BackendServiceIap `pulumi:"iap"`
-	// Indicates whether the backend service will be used with internal or external load balancing. A backend service created
-	// for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED' for a global
-	// backend service. Defaults to 'EXTERNAL'.
+	// Indicates whether the backend service will be used with internal or
+	// external load balancing. A backend service created for one type of
+	// load balancing cannot be used with the other. Must be `EXTERNAL` or
+	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
 	// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
@@ -194,48 +206,51 @@ type backendServiceState struct {
 	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
 	// enabled, logs will be exported to Stackdriver.
 	LogConfig *BackendServiceLogConfig `pulumi:"logConfig"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the cookie.
 	Name *string `pulumi:"name"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
 	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 	OutlierDetection *BackendServiceOutlierDetection `pulumi:"outlierDetection"`
-	// Name of backend port. The same name should appear in the instance groups referenced by this service. Required when the
-	// load balancing scheme is EXTERNAL.
+	// Name of backend port. The same name should appear in the instance
+	// groups referenced by this service. Required when the load balancing
+	// scheme is EXTERNAL.
 	PortName *string `pulumi:"portName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-	// SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if
-	// used with the GA API.
+	// The protocol this BackendService uses to communicate with backends.
+	// Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// types and may result in errors if used with the GA API.
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+	// Type of session affinity to use. The default is NONE. Session affinity is
+	// not applicable if the protocol is UDP.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
-	// [1, 86400].
+	// How many seconds to wait for the backend before considering it a
+	// failed request. Default is 30 seconds. Valid range is [1, 86400].
 	TimeoutSec *int `pulumi:"timeoutSec"`
 }
 
 type BackendServiceState struct {
-	// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
-	// lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
-	// load balancing scheme is INTERNAL, this field is not used.
+	// Lifetime of cookies in seconds if sessionAffinity is
+	// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+	// only until the end of the browser session (or equivalent). The
+	// maximum allowed value for TTL is one day.
+	// When the load balancing scheme is INTERNAL, this field is not used.
 	AffinityCookieTtlSec pulumi.IntPtrInput
-	// The set of backends that serve this BackendService.
+	// The set of backends that serve this BackendService.  Structure is documented below.
 	Backends BackendServiceBackendArrayInput
-	// Cloud CDN configuration for this BackendService.
+	// Cloud CDN configuration for this BackendService.  Structure is documented below.
 	CdnPolicy BackendServiceCdnPolicyPtrInput
 	// Settings controlling the volume of connections to a backend service. This field is applicable only when the
 	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 	CircuitBreakers BackendServiceCircuitBreakersPtrInput
-	// Time for which instance will be drained (not accept new connections, but still work to finish started).
+	// Time for which instance will be drained (not accept new
+	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
 	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
 	// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
@@ -248,20 +263,23 @@ type BackendServiceState struct {
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
+	// Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendService.
 	EnableCdn pulumi.BoolPtrInput
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringPtrInput
-	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently
-	// at most one health check can be specified, and a health check is required. For internal load balancing, a URL to a
-	// HealthCheck resource must be specified instead.
+	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+	// for health checking this BackendService. Currently at most one health
+	// check can be specified, and a health check is required.
+	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks pulumi.StringPtrInput
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
 	Iap BackendServiceIapPtrInput
-	// Indicates whether the backend service will be used with internal or external load balancing. A backend service created
-	// for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED' for a global
-	// backend service. Defaults to 'EXTERNAL'.
+	// Indicates whether the backend service will be used with internal or
+	// external load balancing. A backend service created for one type of
+	// load balancing cannot be used with the other. Must be `EXTERNAL` or
+	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
 	// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
@@ -278,32 +296,32 @@ type BackendServiceState struct {
 	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
 	// enabled, logs will be exported to Stackdriver.
 	LogConfig BackendServiceLogConfigPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the cookie.
 	Name pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
 	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 	OutlierDetection BackendServiceOutlierDetectionPtrInput
-	// Name of backend port. The same name should appear in the instance groups referenced by this service. Required when the
-	// load balancing scheme is EXTERNAL.
+	// Name of backend port. The same name should appear in the instance
+	// groups referenced by this service. Required when the load balancing
+	// scheme is EXTERNAL.
 	PortName pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-	// SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if
-	// used with the GA API.
+	// The protocol this BackendService uses to communicate with backends.
+	// Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// types and may result in errors if used with the GA API.
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+	// Type of session affinity to use. The default is NONE. Session affinity is
+	// not applicable if the protocol is UDP.
 	SessionAffinity pulumi.StringPtrInput
-	// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
-	// [1, 86400].
+	// How many seconds to wait for the backend before considering it a
+	// failed request. Default is 30 seconds. Valid range is [1, 86400].
 	TimeoutSec pulumi.IntPtrInput
 }
 
@@ -312,18 +330,21 @@ func (BackendServiceState) ElementType() reflect.Type {
 }
 
 type backendServiceArgs struct {
-	// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
-	// lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
-	// load balancing scheme is INTERNAL, this field is not used.
+	// Lifetime of cookies in seconds if sessionAffinity is
+	// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+	// only until the end of the browser session (or equivalent). The
+	// maximum allowed value for TTL is one day.
+	// When the load balancing scheme is INTERNAL, this field is not used.
 	AffinityCookieTtlSec *int `pulumi:"affinityCookieTtlSec"`
-	// The set of backends that serve this BackendService.
+	// The set of backends that serve this BackendService.  Structure is documented below.
 	Backends []BackendServiceBackend `pulumi:"backends"`
-	// Cloud CDN configuration for this BackendService.
+	// Cloud CDN configuration for this BackendService.  Structure is documented below.
 	CdnPolicy *BackendServiceCdnPolicy `pulumi:"cdnPolicy"`
 	// Settings controlling the volume of connections to a backend service. This field is applicable only when the
 	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 	CircuitBreakers *BackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
-	// Time for which instance will be drained (not accept new connections, but still work to finish started).
+	// Time for which instance will be drained (not accept new
+	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
 	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
 	// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
@@ -334,18 +355,21 @@ type backendServiceArgs struct {
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
 	// An optional description of this resource.
+	// Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// If true, enable Cloud CDN for this BackendService.
 	EnableCdn *bool `pulumi:"enableCdn"`
-	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently
-	// at most one health check can be specified, and a health check is required. For internal load balancing, a URL to a
-	// HealthCheck resource must be specified instead.
+	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+	// for health checking this BackendService. Currently at most one health
+	// check can be specified, and a health check is required.
+	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks string `pulumi:"healthChecks"`
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
 	Iap *BackendServiceIap `pulumi:"iap"`
-	// Indicates whether the backend service will be used with internal or external load balancing. A backend service created
-	// for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED' for a global
-	// backend service. Defaults to 'EXTERNAL'.
+	// Indicates whether the backend service will be used with internal or
+	// external load balancing. A backend service created for one type of
+	// load balancing cannot be used with the other. Must be `EXTERNAL` or
+	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
 	// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
@@ -362,47 +386,50 @@ type backendServiceArgs struct {
 	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
 	// enabled, logs will be exported to Stackdriver.
 	LogConfig *BackendServiceLogConfig `pulumi:"logConfig"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the cookie.
 	Name *string `pulumi:"name"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
 	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 	OutlierDetection *BackendServiceOutlierDetection `pulumi:"outlierDetection"`
-	// Name of backend port. The same name should appear in the instance groups referenced by this service. Required when the
-	// load balancing scheme is EXTERNAL.
+	// Name of backend port. The same name should appear in the instance
+	// groups referenced by this service. Required when the load balancing
+	// scheme is EXTERNAL.
 	PortName *string `pulumi:"portName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-	// SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if
-	// used with the GA API.
+	// The protocol this BackendService uses to communicate with backends.
+	// Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// types and may result in errors if used with the GA API.
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
-	// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+	// Type of session affinity to use. The default is NONE. Session affinity is
+	// not applicable if the protocol is UDP.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
-	// [1, 86400].
+	// How many seconds to wait for the backend before considering it a
+	// failed request. Default is 30 seconds. Valid range is [1, 86400].
 	TimeoutSec *int `pulumi:"timeoutSec"`
 }
 
 // The set of arguments for constructing a BackendService resource.
 type BackendServiceArgs struct {
-	// Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is non-persistent and
-	// lasts only until the end of the browser session (or equivalent). The maximum allowed value for TTL is one day. When the
-	// load balancing scheme is INTERNAL, this field is not used.
+	// Lifetime of cookies in seconds if sessionAffinity is
+	// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
+	// only until the end of the browser session (or equivalent). The
+	// maximum allowed value for TTL is one day.
+	// When the load balancing scheme is INTERNAL, this field is not used.
 	AffinityCookieTtlSec pulumi.IntPtrInput
-	// The set of backends that serve this BackendService.
+	// The set of backends that serve this BackendService.  Structure is documented below.
 	Backends BackendServiceBackendArrayInput
-	// Cloud CDN configuration for this BackendService.
+	// Cloud CDN configuration for this BackendService.  Structure is documented below.
 	CdnPolicy BackendServiceCdnPolicyPtrInput
 	// Settings controlling the volume of connections to a backend service. This field is applicable only when the
 	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 	CircuitBreakers BackendServiceCircuitBreakersPtrInput
-	// Time for which instance will be drained (not accept new connections, but still work to finish started).
+	// Time for which instance will be drained (not accept new
+	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
 	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
 	// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
@@ -413,18 +440,21 @@ type BackendServiceArgs struct {
 	// Headers that the HTTP/S load balancer should add to proxied requests.
 	CustomRequestHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
+	// Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendService.
 	EnableCdn pulumi.BoolPtrInput
-	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently
-	// at most one health check can be specified, and a health check is required. For internal load balancing, a URL to a
-	// HealthCheck resource must be specified instead.
+	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
+	// for health checking this BackendService. Currently at most one health
+	// check can be specified, and a health check is required.
+	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks pulumi.StringInput
-	// Settings for enabling Cloud Identity Aware Proxy
+	// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
 	Iap BackendServiceIapPtrInput
-	// Indicates whether the backend service will be used with internal or external load balancing. A backend service created
-	// for one type of load balancing cannot be used with the other. Must be 'EXTERNAL' or 'INTERNAL_SELF_MANAGED' for a global
-	// backend service. Defaults to 'EXTERNAL'.
+	// Indicates whether the backend service will be used with internal or
+	// external load balancing. A backend service created for one type of
+	// load balancing cannot be used with the other. Must be `EXTERNAL` or
+	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
 	// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
@@ -441,30 +471,30 @@ type BackendServiceArgs struct {
 	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
 	// enabled, logs will be exported to Stackdriver.
 	LogConfig BackendServiceLogConfigPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	// Name of the cookie.
 	Name pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
 	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 	OutlierDetection BackendServiceOutlierDetectionPtrInput
-	// Name of backend port. The same name should appear in the instance groups referenced by this service. Required when the
-	// load balancing scheme is EXTERNAL.
+	// Name of backend port. The same name should appear in the instance
+	// groups referenced by this service. Required when the load balancing
+	// scheme is EXTERNAL.
 	PortName pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, and
-	// SSL. The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer types and may result in errors if
-	// used with the GA API.
+	// The protocol this BackendService uses to communicate with backends.
+	// Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
+	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// types and may result in errors if used with the GA API.
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
-	// Type of session affinity to use. The default is NONE. Session affinity is not applicable if the protocol is UDP.
+	// Type of session affinity to use. The default is NONE. Session affinity is
+	// not applicable if the protocol is UDP.
 	SessionAffinity pulumi.StringPtrInput
-	// How many seconds to wait for the backend before considering it a failed request. Default is 30 seconds. Valid range is
-	// [1, 86400].
+	// How many seconds to wait for the backend before considering it a
+	// failed request. Default is 30 seconds. Valid range is [1, 86400].
 	TimeoutSec pulumi.IntPtrInput
 }
 

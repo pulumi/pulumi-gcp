@@ -23,11 +23,14 @@ type Node struct {
 
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType pulumi.StringOutput `pulumi:"acceleratorType"`
-	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-	// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-	// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-	// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-	// that is using that CIDR block.
+	// The CIDR block that the TPU node will use when selecting an IP
+	// address. This CIDR block must be a /29 block; the Compute Engine
+	// networks API forbids a smaller block, and using a larger block would
+	// be wasteful (a node can only consume one IP address).
+	// Errors will occur if the CIDR block has already been used for a
+	// currently existing TPU node, the CIDR block conflicts with any
+	// subnetworks in the user's provided network, or the provided network
+	// is peered with another network that is using that CIDR block.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -35,8 +38,10 @@ type Node struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The immutable name of the TPU.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-	// which this API has been activated. If none is provided, "default" will be used.
+	// The name of a network to peer the TPU node to. It must be a
+	// preexisting Compute Engine network inside of the project on which
+	// this API has been activated. If none is provided, "default" will be
+	// used.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
 	// node first reach out to the first (index 0) entry.
@@ -44,7 +49,7 @@ type Node struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Sets the scheduling options for this TPU instance.
+	// Sets the scheduling options for this TPU instance.  Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrOutput `pulumi:"schedulingConfig"`
 	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
 	// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
@@ -97,11 +102,14 @@ func GetNode(ctx *pulumi.Context,
 type nodeState struct {
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType *string `pulumi:"acceleratorType"`
-	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-	// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-	// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-	// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-	// that is using that CIDR block.
+	// The CIDR block that the TPU node will use when selecting an IP
+	// address. This CIDR block must be a /29 block; the Compute Engine
+	// networks API forbids a smaller block, and using a larger block would
+	// be wasteful (a node can only consume one IP address).
+	// Errors will occur if the CIDR block has already been used for a
+	// currently existing TPU node, the CIDR block conflicts with any
+	// subnetworks in the user's provided network, or the provided network
+	// is peered with another network that is using that CIDR block.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description *string `pulumi:"description"`
@@ -109,8 +117,10 @@ type nodeState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The immutable name of the TPU.
 	Name *string `pulumi:"name"`
-	// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-	// which this API has been activated. If none is provided, "default" will be used.
+	// The name of a network to peer the TPU node to. It must be a
+	// preexisting Compute Engine network inside of the project on which
+	// this API has been activated. If none is provided, "default" will be
+	// used.
 	Network *string `pulumi:"network"`
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
 	// node first reach out to the first (index 0) entry.
@@ -118,7 +128,7 @@ type nodeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Sets the scheduling options for this TPU instance.
+	// Sets the scheduling options for this TPU instance.  Structure is documented below.
 	SchedulingConfig *NodeSchedulingConfig `pulumi:"schedulingConfig"`
 	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
 	// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
@@ -132,11 +142,14 @@ type nodeState struct {
 type NodeState struct {
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType pulumi.StringPtrInput
-	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-	// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-	// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-	// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-	// that is using that CIDR block.
+	// The CIDR block that the TPU node will use when selecting an IP
+	// address. This CIDR block must be a /29 block; the Compute Engine
+	// networks API forbids a smaller block, and using a larger block would
+	// be wasteful (a node can only consume one IP address).
+	// Errors will occur if the CIDR block has already been used for a
+	// currently existing TPU node, the CIDR block conflicts with any
+	// subnetworks in the user's provided network, or the provided network
+	// is peered with another network that is using that CIDR block.
 	CidrBlock pulumi.StringPtrInput
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description pulumi.StringPtrInput
@@ -144,8 +157,10 @@ type NodeState struct {
 	Labels pulumi.StringMapInput
 	// The immutable name of the TPU.
 	Name pulumi.StringPtrInput
-	// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-	// which this API has been activated. If none is provided, "default" will be used.
+	// The name of a network to peer the TPU node to. It must be a
+	// preexisting Compute Engine network inside of the project on which
+	// this API has been activated. If none is provided, "default" will be
+	// used.
 	Network pulumi.StringPtrInput
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
 	// node first reach out to the first (index 0) entry.
@@ -153,7 +168,7 @@ type NodeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Sets the scheduling options for this TPU instance.
+	// Sets the scheduling options for this TPU instance.  Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrInput
 	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
 	// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
@@ -171,11 +186,14 @@ func (NodeState) ElementType() reflect.Type {
 type nodeArgs struct {
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType string `pulumi:"acceleratorType"`
-	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-	// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-	// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-	// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-	// that is using that CIDR block.
+	// The CIDR block that the TPU node will use when selecting an IP
+	// address. This CIDR block must be a /29 block; the Compute Engine
+	// networks API forbids a smaller block, and using a larger block would
+	// be wasteful (a node can only consume one IP address).
+	// Errors will occur if the CIDR block has already been used for a
+	// currently existing TPU node, the CIDR block conflicts with any
+	// subnetworks in the user's provided network, or the provided network
+	// is peered with another network that is using that CIDR block.
 	CidrBlock string `pulumi:"cidrBlock"`
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description *string `pulumi:"description"`
@@ -183,13 +201,15 @@ type nodeArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The immutable name of the TPU.
 	Name *string `pulumi:"name"`
-	// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-	// which this API has been activated. If none is provided, "default" will be used.
+	// The name of a network to peer the TPU node to. It must be a
+	// preexisting Compute Engine network inside of the project on which
+	// this API has been activated. If none is provided, "default" will be
+	// used.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Sets the scheduling options for this TPU instance.
+	// Sets the scheduling options for this TPU instance.  Structure is documented below.
 	SchedulingConfig *NodeSchedulingConfig `pulumi:"schedulingConfig"`
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion string `pulumi:"tensorflowVersion"`
@@ -201,11 +221,14 @@ type nodeArgs struct {
 type NodeArgs struct {
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType pulumi.StringInput
-	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-	// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-	// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-	// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-	// that is using that CIDR block.
+	// The CIDR block that the TPU node will use when selecting an IP
+	// address. This CIDR block must be a /29 block; the Compute Engine
+	// networks API forbids a smaller block, and using a larger block would
+	// be wasteful (a node can only consume one IP address).
+	// Errors will occur if the CIDR block has already been used for a
+	// currently existing TPU node, the CIDR block conflicts with any
+	// subnetworks in the user's provided network, or the provided network
+	// is peered with another network that is using that CIDR block.
 	CidrBlock pulumi.StringInput
 	// The user-supplied description of the TPU. Maximum of 512 characters.
 	Description pulumi.StringPtrInput
@@ -213,13 +236,15 @@ type NodeArgs struct {
 	Labels pulumi.StringMapInput
 	// The immutable name of the TPU.
 	Name pulumi.StringPtrInput
-	// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-	// which this API has been activated. If none is provided, "default" will be used.
+	// The name of a network to peer the TPU node to. It must be a
+	// preexisting Compute Engine network inside of the project on which
+	// this API has been activated. If none is provided, "default" will be
+	// used.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Sets the scheduling options for this TPU instance.
+	// Sets the scheduling options for this TPU instance.  Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrInput
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion pulumi.StringInput

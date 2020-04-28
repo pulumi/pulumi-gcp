@@ -33,7 +33,7 @@ class GetOrganizationResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if lifecycle_state and not isinstance(lifecycle_state, str):
             raise TypeError("Expected argument 'lifecycle_state' to be a str")

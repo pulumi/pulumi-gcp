@@ -42,7 +42,8 @@ namespace Pulumi.Gcp.Filestore
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// File system shares on the instance. For this version, only a single file share is supported.
+        /// File system shares on the instance. For this version, only a
+        /// single file share is supported.  Structure is documented below.
         /// </summary>
         [Output("fileShares")]
         public Output<Outputs.InstanceFileShares> FileShares { get; private set; } = null!;
@@ -54,13 +55,14 @@ namespace Pulumi.Gcp.Filestore
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the instance.
+        /// The name of the fileshare (16 characters or less)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// VPC networks to which the instance is connected. For this version, only a single network is supported.
+        /// VPC networks to which the instance is connected. For this version,
+        /// only a single network is supported.  Structure is documented below.
         /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.InstanceNetwork>> Networks { get; private set; } = null!;
@@ -137,7 +139,8 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// File system shares on the instance. For this version, only a single file share is supported.
+        /// File system shares on the instance. For this version, only a
+        /// single file share is supported.  Structure is documented below.
         /// </summary>
         [Input("fileShares", required: true)]
         public Input<Inputs.InstanceFileSharesArgs> FileShares { get; set; } = null!;
@@ -155,7 +158,7 @@ namespace Pulumi.Gcp.Filestore
         }
 
         /// <summary>
-        /// The resource name of the instance.
+        /// The name of the fileshare (16 characters or less)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -164,7 +167,8 @@ namespace Pulumi.Gcp.Filestore
         private InputList<Inputs.InstanceNetworkArgs>? _networks;
 
         /// <summary>
-        /// VPC networks to which the instance is connected. For this version, only a single network is supported.
+        /// VPC networks to which the instance is connected. For this version,
+        /// only a single network is supported.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceNetworkArgs> Networks
         {
@@ -217,7 +221,8 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// File system shares on the instance. For this version, only a single file share is supported.
+        /// File system shares on the instance. For this version, only a
+        /// single file share is supported.  Structure is documented below.
         /// </summary>
         [Input("fileShares")]
         public Input<Inputs.InstanceFileSharesGetArgs>? FileShares { get; set; }
@@ -235,7 +240,7 @@ namespace Pulumi.Gcp.Filestore
         }
 
         /// <summary>
-        /// The resource name of the instance.
+        /// The name of the fileshare (16 characters or less)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -244,7 +249,8 @@ namespace Pulumi.Gcp.Filestore
         private InputList<Inputs.InstanceNetworkGetArgs>? _networks;
 
         /// <summary>
-        /// VPC networks to which the instance is connected. For this version, only a single network is supported.
+        /// VPC networks to which the instance is connected. For this version,
+        /// only a single network is supported.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceNetworkGetArgs> Networks
         {

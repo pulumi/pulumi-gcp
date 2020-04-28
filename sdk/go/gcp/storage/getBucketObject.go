@@ -46,7 +46,7 @@ type LookupBucketObjectResult struct {
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c        string `pulumi:"crc32c"`
 	DetectMd5hash string `pulumi:"detectMd5hash"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash    string            `pulumi:"md5hash"`

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Tpu.Outputs
     [OutputType]
     public sealed class NodeSchedulingConfig
     {
+        /// <summary>
+        /// Defines whether the TPU instance is preemptible.
+        /// </summary>
         public readonly bool Preemptible;
 
         [OutputConstructor]

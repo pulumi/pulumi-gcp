@@ -37,22 +37,18 @@ import (
 type NotificationChannel struct {
 	pulumi.CustomResourceState
 
-	// An optional human-readable description of this notification channel. This description may provide additional details,
-	// beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
+	// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
-	// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
-	// is limited to 512 Unicode characters.
+	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
-	// notifications to a particular channel without removing the channel from all alerting policies that reference the
-	// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
-	// same set of alerting policies on the channel at some point in the future.
+	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
-	// NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
-	// therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
-	// sensitive_labels block, but cannot be configured in both places.
+	// Configuration fields that define the channel and its behavior. The
+	// permissible and required labels are specified in the
+	// NotificationChannelDescriptor corresponding to the type field.
+	// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+	// determine if there are upstream changes to these fields. They can also be configured via
+	// the sensitiveLabels block, but cannot be configured in both places.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
 	// [CHANNEL_ID] is automatically assigned by the server on creation.
@@ -60,21 +56,16 @@ type NotificationChannel struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
-	// contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
-	// The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
-	// specified in both locations and will cause an error. Changing from one location to a different credential configuration
-	// in the config will require an apply to update state.
+	// Different notification type behaviors are configured primarily using the the `labels` field on this
+	// resource. This block contains the labels which contain secrets or passwords so that they can be marked
+	// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
+	// in the `labels` map in the api request.
+	// Credentials may not be specified in both locations and will cause an error. Changing from one location
+	// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
 	SensitiveLabels NotificationChannelSensitiveLabelsPtrOutput `pulumi:"sensitiveLabels"`
-	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See
-	// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of
-	// valid values such as "email", "slack", etc...
+	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
 	Type pulumi.StringOutput `pulumi:"type"`
-	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema,
-	// unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel
-	// objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
-	// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must
-	// begin with a letter.
+	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
 	// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
 	// operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
@@ -117,22 +108,18 @@ func GetNotificationChannel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NotificationChannel resources.
 type notificationChannelState struct {
-	// An optional human-readable description of this notification channel. This description may provide additional details,
-	// beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
+	// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
 	Description *string `pulumi:"description"`
-	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
-	// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
-	// is limited to 512 Unicode characters.
+	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
 	DisplayName *string `pulumi:"displayName"`
-	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
-	// notifications to a particular channel without removing the channel from all alerting policies that reference the
-	// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
-	// same set of alerting policies on the channel at some point in the future.
+	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 	Enabled *bool `pulumi:"enabled"`
-	// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
-	// NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
-	// therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
-	// sensitive_labels block, but cannot be configured in both places.
+	// Configuration fields that define the channel and its behavior. The
+	// permissible and required labels are specified in the
+	// NotificationChannelDescriptor corresponding to the type field.
+	// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+	// determine if there are upstream changes to these fields. They can also be configured via
+	// the sensitiveLabels block, but cannot be configured in both places.
 	Labels map[string]string `pulumi:"labels"`
 	// The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
 	// [CHANNEL_ID] is automatically assigned by the server on creation.
@@ -140,21 +127,16 @@ type notificationChannelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
-	// contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
-	// The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
-	// specified in both locations and will cause an error. Changing from one location to a different credential configuration
-	// in the config will require an apply to update state.
+	// Different notification type behaviors are configured primarily using the the `labels` field on this
+	// resource. This block contains the labels which contain secrets or passwords so that they can be marked
+	// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
+	// in the `labels` map in the api request.
+	// Credentials may not be specified in both locations and will cause an error. Changing from one location
+	// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
 	SensitiveLabels *NotificationChannelSensitiveLabels `pulumi:"sensitiveLabels"`
-	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See
-	// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of
-	// valid values such as "email", "slack", etc...
+	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
 	Type *string `pulumi:"type"`
-	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema,
-	// unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel
-	// objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
-	// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must
-	// begin with a letter.
+	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels map[string]string `pulumi:"userLabels"`
 	// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
 	// operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
@@ -167,22 +149,18 @@ type notificationChannelState struct {
 }
 
 type NotificationChannelState struct {
-	// An optional human-readable description of this notification channel. This description may provide additional details,
-	// beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
+	// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
 	Description pulumi.StringPtrInput
-	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
-	// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
-	// is limited to 512 Unicode characters.
+	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
 	DisplayName pulumi.StringPtrInput
-	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
-	// notifications to a particular channel without removing the channel from all alerting policies that reference the
-	// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
-	// same set of alerting policies on the channel at some point in the future.
+	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 	Enabled pulumi.BoolPtrInput
-	// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
-	// NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
-	// therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
-	// sensitive_labels block, but cannot be configured in both places.
+	// Configuration fields that define the channel and its behavior. The
+	// permissible and required labels are specified in the
+	// NotificationChannelDescriptor corresponding to the type field.
+	// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+	// determine if there are upstream changes to these fields. They can also be configured via
+	// the sensitiveLabels block, but cannot be configured in both places.
 	Labels pulumi.StringMapInput
 	// The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
 	// [CHANNEL_ID] is automatically assigned by the server on creation.
@@ -190,21 +168,16 @@ type NotificationChannelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
-	// contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
-	// The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
-	// specified in both locations and will cause an error. Changing from one location to a different credential configuration
-	// in the config will require an apply to update state.
+	// Different notification type behaviors are configured primarily using the the `labels` field on this
+	// resource. This block contains the labels which contain secrets or passwords so that they can be marked
+	// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
+	// in the `labels` map in the api request.
+	// Credentials may not be specified in both locations and will cause an error. Changing from one location
+	// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
 	SensitiveLabels NotificationChannelSensitiveLabelsPtrInput
-	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See
-	// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of
-	// valid values such as "email", "slack", etc...
+	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
 	Type pulumi.StringPtrInput
-	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema,
-	// unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel
-	// objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
-	// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must
-	// begin with a letter.
+	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapInput
 	// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
 	// operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
@@ -221,81 +194,63 @@ func (NotificationChannelState) ElementType() reflect.Type {
 }
 
 type notificationChannelArgs struct {
-	// An optional human-readable description of this notification channel. This description may provide additional details,
-	// beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
+	// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
 	Description *string `pulumi:"description"`
-	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
-	// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
-	// is limited to 512 Unicode characters.
+	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
 	DisplayName *string `pulumi:"displayName"`
-	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
-	// notifications to a particular channel without removing the channel from all alerting policies that reference the
-	// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
-	// same set of alerting policies on the channel at some point in the future.
+	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 	Enabled *bool `pulumi:"enabled"`
-	// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
-	// NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
-	// therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
-	// sensitive_labels block, but cannot be configured in both places.
+	// Configuration fields that define the channel and its behavior. The
+	// permissible and required labels are specified in the
+	// NotificationChannelDescriptor corresponding to the type field.
+	// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+	// determine if there are upstream changes to these fields. They can also be configured via
+	// the sensitiveLabels block, but cannot be configured in both places.
 	Labels map[string]string `pulumi:"labels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
-	// contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
-	// The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
-	// specified in both locations and will cause an error. Changing from one location to a different credential configuration
-	// in the config will require an apply to update state.
+	// Different notification type behaviors are configured primarily using the the `labels` field on this
+	// resource. This block contains the labels which contain secrets or passwords so that they can be marked
+	// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
+	// in the `labels` map in the api request.
+	// Credentials may not be specified in both locations and will cause an error. Changing from one location
+	// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
 	SensitiveLabels *NotificationChannelSensitiveLabels `pulumi:"sensitiveLabels"`
-	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See
-	// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of
-	// valid values such as "email", "slack", etc...
+	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
 	Type string `pulumi:"type"`
-	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema,
-	// unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel
-	// objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
-	// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must
-	// begin with a letter.
+	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 // The set of arguments for constructing a NotificationChannel resource.
 type NotificationChannelArgs struct {
-	// An optional human-readable description of this notification channel. This description may provide additional details,
-	// beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
+	// An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
 	Description pulumi.StringPtrInput
-	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique
-	// name in order to make it easier to identify the channels in your project, though this is not enforced. The display name
-	// is limited to 512 Unicode characters.
+	// An optional human-readable name for this notification channel. It is recommended that you specify a non-empty and unique name in order to make it easier to identify the channels in your project, though this is not enforced. The display name is limited to 512 Unicode characters.
 	DisplayName pulumi.StringPtrInput
-	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of
-	// notifications to a particular channel without removing the channel from all alerting policies that reference the
-	// channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the
-	// same set of alerting policies on the channel at some point in the future.
+	// Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
 	Enabled pulumi.BoolPtrInput
-	// Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the
-	// NotificationChannelDescriptor corresponding to the type field. Labels with sensitive data are obfuscated by the API and
-	// therefore Terraform cannot determine if there are upstream changes to these fields. They can also be configured via the
-	// sensitive_labels block, but cannot be configured in both places.
+	// Configuration fields that define the channel and its behavior. The
+	// permissible and required labels are specified in the
+	// NotificationChannelDescriptor corresponding to the type field.
+	// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
+	// determine if there are upstream changes to these fields. They can also be configured via
+	// the sensitiveLabels block, but cannot be configured in both places.
 	Labels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Different notification type behaviors are configured primarily using the the 'labels' field on this resource. This block
-	// contains the labels which contain secrets or passwords so that they can be marked sensitive and hidden from plan output.
-	// The name of the field, eg: password, will be the key in the 'labels' map in the api request. Credentials may not be
-	// specified in both locations and will cause an error. Changing from one location to a different credential configuration
-	// in the config will require an apply to update state.
+	// Different notification type behaviors are configured primarily using the the `labels` field on this
+	// resource. This block contains the labels which contain secrets or passwords so that they can be marked
+	// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
+	// in the `labels` map in the api request.
+	// Credentials may not be specified in both locations and will cause an error. Changing from one location
+	// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
 	SensitiveLabels NotificationChannelSensitiveLabelsPtrInput
-	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See
-	// https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of
-	// valid values such as "email", "slack", etc...
+	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
 	Type pulumi.StringInput
-	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema,
-	// unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel
-	// objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
-	// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must
-	// begin with a letter.
+	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapInput
 }
 

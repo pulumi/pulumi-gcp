@@ -63,6 +63,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("loggingConfig")]
         public Input<Inputs.JobSparkConfigLoggingConfigGetArgs>? LoggingConfig { get; set; }
 
+        /// <summary>
+        /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+        /// </summary>
         [Input("mainClass")]
         public Input<string>? MainClass { get; set; }
 

@@ -25,7 +25,7 @@ type LookupWebAppArgs struct {
 type LookupWebAppResult struct {
 	AppId       string `pulumi:"appId"`
 	DisplayName string `pulumi:"displayName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id      string `pulumi:"id"`
 	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`

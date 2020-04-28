@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.AccessContextManager
     public partial class AccessLevel : Pulumi.CustomResource
     {
         /// <summary>
-        /// A set of predefined conditions for the access level and a combining function.
+        /// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
         /// </summary>
         [Output("basic")]
         public Output<Outputs.AccessLevelBasic?> Basic { get; private set; } = null!;
@@ -35,14 +35,16 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
-        /// '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        /// Resource name for the Access Level. The short_name component must begin
+        /// with a letter and only include alphanumeric and '_'.
+        /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+        /// The AccessPolicy this AccessLevel lives in.
+        /// Format: accessPolicies/{policy_id}
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -100,7 +102,7 @@ namespace Pulumi.Gcp.AccessContextManager
     public sealed class AccessLevelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A set of predefined conditions for the access level and a combining function.
+        /// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
         /// </summary>
         [Input("basic")]
         public Input<Inputs.AccessLevelBasicArgs>? Basic { get; set; }
@@ -112,14 +114,16 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
-        /// '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        /// Resource name for the Access Level. The short_name component must begin
+        /// with a letter and only include alphanumeric and '_'.
+        /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+        /// The AccessPolicy this AccessLevel lives in.
+        /// Format: accessPolicies/{policy_id}
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -138,7 +142,7 @@ namespace Pulumi.Gcp.AccessContextManager
     public sealed class AccessLevelState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A set of predefined conditions for the access level and a combining function.
+        /// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
         /// </summary>
         [Input("basic")]
         public Input<Inputs.AccessLevelBasicGetArgs>? Basic { get; set; }
@@ -150,14 +154,16 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
-        /// '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        /// Resource name for the Access Level. The short_name component must begin
+        /// with a letter and only include alphanumeric and '_'.
+        /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+        /// The AccessPolicy this AccessLevel lives in.
+        /// Format: accessPolicies/{policy_id}
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

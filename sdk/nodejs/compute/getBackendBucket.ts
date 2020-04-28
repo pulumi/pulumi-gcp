@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myBackendBucket = gcp.compute.getBackendBucket({
+ * const myBackendBucket = pulumi.output(gcp.compute.getBackendBucket({
  *     name: "my-backend",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_backend_bucket.html.markdown.
@@ -84,7 +84,7 @@ export interface GetBackendBucketResult {
      */
     readonly selfLink: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

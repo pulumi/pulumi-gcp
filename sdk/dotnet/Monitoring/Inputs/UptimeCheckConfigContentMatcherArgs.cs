@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Monitoring.Inputs
 
     public sealed class UptimeCheckConfigContentMatcherArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// String or regex content to match (max 1024 bytes)
+        /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 

@@ -7,54 +7,207 @@ import * as outputs from "../types/output";
 
 export namespace accesscontextmanager {
     export interface AccessLevelBasic {
+        /**
+         * How the conditions list should be combined to determine if a request
+         * is granted this AccessLevel. If AND is used, each Condition in
+         * conditions must be satisfied for the AccessLevel to be applied. If
+         * OR is used, at least one Condition in conditions must be satisfied
+         * for the AccessLevel to be applied. Defaults to AND if unspecified.
+         */
         combiningFunction?: string;
+        /**
+         * A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+         */
         conditions: outputs.accesscontextmanager.AccessLevelBasicCondition[];
     }
 
     export interface AccessLevelBasicCondition {
+        /**
+         * Device specific restrictions, all restrictions must hold for
+         * the Condition to be true. If not specified, all devices are
+         * allowed.  Structure is documented below.
+         */
         devicePolicy?: outputs.accesscontextmanager.AccessLevelBasicConditionDevicePolicy;
+        /**
+         * A list of CIDR block IP subnetwork specification. May be IPv4
+         * or IPv6.
+         * Note that for a CIDR IP address block, the specified IP address
+         * portion must be properly truncated (i.e. all the host bits must
+         * be zero) or the input is considered malformed. For example,
+         * "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+         * for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+         * is not. The originating IP of a request must be in one of the
+         * listed subnets in order for this Condition to be true.
+         * If empty, all IP addresses are allowed.
+         */
         ipSubnetworks?: string[];
+        /**
+         * An allowed list of members (users, service accounts).
+         * Using groups is not supported yet.
+         * The signed-in user originating the request must be a part of one
+         * of the provided members. If not specified, a request may come
+         * from any user (logged in/not logged in, not present in any
+         * groups, etc.).
+         * Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+         */
         members?: string[];
+        /**
+         * Whether to negate the Condition. If true, the Condition becomes
+         * a NAND over its non-empty fields, each field must be false for
+         * the Condition overall to be satisfied. Defaults to false.
+         */
         negate?: boolean;
+        /**
+         * The request must originate from one of the provided
+         * countries/regions.
+         * Format: A valid ISO 3166-1 alpha-2 code.
+         */
         regions?: string[];
+        /**
+         * A list of other access levels defined in the same Policy,
+         * referenced by resource name. Referencing an AccessLevel which
+         * does not exist is an error. All access levels listed must be
+         * granted for the Condition to be true.
+         * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+         */
         requiredAccessLevels?: string[];
     }
 
     export interface AccessLevelBasicConditionDevicePolicy {
+        /**
+         * A list of allowed device management levels.
+         * An empty list allows all management levels.
+         */
         allowedDeviceManagementLevels?: string[];
+        /**
+         * A list of allowed encryptions statuses.
+         * An empty list allows all statuses.
+         */
         allowedEncryptionStatuses?: string[];
+        /**
+         * A list of allowed OS versions.
+         * An empty list allows all types and all versions.  Structure is documented below.
+         */
         osConstraints?: outputs.accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraint[];
+        /**
+         * Whether the device needs to be approved by the customer admin.
+         */
         requireAdminApproval?: boolean;
+        /**
+         * Whether the device needs to be corp owned.
+         */
         requireCorpOwned?: boolean;
+        /**
+         * Whether or not screenlock is required for the DevicePolicy
+         * to be true. Defaults to false.
+         */
         requireScreenLock?: boolean;
     }
 
     export interface AccessLevelBasicConditionDevicePolicyOsConstraint {
+        /**
+         * The minimum allowed OS version. If not set, any version
+         * of this OS satisfies the constraint.
+         * Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+         */
         minimumVersion?: string;
+        /**
+         * The operating system type of the device.
+         */
         osType: string;
     }
 
     export interface ServicePerimeterSpec {
+        /**
+         * A list of AccessLevel resource names that allow resources within
+         * the ServicePerimeter to be accessed from the internet.
+         * AccessLevels listed must be in the same policy as this
+         * ServicePerimeter. Referencing a nonexistent AccessLevel is a
+         * syntax error. If no AccessLevel names are listed, resources within
+         * the perimeter can only be accessed via GCP calls with request
+         * origins within the perimeter. For Service Perimeter Bridge, must
+         * be empty.
+         * Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+         */
         accessLevels?: string[];
+        /**
+         * A list of GCP resources that are inside of the service perimeter.
+         * Currently only projects are allowed.
+         * Format: projects/{project_number}
+         */
         resources?: string[];
+        /**
+         * GCP services that are subject to the Service Perimeter
+         * restrictions. Must contain a list of services. For example, if
+         * `storage.googleapis.com` is specified, access to the storage
+         * buckets inside the perimeter must meet the perimeter's access
+         * restrictions.
+         */
         restrictedServices?: string[];
+        /**
+         * Specifies how APIs are allowed to communicate within the Service
+         * Perimeter.  Structure is documented below.
+         */
         vpcAccessibleServices?: outputs.accesscontextmanager.ServicePerimeterSpecVpcAccessibleServices;
     }
 
     export interface ServicePerimeterSpecVpcAccessibleServices {
+        /**
+         * The list of APIs usable within the Service Perimeter.
+         * Must be empty unless `enableRestriction` is True.
+         */
         allowedServices?: string[];
+        /**
+         * Whether to restrict API calls within the Service Perimeter to the
+         * list of APIs specified in 'allowedServices'.
+         */
         enableRestriction?: boolean;
     }
 
     export interface ServicePerimeterStatus {
+        /**
+         * A list of AccessLevel resource names that allow resources within
+         * the ServicePerimeter to be accessed from the internet.
+         * AccessLevels listed must be in the same policy as this
+         * ServicePerimeter. Referencing a nonexistent AccessLevel is a
+         * syntax error. If no AccessLevel names are listed, resources within
+         * the perimeter can only be accessed via GCP calls with request
+         * origins within the perimeter. For Service Perimeter Bridge, must
+         * be empty.
+         * Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+         */
         accessLevels?: string[];
+        /**
+         * A list of GCP resources that are inside of the service perimeter.
+         * Currently only projects are allowed.
+         * Format: projects/{project_number}
+         */
         resources?: string[];
+        /**
+         * GCP services that are subject to the Service Perimeter
+         * restrictions. Must contain a list of services. For example, if
+         * `storage.googleapis.com` is specified, access to the storage
+         * buckets inside the perimeter must meet the perimeter's access
+         * restrictions.
+         */
         restrictedServices?: string[];
+        /**
+         * Specifies how APIs are allowed to communicate within the Service
+         * Perimeter.  Structure is documented below.
+         */
         vpcAccessibleServices?: outputs.accesscontextmanager.ServicePerimeterStatusVpcAccessibleServices;
     }
 
     export interface ServicePerimeterStatusVpcAccessibleServices {
+        /**
+         * The list of APIs usable within the Service Perimeter.
+         * Must be empty unless `enableRestriction` is True.
+         */
         allowedServices?: string[];
+        /**
+         * Whether to restrict API calls within the Service Perimeter to the
+         * list of APIs specified in 'allowedServices'.
+         */
         enableRestriction?: boolean;
     }
 }
@@ -82,8 +235,20 @@ export namespace appengine {
     }
 
     export interface ApplicationUrlDispatchRulesDispatchRule {
+        /**
+         * Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
+         * Defaults to matching all domains: "*".
+         */
         domain?: string;
+        /**
+         * Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+         * The sum of the lengths of the domain and path may not exceed 100 characters.
+         */
         path: string;
+        /**
+         * Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+         * The sum of the lengths of the domain and path may not exceed 100 characters.
+         */
         service: string;
     }
 
@@ -94,167 +259,423 @@ export namespace appengine {
     }
 
     export interface DomainMappingSslSettings {
+        /**
+         * ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
+         * remove SSL support.
+         * By default, a managed certificate is automatically created for every domain mapping. To omit SSL support
+         * or to configure SSL manually, specify `SslManagementType.MANUAL` on a `CREATE` or `UPDATE` request. You must be
+         * authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
+         * Example: 12345.
+         */
         certificateId: string;
+        /**
+         * -
+         * ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+         * managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
+         * provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
+         * field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
+         * `certificateId` field with an update request.
+         */
         pendingManagedCertificateId: string;
+        /**
+         * SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
+         * If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
+         */
         sslManagementType: string;
     }
 
     export interface EngineSplitTrafficSplit {
+        /**
+         * Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
+         */
         allocations: {[key: string]: string};
+        /**
+         * Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
+         */
         shardBy?: string;
     }
 
     export interface FlexibleAppVersionApiConfig {
+        /**
+         * Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
+         */
         authFailAction?: string;
+        /**
+         * Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+         */
         login?: string;
+        /**
+         * Path to the script from the application root directory.
+         */
         script: string;
+        /**
+         * Security (HTTPS) enforcement for this URL.
+         */
         securityLevel?: string;
+        /**
+         * URL to serve the endpoint at.
+         */
         url?: string;
     }
 
     export interface FlexibleAppVersionAutomaticScaling {
+        /**
+         * The time period that the Autoscaler should wait before it starts collecting information from a new instance.
+         * This prevents the autoscaler from collecting information when the instance is initializing,
+         * during which the collected usage would not be reliable. Default: 120s
+         */
         coolDownPeriod?: string;
+        /**
+         * Target scaling by CPU usage.  Structure is documented below.
+         */
         cpuUtilization: outputs.appengine.FlexibleAppVersionAutomaticScalingCpuUtilization;
+        /**
+         * Target scaling by disk usage.  Structure is documented below.
+         */
         diskUtilization?: outputs.appengine.FlexibleAppVersionAutomaticScalingDiskUtilization;
+        /**
+         * Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+         * Defaults to a runtime-specific value.
+         */
         maxConcurrentRequests: number;
+        /**
+         * Maximum number of idle instances that should be maintained for this version.
+         */
         maxIdleInstances?: number;
+        /**
+         * Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+         */
         maxPendingLatency?: string;
+        /**
+         * Maximum number of instances that should be started to handle requests for this version. Default: 20
+         */
         maxTotalInstances?: number;
+        /**
+         * Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+         */
         minIdleInstances?: number;
+        /**
+         * Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+         */
         minPendingLatency?: string;
+        /**
+         * Minimum number of running instances that should be maintained for this version. Default: 2
+         */
         minTotalInstances?: number;
+        /**
+         * Target scaling by network usage.  Structure is documented below.
+         */
         networkUtilization?: outputs.appengine.FlexibleAppVersionAutomaticScalingNetworkUtilization;
+        /**
+         * Target scaling by request utilization.  Structure is documented below.
+         */
         requestUtilization?: outputs.appengine.FlexibleAppVersionAutomaticScalingRequestUtilization;
     }
 
     export interface FlexibleAppVersionAutomaticScalingCpuUtilization {
+        /**
+         * Period of time over which CPU utilization is calculated.
+         */
         aggregationWindowLength?: string;
+        /**
+         * Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
+         */
         targetUtilization: number;
     }
 
     export interface FlexibleAppVersionAutomaticScalingDiskUtilization {
+        /**
+         * Target bytes read per second.
+         */
         targetReadBytesPerSecond?: number;
+        /**
+         * Target ops read per seconds.
+         */
         targetReadOpsPerSecond?: number;
+        /**
+         * Target bytes written per second.
+         */
         targetWriteBytesPerSecond?: number;
+        /**
+         * Target ops written per second.
+         */
         targetWriteOpsPerSecond?: number;
     }
 
     export interface FlexibleAppVersionAutomaticScalingNetworkUtilization {
+        /**
+         * Target bytes received per second.
+         */
         targetReceivedBytesPerSecond?: number;
+        /**
+         * Target packets received per second.
+         */
         targetReceivedPacketsPerSecond?: number;
+        /**
+         * Target bytes sent per second.
+         */
         targetSentBytesPerSecond?: number;
+        /**
+         * Target packets sent per second.
+         */
         targetSentPacketsPerSecond?: number;
     }
 
     export interface FlexibleAppVersionAutomaticScalingRequestUtilization {
+        /**
+         * Target number of concurrent requests.
+         */
         targetConcurrentRequests?: number;
+        /**
+         * Target requests per second.
+         */
         targetRequestCountPerSecond?: string;
     }
 
     export interface FlexibleAppVersionDeployment {
+        /**
+         * Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.  Structure is documented below.
+         */
         cloudBuildOptions?: outputs.appengine.FlexibleAppVersionDeploymentCloudBuildOptions;
+        /**
+         * The Docker image for the container that runs the version.  Structure is documented below.
+         */
         container?: outputs.appengine.FlexibleAppVersionDeploymentContainer;
+        /**
+         * Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+         * All files must be readable using the credentials supplied with this call.  Structure is documented below.
+         */
         files?: outputs.appengine.FlexibleAppVersionDeploymentFile[];
+        /**
+         * Zip File  Structure is documented below.
+         */
         zip?: outputs.appengine.FlexibleAppVersionDeploymentZip;
     }
 
     export interface FlexibleAppVersionDeploymentCloudBuildOptions {
+        /**
+         * Path to the yaml file used in deployment, used to determine runtime configuration details.
+         */
         appYamlPath: string;
+        /**
+         * The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
         cloudBuildTimeout?: string;
     }
 
     export interface FlexibleAppVersionDeploymentContainer {
+        /**
+         * URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest.
+         * Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
+         */
         image: string;
     }
 
     export interface FlexibleAppVersionDeploymentFile {
         /**
-         * The identifier for this object. Format specified above.
+         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: string;
+        /**
+         * SHA1 checksum of the file
+         */
         sha1Sum?: string;
+        /**
+         * Source URL
+         */
         sourceUrl: string;
     }
 
     export interface FlexibleAppVersionDeploymentZip {
+        /**
+         * files count
+         */
         filesCount?: number;
+        /**
+         * Source URL
+         */
         sourceUrl: string;
     }
 
     export interface FlexibleAppVersionEndpointsApiService {
+        /**
+         * Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
+         * By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
+         * When a new configuration is rolled out, Endpoints must be given the new configuration ID. The configId field is used to give the configuration ID
+         * and is required in this case.
+         * Endpoints also has a rollout strategy called "MANAGED". When using this, Endpoints fetches the latest configuration and does not need
+         * the configuration ID. In this case, configId must be omitted.
+         */
         configId?: string;
+        /**
+         * Enable or disable trace sampling. By default, this is set to false for enabled.
+         */
         disableTraceSampling?: boolean;
         /**
-         * The identifier for this object. Format specified above.
+         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: string;
+        /**
+         * Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
+         */
         rolloutStrategy?: string;
     }
 
     export interface FlexibleAppVersionEntrypoint {
+        /**
+         * The format should be a shell command that can be fed to bash -c.
+         */
         shell: string;
     }
 
     export interface FlexibleAppVersionLivenessCheck {
+        /**
+         * Interval between health checks.
+         */
         checkInterval?: string;
+        /**
+         * Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+         */
         failureThreshold?: number;
+        /**
+         * Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+         */
         host?: string;
+        /**
+         * The initial delay before starting to execute the checks. Default: "300s"
+         */
         initialDelay?: string;
+        /**
+         * The request path.
+         */
         path: string;
+        /**
+         * Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+         */
         successThreshold?: number;
+        /**
+         * Time before the check is considered failed. Default: "4s"
+         */
         timeout?: string;
     }
 
     export interface FlexibleAppVersionManualScaling {
+        /**
+         * Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+         */
         instances: number;
     }
 
     export interface FlexibleAppVersionNetwork {
+        /**
+         * List of ports, or port pairs, to forward from the virtual machine to the application container.
+         */
         forwardedPorts?: string[];
+        /**
+         * Tag to apply to the instance during creation.
+         */
         instanceTag?: string;
         /**
-         * The identifier for this object. Format specified above.
+         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: string;
+        /**
+         * Enable session affinity.
+         */
         sessionAffinity?: boolean;
+        /**
+         * Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
+         * If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.
+         * If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetworkName) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network.
+         * If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetworkName must be specified and the IP address is created from the IPCidrRange of the subnetwork.
+         * If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
+         */
         subnetwork?: string;
     }
 
     export interface FlexibleAppVersionReadinessCheck {
+        /**
+         * A maximum time limit on application initialization, measured from moment the application successfully
+         * replies to a healthcheck until it is ready to serve traffic. Default: "300s"
+         */
         appStartTimeout?: string;
+        /**
+         * Interval between health checks.
+         */
         checkInterval?: string;
+        /**
+         * Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+         */
         failureThreshold?: number;
+        /**
+         * Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+         */
         host?: string;
+        /**
+         * The request path.
+         */
         path: string;
+        /**
+         * Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+         */
         successThreshold?: number;
+        /**
+         * Time before the check is considered failed. Default: "4s"
+         */
         timeout?: string;
     }
 
     export interface FlexibleAppVersionResources {
+        /**
+         * Number of CPU cores needed.
+         */
         cpu?: number;
+        /**
+         * Disk size (GB) needed.
+         */
         diskGb?: number;
+        /**
+         * Memory (GB) needed.
+         */
         memoryGb?: number;
+        /**
+         * List of ports, or port pairs, to forward from the virtual machine to the application container.  Structure is documented below.
+         */
         volumes?: outputs.appengine.FlexibleAppVersionResourcesVolume[];
     }
 
     export interface FlexibleAppVersionResourcesVolume {
         /**
-         * The identifier for this object. Format specified above.
+         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: string;
+        /**
+         * Volume size in gigabytes.
+         */
         sizeGb: number;
+        /**
+         * Underlying volume type, e.g. 'tmpfs'.
+         */
         volumeType: string;
     }
 
     export interface FlexibleAppVersionVpcAccessConnector {
         /**
-         * The identifier for this object. Format specified above.
+         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          */
         name: string;
     }
 
     export interface StandardAppVersionDeployment {
+        /**
+         * Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+         * All files must be readable using the credentials supplied with this call.  Structure is documented below.
+         */
         files?: outputs.appengine.StandardAppVersionDeploymentFile[];
+        /**
+         * Zip File  Structure is documented below.
+         */
         zip?: outputs.appengine.StandardAppVersionDeploymentZip;
     }
 
@@ -263,40 +684,105 @@ export namespace appengine {
          * The identifier for this object. Format specified above.
          */
         name: string;
+        /**
+         * SHA1 checksum of the file
+         */
         sha1Sum?: string;
+        /**
+         * Source URL
+         */
         sourceUrl: string;
     }
 
     export interface StandardAppVersionDeploymentZip {
+        /**
+         * files count
+         */
         filesCount?: number;
+        /**
+         * Source URL
+         */
         sourceUrl: string;
     }
 
     export interface StandardAppVersionEntrypoint {
+        /**
+         * The format should be a shell command that can be fed to bash -c.
+         */
         shell: string;
     }
 
     export interface StandardAppVersionHandler {
+        /**
+         * Actions to take when the user is not logged in.
+         */
         authFailAction?: string;
+        /**
+         * Methods to restrict access to a URL based on login status.
+         */
         login?: string;
+        /**
+         * 30x code to use when performing redirects for the secure field.
+         */
         redirectHttpResponseCode?: string;
+        /**
+         * Executes a script to handle the requests that match this URL pattern.
+         * Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+         */
         script?: outputs.appengine.StandardAppVersionHandlerScript;
+        /**
+         * Security (HTTPS) enforcement for this URL.
+         */
         securityLevel?: string;
+        /**
+         * Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+         */
         staticFiles?: outputs.appengine.StandardAppVersionHandlerStaticFiles;
+        /**
+         * URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+         * All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+         */
         urlRegex?: string;
     }
 
     export interface StandardAppVersionHandlerScript {
+        /**
+         * Path to the script from the application root directory.
+         */
         scriptPath: string;
     }
 
     export interface StandardAppVersionHandlerStaticFiles {
+        /**
+         * Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+         */
         applicationReadable?: boolean;
+        /**
+         * Time a static file served by this handler should be cached by web proxies and browsers.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+         */
         expiration?: string;
+        /**
+         * HTTP headers to use for all responses from these URLs.
+         * An object containing a list of "key:value" value pairs.".
+         */
         httpHeaders?: {[key: string]: string};
+        /**
+         * MIME type used to serve all files served by this handler.
+         * Defaults to file-specific MIME types, which are derived from each file's filename extension.
+         */
         mimeType?: string;
+        /**
+         * Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
+         */
         path?: string;
+        /**
+         * Whether this handler should match the request if the file referenced by the handler does not exist.
+         */
         requireMatchingFile?: boolean;
+        /**
+         * Regular expression that matches the file paths for all files that should be referenced by this handler.
+         */
         uploadPathRegex?: string;
     }
 
@@ -305,32 +791,87 @@ export namespace appengine {
          * The identifier for this object. Format specified above.
          */
         name?: string;
+        /**
+         * Version of the library to select, or "latest".
+         */
         version?: string;
     }
 }
 
 export namespace bigquery {
     export interface AppProfileSingleClusterRouting {
+        /**
+         * If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
+         * It is unsafe to send these requests to the same table/row/column in multiple clusters.
+         */
         allowTransactionalWrites?: boolean;
+        /**
+         * The cluster to which read/write requests should be routed.
+         */
         clusterId: string;
     }
 
     export interface DatasetAccess {
+        /**
+         * A domain to grant access to. Any users signed in with the
+         * domain specified will be granted the specified access
+         */
         domain?: string;
+        /**
+         * An email address of a Google Group to grant access to.
+         */
         groupByEmail?: string;
+        /**
+         * Describes the rights granted to the user specified by the other
+         * member of the access object. Primitive, Predefined and custom
+         * roles are supported. Predefined roles that have equivalent
+         * primitive roles are swapped by the API to their Primitive
+         * counterparts, and will show a diff post-create. See
+         * [official docs](https://cloud.google.com/bigquery/docs/access-control).
+         */
         role?: string;
+        /**
+         * A special group to grant access to. Possible values include:
+         */
         specialGroup?: string;
+        /**
+         * An email address of a user to grant access to. For example:
+         * fred@example.com
+         */
         userByEmail?: string;
+        /**
+         * A view from a different dataset to grant access to. Queries
+         * executed against that view will have read access to tables in
+         * this dataset. The role field is not required when this field is
+         * set. If that view is updated by any user, access to the view
+         * needs to be granted again via an update operation.  Structure is documented below.
+         */
         view?: outputs.bigquery.DatasetAccessView;
     }
 
     export interface DatasetAccessView {
+        /**
+         * The ID of the dataset containing this table.
+         */
         datasetId: string;
+        /**
+         * The ID of the project containing this table.
+         */
         projectId: string;
+        /**
+         * The ID of the table. The ID must contain only letters (a-z,
+         * A-Z), numbers (0-9), or underscores (_). The maximum length
+         * is 1,024 characters.
+         */
         tableId: string;
     }
 
     export interface DatasetDefaultEncryptionConfiguration {
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect destination
+         * BigQuery table. The BigQuery Service Account associated with your project requires
+         * access to this encryption key.
+         */
         kmsKeyName: string;
     }
 
@@ -587,51 +1128,178 @@ export namespace billing {
     }
 
     export interface BudgetAllUpdatesRule {
+        /**
+         * The name of the Cloud Pub/Sub topic where budget related
+         * messages will be published, in the form
+         * projects/{project_id}/topics/{topic_id}. Updates are sent
+         * at regular intervals to the topic.
+         */
         pubsubTopic: string;
+        /**
+         * The schema version of the notification. Only "1.0" is
+         * accepted. It represents the JSON schema as defined in
+         * https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
+         */
         schemaVersion?: string;
     }
 
     export interface BudgetAmount {
+        /**
+         * A specified amount to use as the budget. currencyCode is
+         * optional. If specified, it must match the currency of the
+         * billing account. The currencyCode is provided on output.  Structure is documented below.
+         */
         specifiedAmount: outputs.billing.BudgetAmountSpecifiedAmount;
     }
 
     export interface BudgetAmountSpecifiedAmount {
+        /**
+         * The 3-letter currency code defined in ISO 4217.
+         */
         currencyCode?: string;
+        /**
+         * Number of nano (10^-9) units of the amount.
+         * The value must be between -999,999,999 and +999,999,999
+         * inclusive. If units is positive, nanos must be positive or
+         * zero. If units is zero, nanos can be positive, zero, or
+         * negative. If units is negative, nanos must be negative or
+         * zero. For example $-1.75 is represented as units=-1 and
+         * nanos=-750,000,000.
+         */
         nanos?: number;
+        /**
+         * The whole units of the amount. For example if currencyCode
+         * is "USD", then 1 unit is one US dollar.
+         */
         units?: string;
     }
 
     export interface BudgetBudgetFilter {
+        /**
+         * Specifies how credits should be treated when determining spend
+         * for threshold calculations.
+         */
         creditTypesTreatment?: string;
+        /**
+         * A set of projects of the form projects/{project_id},
+         * specifying that usage from only this set of projects should be
+         * included in the budget. If omitted, the report will include
+         * all usage for the billing account, regardless of which project
+         * the usage occurred on. Only zero or one project can be
+         * specified currently.
+         */
         projects?: string[];
+        /**
+         * A set of services of the form services/{service_id},
+         * specifying that usage from only this set of services should be
+         * included in the budget. If omitted, the report will include
+         * usage for all the services. The service names are available
+         * through the Catalog API:
+         * https://cloud.google.com/billing/v1/how-tos/catalog-api.
+         */
         services?: string[];
     }
 
     export interface BudgetThresholdRule {
+        /**
+         * The type of basis used to determine if spend has passed
+         * the threshold.
+         */
         spendBasis?: string;
+        /**
+         * Send an alert when this threshold is exceeded. This is a
+         * 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
+         */
         thresholdPercent: number;
     }
 }
 
 export namespace binaryauthorization {
     export interface AttestorAttestationAuthorityNote {
+        /**
+         * -
+         * This field will contain the service account email address that
+         * this Attestor will use as the principal when querying Container
+         * Analysis. Attestor administrators must grant this service account
+         * the IAM role needed to read attestations from the noteReference in
+         * Container Analysis (containeranalysis.notes.occurrences.viewer).
+         * This email address is fixed for the lifetime of the Attestor, but
+         * callers should not make any other assumptions about the service
+         * account email; future versions may use an email based on a
+         * different naming pattern.
+         */
         delegationServiceAccountEmail: string;
+        /**
+         * The resource name of a ATTESTATION_AUTHORITY Note, created by the
+         * user. If the Note is in a different project from the Attestor, it
+         * should be specified in the format `projects/*&#47;notes/*` (or the legacy
+         * `providers/*&#47;notes/*`). This field may not be updated.
+         * An attestation by this attestor is stored as a Container Analysis
+         * ATTESTATION_AUTHORITY Occurrence that names a container image
+         * and that links to this Note.
+         */
         noteReference: string;
+        /**
+         * Public keys that verify attestations signed by this attestor. This
+         * field may be updated.
+         * If this field is non-empty, one of the specified public keys must
+         * verify that an attestation was signed by this attestor for the
+         * image specified in the admission request.
+         * If this field is empty, this attestor always returns that no valid
+         * attestations exist.  Structure is documented below.
+         */
         publicKeys?: outputs.binaryauthorization.AttestorAttestationAuthorityNotePublicKey[];
     }
 
     export interface AttestorAttestationAuthorityNotePublicKey {
+        /**
+         * ASCII-armored representation of a PGP public key, as the
+         * entire output by the command
+         * `gpg --export --armor foo@example.com` (either LF or CRLF
+         * line endings). When using this field, id should be left
+         * blank. The BinAuthz API handlers will calculate the ID
+         * and fill it in automatically. BinAuthz computes this ID
+         * as the OpenPGP RFC4880 V4 fingerprint, represented as
+         * upper-case hex. If id is provided by the caller, it will
+         * be overwritten by the API-calculated ID.
+         */
         asciiArmoredPgpPublicKey?: string;
+        /**
+         * A descriptive comment. This field may be updated.
+         */
         comment?: string;
         /**
-         * an identifier for the resource with format `projects/{{project}}/attestors/{{name}}`
+         * The ID of this public key. Signatures verified by BinAuthz
+         * must include the ID of the public key that can be used to
+         * verify them, and that ID must match the contents of this
+         * field exactly. Additional restrictions on this field can
+         * be imposed based on which public key type is encapsulated.
+         * See the documentation on publicKey cases below for details.
          */
         id: string;
+        /**
+         * A raw PKIX SubjectPublicKeyInfo format public key.
+         * NOTE: id may be explicitly provided by the caller when using this
+         * type of public key, but it MUST be a valid RFC3986 URI. If id is left
+         * blank, a default one will be computed based on the digest of the DER
+         * encoding of the public key.  Structure is documented below.
+         */
         pkixPublicKey?: outputs.binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKey;
     }
 
     export interface AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
+        /**
+         * A PEM-encoded public key, as described in
+         * `https://tools.ietf.org/html/rfc7468#section-13`
+         */
         publicKeyPem?: string;
+        /**
+         * The signature algorithm used to verify a message against
+         * a signature using this key. These signature algorithm must
+         * match the structure and any object identifiers encoded in
+         * publicKeyPem (i.e. this algorithm must match that of the
+         * public key).
+         */
         signatureAlgorithm?: string;
     }
 
@@ -648,6 +1316,12 @@ export namespace binaryauthorization {
     }
 
     export interface PolicyAdmissionWhitelistPattern {
+        /**
+         * An image name pattern to whitelist, in the form
+         * `registry/path/to/image`. This supports a trailing * as a
+         * wildcard, but this is allowed only in text after the registry/
+         * part.
+         */
         namePattern: string;
     }
 
@@ -656,71 +1330,253 @@ export namespace binaryauthorization {
          * The identifier for this object. Format specified above.
          */
         cluster: string;
+        /**
+         * The action when a pod creation is denied by the admission rule.
+         */
         enforcementMode: string;
+        /**
+         * How this admission rule will be evaluated.
+         */
         evaluationMode: string;
+        /**
+         * The resource names of the attestors that must attest to a
+         * container image. If the attestor is in a different project from the
+         * policy, it should be specified in the format `projects/*&#47;attestors/*`.
+         * Each attestor must exist before a policy can reference it. To add an
+         * attestor to a policy the principal issuing the policy change
+         * request must be able to read the attestor resource.
+         * Note: this field must be non-empty when the evaluationMode field
+         * specifies REQUIRE_ATTESTATION, otherwise it must be empty.
+         */
         requireAttestationsBies?: string[];
     }
 
     export interface PolicyDefaultAdmissionRule {
+        /**
+         * The action when a pod creation is denied by the admission rule.
+         */
         enforcementMode: string;
+        /**
+         * How this admission rule will be evaluated.
+         */
         evaluationMode: string;
+        /**
+         * The resource names of the attestors that must attest to a
+         * container image. If the attestor is in a different project from the
+         * policy, it should be specified in the format `projects/*&#47;attestors/*`.
+         * Each attestor must exist before a policy can reference it. To add an
+         * attestor to a policy the principal issuing the policy change
+         * request must be able to read the attestor resource.
+         * Note: this field must be non-empty when the evaluationMode field
+         * specifies REQUIRE_ATTESTATION, otherwise it must be empty.
+         */
         requireAttestationsBies?: string[];
     }
 }
 
 export namespace cloudbuild {
     export interface TriggerBuild {
+        /**
+         * A list of images to be pushed upon the successful completion of all build steps.
+         * The images are pushed using the builder service account's credentials.
+         * The digests of the pushed images will be stored in the Build resource's results field.
+         * If any of the images fail to be pushed, the build status is marked FAILURE.
+         */
         images?: string[];
+        /**
+         * The operations to be performed on the workspace.  Structure is documented below.
+         */
         steps: outputs.cloudbuild.TriggerBuildStep[];
+        /**
+         * Tags for annotation of a Build. These are not docker tags.
+         */
         tags?: string[];
+        /**
+         * Time limit for executing this build step. If not defined,
+         * the step has no
+         * time limit and will be allowed to continue to run until either it
+         * completes or the build itself times out.
+         */
         timeout?: string;
     }
 
     export interface TriggerBuildStep {
+        /**
+         * A list of arguments that will be presented to the step when it is started.
+         * If the image used to run the step's container has an entrypoint, the args
+         * are used as arguments to that entrypoint. If the image does not define an
+         * entrypoint, the first element in args is used as the entrypoint, and the
+         * remainder will be used as arguments.
+         */
         args?: string[];
+        /**
+         * Working directory to use when running this step's container.
+         * If this value is a relative path, it is relative to the build's working
+         * directory. If this value is absolute, it may be outside the build's working
+         * directory, in which case the contents of the path may not be persisted
+         * across build step executions, unless a `volume` for that path is specified.
+         * If the build specifies a `RepoSource` with `dir` and a step with a
+         * `dir`,
+         * which specifies an absolute path, the `RepoSource` `dir` is ignored
+         * for the step's execution.
+         */
         dir?: string;
+        /**
+         * Entrypoint to be used instead of the build step image's
+         * default entrypoint.
+         * If unset, the image's default entrypoint is used
+         */
         entrypoint?: string;
+        /**
+         * A list of environment variable definitions to be used when
+         * running a step.
+         * The elements are of the form "KEY=VALUE" for the environment variable
+         * "KEY" being given the value "VALUE".
+         */
         envs?: string[];
         /**
-         * an identifier for the resource with format `projects/{{project}}/triggers/{{trigger_id}}`
+         * Unique identifier for this build step, used in `waitFor` to
+         * reference this build step as a dependency.
          */
         id?: string;
+        /**
+         * Name of the volume to mount.
+         * Volume names must be unique per build step and must be valid names for
+         * Docker volumes. Each named volume must be used by at least two build steps.
+         */
         name: string;
+        /**
+         * A list of environment variables which are encrypted using
+         * a Cloud Key
+         * Management Service crypto key. These values must be specified in
+         * the build's `Secret`.
+         */
         secretEnvs?: string[];
+        /**
+         * Time limit for executing this build step. If not defined,
+         * the step has no
+         * time limit and will be allowed to continue to run until either it
+         * completes or the build itself times out.
+         */
         timeout?: string;
+        /**
+         * Output only. Stores timing information for executing this
+         * build step.
+         */
         timing?: string;
+        /**
+         * List of volumes to mount into the build step.
+         * Each volume is created as an empty volume prior to execution of the
+         * build step. Upon completion of the build, volumes and their contents
+         * are discarded.
+         * Using a named volume in only one step is not valid as it is
+         * indicative of a build request with an incorrect configuration.  Structure is documented below.
+         */
         volumes?: outputs.cloudbuild.TriggerBuildStepVolume[];
+        /**
+         * The ID(s) of the step(s) that this build step depends on.
+         * This build step will not start until all the build steps in `waitFor`
+         * have completed successfully. If `waitFor` is empty, this build step
+         * will start when all previous build steps in the `Build.Steps` list
+         * have completed successfully.
+         */
         waitFors?: string[];
     }
 
     export interface TriggerBuildStepVolume {
+        /**
+         * Name of the volume to mount.
+         * Volume names must be unique per build step and must be valid names for
+         * Docker volumes. Each named volume must be used by at least two build steps.
+         */
         name: string;
+        /**
+         * Path at which to mount the volume.
+         * Paths must be absolute and cannot conflict with other volume paths on
+         * the same build step or with certain reserved volume paths.
+         */
         path: string;
     }
 
     export interface TriggerGithub {
+        /**
+         * Name of the volume to mount.
+         * Volume names must be unique per build step and must be valid names for
+         * Docker volumes. Each named volume must be used by at least two build steps.
+         */
         name?: string;
+        /**
+         * Owner of the repository. For example: The owner for
+         * https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+         */
         owner?: string;
+        /**
+         * filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
+         */
         pullRequest?: outputs.cloudbuild.TriggerGithubPullRequest;
+        /**
+         * filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
+         */
         push?: outputs.cloudbuild.TriggerGithubPush;
     }
 
     export interface TriggerGithubPullRequest {
+        /**
+         * Regex of branches to match.  Specify only one of branch or tag.
+         */
         branch: string;
+        /**
+         * Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+         */
         commentControl?: string;
     }
 
     export interface TriggerGithubPush {
+        /**
+         * Regex of branches to match.  Specify only one of branch or tag.
+         */
         branch?: string;
+        /**
+         * Regex of tags to match.  Specify only one of branch or tag.
+         */
         tag?: string;
     }
 
     export interface TriggerTriggerTemplate {
+        /**
+         * Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * This field is a regular expression.
+         */
         branchName?: string;
+        /**
+         * Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+         */
         commitSha?: string;
+        /**
+         * Working directory to use when running this step's container.
+         * If this value is a relative path, it is relative to the build's working
+         * directory. If this value is absolute, it may be outside the build's working
+         * directory, in which case the contents of the path may not be persisted
+         * across build step executions, unless a `volume` for that path is specified.
+         * If the build specifies a `RepoSource` with `dir` and a step with a
+         * `dir`,
+         * which specifies an absolute path, the `RepoSource` `dir` is ignored
+         * for the step's execution.
+         */
         dir?: string;
+        /**
+         * ID of the project that owns the Cloud Source Repository. If
+         * omitted, the project ID requesting the build is assumed.
+         */
         projectId: string;
+        /**
+         * Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+         */
         repoName?: string;
+        /**
+         * Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+         * This field is a regular expression.
+         */
         tagName?: string;
     }
 }
@@ -803,18 +1659,70 @@ export namespace cloudfunctions {
 
 export namespace cloudrun {
     export interface DomainMappingMetadata {
+        /**
+         * Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         */
         annotations: {[key: string]: string};
+        /**
+         * -
+         * A sequence number representing a specific generation of the desired state.
+         */
         generation: number;
+        /**
+         * Map of string keys and values that can be used to organize and categorize
+         * (scope and select) objects. May match selectors of replication controllers
+         * and routes.
+         * More info: http://kubernetes.io/docs/user-guide/labels
+         */
         labels: {[key: string]: string};
+        /**
+         * In Cloud Run the namespace must be equal to either the
+         * project ID or project number.
+         */
         namespace: string;
+        /**
+         * -
+         * An opaque value that represents the internal version of this object that
+         * can be used by clients to determine when objects have changed. May be used
+         * for optimistic concurrency, change detection, and the watch operation on a
+         * resource or set of resources. They may only be valid for a
+         * particular resource or set of resources.
+         * More info:
+         * https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
+         */
         resourceVersion: string;
+        /**
+         * -
+         * SelfLink is a URL representing this object.
+         */
         selfLink: string;
+        /**
+         * -
+         * UID is a unique id generated by the server on successful creation of a resource and is not
+         * allowed to change on PUT operations.
+         * More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+         */
         uid: string;
     }
 
     export interface DomainMappingSpec {
+        /**
+         * The mode of the certificate.
+         */
         certificateMode?: string;
+        /**
+         * If set, the mapping will override any mapping set before this spec was set.
+         * It is recommended that the user leaves this empty to receive an error
+         * warning about a potential conflict and only set it once the respective UI
+         * has given such a warning.
+         */
         forceOverride?: boolean;
+        /**
+         * The name of the Cloud Run Service that this DomainMapping applies to.
+         * The route must exist.
+         */
         routeName: string;
     }
 
@@ -833,6 +1741,9 @@ export namespace cloudrun {
     }
 
     export interface DomainMappingStatusResourceRecord {
+        /**
+         * Name should be a verified domain
+         */
         name: string;
         rrdata: string;
         type?: string;
@@ -851,12 +1762,51 @@ export namespace cloudrun {
     }
 
     export interface ServiceMetadata {
+        /**
+         * Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         */
         annotations: {[key: string]: string};
+        /**
+         * -
+         * A sequence number representing a specific generation of the desired state.
+         */
         generation: number;
+        /**
+         * Map of string keys and values that can be used to organize and categorize
+         * (scope and select) objects. May match selectors of replication controllers
+         * and routes.
+         * More info: http://kubernetes.io/docs/user-guide/labels
+         */
         labels: {[key: string]: string};
+        /**
+         * In Cloud Run the namespace must be equal to either the
+         * project ID or project number.
+         */
         namespace: string;
+        /**
+         * -
+         * An opaque value that represents the internal version of this object that
+         * can be used by clients to determine when objects have changed. May be used
+         * for optimistic concurrency, change detection, and the watch operation on a
+         * resource or set of resources. They may only be valid for a
+         * particular resource or set of resources.
+         * More info:
+         * https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
+         */
         resourceVersion: string;
+        /**
+         * -
+         * SelfLink is a URL representing this object.
+         */
         selfLink: string;
+        /**
+         * -
+         * UID is a unique id generated by the server on successful creation of a resource and is not
+         * allowed to change on PUT operations.
+         * More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+         */
         uid: string;
     }
 
@@ -876,147 +1826,517 @@ export namespace cloudrun {
     }
 
     export interface ServiceTemplate {
+        /**
+         * Metadata associated with this Service, including name, namespace, labels,
+         * and annotations.  Structure is documented below.
+         */
         metadata: outputs.cloudrun.ServiceTemplateMetadata;
+        /**
+         * RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+         */
         spec: outputs.cloudrun.ServiceTemplateSpec;
     }
 
     export interface ServiceTemplateMetadata {
+        /**
+         * Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         */
         annotations: {[key: string]: string};
+        /**
+         * -
+         * A sequence number representing a specific generation of the desired state.
+         */
         generation: number;
+        /**
+         * Map of string keys and values that can be used to organize and categorize
+         * (scope and select) objects. May match selectors of replication controllers
+         * and routes.
+         * More info: http://kubernetes.io/docs/user-guide/labels
+         */
         labels?: {[key: string]: string};
+        /**
+         * Name of the environment variable.
+         */
         name: string;
+        /**
+         * In Cloud Run the namespace must be equal to either the
+         * project ID or project number.
+         */
         namespace: string;
+        /**
+         * -
+         * An opaque value that represents the internal version of this object that
+         * can be used by clients to determine when objects have changed. May be used
+         * for optimistic concurrency, change detection, and the watch operation on a
+         * resource or set of resources. They may only be valid for a
+         * particular resource or set of resources.
+         * More info:
+         * https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
+         */
         resourceVersion: string;
+        /**
+         * -
+         * SelfLink is a URL representing this object.
+         */
         selfLink: string;
+        /**
+         * -
+         * UID is a unique id generated by the server on successful creation of a resource and is not
+         * allowed to change on PUT operations.
+         * More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+         */
         uid: string;
     }
 
     export interface ServiceTemplateSpec {
+        /**
+         * ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
+         * requests per container of the Revision. Values are:
+         * - `0` thread-safe, the system should manage the max concurrency. This is
+         * the default value.
+         * - `1` not-thread-safe. Single concurrency
+         * - `2-N` thread-safe, max concurrency of N
+         */
         containerConcurrency: number;
+        /**
+         * Container defines the unit of execution for this Revision.
+         * In the context of a Revision, we disallow a number of the fields of
+         * this Container, including: name, ports, and volumeMounts.
+         * The runtime contract is documented here:
+         * https://github.com/knative/serving/blob/master/docs/runtime-contract.md  Structure is documented below.
+         */
         containers: outputs.cloudrun.ServiceTemplateSpecContainer[];
+        /**
+         * Email address of the IAM service account associated with the revision of the
+         * service. The service account represents the identity of the running revision,
+         * and determines what permissions the revision has. If not provided, the revision
+         * will use the project's default service account.
+         */
         serviceAccountName?: string;
+        /**
+         * -
+         * ServingState holds a value describing the state the resources
+         * are in for this Revision.
+         * It is expected
+         * that the system will manipulate this based on routability and load.
+         */
         servingState: string;
     }
 
     export interface ServiceTemplateSpecContainer {
+        /**
+         * Arguments to the entrypoint.
+         * The docker image's CMD is used if this is not provided.
+         * Variable references $(VAR_NAME) are expanded using the container's
+         * environment. If a variable cannot be resolved, the reference in the input
+         * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
+         * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
+         * regardless of whether the variable exists or not.
+         * More info:
+         * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
         args?: string[];
+        /**
+         * Entrypoint array. Not executed within a shell.
+         * The docker image's ENTRYPOINT is used if this is not provided.
+         * Variable references $(VAR_NAME) are expanded using the container's
+         * environment. If a variable cannot be resolved, the reference in the input
+         * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
+         * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
+         * regardless of whether the variable exists or not.
+         * More info:
+         * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
         commands?: string[];
+        /**
+         * List of environment variables to set in the container.  Structure is documented below.
+         */
         envs?: outputs.cloudrun.ServiceTemplateSpecContainerEnv[];
+        /**
+         * -
+         * (Optional, Deprecated)
+         * List of sources to populate environment variables in the container.
+         * All invalid keys will be reported as an event when the container is starting.
+         * When a key exists in multiple sources, the value associated with the last source will
+         * take precedence. Values defined by an Env with a duplicate key will take
+         * precedence.  Structure is documented below.
+         */
         envFroms?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFrom[];
+        /**
+         * Docker image name. This is most often a reference to a container located
+         * in the container registry, such as gcr.io/cloudrun/hello
+         * More info: https://kubernetes.io/docs/concepts/containers/images
+         */
         image: string;
+        /**
+         * Compute Resources required by this container. Used to set values such as max memory
+         * More info:
+         * https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+         */
         resources: outputs.cloudrun.ServiceTemplateSpecContainerResources;
+        /**
+         * -
+         * (Optional, Deprecated)
+         * Container's working directory.
+         * If not specified, the container runtime's default will be used, which
+         * might be configured in the container image.
+         */
         workingDir?: string;
     }
 
     export interface ServiceTemplateSpecContainerEnv {
+        /**
+         * Name of the environment variable.
+         */
         name?: string;
+        /**
+         * Variable references $(VAR_NAME) are expanded
+         * using the previous defined environment variables in the container and
+         * any route environment variables. If a variable cannot be resolved,
+         * the reference in the input string will be unchanged. The $(VAR_NAME)
+         * syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+         * references will never be expanded, regardless of whether the variable
+         * exists or not.
+         * Defaults to "".
+         */
         value?: string;
     }
 
     export interface ServiceTemplateSpecContainerEnvFrom {
+        /**
+         * The ConfigMap to select from.  Structure is documented below.
+         */
         configMapRef?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFromConfigMapRef;
+        /**
+         * An optional identifier to prepend to each key in the ConfigMap.
+         */
         prefix?: string;
+        /**
+         * The Secret to select from.  Structure is documented below.
+         */
         secretRef?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFromSecretRef;
     }
 
     export interface ServiceTemplateSpecContainerEnvFromConfigMapRef {
+        /**
+         * The Secret to select from.  Structure is documented below.
+         */
         localObjectReference?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference;
+        /**
+         * Specify whether the Secret must be defined
+         */
         optional?: boolean;
     }
 
     export interface ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
+        /**
+         * Name of the environment variable.
+         */
         name: string;
     }
 
     export interface ServiceTemplateSpecContainerEnvFromSecretRef {
+        /**
+         * The Secret to select from.  Structure is documented below.
+         */
         localObjectReference?: outputs.cloudrun.ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference;
+        /**
+         * Specify whether the Secret must be defined
+         */
         optional?: boolean;
     }
 
     export interface ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
+        /**
+         * Name of the environment variable.
+         */
         name: string;
     }
 
     export interface ServiceTemplateSpecContainerResources {
+        /**
+         * Limits describes the maximum amount of compute resources allowed.
+         * The values of the map is string form of the 'quantity' k8s type:
+         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
         limits: {[key: string]: string};
+        /**
+         * Requests describes the minimum amount of compute resources required.
+         * If Requests is omitted for a container, it defaults to Limits if that is
+         * explicitly specified, otherwise to an implementation-defined value.
+         * The values of the map is string form of the 'quantity' k8s type:
+         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
         requests?: {[key: string]: string};
     }
 
     export interface ServiceTraffic {
+        /**
+         * LatestRevision may be optionally provided to indicate that the latest ready
+         * Revision of the Configuration should be used for this traffic target. When
+         * provided LatestRevision must be true if RevisionName is empty; it must be
+         * false when RevisionName is non-empty.
+         */
         latestRevision?: boolean;
+        /**
+         * Percent specifies percent of the traffic to this Revision or Configuration.
+         */
         percent: number;
+        /**
+         * RevisionName of a specific revision to which to send this portion of traffic.
+         */
         revisionName?: string;
     }
 }
 
 export namespace cloudscheduler {
     export interface JobAppEngineHttpTarget {
+        /**
+         * App Engine Routing setting for the job.  Structure is documented below.
+         */
         appEngineRouting?: outputs.cloudscheduler.JobAppEngineHttpTargetAppEngineRouting;
+        /**
+         * HTTP request body.
+         * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
+         * It is an error to set body on a job with an incompatible HttpMethod.
+         */
         body?: string;
+        /**
+         * This map contains the header field names and values.
+         * Repeated headers are not supported, but a header value can contain commas.
+         */
         headers?: {[key: string]: string};
+        /**
+         * Which HTTP method to use for the request.
+         */
         httpMethod?: string;
+        /**
+         * The relative URI.
+         * The relative URL must begin with "/" and must be a valid HTTP relative URL.
+         * It can contain a path, query string arguments, and \# fragments.
+         * If the relative URL is empty, then the root path "/" will be used.
+         * No spaces are allowed, and the maximum length allowed is 2083 characters
+         */
         relativeUri: string;
     }
 
     export interface JobAppEngineHttpTargetAppEngineRouting {
+        /**
+         * App instance.
+         * By default, the job is sent to an instance which is available when the job is attempted.
+         */
         instance?: string;
+        /**
+         * App service.
+         * By default, the job is sent to the service which is the default service when the job is attempted.
+         */
         service?: string;
+        /**
+         * App version.
+         * By default, the job is sent to the version which is the default version when the job is attempted.
+         */
         version?: string;
     }
 
     export interface JobHttpTarget {
+        /**
+         * HTTP request body.
+         * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
+         * It is an error to set body on a job with an incompatible HttpMethod.
+         */
         body?: string;
+        /**
+         * This map contains the header field names and values.
+         * Repeated headers are not supported, but a header value can contain commas.
+         */
         headers?: {[key: string]: string};
+        /**
+         * Which HTTP method to use for the request.
+         */
         httpMethod?: string;
+        /**
+         * Contains information needed for generating an OAuth token.
+         * This type of authorization should be used when sending requests to a GCP endpoint.  Structure is documented below.
+         */
         oauthToken?: outputs.cloudscheduler.JobHttpTargetOauthToken;
+        /**
+         * Contains information needed for generating an OpenID Connect token.
+         * This type of authorization should be used when sending requests to third party endpoints or Cloud Run.  Structure is documented below.
+         */
         oidcToken?: outputs.cloudscheduler.JobHttpTargetOidcToken;
+        /**
+         * The full URI path that the request will be sent to.
+         */
         uri: string;
     }
 
     export interface JobHttpTargetOauthToken {
+        /**
+         * OAuth scope to be used for generating OAuth access token. If not specified,
+         * "https://www.googleapis.com/auth/cloud-platform" will be used.
+         */
         scope?: string;
+        /**
+         * Service account email to be used for generating OAuth token.
+         * The service account must be within the same project as the job.
+         */
         serviceAccountEmail: string;
     }
 
     export interface JobHttpTargetOidcToken {
+        /**
+         * Audience to be used when generating OIDC token. If not specified,
+         * the URI specified in target will be used.
+         */
         audience?: string;
+        /**
+         * Service account email to be used for generating OAuth token.
+         * The service account must be within the same project as the job.
+         */
         serviceAccountEmail: string;
     }
 
     export interface JobPubsubTarget {
+        /**
+         * Attributes for PubsubMessage.
+         * Pubsub message must contain either non-empty data, or at least one attribute.
+         */
         attributes?: {[key: string]: string};
+        /**
+         * The message payload for PubsubMessage.
+         * Pubsub message must contain either non-empty data, or at least one attribute.
+         */
         data?: string;
+        /**
+         * The full resource name for the Cloud Pub/Sub topic to which
+         * messages will be published when a job is delivered. ~>**NOTE**:
+         * The topic name must be in the same format as required by PubSub's
+         * PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
+         */
         topicName: string;
     }
 
     export interface JobRetryConfig {
+        /**
+         * The maximum amount of time to wait before retrying a job after it fails.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'.
+         */
         maxBackoffDuration?: string;
+        /**
+         * The time between retries will double maxDoublings times.
+         * A job's retry interval starts at minBackoffDuration,
+         * then doubles maxDoublings times, then increases linearly,
+         * and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
+         */
         maxDoublings?: number;
+        /**
+         * The time limit for retrying a failed job, measured from time when an execution was first attempted.
+         * If specified with retryCount, the job will be retried until both limits are reached.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'.
+         */
         maxRetryDuration?: string;
+        /**
+         * The minimum amount of time to wait before retrying a job after it fails.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'.
+         */
         minBackoffDuration?: string;
+        /**
+         * The number of attempts that the system will make to run a
+         * job using the exponential backoff procedure described by maxDoublings.
+         * Values greater than 5 and negative values are not allowed.
+         */
         retryCount?: number;
     }
 }
 
 export namespace cloudtasks {
     export interface QueueAppEngineRoutingOverride {
+        /**
+         * -
+         * The host that the task is sent to.
+         */
         host: string;
+        /**
+         * App instance.
+         * By default, the task is sent to an instance which is available when the task is attempted.
+         */
         instance?: string;
+        /**
+         * App service.
+         * By default, the task is sent to the service which is the default service when the task is attempted.
+         */
         service?: string;
+        /**
+         * App version.
+         * By default, the task is sent to the version which is the default version when the task is attempted.
+         */
         version?: string;
     }
 
     export interface QueueRateLimits {
+        /**
+         * -
+         * The max burst size.
+         * Max burst size limits how fast tasks in queue are processed when many tasks are
+         * in the queue and the rate is high. This field allows the queue to have a high
+         * rate so processing starts shortly after a task is enqueued, but still limits
+         * resource usage when many tasks are enqueued in a short period of time.
+         */
         maxBurstSize: number;
+        /**
+         * The maximum number of concurrent tasks that Cloud Tasks allows to
+         * be dispatched for this queue. After this threshold has been
+         * reached, Cloud Tasks stops dispatching tasks until the number of
+         * concurrent requests decreases.
+         */
         maxConcurrentDispatches: number;
+        /**
+         * The maximum rate at which tasks are dispatched from this queue.
+         * If unspecified when the queue is created, Cloud Tasks will pick the default.
+         */
         maxDispatchesPerSecond: number;
     }
 
     export interface QueueRetryConfig {
+        /**
+         * Number of attempts per task.
+         * Cloud Tasks will attempt the task maxAttempts times (that is, if
+         * the first attempt fails, then there will be maxAttempts - 1
+         * retries). Must be >= -1.
+         * If unspecified when the queue is created, Cloud Tasks will pick
+         * the default.
+         * -1 indicates unlimited attempts.
+         */
         maxAttempts: number;
+        /**
+         * A task will be scheduled for retry between minBackoff and
+         * maxBackoff duration after it fails, if the queue's RetryConfig
+         * specifies that the task should be retried.
+         */
         maxBackoff: string;
+        /**
+         * The time between retries will double maxDoublings times.
+         * A task's retry interval starts at minBackoff, then doubles maxDoublings times,
+         * then increases linearly, and finally retries retries at intervals of maxBackoff
+         * up to maxAttempts times.
+         */
         maxDoublings: number;
+        /**
+         * If positive, maxRetryDuration specifies the time limit for
+         * retrying a failed task, measured from when the task was first
+         * attempted. Once maxRetryDuration time has passed and the task has
+         * been attempted maxAttempts times, no further attempts will be
+         * made and the task will be deleted.
+         * If zero, then the task age is unlimited.
+         */
         maxRetryDuration: string;
+        /**
+         * A task will be scheduled for retry between minBackoff and
+         * maxBackoff duration after it fails, if the queue's RetryConfig
+         * specifies that the task should be retried.
+         */
         minBackoff: string;
     }
 }
@@ -1026,39 +2346,169 @@ export namespace composer {
         airflowUri: string;
         dagGcsPrefix: string;
         gkeCluster: string;
+        /**
+         * The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
+         */
         nodeConfig: outputs.composer.EnvironmentConfigNodeConfig;
+        /**
+         * The number of nodes in the Kubernetes Engine cluster that
+         * will be used to run this environment.
+         */
         nodeCount: number;
+        /**
+         * The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
+         */
         privateEnvironmentConfig: outputs.composer.EnvironmentConfigPrivateEnvironmentConfig;
+        /**
+         * The configuration settings for software inside the environment.  Structure is documented below.
+         */
         softwareConfig: outputs.composer.EnvironmentConfigSoftwareConfig;
     }
 
     export interface EnvironmentConfigNodeConfig {
+        /**
+         * The disk size in GB used for node VMs. Minimum size is 20GB.
+         * If unspecified, defaults to 100GB. Cannot be updated.
+         */
         diskSizeGb: number;
+        /**
+         * Configuration for controlling how IPs are allocated in the GKE cluster.
+         * Structure is documented below.
+         * Cannot be updated.
+         */
         ipAllocationPolicy: outputs.composer.EnvironmentConfigNodeConfigIpAllocationPolicy;
+        /**
+         * The Compute Engine machine type used for cluster instances,
+         * specified as a name or relative resource name. For example:
+         * "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
+         * region/zone.
+         */
         machineType: string;
+        /**
+         * The Compute Engine network to be used for machine
+         * communications, specified as a self-link, relative resource name
+         * (e.g. "projects/{project}/global/networks/{network}"), by name.
+         */
         network: string;
+        /**
+         * The set of Google API scopes to be made available on all node
+         * VMs. Cannot be updated. If empty, defaults to
+         * `["https://www.googleapis.com/auth/cloud-platform"]`
+         */
         oauthScopes: string[];
+        /**
+         * The Google Cloud Platform Service Account to be used by the
+         * node VMs. If a service account is not specified, the "default"
+         * Compute Engine service account is used. Cannot be updated. If given,
+         * note that the service account must have `roles/composer.worker`
+         * for any GCP resources created under the Cloud Composer Environment.
+         */
         serviceAccount: string;
+        /**
+         * The Compute Engine subnetwork to be used for machine
+         * communications, , specified as a self-link, relative resource name (e.g.
+         * "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
+         * network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+         */
         subnetwork?: string;
+        /**
+         * The list of instance tags applied to all node VMs. Tags are
+         * used to identify valid sources or targets for network
+         * firewalls. Each tag within the list must comply with RFC1035.
+         * Cannot be updated.
+         */
         tags?: string[];
+        /**
+         * The Compute Engine zone in which to deploy the VMs running the
+         * Apache Airflow software, specified as the zone name or
+         * relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
+         * and region.
+         */
         zone: string;
     }
 
     export interface EnvironmentConfigNodeConfigIpAllocationPolicy {
+        /**
+         * The IP address range used to allocate IP addresses to pods in the cluster.
+         * Set to blank to have GKE choose a range with the default size.
+         * Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
+         * Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
+         * (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+         * Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
+         */
         clusterIpv4CidrBlock?: string;
+        /**
+         * The name of the cluster's secondary range used to allocate IP addresses to pods.
+         * Specify either `clusterSecondaryRangeName` or `clusterIpv4CidrBlock` but not both.
+         * This field is applicable only when `useIpAliases` is true.
+         */
         clusterSecondaryRangeName?: string;
+        /**
+         * The IP address range used to allocate IP addresses in this cluster.
+         * Set to blank to have GKE choose a range with the default size.
+         * Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
+         * Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks
+         * (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+         * Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
+         */
         servicesIpv4CidrBlock?: string;
+        /**
+         * The name of the services' secondary range used to allocate IP addresses to the cluster.
+         * Specify either `servicesSecondaryRangeName` or `servicesIpv4CidrBlock` but not both.
+         * This field is applicable only when `useIpAliases` is true.
+         */
         servicesSecondaryRangeName?: string;
+        /**
+         * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
+         * Defaults to true if the `ipAllocationBlock` is present in config.
+         */
         useIpAliases: boolean;
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
+        /**
+         * -
+         * If true, access to the public endpoint of the GKE cluster is denied.
+         */
         enablePrivateEndpoint?: boolean;
+        /**
+         * The IP range in CIDR notation to use for the hosted master network. This range is used
+         * for assigning internal IP addresses to the cluster master or set of masters and to the
+         * internal load balancer virtual IP. This range must not overlap with any other ranges
+         * in use within the cluster's network.
+         * If left blank, the default value of '172.16.0.0/28' is used.
+         */
         masterIpv4CidrBlock?: string;
     }
 
     export interface EnvironmentConfigSoftwareConfig {
+        /**
+         * -
+         * (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
+         * separated by a hyphen, for example "core-dags_are_paused_at_creation".
+         */
         airflowConfigOverrides?: {[key: string]: string};
+        /**
+         * Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
+         * Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
+         * They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
+         * `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
+         * ```
+         * AIRFLOW_HOME
+         * C_FORCE_ROOT
+         * CONTAINER_NAME
+         * DAGS_FOLDER
+         * GCP_PROJECT
+         * GCS_BUCKET
+         * GKE_CLUSTER_NAME
+         * SQL_DATABASE
+         * SQL_INSTANCE
+         * SQL_PASSWORD
+         * SQL_PROJECT
+         * SQL_REGION
+         * SQL_USER
+         * ```
+         */
         envVariables?: {[key: string]: string};
         /**
          * -
@@ -1071,6 +2521,12 @@ export namespace composer {
          * for allowed release names.
          */
         imageVersion: string;
+        /**
+         * Custom Python Package Index (PyPI) packages to be installed
+         * in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
+         * version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without
+         * pinning it to a version specifier, use the empty string as the value.
+         */
         pypiPackages?: {[key: string]: string};
         /**
          * -
@@ -1094,185 +2550,685 @@ export namespace composer {
 
 export namespace compute {
     export interface AutoscalarAutoscalingPolicy {
+        /**
+         * The number of seconds that the autoscaler should wait before it
+         * starts collecting information from a new instance. This prevents
+         * the autoscaler from collecting information when the instance is
+         * initializing, during which the collected usage would not be
+         * reliable. The default time autoscaler waits is 60 seconds.
+         * Virtual machine initialization times might vary because of
+         * numerous factors. We recommend that you test how long an
+         * instance may take to initialize. To do this, create an instance
+         * and time the startup process.
+         */
         cooldownPeriod?: number;
+        /**
+         * Defines the CPU utilization policy that allows the autoscaler to
+         * scale based on the average CPU utilization of a managed instance
+         * group.  Structure is documented below.
+         */
         cpuUtilization: outputs.compute.AutoscalarAutoscalingPolicyCpuUtilization;
+        /**
+         * Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+         */
         loadBalancingUtilization?: outputs.compute.AutoscalarAutoscalingPolicyLoadBalancingUtilization;
+        /**
+         * The maximum number of instances that the autoscaler can scale up
+         * to. This is required when creating or updating an autoscaler. The
+         * maximum number of replicas should not be lower than minimal number
+         * of replicas.
+         */
         maxReplicas: number;
+        /**
+         * Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+         */
         metrics?: outputs.compute.AutoscalarAutoscalingPolicyMetric[];
+        /**
+         * The minimum number of replicas that the autoscaler can scale down
+         * to. This cannot be less than 0. If not provided, autoscaler will
+         * choose a default value depending on maximum number of instances
+         * allowed.
+         */
         minReplicas: number;
     }
 
     export interface AutoscalarAutoscalingPolicyCpuUtilization {
+        /**
+         * Fraction of backend capacity utilization (set in HTTP(s) load
+         * balancing configuration) that autoscaler should maintain. Must
+         * be a positive float value. If not defined, the default is 0.8.
+         */
         target: number;
     }
 
     export interface AutoscalarAutoscalingPolicyLoadBalancingUtilization {
+        /**
+         * Fraction of backend capacity utilization (set in HTTP(s) load
+         * balancing configuration) that autoscaler should maintain. Must
+         * be a positive float value. If not defined, the default is 0.8.
+         */
         target: number;
     }
 
     export interface AutoscalarAutoscalingPolicyMetric {
         filter?: string;
+        /**
+         * The identifier (type) of the Stackdriver Monitoring metric.
+         * The metric cannot have negative values.
+         * The metric must have a value type of INT64 or DOUBLE.
+         */
         name: string;
         singleInstanceAssignment?: number;
+        /**
+         * Fraction of backend capacity utilization (set in HTTP(s) load
+         * balancing configuration) that autoscaler should maintain. Must
+         * be a positive float value. If not defined, the default is 0.8.
+         */
         target?: number;
+        /**
+         * Defines how target utilization value is expressed for a
+         * Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
+         * or DELTA_PER_MINUTE.
+         */
         type?: string;
     }
 
     export interface AutoscalerAutoscalingPolicy {
+        /**
+         * The number of seconds that the autoscaler should wait before it
+         * starts collecting information from a new instance. This prevents
+         * the autoscaler from collecting information when the instance is
+         * initializing, during which the collected usage would not be
+         * reliable. The default time autoscaler waits is 60 seconds.
+         * Virtual machine initialization times might vary because of
+         * numerous factors. We recommend that you test how long an
+         * instance may take to initialize. To do this, create an instance
+         * and time the startup process.
+         */
         cooldownPeriod?: number;
+        /**
+         * Defines the CPU utilization policy that allows the autoscaler to
+         * scale based on the average CPU utilization of a managed instance
+         * group.  Structure is documented below.
+         */
         cpuUtilization: outputs.compute.AutoscalerAutoscalingPolicyCpuUtilization;
+        /**
+         * Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+         */
         loadBalancingUtilization?: outputs.compute.AutoscalerAutoscalingPolicyLoadBalancingUtilization;
+        /**
+         * The maximum number of instances that the autoscaler can scale up
+         * to. This is required when creating or updating an autoscaler. The
+         * maximum number of replicas should not be lower than minimal number
+         * of replicas.
+         */
         maxReplicas: number;
+        /**
+         * Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+         */
         metrics?: outputs.compute.AutoscalerAutoscalingPolicyMetric[];
+        /**
+         * The minimum number of replicas that the autoscaler can scale down
+         * to. This cannot be less than 0. If not provided, autoscaler will
+         * choose a default value depending on maximum number of instances
+         * allowed.
+         */
         minReplicas: number;
     }
 
     export interface AutoscalerAutoscalingPolicyCpuUtilization {
+        /**
+         * Fraction of backend capacity utilization (set in HTTP(s) load
+         * balancing configuration) that autoscaler should maintain. Must
+         * be a positive float value. If not defined, the default is 0.8.
+         */
         target: number;
     }
 
     export interface AutoscalerAutoscalingPolicyLoadBalancingUtilization {
+        /**
+         * Fraction of backend capacity utilization (set in HTTP(s) load
+         * balancing configuration) that autoscaler should maintain. Must
+         * be a positive float value. If not defined, the default is 0.8.
+         */
         target: number;
     }
 
     export interface AutoscalerAutoscalingPolicyMetric {
         filter?: string;
+        /**
+         * The identifier (type) of the Stackdriver Monitoring metric.
+         * The metric cannot have negative values.
+         * The metric must have a value type of INT64 or DOUBLE.
+         */
         name: string;
         singleInstanceAssignment?: number;
+        /**
+         * Fraction of backend capacity utilization (set in HTTP(s) load
+         * balancing configuration) that autoscaler should maintain. Must
+         * be a positive float value. If not defined, the default is 0.8.
+         */
         target?: number;
+        /**
+         * Defines how target utilization value is expressed for a
+         * Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
+         * or DELTA_PER_MINUTE.
+         */
         type?: string;
     }
 
     export interface BackendBucketCdnPolicy {
+        /**
+         * Maximum number of seconds the response to a signed URL request will
+         * be considered fresh. After this time period,
+         * the response will be revalidated before being served.
+         * When serving responses to signed URL requests,
+         * Cloud CDN will internally behave as though
+         * all responses from this backend had a "Cache-Control: public,
+         * max-age=[TTL]" header, regardless of any existing Cache-Control
+         * header. The actual headers served in responses will not be altered.
+         */
         signedUrlCacheMaxAgeSec: number;
     }
 
     export interface BackendServiceBackend {
+        /**
+         * Specifies the balancing mode for this backend.
+         * For global HTTP(S) or TCP/SSL load balancing, the default is
+         * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+         * and CONNECTION (for TCP/SSL).
+         */
         balancingMode?: string;
+        /**
+         * A multiplier applied to the group's maximum servicing capacity
+         * (based on UTILIZATION, RATE or CONNECTION).
+         * Default value is 1, which means the group will serve up to 100%
+         * of its configured capacity (depending on balancingMode). A
+         * setting of 0 means the group is completely drained, offering
+         * 0% of its available Capacity. Valid range is [0.0,1.0].
+         */
         capacityScaler?: number;
+        /**
+         * An optional description of this resource.
+         * Provide this property when you create the resource.
+         */
         description?: string;
+        /**
+         * The fully-qualified URL of an Instance Group or Network Endpoint
+         * Group resource. In case of instance group this defines the list
+         * of instances that serve traffic. Member virtual machine
+         * instances from each instance group must live in the same zone as
+         * the instance group itself. No two backends in a backend service
+         * are allowed to use same Instance Group resource.
+         * For Network Endpoint Groups this defines list of endpoints. All
+         * endpoints of Network Endpoint Group must be hosted on instances
+         * located in the same zone as the Network Endpoint Group.
+         * Backend services cannot mix Instance Group and
+         * Network Endpoint Group backends.
+         * Note that you must specify an Instance Group or Network Endpoint
+         * Group resource using the fully-qualified URL, rather than a
+         * partial URL.
+         */
         group: string;
+        /**
+         * The maximum number of connections to the backend cluster.
+         * Defaults to 1024.
+         */
         maxConnections?: number;
+        /**
+         * The max number of simultaneous connections that a single backend
+         * network endpoint can handle. This is used to calculate the
+         * capacity of the group. Can be used in either CONNECTION or
+         * UTILIZATION balancing modes.
+         * For CONNECTION mode, either
+         * maxConnections or maxConnectionsPerEndpoint must be set.
+         */
         maxConnectionsPerEndpoint?: number;
+        /**
+         * The max number of simultaneous connections that a single
+         * backend instance can handle. This is used to calculate the
+         * capacity of the group. Can be used in either CONNECTION or
+         * UTILIZATION balancing modes.
+         * For CONNECTION mode, either maxConnections or
+         * maxConnectionsPerInstance must be set.
+         */
         maxConnectionsPerInstance?: number;
+        /**
+         * The max requests per second (RPS) of the group.
+         * Can be used with either RATE or UTILIZATION balancing modes,
+         * but required if RATE mode. For RATE mode, either maxRate or one
+         * of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+         * group type, must be set.
+         */
         maxRate?: number;
+        /**
+         * The max requests per second (RPS) that a single backend network
+         * endpoint can handle. This is used to calculate the capacity of
+         * the group. Can be used in either balancing mode. For RATE mode,
+         * either maxRate or maxRatePerEndpoint must be set.
+         */
         maxRatePerEndpoint?: number;
+        /**
+         * The max requests per second (RPS) that a single backend
+         * instance can handle. This is used to calculate the capacity of
+         * the group. Can be used in either balancing mode. For RATE mode,
+         * either maxRate or maxRatePerInstance must be set.
+         */
         maxRatePerInstance?: number;
+        /**
+         * Used when balancingMode is UTILIZATION. This ratio defines the
+         * CPU utilization target for the group. The default is 0.8. Valid
+         * range is [0.0, 1.0].
+         */
         maxUtilization?: number;
     }
 
     export interface BackendServiceCdnPolicy {
+        /**
+         * The CacheKeyPolicy for this CdnPolicy.  Structure is documented below.
+         */
         cacheKeyPolicy?: outputs.compute.BackendServiceCdnPolicyCacheKeyPolicy;
+        /**
+         * Maximum number of seconds the response to a signed URL request
+         * will be considered fresh, defaults to 1hr (3600s). After this
+         * time period, the response will be revalidated before
+         * being served.
+         * When serving responses to signed URL requests, Cloud CDN will
+         * internally behave as though all responses from this backend had a
+         * "Cache-Control: public, max-age=[TTL]" header, regardless of any
+         * existing Cache-Control header. The actual headers served in
+         * responses will not be altered.
+         */
         signedUrlCacheMaxAgeSec?: number;
     }
 
     export interface BackendServiceCdnPolicyCacheKeyPolicy {
+        /**
+         * If true requests to different hosts will be cached separately.
+         */
         includeHost?: boolean;
+        /**
+         * If true, http and https requests will be cached separately.
+         */
         includeProtocol?: boolean;
+        /**
+         * If true, include query string parameters in the cache key
+         * according to queryStringWhitelist and
+         * query_string_blacklist. If neither is set, the entire query
+         * string will be included.
+         * If false, the query string will be excluded from the cache
+         * key entirely.
+         */
         includeQueryString?: boolean;
+        /**
+         * Names of query string parameters to exclude in cache keys.
+         * All other parameters will be included. Either specify
+         * queryStringWhitelist or query_string_blacklist, not both.
+         * '&' and '=' will be percent encoded and not treated as
+         * delimiters.
+         */
         queryStringBlacklists?: string[];
+        /**
+         * Names of query string parameters to include in cache keys.
+         * All other parameters will be excluded. Either specify
+         * queryStringWhitelist or query_string_blacklist, not both.
+         * '&' and '=' will be percent encoded and not treated as
+         * delimiters.
+         */
         queryStringWhitelists?: string[];
     }
 
     export interface BackendServiceCircuitBreakers {
+        /**
+         * The timeout for new network connections to hosts.  Structure is documented below.
+         */
         connectTimeout?: outputs.compute.BackendServiceCircuitBreakersConnectTimeout;
+        /**
+         * The maximum number of connections to the backend cluster.
+         * Defaults to 1024.
+         */
         maxConnections?: number;
+        /**
+         * The maximum number of pending requests to the backend cluster.
+         * Defaults to 1024.
+         */
         maxPendingRequests?: number;
+        /**
+         * The maximum number of parallel requests to the backend cluster.
+         * Defaults to 1024.
+         */
         maxRequests?: number;
+        /**
+         * Maximum requests for a single backend connection. This parameter
+         * is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+         * not specified, there is no limit. Setting this parameter to 1
+         * will effectively disable keep alive.
+         */
         maxRequestsPerConnection?: number;
+        /**
+         * The maximum number of parallel retries to the backend cluster.
+         * Defaults to 3.
+         */
         maxRetries?: number;
     }
 
     export interface BackendServiceCircuitBreakersConnectTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: number;
     }
 
     export interface BackendServiceConsistentHash {
+        /**
+         * Hash is based on HTTP Cookie. This field describes a HTTP cookie
+         * that will be used as the hash key for the consistent hash load
+         * balancer. If the cookie is not present, it will be generated.
+         * This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+         */
         httpCookie?: outputs.compute.BackendServiceConsistentHashHttpCookie;
+        /**
+         * The hash based on the value of the specified header field.
+         * This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+         */
         httpHeaderName?: string;
+        /**
+         * The minimum number of virtual nodes to use for the hash ring.
+         * Larger ring sizes result in more granular load
+         * distributions. If the number of hosts in the load balancing pool
+         * is larger than the ring size, each host will be assigned a single
+         * virtual node.
+         * Defaults to 1024.
+         */
         minimumRingSize?: number;
     }
 
     export interface BackendServiceConsistentHashHttpCookie {
+        /**
+         * Name of the cookie.
+         */
         name?: string;
+        /**
+         * Path to set for the cookie.
+         */
         path?: string;
+        /**
+         * Lifetime of the cookie.  Structure is documented below.
+         */
         ttl?: outputs.compute.BackendServiceConsistentHashHttpCookieTtl;
     }
 
     export interface BackendServiceConsistentHashHttpCookieTtl {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: number;
     }
 
     export interface BackendServiceIap {
+        /**
+         * OAuth2 Client ID for IAP
+         */
         oauth2ClientId: string;
+        /**
+         * OAuth2 Client Secret for IAP
+         */
         oauth2ClientSecret: string;
+        /**
+         * -
+         * OAuth2 Client Secret SHA-256 for IAP
+         */
         oauth2ClientSecretSha256: string;
     }
 
     export interface BackendServiceLogConfig {
+        /**
+         * Whether to enable logging for the load balancer traffic served by this backend service.
+         */
         enable?: boolean;
+        /**
+         * This field can only be specified if logging is enabled for this backend service. The value of
+         * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+         * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+         * The default value is 1.0.
+         */
         sampleRate?: number;
     }
 
     export interface BackendServiceOutlierDetection {
+        /**
+         * The base time that a host is ejected for. The real time is equal to the base
+         * time multiplied by the number of times the host has been ejected. Defaults to
+         * 30000ms or 30s.  Structure is documented below.
+         */
         baseEjectionTime?: outputs.compute.BackendServiceOutlierDetectionBaseEjectionTime;
+        /**
+         * Number of errors before a host is ejected from the connection pool. When the
+         * backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+         * Defaults to 5.
+         */
         consecutiveErrors?: number;
+        /**
+         * The number of consecutive gateway failures (502, 503, 504 status or connection
+         * errors that are mapped to one of those status codes) before a consecutive
+         * gateway failure ejection occurs. Defaults to 5.
+         */
         consecutiveGatewayFailure?: number;
+        /**
+         * The percentage chance that a host will be actually ejected when an outlier
+         * status is detected through consecutive 5xx. This setting can be used to disable
+         * ejection or to ramp it up slowly. Defaults to 100.
+         */
         enforcingConsecutiveErrors?: number;
+        /**
+         * The percentage chance that a host will be actually ejected when an outlier
+         * status is detected through consecutive gateway failures. This setting can be
+         * used to disable ejection or to ramp it up slowly. Defaults to 0.
+         */
         enforcingConsecutiveGatewayFailure?: number;
+        /**
+         * The percentage chance that a host will be actually ejected when an outlier
+         * status is detected through success rate statistics. This setting can be used to
+         * disable ejection or to ramp it up slowly. Defaults to 100.
+         */
         enforcingSuccessRate?: number;
+        /**
+         * Time interval between ejection sweep analysis. This can result in both new
+         * ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+         */
         interval?: outputs.compute.BackendServiceOutlierDetectionInterval;
+        /**
+         * Maximum percentage of hosts in the load balancing pool for the backend service
+         * that can be ejected. Defaults to 10%.
+         */
         maxEjectionPercent?: number;
+        /**
+         * The number of hosts in a cluster that must have enough request volume to detect
+         * success rate outliers. If the number of hosts is less than this setting, outlier
+         * detection via success rate statistics is not performed for any host in the
+         * cluster. Defaults to 5.
+         */
         successRateMinimumHosts?: number;
+        /**
+         * The minimum number of total requests that must be collected in one interval (as
+         * defined by the interval duration above) to include this host in success rate
+         * based outlier detection. If the volume is lower than this setting, outlier
+         * detection via success rate statistics is not performed for that host. Defaults
+         * to 100.
+         */
         successRateRequestVolume?: number;
+        /**
+         * This factor is used to determine the ejection threshold for success rate outlier
+         * ejection. The ejection threshold is the difference between the mean success
+         * rate, and the product of this factor and the standard deviation of the mean
+         * success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+         * by a thousand to get a double. That is, if the desired factor is 1.9, the
+         * runtime value should be 1900. Defaults to 1900.
+         */
         successRateStdevFactor?: number;
     }
 
     export interface BackendServiceOutlierDetectionBaseEjectionTime {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: number;
     }
 
     export interface BackendServiceOutlierDetectionInterval {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: number;
     }
 
     export interface DiskDiskEncryptionKey {
+        /**
+         * The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+         * in the cloud console. Your project's Compute Engine System service account
+         * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+         * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         */
         kmsKeySelfLink?: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey?: string;
+        /**
+         * -
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
     export interface DiskSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+         * in the cloud console. Your project's Compute Engine System service account
+         * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+         * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         */
         kmsKeySelfLink?: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey?: string;
+        /**
+         * -
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
     export interface DiskSourceSnapshotEncryptionKey {
+        /**
+         * The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+         * in the cloud console. Your project's Compute Engine System service account
+         * (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+         * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         */
         kmsKeySelfLink?: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey?: string;
+        /**
+         * -
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
     export interface ExternalVpnGatewayInterface {
         /**
-         * an identifier for the resource with format `projects/{{project}}/global/externalVpnGateways/{{name}}`
+         * The numberic ID for this interface. Allowed values are based on the redundancy type
+         * of this external VPN gateway
+         * * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
+         * * `0, 1 - TWO_IPS_REDUNDANCY`
+         * * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
          */
         id?: number;
+        /**
+         * IP address of the interface in the external VPN gateway.
+         * Only IPv4 is supported. This IP address can be either from
+         * your on-premise gateway or another Cloud provider’s VPN gateway,
+         * it cannot be an IP address from Google Compute Engine.
+         */
         ipAddress?: string;
     }
 
     export interface FirewallAllow {
+        /**
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
         ports?: string[];
+        /**
+         * The IP protocol to which this rule applies. The protocol type is
+         * required when creating a firewall rule. This value can either be
+         * one of the following well known protocol strings (tcp, udp,
+         * icmp, esp, ah, sctp, ipip), or the IP protocol number.
+         */
         protocol: string;
     }
 
     export interface FirewallDeny {
+        /**
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
         ports?: string[];
+        /**
+         * The IP protocol to which this rule applies. The protocol type is
+         * required when creating a firewall rule. This value can either be
+         * one of the following well known protocol strings (tcp, udp,
+         * icmp, esp, ah, sctp, ipip), or the IP protocol number.
+         */
         protocol: string;
     }
 
@@ -1629,12 +3585,33 @@ export namespace compute {
     }
 
     export interface GlobalForwardingRuleMetadataFilter {
+        /**
+         * The list of label value pairs that must match labels in the
+         * provided metadata based on filterMatchCriteria
+         * This list must not be empty and can have at the most 64 entries.  Structure is documented below.
+         */
         filterLabels: outputs.compute.GlobalForwardingRuleMetadataFilterFilterLabel[];
+        /**
+         * Specifies how individual filterLabel matches within the list of
+         * filterLabels contribute towards the overall metadataFilter match.
+         * MATCH_ANY - At least one of the filterLabels must have a matching
+         * label in the provided metadata.
+         * MATCH_ALL - All filterLabels must have matching labels in the
+         * provided metadata.
+         */
         filterMatchCriteria: string;
     }
 
     export interface GlobalForwardingRuleMetadataFilterFilterLabel {
+        /**
+         * Name of the metadata label. The length must be between
+         * 1 and 1024 characters, inclusive.
+         */
         name: string;
+        /**
+         * The value that the label must match. The value has a maximum
+         * length of 1024 characters.
+         */
         value: string;
     }
 
@@ -1647,64 +3624,270 @@ export namespace compute {
     }
 
     export interface HealthCheckHttp2HealthCheck {
+        /**
+         * The value of the host header in the HTTP2 health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
         host?: string;
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         */
         portSpecification?: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend, either NONE or PROXY_V1. The default is NONE.
+         */
         proxyHeader?: string;
+        /**
+         * The request path of the HTTP2 health check request.
+         * The default value is /.
+         */
         requestPath?: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response?: string;
     }
 
     export interface HealthCheckHttpHealthCheck {
+        /**
+         * The value of the host header in the HTTP2 health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
         host?: string;
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         */
         portSpecification?: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend, either NONE or PROXY_V1. The default is NONE.
+         */
         proxyHeader?: string;
+        /**
+         * The request path of the HTTP2 health check request.
+         * The default value is /.
+         */
         requestPath?: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response?: string;
     }
 
     export interface HealthCheckHttpsHealthCheck {
+        /**
+         * The value of the host header in the HTTP2 health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
         host?: string;
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         */
         portSpecification?: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend, either NONE or PROXY_V1. The default is NONE.
+         */
         proxyHeader?: string;
+        /**
+         * The request path of the HTTP2 health check request.
+         * The default value is /.
+         */
         requestPath?: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response?: string;
     }
 
     export interface HealthCheckLogConfig {
+        /**
+         * Indicates whether or not to export logs. This is false by default,
+         * which means no health check logging will be done.
+         */
         enable?: boolean;
     }
 
     export interface HealthCheckSslHealthCheck {
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         */
         portSpecification?: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend, either NONE or PROXY_V1. The default is NONE.
+         */
         proxyHeader?: string;
+        /**
+         * The application data to send once the SSL connection has been
+         * established (default value is empty). If both request and response are
+         * empty, the connection establishment alone will indicate health. The request
+         * data can only be ASCII.
+         */
         request?: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response?: string;
     }
 
     export interface HealthCheckTcpHealthCheck {
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         */
         portSpecification?: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend, either NONE or PROXY_V1. The default is NONE.
+         */
         proxyHeader?: string;
+        /**
+         * The application data to send once the SSL connection has been
+         * established (default value is empty). If both request and response are
+         * empty, the connection establishment alone will indicate health. The request
+         * data can only be ASCII.
+         */
         request?: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response?: string;
     }
 
     export interface ImageGuestOsFeature {
+        /**
+         * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         */
         type: string;
     }
 
     export interface ImageRawDisk {
+        /**
+         * The format used to encode and transmit the block device, which
+         * should be TAR. This is just a container and transmission format
+         * and not a runtime format. Provided by the client when the disk
+         * image is created.
+         */
         containerType?: string;
+        /**
+         * An optional SHA1 checksum of the disk image before unpackaging.
+         * This is provided by the client when the disk image is created.
+         */
         sha1?: string;
+        /**
+         * The full Google Cloud Storage URL where disk storage is stored
+         * You must provide either this property or the sourceDisk property
+         * but not both.
+         */
         source: string;
     }
 
@@ -2441,6 +4624,10 @@ export namespace compute {
     }
 
     export interface ManagedSslCertificateManaged {
+        /**
+         * Domains for which a managed SSL certificate will be valid.  Currently,
+         * there can be up to 100 domains in this list.
+         */
         domains: string[];
     }
 
@@ -2449,215 +4636,862 @@ export namespace compute {
     }
 
     export interface NodeGroupAutoscalingPolicy {
+        /**
+         * Maximum size of the node group. Set to a value less than or equal
+         * to 100 and greater than or equal to min-nodes.
+         */
         maxNodes: number;
+        /**
+         * Minimum size of the node group. Must be less
+         * than or equal to max-nodes. The default value is 0.
+         */
         minNodes: number;
+        /**
+         * The autoscaling mode. Set to one of the following:
+         * - OFF: Disables the autoscaler.
+         * - ON: Enables scaling in and scaling out.
+         * - ONLY_SCALE_OUT: Enables only scaling out.
+         * You must use this mode if your node groups are configured to
+         * restart their hosted VMs on minimal servers.
+         */
         mode: string;
     }
 
     export interface NodeTemplateNodeTypeFlexibility {
+        /**
+         * Number of virtual CPUs to use.
+         */
         cpus?: string;
+        /**
+         * -
+         * Use local SSD
+         */
         localSsd: string;
+        /**
+         * Physical memory available to the node, defined in MB.
+         */
         memory?: string;
     }
 
     export interface NodeTemplateServerBinding {
+        /**
+         * Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
+         * nodes using this template will restart on any physical server
+         * following a maintenance event.
+         * If `RESTART_NODE_ON_MINIMAL_SERVER`, nodes using this template
+         * will restart on the same physical server following a maintenance
+         * event, instead of being live migrated to or restarted on a new
+         * physical server. This option may be useful if you are using
+         * software licenses tied to the underlying server characteristics
+         * such as physical sockets or cores, to avoid the need for
+         * additional licenses when maintenance occurs. However, VMs on such
+         * nodes will experience outages while maintenance is applied.
+         */
         type: string;
     }
 
     export interface PacketMirroringCollectorIlb {
+        /**
+         * The URL of the instances where this rule should be active.
+         */
         url: string;
     }
 
     export interface PacketMirroringFilter {
+        /**
+         * IP CIDR ranges that apply as a filter on the source (ingress) or
+         * destination (egress) IP in the IP header. Only IPv4 is supported.
+         */
         cidrRanges?: string[];
+        /**
+         * Protocols that apply as a filter on mirrored traffic.
+         */
         ipProtocols?: string[];
     }
 
     export interface PacketMirroringMirroredResources {
+        /**
+         * All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+         */
         instances?: outputs.compute.PacketMirroringMirroredResourcesInstance[];
+        /**
+         * All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+         */
         subnetworks?: outputs.compute.PacketMirroringMirroredResourcesSubnetwork[];
+        /**
+         * All instances with these tags will be mirrored.
+         */
         tags?: string[];
     }
 
     export interface PacketMirroringMirroredResourcesInstance {
+        /**
+         * The URL of the instances where this rule should be active.
+         */
         url: string;
     }
 
     export interface PacketMirroringMirroredResourcesSubnetwork {
+        /**
+         * The URL of the instances where this rule should be active.
+         */
         url: string;
     }
 
     export interface PacketMirroringNetwork {
+        /**
+         * The URL of the instances where this rule should be active.
+         */
         url: string;
     }
 
     export interface RegionAutoscalerAutoscalingPolicy {
+        /**
+         * The number of seconds that the autoscaler should wait before it
+         * starts collecting information from a new instance. This prevents
+         * the autoscaler from collecting information when the instance is
+         * initializing, during which the collected usage would not be
+         * reliable. The default time autoscaler waits is 60 seconds.
+         * Virtual machine initialization times might vary because of
+         * numerous factors. We recommend that you test how long an
+         * instance may take to initialize. To do this, create an instance
+         * and time the startup process.
+         */
         cooldownPeriod?: number;
+        /**
+         * Defines the CPU utilization policy that allows the autoscaler to
+         * scale based on the average CPU utilization of a managed instance
+         * group.  Structure is documented below.
+         */
         cpuUtilization: outputs.compute.RegionAutoscalerAutoscalingPolicyCpuUtilization;
+        /**
+         * Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+         */
         loadBalancingUtilization?: outputs.compute.RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization;
+        /**
+         * The maximum number of instances that the autoscaler can scale up
+         * to. This is required when creating or updating an autoscaler. The
+         * maximum number of replicas should not be lower than minimal number
+         * of replicas.
+         */
         maxReplicas: number;
+        /**
+         * Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+         */
         metrics?: outputs.compute.RegionAutoscalerAutoscalingPolicyMetric[];
+        /**
+         * The minimum number of replicas that the autoscaler can scale down
+         * to. This cannot be less than 0. If not provided, autoscaler will
+         * choose a default value depending on maximum number of instances
+         * allowed.
+         */
         minReplicas: number;
     }
 
     export interface RegionAutoscalerAutoscalingPolicyCpuUtilization {
+        /**
+         * Fraction of backend capacity utilization (set in HTTP(s) load
+         * balancing configuration) that autoscaler should maintain. Must
+         * be a positive float value. If not defined, the default is 0.8.
+         */
         target: number;
     }
 
     export interface RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization {
+        /**
+         * Fraction of backend capacity utilization (set in HTTP(s) load
+         * balancing configuration) that autoscaler should maintain. Must
+         * be a positive float value. If not defined, the default is 0.8.
+         */
         target: number;
     }
 
     export interface RegionAutoscalerAutoscalingPolicyMetric {
+        /**
+         * A filter string to be used as the filter string for
+         * a Stackdriver Monitoring TimeSeries.list API call.
+         * This filter is used to select a specific TimeSeries for
+         * the purpose of autoscaling and to determine whether the metric
+         * is exporting per-instance or per-group data.
+         * You can only use the AND operator for joining selectors.
+         * You can only use direct equality comparison operator (=) without
+         * any functions for each selector.
+         * You can specify the metric in both the filter string and in the
+         * metric field. However, if specified in both places, the metric must
+         * be identical.
+         * The monitored resource type determines what kind of values are
+         * expected for the metric. If it is a gce_instance, the autoscaler
+         * expects the metric to include a separate TimeSeries for each
+         * instance in a group. In such a case, you cannot filter on resource
+         * labels.
+         * If the resource type is any other value, the autoscaler expects
+         * this metric to contain values that apply to the entire autoscaled
+         * instance group and resource label filtering can be performed to
+         * point autoscaler at the correct TimeSeries to scale upon.
+         * This is called a per-group metric for the purpose of autoscaling.
+         * If not specified, the type defaults to gce_instance.
+         * You should provide a filter that is selective enough to pick just
+         * one TimeSeries for the autoscaled group or for each of the instances
+         * (if you are using gceInstance resource type). If multiple
+         * TimeSeries are returned upon the query execution, the autoscaler
+         * will sum their respective values to obtain its scaling value.
+         */
         filter?: string;
+        /**
+         * The identifier (type) of the Stackdriver Monitoring metric.
+         * The metric cannot have negative values.
+         * The metric must have a value type of INT64 or DOUBLE.
+         */
         name: string;
+        /**
+         * If scaling is based on a per-group metric value that represents the
+         * total amount of work to be done or resource usage, set this value to
+         * an amount assigned for a single instance of the scaled group.
+         * The autoscaler will keep the number of instances proportional to the
+         * value of this metric, the metric itself should not change value due
+         * to group resizing.
+         * For example, a good metric to use with the target is
+         * `pubsub.googleapis.com/subscription/num_undelivered_messages`
+         * or a custom metric exporting the total number of requests coming to
+         * your instances.
+         * A bad example would be a metric exporting an average or median
+         * latency, since this value can't include a chunk assignable to a
+         * single instance, it could be better used with utilizationTarget
+         * instead.
+         */
         singleInstanceAssignment?: number;
+        /**
+         * Fraction of backend capacity utilization (set in HTTP(s) load
+         * balancing configuration) that autoscaler should maintain. Must
+         * be a positive float value. If not defined, the default is 0.8.
+         */
         target?: number;
+        /**
+         * Defines how target utilization value is expressed for a
+         * Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
+         * or DELTA_PER_MINUTE.
+         */
         type?: string;
     }
 
     export interface RegionBackendServiceBackend {
+        /**
+         * Specifies the balancing mode for this backend. Defaults to CONNECTION.
+         */
         balancingMode?: string;
+        /**
+         * A multiplier applied to the group's maximum servicing capacity
+         * (based on UTILIZATION, RATE or CONNECTION).
+         * ~>**NOTE**: This field cannot be set for
+         * INTERNAL region backend services (default loadBalancingScheme),
+         * but is required for non-INTERNAL backend service. The total
+         * capacityScaler for all backends must be non-zero.
+         * A setting of 0 means the group is completely drained, offering
+         * 0% of its available Capacity. Valid range is [0.0,1.0].
+         */
         capacityScaler?: number;
+        /**
+         * An optional description of this resource.
+         * Provide this property when you create the resource.
+         */
         description?: string;
+        /**
+         * This field designates whether this is a failover backend. More
+         * than one failover backend can be configured for a given RegionBackendService.
+         */
         failover: boolean;
+        /**
+         * The fully-qualified URL of an Instance Group or Network Endpoint
+         * Group resource. In case of instance group this defines the list
+         * of instances that serve traffic. Member virtual machine
+         * instances from each instance group must live in the same zone as
+         * the instance group itself. No two backends in a backend service
+         * are allowed to use same Instance Group resource.
+         * For Network Endpoint Groups this defines list of endpoints. All
+         * endpoints of Network Endpoint Group must be hosted on instances
+         * located in the same zone as the Network Endpoint Group.
+         * Backend services cannot mix Instance Group and
+         * Network Endpoint Group backends.
+         * When the `loadBalancingScheme` is INTERNAL, only instance groups
+         * are supported.
+         * Note that you must specify an Instance Group or Network Endpoint
+         * Group resource using the fully-qualified URL, rather than a
+         * partial URL.
+         */
         group: string;
+        /**
+         * The maximum number of connections to the backend cluster.
+         * Defaults to 1024.
+         */
         maxConnections?: number;
+        /**
+         * The max number of simultaneous connections that a single backend
+         * network endpoint can handle. Cannot be set
+         * for INTERNAL backend services.
+         * This is used to calculate the capacity of the group. Can be
+         * used in either CONNECTION or UTILIZATION balancing modes. For
+         * CONNECTION mode, either maxConnections or
+         * maxConnectionsPerEndpoint must be set.
+         */
         maxConnectionsPerEndpoint?: number;
+        /**
+         * The max number of simultaneous connections that a single
+         * backend instance can handle. Cannot be set for INTERNAL backend
+         * services.
+         * This is used to calculate the capacity of the group.
+         * Can be used in either CONNECTION or UTILIZATION balancing modes.
+         * For CONNECTION mode, either maxConnections or
+         * maxConnectionsPerInstance must be set.
+         */
         maxConnectionsPerInstance?: number;
+        /**
+         * The max requests per second (RPS) of the group. Cannot be set
+         * for INTERNAL backend services.
+         * Can be used with either RATE or UTILIZATION balancing modes,
+         * but required if RATE mode. Either maxRate or one
+         * of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+         * group type, must be set.
+         */
         maxRate?: number;
+        /**
+         * The max requests per second (RPS) that a single backend network
+         * endpoint can handle. This is used to calculate the capacity of
+         * the group. Can be used in either balancing mode. For RATE mode,
+         * either maxRate or maxRatePerEndpoint must be set. Cannot be set
+         * for INTERNAL backend services.
+         */
         maxRatePerEndpoint?: number;
+        /**
+         * The max requests per second (RPS) that a single backend
+         * instance can handle. This is used to calculate the capacity of
+         * the group. Can be used in either balancing mode. For RATE mode,
+         * either maxRate or maxRatePerInstance must be set. Cannot be set
+         * for INTERNAL backend services.
+         */
         maxRatePerInstance?: number;
+        /**
+         * Used when balancingMode is UTILIZATION. This ratio defines the
+         * CPU utilization target for the group. Valid range is [0.0, 1.0].
+         * Cannot be set for INTERNAL backend services.
+         */
         maxUtilization?: number;
     }
 
     export interface RegionBackendServiceCircuitBreakers {
+        /**
+         * The timeout for new network connections to hosts.  Structure is documented below.
+         */
         connectTimeout?: outputs.compute.RegionBackendServiceCircuitBreakersConnectTimeout;
+        /**
+         * The maximum number of connections to the backend cluster.
+         * Defaults to 1024.
+         */
         maxConnections?: number;
+        /**
+         * The maximum number of pending requests to the backend cluster.
+         * Defaults to 1024.
+         */
         maxPendingRequests?: number;
+        /**
+         * The maximum number of parallel requests to the backend cluster.
+         * Defaults to 1024.
+         */
         maxRequests?: number;
+        /**
+         * Maximum requests for a single backend connection. This parameter
+         * is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+         * not specified, there is no limit. Setting this parameter to 1
+         * will effectively disable keep alive.
+         */
         maxRequestsPerConnection?: number;
+        /**
+         * The maximum number of parallel retries to the backend cluster.
+         * Defaults to 3.
+         */
         maxRetries?: number;
     }
 
     export interface RegionBackendServiceCircuitBreakersConnectTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: number;
     }
 
     export interface RegionBackendServiceConsistentHash {
+        /**
+         * Hash is based on HTTP Cookie. This field describes a HTTP cookie
+         * that will be used as the hash key for the consistent hash load
+         * balancer. If the cookie is not present, it will be generated.
+         * This field is applicable if the sessionAffinity is set to HTTP_COOKIE.  Structure is documented below.
+         */
         httpCookie?: outputs.compute.RegionBackendServiceConsistentHashHttpCookie;
+        /**
+         * The hash based on the value of the specified header field.
+         * This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+         */
         httpHeaderName?: string;
+        /**
+         * The minimum number of virtual nodes to use for the hash ring.
+         * Larger ring sizes result in more granular load
+         * distributions. If the number of hosts in the load balancing pool
+         * is larger than the ring size, each host will be assigned a single
+         * virtual node.
+         * Defaults to 1024.
+         */
         minimumRingSize?: number;
     }
 
     export interface RegionBackendServiceConsistentHashHttpCookie {
+        /**
+         * Name of the cookie.
+         */
         name?: string;
+        /**
+         * Path to set for the cookie.
+         */
         path?: string;
+        /**
+         * Lifetime of the cookie.  Structure is documented below.
+         */
         ttl?: outputs.compute.RegionBackendServiceConsistentHashHttpCookieTtl;
     }
 
     export interface RegionBackendServiceConsistentHashHttpCookieTtl {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: number;
     }
 
     export interface RegionBackendServiceFailoverPolicy {
+        /**
+         * On failover or failback, this field indicates whether connection drain
+         * will be honored. Setting this to true has the following effect: connections
+         * to the old active pool are not drained. Connections to the new active pool
+         * use the timeout of 10 min (currently fixed). Setting to false has the
+         * following effect: both old and new connections will have a drain timeout
+         * of 10 min.
+         * This can be set to true only if the protocol is TCP.
+         * The default is false.
+         */
         disableConnectionDrainOnFailover?: boolean;
+        /**
+         * This option is used only when no healthy VMs are detected in the primary
+         * and backup instance groups. When set to true, traffic is dropped. When
+         * set to false, new connections are sent across all VMs in the primary group.
+         * The default is false.
+         */
         dropTrafficIfUnhealthy?: boolean;
+        /**
+         * The value of the field must be in [0, 1]. If the ratio of the healthy
+         * VMs in the primary backend is at or below this number, traffic arriving
+         * at the load-balanced IP will be directed to the failover backend.
+         * In case where 'failoverRatio' is not set or all the VMs in the backup
+         * backend are unhealthy, the traffic will be directed back to the primary
+         * backend in the "force" mode, where traffic will be spread to the healthy
+         * VMs with the best effort, or to all VMs when no VM is healthy.
+         * This field is only used with l4 load balancing.
+         */
         failoverRatio?: number;
     }
 
     export interface RegionBackendServiceLogConfig {
+        /**
+         * Whether to enable logging for the load balancer traffic served by this backend service.
+         */
         enable?: boolean;
+        /**
+         * This field can only be specified if logging is enabled for this backend service. The value of
+         * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+         * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+         * The default value is 1.0.
+         */
         sampleRate?: number;
     }
 
     export interface RegionBackendServiceOutlierDetection {
+        /**
+         * The base time that a host is ejected for. The real time is equal to the base
+         * time multiplied by the number of times the host has been ejected. Defaults to
+         * 30000ms or 30s.  Structure is documented below.
+         */
         baseEjectionTime?: outputs.compute.RegionBackendServiceOutlierDetectionBaseEjectionTime;
+        /**
+         * Number of errors before a host is ejected from the connection pool. When the
+         * backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+         * Defaults to 5.
+         */
         consecutiveErrors?: number;
+        /**
+         * The number of consecutive gateway failures (502, 503, 504 status or connection
+         * errors that are mapped to one of those status codes) before a consecutive
+         * gateway failure ejection occurs. Defaults to 5.
+         */
         consecutiveGatewayFailure?: number;
+        /**
+         * The percentage chance that a host will be actually ejected when an outlier
+         * status is detected through consecutive 5xx. This setting can be used to disable
+         * ejection or to ramp it up slowly. Defaults to 100.
+         */
         enforcingConsecutiveErrors?: number;
+        /**
+         * The percentage chance that a host will be actually ejected when an outlier
+         * status is detected through consecutive gateway failures. This setting can be
+         * used to disable ejection or to ramp it up slowly. Defaults to 0.
+         */
         enforcingConsecutiveGatewayFailure?: number;
+        /**
+         * The percentage chance that a host will be actually ejected when an outlier
+         * status is detected through success rate statistics. This setting can be used to
+         * disable ejection or to ramp it up slowly. Defaults to 100.
+         */
         enforcingSuccessRate?: number;
+        /**
+         * Time interval between ejection sweep analysis. This can result in both new
+         * ejections as well as hosts being returned to service. Defaults to 10 seconds.  Structure is documented below.
+         */
         interval?: outputs.compute.RegionBackendServiceOutlierDetectionInterval;
+        /**
+         * Maximum percentage of hosts in the load balancing pool for the backend service
+         * that can be ejected. Defaults to 10%.
+         */
         maxEjectionPercent?: number;
+        /**
+         * The number of hosts in a cluster that must have enough request volume to detect
+         * success rate outliers. If the number of hosts is less than this setting, outlier
+         * detection via success rate statistics is not performed for any host in the
+         * cluster. Defaults to 5.
+         */
         successRateMinimumHosts?: number;
+        /**
+         * The minimum number of total requests that must be collected in one interval (as
+         * defined by the interval duration above) to include this host in success rate
+         * based outlier detection. If the volume is lower than this setting, outlier
+         * detection via success rate statistics is not performed for that host. Defaults
+         * to 100.
+         */
         successRateRequestVolume?: number;
+        /**
+         * This factor is used to determine the ejection threshold for success rate outlier
+         * ejection. The ejection threshold is the difference between the mean success
+         * rate, and the product of this factor and the standard deviation of the mean
+         * success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+         * by a thousand to get a double. That is, if the desired factor is 1.9, the
+         * runtime value should be 1900. Defaults to 1900.
+         */
         successRateStdevFactor?: number;
     }
 
     export interface RegionBackendServiceOutlierDetectionBaseEjectionTime {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: number;
     }
 
     export interface RegionBackendServiceOutlierDetectionInterval {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: number;
     }
 
     export interface RegionDiskDiskEncryptionKey {
         kmsKeyName?: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey?: string;
+        /**
+         * -
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
     export interface RegionDiskSourceSnapshotEncryptionKey {
         kmsKeyName?: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey?: string;
+        /**
+         * -
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
     export interface RegionHealthCheckHttp2HealthCheck {
+        /**
+         * The value of the host header in the HTTP2 health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
         host?: string;
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         */
         portSpecification?: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend, either NONE or PROXY_V1. The default is NONE.
+         */
         proxyHeader?: string;
+        /**
+         * The request path of the HTTP2 health check request.
+         * The default value is /.
+         */
         requestPath?: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response?: string;
     }
 
     export interface RegionHealthCheckHttpHealthCheck {
+        /**
+         * The value of the host header in the HTTP2 health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
         host?: string;
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         */
         portSpecification?: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend, either NONE or PROXY_V1. The default is NONE.
+         */
         proxyHeader?: string;
+        /**
+         * The request path of the HTTP2 health check request.
+         * The default value is /.
+         */
         requestPath?: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response?: string;
     }
 
     export interface RegionHealthCheckHttpsHealthCheck {
+        /**
+         * The value of the host header in the HTTP2 health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
         host?: string;
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         */
         portSpecification?: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend, either NONE or PROXY_V1. The default is NONE.
+         */
         proxyHeader?: string;
+        /**
+         * The request path of the HTTP2 health check request.
+         * The default value is /.
+         */
         requestPath?: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response?: string;
     }
 
     export interface RegionHealthCheckLogConfig {
+        /**
+         * Indicates whether or not to export logs. This is false by default,
+         * which means no health check logging will be done.
+         */
         enable?: boolean;
     }
 
     export interface RegionHealthCheckSslHealthCheck {
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         */
         portSpecification?: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend, either NONE or PROXY_V1. The default is NONE.
+         */
         proxyHeader?: string;
+        /**
+         * The application data to send once the SSL connection has been
+         * established (default value is empty). If both request and response are
+         * empty, the connection establishment alone will indicate health. The request
+         * data can only be ASCII.
+         */
         request?: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response?: string;
     }
 
     export interface RegionHealthCheckTcpHealthCheck {
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port?: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName?: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
+         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
+         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
+         * network endpoint is used for health checking. For other backends, the
+         * port or named port specified in the Backend Service is used for health
+         * checking.
+         * If not specified, HTTP2 health check follows behavior specified in `port` and
+         * `portName` fields.
+         */
         portSpecification?: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend, either NONE or PROXY_V1. The default is NONE.
+         */
         proxyHeader?: string;
+        /**
+         * The application data to send once the SSL connection has been
+         * established (default value is empty). If both request and response are
+         * empty, the connection establishment alone will indicate health. The request
+         * data can only be ASCII.
+         */
         request?: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response?: string;
     }
 
@@ -2750,394 +5584,1355 @@ export namespace compute {
     }
 
     export interface RegionUrlMapHostRule {
+        /**
+         * Description of this test case.
+         */
         description?: string;
+        /**
+         * The list of host patterns to match. They must be valid
+         * hostnames, except * will match any string of ([a-z0-9-.]*). In
+         * that case, * must be the first character and must be followed in
+         * the pattern by either - or ..
+         */
         hosts: string[];
+        /**
+         * The name of the PathMatcher to use to match the path portion of
+         * the URL if the hostRule matches the URL's host portion.
+         */
         pathMatcher: string;
     }
 
     export interface RegionUrlMapPathMatcher {
+        /**
+         * A reference to a RegionBackendService resource. This will be used if
+         * none of the pathRules defined by this PathMatcher is matched by
+         * the URL's path portion.
+         */
         defaultService: string;
+        /**
+         * Description of this test case.
+         */
         description?: string;
+        /**
+         * The name of the query parameter to match. The query parameter must exist in the
+         * request, in the absence of which the request match fails.
+         */
         name: string;
+        /**
+         * The list of path rules. Use this list instead of routeRules when routing based
+         * on simple path matching is all that's required. The order by which path rules
+         * are specified does not matter. Matches are always done on the longest-path-first
+         * basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
+         * irrespective of the order in which those paths appear in this list. Within a
+         * given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+         */
         pathRules?: outputs.compute.RegionUrlMapPathMatcherPathRule[];
+        /**
+         * The list of ordered HTTP route rules. Use this list instead of pathRules when
+         * advanced route matching and routing actions are desired. The order of specifying
+         * routeRules matters: the first rule that matches will cause its specified routing
+         * action to take effect. Within a given pathMatcher, only one of pathRules or
+         * routeRules must be set. routeRules are not supported in UrlMaps intended for
+         * External load balancers.  Structure is documented below.
+         */
         routeRules?: outputs.compute.RegionUrlMapPathMatcherRouteRule[];
     }
 
     export interface RegionUrlMapPathMatcherPathRule {
+        /**
+         * The list of path patterns to match. Each must start with / and the only place a
+         * * is allowed is at the end following a /. The string fed to the path matcher
+         * does not include any text after the first ? or #, and those chars are not
+         * allowed here.
+         */
         paths: string[];
+        /**
+         * In response to a matching path, the load balancer performs advanced routing
+         * actions like URL rewrites, header transformations, etc. prior to forwarding the
+         * request to the selected backend. If routeAction specifies any
+         * weightedBackendServices, service must not be set. Conversely if service is set,
+         * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+         * or urlRedirect must be set.  Structure is documented below.
+         */
         routeAction?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteAction;
+        /**
+         * A reference to expected RegionBackendService resource the given URL should be mapped to.
+         */
         service?: string;
+        /**
+         * When a path pattern is matched, the request is redirected to a URL specified by
+         * urlRedirect. If urlRedirect is specified, service or routeAction must not be
+         * set.  Structure is documented below.
+         */
         urlRedirect?: outputs.compute.RegionUrlMapPathMatcherPathRuleUrlRedirect;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteAction {
+        /**
+         * The specification for allowing client side cross-origin requests. Please see W3C
+         * Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+         */
         corsPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy;
+        /**
+         * The specification for fault injection introduced into traffic to test the
+         * resiliency of clients to backend service failure. As part of fault injection,
+         * when clients send requests to a backend service, delays can be introduced by
+         * Loadbalancer on a percentage of requests before sending those request to the
+         * backend service. Similarly requests from clients can be aborted by the
+         * Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+         * ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+         */
         faultInjectionPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy;
+        /**
+         * Specifies the policy on how requests intended for the route's backends are
+         * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+         * responses from the shadow service. Prior to sending traffic to the shadow
+         * service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+         */
         requestMirrorPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy;
+        /**
+         * Specifies the retry policy associated with this route.  Structure is documented below.
+         */
         retryPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy;
+        /**
+         * Specifies the timeout for the selected route. Timeout is computed from the time
+         * the request is has been fully processed (i.e. end-of-stream) up until the
+         * response has been completely processed. Timeout includes all retries. If not
+         * specified, the default value is 15 seconds.  Structure is documented below.
+         */
         timeout?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeout;
+        /**
+         * The spec to modify the URL of the request, prior to forwarding the request to
+         * the matched service  Structure is documented below.
+         */
         urlRewrite?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite;
+        /**
+         * A list of weighted backend services to send traffic to when a route match
+         * occurs. The weights determine the fraction of traffic that flows to their
+         * corresponding backend service. If all traffic needs to go to a single backend
+         * service, there must be one  weightedBackendService with weight set to a non 0
+         * number. Once a backendService is identified and before forwarding the request to
+         * the backend service, advanced routing actions like Url rewrites and header
+         * transformations are applied depending on additional settings specified in this
+         * HttpRouteAction.  Structure is documented below.
+         */
         weightedBackendServices?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService[];
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
+        /**
+         * In response to a preflight request, setting this to true indicates that the
+         * actual request can include user credentials. This translates to the Access-
+         * Control-Allow-Credentials header. Defaults to false.
+         */
         allowCredentials?: boolean;
+        /**
+         * Specifies the content for the Access-Control-Allow-Headers header.
+         */
         allowHeaders?: string[];
+        /**
+         * Specifies the content for the Access-Control-Allow-Methods header.
+         */
         allowMethods?: string[];
+        /**
+         * Specifies the regualar expression patterns that match allowed origins. For
+         * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+         * An origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         */
         allowOriginRegexes?: string[];
+        /**
+         * Specifies the list of origins that will be allowed to do CORS requests. An
+         * origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         */
         allowOrigins?: string[];
+        /**
+         * If true, specifies the CORS policy is disabled.
+         */
         disabled: boolean;
+        /**
+         * Specifies the content for the Access-Control-Expose-Headers header.
+         */
         exposeHeaders?: string[];
+        /**
+         * Specifies how long the results of a preflight request can be cached. This
+         * translates to the content for the Access-Control-Max-Age header.
+         */
         maxAge?: number;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
+        /**
+         * The specification for how client requests are aborted as part of fault
+         * injection.  Structure is documented below.
+         */
         abort?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort;
+        /**
+         * The specification for how client requests are delayed as part of fault
+         * injection, before being sent to a backend service.  Structure is documented below.
+         */
         delay?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
+        /**
+         * The HTTP status code used to abort the request. The value must be between 200
+         * and 599 inclusive.
+         */
         httpStatus: number;
+        /**
+         * The percentage of traffic (connections/operations/requests) on which delay will
+         * be introduced as part of fault injection. The value must be between 0.0 and
+         * 100.0 inclusive.
+         */
         percentage: number;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
+        /**
+         * Specifies the value of the fixed delay interval.  Structure is documented below.
+         */
         fixedDelay: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
+        /**
+         * The percentage of traffic (connections/operations/requests) on which delay will
+         * be introduced as part of fault injection. The value must be between 0.0 and
+         * 100.0 inclusive.
+         */
         percentage: number;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
+        /**
+         * The default RegionBackendService resource. Before
+         * forwarding the request to backendService, the loadbalancer applies any relevant
+         * headerActions specified as part of this backendServiceWeight.
+         */
         backendService: string;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy {
+        /**
+         * Specifies the allowed number retries. This number must be > 0.
+         */
         numRetries?: number;
+        /**
+         * Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+         */
         perTryTimeout?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout;
+        /**
+         * Specifies one or more conditions when this retry rule applies. Valid values are:
+         * - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+         * any 5xx response code, or if the backend service does not respond at all,
+         * example: disconnects, reset, read timeout, connection failure, and refused
+         * streams.
+         * - gateway-error: Similar to 5xx, but only applies to response codes
+         * 502, 503 or 504.
+         * - connect-failure: Loadbalancer will retry on failures
+         * connecting to backend services, for example due to connection timeouts.
+         * - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+         * Currently the only retriable error supported is 409.
+         * - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+         * REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+         * - cancelled: Loadbalancer will retry if the gRPC status code in the response
+         * header is set to cancelled
+         * - deadline-exceeded: Loadbalancer will retry if the
+         * gRPC status code in the response header is set to deadline-exceeded
+         * - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+         * header is set to resource-exhausted
+         * - unavailable: Loadbalancer will retry if
+         * the gRPC status code in the response header is set to unavailable
+         */
         retryConditions?: string[];
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite {
+        /**
+         * Prior to forwarding the request to the selected service, the request's host
+         * header is replaced with contents of hostRewrite. The value must be between 1 and
+         * 255 characters.
+         */
         hostRewrite?: string;
+        /**
+         * Prior to forwarding the request to the selected backend service, the matching
+         * portion of the request's path is replaced by pathPrefixRewrite. The value must
+         * be between 1 and 1024 characters.
+         */
         pathPrefixRewrite?: string;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService {
+        /**
+         * The default RegionBackendService resource. Before
+         * forwarding the request to backendService, the loadbalancer applies any relevant
+         * headerActions specified as part of this backendServiceWeight.
+         */
         backendService: string;
+        /**
+         * Specifies changes to request and response headers that need to take effect for
+         * the selected backendService. headerAction specified here take effect before
+         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         */
         headerAction?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction;
+        /**
+         * Specifies the fraction of traffic sent to backendService, computed as weight /
+         * (sum of all weightedBackendService weights in routeAction) . The selection of a
+         * backend service is determined only for new traffic. Once a user's request has
+         * been directed to a backendService, subsequent requests will be sent to the same
+         * backendService as determined by the BackendService's session affinity policy.
+         * The value must be between 0 and 1000
+         */
         weight: number;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
+        /**
+         * Headers to add to a matching request prior to forwarding the request to the
+         * backendService.  Structure is documented below.
+         */
         requestHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request
+         * prior to forwarding the request to the backendService.
+         */
         requestHeadersToRemoves?: string[];
+        /**
+         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         */
         responseHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the response
+         * prior to sending the response back to the client.
+         */
         responseHeadersToRemoves?: string[];
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleUrlRedirect {
+        /**
+         * The host that will be used in the redirect response instead of the one that was
+         * supplied in the request. The value must be between 1 and 255 characters.
+         */
         hostRedirect?: string;
+        /**
+         * If set to true, the URL scheme in the redirected request is set to https. If set
+         * to false, the URL scheme of the redirected request will remain the same as that
+         * of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+         * Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+         */
         httpsRedirect?: boolean;
+        /**
+         * The path that will be used in the redirect response instead of the one that was
+         * supplied in the request. Only one of pathRedirect or prefixRedirect must be
+         * specified. The value must be between 1 and 1024 characters.
+         */
         pathRedirect?: string;
+        /**
+         * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+         * retaining the remaining portion of the URL before redirecting the request.
+         */
         prefixRedirect?: string;
+        /**
+         * The HTTP Status code to use for this RedirectAction. Supported values are:
+         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * - FOUND, which corresponds to 302.
+         * - SEE_OTHER which corresponds to 303.
+         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * will be retained.
+         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * the request method will be retained.
+         */
         redirectResponseCode?: string;
+        /**
+         * If set to true, any accompanying query portion of the original URL is removed
+         * prior to redirecting the request. If set to false, the query portion of the
+         * original URL is retained.
+         */
         stripQuery: boolean;
     }
 
     export interface RegionUrlMapPathMatcherRouteRule {
+        /**
+         * Specifies changes to request and response headers that need to take effect for
+         * the selected backendService. headerAction specified here take effect before
+         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         */
         headerAction?: outputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderAction;
+        /**
+         * The rules for determining a match.  Structure is documented below.
+         */
         matchRules?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRule[];
+        /**
+         * For routeRules within a given pathMatcher, priority determines the order
+         * in which load balancer will interpret routeRules. RouteRules are evaluated
+         * in order of priority, from the lowest to highest number. The priority of
+         * a rule decreases as its number increases (1, 2, 3, N+1). The first rule
+         * that matches the request is applied.
+         * You cannot configure two or more routeRules with the same priority.
+         * Priority for each rule must be set to a number between 0 and
+         * 2147483647 inclusive.
+         * Priority numbers can have gaps, which enable you to add or remove rules
+         * in the future without affecting the rest of the rules. For example,
+         * 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
+         * you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
+         * future without any impact on existing rules.
+         */
         priority: number;
+        /**
+         * In response to a matching path, the load balancer performs advanced routing
+         * actions like URL rewrites, header transformations, etc. prior to forwarding the
+         * request to the selected backend. If routeAction specifies any
+         * weightedBackendServices, service must not be set. Conversely if service is set,
+         * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+         * or urlRedirect must be set.  Structure is documented below.
+         */
         routeAction?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteAction;
+        /**
+         * A reference to expected RegionBackendService resource the given URL should be mapped to.
+         */
         service?: string;
+        /**
+         * When a path pattern is matched, the request is redirected to a URL specified by
+         * urlRedirect. If urlRedirect is specified, service or routeAction must not be
+         * set.  Structure is documented below.
+         */
         urlRedirect?: outputs.compute.RegionUrlMapPathMatcherRouteRuleUrlRedirect;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleHeaderAction {
+        /**
+         * Headers to add to a matching request prior to forwarding the request to the
+         * backendService.  Structure is documented below.
+         */
         requestHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request
+         * prior to forwarding the request to the backendService.
+         */
         requestHeadersToRemoves?: string[];
+        /**
+         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         */
         responseHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the response
+         * prior to sending the response back to the client.
+         */
         responseHeadersToRemoves?: string[];
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleMatchRule {
+        /**
+         * For satifying the matchRule condition, the path of the request must exactly
+         * match the value specified in fullPathMatch after removing any query parameters
+         * and anchor that may be part of the original URL. FullPathMatch must be between 1
+         * and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+         * be specified.
+         */
         fullPathMatch?: string;
+        /**
+         * Specifies a list of header match criteria, all of which must match corresponding
+         * headers in the request.  Structure is documented below.
+         */
         headerMatches?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch[];
+        /**
+         * Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+         * Defaults to false.
+         */
         ignoreCase?: boolean;
+        /**
+         * Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+         * a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
+         * clients present node metadata. If a match takes place, the relevant routing
+         * configuration is made available to those proxies. For each metadataFilter in
+         * this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
+         * filterLabels must match the corresponding label provided in the metadata. If its
+         * filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
+         * with corresponding labels in the provided metadata. metadataFilters specified
+         * here can be overrides those specified in ForwardingRule that refers to this
+         * UrlMap. metadataFilters only applies to Loadbalancers that have their
+         * loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+         */
         metadataFilters?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter[];
+        /**
+         * The value of the header must start with the contents of prefixMatch. Only one of
+         * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+         * must be set.
+         */
         prefixMatch?: string;
+        /**
+         * Specifies a list of query parameter match criteria, all of which must match
+         * corresponding query parameters in the request.  Structure is documented below.
+         */
         queryParameterMatches?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch[];
+        /**
+         * The queryParameterMatch matches if the value of the parameter matches the
+         * regular expression specified by regexMatch. For the regular expression grammar,
+         * please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+         * exactMatch and regexMatch must be set.
+         */
         regexMatch?: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch {
+        /**
+         * The queryParameterMatch matches if the value of the parameter exactly matches
+         * the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+         * must be set.
+         */
         exactMatch?: string;
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * If set to false, the headerMatch is considered a match if the match criteria
+         * above are met. If set to true, the headerMatch is considered a match if the
+         * match criteria above are NOT met. Defaults to false.
+         */
         invertMatch?: boolean;
+        /**
+         * The value of the header must start with the contents of prefixMatch. Only one of
+         * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+         * must be set.
+         */
         prefixMatch?: string;
+        /**
+         * Specifies that the queryParameterMatch matches if the request contains the query
+         * parameter, irrespective of whether the parameter has a value or not. Only one of
+         * presentMatch, exactMatch and regexMatch must be set.
+         */
         presentMatch?: boolean;
+        /**
+         * The header value must be an integer and its value must be in the range specified
+         * in rangeMatch. If the header does not contain an integer, number or is empty,
+         * the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
+         * not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
+         * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+         * must be set.  Structure is documented below.
+         */
         rangeMatch?: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch;
+        /**
+         * The queryParameterMatch matches if the value of the parameter matches the
+         * regular expression specified by regexMatch. For the regular expression grammar,
+         * please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+         * exactMatch and regexMatch must be set.
+         */
         regexMatch?: string;
+        /**
+         * The value of the header must end with the contents of suffixMatch. Only one of
+         * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+         * must be set.
+         */
         suffixMatch?: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
+        /**
+         * The end of the range (exclusive).
+         */
         rangeEnd: number;
+        /**
+         * The start of the range (inclusive).
+         */
         rangeStart: number;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
+        /**
+         * The list of label value pairs that must match labels in the provided metadata
+         * based on filterMatchCriteria  This list must not be empty and can have at the
+         * most 64 entries.  Structure is documented below.
+         */
         filterLabels: outputs.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel[];
+        /**
+         * Specifies how individual filterLabel matches within the list of filterLabels
+         * contribute towards the overall metadataFilter match. Supported values are:
+         * - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+         * provided metadata.
+         * - MATCH_ALL: All filterLabels must have matching labels in
+         * the provided metadata.
+         */
         filterMatchCriteria: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
+        /**
+         * The name of the query parameter to match. The query parameter must exist in the
+         * request, in the absence of which the request match fails.
+         */
         name: string;
+        /**
+         * The value of the label must match the specified value. value can have a maximum
+         * length of 1024 characters.
+         */
         value: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
+        /**
+         * The queryParameterMatch matches if the value of the parameter exactly matches
+         * the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+         * must be set.
+         */
         exactMatch?: string;
+        /**
+         * The name of the query parameter to match. The query parameter must exist in the
+         * request, in the absence of which the request match fails.
+         */
         name: string;
+        /**
+         * Specifies that the queryParameterMatch matches if the request contains the query
+         * parameter, irrespective of whether the parameter has a value or not. Only one of
+         * presentMatch, exactMatch and regexMatch must be set.
+         */
         presentMatch?: boolean;
+        /**
+         * The queryParameterMatch matches if the value of the parameter matches the
+         * regular expression specified by regexMatch. For the regular expression grammar,
+         * please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+         * exactMatch and regexMatch must be set.
+         */
         regexMatch?: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteAction {
+        /**
+         * The specification for allowing client side cross-origin requests. Please see W3C
+         * Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+         */
         corsPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy;
+        /**
+         * The specification for fault injection introduced into traffic to test the
+         * resiliency of clients to backend service failure. As part of fault injection,
+         * when clients send requests to a backend service, delays can be introduced by
+         * Loadbalancer on a percentage of requests before sending those request to the
+         * backend service. Similarly requests from clients can be aborted by the
+         * Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+         * ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+         */
         faultInjectionPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy;
+        /**
+         * Specifies the policy on how requests intended for the route's backends are
+         * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+         * responses from the shadow service. Prior to sending traffic to the shadow
+         * service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+         */
         requestMirrorPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy;
+        /**
+         * Specifies the retry policy associated with this route.  Structure is documented below.
+         */
         retryPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy;
+        /**
+         * Specifies the timeout for the selected route. Timeout is computed from the time
+         * the request is has been fully processed (i.e. end-of-stream) up until the
+         * response has been completely processed. Timeout includes all retries. If not
+         * specified, the default value is 15 seconds.  Structure is documented below.
+         */
         timeout?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionTimeout;
+        /**
+         * The spec to modify the URL of the request, prior to forwarding the request to
+         * the matched service  Structure is documented below.
+         */
         urlRewrite?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite;
+        /**
+         * A list of weighted backend services to send traffic to when a route match
+         * occurs. The weights determine the fraction of traffic that flows to their
+         * corresponding backend service. If all traffic needs to go to a single backend
+         * service, there must be one  weightedBackendService with weight set to a non 0
+         * number. Once a backendService is identified and before forwarding the request to
+         * the backend service, advanced routing actions like Url rewrites and header
+         * transformations are applied depending on additional settings specified in this
+         * HttpRouteAction.  Structure is documented below.
+         */
         weightedBackendServices?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService[];
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
+        /**
+         * In response to a preflight request, setting this to true indicates that the
+         * actual request can include user credentials. This translates to the Access-
+         * Control-Allow-Credentials header. Defaults to false.
+         */
         allowCredentials?: boolean;
+        /**
+         * Specifies the content for the Access-Control-Allow-Headers header.
+         */
         allowHeaders?: string[];
+        /**
+         * Specifies the content for the Access-Control-Allow-Methods header.
+         */
         allowMethods?: string[];
+        /**
+         * Specifies the regualar expression patterns that match allowed origins. For
+         * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+         * An origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         */
         allowOriginRegexes?: string[];
+        /**
+         * Specifies the list of origins that will be allowed to do CORS requests. An
+         * origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         */
         allowOrigins?: string[];
+        /**
+         * If true, specifies the CORS policy is disabled.
+         */
         disabled?: boolean;
+        /**
+         * Specifies the content for the Access-Control-Expose-Headers header.
+         */
         exposeHeaders?: string[];
+        /**
+         * Specifies how long the results of a preflight request can be cached. This
+         * translates to the content for the Access-Control-Max-Age header.
+         */
         maxAge?: number;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
+        /**
+         * The specification for how client requests are aborted as part of fault
+         * injection.  Structure is documented below.
+         */
         abort?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort;
+        /**
+         * The specification for how client requests are delayed as part of fault
+         * injection, before being sent to a backend service.  Structure is documented below.
+         */
         delay?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
+        /**
+         * The HTTP status code used to abort the request. The value must be between 200
+         * and 599 inclusive.
+         */
         httpStatus?: number;
+        /**
+         * The percentage of traffic (connections/operations/requests) on which delay will
+         * be introduced as part of fault injection. The value must be between 0.0 and
+         * 100.0 inclusive.
+         */
         percentage?: number;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
+        /**
+         * Specifies the value of the fixed delay interval.  Structure is documented below.
+         */
         fixedDelay?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
+        /**
+         * The percentage of traffic (connections/operations/requests) on which delay will
+         * be introduced as part of fault injection. The value must be between 0.0 and
+         * 100.0 inclusive.
+         */
         percentage?: number;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
+        /**
+         * The default RegionBackendService resource. Before
+         * forwarding the request to backendService, the loadbalancer applies any relevant
+         * headerActions specified as part of this backendServiceWeight.
+         */
         backendService: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
+        /**
+         * Specifies the allowed number retries. This number must be > 0.
+         */
         numRetries: number;
+        /**
+         * Specifies a non-zero timeout per retry attempt.  Structure is documented below.
+         */
         perTryTimeout?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout;
+        /**
+         * Specifies one or more conditions when this retry rule applies. Valid values are:
+         * - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+         * any 5xx response code, or if the backend service does not respond at all,
+         * example: disconnects, reset, read timeout, connection failure, and refused
+         * streams.
+         * - gateway-error: Similar to 5xx, but only applies to response codes
+         * 502, 503 or 504.
+         * - connect-failure: Loadbalancer will retry on failures
+         * connecting to backend services, for example due to connection timeouts.
+         * - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+         * Currently the only retriable error supported is 409.
+         * - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+         * REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+         * - cancelled: Loadbalancer will retry if the gRPC status code in the response
+         * header is set to cancelled
+         * - deadline-exceeded: Loadbalancer will retry if the
+         * gRPC status code in the response header is set to deadline-exceeded
+         * - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+         * header is set to resource-exhausted
+         * - unavailable: Loadbalancer will retry if
+         * the gRPC status code in the response header is set to unavailable
+         */
         retryConditions?: string[];
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
+        /**
+         * Prior to forwarding the request to the selected service, the request's host
+         * header is replaced with contents of hostRewrite. The value must be between 1 and
+         * 255 characters.
+         */
         hostRewrite?: string;
+        /**
+         * Prior to forwarding the request to the selected backend service, the matching
+         * portion of the request's path is replaced by pathPrefixRewrite. The value must
+         * be between 1 and 1024 characters.
+         */
         pathPrefixRewrite?: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
+        /**
+         * The default RegionBackendService resource. Before
+         * forwarding the request to backendService, the loadbalancer applies any relevant
+         * headerActions specified as part of this backendServiceWeight.
+         */
         backendService: string;
+        /**
+         * Specifies changes to request and response headers that need to take effect for
+         * the selected backendService. headerAction specified here take effect before
+         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         */
         headerAction?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction;
+        /**
+         * Specifies the fraction of traffic sent to backendService, computed as weight /
+         * (sum of all weightedBackendService weights in routeAction) . The selection of a
+         * backend service is determined only for new traffic. Once a user's request has
+         * been directed to a backendService, subsequent requests will be sent to the same
+         * backendService as determined by the BackendService's session affinity policy.
+         * The value must be between 0 and 1000
+         */
         weight: number;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
+        /**
+         * Headers to add to a matching request prior to forwarding the request to the
+         * backendService.  Structure is documented below.
+         */
         requestHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request
+         * prior to forwarding the request to the backendService.
+         */
         requestHeadersToRemoves?: string[];
+        /**
+         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         */
         responseHeadersToAdds?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the response
+         * prior to sending the response back to the client.
+         */
         responseHeadersToRemoves?: string[];
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleUrlRedirect {
+        /**
+         * The host that will be used in the redirect response instead of the one that was
+         * supplied in the request. The value must be between 1 and 255 characters.
+         */
         hostRedirect?: string;
+        /**
+         * If set to true, the URL scheme in the redirected request is set to https. If set
+         * to false, the URL scheme of the redirected request will remain the same as that
+         * of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+         * Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+         */
         httpsRedirect?: boolean;
+        /**
+         * The path that will be used in the redirect response instead of the one that was
+         * supplied in the request. Only one of pathRedirect or prefixRedirect must be
+         * specified. The value must be between 1 and 1024 characters.
+         */
         pathRedirect?: string;
+        /**
+         * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+         * retaining the remaining portion of the URL before redirecting the request.
+         */
         prefixRedirect?: string;
+        /**
+         * The HTTP Status code to use for this RedirectAction. Supported values are:
+         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * - FOUND, which corresponds to 302.
+         * - SEE_OTHER which corresponds to 303.
+         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * will be retained.
+         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * the request method will be retained.
+         */
         redirectResponseCode?: string;
+        /**
+         * If set to true, any accompanying query portion of the original URL is removed
+         * prior to redirecting the request. If set to false, the query portion of the
+         * original URL is retained.
+         */
         stripQuery?: boolean;
     }
 
     export interface RegionUrlMapTest {
+        /**
+         * Description of this test case.
+         */
         description?: string;
+        /**
+         * Host portion of the URL.
+         */
         host: string;
+        /**
+         * Path portion of the URL.
+         */
         path: string;
+        /**
+         * A reference to expected RegionBackendService resource the given URL should be mapped to.
+         */
         service: string;
     }
 
     export interface ReservationSpecificReservation {
+        /**
+         * The number of resources that are allocated.
+         */
         count: number;
+        /**
+         * -
+         * How many instances are in use.
+         */
         inUseCount: number;
+        /**
+         * The instance properties for the reservation.  Structure is documented below.
+         */
         instanceProperties: outputs.compute.ReservationSpecificReservationInstanceProperties;
     }
 
     export interface ReservationSpecificReservationInstanceProperties {
+        /**
+         * Guest accelerator type and count.  Structure is documented below.
+         */
         guestAccelerators?: outputs.compute.ReservationSpecificReservationInstancePropertiesGuestAccelerator[];
+        /**
+         * The amount of local ssd to reserve with each instance. This
+         * reserves disks of type `local-ssd`.  Structure is documented below.
+         */
         localSsds?: outputs.compute.ReservationSpecificReservationInstancePropertiesLocalSsd[];
+        /**
+         * The name of the machine type to reserve.
+         */
         machineType: string;
+        /**
+         * The minimum CPU platform for the reservation. For example,
+         * `"Intel Skylake"`. See
+         * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+         * for information on available CPU platforms.
+         */
         minCpuPlatform: string;
     }
 
     export interface ReservationSpecificReservationInstancePropertiesGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to
+         * this instance.
+         */
         acceleratorCount: number;
+        /**
+         * The full or partial URL of the accelerator type to
+         * attach to this instance. For example:
+         * `projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100`
+         * If you are creating an instance template, specify only the accelerator name.
+         */
         acceleratorType: string;
     }
 
     export interface ReservationSpecificReservationInstancePropertiesLocalSsd {
+        /**
+         * The size of the disk in base-2 GB.
+         */
         diskSizeGb: number;
+        /**
+         * The disk interface to use for attaching this disk, one
+         * of `SCSI` or `NVME`. The default is `SCSI`.
+         */
         interface?: string;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicy {
+        /**
+         * Retention policy applied to snapshots created by this resource policy.  Structure is documented below.
+         */
         retentionPolicy?: outputs.compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicy;
+        /**
+         * Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
+         */
         schedule: outputs.compute.ResourcePolicySnapshotSchedulePolicySchedule;
+        /**
+         * Properties with which the snapshots are created, such as labels.  Structure is documented below.
+         */
         snapshotProperties?: outputs.compute.ResourcePolicySnapshotSchedulePolicySnapshotProperties;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+        /**
+         * Maximum age of the snapshot that is allowed to be kept.
+         */
         maxRetentionDays: number;
+        /**
+         * Specifies the behavior to apply to scheduled snapshots when
+         * the source disk is deleted.
+         * Valid options are KEEP_AUTO_SNAPSHOTS and APPLY_RETENTION_POLICY
+         */
         onSourceDiskDelete?: string;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicySchedule {
+        /**
+         * The policy will execute every nth day at the specified time.  Structure is documented below.
+         */
         dailySchedule?: outputs.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule;
+        /**
+         * The policy will execute every nth hour starting at the specified time.  Structure is documented below.
+         */
         hourlySchedule?: outputs.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule;
+        /**
+         * Allows specifying a snapshot time for each day of the week.  Structure is documented below.
+         */
         weeklySchedule?: outputs.compute.ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+        /**
+         * The number of days between snapshots.
+         */
         daysInCycle: number;
+        /**
+         * Time within the window to start the operations.
+         * It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+         */
         startTime: string;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+        /**
+         * The number of hours between snapshots.
+         */
         hoursInCycle: number;
+        /**
+         * Time within the window to start the operations.
+         * It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+         */
         startTime: string;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
+        /**
+         * May contain up to seven (one for each day of the week) snapshot times.  Structure is documented below.
+         */
         dayOfWeeks: outputs.compute.ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek[];
     }
 
     export interface ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
+        /**
+         * The day of the week to create the snapshot. e.g. MONDAY
+         */
         day: string;
+        /**
+         * Time within the window to start the operations.
+         * It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+         */
         startTime: string;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicySnapshotProperties {
+        /**
+         * Whether to perform a 'guest aware' snapshot.
+         */
         guestFlush?: boolean;
+        /**
+         * A set of key-value pairs.
+         */
         labels?: {[key: string]: string};
+        /**
+         * Cloud Storage bucket location to store the auto snapshot
+         * (regional or multi-regional)
+         */
         storageLocations?: string;
     }
 
     export interface RouterBgp {
+        /**
+         * User-specified flag to indicate which mode to use for advertisement.
+         * Valid values of this enum field are: DEFAULT, CUSTOM
+         */
         advertiseMode?: string;
+        /**
+         * User-specified list of prefix groups to advertise in custom mode.
+         * This field can only be populated if advertiseMode is CUSTOM and
+         * is advertised to all peers of the router. These groups will be
+         * advertised in addition to any specified prefixes. Leave this field
+         * blank to advertise no custom groups.
+         * This enum field has the one valid value: ALL_SUBNETS
+         */
         advertisedGroups?: string[];
+        /**
+         * User-specified list of individual IP ranges to advertise in
+         * custom mode. This field can only be populated if advertiseMode
+         * is CUSTOM and is advertised to all peers of the router. These IP
+         * ranges will be advertised in addition to any specified groups.
+         * Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+         */
         advertisedIpRanges?: outputs.compute.RouterBgpAdvertisedIpRange[];
+        /**
+         * Local BGP Autonomous System Number (ASN). Must be an RFC6996
+         * private ASN, either 16-bit or 32-bit. The value will be fixed for
+         * this router resource. All VPN tunnels that link to this router
+         * will have the same local ASN.
+         */
         asn: number;
     }
 
     export interface RouterBgpAdvertisedIpRange {
+        /**
+         * User-specified description for the IP range.
+         */
         description?: string;
+        /**
+         * The IP range to advertise. The value must be a
+         * CIDR-formatted string.
+         */
         range: string;
     }
 
     export interface RouterNatLogConfig {
+        /**
+         * Indicates whether or not to export logs.
+         */
         enable: boolean;
+        /**
+         * Specifies the desired filtering of logs on this NAT. Valid
+         * values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+         */
         filter: string;
     }
 
     export interface RouterNatSubnetwork {
+        /**
+         * Self-link of subnetwork to NAT
+         */
         name: string;
+        /**
+         * List of the secondary ranges of the subnetwork that are allowed
+         * to use NAT. This can be populated only if
+         * `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
+         * sourceIpRangesToNat
+         */
         secondaryIpRangeNames?: string[];
+        /**
+         * List of options for which source IPs in the subnetwork
+         * should have NAT enabled. Supported values include:
+         * `ALL_IP_RANGES`, `LIST_OF_SECONDARY_IP_RANGES`,
+         * `PRIMARY_IP_RANGE`.
+         */
         sourceIpRangesToNats: string[];
     }
 
     export interface RouterPeerAdvertisedIpRange {
+        /**
+         * User-specified description for the IP range.
+         */
         description?: string;
+        /**
+         * The IP range to advertise. The value must be a
+         * CIDR-formatted string.
+         */
         range: string;
     }
 
@@ -3208,32 +7003,76 @@ export namespace compute {
     }
 
     export interface SecurityScanConfigAuthentication {
+        /**
+         * Describes authentication configuration that uses a custom account.  Structure is documented below.
+         */
         customAccount?: outputs.compute.SecurityScanConfigAuthenticationCustomAccount;
+        /**
+         * Describes authentication configuration that uses a Google account.  Structure is documented below.
+         */
         googleAccount?: outputs.compute.SecurityScanConfigAuthenticationGoogleAccount;
     }
 
     export interface SecurityScanConfigAuthenticationCustomAccount {
+        /**
+         * The login form URL of the website.
+         */
         loginUrl: string;
+        /**
+         * The password of the custom account. The credential is stored encrypted
+         * in GCP.
+         */
         password: string;
+        /**
+         * The user name of the custom account.
+         */
         username: string;
     }
 
     export interface SecurityScanConfigAuthenticationGoogleAccount {
+        /**
+         * The password of the custom account. The credential is stored encrypted
+         * in GCP.
+         */
         password: string;
+        /**
+         * The user name of the custom account.
+         */
         username: string;
     }
 
     export interface SecurityScanConfigSchedule {
+        /**
+         * The duration of time between executions in days
+         */
         intervalDurationDays: number;
+        /**
+         * A timestamp indicates when the next run will be scheduled. The value is refreshed
+         * by the server after each run. If unspecified, it will default to current server time,
+         * which means the scan will be scheduled to start immediately.
+         */
         scheduleTime?: string;
     }
 
     export interface SnapshotSnapshotEncryptionKey {
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey: string;
+        /**
+         * -
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
     export interface SnapshotSourceDiskEncryptionKey {
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey?: string;
     }
 
@@ -3268,351 +7107,1258 @@ export namespace compute {
     }
 
     export interface SubnetworkLogConfig {
+        /**
+         * Can only be specified if VPC flow logging for this subnetwork is enabled.
+         * Toggles the aggregation interval for collecting flow logs. Increasing the
+         * interval time will reduce the amount of generated flow logs for long
+         * lasting connections. Default is an interval of 5 seconds per connection.
+         * Possible values are INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN,
+         * INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN
+         */
         aggregationInterval?: string;
+        /**
+         * Can only be specified if VPC flow logging for this subnetwork is enabled.
+         * The value of the field must be in [0, 1]. Set the sampling rate of VPC
+         * flow logs within the subnetwork where 1.0 means all collected logs are
+         * reported and 0.0 means no logs are reported. Default is 0.5 which means
+         * half of all collected logs are reported.
+         */
         flowSampling?: number;
+        /**
+         * Can only be specified if VPC flow logging for this subnetwork is enabled.
+         * Configures whether metadata fields should be added to the reported VPC
+         * flow logs. Default is `INCLUDE_ALL_METADATA`.
+         */
         metadata?: string;
     }
 
     export interface SubnetworkSecondaryIpRange {
+        /**
+         * The range of IP addresses belonging to this subnetwork secondary
+         * range. Provide this property when you create the subnetwork.
+         * Ranges must be unique and non-overlapping with all primary and
+         * secondary IP ranges within a network. Only IPv4 is supported.
+         */
         ipCidrRange: string;
+        /**
+         * The name associated with this subnetwork secondary range, used
+         * when adding an alias IP range to a VM instance. The name must
+         * be 1-63 characters long, and comply with RFC1035. The name
+         * must be unique within the subnetwork.
+         */
         rangeName: string;
     }
 
     export interface URLMapHeaderAction {
+        /**
+         * Headers to add to a matching request prior to forwarding the request to the
+         * backendService.  Structure is documented below.
+         */
         requestHeadersToAdds?: outputs.compute.URLMapHeaderActionRequestHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request
+         * prior to forwarding the request to the backendService.
+         */
         requestHeadersToRemoves?: string[];
+        /**
+         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         */
         responseHeadersToAdds?: outputs.compute.URLMapHeaderActionResponseHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the response
+         * prior to sending the response back to the client.
+         */
         responseHeadersToRemoves?: string[];
     }
 
     export interface URLMapHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface URLMapHeaderActionResponseHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface URLMapHostRule {
+        /**
+         * Description of this test case.
+         */
         description?: string;
+        /**
+         * The list of host patterns to match. They must be valid hostnames, except * will
+         * match any string of ([a-z0-9-.]*). In that case, * must be the first character
+         * and must be followed in the pattern by either - or ..
+         */
         hosts: string[];
+        /**
+         * The name of the PathMatcher to use to match the path portion of the URL if the
+         * hostRule matches the URL's host portion.
+         */
         pathMatcher: string;
     }
 
     export interface URLMapPathMatcher {
+        /**
+         * The backend service or backend bucket to use when none of the given paths match.
+         */
         defaultService?: string;
+        /**
+         * Description of this test case.
+         */
         description?: string;
+        /**
+         * Specifies changes to request and response headers that need to take effect for
+         * the selected backendService. headerAction specified here take effect before
+         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         */
         headerAction?: outputs.compute.URLMapPathMatcherHeaderAction;
+        /**
+         * The name of the query parameter to match. The query parameter must exist in the
+         * request, in the absence of which the request match fails.
+         */
         name: string;
+        /**
+         * The list of path rules. Use this list instead of routeRules when routing based
+         * on simple path matching is all that's required. The order by which path rules
+         * are specified does not matter. Matches are always done on the longest-path-first
+         * basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
+         * irrespective of the order in which those paths appear in this list. Within a
+         * given pathMatcher, only one of pathRules or routeRules must be set.  Structure is documented below.
+         */
         pathRules?: outputs.compute.URLMapPathMatcherPathRule[];
+        /**
+         * The list of ordered HTTP route rules. Use this list instead of pathRules when
+         * advanced route matching and routing actions are desired. The order of specifying
+         * routeRules matters: the first rule that matches will cause its specified routing
+         * action to take effect. Within a given pathMatcher, only one of pathRules or
+         * routeRules must be set. routeRules are not supported in UrlMaps intended for
+         * External load balancers.  Structure is documented below.
+         */
         routeRules?: outputs.compute.URLMapPathMatcherRouteRule[];
     }
 
     export interface URLMapPathMatcherHeaderAction {
+        /**
+         * Headers to add to a matching request prior to forwarding the request to the
+         * backendService.  Structure is documented below.
+         */
         requestHeadersToAdds?: outputs.compute.URLMapPathMatcherHeaderActionRequestHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request
+         * prior to forwarding the request to the backendService.
+         */
         requestHeadersToRemoves?: string[];
+        /**
+         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         */
         responseHeadersToAdds?: outputs.compute.URLMapPathMatcherHeaderActionResponseHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the response
+         * prior to sending the response back to the client.
+         */
         responseHeadersToRemoves?: string[];
     }
 
     export interface URLMapPathMatcherHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface URLMapPathMatcherHeaderActionResponseHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface URLMapPathMatcherPathRule {
+        /**
+         * The list of path patterns to match. Each must start with / and the only place a
+         * * is allowed is at the end following a /. The string fed to the path matcher
+         * does not include any text after the first ? or #, and those chars are not
+         * allowed here.
+         */
         paths: string[];
+        /**
+         * In response to a matching matchRule, the load balancer performs advanced routing
+         * actions like URL rewrites, header transformations, etc. prior to forwarding the
+         * request to the selected backend. If  routeAction specifies any
+         * weightedBackendServices, service must not be set. Conversely if service is set,
+         * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+         * or urlRedirect must be set.  Structure is documented below.
+         */
         routeAction?: outputs.compute.URLMapPathMatcherPathRuleRouteAction;
+        /**
+         * The backend service or backend bucket link that should be matched by this test.
+         */
         service?: string;
+        /**
+         * When this rule is matched, the request is redirected to a URL specified by
+         * urlRedirect. If urlRedirect is specified, service or routeAction must not be
+         * set.  Structure is documented below.
+         */
         urlRedirect?: outputs.compute.URLMapPathMatcherPathRuleUrlRedirect;
     }
 
     export interface URLMapPathMatcherPathRuleRouteAction {
+        /**
+         * The specification for allowing client side cross-origin requests. Please see W3C
+         * Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+         */
         corsPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionCorsPolicy;
+        /**
+         * The specification for fault injection introduced into traffic to test the
+         * resiliency of clients to backend service failure. As part of fault injection,
+         * when clients send requests to a backend service, delays can be introduced by
+         * Loadbalancer on a percentage of requests before sending those request to the
+         * backend service. Similarly requests from clients can be aborted by the
+         * Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+         * ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+         */
         faultInjectionPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy;
+        /**
+         * Specifies the policy on how requests intended for the route's backends are
+         * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+         * responses from the shadow service. Prior to sending traffic to the shadow
+         * service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+         */
         requestMirrorPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy;
+        /**
+         * Specifies the retry policy associated with this route.  Structure is documented below.
+         */
         retryPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionRetryPolicy;
+        /**
+         * Specifies the timeout for the selected route. Timeout is computed from the time
+         * the request is has been fully processed (i.e. end-of-stream) up until the
+         * response has been completely processed. Timeout includes all retries. If not
+         * specified, the default value is 15 seconds.  Structure is documented below.
+         */
         timeout?: outputs.compute.URLMapPathMatcherPathRuleRouteActionTimeout;
+        /**
+         * The spec to modify the URL of the request, prior to forwarding the request to
+         * the matched service  Structure is documented below.
+         */
         urlRewrite?: outputs.compute.URLMapPathMatcherPathRuleRouteActionUrlRewrite;
+        /**
+         * A list of weighted backend services to send traffic to when a route match
+         * occurs. The weights determine the fraction of traffic that flows to their
+         * corresponding backend service. If all traffic needs to go to a single backend
+         * service, there must be one  weightedBackendService with weight set to a non 0
+         * number. Once a backendService is identified and before forwarding the request to
+         * the backend service, advanced routing actions like Url rewrites and header
+         * transformations are applied depending on additional settings specified in this
+         * HttpRouteAction.  Structure is documented below.
+         */
         weightedBackendServices?: outputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendService[];
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionCorsPolicy {
+        /**
+         * In response to a preflight request, setting this to true indicates that the
+         * actual request can include user credentials. This translates to the Access-
+         * Control-Allow-Credentials header. Defaults to false.
+         */
         allowCredentials?: boolean;
+        /**
+         * Specifies the content for the Access-Control-Allow-Headers header.
+         */
         allowHeaders?: string[];
+        /**
+         * Specifies the content for the Access-Control-Allow-Methods header.
+         */
         allowMethods?: string[];
+        /**
+         * Specifies the regualar expression patterns that match allowed origins. For
+         * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+         * An origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         */
         allowOriginRegexes?: string[];
+        /**
+         * Specifies the list of origins that will be allowed to do CORS requests. An
+         * origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         */
         allowOrigins?: string[];
+        /**
+         * If true, specifies the CORS policy is disabled.
+         * which indicates that the CORS policy is in effect. Defaults to false.
+         */
         disabled: boolean;
+        /**
+         * Specifies the content for the Access-Control-Expose-Headers header.
+         */
         exposeHeaders?: string[];
+        /**
+         * Specifies how long the results of a preflight request can be cached. This
+         * translates to the content for the Access-Control-Max-Age header.
+         */
         maxAge?: number;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
+        /**
+         * The specification for how client requests are aborted as part of fault
+         * injection.  Structure is documented below.
+         */
         abort?: outputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort;
+        /**
+         * The specification for how client requests are delayed as part of fault
+         * injection, before being sent to a backend service.  Structure is documented below.
+         */
         delay?: outputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
+        /**
+         * The HTTP status code used to abort the request. The value must be between 200
+         * and 599 inclusive.
+         */
         httpStatus: number;
+        /**
+         * The percentage of traffic (connections/operations/requests) on which delay will
+         * be introduced as part of fault injection. The value must be between 0.0 and
+         * 100.0 inclusive.
+         */
         percentage: number;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay {
+        /**
+         * Specifies the value of the fixed delay interval.  Structure is documented below.
+         */
         fixedDelay: outputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
+        /**
+         * The percentage of traffic (connections/operations/requests) on which delay will
+         * be introduced as part of fault injection. The value must be between 0.0 and
+         * 100.0 inclusive.
+         */
         percentage: number;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
+        /**
+         * The default BackendService resource. Before
+         * forwarding the request to backendService, the loadbalancer applies any relevant
+         * headerActions specified as part of this backendServiceWeight.
+         */
         backendService: string;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionRetryPolicy {
+        /**
+         * Specifies the allowed number retries. This number must be > 0.
+         */
         numRetries?: number;
+        /**
+         * Specifies a non-zero timeout per retry attempt.
+         * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+         * is not set, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+         */
         perTryTimeout?: outputs.compute.URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout;
+        /**
+         * Specfies one or more conditions when this retry rule applies. Valid values are:
+         * - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+         * any 5xx response code, or if the backend service does not respond at all,
+         * example: disconnects, reset, read timeout, connection failure, and refused
+         * streams.
+         * - gateway-error: Similar to 5xx, but only applies to response codes
+         * 502, 503 or 504.
+         * - connect-failure: Loadbalancer will retry on failures
+         * connecting to backend services, for example due to connection timeouts.
+         * - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+         * Currently the only retriable error supported is 409.
+         * - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+         * REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+         * - cancelled: Loadbalancer will retry if the gRPC status code in the response
+         * header is set to cancelled
+         * - deadline-exceeded: Loadbalancer will retry if the
+         * gRPC status code in the response header is set to deadline-exceeded
+         * - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+         * header is set to resource-exhausted
+         * - unavailable: Loadbalancer will retry if the gRPC status code in
+         * the response header is set to unavailable
+         */
         retryConditions?: string[];
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionUrlRewrite {
+        /**
+         * Prior to forwarding the request to the selected service, the request's host
+         * header is replaced with contents of hostRewrite. The value must be between 1 and
+         * 255 characters.
+         */
         hostRewrite?: string;
+        /**
+         * Prior to forwarding the request to the selected backend service, the matching
+         * portion of the request's path is replaced by pathPrefixRewrite. The value must
+         * be between 1 and 1024 characters.
+         */
         pathPrefixRewrite?: string;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
+        /**
+         * The default BackendService resource. Before
+         * forwarding the request to backendService, the loadbalancer applies any relevant
+         * headerActions specified as part of this backendServiceWeight.
+         */
         backendService: string;
+        /**
+         * Specifies changes to request and response headers that need to take effect for
+         * the selected backendService. headerAction specified here take effect before
+         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         */
         headerAction?: outputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction;
+        /**
+         * Specifies the fraction of traffic sent to backendService, computed as weight /
+         * (sum of all weightedBackendService weights in routeAction) . The selection of a
+         * backend service is determined only for new traffic. Once a user's request has
+         * been directed to a backendService, subsequent requests will be sent to the same
+         * backendService as determined by the BackendService's session affinity policy.
+         * The value must be between 0 and 1000
+         */
         weight: number;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction {
+        /**
+         * Headers to add to a matching request prior to forwarding the request to the
+         * backendService.  Structure is documented below.
+         */
         requestHeadersToAdds?: outputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request
+         * prior to forwarding the request to the backendService.
+         */
         requestHeadersToRemoves?: string[];
+        /**
+         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         */
         responseHeadersToAdds?: outputs.compute.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the response
+         * prior to sending the response back to the client.
+         */
         responseHeadersToRemoves?: string[];
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface URLMapPathMatcherPathRuleUrlRedirect {
+        /**
+         * The host that will be used in the redirect response instead of the one that was
+         * supplied in the request. The value must be between 1 and 255 characters.
+         */
         hostRedirect?: string;
+        /**
+         * If set to true, the URL scheme in the redirected request is set to https. If set
+         * to false, the URL scheme of the redirected request will remain the same as that
+         * of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+         * Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+         */
         httpsRedirect?: boolean;
+        /**
+         * The path that will be used in the redirect response instead of the one that was
+         * supplied in the request. Only one of pathRedirect or prefixRedirect must be
+         * specified. The value must be between 1 and 1024 characters.
+         */
         pathRedirect?: string;
+        /**
+         * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+         * retaining the remaining portion of the URL before redirecting the request.
+         */
         prefixRedirect?: string;
+        /**
+         * The HTTP Status code to use for this RedirectAction. Supported values are:   -
+         * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
+         * FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
+         * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * the request method will be retained.
+         */
         redirectResponseCode?: string;
+        /**
+         * If set to true, any accompanying query portion of the original URL is removed
+         * prior to redirecting the request. If set to false, the query portion of the
+         * original URL is retained. Defaults to false.
+         */
         stripQuery: boolean;
     }
 
     export interface URLMapPathMatcherRouteRule {
+        /**
+         * Specifies changes to request and response headers that need to take effect for
+         * the selected backendService. headerAction specified here take effect before
+         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         */
         headerAction?: outputs.compute.URLMapPathMatcherRouteRuleHeaderAction;
+        /**
+         * The rules for determining a match.  Structure is documented below.
+         */
         matchRules?: outputs.compute.URLMapPathMatcherRouteRuleMatchRule[];
+        /**
+         * For routeRules within a given pathMatcher, priority determines the order
+         * in which load balancer will interpret routeRules. RouteRules are evaluated
+         * in order of priority, from the lowest to highest number. The priority of
+         * a rule decreases as its number increases (1, 2, 3, N+1). The first rule
+         * that matches the request is applied.
+         * You cannot configure two or more routeRules with the same priority.
+         * Priority for each rule must be set to a number between 0 and
+         * 2147483647 inclusive.
+         * Priority numbers can have gaps, which enable you to add or remove rules
+         * in the future without affecting the rest of the rules. For example,
+         * 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers to which
+         * you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
+         * future without any impact on existing rules.
+         */
         priority: number;
+        /**
+         * In response to a matching matchRule, the load balancer performs advanced routing
+         * actions like URL rewrites, header transformations, etc. prior to forwarding the
+         * request to the selected backend. If  routeAction specifies any
+         * weightedBackendServices, service must not be set. Conversely if service is set,
+         * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
+         * or urlRedirect must be set.  Structure is documented below.
+         */
         routeAction?: outputs.compute.URLMapPathMatcherRouteRuleRouteAction;
+        /**
+         * The backend service or backend bucket link that should be matched by this test.
+         */
         service?: string;
+        /**
+         * When this rule is matched, the request is redirected to a URL specified by
+         * urlRedirect. If urlRedirect is specified, service or routeAction must not be
+         * set.  Structure is documented below.
+         */
         urlRedirect?: outputs.compute.URLMapPathMatcherRouteRuleUrlRedirect;
     }
 
     export interface URLMapPathMatcherRouteRuleHeaderAction {
+        /**
+         * Headers to add to a matching request prior to forwarding the request to the
+         * backendService.  Structure is documented below.
+         */
         requestHeadersToAdds?: outputs.compute.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request
+         * prior to forwarding the request to the backendService.
+         */
         requestHeadersToRemoves?: string[];
+        /**
+         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         */
         responseHeadersToAdds?: outputs.compute.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the response
+         * prior to sending the response back to the client.
+         */
         responseHeadersToRemoves?: string[];
     }
 
     export interface URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface URLMapPathMatcherRouteRuleMatchRule {
+        /**
+         * For satifying the matchRule condition, the path of the request must exactly
+         * match the value specified in fullPathMatch after removing any query parameters
+         * and anchor that may be part of the original URL. FullPathMatch must be between 1
+         * and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
+         * be specified.
+         */
         fullPathMatch?: string;
+        /**
+         * Specifies a list of header match criteria, all of which must match corresponding
+         * headers in the request.  Structure is documented below.
+         */
         headerMatches?: outputs.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatch[];
+        /**
+         * Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+         * Defaults to false.
+         */
         ignoreCase?: boolean;
+        /**
+         * Opaque filter criteria used by Loadbalancer to restrict routing configuration to
+         * a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
+         * clients present node metadata. If a match takes place, the relevant routing
+         * configuration is made available to those proxies. For each metadataFilter in
+         * this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
+         * filterLabels must match the corresponding label provided in the metadata. If its
+         * filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
+         * with corresponding labels in the provided metadata. metadataFilters specified
+         * here can be overrides those specified in ForwardingRule that refers to this
+         * UrlMap. metadataFilters only applies to Loadbalancers that have their
+         * loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+         */
         metadataFilters?: outputs.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilter[];
+        /**
+         * The value of the header must start with the contents of prefixMatch. Only one of
+         * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+         * must be set.
+         */
         prefixMatch?: string;
+        /**
+         * Specifies a list of query parameter match criteria, all of which must match
+         * corresponding query parameters in the request.  Structure is documented below.
+         */
         queryParameterMatches?: outputs.compute.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch[];
+        /**
+         * The queryParameterMatch matches if the value of the parameter matches the
+         * regular expression specified by regexMatch. For the regular expression grammar,
+         * please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+         * exactMatch and regexMatch must be set.
+         */
         regexMatch?: string;
     }
 
     export interface URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
+        /**
+         * The queryParameterMatch matches if the value of the parameter exactly matches
+         * the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+         * must be set.
+         */
         exactMatch?: string;
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * If set to false, the headerMatch is considered a match if the match criteria
+         * above are met. If set to true, the headerMatch is considered a match if the
+         * match criteria above are NOT met. Defaults to false.
+         */
         invertMatch?: boolean;
+        /**
+         * The value of the header must start with the contents of prefixMatch. Only one of
+         * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+         * must be set.
+         */
         prefixMatch?: string;
+        /**
+         * Specifies that the queryParameterMatch matches if the request contains the query
+         * parameter, irrespective of whether the parameter has a value or not. Only one of
+         * presentMatch, exactMatch and regexMatch must be set.
+         */
         presentMatch?: boolean;
+        /**
+         * The header value must be an integer and its value must be in the range specified
+         * in rangeMatch. If the header does not contain an integer, number or is empty,
+         * the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
+         * not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
+         * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+         * must be set.  Structure is documented below.
+         */
         rangeMatch?: outputs.compute.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch;
+        /**
+         * The queryParameterMatch matches if the value of the parameter matches the
+         * regular expression specified by regexMatch. For the regular expression grammar,
+         * please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+         * exactMatch and regexMatch must be set.
+         */
         regexMatch?: string;
+        /**
+         * The value of the header must end with the contents of suffixMatch. Only one of
+         * exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
+         * must be set.
+         */
         suffixMatch?: string;
     }
 
     export interface URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
+        /**
+         * The end of the range (exclusive).
+         */
         rangeEnd: number;
+        /**
+         * The start of the range (inclusive).
+         */
         rangeStart: number;
     }
 
     export interface URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
+        /**
+         * The list of label value pairs that must match labels in the provided metadata
+         * based on filterMatchCriteria  This list must not be empty and can have at the
+         * most 64 entries.  Structure is documented below.
+         */
         filterLabels: outputs.compute.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel[];
+        /**
+         * Specifies how individual filterLabel matches within the list of filterLabels
+         * contribute towards the overall metadataFilter match. Supported values are:
+         * - MATCH_ANY: At least one of the filterLabels must have a matching label in the
+         * provided metadata.
+         * - MATCH_ALL: All filterLabels must have matching labels in
+         * the provided metadata.
+         */
         filterMatchCriteria: string;
     }
 
     export interface URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
+        /**
+         * The name of the query parameter to match. The query parameter must exist in the
+         * request, in the absence of which the request match fails.
+         */
         name: string;
+        /**
+         * The value of the label must match the specified value. value can have a maximum
+         * length of 1024 characters.
+         */
         value: string;
     }
 
     export interface URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
+        /**
+         * The queryParameterMatch matches if the value of the parameter exactly matches
+         * the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
+         * must be set.
+         */
         exactMatch?: string;
+        /**
+         * The name of the query parameter to match. The query parameter must exist in the
+         * request, in the absence of which the request match fails.
+         */
         name: string;
+        /**
+         * Specifies that the queryParameterMatch matches if the request contains the query
+         * parameter, irrespective of whether the parameter has a value or not. Only one of
+         * presentMatch, exactMatch and regexMatch must be set.
+         */
         presentMatch?: boolean;
+        /**
+         * The queryParameterMatch matches if the value of the parameter matches the
+         * regular expression specified by regexMatch. For the regular expression grammar,
+         * please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
+         * exactMatch and regexMatch must be set.
+         */
         regexMatch?: string;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteAction {
+        /**
+         * The specification for allowing client side cross-origin requests. Please see W3C
+         * Recommendation for Cross Origin Resource Sharing  Structure is documented below.
+         */
         corsPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionCorsPolicy;
+        /**
+         * The specification for fault injection introduced into traffic to test the
+         * resiliency of clients to backend service failure. As part of fault injection,
+         * when clients send requests to a backend service, delays can be introduced by
+         * Loadbalancer on a percentage of requests before sending those request to the
+         * backend service. Similarly requests from clients can be aborted by the
+         * Loadbalancer for a percentage of requests. timeout and retryPolicy will be
+         * ignored by clients that are configured with a fault_injection_policy.  Structure is documented below.
+         */
         faultInjectionPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy;
+        /**
+         * Specifies the policy on how requests intended for the route's backends are
+         * shadowed to a separate mirrored backend service. Loadbalancer does not wait for
+         * responses from the shadow service. Prior to sending traffic to the shadow
+         * service, the host / authority header is suffixed with -shadow.  Structure is documented below.
+         */
         requestMirrorPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy;
+        /**
+         * Specifies the retry policy associated with this route.  Structure is documented below.
+         */
         retryPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionRetryPolicy;
+        /**
+         * Specifies the timeout for the selected route. Timeout is computed from the time
+         * the request is has been fully processed (i.e. end-of-stream) up until the
+         * response has been completely processed. Timeout includes all retries. If not
+         * specified, the default value is 15 seconds.  Structure is documented below.
+         */
         timeout?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionTimeout;
+        /**
+         * The spec to modify the URL of the request, prior to forwarding the request to
+         * the matched service  Structure is documented below.
+         */
         urlRewrite?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionUrlRewrite;
+        /**
+         * A list of weighted backend services to send traffic to when a route match
+         * occurs. The weights determine the fraction of traffic that flows to their
+         * corresponding backend service. If all traffic needs to go to a single backend
+         * service, there must be one  weightedBackendService with weight set to a non 0
+         * number. Once a backendService is identified and before forwarding the request to
+         * the backend service, advanced routing actions like Url rewrites and header
+         * transformations are applied depending on additional settings specified in this
+         * HttpRouteAction.  Structure is documented below.
+         */
         weightedBackendServices?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendService[];
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionCorsPolicy {
+        /**
+         * In response to a preflight request, setting this to true indicates that the
+         * actual request can include user credentials. This translates to the Access-
+         * Control-Allow-Credentials header. Defaults to false.
+         */
         allowCredentials?: boolean;
+        /**
+         * Specifies the content for the Access-Control-Allow-Headers header.
+         */
         allowHeaders?: string[];
+        /**
+         * Specifies the content for the Access-Control-Allow-Methods header.
+         */
         allowMethods?: string[];
+        /**
+         * Specifies the regualar expression patterns that match allowed origins. For
+         * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+         * An origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         */
         allowOriginRegexes?: string[];
+        /**
+         * Specifies the list of origins that will be allowed to do CORS requests. An
+         * origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         */
         allowOrigins?: string[];
+        /**
+         * If true, specifies the CORS policy is disabled.
+         * which indicates that the CORS policy is in effect. Defaults to false.
+         */
         disabled?: boolean;
+        /**
+         * Specifies the content for the Access-Control-Expose-Headers header.
+         */
         exposeHeaders?: string[];
+        /**
+         * Specifies how long the results of a preflight request can be cached. This
+         * translates to the content for the Access-Control-Max-Age header.
+         */
         maxAge?: number;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
+        /**
+         * The specification for how client requests are aborted as part of fault
+         * injection.  Structure is documented below.
+         */
         abort?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort;
+        /**
+         * The specification for how client requests are delayed as part of fault
+         * injection, before being sent to a backend service.  Structure is documented below.
+         */
         delay?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
+        /**
+         * The HTTP status code used to abort the request. The value must be between 200
+         * and 599 inclusive.
+         */
         httpStatus?: number;
+        /**
+         * The percentage of traffic (connections/operations/requests) on which delay will
+         * be introduced as part of fault injection. The value must be between 0.0 and
+         * 100.0 inclusive.
+         */
         percentage?: number;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
+        /**
+         * Specifies the value of the fixed delay interval.  Structure is documented below.
+         */
         fixedDelay?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
+        /**
+         * The percentage of traffic (connections/operations/requests) on which delay will
+         * be introduced as part of fault injection. The value must be between 0.0 and
+         * 100.0 inclusive.
+         */
         percentage?: number;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy {
+        /**
+         * The default BackendService resource. Before
+         * forwarding the request to backendService, the loadbalancer applies any relevant
+         * headerActions specified as part of this backendServiceWeight.
+         */
         backendService: string;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
+        /**
+         * Specifies the allowed number retries. This number must be > 0.
+         */
         numRetries: number;
+        /**
+         * Specifies a non-zero timeout per retry attempt.
+         * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+         * is not set, will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+         */
         perTryTimeout?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout;
+        /**
+         * Specfies one or more conditions when this retry rule applies. Valid values are:
+         * - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+         * any 5xx response code, or if the backend service does not respond at all,
+         * example: disconnects, reset, read timeout, connection failure, and refused
+         * streams.
+         * - gateway-error: Similar to 5xx, but only applies to response codes
+         * 502, 503 or 504.
+         * - connect-failure: Loadbalancer will retry on failures
+         * connecting to backend services, for example due to connection timeouts.
+         * - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+         * Currently the only retriable error supported is 409.
+         * - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+         * REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+         * - cancelled: Loadbalancer will retry if the gRPC status code in the response
+         * header is set to cancelled
+         * - deadline-exceeded: Loadbalancer will retry if the
+         * gRPC status code in the response header is set to deadline-exceeded
+         * - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+         * header is set to resource-exhausted
+         * - unavailable: Loadbalancer will retry if the gRPC status code in
+         * the response header is set to unavailable
+         */
         retryConditions?: string[];
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 `seconds` field and a positive
+         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: string;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
+        /**
+         * Prior to forwarding the request to the selected service, the request's host
+         * header is replaced with contents of hostRewrite. The value must be between 1 and
+         * 255 characters.
+         */
         hostRewrite?: string;
+        /**
+         * Prior to forwarding the request to the selected backend service, the matching
+         * portion of the request's path is replaced by pathPrefixRewrite. The value must
+         * be between 1 and 1024 characters.
+         */
         pathPrefixRewrite?: string;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
+        /**
+         * The default BackendService resource. Before
+         * forwarding the request to backendService, the loadbalancer applies any relevant
+         * headerActions specified as part of this backendServiceWeight.
+         */
         backendService: string;
+        /**
+         * Specifies changes to request and response headers that need to take effect for
+         * the selected backendService. headerAction specified here take effect before
+         * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+         */
         headerAction?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction;
+        /**
+         * Specifies the fraction of traffic sent to backendService, computed as weight /
+         * (sum of all weightedBackendService weights in routeAction) . The selection of a
+         * backend service is determined only for new traffic. Once a user's request has
+         * been directed to a backendService, subsequent requests will be sent to the same
+         * backendService as determined by the BackendService's session affinity policy.
+         * The value must be between 0 and 1000
+         */
         weight: number;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
+        /**
+         * Headers to add to a matching request prior to forwarding the request to the
+         * backendService.  Structure is documented below.
+         */
         requestHeadersToAdds?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the request
+         * prior to forwarding the request to the backendService.
+         */
         requestHeadersToRemoves?: string[];
+        /**
+         * Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+         */
         responseHeadersToAdds?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd[];
+        /**
+         * A list of header names for headers that need to be removed from the response
+         * prior to sending the response back to the client.
+         */
         responseHeadersToRemoves?: string[];
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+        /**
+         * The name of the header.
+         */
         headerName: string;
+        /**
+         * The value of the header to add.
+         */
         headerValue: string;
+        /**
+         * If false, headerValue is appended to any values that already exist for the
+         * header. If true, headerValue is set for the header, discarding any values that
+         * were set for that header.
+         */
         replace: boolean;
     }
 
     export interface URLMapPathMatcherRouteRuleUrlRedirect {
+        /**
+         * The host that will be used in the redirect response instead of the one that was
+         * supplied in the request. The value must be between 1 and 255 characters.
+         */
         hostRedirect?: string;
+        /**
+         * If set to true, the URL scheme in the redirected request is set to https. If set
+         * to false, the URL scheme of the redirected request will remain the same as that
+         * of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+         * Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+         */
         httpsRedirect?: boolean;
+        /**
+         * The path that will be used in the redirect response instead of the one that was
+         * supplied in the request. Only one of pathRedirect or prefixRedirect must be
+         * specified. The value must be between 1 and 1024 characters.
+         */
         pathRedirect?: string;
+        /**
+         * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+         * retaining the remaining portion of the URL before redirecting the request.
+         */
         prefixRedirect?: string;
+        /**
+         * The HTTP Status code to use for this RedirectAction. Supported values are:   -
+         * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
+         * FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
+         * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * the request method will be retained.
+         */
         redirectResponseCode?: string;
+        /**
+         * If set to true, any accompanying query portion of the original URL is removed
+         * prior to redirecting the request. If set to false, the query portion of the
+         * original URL is retained. Defaults to false.
+         */
         stripQuery?: boolean;
     }
 
     export interface URLMapTest {
+        /**
+         * Description of this test case.
+         */
         description?: string;
+        /**
+         * Host portion of the URL.
+         */
         host: string;
+        /**
+         * Path portion of the URL.
+         */
         path: string;
+        /**
+         * The backend service or backend bucket link that should be matched by this test.
+         */
         service: string;
     }
 }
@@ -4758,44 +9504,155 @@ export namespace container {
 
 export namespace containeranalysis {
     export interface NoteAttestationAuthority {
+        /**
+         * This submessage provides human-readable hints about the purpose of
+         * the AttestationAuthority. Because the name of a Note acts as its
+         * resource reference, it is important to disambiguate the canonical
+         * name of the Note (which might be a UUID for security purposes)
+         * from "readable" names more suitable for debug output. Note that
+         * these hints should NOT be used to look up AttestationAuthorities
+         * in security sensitive contexts, such as when looking up
+         * Attestations to verify.  Structure is documented below.
+         */
         hint: outputs.containeranalysis.NoteAttestationAuthorityHint;
     }
 
     export interface NoteAttestationAuthorityHint {
+        /**
+         * The human readable name of this Attestation Authority, for
+         * example "qa".
+         */
         humanReadableName: string;
     }
 }
 
 export namespace datafusion {
     export interface InstanceNetworkConfig {
+        /**
+         * The IP range in CIDR notation to use for the managed Data Fusion instance
+         * nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
+         */
         ipAllocation: string;
+        /**
+         * Name of the network in the project with which the tenant project
+         * will be peered for executing pipelines. In case of shared VPC where the network resides in another host
+         * project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
+         */
         network: string;
     }
 }
 
 export namespace dataproc {
     export interface AutoscalingPolicyBasicAlgorithm {
+        /**
+         * Duration between scaling events. A scaling period starts after the
+         * update operation from the previous event has completed.
+         * Bounds: [2m, 1d]. Default: 2m.
+         */
         cooldownPeriod?: string;
+        /**
+         * YARN autoscaling configuration.  Structure is documented below.
+         */
         yarnConfig: outputs.dataproc.AutoscalingPolicyBasicAlgorithmYarnConfig;
     }
 
     export interface AutoscalingPolicyBasicAlgorithmYarnConfig {
+        /**
+         * Timeout for YARN graceful decommissioning of Node Managers. Specifies the
+         * duration to wait for jobs to complete before forcefully removing workers
+         * (and potentially interrupting jobs). Only applicable to downscaling operations.
+         * Bounds: [0s, 1d].
+         */
         gracefulDecommissionTimeout: string;
+        /**
+         * Fraction of average pending memory in the last cooldown period for which to
+         * remove workers. A scale-down factor of 1 will result in scaling down so that there
+         * is no available memory remaining after the update (more aggressive scaling).
+         * A scale-down factor of 0 disables removing workers, which can be beneficial for
+         * autoscaling a single job.
+         * Bounds: [0.0, 1.0].
+         */
         scaleDownFactor: number;
+        /**
+         * Minimum scale-down threshold as a fraction of total cluster size before scaling occurs.
+         * For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must
+         * recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0
+         * means the autoscaler will scale down on any recommended change.
+         * Bounds: [0.0, 1.0]. Default: 0.0.
+         */
         scaleDownMinWorkerFraction?: number;
+        /**
+         * Fraction of average pending memory in the last cooldown period for which to
+         * add workers. A scale-up factor of 1.0 will result in scaling up so that there
+         * is no pending memory remaining after the update (more aggressive scaling).
+         * A scale-up factor closer to 0 will result in a smaller magnitude of scaling up
+         * (less aggressive scaling).
+         * Bounds: [0.0, 1.0].
+         */
         scaleUpFactor: number;
+        /**
+         * Minimum scale-up threshold as a fraction of total cluster size before scaling
+         * occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler
+         * must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of
+         * 0 means the autoscaler will scale up on any recommended change.
+         * Bounds: [0.0, 1.0]. Default: 0.0.
+         */
         scaleUpMinWorkerFraction?: number;
     }
 
     export interface AutoscalingPolicySecondaryWorkerConfig {
+        /**
+         * Maximum number of instances for this group. Note that by default, clusters will not use
+         * secondary workers. Required for secondary workers if the minimum secondary instances is set.
+         * Bounds: [minInstances, ). Defaults to 0.
+         */
         maxInstances?: number;
+        /**
+         * Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+         */
         minInstances?: number;
+        /**
+         * Weight for the instance group, which is used to determine the fraction of total workers
+         * in the cluster from this instance group. For example, if primary workers have weight 2,
+         * and secondary workers have weight 1, the cluster will have approximately 2 primary workers
+         * for each secondary worker.
+         * The cluster may not reach the specified balance if constrained by min/max bounds or other
+         * autoscaling settings. For example, if maxInstances for secondary workers is 0, then only
+         * primary workers will be added. The cluster can also be out of balance when created.
+         * If weight is not set on any instance group, the cluster will default to equal weight for
+         * all groups: the cluster will attempt to maintain an equal number of workers in each group
+         * within the configured size bounds for each group. If weight is set for one group only,
+         * the cluster will default to zero weight on the unset group. For example if weight is set
+         * only on primary workers, the cluster will use primary workers only and no secondary workers.
+         */
         weight?: number;
     }
 
     export interface AutoscalingPolicyWorkerConfig {
+        /**
+         * Maximum number of instances for this group. Note that by default, clusters will not use
+         * secondary workers. Required for secondary workers if the minimum secondary instances is set.
+         * Bounds: [minInstances, ). Defaults to 0.
+         */
         maxInstances: number;
+        /**
+         * Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+         */
         minInstances?: number;
+        /**
+         * Weight for the instance group, which is used to determine the fraction of total workers
+         * in the cluster from this instance group. For example, if primary workers have weight 2,
+         * and secondary workers have weight 1, the cluster will have approximately 2 primary workers
+         * for each secondary worker.
+         * The cluster may not reach the specified balance if constrained by min/max bounds or other
+         * autoscaling settings. For example, if maxInstances for secondary workers is 0, then only
+         * primary workers will be added. The cluster can also be out of balance when created.
+         * If weight is not set on any instance group, the cluster will default to equal weight for
+         * all groups: the cluster will attempt to maintain an equal number of workers in each group
+         * within the configured size bounds for each group. If weight is set for one group only,
+         * the cluster will default to zero weight on the unset group. For example if weight is set
+         * only on primary workers, the cluster will use primary workers only and no secondary workers.
+         */
         weight?: number;
     }
 
@@ -4821,6 +9678,10 @@ export namespace dataproc {
          * You can specify multiple versions of these. Structure defined below.
          */
         initializationActions?: outputs.dataproc.ClusterClusterConfigInitializationAction[];
+        /**
+         * The settings for auto deletion cluster schedule.
+         * Structure defined below.
+         */
         lifecycleConfig?: outputs.dataproc.ClusterClusterConfigLifecycleConfig;
         /**
          * The Google Compute Engine config settings for the master instances
@@ -4929,6 +9790,10 @@ export namespace dataproc {
     }
 
     export interface ClusterClusterConfigInitializationAction {
+        /**
+         * The script to be executed during initialization of the cluster.
+         * The script must be a GCS file with a gs:// prefix.
+         */
         script: string;
         /**
          * The maximum duration (in seconds) which `script` is
@@ -4981,6 +9846,10 @@ export namespace dataproc {
          * for details about which CPU families are available (and defaulted) for each zone.
          */
         minCpuPlatform: string;
+        /**
+         * Specifies the number of preemptible nodes to create.
+         * Defaults to 0.
+         */
         numInstances: number;
     }
 
@@ -5021,6 +9890,10 @@ export namespace dataproc {
          */
         diskConfig: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigDiskConfig;
         instanceNames: string[];
+        /**
+         * Specifies the number of preemptible nodes to create.
+         * Defaults to 0.
+         */
         numInstances: number;
     }
 
@@ -5190,6 +10063,10 @@ export namespace dataproc {
          * for details about which CPU families are available (and defaulted) for each zone.
          */
         minCpuPlatform: string;
+        /**
+         * Specifies the number of preemptible nodes to create.
+         * Defaults to 0.
+         */
         numInstances: number;
     }
 
@@ -5254,6 +10131,9 @@ export namespace dataproc {
          */
         jarFileUris?: string[];
         loggingConfig: outputs.dataproc.JobHadoopConfigLoggingConfig;
+        /**
+         * The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
+         */
         mainClass?: string;
         /**
          * The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `mainClass`
@@ -5287,6 +10167,10 @@ export namespace dataproc {
          * Conflicts with `queryList`
          */
         queryFileUri?: string;
+        /**
+         * The list of SQL queries or statements to execute as part of the job.
+         * Conflicts with `queryFileUri`
+         */
         queryLists?: string[];
         /**
          * Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
@@ -5325,6 +10209,10 @@ export namespace dataproc {
          * Conflicts with `queryList`
          */
         queryFileUri?: string;
+        /**
+         * The list of SQL queries or statements to execute as part of the job.
+         * Conflicts with `queryFileUri`
+         */
         queryLists?: string[];
         /**
          * Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
@@ -5359,6 +10247,9 @@ export namespace dataproc {
          */
         jarFileUris?: string[];
         loggingConfig: outputs.dataproc.JobPysparkConfigLoggingConfig;
+        /**
+         * The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+         */
         mainPythonFileUri: string;
         /**
          * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
@@ -5400,6 +10291,9 @@ export namespace dataproc {
          */
         jarFileUris?: string[];
         loggingConfig: outputs.dataproc.JobSparkConfigLoggingConfig;
+        /**
+         * The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
+         */
         mainClass?: string;
         /**
          * The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `mainClass`
@@ -5430,6 +10324,10 @@ export namespace dataproc {
          * Conflicts with `queryList`
          */
         queryFileUri?: string;
+        /**
+         * The list of SQL queries or statements to execute as part of the job.
+         * Conflicts with `queryFileUri`
+         */
         queryLists?: string[];
         /**
          * Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
@@ -5451,28 +10349,58 @@ export namespace dataproc {
 
 export namespace datastore {
     export interface DataStoreIndexProperty {
+        /**
+         * The direction the index should optimize for sorting. Possible values are ASCENDING and DESCENDING.
+         */
         direction: string;
+        /**
+         * The property name to index.
+         */
         name: string;
     }
 }
 
 export namespace deploymentmanager {
     export interface DeploymentLabel {
+        /**
+         * Key for label.
+         */
         key?: string;
+        /**
+         * Value of label.
+         */
         value?: string;
     }
 
     export interface DeploymentTarget {
+        /**
+         * The root configuration file to use for this deployment.  Structure is documented below.
+         */
         config: outputs.deploymentmanager.DeploymentTargetConfig;
+        /**
+         * Specifies import files for this configuration. This can be
+         * used to import templates or other files. For example, you might
+         * import a text file in order to use the file in a template.  Structure is documented below.
+         */
         imports?: outputs.deploymentmanager.DeploymentTargetImport[];
     }
 
     export interface DeploymentTargetConfig {
+        /**
+         * The full contents of the template that you want to import.
+         */
         content: string;
     }
 
     export interface DeploymentTargetImport {
+        /**
+         * The full contents of the template that you want to import.
+         */
         content?: string;
+        /**
+         * The name of the template to import, as declared in the YAML
+         * configuration.
+         */
         name?: string;
     }
 }
@@ -5480,6 +10408,10 @@ export namespace deploymentmanager {
 export namespace diagflow {
     export interface IntentFollowupIntentInfo {
         followupIntentName?: string;
+        /**
+         * The unique identifier of the parent intent in the chain of followup intents.
+         * Format: projects/<Project ID>/agent/intents/<Intent ID>.
+         */
         parentFollowupIntentName?: string;
     }
 }
@@ -5582,33 +10514,87 @@ export namespace dns {
     }
 
     export interface ManagedZoneDnssecConfig {
+        /**
+         * Specifies parameters that will be used for generating initial DnsKeys
+         * for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
+         * you must also provide one for the other.
+         * defaultKeySpecs can only be updated when the state is `off`.  Structure is documented below.
+         */
         defaultKeySpecs: outputs.dns.ManagedZoneDnssecConfigDefaultKeySpec[];
+        /**
+         * Identifies what kind of resource this is
+         */
         kind?: string;
+        /**
+         * Specifies the mechanism used to provide authenticated denial-of-existence responses.
+         * nonExistence can only be updated when the state is `off`.
+         */
         nonExistence: string;
+        /**
+         * Specifies whether DNSSEC is enabled, and what mode it is in
+         */
         state?: string;
     }
 
     export interface ManagedZoneDnssecConfigDefaultKeySpec {
+        /**
+         * String mnemonic specifying the DNSSEC algorithm of this key
+         */
         algorithm?: string;
+        /**
+         * Length of the keys in bits
+         */
         keyLength?: number;
+        /**
+         * Specifies whether this is a key signing key (KSK) or a zone
+         * signing key (ZSK). Key signing keys have the Secure Entry
+         * Point flag set and, when active, will only be used to sign
+         * resource record sets of type DNSKEY. Zone signing keys do
+         * not have the Secure Entry Point flag set and will be used
+         * to sign all other types of resource record sets.
+         */
         keyType?: string;
+        /**
+         * Identifies what kind of resource this is
+         */
         kind?: string;
     }
 
     export interface ManagedZoneForwardingConfig {
+        /**
+         * List of target name servers to forward to. Cloud DNS will
+         * select the best available name server if more than
+         * one target is given.  Structure is documented below.
+         */
         targetNameServers: outputs.dns.ManagedZoneForwardingConfigTargetNameServer[];
     }
 
     export interface ManagedZoneForwardingConfigTargetNameServer {
+        /**
+         * Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
+         * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
+         * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+         */
         forwardingPath?: string;
+        /**
+         * IPv4 address of a target name server.
+         */
         ipv4Address: string;
     }
 
     export interface ManagedZonePeeringConfig {
+        /**
+         * The network with which to peer.  Structure is documented below.
+         */
         targetNetwork: outputs.dns.ManagedZonePeeringConfigTargetNetwork;
     }
 
     export interface ManagedZonePeeringConfigTargetNetwork {
+        /**
+         * The fully qualified URL of the VPC network to forward queries to.
+         * This should be formatted like
+         * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+         */
         networkUrl: string;
     }
 
@@ -5617,18 +10603,36 @@ export namespace dns {
     }
 
     export interface ManagedZonePrivateVisibilityConfigNetwork {
+        /**
+         * The fully qualified URL of the VPC network to forward queries to.
+         * This should be formatted like
+         * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+         */
         networkUrl: string;
     }
 
     export interface PolicyAlternativeNameServerConfig {
+        /**
+         * Sets an alternative name server for the associated networks. When specified,
+         * all DNS queries are forwarded to a name server that you choose. Names such as .internal
+         * are not available when an alternative name server is specified.  Structure is documented below.
+         */
         targetNameServers: outputs.dns.PolicyAlternativeNameServerConfigTargetNameServer[];
     }
 
     export interface PolicyAlternativeNameServerConfigTargetNameServer {
+        /**
+         * IPv4 address to forward to.
+         */
         ipv4Address: string;
     }
 
     export interface PolicyNetwork {
+        /**
+         * The fully qualified URL of the VPC network to bind to.
+         * This should be formatted like
+         * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+         */
         networkUrl: string;
     }
 }
@@ -5668,22 +10672,56 @@ export namespace endpoints {
 
 export namespace filestore {
     export interface InstanceFileShares {
+        /**
+         * File share capacity in GiB. This must be at least 1024 GiB
+         * for the standard tier, or 2560 GiB for the premium tier.
+         */
         capacityGb: number;
+        /**
+         * The name of the fileshare (16 characters or less)
+         */
         name: string;
     }
 
     export interface InstanceNetwork {
+        /**
+         * -
+         * A list of IPv4 or IPv6 addresses.
+         */
         ipAddresses: string[];
+        /**
+         * IP versions for which the instance has
+         * IP addresses assigned.
+         */
         modes: string[];
+        /**
+         * The name of the GCE VPC network to which the
+         * instance is connected.
+         */
         network: string;
+        /**
+         * A /29 CIDR block that identifies the range of IP
+         * addresses reserved for this instance.
+         */
         reservedIpRange: string;
     }
 }
 
 export namespace firestore {
     export interface IndexField {
+        /**
+         * Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+         * be specified.
+         */
         arrayConfig?: string;
+        /**
+         * Name of the field.
+         */
         fieldPath?: string;
+        /**
+         * Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
+         * Only one of `order` and `arrayConfig` can be specified.
+         */
         order?: string;
     }
 }
@@ -5734,6 +10772,9 @@ export namespace folder {
     }
 
     export interface OrganizationPolicyListPolicy {
+        /**
+         * or `deny` - (Optional) One or the other must be set.
+         */
         allow?: outputs.folder.OrganizationPolicyListPolicyAllow;
         deny?: outputs.folder.OrganizationPolicyListPolicyDeny;
         /**
@@ -5779,43 +10820,119 @@ export namespace folder {
 
 export namespace gameservices {
     export interface GameServerClusterConnectionInfo {
+        /**
+         * Reference of the GKE cluster where the game servers are installed.  Structure is documented below.
+         */
         gkeClusterReference: outputs.gameservices.GameServerClusterConnectionInfoGkeClusterReference;
+        /**
+         * Namespace designated on the game server cluster where the game server
+         * instances will be created. The namespace existence will be validated
+         * during creation.
+         */
         namespace: string;
     }
 
     export interface GameServerClusterConnectionInfoGkeClusterReference {
+        /**
+         * The full or partial name of a GKE cluster, using one of the following
+         * forms:
+         * * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
+         * * `locations/{location}/clusters/{cluster_id}`
+         * * `{cluster_id}`
+         * If project and location are not specified, the project and location of the
+         * GameServerCluster resource are used to generate the full name of the
+         * GKE cluster.
+         */
         cluster: string;
     }
 
     export interface GameServerConfigFleetConfig {
+        /**
+         * The fleet spec, which is sent to Agones to configure fleet.
+         * The spec can be passed as inline json but it is recommended to use a file reference
+         * instead. File references can contain the json or yaml format of the fleet spec. Eg:
+         * * fleetSpec = jsonencode(yamldecode(file("fleet_configs.yaml")))
+         * * fleetSpec = file("fleet_configs.json")
+         * The format of the spec can be found :
+         * `https://agones.dev/site/docs/reference/fleet/`.
+         */
         fleetSpec: string;
+        /**
+         * The name of the ScalingConfig
+         */
         name: string;
     }
 
     export interface GameServerConfigScalingConfig {
+        /**
+         * Fleet autoscaler spec, which is sent to Agones.
+         * Example spec can be found :
+         * https://agones.dev/site/docs/reference/fleetautoscaler/
+         */
         fleetAutoscalerSpec: string;
+        /**
+         * The name of the ScalingConfig
+         */
         name: string;
+        /**
+         * The schedules to which this scaling config applies.  Structure is documented below.
+         */
         schedules?: outputs.gameservices.GameServerConfigScalingConfigSchedule[];
+        /**
+         * Labels used to identify the clusters to which this scaling config
+         * applies. A cluster is subject to this scaling config if its labels match
+         * any of the selector entries.  Structure is documented below.
+         */
         selectors?: outputs.gameservices.GameServerConfigScalingConfigSelector[];
     }
 
     export interface GameServerConfigScalingConfigSchedule {
+        /**
+         * The duration for the cron job event. The duration of the event is effective
+         * after the cron job's start time.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
         cronJobDuration?: string;
+        /**
+         * The cron definition of the scheduled event. See
+         * https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as
+         * defined by the realm.
+         */
         cronSpec?: string;
+        /**
+         * The end time of the event.
+         * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+         */
         endTime?: string;
+        /**
+         * The start time of the event.
+         * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+         */
         startTime?: string;
     }
 
     export interface GameServerConfigScalingConfigSelector {
+        /**
+         * Set of labels to group by.
+         */
         labels?: {[key: string]: string};
     }
 
     export interface GameServerDeploymentRolloutGameServerConfigOverride {
+        /**
+         * Version of the configuration.
+         */
         configVersion?: string;
+        /**
+         * Selection by realms.  Structure is documented below.
+         */
         realmsSelector?: outputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector;
     }
 
     export interface GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+        /**
+         * List of realms to match against.
+         */
         realms?: string[];
     }
 }
@@ -5846,6 +10963,14 @@ export namespace healthcare {
     }
 
     export interface DicomStoreNotificationConfig {
+        /**
+         * The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+         * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+         * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+         * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+         * project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+         * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+         */
         pubsubTopic: string;
     }
 
@@ -5862,6 +10987,14 @@ export namespace healthcare {
     }
 
     export interface FhirStoreNotificationConfig {
+        /**
+         * The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+         * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+         * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+         * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+         * project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+         * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+         */
         pubsubTopic: string;
     }
 
@@ -5878,11 +11011,26 @@ export namespace healthcare {
     }
 
     export interface Hl7StoreNotificationConfig {
+        /**
+         * The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+         * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+         * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+         * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+         * project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+         * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+         */
         pubsubTopic: string;
     }
 
     export interface Hl7StoreParserConfig {
+        /**
+         * Determines whether messages with no header are allowed.
+         */
         allowNullHeader?: boolean;
+        /**
+         * Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
+         * A base64-encoded string.
+         */
         segmentTerminator?: string;
     }
 }
@@ -6101,44 +11249,104 @@ export namespace iap {
 
 export namespace identityplatform {
     export interface InboundSamlConfigIdpConfig {
+        /**
+         * The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+         */
         idpCertificates: outputs.identityplatform.InboundSamlConfigIdpConfigIdpCertificate[];
+        /**
+         * Unique identifier for all SAML entities
+         */
         idpEntityId: string;
+        /**
+         * Indicates if outbounding SAMLRequest should be signed.
+         */
         signRequest?: boolean;
+        /**
+         * URL to send Authentication request to.
+         */
         ssoUrl: string;
     }
 
     export interface InboundSamlConfigIdpConfigIdpCertificate {
+        /**
+         * -
+         * The x509 certificate
+         */
         x509Certificate?: string;
     }
 
     export interface InboundSamlConfigSpConfig {
+        /**
+         * Callback URI where responses from IDP are handled. Must start with `https://`.
+         */
         callbackUri?: string;
+        /**
+         * -
+         * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+         */
         spCertificates: outputs.identityplatform.InboundSamlConfigSpConfigSpCertificate[];
+        /**
+         * Unique identifier for all SAML entities.
+         */
         spEntityId?: string;
     }
 
     export interface InboundSamlConfigSpConfigSpCertificate {
+        /**
+         * -
+         * The x509 certificate
+         */
         x509Certificate: string;
     }
 
     export interface TenantInboundSamlConfigIdpConfig {
+        /**
+         * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+         */
         idpCertificates: outputs.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificate[];
+        /**
+         * Unique identifier for all SAML entities
+         */
         idpEntityId: string;
+        /**
+         * Indicates if outbounding SAMLRequest should be signed.
+         */
         signRequest?: boolean;
+        /**
+         * URL to send Authentication request to.
+         */
         ssoUrl: string;
     }
 
     export interface TenantInboundSamlConfigIdpConfigIdpCertificate {
+        /**
+         * -
+         * The x509 certificate
+         */
         x509Certificate?: string;
     }
 
     export interface TenantInboundSamlConfigSpConfig {
+        /**
+         * Callback URI where responses from IDP are handled. Must start with `https://`.
+         */
         callbackUri: string;
+        /**
+         * -
+         * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+         */
         spCertificates: outputs.identityplatform.TenantInboundSamlConfigSpConfigSpCertificate[];
+        /**
+         * Unique identifier for all SAML entities.
+         */
         spEntityId: string;
     }
 
     export interface TenantInboundSamlConfigSpConfigSpCertificate {
+        /**
+         * -
+         * The x509 certificate
+         */
         x509Certificate: string;
     }
 }
@@ -6230,7 +11438,14 @@ export namespace kms {
     }
 
     export interface CryptoKeyVersionTemplate {
+        /**
+         * The algorithm to use when creating a version based on this template.
+         * See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+         */
         algorithm: string;
+        /**
+         * The protection level to use when creating a version based on this template.
+         */
         protectionLevel?: string;
     }
 
@@ -6329,38 +11544,104 @@ export namespace logging {
     }
 
     export interface MetricBucketOptions {
+        /**
+         * Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+         */
         explicitBuckets?: outputs.logging.MetricBucketOptionsExplicitBuckets;
+        /**
+         * Specifies an exponential sequence of buckets that have a width that is proportional to the value of
+         * the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
+         */
         exponentialBuckets?: outputs.logging.MetricBucketOptionsExponentialBuckets;
+        /**
+         * Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
+         * Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+         */
         linearBuckets?: outputs.logging.MetricBucketOptionsLinearBuckets;
     }
 
     export interface MetricBucketOptionsExplicitBuckets {
+        /**
+         * The values must be monotonically increasing.
+         */
         bounds: number[];
     }
 
     export interface MetricBucketOptionsExponentialBuckets {
+        /**
+         * Must be greater than 1.
+         */
         growthFactor?: number;
+        /**
+         * Must be greater than 0.
+         */
         numFiniteBuckets?: number;
+        /**
+         * Must be greater than 0.
+         */
         scale?: number;
     }
 
     export interface MetricBucketOptionsLinearBuckets {
+        /**
+         * Must be greater than 0.
+         */
         numFiniteBuckets?: number;
+        /**
+         * Lower bound of the first bucket.
+         */
         offset?: number;
+        /**
+         * Must be greater than 0.
+         */
         width?: number;
     }
 
     export interface MetricMetricDescriptor {
+        /**
+         * A concise name for the metric, which can be displayed in user interfaces. Use sentence case
+         * without an ending period, for example "Request count". This field is optional but it is
+         * recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+         */
         displayName?: string;
+        /**
+         * The set of labels that can be used to describe a specific instance of this metric type. For
+         * example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
+         * for the HTTP response code, response_code, so you can look at latencies for successful responses
+         * or just for responses that failed.  Structure is documented below.
+         */
         labels?: outputs.logging.MetricMetricDescriptorLabel[];
+        /**
+         * Whether the metric records instantaneous values, changes to a value, etc.
+         * Some combinations of metricKind and valueType might not be supported.
+         * For counter metrics, set this to DELTA.
+         */
         metricKind: string;
+        /**
+         * The unit in which the metric value is reported. It is only applicable if the valueType is
+         * `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
+         * [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
+         */
         unit?: string;
+        /**
+         * The type of data that can be assigned to the label.
+         */
         valueType: string;
     }
 
     export interface MetricMetricDescriptorLabel {
+        /**
+         * A description of this metric, which is used in documentation. The maximum length of the
+         * description is 8000 characters.
+         */
         description?: string;
+        /**
+         * The label key.
+         */
         key: string;
+        /**
+         * The type of data that can be assigned to the label.
+         */
         valueType?: string;
     }
 
@@ -6387,64 +11668,515 @@ export namespace logging {
 
 export namespace ml {
     export interface EngineModelDefaultVersion {
+        /**
+         * The name specified for the version when it was created.
+         */
         name: string;
     }
 }
 
 export namespace monitoring {
     export interface AlertPolicyCondition {
+        /**
+         * A condition that checks that a time series
+         * continues to receive new data points.  Structure is documented below.
+         */
         conditionAbsent?: outputs.monitoring.AlertPolicyConditionConditionAbsent;
+        /**
+         * A condition that compares a time series against a
+         * threshold.  Structure is documented below.
+         */
         conditionThreshold?: outputs.monitoring.AlertPolicyConditionConditionThreshold;
+        /**
+         * A short name or phrase used to identify the
+         * condition in dashboards, notifications, and
+         * incidents. To avoid confusion, don't use the same
+         * display name for multiple conditions in the same
+         * policy.
+         */
         displayName: string;
+        /**
+         * -
+         * The unique resource name for this condition.
+         * Its syntax is:
+         * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+         * [CONDITION_ID] is assigned by Stackdriver Monitoring when
+         * the condition is created as part of a new or updated alerting
+         * policy.
+         */
         name: string;
     }
 
     export interface AlertPolicyConditionConditionAbsent {
+        /**
+         * Specifies the alignment of data points in
+         * individual time series as well as how to
+         * combine the retrieved time series together
+         * (such as when aggregating multiple streams
+         * on each resource to a single stream for each
+         * resource or when aggregating streams across
+         * all members of a group of resources).
+         * Multiple aggregations are applied in the
+         * order specified.This field is similar to the
+         * one in the MetricService.ListTimeSeries
+         * request. It is advisable to use the
+         * ListTimeSeries method when debugging this
+         * field.  Structure is documented below.
+         */
         aggregations?: outputs.monitoring.AlertPolicyConditionConditionAbsentAggregation[];
+        /**
+         * The amount of time that a time series must
+         * violate the threshold to be considered
+         * failing. Currently, only values that are a
+         * multiple of a minute--e.g., 0, 60, 120, or
+         * 300 seconds--are supported. If an invalid
+         * value is given, an error will be returned.
+         * When choosing a duration, it is useful to
+         * keep in mind the frequency of the underlying
+         * time series data (which may also be affected
+         * by any alignments specified in the
+         * aggregations field); a good duration is long
+         * enough so that a single outlier does not
+         * generate spurious alerts, but short enough
+         * that unhealthy states are detected and
+         * alerted on quickly.
+         */
         duration: string;
+        /**
+         * A filter that identifies which time series
+         * should be compared with the threshold.The
+         * filter is similar to the one that is
+         * specified in the
+         * MetricService.ListTimeSeries request (that
+         * call is useful to verify the time series
+         * that will be retrieved / processed) and must
+         * specify the metric type and optionally may
+         * contain restrictions on resource type,
+         * resource labels, and metric labels. This
+         * field may not exceed 2048 Unicode characters
+         * in length.
+         */
         filter?: string;
+        /**
+         * The number/percent of time series for which
+         * the comparison must hold in order for the
+         * condition to trigger. If unspecified, then
+         * the condition will trigger if the comparison
+         * is true for any of the time series that have
+         * been identified by filter and aggregations,
+         * or by the ratio, if denominatorFilter and
+         * denominatorAggregations are specified.  Structure is documented below.
+         */
         trigger?: outputs.monitoring.AlertPolicyConditionConditionAbsentTrigger;
     }
 
     export interface AlertPolicyConditionConditionAbsentAggregation {
+        /**
+         * The alignment period for per-time
+         * series alignment. If present,
+         * alignmentPeriod must be at least
+         * 60 seconds. After per-time series
+         * alignment, each time series will
+         * contain data points only on the
+         * period boundaries. If
+         * perSeriesAligner is not specified
+         * or equals ALIGN_NONE, then this
+         * field is ignored. If
+         * perSeriesAligner is specified and
+         * does not equal ALIGN_NONE, then
+         * this field must be defined;
+         * otherwise an error is returned.
+         */
         alignmentPeriod?: string;
+        /**
+         * The approach to be used to combine
+         * time series. Not all reducer
+         * functions may be applied to all
+         * time series, depending on the
+         * metric type and the value type of
+         * the original time series.
+         * Reduction may change the metric
+         * type of value type of the time
+         * series.Time series data must be
+         * aligned in order to perform cross-
+         * time series reduction. If
+         * crossSeriesReducer is specified,
+         * then perSeriesAligner must be
+         * specified and not equal ALIGN_NONE
+         * and alignmentPeriod must be
+         * specified; otherwise, an error is
+         * returned.
+         */
         crossSeriesReducer?: string;
+        /**
+         * The set of fields to preserve when
+         * crossSeriesReducer is specified.
+         * The groupByFields determine how
+         * the time series are partitioned
+         * into subsets prior to applying the
+         * aggregation function. Each subset
+         * contains time series that have the
+         * same value for each of the
+         * grouping fields. Each individual
+         * time series is a member of exactly
+         * one subset. The crossSeriesReducer
+         * is applied to each subset of time
+         * series. It is not possible to
+         * reduce across different resource
+         * types, so this field implicitly
+         * contains resource.type. Fields not
+         * specified in groupByFields are
+         * aggregated away. If groupByFields
+         * is not specified and all the time
+         * series have the same resource
+         * type, then the time series are
+         * aggregated into a single output
+         * time series. If crossSeriesReducer
+         * is not defined, this field is
+         * ignored.
+         */
         groupByFields?: string[];
+        /**
+         * The approach to be used to align
+         * individual time series. Not all
+         * alignment functions may be applied
+         * to all time series, depending on
+         * the metric type and value type of
+         * the original time series.
+         * Alignment may change the metric
+         * type or the value type of the time
+         * series.Time series data must be
+         * aligned in order to perform cross-
+         * time series reduction. If
+         * crossSeriesReducer is specified,
+         * then perSeriesAligner must be
+         * specified and not equal ALIGN_NONE
+         * and alignmentPeriod must be
+         * specified; otherwise, an error is
+         * returned.
+         */
         perSeriesAligner?: string;
     }
 
     export interface AlertPolicyConditionConditionAbsentTrigger {
+        /**
+         * The absolute number of time series
+         * that must fail the predicate for the
+         * condition to be triggered.
+         */
         count?: number;
+        /**
+         * The percentage of time series that
+         * must fail the predicate for the
+         * condition to be triggered.
+         */
         percent?: number;
     }
 
     export interface AlertPolicyConditionConditionThreshold {
+        /**
+         * Specifies the alignment of data points in
+         * individual time series as well as how to
+         * combine the retrieved time series together
+         * (such as when aggregating multiple streams
+         * on each resource to a single stream for each
+         * resource or when aggregating streams across
+         * all members of a group of resources).
+         * Multiple aggregations are applied in the
+         * order specified.This field is similar to the
+         * one in the MetricService.ListTimeSeries
+         * request. It is advisable to use the
+         * ListTimeSeries method when debugging this
+         * field.  Structure is documented below.
+         */
         aggregations?: outputs.monitoring.AlertPolicyConditionConditionThresholdAggregation[];
+        /**
+         * The comparison to apply between the time
+         * series (indicated by filter and aggregation)
+         * and the threshold (indicated by
+         * threshold_value). The comparison is applied
+         * on each time series, with the time series on
+         * the left-hand side and the threshold on the
+         * right-hand side. Only COMPARISON_LT and
+         * COMPARISON_GT are supported currently.
+         */
         comparison: string;
+        /**
+         * Specifies the alignment of data points in
+         * individual time series selected by
+         * denominatorFilter as well as how to combine
+         * the retrieved time series together (such as
+         * when aggregating multiple streams on each
+         * resource to a single stream for each
+         * resource or when aggregating streams across
+         * all members of a group of resources).When
+         * computing ratios, the aggregations and
+         * denominatorAggregations fields must use the
+         * same alignment period and produce time
+         * series that have the same periodicity and
+         * labels.This field is similar to the one in
+         * the MetricService.ListTimeSeries request. It
+         * is advisable to use the ListTimeSeries
+         * method when debugging this field.  Structure is documented below.
+         */
         denominatorAggregations?: outputs.monitoring.AlertPolicyConditionConditionThresholdDenominatorAggregation[];
+        /**
+         * A filter that identifies a time series that
+         * should be used as the denominator of a ratio
+         * that will be compared with the threshold. If
+         * a denominatorFilter is specified, the time
+         * series specified by the filter field will be
+         * used as the numerator.The filter is similar
+         * to the one that is specified in the
+         * MetricService.ListTimeSeries request (that
+         * call is useful to verify the time series
+         * that will be retrieved / processed) and must
+         * specify the metric type and optionally may
+         * contain restrictions on resource type,
+         * resource labels, and metric labels. This
+         * field may not exceed 2048 Unicode characters
+         * in length.
+         */
         denominatorFilter?: string;
+        /**
+         * The amount of time that a time series must
+         * violate the threshold to be considered
+         * failing. Currently, only values that are a
+         * multiple of a minute--e.g., 0, 60, 120, or
+         * 300 seconds--are supported. If an invalid
+         * value is given, an error will be returned.
+         * When choosing a duration, it is useful to
+         * keep in mind the frequency of the underlying
+         * time series data (which may also be affected
+         * by any alignments specified in the
+         * aggregations field); a good duration is long
+         * enough so that a single outlier does not
+         * generate spurious alerts, but short enough
+         * that unhealthy states are detected and
+         * alerted on quickly.
+         */
         duration: string;
+        /**
+         * A filter that identifies which time series
+         * should be compared with the threshold.The
+         * filter is similar to the one that is
+         * specified in the
+         * MetricService.ListTimeSeries request (that
+         * call is useful to verify the time series
+         * that will be retrieved / processed) and must
+         * specify the metric type and optionally may
+         * contain restrictions on resource type,
+         * resource labels, and metric labels. This
+         * field may not exceed 2048 Unicode characters
+         * in length.
+         */
         filter?: string;
+        /**
+         * A value against which to compare the time
+         * series.
+         */
         thresholdValue?: number;
+        /**
+         * The number/percent of time series for which
+         * the comparison must hold in order for the
+         * condition to trigger. If unspecified, then
+         * the condition will trigger if the comparison
+         * is true for any of the time series that have
+         * been identified by filter and aggregations,
+         * or by the ratio, if denominatorFilter and
+         * denominatorAggregations are specified.  Structure is documented below.
+         */
         trigger?: outputs.monitoring.AlertPolicyConditionConditionThresholdTrigger;
     }
 
     export interface AlertPolicyConditionConditionThresholdAggregation {
+        /**
+         * The alignment period for per-time
+         * series alignment. If present,
+         * alignmentPeriod must be at least
+         * 60 seconds. After per-time series
+         * alignment, each time series will
+         * contain data points only on the
+         * period boundaries. If
+         * perSeriesAligner is not specified
+         * or equals ALIGN_NONE, then this
+         * field is ignored. If
+         * perSeriesAligner is specified and
+         * does not equal ALIGN_NONE, then
+         * this field must be defined;
+         * otherwise an error is returned.
+         */
         alignmentPeriod?: string;
+        /**
+         * The approach to be used to combine
+         * time series. Not all reducer
+         * functions may be applied to all
+         * time series, depending on the
+         * metric type and the value type of
+         * the original time series.
+         * Reduction may change the metric
+         * type of value type of the time
+         * series.Time series data must be
+         * aligned in order to perform cross-
+         * time series reduction. If
+         * crossSeriesReducer is specified,
+         * then perSeriesAligner must be
+         * specified and not equal ALIGN_NONE
+         * and alignmentPeriod must be
+         * specified; otherwise, an error is
+         * returned.
+         */
         crossSeriesReducer?: string;
+        /**
+         * The set of fields to preserve when
+         * crossSeriesReducer is specified.
+         * The groupByFields determine how
+         * the time series are partitioned
+         * into subsets prior to applying the
+         * aggregation function. Each subset
+         * contains time series that have the
+         * same value for each of the
+         * grouping fields. Each individual
+         * time series is a member of exactly
+         * one subset. The crossSeriesReducer
+         * is applied to each subset of time
+         * series. It is not possible to
+         * reduce across different resource
+         * types, so this field implicitly
+         * contains resource.type. Fields not
+         * specified in groupByFields are
+         * aggregated away. If groupByFields
+         * is not specified and all the time
+         * series have the same resource
+         * type, then the time series are
+         * aggregated into a single output
+         * time series. If crossSeriesReducer
+         * is not defined, this field is
+         * ignored.
+         */
         groupByFields?: string[];
+        /**
+         * The approach to be used to align
+         * individual time series. Not all
+         * alignment functions may be applied
+         * to all time series, depending on
+         * the metric type and value type of
+         * the original time series.
+         * Alignment may change the metric
+         * type or the value type of the time
+         * series.Time series data must be
+         * aligned in order to perform cross-
+         * time series reduction. If
+         * crossSeriesReducer is specified,
+         * then perSeriesAligner must be
+         * specified and not equal ALIGN_NONE
+         * and alignmentPeriod must be
+         * specified; otherwise, an error is
+         * returned.
+         */
         perSeriesAligner?: string;
     }
 
     export interface AlertPolicyConditionConditionThresholdDenominatorAggregation {
+        /**
+         * The alignment period for per-time
+         * series alignment. If present,
+         * alignmentPeriod must be at least
+         * 60 seconds. After per-time series
+         * alignment, each time series will
+         * contain data points only on the
+         * period boundaries. If
+         * perSeriesAligner is not specified
+         * or equals ALIGN_NONE, then this
+         * field is ignored. If
+         * perSeriesAligner is specified and
+         * does not equal ALIGN_NONE, then
+         * this field must be defined;
+         * otherwise an error is returned.
+         */
         alignmentPeriod?: string;
+        /**
+         * The approach to be used to combine
+         * time series. Not all reducer
+         * functions may be applied to all
+         * time series, depending on the
+         * metric type and the value type of
+         * the original time series.
+         * Reduction may change the metric
+         * type of value type of the time
+         * series.Time series data must be
+         * aligned in order to perform cross-
+         * time series reduction. If
+         * crossSeriesReducer is specified,
+         * then perSeriesAligner must be
+         * specified and not equal ALIGN_NONE
+         * and alignmentPeriod must be
+         * specified; otherwise, an error is
+         * returned.
+         */
         crossSeriesReducer?: string;
+        /**
+         * The set of fields to preserve when
+         * crossSeriesReducer is specified.
+         * The groupByFields determine how
+         * the time series are partitioned
+         * into subsets prior to applying the
+         * aggregation function. Each subset
+         * contains time series that have the
+         * same value for each of the
+         * grouping fields. Each individual
+         * time series is a member of exactly
+         * one subset. The crossSeriesReducer
+         * is applied to each subset of time
+         * series. It is not possible to
+         * reduce across different resource
+         * types, so this field implicitly
+         * contains resource.type. Fields not
+         * specified in groupByFields are
+         * aggregated away. If groupByFields
+         * is not specified and all the time
+         * series have the same resource
+         * type, then the time series are
+         * aggregated into a single output
+         * time series. If crossSeriesReducer
+         * is not defined, this field is
+         * ignored.
+         */
         groupByFields?: string[];
+        /**
+         * The approach to be used to align
+         * individual time series. Not all
+         * alignment functions may be applied
+         * to all time series, depending on
+         * the metric type and value type of
+         * the original time series.
+         * Alignment may change the metric
+         * type or the value type of the time
+         * series.Time series data must be
+         * aligned in order to perform cross-
+         * time series reduction. If
+         * crossSeriesReducer is specified,
+         * then perSeriesAligner must be
+         * specified and not equal ALIGN_NONE
+         * and alignmentPeriod must be
+         * specified; otherwise, an error is
+         * returned.
+         */
         perSeriesAligner?: string;
     }
 
     export interface AlertPolicyConditionConditionThresholdTrigger {
+        /**
+         * The absolute number of time series
+         * that must fail the predicate for the
+         * condition to be triggered.
+         */
         count?: number;
+        /**
+         * The percentage of time series that
+         * must fail the predicate for the
+         * condition to be triggered.
+         */
         percent?: number;
     }
 
@@ -6454,7 +12186,17 @@ export namespace monitoring {
     }
 
     export interface AlertPolicyDocumentation {
+        /**
+         * The text of the documentation, interpreted according to mimeType.
+         * The content may not exceed 8,192 Unicode characters and may not
+         * exceed more than 10,240 bytes when encoded in UTF-8 format,
+         * whichever is smaller.
+         */
         content?: string;
+        /**
+         * The format of the content field. Presently, only the value
+         * "text/markdown" is supported.
+         */
         mimeType?: string;
     }
 
@@ -6479,52 +12221,138 @@ export namespace monitoring {
     }
 
     export interface NotificationChannelSensitiveLabels {
+        /**
+         * An authorization token for a notification channel. Channel types that support this field include: slack
+         */
         authToken?: string;
+        /**
+         * An password for a notification channel. Channel types that support this field include: webhook_basicauth
+         */
         password?: string;
+        /**
+         * An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+         */
         serviceKey?: string;
     }
 
     export interface SloBasicSli {
+        /**
+         * Parameters for a latency threshold SLI.  Structure is documented below.
+         */
         latency: outputs.monitoring.SloBasicSliLatency;
+        /**
+         * An optional set of locations to which this SLI is relevant.
+         * Telemetry from other locations will not be used to calculate
+         * performance for this SLI. If omitted, this SLI applies to all
+         * locations in which the Service has activity. For service types
+         * that don't support breaking down by location, setting this
+         * field will result in an error.
+         */
         locations?: string[];
+        /**
+         * An optional set of RPCs to which this SLI is relevant.
+         * Telemetry from other methods will not be used to calculate
+         * performance for this SLI. If omitted, this SLI applies to all
+         * the Service's methods. For service types that don't support
+         * breaking down by method, setting this field will result in an
+         * error.
+         */
         methods?: string[];
+        /**
+         * The set of API versions to which this SLI is relevant.
+         * Telemetry from other API versions will not be used to
+         * calculate performance for this SLI. If omitted,
+         * this SLI applies to all API versions. For service types
+         * that don't support breaking down by version, setting this
+         * field will result in an error.
+         */
         versions?: string[];
     }
 
     export interface SloBasicSliLatency {
+        /**
+         * A duration string, e.g. 10s.
+         * Good service is defined to be the count of requests made to
+         * this service that return in no more than threshold.
+         */
         threshold: string;
     }
 
     export interface UptimeCheckConfigContentMatcher {
+        /**
+         * String or regex content to match (max 1024 bytes)
+         */
         content: string;
     }
 
     export interface UptimeCheckConfigHttpCheck {
+        /**
+         * The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
+         */
         authInfo?: outputs.monitoring.UptimeCheckConfigHttpCheckAuthInfo;
+        /**
+         * The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+         */
         headers?: {[key: string]: string};
+        /**
+         * Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if maskHeaders is set to True then the headers will be obscured with ******.
+         */
         maskHeaders?: boolean;
+        /**
+         * The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
+         */
         path?: string;
+        /**
+         * The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+         */
         port: number;
+        /**
+         * If true, use HTTPS instead of HTTP to run the check.
+         */
         useSsl?: boolean;
+        /**
+         * Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
+         */
         validateSsl?: boolean;
     }
 
     export interface UptimeCheckConfigHttpCheckAuthInfo {
+        /**
+         * The password to authenticate.
+         */
         password: string;
+        /**
+         * The username to authenticate.
+         */
         username: string;
     }
 
     export interface UptimeCheckConfigMonitoredResource {
+        /**
+         * Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "projectId", "instanceId", and "zone".
+         */
         labels: {[key: string]: string};
+        /**
+         * The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+         */
         type: string;
     }
 
     export interface UptimeCheckConfigResourceGroup {
+        /**
+         * The group of resources being monitored. Should be the `name` of a group
+         */
         groupId?: string;
+        /**
+         * The resource type of the group members.
+         */
         resourceType?: string;
     }
 
     export interface UptimeCheckConfigTcpCheck {
+        /**
+         * The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+         */
         port: number;
     }
 }
@@ -6615,6 +12443,9 @@ export namespace organizations {
     }
 
     export interface PolicyListPolicy {
+        /**
+         * or `deny` - (Optional) One or the other must be set.
+         */
         allow?: outputs.organizations.PolicyListPolicyAllow;
         deny?: outputs.organizations.PolicyListPolicyDeny;
         /**
@@ -6740,6 +12571,9 @@ export namespace projects {
     }
 
     export interface OrganizationPolicyListPolicy {
+        /**
+         * or `deny` - (Optional) One or the other must be set.
+         */
         allow?: outputs.projects.OrganizationPolicyListPolicyAllow;
         deny?: outputs.projects.OrganizationPolicyListPolicyDeny;
         /**
@@ -6785,11 +12619,39 @@ export namespace projects {
 
 export namespace pubsub {
     export interface SubscriptionDeadLetterPolicy {
+        /**
+         * The name of the topic to which dead letter messages should be published.
+         * Format is `projects/{project}/topics/{topic}`.
+         * The Cloud Pub/Sub service\naccount associated with the enclosing subscription's
+         * parent project (i.e.,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+         * permission to Publish() to this topic.
+         * The operation will fail if the topic does not exist.
+         * Users should ensure that there is a subscription attached to this topic
+         * since messages published to a topic with no subscriptions are lost.
+         */
         deadLetterTopic?: string;
+        /**
+         * The maximum number of delivery attempts for any message. The value must be
+         * between 5 and 100.
+         * The number of delivery attempts is defined as 1 + (the sum of number of
+         * NACKs and number of times the acknowledgement deadline has been exceeded for the message).
+         * A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
+         * client libraries may automatically extend ack_deadlines.
+         * This field will be honored on a best effort basis.
+         * If this parameter is 0, a default value of 5 is used.
+         */
         maxDeliveryAttempts?: number;
     }
 
     export interface SubscriptionExpirationPolicy {
+        /**
+         * Specifies the "time-to-live" duration for an associated resource. The
+         * resource expires if it is not active for a period of ttl.
+         * If ttl is not set, the associated resource never expires.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'.
+         * Example - "3.5s".
+         */
         ttl: string;
     }
 
@@ -6806,13 +12668,56 @@ export namespace pubsub {
     }
 
     export interface SubscriptionPushConfig {
+        /**
+         * Endpoint configuration attributes.
+         * Every endpoint has a set of API supported attributes that can
+         * be used to control different aspects of the message delivery.
+         * The currently supported attribute is x-goog-version, which you
+         * can use to change the format of the pushed message. This
+         * attribute indicates the version of the data expected by
+         * the endpoint. This controls the shape of the pushed message
+         * (i.e., its fields and metadata). The endpoint version is
+         * based on the version of the Pub/Sub API.
+         * If not present during the subscriptions.create call,
+         * it will default to the version of the API used to make
+         * such call. If not present during a subscriptions.modifyPushConfig
+         * call, its value will not be changed. subscriptions.get
+         * calls will always return a valid version, even if the
+         * subscription was created without this attribute.
+         * The possible values for this attribute are:
+         * - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
+         * - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
+         */
         attributes?: {[key: string]: string};
+        /**
+         * If specified, Pub/Sub will generate and attach an OIDC JWT token as
+         * an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+         */
         oidcToken?: outputs.pubsub.SubscriptionPushConfigOidcToken;
+        /**
+         * A URL locating the endpoint to which messages should be pushed.
+         * For example, a Webhook endpoint might use
+         * "https://example.com/push".
+         */
         pushEndpoint: string;
     }
 
     export interface SubscriptionPushConfigOidcToken {
+        /**
+         * Audience to be used when generating OIDC token. The audience claim
+         * identifies the recipients that the JWT is intended for. The audience
+         * value is a single case-sensitive string. Having multiple values (array)
+         * for the audience field is not supported. More info about the OIDC JWT
+         * token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+         * Note: if not specified, the Push endpoint URL will be used.
+         */
         audience?: string;
+        /**
+         * Service account email to be used for generating the OIDC token.
+         * The caller (for subscriptions.create, subscriptions.patch, and
+         * subscriptions.modifyPushConfig RPCs) must have the
+         * iam.serviceAccounts.actAs permission for the service account.
+         */
         serviceAccountEmail: string;
     }
 
@@ -6829,6 +12734,14 @@ export namespace pubsub {
     }
 
     export interface TopicMessageStoragePolicy {
+        /**
+         * A list of IDs of GCP regions where messages that are published to
+         * the topic may be persisted in storage. Messages published by
+         * publishers running in non-allowed GCP regions (or running outside
+         * of GCP altogether) will be routed for storage in one of the
+         * allowed regions. An empty list means that no regions are allowed,
+         * and is not a valid configuration.
+         */
         allowedPersistenceRegions: string[];
     }
 }
@@ -6861,15 +12774,27 @@ export namespace secretmanager {
     }
 
     export interface SecretReplication {
+        /**
+         * The Secret will automatically be replicated without any restrictions.
+         */
         automatic?: boolean;
+        /**
+         * The Secret will automatically be replicated without any restrictions.  Structure is documented below.
+         */
         userManaged?: outputs.secretmanager.SecretReplicationUserManaged;
     }
 
     export interface SecretReplicationUserManaged {
+        /**
+         * The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+         */
         replicas: outputs.secretmanager.SecretReplicationUserManagedReplica[];
     }
 
     export interface SecretReplicationUserManagedReplica {
+        /**
+         * The canonical IDs of the location to replicate data. For example: "us-east1".
+         */
         location: string;
     }
 }
@@ -6920,7 +12845,18 @@ export namespace sourcerepo {
     }
 
     export interface RepositoryPubsubConfig {
+        /**
+         * The format of the Cloud Pub/Sub messages.
+         * - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+         * - JSON: The message payload is a JSON string of SourceRepoEvent.
+         */
         messageFormat: string;
+        /**
+         * Email address of the service account used for publishing Cloud Pub/Sub messages.
+         * This service account needs to be in the same project as the PubsubConfig. When added,
+         * the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+         * If unspecified, it defaults to the compute engine default service account.
+         */
         serviceAccountEmail: string;
         /**
          * The identifier for this object. Format specified above.
@@ -7551,6 +13487,9 @@ export namespace tpu {
     }
 
     export interface NodeSchedulingConfig {
+        /**
+         * Defines whether the TPU instance is preemptible.
+         */
         preemptible: boolean;
     }
 }

@@ -46,21 +46,25 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
-     * Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-     * server that you choose. Names such as .internal are not available when an alternative name server is specified.
+     * Sets an alternative name server for the associated networks.
+     * When specified, all DNS queries are forwarded to a name server that you choose.
+     * Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
      */
     public readonly alternativeNameServerConfig!: pulumi.Output<outputs.dns.PolicyAlternativeNameServerConfig | undefined>;
     /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
+     * A textual description field. Defaults to 'Managed by Pulumi'.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-     * enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+     * Allows networks bound to this policy to receive DNS queries sent
+     * by VMs or applications over VPN connections. When enabled, a
+     * virtual IP address will be allocated from each of the sub-networks
+     * that are bound to this policy.
      */
     public readonly enableInboundForwarding!: pulumi.Output<boolean | undefined>;
     /**
-     * Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+     * Controls whether logging is enabled for the networks bound to this policy.
+     * Defaults to no logging if not set.
      */
     public readonly enableLogging!: pulumi.Output<boolean | undefined>;
     /**
@@ -68,7 +72,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * List of network names specifying networks to which this policy is applied.
+     * List of network names specifying networks to which this policy is applied.  Structure is documented below.
      */
     public readonly networks!: pulumi.Output<outputs.dns.PolicyNetwork[] | undefined>;
     /**
@@ -122,21 +126,25 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyState {
     /**
-     * Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-     * server that you choose. Names such as .internal are not available when an alternative name server is specified.
+     * Sets an alternative name server for the associated networks.
+     * When specified, all DNS queries are forwarded to a name server that you choose.
+     * Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
      */
     readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
     /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
+     * A textual description field. Defaults to 'Managed by Pulumi'.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-     * enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+     * Allows networks bound to this policy to receive DNS queries sent
+     * by VMs or applications over VPN connections. When enabled, a
+     * virtual IP address will be allocated from each of the sub-networks
+     * that are bound to this policy.
      */
     readonly enableInboundForwarding?: pulumi.Input<boolean>;
     /**
-     * Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+     * Controls whether logging is enabled for the networks bound to this policy.
+     * Defaults to no logging if not set.
      */
     readonly enableLogging?: pulumi.Input<boolean>;
     /**
@@ -144,7 +152,7 @@ export interface PolicyState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * List of network names specifying networks to which this policy is applied.
+     * List of network names specifying networks to which this policy is applied.  Structure is documented below.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.PolicyNetwork>[]>;
     /**
@@ -159,21 +167,25 @@ export interface PolicyState {
  */
 export interface PolicyArgs {
     /**
-     * Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-     * server that you choose. Names such as .internal are not available when an alternative name server is specified.
+     * Sets an alternative name server for the associated networks.
+     * When specified, all DNS queries are forwarded to a name server that you choose.
+     * Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
      */
     readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig>;
     /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
+     * A textual description field. Defaults to 'Managed by Pulumi'.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-     * enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+     * Allows networks bound to this policy to receive DNS queries sent
+     * by VMs or applications over VPN connections. When enabled, a
+     * virtual IP address will be allocated from each of the sub-networks
+     * that are bound to this policy.
      */
     readonly enableInboundForwarding?: pulumi.Input<boolean>;
     /**
-     * Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+     * Controls whether logging is enabled for the networks bound to this policy.
+     * Defaults to no logging if not set.
      */
     readonly enableLogging?: pulumi.Input<boolean>;
     /**
@@ -181,7 +193,7 @@ export interface PolicyArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * List of network names specifying networks to which this policy is applied.
+     * List of network names specifying networks to which this policy is applied.  Structure is documented below.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.PolicyNetwork>[]>;
     /**

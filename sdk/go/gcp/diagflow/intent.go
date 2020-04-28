@@ -22,36 +22,39 @@ import (
 type Intent struct {
 	pulumi.CustomResourceState
 
-	// The name of the action associated with the intent. Note: The action name must not contain whitespaces.
+	// The name of the action associated with the intent.
+	// Note: The action name must not contain whitespaces.
 	Action pulumi.StringOutput `pulumi:"action"`
-	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e.
-	// default platform).
+	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+	// (i.e. default platform).
 	DefaultResponsePlatforms pulumi.StringArrayOutput `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the
-	// contexts must be present in the active user session for an event to trigger this intent. See the [events
-	// reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+	// the contexts must be present in the active user session for an event to trigger this intent. See the
+	// [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
 	Events pulumi.StringArrayOutput `pulumi:"events"`
 	// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
 	// in the output.
 	FollowupIntentInfos IntentFollowupIntentInfoArrayOutput `pulumi:"followupIntentInfos"`
-	// The list of context names required for this intent to be triggered. Format: projects/<Project
-	// ID>/agent/sessions/-/contexts/<Context ID>.
+	// The list of context names required for this intent to be triggered.
+	// Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
 	InputContextNames pulumi.StringArrayOutput `pulumi:"inputContextNames"`
 	// Indicates whether this is a fallback intent.
 	IsFallback pulumi.BoolOutput `pulumi:"isFallback"`
-	// Indicates whether Machine Learning is disabled for the intent. Note: If mlDisabled setting is set to true, then this
-	// intent is not taken into account during inference in ML ONLY match mode. Also, auto-markup in the UI is turned off.
+	// Indicates whether Machine Learning is disabled for the intent.
+	// Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+	// ONLY match mode. Also, auto-markup in the UI is turned off.
 	MlDisabled pulumi.BoolOutput `pulumi:"mlDisabled"`
 	// The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The unique identifier of the parent intent in the chain of followup intents. Format: projects/<Project
-	// ID>/agent/intents/<Intent ID>.
+	// The unique identifier of the parent intent in the chain of followup intents.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	ParentFollowupIntentName pulumi.StringOutput `pulumi:"parentFollowupIntentName"`
-	// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0,
-	// the service translates the value to 500,000, which corresponds to the Normal priority in the console. - If the supplied
-	// value is negative, the intent is ignored in runtime detect intent requests.
+	// The priority of this intent. Higher numbers represent higher priorities.
+	// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+	// to the Normal priority in the console.
+	// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -61,8 +64,9 @@ type Intent struct {
 	// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
 	// chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	RootFollowupIntentName pulumi.StringOutput `pulumi:"rootFollowupIntentName"`
-	// Indicates whether webhooks are enabled for the intent. * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in
-	// the intent. * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+	// Indicates whether webhooks are enabled for the intent.
+	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	// filling prompt is forwarded to the webhook.
 	WebhookState pulumi.StringOutput `pulumi:"webhookState"`
 }
@@ -98,36 +102,39 @@ func GetIntent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Intent resources.
 type intentState struct {
-	// The name of the action associated with the intent. Note: The action name must not contain whitespaces.
+	// The name of the action associated with the intent.
+	// Note: The action name must not contain whitespaces.
 	Action *string `pulumi:"action"`
-	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e.
-	// default platform).
+	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+	// (i.e. default platform).
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
 	DisplayName *string `pulumi:"displayName"`
-	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the
-	// contexts must be present in the active user session for an event to trigger this intent. See the [events
-	// reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+	// the contexts must be present in the active user session for an event to trigger this intent. See the
+	// [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
 	Events []string `pulumi:"events"`
 	// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
 	// in the output.
 	FollowupIntentInfos []IntentFollowupIntentInfo `pulumi:"followupIntentInfos"`
-	// The list of context names required for this intent to be triggered. Format: projects/<Project
-	// ID>/agent/sessions/-/contexts/<Context ID>.
+	// The list of context names required for this intent to be triggered.
+	// Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
 	InputContextNames []string `pulumi:"inputContextNames"`
 	// Indicates whether this is a fallback intent.
 	IsFallback *bool `pulumi:"isFallback"`
-	// Indicates whether Machine Learning is disabled for the intent. Note: If mlDisabled setting is set to true, then this
-	// intent is not taken into account during inference in ML ONLY match mode. Also, auto-markup in the UI is turned off.
+	// Indicates whether Machine Learning is disabled for the intent.
+	// Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+	// ONLY match mode. Also, auto-markup in the UI is turned off.
 	MlDisabled *bool `pulumi:"mlDisabled"`
 	// The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	Name *string `pulumi:"name"`
-	// The unique identifier of the parent intent in the chain of followup intents. Format: projects/<Project
-	// ID>/agent/intents/<Intent ID>.
+	// The unique identifier of the parent intent in the chain of followup intents.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	ParentFollowupIntentName *string `pulumi:"parentFollowupIntentName"`
-	// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0,
-	// the service translates the value to 500,000, which corresponds to the Normal priority in the console. - If the supplied
-	// value is negative, the intent is ignored in runtime detect intent requests.
+	// The priority of this intent. Higher numbers represent higher priorities.
+	// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+	// to the Normal priority in the console.
+	// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority *int `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -137,43 +144,47 @@ type intentState struct {
 	// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
 	// chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	RootFollowupIntentName *string `pulumi:"rootFollowupIntentName"`
-	// Indicates whether webhooks are enabled for the intent. * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in
-	// the intent. * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+	// Indicates whether webhooks are enabled for the intent.
+	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	// filling prompt is forwarded to the webhook.
 	WebhookState *string `pulumi:"webhookState"`
 }
 
 type IntentState struct {
-	// The name of the action associated with the intent. Note: The action name must not contain whitespaces.
+	// The name of the action associated with the intent.
+	// Note: The action name must not contain whitespaces.
 	Action pulumi.StringPtrInput
-	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e.
-	// default platform).
+	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+	// (i.e. default platform).
 	DefaultResponsePlatforms pulumi.StringArrayInput
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringPtrInput
-	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the
-	// contexts must be present in the active user session for an event to trigger this intent. See the [events
-	// reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+	// the contexts must be present in the active user session for an event to trigger this intent. See the
+	// [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
 	Events pulumi.StringArrayInput
 	// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
 	// in the output.
 	FollowupIntentInfos IntentFollowupIntentInfoArrayInput
-	// The list of context names required for this intent to be triggered. Format: projects/<Project
-	// ID>/agent/sessions/-/contexts/<Context ID>.
+	// The list of context names required for this intent to be triggered.
+	// Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
 	InputContextNames pulumi.StringArrayInput
 	// Indicates whether this is a fallback intent.
 	IsFallback pulumi.BoolPtrInput
-	// Indicates whether Machine Learning is disabled for the intent. Note: If mlDisabled setting is set to true, then this
-	// intent is not taken into account during inference in ML ONLY match mode. Also, auto-markup in the UI is turned off.
+	// Indicates whether Machine Learning is disabled for the intent.
+	// Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+	// ONLY match mode. Also, auto-markup in the UI is turned off.
 	MlDisabled pulumi.BoolPtrInput
 	// The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	Name pulumi.StringPtrInput
-	// The unique identifier of the parent intent in the chain of followup intents. Format: projects/<Project
-	// ID>/agent/intents/<Intent ID>.
+	// The unique identifier of the parent intent in the chain of followup intents.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	ParentFollowupIntentName pulumi.StringPtrInput
-	// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0,
-	// the service translates the value to 500,000, which corresponds to the Normal priority in the console. - If the supplied
-	// value is negative, the intent is ignored in runtime detect intent requests.
+	// The priority of this intent. Higher numbers represent higher priorities.
+	// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+	// to the Normal priority in the console.
+	// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -183,8 +194,9 @@ type IntentState struct {
 	// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
 	// chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	RootFollowupIntentName pulumi.StringPtrInput
-	// Indicates whether webhooks are enabled for the intent. * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in
-	// the intent. * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+	// Indicates whether webhooks are enabled for the intent.
+	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	// filling prompt is forwarded to the webhook.
 	WebhookState pulumi.StringPtrInput
 }
@@ -194,78 +206,86 @@ func (IntentState) ElementType() reflect.Type {
 }
 
 type intentArgs struct {
-	// The name of the action associated with the intent. Note: The action name must not contain whitespaces.
+	// The name of the action associated with the intent.
+	// Note: The action name must not contain whitespaces.
 	Action *string `pulumi:"action"`
-	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e.
-	// default platform).
+	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+	// (i.e. default platform).
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
 	DisplayName string `pulumi:"displayName"`
-	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the
-	// contexts must be present in the active user session for an event to trigger this intent. See the [events
-	// reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+	// the contexts must be present in the active user session for an event to trigger this intent. See the
+	// [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
 	Events []string `pulumi:"events"`
-	// The list of context names required for this intent to be triggered. Format: projects/<Project
-	// ID>/agent/sessions/-/contexts/<Context ID>.
+	// The list of context names required for this intent to be triggered.
+	// Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
 	InputContextNames []string `pulumi:"inputContextNames"`
 	// Indicates whether this is a fallback intent.
 	IsFallback *bool `pulumi:"isFallback"`
-	// Indicates whether Machine Learning is disabled for the intent. Note: If mlDisabled setting is set to true, then this
-	// intent is not taken into account during inference in ML ONLY match mode. Also, auto-markup in the UI is turned off.
+	// Indicates whether Machine Learning is disabled for the intent.
+	// Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+	// ONLY match mode. Also, auto-markup in the UI is turned off.
 	MlDisabled *bool `pulumi:"mlDisabled"`
-	// The unique identifier of the parent intent in the chain of followup intents. Format: projects/<Project
-	// ID>/agent/intents/<Intent ID>.
+	// The unique identifier of the parent intent in the chain of followup intents.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	ParentFollowupIntentName *string `pulumi:"parentFollowupIntentName"`
-	// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0,
-	// the service translates the value to 500,000, which corresponds to the Normal priority in the console. - If the supplied
-	// value is negative, the intent is ignored in runtime detect intent requests.
+	// The priority of this intent. Higher numbers represent higher priorities.
+	// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+	// to the Normal priority in the console.
+	// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority *int `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts *bool `pulumi:"resetContexts"`
-	// Indicates whether webhooks are enabled for the intent. * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in
-	// the intent. * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+	// Indicates whether webhooks are enabled for the intent.
+	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	// filling prompt is forwarded to the webhook.
 	WebhookState *string `pulumi:"webhookState"`
 }
 
 // The set of arguments for constructing a Intent resource.
 type IntentArgs struct {
-	// The name of the action associated with the intent. Note: The action name must not contain whitespaces.
+	// The name of the action associated with the intent.
+	// Note: The action name must not contain whitespaces.
 	Action pulumi.StringPtrInput
-	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e.
-	// default platform).
+	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+	// (i.e. default platform).
 	DefaultResponsePlatforms pulumi.StringArrayInput
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringInput
-	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the
-	// contexts must be present in the active user session for an event to trigger this intent. See the [events
-	// reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+	// the contexts must be present in the active user session for an event to trigger this intent. See the
+	// [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
 	Events pulumi.StringArrayInput
-	// The list of context names required for this intent to be triggered. Format: projects/<Project
-	// ID>/agent/sessions/-/contexts/<Context ID>.
+	// The list of context names required for this intent to be triggered.
+	// Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
 	InputContextNames pulumi.StringArrayInput
 	// Indicates whether this is a fallback intent.
 	IsFallback pulumi.BoolPtrInput
-	// Indicates whether Machine Learning is disabled for the intent. Note: If mlDisabled setting is set to true, then this
-	// intent is not taken into account during inference in ML ONLY match mode. Also, auto-markup in the UI is turned off.
+	// Indicates whether Machine Learning is disabled for the intent.
+	// Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+	// ONLY match mode. Also, auto-markup in the UI is turned off.
 	MlDisabled pulumi.BoolPtrInput
-	// The unique identifier of the parent intent in the chain of followup intents. Format: projects/<Project
-	// ID>/agent/intents/<Intent ID>.
+	// The unique identifier of the parent intent in the chain of followup intents.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	ParentFollowupIntentName pulumi.StringPtrInput
-	// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0,
-	// the service translates the value to 500,000, which corresponds to the Normal priority in the console. - If the supplied
-	// value is negative, the intent is ignored in runtime detect intent requests.
+	// The priority of this intent. Higher numbers represent higher priorities.
+	// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+	// to the Normal priority in the console.
+	// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts pulumi.BoolPtrInput
-	// Indicates whether webhooks are enabled for the intent. * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in
-	// the intent. * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+	// Indicates whether webhooks are enabled for the intent.
+	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	// filling prompt is forwarded to the webhook.
 	WebhookState pulumi.StringPtrInput
 }

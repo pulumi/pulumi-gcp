@@ -23,8 +23,9 @@ type Tenant struct {
 
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup pulumi.BoolPtrOutput `pulumi:"allowPasswordSignup"`
-	// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-	// sign-in. Admins of the disabled tenant are not able to manage its users.
+	// Whether authentication is disabled for the tenant. If true, the users under
+	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+	// are not able to manage its users.
 	DisableAuth pulumi.BoolPtrOutput `pulumi:"disableAuth"`
 	// Human friendly display name of the tenant.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -70,8 +71,9 @@ func GetTenant(ctx *pulumi.Context,
 type tenantState struct {
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup *bool `pulumi:"allowPasswordSignup"`
-	// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-	// sign-in. Admins of the disabled tenant are not able to manage its users.
+	// Whether authentication is disabled for the tenant. If true, the users under
+	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+	// are not able to manage its users.
 	DisableAuth *bool `pulumi:"disableAuth"`
 	// Human friendly display name of the tenant.
 	DisplayName *string `pulumi:"displayName"`
@@ -87,8 +89,9 @@ type tenantState struct {
 type TenantState struct {
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup pulumi.BoolPtrInput
-	// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-	// sign-in. Admins of the disabled tenant are not able to manage its users.
+	// Whether authentication is disabled for the tenant. If true, the users under
+	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+	// are not able to manage its users.
 	DisableAuth pulumi.BoolPtrInput
 	// Human friendly display name of the tenant.
 	DisplayName pulumi.StringPtrInput
@@ -108,8 +111,9 @@ func (TenantState) ElementType() reflect.Type {
 type tenantArgs struct {
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup *bool `pulumi:"allowPasswordSignup"`
-	// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-	// sign-in. Admins of the disabled tenant are not able to manage its users.
+	// Whether authentication is disabled for the tenant. If true, the users under
+	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+	// are not able to manage its users.
 	DisableAuth *bool `pulumi:"disableAuth"`
 	// Human friendly display name of the tenant.
 	DisplayName string `pulumi:"displayName"`
@@ -124,8 +128,9 @@ type tenantArgs struct {
 type TenantArgs struct {
 	// Whether to allow email/password user authentication.
 	AllowPasswordSignup pulumi.BoolPtrInput
-	// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-	// sign-in. Admins of the disabled tenant are not able to manage its users.
+	// Whether authentication is disabled for the tenant. If true, the users under
+	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+	// are not able to manage its users.
 	DisableAuth pulumi.BoolPtrInput
 	// Human friendly display name of the tenant.
 	DisplayName pulumi.StringInput

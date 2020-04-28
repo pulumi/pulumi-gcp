@@ -31,7 +31,7 @@ type GetBillingAccountArgs struct {
 type GetBillingAccountResult struct {
 	BillingAccount *string `pulumi:"billingAccount"`
 	DisplayName    string  `pulumi:"displayName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
 	Name string `pulumi:"name"`

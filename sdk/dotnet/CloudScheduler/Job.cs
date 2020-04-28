@@ -27,30 +27,36 @@ namespace Pulumi.Gcp.CloudScheduler
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
-        /// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
-        /// instance
+        /// App Engine HTTP target.
+        /// If the job providers a App Engine HTTP target the cron will
+        /// send a request to the service instance  Structure is documented below.
         /// </summary>
         [Output("appEngineHttpTarget")]
         public Output<Outputs.JobAppEngineHttpTarget?> AppEngineHttpTarget { get; private set; } = null!;
 
         /// <summary>
-        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
-        /// and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
-        /// Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
-        /// targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
-        /// in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+        /// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
+        /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
+        /// The allowed duration for this deadline is:
+        /// * For HTTP targets, between 15 seconds and 30 minutes.
+        /// * For App Engine HTTP targets, between 15 seconds and 24 hours.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         /// </summary>
         [Output("attemptDeadline")]
         public Output<string?> AttemptDeadline { get; private set; } = null!;
 
         /// <summary>
-        /// A human-readable description for the job. This string must not contain more than 500 characters.
+        /// A human-readable description for the job.
+        /// This string must not contain more than 500 characters.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+        /// HTTP target.
+        /// If the job providers a http_target the cron will
+        /// send a request to the targeted url  Structure is documented below.
         /// </summary>
         [Output("httpTarget")]
         public Output<Outputs.JobHttpTarget?> HttpTarget { get; private set; } = null!;
@@ -69,7 +75,9 @@ namespace Pulumi.Gcp.CloudScheduler
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+        /// Pub/Sub target
+        /// If the job providers a Pub/Sub target the cron will publish
+        /// a message to the provided topic  Structure is documented below.
         /// </summary>
         [Output("pubsubTarget")]
         public Output<Outputs.JobPubsubTarget?> PubsubTarget { get; private set; } = null!;
@@ -81,8 +89,9 @@ namespace Pulumi.Gcp.CloudScheduler
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the handler,
-        /// then it will be retried with exponential backoff according to the settings
+        /// By default, if a job does not complete successfully,
+        /// meaning that an acknowledgement is not received from the handler,
+        /// then it will be retried with exponential backoff according to the settings  Structure is documented below.
         /// </summary>
         [Output("retryConfig")]
         public Output<Outputs.JobRetryConfig?> RetryConfig { get; private set; } = null!;
@@ -94,8 +103,8 @@ namespace Pulumi.Gcp.CloudScheduler
         public Output<string?> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the
-        /// tz database.
+        /// Specifies the time zone to be used in interpreting schedule.
+        /// The value of this field must be a time zone name from the tz database.
         /// </summary>
         [Output("timeZone")]
         public Output<string?> TimeZone { get; private set; } = null!;
@@ -147,30 +156,36 @@ namespace Pulumi.Gcp.CloudScheduler
     public sealed class JobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
-        /// instance
+        /// App Engine HTTP target.
+        /// If the job providers a App Engine HTTP target the cron will
+        /// send a request to the service instance  Structure is documented below.
         /// </summary>
         [Input("appEngineHttpTarget")]
         public Input<Inputs.JobAppEngineHttpTargetArgs>? AppEngineHttpTarget { get; set; }
 
         /// <summary>
-        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
-        /// and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
-        /// Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
-        /// targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
-        /// in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+        /// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
+        /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
+        /// The allowed duration for this deadline is:
+        /// * For HTTP targets, between 15 seconds and 30 minutes.
+        /// * For App Engine HTTP targets, between 15 seconds and 24 hours.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         /// </summary>
         [Input("attemptDeadline")]
         public Input<string>? AttemptDeadline { get; set; }
 
         /// <summary>
-        /// A human-readable description for the job. This string must not contain more than 500 characters.
+        /// A human-readable description for the job.
+        /// This string must not contain more than 500 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+        /// HTTP target.
+        /// If the job providers a http_target the cron will
+        /// send a request to the targeted url  Structure is documented below.
         /// </summary>
         [Input("httpTarget")]
         public Input<Inputs.JobHttpTargetArgs>? HttpTarget { get; set; }
@@ -189,7 +204,9 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+        /// Pub/Sub target
+        /// If the job providers a Pub/Sub target the cron will publish
+        /// a message to the provided topic  Structure is documented below.
         /// </summary>
         [Input("pubsubTarget")]
         public Input<Inputs.JobPubsubTargetArgs>? PubsubTarget { get; set; }
@@ -201,8 +218,9 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the handler,
-        /// then it will be retried with exponential backoff according to the settings
+        /// By default, if a job does not complete successfully,
+        /// meaning that an acknowledgement is not received from the handler,
+        /// then it will be retried with exponential backoff according to the settings  Structure is documented below.
         /// </summary>
         [Input("retryConfig")]
         public Input<Inputs.JobRetryConfigArgs>? RetryConfig { get; set; }
@@ -214,8 +232,8 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the
-        /// tz database.
+        /// Specifies the time zone to be used in interpreting schedule.
+        /// The value of this field must be a time zone name from the tz database.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
@@ -228,30 +246,36 @@ namespace Pulumi.Gcp.CloudScheduler
     public sealed class JobState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// App Engine HTTP target. If the job providers a App Engine HTTP target the cron will send a request to the service
-        /// instance
+        /// App Engine HTTP target.
+        /// If the job providers a App Engine HTTP target the cron will
+        /// send a request to the service instance  Structure is documented below.
         /// </summary>
         [Input("appEngineHttpTarget")]
         public Input<Inputs.JobAppEngineHttpTargetGetArgs>? AppEngineHttpTarget { get; set; }
 
         /// <summary>
-        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled
-        /// and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in execution logs. Cloud
-        /// Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP
-        /// targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. A duration
-        /// in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+        /// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
+        /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
+        /// The allowed duration for this deadline is:
+        /// * For HTTP targets, between 15 seconds and 30 minutes.
+        /// * For App Engine HTTP targets, between 15 seconds and 24 hours.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         /// </summary>
         [Input("attemptDeadline")]
         public Input<string>? AttemptDeadline { get; set; }
 
         /// <summary>
-        /// A human-readable description for the job. This string must not contain more than 500 characters.
+        /// A human-readable description for the job.
+        /// This string must not contain more than 500 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// HTTP target. If the job providers a http_target the cron will send a request to the targeted url
+        /// HTTP target.
+        /// If the job providers a http_target the cron will
+        /// send a request to the targeted url  Structure is documented below.
         /// </summary>
         [Input("httpTarget")]
         public Input<Inputs.JobHttpTargetGetArgs>? HttpTarget { get; set; }
@@ -270,7 +294,9 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Pub/Sub target If the job providers a Pub/Sub target the cron will publish a message to the provided topic
+        /// Pub/Sub target
+        /// If the job providers a Pub/Sub target the cron will publish
+        /// a message to the provided topic  Structure is documented below.
         /// </summary>
         [Input("pubsubTarget")]
         public Input<Inputs.JobPubsubTargetGetArgs>? PubsubTarget { get; set; }
@@ -282,8 +308,9 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// By default, if a job does not complete successfully, meaning that an acknowledgement is not received from the handler,
-        /// then it will be retried with exponential backoff according to the settings
+        /// By default, if a job does not complete successfully,
+        /// meaning that an acknowledgement is not received from the handler,
+        /// then it will be retried with exponential backoff according to the settings  Structure is documented below.
         /// </summary>
         [Input("retryConfig")]
         public Input<Inputs.JobRetryConfigGetArgs>? RetryConfig { get; set; }
@@ -295,8 +322,8 @@ namespace Pulumi.Gcp.CloudScheduler
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the
-        /// tz database.
+        /// Specifies the time zone to be used in interpreting schedule.
+        /// The value of this field must be a time zone name from the tz database.
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }

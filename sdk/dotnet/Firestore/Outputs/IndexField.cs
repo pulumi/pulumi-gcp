@@ -13,8 +13,19 @@ namespace Pulumi.Gcp.Firestore.Outputs
     [OutputType]
     public sealed class IndexField
     {
+        /// <summary>
+        /// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+        /// be specified.
+        /// </summary>
         public readonly string? ArrayConfig;
+        /// <summary>
+        /// Name of the field.
+        /// </summary>
         public readonly string? FieldPath;
+        /// <summary>
+        /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
+        /// Only one of `order` and `arrayConfig` can be specified.
+        /// </summary>
         public readonly string? Order;
 
         [OutputConstructor]

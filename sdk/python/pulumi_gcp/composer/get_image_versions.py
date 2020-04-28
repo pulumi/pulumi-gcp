@@ -18,7 +18,7 @@ class GetImageVersionsResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if image_versions and not isinstance(image_versions, list):
             raise TypeError("Expected argument 'image_versions' to be a list")

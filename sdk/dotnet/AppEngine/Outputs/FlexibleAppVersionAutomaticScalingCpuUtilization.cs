@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     [OutputType]
     public sealed class FlexibleAppVersionAutomaticScalingCpuUtilization
     {
+        /// <summary>
+        /// Period of time over which CPU utilization is calculated.
+        /// </summary>
         public readonly string? AggregationWindowLength;
+        /// <summary>
+        /// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
+        /// </summary>
         public readonly double TargetUtilization;
 
         [OutputConstructor]

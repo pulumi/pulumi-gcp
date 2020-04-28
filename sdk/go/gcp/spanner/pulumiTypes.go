@@ -142,15 +142,30 @@ func (o DatabaseIAMBindingConditionPtrOutput) Elem() DatabaseIAMBindingCondition
 }
 
 func (o DatabaseIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o DatabaseIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o DatabaseIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o DatabaseIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o DatabaseIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatabaseIAMMemberCondition struct {
@@ -285,15 +300,30 @@ func (o DatabaseIAMMemberConditionPtrOutput) Elem() DatabaseIAMMemberConditionOu
 }
 
 func (o DatabaseIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *DatabaseIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o DatabaseIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o DatabaseIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o DatabaseIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o DatabaseIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceIAMBindingCondition struct {
@@ -428,15 +458,30 @@ func (o InstanceIAMBindingConditionPtrOutput) Elem() InstanceIAMBindingCondition
 }
 
 func (o InstanceIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *InstanceIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o InstanceIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o InstanceIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceIAMMemberCondition struct {
@@ -571,15 +616,30 @@ func (o InstanceIAMMemberConditionPtrOutput) Elem() InstanceIAMMemberConditionOu
 }
 
 func (o InstanceIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *InstanceIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o InstanceIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o InstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

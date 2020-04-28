@@ -24,7 +24,8 @@ type GameServerDeployment struct {
 	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
 	// Human readable description of the game server deployment.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The labels associated with this game server deployment. Each label is a key-value pair.
+	// The labels associated with this game server deployment. Each label is a
+	// key-value pair.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Location of the Deployment.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -72,7 +73,8 @@ type gameServerDeploymentState struct {
 	DeploymentId *string `pulumi:"deploymentId"`
 	// Human readable description of the game server deployment.
 	Description *string `pulumi:"description"`
-	// The labels associated with this game server deployment. Each label is a key-value pair.
+	// The labels associated with this game server deployment. Each label is a
+	// key-value pair.
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the Deployment.
 	Location *string `pulumi:"location"`
@@ -90,7 +92,8 @@ type GameServerDeploymentState struct {
 	DeploymentId pulumi.StringPtrInput
 	// Human readable description of the game server deployment.
 	Description pulumi.StringPtrInput
-	// The labels associated with this game server deployment. Each label is a key-value pair.
+	// The labels associated with this game server deployment. Each label is a
+	// key-value pair.
 	Labels pulumi.StringMapInput
 	// Location of the Deployment.
 	Location pulumi.StringPtrInput
@@ -112,7 +115,8 @@ type gameServerDeploymentArgs struct {
 	DeploymentId string `pulumi:"deploymentId"`
 	// Human readable description of the game server deployment.
 	Description *string `pulumi:"description"`
-	// The labels associated with this game server deployment. Each label is a key-value pair.
+	// The labels associated with this game server deployment. Each label is a
+	// key-value pair.
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the Deployment.
 	Location *string `pulumi:"location"`
@@ -127,7 +131,8 @@ type GameServerDeploymentArgs struct {
 	DeploymentId pulumi.StringInput
 	// Human readable description of the game server deployment.
 	Description pulumi.StringPtrInput
-	// The labels associated with this game server deployment. Each label is a key-value pair.
+	// The labels associated with this game server deployment. Each label is a
+	// key-value pair.
 	Labels pulumi.StringMapInput
 	// Location of the Deployment.
 	Location pulumi.StringPtrInput

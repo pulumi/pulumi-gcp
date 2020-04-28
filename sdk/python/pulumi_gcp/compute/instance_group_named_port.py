@@ -16,7 +16,8 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
+    The name for this named port. The name must be 1-63 characters
+    long, and comply with RFC1035.
     """
     port: pulumi.Output[float]
     """
@@ -48,7 +49,8 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The name of the instance group.
-        :param pulumi.Input[str] name: The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
+        :param pulumi.Input[str] name: The name for this named port. The name must be 1-63 characters
+               long, and comply with RFC1035.
         :param pulumi.Input[float] port: The port number, which can be a value between 1 and 65535.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -96,7 +98,8 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The name of the instance group.
-        :param pulumi.Input[str] name: The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
+        :param pulumi.Input[str] name: The name for this named port. The name must be 1-63 characters
+               long, and comply with RFC1035.
         :param pulumi.Input[float] port: The port number, which can be a value between 1 and 65535.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

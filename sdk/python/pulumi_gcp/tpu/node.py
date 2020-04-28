@@ -16,11 +16,14 @@ class Node(pulumi.CustomResource):
     """
     cidr_block: pulumi.Output[str]
     """
-    The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-    Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-    address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-    conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-    that is using that CIDR block.
+    The CIDR block that the TPU node will use when selecting an IP
+    address. This CIDR block must be a /29 block; the Compute Engine
+    networks API forbids a smaller block, and using a larger block would
+    be wasteful (a node can only consume one IP address).
+    Errors will occur if the CIDR block has already been used for a
+    currently existing TPU node, the CIDR block conflicts with any
+    subnetworks in the user's provided network, or the provided network
+    is peered with another network that is using that CIDR block.
     """
     description: pulumi.Output[str]
     """
@@ -36,8 +39,10 @@ class Node(pulumi.CustomResource):
     """
     network: pulumi.Output[str]
     """
-    The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-    which this API has been activated. If none is provided, "default" will be used.
+    The name of a network to peer the TPU node to. It must be a
+    preexisting Compute Engine network inside of the project on which
+    this API has been activated. If none is provided, "default" will be
+    used.
     """
     network_endpoints: pulumi.Output[list]
     """
@@ -54,9 +59,9 @@ class Node(pulumi.CustomResource):
     """
     scheduling_config: pulumi.Output[dict]
     """
-    Sets the scheduling options for this TPU instance.
+    Sets the scheduling options for this TPU instance.  Structure is documented below.
 
-      * `preemptible` (`bool`)
+      * `preemptible` (`bool`) - Defines whether the TPU instance is preemptible.
     """
     service_account: pulumi.Output[str]
     """
@@ -85,25 +90,30 @@ class Node(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
-        :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-               Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-               address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-               conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-               that is using that CIDR block.
+        :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP
+               address. This CIDR block must be a /29 block; the Compute Engine
+               networks API forbids a smaller block, and using a larger block would
+               be wasteful (a node can only consume one IP address).
+               Errors will occur if the CIDR block has already been used for a
+               currently existing TPU node, the CIDR block conflicts with any
+               subnetworks in the user's provided network, or the provided network
+               is peered with another network that is using that CIDR block.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
         :param pulumi.Input[dict] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: The immutable name of the TPU.
-        :param pulumi.Input[str] network: The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-               which this API has been activated. If none is provided, "default" will be used.
+        :param pulumi.Input[str] network: The name of a network to peer the TPU node to. It must be a
+               preexisting Compute Engine network inside of the project on which
+               this API has been activated. If none is provided, "default" will be
+               used.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] scheduling_config: Sets the scheduling options for this TPU instance.
+        :param pulumi.Input[dict] scheduling_config: Sets the scheduling options for this TPU instance.  Structure is documented below.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
         :param pulumi.Input[str] zone: The GCP location for the TPU.
 
         The **scheduling_config** object supports the following:
 
-          * `preemptible` (`pulumi.Input[bool]`)
+          * `preemptible` (`pulumi.Input[bool]`) - Defines whether the TPU instance is preemptible.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -158,21 +168,26 @@ class Node(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
-        :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-               Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-               address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-               conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-               that is using that CIDR block.
+        :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP
+               address. This CIDR block must be a /29 block; the Compute Engine
+               networks API forbids a smaller block, and using a larger block would
+               be wasteful (a node can only consume one IP address).
+               Errors will occur if the CIDR block has already been used for a
+               currently existing TPU node, the CIDR block conflicts with any
+               subnetworks in the user's provided network, or the provided network
+               is peered with another network that is using that CIDR block.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
         :param pulumi.Input[dict] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: The immutable name of the TPU.
-        :param pulumi.Input[str] network: The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-               which this API has been activated. If none is provided, "default" will be used.
+        :param pulumi.Input[str] network: The name of a network to peer the TPU node to. It must be a
+               preexisting Compute Engine network inside of the project on which
+               this API has been activated. If none is provided, "default" will be
+               used.
         :param pulumi.Input[list] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
                node first reach out to the first (index 0) entry.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] scheduling_config: Sets the scheduling options for this TPU instance.
+        :param pulumi.Input[dict] scheduling_config: Sets the scheduling options for this TPU instance.  Structure is documented below.
         :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
                Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
@@ -185,7 +200,7 @@ class Node(pulumi.CustomResource):
 
         The **scheduling_config** object supports the following:
 
-          * `preemptible` (`pulumi.Input[bool]`)
+          * `preemptible` (`pulumi.Input[bool]`) - Defines whether the TPU instance is preemptible.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

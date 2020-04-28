@@ -12,12 +12,22 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class NodeTemplateNodeTypeFlexibilityGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Number of virtual CPUs to use.
+        /// </summary>
         [Input("cpus")]
         public Input<string>? Cpus { get; set; }
 
+        /// <summary>
+        /// -
+        /// Use local SSD
+        /// </summary>
         [Input("localSsd")]
         public Input<string>? LocalSsd { get; set; }
 
+        /// <summary>
+        /// Physical memory available to the node, defined in MB.
+        /// </summary>
         [Input("memory")]
         public Input<string>? Memory { get; set; }
 

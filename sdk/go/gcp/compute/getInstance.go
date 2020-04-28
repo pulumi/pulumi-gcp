@@ -57,7 +57,7 @@ type LookupInstanceResult struct {
 	// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
 	GuestAccelerators []GetInstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	Hostname          string                        `pulumi:"hostname"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId string `pulumi:"instanceId"`

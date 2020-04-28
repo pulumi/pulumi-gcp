@@ -16,7 +16,8 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
+    The resource policy to be attached to the disk for scheduling snapshot
+    creation. Do not specify the self link.
     """
     project: pulumi.Output[str]
     """
@@ -37,7 +38,8 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] disk: The name of the regional disk in which the resource policies are attached to.
-        :param pulumi.Input[str] name: The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
+        :param pulumi.Input[str] name: The resource policy to be attached to the disk for scheduling snapshot
+               creation. Do not specify the self link.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the disk resides.
@@ -81,7 +83,8 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] disk: The name of the regional disk in which the resource policies are attached to.
-        :param pulumi.Input[str] name: The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
+        :param pulumi.Input[str] name: The resource policy to be attached to the disk for scheduling snapshot
+               creation. Do not specify the self link.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the disk resides.

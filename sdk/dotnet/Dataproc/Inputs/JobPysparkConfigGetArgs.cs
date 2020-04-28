@@ -63,6 +63,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("loggingConfig")]
         public Input<Inputs.JobPysparkConfigLoggingConfigGetArgs>? LoggingConfig { get; set; }
 
+        /// <summary>
+        /// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+        /// </summary>
         [Input("mainPythonFileUri", required: true)]
         public Input<string> MainPythonFileUri { get; set; } = null!;
 

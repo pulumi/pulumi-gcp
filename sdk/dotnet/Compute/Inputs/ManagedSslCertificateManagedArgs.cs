@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         [Input("domains", required: true)]
         private InputList<string>? _domains;
+
+        /// <summary>
+        /// Domains for which a managed SSL certificate will be valid.  Currently,
+        /// there can be up to 100 domains in this list.
+        /// </summary>
         public InputList<string> Domains
         {
             get => _domains ?? (_domains = new InputList<string>());

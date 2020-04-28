@@ -51,7 +51,7 @@ class GetFunctionResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if ingress_settings and not isinstance(ingress_settings, str):
             raise TypeError("Expected argument 'ingress_settings' to be a str")

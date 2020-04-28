@@ -13,8 +13,24 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class DiskSourceImageEncryptionKey
     {
+        /// <summary>
+        /// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+        /// in the cloud console. Your project's Compute Engine System service account
+        /// (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
+        /// `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
+        /// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        /// </summary>
         public readonly string? KmsKeySelfLink;
+        /// <summary>
+        /// Specifies a 256-bit customer-supplied encryption key, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// </summary>
         public readonly string? RawKey;
+        /// <summary>
+        /// -
+        /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+        /// encryption key that protects this resource.
+        /// </summary>
         public readonly string? Sha256;
 
         [OutputConstructor]

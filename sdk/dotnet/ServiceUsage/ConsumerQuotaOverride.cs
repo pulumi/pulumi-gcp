@@ -29,20 +29,20 @@ namespace Pulumi.Gcp.ServiceUsage
         public Output<ImmutableDictionary<string, string>?> Dimensions { get; private set; } = null!;
 
         /// <summary>
-        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-        /// safety check is ignored.
+        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+        /// If `force` is `true`, that safety check is ignored.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The limit on the metric, e.g. '/project/region'.
+        /// The limit on the metric, e.g. `/project/region`.
         /// </summary>
         [Output("limit")]
         public Output<string> Limit { get; private set; } = null!;
 
         /// <summary>
-        /// The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+        /// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         /// </summary>
         [Output("metric")]
         public Output<string> Metric { get; private set; } = null!;
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.ServiceUsage
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+        /// The service that the metrics belong to, e.g. `compute.googleapis.com`.
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
@@ -131,20 +131,20 @@ namespace Pulumi.Gcp.ServiceUsage
         }
 
         /// <summary>
-        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-        /// safety check is ignored.
+        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+        /// If `force` is `true`, that safety check is ignored.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The limit on the metric, e.g. '/project/region'.
+        /// The limit on the metric, e.g. `/project/region`.
         /// </summary>
         [Input("limit", required: true)]
         public Input<string> Limit { get; set; } = null!;
 
         /// <summary>
-        /// The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+        /// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         /// </summary>
         [Input("metric", required: true)]
         public Input<string> Metric { get; set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.ServiceUsage
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+        /// The service that the metrics belong to, e.g. `compute.googleapis.com`.
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
@@ -188,20 +188,20 @@ namespace Pulumi.Gcp.ServiceUsage
         }
 
         /// <summary>
-        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected. If 'force' is 'true', that
-        /// safety check is ignored.
+        /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
+        /// If `force` is `true`, that safety check is ignored.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The limit on the metric, e.g. '/project/region'.
+        /// The limit on the metric, e.g. `/project/region`.
         /// </summary>
         [Input("limit")]
         public Input<string>? Limit { get; set; }
 
         /// <summary>
-        /// The metric that should be limited, e.g. 'compute.googleapis.com/cpus'.
+        /// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
         /// </summary>
         [Input("metric")]
         public Input<string>? Metric { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.Gcp.ServiceUsage
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The service that the metrics belong to, e.g. 'compute.googleapis.com'.
+        /// The service that the metrics belong to, e.g. `compute.googleapis.com`.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

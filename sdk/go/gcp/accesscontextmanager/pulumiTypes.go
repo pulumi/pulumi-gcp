@@ -11,8 +11,14 @@ import (
 )
 
 type AccessLevelBasic struct {
-	CombiningFunction *string                     `pulumi:"combiningFunction"`
-	Conditions        []AccessLevelBasicCondition `pulumi:"conditions"`
+	// How the conditions list should be combined to determine if a request
+	// is granted this AccessLevel. If AND is used, each Condition in
+	// conditions must be satisfied for the AccessLevel to be applied. If
+	// OR is used, at least one Condition in conditions must be satisfied
+	// for the AccessLevel to be applied. Defaults to AND if unspecified.
+	CombiningFunction *string `pulumi:"combiningFunction"`
+	// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+	Conditions []AccessLevelBasicCondition `pulumi:"conditions"`
 }
 
 // AccessLevelBasicInput is an input type that accepts AccessLevelBasicArgs and AccessLevelBasicOutput values.
@@ -28,8 +34,14 @@ type AccessLevelBasicInput interface {
 }
 
 type AccessLevelBasicArgs struct {
-	CombiningFunction pulumi.StringPtrInput               `pulumi:"combiningFunction"`
-	Conditions        AccessLevelBasicConditionArrayInput `pulumi:"conditions"`
+	// How the conditions list should be combined to determine if a request
+	// is granted this AccessLevel. If AND is used, each Condition in
+	// conditions must be satisfied for the AccessLevel to be applied. If
+	// OR is used, at least one Condition in conditions must be satisfied
+	// for the AccessLevel to be applied. Defaults to AND if unspecified.
+	CombiningFunction pulumi.StringPtrInput `pulumi:"combiningFunction"`
+	// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+	Conditions AccessLevelBasicConditionArrayInput `pulumi:"conditions"`
 }
 
 func (AccessLevelBasicArgs) ElementType() reflect.Type {
@@ -109,10 +121,17 @@ func (o AccessLevelBasicOutput) ToAccessLevelBasicPtrOutputWithContext(ctx conte
 		return &v
 	}).(AccessLevelBasicPtrOutput)
 }
+
+// How the conditions list should be combined to determine if a request
+// is granted this AccessLevel. If AND is used, each Condition in
+// conditions must be satisfied for the AccessLevel to be applied. If
+// OR is used, at least one Condition in conditions must be satisfied
+// for the AccessLevel to be applied. Defaults to AND if unspecified.
 func (o AccessLevelBasicOutput) CombiningFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
 }
 
+// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
 func (o AccessLevelBasicOutput) Conditions() AccessLevelBasicConditionArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasic) []AccessLevelBasicCondition { return v.Conditions }).(AccessLevelBasicConditionArrayOutput)
 }
@@ -135,21 +154,68 @@ func (o AccessLevelBasicPtrOutput) Elem() AccessLevelBasicOutput {
 	return o.ApplyT(func(v *AccessLevelBasic) AccessLevelBasic { return *v }).(AccessLevelBasicOutput)
 }
 
+// How the conditions list should be combined to determine if a request
+// is granted this AccessLevel. If AND is used, each Condition in
+// conditions must be satisfied for the AccessLevel to be applied. If
+// OR is used, at least one Condition in conditions must be satisfied
+// for the AccessLevel to be applied. Defaults to AND if unspecified.
 func (o AccessLevelBasicPtrOutput) CombiningFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AccessLevelBasic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CombiningFunction
+	}).(pulumi.StringPtrOutput)
 }
 
+// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
 func (o AccessLevelBasicPtrOutput) Conditions() AccessLevelBasicConditionArrayOutput {
-	return o.ApplyT(func(v AccessLevelBasic) []AccessLevelBasicCondition { return v.Conditions }).(AccessLevelBasicConditionArrayOutput)
+	return o.ApplyT(func(v *AccessLevelBasic) []AccessLevelBasicCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(AccessLevelBasicConditionArrayOutput)
 }
 
 type AccessLevelBasicCondition struct {
-	DevicePolicy         *AccessLevelBasicConditionDevicePolicy `pulumi:"devicePolicy"`
-	IpSubnetworks        []string                               `pulumi:"ipSubnetworks"`
-	Members              []string                               `pulumi:"members"`
-	Negate               *bool                                  `pulumi:"negate"`
-	Regions              []string                               `pulumi:"regions"`
-	RequiredAccessLevels []string                               `pulumi:"requiredAccessLevels"`
+	// Device specific restrictions, all restrictions must hold for
+	// the Condition to be true. If not specified, all devices are
+	// allowed.  Structure is documented below.
+	DevicePolicy *AccessLevelBasicConditionDevicePolicy `pulumi:"devicePolicy"`
+	// A list of CIDR block IP subnetwork specification. May be IPv4
+	// or IPv6.
+	// Note that for a CIDR IP address block, the specified IP address
+	// portion must be properly truncated (i.e. all the host bits must
+	// be zero) or the input is considered malformed. For example,
+	// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+	// for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+	// is not. The originating IP of a request must be in one of the
+	// listed subnets in order for this Condition to be true.
+	// If empty, all IP addresses are allowed.
+	IpSubnetworks []string `pulumi:"ipSubnetworks"`
+	// An allowed list of members (users, service accounts).
+	// Using groups is not supported yet.
+	// The signed-in user originating the request must be a part of one
+	// of the provided members. If not specified, a request may come
+	// from any user (logged in/not logged in, not present in any
+	// groups, etc.).
+	// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+	Members []string `pulumi:"members"`
+	// Whether to negate the Condition. If true, the Condition becomes
+	// a NAND over its non-empty fields, each field must be false for
+	// the Condition overall to be satisfied. Defaults to false.
+	Negate *bool `pulumi:"negate"`
+	// The request must originate from one of the provided
+	// countries/regions.
+	// Format: A valid ISO 3166-1 alpha-2 code.
+	Regions []string `pulumi:"regions"`
+	// A list of other access levels defined in the same Policy,
+	// referenced by resource name. Referencing an AccessLevel which
+	// does not exist is an error. All access levels listed must be
+	// granted for the Condition to be true.
+	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+	RequiredAccessLevels []string `pulumi:"requiredAccessLevels"`
 }
 
 // AccessLevelBasicConditionInput is an input type that accepts AccessLevelBasicConditionArgs and AccessLevelBasicConditionOutput values.
@@ -165,12 +231,43 @@ type AccessLevelBasicConditionInput interface {
 }
 
 type AccessLevelBasicConditionArgs struct {
-	DevicePolicy         AccessLevelBasicConditionDevicePolicyPtrInput `pulumi:"devicePolicy"`
-	IpSubnetworks        pulumi.StringArrayInput                       `pulumi:"ipSubnetworks"`
-	Members              pulumi.StringArrayInput                       `pulumi:"members"`
-	Negate               pulumi.BoolPtrInput                           `pulumi:"negate"`
-	Regions              pulumi.StringArrayInput                       `pulumi:"regions"`
-	RequiredAccessLevels pulumi.StringArrayInput                       `pulumi:"requiredAccessLevels"`
+	// Device specific restrictions, all restrictions must hold for
+	// the Condition to be true. If not specified, all devices are
+	// allowed.  Structure is documented below.
+	DevicePolicy AccessLevelBasicConditionDevicePolicyPtrInput `pulumi:"devicePolicy"`
+	// A list of CIDR block IP subnetwork specification. May be IPv4
+	// or IPv6.
+	// Note that for a CIDR IP address block, the specified IP address
+	// portion must be properly truncated (i.e. all the host bits must
+	// be zero) or the input is considered malformed. For example,
+	// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+	// for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+	// is not. The originating IP of a request must be in one of the
+	// listed subnets in order for this Condition to be true.
+	// If empty, all IP addresses are allowed.
+	IpSubnetworks pulumi.StringArrayInput `pulumi:"ipSubnetworks"`
+	// An allowed list of members (users, service accounts).
+	// Using groups is not supported yet.
+	// The signed-in user originating the request must be a part of one
+	// of the provided members. If not specified, a request may come
+	// from any user (logged in/not logged in, not present in any
+	// groups, etc.).
+	// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Whether to negate the Condition. If true, the Condition becomes
+	// a NAND over its non-empty fields, each field must be false for
+	// the Condition overall to be satisfied. Defaults to false.
+	Negate pulumi.BoolPtrInput `pulumi:"negate"`
+	// The request must originate from one of the provided
+	// countries/regions.
+	// Format: A valid ISO 3166-1 alpha-2 code.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// A list of other access levels defined in the same Policy,
+	// referenced by resource name. Referencing an AccessLevel which
+	// does not exist is an error. All access levels listed must be
+	// granted for the Condition to be true.
+	// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+	RequiredAccessLevels pulumi.StringArrayInput `pulumi:"requiredAccessLevels"`
 }
 
 func (AccessLevelBasicConditionArgs) ElementType() reflect.Type {
@@ -225,26 +322,57 @@ func (o AccessLevelBasicConditionOutput) ToAccessLevelBasicConditionOutputWithCo
 	return o
 }
 
+// Device specific restrictions, all restrictions must hold for
+// the Condition to be true. If not specified, all devices are
+// allowed.  Structure is documented below.
 func (o AccessLevelBasicConditionOutput) DevicePolicy() AccessLevelBasicConditionDevicePolicyPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasicCondition) *AccessLevelBasicConditionDevicePolicy { return v.DevicePolicy }).(AccessLevelBasicConditionDevicePolicyPtrOutput)
 }
 
+// A list of CIDR block IP subnetwork specification. May be IPv4
+// or IPv6.
+// Note that for a CIDR IP address block, the specified IP address
+// portion must be properly truncated (i.e. all the host bits must
+// be zero) or the input is considered malformed. For example,
+// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+// for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+// is not. The originating IP of a request must be in one of the
+// listed subnets in order for this Condition to be true.
+// If empty, all IP addresses are allowed.
 func (o AccessLevelBasicConditionOutput) IpSubnetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicCondition) []string { return v.IpSubnetworks }).(pulumi.StringArrayOutput)
 }
 
+// An allowed list of members (users, service accounts).
+// Using groups is not supported yet.
+// The signed-in user originating the request must be a part of one
+// of the provided members. If not specified, a request may come
+// from any user (logged in/not logged in, not present in any
+// groups, etc.).
+// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
 func (o AccessLevelBasicConditionOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicCondition) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
+// Whether to negate the Condition. If true, the Condition becomes
+// a NAND over its non-empty fields, each field must be false for
+// the Condition overall to be satisfied. Defaults to false.
 func (o AccessLevelBasicConditionOutput) Negate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasicCondition) *bool { return v.Negate }).(pulumi.BoolPtrOutput)
 }
 
+// The request must originate from one of the provided
+// countries/regions.
+// Format: A valid ISO 3166-1 alpha-2 code.
 func (o AccessLevelBasicConditionOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicCondition) []string { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
+// A list of other access levels defined in the same Policy,
+// referenced by resource name. Referencing an AccessLevel which
+// does not exist is an error. All access levels listed must be
+// granted for the Condition to be true.
+// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
 func (o AccessLevelBasicConditionOutput) RequiredAccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicCondition) []string { return v.RequiredAccessLevels }).(pulumi.StringArrayOutput)
 }
@@ -270,12 +398,22 @@ func (o AccessLevelBasicConditionArrayOutput) Index(i pulumi.IntInput) AccessLev
 }
 
 type AccessLevelBasicConditionDevicePolicy struct {
-	AllowedDeviceManagementLevels []string                                            `pulumi:"allowedDeviceManagementLevels"`
-	AllowedEncryptionStatuses     []string                                            `pulumi:"allowedEncryptionStatuses"`
-	OsConstraints                 []AccessLevelBasicConditionDevicePolicyOsConstraint `pulumi:"osConstraints"`
-	RequireAdminApproval          *bool                                               `pulumi:"requireAdminApproval"`
-	RequireCorpOwned              *bool                                               `pulumi:"requireCorpOwned"`
-	RequireScreenLock             *bool                                               `pulumi:"requireScreenLock"`
+	// A list of allowed device management levels.
+	// An empty list allows all management levels.
+	AllowedDeviceManagementLevels []string `pulumi:"allowedDeviceManagementLevels"`
+	// A list of allowed encryptions statuses.
+	// An empty list allows all statuses.
+	AllowedEncryptionStatuses []string `pulumi:"allowedEncryptionStatuses"`
+	// A list of allowed OS versions.
+	// An empty list allows all types and all versions.  Structure is documented below.
+	OsConstraints []AccessLevelBasicConditionDevicePolicyOsConstraint `pulumi:"osConstraints"`
+	// Whether the device needs to be approved by the customer admin.
+	RequireAdminApproval *bool `pulumi:"requireAdminApproval"`
+	// Whether the device needs to be corp owned.
+	RequireCorpOwned *bool `pulumi:"requireCorpOwned"`
+	// Whether or not screenlock is required for the DevicePolicy
+	// to be true. Defaults to false.
+	RequireScreenLock *bool `pulumi:"requireScreenLock"`
 }
 
 // AccessLevelBasicConditionDevicePolicyInput is an input type that accepts AccessLevelBasicConditionDevicePolicyArgs and AccessLevelBasicConditionDevicePolicyOutput values.
@@ -291,12 +429,22 @@ type AccessLevelBasicConditionDevicePolicyInput interface {
 }
 
 type AccessLevelBasicConditionDevicePolicyArgs struct {
-	AllowedDeviceManagementLevels pulumi.StringArrayInput                                     `pulumi:"allowedDeviceManagementLevels"`
-	AllowedEncryptionStatuses     pulumi.StringArrayInput                                     `pulumi:"allowedEncryptionStatuses"`
-	OsConstraints                 AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput `pulumi:"osConstraints"`
-	RequireAdminApproval          pulumi.BoolPtrInput                                         `pulumi:"requireAdminApproval"`
-	RequireCorpOwned              pulumi.BoolPtrInput                                         `pulumi:"requireCorpOwned"`
-	RequireScreenLock             pulumi.BoolPtrInput                                         `pulumi:"requireScreenLock"`
+	// A list of allowed device management levels.
+	// An empty list allows all management levels.
+	AllowedDeviceManagementLevels pulumi.StringArrayInput `pulumi:"allowedDeviceManagementLevels"`
+	// A list of allowed encryptions statuses.
+	// An empty list allows all statuses.
+	AllowedEncryptionStatuses pulumi.StringArrayInput `pulumi:"allowedEncryptionStatuses"`
+	// A list of allowed OS versions.
+	// An empty list allows all types and all versions.  Structure is documented below.
+	OsConstraints AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput `pulumi:"osConstraints"`
+	// Whether the device needs to be approved by the customer admin.
+	RequireAdminApproval pulumi.BoolPtrInput `pulumi:"requireAdminApproval"`
+	// Whether the device needs to be corp owned.
+	RequireCorpOwned pulumi.BoolPtrInput `pulumi:"requireCorpOwned"`
+	// Whether or not screenlock is required for the DevicePolicy
+	// to be true. Defaults to false.
+	RequireScreenLock pulumi.BoolPtrInput `pulumi:"requireScreenLock"`
 }
 
 func (AccessLevelBasicConditionDevicePolicyArgs) ElementType() reflect.Type {
@@ -376,28 +524,39 @@ func (o AccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelBasicCondition
 		return &v
 	}).(AccessLevelBasicConditionDevicePolicyPtrOutput)
 }
+
+// A list of allowed device management levels.
+// An empty list allows all management levels.
 func (o AccessLevelBasicConditionDevicePolicyOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
 }
 
+// A list of allowed encryptions statuses.
+// An empty list allows all statuses.
 func (o AccessLevelBasicConditionDevicePolicyOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
 }
 
+// A list of allowed OS versions.
+// An empty list allows all types and all versions.  Structure is documented below.
 func (o AccessLevelBasicConditionDevicePolicyOutput) OsConstraints() AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []AccessLevelBasicConditionDevicePolicyOsConstraint {
 		return v.OsConstraints
 	}).(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
 }
 
+// Whether the device needs to be approved by the customer admin.
 func (o AccessLevelBasicConditionDevicePolicyOutput) RequireAdminApproval() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireAdminApproval }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the device needs to be corp owned.
 func (o AccessLevelBasicConditionDevicePolicyOutput) RequireCorpOwned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireCorpOwned }).(pulumi.BoolPtrOutput)
 }
 
+// Whether or not screenlock is required for the DevicePolicy
+// to be true. Defaults to false.
 func (o AccessLevelBasicConditionDevicePolicyOutput) RequireScreenLock() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireScreenLock }).(pulumi.BoolPtrOutput)
 }
@@ -420,35 +579,77 @@ func (o AccessLevelBasicConditionDevicePolicyPtrOutput) Elem() AccessLevelBasicC
 	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) AccessLevelBasicConditionDevicePolicy { return *v }).(AccessLevelBasicConditionDevicePolicyOutput)
 }
 
+// A list of allowed device management levels.
+// An empty list allows all management levels.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedDeviceManagementLevels
+	}).(pulumi.StringArrayOutput)
 }
 
+// A list of allowed encryptions statuses.
+// An empty list allows all statuses.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedEncryptionStatuses
+	}).(pulumi.StringArrayOutput)
 }
 
+// A list of allowed OS versions.
+// An empty list allows all types and all versions.  Structure is documented below.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) OsConstraints() AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
-	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []AccessLevelBasicConditionDevicePolicyOsConstraint {
+	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) []AccessLevelBasicConditionDevicePolicyOsConstraint {
+		if v == nil {
+			return nil
+		}
 		return v.OsConstraints
 	}).(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput)
 }
 
+// Whether the device needs to be approved by the customer admin.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) RequireAdminApproval() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireAdminApproval }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireAdminApproval
+	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether the device needs to be corp owned.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) RequireCorpOwned() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireCorpOwned }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireCorpOwned
+	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether or not screenlock is required for the DevicePolicy
+// to be true. Defaults to false.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) RequireScreenLock() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) *bool { return v.RequireScreenLock }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireScreenLock
+	}).(pulumi.BoolPtrOutput)
 }
 
 type AccessLevelBasicConditionDevicePolicyOsConstraint struct {
+	// The minimum allowed OS version. If not set, any version
+	// of this OS satisfies the constraint.
+	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion *string `pulumi:"minimumVersion"`
-	OsType         string  `pulumi:"osType"`
+	// The operating system type of the device.
+	OsType string `pulumi:"osType"`
 }
 
 // AccessLevelBasicConditionDevicePolicyOsConstraintInput is an input type that accepts AccessLevelBasicConditionDevicePolicyOsConstraintArgs and AccessLevelBasicConditionDevicePolicyOsConstraintOutput values.
@@ -464,8 +665,12 @@ type AccessLevelBasicConditionDevicePolicyOsConstraintInput interface {
 }
 
 type AccessLevelBasicConditionDevicePolicyOsConstraintArgs struct {
+	// The minimum allowed OS version. If not set, any version
+	// of this OS satisfies the constraint.
+	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
-	OsType         pulumi.StringInput    `pulumi:"osType"`
+	// The operating system type of the device.
+	OsType pulumi.StringInput `pulumi:"osType"`
 }
 
 func (AccessLevelBasicConditionDevicePolicyOsConstraintArgs) ElementType() reflect.Type {
@@ -520,10 +725,14 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) ToAccessLevelBa
 	return o
 }
 
+// The minimum allowed OS version. If not set, any version
+// of this OS satisfies the constraint.
+// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) MinimumVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicyOsConstraint) *string { return v.MinimumVersion }).(pulumi.StringPtrOutput)
 }
 
+// The operating system type of the device.
 func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
 }
@@ -549,9 +758,28 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) Index(i pu
 }
 
 type ServicePerimeterSpec struct {
-	AccessLevels          []string                                   `pulumi:"accessLevels"`
-	Resources             []string                                   `pulumi:"resources"`
-	RestrictedServices    []string                                   `pulumi:"restrictedServices"`
+	// A list of AccessLevel resource names that allow resources within
+	// the ServicePerimeter to be accessed from the internet.
+	// AccessLevels listed must be in the same policy as this
+	// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+	// syntax error. If no AccessLevel names are listed, resources within
+	// the perimeter can only be accessed via GCP calls with request
+	// origins within the perimeter. For Service Perimeter Bridge, must
+	// be empty.
+	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+	AccessLevels []string `pulumi:"accessLevels"`
+	// A list of GCP resources that are inside of the service perimeter.
+	// Currently only projects are allowed.
+	// Format: projects/{project_number}
+	Resources []string `pulumi:"resources"`
+	// GCP services that are subject to the Service Perimeter
+	// restrictions. Must contain a list of services. For example, if
+	// `storage.googleapis.com` is specified, access to the storage
+	// buckets inside the perimeter must meet the perimeter's access
+	// restrictions.
+	RestrictedServices []string `pulumi:"restrictedServices"`
+	// Specifies how APIs are allowed to communicate within the Service
+	// Perimeter.  Structure is documented below.
 	VpcAccessibleServices *ServicePerimeterSpecVpcAccessibleServices `pulumi:"vpcAccessibleServices"`
 }
 
@@ -568,9 +796,28 @@ type ServicePerimeterSpecInput interface {
 }
 
 type ServicePerimeterSpecArgs struct {
-	AccessLevels          pulumi.StringArrayInput                           `pulumi:"accessLevels"`
-	Resources             pulumi.StringArrayInput                           `pulumi:"resources"`
-	RestrictedServices    pulumi.StringArrayInput                           `pulumi:"restrictedServices"`
+	// A list of AccessLevel resource names that allow resources within
+	// the ServicePerimeter to be accessed from the internet.
+	// AccessLevels listed must be in the same policy as this
+	// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+	// syntax error. If no AccessLevel names are listed, resources within
+	// the perimeter can only be accessed via GCP calls with request
+	// origins within the perimeter. For Service Perimeter Bridge, must
+	// be empty.
+	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
+	// A list of GCP resources that are inside of the service perimeter.
+	// Currently only projects are allowed.
+	// Format: projects/{project_number}
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// GCP services that are subject to the Service Perimeter
+	// restrictions. Must contain a list of services. For example, if
+	// `storage.googleapis.com` is specified, access to the storage
+	// buckets inside the perimeter must meet the perimeter's access
+	// restrictions.
+	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
+	// Specifies how APIs are allowed to communicate within the Service
+	// Perimeter.  Structure is documented below.
 	VpcAccessibleServices ServicePerimeterSpecVpcAccessibleServicesPtrInput `pulumi:"vpcAccessibleServices"`
 }
 
@@ -651,18 +898,38 @@ func (o ServicePerimeterSpecOutput) ToServicePerimeterSpecPtrOutputWithContext(c
 		return &v
 	}).(ServicePerimeterSpecPtrOutput)
 }
+
+// A list of AccessLevel resource names that allow resources within
+// the ServicePerimeter to be accessed from the internet.
+// AccessLevels listed must be in the same policy as this
+// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+// syntax error. If no AccessLevel names are listed, resources within
+// the perimeter can only be accessed via GCP calls with request
+// origins within the perimeter. For Service Perimeter Bridge, must
+// be empty.
+// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 func (o ServicePerimeterSpecOutput) AccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
+// A list of GCP resources that are inside of the service perimeter.
+// Currently only projects are allowed.
+// Format: projects/{project_number}
 func (o ServicePerimeterSpecOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// GCP services that are subject to the Service Perimeter
+// restrictions. Must contain a list of services. For example, if
+// `storage.googleapis.com` is specified, access to the storage
+// buckets inside the perimeter must meet the perimeter's access
+// restrictions.
 func (o ServicePerimeterSpecOutput) RestrictedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
 }
 
+// Specifies how APIs are allowed to communicate within the Service
+// Perimeter.  Structure is documented below.
 func (o ServicePerimeterSpecOutput) VpcAccessibleServices() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) *ServicePerimeterSpecVpcAccessibleServices {
 		return v.VpcAccessibleServices
@@ -687,27 +954,68 @@ func (o ServicePerimeterSpecPtrOutput) Elem() ServicePerimeterSpecOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpec) ServicePerimeterSpec { return *v }).(ServicePerimeterSpecOutput)
 }
 
+// A list of AccessLevel resource names that allow resources within
+// the ServicePerimeter to be accessed from the internet.
+// AccessLevels listed must be in the same policy as this
+// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+// syntax error. If no AccessLevel names are listed, resources within
+// the perimeter can only be accessed via GCP calls with request
+// origins within the perimeter. For Service Perimeter Bridge, must
+// be empty.
+// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 func (o ServicePerimeterSpecPtrOutput) AccessLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServicePerimeterSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessLevels
+	}).(pulumi.StringArrayOutput)
 }
 
+// A list of GCP resources that are inside of the service perimeter.
+// Currently only projects are allowed.
+// Format: projects/{project_number}
 func (o ServicePerimeterSpecPtrOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServicePerimeterSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
 }
 
+// GCP services that are subject to the Service Perimeter
+// restrictions. Must contain a list of services. For example, if
+// `storage.googleapis.com` is specified, access to the storage
+// buckets inside the perimeter must meet the perimeter's access
+// restrictions.
 func (o ServicePerimeterSpecPtrOutput) RestrictedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServicePerimeterSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictedServices
+	}).(pulumi.StringArrayOutput)
 }
 
+// Specifies how APIs are allowed to communicate within the Service
+// Perimeter.  Structure is documented below.
 func (o ServicePerimeterSpecPtrOutput) VpcAccessibleServices() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterSpec) *ServicePerimeterSpecVpcAccessibleServices {
+	return o.ApplyT(func(v *ServicePerimeterSpec) *ServicePerimeterSpecVpcAccessibleServices {
+		if v == nil {
+			return nil
+		}
 		return v.VpcAccessibleServices
 	}).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
 }
 
 type ServicePerimeterSpecVpcAccessibleServices struct {
-	AllowedServices   []string `pulumi:"allowedServices"`
-	EnableRestriction *bool    `pulumi:"enableRestriction"`
+	// The list of APIs usable within the Service Perimeter.
+	// Must be empty unless `enableRestriction` is True.
+	AllowedServices []string `pulumi:"allowedServices"`
+	// Whether to restrict API calls within the Service Perimeter to the
+	// list of APIs specified in 'allowedServices'.
+	EnableRestriction *bool `pulumi:"enableRestriction"`
 }
 
 // ServicePerimeterSpecVpcAccessibleServicesInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesArgs and ServicePerimeterSpecVpcAccessibleServicesOutput values.
@@ -723,8 +1031,12 @@ type ServicePerimeterSpecVpcAccessibleServicesInput interface {
 }
 
 type ServicePerimeterSpecVpcAccessibleServicesArgs struct {
-	AllowedServices   pulumi.StringArrayInput `pulumi:"allowedServices"`
-	EnableRestriction pulumi.BoolPtrInput     `pulumi:"enableRestriction"`
+	// The list of APIs usable within the Service Perimeter.
+	// Must be empty unless `enableRestriction` is True.
+	AllowedServices pulumi.StringArrayInput `pulumi:"allowedServices"`
+	// Whether to restrict API calls within the Service Perimeter to the
+	// list of APIs specified in 'allowedServices'.
+	EnableRestriction pulumi.BoolPtrInput `pulumi:"enableRestriction"`
 }
 
 func (ServicePerimeterSpecVpcAccessibleServicesArgs) ElementType() reflect.Type {
@@ -804,10 +1116,15 @@ func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimeterSpecV
 		return &v
 	}).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
 }
+
+// The list of APIs usable within the Service Perimeter.
+// Must be empty unless `enableRestriction` is True.
 func (o ServicePerimeterSpecVpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
 }
 
+// Whether to restrict API calls within the Service Perimeter to the
+// list of APIs specified in 'allowedServices'.
 func (o ServicePerimeterSpecVpcAccessibleServicesOutput) EnableRestriction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
 }
@@ -832,18 +1149,51 @@ func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) Elem() ServicePerime
 	}).(ServicePerimeterSpecVpcAccessibleServicesOutput)
 }
 
+// The list of APIs usable within the Service Perimeter.
+// Must be empty unless `enableRestriction` is True.
 func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) AllowedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServicePerimeterSpecVpcAccessibleServices) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedServices
+	}).(pulumi.StringArrayOutput)
 }
 
+// Whether to restrict API calls within the Service Perimeter to the
+// list of APIs specified in 'allowedServices'.
 func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) EnableRestriction() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServicePerimeterSpecVpcAccessibleServices) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRestriction
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServicePerimeterStatus struct {
-	AccessLevels          []string                                     `pulumi:"accessLevels"`
-	Resources             []string                                     `pulumi:"resources"`
-	RestrictedServices    []string                                     `pulumi:"restrictedServices"`
+	// A list of AccessLevel resource names that allow resources within
+	// the ServicePerimeter to be accessed from the internet.
+	// AccessLevels listed must be in the same policy as this
+	// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+	// syntax error. If no AccessLevel names are listed, resources within
+	// the perimeter can only be accessed via GCP calls with request
+	// origins within the perimeter. For Service Perimeter Bridge, must
+	// be empty.
+	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+	AccessLevels []string `pulumi:"accessLevels"`
+	// A list of GCP resources that are inside of the service perimeter.
+	// Currently only projects are allowed.
+	// Format: projects/{project_number}
+	Resources []string `pulumi:"resources"`
+	// GCP services that are subject to the Service Perimeter
+	// restrictions. Must contain a list of services. For example, if
+	// `storage.googleapis.com` is specified, access to the storage
+	// buckets inside the perimeter must meet the perimeter's access
+	// restrictions.
+	RestrictedServices []string `pulumi:"restrictedServices"`
+	// Specifies how APIs are allowed to communicate within the Service
+	// Perimeter.  Structure is documented below.
 	VpcAccessibleServices *ServicePerimeterStatusVpcAccessibleServices `pulumi:"vpcAccessibleServices"`
 }
 
@@ -860,9 +1210,28 @@ type ServicePerimeterStatusInput interface {
 }
 
 type ServicePerimeterStatusArgs struct {
-	AccessLevels          pulumi.StringArrayInput                             `pulumi:"accessLevels"`
-	Resources             pulumi.StringArrayInput                             `pulumi:"resources"`
-	RestrictedServices    pulumi.StringArrayInput                             `pulumi:"restrictedServices"`
+	// A list of AccessLevel resource names that allow resources within
+	// the ServicePerimeter to be accessed from the internet.
+	// AccessLevels listed must be in the same policy as this
+	// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+	// syntax error. If no AccessLevel names are listed, resources within
+	// the perimeter can only be accessed via GCP calls with request
+	// origins within the perimeter. For Service Perimeter Bridge, must
+	// be empty.
+	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
+	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
+	// A list of GCP resources that are inside of the service perimeter.
+	// Currently only projects are allowed.
+	// Format: projects/{project_number}
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// GCP services that are subject to the Service Perimeter
+	// restrictions. Must contain a list of services. For example, if
+	// `storage.googleapis.com` is specified, access to the storage
+	// buckets inside the perimeter must meet the perimeter's access
+	// restrictions.
+	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
+	// Specifies how APIs are allowed to communicate within the Service
+	// Perimeter.  Structure is documented below.
 	VpcAccessibleServices ServicePerimeterStatusVpcAccessibleServicesPtrInput `pulumi:"vpcAccessibleServices"`
 }
 
@@ -943,18 +1312,38 @@ func (o ServicePerimeterStatusOutput) ToServicePerimeterStatusPtrOutputWithConte
 		return &v
 	}).(ServicePerimeterStatusPtrOutput)
 }
+
+// A list of AccessLevel resource names that allow resources within
+// the ServicePerimeter to be accessed from the internet.
+// AccessLevels listed must be in the same policy as this
+// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+// syntax error. If no AccessLevel names are listed, resources within
+// the perimeter can only be accessed via GCP calls with request
+// origins within the perimeter. For Service Perimeter Bridge, must
+// be empty.
+// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 func (o ServicePerimeterStatusOutput) AccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
+// A list of GCP resources that are inside of the service perimeter.
+// Currently only projects are allowed.
+// Format: projects/{project_number}
 func (o ServicePerimeterStatusOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
 
+// GCP services that are subject to the Service Perimeter
+// restrictions. Must contain a list of services. For example, if
+// `storage.googleapis.com` is specified, access to the storage
+// buckets inside the perimeter must meet the perimeter's access
+// restrictions.
 func (o ServicePerimeterStatusOutput) RestrictedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
 }
 
+// Specifies how APIs are allowed to communicate within the Service
+// Perimeter.  Structure is documented below.
 func (o ServicePerimeterStatusOutput) VpcAccessibleServices() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) *ServicePerimeterStatusVpcAccessibleServices {
 		return v.VpcAccessibleServices
@@ -979,27 +1368,68 @@ func (o ServicePerimeterStatusPtrOutput) Elem() ServicePerimeterStatusOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatus) ServicePerimeterStatus { return *v }).(ServicePerimeterStatusOutput)
 }
 
+// A list of AccessLevel resource names that allow resources within
+// the ServicePerimeter to be accessed from the internet.
+// AccessLevels listed must be in the same policy as this
+// ServicePerimeter. Referencing a nonexistent AccessLevel is a
+// syntax error. If no AccessLevel names are listed, resources within
+// the perimeter can only be accessed via GCP calls with request
+// origins within the perimeter. For Service Perimeter Bridge, must
+// be empty.
+// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 func (o ServicePerimeterStatusPtrOutput) AccessLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServicePerimeterStatus) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessLevels
+	}).(pulumi.StringArrayOutput)
 }
 
+// A list of GCP resources that are inside of the service perimeter.
+// Currently only projects are allowed.
+// Format: projects/{project_number}
 func (o ServicePerimeterStatusPtrOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServicePerimeterStatus) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
 }
 
+// GCP services that are subject to the Service Perimeter
+// restrictions. Must contain a list of services. For example, if
+// `storage.googleapis.com` is specified, access to the storage
+// buckets inside the perimeter must meet the perimeter's access
+// restrictions.
 func (o ServicePerimeterStatusPtrOutput) RestrictedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServicePerimeterStatus) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictedServices
+	}).(pulumi.StringArrayOutput)
 }
 
+// Specifies how APIs are allowed to communicate within the Service
+// Perimeter.  Structure is documented below.
 func (o ServicePerimeterStatusPtrOutput) VpcAccessibleServices() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterStatus) *ServicePerimeterStatusVpcAccessibleServices {
+	return o.ApplyT(func(v *ServicePerimeterStatus) *ServicePerimeterStatusVpcAccessibleServices {
+		if v == nil {
+			return nil
+		}
 		return v.VpcAccessibleServices
 	}).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
 }
 
 type ServicePerimeterStatusVpcAccessibleServices struct {
-	AllowedServices   []string `pulumi:"allowedServices"`
-	EnableRestriction *bool    `pulumi:"enableRestriction"`
+	// The list of APIs usable within the Service Perimeter.
+	// Must be empty unless `enableRestriction` is True.
+	AllowedServices []string `pulumi:"allowedServices"`
+	// Whether to restrict API calls within the Service Perimeter to the
+	// list of APIs specified in 'allowedServices'.
+	EnableRestriction *bool `pulumi:"enableRestriction"`
 }
 
 // ServicePerimeterStatusVpcAccessibleServicesInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesArgs and ServicePerimeterStatusVpcAccessibleServicesOutput values.
@@ -1015,8 +1445,12 @@ type ServicePerimeterStatusVpcAccessibleServicesInput interface {
 }
 
 type ServicePerimeterStatusVpcAccessibleServicesArgs struct {
-	AllowedServices   pulumi.StringArrayInput `pulumi:"allowedServices"`
-	EnableRestriction pulumi.BoolPtrInput     `pulumi:"enableRestriction"`
+	// The list of APIs usable within the Service Perimeter.
+	// Must be empty unless `enableRestriction` is True.
+	AllowedServices pulumi.StringArrayInput `pulumi:"allowedServices"`
+	// Whether to restrict API calls within the Service Perimeter to the
+	// list of APIs specified in 'allowedServices'.
+	EnableRestriction pulumi.BoolPtrInput `pulumi:"enableRestriction"`
 }
 
 func (ServicePerimeterStatusVpcAccessibleServicesArgs) ElementType() reflect.Type {
@@ -1096,10 +1530,15 @@ func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimeterSta
 		return &v
 	}).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
 }
+
+// The list of APIs usable within the Service Perimeter.
+// Must be empty unless `enableRestriction` is True.
 func (o ServicePerimeterStatusVpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
 }
 
+// Whether to restrict API calls within the Service Perimeter to the
+// list of APIs specified in 'allowedServices'.
 func (o ServicePerimeterStatusVpcAccessibleServicesOutput) EnableRestriction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
 }
@@ -1124,12 +1563,26 @@ func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) Elem() ServicePeri
 	}).(ServicePerimeterStatusVpcAccessibleServicesOutput)
 }
 
+// The list of APIs usable within the Service Perimeter.
+// Must be empty unless `enableRestriction` is True.
 func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) AllowedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *ServicePerimeterStatusVpcAccessibleServices) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedServices
+	}).(pulumi.StringArrayOutput)
 }
 
+// Whether to restrict API calls within the Service Perimeter to the
+// list of APIs specified in 'allowedServices'.
 func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) EnableRestriction() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ServicePerimeterStatusVpcAccessibleServices) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRestriction
+	}).(pulumi.BoolPtrOutput)
 }
 
 func init() {

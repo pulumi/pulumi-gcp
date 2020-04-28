@@ -33,7 +33,8 @@ namespace Pulumi.Gcp.GameServices
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The labels associated with this game server deployment. Each label is a key-value pair.
+        /// The labels associated with this game server deployment. Each label is a
+        /// key-value pair.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -121,7 +122,8 @@ namespace Pulumi.Gcp.GameServices
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels associated with this game server deployment. Each label is a key-value pair.
+        /// The labels associated with this game server deployment. Each label is a
+        /// key-value pair.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -165,7 +167,8 @@ namespace Pulumi.Gcp.GameServices
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The labels associated with this game server deployment. Each label is a key-value pair.
+        /// The labels associated with this game server deployment. Each label is a
+        /// key-value pair.
         /// </summary>
         public InputMap<string> Labels
         {

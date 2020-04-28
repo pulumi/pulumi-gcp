@@ -39,8 +39,9 @@ export class Client extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier of the brand to which this client is attached to. The format is
-     * 'projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}'.
+     * Identifier of the brand to which this client
+     * is attached to. The format is
+     * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
      */
     public readonly brand!: pulumi.Output<string>;
     /**
@@ -101,8 +102,9 @@ export class Client extends pulumi.CustomResource {
  */
 export interface ClientState {
     /**
-     * Identifier of the brand to which this client is attached to. The format is
-     * 'projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}'.
+     * Identifier of the brand to which this client
+     * is attached to. The format is
+     * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
      */
     readonly brand?: pulumi.Input<string>;
     /**
@@ -124,8 +126,9 @@ export interface ClientState {
  */
 export interface ClientArgs {
     /**
-     * Identifier of the brand to which this client is attached to. The format is
-     * 'projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}'.
+     * Identifier of the brand to which this client
+     * is attached to. The format is
+     * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
      */
     readonly brand: pulumi.Input<string>;
     /**

@@ -13,9 +13,26 @@ namespace Pulumi.Gcp.Dns.Outputs
     [OutputType]
     public sealed class ManagedZoneDnssecConfigDefaultKeySpec
     {
+        /// <summary>
+        /// String mnemonic specifying the DNSSEC algorithm of this key
+        /// </summary>
         public readonly string? Algorithm;
+        /// <summary>
+        /// Length of the keys in bits
+        /// </summary>
         public readonly int? KeyLength;
+        /// <summary>
+        /// Specifies whether this is a key signing key (KSK) or a zone
+        /// signing key (ZSK). Key signing keys have the Secure Entry
+        /// Point flag set and, when active, will only be used to sign
+        /// resource record sets of type DNSKEY. Zone signing keys do
+        /// not have the Secure Entry Point flag set and will be used
+        /// to sign all other types of resource record sets.
+        /// </summary>
         public readonly string? KeyType;
+        /// <summary>
+        /// Identifies what kind of resource this is
+        /// </summary>
         public readonly string? Kind;
 
         [OutputConstructor]

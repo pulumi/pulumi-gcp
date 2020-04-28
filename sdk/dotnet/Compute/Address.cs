@@ -35,14 +35,17 @@ namespace Pulumi.Gcp.Compute
     public partial class Address : Pulumi.CustomResource
     {
         /// <summary>
-        /// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-        /// for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
+        /// The static external IP address represented by this resource. Only
+        /// IPv4 is supported. An address may only be specified for INTERNAL
+        /// address types. The IP address must be inside the specified subnetwork,
+        /// if any.
         /// </summary>
         [Output("address")]
         public Output<string> IPAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+        /// The type of address to reserve, either INTERNAL or EXTERNAL.
+        /// If unspecified, defaults to EXTERNAL.
         /// </summary>
         [Output("addressType")]
         public Output<string?> AddressType { get; private set; } = null!;
@@ -72,17 +75,20 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters
+        /// long and match the regular expression `a-z?`
+        /// which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-        /// this field is not specified, it is assumed to be PREMIUM.
+        /// The networking tier used for configuring this address. This field can
+        /// take the following values: PREMIUM or STANDARD. If this field is not
+        /// specified, it is assumed to be PREMIUM.
         /// </summary>
         [Output("networkTier")]
         public Output<string> NetworkTier { get; private set; } = null!;
@@ -95,15 +101,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-        /// instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-        /// Internal address.
+        /// The purpose of this resource, which can be one of the following values:
+        /// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
 
         /// <summary>
-        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// The Region in which the created address should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -115,8 +122,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-        /// subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+        /// The URL of the subnetwork in which to reserve the address. If an IP
+        /// address is specified, it must be within the subnetwork's IP range.
+        /// This field can only be used with INTERNAL type with
+        /// GCE_ENDPOINT/DNS_RESOLVER purposes.
         /// </summary>
         [Output("subnetwork")]
         public Output<string> Subnetwork { get; private set; } = null!;
@@ -174,14 +183,17 @@ namespace Pulumi.Gcp.Compute
     public sealed class AddressArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-        /// for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
+        /// The static external IP address represented by this resource. Only
+        /// IPv4 is supported. An address may only be specified for INTERNAL
+        /// address types. The IP address must be inside the specified subnetwork,
+        /// if any.
         /// </summary>
         [Input("address")]
         public Input<string>? IPAddress { get; set; }
 
         /// <summary>
-        /// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+        /// The type of address to reserve, either INTERNAL or EXTERNAL.
+        /// If unspecified, defaults to EXTERNAL.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -205,17 +217,20 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters
+        /// long and match the regular expression `a-z?`
+        /// which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-        /// this field is not specified, it is assumed to be PREMIUM.
+        /// The networking tier used for configuring this address. This field can
+        /// take the following values: PREMIUM or STANDARD. If this field is not
+        /// specified, it is assumed to be PREMIUM.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
@@ -228,22 +243,25 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-        /// instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-        /// Internal address.
+        /// The purpose of this resource, which can be one of the following values:
+        /// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
 
         /// <summary>
-        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// The Region in which the created address should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-        /// subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+        /// The URL of the subnetwork in which to reserve the address. If an IP
+        /// address is specified, it must be within the subnetwork's IP range.
+        /// This field can only be used with INTERNAL type with
+        /// GCE_ENDPOINT/DNS_RESOLVER purposes.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -256,14 +274,17 @@ namespace Pulumi.Gcp.Compute
     public sealed class AddressState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The static external IP address represented by this resource. Only IPv4 is supported. An address may only be specified
-        /// for INTERNAL address types. The IP address must be inside the specified subnetwork, if any.
+        /// The static external IP address represented by this resource. Only
+        /// IPv4 is supported. An address may only be specified for INTERNAL
+        /// address types. The IP address must be inside the specified subnetwork,
+        /// if any.
         /// </summary>
         [Input("address")]
         public Input<string>? IPAddress { get; set; }
 
         /// <summary>
-        /// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
+        /// The type of address to reserve, either INTERNAL or EXTERNAL.
+        /// If unspecified, defaults to EXTERNAL.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -299,17 +320,20 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters
+        /// long and match the regular expression `a-z?`
+        /// which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The networking tier used for configuring this address. This field can take the following values: PREMIUM or STANDARD. If
-        /// this field is not specified, it is assumed to be PREMIUM.
+        /// The networking tier used for configuring this address. This field can
+        /// take the following values: PREMIUM or STANDARD. If this field is not
+        /// specified, it is assumed to be PREMIUM.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
@@ -322,15 +346,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM
-        /// instances, alias IP ranges, internal load balancers, and similar resources. This should only be set when using an
-        /// Internal address.
+        /// The purpose of this resource, which can be one of the following values:
+        /// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
 
         /// <summary>
-        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// The Region in which the created address should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -342,8 +367,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the
-        /// subnetwork's IP range. This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
+        /// The URL of the subnetwork in which to reserve the address. If an IP
+        /// address is specified, it must be within the subnetwork's IP range.
+        /// This field can only be used with INTERNAL type with
+        /// GCE_ENDPOINT/DNS_RESOLVER purposes.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

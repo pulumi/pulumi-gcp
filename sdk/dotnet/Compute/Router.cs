@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Compute
     public partial class Router : Pulumi.CustomResource
     {
         /// <summary>
-        /// BGP information specific to this router.
+        /// BGP information specific to this router.  Structure is documented below.
         /// </summary>
         [Output("bgp")]
         public Output<Outputs.RouterBgp?> Bgp { get; private set; } = null!;
@@ -34,16 +34,18 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// An optional description of this resource.
+        /// User-specified description for the IP range.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters
+        /// long and match the regular expression `a-z?`
+        /// which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -120,22 +122,24 @@ namespace Pulumi.Gcp.Compute
     public sealed class RouterArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// BGP information specific to this router.
+        /// BGP information specific to this router.  Structure is documented below.
         /// </summary>
         [Input("bgp")]
         public Input<Inputs.RouterBgpArgs>? Bgp { get; set; }
 
         /// <summary>
-        /// An optional description of this resource.
+        /// User-specified description for the IP range.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters
+        /// long and match the regular expression `a-z?`
+        /// which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -167,7 +171,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class RouterState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// BGP information specific to this router.
+        /// BGP information specific to this router.  Structure is documented below.
         /// </summary>
         [Input("bgp")]
         public Input<Inputs.RouterBgpGetArgs>? Bgp { get; set; }
@@ -179,16 +183,18 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
-        /// An optional description of this resource.
+        /// User-specified description for the IP range.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-        /// 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must
-        /// be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// Name of the resource. The name must be 1-63 characters long, and
+        /// comply with RFC1035. Specifically, the name must be 1-63 characters
+        /// long and match the regular expression `a-z?`
+        /// which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

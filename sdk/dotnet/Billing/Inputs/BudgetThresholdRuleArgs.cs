@@ -12,9 +12,17 @@ namespace Pulumi.Gcp.Billing.Inputs
 
     public sealed class BudgetThresholdRuleArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of basis used to determine if spend has passed
+        /// the threshold.
+        /// </summary>
         [Input("spendBasis")]
         public Input<string>? SpendBasis { get; set; }
 
+        /// <summary>
+        /// Send an alert when this threshold is exceeded. This is a
+        /// 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
+        /// </summary>
         [Input("thresholdPercent", required: true)]
         public Input<double> ThresholdPercent { get; set; } = null!;
 

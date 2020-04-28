@@ -13,14 +13,20 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class FlexibleAppVersionResourcesVolumeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Volume size in gigabytes.
+        /// </summary>
         [Input("sizeGb", required: true)]
         public Input<int> SizeGb { get; set; } = null!;
 
+        /// <summary>
+        /// Underlying volume type, e.g. 'tmpfs'.
+        /// </summary>
         [Input("volumeType", required: true)]
         public Input<string> VolumeType { get; set; } = null!;
 

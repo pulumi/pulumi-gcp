@@ -30,13 +30,13 @@ namespace Pulumi.Gcp.AppEngine
         public Output<bool?> DeleteServiceOnDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// Code and application artifacts that make up this version.
+        /// Code and application artifacts that make up this version.  Structure is documented below.
         /// </summary>
         [Output("deployment")]
         public Output<Outputs.StandardAppVersionDeployment?> Deployment { get; private set; } = null!;
 
         /// <summary>
-        /// The entrypoint for the application.
+        /// The entrypoint for the application.  Structure is documented below.
         /// </summary>
         [Output("entrypoint")]
         public Output<Outputs.StandardAppVersionEntrypoint?> Entrypoint { get; private set; } = null!;
@@ -48,21 +48,22 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableDictionary<string, string>?> EnvVariables { get; private set; } = null!;
 
         /// <summary>
-        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-        /// request and other request handlers are not attempted.
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests.
+        /// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
         /// </summary>
         [Output("handlers")]
         public Output<ImmutableArray<Outputs.StandardAppVersionHandler>> Handlers { get; private set; } = null!;
 
         /// <summary>
-        /// Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-        /// AutomaticScaling is supported at the moment)
+        /// Instance class that is used to run this version. Valid values are
+        /// AutomaticScaling F1, F2, F4, F4_1G
+        /// (Only AutomaticScaling is supported at the moment)
         /// </summary>
         [Output("instanceClass")]
         public Output<string?> InstanceClass { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for third-party Python runtime libraries that are required by the application.
+        /// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
         /// </summary>
         [Output("libraries")]
         public Output<ImmutableArray<Outputs.StandardAppVersionLibrary>> Libraries { get; private set; } = null!;
@@ -93,8 +94,8 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-        /// https://cloud.google.com/appengine/docs/standard//config/appref
+        /// The version of the API in the given runtime environment.
+        /// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
         /// </summary>
         [Output("runtimeApiVersion")]
         public Output<string?> RuntimeApiVersion { get; private set; } = null!;
@@ -112,8 +113,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<bool?> Threadsafe { get; private set; } = null!;
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Output("versionId")]
         public Output<string?> VersionId { get; private set; } = null!;
@@ -171,13 +171,13 @@ namespace Pulumi.Gcp.AppEngine
         public Input<bool>? DeleteServiceOnDestroy { get; set; }
 
         /// <summary>
-        /// Code and application artifacts that make up this version.
+        /// Code and application artifacts that make up this version.  Structure is documented below.
         /// </summary>
         [Input("deployment")]
         public Input<Inputs.StandardAppVersionDeploymentArgs>? Deployment { get; set; }
 
         /// <summary>
-        /// The entrypoint for the application.
+        /// The entrypoint for the application.  Structure is documented below.
         /// </summary>
         [Input("entrypoint")]
         public Input<Inputs.StandardAppVersionEntrypointArgs>? Entrypoint { get; set; }
@@ -198,8 +198,8 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<Inputs.StandardAppVersionHandlerArgs>? _handlers;
 
         /// <summary>
-        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-        /// request and other request handlers are not attempted.
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests.
+        /// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.StandardAppVersionHandlerArgs> Handlers
         {
@@ -208,8 +208,9 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-        /// AutomaticScaling is supported at the moment)
+        /// Instance class that is used to run this version. Valid values are
+        /// AutomaticScaling F1, F2, F4, F4_1G
+        /// (Only AutomaticScaling is supported at the moment)
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -218,7 +219,7 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<Inputs.StandardAppVersionLibraryArgs>? _libraries;
 
         /// <summary>
-        /// Configuration for third-party Python runtime libraries that are required by the application.
+        /// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.StandardAppVersionLibraryArgs> Libraries
         {
@@ -246,8 +247,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string> Runtime { get; set; } = null!;
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-        /// https://cloud.google.com/appengine/docs/standard//config/appref
+        /// The version of the API in the given runtime environment.
+        /// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -265,8 +266,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<bool>? Threadsafe { get; set; }
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
@@ -285,13 +285,13 @@ namespace Pulumi.Gcp.AppEngine
         public Input<bool>? DeleteServiceOnDestroy { get; set; }
 
         /// <summary>
-        /// Code and application artifacts that make up this version.
+        /// Code and application artifacts that make up this version.  Structure is documented below.
         /// </summary>
         [Input("deployment")]
         public Input<Inputs.StandardAppVersionDeploymentGetArgs>? Deployment { get; set; }
 
         /// <summary>
-        /// The entrypoint for the application.
+        /// The entrypoint for the application.  Structure is documented below.
         /// </summary>
         [Input("entrypoint")]
         public Input<Inputs.StandardAppVersionEntrypointGetArgs>? Entrypoint { get; set; }
@@ -312,8 +312,8 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<Inputs.StandardAppVersionHandlerGetArgs>? _handlers;
 
         /// <summary>
-        /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-        /// request and other request handlers are not attempted.
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests.
+        /// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.StandardAppVersionHandlerGetArgs> Handlers
         {
@@ -322,8 +322,9 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-        /// AutomaticScaling is supported at the moment)
+        /// Instance class that is used to run this version. Valid values are
+        /// AutomaticScaling F1, F2, F4, F4_1G
+        /// (Only AutomaticScaling is supported at the moment)
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -332,7 +333,7 @@ namespace Pulumi.Gcp.AppEngine
         private InputList<Inputs.StandardAppVersionLibraryGetArgs>? _libraries;
 
         /// <summary>
-        /// Configuration for third-party Python runtime libraries that are required by the application.
+        /// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.StandardAppVersionLibraryGetArgs> Libraries
         {
@@ -366,8 +367,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Runtime { get; set; }
 
         /// <summary>
-        /// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-        /// https://cloud.google.com/appengine/docs/standard//config/appref
+        /// The version of the API in the given runtime environment.
+        /// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
         /// </summary>
         [Input("runtimeApiVersion")]
         public Input<string>? RuntimeApiVersion { get; set; }
@@ -385,8 +386,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<bool>? Threadsafe { get; set; }
 
         /// <summary>
-        /// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-        /// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+        /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

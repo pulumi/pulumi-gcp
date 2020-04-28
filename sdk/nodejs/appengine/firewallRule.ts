@@ -55,9 +55,11 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-     * default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the
-     * action of this rule can be modified by the user.
+     * A positive integer that defines the order of rule evaluation.
+     * Rules with the lowest priority are evaluated first.
+     * A default rule at priority Int32.MaxValue matches all IPv4 and
+     * IPv6 traffic when no previous rule matches. Only the action of
+     * this rule can be modified by the user.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
@@ -125,9 +127,11 @@ export interface FirewallRuleState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-     * default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the
-     * action of this rule can be modified by the user.
+     * A positive integer that defines the order of rule evaluation.
+     * Rules with the lowest priority are evaluated first.
+     * A default rule at priority Int32.MaxValue matches all IPv4 and
+     * IPv6 traffic when no previous rule matches. Only the action of
+     * this rule can be modified by the user.
      */
     readonly priority?: pulumi.Input<number>;
     /**
@@ -154,9 +158,11 @@ export interface FirewallRuleArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-     * default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the
-     * action of this rule can be modified by the user.
+     * A positive integer that defines the order of rule evaluation.
+     * Rules with the lowest priority are evaluated first.
+     * A default rule at priority Int32.MaxValue matches all IPv4 and
+     * IPv6 traffic when no previous rule matches. Only the action of
+     * this rule can be modified by the user.
      */
     readonly priority?: pulumi.Input<number>;
     /**

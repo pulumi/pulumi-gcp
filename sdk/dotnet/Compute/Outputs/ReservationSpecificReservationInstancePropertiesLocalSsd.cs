@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class ReservationSpecificReservationInstancePropertiesLocalSsd
     {
+        /// <summary>
+        /// The size of the disk in base-2 GB.
+        /// </summary>
         public readonly int DiskSizeGb;
+        /// <summary>
+        /// The disk interface to use for attaching this disk, one
+        /// of `SCSI` or `NVME`. The default is `SCSI`.
+        /// </summary>
         public readonly string? Interface;
 
         [OutputConstructor]

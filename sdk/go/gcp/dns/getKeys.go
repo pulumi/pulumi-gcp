@@ -29,7 +29,7 @@ type GetKeysArgs struct {
 
 // A collection of values returned by getKeys.
 type GetKeysResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
 	KeySigningKeys []GetKeysKeySigningKey `pulumi:"keySigningKeys"`

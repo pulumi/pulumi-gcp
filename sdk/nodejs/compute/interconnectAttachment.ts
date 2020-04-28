@@ -40,22 +40,26 @@ export class InterconnectAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the VLAN attachment is enabled or disabled. When using PARTNER type this will Pre-Activate the interconnect
-     * attachment
+     * Whether the VLAN attachment is enabled or disabled.  When using
+     * PARTNER type this will Pre-Activate the interconnect attachment
      */
     public readonly adminEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set
-     * the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the
-     * bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, Defaults to BPS_10G
+     * Provisioned bandwidth capacity for the interconnect attachment.
+     * For attachments of type DEDICATED, the user can set the bandwidth.
+     * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
+     * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
+     * Defaults to BPS_10G
      */
     public readonly bandwidth!: pulumi.Output<string>;
     /**
-     * Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and
-     * customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16)
-     * and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate
-     * prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will
-     * randomly select an unused /29 from all of link-local space.
+     * Up to 16 candidate prefixes that can be used to restrict the allocation
+     * of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
+     * All prefixes must be within link-local address space (169.254.0.0/16)
+     * and must be /29 or shorter (/28, /27, etc). Google will attempt to select
+     * an unused /29 from the supplied candidate prefix(es). The request will
+     * fail if all possible /29s are in use on Google's edge. If not supplied,
+     * Google will randomly select an unused /29 from all of link-local space.
      */
     public readonly candidateSubnets!: pulumi.Output<string[] | undefined>;
     /**
@@ -75,10 +79,12 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Desired availability domain for the attachment. Only available for type PARTNER, at creation time. For improved
-     * reliability, customers should configure a pair of attachments with one per availability domain. The selected
-     * availability domain will be provided to the Partner via the pairing key so that the provisioned circuit will lie in
-     * the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+     * Desired availability domain for the attachment. Only available for type
+     * PARTNER, at creation time. For improved reliability, customers should
+     * configure a pair of attachments with one per availability domain. The
+     * selected availability domain will be provided to the Partner via the
+     * pairing key so that the provisioned circuit will lie in the specified
+     * domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
      */
     public readonly edgeAvailabilityDomain!: pulumi.Output<string | undefined>;
     /**
@@ -87,15 +93,18 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly googleReferenceId!: pulumi.Output<string>;
     /**
-     * URL of the underlying Interconnect object that this attachment's traffic will traverse through. Required if type is
-     * DEDICATED, must not be set if type is PARTNER.
+     * URL of the underlying Interconnect object that this attachment's
+     * traffic will traverse through. Required if type is DEDICATED, must not
+     * be set if type is PARTNER.
      */
     public readonly interconnect!: pulumi.Output<string | undefined>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is created. The
+     * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+     * name must be 1-63 characters long and match the regular expression
+     * `a-z?` which means the first character must be a
+     * lowercase letter, and all following characters must be a dash, lowercase
+     * letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -123,9 +132,10 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * URL of the cloud router to be used for dynamic routing. This router must be in the same region as this
-     * InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network &
-     * region within which the Cloud Router is configured.
+     * URL of the cloud router to be used for dynamic routing. This router must be in
+     * the same region as this InterconnectAttachment. The InterconnectAttachment will
+     * automatically connect the Interconnect to the network & region within which the
+     * Cloud Router is configured.
      */
     public readonly router!: pulumi.Output<string>;
     /**
@@ -137,12 +147,13 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The type of InterconnectAttachment you wish to create. Defaults to DEDICATED.
+     * The type of InterconnectAttachment you wish to create. Defaults to
+     * DEDICATED.
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When using PARTNER type this will be managed
-     * upstream.
+     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
+     * using PARTNER type this will be managed upstream.
      */
     public readonly vlanTag8021q!: pulumi.Output<number>;
 
@@ -222,22 +233,26 @@ export class InterconnectAttachment extends pulumi.CustomResource {
  */
 export interface InterconnectAttachmentState {
     /**
-     * Whether the VLAN attachment is enabled or disabled. When using PARTNER type this will Pre-Activate the interconnect
-     * attachment
+     * Whether the VLAN attachment is enabled or disabled.  When using
+     * PARTNER type this will Pre-Activate the interconnect attachment
      */
     readonly adminEnabled?: pulumi.Input<boolean>;
     /**
-     * Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set
-     * the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the
-     * bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, Defaults to BPS_10G
+     * Provisioned bandwidth capacity for the interconnect attachment.
+     * For attachments of type DEDICATED, the user can set the bandwidth.
+     * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
+     * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
+     * Defaults to BPS_10G
      */
     readonly bandwidth?: pulumi.Input<string>;
     /**
-     * Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and
-     * customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16)
-     * and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate
-     * prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will
-     * randomly select an unused /29 from all of link-local space.
+     * Up to 16 candidate prefixes that can be used to restrict the allocation
+     * of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
+     * All prefixes must be within link-local address space (169.254.0.0/16)
+     * and must be /29 or shorter (/28, /27, etc). Google will attempt to select
+     * an unused /29 from the supplied candidate prefix(es). The request will
+     * fail if all possible /29s are in use on Google's edge. If not supplied,
+     * Google will randomly select an unused /29 from all of link-local space.
      */
     readonly candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -257,10 +272,12 @@ export interface InterconnectAttachmentState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Desired availability domain for the attachment. Only available for type PARTNER, at creation time. For improved
-     * reliability, customers should configure a pair of attachments with one per availability domain. The selected
-     * availability domain will be provided to the Partner via the pairing key so that the provisioned circuit will lie in
-     * the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+     * Desired availability domain for the attachment. Only available for type
+     * PARTNER, at creation time. For improved reliability, customers should
+     * configure a pair of attachments with one per availability domain. The
+     * selected availability domain will be provided to the Partner via the
+     * pairing key so that the provisioned circuit will lie in the specified
+     * domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
      */
     readonly edgeAvailabilityDomain?: pulumi.Input<string>;
     /**
@@ -269,15 +286,18 @@ export interface InterconnectAttachmentState {
      */
     readonly googleReferenceId?: pulumi.Input<string>;
     /**
-     * URL of the underlying Interconnect object that this attachment's traffic will traverse through. Required if type is
-     * DEDICATED, must not be set if type is PARTNER.
+     * URL of the underlying Interconnect object that this attachment's
+     * traffic will traverse through. Required if type is DEDICATED, must not
+     * be set if type is PARTNER.
      */
     readonly interconnect?: pulumi.Input<string>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is created. The
+     * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+     * name must be 1-63 characters long and match the regular expression
+     * `a-z?` which means the first character must be a
+     * lowercase letter, and all following characters must be a dash, lowercase
+     * letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -305,9 +325,10 @@ export interface InterconnectAttachmentState {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * URL of the cloud router to be used for dynamic routing. This router must be in the same region as this
-     * InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network &
-     * region within which the Cloud Router is configured.
+     * URL of the cloud router to be used for dynamic routing. This router must be in
+     * the same region as this InterconnectAttachment. The InterconnectAttachment will
+     * automatically connect the Interconnect to the network & region within which the
+     * Cloud Router is configured.
      */
     readonly router?: pulumi.Input<string>;
     /**
@@ -319,12 +340,13 @@ export interface InterconnectAttachmentState {
      */
     readonly state?: pulumi.Input<string>;
     /**
-     * The type of InterconnectAttachment you wish to create. Defaults to DEDICATED.
+     * The type of InterconnectAttachment you wish to create. Defaults to
+     * DEDICATED.
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When using PARTNER type this will be managed
-     * upstream.
+     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
+     * using PARTNER type this will be managed upstream.
      */
     readonly vlanTag8021q?: pulumi.Input<number>;
 }
@@ -334,22 +356,26 @@ export interface InterconnectAttachmentState {
  */
 export interface InterconnectAttachmentArgs {
     /**
-     * Whether the VLAN attachment is enabled or disabled. When using PARTNER type this will Pre-Activate the interconnect
-     * attachment
+     * Whether the VLAN attachment is enabled or disabled.  When using
+     * PARTNER type this will Pre-Activate the interconnect attachment
      */
     readonly adminEnabled?: pulumi.Input<boolean>;
     /**
-     * Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set
-     * the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the
-     * bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, Defaults to BPS_10G
+     * Provisioned bandwidth capacity for the interconnect attachment.
+     * For attachments of type DEDICATED, the user can set the bandwidth.
+     * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
+     * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
+     * Defaults to BPS_10G
      */
     readonly bandwidth?: pulumi.Input<string>;
     /**
-     * Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and
-     * customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16)
-     * and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate
-     * prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will
-     * randomly select an unused /29 from all of link-local space.
+     * Up to 16 candidate prefixes that can be used to restrict the allocation
+     * of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
+     * All prefixes must be within link-local address space (169.254.0.0/16)
+     * and must be /29 or shorter (/28, /27, etc). Google will attempt to select
+     * an unused /29 from the supplied candidate prefix(es). The request will
+     * fail if all possible /29s are in use on Google's edge. If not supplied,
+     * Google will randomly select an unused /29 from all of link-local space.
      */
     readonly candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -357,22 +383,27 @@ export interface InterconnectAttachmentArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Desired availability domain for the attachment. Only available for type PARTNER, at creation time. For improved
-     * reliability, customers should configure a pair of attachments with one per availability domain. The selected
-     * availability domain will be provided to the Partner via the pairing key so that the provisioned circuit will lie in
-     * the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+     * Desired availability domain for the attachment. Only available for type
+     * PARTNER, at creation time. For improved reliability, customers should
+     * configure a pair of attachments with one per availability domain. The
+     * selected availability domain will be provided to the Partner via the
+     * pairing key so that the provisioned circuit will lie in the specified
+     * domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
      */
     readonly edgeAvailabilityDomain?: pulumi.Input<string>;
     /**
-     * URL of the underlying Interconnect object that this attachment's traffic will traverse through. Required if type is
-     * DEDICATED, must not be set if type is PARTNER.
+     * URL of the underlying Interconnect object that this attachment's
+     * traffic will traverse through. Required if type is DEDICATED, must not
+     * be set if type is PARTNER.
      */
     readonly interconnect?: pulumi.Input<string>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is created. The
+     * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+     * name must be 1-63 characters long and match the regular expression
+     * `a-z?` which means the first character must be a
+     * lowercase letter, and all following characters must be a dash, lowercase
+     * letter, or digit, except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -385,18 +416,20 @@ export interface InterconnectAttachmentArgs {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * URL of the cloud router to be used for dynamic routing. This router must be in the same region as this
-     * InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network &
-     * region within which the Cloud Router is configured.
+     * URL of the cloud router to be used for dynamic routing. This router must be in
+     * the same region as this InterconnectAttachment. The InterconnectAttachment will
+     * automatically connect the Interconnect to the network & region within which the
+     * Cloud Router is configured.
      */
     readonly router: pulumi.Input<string>;
     /**
-     * The type of InterconnectAttachment you wish to create. Defaults to DEDICATED.
+     * The type of InterconnectAttachment you wish to create. Defaults to
+     * DEDICATED.
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When using PARTNER type this will be managed
-     * upstream.
+     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
+     * using PARTNER type this will be managed upstream.
      */
     readonly vlanTag8021q?: pulumi.Input<number>;
 }

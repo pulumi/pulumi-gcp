@@ -56,7 +56,8 @@ export class Repository extends pulumi.CustomResource {
     }
 
     /**
-     * Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+     * Resource name of the repository, of the form `{{repo}}`.
+     * The repo name may contain slashes. eg, `name/with/slash`
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -65,7 +66,8 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+     * How this repository publishes a change in the repository through Cloud Pub/Sub.
+     * Keyed by the topic names.  Structure is documented below.
      */
     public readonly pubsubConfigs!: pulumi.Output<outputs.sourcerepo.RepositoryPubsubConfig[] | undefined>;
     /**
@@ -118,7 +120,8 @@ export class Repository extends pulumi.CustomResource {
  */
 export interface RepositoryState {
     /**
-     * Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+     * Resource name of the repository, of the form `{{repo}}`.
+     * The repo name may contain slashes. eg, `name/with/slash`
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -127,7 +130,8 @@ export interface RepositoryState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+     * How this repository publishes a change in the repository through Cloud Pub/Sub.
+     * Keyed by the topic names.  Structure is documented below.
      */
     readonly pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[]>;
     /**
@@ -145,7 +149,8 @@ export interface RepositoryState {
  */
 export interface RepositoryArgs {
     /**
-     * Resource name of the repository, of the form '{{repo}}'. The repo name may contain slashes. eg, 'name/with/slash'
+     * Resource name of the repository, of the form `{{repo}}`.
+     * The repo name may contain slashes. eg, `name/with/slash`
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -154,7 +159,8 @@ export interface RepositoryArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+     * How this repository publishes a change in the repository through Cloud Pub/Sub.
+     * Keyed by the topic names.  Structure is documented below.
      */
     readonly pubsubConfigs?: pulumi.Input<pulumi.Input<inputs.sourcerepo.RepositoryPubsubConfig>[]>;
 }

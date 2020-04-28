@@ -13,11 +13,33 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     [OutputType]
     public sealed class AccessLevelBasicConditionDevicePolicy
     {
+        /// <summary>
+        /// A list of allowed device management levels.
+        /// An empty list allows all management levels.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedDeviceManagementLevels;
+        /// <summary>
+        /// A list of allowed encryptions statuses.
+        /// An empty list allows all statuses.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedEncryptionStatuses;
+        /// <summary>
+        /// A list of allowed OS versions.
+        /// An empty list allows all types and all versions.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AccessLevelBasicConditionDevicePolicyOsConstraint> OsConstraints;
+        /// <summary>
+        /// Whether the device needs to be approved by the customer admin.
+        /// </summary>
         public readonly bool? RequireAdminApproval;
+        /// <summary>
+        /// Whether the device needs to be corp owned.
+        /// </summary>
         public readonly bool? RequireCorpOwned;
+        /// <summary>
+        /// Whether or not screenlock is required for the DevicePolicy
+        /// to be true. Defaults to false.
+        /// </summary>
         public readonly bool? RequireScreenLock;
 
         [OutputConstructor]

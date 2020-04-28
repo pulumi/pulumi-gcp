@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Logging.Outputs
     [OutputType]
     public sealed class MetricBucketOptionsLinearBuckets
     {
+        /// <summary>
+        /// Must be greater than 0.
+        /// </summary>
         public readonly int? NumFiniteBuckets;
+        /// <summary>
+        /// Lower bound of the first bucket.
+        /// </summary>
         public readonly double? Offset;
+        /// <summary>
+        /// Must be greater than 0.
+        /// </summary>
         public readonly int? Width;
 
         [OutputConstructor]

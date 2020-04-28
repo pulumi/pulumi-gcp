@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
     public sealed class ClusterClusterConfigInitializationActionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The script to be executed during initialization of the cluster.
+        /// The script must be a GCS file with a gs:// prefix.
+        /// </summary>
         [Input("script", required: true)]
         public Input<string> Script { get; set; } = null!;
 

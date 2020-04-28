@@ -9,6 +9,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+//
+// Deprecated: gcp.MangedSslCertificate has been deprecated in favour of gcp.ManagedSslCertificate
 type MangedSslCertificate struct {
 	pulumi.CustomResourceState
 

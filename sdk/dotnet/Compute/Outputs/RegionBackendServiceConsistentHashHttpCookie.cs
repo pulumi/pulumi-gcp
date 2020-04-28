@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class RegionBackendServiceConsistentHashHttpCookie
     {
+        /// <summary>
+        /// Name of the cookie.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Path to set for the cookie.
+        /// </summary>
         public readonly string? Path;
+        /// <summary>
+        /// Lifetime of the cookie.  Structure is documented below.
+        /// </summary>
         public readonly Outputs.RegionBackendServiceConsistentHashHttpCookieTtl? Ttl;
 
         [OutputConstructor]

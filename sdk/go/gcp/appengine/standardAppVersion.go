@@ -25,19 +25,20 @@ type StandardAppVersion struct {
 
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteServiceOnDestroy"`
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	Deployment StandardAppVersionDeploymentPtrOutput `pulumi:"deployment"`
-	// The entrypoint for the application.
+	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint StandardAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
 	// Environment variables available to the application.
 	EnvVariables pulumi.StringMapOutput `pulumi:"envVariables"`
-	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-	// request and other request handlers are not attempted.
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayOutput `pulumi:"handlers"`
-	// Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-	// AutomaticScaling is supported at the moment)
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling F1, F2, F4, F4_1G
+	// (Only AutomaticScaling is supported at the moment)
 	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
-	// Configuration for third-party Python runtime libraries that are required by the application.
+	// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 	Libraries StandardAppVersionLibraryArrayOutput `pulumi:"libraries"`
 	// The identifier for this object. Format specified above.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -48,15 +49,14 @@ type StandardAppVersion struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// https://cloud.google.com/appengine/docs/standard//config/appref
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion pulumi.StringPtrOutput `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service pulumi.StringPtrOutput `pulumi:"service"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrOutput `pulumi:"threadsafe"`
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrOutput `pulumi:"versionId"`
 }
 
@@ -93,19 +93,20 @@ func GetStandardAppVersion(ctx *pulumi.Context,
 type standardAppVersionState struct {
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	Deployment *StandardAppVersionDeployment `pulumi:"deployment"`
-	// The entrypoint for the application.
+	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint *StandardAppVersionEntrypoint `pulumi:"entrypoint"`
 	// Environment variables available to the application.
 	EnvVariables map[string]string `pulumi:"envVariables"`
-	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-	// request and other request handlers are not attempted.
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers []StandardAppVersionHandler `pulumi:"handlers"`
-	// Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-	// AutomaticScaling is supported at the moment)
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling F1, F2, F4, F4_1G
+	// (Only AutomaticScaling is supported at the moment)
 	InstanceClass *string `pulumi:"instanceClass"`
-	// Configuration for third-party Python runtime libraries that are required by the application.
+	// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 	Libraries []StandardAppVersionLibrary `pulumi:"libraries"`
 	// The identifier for this object. Format specified above.
 	Name *string `pulumi:"name"`
@@ -116,34 +117,34 @@ type standardAppVersionState struct {
 	Project *string `pulumi:"project"`
 	// Desired runtime. Example python27.
 	Runtime *string `pulumi:"runtime"`
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// https://cloud.google.com/appengine/docs/standard//config/appref
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service *string `pulumi:"service"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe *bool `pulumi:"threadsafe"`
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
 }
 
 type StandardAppVersionState struct {
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	Deployment StandardAppVersionDeploymentPtrInput
-	// The entrypoint for the application.
+	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint StandardAppVersionEntrypointPtrInput
 	// Environment variables available to the application.
 	EnvVariables pulumi.StringMapInput
-	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-	// request and other request handlers are not attempted.
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayInput
-	// Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-	// AutomaticScaling is supported at the moment)
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling F1, F2, F4, F4_1G
+	// (Only AutomaticScaling is supported at the moment)
 	InstanceClass pulumi.StringPtrInput
-	// Configuration for third-party Python runtime libraries that are required by the application.
+	// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 	Libraries StandardAppVersionLibraryArrayInput
 	// The identifier for this object. Format specified above.
 	Name pulumi.StringPtrInput
@@ -154,15 +155,14 @@ type StandardAppVersionState struct {
 	Project pulumi.StringPtrInput
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringPtrInput
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// https://cloud.google.com/appengine/docs/standard//config/appref
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion pulumi.StringPtrInput
 	// AppEngine service resource
 	Service pulumi.StringPtrInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
 }
 
@@ -173,19 +173,20 @@ func (StandardAppVersionState) ElementType() reflect.Type {
 type standardAppVersionArgs struct {
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	Deployment *StandardAppVersionDeployment `pulumi:"deployment"`
-	// The entrypoint for the application.
+	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint *StandardAppVersionEntrypoint `pulumi:"entrypoint"`
 	// Environment variables available to the application.
 	EnvVariables map[string]string `pulumi:"envVariables"`
-	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-	// request and other request handlers are not attempted.
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers []StandardAppVersionHandler `pulumi:"handlers"`
-	// Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-	// AutomaticScaling is supported at the moment)
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling F1, F2, F4, F4_1G
+	// (Only AutomaticScaling is supported at the moment)
 	InstanceClass *string `pulumi:"instanceClass"`
-	// Configuration for third-party Python runtime libraries that are required by the application.
+	// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 	Libraries []StandardAppVersionLibrary `pulumi:"libraries"`
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy *bool `pulumi:"noopOnDestroy"`
@@ -194,15 +195,14 @@ type standardAppVersionArgs struct {
 	Project *string `pulumi:"project"`
 	// Desired runtime. Example python27.
 	Runtime string `pulumi:"runtime"`
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// https://cloud.google.com/appengine/docs/standard//config/appref
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
 	Service *string `pulumi:"service"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe *bool `pulumi:"threadsafe"`
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
 }
 
@@ -210,19 +210,20 @@ type standardAppVersionArgs struct {
 type StandardAppVersionArgs struct {
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	Deployment StandardAppVersionDeploymentPtrInput
-	// The entrypoint for the application.
+	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint StandardAppVersionEntrypointPtrInput
 	// Environment variables available to the application.
 	EnvVariables pulumi.StringMapInput
-	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the
-	// request and other request handlers are not attempted.
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayInput
-	// Instance class that is used to run this version. Valid values are AutomaticScaling F1, F2, F4, F4_1G (Only
-	// AutomaticScaling is supported at the moment)
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling F1, F2, F4, F4_1G
+	// (Only AutomaticScaling is supported at the moment)
 	InstanceClass pulumi.StringPtrInput
-	// Configuration for third-party Python runtime libraries that are required by the application.
+	// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 	Libraries StandardAppVersionLibraryArrayInput
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrInput
@@ -231,15 +232,14 @@ type StandardAppVersionArgs struct {
 	Project pulumi.StringPtrInput
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringInput
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// https://cloud.google.com/appengine/docs/standard//config/appref
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion pulumi.StringPtrInput
 	// AppEngine service resource
 	Service pulumi.StringPtrInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
 }
 

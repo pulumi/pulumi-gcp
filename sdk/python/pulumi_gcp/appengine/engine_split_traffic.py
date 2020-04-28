@@ -25,10 +25,10 @@ class EngineSplitTraffic(pulumi.CustomResource):
     """
     split: pulumi.Output[dict]
     """
-    Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+    Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
 
-      * `allocations` (`dict`)
-      * `shardBy` (`str`)
+      * `allocations` (`dict`) - Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
+      * `shardBy` (`str`) - Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
     """
     def __init__(__self__, resource_name, opts=None, migrate_traffic=None, project=None, service=None, split=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -45,12 +45,12 @@ class EngineSplitTraffic(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
-        :param pulumi.Input[dict] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        :param pulumi.Input[dict] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
 
         The **split** object supports the following:
 
-          * `allocations` (`pulumi.Input[dict]`)
-          * `shardBy` (`pulumi.Input[str]`)
+          * `allocations` (`pulumi.Input[dict]`) - Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
+          * `shardBy` (`pulumi.Input[str]`) - Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,12 +96,12 @@ class EngineSplitTraffic(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The name of the service these settings apply to.
-        :param pulumi.Input[dict] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        :param pulumi.Input[dict] split: Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
 
         The **split** object supports the following:
 
-          * `allocations` (`pulumi.Input[dict]`)
-          * `shardBy` (`pulumi.Input[str]`)
+          * `allocations` (`pulumi.Input[dict]`) - Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
+          * `shardBy` (`pulumi.Input[str]`) - Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

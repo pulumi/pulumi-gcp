@@ -28,8 +28,9 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Output<bool?> AllowPasswordSignup { get; private set; } = null!;
 
         /// <summary>
-        /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-        /// sign-in. Admins of the disabled tenant are not able to manage its users.
+        /// Whether authentication is disabled for the tenant. If true, the users under
+        /// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+        /// are not able to manage its users.
         /// </summary>
         [Output("disableAuth")]
         public Output<bool?> DisableAuth { get; private set; } = null!;
@@ -112,8 +113,9 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<bool>? AllowPasswordSignup { get; set; }
 
         /// <summary>
-        /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-        /// sign-in. Admins of the disabled tenant are not able to manage its users.
+        /// Whether authentication is disabled for the tenant. If true, the users under
+        /// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+        /// are not able to manage its users.
         /// </summary>
         [Input("disableAuth")]
         public Input<bool>? DisableAuth { get; set; }
@@ -151,8 +153,9 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<bool>? AllowPasswordSignup { get; set; }
 
         /// <summary>
-        /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to
-        /// sign-in. Admins of the disabled tenant are not able to manage its users.
+        /// Whether authentication is disabled for the tenant. If true, the users under
+        /// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+        /// are not able to manage its users.
         /// </summary>
         [Input("disableAuth")]
         public Input<bool>? DisableAuth { get; set; }

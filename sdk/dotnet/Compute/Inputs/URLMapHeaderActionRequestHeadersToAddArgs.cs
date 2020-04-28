@@ -12,12 +12,23 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class URLMapHeaderActionRequestHeadersToAddArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the header.
+        /// </summary>
         [Input("headerName", required: true)]
         public Input<string> HeaderName { get; set; } = null!;
 
+        /// <summary>
+        /// The value of the header to add.
+        /// </summary>
         [Input("headerValue", required: true)]
         public Input<string> HeaderValue { get; set; } = null!;
 
+        /// <summary>
+        /// If false, headerValue is appended to any values that already exist for the
+        /// header. If true, headerValue is set for the header, discarding any values that
+        /// were set for that header.
+        /// </summary>
         [Input("replace", required: true)]
         public Input<bool> Replace { get; set; } = null!;
 

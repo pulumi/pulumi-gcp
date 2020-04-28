@@ -37,7 +37,7 @@ type LookupSecretVersionResult struct {
 	DestroyTime string `pulumi:"destroyTime"`
 	// True if the current state of the SecretVersion is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`

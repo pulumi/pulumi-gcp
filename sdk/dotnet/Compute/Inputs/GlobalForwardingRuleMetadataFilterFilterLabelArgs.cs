@@ -12,9 +12,17 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class GlobalForwardingRuleMetadataFilterFilterLabelArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the metadata label. The length must be between
+        /// 1 and 1024 characters, inclusive.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The value that the label must match. The value has a maximum
+        /// length of 1024 characters.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

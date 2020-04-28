@@ -47,12 +47,14 @@ export class Secret extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-     * maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values must be between 0 and 63 characters long, have a UTF-8
-     * encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given resource. An object containing a list
-     * of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     * The labels assigned to this Secret.
+     * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * No more than 64 labels can be assigned to a given resource.
+     * An object containing a list of "key": value pairs. Example:
+     * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -65,8 +67,8 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-     * created.
+     * The replication policy of the secret data attached to the Secret. It cannot be changed
+     * after the Secret has been created.  Structure is documented below.
      */
     public readonly replication!: pulumi.Output<outputs.secretmanager.SecretReplication>;
     /**
@@ -127,12 +129,14 @@ export interface SecretState {
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-     * maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values must be between 0 and 63 characters long, have a UTF-8
-     * encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given resource. An object containing a list
-     * of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     * The labels assigned to this Secret.
+     * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * No more than 64 labels can be assigned to a given resource.
+     * An object containing a list of "key": value pairs. Example:
+     * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -145,8 +149,8 @@ export interface SecretState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-     * created.
+     * The replication policy of the secret data attached to the Secret. It cannot be changed
+     * after the Secret has been created.  Structure is documented below.
      */
     readonly replication?: pulumi.Input<inputs.secretmanager.SecretReplication>;
     /**
@@ -160,12 +164,14 @@ export interface SecretState {
  */
 export interface SecretArgs {
     /**
-     * The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-     * maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values must be between 0 and 63 characters long, have a UTF-8
-     * encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-     * [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be assigned to a given resource. An object containing a list
-     * of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     * The labels assigned to this Secret.
+     * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+     * Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
+     * and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+     * No more than 64 labels can be assigned to a given resource.
+     * An object containing a list of "key": value pairs. Example:
+     * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -174,8 +180,8 @@ export interface SecretArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The replication policy of the secret data attached to the Secret. It cannot be changed after the Secret has been
-     * created.
+     * The replication policy of the secret data attached to the Secret. It cannot be changed
+     * after the Secret has been created.  Structure is documented below.
      */
     readonly replication: pulumi.Input<inputs.secretmanager.SecretReplication>;
     /**

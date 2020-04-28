@@ -12,11 +12,14 @@ from .. import utilities, tables
 class ApplicationUrlDispatchRules(pulumi.CustomResource):
     dispatch_rules: pulumi.Output[list]
     """
-    Rules to match an HTTP request and dispatch that request to a service.
+    Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
 
-      * `domain` (`str`)
-      * `path` (`str`)
-      * `service` (`str`)
+      * `domain` (`str`) - Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
+        Defaults to matching all domains: "*".
+      * `path` (`str`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+        The sum of the lengths of the domain and path may not exceed 100 characters.
+      * `service` (`str`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+        The sum of the lengths of the domain and path may not exceed 100 characters.
     """
     project: pulumi.Output[str]
     """
@@ -34,15 +37,18 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
         The **dispatch_rules** object supports the following:
 
-          * `domain` (`pulumi.Input[str]`)
-          * `path` (`pulumi.Input[str]`)
-          * `service` (`pulumi.Input[str]`)
+          * `domain` (`pulumi.Input[str]`) - Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
+            Defaults to matching all domains: "*".
+          * `path` (`pulumi.Input[str]`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+            The sum of the lengths of the domain and path may not exceed 100 characters.
+          * `service` (`pulumi.Input[str]`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+            The sum of the lengths of the domain and path may not exceed 100 characters.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -80,15 +86,18 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
         The **dispatch_rules** object supports the following:
 
-          * `domain` (`pulumi.Input[str]`)
-          * `path` (`pulumi.Input[str]`)
-          * `service` (`pulumi.Input[str]`)
+          * `domain` (`pulumi.Input[str]`) - Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
+            Defaults to matching all domains: "*".
+          * `path` (`pulumi.Input[str]`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+            The sum of the lengths of the domain and path may not exceed 100 characters.
+          * `service` (`pulumi.Input[str]`) - Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
+            The sum of the lengths of the domain and path may not exceed 100 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

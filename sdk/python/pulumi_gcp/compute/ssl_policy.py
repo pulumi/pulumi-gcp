@@ -16,11 +16,14 @@ class SSLPolicy(pulumi.CustomResource):
     """
     custom_features: pulumi.Output[list]
     """
-    Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This
-    can be one of 'COMPATIBLE', 'MODERN', 'RESTRICTED', or 'CUSTOM'. If using 'CUSTOM', the set of SSL features to enable
-    must be specified in the 'customFeatures' field. See the [official
-    documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport) for which
-    ciphers are available to use. **Note**: this argument *must* be present when using the 'CUSTOM' profile. This argument
+    Profile specifies the set of SSL features that can be used by the
+    load balancer when negotiating SSL with clients. This can be one of
+    `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+    the set of SSL features to enable must be specified in the
+    `customFeatures` field.
+    See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+    for which ciphers are available to use. **Note**: this argument
+    *must* be present when using the `CUSTOM` profile. This argument
     *must not* be present when using any other profile.
     """
     description: pulumi.Output[str]
@@ -37,24 +40,32 @@ class SSLPolicy(pulumi.CustomResource):
     """
     min_tls_version: pulumi.Output[str]
     """
-    The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer.
-    This can be one of 'TLS_1_0', 'TLS_1_1', 'TLS_1_2'. Default is 'TLS_1_0'.
+    The minimum version of SSL protocol that can be used by the clients
+    to establish a connection with the load balancer. This can be one of
+    `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+    Default is `TLS_1_0`.
     """
     name: pulumi.Output[str]
     """
-    Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-    comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-    '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-    must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+    Name of the resource. Provided by the client when the resource is
+    created. The name must be 1-63 characters long, and comply with
+    RFC1035. Specifically, the name must be 1-63 characters long and match
+    the regular expression `a-z?` which means the
+    first character must be a lowercase letter, and all following
+    characters must be a dash, lowercase letter, or digit, except the last
+    character, which cannot be a dash.
     """
     profile: pulumi.Output[str]
     """
-    Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This
-    can be one of 'COMPATIBLE', 'MODERN', 'RESTRICTED', or 'CUSTOM'. If using 'CUSTOM', the set of SSL features to enable
-    must be specified in the 'customFeatures' field. See the [official
-    documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport) for information
-    on what cipher suites each profile provides. If 'CUSTOM' is used, the 'custom_features' attribute **must be set**.
-    Default is 'COMPATIBLE'.
+    Profile specifies the set of SSL features that can be used by the
+    load balancer when negotiating SSL with clients. This can be one of
+    `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+    the set of SSL features to enable must be specified in the
+    `customFeatures` field.
+    See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+    for information on what cipher suites each profile provides. If
+    `CUSTOM` is used, the `custom_features` attribute **must be set**.
+    Default is `COMPATIBLE`.
     """
     project: pulumi.Output[str]
     """
@@ -79,25 +90,36 @@ class SSLPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] custom_features: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This
-               can be one of 'COMPATIBLE', 'MODERN', 'RESTRICTED', or 'CUSTOM'. If using 'CUSTOM', the set of SSL features to enable
-               must be specified in the 'customFeatures' field. See the [official
-               documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport) for which
-               ciphers are available to use. **Note**: this argument *must* be present when using the 'CUSTOM' profile. This argument
+        :param pulumi.Input[list] custom_features: Profile specifies the set of SSL features that can be used by the
+               load balancer when negotiating SSL with clients. This can be one of
+               `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+               the set of SSL features to enable must be specified in the
+               `customFeatures` field.
+               See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+               for which ciphers are available to use. **Note**: this argument
+               *must* be present when using the `CUSTOM` profile. This argument
                *must not* be present when using any other profile.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer.
-               This can be one of 'TLS_1_0', 'TLS_1_1', 'TLS_1_2'. Default is 'TLS_1_0'.
-        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This
-               can be one of 'COMPATIBLE', 'MODERN', 'RESTRICTED', or 'CUSTOM'. If using 'CUSTOM', the set of SSL features to enable
-               must be specified in the 'customFeatures' field. See the [official
-               documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport) for information
-               on what cipher suites each profile provides. If 'CUSTOM' is used, the 'custom_features' attribute **must be set**.
-               Default is 'COMPATIBLE'.
+        :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
+               to establish a connection with the load balancer. This can be one of
+               `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+               Default is `TLS_1_0`.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the
+               load balancer when negotiating SSL with clients. This can be one of
+               `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+               the set of SSL features to enable must be specified in the
+               `customFeatures` field.
+               See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+               for information on what cipher suites each profile provides. If
+               `CUSTOM` is used, the `custom_features` attribute **must be set**.
+               Default is `COMPATIBLE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -144,27 +166,38 @@ class SSLPolicy(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[list] custom_features: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This
-               can be one of 'COMPATIBLE', 'MODERN', 'RESTRICTED', or 'CUSTOM'. If using 'CUSTOM', the set of SSL features to enable
-               must be specified in the 'customFeatures' field. See the [official
-               documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport) for which
-               ciphers are available to use. **Note**: this argument *must* be present when using the 'CUSTOM' profile. This argument
+        :param pulumi.Input[list] custom_features: Profile specifies the set of SSL features that can be used by the
+               load balancer when negotiating SSL with clients. This can be one of
+               `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+               the set of SSL features to enable must be specified in the
+               `customFeatures` field.
+               See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+               for which ciphers are available to use. **Note**: this argument
+               *must* be present when using the `CUSTOM` profile. This argument
                *must not* be present when using any other profile.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[list] enabled_features: The list of features enabled in the SSL policy.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-        :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer.
-               This can be one of 'TLS_1_0', 'TLS_1_1', 'TLS_1_2'. Default is 'TLS_1_0'.
-        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-               comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-               '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-               must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This
-               can be one of 'COMPATIBLE', 'MODERN', 'RESTRICTED', or 'CUSTOM'. If using 'CUSTOM', the set of SSL features to enable
-               must be specified in the 'customFeatures' field. See the [official
-               documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport) for information
-               on what cipher suites each profile provides. If 'CUSTOM' is used, the 'custom_features' attribute **must be set**.
-               Default is 'COMPATIBLE'.
+        :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
+               to establish a connection with the load balancer. This can be one of
+               `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+               Default is `TLS_1_0`.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the
+               load balancer when negotiating SSL with clients. This can be one of
+               `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+               the set of SSL features to enable must be specified in the
+               `customFeatures` field.
+               See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
+               for information on what cipher suites each profile provides. If
+               `CUSTOM` is used, the `custom_features` attribute **must be set**.
+               Default is `COMPATIBLE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.

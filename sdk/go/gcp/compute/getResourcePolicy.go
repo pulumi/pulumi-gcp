@@ -31,7 +31,7 @@ type LookupResourcePolicyArgs struct {
 type LookupResourcePolicyResult struct {
 	// Description of this Resource Policy.
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id      string  `pulumi:"id"`
 	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`

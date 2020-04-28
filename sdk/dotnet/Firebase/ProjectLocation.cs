@@ -30,8 +30,8 @@ namespace Pulumi.Gcp.Firebase
     public partial class ProjectLocation : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP resource
-        /// locations.
+        /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
+        /// resource locations.
         /// </summary>
         [Output("locationId")]
         public Output<string> LocationId { get; private set; } = null!;
@@ -90,8 +90,8 @@ namespace Pulumi.Gcp.Firebase
     public sealed class ProjectLocationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP resource
-        /// locations.
+        /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
+        /// resource locations.
         /// </summary>
         [Input("locationId", required: true)]
         public Input<string> LocationId { get; set; } = null!;
@@ -111,8 +111,8 @@ namespace Pulumi.Gcp.Firebase
     public sealed class ProjectLocationState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP resource
-        /// locations.
+        /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
+        /// resource locations.
         /// </summary>
         [Input("locationId")]
         public Input<string>? LocationId { get; set; }

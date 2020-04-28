@@ -14,21 +14,23 @@ import (
 type AutoscalingPolicy struct {
 	pulumi.CustomResourceState
 
-	// Basic algorithm for autoscaling.
+	// Basic algorithm for autoscaling.  Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrOutput `pulumi:"basicAlgorithm"`
-	// The location where the autoscaling poicy should reside. The default value is 'global'.
+	// The  location where the autoscaling poicy should reside.
+	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The "resource name" of the autoscaling policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
-	// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+	// 3 and 50 characters.
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Describes how the autoscaler will operate for secondary workers.
+	// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
 	SecondaryWorkerConfig AutoscalingPolicySecondaryWorkerConfigPtrOutput `pulumi:"secondaryWorkerConfig"`
-	// Describes how the autoscaler will operate for primary workers.
+	// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
 	WorkerConfig AutoscalingPolicyWorkerConfigPtrOutput `pulumi:"workerConfig"`
 }
 
@@ -63,40 +65,44 @@ func GetAutoscalingPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AutoscalingPolicy resources.
 type autoscalingPolicyState struct {
-	// Basic algorithm for autoscaling.
+	// Basic algorithm for autoscaling.  Structure is documented below.
 	BasicAlgorithm *AutoscalingPolicyBasicAlgorithm `pulumi:"basicAlgorithm"`
-	// The location where the autoscaling poicy should reside. The default value is 'global'.
+	// The  location where the autoscaling poicy should reside.
+	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The "resource name" of the autoscaling policy.
 	Name *string `pulumi:"name"`
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
-	// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+	// 3 and 50 characters.
 	PolicyId *string `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Describes how the autoscaler will operate for secondary workers.
+	// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
 	SecondaryWorkerConfig *AutoscalingPolicySecondaryWorkerConfig `pulumi:"secondaryWorkerConfig"`
-	// Describes how the autoscaler will operate for primary workers.
+	// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
 	WorkerConfig *AutoscalingPolicyWorkerConfig `pulumi:"workerConfig"`
 }
 
 type AutoscalingPolicyState struct {
-	// Basic algorithm for autoscaling.
+	// Basic algorithm for autoscaling.  Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrInput
-	// The location where the autoscaling poicy should reside. The default value is 'global'.
+	// The  location where the autoscaling poicy should reside.
+	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The "resource name" of the autoscaling policy.
 	Name pulumi.StringPtrInput
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
-	// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+	// 3 and 50 characters.
 	PolicyId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Describes how the autoscaler will operate for secondary workers.
+	// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
 	SecondaryWorkerConfig AutoscalingPolicySecondaryWorkerConfigPtrInput
-	// Describes how the autoscaler will operate for primary workers.
+	// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
 	WorkerConfig AutoscalingPolicyWorkerConfigPtrInput
 }
 
@@ -105,37 +111,41 @@ func (AutoscalingPolicyState) ElementType() reflect.Type {
 }
 
 type autoscalingPolicyArgs struct {
-	// Basic algorithm for autoscaling.
+	// Basic algorithm for autoscaling.  Structure is documented below.
 	BasicAlgorithm *AutoscalingPolicyBasicAlgorithm `pulumi:"basicAlgorithm"`
-	// The location where the autoscaling poicy should reside. The default value is 'global'.
+	// The  location where the autoscaling poicy should reside.
+	// The default value is `global`.
 	Location *string `pulumi:"location"`
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
-	// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+	// 3 and 50 characters.
 	PolicyId string `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Describes how the autoscaler will operate for secondary workers.
+	// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
 	SecondaryWorkerConfig *AutoscalingPolicySecondaryWorkerConfig `pulumi:"secondaryWorkerConfig"`
-	// Describes how the autoscaler will operate for primary workers.
+	// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
 	WorkerConfig *AutoscalingPolicyWorkerConfig `pulumi:"workerConfig"`
 }
 
 // The set of arguments for constructing a AutoscalingPolicy resource.
 type AutoscalingPolicyArgs struct {
-	// Basic algorithm for autoscaling.
+	// Basic algorithm for autoscaling.  Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrInput
-	// The location where the autoscaling poicy should reside. The default value is 'global'.
+	// The  location where the autoscaling poicy should reside.
+	// The default value is `global`.
 	Location pulumi.StringPtrInput
-	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot
-	// begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
+	// 3 and 50 characters.
 	PolicyId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Describes how the autoscaler will operate for secondary workers.
+	// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
 	SecondaryWorkerConfig AutoscalingPolicySecondaryWorkerConfigPtrInput
-	// Describes how the autoscaler will operate for primary workers.
+	// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
 	WorkerConfig AutoscalingPolicyWorkerConfigPtrInput
 }
 

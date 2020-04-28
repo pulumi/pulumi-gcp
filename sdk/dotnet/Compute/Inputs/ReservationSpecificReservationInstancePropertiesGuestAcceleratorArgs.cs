@@ -12,9 +12,19 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of the guest accelerator cards exposed to
+        /// this instance.
+        /// </summary>
         [Input("acceleratorCount", required: true)]
         public Input<int> AcceleratorCount { get; set; } = null!;
 
+        /// <summary>
+        /// The full or partial URL of the accelerator type to
+        /// attach to this instance. For example:
+        /// `projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100`
+        /// If you are creating an instance template, specify only the accelerator name.
+        /// </summary>
         [Input("acceleratorType", required: true)]
         public Input<string> AcceleratorType { get; set; } = null!;
 

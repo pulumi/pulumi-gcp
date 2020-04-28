@@ -11,8 +11,11 @@ import (
 )
 
 type InstanceFileShares struct {
-	CapacityGb int    `pulumi:"capacityGb"`
-	Name       string `pulumi:"name"`
+	// File share capacity in GiB. This must be at least 1024 GiB
+	// for the standard tier, or 2560 GiB for the premium tier.
+	CapacityGb int `pulumi:"capacityGb"`
+	// The name of the fileshare (16 characters or less)
+	Name string `pulumi:"name"`
 }
 
 // InstanceFileSharesInput is an input type that accepts InstanceFileSharesArgs and InstanceFileSharesOutput values.
@@ -28,8 +31,11 @@ type InstanceFileSharesInput interface {
 }
 
 type InstanceFileSharesArgs struct {
-	CapacityGb pulumi.IntInput    `pulumi:"capacityGb"`
-	Name       pulumi.StringInput `pulumi:"name"`
+	// File share capacity in GiB. This must be at least 1024 GiB
+	// for the standard tier, or 2560 GiB for the premium tier.
+	CapacityGb pulumi.IntInput `pulumi:"capacityGb"`
+	// The name of the fileshare (16 characters or less)
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (InstanceFileSharesArgs) ElementType() reflect.Type {
@@ -109,10 +115,14 @@ func (o InstanceFileSharesOutput) ToInstanceFileSharesPtrOutputWithContext(ctx c
 		return &v
 	}).(InstanceFileSharesPtrOutput)
 }
+
+// File share capacity in GiB. This must be at least 1024 GiB
+// for the standard tier, or 2560 GiB for the premium tier.
 func (o InstanceFileSharesOutput) CapacityGb() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceFileShares) int { return v.CapacityGb }).(pulumi.IntOutput)
 }
 
+// The name of the fileshare (16 characters or less)
 func (o InstanceFileSharesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceFileShares) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -135,19 +145,40 @@ func (o InstanceFileSharesPtrOutput) Elem() InstanceFileSharesOutput {
 	return o.ApplyT(func(v *InstanceFileShares) InstanceFileShares { return *v }).(InstanceFileSharesOutput)
 }
 
-func (o InstanceFileSharesPtrOutput) CapacityGb() pulumi.IntOutput {
-	return o.ApplyT(func(v InstanceFileShares) int { return v.CapacityGb }).(pulumi.IntOutput)
+// File share capacity in GiB. This must be at least 1024 GiB
+// for the standard tier, or 2560 GiB for the premium tier.
+func (o InstanceFileSharesPtrOutput) CapacityGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceFileShares) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.CapacityGb
+	}).(pulumi.IntPtrOutput)
 }
 
-func (o InstanceFileSharesPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceFileShares) string { return v.Name }).(pulumi.StringOutput)
+// The name of the fileshare (16 characters or less)
+func (o InstanceFileSharesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFileShares) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceNetwork struct {
-	IpAddresses     []string `pulumi:"ipAddresses"`
-	Modes           []string `pulumi:"modes"`
-	Network         string   `pulumi:"network"`
-	ReservedIpRange *string  `pulumi:"reservedIpRange"`
+	// -
+	// A list of IPv4 or IPv6 addresses.
+	IpAddresses []string `pulumi:"ipAddresses"`
+	// IP versions for which the instance has
+	// IP addresses assigned.
+	Modes []string `pulumi:"modes"`
+	// The name of the GCE VPC network to which the
+	// instance is connected.
+	Network string `pulumi:"network"`
+	// A /29 CIDR block that identifies the range of IP
+	// addresses reserved for this instance.
+	ReservedIpRange *string `pulumi:"reservedIpRange"`
 }
 
 // InstanceNetworkInput is an input type that accepts InstanceNetworkArgs and InstanceNetworkOutput values.
@@ -163,10 +194,18 @@ type InstanceNetworkInput interface {
 }
 
 type InstanceNetworkArgs struct {
-	IpAddresses     pulumi.StringArrayInput `pulumi:"ipAddresses"`
-	Modes           pulumi.StringArrayInput `pulumi:"modes"`
-	Network         pulumi.StringInput      `pulumi:"network"`
-	ReservedIpRange pulumi.StringPtrInput   `pulumi:"reservedIpRange"`
+	// -
+	// A list of IPv4 or IPv6 addresses.
+	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
+	// IP versions for which the instance has
+	// IP addresses assigned.
+	Modes pulumi.StringArrayInput `pulumi:"modes"`
+	// The name of the GCE VPC network to which the
+	// instance is connected.
+	Network pulumi.StringInput `pulumi:"network"`
+	// A /29 CIDR block that identifies the range of IP
+	// addresses reserved for this instance.
+	ReservedIpRange pulumi.StringPtrInput `pulumi:"reservedIpRange"`
 }
 
 func (InstanceNetworkArgs) ElementType() reflect.Type {
@@ -221,18 +260,26 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 	return o
 }
 
+// -
+// A list of IPv4 or IPv6 addresses.
 func (o InstanceNetworkOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceNetwork) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
 
+// IP versions for which the instance has
+// IP addresses assigned.
 func (o InstanceNetworkOutput) Modes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceNetwork) []string { return v.Modes }).(pulumi.StringArrayOutput)
 }
 
+// The name of the GCE VPC network to which the
+// instance is connected.
 func (o InstanceNetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceNetwork) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// A /29 CIDR block that identifies the range of IP
+// addresses reserved for this instance.
 func (o InstanceNetworkOutput) ReservedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.ReservedIpRange }).(pulumi.StringPtrOutput)
 }

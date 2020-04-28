@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Folder.Inputs
 
     public sealed class OrganizationPolicyListPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// or `deny` - (Optional) One or the other must be set.
+        /// </summary>
         [Input("allow")]
         public Input<Inputs.OrganizationPolicyListPolicyAllowArgs>? Allow { get; set; }
 

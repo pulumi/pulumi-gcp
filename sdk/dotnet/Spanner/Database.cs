@@ -22,9 +22,10 @@ namespace Pulumi.Gcp.Spanner
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>
-        /// An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc.
-        /// These statements execute atomically with the creation of the database: if there is an error in any statement, the
-        /// database is not created.
+        /// An optional list of DDL statements to run inside the newly created
+        /// database. Statements can create tables, indexes, etc. These statements
+        /// execute atomically with the creation of the database: if there is an
+        /// error in any statement, the database is not created.
         /// </summary>
         [Output("ddls")]
         public Output<ImmutableArray<string>> Ddls { get; private set; } = null!;
@@ -36,8 +37,8 @@ namespace Pulumi.Gcp.Spanner
         public Output<string> Instance { get; private set; } = null!;
 
         /// <summary>
-        /// A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
-        /// [a-z][-a-z0-9]*[a-z0-9].
+        /// A unique identifier for the database, which cannot be changed after
+        /// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -105,9 +106,10 @@ namespace Pulumi.Gcp.Spanner
         private InputList<string>? _ddls;
 
         /// <summary>
-        /// An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc.
-        /// These statements execute atomically with the creation of the database: if there is an error in any statement, the
-        /// database is not created.
+        /// An optional list of DDL statements to run inside the newly created
+        /// database. Statements can create tables, indexes, etc. These statements
+        /// execute atomically with the creation of the database: if there is an
+        /// error in any statement, the database is not created.
         /// </summary>
         public InputList<string> Ddls
         {
@@ -122,8 +124,8 @@ namespace Pulumi.Gcp.Spanner
         public Input<string> Instance { get; set; } = null!;
 
         /// <summary>
-        /// A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
-        /// [a-z][-a-z0-9]*[a-z0-9].
+        /// A unique identifier for the database, which cannot be changed after
+        /// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -146,9 +148,10 @@ namespace Pulumi.Gcp.Spanner
         private InputList<string>? _ddls;
 
         /// <summary>
-        /// An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc.
-        /// These statements execute atomically with the creation of the database: if there is an error in any statement, the
-        /// database is not created.
+        /// An optional list of DDL statements to run inside the newly created
+        /// database. Statements can create tables, indexes, etc. These statements
+        /// execute atomically with the creation of the database: if there is an
+        /// error in any statement, the database is not created.
         /// </summary>
         public InputList<string> Ddls
         {
@@ -163,8 +166,8 @@ namespace Pulumi.Gcp.Spanner
         public Input<string>? Instance { get; set; }
 
         /// <summary>
-        /// A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
-        /// [a-z][-a-z0-9]*[a-z0-9].
+        /// A unique identifier for the database, which cannot be changed after
+        /// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

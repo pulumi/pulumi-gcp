@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myRouter = gcp.compute.getRouter({
+ * const myRouter = pulumi.output(gcp.compute.getRouter({
  *     name: "myrouter-us-east1",
  *     network: "my-network",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_router.html.markdown.
@@ -78,7 +78,7 @@ export interface GetRouterResult {
     readonly region?: string;
     readonly selfLink: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

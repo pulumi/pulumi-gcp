@@ -142,15 +142,30 @@ func (o RepositoryIamBindingConditionPtrOutput) Elem() RepositoryIamBindingCondi
 }
 
 func (o RepositoryIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RepositoryIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RepositoryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o RepositoryIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v RepositoryIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o RepositoryIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o RepositoryIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v RepositoryIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o RepositoryIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type RepositoryIamMemberCondition struct {
@@ -285,19 +300,41 @@ func (o RepositoryIamMemberConditionPtrOutput) Elem() RepositoryIamMemberConditi
 }
 
 func (o RepositoryIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RepositoryIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RepositoryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o RepositoryIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v RepositoryIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o RepositoryIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o RepositoryIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v RepositoryIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o RepositoryIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type RepositoryPubsubConfig struct {
-	MessageFormat       string  `pulumi:"messageFormat"`
+	// The format of the Cloud Pub/Sub messages.
+	// - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+	// - JSON: The message payload is a JSON string of SourceRepoEvent.
+	MessageFormat string `pulumi:"messageFormat"`
+	// Email address of the service account used for publishing Cloud Pub/Sub messages.
+	// This service account needs to be in the same project as the PubsubConfig. When added,
+	// the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+	// If unspecified, it defaults to the compute engine default service account.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The identifier for this object. Format specified above.
 	Topic string `pulumi:"topic"`
@@ -316,7 +353,14 @@ type RepositoryPubsubConfigInput interface {
 }
 
 type RepositoryPubsubConfigArgs struct {
-	MessageFormat       pulumi.StringInput    `pulumi:"messageFormat"`
+	// The format of the Cloud Pub/Sub messages.
+	// - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+	// - JSON: The message payload is a JSON string of SourceRepoEvent.
+	MessageFormat pulumi.StringInput `pulumi:"messageFormat"`
+	// Email address of the service account used for publishing Cloud Pub/Sub messages.
+	// This service account needs to be in the same project as the PubsubConfig. When added,
+	// the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+	// If unspecified, it defaults to the compute engine default service account.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// The identifier for this object. Format specified above.
 	Topic pulumi.StringInput `pulumi:"topic"`
@@ -374,10 +418,17 @@ func (o RepositoryPubsubConfigOutput) ToRepositoryPubsubConfigOutputWithContext(
 	return o
 }
 
+// The format of the Cloud Pub/Sub messages.
+// - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+// - JSON: The message payload is a JSON string of SourceRepoEvent.
 func (o RepositoryPubsubConfigOutput) MessageFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryPubsubConfig) string { return v.MessageFormat }).(pulumi.StringOutput)
 }
 
+// Email address of the service account used for publishing Cloud Pub/Sub messages.
+// This service account needs to be in the same project as the PubsubConfig. When added,
+// the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+// If unspecified, it defaults to the compute engine default service account.
 func (o RepositoryPubsubConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryPubsubConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }

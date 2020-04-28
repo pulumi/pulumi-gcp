@@ -31,9 +31,11 @@ namespace Pulumi.Gcp.SecurityCenter
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The source’s display name. A source’s display name must be unique amongst its siblings, for example, two sources
-        /// with the same parent can't share the same display name. The display name must start and end with a letter or digit, may
-        /// contain letters, digits, spaces, hyphens, and underscores, and can be no longer than 32 characters.
+        /// The source’s display name. A source’s display name must be unique
+        /// amongst its siblings, for example, two sources with the same parent
+        /// can't share the same display name. The display name must start and end
+        /// with a letter or digit, may contain letters, digits, spaces, hyphens,
+        /// and underscores, and can be no longer than 32 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -45,7 +47,8 @@ namespace Pulumi.Gcp.SecurityCenter
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The organization whose Cloud Security Command Center the Source lives in.
+        /// The organization whose Cloud Security Command Center the Source
+        /// lives in.
         /// </summary>
         [Output("organization")]
         public Output<string> Organization { get; private set; } = null!;
@@ -103,15 +106,18 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The source’s display name. A source’s display name must be unique amongst its siblings, for example, two sources
-        /// with the same parent can't share the same display name. The display name must start and end with a letter or digit, may
-        /// contain letters, digits, spaces, hyphens, and underscores, and can be no longer than 32 characters.
+        /// The source’s display name. A source’s display name must be unique
+        /// amongst its siblings, for example, two sources with the same parent
+        /// can't share the same display name. The display name must start and end
+        /// with a letter or digit, may contain letters, digits, spaces, hyphens,
+        /// and underscores, and can be no longer than 32 characters.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// The organization whose Cloud Security Command Center the Source lives in.
+        /// The organization whose Cloud Security Command Center the Source
+        /// lives in.
         /// </summary>
         [Input("organization", required: true)]
         public Input<string> Organization { get; set; } = null!;
@@ -130,9 +136,11 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The source’s display name. A source’s display name must be unique amongst its siblings, for example, two sources
-        /// with the same parent can't share the same display name. The display name must start and end with a letter or digit, may
-        /// contain letters, digits, spaces, hyphens, and underscores, and can be no longer than 32 characters.
+        /// The source’s display name. A source’s display name must be unique
+        /// amongst its siblings, for example, two sources with the same parent
+        /// can't share the same display name. The display name must start and end
+        /// with a letter or digit, may contain letters, digits, spaces, hyphens,
+        /// and underscores, and can be no longer than 32 characters.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -144,7 +152,8 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The organization whose Cloud Security Command Center the Source lives in.
+        /// The organization whose Cloud Security Command Center the Source
+        /// lives in.
         /// </summary>
         [Input("organization")]
         public Input<string>? Organization { get; set; }

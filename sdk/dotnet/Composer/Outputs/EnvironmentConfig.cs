@@ -16,9 +16,22 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly string? AirflowUri;
         public readonly string? DagGcsPrefix;
         public readonly string? GkeCluster;
+        /// <summary>
+        /// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
+        /// </summary>
         public readonly Outputs.EnvironmentConfigNodeConfig? NodeConfig;
+        /// <summary>
+        /// The number of nodes in the Kubernetes Engine cluster that
+        /// will be used to run this environment.
+        /// </summary>
         public readonly int? NodeCount;
+        /// <summary>
+        /// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
+        /// </summary>
         public readonly Outputs.EnvironmentConfigPrivateEnvironmentConfig? PrivateEnvironmentConfig;
+        /// <summary>
+        /// The configuration settings for software inside the environment.  Structure is documented below.
+        /// </summary>
         public readonly Outputs.EnvironmentConfigSoftwareConfig? SoftwareConfig;
 
         [OutputConstructor]

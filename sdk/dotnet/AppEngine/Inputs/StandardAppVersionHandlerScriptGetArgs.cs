@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
     public sealed class StandardAppVersionHandlerScriptGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Path to the script from the application root directory.
+        /// </summary>
         [Input("scriptPath", required: true)]
         public Input<string> ScriptPath { get; set; } = null!;
 

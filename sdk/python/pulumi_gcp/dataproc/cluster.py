@@ -58,12 +58,14 @@ class Cluster(pulumi.CustomResource):
 
       * `initializationActions` (`list`) - Commands to execute on each node after config is completed.
         You can specify multiple versions of these. Structure defined below.
-        * `script` (`str`)
+        * `script` (`str`) - The script to be executed during initialization of the cluster.
+          The script must be a GCS file with a gs:// prefix.
         * `timeout_sec` (`float`) - The maximum duration (in seconds) which `script` is
           allowed to take to execute its action. GCP will default to a predetermined
           computed value if not set (currently 300).
 
-      * `lifecycleConfig` (`dict`)
+      * `lifecycleConfig` (`dict`) - The settings for auto deletion cluster schedule.
+        Structure defined below.
         * `autoDeleteTime` (`str`) - The time when cluster will be auto-deleted.
           A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
           Example: "2014-10-02T15:01:23.045123456Z".
@@ -97,7 +99,8 @@ class Cluster(pulumi.CustomResource):
           for the master. If not specified, GCP will default to a predetermined computed value
           for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
           for details about which CPU families are available (and defaulted) for each zone.
-        * `numInstances` (`float`)
+        * `numInstances` (`float`) - Specifies the number of preemptible nodes to create.
+          Defaults to 0.
 
       * `preemptibleWorkerConfig` (`dict`) - The Google Compute Engine config settings for the additional (aka
         preemptible) instances in a cluster. Structure defined below.
@@ -112,7 +115,8 @@ class Cluster(pulumi.CustomResource):
             attached to each preemptible worker node. Defaults to 0.
 
         * `instanceNames` (`list`)
-        * `numInstances` (`float`)
+        * `numInstances` (`float`) - Specifies the number of preemptible nodes to create.
+          Defaults to 0.
 
       * `securityConfig` (`dict`) - Security related configuration. Structure defined below.
         * `kerberosConfig` (`dict`) - Kerberos Configuration
@@ -204,7 +208,8 @@ class Cluster(pulumi.CustomResource):
           for the master. If not specified, GCP will default to a predetermined computed value
           for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
           for details about which CPU families are available (and defaulted) for each zone.
-        * `numInstances` (`float`)
+        * `numInstances` (`float`) - Specifies the number of preemptible nodes to create.
+          Defaults to 0.
     """
     labels: pulumi.Output[dict]
     """
@@ -296,12 +301,14 @@ class Cluster(pulumi.CustomResource):
 
           * `initializationActions` (`pulumi.Input[list]`) - Commands to execute on each node after config is completed.
             You can specify multiple versions of these. Structure defined below.
-            * `script` (`pulumi.Input[str]`)
+            * `script` (`pulumi.Input[str]`) - The script to be executed during initialization of the cluster.
+              The script must be a GCS file with a gs:// prefix.
             * `timeout_sec` (`pulumi.Input[float]`) - The maximum duration (in seconds) which `script` is
               allowed to take to execute its action. GCP will default to a predetermined
               computed value if not set (currently 300).
 
-          * `lifecycleConfig` (`pulumi.Input[dict]`)
+          * `lifecycleConfig` (`pulumi.Input[dict]`) - The settings for auto deletion cluster schedule.
+            Structure defined below.
             * `autoDeleteTime` (`pulumi.Input[str]`) - The time when cluster will be auto-deleted.
               A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
               Example: "2014-10-02T15:01:23.045123456Z".
@@ -335,7 +342,8 @@ class Cluster(pulumi.CustomResource):
               for the master. If not specified, GCP will default to a predetermined computed value
               for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
               for details about which CPU families are available (and defaulted) for each zone.
-            * `numInstances` (`pulumi.Input[float]`)
+            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
+              Defaults to 0.
 
           * `preemptibleWorkerConfig` (`pulumi.Input[dict]`) - The Google Compute Engine config settings for the additional (aka
             preemptible) instances in a cluster. Structure defined below.
@@ -350,7 +358,8 @@ class Cluster(pulumi.CustomResource):
                 attached to each preemptible worker node. Defaults to 0.
 
             * `instanceNames` (`pulumi.Input[list]`)
-            * `numInstances` (`pulumi.Input[float]`)
+            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
+              Defaults to 0.
 
           * `securityConfig` (`pulumi.Input[dict]`) - Security related configuration. Structure defined below.
             * `kerberosConfig` (`pulumi.Input[dict]`) - Kerberos Configuration
@@ -442,7 +451,8 @@ class Cluster(pulumi.CustomResource):
               for the master. If not specified, GCP will default to a predetermined computed value
               for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
               for details about which CPU families are available (and defaulted) for each zone.
-            * `numInstances` (`pulumi.Input[float]`)
+            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
+              Defaults to 0.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -538,12 +548,14 @@ class Cluster(pulumi.CustomResource):
 
           * `initializationActions` (`pulumi.Input[list]`) - Commands to execute on each node after config is completed.
             You can specify multiple versions of these. Structure defined below.
-            * `script` (`pulumi.Input[str]`)
+            * `script` (`pulumi.Input[str]`) - The script to be executed during initialization of the cluster.
+              The script must be a GCS file with a gs:// prefix.
             * `timeout_sec` (`pulumi.Input[float]`) - The maximum duration (in seconds) which `script` is
               allowed to take to execute its action. GCP will default to a predetermined
               computed value if not set (currently 300).
 
-          * `lifecycleConfig` (`pulumi.Input[dict]`)
+          * `lifecycleConfig` (`pulumi.Input[dict]`) - The settings for auto deletion cluster schedule.
+            Structure defined below.
             * `autoDeleteTime` (`pulumi.Input[str]`) - The time when cluster will be auto-deleted.
               A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
               Example: "2014-10-02T15:01:23.045123456Z".
@@ -577,7 +589,8 @@ class Cluster(pulumi.CustomResource):
               for the master. If not specified, GCP will default to a predetermined computed value
               for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
               for details about which CPU families are available (and defaulted) for each zone.
-            * `numInstances` (`pulumi.Input[float]`)
+            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
+              Defaults to 0.
 
           * `preemptibleWorkerConfig` (`pulumi.Input[dict]`) - The Google Compute Engine config settings for the additional (aka
             preemptible) instances in a cluster. Structure defined below.
@@ -592,7 +605,8 @@ class Cluster(pulumi.CustomResource):
                 attached to each preemptible worker node. Defaults to 0.
 
             * `instanceNames` (`pulumi.Input[list]`)
-            * `numInstances` (`pulumi.Input[float]`)
+            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
+              Defaults to 0.
 
           * `securityConfig` (`pulumi.Input[dict]`) - Security related configuration. Structure defined below.
             * `kerberosConfig` (`pulumi.Input[dict]`) - Kerberos Configuration
@@ -684,7 +698,8 @@ class Cluster(pulumi.CustomResource):
               for the master. If not specified, GCP will default to a predetermined computed value
               for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
               for details about which CPU families are available (and defaulted) for each zone.
-            * `numInstances` (`pulumi.Input[float]`)
+            * `numInstances` (`pulumi.Input[float]`) - Specifies the number of preemptible nodes to create.
+              Defaults to 0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

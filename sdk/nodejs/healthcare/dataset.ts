@@ -60,9 +60,9 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York"
-     * or empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
-     * timezone is specified.
+     * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
+     * "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
+     * (e.g., HL7 messages) where no explicit timezone is specified.
      */
     public readonly timeZone!: pulumi.Output<string>;
 
@@ -127,9 +127,9 @@ export interface DatasetState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York"
-     * or empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
-     * timezone is specified.
+     * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
+     * "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
+     * (e.g., HL7 messages) where no explicit timezone is specified.
      */
     readonly timeZone?: pulumi.Input<string>;
 }
@@ -152,9 +152,9 @@ export interface DatasetArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York"
-     * or empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
-     * timezone is specified.
+     * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
+     * "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
+     * (e.g., HL7 messages) where no explicit timezone is specified.
      */
     readonly timeZone?: pulumi.Input<string>;
 }

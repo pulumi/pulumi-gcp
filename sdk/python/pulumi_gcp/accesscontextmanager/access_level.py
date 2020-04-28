@@ -12,26 +12,61 @@ from .. import utilities, tables
 class AccessLevel(pulumi.CustomResource):
     basic: pulumi.Output[dict]
     """
-    A set of predefined conditions for the access level and a combining function.
+    A set of predefined conditions for the access level and a combining function.  Structure is documented below.
 
-      * `combiningFunction` (`str`)
-      * `conditions` (`list`)
-        * `devicePolicy` (`dict`)
-          * `allowedDeviceManagementLevels` (`list`)
-          * `allowedEncryptionStatuses` (`list`)
-          * `osConstraints` (`list`)
-            * `minimumVersion` (`str`)
-            * `osType` (`str`)
+      * `combiningFunction` (`str`) - How the conditions list should be combined to determine if a request
+        is granted this AccessLevel. If AND is used, each Condition in
+        conditions must be satisfied for the AccessLevel to be applied. If
+        OR is used, at least one Condition in conditions must be satisfied
+        for the AccessLevel to be applied. Defaults to AND if unspecified.
+      * `conditions` (`list`) - A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+        * `devicePolicy` (`dict`) - Device specific restrictions, all restrictions must hold for
+          the Condition to be true. If not specified, all devices are
+          allowed.  Structure is documented below.
+          * `allowedDeviceManagementLevels` (`list`) - A list of allowed device management levels.
+            An empty list allows all management levels.
+          * `allowedEncryptionStatuses` (`list`) - A list of allowed encryptions statuses.
+            An empty list allows all statuses.
+          * `osConstraints` (`list`) - A list of allowed OS versions.
+            An empty list allows all types and all versions.  Structure is documented below.
+            * `minimumVersion` (`str`) - The minimum allowed OS version. If not set, any version
+              of this OS satisfies the constraint.
+              Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+            * `osType` (`str`) - The operating system type of the device.
 
-          * `requireAdminApproval` (`bool`)
-          * `requireCorpOwned` (`bool`)
-          * `requireScreenLock` (`bool`)
+          * `requireAdminApproval` (`bool`) - Whether the device needs to be approved by the customer admin.
+          * `requireCorpOwned` (`bool`) - Whether the device needs to be corp owned.
+          * `requireScreenLock` (`bool`) - Whether or not screenlock is required for the DevicePolicy
+            to be true. Defaults to false.
 
-        * `ipSubnetworks` (`list`)
-        * `members` (`list`)
-        * `negate` (`bool`)
-        * `regions` (`list`)
-        * `requiredAccessLevels` (`list`)
+        * `ipSubnetworks` (`list`) - A list of CIDR block IP subnetwork specification. May be IPv4
+          or IPv6.
+          Note that for a CIDR IP address block, the specified IP address
+          portion must be properly truncated (i.e. all the host bits must
+          be zero) or the input is considered malformed. For example,
+          "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+          for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+          is not. The originating IP of a request must be in one of the
+          listed subnets in order for this Condition to be true.
+          If empty, all IP addresses are allowed.
+        * `members` (`list`) - An allowed list of members (users, service accounts).
+          Using groups is not supported yet.
+          The signed-in user originating the request must be a part of one
+          of the provided members. If not specified, a request may come
+          from any user (logged in/not logged in, not present in any
+          groups, etc.).
+          Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+        * `negate` (`bool`) - Whether to negate the Condition. If true, the Condition becomes
+          a NAND over its non-empty fields, each field must be false for
+          the Condition overall to be satisfied. Defaults to false.
+        * `regions` (`list`) - The request must originate from one of the provided
+          countries/regions.
+          Format: A valid ISO 3166-1 alpha-2 code.
+        * `requiredAccessLevels` (`list`) - A list of other access levels defined in the same Policy,
+          referenced by resource name. Referencing an AccessLevel which
+          does not exist is an error. All access levels listed must be
+          granted for the Condition to be true.
+          Format: accessPolicies/{policy_id}/accessLevels/{short_name}
     """
     description: pulumi.Output[str]
     """
@@ -39,12 +74,14 @@ class AccessLevel(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
-    '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+    Resource name for the Access Level. The short_name component must begin
+    with a letter and only include alphanumeric and '_'.
+    Format: accessPolicies/{policy_id}/accessLevels/{short_name}
     """
     parent: pulumi.Output[str]
     """
-    The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+    The AccessPolicy this AccessLevel lives in.
+    Format: accessPolicies/{policy_id}
     """
     title: pulumi.Output[str]
     """
@@ -64,33 +101,70 @@ class AccessLevel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.  Structure is documented below.
         :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
-        :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
-               '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+        :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
+               with a letter and only include alphanumeric and '_'.
+               Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
+               Format: accessPolicies/{policy_id}
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
 
         The **basic** object supports the following:
 
-          * `combiningFunction` (`pulumi.Input[str]`)
-          * `conditions` (`pulumi.Input[list]`)
-            * `devicePolicy` (`pulumi.Input[dict]`)
-              * `allowedDeviceManagementLevels` (`pulumi.Input[list]`)
-              * `allowedEncryptionStatuses` (`pulumi.Input[list]`)
-              * `osConstraints` (`pulumi.Input[list]`)
-                * `minimumVersion` (`pulumi.Input[str]`)
-                * `osType` (`pulumi.Input[str]`)
+          * `combiningFunction` (`pulumi.Input[str]`) - How the conditions list should be combined to determine if a request
+            is granted this AccessLevel. If AND is used, each Condition in
+            conditions must be satisfied for the AccessLevel to be applied. If
+            OR is used, at least one Condition in conditions must be satisfied
+            for the AccessLevel to be applied. Defaults to AND if unspecified.
+          * `conditions` (`pulumi.Input[list]`) - A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+            * `devicePolicy` (`pulumi.Input[dict]`) - Device specific restrictions, all restrictions must hold for
+              the Condition to be true. If not specified, all devices are
+              allowed.  Structure is documented below.
+              * `allowedDeviceManagementLevels` (`pulumi.Input[list]`) - A list of allowed device management levels.
+                An empty list allows all management levels.
+              * `allowedEncryptionStatuses` (`pulumi.Input[list]`) - A list of allowed encryptions statuses.
+                An empty list allows all statuses.
+              * `osConstraints` (`pulumi.Input[list]`) - A list of allowed OS versions.
+                An empty list allows all types and all versions.  Structure is documented below.
+                * `minimumVersion` (`pulumi.Input[str]`) - The minimum allowed OS version. If not set, any version
+                  of this OS satisfies the constraint.
+                  Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+                * `osType` (`pulumi.Input[str]`) - The operating system type of the device.
 
-              * `requireAdminApproval` (`pulumi.Input[bool]`)
-              * `requireCorpOwned` (`pulumi.Input[bool]`)
-              * `requireScreenLock` (`pulumi.Input[bool]`)
+              * `requireAdminApproval` (`pulumi.Input[bool]`) - Whether the device needs to be approved by the customer admin.
+              * `requireCorpOwned` (`pulumi.Input[bool]`) - Whether the device needs to be corp owned.
+              * `requireScreenLock` (`pulumi.Input[bool]`) - Whether or not screenlock is required for the DevicePolicy
+                to be true. Defaults to false.
 
-            * `ipSubnetworks` (`pulumi.Input[list]`)
-            * `members` (`pulumi.Input[list]`)
-            * `negate` (`pulumi.Input[bool]`)
-            * `regions` (`pulumi.Input[list]`)
-            * `requiredAccessLevels` (`pulumi.Input[list]`)
+            * `ipSubnetworks` (`pulumi.Input[list]`) - A list of CIDR block IP subnetwork specification. May be IPv4
+              or IPv6.
+              Note that for a CIDR IP address block, the specified IP address
+              portion must be properly truncated (i.e. all the host bits must
+              be zero) or the input is considered malformed. For example,
+              "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+              for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+              is not. The originating IP of a request must be in one of the
+              listed subnets in order for this Condition to be true.
+              If empty, all IP addresses are allowed.
+            * `members` (`pulumi.Input[list]`) - An allowed list of members (users, service accounts).
+              Using groups is not supported yet.
+              The signed-in user originating the request must be a part of one
+              of the provided members. If not specified, a request may come
+              from any user (logged in/not logged in, not present in any
+              groups, etc.).
+              Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+            * `negate` (`pulumi.Input[bool]`) - Whether to negate the Condition. If true, the Condition becomes
+              a NAND over its non-empty fields, each field must be false for
+              the Condition overall to be satisfied. Defaults to false.
+            * `regions` (`pulumi.Input[list]`) - The request must originate from one of the provided
+              countries/regions.
+              Format: A valid ISO 3166-1 alpha-2 code.
+            * `requiredAccessLevels` (`pulumi.Input[list]`) - A list of other access levels defined in the same Policy,
+              referenced by resource name. Referencing an AccessLevel which
+              does not exist is an error. All access levels listed must be
+              granted for the Condition to be true.
+              Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -133,33 +207,70 @@ class AccessLevel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.
+        :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.  Structure is documented below.
         :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
-        :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin with a letter and only include alphanumeric and
-               '_'. Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-        :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in. Format: accessPolicies/{policy_id}
+        :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
+               with a letter and only include alphanumeric and '_'.
+               Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
+               Format: accessPolicies/{policy_id}
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
 
         The **basic** object supports the following:
 
-          * `combiningFunction` (`pulumi.Input[str]`)
-          * `conditions` (`pulumi.Input[list]`)
-            * `devicePolicy` (`pulumi.Input[dict]`)
-              * `allowedDeviceManagementLevels` (`pulumi.Input[list]`)
-              * `allowedEncryptionStatuses` (`pulumi.Input[list]`)
-              * `osConstraints` (`pulumi.Input[list]`)
-                * `minimumVersion` (`pulumi.Input[str]`)
-                * `osType` (`pulumi.Input[str]`)
+          * `combiningFunction` (`pulumi.Input[str]`) - How the conditions list should be combined to determine if a request
+            is granted this AccessLevel. If AND is used, each Condition in
+            conditions must be satisfied for the AccessLevel to be applied. If
+            OR is used, at least one Condition in conditions must be satisfied
+            for the AccessLevel to be applied. Defaults to AND if unspecified.
+          * `conditions` (`pulumi.Input[list]`) - A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+            * `devicePolicy` (`pulumi.Input[dict]`) - Device specific restrictions, all restrictions must hold for
+              the Condition to be true. If not specified, all devices are
+              allowed.  Structure is documented below.
+              * `allowedDeviceManagementLevels` (`pulumi.Input[list]`) - A list of allowed device management levels.
+                An empty list allows all management levels.
+              * `allowedEncryptionStatuses` (`pulumi.Input[list]`) - A list of allowed encryptions statuses.
+                An empty list allows all statuses.
+              * `osConstraints` (`pulumi.Input[list]`) - A list of allowed OS versions.
+                An empty list allows all types and all versions.  Structure is documented below.
+                * `minimumVersion` (`pulumi.Input[str]`) - The minimum allowed OS version. If not set, any version
+                  of this OS satisfies the constraint.
+                  Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+                * `osType` (`pulumi.Input[str]`) - The operating system type of the device.
 
-              * `requireAdminApproval` (`pulumi.Input[bool]`)
-              * `requireCorpOwned` (`pulumi.Input[bool]`)
-              * `requireScreenLock` (`pulumi.Input[bool]`)
+              * `requireAdminApproval` (`pulumi.Input[bool]`) - Whether the device needs to be approved by the customer admin.
+              * `requireCorpOwned` (`pulumi.Input[bool]`) - Whether the device needs to be corp owned.
+              * `requireScreenLock` (`pulumi.Input[bool]`) - Whether or not screenlock is required for the DevicePolicy
+                to be true. Defaults to false.
 
-            * `ipSubnetworks` (`pulumi.Input[list]`)
-            * `members` (`pulumi.Input[list]`)
-            * `negate` (`pulumi.Input[bool]`)
-            * `regions` (`pulumi.Input[list]`)
-            * `requiredAccessLevels` (`pulumi.Input[list]`)
+            * `ipSubnetworks` (`pulumi.Input[list]`) - A list of CIDR block IP subnetwork specification. May be IPv4
+              or IPv6.
+              Note that for a CIDR IP address block, the specified IP address
+              portion must be properly truncated (i.e. all the host bits must
+              be zero) or the input is considered malformed. For example,
+              "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
+              for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
+              is not. The originating IP of a request must be in one of the
+              listed subnets in order for this Condition to be true.
+              If empty, all IP addresses are allowed.
+            * `members` (`pulumi.Input[list]`) - An allowed list of members (users, service accounts).
+              Using groups is not supported yet.
+              The signed-in user originating the request must be a part of one
+              of the provided members. If not specified, a request may come
+              from any user (logged in/not logged in, not present in any
+              groups, etc.).
+              Formats: `user:{emailid}`, `serviceAccount:{emailid}`
+            * `negate` (`pulumi.Input[bool]`) - Whether to negate the Condition. If true, the Condition becomes
+              a NAND over its non-empty fields, each field must be false for
+              the Condition overall to be satisfied. Defaults to false.
+            * `regions` (`pulumi.Input[list]`) - The request must originate from one of the provided
+              countries/regions.
+              Format: A valid ISO 3166-1 alpha-2 code.
+            * `requiredAccessLevels` (`pulumi.Input[list]`) - A list of other access levels defined in the same Policy,
+              referenced by resource name. Referencing an AccessLevel which
+              does not exist is an error. All access levels listed must be
+              granted for the Condition to be true.
+              Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

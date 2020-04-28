@@ -48,7 +48,7 @@ class GetImageResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if image_encryption_key_sha256 and not isinstance(image_encryption_key_sha256, str):
             raise TypeError("Expected argument 'image_encryption_key_sha256' to be a str")
@@ -164,7 +164,10 @@ def get_image(family=None,name=None,project=None,opts=None):
 
 
     :param str family: The family name of the image.
-    :param str name: The name of the image.
+    :param str name: or `family` - (Required) The name of a specific image or a family.
+           Exactly one of `name` of `family` must be specified. If `name` is specified, it will fetch
+           the corresponding image. If `family` is specified, it will returns the latest image
+           that is part of an image family and is not deprecated.
     :param str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.

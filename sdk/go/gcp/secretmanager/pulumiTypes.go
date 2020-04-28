@@ -142,15 +142,30 @@ func (o SecretIamBindingConditionPtrOutput) Elem() SecretIamBindingConditionOutp
 }
 
 func (o SecretIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *SecretIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o SecretIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v SecretIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o SecretIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o SecretIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v SecretIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o SecretIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type SecretIamMemberCondition struct {
@@ -285,19 +300,36 @@ func (o SecretIamMemberConditionPtrOutput) Elem() SecretIamMemberConditionOutput
 }
 
 func (o SecretIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *SecretIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o SecretIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v SecretIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o SecretIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o SecretIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v SecretIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o SecretIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type SecretReplication struct {
-	Automatic   *bool                         `pulumi:"automatic"`
+	// The Secret will automatically be replicated without any restrictions.
+	Automatic *bool `pulumi:"automatic"`
+	// The Secret will automatically be replicated without any restrictions.  Structure is documented below.
 	UserManaged *SecretReplicationUserManaged `pulumi:"userManaged"`
 }
 
@@ -314,7 +346,9 @@ type SecretReplicationInput interface {
 }
 
 type SecretReplicationArgs struct {
-	Automatic   pulumi.BoolPtrInput                  `pulumi:"automatic"`
+	// The Secret will automatically be replicated without any restrictions.
+	Automatic pulumi.BoolPtrInput `pulumi:"automatic"`
+	// The Secret will automatically be replicated without any restrictions.  Structure is documented below.
 	UserManaged SecretReplicationUserManagedPtrInput `pulumi:"userManaged"`
 }
 
@@ -395,10 +429,13 @@ func (o SecretReplicationOutput) ToSecretReplicationPtrOutputWithContext(ctx con
 		return &v
 	}).(SecretReplicationPtrOutput)
 }
+
+// The Secret will automatically be replicated without any restrictions.
 func (o SecretReplicationOutput) Automatic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
 }
 
+// The Secret will automatically be replicated without any restrictions.  Structure is documented below.
 func (o SecretReplicationOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
 	return o.ApplyT(func(v SecretReplication) *SecretReplicationUserManaged { return v.UserManaged }).(SecretReplicationUserManagedPtrOutput)
 }
@@ -421,15 +458,28 @@ func (o SecretReplicationPtrOutput) Elem() SecretReplicationOutput {
 	return o.ApplyT(func(v *SecretReplication) SecretReplication { return *v }).(SecretReplicationOutput)
 }
 
+// The Secret will automatically be replicated without any restrictions.
 func (o SecretReplicationPtrOutput) Automatic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *SecretReplication) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Automatic
+	}).(pulumi.BoolPtrOutput)
 }
 
+// The Secret will automatically be replicated without any restrictions.  Structure is documented below.
 func (o SecretReplicationPtrOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
-	return o.ApplyT(func(v SecretReplication) *SecretReplicationUserManaged { return v.UserManaged }).(SecretReplicationUserManagedPtrOutput)
+	return o.ApplyT(func(v *SecretReplication) *SecretReplicationUserManaged {
+		if v == nil {
+			return nil
+		}
+		return v.UserManaged
+	}).(SecretReplicationUserManagedPtrOutput)
 }
 
 type SecretReplicationUserManaged struct {
+	// The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
 	Replicas []SecretReplicationUserManagedReplica `pulumi:"replicas"`
 }
 
@@ -446,6 +496,7 @@ type SecretReplicationUserManagedInput interface {
 }
 
 type SecretReplicationUserManagedArgs struct {
+	// The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
 	Replicas SecretReplicationUserManagedReplicaArrayInput `pulumi:"replicas"`
 }
 
@@ -526,6 +577,8 @@ func (o SecretReplicationUserManagedOutput) ToSecretReplicationUserManagedPtrOut
 		return &v
 	}).(SecretReplicationUserManagedPtrOutput)
 }
+
+// The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
 func (o SecretReplicationUserManagedOutput) Replicas() SecretReplicationUserManagedReplicaArrayOutput {
 	return o.ApplyT(func(v SecretReplicationUserManaged) []SecretReplicationUserManagedReplica { return v.Replicas }).(SecretReplicationUserManagedReplicaArrayOutput)
 }
@@ -548,11 +601,18 @@ func (o SecretReplicationUserManagedPtrOutput) Elem() SecretReplicationUserManag
 	return o.ApplyT(func(v *SecretReplicationUserManaged) SecretReplicationUserManaged { return *v }).(SecretReplicationUserManagedOutput)
 }
 
+// The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
 func (o SecretReplicationUserManagedPtrOutput) Replicas() SecretReplicationUserManagedReplicaArrayOutput {
-	return o.ApplyT(func(v SecretReplicationUserManaged) []SecretReplicationUserManagedReplica { return v.Replicas }).(SecretReplicationUserManagedReplicaArrayOutput)
+	return o.ApplyT(func(v *SecretReplicationUserManaged) []SecretReplicationUserManagedReplica {
+		if v == nil {
+			return nil
+		}
+		return v.Replicas
+	}).(SecretReplicationUserManagedReplicaArrayOutput)
 }
 
 type SecretReplicationUserManagedReplica struct {
+	// The canonical IDs of the location to replicate data. For example: "us-east1".
 	Location string `pulumi:"location"`
 }
 
@@ -569,6 +629,7 @@ type SecretReplicationUserManagedReplicaInput interface {
 }
 
 type SecretReplicationUserManagedReplicaArgs struct {
+	// The canonical IDs of the location to replicate data. For example: "us-east1".
 	Location pulumi.StringInput `pulumi:"location"`
 }
 
@@ -624,6 +685,7 @@ func (o SecretReplicationUserManagedReplicaOutput) ToSecretReplicationUserManage
 	return o
 }
 
+// The canonical IDs of the location to replicate data. For example: "us-east1".
 func (o SecretReplicationUserManagedReplicaOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretReplicationUserManagedReplica) string { return v.Location }).(pulumi.StringOutput)
 }

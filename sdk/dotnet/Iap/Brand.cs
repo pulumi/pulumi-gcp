@@ -48,9 +48,11 @@ namespace Pulumi.Gcp.Iap
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
-        /// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
-        /// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
+        /// Support email displayed on the OAuth consent screen. Can be either a
+        /// user or group email. When a user email is specified, the caller must
+        /// be the user with the associated email address. When a group email is
+        /// specified, the caller can be either a user or a service account which
+        /// is an owner of the specified group in Cloud Identity.
         /// </summary>
         [Output("supportEmail")]
         public Output<string> SupportEmail { get; private set; } = null!;
@@ -115,9 +117,11 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
-        /// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
-        /// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
+        /// Support email displayed on the OAuth consent screen. Can be either a
+        /// user or group email. When a user email is specified, the caller must
+        /// be the user with the associated email address. When a group email is
+        /// specified, the caller can be either a user or a service account which
+        /// is an owner of the specified group in Cloud Identity.
         /// </summary>
         [Input("supportEmail", required: true)]
         public Input<string> SupportEmail { get; set; } = null!;
@@ -156,9 +160,11 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Support email displayed on the OAuth consent screen. Can be either a user or group email. When a user email is
-        /// specified, the caller must be the user with the associated email address. When a group email is specified, the caller
-        /// can be either a user or a service account which is an owner of the specified group in Cloud Identity.
+        /// Support email displayed on the OAuth consent screen. Can be either a
+        /// user or group email. When a user email is specified, the caller must
+        /// be the user with the associated email address. When a group email is
+        /// specified, the caller can be either a user or a service account which
+        /// is an owner of the specified group in Cloud Identity.
         /// </summary>
         [Input("supportEmail")]
         public Input<string>? SupportEmail { get; set; }

@@ -53,7 +53,8 @@ export class GameServerDeployment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The labels associated with this game server deployment. Each label is a key-value pair.
+     * The labels associated with this game server deployment. Each label is a
+     * key-value pair.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -126,7 +127,8 @@ export interface GameServerDeploymentState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The labels associated with this game server deployment. Each label is a key-value pair.
+     * The labels associated with this game server deployment. Each label is a
+     * key-value pair.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -159,7 +161,8 @@ export interface GameServerDeploymentArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The labels associated with this game server deployment. Each label is a key-value pair.
+     * The labels associated with this game server deployment. Each label is a
+     * key-value pair.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

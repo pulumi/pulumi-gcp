@@ -114,7 +114,7 @@ export interface GetClusterResult {
     readonly workloadIdentityConfigs: outputs.container.GetClusterWorkloadIdentityConfig[];
     readonly zone?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

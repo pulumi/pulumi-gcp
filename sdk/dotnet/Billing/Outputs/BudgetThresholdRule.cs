@@ -13,7 +13,15 @@ namespace Pulumi.Gcp.Billing.Outputs
     [OutputType]
     public sealed class BudgetThresholdRule
     {
+        /// <summary>
+        /// The type of basis used to determine if spend has passed
+        /// the threshold.
+        /// </summary>
         public readonly string? SpendBasis;
+        /// <summary>
+        /// Send an alert when this threshold is exceeded. This is a
+        /// 1.0-based percentage, so 0.5 = 50%. Must be &gt;= 0.
+        /// </summary>
         public readonly double ThresholdPercent;
 
         [OutputConstructor]

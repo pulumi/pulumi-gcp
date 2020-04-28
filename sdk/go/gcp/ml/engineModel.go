@@ -16,13 +16,14 @@ import (
 type EngineModel struct {
 	pulumi.CustomResourceState
 
-	// The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+	// The default version of the model. This version will be used to handle
+	// prediction requests that do not specify a version.  Structure is documented below.
 	DefaultVersion EngineModelDefaultVersionPtrOutput `pulumi:"defaultVersion"`
 	// The description specified for the model when it was created.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// One or more labels that you can add, to organize your models.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The name specified for the model.
+	// The name specified for the version when it was created.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 	OnlinePredictionConsoleLogging pulumi.BoolPtrOutput `pulumi:"onlinePredictionConsoleLogging"`
@@ -31,7 +32,8 @@ type EngineModel struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The list of regions where the model is going to be deployed. Currently only one region per model is supported
+	// The list of regions where the model is going to be deployed.
+	// Currently only one region per model is supported
 	Regions pulumi.StringPtrOutput `pulumi:"regions"`
 }
 
@@ -63,13 +65,14 @@ func GetEngineModel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EngineModel resources.
 type engineModelState struct {
-	// The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+	// The default version of the model. This version will be used to handle
+	// prediction requests that do not specify a version.  Structure is documented below.
 	DefaultVersion *EngineModelDefaultVersion `pulumi:"defaultVersion"`
 	// The description specified for the model when it was created.
 	Description *string `pulumi:"description"`
 	// One or more labels that you can add, to organize your models.
 	Labels map[string]string `pulumi:"labels"`
-	// The name specified for the model.
+	// The name specified for the version when it was created.
 	Name *string `pulumi:"name"`
 	// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 	OnlinePredictionConsoleLogging *bool `pulumi:"onlinePredictionConsoleLogging"`
@@ -78,18 +81,20 @@ type engineModelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The list of regions where the model is going to be deployed. Currently only one region per model is supported
+	// The list of regions where the model is going to be deployed.
+	// Currently only one region per model is supported
 	Regions *string `pulumi:"regions"`
 }
 
 type EngineModelState struct {
-	// The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+	// The default version of the model. This version will be used to handle
+	// prediction requests that do not specify a version.  Structure is documented below.
 	DefaultVersion EngineModelDefaultVersionPtrInput
 	// The description specified for the model when it was created.
 	Description pulumi.StringPtrInput
 	// One or more labels that you can add, to organize your models.
 	Labels pulumi.StringMapInput
-	// The name specified for the model.
+	// The name specified for the version when it was created.
 	Name pulumi.StringPtrInput
 	// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 	OnlinePredictionConsoleLogging pulumi.BoolPtrInput
@@ -98,7 +103,8 @@ type EngineModelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The list of regions where the model is going to be deployed. Currently only one region per model is supported
+	// The list of regions where the model is going to be deployed.
+	// Currently only one region per model is supported
 	Regions pulumi.StringPtrInput
 }
 
@@ -107,13 +113,14 @@ func (EngineModelState) ElementType() reflect.Type {
 }
 
 type engineModelArgs struct {
-	// The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+	// The default version of the model. This version will be used to handle
+	// prediction requests that do not specify a version.  Structure is documented below.
 	DefaultVersion *EngineModelDefaultVersion `pulumi:"defaultVersion"`
 	// The description specified for the model when it was created.
 	Description *string `pulumi:"description"`
 	// One or more labels that you can add, to organize your models.
 	Labels map[string]string `pulumi:"labels"`
-	// The name specified for the model.
+	// The name specified for the version when it was created.
 	Name *string `pulumi:"name"`
 	// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 	OnlinePredictionConsoleLogging *bool `pulumi:"onlinePredictionConsoleLogging"`
@@ -122,19 +129,21 @@ type engineModelArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The list of regions where the model is going to be deployed. Currently only one region per model is supported
+	// The list of regions where the model is going to be deployed.
+	// Currently only one region per model is supported
 	Regions *string `pulumi:"regions"`
 }
 
 // The set of arguments for constructing a EngineModel resource.
 type EngineModelArgs struct {
-	// The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+	// The default version of the model. This version will be used to handle
+	// prediction requests that do not specify a version.  Structure is documented below.
 	DefaultVersion EngineModelDefaultVersionPtrInput
 	// The description specified for the model when it was created.
 	Description pulumi.StringPtrInput
 	// One or more labels that you can add, to organize your models.
 	Labels pulumi.StringMapInput
-	// The name specified for the model.
+	// The name specified for the version when it was created.
 	Name pulumi.StringPtrInput
 	// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 	OnlinePredictionConsoleLogging pulumi.BoolPtrInput
@@ -143,7 +152,8 @@ type EngineModelArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The list of regions where the model is going to be deployed. Currently only one region per model is supported
+	// The list of regions where the model is going to be deployed.
+	// Currently only one region per model is supported
 	Regions pulumi.StringPtrInput
 }
 

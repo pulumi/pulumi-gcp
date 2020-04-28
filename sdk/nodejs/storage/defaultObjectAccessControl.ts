@@ -70,9 +70,15 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
      */
     public /*out*/ readonly email!: pulumi.Output<string>;
     /**
-     * The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-     * "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-     * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+     * The entity holding the permission, in one of the following forms:
+     * * user-{{userId}}
+     * * user-{{email}} (such as "user-liz@example.com")
+     * * group-{{groupId}}
+     * * group-{{email}} (such as "group-example@googlegroups.com")
+     * * domain-{{domain}} (such as "domain-example.com")
+     * * project-team-{{projectId}}
+     * * allUsers
+     * * allAuthenticatedUsers
      */
     public readonly entity!: pulumi.Output<string>;
     /**
@@ -166,9 +172,15 @@ export interface DefaultObjectAccessControlState {
      */
     readonly email?: pulumi.Input<string>;
     /**
-     * The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-     * "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-     * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+     * The entity holding the permission, in one of the following forms:
+     * * user-{{userId}}
+     * * user-{{email}} (such as "user-liz@example.com")
+     * * group-{{groupId}}
+     * * group-{{email}} (such as "group-example@googlegroups.com")
+     * * domain-{{domain}} (such as "domain-example.com")
+     * * project-team-{{projectId}}
+     * * allUsers
+     * * allAuthenticatedUsers
      */
     readonly entity?: pulumi.Input<string>;
     /**
@@ -202,9 +214,15 @@ export interface DefaultObjectAccessControlArgs {
      */
     readonly bucket: pulumi.Input<string>;
     /**
-     * The entity holding the permission, in one of the following forms: * user-{{userId}} * user-{{email}} (such as
-     * "user-liz@example.com") * group-{{groupId}} * group-{{email}} (such as "group-example@googlegroups.com") *
-     * domain-{{domain}} (such as "domain-example.com") * project-team-{{projectId}} * allUsers * allAuthenticatedUsers
+     * The entity holding the permission, in one of the following forms:
+     * * user-{{userId}}
+     * * user-{{email}} (such as "user-liz@example.com")
+     * * group-{{groupId}}
+     * * group-{{email}} (such as "group-example@googlegroups.com")
+     * * domain-{{domain}} (such as "domain-example.com")
+     * * project-team-{{projectId}}
+     * * allUsers
+     * * allAuthenticatedUsers
      */
     readonly entity: pulumi.Input<string>;
     /**

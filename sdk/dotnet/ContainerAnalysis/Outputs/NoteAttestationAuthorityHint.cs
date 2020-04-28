@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.ContainerAnalysis.Outputs
     [OutputType]
     public sealed class NoteAttestationAuthorityHint
     {
+        /// <summary>
+        /// The human readable name of this Attestation Authority, for
+        /// example "qa".
+        /// </summary>
         public readonly string HumanReadableName;
 
         [OutputConstructor]

@@ -35,7 +35,7 @@ type LookupForwardingRuleResult struct {
 	BackendService string `pulumi:"backendService"`
 	// Description of this forwarding rule.
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// IP address of this forwarding rule.
 	IpAddress string `pulumi:"ipAddress"`

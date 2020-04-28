@@ -14,9 +14,24 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class AutoscalerAutoscalingPolicyMetric
     {
         public readonly string? Filter;
+        /// <summary>
+        /// The identifier (type) of the Stackdriver Monitoring metric.
+        /// The metric cannot have negative values.
+        /// The metric must have a value type of INT64 or DOUBLE.
+        /// </summary>
         public readonly string Name;
         public readonly double? SingleInstanceAssignment;
+        /// <summary>
+        /// Fraction of backend capacity utilization (set in HTTP(s) load
+        /// balancing configuration) that autoscaler should maintain. Must
+        /// be a positive float value. If not defined, the default is 0.8.
+        /// </summary>
         public readonly double? Target;
+        /// <summary>
+        /// Defines how target utilization value is expressed for a
+        /// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
+        /// or DELTA_PER_MINUTE.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

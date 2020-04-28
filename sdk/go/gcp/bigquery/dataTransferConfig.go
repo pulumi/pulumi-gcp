@@ -22,9 +22,11 @@ import (
 type DataTransferConfig struct {
 	pulumi.CustomResourceState
 
-	// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
-	// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
-	// the data source supports the feature. Set the value to 0 to use the default value.
+	// The number of days to look back to automatically refresh the data.
+	// For example, if dataRefreshWindowDays = 10, then every day BigQuery
+	// reingests data for [today-10, today-1], rather than ingesting data for
+	// just [today-1]. Only valid if the data source supports the feature.
+	// Set the value to 0 to use the default value.
 	DataRefreshWindowDays pulumi.IntPtrOutput `pulumi:"dataRefreshWindowDays"`
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
@@ -34,8 +36,8 @@ type DataTransferConfig struct {
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The user specified display name for the transfer config.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-	// US.
+	// The geographic location where the transfer config should reside.
+	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name of the transfer config. Transfer config names have the form
 	// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
@@ -46,10 +48,13 @@ type DataTransferConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the
-	// default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd monday
-	// of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about the
-	// format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+	// Data transfer schedule. If the data source does not support a custom
+	// schedule, this should be empty. If it is empty, the default value for
+	// the data source will be used. The specified times are in UTC. Examples
+	// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+	// jun 13:15, and first sunday of quarter 00:00. See more explanation
+	// about the format here:
+	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
 }
@@ -94,9 +99,11 @@ func GetDataTransferConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataTransferConfig resources.
 type dataTransferConfigState struct {
-	// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
-	// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
-	// the data source supports the feature. Set the value to 0 to use the default value.
+	// The number of days to look back to automatically refresh the data.
+	// For example, if dataRefreshWindowDays = 10, then every day BigQuery
+	// reingests data for [today-10, today-1], rather than ingesting data for
+	// just [today-1]. Only valid if the data source supports the feature.
+	// Set the value to 0 to use the default value.
 	DataRefreshWindowDays *int `pulumi:"dataRefreshWindowDays"`
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId *string `pulumi:"dataSourceId"`
@@ -106,8 +113,8 @@ type dataTransferConfigState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// The user specified display name for the transfer config.
 	DisplayName *string `pulumi:"displayName"`
-	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-	// US.
+	// The geographic location where the transfer config should reside.
+	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
 	// The resource name of the transfer config. Transfer config names have the form
 	// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
@@ -118,18 +125,23 @@ type dataTransferConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the
-	// default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd monday
-	// of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about the
-	// format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+	// Data transfer schedule. If the data source does not support a custom
+	// schedule, this should be empty. If it is empty, the default value for
+	// the data source will be used. The specified times are in UTC. Examples
+	// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+	// jun 13:15, and first sunday of quarter 00:00. See more explanation
+	// about the format here:
+	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
 }
 
 type DataTransferConfigState struct {
-	// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
-	// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
-	// the data source supports the feature. Set the value to 0 to use the default value.
+	// The number of days to look back to automatically refresh the data.
+	// For example, if dataRefreshWindowDays = 10, then every day BigQuery
+	// reingests data for [today-10, today-1], rather than ingesting data for
+	// just [today-1]. Only valid if the data source supports the feature.
+	// Set the value to 0 to use the default value.
 	DataRefreshWindowDays pulumi.IntPtrInput
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId pulumi.StringPtrInput
@@ -139,8 +151,8 @@ type DataTransferConfigState struct {
 	Disabled pulumi.BoolPtrInput
 	// The user specified display name for the transfer config.
 	DisplayName pulumi.StringPtrInput
-	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-	// US.
+	// The geographic location where the transfer config should reside.
+	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
 	// The resource name of the transfer config. Transfer config names have the form
 	// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
@@ -151,10 +163,13 @@ type DataTransferConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the
-	// default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd monday
-	// of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about the
-	// format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+	// Data transfer schedule. If the data source does not support a custom
+	// schedule, this should be empty. If it is empty, the default value for
+	// the data source will be used. The specified times are in UTC. Examples
+	// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+	// jun 13:15, and first sunday of quarter 00:00. See more explanation
+	// about the format here:
+	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
 }
@@ -164,9 +179,11 @@ func (DataTransferConfigState) ElementType() reflect.Type {
 }
 
 type dataTransferConfigArgs struct {
-	// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
-	// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
-	// the data source supports the feature. Set the value to 0 to use the default value.
+	// The number of days to look back to automatically refresh the data.
+	// For example, if dataRefreshWindowDays = 10, then every day BigQuery
+	// reingests data for [today-10, today-1], rather than ingesting data for
+	// just [today-1]. Only valid if the data source supports the feature.
+	// Set the value to 0 to use the default value.
 	DataRefreshWindowDays *int `pulumi:"dataRefreshWindowDays"`
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId string `pulumi:"dataSourceId"`
@@ -176,27 +193,32 @@ type dataTransferConfigArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// The user specified display name for the transfer config.
 	DisplayName string `pulumi:"displayName"`
-	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-	// US.
+	// The geographic location where the transfer config should reside.
+	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
 	// These parameters are specific to each data source.
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the
-	// default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd monday
-	// of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about the
-	// format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+	// Data transfer schedule. If the data source does not support a custom
+	// schedule, this should be empty. If it is empty, the default value for
+	// the data source will be used. The specified times are in UTC. Examples
+	// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+	// jun 13:15, and first sunday of quarter 00:00. See more explanation
+	// about the format here:
+	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
 }
 
 // The set of arguments for constructing a DataTransferConfig resource.
 type DataTransferConfigArgs struct {
-	// The number of days to look back to automatically refresh the data. For example, if dataRefreshWindowDays = 10, then
-	// every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if
-	// the data source supports the feature. Set the value to 0 to use the default value.
+	// The number of days to look back to automatically refresh the data.
+	// For example, if dataRefreshWindowDays = 10, then every day BigQuery
+	// reingests data for [today-10, today-1], rather than ingesting data for
+	// just [today-1]. Only valid if the data source supports the feature.
+	// Set the value to 0 to use the default value.
 	DataRefreshWindowDays pulumi.IntPtrInput
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId pulumi.StringInput
@@ -206,18 +228,21 @@ type DataTransferConfigArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// The user specified display name for the transfer config.
 	DisplayName pulumi.StringInput
-	// The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-	// US.
+	// The geographic location where the transfer config should reside.
+	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
 	// These parameters are specific to each data source.
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the
-	// default value for the data source will be used. The specified times are in UTC. Examples of valid format: 1st,3rd monday
-	// of month 15:30, every wed,fri of jan, jun 13:15, and first sunday of quarter 00:00. See more explanation about the
-	// format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+	// Data transfer schedule. If the data source does not support a custom
+	// schedule, this should be empty. If it is empty, the default value for
+	// the data source will be used. The specified times are in UTC. Examples
+	// of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
+	// jun 13:15, and first sunday of quarter 00:00. See more explanation
+	// about the format here:
+	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
 }

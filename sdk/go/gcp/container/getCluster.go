@@ -53,7 +53,7 @@ type LookupClusterResult struct {
 	EnableShieldedNodes        bool                                  `pulumi:"enableShieldedNodes"`
 	EnableTpu                  bool                                  `pulumi:"enableTpu"`
 	Endpoint                   string                                `pulumi:"endpoint"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                              string                                     `pulumi:"id"`
 	InitialNodeCount                int                                        `pulumi:"initialNodeCount"`
 	InstanceGroupUrls               []string                                   `pulumi:"instanceGroupUrls"`

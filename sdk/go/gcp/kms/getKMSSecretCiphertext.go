@@ -43,7 +43,7 @@ type GetKMSSecretCiphertextResult struct {
 	// Contains the result of encrypting the provided plaintext, encoded in base64.
 	Ciphertext string `pulumi:"ciphertext"`
 	CryptoKey  string `pulumi:"cryptoKey"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string `pulumi:"id"`
 	Plaintext string `pulumi:"plaintext"`
 }

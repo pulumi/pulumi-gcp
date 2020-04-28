@@ -12,13 +12,14 @@ from .. import utilities, tables
 class Reservation(pulumi.CustomResource):
     ignore_idle_slots: pulumi.Output[bool]
     """
-    If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-    true, a query using this reservation will execute with the slot capacity specified above at most.
+    If false, any query using this reservation will use idle slots from other reservations within
+    the same admin project. If true, a query using this reservation will execute with the slot
+    capacity specified above at most.
     """
     location: pulumi.Output[str]
     """
-    The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-    US.
+    The geographic location where the transfer config should reside.
+    Examples: US, EU, asia-northeast1. The default value is US.
     """
     name: pulumi.Output[str]
     """
@@ -31,8 +32,8 @@ class Reservation(pulumi.CustomResource):
     """
     slot_capacity: pulumi.Output[float]
     """
-    Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-    of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+    Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+    unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
     """
     def __init__(__self__, resource_name, opts=None, ignore_idle_slots=None, location=None, name=None, project=None, slot_capacity=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -46,15 +47,16 @@ class Reservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-               true, a query using this reservation will execute with the slot capacity specified above at most.
-        :param pulumi.Input[str] location: The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-               US.
+        :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
+               the same admin project. If true, a query using this reservation will execute with the slot
+               capacity specified above at most.
+        :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
+               Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[float] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-               of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+        :param pulumi.Input[float] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+               unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,15 +97,16 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within the same admin project. If
-               true, a query using this reservation will execute with the slot capacity specified above at most.
-        :param pulumi.Input[str] location: The geographic location where the transfer config should reside. Examples: US, EU, asia-northeast1. The default value is
-               US.
+        :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
+               the same admin project. If true, a query using this reservation will execute with the slot
+               capacity specified above at most.
+        :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
+               Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[float] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit
-               of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+        :param pulumi.Input[float] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
+               unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

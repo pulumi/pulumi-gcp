@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.SecretManager.Inputs
 
     public sealed class SecretReplicationUserManagedReplicaArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The canonical IDs of the location to replicate data. For example: "us-east1".
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 

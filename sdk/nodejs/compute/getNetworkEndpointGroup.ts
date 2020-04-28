@@ -19,13 +19,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const neg1 = gcp.compute.getNetworkEndpointGroup({
+ * const neg1 = pulumi.output(gcp.compute.getNetworkEndpointGroup({
  *     name: "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
  *     zone: "us-central1-a",
- * });
- * const neg2 = gcp.compute.getNetworkEndpointGroup({
+ * }, { async: true }));
+ * const neg2 = pulumi.output(gcp.compute.getNetworkEndpointGroup({
  *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_compute_network_endpoint_group.html.markdown.
@@ -98,7 +98,7 @@ export interface GetNetworkEndpointGroupResult {
     readonly subnetwork: string;
     readonly zone?: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

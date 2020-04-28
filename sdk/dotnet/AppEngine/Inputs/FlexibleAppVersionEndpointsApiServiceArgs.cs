@@ -12,18 +12,32 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
     public sealed class FlexibleAppVersionEndpointsApiServiceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
+        /// By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
+        /// When a new configuration is rolled out, Endpoints must be given the new configuration ID. The configId field is used to give the configuration ID
+        /// and is required in this case.
+        /// Endpoints also has a rollout strategy called "MANAGED". When using this, Endpoints fetches the latest configuration and does not need
+        /// the configuration ID. In this case, configId must be omitted.
+        /// </summary>
         [Input("configId")]
         public Input<string>? ConfigId { get; set; }
 
+        /// <summary>
+        /// Enable or disable trace sampling. By default, this is set to false for enabled.
+        /// </summary>
         [Input("disableTraceSampling")]
         public Input<bool>? DisableTraceSampling { get; set; }
 
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
+        /// </summary>
         [Input("rolloutStrategy")]
         public Input<string>? RolloutStrategy { get; set; }
 

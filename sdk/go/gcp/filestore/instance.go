@@ -29,13 +29,15 @@ type Instance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// File system shares on the instance. For this version, only a single file share is supported.
+	// File system shares on the instance. For this version, only a
+	// single file share is supported.  Structure is documented below.
 	FileShares InstanceFileSharesOutput `pulumi:"fileShares"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The resource name of the instance.
+	// The name of the fileshare (16 characters or less)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// VPC networks to which the instance is connected. For this version, only a single network is supported.
+	// VPC networks to which the instance is connected. For this version,
+	// only a single network is supported.  Structure is documented below.
 	Networks InstanceNetworkArrayOutput `pulumi:"networks"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -92,13 +94,15 @@ type instanceState struct {
 	Description *string `pulumi:"description"`
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag *string `pulumi:"etag"`
-	// File system shares on the instance. For this version, only a single file share is supported.
+	// File system shares on the instance. For this version, only a
+	// single file share is supported.  Structure is documented below.
 	FileShares *InstanceFileShares `pulumi:"fileShares"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the instance.
+	// The name of the fileshare (16 characters or less)
 	Name *string `pulumi:"name"`
-	// VPC networks to which the instance is connected. For this version, only a single network is supported.
+	// VPC networks to which the instance is connected. For this version,
+	// only a single network is supported.  Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -116,13 +120,15 @@ type InstanceState struct {
 	Description pulumi.StringPtrInput
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag pulumi.StringPtrInput
-	// File system shares on the instance. For this version, only a single file share is supported.
+	// File system shares on the instance. For this version, only a
+	// single file share is supported.  Structure is documented below.
 	FileShares InstanceFileSharesPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
-	// The resource name of the instance.
+	// The name of the fileshare (16 characters or less)
 	Name pulumi.StringPtrInput
-	// VPC networks to which the instance is connected. For this version, only a single network is supported.
+	// VPC networks to which the instance is connected. For this version,
+	// only a single network is supported.  Structure is documented below.
 	Networks InstanceNetworkArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -140,13 +146,15 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// A description of the instance.
 	Description *string `pulumi:"description"`
-	// File system shares on the instance. For this version, only a single file share is supported.
+	// File system shares on the instance. For this version, only a
+	// single file share is supported.  Structure is documented below.
 	FileShares InstanceFileShares `pulumi:"fileShares"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the instance.
+	// The name of the fileshare (16 characters or less)
 	Name *string `pulumi:"name"`
-	// VPC networks to which the instance is connected. For this version, only a single network is supported.
+	// VPC networks to which the instance is connected. For this version,
+	// only a single network is supported.  Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -161,13 +169,15 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// A description of the instance.
 	Description pulumi.StringPtrInput
-	// File system shares on the instance. For this version, only a single file share is supported.
+	// File system shares on the instance. For this version, only a
+	// single file share is supported.  Structure is documented below.
 	FileShares InstanceFileSharesInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
-	// The resource name of the instance.
+	// The name of the fileshare (16 characters or less)
 	Name pulumi.StringPtrInput
-	// VPC networks to which the instance is connected. For this version, only a single network is supported.
+	// VPC networks to which the instance is connected. For this version,
+	// only a single network is supported.  Structure is documented below.
 	Networks InstanceNetworkArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -18,7 +18,7 @@ class GetAccountKeyResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if key_algorithm and not isinstance(key_algorithm, str):
             raise TypeError("Expected argument 'key_algorithm' to be a str")

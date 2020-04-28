@@ -75,8 +75,9 @@ export class Realm extends pulumi.CustomResource {
      */
     public readonly realmId!: pulumi.Output<string>;
     /**
-     * Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA
-     * time zone database: https://www.iana.org/time-zones.
+     * Required. Time zone where all realm-specific policies are evaluated. The value of
+     * this field must be from the IANA time zone database:
+     * https://www.iana.org/time-zones.
      */
     public readonly timeZone!: pulumi.Output<string>;
 
@@ -163,8 +164,9 @@ export interface RealmState {
      */
     readonly realmId?: pulumi.Input<string>;
     /**
-     * Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA
-     * time zone database: https://www.iana.org/time-zones.
+     * Required. Time zone where all realm-specific policies are evaluated. The value of
+     * this field must be from the IANA time zone database:
+     * https://www.iana.org/time-zones.
      */
     readonly timeZone?: pulumi.Input<string>;
 }
@@ -195,8 +197,9 @@ export interface RealmArgs {
      */
     readonly realmId: pulumi.Input<string>;
     /**
-     * Required. Time zone where all realm-specific policies are evaluated. The value of this field must be from the IANA
-     * time zone database: https://www.iana.org/time-zones.
+     * Required. Time zone where all realm-specific policies are evaluated. The value of
+     * this field must be from the IANA time zone database:
+     * https://www.iana.org/time-zones.
      */
     readonly timeZone: pulumi.Input<string>;
 }

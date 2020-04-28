@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.GameServices.Outputs
     [OutputType]
     public sealed class GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector
     {
+        /// <summary>
+        /// List of realms to match against.
+        /// </summary>
         public readonly ImmutableArray<string> Realms;
 
         [OutputConstructor]

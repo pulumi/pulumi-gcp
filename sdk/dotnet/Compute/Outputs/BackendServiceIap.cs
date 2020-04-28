@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class BackendServiceIap
     {
+        /// <summary>
+        /// OAuth2 Client ID for IAP
+        /// </summary>
         public readonly string Oauth2ClientId;
+        /// <summary>
+        /// OAuth2 Client Secret for IAP
+        /// </summary>
         public readonly string Oauth2ClientSecret;
+        /// <summary>
+        /// -
+        /// OAuth2 Client Secret SHA-256 for IAP
+        /// </summary>
         public readonly string? Oauth2ClientSecretSha256;
 
         [OutputConstructor]

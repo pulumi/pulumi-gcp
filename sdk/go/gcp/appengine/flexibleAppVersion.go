@@ -27,39 +27,40 @@ import (
 type FlexibleAppVersion struct {
 	pulumi.CustomResourceState
 
-	// Serving configuration for Google Cloud Endpoints.
+	// Serving configuration for Google Cloud Endpoints.  Structure is documented below.
 	ApiConfig FlexibleAppVersionApiConfigPtrOutput `pulumi:"apiConfig"`
-	// Automatic scaling is based on request rate, response latencies, and other application metrics.
+	// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
 	AutomaticScaling FlexibleAppVersionAutomaticScalingPtrOutput `pulumi:"automaticScaling"`
 	// Metadata settings that are supplied to this version to enable beta runtime features.
 	BetaSettings pulumi.StringMapOutput `pulumi:"betaSettings"`
-	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-	// StaticFilesHandler does not specify its own expiration time.
+	// Duration that static files should be cached by web proxies and browsers.
+	// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
 	DefaultExpiration pulumi.StringPtrOutput `pulumi:"defaultExpiration"`
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteServiceOnDestroy"`
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	Deployment FlexibleAppVersionDeploymentPtrOutput `pulumi:"deployment"`
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrOutput `pulumi:"endpointsApiService"`
-	// The entrypoint for the application.
+	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint FlexibleAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
 	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
 	// detect any changes made outside of the Terraform config.
 	EnvVariables pulumi.StringMapOutput `pulumi:"envVariables"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices pulumi.StringArrayOutput `pulumi:"inboundServices"`
-	// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-	// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// ManualScaling: B1, B2, B4, B8, B4_1G
+	// Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
 	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
-	// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+	// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.  Structure is documented below.
 	LivenessCheck FlexibleAppVersionLivenessCheckOutput `pulumi:"livenessCheck"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-	// its memory over time.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
 	ManualScaling FlexibleAppVersionManualScalingPtrOutput `pulumi:"manualScaling"`
-	// The identifier for this object. Format specified above.
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Extra network settings
+	// Extra network settings  Structure is documented below.
 	Network FlexibleAppVersionNetworkPtrOutput `pulumi:"network"`
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
 	NobuildFilesRegex pulumi.StringPtrOutput `pulumi:"nobuildFilesRegex"`
@@ -68,14 +69,14 @@ type FlexibleAppVersion struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.  Structure is documented below.
 	ReadinessCheck FlexibleAppVersionReadinessCheckOutput `pulumi:"readinessCheck"`
-	// Machine resources for a version.
+	// Machine resources for a version.  Structure is documented below.
 	Resources FlexibleAppVersionResourcesPtrOutput `pulumi:"resources"`
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// https://cloud.google.com/appengine/docs/standard//config/appref
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion pulumi.StringOutput `pulumi:"runtimeApiVersion"`
 	// The channel of the runtime to use. Only available for some runtimes.
 	RuntimeChannel pulumi.StringPtrOutput `pulumi:"runtimeChannel"`
@@ -86,10 +87,10 @@ type FlexibleAppVersion struct {
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Defaults to SERVING.
 	ServingStatus pulumi.StringPtrOutput `pulumi:"servingStatus"`
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+	// Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrOutput `pulumi:"versionId"`
-	// Enables VPC connectivity for standard apps.
+	// Enables VPC connectivity for standard apps.  Structure is documented below.
 	VpcAccessConnector FlexibleAppVersionVpcAccessConnectorPtrOutput `pulumi:"vpcAccessConnector"`
 }
 
@@ -130,39 +131,40 @@ func GetFlexibleAppVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FlexibleAppVersion resources.
 type flexibleAppVersionState struct {
-	// Serving configuration for Google Cloud Endpoints.
+	// Serving configuration for Google Cloud Endpoints.  Structure is documented below.
 	ApiConfig *FlexibleAppVersionApiConfig `pulumi:"apiConfig"`
-	// Automatic scaling is based on request rate, response latencies, and other application metrics.
+	// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
 	AutomaticScaling *FlexibleAppVersionAutomaticScaling `pulumi:"automaticScaling"`
 	// Metadata settings that are supplied to this version to enable beta runtime features.
 	BetaSettings map[string]string `pulumi:"betaSettings"`
-	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-	// StaticFilesHandler does not specify its own expiration time.
+	// Duration that static files should be cached by web proxies and browsers.
+	// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
 	DefaultExpiration *string `pulumi:"defaultExpiration"`
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	Deployment *FlexibleAppVersionDeployment `pulumi:"deployment"`
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	EndpointsApiService *FlexibleAppVersionEndpointsApiService `pulumi:"endpointsApiService"`
-	// The entrypoint for the application.
+	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
 	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
 	// detect any changes made outside of the Terraform config.
 	EnvVariables map[string]string `pulumi:"envVariables"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices []string `pulumi:"inboundServices"`
-	// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-	// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// ManualScaling: B1, B2, B4, B8, B4_1G
+	// Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
 	InstanceClass *string `pulumi:"instanceClass"`
-	// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+	// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.  Structure is documented below.
 	LivenessCheck *FlexibleAppVersionLivenessCheck `pulumi:"livenessCheck"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-	// its memory over time.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
 	ManualScaling *FlexibleAppVersionManualScaling `pulumi:"manualScaling"`
-	// The identifier for this object. Format specified above.
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name *string `pulumi:"name"`
-	// Extra network settings
+	// Extra network settings  Structure is documented below.
 	Network *FlexibleAppVersionNetwork `pulumi:"network"`
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
 	NobuildFilesRegex *string `pulumi:"nobuildFilesRegex"`
@@ -171,14 +173,14 @@ type flexibleAppVersionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.  Structure is documented below.
 	ReadinessCheck *FlexibleAppVersionReadinessCheck `pulumi:"readinessCheck"`
-	// Machine resources for a version.
+	// Machine resources for a version.  Structure is documented below.
 	Resources *FlexibleAppVersionResources `pulumi:"resources"`
 	// Desired runtime. Example python27.
 	Runtime *string `pulumi:"runtime"`
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// https://cloud.google.com/appengine/docs/standard//config/appref
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// The channel of the runtime to use. Only available for some runtimes.
 	RuntimeChannel *string `pulumi:"runtimeChannel"`
@@ -189,47 +191,48 @@ type flexibleAppVersionState struct {
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Defaults to SERVING.
 	ServingStatus *string `pulumi:"servingStatus"`
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+	// Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
-	// Enables VPC connectivity for standard apps.
+	// Enables VPC connectivity for standard apps.  Structure is documented below.
 	VpcAccessConnector *FlexibleAppVersionVpcAccessConnector `pulumi:"vpcAccessConnector"`
 }
 
 type FlexibleAppVersionState struct {
-	// Serving configuration for Google Cloud Endpoints.
+	// Serving configuration for Google Cloud Endpoints.  Structure is documented below.
 	ApiConfig FlexibleAppVersionApiConfigPtrInput
-	// Automatic scaling is based on request rate, response latencies, and other application metrics.
+	// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
 	AutomaticScaling FlexibleAppVersionAutomaticScalingPtrInput
 	// Metadata settings that are supplied to this version to enable beta runtime features.
 	BetaSettings pulumi.StringMapInput
-	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-	// StaticFilesHandler does not specify its own expiration time.
+	// Duration that static files should be cached by web proxies and browsers.
+	// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
 	DefaultExpiration pulumi.StringPtrInput
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	Deployment FlexibleAppVersionDeploymentPtrInput
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrInput
-	// The entrypoint for the application.
+	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint FlexibleAppVersionEntrypointPtrInput
 	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
 	// detect any changes made outside of the Terraform config.
 	EnvVariables pulumi.StringMapInput
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices pulumi.StringArrayInput
-	// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-	// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// ManualScaling: B1, B2, B4, B8, B4_1G
+	// Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
 	InstanceClass pulumi.StringPtrInput
-	// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+	// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.  Structure is documented below.
 	LivenessCheck FlexibleAppVersionLivenessCheckPtrInput
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-	// its memory over time.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
 	ManualScaling FlexibleAppVersionManualScalingPtrInput
-	// The identifier for this object. Format specified above.
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringPtrInput
-	// Extra network settings
+	// Extra network settings  Structure is documented below.
 	Network FlexibleAppVersionNetworkPtrInput
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
 	NobuildFilesRegex pulumi.StringPtrInput
@@ -238,14 +241,14 @@ type FlexibleAppVersionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.  Structure is documented below.
 	ReadinessCheck FlexibleAppVersionReadinessCheckPtrInput
-	// Machine resources for a version.
+	// Machine resources for a version.  Structure is documented below.
 	Resources FlexibleAppVersionResourcesPtrInput
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringPtrInput
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// https://cloud.google.com/appengine/docs/standard//config/appref
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion pulumi.StringPtrInput
 	// The channel of the runtime to use. Only available for some runtimes.
 	RuntimeChannel pulumi.StringPtrInput
@@ -256,10 +259,10 @@ type FlexibleAppVersionState struct {
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Defaults to SERVING.
 	ServingStatus pulumi.StringPtrInput
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+	// Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
-	// Enables VPC connectivity for standard apps.
+	// Enables VPC connectivity for standard apps.  Structure is documented below.
 	VpcAccessConnector FlexibleAppVersionVpcAccessConnectorPtrInput
 }
 
@@ -268,37 +271,38 @@ func (FlexibleAppVersionState) ElementType() reflect.Type {
 }
 
 type flexibleAppVersionArgs struct {
-	// Serving configuration for Google Cloud Endpoints.
+	// Serving configuration for Google Cloud Endpoints.  Structure is documented below.
 	ApiConfig *FlexibleAppVersionApiConfig `pulumi:"apiConfig"`
-	// Automatic scaling is based on request rate, response latencies, and other application metrics.
+	// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
 	AutomaticScaling *FlexibleAppVersionAutomaticScaling `pulumi:"automaticScaling"`
 	// Metadata settings that are supplied to this version to enable beta runtime features.
 	BetaSettings map[string]string `pulumi:"betaSettings"`
-	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-	// StaticFilesHandler does not specify its own expiration time.
+	// Duration that static files should be cached by web proxies and browsers.
+	// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
 	DefaultExpiration *string `pulumi:"defaultExpiration"`
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	Deployment *FlexibleAppVersionDeployment `pulumi:"deployment"`
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	EndpointsApiService *FlexibleAppVersionEndpointsApiService `pulumi:"endpointsApiService"`
-	// The entrypoint for the application.
+	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
 	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
 	// detect any changes made outside of the Terraform config.
 	EnvVariables map[string]string `pulumi:"envVariables"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices []string `pulumi:"inboundServices"`
-	// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-	// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// ManualScaling: B1, B2, B4, B8, B4_1G
+	// Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
 	InstanceClass *string `pulumi:"instanceClass"`
-	// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+	// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.  Structure is documented below.
 	LivenessCheck FlexibleAppVersionLivenessCheck `pulumi:"livenessCheck"`
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-	// its memory over time.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
 	ManualScaling *FlexibleAppVersionManualScaling `pulumi:"manualScaling"`
-	// Extra network settings
+	// Extra network settings  Structure is documented below.
 	Network *FlexibleAppVersionNetwork `pulumi:"network"`
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
 	NobuildFilesRegex *string `pulumi:"nobuildFilesRegex"`
@@ -307,14 +311,14 @@ type flexibleAppVersionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.  Structure is documented below.
 	ReadinessCheck FlexibleAppVersionReadinessCheck `pulumi:"readinessCheck"`
-	// Machine resources for a version.
+	// Machine resources for a version.  Structure is documented below.
 	Resources *FlexibleAppVersionResources `pulumi:"resources"`
 	// Desired runtime. Example python27.
 	Runtime string `pulumi:"runtime"`
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// https://cloud.google.com/appengine/docs/standard//config/appref
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// The channel of the runtime to use. Only available for some runtimes.
 	RuntimeChannel *string `pulumi:"runtimeChannel"`
@@ -325,46 +329,47 @@ type flexibleAppVersionArgs struct {
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Defaults to SERVING.
 	ServingStatus *string `pulumi:"servingStatus"`
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+	// Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId *string `pulumi:"versionId"`
-	// Enables VPC connectivity for standard apps.
+	// Enables VPC connectivity for standard apps.  Structure is documented below.
 	VpcAccessConnector *FlexibleAppVersionVpcAccessConnector `pulumi:"vpcAccessConnector"`
 }
 
 // The set of arguments for constructing a FlexibleAppVersion resource.
 type FlexibleAppVersionArgs struct {
-	// Serving configuration for Google Cloud Endpoints.
+	// Serving configuration for Google Cloud Endpoints.  Structure is documented below.
 	ApiConfig FlexibleAppVersionApiConfigPtrInput
-	// Automatic scaling is based on request rate, response latencies, and other application metrics.
+	// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
 	AutomaticScaling FlexibleAppVersionAutomaticScalingPtrInput
 	// Metadata settings that are supplied to this version to enable beta runtime features.
 	BetaSettings pulumi.StringMapInput
-	// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding
-	// StaticFilesHandler does not specify its own expiration time.
+	// Duration that static files should be cached by web proxies and browsers.
+	// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
 	DefaultExpiration pulumi.StringPtrInput
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	Deployment FlexibleAppVersionDeploymentPtrInput
-	// Code and application artifacts that make up this version.
+	// Code and application artifacts that make up this version.  Structure is documented below.
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrInput
-	// The entrypoint for the application.
+	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint FlexibleAppVersionEntrypointPtrInput
 	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
 	// detect any changes made outside of the Terraform config.
 	EnvVariables pulumi.StringMapInput
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices pulumi.StringArrayInput
-	// Instance class that is used to run this version. Valid values are AutomaticScaling: F1, F2, F4, F4_1G ManualScaling: B1,
-	// B2, B4, B8, B4_1G Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
+	// Instance class that is used to run this version. Valid values are
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// ManualScaling: B1, B2, B4, B8, B4_1G
+	// Defaults to F1 for AutomaticScaling and B1 for ManualScaling.
 	InstanceClass pulumi.StringPtrInput
-	// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+	// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.  Structure is documented below.
 	LivenessCheck FlexibleAppVersionLivenessCheckInput
-	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of
-	// its memory over time.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
 	ManualScaling FlexibleAppVersionManualScalingPtrInput
-	// Extra network settings
+	// Extra network settings  Structure is documented below.
 	Network FlexibleAppVersionNetworkPtrInput
 	// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
 	NobuildFilesRegex pulumi.StringPtrInput
@@ -373,14 +378,14 @@ type FlexibleAppVersionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+	// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.  Structure is documented below.
 	ReadinessCheck FlexibleAppVersionReadinessCheckInput
-	// Machine resources for a version.
+	// Machine resources for a version.  Structure is documented below.
 	Resources FlexibleAppVersionResourcesPtrInput
 	// Desired runtime. Example python27.
 	Runtime pulumi.StringInput
-	// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at
-	// https://cloud.google.com/appengine/docs/standard//config/appref
+	// The version of the API in the given runtime environment.
+	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion pulumi.StringPtrInput
 	// The channel of the runtime to use. Only available for some runtimes.
 	RuntimeChannel pulumi.StringPtrInput
@@ -391,10 +396,10 @@ type FlexibleAppVersionArgs struct {
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Defaults to SERVING.
 	ServingStatus pulumi.StringPtrInput
-	// Relative name of the version within the service. For example, 'v1'. Version names can contain only lowercase letters,
-	// numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
+	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
+	// Reserved names,"default", "latest", and any name with the prefix "ah-".
 	VersionId pulumi.StringPtrInput
-	// Enables VPC connectivity for standard apps.
+	// Enables VPC connectivity for standard apps.  Structure is documented below.
 	VpcAccessConnector FlexibleAppVersionVpcAccessConnectorPtrInput
 }
 

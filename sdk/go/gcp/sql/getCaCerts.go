@@ -34,7 +34,7 @@ type GetCaCertsResult struct {
 	ActiveVersion string `pulumi:"activeVersion"`
 	// A list of server CA certificates for the instance. Each contains:
 	Certs []GetCaCertsCert `pulumi:"certs"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
 	Instance string `pulumi:"instance"`
 	Project  string `pulumi:"project"`

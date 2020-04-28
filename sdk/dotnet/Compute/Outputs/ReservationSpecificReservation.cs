@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class ReservationSpecificReservation
     {
+        /// <summary>
+        /// The number of resources that are allocated.
+        /// </summary>
         public readonly int Count;
+        /// <summary>
+        /// -
+        /// How many instances are in use.
+        /// </summary>
         public readonly int? InUseCount;
+        /// <summary>
+        /// The instance properties for the reservation.  Structure is documented below.
+        /// </summary>
         public readonly Outputs.ReservationSpecificReservationInstanceProperties InstanceProperties;
 
         [OutputConstructor]

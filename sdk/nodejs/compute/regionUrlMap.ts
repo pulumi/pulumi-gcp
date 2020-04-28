@@ -44,11 +44,13 @@ export class RegionUrlMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * A reference to RegionBackendService resource if none of the hostRules match.
+     * A reference to a RegionBackendService resource. This will be used if
+     * none of the pathRules defined by this PathMatcher is matched by
+     * the URL's path portion.
      */
     public readonly defaultService!: pulumi.Output<string>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * Description of this test case.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -56,7 +58,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * The list of HostRules to use against the URL.
+     * The list of HostRules to use against the URL.  Structure is documented below.
      */
     public readonly hostRules!: pulumi.Output<outputs.compute.RegionUrlMapHostRule[] | undefined>;
     /**
@@ -64,14 +66,13 @@ export class RegionUrlMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly mapId!: pulumi.Output<number>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * The name of the query parameter to match. The query parameter must exist in the
+     * request, in the absence of which the request match fails.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The list of named PathMatchers to use against the URL.
+     * The name of the PathMatcher to use to match the path portion of
+     * the URL if the hostRule matches the URL's host portion.
      */
     public readonly pathMatchers!: pulumi.Output<outputs.compute.RegionUrlMapPathMatcher[] | undefined>;
     /**
@@ -80,7 +81,8 @@ export class RegionUrlMap extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The Region in which the url map should reside. If it is not provided, the provider region is used.
+     * The Region in which the url map should reside.
+     * If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -88,7 +90,8 @@ export class RegionUrlMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+     * The list of expected URL mappings. Requests to update this UrlMap will
+     * succeed only if all of the test cases pass.  Structure is documented below.
      */
     public readonly tests!: pulumi.Output<outputs.compute.RegionUrlMapTest[] | undefined>;
 
@@ -154,11 +157,13 @@ export interface RegionUrlMapState {
      */
     readonly creationTimestamp?: pulumi.Input<string>;
     /**
-     * A reference to RegionBackendService resource if none of the hostRules match.
+     * A reference to a RegionBackendService resource. This will be used if
+     * none of the pathRules defined by this PathMatcher is matched by
+     * the URL's path portion.
      */
     readonly defaultService?: pulumi.Input<string>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * Description of this test case.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -166,7 +171,7 @@ export interface RegionUrlMapState {
      */
     readonly fingerprint?: pulumi.Input<string>;
     /**
-     * The list of HostRules to use against the URL.
+     * The list of HostRules to use against the URL.  Structure is documented below.
      */
     readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[]>;
     /**
@@ -174,14 +179,13 @@ export interface RegionUrlMapState {
      */
     readonly mapId?: pulumi.Input<number>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * The name of the query parameter to match. The query parameter must exist in the
+     * request, in the absence of which the request match fails.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The list of named PathMatchers to use against the URL.
+     * The name of the PathMatcher to use to match the path portion of
+     * the URL if the hostRule matches the URL's host portion.
      */
     readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcher>[]>;
     /**
@@ -190,7 +194,8 @@ export interface RegionUrlMapState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The Region in which the url map should reside. If it is not provided, the provider region is used.
+     * The Region in which the url map should reside.
+     * If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -198,7 +203,8 @@ export interface RegionUrlMapState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+     * The list of expected URL mappings. Requests to update this UrlMap will
+     * succeed only if all of the test cases pass.  Structure is documented below.
      */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[]>;
 }
@@ -208,26 +214,27 @@ export interface RegionUrlMapState {
  */
 export interface RegionUrlMapArgs {
     /**
-     * A reference to RegionBackendService resource if none of the hostRules match.
+     * A reference to a RegionBackendService resource. This will be used if
+     * none of the pathRules defined by this PathMatcher is matched by
+     * the URL's path portion.
      */
     readonly defaultService: pulumi.Input<string>;
     /**
-     * An optional description of this resource. Provide this property when you create the resource.
+     * Description of this test case.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The list of HostRules to use against the URL.
+     * The list of HostRules to use against the URL.  Structure is documented below.
      */
     readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[]>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * The name of the query parameter to match. The query parameter must exist in the
+     * request, in the absence of which the request match fails.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The list of named PathMatchers to use against the URL.
+     * The name of the PathMatcher to use to match the path portion of
+     * the URL if the hostRule matches the URL's host portion.
      */
     readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcher>[]>;
     /**
@@ -236,11 +243,13 @@ export interface RegionUrlMapArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The Region in which the url map should reside. If it is not provided, the provider region is used.
+     * The Region in which the url map should reside.
+     * If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
+     * The list of expected URL mappings. Requests to update this UrlMap will
+     * succeed only if all of the test cases pass.  Structure is documented below.
      */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[]>;
 }

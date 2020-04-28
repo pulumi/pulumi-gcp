@@ -37,7 +37,8 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The externally accessible port for the source database server. Defaults to 3306.
+        /// The externally accessible port for the source database server.
+        /// Defaults to 3306.
         /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
@@ -50,7 +51,8 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The Region in which the created instance should reside. If it is not provided, the provider region is used.
+        /// The Region in which the created instance should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -120,7 +122,8 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The externally accessible port for the source database server. Defaults to 3306.
+        /// The externally accessible port for the source database server.
+        /// Defaults to 3306.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -133,7 +136,8 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Region in which the created instance should reside. If it is not provided, the provider region is used.
+        /// The Region in which the created instance should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -164,7 +168,8 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The externally accessible port for the source database server. Defaults to 3306.
+        /// The externally accessible port for the source database server.
+        /// Defaults to 3306.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -177,7 +182,8 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Region in which the created instance should reside. If it is not provided, the provider region is used.
+        /// The Region in which the created instance should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

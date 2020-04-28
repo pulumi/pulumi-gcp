@@ -153,17 +153,32 @@ func (o AppEngineServiceIamBindingConditionPtrOutput) Elem() AppEngineServiceIam
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o AppEngineServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AppEngineServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o AppEngineServiceIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o AppEngineServiceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEngineServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o AppEngineServiceIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v AppEngineServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o AppEngineServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEngineServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppEngineServiceIamMemberCondition struct {
@@ -309,17 +324,32 @@ func (o AppEngineServiceIamMemberConditionPtrOutput) Elem() AppEngineServiceIamM
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o AppEngineServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AppEngineServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o AppEngineServiceIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o AppEngineServiceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEngineServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o AppEngineServiceIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v AppEngineServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o AppEngineServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEngineServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppEngineVersionIamBindingCondition struct {
@@ -465,17 +495,32 @@ func (o AppEngineVersionIamBindingConditionPtrOutput) Elem() AppEngineVersionIam
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o AppEngineVersionIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AppEngineVersionIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o AppEngineVersionIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o AppEngineVersionIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEngineVersionIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o AppEngineVersionIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v AppEngineVersionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o AppEngineVersionIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEngineVersionIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppEngineVersionIamMemberCondition struct {
@@ -621,17 +666,32 @@ func (o AppEngineVersionIamMemberConditionPtrOutput) Elem() AppEngineVersionIamM
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o AppEngineVersionIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AppEngineVersionIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o AppEngineVersionIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o AppEngineVersionIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEngineVersionIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o AppEngineVersionIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v AppEngineVersionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o AppEngineVersionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEngineVersionIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type TunnelInstanceIAMBindingCondition struct {
@@ -777,17 +837,32 @@ func (o TunnelInstanceIAMBindingConditionPtrOutput) Elem() TunnelInstanceIAMBind
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o TunnelInstanceIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o TunnelInstanceIAMBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o TunnelInstanceIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o TunnelInstanceIAMBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o TunnelInstanceIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type TunnelInstanceIAMMemberCondition struct {
@@ -933,17 +1008,32 @@ func (o TunnelInstanceIAMMemberConditionPtrOutput) Elem() TunnelInstanceIAMMembe
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o TunnelInstanceIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o TunnelInstanceIAMMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o TunnelInstanceIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o TunnelInstanceIAMMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o TunnelInstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type WebBackendServiceIamBindingCondition struct {
@@ -1089,17 +1179,32 @@ func (o WebBackendServiceIamBindingConditionPtrOutput) Elem() WebBackendServiceI
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o WebBackendServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *WebBackendServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o WebBackendServiceIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o WebBackendServiceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebBackendServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o WebBackendServiceIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v WebBackendServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o WebBackendServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebBackendServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type WebBackendServiceIamMemberCondition struct {
@@ -1245,17 +1350,32 @@ func (o WebBackendServiceIamMemberConditionPtrOutput) Elem() WebBackendServiceIa
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o WebBackendServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *WebBackendServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o WebBackendServiceIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o WebBackendServiceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebBackendServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o WebBackendServiceIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v WebBackendServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o WebBackendServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebBackendServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type WebIamBindingCondition struct {
@@ -1401,17 +1521,32 @@ func (o WebIamBindingConditionPtrOutput) Elem() WebIamBindingConditionOutput {
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o WebIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *WebIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o WebIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v WebIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o WebIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o WebIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v WebIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o WebIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type WebIamMemberCondition struct {
@@ -1557,17 +1692,32 @@ func (o WebIamMemberConditionPtrOutput) Elem() WebIamMemberConditionOutput {
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o WebIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *WebIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o WebIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v WebIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o WebIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o WebIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v WebIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o WebIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type WebTypeAppEngingIamBindingCondition struct {
@@ -1713,17 +1863,32 @@ func (o WebTypeAppEngingIamBindingConditionPtrOutput) Elem() WebTypeAppEngingIam
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o WebTypeAppEngingIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *WebTypeAppEngingIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o WebTypeAppEngingIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o WebTypeAppEngingIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebTypeAppEngingIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o WebTypeAppEngingIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v WebTypeAppEngingIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o WebTypeAppEngingIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebTypeAppEngingIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type WebTypeAppEngingIamMemberCondition struct {
@@ -1869,17 +2034,32 @@ func (o WebTypeAppEngingIamMemberConditionPtrOutput) Elem() WebTypeAppEngingIamM
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o WebTypeAppEngingIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *WebTypeAppEngingIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o WebTypeAppEngingIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o WebTypeAppEngingIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebTypeAppEngingIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o WebTypeAppEngingIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v WebTypeAppEngingIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o WebTypeAppEngingIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebTypeAppEngingIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type WebTypeComputeIamBindingCondition struct {
@@ -2025,17 +2205,32 @@ func (o WebTypeComputeIamBindingConditionPtrOutput) Elem() WebTypeComputeIamBind
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o WebTypeComputeIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *WebTypeComputeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o WebTypeComputeIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o WebTypeComputeIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebTypeComputeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o WebTypeComputeIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v WebTypeComputeIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o WebTypeComputeIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebTypeComputeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type WebTypeComputeIamMemberCondition struct {
@@ -2181,17 +2376,32 @@ func (o WebTypeComputeIamMemberConditionPtrOutput) Elem() WebTypeComputeIamMembe
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o WebTypeComputeIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *WebTypeComputeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o WebTypeComputeIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o WebTypeComputeIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebTypeComputeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o WebTypeComputeIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v WebTypeComputeIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o WebTypeComputeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebTypeComputeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

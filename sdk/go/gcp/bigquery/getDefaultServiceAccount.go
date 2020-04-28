@@ -36,7 +36,7 @@ type GetDefaultServiceAccountResult struct {
 	// The email address of the service account. This value is often used to refer to the service account
 	// in order to grant IAM permissions.
 	Email string `pulumi:"email"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id      string `pulumi:"id"`
 	Project string `pulumi:"project"`
 }

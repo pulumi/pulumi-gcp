@@ -24,16 +24,19 @@ type DicomStore struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
-	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a
-	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-	// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
-	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-	// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
-	// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// User-supplied key-value pairs used to organize DICOM stores.
+	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// No more than 64 labels can be associated with a given store.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
+	// The resource name for the DicomStore.
+	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A nested object resource
+	// A nested object resource  Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -73,16 +76,19 @@ type dicomStoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset *string `pulumi:"dataset"`
-	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a
-	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-	// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
-	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-	// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
-	// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// User-supplied key-value pairs used to organize DICOM stores.
+	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// No more than 64 labels can be associated with a given store.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
+	// The resource name for the DicomStore.
+	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name *string `pulumi:"name"`
-	// A nested object resource
+	// A nested object resource  Structure is documented below.
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
@@ -92,16 +98,19 @@ type DicomStoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset pulumi.StringPtrInput
-	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a
-	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-	// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
-	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-	// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
-	// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// User-supplied key-value pairs used to organize DICOM stores.
+	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// No more than 64 labels can be associated with a given store.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
-	// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
+	// The resource name for the DicomStore.
+	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name pulumi.StringPtrInput
-	// A nested object resource
+	// A nested object resource  Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
@@ -115,16 +124,19 @@ type dicomStoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset string `pulumi:"dataset"`
-	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a
-	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-	// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
-	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-	// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
-	// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// User-supplied key-value pairs used to organize DICOM stores.
+	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// No more than 64 labels can be associated with a given store.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
+	// The resource name for the DicomStore.
+	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name *string `pulumi:"name"`
-	// A nested object resource
+	// A nested object resource  Structure is documented below.
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
 }
 
@@ -133,16 +145,19 @@ type DicomStoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	Dataset pulumi.StringInput
-	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a
-	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-	// [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62} Label values are optional, must be between 1 and 63 characters long, have a
-	// UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
-	// [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. An object containing a list of
-	// "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	// User-supplied key-value pairs used to organize DICOM stores.
+	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
+	// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+	// bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
+	// No more than 64 labels can be associated with a given store.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
-	// The resource name for the DicomStore. ** Changing this property may recreate the Dicom store (removing all data) **
+	// The resource name for the DicomStore.
+	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name pulumi.StringPtrInput
-	// A nested object resource
+	// A nested object resource  Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrInput
 }
 

@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class SecurityScanConfigAuthenticationCustomAccount
     {
+        /// <summary>
+        /// The login form URL of the website.
+        /// </summary>
         public readonly string LoginUrl;
+        /// <summary>
+        /// The password of the custom account. The credential is stored encrypted
+        /// in GCP.
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// The user name of the custom account.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

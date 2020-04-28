@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The end of the range (exclusive).
+        /// </summary>
         [Input("rangeEnd", required: true)]
         public Input<int> RangeEnd { get; set; } = null!;
 
+        /// <summary>
+        /// The start of the range (inclusive).
+        /// </summary>
         [Input("rangeStart", required: true)]
         public Input<int> RangeStart { get; set; } = null!;
 

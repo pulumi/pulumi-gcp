@@ -27,7 +27,7 @@ class GetNotificationChannelResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -84,6 +84,7 @@ def get_notification_channel(display_name=None,labels=None,project=None,type=Non
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
 
+    :param str display_name: The display name for this notification channel.
     :param dict labels: Labels (corresponding to the
            NotificationChannelDescriptor schema) to filter the notification channels by.
     :param str project: The ID of the project in which the resource belongs.

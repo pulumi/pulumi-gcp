@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class HealthCheckLogConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates whether or not to export logs. This is false by default,
+        /// which means no health check logging will be done.
+        /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 

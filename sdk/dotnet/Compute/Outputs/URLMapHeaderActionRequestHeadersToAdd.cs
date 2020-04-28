@@ -13,8 +13,19 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class URLMapHeaderActionRequestHeadersToAdd
     {
+        /// <summary>
+        /// The name of the header.
+        /// </summary>
         public readonly string HeaderName;
+        /// <summary>
+        /// The value of the header to add.
+        /// </summary>
         public readonly string HeaderValue;
+        /// <summary>
+        /// If false, headerValue is appended to any values that already exist for the
+        /// header. If true, headerValue is set for the header, discarding any values that
+        /// were set for that header.
+        /// </summary>
         public readonly bool Replace;
 
         [OutputConstructor]

@@ -55,10 +55,13 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -71,10 +74,12 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly proxyId!: pulumi.Output<number>;
     /**
-     * Specifies the QUIC override policy for this resource. This determines whether the load balancer will attempt to
-     * negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is specified, uses the QUIC
-     * policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying
-     * NONE.
+     * Specifies the QUIC override policy for this resource. This determines
+     * whether the load balancer will attempt to negotiate QUIC with clients
+     * or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
+     * specified, uses the QUIC policy with no user overrides, which is
+     * equivalent to DISABLE. Not specifying this field is equivalent to
+     * specifying NONE.
      */
     public readonly quicOverride!: pulumi.Output<string | undefined>;
     /**
@@ -82,17 +87,20 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
-     * least one SSL certificate must be specified.
+     * A list of SslCertificate resources that are used to authenticate
+     * connections between users and the load balancer. At least one SSL
+     * certificate must be specified.
      */
     public readonly sslCertificates!: pulumi.Output<string[]>;
     /**
-     * A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-     * TargetHttpsProxy resource will not have any SSL policy configured.
+     * A reference to the SslPolicy resource that will be associated with
+     * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+     * resource will not have any SSL policy configured.
      */
     public readonly sslPolicy!: pulumi.Output<string | undefined>;
     /**
-     * A reference to the UrlMap resource that defines the mapping from URL to the BackendService.
+     * A reference to the UrlMap resource that defines the mapping from URL
+     * to the BackendService.
      */
     public readonly urlMap!: pulumi.Output<string>;
 
@@ -161,10 +169,13 @@ export interface TargetHttpsProxyState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -177,10 +188,12 @@ export interface TargetHttpsProxyState {
      */
     readonly proxyId?: pulumi.Input<number>;
     /**
-     * Specifies the QUIC override policy for this resource. This determines whether the load balancer will attempt to
-     * negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is specified, uses the QUIC
-     * policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying
-     * NONE.
+     * Specifies the QUIC override policy for this resource. This determines
+     * whether the load balancer will attempt to negotiate QUIC with clients
+     * or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
+     * specified, uses the QUIC policy with no user overrides, which is
+     * equivalent to DISABLE. Not specifying this field is equivalent to
+     * specifying NONE.
      */
     readonly quicOverride?: pulumi.Input<string>;
     /**
@@ -188,17 +201,20 @@ export interface TargetHttpsProxyState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
-     * least one SSL certificate must be specified.
+     * A list of SslCertificate resources that are used to authenticate
+     * connections between users and the load balancer. At least one SSL
+     * certificate must be specified.
      */
     readonly sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-     * TargetHttpsProxy resource will not have any SSL policy configured.
+     * A reference to the SslPolicy resource that will be associated with
+     * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+     * resource will not have any SSL policy configured.
      */
     readonly sslPolicy?: pulumi.Input<string>;
     /**
-     * A reference to the UrlMap resource that defines the mapping from URL to the BackendService.
+     * A reference to the UrlMap resource that defines the mapping from URL
+     * to the BackendService.
      */
     readonly urlMap?: pulumi.Input<string>;
 }
@@ -212,10 +228,13 @@ export interface TargetHttpsProxyArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -224,24 +243,29 @@ export interface TargetHttpsProxyArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Specifies the QUIC override policy for this resource. This determines whether the load balancer will attempt to
-     * negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is specified, uses the QUIC
-     * policy with no user overrides, which is equivalent to DISABLE. Not specifying this field is equivalent to specifying
-     * NONE.
+     * Specifies the QUIC override policy for this resource. This determines
+     * whether the load balancer will attempt to negotiate QUIC with clients
+     * or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
+     * specified, uses the QUIC policy with no user overrides, which is
+     * equivalent to DISABLE. Not specifying this field is equivalent to
+     * specifying NONE.
      */
     readonly quicOverride?: pulumi.Input<string>;
     /**
-     * A list of SslCertificate resources that are used to authenticate connections between users and the load balancer. At
-     * least one SSL certificate must be specified.
+     * A list of SslCertificate resources that are used to authenticate
+     * connections between users and the load balancer. At least one SSL
+     * certificate must be specified.
      */
     readonly sslCertificates: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A reference to the SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-     * TargetHttpsProxy resource will not have any SSL policy configured.
+     * A reference to the SslPolicy resource that will be associated with
+     * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+     * resource will not have any SSL policy configured.
      */
     readonly sslPolicy?: pulumi.Input<string>;
     /**
-     * A reference to the UrlMap resource that defines the mapping from URL to the BackendService.
+     * A reference to the UrlMap resource that defines the mapping from URL
+     * to the BackendService.
      */
     readonly urlMap: pulumi.Input<string>;
 }

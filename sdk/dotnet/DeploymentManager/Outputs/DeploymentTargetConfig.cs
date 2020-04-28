@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.DeploymentManager.Outputs
     [OutputType]
     public sealed class DeploymentTargetConfig
     {
+        /// <summary>
+        /// The full contents of the template that you want to import.
+        /// </summary>
         public readonly string Content;
 
         [OutputConstructor]

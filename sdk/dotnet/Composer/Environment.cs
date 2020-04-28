@@ -35,12 +35,29 @@ namespace Pulumi.Gcp.Composer
     /// </summary>
     public partial class Environment : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configuration parameters for this environment  Structure is documented below.
+        /// </summary>
         [Output("config")]
         public Output<Outputs.EnvironmentConfig> Config { get; private set; } = null!;
 
+        /// <summary>
+        /// User-defined labels for this environment. The labels map can contain
+        /// no more than 64 entries. Entries of the labels map are UTF8 strings
+        /// that comply with the following restrictions:
+        /// Label keys must be between 1 and 63 characters long and must conform
+        /// to the following regular expression: `a-z?`.
+        /// Label values must be between 0 and 63 characters long and must
+        /// conform to the regular expression `(a-z?)?`.
+        /// No more than 64 labels can be associated with a given environment.
+        /// Both keys and values must be &lt;= 128 bytes in size.
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the environment
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -51,6 +68,9 @@ namespace Pulumi.Gcp.Composer
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The location or Compute Engine region for the environment.
+        /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
 
@@ -100,17 +120,35 @@ namespace Pulumi.Gcp.Composer
 
     public sealed class EnvironmentArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration parameters for this environment  Structure is documented below.
+        /// </summary>
         [Input("config")]
         public Input<Inputs.EnvironmentConfigArgs>? Config { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// User-defined labels for this environment. The labels map can contain
+        /// no more than 64 entries. Entries of the labels map are UTF8 strings
+        /// that comply with the following restrictions:
+        /// Label keys must be between 1 and 63 characters long and must conform
+        /// to the following regular expression: `a-z?`.
+        /// Label values must be between 0 and 63 characters long and must
+        /// conform to the regular expression `(a-z?)?`.
+        /// No more than 64 labels can be associated with a given environment.
+        /// Both keys and values must be &lt;= 128 bytes in size.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Name of the environment
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -121,6 +159,9 @@ namespace Pulumi.Gcp.Composer
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The location or Compute Engine region for the environment.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -131,17 +172,35 @@ namespace Pulumi.Gcp.Composer
 
     public sealed class EnvironmentState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration parameters for this environment  Structure is documented below.
+        /// </summary>
         [Input("config")]
         public Input<Inputs.EnvironmentConfigGetArgs>? Config { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// User-defined labels for this environment. The labels map can contain
+        /// no more than 64 entries. Entries of the labels map are UTF8 strings
+        /// that comply with the following restrictions:
+        /// Label keys must be between 1 and 63 characters long and must conform
+        /// to the following regular expression: `a-z?`.
+        /// Label values must be between 0 and 63 characters long and must
+        /// conform to the regular expression `(a-z?)?`.
+        /// No more than 64 labels can be associated with a given environment.
+        /// Both keys and values must be &lt;= 128 bytes in size.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Name of the environment
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -152,6 +211,9 @@ namespace Pulumi.Gcp.Composer
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The location or Compute Engine region for the environment.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

@@ -24,16 +24,20 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
-	// A user-assigned name for this group, used only for display purposes.
+	// A user-assigned name for this group, used only for display
+	// purposes.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The filter used to determine which monitored resources belong to this group.
+	// The filter used to determine which monitored resources
+	// belong to this group.
 	Filter pulumi.StringOutput `pulumi:"filter"`
-	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
-	// that are clusters.
+	// If true, the members of this group are considered to be a
+	// cluster. The system can perform additional analysis on
+	// groups that are clusters.
 	IsCluster pulumi.BoolPtrOutput `pulumi:"isCluster"`
 	// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+	// The name of the group's parent, if it has one. The format is
+	// "projects/{project_id_or_number}/groups/{group_id}". For
 	// groups with no parent, parentName is the empty string, "".
 	ParentName pulumi.StringPtrOutput `pulumi:"parentName"`
 	// The ID of the project in which the resource belongs.
@@ -75,16 +79,20 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// A user-assigned name for this group, used only for display purposes.
+	// A user-assigned name for this group, used only for display
+	// purposes.
 	DisplayName *string `pulumi:"displayName"`
-	// The filter used to determine which monitored resources belong to this group.
+	// The filter used to determine which monitored resources
+	// belong to this group.
 	Filter *string `pulumi:"filter"`
-	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
-	// that are clusters.
+	// If true, the members of this group are considered to be a
+	// cluster. The system can perform additional analysis on
+	// groups that are clusters.
 	IsCluster *bool `pulumi:"isCluster"`
 	// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
 	Name *string `pulumi:"name"`
-	// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+	// The name of the group's parent, if it has one. The format is
+	// "projects/{project_id_or_number}/groups/{group_id}". For
 	// groups with no parent, parentName is the empty string, "".
 	ParentName *string `pulumi:"parentName"`
 	// The ID of the project in which the resource belongs.
@@ -93,16 +101,20 @@ type groupState struct {
 }
 
 type GroupState struct {
-	// A user-assigned name for this group, used only for display purposes.
+	// A user-assigned name for this group, used only for display
+	// purposes.
 	DisplayName pulumi.StringPtrInput
-	// The filter used to determine which monitored resources belong to this group.
+	// The filter used to determine which monitored resources
+	// belong to this group.
 	Filter pulumi.StringPtrInput
-	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
-	// that are clusters.
+	// If true, the members of this group are considered to be a
+	// cluster. The system can perform additional analysis on
+	// groups that are clusters.
 	IsCluster pulumi.BoolPtrInput
 	// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
 	Name pulumi.StringPtrInput
-	// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+	// The name of the group's parent, if it has one. The format is
+	// "projects/{project_id_or_number}/groups/{group_id}". For
 	// groups with no parent, parentName is the empty string, "".
 	ParentName pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -115,14 +127,18 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// A user-assigned name for this group, used only for display purposes.
+	// A user-assigned name for this group, used only for display
+	// purposes.
 	DisplayName string `pulumi:"displayName"`
-	// The filter used to determine which monitored resources belong to this group.
+	// The filter used to determine which monitored resources
+	// belong to this group.
 	Filter string `pulumi:"filter"`
-	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
-	// that are clusters.
+	// If true, the members of this group are considered to be a
+	// cluster. The system can perform additional analysis on
+	// groups that are clusters.
 	IsCluster *bool `pulumi:"isCluster"`
-	// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+	// The name of the group's parent, if it has one. The format is
+	// "projects/{project_id_or_number}/groups/{group_id}". For
 	// groups with no parent, parentName is the empty string, "".
 	ParentName *string `pulumi:"parentName"`
 	// The ID of the project in which the resource belongs.
@@ -132,14 +148,18 @@ type groupArgs struct {
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// A user-assigned name for this group, used only for display purposes.
+	// A user-assigned name for this group, used only for display
+	// purposes.
 	DisplayName pulumi.StringInput
-	// The filter used to determine which monitored resources belong to this group.
+	// The filter used to determine which monitored resources
+	// belong to this group.
 	Filter pulumi.StringInput
-	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups
-	// that are clusters.
+	// If true, the members of this group are considered to be a
+	// cluster. The system can perform additional analysis on
+	// groups that are clusters.
 	IsCluster pulumi.BoolPtrInput
-	// The name of the group's parent, if it has one. The format is "projects/{project_id_or_number}/groups/{group_id}". For
+	// The name of the group's parent, if it has one. The format is
+	// "projects/{project_id_or_number}/groups/{group_id}". For
 	// groups with no parent, parentName is the empty string, "".
 	ParentName pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.

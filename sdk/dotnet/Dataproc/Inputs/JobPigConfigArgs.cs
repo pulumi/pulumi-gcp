@@ -54,6 +54,11 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         [Input("queryLists")]
         private InputList<string>? _queryLists;
+
+        /// <summary>
+        /// The list of SQL queries or statements to execute as part of the job.
+        /// Conflicts with `query_file_uri`
+        /// </summary>
         public InputList<string> QueryLists
         {
             get => _queryLists ?? (_queryLists = new InputList<string>());

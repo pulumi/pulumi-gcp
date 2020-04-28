@@ -24,12 +24,14 @@ type SourceRepresentationInstance struct {
 	Host pulumi.StringOutput `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The externally accessible port for the source database server. Defaults to 3306.
+	// The externally accessible port for the source database server.
+	// Defaults to 3306.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The Region in which the created instance should reside. If it is not provided, the provider region is used.
+	// The Region in which the created instance should reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -73,12 +75,14 @@ type sourceRepresentationInstanceState struct {
 	Host *string `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name *string `pulumi:"name"`
-	// The externally accessible port for the source database server. Defaults to 3306.
+	// The externally accessible port for the source database server.
+	// Defaults to 3306.
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The Region in which the created instance should reside. If it is not provided, the provider region is used.
+	// The Region in which the created instance should reside.
+	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 }
 
@@ -89,12 +93,14 @@ type SourceRepresentationInstanceState struct {
 	Host pulumi.StringPtrInput
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringPtrInput
-	// The externally accessible port for the source database server. Defaults to 3306.
+	// The externally accessible port for the source database server.
+	// Defaults to 3306.
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The Region in which the created instance should reside. If it is not provided, the provider region is used.
+	// The Region in which the created instance should reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 }
 
@@ -109,12 +115,14 @@ type sourceRepresentationInstanceArgs struct {
 	Host string `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name *string `pulumi:"name"`
-	// The externally accessible port for the source database server. Defaults to 3306.
+	// The externally accessible port for the source database server.
+	// Defaults to 3306.
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The Region in which the created instance should reside. If it is not provided, the provider region is used.
+	// The Region in which the created instance should reside.
+	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 }
 
@@ -126,12 +134,14 @@ type SourceRepresentationInstanceArgs struct {
 	Host pulumi.StringInput
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringPtrInput
-	// The externally accessible port for the source database server. Defaults to 3306.
+	// The externally accessible port for the source database server.
+	// Defaults to 3306.
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The Region in which the created instance should reside. If it is not provided, the provider region is used.
+	// The Region in which the created instance should reside.
+	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 }
 

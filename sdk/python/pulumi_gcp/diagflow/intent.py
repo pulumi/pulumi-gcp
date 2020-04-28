@@ -12,12 +12,13 @@ from .. import utilities, tables
 class Intent(pulumi.CustomResource):
     action: pulumi.Output[str]
     """
-    The name of the action associated with the intent. Note: The action name must not contain whitespaces.
+    The name of the action associated with the intent.
+    Note: The action name must not contain whitespaces.
     """
     default_response_platforms: pulumi.Output[list]
     """
-    The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e.
-    default platform).
+    The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+    (i.e. default platform).
     """
     display_name: pulumi.Output[str]
     """
@@ -25,9 +26,9 @@ class Intent(pulumi.CustomResource):
     """
     events: pulumi.Output[list]
     """
-    The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the
-    contexts must be present in the active user session for an event to trigger this intent. See the [events
-    reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+    The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+    the contexts must be present in the active user session for an event to trigger this intent. See the
+    [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
     """
     followup_intent_infos: pulumi.Output[list]
     """
@@ -35,12 +36,13 @@ class Intent(pulumi.CustomResource):
     in the output.
 
       * `followupIntentName` (`str`)
-      * `parent_followup_intent_name` (`str`)
+      * `parent_followup_intent_name` (`str`) - The unique identifier of the parent intent in the chain of followup intents.
+        Format: projects/<Project ID>/agent/intents/<Intent ID>.
     """
     input_context_names: pulumi.Output[list]
     """
-    The list of context names required for this intent to be triggered. Format: projects/<Project
-    ID>/agent/sessions/-/contexts/<Context ID>.
+    The list of context names required for this intent to be triggered.
+    Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
     """
     is_fallback: pulumi.Output[bool]
     """
@@ -48,8 +50,9 @@ class Intent(pulumi.CustomResource):
     """
     ml_disabled: pulumi.Output[bool]
     """
-    Indicates whether Machine Learning is disabled for the intent. Note: If mlDisabled setting is set to true, then this
-    intent is not taken into account during inference in ML ONLY match mode. Also, auto-markup in the UI is turned off.
+    Indicates whether Machine Learning is disabled for the intent.
+    Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+    ONLY match mode. Also, auto-markup in the UI is turned off.
     """
     name: pulumi.Output[str]
     """
@@ -57,14 +60,15 @@ class Intent(pulumi.CustomResource):
     """
     parent_followup_intent_name: pulumi.Output[str]
     """
-    The unique identifier of the parent intent in the chain of followup intents. Format: projects/<Project
-    ID>/agent/intents/<Intent ID>.
+    The unique identifier of the parent intent in the chain of followup intents.
+    Format: projects/<Project ID>/agent/intents/<Intent ID>.
     """
     priority: pulumi.Output[float]
     """
-    The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0,
-    the service translates the value to 500,000, which corresponds to the Normal priority in the console. - If the supplied
-    value is negative, the intent is ignored in runtime detect intent requests.
+    The priority of this intent. Higher numbers represent higher priorities.
+    - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+    to the Normal priority in the console.
+    - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
     """
     project: pulumi.Output[str]
     """
@@ -82,8 +86,9 @@ class Intent(pulumi.CustomResource):
     """
     webhook_state: pulumi.Output[str]
     """
-    Indicates whether webhooks are enabled for the intent. * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in
-    the intent. * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+    Indicates whether webhooks are enabled for the intent.
+    * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+    * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
     filling prompt is forwarded to the webhook.
     """
     def __init__(__self__, resource_name, opts=None, action=None, default_response_platforms=None, display_name=None, events=None, input_context_names=None, is_fallback=None, ml_disabled=None, parent_followup_intent_name=None, priority=None, project=None, reset_contexts=None, webhook_state=None, __props__=None, __name__=None, __opts__=None):
@@ -100,28 +105,32 @@ class Intent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The name of the action associated with the intent. Note: The action name must not contain whitespaces.
-        :param pulumi.Input[list] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e.
-               default platform).
+        :param pulumi.Input[str] action: The name of the action associated with the intent.
+               Note: The action name must not contain whitespaces.
+        :param pulumi.Input[list] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+               (i.e. default platform).
         :param pulumi.Input[str] display_name: The name of this intent to be displayed on the console.
-        :param pulumi.Input[list] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the
-               contexts must be present in the active user session for an event to trigger this intent. See the [events
-               reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
-        :param pulumi.Input[list] input_context_names: The list of context names required for this intent to be triggered. Format: projects/<Project
-               ID>/agent/sessions/-/contexts/<Context ID>.
+        :param pulumi.Input[list] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+               the contexts must be present in the active user session for an event to trigger this intent. See the
+               [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+        :param pulumi.Input[list] input_context_names: The list of context names required for this intent to be triggered.
+               Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent.
-        :param pulumi.Input[bool] ml_disabled: Indicates whether Machine Learning is disabled for the intent. Note: If mlDisabled setting is set to true, then this
-               intent is not taken into account during inference in ML ONLY match mode. Also, auto-markup in the UI is turned off.
-        :param pulumi.Input[str] parent_followup_intent_name: The unique identifier of the parent intent in the chain of followup intents. Format: projects/<Project
-               ID>/agent/intents/<Intent ID>.
-        :param pulumi.Input[float] priority: The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0,
-               the service translates the value to 500,000, which corresponds to the Normal priority in the console. - If the supplied
-               value is negative, the intent is ignored in runtime detect intent requests.
+        :param pulumi.Input[bool] ml_disabled: Indicates whether Machine Learning is disabled for the intent.
+               Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+               ONLY match mode. Also, auto-markup in the UI is turned off.
+        :param pulumi.Input[str] parent_followup_intent_name: The unique identifier of the parent intent in the chain of followup intents.
+               Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        :param pulumi.Input[float] priority: The priority of this intent. Higher numbers represent higher priorities.
+               - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+               to the Normal priority in the console.
+               - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reset_contexts: Indicates whether to delete all contexts in the current session when this intent is matched.
-        :param pulumi.Input[str] webhook_state: Indicates whether webhooks are enabled for the intent. * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in
-               the intent. * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+        :param pulumi.Input[str] webhook_state: Indicates whether webhooks are enabled for the intent.
+               * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+               * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
                filling prompt is forwarded to the webhook.
         """
         if __name__ is not None:
@@ -173,39 +182,44 @@ class Intent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The name of the action associated with the intent. Note: The action name must not contain whitespaces.
-        :param pulumi.Input[list] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e.
-               default platform).
+        :param pulumi.Input[str] action: The name of the action associated with the intent.
+               Note: The action name must not contain whitespaces.
+        :param pulumi.Input[list] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+               (i.e. default platform).
         :param pulumi.Input[str] display_name: The name of this intent to be displayed on the console.
-        :param pulumi.Input[list] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the
-               contexts must be present in the active user session for an event to trigger this intent. See the [events
-               reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+        :param pulumi.Input[list] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+               the contexts must be present in the active user session for an event to trigger this intent. See the
+               [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
         :param pulumi.Input[list] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
                in the output.
-        :param pulumi.Input[list] input_context_names: The list of context names required for this intent to be triggered. Format: projects/<Project
-               ID>/agent/sessions/-/contexts/<Context ID>.
+        :param pulumi.Input[list] input_context_names: The list of context names required for this intent to be triggered.
+               Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent.
-        :param pulumi.Input[bool] ml_disabled: Indicates whether Machine Learning is disabled for the intent. Note: If mlDisabled setting is set to true, then this
-               intent is not taken into account during inference in ML ONLY match mode. Also, auto-markup in the UI is turned off.
+        :param pulumi.Input[bool] ml_disabled: Indicates whether Machine Learning is disabled for the intent.
+               Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+               ONLY match mode. Also, auto-markup in the UI is turned off.
         :param pulumi.Input[str] name: The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
-        :param pulumi.Input[str] parent_followup_intent_name: The unique identifier of the parent intent in the chain of followup intents. Format: projects/<Project
-               ID>/agent/intents/<Intent ID>.
-        :param pulumi.Input[float] priority: The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0,
-               the service translates the value to 500,000, which corresponds to the Normal priority in the console. - If the supplied
-               value is negative, the intent is ignored in runtime detect intent requests.
+        :param pulumi.Input[str] parent_followup_intent_name: The unique identifier of the parent intent in the chain of followup intents.
+               Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        :param pulumi.Input[float] priority: The priority of this intent. Higher numbers represent higher priorities.
+               - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+               to the Normal priority in the console.
+               - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reset_contexts: Indicates whether to delete all contexts in the current session when this intent is matched.
         :param pulumi.Input[str] root_followup_intent_name: The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
                chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
-        :param pulumi.Input[str] webhook_state: Indicates whether webhooks are enabled for the intent. * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in
-               the intent. * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+        :param pulumi.Input[str] webhook_state: Indicates whether webhooks are enabled for the intent.
+               * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+               * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
                filling prompt is forwarded to the webhook.
 
         The **followup_intent_infos** object supports the following:
 
           * `followupIntentName` (`pulumi.Input[str]`)
-          * `parent_followup_intent_name` (`pulumi.Input[str]`)
+          * `parent_followup_intent_name` (`pulumi.Input[str]`) - The unique identifier of the parent intent in the chain of followup intents.
+            Format: projects/<Project ID>/agent/intents/<Intent ID>.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -24,7 +24,7 @@ class GetClientConfigResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")

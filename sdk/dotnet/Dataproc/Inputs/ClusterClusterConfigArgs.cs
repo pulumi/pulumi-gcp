@@ -49,6 +49,10 @@ namespace Pulumi.Gcp.Dataproc.Inputs
             set => _initializationActions = value;
         }
 
+        /// <summary>
+        /// The settings for auto deletion cluster schedule.
+        /// Structure defined below.
+        /// </summary>
         [Input("lifecycleConfig")]
         public Input<Inputs.ClusterClusterConfigLifecycleConfigArgs>? LifecycleConfig { get; set; }
 

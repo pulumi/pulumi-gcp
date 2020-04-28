@@ -23,8 +23,9 @@ import (
 type SSLCertificate struct {
 	pulumi.CustomResourceState
 
-	// The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
-	// least one intermediate cert.
+	// The certificate in PEM format.
+	// The certificate chain must be no greater than 5 certs long.
+	// The chain must include at least one intermediate cert.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// The unique identifier for the resource.
 	CertificateId pulumi.IntOutput `pulumi:"certificateId"`
@@ -32,11 +33,13 @@ type SSLCertificate struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-	// namespace as the managed SSL certificates.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
@@ -84,8 +87,9 @@ func GetSSLCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SSLCertificate resources.
 type sslcertificateState struct {
-	// The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
-	// least one intermediate cert.
+	// The certificate in PEM format.
+	// The certificate chain must be no greater than 5 certs long.
+	// The chain must include at least one intermediate cert.
 	Certificate *string `pulumi:"certificate"`
 	// The unique identifier for the resource.
 	CertificateId *int `pulumi:"certificateId"`
@@ -93,11 +97,13 @@ type sslcertificateState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-	// namespace as the managed SSL certificates.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
@@ -112,8 +118,9 @@ type sslcertificateState struct {
 }
 
 type SSLCertificateState struct {
-	// The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
-	// least one intermediate cert.
+	// The certificate in PEM format.
+	// The certificate chain must be no greater than 5 certs long.
+	// The chain must include at least one intermediate cert.
 	Certificate pulumi.StringPtrInput
 	// The unique identifier for the resource.
 	CertificateId pulumi.IntPtrInput
@@ -121,11 +128,13 @@ type SSLCertificateState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-	// namespace as the managed SSL certificates.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
@@ -144,16 +153,19 @@ func (SSLCertificateState) ElementType() reflect.Type {
 }
 
 type sslcertificateArgs struct {
-	// The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
-	// least one intermediate cert.
+	// The certificate in PEM format.
+	// The certificate chain must be no greater than 5 certs long.
+	// The chain must include at least one intermediate cert.
 	Certificate string `pulumi:"certificate"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-	// namespace as the managed SSL certificates.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
@@ -167,16 +179,19 @@ type sslcertificateArgs struct {
 
 // The set of arguments for constructing a SSLCertificate resource.
 type SSLCertificateArgs struct {
-	// The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at
-	// least one intermediate cert.
+	// The certificate in PEM format.
+	// The certificate chain must be no greater than 5 certs long.
+	// The chain must include at least one intermediate cert.
 	Certificate pulumi.StringInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-	// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-	// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-	// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
-	// namespace as the managed SSL certificates.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.

@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
     [OutputType]
     public sealed class InboundSamlConfigSpConfigSpCertificate
     {
+        /// <summary>
+        /// -
+        /// The x509 certificate
+        /// </summary>
         public readonly string? X509Certificate;
 
         [OutputConstructor]

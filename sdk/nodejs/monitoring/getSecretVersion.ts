@@ -12,7 +12,9 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_secret_manager_secret_version.html.markdown.
  */
+/** @deprecated gcp.getSecretVersion has been deprecated in favour of gcp.getSecretVersion */
 export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionResult> {
+    pulumi.log.warn("getSecretVersion is deprecated: gcp.getSecretVersion has been deprecated in favour of gcp.getSecretVersion")
     if (!opts) {
         opts = {}
     }
@@ -76,7 +78,7 @@ export interface GetSecretVersionResult {
     readonly secretData: string;
     readonly version: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

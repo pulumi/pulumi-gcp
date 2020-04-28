@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const myNetwork = gcp.compute.getNetwork({
+ * const myNetwork = pulumi.output(gcp.compute.getNetwork({
  *     name: "default-us-east1",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_network.html.markdown.
@@ -76,7 +76,7 @@ export interface GetNetworkResult {
      */
     readonly subnetworksSelfLinks: string[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -20,19 +20,23 @@ import (
 type Policy struct {
 	pulumi.CustomResourceState
 
-	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-	// server that you choose. Names such as .internal are not available when an alternative name server is specified.
+	// Sets an alternative name server for the associated networks.
+	// When specified, all DNS queries are forwarded to a name server that you choose.
+	// Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrOutput `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-	// enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+	// Allows networks bound to this policy to receive DNS queries sent
+	// by VMs or applications over VPN connections. When enabled, a
+	// virtual IP address will be allocated from each of the sub-networks
+	// that are bound to this policy.
 	EnableInboundForwarding pulumi.BoolPtrOutput `pulumi:"enableInboundForwarding"`
-	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+	// Controls whether logging is enabled for the networks bound to this policy.
+	// Defaults to no logging if not set.
 	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
 	// User assigned name for this policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of network names specifying networks to which this policy is applied.
+	// List of network names specifying networks to which this policy is applied.  Structure is documented below.
 	Networks PolicyNetworkArrayOutput `pulumi:"networks"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -67,19 +71,23 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
-	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-	// server that you choose. Names such as .internal are not available when an alternative name server is specified.
+	// Sets an alternative name server for the associated networks.
+	// When specified, all DNS queries are forwarded to a name server that you choose.
+	// Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
-	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-	// enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+	// Allows networks bound to this policy to receive DNS queries sent
+	// by VMs or applications over VPN connections. When enabled, a
+	// virtual IP address will be allocated from each of the sub-networks
+	// that are bound to this policy.
 	EnableInboundForwarding *bool `pulumi:"enableInboundForwarding"`
-	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+	// Controls whether logging is enabled for the networks bound to this policy.
+	// Defaults to no logging if not set.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// User assigned name for this policy.
 	Name *string `pulumi:"name"`
-	// List of network names specifying networks to which this policy is applied.
+	// List of network names specifying networks to which this policy is applied.  Structure is documented below.
 	Networks []PolicyNetwork `pulumi:"networks"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -87,19 +95,23 @@ type policyState struct {
 }
 
 type PolicyState struct {
-	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-	// server that you choose. Names such as .internal are not available when an alternative name server is specified.
+	// Sets an alternative name server for the associated networks.
+	// When specified, all DNS queries are forwarded to a name server that you choose.
+	// Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
-	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-	// enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+	// Allows networks bound to this policy to receive DNS queries sent
+	// by VMs or applications over VPN connections. When enabled, a
+	// virtual IP address will be allocated from each of the sub-networks
+	// that are bound to this policy.
 	EnableInboundForwarding pulumi.BoolPtrInput
-	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+	// Controls whether logging is enabled for the networks bound to this policy.
+	// Defaults to no logging if not set.
 	EnableLogging pulumi.BoolPtrInput
 	// User assigned name for this policy.
 	Name pulumi.StringPtrInput
-	// List of network names specifying networks to which this policy is applied.
+	// List of network names specifying networks to which this policy is applied.  Structure is documented below.
 	Networks PolicyNetworkArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -111,19 +123,23 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
-	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-	// server that you choose. Names such as .internal are not available when an alternative name server is specified.
+	// Sets an alternative name server for the associated networks.
+	// When specified, all DNS queries are forwarded to a name server that you choose.
+	// Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
-	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-	// enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+	// Allows networks bound to this policy to receive DNS queries sent
+	// by VMs or applications over VPN connections. When enabled, a
+	// virtual IP address will be allocated from each of the sub-networks
+	// that are bound to this policy.
 	EnableInboundForwarding *bool `pulumi:"enableInboundForwarding"`
-	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+	// Controls whether logging is enabled for the networks bound to this policy.
+	// Defaults to no logging if not set.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// User assigned name for this policy.
 	Name *string `pulumi:"name"`
-	// List of network names specifying networks to which this policy is applied.
+	// List of network names specifying networks to which this policy is applied.  Structure is documented below.
 	Networks []PolicyNetwork `pulumi:"networks"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -132,19 +148,23 @@ type policyArgs struct {
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-	// server that you choose. Names such as .internal are not available when an alternative name server is specified.
+	// Sets an alternative name server for the associated networks.
+	// When specified, all DNS queries are forwarded to a name server that you choose.
+	// Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
-	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-	// enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+	// Allows networks bound to this policy to receive DNS queries sent
+	// by VMs or applications over VPN connections. When enabled, a
+	// virtual IP address will be allocated from each of the sub-networks
+	// that are bound to this policy.
 	EnableInboundForwarding pulumi.BoolPtrInput
-	// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+	// Controls whether logging is enabled for the networks bound to this policy.
+	// Defaults to no logging if not set.
 	EnableLogging pulumi.BoolPtrInput
 	// User assigned name for this policy.
 	Name pulumi.StringPtrInput
-	// List of network names specifying networks to which this policy is applied.
+	// List of network names specifying networks to which this policy is applied.  Structure is documented below.
 	Networks PolicyNetworkArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

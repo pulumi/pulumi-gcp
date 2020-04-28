@@ -29,7 +29,8 @@ type AccessPolicy struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Resource name of the AccessPolicy. Format: {policy_id}
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
+	// Format: organizations/{organization_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Human readable title. Does not affect behavior.
 	Title pulumi.StringOutput `pulumi:"title"`
@@ -75,7 +76,8 @@ type accessPolicyState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Resource name of the AccessPolicy. Format: {policy_id}
 	Name *string `pulumi:"name"`
-	// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
+	// Format: organizations/{organization_id}
 	Parent *string `pulumi:"parent"`
 	// Human readable title. Does not affect behavior.
 	Title *string `pulumi:"title"`
@@ -88,7 +90,8 @@ type AccessPolicyState struct {
 	CreateTime pulumi.StringPtrInput
 	// Resource name of the AccessPolicy. Format: {policy_id}
 	Name pulumi.StringPtrInput
-	// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
+	// Format: organizations/{organization_id}
 	Parent pulumi.StringPtrInput
 	// Human readable title. Does not affect behavior.
 	Title pulumi.StringPtrInput
@@ -101,7 +104,8 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
-	// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
+	// Format: organizations/{organization_id}
 	Parent string `pulumi:"parent"`
 	// Human readable title. Does not affect behavior.
 	Title string `pulumi:"title"`
@@ -109,7 +113,8 @@ type accessPolicyArgs struct {
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
-	// The parent of this AccessPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id}
+	// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
+	// Format: organizations/{organization_id}
 	Parent pulumi.StringInput
 	// Human readable title. Does not affect behavior.
 	Title pulumi.StringInput

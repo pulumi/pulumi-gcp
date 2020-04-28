@@ -21,7 +21,8 @@ import (
 type DataStoreIndex struct {
 	pulumi.CustomResourceState
 
-	// Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+	// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
+	// the default is `NONE`.
 	Ancestor pulumi.StringPtrOutput `pulumi:"ancestor"`
 	// The index id.
 	IndexId pulumi.StringOutput `pulumi:"indexId"`
@@ -30,7 +31,7 @@ type DataStoreIndex struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// An ordered list of properties to index on.
+	// An ordered list of properties to index on.  Structure is documented below.
 	Properties DataStoreIndexPropertyArrayOutput `pulumi:"properties"`
 }
 
@@ -65,7 +66,8 @@ func GetDataStoreIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataStoreIndex resources.
 type dataStoreIndexState struct {
-	// Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+	// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
+	// the default is `NONE`.
 	Ancestor *string `pulumi:"ancestor"`
 	// The index id.
 	IndexId *string `pulumi:"indexId"`
@@ -74,12 +76,13 @@ type dataStoreIndexState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// An ordered list of properties to index on.
+	// An ordered list of properties to index on.  Structure is documented below.
 	Properties []DataStoreIndexProperty `pulumi:"properties"`
 }
 
 type DataStoreIndexState struct {
-	// Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+	// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
+	// the default is `NONE`.
 	Ancestor pulumi.StringPtrInput
 	// The index id.
 	IndexId pulumi.StringPtrInput
@@ -88,7 +91,7 @@ type DataStoreIndexState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// An ordered list of properties to index on.
+	// An ordered list of properties to index on.  Structure is documented below.
 	Properties DataStoreIndexPropertyArrayInput
 }
 
@@ -97,27 +100,29 @@ func (DataStoreIndexState) ElementType() reflect.Type {
 }
 
 type dataStoreIndexArgs struct {
-	// Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+	// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
+	// the default is `NONE`.
 	Ancestor *string `pulumi:"ancestor"`
 	// The entity kind which the index applies to.
 	Kind string `pulumi:"kind"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// An ordered list of properties to index on.
+	// An ordered list of properties to index on.  Structure is documented below.
 	Properties []DataStoreIndexProperty `pulumi:"properties"`
 }
 
 // The set of arguments for constructing a DataStoreIndex resource.
 type DataStoreIndexArgs struct {
-	// Policy for including ancestors in the index. Either 'ALL_ANCESTORS' or 'NONE', the default is 'NONE'.
+	// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
+	// the default is `NONE`.
 	Ancestor pulumi.StringPtrInput
 	// The entity kind which the index applies to.
 	Kind pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// An ordered list of properties to index on.
+	// An ordered list of properties to index on.  Structure is documented below.
 	Properties DataStoreIndexPropertyArrayInput
 }
 

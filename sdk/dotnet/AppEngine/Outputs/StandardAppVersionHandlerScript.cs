@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     [OutputType]
     public sealed class StandardAppVersionHandlerScript
     {
+        /// <summary>
+        /// Path to the script from the application root directory.
+        /// </summary>
         public readonly string ScriptPath;
 
         [OutputConstructor]

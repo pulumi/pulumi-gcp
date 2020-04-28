@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Projects.Outputs
     [OutputType]
     public sealed class OrganizationPolicyListPolicy
     {
+        /// <summary>
+        /// or `deny` - (Optional) One or the other must be set.
+        /// </summary>
         public readonly Outputs.OrganizationPolicyListPolicyAllow? Allow;
         public readonly Outputs.OrganizationPolicyListPolicyDeny? Deny;
         /// <summary>

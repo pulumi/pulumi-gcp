@@ -142,15 +142,30 @@ func (o AccountIamBindingConditionPtrOutput) Elem() AccountIamBindingConditionOu
 }
 
 func (o AccountIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccountIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AccountIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o AccountIamBindingConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o AccountIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o AccountIamBindingConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o AccountIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type AccountIamMemberCondition struct {
@@ -285,19 +300,41 @@ func (o AccountIamMemberConditionPtrOutput) Elem() AccountIamMemberConditionOutp
 }
 
 func (o AccountIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccountIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *AccountIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o AccountIamMemberConditionPtrOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o AccountIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o AccountIamMemberConditionPtrOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o AccountIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type BudgetAllUpdatesRule struct {
-	PubsubTopic   string  `pulumi:"pubsubTopic"`
+	// The name of the Cloud Pub/Sub topic where budget related
+	// messages will be published, in the form
+	// projects/{project_id}/topics/{topic_id}. Updates are sent
+	// at regular intervals to the topic.
+	PubsubTopic string `pulumi:"pubsubTopic"`
+	// The schema version of the notification. Only "1.0" is
+	// accepted. It represents the JSON schema as defined in
+	// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
 	SchemaVersion *string `pulumi:"schemaVersion"`
 }
 
@@ -314,7 +351,14 @@ type BudgetAllUpdatesRuleInput interface {
 }
 
 type BudgetAllUpdatesRuleArgs struct {
-	PubsubTopic   pulumi.StringInput    `pulumi:"pubsubTopic"`
+	// The name of the Cloud Pub/Sub topic where budget related
+	// messages will be published, in the form
+	// projects/{project_id}/topics/{topic_id}. Updates are sent
+	// at regular intervals to the topic.
+	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
+	// The schema version of the notification. Only "1.0" is
+	// accepted. It represents the JSON schema as defined in
+	// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
 	SchemaVersion pulumi.StringPtrInput `pulumi:"schemaVersion"`
 }
 
@@ -395,10 +439,18 @@ func (o BudgetAllUpdatesRuleOutput) ToBudgetAllUpdatesRulePtrOutputWithContext(c
 		return &v
 	}).(BudgetAllUpdatesRulePtrOutput)
 }
+
+// The name of the Cloud Pub/Sub topic where budget related
+// messages will be published, in the form
+// projects/{project_id}/topics/{topic_id}. Updates are sent
+// at regular intervals to the topic.
 func (o BudgetAllUpdatesRuleOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v BudgetAllUpdatesRule) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
+// The schema version of the notification. Only "1.0" is
+// accepted. It represents the JSON schema as defined in
+// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
 func (o BudgetAllUpdatesRuleOutput) SchemaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetAllUpdatesRule) *string { return v.SchemaVersion }).(pulumi.StringPtrOutput)
 }
@@ -421,15 +473,35 @@ func (o BudgetAllUpdatesRulePtrOutput) Elem() BudgetAllUpdatesRuleOutput {
 	return o.ApplyT(func(v *BudgetAllUpdatesRule) BudgetAllUpdatesRule { return *v }).(BudgetAllUpdatesRuleOutput)
 }
 
-func (o BudgetAllUpdatesRulePtrOutput) PubsubTopic() pulumi.StringOutput {
-	return o.ApplyT(func(v BudgetAllUpdatesRule) string { return v.PubsubTopic }).(pulumi.StringOutput)
+// The name of the Cloud Pub/Sub topic where budget related
+// messages will be published, in the form
+// projects/{project_id}/topics/{topic_id}. Updates are sent
+// at regular intervals to the topic.
+func (o BudgetAllUpdatesRulePtrOutput) PubsubTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BudgetAllUpdatesRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PubsubTopic
+	}).(pulumi.StringPtrOutput)
 }
 
+// The schema version of the notification. Only "1.0" is
+// accepted. It represents the JSON schema as defined in
+// https://cloud.google.com/billing/docs/how-to/budgets#notification_format.
 func (o BudgetAllUpdatesRulePtrOutput) SchemaVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BudgetAllUpdatesRule) *string { return v.SchemaVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BudgetAllUpdatesRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 type BudgetAmount struct {
+	// A specified amount to use as the budget. currencyCode is
+	// optional. If specified, it must match the currency of the
+	// billing account. The currencyCode is provided on output.  Structure is documented below.
 	SpecifiedAmount BudgetAmountSpecifiedAmount `pulumi:"specifiedAmount"`
 }
 
@@ -446,6 +518,9 @@ type BudgetAmountInput interface {
 }
 
 type BudgetAmountArgs struct {
+	// A specified amount to use as the budget. currencyCode is
+	// optional. If specified, it must match the currency of the
+	// billing account. The currencyCode is provided on output.  Structure is documented below.
 	SpecifiedAmount BudgetAmountSpecifiedAmountInput `pulumi:"specifiedAmount"`
 }
 
@@ -526,6 +601,10 @@ func (o BudgetAmountOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Conte
 		return &v
 	}).(BudgetAmountPtrOutput)
 }
+
+// A specified amount to use as the budget. currencyCode is
+// optional. If specified, it must match the currency of the
+// billing account. The currencyCode is provided on output.  Structure is documented below.
 func (o BudgetAmountOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountOutput {
 	return o.ApplyT(func(v BudgetAmount) BudgetAmountSpecifiedAmount { return v.SpecifiedAmount }).(BudgetAmountSpecifiedAmountOutput)
 }
@@ -548,14 +627,32 @@ func (o BudgetAmountPtrOutput) Elem() BudgetAmountOutput {
 	return o.ApplyT(func(v *BudgetAmount) BudgetAmount { return *v }).(BudgetAmountOutput)
 }
 
-func (o BudgetAmountPtrOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountOutput {
-	return o.ApplyT(func(v BudgetAmount) BudgetAmountSpecifiedAmount { return v.SpecifiedAmount }).(BudgetAmountSpecifiedAmountOutput)
+// A specified amount to use as the budget. currencyCode is
+// optional. If specified, it must match the currency of the
+// billing account. The currencyCode is provided on output.  Structure is documented below.
+func (o BudgetAmountPtrOutput) SpecifiedAmount() BudgetAmountSpecifiedAmountPtrOutput {
+	return o.ApplyT(func(v *BudgetAmount) *BudgetAmountSpecifiedAmount {
+		if v == nil {
+			return nil
+		}
+		return &v.SpecifiedAmount
+	}).(BudgetAmountSpecifiedAmountPtrOutput)
 }
 
 type BudgetAmountSpecifiedAmount struct {
+	// The 3-letter currency code defined in ISO 4217.
 	CurrencyCode *string `pulumi:"currencyCode"`
-	Nanos        *int    `pulumi:"nanos"`
-	Units        *string `pulumi:"units"`
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999
+	// inclusive. If units is positive, nanos must be positive or
+	// zero. If units is zero, nanos can be positive, zero, or
+	// negative. If units is negative, nanos must be negative or
+	// zero. For example $-1.75 is represented as units=-1 and
+	// nanos=-750,000,000.
+	Nanos *int `pulumi:"nanos"`
+	// The whole units of the amount. For example if currencyCode
+	// is "USD", then 1 unit is one US dollar.
+	Units *string `pulumi:"units"`
 }
 
 // BudgetAmountSpecifiedAmountInput is an input type that accepts BudgetAmountSpecifiedAmountArgs and BudgetAmountSpecifiedAmountOutput values.
@@ -571,9 +668,19 @@ type BudgetAmountSpecifiedAmountInput interface {
 }
 
 type BudgetAmountSpecifiedAmountArgs struct {
+	// The 3-letter currency code defined in ISO 4217.
 	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
-	Nanos        pulumi.IntPtrInput    `pulumi:"nanos"`
-	Units        pulumi.StringPtrInput `pulumi:"units"`
+	// Number of nano (10^-9) units of the amount.
+	// The value must be between -999,999,999 and +999,999,999
+	// inclusive. If units is positive, nanos must be positive or
+	// zero. If units is zero, nanos can be positive, zero, or
+	// negative. If units is negative, nanos must be negative or
+	// zero. For example $-1.75 is represented as units=-1 and
+	// nanos=-750,000,000.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// The whole units of the amount. For example if currencyCode
+	// is "USD", then 1 unit is one US dollar.
+	Units pulumi.StringPtrInput `pulumi:"units"`
 }
 
 func (BudgetAmountSpecifiedAmountArgs) ElementType() reflect.Type {
@@ -586,6 +693,48 @@ func (i BudgetAmountSpecifiedAmountArgs) ToBudgetAmountSpecifiedAmountOutput() B
 
 func (i BudgetAmountSpecifiedAmountArgs) ToBudgetAmountSpecifiedAmountOutputWithContext(ctx context.Context) BudgetAmountSpecifiedAmountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountSpecifiedAmountOutput)
+}
+
+func (i BudgetAmountSpecifiedAmountArgs) ToBudgetAmountSpecifiedAmountPtrOutput() BudgetAmountSpecifiedAmountPtrOutput {
+	return i.ToBudgetAmountSpecifiedAmountPtrOutputWithContext(context.Background())
+}
+
+func (i BudgetAmountSpecifiedAmountArgs) ToBudgetAmountSpecifiedAmountPtrOutputWithContext(ctx context.Context) BudgetAmountSpecifiedAmountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountSpecifiedAmountOutput).ToBudgetAmountSpecifiedAmountPtrOutputWithContext(ctx)
+}
+
+// BudgetAmountSpecifiedAmountPtrInput is an input type that accepts BudgetAmountSpecifiedAmountArgs, BudgetAmountSpecifiedAmountPtr and BudgetAmountSpecifiedAmountPtrOutput values.
+// You can construct a concrete instance of `BudgetAmountSpecifiedAmountPtrInput` via:
+//
+// 		 BudgetAmountSpecifiedAmountArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type BudgetAmountSpecifiedAmountPtrInput interface {
+	pulumi.Input
+
+	ToBudgetAmountSpecifiedAmountPtrOutput() BudgetAmountSpecifiedAmountPtrOutput
+	ToBudgetAmountSpecifiedAmountPtrOutputWithContext(context.Context) BudgetAmountSpecifiedAmountPtrOutput
+}
+
+type budgetAmountSpecifiedAmountPtrType BudgetAmountSpecifiedAmountArgs
+
+func BudgetAmountSpecifiedAmountPtr(v *BudgetAmountSpecifiedAmountArgs) BudgetAmountSpecifiedAmountPtrInput {
+	return (*budgetAmountSpecifiedAmountPtrType)(v)
+}
+
+func (*budgetAmountSpecifiedAmountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetAmountSpecifiedAmount)(nil)).Elem()
+}
+
+func (i *budgetAmountSpecifiedAmountPtrType) ToBudgetAmountSpecifiedAmountPtrOutput() BudgetAmountSpecifiedAmountPtrOutput {
+	return i.ToBudgetAmountSpecifiedAmountPtrOutputWithContext(context.Background())
+}
+
+func (i *budgetAmountSpecifiedAmountPtrType) ToBudgetAmountSpecifiedAmountPtrOutputWithContext(ctx context.Context) BudgetAmountSpecifiedAmountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountSpecifiedAmountPtrOutput)
 }
 
 type BudgetAmountSpecifiedAmountOutput struct{ *pulumi.OutputState }
@@ -602,22 +751,111 @@ func (o BudgetAmountSpecifiedAmountOutput) ToBudgetAmountSpecifiedAmountOutputWi
 	return o
 }
 
+func (o BudgetAmountSpecifiedAmountOutput) ToBudgetAmountSpecifiedAmountPtrOutput() BudgetAmountSpecifiedAmountPtrOutput {
+	return o.ToBudgetAmountSpecifiedAmountPtrOutputWithContext(context.Background())
+}
+
+func (o BudgetAmountSpecifiedAmountOutput) ToBudgetAmountSpecifiedAmountPtrOutputWithContext(ctx context.Context) BudgetAmountSpecifiedAmountPtrOutput {
+	return o.ApplyT(func(v BudgetAmountSpecifiedAmount) *BudgetAmountSpecifiedAmount {
+		return &v
+	}).(BudgetAmountSpecifiedAmountPtrOutput)
+}
+
+// The 3-letter currency code defined in ISO 4217.
 func (o BudgetAmountSpecifiedAmountOutput) CurrencyCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetAmountSpecifiedAmount) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
 }
 
+// Number of nano (10^-9) units of the amount.
+// The value must be between -999,999,999 and +999,999,999
+// inclusive. If units is positive, nanos must be positive or
+// zero. If units is zero, nanos can be positive, zero, or
+// negative. If units is negative, nanos must be negative or
+// zero. For example $-1.75 is represented as units=-1 and
+// nanos=-750,000,000.
 func (o BudgetAmountSpecifiedAmountOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BudgetAmountSpecifiedAmount) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
 
+// The whole units of the amount. For example if currencyCode
+// is "USD", then 1 unit is one US dollar.
 func (o BudgetAmountSpecifiedAmountOutput) Units() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetAmountSpecifiedAmount) *string { return v.Units }).(pulumi.StringPtrOutput)
 }
 
+type BudgetAmountSpecifiedAmountPtrOutput struct{ *pulumi.OutputState }
+
+func (BudgetAmountSpecifiedAmountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BudgetAmountSpecifiedAmount)(nil)).Elem()
+}
+
+func (o BudgetAmountSpecifiedAmountPtrOutput) ToBudgetAmountSpecifiedAmountPtrOutput() BudgetAmountSpecifiedAmountPtrOutput {
+	return o
+}
+
+func (o BudgetAmountSpecifiedAmountPtrOutput) ToBudgetAmountSpecifiedAmountPtrOutputWithContext(ctx context.Context) BudgetAmountSpecifiedAmountPtrOutput {
+	return o
+}
+
+func (o BudgetAmountSpecifiedAmountPtrOutput) Elem() BudgetAmountSpecifiedAmountOutput {
+	return o.ApplyT(func(v *BudgetAmountSpecifiedAmount) BudgetAmountSpecifiedAmount { return *v }).(BudgetAmountSpecifiedAmountOutput)
+}
+
+// The 3-letter currency code defined in ISO 4217.
+func (o BudgetAmountSpecifiedAmountPtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BudgetAmountSpecifiedAmount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of nano (10^-9) units of the amount.
+// The value must be between -999,999,999 and +999,999,999
+// inclusive. If units is positive, nanos must be positive or
+// zero. If units is zero, nanos can be positive, zero, or
+// negative. If units is negative, nanos must be negative or
+// zero. For example $-1.75 is represented as units=-1 and
+// nanos=-750,000,000.
+func (o BudgetAmountSpecifiedAmountPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BudgetAmountSpecifiedAmount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// The whole units of the amount. For example if currencyCode
+// is "USD", then 1 unit is one US dollar.
+func (o BudgetAmountSpecifiedAmountPtrOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BudgetAmountSpecifiedAmount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Units
+	}).(pulumi.StringPtrOutput)
+}
+
 type BudgetBudgetFilter struct {
-	CreditTypesTreatment *string  `pulumi:"creditTypesTreatment"`
-	Projects             []string `pulumi:"projects"`
-	Services             []string `pulumi:"services"`
+	// Specifies how credits should be treated when determining spend
+	// for threshold calculations.
+	CreditTypesTreatment *string `pulumi:"creditTypesTreatment"`
+	// A set of projects of the form projects/{project_id},
+	// specifying that usage from only this set of projects should be
+	// included in the budget. If omitted, the report will include
+	// all usage for the billing account, regardless of which project
+	// the usage occurred on. Only zero or one project can be
+	// specified currently.
+	Projects []string `pulumi:"projects"`
+	// A set of services of the form services/{service_id},
+	// specifying that usage from only this set of services should be
+	// included in the budget. If omitted, the report will include
+	// usage for all the services. The service names are available
+	// through the Catalog API:
+	// https://cloud.google.com/billing/v1/how-tos/catalog-api.
+	Services []string `pulumi:"services"`
 }
 
 // BudgetBudgetFilterInput is an input type that accepts BudgetBudgetFilterArgs and BudgetBudgetFilterOutput values.
@@ -633,9 +871,23 @@ type BudgetBudgetFilterInput interface {
 }
 
 type BudgetBudgetFilterArgs struct {
-	CreditTypesTreatment pulumi.StringPtrInput   `pulumi:"creditTypesTreatment"`
-	Projects             pulumi.StringArrayInput `pulumi:"projects"`
-	Services             pulumi.StringArrayInput `pulumi:"services"`
+	// Specifies how credits should be treated when determining spend
+	// for threshold calculations.
+	CreditTypesTreatment pulumi.StringPtrInput `pulumi:"creditTypesTreatment"`
+	// A set of projects of the form projects/{project_id},
+	// specifying that usage from only this set of projects should be
+	// included in the budget. If omitted, the report will include
+	// all usage for the billing account, regardless of which project
+	// the usage occurred on. Only zero or one project can be
+	// specified currently.
+	Projects pulumi.StringArrayInput `pulumi:"projects"`
+	// A set of services of the form services/{service_id},
+	// specifying that usage from only this set of services should be
+	// included in the budget. If omitted, the report will include
+	// usage for all the services. The service names are available
+	// through the Catalog API:
+	// https://cloud.google.com/billing/v1/how-tos/catalog-api.
+	Services pulumi.StringArrayInput `pulumi:"services"`
 }
 
 func (BudgetBudgetFilterArgs) ElementType() reflect.Type {
@@ -715,14 +967,29 @@ func (o BudgetBudgetFilterOutput) ToBudgetBudgetFilterPtrOutputWithContext(ctx c
 		return &v
 	}).(BudgetBudgetFilterPtrOutput)
 }
+
+// Specifies how credits should be treated when determining spend
+// for threshold calculations.
 func (o BudgetBudgetFilterOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
 }
 
+// A set of projects of the form projects/{project_id},
+// specifying that usage from only this set of projects should be
+// included in the budget. If omitted, the report will include
+// all usage for the billing account, regardless of which project
+// the usage occurred on. Only zero or one project can be
+// specified currently.
 func (o BudgetBudgetFilterOutput) Projects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Projects }).(pulumi.StringArrayOutput)
 }
 
+// A set of services of the form services/{service_id},
+// specifying that usage from only this set of services should be
+// included in the budget. If omitted, the report will include
+// usage for all the services. The service names are available
+// through the Catalog API:
+// https://cloud.google.com/billing/v1/how-tos/catalog-api.
 func (o BudgetBudgetFilterOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
@@ -745,20 +1012,53 @@ func (o BudgetBudgetFilterPtrOutput) Elem() BudgetBudgetFilterOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) BudgetBudgetFilter { return *v }).(BudgetBudgetFilterOutput)
 }
 
+// Specifies how credits should be treated when determining spend
+// for threshold calculations.
 func (o BudgetBudgetFilterPtrOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BudgetBudgetFilter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *BudgetBudgetFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreditTypesTreatment
+	}).(pulumi.StringPtrOutput)
 }
 
+// A set of projects of the form projects/{project_id},
+// specifying that usage from only this set of projects should be
+// included in the budget. If omitted, the report will include
+// all usage for the billing account, regardless of which project
+// the usage occurred on. Only zero or one project can be
+// specified currently.
 func (o BudgetBudgetFilterPtrOutput) Projects() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Projects }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *BudgetBudgetFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Projects
+	}).(pulumi.StringArrayOutput)
 }
 
+// A set of services of the form services/{service_id},
+// specifying that usage from only this set of services should be
+// included in the budget. If omitted, the report will include
+// usage for all the services. The service names are available
+// through the Catalog API:
+// https://cloud.google.com/billing/v1/how-tos/catalog-api.
 func (o BudgetBudgetFilterPtrOutput) Services() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Services }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *BudgetBudgetFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Services
+	}).(pulumi.StringArrayOutput)
 }
 
 type BudgetThresholdRule struct {
-	SpendBasis       *string `pulumi:"spendBasis"`
+	// The type of basis used to determine if spend has passed
+	// the threshold.
+	SpendBasis *string `pulumi:"spendBasis"`
+	// Send an alert when this threshold is exceeded. This is a
+	// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
 	ThresholdPercent float64 `pulumi:"thresholdPercent"`
 }
 
@@ -775,8 +1075,12 @@ type BudgetThresholdRuleInput interface {
 }
 
 type BudgetThresholdRuleArgs struct {
-	SpendBasis       pulumi.StringPtrInput `pulumi:"spendBasis"`
-	ThresholdPercent pulumi.Float64Input   `pulumi:"thresholdPercent"`
+	// The type of basis used to determine if spend has passed
+	// the threshold.
+	SpendBasis pulumi.StringPtrInput `pulumi:"spendBasis"`
+	// Send an alert when this threshold is exceeded. This is a
+	// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
+	ThresholdPercent pulumi.Float64Input `pulumi:"thresholdPercent"`
 }
 
 func (BudgetThresholdRuleArgs) ElementType() reflect.Type {
@@ -831,10 +1135,14 @@ func (o BudgetThresholdRuleOutput) ToBudgetThresholdRuleOutputWithContext(ctx co
 	return o
 }
 
+// The type of basis used to determine if spend has passed
+// the threshold.
 func (o BudgetThresholdRuleOutput) SpendBasis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetThresholdRule) *string { return v.SpendBasis }).(pulumi.StringPtrOutput)
 }
 
+// Send an alert when this threshold is exceeded. This is a
+// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
 func (o BudgetThresholdRuleOutput) ThresholdPercent() pulumi.Float64Output {
 	return o.ApplyT(func(v BudgetThresholdRule) float64 { return v.ThresholdPercent }).(pulumi.Float64Output)
 }
@@ -869,6 +1177,7 @@ func init() {
 	pulumi.RegisterOutputType(BudgetAmountOutput{})
 	pulumi.RegisterOutputType(BudgetAmountPtrOutput{})
 	pulumi.RegisterOutputType(BudgetAmountSpecifiedAmountOutput{})
+	pulumi.RegisterOutputType(BudgetAmountSpecifiedAmountPtrOutput{})
 	pulumi.RegisterOutputType(BudgetBudgetFilterOutput{})
 	pulumi.RegisterOutputType(BudgetBudgetFilterPtrOutput{})
 	pulumi.RegisterOutputType(BudgetThresholdRuleOutput{})

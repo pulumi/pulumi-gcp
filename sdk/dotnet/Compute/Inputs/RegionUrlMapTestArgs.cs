@@ -12,15 +12,27 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RegionUrlMapTestArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Description of this test case.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Host portion of the URL.
+        /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
+        /// <summary>
+        /// Path portion of the URL.
+        /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// A reference to expected RegionBackendService resource the given URL should be mapped to.
+        /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 

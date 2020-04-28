@@ -24,7 +24,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Disk { get; private set; } = null!;
 
         /// <summary>
-        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
+        /// The resource policy to be attached to the disk for scheduling snapshot
+        /// creation. Do not specify the self link.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -95,7 +96,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Disk { get; set; } = null!;
 
         /// <summary>
-        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
+        /// The resource policy to be attached to the disk for scheduling snapshot
+        /// creation. Do not specify the self link.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -127,7 +129,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Disk { get; set; }
 
         /// <summary>
-        /// The resource policy to be attached to the disk for scheduling snapshot creation. Do not specify the self link.
+        /// The resource policy to be attached to the disk for scheduling snapshot
+        /// creation. Do not specify the self link.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

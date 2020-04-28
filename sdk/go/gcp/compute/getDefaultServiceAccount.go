@@ -29,7 +29,7 @@ type GetDefaultServiceAccountResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Email address of the default service account used by VMs running in this project
 	Email string `pulumi:"email"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The fully-qualified name of the service account.
 	Name    string `pulumi:"name"`

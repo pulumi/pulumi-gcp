@@ -34,7 +34,8 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+        /// Whether the domain creation should override any existing mappings for this domain.
+        /// By default, overrides are rejected.
         /// </summary>
         [Output("overrideStrategy")]
         public Output<string?> OverrideStrategy { get; private set; } = null!;
@@ -54,7 +55,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableArray<Outputs.DomainMappingResourceRecord>> ResourceRecords { get; private set; } = null!;
 
         /// <summary>
-        /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
         /// </summary>
         [Output("sslSettings")]
         public Output<Outputs.DomainMappingSslSettings?> SslSettings { get; private set; } = null!;
@@ -112,7 +113,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+        /// Whether the domain creation should override any existing mappings for this domain.
+        /// By default, overrides are rejected.
         /// </summary>
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }
@@ -125,7 +127,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
         /// </summary>
         [Input("sslSettings")]
         public Input<Inputs.DomainMappingSslSettingsArgs>? SslSettings { get; set; }
@@ -150,7 +152,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+        /// Whether the domain creation should override any existing mappings for this domain.
+        /// By default, overrides are rejected.
         /// </summary>
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }
@@ -176,7 +179,7 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
         /// </summary>
         [Input("sslSettings")]
         public Input<Inputs.DomainMappingSslSettingsGetArgs>? SslSettings { get; set; }

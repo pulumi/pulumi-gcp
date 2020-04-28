@@ -46,7 +46,7 @@ export class Router extends pulumi.CustomResource {
     }
 
     /**
-     * BGP information specific to this router.
+     * BGP information specific to this router.  Structure is documented below.
      */
     public readonly bgp!: pulumi.Output<outputs.compute.RouterBgp | undefined>;
     /**
@@ -54,14 +54,16 @@ export class Router extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * An optional description of this resource.
+     * User-specified description for the IP range.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-     * 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character
-     * must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-     * character, which cannot be a dash.
+     * Name of the resource. The name must be 1-63 characters long, and
+     * comply with RFC1035. Specifically, the name must be 1-63 characters
+     * long and match the regular expression `a-z?`
+     * which means the first character must be a lowercase letter, and all
+     * following characters must be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -132,7 +134,7 @@ export class Router extends pulumi.CustomResource {
  */
 export interface RouterState {
     /**
-     * BGP information specific to this router.
+     * BGP information specific to this router.  Structure is documented below.
      */
     readonly bgp?: pulumi.Input<inputs.compute.RouterBgp>;
     /**
@@ -140,14 +142,16 @@ export interface RouterState {
      */
     readonly creationTimestamp?: pulumi.Input<string>;
     /**
-     * An optional description of this resource.
+     * User-specified description for the IP range.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-     * 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character
-     * must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-     * character, which cannot be a dash.
+     * Name of the resource. The name must be 1-63 characters long, and
+     * comply with RFC1035. Specifically, the name must be 1-63 characters
+     * long and match the regular expression `a-z?`
+     * which means the first character must be a lowercase letter, and all
+     * following characters must be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -174,18 +178,20 @@ export interface RouterState {
  */
 export interface RouterArgs {
     /**
-     * BGP information specific to this router.
+     * BGP information specific to this router.  Structure is documented below.
      */
     readonly bgp?: pulumi.Input<inputs.compute.RouterBgp>;
     /**
-     * An optional description of this resource.
+     * User-specified description for the IP range.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be
-     * 1-63 characters long and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character
-     * must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
-     * character, which cannot be a dash.
+     * Name of the resource. The name must be 1-63 characters long, and
+     * comply with RFC1035. Specifically, the name must be 1-63 characters
+     * long and match the regular expression `a-z?`
+     * which means the first character must be a lowercase letter, and all
+     * following characters must be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**

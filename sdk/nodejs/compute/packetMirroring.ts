@@ -47,8 +47,10 @@ export class PacketMirroring extends pulumi.CustomResource {
     }
 
     /**
-     * The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
-     * traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+     * The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+     * that will be used as collector for mirrored traffic. The
+     * specified forwarding rule must have isMirroringCollector
+     * set to true.  Structure is documented below.
      */
     public readonly collectorIlb!: pulumi.Output<outputs.compute.PacketMirroringCollectorIlb>;
     /**
@@ -56,11 +58,11 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A filter for mirrored traffic. If unset, all traffic is mirrored.
+     * A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
      */
     public readonly filter!: pulumi.Output<outputs.compute.PacketMirroringFilter | undefined>;
     /**
-     * A means of specifying which resources to mirror.
+     * A means of specifying which resources to mirror.  Structure is documented below.
      */
     public readonly mirroredResources!: pulumi.Output<outputs.compute.PacketMirroringMirroredResources>;
     /**
@@ -68,12 +70,14 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a
-     * NIC in the given network. All mirrored subnetworks should belong to the given network.
+     * Specifies the mirrored VPC network. Only packets in this network
+     * will be mirrored. All mirrored VMs should have a NIC in the given
+     * network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
      */
     public readonly network!: pulumi.Output<outputs.compute.PacketMirroringNetwork>;
     /**
-     * Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to
+     * Since only one rule can be active at a time, priority is
+     * used to break ties in the case of two rules that apply to
      * the same instances.
      */
     public readonly priority!: pulumi.Output<number>;
@@ -83,7 +87,8 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The Region in which the created address should reside. If it is not provided, the provider region is used.
+     * The Region in which the created address should reside.
+     * If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
 
@@ -145,8 +150,10 @@ export class PacketMirroring extends pulumi.CustomResource {
  */
 export interface PacketMirroringState {
     /**
-     * The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
-     * traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+     * The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+     * that will be used as collector for mirrored traffic. The
+     * specified forwarding rule must have isMirroringCollector
+     * set to true.  Structure is documented below.
      */
     readonly collectorIlb?: pulumi.Input<inputs.compute.PacketMirroringCollectorIlb>;
     /**
@@ -154,11 +161,11 @@ export interface PacketMirroringState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A filter for mirrored traffic. If unset, all traffic is mirrored.
+     * A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
      */
     readonly filter?: pulumi.Input<inputs.compute.PacketMirroringFilter>;
     /**
-     * A means of specifying which resources to mirror.
+     * A means of specifying which resources to mirror.  Structure is documented below.
      */
     readonly mirroredResources?: pulumi.Input<inputs.compute.PacketMirroringMirroredResources>;
     /**
@@ -166,12 +173,14 @@ export interface PacketMirroringState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a
-     * NIC in the given network. All mirrored subnetworks should belong to the given network.
+     * Specifies the mirrored VPC network. Only packets in this network
+     * will be mirrored. All mirrored VMs should have a NIC in the given
+     * network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
      */
     readonly network?: pulumi.Input<inputs.compute.PacketMirroringNetwork>;
     /**
-     * Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to
+     * Since only one rule can be active at a time, priority is
+     * used to break ties in the case of two rules that apply to
      * the same instances.
      */
     readonly priority?: pulumi.Input<number>;
@@ -181,7 +190,8 @@ export interface PacketMirroringState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The Region in which the created address should reside. If it is not provided, the provider region is used.
+     * The Region in which the created address should reside.
+     * If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
 }
@@ -191,8 +201,10 @@ export interface PacketMirroringState {
  */
 export interface PacketMirroringArgs {
     /**
-     * The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL) that will be used as collector for mirrored
-     * traffic. The specified forwarding rule must have is_mirroring_collector set to true.
+     * The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+     * that will be used as collector for mirrored traffic. The
+     * specified forwarding rule must have isMirroringCollector
+     * set to true.  Structure is documented below.
      */
     readonly collectorIlb: pulumi.Input<inputs.compute.PacketMirroringCollectorIlb>;
     /**
@@ -200,11 +212,11 @@ export interface PacketMirroringArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A filter for mirrored traffic. If unset, all traffic is mirrored.
+     * A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
      */
     readonly filter?: pulumi.Input<inputs.compute.PacketMirroringFilter>;
     /**
-     * A means of specifying which resources to mirror.
+     * A means of specifying which resources to mirror.  Structure is documented below.
      */
     readonly mirroredResources: pulumi.Input<inputs.compute.PacketMirroringMirroredResources>;
     /**
@@ -212,12 +224,14 @@ export interface PacketMirroringArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a
-     * NIC in the given network. All mirrored subnetworks should belong to the given network.
+     * Specifies the mirrored VPC network. Only packets in this network
+     * will be mirrored. All mirrored VMs should have a NIC in the given
+     * network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
      */
     readonly network: pulumi.Input<inputs.compute.PacketMirroringNetwork>;
     /**
-     * Since only one rule can be active at a time, priority is used to break ties in the case of two rules that apply to
+     * Since only one rule can be active at a time, priority is
+     * used to break ties in the case of two rules that apply to
      * the same instances.
      */
     readonly priority?: pulumi.Input<number>;
@@ -227,7 +241,8 @@ export interface PacketMirroringArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The Region in which the created address should reside. If it is not provided, the provider region is used.
+     * The Region in which the created address should reside.
+     * If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
 }

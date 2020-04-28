@@ -36,7 +36,7 @@ type LookupAccountResult struct {
 	// should be referenced from any `organizations.getIAMPolicy` data sources
 	// that would grant the service account privileges.
 	Email string `pulumi:"email"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The fully-qualified name of the service account.
 	Name    string  `pulumi:"name"`

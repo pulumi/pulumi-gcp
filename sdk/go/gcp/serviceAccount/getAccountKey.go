@@ -32,7 +32,7 @@ type GetAccountKeyArgs struct {
 
 // A collection of values returned by getAccountKey.
 type GetAccountKeyResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id           string  `pulumi:"id"`
 	KeyAlgorithm string  `pulumi:"keyAlgorithm"`
 	Name         string  `pulumi:"name"`

@@ -12,12 +12,22 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class BackendServiceIapGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// OAuth2 Client ID for IAP
+        /// </summary>
         [Input("oauth2ClientId", required: true)]
         public Input<string> Oauth2ClientId { get; set; } = null!;
 
+        /// <summary>
+        /// OAuth2 Client Secret for IAP
+        /// </summary>
         [Input("oauth2ClientSecret", required: true)]
         public Input<string> Oauth2ClientSecret { get; set; } = null!;
 
+        /// <summary>
+        /// -
+        /// OAuth2 Client Secret SHA-256 for IAP
+        /// </summary>
         [Input("oauth2ClientSecretSha256")]
         public Input<string>? Oauth2ClientSecretSha256 { get; set; }
 

@@ -24,7 +24,7 @@ export function getUptimeCheckIPs(opts?: pulumi.InvokeOptions): Promise<GetUptim
 export interface GetUptimeCheckIPsResult {
     readonly uptimeCheckIps: outputs.monitoring.GetUptimeCheckIPsUptimeCheckIp[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

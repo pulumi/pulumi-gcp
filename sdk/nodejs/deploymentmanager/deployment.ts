@@ -53,16 +53,20 @@ export class Deployment extends pulumi.CustomResource {
     }
 
     /**
-     * Set the policy to use for creating new resources. Only used on create and update. Valid values are
-     * 'CREATE_OR_ACQUIRE' (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment
-     * will fail. Note that updating this field does not actually affect the deployment, just how it is updated.
+     * Set the policy to use for creating new resources. Only used on
+     * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
+     * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
+     * the deployment will fail. Note that updating this field does not
+     * actually affect the deployment, just how it is updated.
      */
     public readonly createPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'.
-     * If 'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed
-     * from Deployment Manager and is not actually deleted. Note that updating this field does not actually change the
-     * deployment, just how it is updated.
+     * Set the policy to use for deleting new resources on update/delete.
+     * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
+     * resource is deleted after removal from Deployment Manager. If
+     * `ABANDON`, the resource is only removed from Deployment Manager
+     * and is not actually deleted. Note that updating this field does not
+     * actually change the deployment, just how it is updated.
      */
     public readonly deletePolicy!: pulumi.Output<string | undefined>;
     /**
@@ -74,7 +78,7 @@ export class Deployment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Key-value pairs to apply to this labels.
+     * Key-value pairs to apply to this labels.  Structure is documented below.
      */
     public readonly labels!: pulumi.Output<outputs.deploymentmanager.DeploymentLabel[] | undefined>;
     /**
@@ -82,15 +86,19 @@ export class Deployment extends pulumi.CustomResource {
      */
     public /*out*/ readonly manifest!: pulumi.Output<string>;
     /**
-     * Unique name for the deployment
+     * The name of the template to import, as declared in the YAML
+     * configuration.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you
-     * to preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE**: Deployment
-     * Manager does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will
-     * force-recreate deployments if either preview is updated to true or if other fields are updated while preview is
-     * true.
+     * If set to true, a deployment is created with "shell" resources
+     * that are not actually instantiated. This allows you to preview a
+     * deployment. It can be updated to false to actually deploy
+     * with real resources.
+     * ~>**NOTE**: Deployment Manager does not allow update
+     * of a deployment in preview (unless updating to preview=false). Thus,
+     * the provider will force-recreate deployments if either preview is updated
+     * to true or if other fields are updated while preview is true.
      */
     public readonly preview!: pulumi.Output<boolean | undefined>;
     /**
@@ -103,7 +111,8 @@ export class Deployment extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Parameters that define your deployment, including the deployment configuration and relevant templates.
+     * Parameters that define your deployment, including the deployment
+     * configuration and relevant templates.  Structure is documented below.
      */
     public readonly target!: pulumi.Output<outputs.deploymentmanager.DeploymentTarget>;
 
@@ -163,16 +172,20 @@ export class Deployment extends pulumi.CustomResource {
  */
 export interface DeploymentState {
     /**
-     * Set the policy to use for creating new resources. Only used on create and update. Valid values are
-     * 'CREATE_OR_ACQUIRE' (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment
-     * will fail. Note that updating this field does not actually affect the deployment, just how it is updated.
+     * Set the policy to use for creating new resources. Only used on
+     * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
+     * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
+     * the deployment will fail. Note that updating this field does not
+     * actually affect the deployment, just how it is updated.
      */
     readonly createPolicy?: pulumi.Input<string>;
     /**
-     * Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'.
-     * If 'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed
-     * from Deployment Manager and is not actually deleted. Note that updating this field does not actually change the
-     * deployment, just how it is updated.
+     * Set the policy to use for deleting new resources on update/delete.
+     * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
+     * resource is deleted after removal from Deployment Manager. If
+     * `ABANDON`, the resource is only removed from Deployment Manager
+     * and is not actually deleted. Note that updating this field does not
+     * actually change the deployment, just how it is updated.
      */
     readonly deletePolicy?: pulumi.Input<string>;
     /**
@@ -184,7 +197,7 @@ export interface DeploymentState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Key-value pairs to apply to this labels.
+     * Key-value pairs to apply to this labels.  Structure is documented below.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[]>;
     /**
@@ -192,15 +205,19 @@ export interface DeploymentState {
      */
     readonly manifest?: pulumi.Input<string>;
     /**
-     * Unique name for the deployment
+     * The name of the template to import, as declared in the YAML
+     * configuration.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you
-     * to preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE**: Deployment
-     * Manager does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will
-     * force-recreate deployments if either preview is updated to true or if other fields are updated while preview is
-     * true.
+     * If set to true, a deployment is created with "shell" resources
+     * that are not actually instantiated. This allows you to preview a
+     * deployment. It can be updated to false to actually deploy
+     * with real resources.
+     * ~>**NOTE**: Deployment Manager does not allow update
+     * of a deployment in preview (unless updating to preview=false). Thus,
+     * the provider will force-recreate deployments if either preview is updated
+     * to true or if other fields are updated while preview is true.
      */
     readonly preview?: pulumi.Input<boolean>;
     /**
@@ -213,7 +230,8 @@ export interface DeploymentState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * Parameters that define your deployment, including the deployment configuration and relevant templates.
+     * Parameters that define your deployment, including the deployment
+     * configuration and relevant templates.  Structure is documented below.
      */
     readonly target?: pulumi.Input<inputs.deploymentmanager.DeploymentTarget>;
 }
@@ -223,16 +241,20 @@ export interface DeploymentState {
  */
 export interface DeploymentArgs {
     /**
-     * Set the policy to use for creating new resources. Only used on create and update. Valid values are
-     * 'CREATE_OR_ACQUIRE' (default) or 'ACQUIRE'. If set to 'ACQUIRE' and resources do not already exist, the deployment
-     * will fail. Note that updating this field does not actually affect the deployment, just how it is updated.
+     * Set the policy to use for creating new resources. Only used on
+     * create and update. Valid values are `CREATE_OR_ACQUIRE` (default) or
+     * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
+     * the deployment will fail. Note that updating this field does not
+     * actually affect the deployment, just how it is updated.
      */
     readonly createPolicy?: pulumi.Input<string>;
     /**
-     * Set the policy to use for deleting new resources on update/delete. Valid values are 'DELETE' (default) or 'ABANDON'.
-     * If 'DELETE', resource is deleted after removal from Deployment Manager. If 'ABANDON', the resource is only removed
-     * from Deployment Manager and is not actually deleted. Note that updating this field does not actually change the
-     * deployment, just how it is updated.
+     * Set the policy to use for deleting new resources on update/delete.
+     * Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
+     * resource is deleted after removal from Deployment Manager. If
+     * `ABANDON`, the resource is only removed from Deployment Manager
+     * and is not actually deleted. Note that updating this field does not
+     * actually change the deployment, just how it is updated.
      */
     readonly deletePolicy?: pulumi.Input<string>;
     /**
@@ -240,19 +262,23 @@ export interface DeploymentArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Key-value pairs to apply to this labels.
+     * Key-value pairs to apply to this labels.  Structure is documented below.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[]>;
     /**
-     * Unique name for the deployment
+     * The name of the template to import, as declared in the YAML
+     * configuration.
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * If set to true, a deployment is created with "shell" resources that are not actually instantiated. This allows you
-     * to preview a deployment. It can be updated to false to actually deploy with real resources. ~>**NOTE**: Deployment
-     * Manager does not allow update of a deployment in preview (unless updating to preview=false). Thus, Terraform will
-     * force-recreate deployments if either preview is updated to true or if other fields are updated while preview is
-     * true.
+     * If set to true, a deployment is created with "shell" resources
+     * that are not actually instantiated. This allows you to preview a
+     * deployment. It can be updated to false to actually deploy
+     * with real resources.
+     * ~>**NOTE**: Deployment Manager does not allow update
+     * of a deployment in preview (unless updating to preview=false). Thus,
+     * the provider will force-recreate deployments if either preview is updated
+     * to true or if other fields are updated while preview is true.
      */
     readonly preview?: pulumi.Input<boolean>;
     /**
@@ -261,7 +287,8 @@ export interface DeploymentArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Parameters that define your deployment, including the deployment configuration and relevant templates.
+     * Parameters that define your deployment, including the deployment
+     * configuration and relevant templates.  Structure is documented below.
      */
     readonly target: pulumi.Input<inputs.deploymentmanager.DeploymentTarget>;
 }

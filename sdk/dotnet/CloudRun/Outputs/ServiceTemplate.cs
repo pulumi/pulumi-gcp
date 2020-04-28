@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class ServiceTemplate
     {
+        /// <summary>
+        /// Metadata associated with this Service, including name, namespace, labels,
+        /// and annotations.  Structure is documented below.
+        /// </summary>
         public readonly Outputs.ServiceTemplateMetadata? Metadata;
+        /// <summary>
+        /// RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+        /// </summary>
         public readonly Outputs.ServiceTemplateSpec? Spec;
 
         [OutputConstructor]

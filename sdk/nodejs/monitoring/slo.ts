@@ -53,13 +53,15 @@ export class Slo extends pulumi.CustomResource {
     }
 
     /**
-     * Basic Service-Level Indicator (SLI) on a well-known service type. Performance will be computed on the basis of
-     * pre-defined metrics. SLIs are used to measure and calculate the quality of the Service's performance with respect to
-     * a single aspect of service quality.
+     * Basic Service-Level Indicator (SLI) on a well-known service type.
+     * Performance will be computed on the basis of pre-defined metrics.
+     * SLIs are used to measure and calculate the quality of the Service's
+     * performance with respect to a single aspect of service quality.  Structure is documented below.
      */
     public readonly basicSli!: pulumi.Output<outputs.monitoring.SloBasicSli>;
     /**
-     * A calendar period, semantically "since the start of the current <calendarPeriod>".
+     * A calendar period, semantically "since the start of the current
+     * <calendarPeriod>".
      */
     public readonly calendarPeriod!: pulumi.Output<string | undefined>;
     /**
@@ -67,7 +69,8 @@ export class Slo extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999
+     * The fraction of service that must be good in order for this objective
+     * to be met. 0 < goal <= 0.999
      */
     public readonly goal!: pulumi.Output<number>;
     /**
@@ -81,7 +84,8 @@ export class Slo extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * A rolling time period, semantically "in the past X days". Must be between 1 to 30 days, inclusive.
+     * A rolling time period, semantically "in the past X days".
+     * Must be between 1 to 30 days, inclusive.
      */
     public readonly rollingPeriodDays!: pulumi.Output<number | undefined>;
     /**
@@ -151,13 +155,15 @@ export class Slo extends pulumi.CustomResource {
  */
 export interface SloState {
     /**
-     * Basic Service-Level Indicator (SLI) on a well-known service type. Performance will be computed on the basis of
-     * pre-defined metrics. SLIs are used to measure and calculate the quality of the Service's performance with respect to
-     * a single aspect of service quality.
+     * Basic Service-Level Indicator (SLI) on a well-known service type.
+     * Performance will be computed on the basis of pre-defined metrics.
+     * SLIs are used to measure and calculate the quality of the Service's
+     * performance with respect to a single aspect of service quality.  Structure is documented below.
      */
     readonly basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
     /**
-     * A calendar period, semantically "since the start of the current <calendarPeriod>".
+     * A calendar period, semantically "since the start of the current
+     * <calendarPeriod>".
      */
     readonly calendarPeriod?: pulumi.Input<string>;
     /**
@@ -165,7 +171,8 @@ export interface SloState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999
+     * The fraction of service that must be good in order for this objective
+     * to be met. 0 < goal <= 0.999
      */
     readonly goal?: pulumi.Input<number>;
     /**
@@ -179,7 +186,8 @@ export interface SloState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * A rolling time period, semantically "in the past X days". Must be between 1 to 30 days, inclusive.
+     * A rolling time period, semantically "in the past X days".
+     * Must be between 1 to 30 days, inclusive.
      */
     readonly rollingPeriodDays?: pulumi.Input<number>;
     /**
@@ -197,13 +205,15 @@ export interface SloState {
  */
 export interface SloArgs {
     /**
-     * Basic Service-Level Indicator (SLI) on a well-known service type. Performance will be computed on the basis of
-     * pre-defined metrics. SLIs are used to measure and calculate the quality of the Service's performance with respect to
-     * a single aspect of service quality.
+     * Basic Service-Level Indicator (SLI) on a well-known service type.
+     * Performance will be computed on the basis of pre-defined metrics.
+     * SLIs are used to measure and calculate the quality of the Service's
+     * performance with respect to a single aspect of service quality.  Structure is documented below.
      */
     readonly basicSli: pulumi.Input<inputs.monitoring.SloBasicSli>;
     /**
-     * A calendar period, semantically "since the start of the current <calendarPeriod>".
+     * A calendar period, semantically "since the start of the current
+     * <calendarPeriod>".
      */
     readonly calendarPeriod?: pulumi.Input<string>;
     /**
@@ -211,7 +221,8 @@ export interface SloArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999
+     * The fraction of service that must be good in order for this objective
+     * to be met. 0 < goal <= 0.999
      */
     readonly goal: pulumi.Input<number>;
     /**
@@ -220,7 +231,8 @@ export interface SloArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * A rolling time period, semantically "in the past X days". Must be between 1 to 30 days, inclusive.
+     * A rolling time period, semantically "in the past X days".
+     * Must be between 1 to 30 days, inclusive.
      */
     readonly rollingPeriodDays?: pulumi.Input<number>;
     /**

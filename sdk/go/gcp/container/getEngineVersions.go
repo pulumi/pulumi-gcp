@@ -46,7 +46,7 @@ type GetEngineVersionsArgs struct {
 type GetEngineVersionsResult struct {
 	// Version of Kubernetes the service deploys by default.
 	DefaultClusterVersion string `pulumi:"defaultClusterVersion"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The latest version available in the given zone for use with master instances.
 	LatestMasterVersion string `pulumi:"latestMasterVersion"`

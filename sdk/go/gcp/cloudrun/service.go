@@ -41,26 +41,28 @@ type Service struct {
 	AutogenerateRevisionName pulumi.BoolPtrOutput `pulumi:"autogenerateRevisionName"`
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Metadata associated with this Service, including name, namespace, labels, and annotations.
+	// Metadata associated with this Service, including name, namespace, labels,
+	// and annotations.  Structure is documented below.
 	Metadata ServiceMetadataOutput `pulumi:"metadata"`
-	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
-	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
-	// http://kubernetes.io/docs/user-guide/identifiers#names
+	// Name of the environment variable.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The current status of the Service.
 	Status ServiceStatusOutput `pulumi:"status"`
-	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
-	// and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
-	// force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
-	// metadata. For more details, see:
-	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
-	// Run does not currently support referencing a build that is responsible for materializing the container image from
-	// source.
+	// template holds the latest specification for the Revision to
+	// be stamped out. The template references the container image, and may also
+	// include labels and annotations that should be attached to the Revision.
+	// To correlate a Revision, and/or to force a Revision to be created when the
+	// spec doesn't otherwise change, a nonce label may be provided in the
+	// template metadata. For more details, see:
+	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+	// Cloud Run does not currently support referencing a build that is
+	// responsible for materializing the container image from source.  Structure is documented below.
 	Template ServiceTemplatePtrOutput `pulumi:"template"`
-	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations  Structure is documented below.
 	Traffics ServiceTrafficArrayOutput `pulumi:"traffics"`
 }
 
@@ -103,26 +105,28 @@ type serviceState struct {
 	AutogenerateRevisionName *bool `pulumi:"autogenerateRevisionName"`
 	// The location of the cloud run instance. eg us-central1
 	Location *string `pulumi:"location"`
-	// Metadata associated with this Service, including name, namespace, labels, and annotations.
+	// Metadata associated with this Service, including name, namespace, labels,
+	// and annotations.  Structure is documented below.
 	Metadata *ServiceMetadata `pulumi:"metadata"`
-	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
-	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
-	// http://kubernetes.io/docs/user-guide/identifiers#names
+	// Name of the environment variable.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The current status of the Service.
 	Status *ServiceStatus `pulumi:"status"`
-	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
-	// and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
-	// force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
-	// metadata. For more details, see:
-	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
-	// Run does not currently support referencing a build that is responsible for materializing the container image from
-	// source.
+	// template holds the latest specification for the Revision to
+	// be stamped out. The template references the container image, and may also
+	// include labels and annotations that should be attached to the Revision.
+	// To correlate a Revision, and/or to force a Revision to be created when the
+	// spec doesn't otherwise change, a nonce label may be provided in the
+	// template metadata. For more details, see:
+	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+	// Cloud Run does not currently support referencing a build that is
+	// responsible for materializing the container image from source.  Structure is documented below.
 	Template *ServiceTemplate `pulumi:"template"`
-	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations  Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 }
 
@@ -135,26 +139,28 @@ type ServiceState struct {
 	AutogenerateRevisionName pulumi.BoolPtrInput
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringPtrInput
-	// Metadata associated with this Service, including name, namespace, labels, and annotations.
+	// Metadata associated with this Service, including name, namespace, labels,
+	// and annotations.  Structure is documented below.
 	Metadata ServiceMetadataPtrInput
-	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
-	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
-	// http://kubernetes.io/docs/user-guide/identifiers#names
+	// Name of the environment variable.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The current status of the Service.
 	Status ServiceStatusPtrInput
-	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
-	// and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
-	// force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
-	// metadata. For more details, see:
-	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
-	// Run does not currently support referencing a build that is responsible for materializing the container image from
-	// source.
+	// template holds the latest specification for the Revision to
+	// be stamped out. The template references the container image, and may also
+	// include labels and annotations that should be attached to the Revision.
+	// To correlate a Revision, and/or to force a Revision to be created when the
+	// spec doesn't otherwise change, a nonce label may be provided in the
+	// template metadata. For more details, see:
+	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+	// Cloud Run does not currently support referencing a build that is
+	// responsible for materializing the container image from source.  Structure is documented below.
 	Template ServiceTemplatePtrInput
-	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations  Structure is documented below.
 	Traffics ServiceTrafficArrayInput
 }
 
@@ -171,24 +177,26 @@ type serviceArgs struct {
 	AutogenerateRevisionName *bool `pulumi:"autogenerateRevisionName"`
 	// The location of the cloud run instance. eg us-central1
 	Location string `pulumi:"location"`
-	// Metadata associated with this Service, including name, namespace, labels, and annotations.
+	// Metadata associated with this Service, including name, namespace, labels,
+	// and annotations.  Structure is documented below.
 	Metadata *ServiceMetadata `pulumi:"metadata"`
-	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
-	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
-	// http://kubernetes.io/docs/user-guide/identifiers#names
+	// Name of the environment variable.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
-	// and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
-	// force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
-	// metadata. For more details, see:
-	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
-	// Run does not currently support referencing a build that is responsible for materializing the container image from
-	// source.
+	// template holds the latest specification for the Revision to
+	// be stamped out. The template references the container image, and may also
+	// include labels and annotations that should be attached to the Revision.
+	// To correlate a Revision, and/or to force a Revision to be created when the
+	// spec doesn't otherwise change, a nonce label may be provided in the
+	// template metadata. For more details, see:
+	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+	// Cloud Run does not currently support referencing a build that is
+	// responsible for materializing the container image from source.  Structure is documented below.
 	Template *ServiceTemplate `pulumi:"template"`
-	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations  Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 }
 
@@ -202,24 +210,26 @@ type ServiceArgs struct {
 	AutogenerateRevisionName pulumi.BoolPtrInput
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringInput
-	// Metadata associated with this Service, including name, namespace, labels, and annotations.
+	// Metadata associated with this Service, including name, namespace, labels,
+	// and annotations.  Structure is documented below.
 	Metadata ServiceMetadataPtrInput
-	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources. Name is
-	// primarily intended for creation idempotence and configuration definition. Cannot be updated. More info:
-	// http://kubernetes.io/docs/user-guide/identifiers#names
+	// Name of the environment variable.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// template holds the latest specification for the Revision to be stamped out. The template references the container image,
-	// and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to
-	// force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template
-	// metadata. For more details, see:
-	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud
-	// Run does not currently support referencing a build that is responsible for materializing the container image from
-	// source.
+	// template holds the latest specification for the Revision to
+	// be stamped out. The template references the container image, and may also
+	// include labels and annotations that should be attached to the Revision.
+	// To correlate a Revision, and/or to force a Revision to be created when the
+	// spec doesn't otherwise change, a nonce label may be provided in the
+	// template metadata. For more details, see:
+	// https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
+	// Cloud Run does not currently support referencing a build that is
+	// responsible for materializing the container image from source.  Structure is documented below.
 	Template ServiceTemplatePtrInput
-	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations  Structure is documented below.
 	Traffics ServiceTrafficArrayInput
 }
 

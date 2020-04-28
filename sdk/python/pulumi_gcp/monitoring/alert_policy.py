@@ -12,50 +12,405 @@ from .. import utilities, tables
 class AlertPolicy(pulumi.CustomResource):
     combiner: pulumi.Output[str]
     """
-    How to combine the results of multiple conditions to determine if an incident should be opened.
+    How to combine the results of multiple conditions to
+    determine if an incident should be opened.
     """
     conditions: pulumi.Output[list]
     """
-    A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-    combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+    A list of conditions for the policy. The conditions are combined by
+    AND or OR according to the combiner field. If the combined conditions
+    evaluate to true, then an incident is created. A policy can have from
+    one to six conditions.  Structure is documented below.
 
-      * `conditionAbsent` (`dict`)
-        * `aggregations` (`list`)
-          * `alignmentPeriod` (`str`)
-          * `crossSeriesReducer` (`str`)
-          * `groupByFields` (`list`)
-          * `perSeriesAligner` (`str`)
+      * `conditionAbsent` (`dict`) - A condition that checks that a time series
+        continues to receive new data points.  Structure is documented below.
+        * `aggregations` (`list`) - Specifies the alignment of data points in
+          individual time series as well as how to
+          combine the retrieved time series together
+          (such as when aggregating multiple streams
+          on each resource to a single stream for each
+          resource or when aggregating streams across
+          all members of a group of resources).
+          Multiple aggregations are applied in the
+          order specified.This field is similar to the
+          one in the MetricService.ListTimeSeries
+          request. It is advisable to use the
+          ListTimeSeries method when debugging this
+          field.  Structure is documented below.
+          * `alignmentPeriod` (`str`) - The alignment period for per-time
+            series alignment. If present,
+            alignmentPeriod must be at least
+            60 seconds. After per-time series
+            alignment, each time series will
+            contain data points only on the
+            period boundaries. If
+            perSeriesAligner is not specified
+            or equals ALIGN_NONE, then this
+            field is ignored. If
+            perSeriesAligner is specified and
+            does not equal ALIGN_NONE, then
+            this field must be defined;
+            otherwise an error is returned.
+          * `crossSeriesReducer` (`str`) - The approach to be used to combine
+            time series. Not all reducer
+            functions may be applied to all
+            time series, depending on the
+            metric type and the value type of
+            the original time series.
+            Reduction may change the metric
+            type of value type of the time
+            series.Time series data must be
+            aligned in order to perform cross-
+            time series reduction. If
+            crossSeriesReducer is specified,
+            then perSeriesAligner must be
+            specified and not equal ALIGN_NONE
+            and alignmentPeriod must be
+            specified; otherwise, an error is
+            returned.
+          * `groupByFields` (`list`) - The set of fields to preserve when
+            crossSeriesReducer is specified.
+            The groupByFields determine how
+            the time series are partitioned
+            into subsets prior to applying the
+            aggregation function. Each subset
+            contains time series that have the
+            same value for each of the
+            grouping fields. Each individual
+            time series is a member of exactly
+            one subset. The crossSeriesReducer
+            is applied to each subset of time
+            series. It is not possible to
+            reduce across different resource
+            types, so this field implicitly
+            contains resource.type. Fields not
+            specified in groupByFields are
+            aggregated away. If groupByFields
+            is not specified and all the time
+            series have the same resource
+            type, then the time series are
+            aggregated into a single output
+            time series. If crossSeriesReducer
+            is not defined, this field is
+            ignored.
+          * `perSeriesAligner` (`str`) - The approach to be used to align
+            individual time series. Not all
+            alignment functions may be applied
+            to all time series, depending on
+            the metric type and value type of
+            the original time series.
+            Alignment may change the metric
+            type or the value type of the time
+            series.Time series data must be
+            aligned in order to perform cross-
+            time series reduction. If
+            crossSeriesReducer is specified,
+            then perSeriesAligner must be
+            specified and not equal ALIGN_NONE
+            and alignmentPeriod must be
+            specified; otherwise, an error is
+            returned.
 
-        * `duration` (`str`)
-        * `filter` (`str`)
-        * `trigger` (`dict`)
-          * `count` (`float`)
-          * `percent` (`float`)
+        * `duration` (`str`) - The amount of time that a time series must
+          violate the threshold to be considered
+          failing. Currently, only values that are a
+          multiple of a minute--e.g., 0, 60, 120, or
+          300 seconds--are supported. If an invalid
+          value is given, an error will be returned.
+          When choosing a duration, it is useful to
+          keep in mind the frequency of the underlying
+          time series data (which may also be affected
+          by any alignments specified in the
+          aggregations field); a good duration is long
+          enough so that a single outlier does not
+          generate spurious alerts, but short enough
+          that unhealthy states are detected and
+          alerted on quickly.
+        * `filter` (`str`) - A filter that identifies which time series
+          should be compared with the threshold.The
+          filter is similar to the one that is
+          specified in the
+          MetricService.ListTimeSeries request (that
+          call is useful to verify the time series
+          that will be retrieved / processed) and must
+          specify the metric type and optionally may
+          contain restrictions on resource type,
+          resource labels, and metric labels. This
+          field may not exceed 2048 Unicode characters
+          in length.
+        * `trigger` (`dict`) - The number/percent of time series for which
+          the comparison must hold in order for the
+          condition to trigger. If unspecified, then
+          the condition will trigger if the comparison
+          is true for any of the time series that have
+          been identified by filter and aggregations,
+          or by the ratio, if denominator_filter and
+          denominator_aggregations are specified.  Structure is documented below.
+          * `count` (`float`) - The absolute number of time series
+            that must fail the predicate for the
+            condition to be triggered.
+          * `percent` (`float`) - The percentage of time series that
+            must fail the predicate for the
+            condition to be triggered.
 
-      * `conditionThreshold` (`dict`)
-        * `aggregations` (`list`)
-          * `alignmentPeriod` (`str`)
-          * `crossSeriesReducer` (`str`)
-          * `groupByFields` (`list`)
-          * `perSeriesAligner` (`str`)
+      * `conditionThreshold` (`dict`) - A condition that compares a time series against a
+        threshold.  Structure is documented below.
+        * `aggregations` (`list`) - Specifies the alignment of data points in
+          individual time series as well as how to
+          combine the retrieved time series together
+          (such as when aggregating multiple streams
+          on each resource to a single stream for each
+          resource or when aggregating streams across
+          all members of a group of resources).
+          Multiple aggregations are applied in the
+          order specified.This field is similar to the
+          one in the MetricService.ListTimeSeries
+          request. It is advisable to use the
+          ListTimeSeries method when debugging this
+          field.  Structure is documented below.
+          * `alignmentPeriod` (`str`) - The alignment period for per-time
+            series alignment. If present,
+            alignmentPeriod must be at least
+            60 seconds. After per-time series
+            alignment, each time series will
+            contain data points only on the
+            period boundaries. If
+            perSeriesAligner is not specified
+            or equals ALIGN_NONE, then this
+            field is ignored. If
+            perSeriesAligner is specified and
+            does not equal ALIGN_NONE, then
+            this field must be defined;
+            otherwise an error is returned.
+          * `crossSeriesReducer` (`str`) - The approach to be used to combine
+            time series. Not all reducer
+            functions may be applied to all
+            time series, depending on the
+            metric type and the value type of
+            the original time series.
+            Reduction may change the metric
+            type of value type of the time
+            series.Time series data must be
+            aligned in order to perform cross-
+            time series reduction. If
+            crossSeriesReducer is specified,
+            then perSeriesAligner must be
+            specified and not equal ALIGN_NONE
+            and alignmentPeriod must be
+            specified; otherwise, an error is
+            returned.
+          * `groupByFields` (`list`) - The set of fields to preserve when
+            crossSeriesReducer is specified.
+            The groupByFields determine how
+            the time series are partitioned
+            into subsets prior to applying the
+            aggregation function. Each subset
+            contains time series that have the
+            same value for each of the
+            grouping fields. Each individual
+            time series is a member of exactly
+            one subset. The crossSeriesReducer
+            is applied to each subset of time
+            series. It is not possible to
+            reduce across different resource
+            types, so this field implicitly
+            contains resource.type. Fields not
+            specified in groupByFields are
+            aggregated away. If groupByFields
+            is not specified and all the time
+            series have the same resource
+            type, then the time series are
+            aggregated into a single output
+            time series. If crossSeriesReducer
+            is not defined, this field is
+            ignored.
+          * `perSeriesAligner` (`str`) - The approach to be used to align
+            individual time series. Not all
+            alignment functions may be applied
+            to all time series, depending on
+            the metric type and value type of
+            the original time series.
+            Alignment may change the metric
+            type or the value type of the time
+            series.Time series data must be
+            aligned in order to perform cross-
+            time series reduction. If
+            crossSeriesReducer is specified,
+            then perSeriesAligner must be
+            specified and not equal ALIGN_NONE
+            and alignmentPeriod must be
+            specified; otherwise, an error is
+            returned.
 
-        * `comparison` (`str`)
-        * `denominatorAggregations` (`list`)
-          * `alignmentPeriod` (`str`)
-          * `crossSeriesReducer` (`str`)
-          * `groupByFields` (`list`)
-          * `perSeriesAligner` (`str`)
+        * `comparison` (`str`) - The comparison to apply between the time
+          series (indicated by filter and aggregation)
+          and the threshold (indicated by
+          threshold_value). The comparison is applied
+          on each time series, with the time series on
+          the left-hand side and the threshold on the
+          right-hand side. Only COMPARISON_LT and
+          COMPARISON_GT are supported currently.
+        * `denominatorAggregations` (`list`) - Specifies the alignment of data points in
+          individual time series selected by
+          denominatorFilter as well as how to combine
+          the retrieved time series together (such as
+          when aggregating multiple streams on each
+          resource to a single stream for each
+          resource or when aggregating streams across
+          all members of a group of resources).When
+          computing ratios, the aggregations and
+          denominator_aggregations fields must use the
+          same alignment period and produce time
+          series that have the same periodicity and
+          labels.This field is similar to the one in
+          the MetricService.ListTimeSeries request. It
+          is advisable to use the ListTimeSeries
+          method when debugging this field.  Structure is documented below.
+          * `alignmentPeriod` (`str`) - The alignment period for per-time
+            series alignment. If present,
+            alignmentPeriod must be at least
+            60 seconds. After per-time series
+            alignment, each time series will
+            contain data points only on the
+            period boundaries. If
+            perSeriesAligner is not specified
+            or equals ALIGN_NONE, then this
+            field is ignored. If
+            perSeriesAligner is specified and
+            does not equal ALIGN_NONE, then
+            this field must be defined;
+            otherwise an error is returned.
+          * `crossSeriesReducer` (`str`) - The approach to be used to combine
+            time series. Not all reducer
+            functions may be applied to all
+            time series, depending on the
+            metric type and the value type of
+            the original time series.
+            Reduction may change the metric
+            type of value type of the time
+            series.Time series data must be
+            aligned in order to perform cross-
+            time series reduction. If
+            crossSeriesReducer is specified,
+            then perSeriesAligner must be
+            specified and not equal ALIGN_NONE
+            and alignmentPeriod must be
+            specified; otherwise, an error is
+            returned.
+          * `groupByFields` (`list`) - The set of fields to preserve when
+            crossSeriesReducer is specified.
+            The groupByFields determine how
+            the time series are partitioned
+            into subsets prior to applying the
+            aggregation function. Each subset
+            contains time series that have the
+            same value for each of the
+            grouping fields. Each individual
+            time series is a member of exactly
+            one subset. The crossSeriesReducer
+            is applied to each subset of time
+            series. It is not possible to
+            reduce across different resource
+            types, so this field implicitly
+            contains resource.type. Fields not
+            specified in groupByFields are
+            aggregated away. If groupByFields
+            is not specified and all the time
+            series have the same resource
+            type, then the time series are
+            aggregated into a single output
+            time series. If crossSeriesReducer
+            is not defined, this field is
+            ignored.
+          * `perSeriesAligner` (`str`) - The approach to be used to align
+            individual time series. Not all
+            alignment functions may be applied
+            to all time series, depending on
+            the metric type and value type of
+            the original time series.
+            Alignment may change the metric
+            type or the value type of the time
+            series.Time series data must be
+            aligned in order to perform cross-
+            time series reduction. If
+            crossSeriesReducer is specified,
+            then perSeriesAligner must be
+            specified and not equal ALIGN_NONE
+            and alignmentPeriod must be
+            specified; otherwise, an error is
+            returned.
 
-        * `denominatorFilter` (`str`)
-        * `duration` (`str`)
-        * `filter` (`str`)
-        * `thresholdValue` (`float`)
-        * `trigger` (`dict`)
-          * `count` (`float`)
-          * `percent` (`float`)
+        * `denominatorFilter` (`str`) - A filter that identifies a time series that
+          should be used as the denominator of a ratio
+          that will be compared with the threshold. If
+          a denominator_filter is specified, the time
+          series specified by the filter field will be
+          used as the numerator.The filter is similar
+          to the one that is specified in the
+          MetricService.ListTimeSeries request (that
+          call is useful to verify the time series
+          that will be retrieved / processed) and must
+          specify the metric type and optionally may
+          contain restrictions on resource type,
+          resource labels, and metric labels. This
+          field may not exceed 2048 Unicode characters
+          in length.
+        * `duration` (`str`) - The amount of time that a time series must
+          violate the threshold to be considered
+          failing. Currently, only values that are a
+          multiple of a minute--e.g., 0, 60, 120, or
+          300 seconds--are supported. If an invalid
+          value is given, an error will be returned.
+          When choosing a duration, it is useful to
+          keep in mind the frequency of the underlying
+          time series data (which may also be affected
+          by any alignments specified in the
+          aggregations field); a good duration is long
+          enough so that a single outlier does not
+          generate spurious alerts, but short enough
+          that unhealthy states are detected and
+          alerted on quickly.
+        * `filter` (`str`) - A filter that identifies which time series
+          should be compared with the threshold.The
+          filter is similar to the one that is
+          specified in the
+          MetricService.ListTimeSeries request (that
+          call is useful to verify the time series
+          that will be retrieved / processed) and must
+          specify the metric type and optionally may
+          contain restrictions on resource type,
+          resource labels, and metric labels. This
+          field may not exceed 2048 Unicode characters
+          in length.
+        * `thresholdValue` (`float`) - A value against which to compare the time
+          series.
+        * `trigger` (`dict`) - The number/percent of time series for which
+          the comparison must hold in order for the
+          condition to trigger. If unspecified, then
+          the condition will trigger if the comparison
+          is true for any of the time series that have
+          been identified by filter and aggregations,
+          or by the ratio, if denominator_filter and
+          denominator_aggregations are specified.  Structure is documented below.
+          * `count` (`float`) - The absolute number of time series
+            that must fail the predicate for the
+            condition to be triggered.
+          * `percent` (`float`) - The percentage of time series that
+            must fail the predicate for the
+            condition to be triggered.
 
-      * `display_name` (`str`)
-      * `name` (`str`)
+      * `display_name` (`str`) - A short name or phrase used to identify the
+        condition in dashboards, notifications, and
+        incidents. To avoid confusion, don't use the same
+        display name for multiple conditions in the same
+        policy.
+      * `name` (`str`) - -
+        The unique resource name for this condition.
+        Its syntax is:
+        projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+        [CONDITION_ID] is assigned by Stackdriver Monitoring when
+        the condition is created as part of a new or updated alerting
+        policy.
     """
     creation_record: pulumi.Output[dict]
     """
@@ -67,18 +422,25 @@ class AlertPolicy(pulumi.CustomResource):
     """
     display_name: pulumi.Output[str]
     """
-    A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-    don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-    characters.
+    A short name or phrase used to identify the
+    condition in dashboards, notifications, and
+    incidents. To avoid confusion, don't use the same
+    display name for multiple conditions in the same
+    policy.
     """
     documentation: pulumi.Output[dict]
     """
-    A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-    don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-    characters.
+    A short name or phrase used to identify the policy in dashboards,
+    notifications, and incidents. To avoid confusion, don't use the same
+    display name for multiple policies in the same project. The name is
+    limited to 512 Unicode characters.  Structure is documented below.
 
-      * `content` (`str`)
-      * `mimeType` (`str`)
+      * `content` (`str`) - The text of the documentation, interpreted according to mimeType.
+        The content may not exceed 8,192 Unicode characters and may not
+        exceed more than 10,240 bytes when encoded in UTF-8 format,
+        whichever is smaller.
+      * `mimeType` (`str`) - The format of the content field. Presently, only the value
+        "text/markdown" is supported.
     """
     enabled: pulumi.Output[bool]
     """
@@ -86,14 +448,23 @@ class AlertPolicy(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+    -
+    The unique resource name for this condition.
+    Its syntax is:
+    projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+    [CONDITION_ID] is assigned by Stackdriver Monitoring when
+    the condition is created as part of a new or updated alerting
+    policy.
     """
     notification_channels: pulumi.Output[list]
     """
-    Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-    new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-    the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-    in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+    Identifies the notification channels to which notifications should be
+    sent when incidents are opened or closed or when new violations occur
+    on an already opened incident. Each element of this array corresponds
+    to the name field in each of the NotificationChannel objects that are
+    returned from the notificationChannels.list method. The syntax of the
+    entries in this field is
+    `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
     """
     project: pulumi.Output[str]
     """
@@ -102,9 +473,11 @@ class AlertPolicy(pulumi.CustomResource):
     """
     user_labels: pulumi.Output[dict]
     """
-    This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-    entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-    can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+    This field is intended to be used for organizing and identifying the AlertPolicy
+    objects.The field can contain up to 64 entries. Each key and value is limited
+    to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+    can contain only lowercase letters, numerals, underscores, and dashes. Keys
+    must begin with a letter.
     """
     def __init__(__self__, resource_name, opts=None, combiner=None, conditions=None, display_name=None, documentation=None, enabled=None, notification_channels=None, project=None, user_labels=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -121,70 +494,437 @@ class AlertPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to determine if an incident should be opened.
-        :param pulumi.Input[list] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-               combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
-        :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-               don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-               characters.
-        :param pulumi.Input[dict] documentation: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-               don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-               characters.
+        :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
+               determine if an incident should be opened.
+        :param pulumi.Input[list] conditions: A list of conditions for the policy. The conditions are combined by
+               AND or OR according to the combiner field. If the combined conditions
+               evaluate to true, then an incident is created. A policy can have from
+               one to six conditions.  Structure is documented below.
+        :param pulumi.Input[str] display_name: A short name or phrase used to identify the
+               condition in dashboards, notifications, and
+               incidents. To avoid confusion, don't use the same
+               display name for multiple conditions in the same
+               policy.
+        :param pulumi.Input[dict] documentation: A short name or phrase used to identify the policy in dashboards,
+               notifications, and incidents. To avoid confusion, don't use the same
+               display name for multiple policies in the same project. The name is
+               limited to 512 Unicode characters.  Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
-        :param pulumi.Input[list] notification_channels: Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-               new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-               the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-               in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+        :param pulumi.Input[list] notification_channels: Identifies the notification channels to which notifications should be
+               sent when incidents are opened or closed or when new violations occur
+               on an already opened incident. Each element of this array corresponds
+               to the name field in each of the NotificationChannel objects that are
+               returned from the notificationChannels.list method. The syntax of the
+               entries in this field is
+               `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-               entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-               can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        :param pulumi.Input[dict] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
+               objects.The field can contain up to 64 entries. Each key and value is limited
+               to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+               can contain only lowercase letters, numerals, underscores, and dashes. Keys
+               must begin with a letter.
 
         The **conditions** object supports the following:
 
-          * `conditionAbsent` (`pulumi.Input[dict]`)
-            * `aggregations` (`pulumi.Input[list]`)
-              * `alignmentPeriod` (`pulumi.Input[str]`)
-              * `crossSeriesReducer` (`pulumi.Input[str]`)
-              * `groupByFields` (`pulumi.Input[list]`)
-              * `perSeriesAligner` (`pulumi.Input[str]`)
+          * `conditionAbsent` (`pulumi.Input[dict]`) - A condition that checks that a time series
+            continues to receive new data points.  Structure is documented below.
+            * `aggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
+              individual time series as well as how to
+              combine the retrieved time series together
+              (such as when aggregating multiple streams
+              on each resource to a single stream for each
+              resource or when aggregating streams across
+              all members of a group of resources).
+              Multiple aggregations are applied in the
+              order specified.This field is similar to the
+              one in the MetricService.ListTimeSeries
+              request. It is advisable to use the
+              ListTimeSeries method when debugging this
+              field.  Structure is documented below.
+              * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
+                series alignment. If present,
+                alignmentPeriod must be at least
+                60 seconds. After per-time series
+                alignment, each time series will
+                contain data points only on the
+                period boundaries. If
+                perSeriesAligner is not specified
+                or equals ALIGN_NONE, then this
+                field is ignored. If
+                perSeriesAligner is specified and
+                does not equal ALIGN_NONE, then
+                this field must be defined;
+                otherwise an error is returned.
+              * `crossSeriesReducer` (`pulumi.Input[str]`) - The approach to be used to combine
+                time series. Not all reducer
+                functions may be applied to all
+                time series, depending on the
+                metric type and the value type of
+                the original time series.
+                Reduction may change the metric
+                type of value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
+              * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
+                crossSeriesReducer is specified.
+                The groupByFields determine how
+                the time series are partitioned
+                into subsets prior to applying the
+                aggregation function. Each subset
+                contains time series that have the
+                same value for each of the
+                grouping fields. Each individual
+                time series is a member of exactly
+                one subset. The crossSeriesReducer
+                is applied to each subset of time
+                series. It is not possible to
+                reduce across different resource
+                types, so this field implicitly
+                contains resource.type. Fields not
+                specified in groupByFields are
+                aggregated away. If groupByFields
+                is not specified and all the time
+                series have the same resource
+                type, then the time series are
+                aggregated into a single output
+                time series. If crossSeriesReducer
+                is not defined, this field is
+                ignored.
+              * `perSeriesAligner` (`pulumi.Input[str]`) - The approach to be used to align
+                individual time series. Not all
+                alignment functions may be applied
+                to all time series, depending on
+                the metric type and value type of
+                the original time series.
+                Alignment may change the metric
+                type or the value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
 
-            * `duration` (`pulumi.Input[str]`)
-            * `filter` (`pulumi.Input[str]`)
-            * `trigger` (`pulumi.Input[dict]`)
-              * `count` (`pulumi.Input[float]`)
-              * `percent` (`pulumi.Input[float]`)
+            * `duration` (`pulumi.Input[str]`) - The amount of time that a time series must
+              violate the threshold to be considered
+              failing. Currently, only values that are a
+              multiple of a minute--e.g., 0, 60, 120, or
+              300 seconds--are supported. If an invalid
+              value is given, an error will be returned.
+              When choosing a duration, it is useful to
+              keep in mind the frequency of the underlying
+              time series data (which may also be affected
+              by any alignments specified in the
+              aggregations field); a good duration is long
+              enough so that a single outlier does not
+              generate spurious alerts, but short enough
+              that unhealthy states are detected and
+              alerted on quickly.
+            * `filter` (`pulumi.Input[str]`) - A filter that identifies which time series
+              should be compared with the threshold.The
+              filter is similar to the one that is
+              specified in the
+              MetricService.ListTimeSeries request (that
+              call is useful to verify the time series
+              that will be retrieved / processed) and must
+              specify the metric type and optionally may
+              contain restrictions on resource type,
+              resource labels, and metric labels. This
+              field may not exceed 2048 Unicode characters
+              in length.
+            * `trigger` (`pulumi.Input[dict]`) - The number/percent of time series for which
+              the comparison must hold in order for the
+              condition to trigger. If unspecified, then
+              the condition will trigger if the comparison
+              is true for any of the time series that have
+              been identified by filter and aggregations,
+              or by the ratio, if denominator_filter and
+              denominator_aggregations are specified.  Structure is documented below.
+              * `count` (`pulumi.Input[float]`) - The absolute number of time series
+                that must fail the predicate for the
+                condition to be triggered.
+              * `percent` (`pulumi.Input[float]`) - The percentage of time series that
+                must fail the predicate for the
+                condition to be triggered.
 
-          * `conditionThreshold` (`pulumi.Input[dict]`)
-            * `aggregations` (`pulumi.Input[list]`)
-              * `alignmentPeriod` (`pulumi.Input[str]`)
-              * `crossSeriesReducer` (`pulumi.Input[str]`)
-              * `groupByFields` (`pulumi.Input[list]`)
-              * `perSeriesAligner` (`pulumi.Input[str]`)
+          * `conditionThreshold` (`pulumi.Input[dict]`) - A condition that compares a time series against a
+            threshold.  Structure is documented below.
+            * `aggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
+              individual time series as well as how to
+              combine the retrieved time series together
+              (such as when aggregating multiple streams
+              on each resource to a single stream for each
+              resource or when aggregating streams across
+              all members of a group of resources).
+              Multiple aggregations are applied in the
+              order specified.This field is similar to the
+              one in the MetricService.ListTimeSeries
+              request. It is advisable to use the
+              ListTimeSeries method when debugging this
+              field.  Structure is documented below.
+              * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
+                series alignment. If present,
+                alignmentPeriod must be at least
+                60 seconds. After per-time series
+                alignment, each time series will
+                contain data points only on the
+                period boundaries. If
+                perSeriesAligner is not specified
+                or equals ALIGN_NONE, then this
+                field is ignored. If
+                perSeriesAligner is specified and
+                does not equal ALIGN_NONE, then
+                this field must be defined;
+                otherwise an error is returned.
+              * `crossSeriesReducer` (`pulumi.Input[str]`) - The approach to be used to combine
+                time series. Not all reducer
+                functions may be applied to all
+                time series, depending on the
+                metric type and the value type of
+                the original time series.
+                Reduction may change the metric
+                type of value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
+              * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
+                crossSeriesReducer is specified.
+                The groupByFields determine how
+                the time series are partitioned
+                into subsets prior to applying the
+                aggregation function. Each subset
+                contains time series that have the
+                same value for each of the
+                grouping fields. Each individual
+                time series is a member of exactly
+                one subset. The crossSeriesReducer
+                is applied to each subset of time
+                series. It is not possible to
+                reduce across different resource
+                types, so this field implicitly
+                contains resource.type. Fields not
+                specified in groupByFields are
+                aggregated away. If groupByFields
+                is not specified and all the time
+                series have the same resource
+                type, then the time series are
+                aggregated into a single output
+                time series. If crossSeriesReducer
+                is not defined, this field is
+                ignored.
+              * `perSeriesAligner` (`pulumi.Input[str]`) - The approach to be used to align
+                individual time series. Not all
+                alignment functions may be applied
+                to all time series, depending on
+                the metric type and value type of
+                the original time series.
+                Alignment may change the metric
+                type or the value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
 
-            * `comparison` (`pulumi.Input[str]`)
-            * `denominatorAggregations` (`pulumi.Input[list]`)
-              * `alignmentPeriod` (`pulumi.Input[str]`)
-              * `crossSeriesReducer` (`pulumi.Input[str]`)
-              * `groupByFields` (`pulumi.Input[list]`)
-              * `perSeriesAligner` (`pulumi.Input[str]`)
+            * `comparison` (`pulumi.Input[str]`) - The comparison to apply between the time
+              series (indicated by filter and aggregation)
+              and the threshold (indicated by
+              threshold_value). The comparison is applied
+              on each time series, with the time series on
+              the left-hand side and the threshold on the
+              right-hand side. Only COMPARISON_LT and
+              COMPARISON_GT are supported currently.
+            * `denominatorAggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
+              individual time series selected by
+              denominatorFilter as well as how to combine
+              the retrieved time series together (such as
+              when aggregating multiple streams on each
+              resource to a single stream for each
+              resource or when aggregating streams across
+              all members of a group of resources).When
+              computing ratios, the aggregations and
+              denominator_aggregations fields must use the
+              same alignment period and produce time
+              series that have the same periodicity and
+              labels.This field is similar to the one in
+              the MetricService.ListTimeSeries request. It
+              is advisable to use the ListTimeSeries
+              method when debugging this field.  Structure is documented below.
+              * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
+                series alignment. If present,
+                alignmentPeriod must be at least
+                60 seconds. After per-time series
+                alignment, each time series will
+                contain data points only on the
+                period boundaries. If
+                perSeriesAligner is not specified
+                or equals ALIGN_NONE, then this
+                field is ignored. If
+                perSeriesAligner is specified and
+                does not equal ALIGN_NONE, then
+                this field must be defined;
+                otherwise an error is returned.
+              * `crossSeriesReducer` (`pulumi.Input[str]`) - The approach to be used to combine
+                time series. Not all reducer
+                functions may be applied to all
+                time series, depending on the
+                metric type and the value type of
+                the original time series.
+                Reduction may change the metric
+                type of value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
+              * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
+                crossSeriesReducer is specified.
+                The groupByFields determine how
+                the time series are partitioned
+                into subsets prior to applying the
+                aggregation function. Each subset
+                contains time series that have the
+                same value for each of the
+                grouping fields. Each individual
+                time series is a member of exactly
+                one subset. The crossSeriesReducer
+                is applied to each subset of time
+                series. It is not possible to
+                reduce across different resource
+                types, so this field implicitly
+                contains resource.type. Fields not
+                specified in groupByFields are
+                aggregated away. If groupByFields
+                is not specified and all the time
+                series have the same resource
+                type, then the time series are
+                aggregated into a single output
+                time series. If crossSeriesReducer
+                is not defined, this field is
+                ignored.
+              * `perSeriesAligner` (`pulumi.Input[str]`) - The approach to be used to align
+                individual time series. Not all
+                alignment functions may be applied
+                to all time series, depending on
+                the metric type and value type of
+                the original time series.
+                Alignment may change the metric
+                type or the value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
 
-            * `denominatorFilter` (`pulumi.Input[str]`)
-            * `duration` (`pulumi.Input[str]`)
-            * `filter` (`pulumi.Input[str]`)
-            * `thresholdValue` (`pulumi.Input[float]`)
-            * `trigger` (`pulumi.Input[dict]`)
-              * `count` (`pulumi.Input[float]`)
-              * `percent` (`pulumi.Input[float]`)
+            * `denominatorFilter` (`pulumi.Input[str]`) - A filter that identifies a time series that
+              should be used as the denominator of a ratio
+              that will be compared with the threshold. If
+              a denominator_filter is specified, the time
+              series specified by the filter field will be
+              used as the numerator.The filter is similar
+              to the one that is specified in the
+              MetricService.ListTimeSeries request (that
+              call is useful to verify the time series
+              that will be retrieved / processed) and must
+              specify the metric type and optionally may
+              contain restrictions on resource type,
+              resource labels, and metric labels. This
+              field may not exceed 2048 Unicode characters
+              in length.
+            * `duration` (`pulumi.Input[str]`) - The amount of time that a time series must
+              violate the threshold to be considered
+              failing. Currently, only values that are a
+              multiple of a minute--e.g., 0, 60, 120, or
+              300 seconds--are supported. If an invalid
+              value is given, an error will be returned.
+              When choosing a duration, it is useful to
+              keep in mind the frequency of the underlying
+              time series data (which may also be affected
+              by any alignments specified in the
+              aggregations field); a good duration is long
+              enough so that a single outlier does not
+              generate spurious alerts, but short enough
+              that unhealthy states are detected and
+              alerted on quickly.
+            * `filter` (`pulumi.Input[str]`) - A filter that identifies which time series
+              should be compared with the threshold.The
+              filter is similar to the one that is
+              specified in the
+              MetricService.ListTimeSeries request (that
+              call is useful to verify the time series
+              that will be retrieved / processed) and must
+              specify the metric type and optionally may
+              contain restrictions on resource type,
+              resource labels, and metric labels. This
+              field may not exceed 2048 Unicode characters
+              in length.
+            * `thresholdValue` (`pulumi.Input[float]`) - A value against which to compare the time
+              series.
+            * `trigger` (`pulumi.Input[dict]`) - The number/percent of time series for which
+              the comparison must hold in order for the
+              condition to trigger. If unspecified, then
+              the condition will trigger if the comparison
+              is true for any of the time series that have
+              been identified by filter and aggregations,
+              or by the ratio, if denominator_filter and
+              denominator_aggregations are specified.  Structure is documented below.
+              * `count` (`pulumi.Input[float]`) - The absolute number of time series
+                that must fail the predicate for the
+                condition to be triggered.
+              * `percent` (`pulumi.Input[float]`) - The percentage of time series that
+                must fail the predicate for the
+                condition to be triggered.
 
-          * `display_name` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
+          * `display_name` (`pulumi.Input[str]`) - A short name or phrase used to identify the
+            condition in dashboards, notifications, and
+            incidents. To avoid confusion, don't use the same
+            display name for multiple conditions in the same
+            policy.
+          * `name` (`pulumi.Input[str]`) - -
+            The unique resource name for this condition.
+            Its syntax is:
+            projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+            [CONDITION_ID] is assigned by Stackdriver Monitoring when
+            the condition is created as part of a new or updated alerting
+            policy.
 
         The **documentation** object supports the following:
 
-          * `content` (`pulumi.Input[str]`)
-          * `mimeType` (`pulumi.Input[str]`)
+          * `content` (`pulumi.Input[str]`) - The text of the documentation, interpreted according to mimeType.
+            The content may not exceed 8,192 Unicode characters and may not
+            exceed more than 10,240 bytes when encoded in UTF-8 format,
+            whichever is smaller.
+          * `mimeType` (`pulumi.Input[str]`) - The format of the content field. Presently, only the value
+            "text/markdown" is supported.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -234,68 +974,437 @@ class AlertPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to determine if an incident should be opened.
-        :param pulumi.Input[list] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the
-               combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions.
+        :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
+               determine if an incident should be opened.
+        :param pulumi.Input[list] conditions: A list of conditions for the policy. The conditions are combined by
+               AND or OR according to the combiner field. If the combined conditions
+               evaluate to true, then an incident is created. A policy can have from
+               one to six conditions.  Structure is documented below.
         :param pulumi.Input[dict] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
                ignored.
-        :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-               don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-               characters.
-        :param pulumi.Input[dict] documentation: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion,
-               don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode
-               characters.
+        :param pulumi.Input[str] display_name: A short name or phrase used to identify the
+               condition in dashboards, notifications, and
+               incidents. To avoid confusion, don't use the same
+               display name for multiple conditions in the same
+               policy.
+        :param pulumi.Input[dict] documentation: A short name or phrase used to identify the policy in dashboards,
+               notifications, and incidents. To avoid confusion, don't use the same
+               display name for multiple policies in the same project. The name is
+               limited to 512 Unicode characters.  Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
-        :param pulumi.Input[str] name: The unique resource name for this policy. Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
-        :param pulumi.Input[list] notification_channels: Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when
-               new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of
-               the NotificationChannel objects that are returned from the notificationChannels.list method. The syntax of the entries
-               in this field is 'projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]'
+        :param pulumi.Input[str] name: -
+               The unique resource name for this condition.
+               Its syntax is:
+               projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+               [CONDITION_ID] is assigned by Stackdriver Monitoring when
+               the condition is created as part of a new or updated alerting
+               policy.
+        :param pulumi.Input[list] notification_channels: Identifies the notification channels to which notifications should be
+               sent when incidents are opened or closed or when new violations occur
+               on an already opened incident. Each element of this array corresponds
+               to the name field in each of the NotificationChannel objects that are
+               returned from the notificationChannels.list method. The syntax of the
+               entries in this field is
+               `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64
-               entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
-               can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        :param pulumi.Input[dict] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
+               objects.The field can contain up to 64 entries. Each key and value is limited
+               to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
+               can contain only lowercase letters, numerals, underscores, and dashes. Keys
+               must begin with a letter.
 
         The **conditions** object supports the following:
 
-          * `conditionAbsent` (`pulumi.Input[dict]`)
-            * `aggregations` (`pulumi.Input[list]`)
-              * `alignmentPeriod` (`pulumi.Input[str]`)
-              * `crossSeriesReducer` (`pulumi.Input[str]`)
-              * `groupByFields` (`pulumi.Input[list]`)
-              * `perSeriesAligner` (`pulumi.Input[str]`)
+          * `conditionAbsent` (`pulumi.Input[dict]`) - A condition that checks that a time series
+            continues to receive new data points.  Structure is documented below.
+            * `aggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
+              individual time series as well as how to
+              combine the retrieved time series together
+              (such as when aggregating multiple streams
+              on each resource to a single stream for each
+              resource or when aggregating streams across
+              all members of a group of resources).
+              Multiple aggregations are applied in the
+              order specified.This field is similar to the
+              one in the MetricService.ListTimeSeries
+              request. It is advisable to use the
+              ListTimeSeries method when debugging this
+              field.  Structure is documented below.
+              * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
+                series alignment. If present,
+                alignmentPeriod must be at least
+                60 seconds. After per-time series
+                alignment, each time series will
+                contain data points only on the
+                period boundaries. If
+                perSeriesAligner is not specified
+                or equals ALIGN_NONE, then this
+                field is ignored. If
+                perSeriesAligner is specified and
+                does not equal ALIGN_NONE, then
+                this field must be defined;
+                otherwise an error is returned.
+              * `crossSeriesReducer` (`pulumi.Input[str]`) - The approach to be used to combine
+                time series. Not all reducer
+                functions may be applied to all
+                time series, depending on the
+                metric type and the value type of
+                the original time series.
+                Reduction may change the metric
+                type of value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
+              * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
+                crossSeriesReducer is specified.
+                The groupByFields determine how
+                the time series are partitioned
+                into subsets prior to applying the
+                aggregation function. Each subset
+                contains time series that have the
+                same value for each of the
+                grouping fields. Each individual
+                time series is a member of exactly
+                one subset. The crossSeriesReducer
+                is applied to each subset of time
+                series. It is not possible to
+                reduce across different resource
+                types, so this field implicitly
+                contains resource.type. Fields not
+                specified in groupByFields are
+                aggregated away. If groupByFields
+                is not specified and all the time
+                series have the same resource
+                type, then the time series are
+                aggregated into a single output
+                time series. If crossSeriesReducer
+                is not defined, this field is
+                ignored.
+              * `perSeriesAligner` (`pulumi.Input[str]`) - The approach to be used to align
+                individual time series. Not all
+                alignment functions may be applied
+                to all time series, depending on
+                the metric type and value type of
+                the original time series.
+                Alignment may change the metric
+                type or the value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
 
-            * `duration` (`pulumi.Input[str]`)
-            * `filter` (`pulumi.Input[str]`)
-            * `trigger` (`pulumi.Input[dict]`)
-              * `count` (`pulumi.Input[float]`)
-              * `percent` (`pulumi.Input[float]`)
+            * `duration` (`pulumi.Input[str]`) - The amount of time that a time series must
+              violate the threshold to be considered
+              failing. Currently, only values that are a
+              multiple of a minute--e.g., 0, 60, 120, or
+              300 seconds--are supported. If an invalid
+              value is given, an error will be returned.
+              When choosing a duration, it is useful to
+              keep in mind the frequency of the underlying
+              time series data (which may also be affected
+              by any alignments specified in the
+              aggregations field); a good duration is long
+              enough so that a single outlier does not
+              generate spurious alerts, but short enough
+              that unhealthy states are detected and
+              alerted on quickly.
+            * `filter` (`pulumi.Input[str]`) - A filter that identifies which time series
+              should be compared with the threshold.The
+              filter is similar to the one that is
+              specified in the
+              MetricService.ListTimeSeries request (that
+              call is useful to verify the time series
+              that will be retrieved / processed) and must
+              specify the metric type and optionally may
+              contain restrictions on resource type,
+              resource labels, and metric labels. This
+              field may not exceed 2048 Unicode characters
+              in length.
+            * `trigger` (`pulumi.Input[dict]`) - The number/percent of time series for which
+              the comparison must hold in order for the
+              condition to trigger. If unspecified, then
+              the condition will trigger if the comparison
+              is true for any of the time series that have
+              been identified by filter and aggregations,
+              or by the ratio, if denominator_filter and
+              denominator_aggregations are specified.  Structure is documented below.
+              * `count` (`pulumi.Input[float]`) - The absolute number of time series
+                that must fail the predicate for the
+                condition to be triggered.
+              * `percent` (`pulumi.Input[float]`) - The percentage of time series that
+                must fail the predicate for the
+                condition to be triggered.
 
-          * `conditionThreshold` (`pulumi.Input[dict]`)
-            * `aggregations` (`pulumi.Input[list]`)
-              * `alignmentPeriod` (`pulumi.Input[str]`)
-              * `crossSeriesReducer` (`pulumi.Input[str]`)
-              * `groupByFields` (`pulumi.Input[list]`)
-              * `perSeriesAligner` (`pulumi.Input[str]`)
+          * `conditionThreshold` (`pulumi.Input[dict]`) - A condition that compares a time series against a
+            threshold.  Structure is documented below.
+            * `aggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
+              individual time series as well as how to
+              combine the retrieved time series together
+              (such as when aggregating multiple streams
+              on each resource to a single stream for each
+              resource or when aggregating streams across
+              all members of a group of resources).
+              Multiple aggregations are applied in the
+              order specified.This field is similar to the
+              one in the MetricService.ListTimeSeries
+              request. It is advisable to use the
+              ListTimeSeries method when debugging this
+              field.  Structure is documented below.
+              * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
+                series alignment. If present,
+                alignmentPeriod must be at least
+                60 seconds. After per-time series
+                alignment, each time series will
+                contain data points only on the
+                period boundaries. If
+                perSeriesAligner is not specified
+                or equals ALIGN_NONE, then this
+                field is ignored. If
+                perSeriesAligner is specified and
+                does not equal ALIGN_NONE, then
+                this field must be defined;
+                otherwise an error is returned.
+              * `crossSeriesReducer` (`pulumi.Input[str]`) - The approach to be used to combine
+                time series. Not all reducer
+                functions may be applied to all
+                time series, depending on the
+                metric type and the value type of
+                the original time series.
+                Reduction may change the metric
+                type of value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
+              * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
+                crossSeriesReducer is specified.
+                The groupByFields determine how
+                the time series are partitioned
+                into subsets prior to applying the
+                aggregation function. Each subset
+                contains time series that have the
+                same value for each of the
+                grouping fields. Each individual
+                time series is a member of exactly
+                one subset. The crossSeriesReducer
+                is applied to each subset of time
+                series. It is not possible to
+                reduce across different resource
+                types, so this field implicitly
+                contains resource.type. Fields not
+                specified in groupByFields are
+                aggregated away. If groupByFields
+                is not specified and all the time
+                series have the same resource
+                type, then the time series are
+                aggregated into a single output
+                time series. If crossSeriesReducer
+                is not defined, this field is
+                ignored.
+              * `perSeriesAligner` (`pulumi.Input[str]`) - The approach to be used to align
+                individual time series. Not all
+                alignment functions may be applied
+                to all time series, depending on
+                the metric type and value type of
+                the original time series.
+                Alignment may change the metric
+                type or the value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
 
-            * `comparison` (`pulumi.Input[str]`)
-            * `denominatorAggregations` (`pulumi.Input[list]`)
-              * `alignmentPeriod` (`pulumi.Input[str]`)
-              * `crossSeriesReducer` (`pulumi.Input[str]`)
-              * `groupByFields` (`pulumi.Input[list]`)
-              * `perSeriesAligner` (`pulumi.Input[str]`)
+            * `comparison` (`pulumi.Input[str]`) - The comparison to apply between the time
+              series (indicated by filter and aggregation)
+              and the threshold (indicated by
+              threshold_value). The comparison is applied
+              on each time series, with the time series on
+              the left-hand side and the threshold on the
+              right-hand side. Only COMPARISON_LT and
+              COMPARISON_GT are supported currently.
+            * `denominatorAggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
+              individual time series selected by
+              denominatorFilter as well as how to combine
+              the retrieved time series together (such as
+              when aggregating multiple streams on each
+              resource to a single stream for each
+              resource or when aggregating streams across
+              all members of a group of resources).When
+              computing ratios, the aggregations and
+              denominator_aggregations fields must use the
+              same alignment period and produce time
+              series that have the same periodicity and
+              labels.This field is similar to the one in
+              the MetricService.ListTimeSeries request. It
+              is advisable to use the ListTimeSeries
+              method when debugging this field.  Structure is documented below.
+              * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
+                series alignment. If present,
+                alignmentPeriod must be at least
+                60 seconds. After per-time series
+                alignment, each time series will
+                contain data points only on the
+                period boundaries. If
+                perSeriesAligner is not specified
+                or equals ALIGN_NONE, then this
+                field is ignored. If
+                perSeriesAligner is specified and
+                does not equal ALIGN_NONE, then
+                this field must be defined;
+                otherwise an error is returned.
+              * `crossSeriesReducer` (`pulumi.Input[str]`) - The approach to be used to combine
+                time series. Not all reducer
+                functions may be applied to all
+                time series, depending on the
+                metric type and the value type of
+                the original time series.
+                Reduction may change the metric
+                type of value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
+              * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
+                crossSeriesReducer is specified.
+                The groupByFields determine how
+                the time series are partitioned
+                into subsets prior to applying the
+                aggregation function. Each subset
+                contains time series that have the
+                same value for each of the
+                grouping fields. Each individual
+                time series is a member of exactly
+                one subset. The crossSeriesReducer
+                is applied to each subset of time
+                series. It is not possible to
+                reduce across different resource
+                types, so this field implicitly
+                contains resource.type. Fields not
+                specified in groupByFields are
+                aggregated away. If groupByFields
+                is not specified and all the time
+                series have the same resource
+                type, then the time series are
+                aggregated into a single output
+                time series. If crossSeriesReducer
+                is not defined, this field is
+                ignored.
+              * `perSeriesAligner` (`pulumi.Input[str]`) - The approach to be used to align
+                individual time series. Not all
+                alignment functions may be applied
+                to all time series, depending on
+                the metric type and value type of
+                the original time series.
+                Alignment may change the metric
+                type or the value type of the time
+                series.Time series data must be
+                aligned in order to perform cross-
+                time series reduction. If
+                crossSeriesReducer is specified,
+                then perSeriesAligner must be
+                specified and not equal ALIGN_NONE
+                and alignmentPeriod must be
+                specified; otherwise, an error is
+                returned.
 
-            * `denominatorFilter` (`pulumi.Input[str]`)
-            * `duration` (`pulumi.Input[str]`)
-            * `filter` (`pulumi.Input[str]`)
-            * `thresholdValue` (`pulumi.Input[float]`)
-            * `trigger` (`pulumi.Input[dict]`)
-              * `count` (`pulumi.Input[float]`)
-              * `percent` (`pulumi.Input[float]`)
+            * `denominatorFilter` (`pulumi.Input[str]`) - A filter that identifies a time series that
+              should be used as the denominator of a ratio
+              that will be compared with the threshold. If
+              a denominator_filter is specified, the time
+              series specified by the filter field will be
+              used as the numerator.The filter is similar
+              to the one that is specified in the
+              MetricService.ListTimeSeries request (that
+              call is useful to verify the time series
+              that will be retrieved / processed) and must
+              specify the metric type and optionally may
+              contain restrictions on resource type,
+              resource labels, and metric labels. This
+              field may not exceed 2048 Unicode characters
+              in length.
+            * `duration` (`pulumi.Input[str]`) - The amount of time that a time series must
+              violate the threshold to be considered
+              failing. Currently, only values that are a
+              multiple of a minute--e.g., 0, 60, 120, or
+              300 seconds--are supported. If an invalid
+              value is given, an error will be returned.
+              When choosing a duration, it is useful to
+              keep in mind the frequency of the underlying
+              time series data (which may also be affected
+              by any alignments specified in the
+              aggregations field); a good duration is long
+              enough so that a single outlier does not
+              generate spurious alerts, but short enough
+              that unhealthy states are detected and
+              alerted on quickly.
+            * `filter` (`pulumi.Input[str]`) - A filter that identifies which time series
+              should be compared with the threshold.The
+              filter is similar to the one that is
+              specified in the
+              MetricService.ListTimeSeries request (that
+              call is useful to verify the time series
+              that will be retrieved / processed) and must
+              specify the metric type and optionally may
+              contain restrictions on resource type,
+              resource labels, and metric labels. This
+              field may not exceed 2048 Unicode characters
+              in length.
+            * `thresholdValue` (`pulumi.Input[float]`) - A value against which to compare the time
+              series.
+            * `trigger` (`pulumi.Input[dict]`) - The number/percent of time series for which
+              the comparison must hold in order for the
+              condition to trigger. If unspecified, then
+              the condition will trigger if the comparison
+              is true for any of the time series that have
+              been identified by filter and aggregations,
+              or by the ratio, if denominator_filter and
+              denominator_aggregations are specified.  Structure is documented below.
+              * `count` (`pulumi.Input[float]`) - The absolute number of time series
+                that must fail the predicate for the
+                condition to be triggered.
+              * `percent` (`pulumi.Input[float]`) - The percentage of time series that
+                must fail the predicate for the
+                condition to be triggered.
 
-          * `display_name` (`pulumi.Input[str]`)
-          * `name` (`pulumi.Input[str]`)
+          * `display_name` (`pulumi.Input[str]`) - A short name or phrase used to identify the
+            condition in dashboards, notifications, and
+            incidents. To avoid confusion, don't use the same
+            display name for multiple conditions in the same
+            policy.
+          * `name` (`pulumi.Input[str]`) - -
+            The unique resource name for this condition.
+            Its syntax is:
+            projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+            [CONDITION_ID] is assigned by Stackdriver Monitoring when
+            the condition is created as part of a new or updated alerting
+            policy.
 
         The **creation_record** object supports the following:
 
@@ -304,8 +1413,12 @@ class AlertPolicy(pulumi.CustomResource):
 
         The **documentation** object supports the following:
 
-          * `content` (`pulumi.Input[str]`)
-          * `mimeType` (`pulumi.Input[str]`)
+          * `content` (`pulumi.Input[str]`) - The text of the documentation, interpreted according to mimeType.
+            The content may not exceed 8,192 Unicode characters and may not
+            exceed more than 10,240 bytes when encoded in UTF-8 format,
+            whichever is smaller.
+          * `mimeType` (`pulumi.Input[str]`) - The format of the content field. Presently, only the value
+            "text/markdown" is supported.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

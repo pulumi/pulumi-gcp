@@ -42,21 +42,24 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Labels to use for node affinity, which will be used in instance scheduling.
+        /// Labels to use for node affinity, which will be used in
+        /// instance scheduling.
         /// </summary>
         [Output("nodeAffinityLabels")]
         public Output<ImmutableDictionary<string, string>?> NodeAffinityLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
-        /// be specified.
+        /// Node type to use for nodes group that are created from this template.
+        /// Only one of nodeTypeFlexibility and nodeType can be specified.
         /// </summary>
         [Output("nodeType")]
         public Output<string?> NodeType { get; private set; } = null!;
 
         /// <summary>
-        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
-        /// matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        /// Flexible properties for the desired node type. Node groups that
+        /// use this node template will create nodes of a type that matches
+        /// these properties. Only one of nodeTypeFlexibility and nodeType can
+        /// be specified.  Structure is documented below.
         /// </summary>
         [Output("nodeTypeFlexibility")]
         public Output<Outputs.NodeTemplateNodeTypeFlexibility?> NodeTypeFlexibility { get; private set; } = null!;
@@ -69,7 +72,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+        /// Region where nodes using the node template will be created.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -149,7 +153,8 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _nodeAffinityLabels;
 
         /// <summary>
-        /// Labels to use for node affinity, which will be used in instance scheduling.
+        /// Labels to use for node affinity, which will be used in
+        /// instance scheduling.
         /// </summary>
         public InputMap<string> NodeAffinityLabels
         {
@@ -158,15 +163,17 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
-        /// be specified.
+        /// Node type to use for nodes group that are created from this template.
+        /// Only one of nodeTypeFlexibility and nodeType can be specified.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
-        /// matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        /// Flexible properties for the desired node type. Node groups that
+        /// use this node template will create nodes of a type that matches
+        /// these properties. Only one of nodeTypeFlexibility and nodeType can
+        /// be specified.  Structure is documented below.
         /// </summary>
         [Input("nodeTypeFlexibility")]
         public Input<Inputs.NodeTemplateNodeTypeFlexibilityArgs>? NodeTypeFlexibility { get; set; }
@@ -179,7 +186,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+        /// Region where nodes using the node template will be created.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -220,7 +228,8 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _nodeAffinityLabels;
 
         /// <summary>
-        /// Labels to use for node affinity, which will be used in instance scheduling.
+        /// Labels to use for node affinity, which will be used in
+        /// instance scheduling.
         /// </summary>
         public InputMap<string> NodeAffinityLabels
         {
@@ -229,15 +238,17 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
-        /// be specified.
+        /// Node type to use for nodes group that are created from this template.
+        /// Only one of nodeTypeFlexibility and nodeType can be specified.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
-        /// matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        /// Flexible properties for the desired node type. Node groups that
+        /// use this node template will create nodes of a type that matches
+        /// these properties. Only one of nodeTypeFlexibility and nodeType can
+        /// be specified.  Structure is documented below.
         /// </summary>
         [Input("nodeTypeFlexibility")]
         public Input<Inputs.NodeTemplateNodeTypeFlexibilityGetArgs>? NodeTypeFlexibility { get; set; }
@@ -250,7 +261,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+        /// Region where nodes using the node template will be created.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

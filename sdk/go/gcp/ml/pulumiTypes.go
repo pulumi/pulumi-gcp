@@ -11,6 +11,7 @@ import (
 )
 
 type EngineModelDefaultVersion struct {
+	// The name specified for the version when it was created.
 	Name string `pulumi:"name"`
 }
 
@@ -27,6 +28,7 @@ type EngineModelDefaultVersionInput interface {
 }
 
 type EngineModelDefaultVersionArgs struct {
+	// The name specified for the version when it was created.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -107,6 +109,8 @@ func (o EngineModelDefaultVersionOutput) ToEngineModelDefaultVersionPtrOutputWit
 		return &v
 	}).(EngineModelDefaultVersionPtrOutput)
 }
+
+// The name specified for the version when it was created.
 func (o EngineModelDefaultVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EngineModelDefaultVersion) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -129,8 +133,14 @@ func (o EngineModelDefaultVersionPtrOutput) Elem() EngineModelDefaultVersionOutp
 	return o.ApplyT(func(v *EngineModelDefaultVersion) EngineModelDefaultVersion { return *v }).(EngineModelDefaultVersionOutput)
 }
 
-func (o EngineModelDefaultVersionPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v EngineModelDefaultVersion) string { return v.Name }).(pulumi.StringOutput)
+// The name specified for the version when it was created.
+func (o EngineModelDefaultVersionPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EngineModelDefaultVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

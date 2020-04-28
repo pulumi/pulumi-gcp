@@ -14,10 +14,16 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     public sealed class FlexibleAppVersionResourcesVolume
     {
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Volume size in gigabytes.
+        /// </summary>
         public readonly int SizeGb;
+        /// <summary>
+        /// Underlying volume type, e.g. 'tmpfs'.
+        /// </summary>
         public readonly string VolumeType;
 
         [OutputConstructor]

@@ -12,9 +12,17 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the query parameter to match. The query parameter must exist in the
+        /// request, in the absence of which the request match fails.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The value of the label must match the specified value. value can have a maximum
+        /// length of 1024 characters.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

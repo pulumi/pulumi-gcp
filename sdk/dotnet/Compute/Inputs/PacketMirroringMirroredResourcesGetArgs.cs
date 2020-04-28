@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         [Input("instances")]
         private InputList<Inputs.PacketMirroringMirroredResourcesInstanceGetArgs>? _instances;
+
+        /// <summary>
+        /// All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+        /// </summary>
         public InputList<Inputs.PacketMirroringMirroredResourcesInstanceGetArgs> Instances
         {
             get => _instances ?? (_instances = new InputList<Inputs.PacketMirroringMirroredResourcesInstanceGetArgs>());
@@ -22,6 +26,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("subnetworks")]
         private InputList<Inputs.PacketMirroringMirroredResourcesSubnetworkGetArgs>? _subnetworks;
+
+        /// <summary>
+        /// All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+        /// </summary>
         public InputList<Inputs.PacketMirroringMirroredResourcesSubnetworkGetArgs> Subnetworks
         {
             get => _subnetworks ?? (_subnetworks = new InputList<Inputs.PacketMirroringMirroredResourcesSubnetworkGetArgs>());
@@ -30,6 +38,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// All instances with these tags will be mirrored.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());

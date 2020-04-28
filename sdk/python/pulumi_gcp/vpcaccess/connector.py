@@ -12,11 +12,11 @@ from .. import utilities, tables
 class Connector(pulumi.CustomResource):
     ip_cidr_range: pulumi.Output[str]
     """
-    The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+    The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
     """
     max_throughput: pulumi.Output[float]
     """
-    Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+    Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
     """
     min_throughput: pulumi.Output[float]
     """
@@ -60,8 +60,8 @@ class Connector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
-        :param pulumi.Input[float] max_throughput: Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+        :param pulumi.Input[float] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
         :param pulumi.Input[float] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
         :param pulumi.Input[str] network: Name of a VPC network.
@@ -116,8 +116,8 @@ class Connector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
-        :param pulumi.Input[float] max_throughput: Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+        :param pulumi.Input[float] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
         :param pulumi.Input[float] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
         :param pulumi.Input[str] network: Name of a VPC network.

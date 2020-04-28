@@ -412,8 +412,13 @@ func (o RegistryHttpConfigPtrOutput) Elem() RegistryHttpConfigOutput {
 }
 
 // The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
-func (o RegistryHttpConfigPtrOutput) HttpEnabledState() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryHttpConfig) string { return v.HttpEnabledState }).(pulumi.StringOutput)
+func (o RegistryHttpConfigPtrOutput) HttpEnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryHttpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpEnabledState
+	}).(pulumi.StringPtrOutput)
 }
 
 type RegistryMqttConfig struct {
@@ -540,8 +545,13 @@ func (o RegistryMqttConfigPtrOutput) Elem() RegistryMqttConfigOutput {
 }
 
 // The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
-func (o RegistryMqttConfigPtrOutput) MqttEnabledState() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryMqttConfig) string { return v.MqttEnabledState }).(pulumi.StringOutput)
+func (o RegistryMqttConfigPtrOutput) MqttEnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryMqttConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MqttEnabledState
+	}).(pulumi.StringPtrOutput)
 }
 
 type RegistryStateNotificationConfig struct {
@@ -668,8 +678,13 @@ func (o RegistryStateNotificationConfigPtrOutput) Elem() RegistryStateNotificati
 }
 
 // PubSub topic name to publish device state updates.
-func (o RegistryStateNotificationConfigPtrOutput) PubsubTopicName() pulumi.StringOutput {
-	return o.ApplyT(func(v RegistryStateNotificationConfig) string { return v.PubsubTopicName }).(pulumi.StringOutput)
+func (o RegistryStateNotificationConfigPtrOutput) PubsubTopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryStateNotificationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PubsubTopicName
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -58,11 +58,11 @@ export class Connector extends pulumi.CustomResource {
     }
 
     /**
-     * The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+     * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
-     * Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+     * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
      */
     public readonly maxThroughput!: pulumi.Output<number | undefined>;
     /**
@@ -153,11 +153,11 @@ export class Connector extends pulumi.CustomResource {
  */
 export interface ConnectorState {
     /**
-     * The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+     * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
     readonly ipCidrRange?: pulumi.Input<string>;
     /**
-     * Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+     * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
      */
     readonly maxThroughput?: pulumi.Input<number>;
     /**
@@ -196,11 +196,11 @@ export interface ConnectorState {
  */
 export interface ConnectorArgs {
     /**
-     * The range of internal addresses that follows RFC 4632 notation. Example: '10.132.0.0/28'.
+     * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
     readonly ipCidrRange: pulumi.Input<string>;
     /**
-     * Maximum throughput of the connector in Mbps, must be greater than 'min_throughput'. Default is 1000.
+     * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
      */
     readonly maxThroughput?: pulumi.Input<number>;
     /**

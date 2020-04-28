@@ -12,11 +12,22 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
 
     public sealed class AccessLevelBasicArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// How the conditions list should be combined to determine if a request
+        /// is granted this AccessLevel. If AND is used, each Condition in
+        /// conditions must be satisfied for the AccessLevel to be applied. If
+        /// OR is used, at least one Condition in conditions must be satisfied
+        /// for the AccessLevel to be applied. Defaults to AND if unspecified.
+        /// </summary>
         [Input("combiningFunction")]
         public Input<string>? CombiningFunction { get; set; }
 
         [Input("conditions", required: true)]
         private InputList<Inputs.AccessLevelBasicConditionArgs>? _conditions;
+
+        /// <summary>
+        /// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+        /// </summary>
         public InputList<Inputs.AccessLevelBasicConditionArgs> Conditions
         {
             get => _conditions ?? (_conditions = new InputList<Inputs.AccessLevelBasicConditionArgs>());

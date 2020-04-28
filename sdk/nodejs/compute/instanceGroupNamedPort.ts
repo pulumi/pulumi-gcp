@@ -53,7 +53,8 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string>;
     /**
-     * The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
+     * The name for this named port. The name must be 1-63 characters
+     * long, and comply with RFC1035.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -121,7 +122,8 @@ export interface InstanceGroupNamedPortState {
      */
     readonly group?: pulumi.Input<string>;
     /**
-     * The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
+     * The name for this named port. The name must be 1-63 characters
+     * long, and comply with RFC1035.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -148,7 +150,8 @@ export interface InstanceGroupNamedPortArgs {
      */
     readonly group: pulumi.Input<string>;
     /**
-     * The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
+     * The name for this named port. The name must be 1-63 characters
+     * long, and comply with RFC1035.
      */
     readonly name?: pulumi.Input<string>;
     /**

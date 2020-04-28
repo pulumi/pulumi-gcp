@@ -12,24 +12,30 @@ from .. import utilities, tables
 class Policy(pulumi.CustomResource):
     alternative_name_server_config: pulumi.Output[dict]
     """
-    Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-    server that you choose. Names such as .internal are not available when an alternative name server is specified.
+    Sets an alternative name server for the associated networks.
+    When specified, all DNS queries are forwarded to a name server that you choose.
+    Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
 
-      * `targetNameServers` (`list`)
-        * `ipv4Address` (`str`)
+      * `targetNameServers` (`list`) - Sets an alternative name server for the associated networks. When specified,
+        all DNS queries are forwarded to a name server that you choose. Names such as .internal
+        are not available when an alternative name server is specified.  Structure is documented below.
+        * `ipv4Address` (`str`) - IPv4 address to forward to.
     """
     description: pulumi.Output[str]
     """
-    A textual description field. Defaults to 'Managed by Terraform'.
+    A textual description field. Defaults to 'Managed by Pulumi'.
     """
     enable_inbound_forwarding: pulumi.Output[bool]
     """
-    Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-    enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
+    Allows networks bound to this policy to receive DNS queries sent
+    by VMs or applications over VPN connections. When enabled, a
+    virtual IP address will be allocated from each of the sub-networks
+    that are bound to this policy.
     """
     enable_logging: pulumi.Output[bool]
     """
-    Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+    Controls whether logging is enabled for the networks bound to this policy.
+    Defaults to no logging if not set.
     """
     name: pulumi.Output[str]
     """
@@ -37,9 +43,11 @@ class Policy(pulumi.CustomResource):
     """
     networks: pulumi.Output[list]
     """
-    List of network names specifying networks to which this policy is applied.
+    List of network names specifying networks to which this policy is applied.  Structure is documented below.
 
-      * `networkUrl` (`str`)
+      * `networkUrl` (`str`) - The fully qualified URL of the VPC network to bind to.
+        This should be formatted like
+        `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
     """
     project: pulumi.Output[str]
     """
@@ -59,25 +67,33 @@ class Policy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] alternative_name_server_config: Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-               server that you choose. Names such as .internal are not available when an alternative name server is specified.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
-        :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-               enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
-        :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+        :param pulumi.Input[dict] alternative_name_server_config: Sets an alternative name server for the associated networks.
+               When specified, all DNS queries are forwarded to a name server that you choose.
+               Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
+               by VMs or applications over VPN connections. When enabled, a
+               virtual IP address will be allocated from each of the sub-networks
+               that are bound to this policy.
+        :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
+               Defaults to no logging if not set.
         :param pulumi.Input[str] name: User assigned name for this policy.
-        :param pulumi.Input[list] networks: List of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[list] networks: List of network names specifying networks to which this policy is applied.  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
         The **alternative_name_server_config** object supports the following:
 
-          * `targetNameServers` (`pulumi.Input[list]`)
-            * `ipv4Address` (`pulumi.Input[str]`)
+          * `targetNameServers` (`pulumi.Input[list]`) - Sets an alternative name server for the associated networks. When specified,
+            all DNS queries are forwarded to a name server that you choose. Names such as .internal
+            are not available when an alternative name server is specified.  Structure is documented below.
+            * `ipv4Address` (`pulumi.Input[str]`) - IPv4 address to forward to.
 
         The **networks** object supports the following:
 
-          * `networkUrl` (`pulumi.Input[str]`)
+          * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to bind to.
+            This should be formatted like
+            `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -118,25 +134,33 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] alternative_name_server_config: Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name
-               server that you choose. Names such as .internal are not available when an alternative name server is specified.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
-        :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When
-               enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
-        :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+        :param pulumi.Input[dict] alternative_name_server_config: Sets an alternative name server for the associated networks.
+               When specified, all DNS queries are forwarded to a name server that you choose.
+               Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
+        :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
+               by VMs or applications over VPN connections. When enabled, a
+               virtual IP address will be allocated from each of the sub-networks
+               that are bound to this policy.
+        :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
+               Defaults to no logging if not set.
         :param pulumi.Input[str] name: User assigned name for this policy.
-        :param pulumi.Input[list] networks: List of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[list] networks: List of network names specifying networks to which this policy is applied.  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
         The **alternative_name_server_config** object supports the following:
 
-          * `targetNameServers` (`pulumi.Input[list]`)
-            * `ipv4Address` (`pulumi.Input[str]`)
+          * `targetNameServers` (`pulumi.Input[list]`) - Sets an alternative name server for the associated networks. When specified,
+            all DNS queries are forwarded to a name server that you choose. Names such as .internal
+            are not available when an alternative name server is specified.  Structure is documented below.
+            * `ipv4Address` (`pulumi.Input[str]`) - IPv4 address to forward to.
 
         The **networks** object supports the following:
 
-          * `networkUrl` (`pulumi.Input[str]`)
+          * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to bind to.
+            This should be formatted like
+            `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

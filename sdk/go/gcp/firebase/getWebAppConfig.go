@@ -27,7 +27,7 @@ type GetWebAppConfigResult struct {
 	ApiKey      string `pulumi:"apiKey"`
 	AuthDomain  string `pulumi:"authDomain"`
 	DatabaseUrl string `pulumi:"databaseUrl"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                string  `pulumi:"id"`
 	LocationId        string  `pulumi:"locationId"`
 	MeasurementId     string  `pulumi:"measurementId"`

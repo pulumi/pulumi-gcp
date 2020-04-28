@@ -21,21 +21,23 @@ import (
 type RouterNat struct {
 	pulumi.CustomResourceState
 
-	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to
-	// the NAT.
+	// A list of URLs of the IP resources to be drained. These IPs must be
+	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayOutput `pulumi:"drainNatIps"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"icmpIdleTimeoutSec"`
-	// Configuration for logging on NAT
+	// Configuration for logging on NAT  Structure is documented below.
 	LogConfig RouterNatLogConfigPtrOutput `pulumi:"logConfig"`
 	// Minimum number of ports allocated to a VM from this NAT.
 	MinPortsPerVm pulumi.IntPtrOutput `pulumi:"minPortsPerVm"`
-	// Name of the NAT service. The name must be 1-63 characters long and comply with RFC1035.
+	// Self-link of subnetwork to NAT
 	Name pulumi.StringOutput `pulumi:"name"`
-	// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs allocated by
-	// Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+	// How external IPs should be allocated for this NAT. Valid values are
+	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
+	// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
 	NatIpAllocateOption pulumi.StringOutput `pulumi:"natIpAllocateOption"`
-	// Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+	// Self-links of NAT IPs. Only valid if natIpAllocateOption
+	// is set to MANUAL_ONLY.
 	NatIps pulumi.StringArrayOutput `pulumi:"natIps"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -44,19 +46,25 @@ type RouterNat struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
 	Router pulumi.StringOutput `pulumi:"router"`
-	// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in every
-	// Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP ranges in every
-	// Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to Nat (specified in the field
-	// subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this
-	// network in this region.
+	// How NAT should be configured per Subnetwork.
+	// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
+	// IP ranges in every Subnetwork are allowed to Nat.
+	// If `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, all of the primary IP
+	// ranges in every Subnetwork are allowed to Nat.
+	// `LIST_OF_SUBNETWORKS`: A list of Subnetworks are allowed to Nat
+	// (specified in the field subnetwork below). Note that if this field
+	// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
+	// other RouterNat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat pulumi.StringOutput `pulumi:"sourceSubnetworkIpRangesToNat"`
-	// One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
-	// 'LIST_OF_SUBNETWORKS'
+	// One or more subnetwork NAT configurations. Only used if
+	// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`  Structure is documented below.
 	Subnetworks RouterNatSubnetworkArrayOutput `pulumi:"subnetworks"`
-	// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
+	// Timeout (in seconds) for TCP established connections.
+	// Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"tcpEstablishedIdleTimeoutSec"`
-	// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+	// Timeout (in seconds) for TCP transitory connections.
+	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"tcpTransitoryIdleTimeoutSec"`
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 	UdpIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"udpIdleTimeoutSec"`
@@ -99,21 +107,23 @@ func GetRouterNat(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouterNat resources.
 type routerNatState struct {
-	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to
-	// the NAT.
+	// A list of URLs of the IP resources to be drained. These IPs must be
+	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps []string `pulumi:"drainNatIps"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec *int `pulumi:"icmpIdleTimeoutSec"`
-	// Configuration for logging on NAT
+	// Configuration for logging on NAT  Structure is documented below.
 	LogConfig *RouterNatLogConfig `pulumi:"logConfig"`
 	// Minimum number of ports allocated to a VM from this NAT.
 	MinPortsPerVm *int `pulumi:"minPortsPerVm"`
-	// Name of the NAT service. The name must be 1-63 characters long and comply with RFC1035.
+	// Self-link of subnetwork to NAT
 	Name *string `pulumi:"name"`
-	// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs allocated by
-	// Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+	// How external IPs should be allocated for this NAT. Valid values are
+	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
+	// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
 	NatIpAllocateOption *string `pulumi:"natIpAllocateOption"`
-	// Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+	// Self-links of NAT IPs. Only valid if natIpAllocateOption
+	// is set to MANUAL_ONLY.
 	NatIps []string `pulumi:"natIps"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -122,40 +132,48 @@ type routerNatState struct {
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
 	Router *string `pulumi:"router"`
-	// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in every
-	// Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP ranges in every
-	// Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to Nat (specified in the field
-	// subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this
-	// network in this region.
+	// How NAT should be configured per Subnetwork.
+	// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
+	// IP ranges in every Subnetwork are allowed to Nat.
+	// If `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, all of the primary IP
+	// ranges in every Subnetwork are allowed to Nat.
+	// `LIST_OF_SUBNETWORKS`: A list of Subnetworks are allowed to Nat
+	// (specified in the field subnetwork below). Note that if this field
+	// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
+	// other RouterNat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat *string `pulumi:"sourceSubnetworkIpRangesToNat"`
-	// One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
-	// 'LIST_OF_SUBNETWORKS'
+	// One or more subnetwork NAT configurations. Only used if
+	// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`  Structure is documented below.
 	Subnetworks []RouterNatSubnetwork `pulumi:"subnetworks"`
-	// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
+	// Timeout (in seconds) for TCP established connections.
+	// Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec *int `pulumi:"tcpEstablishedIdleTimeoutSec"`
-	// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+	// Timeout (in seconds) for TCP transitory connections.
+	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec *int `pulumi:"tcpTransitoryIdleTimeoutSec"`
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 	UdpIdleTimeoutSec *int `pulumi:"udpIdleTimeoutSec"`
 }
 
 type RouterNatState struct {
-	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to
-	// the NAT.
+	// A list of URLs of the IP resources to be drained. These IPs must be
+	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayInput
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrInput
-	// Configuration for logging on NAT
+	// Configuration for logging on NAT  Structure is documented below.
 	LogConfig RouterNatLogConfigPtrInput
 	// Minimum number of ports allocated to a VM from this NAT.
 	MinPortsPerVm pulumi.IntPtrInput
-	// Name of the NAT service. The name must be 1-63 characters long and comply with RFC1035.
+	// Self-link of subnetwork to NAT
 	Name pulumi.StringPtrInput
-	// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs allocated by
-	// Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+	// How external IPs should be allocated for this NAT. Valid values are
+	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
+	// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
 	NatIpAllocateOption pulumi.StringPtrInput
-	// Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+	// Self-links of NAT IPs. Only valid if natIpAllocateOption
+	// is set to MANUAL_ONLY.
 	NatIps pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -164,19 +182,25 @@ type RouterNatState struct {
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this NAT will be configured.
 	Router pulumi.StringPtrInput
-	// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in every
-	// Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP ranges in every
-	// Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to Nat (specified in the field
-	// subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this
-	// network in this region.
+	// How NAT should be configured per Subnetwork.
+	// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
+	// IP ranges in every Subnetwork are allowed to Nat.
+	// If `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, all of the primary IP
+	// ranges in every Subnetwork are allowed to Nat.
+	// `LIST_OF_SUBNETWORKS`: A list of Subnetworks are allowed to Nat
+	// (specified in the field subnetwork below). Note that if this field
+	// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
+	// other RouterNat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat pulumi.StringPtrInput
-	// One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
-	// 'LIST_OF_SUBNETWORKS'
+	// One or more subnetwork NAT configurations. Only used if
+	// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`  Structure is documented below.
 	Subnetworks RouterNatSubnetworkArrayInput
-	// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
+	// Timeout (in seconds) for TCP established connections.
+	// Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec pulumi.IntPtrInput
-	// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+	// Timeout (in seconds) for TCP transitory connections.
+	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntPtrInput
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 	UdpIdleTimeoutSec pulumi.IntPtrInput
@@ -187,21 +211,23 @@ func (RouterNatState) ElementType() reflect.Type {
 }
 
 type routerNatArgs struct {
-	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to
-	// the NAT.
+	// A list of URLs of the IP resources to be drained. These IPs must be
+	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps []string `pulumi:"drainNatIps"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec *int `pulumi:"icmpIdleTimeoutSec"`
-	// Configuration for logging on NAT
+	// Configuration for logging on NAT  Structure is documented below.
 	LogConfig *RouterNatLogConfig `pulumi:"logConfig"`
 	// Minimum number of ports allocated to a VM from this NAT.
 	MinPortsPerVm *int `pulumi:"minPortsPerVm"`
-	// Name of the NAT service. The name must be 1-63 characters long and comply with RFC1035.
+	// Self-link of subnetwork to NAT
 	Name *string `pulumi:"name"`
-	// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs allocated by
-	// Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+	// How external IPs should be allocated for this NAT. Valid values are
+	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
+	// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
 	NatIpAllocateOption string `pulumi:"natIpAllocateOption"`
-	// Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+	// Self-links of NAT IPs. Only valid if natIpAllocateOption
+	// is set to MANUAL_ONLY.
 	NatIps []string `pulumi:"natIps"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -210,19 +236,25 @@ type routerNatArgs struct {
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
 	Router string `pulumi:"router"`
-	// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in every
-	// Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP ranges in every
-	// Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to Nat (specified in the field
-	// subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this
-	// network in this region.
+	// How NAT should be configured per Subnetwork.
+	// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
+	// IP ranges in every Subnetwork are allowed to Nat.
+	// If `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, all of the primary IP
+	// ranges in every Subnetwork are allowed to Nat.
+	// `LIST_OF_SUBNETWORKS`: A list of Subnetworks are allowed to Nat
+	// (specified in the field subnetwork below). Note that if this field
+	// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
+	// other RouterNat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat string `pulumi:"sourceSubnetworkIpRangesToNat"`
-	// One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
-	// 'LIST_OF_SUBNETWORKS'
+	// One or more subnetwork NAT configurations. Only used if
+	// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`  Structure is documented below.
 	Subnetworks []RouterNatSubnetwork `pulumi:"subnetworks"`
-	// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
+	// Timeout (in seconds) for TCP established connections.
+	// Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec *int `pulumi:"tcpEstablishedIdleTimeoutSec"`
-	// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+	// Timeout (in seconds) for TCP transitory connections.
+	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec *int `pulumi:"tcpTransitoryIdleTimeoutSec"`
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 	UdpIdleTimeoutSec *int `pulumi:"udpIdleTimeoutSec"`
@@ -230,21 +262,23 @@ type routerNatArgs struct {
 
 // The set of arguments for constructing a RouterNat resource.
 type RouterNatArgs struct {
-	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to
-	// the NAT.
+	// A list of URLs of the IP resources to be drained. These IPs must be
+	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayInput
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrInput
-	// Configuration for logging on NAT
+	// Configuration for logging on NAT  Structure is documented below.
 	LogConfig RouterNatLogConfigPtrInput
 	// Minimum number of ports allocated to a VM from this NAT.
 	MinPortsPerVm pulumi.IntPtrInput
-	// Name of the NAT service. The name must be 1-63 characters long and comply with RFC1035.
+	// Self-link of subnetwork to NAT
 	Name pulumi.StringPtrInput
-	// How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs allocated by
-	// Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses.
+	// How external IPs should be allocated for this NAT. Valid values are
+	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
+	// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
 	NatIpAllocateOption pulumi.StringInput
-	// Self-links of NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+	// Self-links of NAT IPs. Only valid if natIpAllocateOption
+	// is set to MANUAL_ONLY.
 	NatIps pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -253,19 +287,25 @@ type RouterNatArgs struct {
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this NAT will be configured.
 	Router pulumi.StringInput
-	// How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in every
-	// Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP ranges in every
-	// Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to Nat (specified in the field
-	// subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this
-	// network in this region.
+	// How NAT should be configured per Subnetwork.
+	// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
+	// IP ranges in every Subnetwork are allowed to Nat.
+	// If `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, all of the primary IP
+	// ranges in every Subnetwork are allowed to Nat.
+	// `LIST_OF_SUBNETWORKS`: A list of Subnetworks are allowed to Nat
+	// (specified in the field subnetwork below). Note that if this field
+	// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
+	// other RouterNat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat pulumi.StringInput
-	// One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to
-	// 'LIST_OF_SUBNETWORKS'
+	// One or more subnetwork NAT configurations. Only used if
+	// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`  Structure is documented below.
 	Subnetworks RouterNatSubnetworkArrayInput
-	// Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
+	// Timeout (in seconds) for TCP established connections.
+	// Defaults to 1200s if not set.
 	TcpEstablishedIdleTimeoutSec pulumi.IntPtrInput
-	// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+	// Timeout (in seconds) for TCP transitory connections.
+	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntPtrInput
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 	UdpIdleTimeoutSec pulumi.IntPtrInput

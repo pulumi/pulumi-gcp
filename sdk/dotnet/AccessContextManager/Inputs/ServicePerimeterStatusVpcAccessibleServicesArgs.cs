@@ -14,12 +14,21 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
     {
         [Input("allowedServices")]
         private InputList<string>? _allowedServices;
+
+        /// <summary>
+        /// The list of APIs usable within the Service Perimeter.
+        /// Must be empty unless `enableRestriction` is True.
+        /// </summary>
         public InputList<string> AllowedServices
         {
             get => _allowedServices ?? (_allowedServices = new InputList<string>());
             set => _allowedServices = value;
         }
 
+        /// <summary>
+        /// Whether to restrict API calls within the Service Perimeter to the
+        /// list of APIs specified in 'allowedServices'.
+        /// </summary>
         [Input("enableRestriction")]
         public Input<bool>? EnableRestriction { get; set; }
 

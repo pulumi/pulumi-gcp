@@ -13,9 +13,25 @@ namespace Pulumi.Gcp.CloudTasks.Outputs
     [OutputType]
     public sealed class QueueAppEngineRoutingOverride
     {
+        /// <summary>
+        /// -
+        /// The host that the task is sent to.
+        /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// App instance.
+        /// By default, the task is sent to an instance which is available when the task is attempted.
+        /// </summary>
         public readonly string? Instance;
+        /// <summary>
+        /// App service.
+        /// By default, the task is sent to the service which is the default service when the task is attempted.
+        /// </summary>
         public readonly string? Service;
+        /// <summary>
+        /// App version.
+        /// By default, the task is sent to the version which is the default version when the task is attempted.
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

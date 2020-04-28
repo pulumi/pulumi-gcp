@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.SecretManager.Outputs
     [OutputType]
     public sealed class SecretReplicationUserManaged
     {
+        /// <summary>
+        /// The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.SecretReplicationUserManagedReplica> Replicas;
 
         [OutputConstructor]

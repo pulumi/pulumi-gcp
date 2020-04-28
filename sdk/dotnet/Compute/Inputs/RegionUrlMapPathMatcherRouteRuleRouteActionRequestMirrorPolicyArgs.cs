@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The default RegionBackendService resource. Before
+        /// forwarding the request to backendService, the loadbalancer applies any relevant
+        /// headerActions specified as part of this backendServiceWeight.
+        /// </summary>
         [Input("backendService", required: true)]
         public Input<string> BackendService { get; set; } = null!;
 

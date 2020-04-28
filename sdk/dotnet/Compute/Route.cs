@@ -43,22 +43,27 @@ namespace Pulumi.Gcp.Compute
     public partial class Route : Pulumi.CustomResource
     {
         /// <summary>
-        /// An optional description of this resource. Provide this property when you create the resource.
+        /// An optional description of this resource. Provide this property
+        /// when you create the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The destination range of outgoing packets that this route applies to. Only IPv4 is supported.
+        /// The destination range of outgoing packets that this route applies to.
+        /// Only IPv4 is supported.
         /// </summary>
         [Output("destRange")]
         public Output<string> DestRange { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035.  Specifically, the name must be 1-63 characters long and
+        /// match the regular expression `a-z?` which means
+        /// the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the
+        /// last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -70,30 +75,34 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// URL to a gateway that should handle matching packets. Currently, you can only specify the internet gateway, using a full
-        /// or partial valid URL: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway' *
-        /// 'projects/project/global/gateways/default-internet-gateway' * 'global/gateways/default-internet-gateway' * The string
-        /// 'default-internet-gateway'.
+        /// URL to a gateway that should handle matching packets.
+        /// Currently, you can only specify the internet gateway, using a full or
+        /// partial valid URL:
+        /// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
+        /// * `projects/project/global/gateways/default-internet-gateway`
+        /// * `global/gateways/default-internet-gateway`
+        /// * The string `default-internet-gateway`.
         /// </summary>
         [Output("nextHopGateway")]
         public Output<string?> NextHopGateway { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets. You can only
-        /// specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
+        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
+        /// You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
         /// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-        /// regions/region/forwardingRules/forwardingRule Note that this can only be used when the destinationRange is a public
-        /// (non-RFC 1918) IP CIDR range.
+        /// regions/region/forwardingRules/forwardingRule
+        /// Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
         /// </summary>
         [Output("nextHopIlb")]
         public Output<string?> NextHopIlb { get; private set; } = null!;
 
         /// <summary>
-        /// URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance' *
-        /// 'projects/project/zones/zone/instances/instance' * 'zones/zone/instances/instance' * Just the instance name, with the
-        /// zone in 'next_hop_instance_zone'.
+        /// URL to an instance that should handle matching packets.
+        /// You can specify this as a full or partial URL. For example:
+        /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
+        /// * `projects/project/zones/zone/instances/instance`
+        /// * `zones/zone/instances/instance`
+        /// * Just the instance name, with the zone in `next_hop_instance_zone`.
         /// </summary>
         [Output("nextHopInstance")]
         public Output<string?> NextHopInstance { get; private set; } = null!;
@@ -126,8 +135,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> NextHopVpnTunnel { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal
-        /// prefix length. In the case of two routes with equal prefix length, the one with the lowest-numbered priority value wins.
+        /// The priority of this route. Priority is used to break ties in cases
+        /// where there is more than one matching route of equal prefix length.
+        /// In the case of two routes with equal prefix length, the one with the
+        /// lowest-numbered priority value wins.
         /// Default value is 1000. Valid range is 0 through 65535.
         /// </summary>
         [Output("priority")]
@@ -199,22 +210,27 @@ namespace Pulumi.Gcp.Compute
     public sealed class RouteArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional description of this resource. Provide this property when you create the resource.
+        /// An optional description of this resource. Provide this property
+        /// when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The destination range of outgoing packets that this route applies to. Only IPv4 is supported.
+        /// The destination range of outgoing packets that this route applies to.
+        /// Only IPv4 is supported.
         /// </summary>
         [Input("destRange", required: true)]
         public Input<string> DestRange { get; set; } = null!;
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035.  Specifically, the name must be 1-63 characters long and
+        /// match the regular expression `a-z?` which means
+        /// the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the
+        /// last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -226,30 +242,34 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// URL to a gateway that should handle matching packets. Currently, you can only specify the internet gateway, using a full
-        /// or partial valid URL: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway' *
-        /// 'projects/project/global/gateways/default-internet-gateway' * 'global/gateways/default-internet-gateway' * The string
-        /// 'default-internet-gateway'.
+        /// URL to a gateway that should handle matching packets.
+        /// Currently, you can only specify the internet gateway, using a full or
+        /// partial valid URL:
+        /// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
+        /// * `projects/project/global/gateways/default-internet-gateway`
+        /// * `global/gateways/default-internet-gateway`
+        /// * The string `default-internet-gateway`.
         /// </summary>
         [Input("nextHopGateway")]
         public Input<string>? NextHopGateway { get; set; }
 
         /// <summary>
-        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets. You can only
-        /// specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
+        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
+        /// You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
         /// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-        /// regions/region/forwardingRules/forwardingRule Note that this can only be used when the destinationRange is a public
-        /// (non-RFC 1918) IP CIDR range.
+        /// regions/region/forwardingRules/forwardingRule
+        /// Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
         /// </summary>
         [Input("nextHopIlb")]
         public Input<string>? NextHopIlb { get; set; }
 
         /// <summary>
-        /// URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance' *
-        /// 'projects/project/zones/zone/instances/instance' * 'zones/zone/instances/instance' * Just the instance name, with the
-        /// zone in 'next_hop_instance_zone'.
+        /// URL to an instance that should handle matching packets.
+        /// You can specify this as a full or partial URL. For example:
+        /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
+        /// * `projects/project/zones/zone/instances/instance`
+        /// * `zones/zone/instances/instance`
+        /// * Just the instance name, with the zone in `next_hop_instance_zone`.
         /// </summary>
         [Input("nextHopInstance")]
         public Input<string>? NextHopInstance { get; set; }
@@ -276,8 +296,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NextHopVpnTunnel { get; set; }
 
         /// <summary>
-        /// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal
-        /// prefix length. In the case of two routes with equal prefix length, the one with the lowest-numbered priority value wins.
+        /// The priority of this route. Priority is used to break ties in cases
+        /// where there is more than one matching route of equal prefix length.
+        /// In the case of two routes with equal prefix length, the one with the
+        /// lowest-numbered priority value wins.
         /// Default value is 1000. Valid range is 0 through 65535.
         /// </summary>
         [Input("priority")]
@@ -310,22 +332,27 @@ namespace Pulumi.Gcp.Compute
     public sealed class RouteState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional description of this resource. Provide this property when you create the resource.
+        /// An optional description of this resource. Provide this property
+        /// when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The destination range of outgoing packets that this route applies to. Only IPv4 is supported.
+        /// The destination range of outgoing packets that this route applies to.
+        /// Only IPv4 is supported.
         /// </summary>
         [Input("destRange")]
         public Input<string>? DestRange { get; set; }
 
         /// <summary>
-        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
-        /// comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-        /// '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
-        /// must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035.  Specifically, the name must be 1-63 characters long and
+        /// match the regular expression `a-z?` which means
+        /// the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the
+        /// last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -337,30 +364,34 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// URL to a gateway that should handle matching packets. Currently, you can only specify the internet gateway, using a full
-        /// or partial valid URL: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway' *
-        /// 'projects/project/global/gateways/default-internet-gateway' * 'global/gateways/default-internet-gateway' * The string
-        /// 'default-internet-gateway'.
+        /// URL to a gateway that should handle matching packets.
+        /// Currently, you can only specify the internet gateway, using a full or
+        /// partial valid URL:
+        /// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
+        /// * `projects/project/global/gateways/default-internet-gateway`
+        /// * `global/gateways/default-internet-gateway`
+        /// * The string `default-internet-gateway`.
         /// </summary>
         [Input("nextHopGateway")]
         public Input<string>? NextHopGateway { get; set; }
 
         /// <summary>
-        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets. You can only
-        /// specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
+        /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.
+        /// You can only specify the forwarding rule as a partial or full URL. For example, the following are all valid URLs:
         /// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
-        /// regions/region/forwardingRules/forwardingRule Note that this can only be used when the destinationRange is a public
-        /// (non-RFC 1918) IP CIDR range.
+        /// regions/region/forwardingRules/forwardingRule
+        /// Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
         /// </summary>
         [Input("nextHopIlb")]
         public Input<string>? NextHopIlb { get; set; }
 
         /// <summary>
-        /// URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance' *
-        /// 'projects/project/zones/zone/instances/instance' * 'zones/zone/instances/instance' * Just the instance name, with the
-        /// zone in 'next_hop_instance_zone'.
+        /// URL to an instance that should handle matching packets.
+        /// You can specify this as a full or partial URL. For example:
+        /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
+        /// * `projects/project/zones/zone/instances/instance`
+        /// * `zones/zone/instances/instance`
+        /// * Just the instance name, with the zone in `next_hop_instance_zone`.
         /// </summary>
         [Input("nextHopInstance")]
         public Input<string>? NextHopInstance { get; set; }
@@ -393,8 +424,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NextHopVpnTunnel { get; set; }
 
         /// <summary>
-        /// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal
-        /// prefix length. In the case of two routes with equal prefix length, the one with the lowest-numbered priority value wins.
+        /// The priority of this route. Priority is used to break ties in cases
+        /// where there is more than one matching route of equal prefix length.
+        /// In the case of two routes with equal prefix length, the one with the
+        /// lowest-numbered priority value wins.
         /// Default value is 1000. Valid range is 0 through 65535.
         /// </summary>
         [Input("priority")]

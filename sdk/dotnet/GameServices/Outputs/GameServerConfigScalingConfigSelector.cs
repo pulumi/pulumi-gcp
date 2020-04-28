@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.GameServices.Outputs
     [OutputType]
     public sealed class GameServerConfigScalingConfigSelector
     {
+        /// <summary>
+        /// Set of labels to group by.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
 
         [OutputConstructor]

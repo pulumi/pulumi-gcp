@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         [Input("requestHeadersToAdds")]
         private InputList<Inputs.URLMapHeaderActionRequestHeadersToAddArgs>? _requestHeadersToAdds;
+
+        /// <summary>
+        /// Headers to add to a matching request prior to forwarding the request to the
+        /// backendService.  Structure is documented below.
+        /// </summary>
         public InputList<Inputs.URLMapHeaderActionRequestHeadersToAddArgs> RequestHeadersToAdds
         {
             get => _requestHeadersToAdds ?? (_requestHeadersToAdds = new InputList<Inputs.URLMapHeaderActionRequestHeadersToAddArgs>());
@@ -22,6 +27,11 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("requestHeadersToRemoves")]
         private InputList<string>? _requestHeadersToRemoves;
+
+        /// <summary>
+        /// A list of header names for headers that need to be removed from the request
+        /// prior to forwarding the request to the backendService.
+        /// </summary>
         public InputList<string> RequestHeadersToRemoves
         {
             get => _requestHeadersToRemoves ?? (_requestHeadersToRemoves = new InputList<string>());
@@ -30,6 +40,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("responseHeadersToAdds")]
         private InputList<Inputs.URLMapHeaderActionResponseHeadersToAddArgs>? _responseHeadersToAdds;
+
+        /// <summary>
+        /// Headers to add the response prior to sending the response back to the client.  Structure is documented below.
+        /// </summary>
         public InputList<Inputs.URLMapHeaderActionResponseHeadersToAddArgs> ResponseHeadersToAdds
         {
             get => _responseHeadersToAdds ?? (_responseHeadersToAdds = new InputList<Inputs.URLMapHeaderActionResponseHeadersToAddArgs>());
@@ -38,6 +52,11 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("responseHeadersToRemoves")]
         private InputList<string>? _responseHeadersToRemoves;
+
+        /// <summary>
+        /// A list of header names for headers that need to be removed from the response
+        /// prior to sending the response back to the client.
+        /// </summary>
         public InputList<string> ResponseHeadersToRemoves
         {
             get => _responseHeadersToRemoves ?? (_responseHeadersToRemoves = new InputList<string>());

@@ -60,17 +60,20 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Labels to use for node affinity, which will be used in instance scheduling.
+     * Labels to use for node affinity, which will be used in
+     * instance scheduling.
      */
     public readonly nodeAffinityLabels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType
-     * can be specified.
+     * Node type to use for nodes group that are created from this template.
+     * Only one of nodeTypeFlexibility and nodeType can be specified.
      */
     public readonly nodeType!: pulumi.Output<string | undefined>;
     /**
-     * Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type
-     * that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+     * Flexible properties for the desired node type. Node groups that
+     * use this node template will create nodes of a type that matches
+     * these properties. Only one of nodeTypeFlexibility and nodeType can
+     * be specified.  Structure is documented below.
      */
     public readonly nodeTypeFlexibility!: pulumi.Output<outputs.compute.NodeTemplateNodeTypeFlexibility | undefined>;
     /**
@@ -79,7 +82,8 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+     * Region where nodes using the node template will be created.
+     * If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -155,17 +159,20 @@ export interface NodeTemplateState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Labels to use for node affinity, which will be used in instance scheduling.
+     * Labels to use for node affinity, which will be used in
+     * instance scheduling.
      */
     readonly nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType
-     * can be specified.
+     * Node type to use for nodes group that are created from this template.
+     * Only one of nodeTypeFlexibility and nodeType can be specified.
      */
     readonly nodeType?: pulumi.Input<string>;
     /**
-     * Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type
-     * that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+     * Flexible properties for the desired node type. Node groups that
+     * use this node template will create nodes of a type that matches
+     * these properties. Only one of nodeTypeFlexibility and nodeType can
+     * be specified.  Structure is documented below.
      */
     readonly nodeTypeFlexibility?: pulumi.Input<inputs.compute.NodeTemplateNodeTypeFlexibility>;
     /**
@@ -174,7 +181,8 @@ export interface NodeTemplateState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+     * Region where nodes using the node template will be created.
+     * If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -201,17 +209,20 @@ export interface NodeTemplateArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Labels to use for node affinity, which will be used in instance scheduling.
+     * Labels to use for node affinity, which will be used in
+     * instance scheduling.
      */
     readonly nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType
-     * can be specified.
+     * Node type to use for nodes group that are created from this template.
+     * Only one of nodeTypeFlexibility and nodeType can be specified.
      */
     readonly nodeType?: pulumi.Input<string>;
     /**
-     * Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type
-     * that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+     * Flexible properties for the desired node type. Node groups that
+     * use this node template will create nodes of a type that matches
+     * these properties. Only one of nodeTypeFlexibility and nodeType can
+     * be specified.  Structure is documented below.
      */
     readonly nodeTypeFlexibility?: pulumi.Input<inputs.compute.NodeTemplateNodeTypeFlexibility>;
     /**
@@ -220,7 +231,8 @@ export interface NodeTemplateArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+     * Region where nodes using the node template will be created.
+     * If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
     /**

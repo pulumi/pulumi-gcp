@@ -37,7 +37,7 @@ type LookupInstanceGroupArgs struct {
 type LookupInstanceGroupResult struct {
 	// Textual description of the instance group.
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// List of instances in the group.
 	Instances []string `pulumi:"instances"`

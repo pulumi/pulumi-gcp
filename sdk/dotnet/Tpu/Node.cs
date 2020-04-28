@@ -28,11 +28,14 @@ namespace Pulumi.Gcp.Tpu
         public Output<string> AcceleratorType { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-        /// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-        /// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-        /// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-        /// that is using that CIDR block.
+        /// The CIDR block that the TPU node will use when selecting an IP
+        /// address. This CIDR block must be a /29 block; the Compute Engine
+        /// networks API forbids a smaller block, and using a larger block would
+        /// be wasteful (a node can only consume one IP address).
+        /// Errors will occur if the CIDR block has already been used for a
+        /// currently existing TPU node, the CIDR block conflicts with any
+        /// subnetworks in the user's provided network, or the provided network
+        /// is peered with another network that is using that CIDR block.
         /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
@@ -56,8 +59,10 @@ namespace Pulumi.Gcp.Tpu
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-        /// which this API has been activated. If none is provided, "default" will be used.
+        /// The name of a network to peer the TPU node to. It must be a
+        /// preexisting Compute Engine network inside of the project on which
+        /// this API has been activated. If none is provided, "default" will be
+        /// used.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -77,7 +82,7 @@ namespace Pulumi.Gcp.Tpu
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the scheduling options for this TPU instance.
+        /// Sets the scheduling options for this TPU instance.  Structure is documented below.
         /// </summary>
         [Output("schedulingConfig")]
         public Output<Outputs.NodeSchedulingConfig?> SchedulingConfig { get; private set; } = null!;
@@ -154,11 +159,14 @@ namespace Pulumi.Gcp.Tpu
         public Input<string> AcceleratorType { get; set; } = null!;
 
         /// <summary>
-        /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-        /// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-        /// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-        /// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-        /// that is using that CIDR block.
+        /// The CIDR block that the TPU node will use when selecting an IP
+        /// address. This CIDR block must be a /29 block; the Compute Engine
+        /// networks API forbids a smaller block, and using a larger block would
+        /// be wasteful (a node can only consume one IP address).
+        /// Errors will occur if the CIDR block has already been used for a
+        /// currently existing TPU node, the CIDR block conflicts with any
+        /// subnetworks in the user's provided network, or the provided network
+        /// is peered with another network that is using that CIDR block.
         /// </summary>
         [Input("cidrBlock", required: true)]
         public Input<string> CidrBlock { get; set; } = null!;
@@ -188,8 +196,10 @@ namespace Pulumi.Gcp.Tpu
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-        /// which this API has been activated. If none is provided, "default" will be used.
+        /// The name of a network to peer the TPU node to. It must be a
+        /// preexisting Compute Engine network inside of the project on which
+        /// this API has been activated. If none is provided, "default" will be
+        /// used.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -202,7 +212,7 @@ namespace Pulumi.Gcp.Tpu
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Sets the scheduling options for this TPU instance.
+        /// Sets the scheduling options for this TPU instance.  Structure is documented below.
         /// </summary>
         [Input("schedulingConfig")]
         public Input<Inputs.NodeSchedulingConfigArgs>? SchedulingConfig { get; set; }
@@ -233,11 +243,14 @@ namespace Pulumi.Gcp.Tpu
         public Input<string>? AcceleratorType { get; set; }
 
         /// <summary>
-        /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute
-        /// Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP
-        /// address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block
-        /// conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network
-        /// that is using that CIDR block.
+        /// The CIDR block that the TPU node will use when selecting an IP
+        /// address. This CIDR block must be a /29 block; the Compute Engine
+        /// networks API forbids a smaller block, and using a larger block would
+        /// be wasteful (a node can only consume one IP address).
+        /// Errors will occur if the CIDR block has already been used for a
+        /// currently existing TPU node, the CIDR block conflicts with any
+        /// subnetworks in the user's provided network, or the provided network
+        /// is peered with another network that is using that CIDR block.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
@@ -267,8 +280,10 @@ namespace Pulumi.Gcp.Tpu
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of a network to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on
-        /// which this API has been activated. If none is provided, "default" will be used.
+        /// The name of a network to peer the TPU node to. It must be a
+        /// preexisting Compute Engine network inside of the project on which
+        /// this API has been activated. If none is provided, "default" will be
+        /// used.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -294,7 +309,7 @@ namespace Pulumi.Gcp.Tpu
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Sets the scheduling options for this TPU instance.
+        /// Sets the scheduling options for this TPU instance.  Structure is documented below.
         /// </summary>
         [Input("schedulingConfig")]
         public Input<Inputs.NodeSchedulingConfigGetArgs>? SchedulingConfig { get; set; }

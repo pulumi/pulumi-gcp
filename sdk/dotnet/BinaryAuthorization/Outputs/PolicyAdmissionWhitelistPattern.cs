@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.BinaryAuthorization.Outputs
     [OutputType]
     public sealed class PolicyAdmissionWhitelistPattern
     {
+        /// <summary>
+        /// An image name pattern to whitelist, in the form
+        /// `registry/path/to/image`. This supports a trailing * as a
+        /// wildcard, but this is allowed only in text after the registry/
+        /// part.
+        /// </summary>
         public readonly string NamePattern;
 
         [OutputConstructor]

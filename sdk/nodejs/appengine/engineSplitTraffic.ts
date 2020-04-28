@@ -57,7 +57,7 @@ export class EngineSplitTraffic extends pulumi.CustomResource {
      */
     public readonly service!: pulumi.Output<string>;
     /**
-     * Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+     * Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
      */
     public readonly split!: pulumi.Output<outputs.appengine.EngineSplitTrafficSplit>;
 
@@ -119,7 +119,7 @@ export interface EngineSplitTrafficState {
      */
     readonly service?: pulumi.Input<string>;
     /**
-     * Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+     * Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
      */
     readonly split?: pulumi.Input<inputs.appengine.EngineSplitTrafficSplit>;
 }
@@ -142,7 +142,7 @@ export interface EngineSplitTrafficArgs {
      */
     readonly service: pulumi.Input<string>;
     /**
-     * Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+     * Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
      */
     readonly split: pulumi.Input<inputs.appengine.EngineSplitTrafficSplit>;
 }

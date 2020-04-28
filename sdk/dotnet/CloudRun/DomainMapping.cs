@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.CloudRun
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Metadata associated with this DomainMapping.
+        /// Metadata associated with this DomainMapping.  Structure is documented below.
         /// </summary>
         [Output("metadata")]
         public Output<Outputs.DomainMappingMetadata> Metadata { get; private set; } = null!;
@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.CloudRun
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The spec for this DomainMapping.
+        /// The spec for this DomainMapping.  Structure is documented below.
         /// </summary>
         [Output("spec")]
         public Output<Outputs.DomainMappingSpec> Spec { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.CloudRun
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Metadata associated with this DomainMapping.
+        /// Metadata associated with this DomainMapping.  Structure is documented below.
         /// </summary>
         [Input("metadata", required: true)]
         public Input<Inputs.DomainMappingMetadataArgs> Metadata { get; set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.CloudRun
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The spec for this DomainMapping.
+        /// The spec for this DomainMapping.  Structure is documented below.
         /// </summary>
         [Input("spec", required: true)]
         public Input<Inputs.DomainMappingSpecArgs> Spec { get; set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.CloudRun
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Metadata associated with this DomainMapping.
+        /// Metadata associated with this DomainMapping.  Structure is documented below.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.DomainMappingMetadataGetArgs>? Metadata { get; set; }
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.CloudRun
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The spec for this DomainMapping.
+        /// The spec for this DomainMapping.  Structure is documented below.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.DomainMappingSpecGetArgs>? Spec { get; set; }

@@ -29,9 +29,9 @@ type Dataset struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
-	// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
-	// timezone is specified.
+	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
+	// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
+	// (e.g., HL7 messages) where no explicit timezone is specified.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
 
@@ -75,9 +75,9 @@ type datasetState struct {
 	Project *string `pulumi:"project"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
-	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
-	// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
-	// timezone is specified.
+	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
+	// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
+	// (e.g., HL7 messages) where no explicit timezone is specified.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -91,9 +91,9 @@ type DatasetState struct {
 	Project pulumi.StringPtrInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
-	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
-	// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
-	// timezone is specified.
+	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
+	// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
+	// (e.g., HL7 messages) where no explicit timezone is specified.
 	TimeZone pulumi.StringPtrInput
 }
 
@@ -109,9 +109,9 @@ type datasetArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
-	// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
-	// timezone is specified.
+	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
+	// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
+	// (e.g., HL7 messages) where no explicit timezone is specified.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -124,9 +124,9 @@ type DatasetArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or
-	// empty, which defaults to UTC. This is used for parsing times in resources (e.g., HL7 messages) where no explicit
-	// timezone is specified.
+	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
+	// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
+	// (e.g., HL7 messages) where no explicit timezone is specified.
 	TimeZone pulumi.StringPtrInput
 }
 

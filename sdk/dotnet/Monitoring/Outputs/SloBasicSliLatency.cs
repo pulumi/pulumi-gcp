@@ -13,6 +13,11 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     [OutputType]
     public sealed class SloBasicSliLatency
     {
+        /// <summary>
+        /// A duration string, e.g. 10s.
+        /// Good service is defined to be the count of requests made to
+        /// this service that return in no more than threshold.
+        /// </summary>
         public readonly string Threshold;
 
         [OutputConstructor]

@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     [OutputType]
     public sealed class FlexibleAppVersionAutomaticScalingNetworkUtilization
     {
+        /// <summary>
+        /// Target bytes received per second.
+        /// </summary>
         public readonly int? TargetReceivedBytesPerSecond;
+        /// <summary>
+        /// Target packets received per second.
+        /// </summary>
         public readonly int? TargetReceivedPacketsPerSecond;
+        /// <summary>
+        /// Target bytes sent per second.
+        /// </summary>
         public readonly int? TargetSentBytesPerSecond;
+        /// <summary>
+        /// Target packets sent per second.
+        /// </summary>
         public readonly int? TargetSentPacketsPerSecond;
 
         [OutputConstructor]

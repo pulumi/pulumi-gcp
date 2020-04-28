@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     [OutputType]
     public sealed class UptimeCheckConfigHttpCheckAuthInfo
     {
+        /// <summary>
+        /// The password to authenticate.
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// The username to authenticate.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

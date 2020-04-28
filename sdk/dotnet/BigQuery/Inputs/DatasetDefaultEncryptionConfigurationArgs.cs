@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.BigQuery.Inputs
 
     public sealed class DatasetDefaultEncryptionConfigurationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Describes the Cloud KMS encryption key that will be used to protect destination
+        /// BigQuery table. The BigQuery Service Account associated with your project requires
+        /// access to this encryption key.
+        /// </summary>
         [Input("kmsKeyName", required: true)]
         public Input<string> KmsKeyName { get; set; } = null!;
 

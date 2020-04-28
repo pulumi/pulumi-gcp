@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class HealthCheckLogConfig
     {
+        /// <summary>
+        /// Indicates whether or not to export logs. This is false by default,
+        /// which means no health check logging will be done.
+        /// </summary>
         public readonly bool? Enable;
 
         [OutputConstructor]

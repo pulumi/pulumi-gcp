@@ -11,10 +11,14 @@ import (
 )
 
 type InboundSamlConfigIdpConfig struct {
+	// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 	IdpCertificates []InboundSamlConfigIdpConfigIdpCertificate `pulumi:"idpCertificates"`
-	IdpEntityId     string                                     `pulumi:"idpEntityId"`
-	SignRequest     *bool                                      `pulumi:"signRequest"`
-	SsoUrl          string                                     `pulumi:"ssoUrl"`
+	// Unique identifier for all SAML entities
+	IdpEntityId string `pulumi:"idpEntityId"`
+	// Indicates if outbounding SAMLRequest should be signed.
+	SignRequest *bool `pulumi:"signRequest"`
+	// URL to send Authentication request to.
+	SsoUrl string `pulumi:"ssoUrl"`
 }
 
 // InboundSamlConfigIdpConfigInput is an input type that accepts InboundSamlConfigIdpConfigArgs and InboundSamlConfigIdpConfigOutput values.
@@ -30,10 +34,14 @@ type InboundSamlConfigIdpConfigInput interface {
 }
 
 type InboundSamlConfigIdpConfigArgs struct {
+	// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 	IdpCertificates InboundSamlConfigIdpConfigIdpCertificateArrayInput `pulumi:"idpCertificates"`
-	IdpEntityId     pulumi.StringInput                                 `pulumi:"idpEntityId"`
-	SignRequest     pulumi.BoolPtrInput                                `pulumi:"signRequest"`
-	SsoUrl          pulumi.StringInput                                 `pulumi:"ssoUrl"`
+	// Unique identifier for all SAML entities
+	IdpEntityId pulumi.StringInput `pulumi:"idpEntityId"`
+	// Indicates if outbounding SAMLRequest should be signed.
+	SignRequest pulumi.BoolPtrInput `pulumi:"signRequest"`
+	// URL to send Authentication request to.
+	SsoUrl pulumi.StringInput `pulumi:"ssoUrl"`
 }
 
 func (InboundSamlConfigIdpConfigArgs) ElementType() reflect.Type {
@@ -113,20 +121,25 @@ func (o InboundSamlConfigIdpConfigOutput) ToInboundSamlConfigIdpConfigPtrOutputW
 		return &v
 	}).(InboundSamlConfigIdpConfigPtrOutput)
 }
+
+// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 func (o InboundSamlConfigIdpConfigOutput) IdpCertificates() InboundSamlConfigIdpConfigIdpCertificateArrayOutput {
 	return o.ApplyT(func(v InboundSamlConfigIdpConfig) []InboundSamlConfigIdpConfigIdpCertificate {
 		return v.IdpCertificates
 	}).(InboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
+// Unique identifier for all SAML entities
 func (o InboundSamlConfigIdpConfigOutput) IdpEntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v InboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
 }
 
+// Indicates if outbounding SAMLRequest should be signed.
 func (o InboundSamlConfigIdpConfigOutput) SignRequest() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
 }
 
+// URL to send Authentication request to.
 func (o InboundSamlConfigIdpConfigOutput) SsoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v InboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
 }
@@ -149,25 +162,49 @@ func (o InboundSamlConfigIdpConfigPtrOutput) Elem() InboundSamlConfigIdpConfigOu
 	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) InboundSamlConfigIdpConfig { return *v }).(InboundSamlConfigIdpConfigOutput)
 }
 
+// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 func (o InboundSamlConfigIdpConfigPtrOutput) IdpCertificates() InboundSamlConfigIdpConfigIdpCertificateArrayOutput {
-	return o.ApplyT(func(v InboundSamlConfigIdpConfig) []InboundSamlConfigIdpConfigIdpCertificate {
+	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) []InboundSamlConfigIdpConfigIdpCertificate {
+		if v == nil {
+			return nil
+		}
 		return v.IdpCertificates
 	}).(InboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
-func (o InboundSamlConfigIdpConfigPtrOutput) IdpEntityId() pulumi.StringOutput {
-	return o.ApplyT(func(v InboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
+// Unique identifier for all SAML entities
+func (o InboundSamlConfigIdpConfigPtrOutput) IdpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdpEntityId
+	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates if outbounding SAMLRequest should be signed.
 func (o InboundSamlConfigIdpConfigPtrOutput) SignRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SignRequest
+	}).(pulumi.BoolPtrOutput)
 }
 
-func (o InboundSamlConfigIdpConfigPtrOutput) SsoUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v InboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
+// URL to send Authentication request to.
+func (o InboundSamlConfigIdpConfigPtrOutput) SsoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InboundSamlConfigIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SsoUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type InboundSamlConfigIdpConfigIdpCertificate struct {
+	// -
+	// The x509 certificate
 	X509Certificate *string `pulumi:"x509Certificate"`
 }
 
@@ -184,6 +221,8 @@ type InboundSamlConfigIdpConfigIdpCertificateInput interface {
 }
 
 type InboundSamlConfigIdpConfigIdpCertificateArgs struct {
+	// -
+	// The x509 certificate
 	X509Certificate pulumi.StringPtrInput `pulumi:"x509Certificate"`
 }
 
@@ -239,6 +278,8 @@ func (o InboundSamlConfigIdpConfigIdpCertificateOutput) ToInboundSamlConfigIdpCo
 	return o
 }
 
+// -
+// The x509 certificate
 func (o InboundSamlConfigIdpConfigIdpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InboundSamlConfigIdpConfigIdpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
 }
@@ -264,9 +305,13 @@ func (o InboundSamlConfigIdpConfigIdpCertificateArrayOutput) Index(i pulumi.IntI
 }
 
 type InboundSamlConfigSpConfig struct {
-	CallbackUri    *string                                  `pulumi:"callbackUri"`
+	// Callback URI where responses from IDP are handled. Must start with `https://`.
+	CallbackUri *string `pulumi:"callbackUri"`
+	// -
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 	SpCertificates []InboundSamlConfigSpConfigSpCertificate `pulumi:"spCertificates"`
-	SpEntityId     *string                                  `pulumi:"spEntityId"`
+	// Unique identifier for all SAML entities.
+	SpEntityId *string `pulumi:"spEntityId"`
 }
 
 // InboundSamlConfigSpConfigInput is an input type that accepts InboundSamlConfigSpConfigArgs and InboundSamlConfigSpConfigOutput values.
@@ -282,9 +327,13 @@ type InboundSamlConfigSpConfigInput interface {
 }
 
 type InboundSamlConfigSpConfigArgs struct {
-	CallbackUri    pulumi.StringPtrInput                            `pulumi:"callbackUri"`
+	// Callback URI where responses from IDP are handled. Must start with `https://`.
+	CallbackUri pulumi.StringPtrInput `pulumi:"callbackUri"`
+	// -
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 	SpCertificates InboundSamlConfigSpConfigSpCertificateArrayInput `pulumi:"spCertificates"`
-	SpEntityId     pulumi.StringPtrInput                            `pulumi:"spEntityId"`
+	// Unique identifier for all SAML entities.
+	SpEntityId pulumi.StringPtrInput `pulumi:"spEntityId"`
 }
 
 func (InboundSamlConfigSpConfigArgs) ElementType() reflect.Type {
@@ -364,14 +413,19 @@ func (o InboundSamlConfigSpConfigOutput) ToInboundSamlConfigSpConfigPtrOutputWit
 		return &v
 	}).(InboundSamlConfigSpConfigPtrOutput)
 }
+
+// Callback URI where responses from IDP are handled. Must start with `https://`.
 func (o InboundSamlConfigSpConfigOutput) CallbackUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfig) *string { return v.CallbackUri }).(pulumi.StringPtrOutput)
 }
 
+// -
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 func (o InboundSamlConfigSpConfigOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate { return v.SpCertificates }).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
+// Unique identifier for all SAML entities.
 func (o InboundSamlConfigSpConfigOutput) SpEntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfig) *string { return v.SpEntityId }).(pulumi.StringPtrOutput)
 }
@@ -394,19 +448,40 @@ func (o InboundSamlConfigSpConfigPtrOutput) Elem() InboundSamlConfigSpConfigOutp
 	return o.ApplyT(func(v *InboundSamlConfigSpConfig) InboundSamlConfigSpConfig { return *v }).(InboundSamlConfigSpConfigOutput)
 }
 
+// Callback URI where responses from IDP are handled. Must start with `https://`.
 func (o InboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InboundSamlConfigSpConfig) *string { return v.CallbackUri }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *InboundSamlConfigSpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CallbackUri
+	}).(pulumi.StringPtrOutput)
 }
 
+// -
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 func (o InboundSamlConfigSpConfigPtrOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
-	return o.ApplyT(func(v InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate { return v.SpCertificates }).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
+	return o.ApplyT(func(v *InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate {
+		if v == nil {
+			return nil
+		}
+		return v.SpCertificates
+	}).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
+// Unique identifier for all SAML entities.
 func (o InboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InboundSamlConfigSpConfig) *string { return v.SpEntityId }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *InboundSamlConfigSpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpEntityId
+	}).(pulumi.StringPtrOutput)
 }
 
 type InboundSamlConfigSpConfigSpCertificate struct {
+	// -
+	// The x509 certificate
 	X509Certificate *string `pulumi:"x509Certificate"`
 }
 
@@ -423,6 +498,8 @@ type InboundSamlConfigSpConfigSpCertificateInput interface {
 }
 
 type InboundSamlConfigSpConfigSpCertificateArgs struct {
+	// -
+	// The x509 certificate
 	X509Certificate pulumi.StringPtrInput `pulumi:"x509Certificate"`
 }
 
@@ -478,6 +555,8 @@ func (o InboundSamlConfigSpConfigSpCertificateOutput) ToInboundSamlConfigSpConfi
 	return o
 }
 
+// -
+// The x509 certificate
 func (o InboundSamlConfigSpConfigSpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
 }
@@ -503,10 +582,14 @@ func (o InboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.IntInp
 }
 
 type TenantInboundSamlConfigIdpConfig struct {
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 	IdpCertificates []TenantInboundSamlConfigIdpConfigIdpCertificate `pulumi:"idpCertificates"`
-	IdpEntityId     string                                           `pulumi:"idpEntityId"`
-	SignRequest     *bool                                            `pulumi:"signRequest"`
-	SsoUrl          string                                           `pulumi:"ssoUrl"`
+	// Unique identifier for all SAML entities
+	IdpEntityId string `pulumi:"idpEntityId"`
+	// Indicates if outbounding SAMLRequest should be signed.
+	SignRequest *bool `pulumi:"signRequest"`
+	// URL to send Authentication request to.
+	SsoUrl string `pulumi:"ssoUrl"`
 }
 
 // TenantInboundSamlConfigIdpConfigInput is an input type that accepts TenantInboundSamlConfigIdpConfigArgs and TenantInboundSamlConfigIdpConfigOutput values.
@@ -522,10 +605,14 @@ type TenantInboundSamlConfigIdpConfigInput interface {
 }
 
 type TenantInboundSamlConfigIdpConfigArgs struct {
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 	IdpCertificates TenantInboundSamlConfigIdpConfigIdpCertificateArrayInput `pulumi:"idpCertificates"`
-	IdpEntityId     pulumi.StringInput                                       `pulumi:"idpEntityId"`
-	SignRequest     pulumi.BoolPtrInput                                      `pulumi:"signRequest"`
-	SsoUrl          pulumi.StringInput                                       `pulumi:"ssoUrl"`
+	// Unique identifier for all SAML entities
+	IdpEntityId pulumi.StringInput `pulumi:"idpEntityId"`
+	// Indicates if outbounding SAMLRequest should be signed.
+	SignRequest pulumi.BoolPtrInput `pulumi:"signRequest"`
+	// URL to send Authentication request to.
+	SsoUrl pulumi.StringInput `pulumi:"ssoUrl"`
 }
 
 func (TenantInboundSamlConfigIdpConfigArgs) ElementType() reflect.Type {
@@ -605,20 +692,25 @@ func (o TenantInboundSamlConfigIdpConfigOutput) ToTenantInboundSamlConfigIdpConf
 		return &v
 	}).(TenantInboundSamlConfigIdpConfigPtrOutput)
 }
+
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 func (o TenantInboundSamlConfigIdpConfigOutput) IdpCertificates() TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) []TenantInboundSamlConfigIdpConfigIdpCertificate {
 		return v.IdpCertificates
 	}).(TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
+// Unique identifier for all SAML entities
 func (o TenantInboundSamlConfigIdpConfigOutput) IdpEntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
 }
 
+// Indicates if outbounding SAMLRequest should be signed.
 func (o TenantInboundSamlConfigIdpConfigOutput) SignRequest() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
 }
 
+// URL to send Authentication request to.
 func (o TenantInboundSamlConfigIdpConfigOutput) SsoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
 }
@@ -641,25 +733,49 @@ func (o TenantInboundSamlConfigIdpConfigPtrOutput) Elem() TenantInboundSamlConfi
 	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) TenantInboundSamlConfigIdpConfig { return *v }).(TenantInboundSamlConfigIdpConfigOutput)
 }
 
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) IdpCertificates() TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput {
-	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) []TenantInboundSamlConfigIdpConfigIdpCertificate {
+	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) []TenantInboundSamlConfigIdpConfigIdpCertificate {
+		if v == nil {
+			return nil
+		}
 		return v.IdpCertificates
 	}).(TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput)
 }
 
-func (o TenantInboundSamlConfigIdpConfigPtrOutput) IdpEntityId() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) string { return v.IdpEntityId }).(pulumi.StringOutput)
+// Unique identifier for all SAML entities
+func (o TenantInboundSamlConfigIdpConfigPtrOutput) IdpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdpEntityId
+	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates if outbounding SAMLRequest should be signed.
 func (o TenantInboundSamlConfigIdpConfigPtrOutput) SignRequest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SignRequest
+	}).(pulumi.BoolPtrOutput)
 }
 
-func (o TenantInboundSamlConfigIdpConfigPtrOutput) SsoUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfig) string { return v.SsoUrl }).(pulumi.StringOutput)
+// URL to send Authentication request to.
+func (o TenantInboundSamlConfigIdpConfigPtrOutput) SsoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantInboundSamlConfigIdpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SsoUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type TenantInboundSamlConfigIdpConfigIdpCertificate struct {
+	// -
+	// The x509 certificate
 	X509Certificate *string `pulumi:"x509Certificate"`
 }
 
@@ -676,6 +792,8 @@ type TenantInboundSamlConfigIdpConfigIdpCertificateInput interface {
 }
 
 type TenantInboundSamlConfigIdpConfigIdpCertificateArgs struct {
+	// -
+	// The x509 certificate
 	X509Certificate pulumi.StringPtrInput `pulumi:"x509Certificate"`
 }
 
@@ -731,6 +849,8 @@ func (o TenantInboundSamlConfigIdpConfigIdpCertificateOutput) ToTenantInboundSam
 	return o
 }
 
+// -
+// The x509 certificate
 func (o TenantInboundSamlConfigIdpConfigIdpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigIdpConfigIdpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
 }
@@ -756,9 +876,13 @@ func (o TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput) Index(i pulum
 }
 
 type TenantInboundSamlConfigSpConfig struct {
-	CallbackUri    string                                         `pulumi:"callbackUri"`
+	// Callback URI where responses from IDP are handled. Must start with `https://`.
+	CallbackUri string `pulumi:"callbackUri"`
+	// -
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 	SpCertificates []TenantInboundSamlConfigSpConfigSpCertificate `pulumi:"spCertificates"`
-	SpEntityId     string                                         `pulumi:"spEntityId"`
+	// Unique identifier for all SAML entities.
+	SpEntityId string `pulumi:"spEntityId"`
 }
 
 // TenantInboundSamlConfigSpConfigInput is an input type that accepts TenantInboundSamlConfigSpConfigArgs and TenantInboundSamlConfigSpConfigOutput values.
@@ -774,9 +898,13 @@ type TenantInboundSamlConfigSpConfigInput interface {
 }
 
 type TenantInboundSamlConfigSpConfigArgs struct {
-	CallbackUri    pulumi.StringInput                                     `pulumi:"callbackUri"`
+	// Callback URI where responses from IDP are handled. Must start with `https://`.
+	CallbackUri pulumi.StringInput `pulumi:"callbackUri"`
+	// -
+	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 	SpCertificates TenantInboundSamlConfigSpConfigSpCertificateArrayInput `pulumi:"spCertificates"`
-	SpEntityId     pulumi.StringInput                                     `pulumi:"spEntityId"`
+	// Unique identifier for all SAML entities.
+	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
 }
 
 func (TenantInboundSamlConfigSpConfigArgs) ElementType() reflect.Type {
@@ -856,16 +984,21 @@ func (o TenantInboundSamlConfigSpConfigOutput) ToTenantInboundSamlConfigSpConfig
 		return &v
 	}).(TenantInboundSamlConfigSpConfigPtrOutput)
 }
+
+// Callback URI where responses from IDP are handled. Must start with `https://`.
 func (o TenantInboundSamlConfigSpConfigOutput) CallbackUri() pulumi.StringOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) string { return v.CallbackUri }).(pulumi.StringOutput)
 }
 
+// -
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 func (o TenantInboundSamlConfigSpConfigOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate {
 		return v.SpCertificates
 	}).(TenantInboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
+// Unique identifier for all SAML entities.
 func (o TenantInboundSamlConfigSpConfigOutput) SpEntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) string { return v.SpEntityId }).(pulumi.StringOutput)
 }
@@ -888,21 +1021,40 @@ func (o TenantInboundSamlConfigSpConfigPtrOutput) Elem() TenantInboundSamlConfig
 	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) TenantInboundSamlConfigSpConfig { return *v }).(TenantInboundSamlConfigSpConfigOutput)
 }
 
-func (o TenantInboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) string { return v.CallbackUri }).(pulumi.StringOutput)
+// Callback URI where responses from IDP are handled. Must start with `https://`.
+func (o TenantInboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CallbackUri
+	}).(pulumi.StringPtrOutput)
 }
 
+// -
+// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
 func (o TenantInboundSamlConfigSpConfigPtrOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
-	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate {
+	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate {
+		if v == nil {
+			return nil
+		}
 		return v.SpCertificates
 	}).(TenantInboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
 
-func (o TenantInboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringOutput {
-	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) string { return v.SpEntityId }).(pulumi.StringOutput)
+// Unique identifier for all SAML entities.
+func (o TenantInboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SpEntityId
+	}).(pulumi.StringPtrOutput)
 }
 
 type TenantInboundSamlConfigSpConfigSpCertificate struct {
+	// -
+	// The x509 certificate
 	X509Certificate *string `pulumi:"x509Certificate"`
 }
 
@@ -919,6 +1071,8 @@ type TenantInboundSamlConfigSpConfigSpCertificateInput interface {
 }
 
 type TenantInboundSamlConfigSpConfigSpCertificateArgs struct {
+	// -
+	// The x509 certificate
 	X509Certificate pulumi.StringPtrInput `pulumi:"x509Certificate"`
 }
 
@@ -974,6 +1128,8 @@ func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) ToTenantInboundSamlC
 	return o
 }
 
+// -
+// The x509 certificate
 func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
 }

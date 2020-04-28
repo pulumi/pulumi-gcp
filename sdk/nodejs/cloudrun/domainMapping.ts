@@ -50,7 +50,7 @@ export class DomainMapping extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Metadata associated with this DomainMapping.
+     * Metadata associated with this DomainMapping.  Structure is documented below.
      */
     public readonly metadata!: pulumi.Output<outputs.cloudrun.DomainMappingMetadata>;
     /**
@@ -63,7 +63,7 @@ export class DomainMapping extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The spec for this DomainMapping.
+     * The spec for this DomainMapping.  Structure is documented below.
      */
     public readonly spec!: pulumi.Output<outputs.cloudrun.DomainMappingSpec>;
     /**
@@ -127,7 +127,7 @@ export interface DomainMappingState {
      */
     readonly location?: pulumi.Input<string>;
     /**
-     * Metadata associated with this DomainMapping.
+     * Metadata associated with this DomainMapping.  Structure is documented below.
      */
     readonly metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
     /**
@@ -140,7 +140,7 @@ export interface DomainMappingState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The spec for this DomainMapping.
+     * The spec for this DomainMapping.  Structure is documented below.
      */
     readonly spec?: pulumi.Input<inputs.cloudrun.DomainMappingSpec>;
     /**
@@ -158,7 +158,7 @@ export interface DomainMappingArgs {
      */
     readonly location: pulumi.Input<string>;
     /**
-     * Metadata associated with this DomainMapping.
+     * Metadata associated with this DomainMapping.  Structure is documented below.
      */
     readonly metadata: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
     /**
@@ -171,7 +171,7 @@ export interface DomainMappingArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The spec for this DomainMapping.
+     * The spec for this DomainMapping.  Structure is documented below.
      */
     readonly spec: pulumi.Input<inputs.cloudrun.DomainMappingSpec>;
 }

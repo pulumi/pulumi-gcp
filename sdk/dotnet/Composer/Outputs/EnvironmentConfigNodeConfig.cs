@@ -13,14 +13,64 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigNodeConfig
     {
+        /// <summary>
+        /// The disk size in GB used for node VMs. Minimum size is 20GB.
+        /// If unspecified, defaults to 100GB. Cannot be updated.
+        /// </summary>
         public readonly int? DiskSizeGb;
+        /// <summary>
+        /// Configuration for controlling how IPs are allocated in the GKE cluster.
+        /// Structure is documented below.
+        /// Cannot be updated.
+        /// </summary>
         public readonly Outputs.EnvironmentConfigNodeConfigIpAllocationPolicy? IpAllocationPolicy;
+        /// <summary>
+        /// The Compute Engine machine type used for cluster instances,
+        /// specified as a name or relative resource name. For example:
+        /// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and
+        /// region/zone.
+        /// </summary>
         public readonly string? MachineType;
+        /// <summary>
+        /// The Compute Engine network to be used for machine
+        /// communications, specified as a self-link, relative resource name
+        /// (e.g. "projects/{project}/global/networks/{network}"), by name.
+        /// </summary>
         public readonly string? Network;
+        /// <summary>
+        /// The set of Google API scopes to be made available on all node
+        /// VMs. Cannot be updated. If empty, defaults to
+        /// `["https://www.googleapis.com/auth/cloud-platform"]`
+        /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
+        /// <summary>
+        /// The Google Cloud Platform Service Account to be used by the
+        /// node VMs. If a service account is not specified, the "default"
+        /// Compute Engine service account is used. Cannot be updated. If given,
+        /// note that the service account must have `roles/composer.worker`
+        /// for any GCP resources created under the Cloud Composer Environment.
+        /// </summary>
         public readonly string? ServiceAccount;
+        /// <summary>
+        /// The Compute Engine subnetwork to be used for machine
+        /// communications, , specified as a self-link, relative resource name (e.g.
+        /// "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
+        /// network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+        /// </summary>
         public readonly string? Subnetwork;
+        /// <summary>
+        /// The list of instance tags applied to all node VMs. Tags are
+        /// used to identify valid sources or targets for network
+        /// firewalls. Each tag within the list must comply with RFC1035.
+        /// Cannot be updated.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// The Compute Engine zone in which to deploy the VMs running the
+        /// Apache Airflow software, specified as the zone name or
+        /// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project
+        /// and region.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

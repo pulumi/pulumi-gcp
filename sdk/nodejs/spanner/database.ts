@@ -44,9 +44,10 @@ export class Database extends pulumi.CustomResource {
     }
 
     /**
-     * An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes,
-     * etc. These statements execute atomically with the creation of the database: if there is an error in any statement,
-     * the database is not created.
+     * An optional list of DDL statements to run inside the newly created
+     * database. Statements can create tables, indexes, etc. These statements
+     * execute atomically with the creation of the database: if there is an
+     * error in any statement, the database is not created.
      */
     public readonly ddls!: pulumi.Output<string[] | undefined>;
     /**
@@ -54,8 +55,8 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string>;
     /**
-     * A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
-     * [a-z][-a-z0-9]*[a-z0-9].
+     * A unique identifier for the database, which cannot be changed after
+     * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -112,9 +113,10 @@ export class Database extends pulumi.CustomResource {
  */
 export interface DatabaseState {
     /**
-     * An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes,
-     * etc. These statements execute atomically with the creation of the database: if there is an error in any statement,
-     * the database is not created.
+     * An optional list of DDL statements to run inside the newly created
+     * database. Statements can create tables, indexes, etc. These statements
+     * execute atomically with the creation of the database: if there is an
+     * error in any statement, the database is not created.
      */
     readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -122,8 +124,8 @@ export interface DatabaseState {
      */
     readonly instance?: pulumi.Input<string>;
     /**
-     * A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
-     * [a-z][-a-z0-9]*[a-z0-9].
+     * A unique identifier for the database, which cannot be changed after
+     * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -142,9 +144,10 @@ export interface DatabaseState {
  */
 export interface DatabaseArgs {
     /**
-     * An optional list of DDL statements to run inside the newly created database. Statements can create tables, indexes,
-     * etc. These statements execute atomically with the creation of the database: if there is an error in any statement,
-     * the database is not created.
+     * An optional list of DDL statements to run inside the newly created
+     * database. Statements can create tables, indexes, etc. These statements
+     * execute atomically with the creation of the database: if there is an
+     * error in any statement, the database is not created.
      */
     readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -152,8 +155,8 @@ export interface DatabaseArgs {
      */
     readonly instance: pulumi.Input<string>;
     /**
-     * A unique identifier for the database, which cannot be changed after the instance is created. Values are of the form
-     * [a-z][-a-z0-9]*[a-z0-9].
+     * A unique identifier for the database, which cannot be changed after
+     * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
      */
     readonly name?: pulumi.Input<string>;
     /**

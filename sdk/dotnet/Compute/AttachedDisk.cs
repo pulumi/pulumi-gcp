@@ -27,21 +27,50 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class AttachedDisk : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Specifies a unique device name of your choice that is
+        /// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+        /// system running within the instance. This name can be used to
+        /// reference the device for mounting, resizing, and so on, from within
+        /// the instance.
+        /// </summary>
         [Output("deviceName")]
         public Output<string> DeviceName { get; private set; } = null!;
 
+        /// <summary>
+        /// `name` or `self_link` of the disk that will be attached.
+        /// </summary>
         [Output("disk")]
         public Output<string> Disk { get; private set; } = null!;
 
+        /// <summary>
+        /// `name` or `self_link` of the compute instance that the disk will be attached to.
+        /// If the `self_link` is provided then `zone` and `project` are extracted from the
+        /// self link. If only the name is used then `zone` and `project` must be defined
+        /// as properties on the resource or provider.
+        /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
 
+        /// <summary>
+        /// The mode in which to attach this disk, either READ_WRITE or
+        /// READ_ONLY. If not specified, the default is to attach the disk in
+        /// READ_WRITE mode.
+        /// </summary>
         [Output("mode")]
         public Output<string?> Mode { get; private set; } = null!;
 
+        /// <summary>
+        /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
+        /// `self_link` the project defined in the link will take precedence.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
+        /// `self_link` the zone defined in the link will take precedence.
+        /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -91,21 +120,50 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class AttachedDiskArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies a unique device name of your choice that is
+        /// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+        /// system running within the instance. This name can be used to
+        /// reference the device for mounting, resizing, and so on, from within
+        /// the instance.
+        /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
 
+        /// <summary>
+        /// `name` or `self_link` of the disk that will be attached.
+        /// </summary>
         [Input("disk", required: true)]
         public Input<string> Disk { get; set; } = null!;
 
+        /// <summary>
+        /// `name` or `self_link` of the compute instance that the disk will be attached to.
+        /// If the `self_link` is provided then `zone` and `project` are extracted from the
+        /// self link. If only the name is used then `zone` and `project` must be defined
+        /// as properties on the resource or provider.
+        /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
 
+        /// <summary>
+        /// The mode in which to attach this disk, either READ_WRITE or
+        /// READ_ONLY. If not specified, the default is to attach the disk in
+        /// READ_WRITE mode.
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        /// <summary>
+        /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
+        /// `self_link` the project defined in the link will take precedence.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
+        /// `self_link` the zone defined in the link will take precedence.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
@@ -116,21 +174,50 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class AttachedDiskState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies a unique device name of your choice that is
+        /// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+        /// system running within the instance. This name can be used to
+        /// reference the device for mounting, resizing, and so on, from within
+        /// the instance.
+        /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
 
+        /// <summary>
+        /// `name` or `self_link` of the disk that will be attached.
+        /// </summary>
         [Input("disk")]
         public Input<string>? Disk { get; set; }
 
+        /// <summary>
+        /// `name` or `self_link` of the compute instance that the disk will be attached to.
+        /// If the `self_link` is provided then `zone` and `project` are extracted from the
+        /// self link. If only the name is used then `zone` and `project` must be defined
+        /// as properties on the resource or provider.
+        /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }
 
+        /// <summary>
+        /// The mode in which to attach this disk, either READ_WRITE or
+        /// READ_ONLY. If not specified, the default is to attach the disk in
+        /// READ_WRITE mode.
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        /// <summary>
+        /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
+        /// `self_link` the project defined in the link will take precedence.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
+        /// `self_link` the zone defined in the link will take precedence.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

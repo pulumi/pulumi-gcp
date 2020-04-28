@@ -27,7 +27,7 @@ type GetRegistryRepositoryArgs struct {
 
 // A collection of values returned by getRegistryRepository.
 type GetRegistryRepositoryResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id            string  `pulumi:"id"`
 	Project       string  `pulumi:"project"`
 	Region        *string `pulumi:"region"`

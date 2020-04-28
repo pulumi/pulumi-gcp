@@ -33,7 +33,7 @@ type LookupVPNGatewayArgs struct {
 type LookupVPNGatewayResult struct {
 	// Description of this VPN gateway.
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// The network of this VPN gateway.

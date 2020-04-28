@@ -24,21 +24,25 @@ class NodeTemplate(pulumi.CustomResource):
     """
     node_affinity_labels: pulumi.Output[dict]
     """
-    Labels to use for node affinity, which will be used in instance scheduling.
+    Labels to use for node affinity, which will be used in
+    instance scheduling.
     """
     node_type: pulumi.Output[str]
     """
-    Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
-    be specified.
+    Node type to use for nodes group that are created from this template.
+    Only one of nodeTypeFlexibility and nodeType can be specified.
     """
     node_type_flexibility: pulumi.Output[dict]
     """
-    Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
-    matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+    Flexible properties for the desired node type. Node groups that
+    use this node template will create nodes of a type that matches
+    these properties. Only one of nodeTypeFlexibility and nodeType can
+    be specified.  Structure is documented below.
 
-      * `cpus` (`str`)
-      * `localSsd` (`str`)
-      * `memory` (`str`)
+      * `cpus` (`str`) - Number of virtual CPUs to use.
+      * `localSsd` (`str`) - -
+        Use local SSD
+      * `memory` (`str`) - Physical memory available to the node, defined in MB.
     """
     project: pulumi.Output[str]
     """
@@ -47,7 +51,8 @@ class NodeTemplate(pulumi.CustomResource):
     """
     region: pulumi.Output[str]
     """
-    Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+    Region where nodes using the node template will be created.
+    If it is not provided, the provider region is used.
     """
     self_link: pulumi.Output[str]
     """
@@ -58,7 +63,17 @@ class NodeTemplate(pulumi.CustomResource):
     The server binding policy for nodes using this template. Determines where the nodes should restart following a
     maintenance event.
 
-      * `type` (`str`)
+      * `type` (`str`) - Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
+        nodes using this template will restart on any physical server
+        following a maintenance event.
+        If `RESTART_NODE_ON_MINIMAL_SERVER`, nodes using this template
+        will restart on the same physical server following a maintenance
+        event, instead of being live migrated to or restarted on a new
+        physical server. This option may be useful if you are using
+        software licenses tied to the underlying server characteristics
+        such as physical sockets or cores, to avoid the need for
+        additional licenses when maintenance occurs. However, VMs on such
+        nodes will experience outages while maintenance is applied.
     """
     def __init__(__self__, resource_name, opts=None, description=None, name=None, node_affinity_labels=None, node_type=None, node_type_flexibility=None, project=None, region=None, server_binding=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -77,26 +92,41 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[dict] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
-        :param pulumi.Input[str] node_type: Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
-               be specified.
-        :param pulumi.Input[dict] node_type_flexibility: Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
-               matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        :param pulumi.Input[dict] node_affinity_labels: Labels to use for node affinity, which will be used in
+               instance scheduling.
+        :param pulumi.Input[str] node_type: Node type to use for nodes group that are created from this template.
+               Only one of nodeTypeFlexibility and nodeType can be specified.
+        :param pulumi.Input[dict] node_type_flexibility: Flexible properties for the desired node type. Node groups that
+               use this node template will create nodes of a type that matches
+               these properties. Only one of nodeTypeFlexibility and nodeType can
+               be specified.  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+        :param pulumi.Input[str] region: Region where nodes using the node template will be created.
+               If it is not provided, the provider region is used.
         :param pulumi.Input[dict] server_binding: The server binding policy for nodes using this template. Determines where the nodes should restart following a
                maintenance event.
 
         The **node_type_flexibility** object supports the following:
 
-          * `cpus` (`pulumi.Input[str]`)
-          * `localSsd` (`pulumi.Input[str]`)
-          * `memory` (`pulumi.Input[str]`)
+          * `cpus` (`pulumi.Input[str]`) - Number of virtual CPUs to use.
+          * `localSsd` (`pulumi.Input[str]`) - -
+            Use local SSD
+          * `memory` (`pulumi.Input[str]`) - Physical memory available to the node, defined in MB.
 
         The **server_binding** object supports the following:
 
-          * `type` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[str]`) - Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
+            nodes using this template will restart on any physical server
+            following a maintenance event.
+            If `RESTART_NODE_ON_MINIMAL_SERVER`, nodes using this template
+            will restart on the same physical server following a maintenance
+            event, instead of being live migrated to or restarted on a new
+            physical server. This option may be useful if you are using
+            software licenses tied to the underlying server characteristics
+            such as physical sockets or cores, to avoid the need for
+            additional licenses when maintenance occurs. However, VMs on such
+            nodes will experience outages while maintenance is applied.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -143,27 +173,42 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[dict] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
-        :param pulumi.Input[str] node_type: Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can
-               be specified.
-        :param pulumi.Input[dict] node_type_flexibility: Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that
-               matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
+        :param pulumi.Input[dict] node_affinity_labels: Labels to use for node affinity, which will be used in
+               instance scheduling.
+        :param pulumi.Input[str] node_type: Node type to use for nodes group that are created from this template.
+               Only one of nodeTypeFlexibility and nodeType can be specified.
+        :param pulumi.Input[dict] node_type_flexibility: Flexible properties for the desired node type. Node groups that
+               use this node template will create nodes of a type that matches
+               these properties. Only one of nodeTypeFlexibility and nodeType can
+               be specified.  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: Region where nodes using the node template will be created. If it is not provided, the provider region is used.
+        :param pulumi.Input[str] region: Region where nodes using the node template will be created.
+               If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[dict] server_binding: The server binding policy for nodes using this template. Determines where the nodes should restart following a
                maintenance event.
 
         The **node_type_flexibility** object supports the following:
 
-          * `cpus` (`pulumi.Input[str]`)
-          * `localSsd` (`pulumi.Input[str]`)
-          * `memory` (`pulumi.Input[str]`)
+          * `cpus` (`pulumi.Input[str]`) - Number of virtual CPUs to use.
+          * `localSsd` (`pulumi.Input[str]`) - -
+            Use local SSD
+          * `memory` (`pulumi.Input[str]`) - Physical memory available to the node, defined in MB.
 
         The **server_binding** object supports the following:
 
-          * `type` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[str]`) - Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
+            nodes using this template will restart on any physical server
+            following a maintenance event.
+            If `RESTART_NODE_ON_MINIMAL_SERVER`, nodes using this template
+            will restart on the same physical server following a maintenance
+            event, instead of being live migrated to or restarted on a new
+            physical server. This option may be useful if you are using
+            software licenses tied to the underlying server characteristics
+            such as physical sockets or cores, to avoid the need for
+            additional licenses when maintenance occurs. However, VMs on such
+            nodes will experience outages while maintenance is applied.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -63,7 +63,7 @@ class GetClusterResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if initial_node_count and not isinstance(initial_node_count, float):
             raise TypeError("Expected argument 'initial_node_count' to be a float")

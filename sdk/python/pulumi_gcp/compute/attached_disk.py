@@ -11,11 +11,40 @@ from .. import utilities, tables
 
 class AttachedDisk(pulumi.CustomResource):
     device_name: pulumi.Output[str]
+    """
+    Specifies a unique device name of your choice that is
+    reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+    system running within the instance. This name can be used to
+    reference the device for mounting, resizing, and so on, from within
+    the instance.
+    """
     disk: pulumi.Output[str]
+    """
+    `name` or `self_link` of the disk that will be attached.
+    """
     instance: pulumi.Output[str]
+    """
+    `name` or `self_link` of the compute instance that the disk will be attached to.
+    If the `self_link` is provided then `zone` and `project` are extracted from the
+    self link. If only the name is used then `zone` and `project` must be defined
+    as properties on the resource or provider.
+    """
     mode: pulumi.Output[str]
+    """
+    The mode in which to attach this disk, either READ_WRITE or
+    READ_ONLY. If not specified, the default is to attach the disk in
+    READ_WRITE mode.
+    """
     project: pulumi.Output[str]
+    """
+    The project that the referenced compute instance is a part of. If `instance` is referenced by its
+    `self_link` the project defined in the link will take precedence.
+    """
     zone: pulumi.Output[str]
+    """
+    The zone that the referenced compute instance is located within. If `instance` is referenced by its
+    `self_link` the zone defined in the link will take precedence.
+    """
     def __init__(__self__, resource_name, opts=None, device_name=None, disk=None, instance=None, mode=None, project=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Persistent disks can be attached to a compute instance using the `attached_disk`
@@ -37,6 +66,23 @@ class AttachedDisk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] device_name: Specifies a unique device name of your choice that is
+               reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+               system running within the instance. This name can be used to
+               reference the device for mounting, resizing, and so on, from within
+               the instance.
+        :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
+        :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
+               If the `self_link` is provided then `zone` and `project` are extracted from the
+               self link. If only the name is used then `zone` and `project` must be defined
+               as properties on the resource or provider.
+        :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
+               READ_ONLY. If not specified, the default is to attach the disk in
+               READ_WRITE mode.
+        :param pulumi.Input[str] project: The project that the referenced compute instance is a part of. If `instance` is referenced by its
+               `self_link` the project defined in the link will take precedence.
+        :param pulumi.Input[str] zone: The zone that the referenced compute instance is located within. If `instance` is referenced by its
+               `self_link` the zone defined in the link will take precedence.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -80,6 +126,23 @@ class AttachedDisk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] device_name: Specifies a unique device name of your choice that is
+               reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+               system running within the instance. This name can be used to
+               reference the device for mounting, resizing, and so on, from within
+               the instance.
+        :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
+        :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
+               If the `self_link` is provided then `zone` and `project` are extracted from the
+               self link. If only the name is used then `zone` and `project` must be defined
+               as properties on the resource or provider.
+        :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
+               READ_ONLY. If not specified, the default is to attach the disk in
+               READ_WRITE mode.
+        :param pulumi.Input[str] project: The project that the referenced compute instance is a part of. If `instance` is referenced by its
+               `self_link` the project defined in the link will take precedence.
+        :param pulumi.Input[str] zone: The zone that the referenced compute instance is located within. If `instance` is referenced by its
+               `self_link` the zone defined in the link will take precedence.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

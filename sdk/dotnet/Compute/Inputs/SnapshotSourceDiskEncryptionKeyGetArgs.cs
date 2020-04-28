@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class SnapshotSourceDiskEncryptionKeyGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies a 256-bit customer-supplied encryption key, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// </summary>
         [Input("rawKey")]
         public Input<string>? RawKey { get; set; }
 

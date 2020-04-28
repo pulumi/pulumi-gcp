@@ -47,10 +47,10 @@ import * as utilities from "../utilities";
  *             "bar",
  *         ],
  *     },
- * }, {timeouts: {
+ * }, { timeouts: {
  *     create: "30m",
  *     update: "40m",
- * }});
+ * } });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.

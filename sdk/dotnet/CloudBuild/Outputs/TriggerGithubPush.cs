@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class TriggerGithubPush
     {
+        /// <summary>
+        /// Regex of branches to match.  Specify only one of branch or tag.
+        /// </summary>
         public readonly string? Branch;
+        /// <summary>
+        /// Regex of tags to match.  Specify only one of branch or tag.
+        /// </summary>
         public readonly string? Tag;
 
         [OutputConstructor]

@@ -54,10 +54,13 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -70,8 +73,8 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly proxyId!: pulumi.Output<number>;
     /**
-     * The Region in which the created target https proxy should reside. If it is not provided, the provider region is
-     * used.
+     * The Region in which the created target https proxy should reside.
+     * If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -79,7 +82,8 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * A reference to the RegionUrlMap resource that defines the mapping from URL to the BackendService.
+     * A reference to the RegionUrlMap resource that defines the mapping from URL
+     * to the BackendService.
      */
     public readonly urlMap!: pulumi.Output<string>;
 
@@ -141,10 +145,13 @@ export interface RegionTargetHttpProxyState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -157,8 +164,8 @@ export interface RegionTargetHttpProxyState {
      */
     readonly proxyId?: pulumi.Input<number>;
     /**
-     * The Region in which the created target https proxy should reside. If it is not provided, the provider region is
-     * used.
+     * The Region in which the created target https proxy should reside.
+     * If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -166,7 +173,8 @@ export interface RegionTargetHttpProxyState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * A reference to the RegionUrlMap resource that defines the mapping from URL to the BackendService.
+     * A reference to the RegionUrlMap resource that defines the mapping from URL
+     * to the BackendService.
      */
     readonly urlMap?: pulumi.Input<string>;
 }
@@ -180,10 +188,13 @@ export interface RegionTargetHttpProxyArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -192,12 +203,13 @@ export interface RegionTargetHttpProxyArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The Region in which the created target https proxy should reside. If it is not provided, the provider region is
-     * used.
+     * The Region in which the created target https proxy should reside.
+     * If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * A reference to the RegionUrlMap resource that defines the mapping from URL to the BackendService.
+     * A reference to the RegionUrlMap resource that defines the mapping from URL
+     * to the BackendService.
      */
     readonly urlMap: pulumi.Input<string>;
 }

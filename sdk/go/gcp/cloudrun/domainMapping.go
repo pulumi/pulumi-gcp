@@ -23,14 +23,14 @@ type DomainMapping struct {
 
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Metadata associated with this DomainMapping.
+	// Metadata associated with this DomainMapping.  Structure is documented below.
 	Metadata DomainMappingMetadataOutput `pulumi:"metadata"`
 	// Name should be a verified domain
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The spec for this DomainMapping.
+	// The spec for this DomainMapping.  Structure is documented below.
 	Spec DomainMappingSpecOutput `pulumi:"spec"`
 	// The current status of the DomainMapping.
 	Status DomainMappingStatusOutput `pulumi:"status"`
@@ -75,14 +75,14 @@ func GetDomainMapping(ctx *pulumi.Context,
 type domainMappingState struct {
 	// The location of the cloud run instance. eg us-central1
 	Location *string `pulumi:"location"`
-	// Metadata associated with this DomainMapping.
+	// Metadata associated with this DomainMapping.  Structure is documented below.
 	Metadata *DomainMappingMetadata `pulumi:"metadata"`
 	// Name should be a verified domain
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The spec for this DomainMapping.
+	// The spec for this DomainMapping.  Structure is documented below.
 	Spec *DomainMappingSpec `pulumi:"spec"`
 	// The current status of the DomainMapping.
 	Status *DomainMappingStatus `pulumi:"status"`
@@ -91,14 +91,14 @@ type domainMappingState struct {
 type DomainMappingState struct {
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringPtrInput
-	// Metadata associated with this DomainMapping.
+	// Metadata associated with this DomainMapping.  Structure is documented below.
 	Metadata DomainMappingMetadataPtrInput
 	// Name should be a verified domain
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The spec for this DomainMapping.
+	// The spec for this DomainMapping.  Structure is documented below.
 	Spec DomainMappingSpecPtrInput
 	// The current status of the DomainMapping.
 	Status DomainMappingStatusPtrInput
@@ -111,14 +111,14 @@ func (DomainMappingState) ElementType() reflect.Type {
 type domainMappingArgs struct {
 	// The location of the cloud run instance. eg us-central1
 	Location string `pulumi:"location"`
-	// Metadata associated with this DomainMapping.
+	// Metadata associated with this DomainMapping.  Structure is documented below.
 	Metadata DomainMappingMetadata `pulumi:"metadata"`
 	// Name should be a verified domain
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The spec for this DomainMapping.
+	// The spec for this DomainMapping.  Structure is documented below.
 	Spec DomainMappingSpec `pulumi:"spec"`
 }
 
@@ -126,14 +126,14 @@ type domainMappingArgs struct {
 type DomainMappingArgs struct {
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringInput
-	// Metadata associated with this DomainMapping.
+	// Metadata associated with this DomainMapping.  Structure is documented below.
 	Metadata DomainMappingMetadataInput
 	// Name should be a verified domain
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The spec for this DomainMapping.
+	// The spec for this DomainMapping.  Structure is documented below.
 	Spec DomainMappingSpecInput
 }
 

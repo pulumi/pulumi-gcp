@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_autoscaler.html.markdown.
  */
+/** @deprecated gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler */
 export class Autoscalar extends pulumi.CustomResource {
     /**
      * Get an existing Autoscalar resource's state with the given name, ID, and optional extra
@@ -32,6 +33,7 @@ export class Autoscalar extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AutoscalarState, opts?: pulumi.CustomResourceOptions): Autoscalar {
+        pulumi.log.warn("Autoscalar is deprecated: gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler")
         return new Autoscalar(name, <any>state, { ...opts, id: id });
     }
 
@@ -50,9 +52,11 @@ export class Autoscalar extends pulumi.CustomResource {
     }
 
     /**
-     * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
-     * autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified,
-     * the default will be to autoscale based on cpuUtilization to 0.6 or 60%!.(MISSING)
+     * The configuration parameters for the autoscaling algorithm. You can
+     * define one or more of the policies for an autoscaler: cpuUtilization,
+     * customMetricUtilizations, and loadBalancingUtilization.
+     * If none of these are specified, the default will be to autoscale based
+     * on cpuUtilization to 0.6 or 60%.  Structure is documented below.
      */
     public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.AutoscalarAutoscalingPolicy>;
     /**
@@ -64,9 +68,9 @@ export class Autoscalar extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Name of the resource. The name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * The identifier (type) of the Stackdriver Monitoring metric.
+     * The metric cannot have negative values.
+     * The metric must have a value type of INT64 or DOUBLE.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -79,7 +83,9 @@ export class Autoscalar extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * URL of the managed instance group that this autoscaler will scale.
+     * Fraction of backend capacity utilization (set in HTTP(s) load
+     * balancing configuration) that autoscaler should maintain. Must
+     * be a positive float value. If not defined, the default is 0.8.
      */
     public readonly target!: pulumi.Output<string>;
     /**
@@ -94,8 +100,11 @@ export class Autoscalar extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler */
     constructor(name: string, args: AutoscalarArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler */
     constructor(name: string, argsOrState?: AutoscalarArgs | AutoscalarState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Autoscalar is deprecated: gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as AutoscalarState | undefined;
@@ -140,9 +149,11 @@ export class Autoscalar extends pulumi.CustomResource {
  */
 export interface AutoscalarState {
     /**
-     * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
-     * autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified,
-     * the default will be to autoscale based on cpuUtilization to 0.6 or 60%!.(MISSING)
+     * The configuration parameters for the autoscaling algorithm. You can
+     * define one or more of the policies for an autoscaler: cpuUtilization,
+     * customMetricUtilizations, and loadBalancingUtilization.
+     * If none of these are specified, the default will be to autoscale based
+     * on cpuUtilization to 0.6 or 60%.  Structure is documented below.
      */
     readonly autoscalingPolicy?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicy>;
     /**
@@ -154,9 +165,9 @@ export interface AutoscalarState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the resource. The name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * The identifier (type) of the Stackdriver Monitoring metric.
+     * The metric cannot have negative values.
+     * The metric must have a value type of INT64 or DOUBLE.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -169,7 +180,9 @@ export interface AutoscalarState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * URL of the managed instance group that this autoscaler will scale.
+     * Fraction of backend capacity utilization (set in HTTP(s) load
+     * balancing configuration) that autoscaler should maintain. Must
+     * be a positive float value. If not defined, the default is 0.8.
      */
     readonly target?: pulumi.Input<string>;
     /**
@@ -183,9 +196,11 @@ export interface AutoscalarState {
  */
 export interface AutoscalarArgs {
     /**
-     * The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an
-     * autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified,
-     * the default will be to autoscale based on cpuUtilization to 0.6 or 60%!.(MISSING)
+     * The configuration parameters for the autoscaling algorithm. You can
+     * define one or more of the policies for an autoscaler: cpuUtilization,
+     * customMetricUtilizations, and loadBalancingUtilization.
+     * If none of these are specified, the default will be to autoscale based
+     * on cpuUtilization to 0.6 or 60%.  Structure is documented below.
      */
     readonly autoscalingPolicy: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicy>;
     /**
@@ -193,9 +208,9 @@ export interface AutoscalarArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Name of the resource. The name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * The identifier (type) of the Stackdriver Monitoring metric.
+     * The metric cannot have negative values.
+     * The metric must have a value type of INT64 or DOUBLE.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -204,7 +219,9 @@ export interface AutoscalarArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * URL of the managed instance group that this autoscaler will scale.
+     * Fraction of backend capacity utilization (set in HTTP(s) load
+     * balancing configuration) that autoscaler should maintain. Must
+     * be a positive float value. If not defined, the default is 0.8.
      */
     readonly target: pulumi.Input<string>;
     /**

@@ -49,7 +49,8 @@ export class GameServerCluster extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Game server cluster connection information. This information is used to manage game server clusters.
+     * Game server cluster connection information. This information is used to
+     * manage game server clusters.  Structure is documented below.
      */
     public readonly connectionInfo!: pulumi.Output<outputs.gameservices.GameServerClusterConnectionInfo>;
     /**
@@ -57,7 +58,8 @@ export class GameServerCluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The labels associated with this game server cluster. Each label is a key-value pair.
+     * The labels associated with this game server cluster. Each label is a
+     * key-value pair.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -140,7 +142,8 @@ export interface GameServerClusterState {
      */
     readonly clusterId?: pulumi.Input<string>;
     /**
-     * Game server cluster connection information. This information is used to manage game server clusters.
+     * Game server cluster connection information. This information is used to
+     * manage game server clusters.  Structure is documented below.
      */
     readonly connectionInfo?: pulumi.Input<inputs.gameservices.GameServerClusterConnectionInfo>;
     /**
@@ -148,7 +151,8 @@ export interface GameServerClusterState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The labels associated with this game server cluster. Each label is a key-value pair.
+     * The labels associated with this game server cluster. Each label is a
+     * key-value pair.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -181,7 +185,8 @@ export interface GameServerClusterArgs {
      */
     readonly clusterId: pulumi.Input<string>;
     /**
-     * Game server cluster connection information. This information is used to manage game server clusters.
+     * Game server cluster connection information. This information is used to
+     * manage game server clusters.  Structure is documented below.
      */
     readonly connectionInfo: pulumi.Input<inputs.gameservices.GameServerClusterConnectionInfo>;
     /**
@@ -189,7 +194,8 @@ export interface GameServerClusterArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The labels associated with this game server cluster. Each label is a key-value pair.
+     * The labels associated with this game server cluster. Each label is a
+     * key-value pair.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

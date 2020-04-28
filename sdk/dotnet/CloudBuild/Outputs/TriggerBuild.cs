@@ -13,9 +13,27 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class TriggerBuild
     {
+        /// <summary>
+        /// A list of images to be pushed upon the successful completion of all build steps.
+        /// The images are pushed using the builder service account's credentials.
+        /// The digests of the pushed images will be stored in the Build resource's results field.
+        /// If any of the images fail to be pushed, the build status is marked FAILURE.
+        /// </summary>
         public readonly ImmutableArray<string> Images;
+        /// <summary>
+        /// The operations to be performed on the workspace.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.TriggerBuildStep> Steps;
+        /// <summary>
+        /// Tags for annotation of a Build. These are not docker tags.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Time limit for executing this build step. If not defined,
+        /// the step has no
+        /// time limit and will be allowed to continue to run until either it
+        /// completes or the build itself times out.
+        /// </summary>
         public readonly string? Timeout;
 
         [OutputConstructor]

@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class ReservationSpecificReservationInstancePropertiesLocalSsdGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The size of the disk in base-2 GB.
+        /// </summary>
         [Input("diskSizeGb", required: true)]
         public Input<int> DiskSizeGb { get; set; } = null!;
 
+        /// <summary>
+        /// The disk interface to use for attaching this disk, one
+        /// of `SCSI` or `NVME`. The default is `SCSI`.
+        /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
 

@@ -35,8 +35,9 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string> PerimeterName { get; private set; } = null!;
 
         /// <summary>
-        /// A GCP resource that is inside of the service perimeter. Currently only projects are allowed. Format:
-        /// projects/{project_number}
+        /// A GCP resource that is inside of the service perimeter.
+        /// Currently only projects are allowed.
+        /// Format: projects/{project_number}
         /// </summary>
         [Output("resource")]
         public Output<string> Resource { get; private set; } = null!;
@@ -94,8 +95,9 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string> PerimeterName { get; set; } = null!;
 
         /// <summary>
-        /// A GCP resource that is inside of the service perimeter. Currently only projects are allowed. Format:
-        /// projects/{project_number}
+        /// A GCP resource that is inside of the service perimeter.
+        /// Currently only projects are allowed.
+        /// Format: projects/{project_number}
         /// </summary>
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;
@@ -114,8 +116,9 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? PerimeterName { get; set; }
 
         /// <summary>
-        /// A GCP resource that is inside of the service perimeter. Currently only projects are allowed. Format:
-        /// projects/{project_number}
+        /// A GCP resource that is inside of the service perimeter.
+        /// Currently only projects are allowed.
+        /// Format: projects/{project_number}
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }

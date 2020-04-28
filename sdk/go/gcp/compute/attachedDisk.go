@@ -27,12 +27,29 @@ import (
 type AttachedDisk struct {
 	pulumi.CustomResourceState
 
-	DeviceName pulumi.StringOutput    `pulumi:"deviceName"`
-	Disk       pulumi.StringOutput    `pulumi:"disk"`
-	Instance   pulumi.StringOutput    `pulumi:"instance"`
-	Mode       pulumi.StringPtrOutput `pulumi:"mode"`
-	Project    pulumi.StringOutput    `pulumi:"project"`
-	Zone       pulumi.StringOutput    `pulumi:"zone"`
+	// Specifies a unique device name of your choice that is
+	// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+	// system running within the instance. This name can be used to
+	// reference the device for mounting, resizing, and so on, from within
+	// the instance.
+	DeviceName pulumi.StringOutput `pulumi:"deviceName"`
+	// `name` or `selfLink` of the disk that will be attached.
+	Disk pulumi.StringOutput `pulumi:"disk"`
+	// `name` or `selfLink` of the compute instance that the disk will be attached to.
+	// If the `selfLink` is provided then `zone` and `project` are extracted from the
+	// self link. If only the name is used then `zone` and `project` must be defined
+	// as properties on the resource or provider.
+	Instance pulumi.StringOutput `pulumi:"instance"`
+	// The mode in which to attach this disk, either READ_WRITE or
+	// READ_ONLY. If not specified, the default is to attach the disk in
+	// READ_WRITE mode.
+	Mode pulumi.StringPtrOutput `pulumi:"mode"`
+	// The project that the referenced compute instance is a part of. If `instance` is referenced by its
+	// `selfLink` the project defined in the link will take precedence.
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The zone that the referenced compute instance is located within. If `instance` is referenced by its
+	// `selfLink` the zone defined in the link will take precedence.
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewAttachedDisk registers a new resource with the given unique name, arguments, and options.
@@ -69,21 +86,55 @@ func GetAttachedDisk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AttachedDisk resources.
 type attachedDiskState struct {
+	// Specifies a unique device name of your choice that is
+	// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+	// system running within the instance. This name can be used to
+	// reference the device for mounting, resizing, and so on, from within
+	// the instance.
 	DeviceName *string `pulumi:"deviceName"`
-	Disk       *string `pulumi:"disk"`
-	Instance   *string `pulumi:"instance"`
-	Mode       *string `pulumi:"mode"`
-	Project    *string `pulumi:"project"`
-	Zone       *string `pulumi:"zone"`
+	// `name` or `selfLink` of the disk that will be attached.
+	Disk *string `pulumi:"disk"`
+	// `name` or `selfLink` of the compute instance that the disk will be attached to.
+	// If the `selfLink` is provided then `zone` and `project` are extracted from the
+	// self link. If only the name is used then `zone` and `project` must be defined
+	// as properties on the resource or provider.
+	Instance *string `pulumi:"instance"`
+	// The mode in which to attach this disk, either READ_WRITE or
+	// READ_ONLY. If not specified, the default is to attach the disk in
+	// READ_WRITE mode.
+	Mode *string `pulumi:"mode"`
+	// The project that the referenced compute instance is a part of. If `instance` is referenced by its
+	// `selfLink` the project defined in the link will take precedence.
+	Project *string `pulumi:"project"`
+	// The zone that the referenced compute instance is located within. If `instance` is referenced by its
+	// `selfLink` the zone defined in the link will take precedence.
+	Zone *string `pulumi:"zone"`
 }
 
 type AttachedDiskState struct {
+	// Specifies a unique device name of your choice that is
+	// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+	// system running within the instance. This name can be used to
+	// reference the device for mounting, resizing, and so on, from within
+	// the instance.
 	DeviceName pulumi.StringPtrInput
-	Disk       pulumi.StringPtrInput
-	Instance   pulumi.StringPtrInput
-	Mode       pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
-	Zone       pulumi.StringPtrInput
+	// `name` or `selfLink` of the disk that will be attached.
+	Disk pulumi.StringPtrInput
+	// `name` or `selfLink` of the compute instance that the disk will be attached to.
+	// If the `selfLink` is provided then `zone` and `project` are extracted from the
+	// self link. If only the name is used then `zone` and `project` must be defined
+	// as properties on the resource or provider.
+	Instance pulumi.StringPtrInput
+	// The mode in which to attach this disk, either READ_WRITE or
+	// READ_ONLY. If not specified, the default is to attach the disk in
+	// READ_WRITE mode.
+	Mode pulumi.StringPtrInput
+	// The project that the referenced compute instance is a part of. If `instance` is referenced by its
+	// `selfLink` the project defined in the link will take precedence.
+	Project pulumi.StringPtrInput
+	// The zone that the referenced compute instance is located within. If `instance` is referenced by its
+	// `selfLink` the zone defined in the link will take precedence.
+	Zone pulumi.StringPtrInput
 }
 
 func (AttachedDiskState) ElementType() reflect.Type {
@@ -91,22 +142,56 @@ func (AttachedDiskState) ElementType() reflect.Type {
 }
 
 type attachedDiskArgs struct {
+	// Specifies a unique device name of your choice that is
+	// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+	// system running within the instance. This name can be used to
+	// reference the device for mounting, resizing, and so on, from within
+	// the instance.
 	DeviceName *string `pulumi:"deviceName"`
-	Disk       string  `pulumi:"disk"`
-	Instance   string  `pulumi:"instance"`
-	Mode       *string `pulumi:"mode"`
-	Project    *string `pulumi:"project"`
-	Zone       *string `pulumi:"zone"`
+	// `name` or `selfLink` of the disk that will be attached.
+	Disk string `pulumi:"disk"`
+	// `name` or `selfLink` of the compute instance that the disk will be attached to.
+	// If the `selfLink` is provided then `zone` and `project` are extracted from the
+	// self link. If only the name is used then `zone` and `project` must be defined
+	// as properties on the resource or provider.
+	Instance string `pulumi:"instance"`
+	// The mode in which to attach this disk, either READ_WRITE or
+	// READ_ONLY. If not specified, the default is to attach the disk in
+	// READ_WRITE mode.
+	Mode *string `pulumi:"mode"`
+	// The project that the referenced compute instance is a part of. If `instance` is referenced by its
+	// `selfLink` the project defined in the link will take precedence.
+	Project *string `pulumi:"project"`
+	// The zone that the referenced compute instance is located within. If `instance` is referenced by its
+	// `selfLink` the zone defined in the link will take precedence.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a AttachedDisk resource.
 type AttachedDiskArgs struct {
+	// Specifies a unique device name of your choice that is
+	// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
+	// system running within the instance. This name can be used to
+	// reference the device for mounting, resizing, and so on, from within
+	// the instance.
 	DeviceName pulumi.StringPtrInput
-	Disk       pulumi.StringInput
-	Instance   pulumi.StringInput
-	Mode       pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
-	Zone       pulumi.StringPtrInput
+	// `name` or `selfLink` of the disk that will be attached.
+	Disk pulumi.StringInput
+	// `name` or `selfLink` of the compute instance that the disk will be attached to.
+	// If the `selfLink` is provided then `zone` and `project` are extracted from the
+	// self link. If only the name is used then `zone` and `project` must be defined
+	// as properties on the resource or provider.
+	Instance pulumi.StringInput
+	// The mode in which to attach this disk, either READ_WRITE or
+	// READ_ONLY. If not specified, the default is to attach the disk in
+	// READ_WRITE mode.
+	Mode pulumi.StringPtrInput
+	// The project that the referenced compute instance is a part of. If `instance` is referenced by its
+	// `selfLink` the project defined in the link will take precedence.
+	Project pulumi.StringPtrInput
+	// The zone that the referenced compute instance is located within. If `instance` is referenced by its
+	// `selfLink` the zone defined in the link will take precedence.
+	Zone pulumi.StringPtrInput
 }
 
 func (AttachedDiskArgs) ElementType() reflect.Type {

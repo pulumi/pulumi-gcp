@@ -13,14 +13,20 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class FlexibleAppVersionDeploymentFileArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// SHA1 checksum of the file
+        /// </summary>
         [Input("sha1Sum")]
         public Input<string>? Sha1Sum { get; set; }
 
+        /// <summary>
+        /// Source URL
+        /// </summary>
         [Input("sourceUrl", required: true)]
         public Input<string> SourceUrl { get; set; } = null!;
 

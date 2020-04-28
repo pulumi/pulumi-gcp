@@ -36,7 +36,7 @@ type LookupNetworkEndpointGroupResult struct {
 	DefaultPort int `pulumi:"defaultPort"`
 	// The NEG description.
 	Description string `pulumi:"description"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name *string `pulumi:"name"`
 	// The network to which all network endpoints in the NEG belong.

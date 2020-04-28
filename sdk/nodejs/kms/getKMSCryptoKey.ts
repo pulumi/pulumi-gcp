@@ -70,7 +70,7 @@ export interface GetKMSCryptoKeyResult {
     readonly selfLink: string;
     readonly versionTemplates: outputs.kms.GetKMSCryptoKeyVersionTemplate[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

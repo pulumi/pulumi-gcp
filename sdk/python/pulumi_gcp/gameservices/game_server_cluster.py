@@ -16,12 +16,22 @@ class GameServerCluster(pulumi.CustomResource):
     """
     connection_info: pulumi.Output[dict]
     """
-    Game server cluster connection information. This information is used to manage game server clusters.
+    Game server cluster connection information. This information is used to
+    manage game server clusters.  Structure is documented below.
 
-      * `gkeClusterReference` (`dict`)
-        * `cluster` (`str`)
+      * `gkeClusterReference` (`dict`) - Reference of the GKE cluster where the game servers are installed.  Structure is documented below.
+        * `cluster` (`str`) - The full or partial name of a GKE cluster, using one of the following
+          forms:
+          * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
+          * `locations/{location}/clusters/{cluster_id}`
+          * `{cluster_id}`
+          If project and location are not specified, the project and location of the
+          GameServerCluster resource are used to generate the full name of the
+          GKE cluster.
 
-      * `namespace` (`str`)
+      * `namespace` (`str`) - Namespace designated on the game server cluster where the game server
+        instances will be created. The namespace existence will be validated
+        during creation.
     """
     description: pulumi.Output[str]
     """
@@ -29,7 +39,8 @@ class GameServerCluster(pulumi.CustomResource):
     """
     labels: pulumi.Output[dict]
     """
-    The labels associated with this game server cluster. Each label is a key-value pair.
+    The labels associated with this game server cluster. Each label is a
+    key-value pair.
     """
     location: pulumi.Output[str]
     """
@@ -63,9 +74,11 @@ class GameServerCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Required. The resource name of the game server cluster
-        :param pulumi.Input[dict] connection_info: Game server cluster connection information. This information is used to manage game server clusters.
+        :param pulumi.Input[dict] connection_info: Game server cluster connection information. This information is used to
+               manage game server clusters.  Structure is documented below.
         :param pulumi.Input[str] description: Human readable description of the cluster.
-        :param pulumi.Input[dict] labels: The labels associated with this game server cluster. Each label is a key-value pair.
+        :param pulumi.Input[dict] labels: The labels associated with this game server cluster. Each label is a
+               key-value pair.
         :param pulumi.Input[str] location: Location of the Cluster.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -73,10 +86,19 @@ class GameServerCluster(pulumi.CustomResource):
 
         The **connection_info** object supports the following:
 
-          * `gkeClusterReference` (`pulumi.Input[dict]`)
-            * `cluster` (`pulumi.Input[str]`)
+          * `gkeClusterReference` (`pulumi.Input[dict]`) - Reference of the GKE cluster where the game servers are installed.  Structure is documented below.
+            * `cluster` (`pulumi.Input[str]`) - The full or partial name of a GKE cluster, using one of the following
+              forms:
+              * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
+              * `locations/{location}/clusters/{cluster_id}`
+              * `{cluster_id}`
+              If project and location are not specified, the project and location of the
+              GameServerCluster resource are used to generate the full name of the
+              GKE cluster.
 
-          * `namespace` (`pulumi.Input[str]`)
+          * `namespace` (`pulumi.Input[str]`) - Namespace designated on the game server cluster where the game server
+            instances will be created. The namespace existence will be validated
+            during creation.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -125,9 +147,11 @@ class GameServerCluster(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Required. The resource name of the game server cluster
-        :param pulumi.Input[dict] connection_info: Game server cluster connection information. This information is used to manage game server clusters.
+        :param pulumi.Input[dict] connection_info: Game server cluster connection information. This information is used to
+               manage game server clusters.  Structure is documented below.
         :param pulumi.Input[str] description: Human readable description of the cluster.
-        :param pulumi.Input[dict] labels: The labels associated with this game server cluster. Each label is a key-value pair.
+        :param pulumi.Input[dict] labels: The labels associated with this game server cluster. Each label is a
+               key-value pair.
         :param pulumi.Input[str] location: Location of the Cluster.
         :param pulumi.Input[str] name: The resource id of the game server cluster, eg:
                'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
@@ -138,10 +162,19 @@ class GameServerCluster(pulumi.CustomResource):
 
         The **connection_info** object supports the following:
 
-          * `gkeClusterReference` (`pulumi.Input[dict]`)
-            * `cluster` (`pulumi.Input[str]`)
+          * `gkeClusterReference` (`pulumi.Input[dict]`) - Reference of the GKE cluster where the game servers are installed.  Structure is documented below.
+            * `cluster` (`pulumi.Input[str]`) - The full or partial name of a GKE cluster, using one of the following
+              forms:
+              * `projects/{project_id}/locations/{location}/clusters/{cluster_id}`
+              * `locations/{location}/clusters/{cluster_id}`
+              * `{cluster_id}`
+              If project and location are not specified, the project and location of the
+              GameServerCluster resource are used to generate the full name of the
+              GKE cluster.
 
-          * `namespace` (`pulumi.Input[str]`)
+          * `namespace` (`pulumi.Input[str]`) - Namespace designated on the game server cluster where the game server
+            instances will be created. The namespace existence will be validated
+            during creation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

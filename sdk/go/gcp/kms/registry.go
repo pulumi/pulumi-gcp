@@ -9,6 +9,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+//
+// Deprecated: gcp.Registry has been deprecated in favour of gcp.Registry
 type Registry struct {
 	pulumi.CustomResourceState
 

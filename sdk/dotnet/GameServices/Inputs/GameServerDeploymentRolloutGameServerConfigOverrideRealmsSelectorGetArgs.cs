@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.GameServices.Inputs
     {
         [Input("realms")]
         private InputList<string>? _realms;
+
+        /// <summary>
+        /// List of realms to match against.
+        /// </summary>
         public InputList<string> Realms
         {
             get => _realms ?? (_realms = new InputList<string>());

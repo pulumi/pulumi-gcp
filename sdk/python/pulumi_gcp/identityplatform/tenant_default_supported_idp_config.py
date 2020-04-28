@@ -24,8 +24,17 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
     """
     idp_id: pulumi.Output[str]
     """
-    ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
-    'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+    ID of the IDP. Possible values include:
+    * `apple.com`
+    * `facebook.com`
+    * `gc.apple.com`
+    * `github.com`
+    * `google.com`
+    * `linkedin.com`
+    * `microsoft.com`
+    * `playgames.google.com`
+    * `twitter.com`
+    * `yahoo.com`
     """
     name: pulumi.Output[str]
     """
@@ -53,8 +62,17 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
-        :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
-               'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+        :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
+               * `apple.com`
+               * `facebook.com`
+               * `gc.apple.com`
+               * `github.com`
+               * `google.com`
+               * `linkedin.com`
+               * `microsoft.com`
+               * `playgames.google.com`
+               * `twitter.com`
+               * `yahoo.com`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tenant: The name of the tenant where this DefaultSupportedIdpConfig resource exists
@@ -109,8 +127,17 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
-        :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include: * 'apple.com' * 'facebook.com' * 'gc.apple.com' * 'github.com' * 'google.com' *
-               'linkedin.com' * 'microsoft.com' * 'playgames.google.com' * 'twitter.com' * 'yahoo.com'
+        :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
+               * `apple.com`
+               * `facebook.com`
+               * `gc.apple.com`
+               * `github.com`
+               * `google.com`
+               * `linkedin.com`
+               * `microsoft.com`
+               * `playgames.google.com`
+               * `twitter.com`
+               * `yahoo.com`
         :param pulumi.Input[str] name: The name of the default supported IDP config resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

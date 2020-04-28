@@ -26,9 +26,11 @@ type FirewallRule struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// An optional string description of this rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-	// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-	// of this rule can be modified by the user.
+	// A positive integer that defines the order of rule evaluation.
+	// Rules with the lowest priority are evaluated first.
+	// A default rule at priority Int32.MaxValue matches all IPv4 and
+	// IPv6 traffic when no previous rule matches. Only the action of
+	// this rule can be modified by the user.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -75,9 +77,11 @@ type firewallRuleState struct {
 	Action *string `pulumi:"action"`
 	// An optional string description of this rule.
 	Description *string `pulumi:"description"`
-	// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-	// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-	// of this rule can be modified by the user.
+	// A positive integer that defines the order of rule evaluation.
+	// Rules with the lowest priority are evaluated first.
+	// A default rule at priority Int32.MaxValue matches all IPv4 and
+	// IPv6 traffic when no previous rule matches. Only the action of
+	// this rule can be modified by the user.
 	Priority *int `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -91,9 +95,11 @@ type FirewallRuleState struct {
 	Action pulumi.StringPtrInput
 	// An optional string description of this rule.
 	Description pulumi.StringPtrInput
-	// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-	// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-	// of this rule can be modified by the user.
+	// A positive integer that defines the order of rule evaluation.
+	// Rules with the lowest priority are evaluated first.
+	// A default rule at priority Int32.MaxValue matches all IPv4 and
+	// IPv6 traffic when no previous rule matches. Only the action of
+	// this rule can be modified by the user.
 	Priority pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -111,9 +117,11 @@ type firewallRuleArgs struct {
 	Action string `pulumi:"action"`
 	// An optional string description of this rule.
 	Description *string `pulumi:"description"`
-	// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-	// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-	// of this rule can be modified by the user.
+	// A positive integer that defines the order of rule evaluation.
+	// Rules with the lowest priority are evaluated first.
+	// A default rule at priority Int32.MaxValue matches all IPv4 and
+	// IPv6 traffic when no previous rule matches. Only the action of
+	// this rule can be modified by the user.
 	Priority *int `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -128,9 +136,11 @@ type FirewallRuleArgs struct {
 	Action pulumi.StringInput
 	// An optional string description of this rule.
 	Description pulumi.StringPtrInput
-	// A positive integer that defines the order of rule evaluation. Rules with the lowest priority are evaluated first. A
-	// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action
-	// of this rule can be modified by the user.
+	// A positive integer that defines the order of rule evaluation.
+	// Rules with the lowest priority are evaluated first.
+	// A default rule at priority Int32.MaxValue matches all IPv4 and
+	// IPv6 traffic when no previous rule matches. Only the action of
+	// this rule can be modified by the user.
 	Priority pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

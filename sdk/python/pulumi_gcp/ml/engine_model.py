@@ -12,9 +12,10 @@ from .. import utilities, tables
 class EngineModel(pulumi.CustomResource):
     default_version: pulumi.Output[dict]
     """
-    The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+    The default version of the model. This version will be used to handle
+    prediction requests that do not specify a version.  Structure is documented below.
 
-      * `name` (`str`)
+      * `name` (`str`) - The name specified for the version when it was created.
     """
     description: pulumi.Output[str]
     """
@@ -26,7 +27,7 @@ class EngineModel(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name specified for the model.
+    The name specified for the version when it was created.
     """
     online_prediction_console_logging: pulumi.Output[bool]
     """
@@ -43,7 +44,8 @@ class EngineModel(pulumi.CustomResource):
     """
     regions: pulumi.Output[str]
     """
-    The list of regions where the model is going to be deployed. Currently only one region per model is supported
+    The list of regions where the model is going to be deployed.
+    Currently only one region per model is supported
     """
     def __init__(__self__, resource_name, opts=None, default_version=None, description=None, labels=None, name=None, online_prediction_console_logging=None, online_prediction_logging=None, project=None, regions=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -54,19 +56,21 @@ class EngineModel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+        :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle
+               prediction requests that do not specify a version.  Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
         :param pulumi.Input[dict] labels: One or more labels that you can add, to organize your models.
-        :param pulumi.Input[str] name: The name specified for the model.
+        :param pulumi.Input[str] name: The name specified for the version when it was created.
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed. Currently only one region per model is supported
+        :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
+               Currently only one region per model is supported
 
         The **default_version** object supports the following:
 
-          * `name` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - The name specified for the version when it was created.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -108,19 +112,21 @@ class EngineModel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle prediction requests that do not specify a version.
+        :param pulumi.Input[dict] default_version: The default version of the model. This version will be used to handle
+               prediction requests that do not specify a version.  Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
         :param pulumi.Input[dict] labels: One or more labels that you can add, to organize your models.
-        :param pulumi.Input[str] name: The name specified for the model.
+        :param pulumi.Input[str] name: The name specified for the version when it was created.
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed. Currently only one region per model is supported
+        :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
+               Currently only one region per model is supported
 
         The **default_version** object supports the following:
 
-          * `name` (`pulumi.Input[str]`)
+          * `name` (`pulumi.Input[str]`) - The name specified for the version when it was created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
