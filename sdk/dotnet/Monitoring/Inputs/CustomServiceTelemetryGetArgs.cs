@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Monitoring.Inputs
 
     public sealed class CustomServiceTelemetryGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The full name of the resource that defines this service.
+        /// Formatted as described in
+        /// https://cloud.google.com/apis/design/resource_names.
+        /// </summary>
         [Input("resourceName")]
         public Input<string>? ResourceName { get; set; }
 

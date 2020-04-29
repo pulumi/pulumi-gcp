@@ -663,6 +663,3729 @@ func (o DatasetDefaultEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type JobCopy struct {
+	// Specifies whether the job is allowed to create new tables. The following values are supported:
+	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	CreateDisposition *string `pulumi:"createDisposition"`
+	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	DestinationEncryptionConfiguration *JobCopyDestinationEncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
+	// The destination table.  Structure is documented below.
+	DestinationTable *JobCopyDestinationTable `pulumi:"destinationTable"`
+	// Source tables to copy.  Structure is documented below.
+	SourceTables []JobCopySourceTable `pulumi:"sourceTables"`
+	// Specifies the action that occurs if the destination table already exists. The following values are supported:
+	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	WriteDisposition *string `pulumi:"writeDisposition"`
+}
+
+// JobCopyInput is an input type that accepts JobCopyArgs and JobCopyOutput values.
+// You can construct a concrete instance of `JobCopyInput` via:
+//
+// 		 JobCopyArgs{...}
+//
+type JobCopyInput interface {
+	pulumi.Input
+
+	ToJobCopyOutput() JobCopyOutput
+	ToJobCopyOutputWithContext(context.Context) JobCopyOutput
+}
+
+type JobCopyArgs struct {
+	// Specifies whether the job is allowed to create new tables. The following values are supported:
+	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
+	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	DestinationEncryptionConfiguration JobCopyDestinationEncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
+	// The destination table.  Structure is documented below.
+	DestinationTable JobCopyDestinationTablePtrInput `pulumi:"destinationTable"`
+	// Source tables to copy.  Structure is documented below.
+	SourceTables JobCopySourceTableArrayInput `pulumi:"sourceTables"`
+	// Specifies the action that occurs if the destination table already exists. The following values are supported:
+	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
+}
+
+func (JobCopyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCopy)(nil)).Elem()
+}
+
+func (i JobCopyArgs) ToJobCopyOutput() JobCopyOutput {
+	return i.ToJobCopyOutputWithContext(context.Background())
+}
+
+func (i JobCopyArgs) ToJobCopyOutputWithContext(ctx context.Context) JobCopyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopyOutput)
+}
+
+func (i JobCopyArgs) ToJobCopyPtrOutput() JobCopyPtrOutput {
+	return i.ToJobCopyPtrOutputWithContext(context.Background())
+}
+
+func (i JobCopyArgs) ToJobCopyPtrOutputWithContext(ctx context.Context) JobCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopyOutput).ToJobCopyPtrOutputWithContext(ctx)
+}
+
+// JobCopyPtrInput is an input type that accepts JobCopyArgs, JobCopyPtr and JobCopyPtrOutput values.
+// You can construct a concrete instance of `JobCopyPtrInput` via:
+//
+// 		 JobCopyArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobCopyPtrInput interface {
+	pulumi.Input
+
+	ToJobCopyPtrOutput() JobCopyPtrOutput
+	ToJobCopyPtrOutputWithContext(context.Context) JobCopyPtrOutput
+}
+
+type jobCopyPtrType JobCopyArgs
+
+func JobCopyPtr(v *JobCopyArgs) JobCopyPtrInput {
+	return (*jobCopyPtrType)(v)
+}
+
+func (*jobCopyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobCopy)(nil)).Elem()
+}
+
+func (i *jobCopyPtrType) ToJobCopyPtrOutput() JobCopyPtrOutput {
+	return i.ToJobCopyPtrOutputWithContext(context.Background())
+}
+
+func (i *jobCopyPtrType) ToJobCopyPtrOutputWithContext(ctx context.Context) JobCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopyPtrOutput)
+}
+
+type JobCopyOutput struct{ *pulumi.OutputState }
+
+func (JobCopyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCopy)(nil)).Elem()
+}
+
+func (o JobCopyOutput) ToJobCopyOutput() JobCopyOutput {
+	return o
+}
+
+func (o JobCopyOutput) ToJobCopyOutputWithContext(ctx context.Context) JobCopyOutput {
+	return o
+}
+
+func (o JobCopyOutput) ToJobCopyPtrOutput() JobCopyPtrOutput {
+	return o.ToJobCopyPtrOutputWithContext(context.Background())
+}
+
+func (o JobCopyOutput) ToJobCopyPtrOutputWithContext(ctx context.Context) JobCopyPtrOutput {
+	return o.ApplyT(func(v JobCopy) *JobCopy {
+		return &v
+	}).(JobCopyPtrOutput)
+}
+
+// Specifies whether the job is allowed to create new tables. The following values are supported:
+// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+func (o JobCopyOutput) CreateDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCopy) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
+}
+
+// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+func (o JobCopyOutput) DestinationEncryptionConfiguration() JobCopyDestinationEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v JobCopy) *JobCopyDestinationEncryptionConfiguration {
+		return v.DestinationEncryptionConfiguration
+	}).(JobCopyDestinationEncryptionConfigurationPtrOutput)
+}
+
+// The destination table.  Structure is documented below.
+func (o JobCopyOutput) DestinationTable() JobCopyDestinationTablePtrOutput {
+	return o.ApplyT(func(v JobCopy) *JobCopyDestinationTable { return v.DestinationTable }).(JobCopyDestinationTablePtrOutput)
+}
+
+// Source tables to copy.  Structure is documented below.
+func (o JobCopyOutput) SourceTables() JobCopySourceTableArrayOutput {
+	return o.ApplyT(func(v JobCopy) []JobCopySourceTable { return v.SourceTables }).(JobCopySourceTableArrayOutput)
+}
+
+// Specifies the action that occurs if the destination table already exists. The following values are supported:
+// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Creation, truncation and append actions occur as one atomic update upon job completion.
+func (o JobCopyOutput) WriteDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCopy) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
+}
+
+type JobCopyPtrOutput struct{ *pulumi.OutputState }
+
+func (JobCopyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobCopy)(nil)).Elem()
+}
+
+func (o JobCopyPtrOutput) ToJobCopyPtrOutput() JobCopyPtrOutput {
+	return o
+}
+
+func (o JobCopyPtrOutput) ToJobCopyPtrOutputWithContext(ctx context.Context) JobCopyPtrOutput {
+	return o
+}
+
+func (o JobCopyPtrOutput) Elem() JobCopyOutput {
+	return o.ApplyT(func(v *JobCopy) JobCopy { return *v }).(JobCopyOutput)
+}
+
+// Specifies whether the job is allowed to create new tables. The following values are supported:
+// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+func (o JobCopyPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobCopy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateDisposition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+func (o JobCopyPtrOutput) DestinationEncryptionConfiguration() JobCopyDestinationEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *JobCopy) *JobCopyDestinationEncryptionConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEncryptionConfiguration
+	}).(JobCopyDestinationEncryptionConfigurationPtrOutput)
+}
+
+// The destination table.  Structure is documented below.
+func (o JobCopyPtrOutput) DestinationTable() JobCopyDestinationTablePtrOutput {
+	return o.ApplyT(func(v *JobCopy) *JobCopyDestinationTable {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationTable
+	}).(JobCopyDestinationTablePtrOutput)
+}
+
+// Source tables to copy.  Structure is documented below.
+func (o JobCopyPtrOutput) SourceTables() JobCopySourceTableArrayOutput {
+	return o.ApplyT(func(v *JobCopy) []JobCopySourceTable {
+		if v == nil {
+			return nil
+		}
+		return v.SourceTables
+	}).(JobCopySourceTableArrayOutput)
+}
+
+// Specifies the action that occurs if the destination table already exists. The following values are supported:
+// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Creation, truncation and append actions occur as one atomic update upon job completion.
+func (o JobCopyPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobCopy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WriteDisposition
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobCopyDestinationEncryptionConfiguration struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+	// The BigQuery Service Account associated with your project requires access to this encryption key.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// JobCopyDestinationEncryptionConfigurationInput is an input type that accepts JobCopyDestinationEncryptionConfigurationArgs and JobCopyDestinationEncryptionConfigurationOutput values.
+// You can construct a concrete instance of `JobCopyDestinationEncryptionConfigurationInput` via:
+//
+// 		 JobCopyDestinationEncryptionConfigurationArgs{...}
+//
+type JobCopyDestinationEncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToJobCopyDestinationEncryptionConfigurationOutput() JobCopyDestinationEncryptionConfigurationOutput
+	ToJobCopyDestinationEncryptionConfigurationOutputWithContext(context.Context) JobCopyDestinationEncryptionConfigurationOutput
+}
+
+type JobCopyDestinationEncryptionConfigurationArgs struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+	// The BigQuery Service Account associated with your project requires access to this encryption key.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (JobCopyDestinationEncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCopyDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i JobCopyDestinationEncryptionConfigurationArgs) ToJobCopyDestinationEncryptionConfigurationOutput() JobCopyDestinationEncryptionConfigurationOutput {
+	return i.ToJobCopyDestinationEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i JobCopyDestinationEncryptionConfigurationArgs) ToJobCopyDestinationEncryptionConfigurationOutputWithContext(ctx context.Context) JobCopyDestinationEncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopyDestinationEncryptionConfigurationOutput)
+}
+
+func (i JobCopyDestinationEncryptionConfigurationArgs) ToJobCopyDestinationEncryptionConfigurationPtrOutput() JobCopyDestinationEncryptionConfigurationPtrOutput {
+	return i.ToJobCopyDestinationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i JobCopyDestinationEncryptionConfigurationArgs) ToJobCopyDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobCopyDestinationEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopyDestinationEncryptionConfigurationOutput).ToJobCopyDestinationEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// JobCopyDestinationEncryptionConfigurationPtrInput is an input type that accepts JobCopyDestinationEncryptionConfigurationArgs, JobCopyDestinationEncryptionConfigurationPtr and JobCopyDestinationEncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `JobCopyDestinationEncryptionConfigurationPtrInput` via:
+//
+// 		 JobCopyDestinationEncryptionConfigurationArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobCopyDestinationEncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToJobCopyDestinationEncryptionConfigurationPtrOutput() JobCopyDestinationEncryptionConfigurationPtrOutput
+	ToJobCopyDestinationEncryptionConfigurationPtrOutputWithContext(context.Context) JobCopyDestinationEncryptionConfigurationPtrOutput
+}
+
+type jobCopyDestinationEncryptionConfigurationPtrType JobCopyDestinationEncryptionConfigurationArgs
+
+func JobCopyDestinationEncryptionConfigurationPtr(v *JobCopyDestinationEncryptionConfigurationArgs) JobCopyDestinationEncryptionConfigurationPtrInput {
+	return (*jobCopyDestinationEncryptionConfigurationPtrType)(v)
+}
+
+func (*jobCopyDestinationEncryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobCopyDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *jobCopyDestinationEncryptionConfigurationPtrType) ToJobCopyDestinationEncryptionConfigurationPtrOutput() JobCopyDestinationEncryptionConfigurationPtrOutput {
+	return i.ToJobCopyDestinationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *jobCopyDestinationEncryptionConfigurationPtrType) ToJobCopyDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobCopyDestinationEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopyDestinationEncryptionConfigurationPtrOutput)
+}
+
+type JobCopyDestinationEncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (JobCopyDestinationEncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCopyDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o JobCopyDestinationEncryptionConfigurationOutput) ToJobCopyDestinationEncryptionConfigurationOutput() JobCopyDestinationEncryptionConfigurationOutput {
+	return o
+}
+
+func (o JobCopyDestinationEncryptionConfigurationOutput) ToJobCopyDestinationEncryptionConfigurationOutputWithContext(ctx context.Context) JobCopyDestinationEncryptionConfigurationOutput {
+	return o
+}
+
+func (o JobCopyDestinationEncryptionConfigurationOutput) ToJobCopyDestinationEncryptionConfigurationPtrOutput() JobCopyDestinationEncryptionConfigurationPtrOutput {
+	return o.ToJobCopyDestinationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o JobCopyDestinationEncryptionConfigurationOutput) ToJobCopyDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobCopyDestinationEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v JobCopyDestinationEncryptionConfiguration) *JobCopyDestinationEncryptionConfiguration {
+		return &v
+	}).(JobCopyDestinationEncryptionConfigurationPtrOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+// The BigQuery Service Account associated with your project requires access to this encryption key.
+func (o JobCopyDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCopyDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type JobCopyDestinationEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (JobCopyDestinationEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobCopyDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o JobCopyDestinationEncryptionConfigurationPtrOutput) ToJobCopyDestinationEncryptionConfigurationPtrOutput() JobCopyDestinationEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o JobCopyDestinationEncryptionConfigurationPtrOutput) ToJobCopyDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobCopyDestinationEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o JobCopyDestinationEncryptionConfigurationPtrOutput) Elem() JobCopyDestinationEncryptionConfigurationOutput {
+	return o.ApplyT(func(v *JobCopyDestinationEncryptionConfiguration) JobCopyDestinationEncryptionConfiguration {
+		return *v
+	}).(JobCopyDestinationEncryptionConfigurationOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+// The BigQuery Service Account associated with your project requires access to this encryption key.
+func (o JobCopyDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobCopyDestinationEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobCopyDestinationTable struct {
+	// The ID of the dataset containing this model.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId string `pulumi:"projectId"`
+	// The ID of the table.
+	TableId string `pulumi:"tableId"`
+}
+
+// JobCopyDestinationTableInput is an input type that accepts JobCopyDestinationTableArgs and JobCopyDestinationTableOutput values.
+// You can construct a concrete instance of `JobCopyDestinationTableInput` via:
+//
+// 		 JobCopyDestinationTableArgs{...}
+//
+type JobCopyDestinationTableInput interface {
+	pulumi.Input
+
+	ToJobCopyDestinationTableOutput() JobCopyDestinationTableOutput
+	ToJobCopyDestinationTableOutputWithContext(context.Context) JobCopyDestinationTableOutput
+}
+
+type JobCopyDestinationTableArgs struct {
+	// The ID of the dataset containing this model.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The ID of the table.
+	TableId pulumi.StringInput `pulumi:"tableId"`
+}
+
+func (JobCopyDestinationTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCopyDestinationTable)(nil)).Elem()
+}
+
+func (i JobCopyDestinationTableArgs) ToJobCopyDestinationTableOutput() JobCopyDestinationTableOutput {
+	return i.ToJobCopyDestinationTableOutputWithContext(context.Background())
+}
+
+func (i JobCopyDestinationTableArgs) ToJobCopyDestinationTableOutputWithContext(ctx context.Context) JobCopyDestinationTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopyDestinationTableOutput)
+}
+
+func (i JobCopyDestinationTableArgs) ToJobCopyDestinationTablePtrOutput() JobCopyDestinationTablePtrOutput {
+	return i.ToJobCopyDestinationTablePtrOutputWithContext(context.Background())
+}
+
+func (i JobCopyDestinationTableArgs) ToJobCopyDestinationTablePtrOutputWithContext(ctx context.Context) JobCopyDestinationTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopyDestinationTableOutput).ToJobCopyDestinationTablePtrOutputWithContext(ctx)
+}
+
+// JobCopyDestinationTablePtrInput is an input type that accepts JobCopyDestinationTableArgs, JobCopyDestinationTablePtr and JobCopyDestinationTablePtrOutput values.
+// You can construct a concrete instance of `JobCopyDestinationTablePtrInput` via:
+//
+// 		 JobCopyDestinationTableArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobCopyDestinationTablePtrInput interface {
+	pulumi.Input
+
+	ToJobCopyDestinationTablePtrOutput() JobCopyDestinationTablePtrOutput
+	ToJobCopyDestinationTablePtrOutputWithContext(context.Context) JobCopyDestinationTablePtrOutput
+}
+
+type jobCopyDestinationTablePtrType JobCopyDestinationTableArgs
+
+func JobCopyDestinationTablePtr(v *JobCopyDestinationTableArgs) JobCopyDestinationTablePtrInput {
+	return (*jobCopyDestinationTablePtrType)(v)
+}
+
+func (*jobCopyDestinationTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobCopyDestinationTable)(nil)).Elem()
+}
+
+func (i *jobCopyDestinationTablePtrType) ToJobCopyDestinationTablePtrOutput() JobCopyDestinationTablePtrOutput {
+	return i.ToJobCopyDestinationTablePtrOutputWithContext(context.Background())
+}
+
+func (i *jobCopyDestinationTablePtrType) ToJobCopyDestinationTablePtrOutputWithContext(ctx context.Context) JobCopyDestinationTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopyDestinationTablePtrOutput)
+}
+
+type JobCopyDestinationTableOutput struct{ *pulumi.OutputState }
+
+func (JobCopyDestinationTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCopyDestinationTable)(nil)).Elem()
+}
+
+func (o JobCopyDestinationTableOutput) ToJobCopyDestinationTableOutput() JobCopyDestinationTableOutput {
+	return o
+}
+
+func (o JobCopyDestinationTableOutput) ToJobCopyDestinationTableOutputWithContext(ctx context.Context) JobCopyDestinationTableOutput {
+	return o
+}
+
+func (o JobCopyDestinationTableOutput) ToJobCopyDestinationTablePtrOutput() JobCopyDestinationTablePtrOutput {
+	return o.ToJobCopyDestinationTablePtrOutputWithContext(context.Background())
+}
+
+func (o JobCopyDestinationTableOutput) ToJobCopyDestinationTablePtrOutputWithContext(ctx context.Context) JobCopyDestinationTablePtrOutput {
+	return o.ApplyT(func(v JobCopyDestinationTable) *JobCopyDestinationTable {
+		return &v
+	}).(JobCopyDestinationTablePtrOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobCopyDestinationTableOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCopyDestinationTable) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobCopyDestinationTableOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCopyDestinationTable) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The ID of the table.
+func (o JobCopyDestinationTableOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCopyDestinationTable) string { return v.TableId }).(pulumi.StringOutput)
+}
+
+type JobCopyDestinationTablePtrOutput struct{ *pulumi.OutputState }
+
+func (JobCopyDestinationTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobCopyDestinationTable)(nil)).Elem()
+}
+
+func (o JobCopyDestinationTablePtrOutput) ToJobCopyDestinationTablePtrOutput() JobCopyDestinationTablePtrOutput {
+	return o
+}
+
+func (o JobCopyDestinationTablePtrOutput) ToJobCopyDestinationTablePtrOutputWithContext(ctx context.Context) JobCopyDestinationTablePtrOutput {
+	return o
+}
+
+func (o JobCopyDestinationTablePtrOutput) Elem() JobCopyDestinationTableOutput {
+	return o.ApplyT(func(v *JobCopyDestinationTable) JobCopyDestinationTable { return *v }).(JobCopyDestinationTableOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobCopyDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobCopyDestinationTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobCopyDestinationTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobCopyDestinationTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the table.
+func (o JobCopyDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobCopyDestinationTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TableId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobCopySourceTable struct {
+	// The ID of the dataset containing this model.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId string `pulumi:"projectId"`
+	// The ID of the table.
+	TableId string `pulumi:"tableId"`
+}
+
+// JobCopySourceTableInput is an input type that accepts JobCopySourceTableArgs and JobCopySourceTableOutput values.
+// You can construct a concrete instance of `JobCopySourceTableInput` via:
+//
+// 		 JobCopySourceTableArgs{...}
+//
+type JobCopySourceTableInput interface {
+	pulumi.Input
+
+	ToJobCopySourceTableOutput() JobCopySourceTableOutput
+	ToJobCopySourceTableOutputWithContext(context.Context) JobCopySourceTableOutput
+}
+
+type JobCopySourceTableArgs struct {
+	// The ID of the dataset containing this model.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The ID of the table.
+	TableId pulumi.StringInput `pulumi:"tableId"`
+}
+
+func (JobCopySourceTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCopySourceTable)(nil)).Elem()
+}
+
+func (i JobCopySourceTableArgs) ToJobCopySourceTableOutput() JobCopySourceTableOutput {
+	return i.ToJobCopySourceTableOutputWithContext(context.Background())
+}
+
+func (i JobCopySourceTableArgs) ToJobCopySourceTableOutputWithContext(ctx context.Context) JobCopySourceTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopySourceTableOutput)
+}
+
+// JobCopySourceTableArrayInput is an input type that accepts JobCopySourceTableArray and JobCopySourceTableArrayOutput values.
+// You can construct a concrete instance of `JobCopySourceTableArrayInput` via:
+//
+// 		 JobCopySourceTableArray{ JobCopySourceTableArgs{...} }
+//
+type JobCopySourceTableArrayInput interface {
+	pulumi.Input
+
+	ToJobCopySourceTableArrayOutput() JobCopySourceTableArrayOutput
+	ToJobCopySourceTableArrayOutputWithContext(context.Context) JobCopySourceTableArrayOutput
+}
+
+type JobCopySourceTableArray []JobCopySourceTableInput
+
+func (JobCopySourceTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobCopySourceTable)(nil)).Elem()
+}
+
+func (i JobCopySourceTableArray) ToJobCopySourceTableArrayOutput() JobCopySourceTableArrayOutput {
+	return i.ToJobCopySourceTableArrayOutputWithContext(context.Background())
+}
+
+func (i JobCopySourceTableArray) ToJobCopySourceTableArrayOutputWithContext(ctx context.Context) JobCopySourceTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobCopySourceTableArrayOutput)
+}
+
+type JobCopySourceTableOutput struct{ *pulumi.OutputState }
+
+func (JobCopySourceTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobCopySourceTable)(nil)).Elem()
+}
+
+func (o JobCopySourceTableOutput) ToJobCopySourceTableOutput() JobCopySourceTableOutput {
+	return o
+}
+
+func (o JobCopySourceTableOutput) ToJobCopySourceTableOutputWithContext(ctx context.Context) JobCopySourceTableOutput {
+	return o
+}
+
+// The ID of the dataset containing this model.
+func (o JobCopySourceTableOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCopySourceTable) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobCopySourceTableOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCopySourceTable) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The ID of the table.
+func (o JobCopySourceTableOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCopySourceTable) string { return v.TableId }).(pulumi.StringOutput)
+}
+
+type JobCopySourceTableArrayOutput struct{ *pulumi.OutputState }
+
+func (JobCopySourceTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobCopySourceTable)(nil)).Elem()
+}
+
+func (o JobCopySourceTableArrayOutput) ToJobCopySourceTableArrayOutput() JobCopySourceTableArrayOutput {
+	return o
+}
+
+func (o JobCopySourceTableArrayOutput) ToJobCopySourceTableArrayOutputWithContext(ctx context.Context) JobCopySourceTableArrayOutput {
+	return o
+}
+
+func (o JobCopySourceTableArrayOutput) Index(i pulumi.IntInput) JobCopySourceTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobCopySourceTable {
+		return vs[0].([]JobCopySourceTable)[vs[1].(int)]
+	}).(JobCopySourceTableOutput)
+}
+
+type JobExtract struct {
+	// The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
+	// The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
+	Compression *string `pulumi:"compression"`
+	// The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
+	// The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
+	// The default value for models is SAVED_MODEL.
+	DestinationFormat *string `pulumi:"destinationFormat"`
+	// A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
+	DestinationUris []string `pulumi:"destinationUris"`
+	// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+	// Default is ','
+	FieldDelimiter *string `pulumi:"fieldDelimiter"`
+	// Whether to print out a header row in the results. Default is true.
+	PrintHeader *bool `pulumi:"printHeader"`
+	// A reference to the model being exported.  Structure is documented below.
+	SourceModel *JobExtractSourceModel `pulumi:"sourceModel"`
+	// A reference to the table being exported.  Structure is documented below.
+	SourceTable *JobExtractSourceTable `pulumi:"sourceTable"`
+	// Whether to use logical types when extracting to AVRO format.
+	UseAvroLogicalTypes *bool `pulumi:"useAvroLogicalTypes"`
+}
+
+// JobExtractInput is an input type that accepts JobExtractArgs and JobExtractOutput values.
+// You can construct a concrete instance of `JobExtractInput` via:
+//
+// 		 JobExtractArgs{...}
+//
+type JobExtractInput interface {
+	pulumi.Input
+
+	ToJobExtractOutput() JobExtractOutput
+	ToJobExtractOutputWithContext(context.Context) JobExtractOutput
+}
+
+type JobExtractArgs struct {
+	// The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
+	// The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
+	Compression pulumi.StringPtrInput `pulumi:"compression"`
+	// The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
+	// The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
+	// The default value for models is SAVED_MODEL.
+	DestinationFormat pulumi.StringPtrInput `pulumi:"destinationFormat"`
+	// A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
+	DestinationUris pulumi.StringArrayInput `pulumi:"destinationUris"`
+	// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+	// Default is ','
+	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
+	// Whether to print out a header row in the results. Default is true.
+	PrintHeader pulumi.BoolPtrInput `pulumi:"printHeader"`
+	// A reference to the model being exported.  Structure is documented below.
+	SourceModel JobExtractSourceModelPtrInput `pulumi:"sourceModel"`
+	// A reference to the table being exported.  Structure is documented below.
+	SourceTable JobExtractSourceTablePtrInput `pulumi:"sourceTable"`
+	// Whether to use logical types when extracting to AVRO format.
+	UseAvroLogicalTypes pulumi.BoolPtrInput `pulumi:"useAvroLogicalTypes"`
+}
+
+func (JobExtractArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExtract)(nil)).Elem()
+}
+
+func (i JobExtractArgs) ToJobExtractOutput() JobExtractOutput {
+	return i.ToJobExtractOutputWithContext(context.Background())
+}
+
+func (i JobExtractArgs) ToJobExtractOutputWithContext(ctx context.Context) JobExtractOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExtractOutput)
+}
+
+func (i JobExtractArgs) ToJobExtractPtrOutput() JobExtractPtrOutput {
+	return i.ToJobExtractPtrOutputWithContext(context.Background())
+}
+
+func (i JobExtractArgs) ToJobExtractPtrOutputWithContext(ctx context.Context) JobExtractPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExtractOutput).ToJobExtractPtrOutputWithContext(ctx)
+}
+
+// JobExtractPtrInput is an input type that accepts JobExtractArgs, JobExtractPtr and JobExtractPtrOutput values.
+// You can construct a concrete instance of `JobExtractPtrInput` via:
+//
+// 		 JobExtractArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobExtractPtrInput interface {
+	pulumi.Input
+
+	ToJobExtractPtrOutput() JobExtractPtrOutput
+	ToJobExtractPtrOutputWithContext(context.Context) JobExtractPtrOutput
+}
+
+type jobExtractPtrType JobExtractArgs
+
+func JobExtractPtr(v *JobExtractArgs) JobExtractPtrInput {
+	return (*jobExtractPtrType)(v)
+}
+
+func (*jobExtractPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExtract)(nil)).Elem()
+}
+
+func (i *jobExtractPtrType) ToJobExtractPtrOutput() JobExtractPtrOutput {
+	return i.ToJobExtractPtrOutputWithContext(context.Background())
+}
+
+func (i *jobExtractPtrType) ToJobExtractPtrOutputWithContext(ctx context.Context) JobExtractPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExtractPtrOutput)
+}
+
+type JobExtractOutput struct{ *pulumi.OutputState }
+
+func (JobExtractOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExtract)(nil)).Elem()
+}
+
+func (o JobExtractOutput) ToJobExtractOutput() JobExtractOutput {
+	return o
+}
+
+func (o JobExtractOutput) ToJobExtractOutputWithContext(ctx context.Context) JobExtractOutput {
+	return o
+}
+
+func (o JobExtractOutput) ToJobExtractPtrOutput() JobExtractPtrOutput {
+	return o.ToJobExtractPtrOutputWithContext(context.Background())
+}
+
+func (o JobExtractOutput) ToJobExtractPtrOutputWithContext(ctx context.Context) JobExtractPtrOutput {
+	return o.ApplyT(func(v JobExtract) *JobExtract {
+		return &v
+	}).(JobExtractPtrOutput)
+}
+
+// The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
+// The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
+func (o JobExtractOutput) Compression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobExtract) *string { return v.Compression }).(pulumi.StringPtrOutput)
+}
+
+// The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
+// The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
+// The default value for models is SAVED_MODEL.
+func (o JobExtractOutput) DestinationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobExtract) *string { return v.DestinationFormat }).(pulumi.StringPtrOutput)
+}
+
+// A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
+func (o JobExtractOutput) DestinationUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobExtract) []string { return v.DestinationUris }).(pulumi.StringArrayOutput)
+}
+
+// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+// Default is ','
+func (o JobExtractOutput) FieldDelimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobExtract) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
+}
+
+// Whether to print out a header row in the results. Default is true.
+func (o JobExtractOutput) PrintHeader() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobExtract) *bool { return v.PrintHeader }).(pulumi.BoolPtrOutput)
+}
+
+// A reference to the model being exported.  Structure is documented below.
+func (o JobExtractOutput) SourceModel() JobExtractSourceModelPtrOutput {
+	return o.ApplyT(func(v JobExtract) *JobExtractSourceModel { return v.SourceModel }).(JobExtractSourceModelPtrOutput)
+}
+
+// A reference to the table being exported.  Structure is documented below.
+func (o JobExtractOutput) SourceTable() JobExtractSourceTablePtrOutput {
+	return o.ApplyT(func(v JobExtract) *JobExtractSourceTable { return v.SourceTable }).(JobExtractSourceTablePtrOutput)
+}
+
+// Whether to use logical types when extracting to AVRO format.
+func (o JobExtractOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobExtract) *bool { return v.UseAvroLogicalTypes }).(pulumi.BoolPtrOutput)
+}
+
+type JobExtractPtrOutput struct{ *pulumi.OutputState }
+
+func (JobExtractPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExtract)(nil)).Elem()
+}
+
+func (o JobExtractPtrOutput) ToJobExtractPtrOutput() JobExtractPtrOutput {
+	return o
+}
+
+func (o JobExtractPtrOutput) ToJobExtractPtrOutputWithContext(ctx context.Context) JobExtractPtrOutput {
+	return o
+}
+
+func (o JobExtractPtrOutput) Elem() JobExtractOutput {
+	return o.ApplyT(func(v *JobExtract) JobExtract { return *v }).(JobExtractOutput)
+}
+
+// The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
+// The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
+func (o JobExtractPtrOutput) Compression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Compression
+	}).(pulumi.StringPtrOutput)
+}
+
+// The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
+// The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
+// The default value for models is SAVED_MODEL.
+func (o JobExtractPtrOutput) DestinationFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
+func (o JobExtractPtrOutput) DestinationUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobExtract) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+// Default is ','
+func (o JobExtractPtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobExtract) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldDelimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to print out a header row in the results. Default is true.
+func (o JobExtractPtrOutput) PrintHeader() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobExtract) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrintHeader
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A reference to the model being exported.  Structure is documented below.
+func (o JobExtractPtrOutput) SourceModel() JobExtractSourceModelPtrOutput {
+	return o.ApplyT(func(v *JobExtract) *JobExtractSourceModel {
+		if v == nil {
+			return nil
+		}
+		return v.SourceModel
+	}).(JobExtractSourceModelPtrOutput)
+}
+
+// A reference to the table being exported.  Structure is documented below.
+func (o JobExtractPtrOutput) SourceTable() JobExtractSourceTablePtrOutput {
+	return o.ApplyT(func(v *JobExtract) *JobExtractSourceTable {
+		if v == nil {
+			return nil
+		}
+		return v.SourceTable
+	}).(JobExtractSourceTablePtrOutput)
+}
+
+// Whether to use logical types when extracting to AVRO format.
+func (o JobExtractPtrOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobExtract) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAvroLogicalTypes
+	}).(pulumi.BoolPtrOutput)
+}
+
+type JobExtractSourceModel struct {
+	// The ID of the dataset containing this model.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the model.
+	ModelId string `pulumi:"modelId"`
+	// The ID of the project containing this model.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// JobExtractSourceModelInput is an input type that accepts JobExtractSourceModelArgs and JobExtractSourceModelOutput values.
+// You can construct a concrete instance of `JobExtractSourceModelInput` via:
+//
+// 		 JobExtractSourceModelArgs{...}
+//
+type JobExtractSourceModelInput interface {
+	pulumi.Input
+
+	ToJobExtractSourceModelOutput() JobExtractSourceModelOutput
+	ToJobExtractSourceModelOutputWithContext(context.Context) JobExtractSourceModelOutput
+}
+
+type JobExtractSourceModelArgs struct {
+	// The ID of the dataset containing this model.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the model.
+	ModelId pulumi.StringInput `pulumi:"modelId"`
+	// The ID of the project containing this model.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (JobExtractSourceModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExtractSourceModel)(nil)).Elem()
+}
+
+func (i JobExtractSourceModelArgs) ToJobExtractSourceModelOutput() JobExtractSourceModelOutput {
+	return i.ToJobExtractSourceModelOutputWithContext(context.Background())
+}
+
+func (i JobExtractSourceModelArgs) ToJobExtractSourceModelOutputWithContext(ctx context.Context) JobExtractSourceModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExtractSourceModelOutput)
+}
+
+func (i JobExtractSourceModelArgs) ToJobExtractSourceModelPtrOutput() JobExtractSourceModelPtrOutput {
+	return i.ToJobExtractSourceModelPtrOutputWithContext(context.Background())
+}
+
+func (i JobExtractSourceModelArgs) ToJobExtractSourceModelPtrOutputWithContext(ctx context.Context) JobExtractSourceModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExtractSourceModelOutput).ToJobExtractSourceModelPtrOutputWithContext(ctx)
+}
+
+// JobExtractSourceModelPtrInput is an input type that accepts JobExtractSourceModelArgs, JobExtractSourceModelPtr and JobExtractSourceModelPtrOutput values.
+// You can construct a concrete instance of `JobExtractSourceModelPtrInput` via:
+//
+// 		 JobExtractSourceModelArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobExtractSourceModelPtrInput interface {
+	pulumi.Input
+
+	ToJobExtractSourceModelPtrOutput() JobExtractSourceModelPtrOutput
+	ToJobExtractSourceModelPtrOutputWithContext(context.Context) JobExtractSourceModelPtrOutput
+}
+
+type jobExtractSourceModelPtrType JobExtractSourceModelArgs
+
+func JobExtractSourceModelPtr(v *JobExtractSourceModelArgs) JobExtractSourceModelPtrInput {
+	return (*jobExtractSourceModelPtrType)(v)
+}
+
+func (*jobExtractSourceModelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExtractSourceModel)(nil)).Elem()
+}
+
+func (i *jobExtractSourceModelPtrType) ToJobExtractSourceModelPtrOutput() JobExtractSourceModelPtrOutput {
+	return i.ToJobExtractSourceModelPtrOutputWithContext(context.Background())
+}
+
+func (i *jobExtractSourceModelPtrType) ToJobExtractSourceModelPtrOutputWithContext(ctx context.Context) JobExtractSourceModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExtractSourceModelPtrOutput)
+}
+
+type JobExtractSourceModelOutput struct{ *pulumi.OutputState }
+
+func (JobExtractSourceModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExtractSourceModel)(nil)).Elem()
+}
+
+func (o JobExtractSourceModelOutput) ToJobExtractSourceModelOutput() JobExtractSourceModelOutput {
+	return o
+}
+
+func (o JobExtractSourceModelOutput) ToJobExtractSourceModelOutputWithContext(ctx context.Context) JobExtractSourceModelOutput {
+	return o
+}
+
+func (o JobExtractSourceModelOutput) ToJobExtractSourceModelPtrOutput() JobExtractSourceModelPtrOutput {
+	return o.ToJobExtractSourceModelPtrOutputWithContext(context.Background())
+}
+
+func (o JobExtractSourceModelOutput) ToJobExtractSourceModelPtrOutputWithContext(ctx context.Context) JobExtractSourceModelPtrOutput {
+	return o.ApplyT(func(v JobExtractSourceModel) *JobExtractSourceModel {
+		return &v
+	}).(JobExtractSourceModelPtrOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobExtractSourceModelOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobExtractSourceModel) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the model.
+func (o JobExtractSourceModelOutput) ModelId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobExtractSourceModel) string { return v.ModelId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobExtractSourceModelOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobExtractSourceModel) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type JobExtractSourceModelPtrOutput struct{ *pulumi.OutputState }
+
+func (JobExtractSourceModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExtractSourceModel)(nil)).Elem()
+}
+
+func (o JobExtractSourceModelPtrOutput) ToJobExtractSourceModelPtrOutput() JobExtractSourceModelPtrOutput {
+	return o
+}
+
+func (o JobExtractSourceModelPtrOutput) ToJobExtractSourceModelPtrOutputWithContext(ctx context.Context) JobExtractSourceModelPtrOutput {
+	return o
+}
+
+func (o JobExtractSourceModelPtrOutput) Elem() JobExtractSourceModelOutput {
+	return o.ApplyT(func(v *JobExtractSourceModel) JobExtractSourceModel { return *v }).(JobExtractSourceModelOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobExtractSourceModelPtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobExtractSourceModel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the model.
+func (o JobExtractSourceModelPtrOutput) ModelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobExtractSourceModel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ModelId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobExtractSourceModelPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobExtractSourceModel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobExtractSourceTable struct {
+	// The ID of the dataset containing this model.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId string `pulumi:"projectId"`
+	// The ID of the table.
+	TableId string `pulumi:"tableId"`
+}
+
+// JobExtractSourceTableInput is an input type that accepts JobExtractSourceTableArgs and JobExtractSourceTableOutput values.
+// You can construct a concrete instance of `JobExtractSourceTableInput` via:
+//
+// 		 JobExtractSourceTableArgs{...}
+//
+type JobExtractSourceTableInput interface {
+	pulumi.Input
+
+	ToJobExtractSourceTableOutput() JobExtractSourceTableOutput
+	ToJobExtractSourceTableOutputWithContext(context.Context) JobExtractSourceTableOutput
+}
+
+type JobExtractSourceTableArgs struct {
+	// The ID of the dataset containing this model.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The ID of the table.
+	TableId pulumi.StringInput `pulumi:"tableId"`
+}
+
+func (JobExtractSourceTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExtractSourceTable)(nil)).Elem()
+}
+
+func (i JobExtractSourceTableArgs) ToJobExtractSourceTableOutput() JobExtractSourceTableOutput {
+	return i.ToJobExtractSourceTableOutputWithContext(context.Background())
+}
+
+func (i JobExtractSourceTableArgs) ToJobExtractSourceTableOutputWithContext(ctx context.Context) JobExtractSourceTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExtractSourceTableOutput)
+}
+
+func (i JobExtractSourceTableArgs) ToJobExtractSourceTablePtrOutput() JobExtractSourceTablePtrOutput {
+	return i.ToJobExtractSourceTablePtrOutputWithContext(context.Background())
+}
+
+func (i JobExtractSourceTableArgs) ToJobExtractSourceTablePtrOutputWithContext(ctx context.Context) JobExtractSourceTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExtractSourceTableOutput).ToJobExtractSourceTablePtrOutputWithContext(ctx)
+}
+
+// JobExtractSourceTablePtrInput is an input type that accepts JobExtractSourceTableArgs, JobExtractSourceTablePtr and JobExtractSourceTablePtrOutput values.
+// You can construct a concrete instance of `JobExtractSourceTablePtrInput` via:
+//
+// 		 JobExtractSourceTableArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobExtractSourceTablePtrInput interface {
+	pulumi.Input
+
+	ToJobExtractSourceTablePtrOutput() JobExtractSourceTablePtrOutput
+	ToJobExtractSourceTablePtrOutputWithContext(context.Context) JobExtractSourceTablePtrOutput
+}
+
+type jobExtractSourceTablePtrType JobExtractSourceTableArgs
+
+func JobExtractSourceTablePtr(v *JobExtractSourceTableArgs) JobExtractSourceTablePtrInput {
+	return (*jobExtractSourceTablePtrType)(v)
+}
+
+func (*jobExtractSourceTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExtractSourceTable)(nil)).Elem()
+}
+
+func (i *jobExtractSourceTablePtrType) ToJobExtractSourceTablePtrOutput() JobExtractSourceTablePtrOutput {
+	return i.ToJobExtractSourceTablePtrOutputWithContext(context.Background())
+}
+
+func (i *jobExtractSourceTablePtrType) ToJobExtractSourceTablePtrOutputWithContext(ctx context.Context) JobExtractSourceTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExtractSourceTablePtrOutput)
+}
+
+type JobExtractSourceTableOutput struct{ *pulumi.OutputState }
+
+func (JobExtractSourceTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExtractSourceTable)(nil)).Elem()
+}
+
+func (o JobExtractSourceTableOutput) ToJobExtractSourceTableOutput() JobExtractSourceTableOutput {
+	return o
+}
+
+func (o JobExtractSourceTableOutput) ToJobExtractSourceTableOutputWithContext(ctx context.Context) JobExtractSourceTableOutput {
+	return o
+}
+
+func (o JobExtractSourceTableOutput) ToJobExtractSourceTablePtrOutput() JobExtractSourceTablePtrOutput {
+	return o.ToJobExtractSourceTablePtrOutputWithContext(context.Background())
+}
+
+func (o JobExtractSourceTableOutput) ToJobExtractSourceTablePtrOutputWithContext(ctx context.Context) JobExtractSourceTablePtrOutput {
+	return o.ApplyT(func(v JobExtractSourceTable) *JobExtractSourceTable {
+		return &v
+	}).(JobExtractSourceTablePtrOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobExtractSourceTableOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobExtractSourceTable) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobExtractSourceTableOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobExtractSourceTable) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The ID of the table.
+func (o JobExtractSourceTableOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobExtractSourceTable) string { return v.TableId }).(pulumi.StringOutput)
+}
+
+type JobExtractSourceTablePtrOutput struct{ *pulumi.OutputState }
+
+func (JobExtractSourceTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExtractSourceTable)(nil)).Elem()
+}
+
+func (o JobExtractSourceTablePtrOutput) ToJobExtractSourceTablePtrOutput() JobExtractSourceTablePtrOutput {
+	return o
+}
+
+func (o JobExtractSourceTablePtrOutput) ToJobExtractSourceTablePtrOutputWithContext(ctx context.Context) JobExtractSourceTablePtrOutput {
+	return o
+}
+
+func (o JobExtractSourceTablePtrOutput) Elem() JobExtractSourceTableOutput {
+	return o.ApplyT(func(v *JobExtractSourceTable) JobExtractSourceTable { return *v }).(JobExtractSourceTableOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobExtractSourceTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobExtractSourceTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobExtractSourceTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobExtractSourceTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the table.
+func (o JobExtractSourceTablePtrOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobExtractSourceTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TableId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobLoad struct {
+	// Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
+	// If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
+	// an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
+	AllowJaggedRows *bool `pulumi:"allowJaggedRows"`
+	// Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file.
+	// The default value is false.
+	AllowQuotedNewlines *bool `pulumi:"allowQuotedNewlines"`
+	// Indicates if we should automatically infer the options and schema for CSV and JSON sources.
+	Autodetect *bool `pulumi:"autodetect"`
+	// Specifies whether the job is allowed to create new tables. The following values are supported:
+	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	CreateDisposition *string `pulumi:"createDisposition"`
+	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	DestinationEncryptionConfiguration *JobLoadDestinationEncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
+	// The destination table.  Structure is documented below.
+	DestinationTable JobLoadDestinationTable `pulumi:"destinationTable"`
+	// The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
+	// The default value is UTF-8. BigQuery decodes the data after the raw, binary data
+	// has been split using the values of the quote and fieldDelimiter properties.
+	Encoding *string `pulumi:"encoding"`
+	// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+	// Default is ','
+	FieldDelimiter *string `pulumi:"fieldDelimiter"`
+	// Indicates if BigQuery should allow extra values that are not represented in the table schema.
+	// If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
+	// and if there are too many bad records, an invalid error is returned in the job result.
+	// The default value is false. The sourceFormat property determines what BigQuery treats as an extra value:
+	// CSV: Trailing columns
+	// JSON: Named values that don't match any column names
+	IgnoreUnknownValues *bool `pulumi:"ignoreUnknownValues"`
+	// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
+	// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
+	MaxBadRecords *int `pulumi:"maxBadRecords"`
+	// Specifies a string that represents a null value in a CSV file. For example, if you specify `\N`, BigQuery interprets `\N` as a null value
+	// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
+	// empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
+	// an empty value.
+	NullMarker *string `pulumi:"nullMarker"`
+	// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
+	// Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
+	// If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
+	ProjectionFields []string `pulumi:"projectionFields"`
+	// The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
+	// and then uses the first byte of the encoded string to split the data in its raw, binary state.
+	// The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
+	// If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
+	Quote *string `pulumi:"quote"`
+	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+	// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+	// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+	// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+	// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+	// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+	SchemaUpdateOptions []string `pulumi:"schemaUpdateOptions"`
+	// The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
+	// The default value is 0. This property is useful if you have header rows in the file that should be skipped.
+	// When autodetect is on, the behavior is the following:
+	// skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected,
+	// the row is read as data. Otherwise data is read starting from the second row.
+	// skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row.
+	// skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected,
+	// row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+	SkipLeadingRows *int `pulumi:"skipLeadingRows"`
+	// The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
+	// For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
+	// For orc, specify "ORC". The default value is CSV.
+	SourceFormat *string `pulumi:"sourceFormat"`
+	// The fully-qualified URIs that point to your data in Google Cloud.
+	// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+	// and it must come after the 'bucket' name. Size limits related to load jobs apply
+	// to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
+	// specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
+	// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+	SourceUris []string `pulumi:"sourceUris"`
+	// Time-based partitioning specification for the destination table.  Structure is documented below.
+	TimePartitioning *JobLoadTimePartitioning `pulumi:"timePartitioning"`
+	// Specifies the action that occurs if the destination table already exists. The following values are supported:
+	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	WriteDisposition *string `pulumi:"writeDisposition"`
+}
+
+// JobLoadInput is an input type that accepts JobLoadArgs and JobLoadOutput values.
+// You can construct a concrete instance of `JobLoadInput` via:
+//
+// 		 JobLoadArgs{...}
+//
+type JobLoadInput interface {
+	pulumi.Input
+
+	ToJobLoadOutput() JobLoadOutput
+	ToJobLoadOutputWithContext(context.Context) JobLoadOutput
+}
+
+type JobLoadArgs struct {
+	// Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
+	// If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
+	// an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
+	AllowJaggedRows pulumi.BoolPtrInput `pulumi:"allowJaggedRows"`
+	// Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file.
+	// The default value is false.
+	AllowQuotedNewlines pulumi.BoolPtrInput `pulumi:"allowQuotedNewlines"`
+	// Indicates if we should automatically infer the options and schema for CSV and JSON sources.
+	Autodetect pulumi.BoolPtrInput `pulumi:"autodetect"`
+	// Specifies whether the job is allowed to create new tables. The following values are supported:
+	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
+	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	DestinationEncryptionConfiguration JobLoadDestinationEncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
+	// The destination table.  Structure is documented below.
+	DestinationTable JobLoadDestinationTableInput `pulumi:"destinationTable"`
+	// The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
+	// The default value is UTF-8. BigQuery decodes the data after the raw, binary data
+	// has been split using the values of the quote and fieldDelimiter properties.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+	// Default is ','
+	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
+	// Indicates if BigQuery should allow extra values that are not represented in the table schema.
+	// If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
+	// and if there are too many bad records, an invalid error is returned in the job result.
+	// The default value is false. The sourceFormat property determines what BigQuery treats as an extra value:
+	// CSV: Trailing columns
+	// JSON: Named values that don't match any column names
+	IgnoreUnknownValues pulumi.BoolPtrInput `pulumi:"ignoreUnknownValues"`
+	// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
+	// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
+	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
+	// Specifies a string that represents a null value in a CSV file. For example, if you specify `\N`, BigQuery interprets `\N` as a null value
+	// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
+	// empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
+	// an empty value.
+	NullMarker pulumi.StringPtrInput `pulumi:"nullMarker"`
+	// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
+	// Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
+	// If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
+	ProjectionFields pulumi.StringArrayInput `pulumi:"projectionFields"`
+	// The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
+	// and then uses the first byte of the encoded string to split the data in its raw, binary state.
+	// The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
+	// If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
+	Quote pulumi.StringPtrInput `pulumi:"quote"`
+	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+	// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+	// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+	// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+	// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+	// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+	SchemaUpdateOptions pulumi.StringArrayInput `pulumi:"schemaUpdateOptions"`
+	// The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
+	// The default value is 0. This property is useful if you have header rows in the file that should be skipped.
+	// When autodetect is on, the behavior is the following:
+	// skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected,
+	// the row is read as data. Otherwise data is read starting from the second row.
+	// skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row.
+	// skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected,
+	// row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+	SkipLeadingRows pulumi.IntPtrInput `pulumi:"skipLeadingRows"`
+	// The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
+	// For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
+	// For orc, specify "ORC". The default value is CSV.
+	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
+	// The fully-qualified URIs that point to your data in Google Cloud.
+	// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+	// and it must come after the 'bucket' name. Size limits related to load jobs apply
+	// to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
+	// specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
+	// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+	SourceUris pulumi.StringArrayInput `pulumi:"sourceUris"`
+	// Time-based partitioning specification for the destination table.  Structure is documented below.
+	TimePartitioning JobLoadTimePartitioningPtrInput `pulumi:"timePartitioning"`
+	// Specifies the action that occurs if the destination table already exists. The following values are supported:
+	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
+}
+
+func (JobLoadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLoad)(nil)).Elem()
+}
+
+func (i JobLoadArgs) ToJobLoadOutput() JobLoadOutput {
+	return i.ToJobLoadOutputWithContext(context.Background())
+}
+
+func (i JobLoadArgs) ToJobLoadOutputWithContext(ctx context.Context) JobLoadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadOutput)
+}
+
+func (i JobLoadArgs) ToJobLoadPtrOutput() JobLoadPtrOutput {
+	return i.ToJobLoadPtrOutputWithContext(context.Background())
+}
+
+func (i JobLoadArgs) ToJobLoadPtrOutputWithContext(ctx context.Context) JobLoadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadOutput).ToJobLoadPtrOutputWithContext(ctx)
+}
+
+// JobLoadPtrInput is an input type that accepts JobLoadArgs, JobLoadPtr and JobLoadPtrOutput values.
+// You can construct a concrete instance of `JobLoadPtrInput` via:
+//
+// 		 JobLoadArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobLoadPtrInput interface {
+	pulumi.Input
+
+	ToJobLoadPtrOutput() JobLoadPtrOutput
+	ToJobLoadPtrOutputWithContext(context.Context) JobLoadPtrOutput
+}
+
+type jobLoadPtrType JobLoadArgs
+
+func JobLoadPtr(v *JobLoadArgs) JobLoadPtrInput {
+	return (*jobLoadPtrType)(v)
+}
+
+func (*jobLoadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLoad)(nil)).Elem()
+}
+
+func (i *jobLoadPtrType) ToJobLoadPtrOutput() JobLoadPtrOutput {
+	return i.ToJobLoadPtrOutputWithContext(context.Background())
+}
+
+func (i *jobLoadPtrType) ToJobLoadPtrOutputWithContext(ctx context.Context) JobLoadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadPtrOutput)
+}
+
+type JobLoadOutput struct{ *pulumi.OutputState }
+
+func (JobLoadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLoad)(nil)).Elem()
+}
+
+func (o JobLoadOutput) ToJobLoadOutput() JobLoadOutput {
+	return o
+}
+
+func (o JobLoadOutput) ToJobLoadOutputWithContext(ctx context.Context) JobLoadOutput {
+	return o
+}
+
+func (o JobLoadOutput) ToJobLoadPtrOutput() JobLoadPtrOutput {
+	return o.ToJobLoadPtrOutputWithContext(context.Background())
+}
+
+func (o JobLoadOutput) ToJobLoadPtrOutputWithContext(ctx context.Context) JobLoadPtrOutput {
+	return o.ApplyT(func(v JobLoad) *JobLoad {
+		return &v
+	}).(JobLoadPtrOutput)
+}
+
+// Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
+// If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
+// an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
+func (o JobLoadOutput) AllowJaggedRows() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobLoad) *bool { return v.AllowJaggedRows }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file.
+// The default value is false.
+func (o JobLoadOutput) AllowQuotedNewlines() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobLoad) *bool { return v.AllowQuotedNewlines }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if we should automatically infer the options and schema for CSV and JSON sources.
+func (o JobLoadOutput) Autodetect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobLoad) *bool { return v.Autodetect }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the job is allowed to create new tables. The following values are supported:
+// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+func (o JobLoadOutput) CreateDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoad) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
+}
+
+// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+func (o JobLoadOutput) DestinationEncryptionConfiguration() JobLoadDestinationEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v JobLoad) *JobLoadDestinationEncryptionConfiguration {
+		return v.DestinationEncryptionConfiguration
+	}).(JobLoadDestinationEncryptionConfigurationPtrOutput)
+}
+
+// The destination table.  Structure is documented below.
+func (o JobLoadOutput) DestinationTable() JobLoadDestinationTableOutput {
+	return o.ApplyT(func(v JobLoad) JobLoadDestinationTable { return v.DestinationTable }).(JobLoadDestinationTableOutput)
+}
+
+// The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
+// The default value is UTF-8. BigQuery decodes the data after the raw, binary data
+// has been split using the values of the quote and fieldDelimiter properties.
+func (o JobLoadOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoad) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+// Default is ','
+func (o JobLoadOutput) FieldDelimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoad) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if BigQuery should allow extra values that are not represented in the table schema.
+// If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
+// and if there are too many bad records, an invalid error is returned in the job result.
+// The default value is false. The sourceFormat property determines what BigQuery treats as an extra value:
+// CSV: Trailing columns
+// JSON: Named values that don't match any column names
+func (o JobLoadOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobLoad) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
+// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
+func (o JobLoadOutput) MaxBadRecords() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobLoad) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
+}
+
+// Specifies a string that represents a null value in a CSV file. For example, if you specify `\N`, BigQuery interprets `\N` as a null value
+// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
+// empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
+// an empty value.
+func (o JobLoadOutput) NullMarker() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoad) *string { return v.NullMarker }).(pulumi.StringPtrOutput)
+}
+
+// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
+// Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
+// If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
+func (o JobLoadOutput) ProjectionFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobLoad) []string { return v.ProjectionFields }).(pulumi.StringArrayOutput)
+}
+
+// The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
+// and then uses the first byte of the encoded string to split the data in its raw, binary state.
+// The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
+// If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
+func (o JobLoadOutput) Quote() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoad) *string { return v.Quote }).(pulumi.StringPtrOutput)
+}
+
+// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+func (o JobLoadOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobLoad) []string { return v.SchemaUpdateOptions }).(pulumi.StringArrayOutput)
+}
+
+// The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
+// The default value is 0. This property is useful if you have header rows in the file that should be skipped.
+// When autodetect is on, the behavior is the following:
+// skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected,
+// the row is read as data. Otherwise data is read starting from the second row.
+// skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row.
+// skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected,
+// row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+func (o JobLoadOutput) SkipLeadingRows() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobLoad) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
+}
+
+// The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
+// For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
+// For orc, specify "ORC". The default value is CSV.
+func (o JobLoadOutput) SourceFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoad) *string { return v.SourceFormat }).(pulumi.StringPtrOutput)
+}
+
+// The fully-qualified URIs that point to your data in Google Cloud.
+// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+// and it must come after the 'bucket' name. Size limits related to load jobs apply
+// to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
+// specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
+// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+func (o JobLoadOutput) SourceUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobLoad) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
+}
+
+// Time-based partitioning specification for the destination table.  Structure is documented below.
+func (o JobLoadOutput) TimePartitioning() JobLoadTimePartitioningPtrOutput {
+	return o.ApplyT(func(v JobLoad) *JobLoadTimePartitioning { return v.TimePartitioning }).(JobLoadTimePartitioningPtrOutput)
+}
+
+// Specifies the action that occurs if the destination table already exists. The following values are supported:
+// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Creation, truncation and append actions occur as one atomic update upon job completion.
+func (o JobLoadOutput) WriteDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoad) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
+}
+
+type JobLoadPtrOutput struct{ *pulumi.OutputState }
+
+func (JobLoadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLoad)(nil)).Elem()
+}
+
+func (o JobLoadPtrOutput) ToJobLoadPtrOutput() JobLoadPtrOutput {
+	return o
+}
+
+func (o JobLoadPtrOutput) ToJobLoadPtrOutputWithContext(ctx context.Context) JobLoadPtrOutput {
+	return o
+}
+
+func (o JobLoadPtrOutput) Elem() JobLoadOutput {
+	return o.ApplyT(func(v *JobLoad) JobLoad { return *v }).(JobLoadOutput)
+}
+
+// Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
+// If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
+// an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
+func (o JobLoadPtrOutput) AllowJaggedRows() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowJaggedRows
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file.
+// The default value is false.
+func (o JobLoadPtrOutput) AllowQuotedNewlines() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowQuotedNewlines
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if we should automatically infer the options and schema for CSV and JSON sources.
+func (o JobLoadPtrOutput) Autodetect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Autodetect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the job is allowed to create new tables. The following values are supported:
+// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+func (o JobLoadPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateDisposition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+func (o JobLoadPtrOutput) DestinationEncryptionConfiguration() JobLoadDestinationEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *JobLoadDestinationEncryptionConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEncryptionConfiguration
+	}).(JobLoadDestinationEncryptionConfigurationPtrOutput)
+}
+
+// The destination table.  Structure is documented below.
+func (o JobLoadPtrOutput) DestinationTable() JobLoadDestinationTablePtrOutput {
+	return o.ApplyT(func(v *JobLoad) *JobLoadDestinationTable {
+		if v == nil {
+			return nil
+		}
+		return &v.DestinationTable
+	}).(JobLoadDestinationTablePtrOutput)
+}
+
+// The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
+// The default value is UTF-8. BigQuery decodes the data after the raw, binary data
+// has been split using the values of the quote and fieldDelimiter properties.
+func (o JobLoadPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+// Default is ','
+func (o JobLoadPtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldDelimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if BigQuery should allow extra values that are not represented in the table schema.
+// If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
+// and if there are too many bad records, an invalid error is returned in the job result.
+// The default value is false. The sourceFormat property determines what BigQuery treats as an extra value:
+// CSV: Trailing columns
+// JSON: Named values that don't match any column names
+func (o JobLoadPtrOutput) IgnoreUnknownValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreUnknownValues
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
+// an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
+func (o JobLoadPtrOutput) MaxBadRecords() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBadRecords
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies a string that represents a null value in a CSV file. For example, if you specify `\N`, BigQuery interprets `\N` as a null value
+// when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
+// empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
+// an empty value.
+func (o JobLoadPtrOutput) NullMarker() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NullMarker
+	}).(pulumi.StringPtrOutput)
+}
+
+// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
+// Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
+// If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
+func (o JobLoadPtrOutput) ProjectionFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobLoad) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectionFields
+	}).(pulumi.StringArrayOutput)
+}
+
+// The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
+// and then uses the first byte of the encoded string to split the data in its raw, binary state.
+// The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
+// If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
+func (o JobLoadPtrOutput) Quote() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Quote
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+func (o JobLoadPtrOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobLoad) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaUpdateOptions
+	}).(pulumi.StringArrayOutput)
+}
+
+// The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
+// The default value is 0. This property is useful if you have header rows in the file that should be skipped.
+// When autodetect is on, the behavior is the following:
+// skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected,
+// the row is read as data. Otherwise data is read starting from the second row.
+// skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row.
+// skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected,
+// row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+func (o JobLoadPtrOutput) SkipLeadingRows() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SkipLeadingRows
+	}).(pulumi.IntPtrOutput)
+}
+
+// The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
+// For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
+// For orc, specify "ORC". The default value is CSV.
+func (o JobLoadPtrOutput) SourceFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully-qualified URIs that point to your data in Google Cloud.
+// For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+// and it must come after the 'bucket' name. Size limits related to load jobs apply
+// to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
+// specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
+// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+func (o JobLoadPtrOutput) SourceUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobLoad) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Time-based partitioning specification for the destination table.  Structure is documented below.
+func (o JobLoadPtrOutput) TimePartitioning() JobLoadTimePartitioningPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *JobLoadTimePartitioning {
+		if v == nil {
+			return nil
+		}
+		return v.TimePartitioning
+	}).(JobLoadTimePartitioningPtrOutput)
+}
+
+// Specifies the action that occurs if the destination table already exists. The following values are supported:
+// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Creation, truncation and append actions occur as one atomic update upon job completion.
+func (o JobLoadPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WriteDisposition
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobLoadDestinationEncryptionConfiguration struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+	// The BigQuery Service Account associated with your project requires access to this encryption key.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// JobLoadDestinationEncryptionConfigurationInput is an input type that accepts JobLoadDestinationEncryptionConfigurationArgs and JobLoadDestinationEncryptionConfigurationOutput values.
+// You can construct a concrete instance of `JobLoadDestinationEncryptionConfigurationInput` via:
+//
+// 		 JobLoadDestinationEncryptionConfigurationArgs{...}
+//
+type JobLoadDestinationEncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToJobLoadDestinationEncryptionConfigurationOutput() JobLoadDestinationEncryptionConfigurationOutput
+	ToJobLoadDestinationEncryptionConfigurationOutputWithContext(context.Context) JobLoadDestinationEncryptionConfigurationOutput
+}
+
+type JobLoadDestinationEncryptionConfigurationArgs struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+	// The BigQuery Service Account associated with your project requires access to this encryption key.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (JobLoadDestinationEncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLoadDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i JobLoadDestinationEncryptionConfigurationArgs) ToJobLoadDestinationEncryptionConfigurationOutput() JobLoadDestinationEncryptionConfigurationOutput {
+	return i.ToJobLoadDestinationEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i JobLoadDestinationEncryptionConfigurationArgs) ToJobLoadDestinationEncryptionConfigurationOutputWithContext(ctx context.Context) JobLoadDestinationEncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadDestinationEncryptionConfigurationOutput)
+}
+
+func (i JobLoadDestinationEncryptionConfigurationArgs) ToJobLoadDestinationEncryptionConfigurationPtrOutput() JobLoadDestinationEncryptionConfigurationPtrOutput {
+	return i.ToJobLoadDestinationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i JobLoadDestinationEncryptionConfigurationArgs) ToJobLoadDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobLoadDestinationEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadDestinationEncryptionConfigurationOutput).ToJobLoadDestinationEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// JobLoadDestinationEncryptionConfigurationPtrInput is an input type that accepts JobLoadDestinationEncryptionConfigurationArgs, JobLoadDestinationEncryptionConfigurationPtr and JobLoadDestinationEncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `JobLoadDestinationEncryptionConfigurationPtrInput` via:
+//
+// 		 JobLoadDestinationEncryptionConfigurationArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobLoadDestinationEncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToJobLoadDestinationEncryptionConfigurationPtrOutput() JobLoadDestinationEncryptionConfigurationPtrOutput
+	ToJobLoadDestinationEncryptionConfigurationPtrOutputWithContext(context.Context) JobLoadDestinationEncryptionConfigurationPtrOutput
+}
+
+type jobLoadDestinationEncryptionConfigurationPtrType JobLoadDestinationEncryptionConfigurationArgs
+
+func JobLoadDestinationEncryptionConfigurationPtr(v *JobLoadDestinationEncryptionConfigurationArgs) JobLoadDestinationEncryptionConfigurationPtrInput {
+	return (*jobLoadDestinationEncryptionConfigurationPtrType)(v)
+}
+
+func (*jobLoadDestinationEncryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLoadDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *jobLoadDestinationEncryptionConfigurationPtrType) ToJobLoadDestinationEncryptionConfigurationPtrOutput() JobLoadDestinationEncryptionConfigurationPtrOutput {
+	return i.ToJobLoadDestinationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *jobLoadDestinationEncryptionConfigurationPtrType) ToJobLoadDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobLoadDestinationEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadDestinationEncryptionConfigurationPtrOutput)
+}
+
+type JobLoadDestinationEncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (JobLoadDestinationEncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLoadDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o JobLoadDestinationEncryptionConfigurationOutput) ToJobLoadDestinationEncryptionConfigurationOutput() JobLoadDestinationEncryptionConfigurationOutput {
+	return o
+}
+
+func (o JobLoadDestinationEncryptionConfigurationOutput) ToJobLoadDestinationEncryptionConfigurationOutputWithContext(ctx context.Context) JobLoadDestinationEncryptionConfigurationOutput {
+	return o
+}
+
+func (o JobLoadDestinationEncryptionConfigurationOutput) ToJobLoadDestinationEncryptionConfigurationPtrOutput() JobLoadDestinationEncryptionConfigurationPtrOutput {
+	return o.ToJobLoadDestinationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o JobLoadDestinationEncryptionConfigurationOutput) ToJobLoadDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobLoadDestinationEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v JobLoadDestinationEncryptionConfiguration) *JobLoadDestinationEncryptionConfiguration {
+		return &v
+	}).(JobLoadDestinationEncryptionConfigurationPtrOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+// The BigQuery Service Account associated with your project requires access to this encryption key.
+func (o JobLoadDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v JobLoadDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type JobLoadDestinationEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (JobLoadDestinationEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLoadDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o JobLoadDestinationEncryptionConfigurationPtrOutput) ToJobLoadDestinationEncryptionConfigurationPtrOutput() JobLoadDestinationEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o JobLoadDestinationEncryptionConfigurationPtrOutput) ToJobLoadDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobLoadDestinationEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o JobLoadDestinationEncryptionConfigurationPtrOutput) Elem() JobLoadDestinationEncryptionConfigurationOutput {
+	return o.ApplyT(func(v *JobLoadDestinationEncryptionConfiguration) JobLoadDestinationEncryptionConfiguration {
+		return *v
+	}).(JobLoadDestinationEncryptionConfigurationOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+// The BigQuery Service Account associated with your project requires access to this encryption key.
+func (o JobLoadDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoadDestinationEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobLoadDestinationTable struct {
+	// The ID of the dataset containing this model.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId string `pulumi:"projectId"`
+	// The ID of the table.
+	TableId string `pulumi:"tableId"`
+}
+
+// JobLoadDestinationTableInput is an input type that accepts JobLoadDestinationTableArgs and JobLoadDestinationTableOutput values.
+// You can construct a concrete instance of `JobLoadDestinationTableInput` via:
+//
+// 		 JobLoadDestinationTableArgs{...}
+//
+type JobLoadDestinationTableInput interface {
+	pulumi.Input
+
+	ToJobLoadDestinationTableOutput() JobLoadDestinationTableOutput
+	ToJobLoadDestinationTableOutputWithContext(context.Context) JobLoadDestinationTableOutput
+}
+
+type JobLoadDestinationTableArgs struct {
+	// The ID of the dataset containing this model.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The ID of the table.
+	TableId pulumi.StringInput `pulumi:"tableId"`
+}
+
+func (JobLoadDestinationTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLoadDestinationTable)(nil)).Elem()
+}
+
+func (i JobLoadDestinationTableArgs) ToJobLoadDestinationTableOutput() JobLoadDestinationTableOutput {
+	return i.ToJobLoadDestinationTableOutputWithContext(context.Background())
+}
+
+func (i JobLoadDestinationTableArgs) ToJobLoadDestinationTableOutputWithContext(ctx context.Context) JobLoadDestinationTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadDestinationTableOutput)
+}
+
+func (i JobLoadDestinationTableArgs) ToJobLoadDestinationTablePtrOutput() JobLoadDestinationTablePtrOutput {
+	return i.ToJobLoadDestinationTablePtrOutputWithContext(context.Background())
+}
+
+func (i JobLoadDestinationTableArgs) ToJobLoadDestinationTablePtrOutputWithContext(ctx context.Context) JobLoadDestinationTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadDestinationTableOutput).ToJobLoadDestinationTablePtrOutputWithContext(ctx)
+}
+
+// JobLoadDestinationTablePtrInput is an input type that accepts JobLoadDestinationTableArgs, JobLoadDestinationTablePtr and JobLoadDestinationTablePtrOutput values.
+// You can construct a concrete instance of `JobLoadDestinationTablePtrInput` via:
+//
+// 		 JobLoadDestinationTableArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobLoadDestinationTablePtrInput interface {
+	pulumi.Input
+
+	ToJobLoadDestinationTablePtrOutput() JobLoadDestinationTablePtrOutput
+	ToJobLoadDestinationTablePtrOutputWithContext(context.Context) JobLoadDestinationTablePtrOutput
+}
+
+type jobLoadDestinationTablePtrType JobLoadDestinationTableArgs
+
+func JobLoadDestinationTablePtr(v *JobLoadDestinationTableArgs) JobLoadDestinationTablePtrInput {
+	return (*jobLoadDestinationTablePtrType)(v)
+}
+
+func (*jobLoadDestinationTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLoadDestinationTable)(nil)).Elem()
+}
+
+func (i *jobLoadDestinationTablePtrType) ToJobLoadDestinationTablePtrOutput() JobLoadDestinationTablePtrOutput {
+	return i.ToJobLoadDestinationTablePtrOutputWithContext(context.Background())
+}
+
+func (i *jobLoadDestinationTablePtrType) ToJobLoadDestinationTablePtrOutputWithContext(ctx context.Context) JobLoadDestinationTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadDestinationTablePtrOutput)
+}
+
+type JobLoadDestinationTableOutput struct{ *pulumi.OutputState }
+
+func (JobLoadDestinationTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLoadDestinationTable)(nil)).Elem()
+}
+
+func (o JobLoadDestinationTableOutput) ToJobLoadDestinationTableOutput() JobLoadDestinationTableOutput {
+	return o
+}
+
+func (o JobLoadDestinationTableOutput) ToJobLoadDestinationTableOutputWithContext(ctx context.Context) JobLoadDestinationTableOutput {
+	return o
+}
+
+func (o JobLoadDestinationTableOutput) ToJobLoadDestinationTablePtrOutput() JobLoadDestinationTablePtrOutput {
+	return o.ToJobLoadDestinationTablePtrOutputWithContext(context.Background())
+}
+
+func (o JobLoadDestinationTableOutput) ToJobLoadDestinationTablePtrOutputWithContext(ctx context.Context) JobLoadDestinationTablePtrOutput {
+	return o.ApplyT(func(v JobLoadDestinationTable) *JobLoadDestinationTable {
+		return &v
+	}).(JobLoadDestinationTablePtrOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobLoadDestinationTableOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobLoadDestinationTable) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobLoadDestinationTableOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobLoadDestinationTable) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The ID of the table.
+func (o JobLoadDestinationTableOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobLoadDestinationTable) string { return v.TableId }).(pulumi.StringOutput)
+}
+
+type JobLoadDestinationTablePtrOutput struct{ *pulumi.OutputState }
+
+func (JobLoadDestinationTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLoadDestinationTable)(nil)).Elem()
+}
+
+func (o JobLoadDestinationTablePtrOutput) ToJobLoadDestinationTablePtrOutput() JobLoadDestinationTablePtrOutput {
+	return o
+}
+
+func (o JobLoadDestinationTablePtrOutput) ToJobLoadDestinationTablePtrOutputWithContext(ctx context.Context) JobLoadDestinationTablePtrOutput {
+	return o
+}
+
+func (o JobLoadDestinationTablePtrOutput) Elem() JobLoadDestinationTableOutput {
+	return o.ApplyT(func(v *JobLoadDestinationTable) JobLoadDestinationTable { return *v }).(JobLoadDestinationTableOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobLoadDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoadDestinationTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobLoadDestinationTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoadDestinationTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the table.
+func (o JobLoadDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoadDestinationTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TableId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobLoadTimePartitioning struct {
+	// Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
+	ExpirationMs *string `pulumi:"expirationMs"`
+	// If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field.
+	// The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
+	// A wrapper is used here because an empty string is an invalid value.
+	Field *string `pulumi:"field"`
+	// The only type supported is DAY, which will generate one partition per day. Providing an empty string used to cause an error,
+	// but in OnePlatform the field will be treated as unset.
+	Type string `pulumi:"type"`
+}
+
+// JobLoadTimePartitioningInput is an input type that accepts JobLoadTimePartitioningArgs and JobLoadTimePartitioningOutput values.
+// You can construct a concrete instance of `JobLoadTimePartitioningInput` via:
+//
+// 		 JobLoadTimePartitioningArgs{...}
+//
+type JobLoadTimePartitioningInput interface {
+	pulumi.Input
+
+	ToJobLoadTimePartitioningOutput() JobLoadTimePartitioningOutput
+	ToJobLoadTimePartitioningOutputWithContext(context.Context) JobLoadTimePartitioningOutput
+}
+
+type JobLoadTimePartitioningArgs struct {
+	// Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
+	ExpirationMs pulumi.StringPtrInput `pulumi:"expirationMs"`
+	// If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field.
+	// The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
+	// A wrapper is used here because an empty string is an invalid value.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// The only type supported is DAY, which will generate one partition per day. Providing an empty string used to cause an error,
+	// but in OnePlatform the field will be treated as unset.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (JobLoadTimePartitioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLoadTimePartitioning)(nil)).Elem()
+}
+
+func (i JobLoadTimePartitioningArgs) ToJobLoadTimePartitioningOutput() JobLoadTimePartitioningOutput {
+	return i.ToJobLoadTimePartitioningOutputWithContext(context.Background())
+}
+
+func (i JobLoadTimePartitioningArgs) ToJobLoadTimePartitioningOutputWithContext(ctx context.Context) JobLoadTimePartitioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadTimePartitioningOutput)
+}
+
+func (i JobLoadTimePartitioningArgs) ToJobLoadTimePartitioningPtrOutput() JobLoadTimePartitioningPtrOutput {
+	return i.ToJobLoadTimePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i JobLoadTimePartitioningArgs) ToJobLoadTimePartitioningPtrOutputWithContext(ctx context.Context) JobLoadTimePartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadTimePartitioningOutput).ToJobLoadTimePartitioningPtrOutputWithContext(ctx)
+}
+
+// JobLoadTimePartitioningPtrInput is an input type that accepts JobLoadTimePartitioningArgs, JobLoadTimePartitioningPtr and JobLoadTimePartitioningPtrOutput values.
+// You can construct a concrete instance of `JobLoadTimePartitioningPtrInput` via:
+//
+// 		 JobLoadTimePartitioningArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobLoadTimePartitioningPtrInput interface {
+	pulumi.Input
+
+	ToJobLoadTimePartitioningPtrOutput() JobLoadTimePartitioningPtrOutput
+	ToJobLoadTimePartitioningPtrOutputWithContext(context.Context) JobLoadTimePartitioningPtrOutput
+}
+
+type jobLoadTimePartitioningPtrType JobLoadTimePartitioningArgs
+
+func JobLoadTimePartitioningPtr(v *JobLoadTimePartitioningArgs) JobLoadTimePartitioningPtrInput {
+	return (*jobLoadTimePartitioningPtrType)(v)
+}
+
+func (*jobLoadTimePartitioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLoadTimePartitioning)(nil)).Elem()
+}
+
+func (i *jobLoadTimePartitioningPtrType) ToJobLoadTimePartitioningPtrOutput() JobLoadTimePartitioningPtrOutput {
+	return i.ToJobLoadTimePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i *jobLoadTimePartitioningPtrType) ToJobLoadTimePartitioningPtrOutputWithContext(ctx context.Context) JobLoadTimePartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadTimePartitioningPtrOutput)
+}
+
+type JobLoadTimePartitioningOutput struct{ *pulumi.OutputState }
+
+func (JobLoadTimePartitioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLoadTimePartitioning)(nil)).Elem()
+}
+
+func (o JobLoadTimePartitioningOutput) ToJobLoadTimePartitioningOutput() JobLoadTimePartitioningOutput {
+	return o
+}
+
+func (o JobLoadTimePartitioningOutput) ToJobLoadTimePartitioningOutputWithContext(ctx context.Context) JobLoadTimePartitioningOutput {
+	return o
+}
+
+func (o JobLoadTimePartitioningOutput) ToJobLoadTimePartitioningPtrOutput() JobLoadTimePartitioningPtrOutput {
+	return o.ToJobLoadTimePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (o JobLoadTimePartitioningOutput) ToJobLoadTimePartitioningPtrOutputWithContext(ctx context.Context) JobLoadTimePartitioningPtrOutput {
+	return o.ApplyT(func(v JobLoadTimePartitioning) *JobLoadTimePartitioning {
+		return &v
+	}).(JobLoadTimePartitioningPtrOutput)
+}
+
+// Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
+func (o JobLoadTimePartitioningOutput) ExpirationMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoadTimePartitioning) *string { return v.ExpirationMs }).(pulumi.StringPtrOutput)
+}
+
+// If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field.
+// The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
+// A wrapper is used here because an empty string is an invalid value.
+func (o JobLoadTimePartitioningOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoadTimePartitioning) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+// The only type supported is DAY, which will generate one partition per day. Providing an empty string used to cause an error,
+// but in OnePlatform the field will be treated as unset.
+func (o JobLoadTimePartitioningOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v JobLoadTimePartitioning) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type JobLoadTimePartitioningPtrOutput struct{ *pulumi.OutputState }
+
+func (JobLoadTimePartitioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLoadTimePartitioning)(nil)).Elem()
+}
+
+func (o JobLoadTimePartitioningPtrOutput) ToJobLoadTimePartitioningPtrOutput() JobLoadTimePartitioningPtrOutput {
+	return o
+}
+
+func (o JobLoadTimePartitioningPtrOutput) ToJobLoadTimePartitioningPtrOutputWithContext(ctx context.Context) JobLoadTimePartitioningPtrOutput {
+	return o
+}
+
+func (o JobLoadTimePartitioningPtrOutput) Elem() JobLoadTimePartitioningOutput {
+	return o.ApplyT(func(v *JobLoadTimePartitioning) JobLoadTimePartitioning { return *v }).(JobLoadTimePartitioningOutput)
+}
+
+// Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
+func (o JobLoadTimePartitioningPtrOutput) ExpirationMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoadTimePartitioning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field.
+// The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
+// A wrapper is used here because an empty string is an invalid value.
+func (o JobLoadTimePartitioningPtrOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoadTimePartitioning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+// The only type supported is DAY, which will generate one partition per day. Providing an empty string used to cause an error,
+// but in OnePlatform the field will be treated as unset.
+func (o JobLoadTimePartitioningPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobLoadTimePartitioning) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobQuery struct {
+	// If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
+	// Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
+	// However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+	AllowLargeResults *bool `pulumi:"allowLargeResults"`
+	// Specifies whether the job is allowed to create new tables. The following values are supported:
+	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	CreateDisposition *string `pulumi:"createDisposition"`
+	// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+	DefaultDataset *JobQueryDefaultDataset `pulumi:"defaultDataset"`
+	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	DestinationEncryptionConfiguration *JobQueryDestinationEncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
+	// The destination table.  Structure is documented below.
+	DestinationTable *JobQueryDestinationTable `pulumi:"destinationTable"`
+	// If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
+	// allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
+	FlattenResults *bool `pulumi:"flattenResults"`
+	// Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
+	// If unspecified, this will be set to your project default.
+	MaximumBillingTier *int `pulumi:"maximumBillingTier"`
+	// Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
+	// If unspecified, this will be set to your project default.
+	MaximumBytesBilled *string `pulumi:"maximumBytesBilled"`
+	// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+	ParameterMode *string `pulumi:"parameterMode"`
+	// Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+	Priority *string `pulumi:"priority"`
+	// Configures a query job.  Structure is documented below.
+	Query string `pulumi:"query"`
+	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+	// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+	// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+	// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+	// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+	// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+	SchemaUpdateOptions []string `pulumi:"schemaUpdateOptions"`
+	// Options controlling the execution of scripts.  Structure is documented below.
+	ScriptOptions *JobQueryScriptOptions `pulumi:"scriptOptions"`
+	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
+	// If set to false, the query will use BigQuery's standard SQL.
+	UseLegacySql *bool `pulumi:"useLegacySql"`
+	// Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
+	// tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
+	// The default value is true.
+	UseQueryCache *bool `pulumi:"useQueryCache"`
+	// Describes user-defined function resources used in the query.  Structure is documented below.
+	UserDefinedFunctionResources []JobQueryUserDefinedFunctionResource `pulumi:"userDefinedFunctionResources"`
+	// Specifies the action that occurs if the destination table already exists. The following values are supported:
+	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	WriteDisposition *string `pulumi:"writeDisposition"`
+}
+
+// JobQueryInput is an input type that accepts JobQueryArgs and JobQueryOutput values.
+// You can construct a concrete instance of `JobQueryInput` via:
+//
+// 		 JobQueryArgs{...}
+//
+type JobQueryInput interface {
+	pulumi.Input
+
+	ToJobQueryOutput() JobQueryOutput
+	ToJobQueryOutputWithContext(context.Context) JobQueryOutput
+}
+
+type JobQueryArgs struct {
+	// If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
+	// Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
+	// However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+	AllowLargeResults pulumi.BoolPtrInput `pulumi:"allowLargeResults"`
+	// Specifies whether the job is allowed to create new tables. The following values are supported:
+	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
+	// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+	DefaultDataset JobQueryDefaultDatasetPtrInput `pulumi:"defaultDataset"`
+	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	DestinationEncryptionConfiguration JobQueryDestinationEncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
+	// The destination table.  Structure is documented below.
+	DestinationTable JobQueryDestinationTablePtrInput `pulumi:"destinationTable"`
+	// If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
+	// allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
+	FlattenResults pulumi.BoolPtrInput `pulumi:"flattenResults"`
+	// Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
+	// If unspecified, this will be set to your project default.
+	MaximumBillingTier pulumi.IntPtrInput `pulumi:"maximumBillingTier"`
+	// Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
+	// If unspecified, this will be set to your project default.
+	MaximumBytesBilled pulumi.StringPtrInput `pulumi:"maximumBytesBilled"`
+	// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+	ParameterMode pulumi.StringPtrInput `pulumi:"parameterMode"`
+	// Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+	Priority pulumi.StringPtrInput `pulumi:"priority"`
+	// Configures a query job.  Structure is documented below.
+	Query pulumi.StringInput `pulumi:"query"`
+	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+	// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+	// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+	// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+	// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+	// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+	SchemaUpdateOptions pulumi.StringArrayInput `pulumi:"schemaUpdateOptions"`
+	// Options controlling the execution of scripts.  Structure is documented below.
+	ScriptOptions JobQueryScriptOptionsPtrInput `pulumi:"scriptOptions"`
+	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
+	// If set to false, the query will use BigQuery's standard SQL.
+	UseLegacySql pulumi.BoolPtrInput `pulumi:"useLegacySql"`
+	// Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
+	// tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
+	// The default value is true.
+	UseQueryCache pulumi.BoolPtrInput `pulumi:"useQueryCache"`
+	// Describes user-defined function resources used in the query.  Structure is documented below.
+	UserDefinedFunctionResources JobQueryUserDefinedFunctionResourceArrayInput `pulumi:"userDefinedFunctionResources"`
+	// Specifies the action that occurs if the destination table already exists. The following values are supported:
+	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
+}
+
+func (JobQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQuery)(nil)).Elem()
+}
+
+func (i JobQueryArgs) ToJobQueryOutput() JobQueryOutput {
+	return i.ToJobQueryOutputWithContext(context.Background())
+}
+
+func (i JobQueryArgs) ToJobQueryOutputWithContext(ctx context.Context) JobQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryOutput)
+}
+
+func (i JobQueryArgs) ToJobQueryPtrOutput() JobQueryPtrOutput {
+	return i.ToJobQueryPtrOutputWithContext(context.Background())
+}
+
+func (i JobQueryArgs) ToJobQueryPtrOutputWithContext(ctx context.Context) JobQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryOutput).ToJobQueryPtrOutputWithContext(ctx)
+}
+
+// JobQueryPtrInput is an input type that accepts JobQueryArgs, JobQueryPtr and JobQueryPtrOutput values.
+// You can construct a concrete instance of `JobQueryPtrInput` via:
+//
+// 		 JobQueryArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobQueryPtrInput interface {
+	pulumi.Input
+
+	ToJobQueryPtrOutput() JobQueryPtrOutput
+	ToJobQueryPtrOutputWithContext(context.Context) JobQueryPtrOutput
+}
+
+type jobQueryPtrType JobQueryArgs
+
+func JobQueryPtr(v *JobQueryArgs) JobQueryPtrInput {
+	return (*jobQueryPtrType)(v)
+}
+
+func (*jobQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQuery)(nil)).Elem()
+}
+
+func (i *jobQueryPtrType) ToJobQueryPtrOutput() JobQueryPtrOutput {
+	return i.ToJobQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *jobQueryPtrType) ToJobQueryPtrOutputWithContext(ctx context.Context) JobQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryPtrOutput)
+}
+
+type JobQueryOutput struct{ *pulumi.OutputState }
+
+func (JobQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQuery)(nil)).Elem()
+}
+
+func (o JobQueryOutput) ToJobQueryOutput() JobQueryOutput {
+	return o
+}
+
+func (o JobQueryOutput) ToJobQueryOutputWithContext(ctx context.Context) JobQueryOutput {
+	return o
+}
+
+func (o JobQueryOutput) ToJobQueryPtrOutput() JobQueryPtrOutput {
+	return o.ToJobQueryPtrOutputWithContext(context.Background())
+}
+
+func (o JobQueryOutput) ToJobQueryPtrOutputWithContext(ctx context.Context) JobQueryPtrOutput {
+	return o.ApplyT(func(v JobQuery) *JobQuery {
+		return &v
+	}).(JobQueryPtrOutput)
+}
+
+// If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
+// Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
+// However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+func (o JobQueryOutput) AllowLargeResults() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobQuery) *bool { return v.AllowLargeResults }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the job is allowed to create new tables. The following values are supported:
+// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+func (o JobQueryOutput) CreateDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQuery) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+func (o JobQueryOutput) DefaultDataset() JobQueryDefaultDatasetPtrOutput {
+	return o.ApplyT(func(v JobQuery) *JobQueryDefaultDataset { return v.DefaultDataset }).(JobQueryDefaultDatasetPtrOutput)
+}
+
+// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+func (o JobQueryOutput) DestinationEncryptionConfiguration() JobQueryDestinationEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v JobQuery) *JobQueryDestinationEncryptionConfiguration {
+		return v.DestinationEncryptionConfiguration
+	}).(JobQueryDestinationEncryptionConfigurationPtrOutput)
+}
+
+// The destination table.  Structure is documented below.
+func (o JobQueryOutput) DestinationTable() JobQueryDestinationTablePtrOutput {
+	return o.ApplyT(func(v JobQuery) *JobQueryDestinationTable { return v.DestinationTable }).(JobQueryDestinationTablePtrOutput)
+}
+
+// If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
+// allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
+func (o JobQueryOutput) FlattenResults() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobQuery) *bool { return v.FlattenResults }).(pulumi.BoolPtrOutput)
+}
+
+// Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
+// If unspecified, this will be set to your project default.
+func (o JobQueryOutput) MaximumBillingTier() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobQuery) *int { return v.MaximumBillingTier }).(pulumi.IntPtrOutput)
+}
+
+// Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
+// If unspecified, this will be set to your project default.
+func (o JobQueryOutput) MaximumBytesBilled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQuery) *string { return v.MaximumBytesBilled }).(pulumi.StringPtrOutput)
+}
+
+// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+func (o JobQueryOutput) ParameterMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQuery) *string { return v.ParameterMode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+func (o JobQueryOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQuery) *string { return v.Priority }).(pulumi.StringPtrOutput)
+}
+
+// Configures a query job.  Structure is documented below.
+func (o JobQueryOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v JobQuery) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+func (o JobQueryOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobQuery) []string { return v.SchemaUpdateOptions }).(pulumi.StringArrayOutput)
+}
+
+// Options controlling the execution of scripts.  Structure is documented below.
+func (o JobQueryOutput) ScriptOptions() JobQueryScriptOptionsPtrOutput {
+	return o.ApplyT(func(v JobQuery) *JobQueryScriptOptions { return v.ScriptOptions }).(JobQueryScriptOptionsPtrOutput)
+}
+
+// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
+// If set to false, the query will use BigQuery's standard SQL.
+func (o JobQueryOutput) UseLegacySql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobQuery) *bool { return v.UseLegacySql }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
+// tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
+// The default value is true.
+func (o JobQueryOutput) UseQueryCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobQuery) *bool { return v.UseQueryCache }).(pulumi.BoolPtrOutput)
+}
+
+// Describes user-defined function resources used in the query.  Structure is documented below.
+func (o JobQueryOutput) UserDefinedFunctionResources() JobQueryUserDefinedFunctionResourceArrayOutput {
+	return o.ApplyT(func(v JobQuery) []JobQueryUserDefinedFunctionResource { return v.UserDefinedFunctionResources }).(JobQueryUserDefinedFunctionResourceArrayOutput)
+}
+
+// Specifies the action that occurs if the destination table already exists. The following values are supported:
+// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Creation, truncation and append actions occur as one atomic update upon job completion.
+func (o JobQueryOutput) WriteDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQuery) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
+}
+
+type JobQueryPtrOutput struct{ *pulumi.OutputState }
+
+func (JobQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQuery)(nil)).Elem()
+}
+
+func (o JobQueryPtrOutput) ToJobQueryPtrOutput() JobQueryPtrOutput {
+	return o
+}
+
+func (o JobQueryPtrOutput) ToJobQueryPtrOutputWithContext(ctx context.Context) JobQueryPtrOutput {
+	return o
+}
+
+func (o JobQueryPtrOutput) Elem() JobQueryOutput {
+	return o.ApplyT(func(v *JobQuery) JobQuery { return *v }).(JobQueryOutput)
+}
+
+// If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
+// Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
+// However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+func (o JobQueryPtrOutput) AllowLargeResults() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowLargeResults
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the job is allowed to create new tables. The following values are supported:
+// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+func (o JobQueryPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateDisposition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+func (o JobQueryPtrOutput) DefaultDataset() JobQueryDefaultDatasetPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *JobQueryDefaultDataset {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDataset
+	}).(JobQueryDefaultDatasetPtrOutput)
+}
+
+// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+func (o JobQueryPtrOutput) DestinationEncryptionConfiguration() JobQueryDestinationEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *JobQueryDestinationEncryptionConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationEncryptionConfiguration
+	}).(JobQueryDestinationEncryptionConfigurationPtrOutput)
+}
+
+// The destination table.  Structure is documented below.
+func (o JobQueryPtrOutput) DestinationTable() JobQueryDestinationTablePtrOutput {
+	return o.ApplyT(func(v *JobQuery) *JobQueryDestinationTable {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationTable
+	}).(JobQueryDestinationTablePtrOutput)
+}
+
+// If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
+// allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
+func (o JobQueryPtrOutput) FlattenResults() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FlattenResults
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
+// If unspecified, this will be set to your project default.
+func (o JobQueryPtrOutput) MaximumBillingTier() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumBillingTier
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
+// If unspecified, this will be set to your project default.
+func (o JobQueryPtrOutput) MaximumBytesBilled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaximumBytesBilled
+	}).(pulumi.StringPtrOutput)
+}
+
+// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+func (o JobQueryPtrOutput) ParameterMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+func (o JobQueryPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configures a query job.  Structure is documented below.
+func (o JobQueryPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+func (o JobQueryPtrOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobQuery) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaUpdateOptions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Options controlling the execution of scripts.  Structure is documented below.
+func (o JobQueryPtrOutput) ScriptOptions() JobQueryScriptOptionsPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *JobQueryScriptOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptOptions
+	}).(JobQueryScriptOptionsPtrOutput)
+}
+
+// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
+// If set to false, the query will use BigQuery's standard SQL.
+func (o JobQueryPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseLegacySql
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
+// tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
+// The default value is true.
+func (o JobQueryPtrOutput) UseQueryCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseQueryCache
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Describes user-defined function resources used in the query.  Structure is documented below.
+func (o JobQueryPtrOutput) UserDefinedFunctionResources() JobQueryUserDefinedFunctionResourceArrayOutput {
+	return o.ApplyT(func(v *JobQuery) []JobQueryUserDefinedFunctionResource {
+		if v == nil {
+			return nil
+		}
+		return v.UserDefinedFunctionResources
+	}).(JobQueryUserDefinedFunctionResourceArrayOutput)
+}
+
+// Specifies the action that occurs if the destination table already exists. The following values are supported:
+// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Creation, truncation and append actions occur as one atomic update upon job completion.
+func (o JobQueryPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WriteDisposition
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobQueryDefaultDataset struct {
+	// The ID of the dataset containing this model.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId *string `pulumi:"projectId"`
+}
+
+// JobQueryDefaultDatasetInput is an input type that accepts JobQueryDefaultDatasetArgs and JobQueryDefaultDatasetOutput values.
+// You can construct a concrete instance of `JobQueryDefaultDatasetInput` via:
+//
+// 		 JobQueryDefaultDatasetArgs{...}
+//
+type JobQueryDefaultDatasetInput interface {
+	pulumi.Input
+
+	ToJobQueryDefaultDatasetOutput() JobQueryDefaultDatasetOutput
+	ToJobQueryDefaultDatasetOutputWithContext(context.Context) JobQueryDefaultDatasetOutput
+}
+
+type JobQueryDefaultDatasetArgs struct {
+	// The ID of the dataset containing this model.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+}
+
+func (JobQueryDefaultDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryDefaultDataset)(nil)).Elem()
+}
+
+func (i JobQueryDefaultDatasetArgs) ToJobQueryDefaultDatasetOutput() JobQueryDefaultDatasetOutput {
+	return i.ToJobQueryDefaultDatasetOutputWithContext(context.Background())
+}
+
+func (i JobQueryDefaultDatasetArgs) ToJobQueryDefaultDatasetOutputWithContext(ctx context.Context) JobQueryDefaultDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryDefaultDatasetOutput)
+}
+
+func (i JobQueryDefaultDatasetArgs) ToJobQueryDefaultDatasetPtrOutput() JobQueryDefaultDatasetPtrOutput {
+	return i.ToJobQueryDefaultDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i JobQueryDefaultDatasetArgs) ToJobQueryDefaultDatasetPtrOutputWithContext(ctx context.Context) JobQueryDefaultDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryDefaultDatasetOutput).ToJobQueryDefaultDatasetPtrOutputWithContext(ctx)
+}
+
+// JobQueryDefaultDatasetPtrInput is an input type that accepts JobQueryDefaultDatasetArgs, JobQueryDefaultDatasetPtr and JobQueryDefaultDatasetPtrOutput values.
+// You can construct a concrete instance of `JobQueryDefaultDatasetPtrInput` via:
+//
+// 		 JobQueryDefaultDatasetArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobQueryDefaultDatasetPtrInput interface {
+	pulumi.Input
+
+	ToJobQueryDefaultDatasetPtrOutput() JobQueryDefaultDatasetPtrOutput
+	ToJobQueryDefaultDatasetPtrOutputWithContext(context.Context) JobQueryDefaultDatasetPtrOutput
+}
+
+type jobQueryDefaultDatasetPtrType JobQueryDefaultDatasetArgs
+
+func JobQueryDefaultDatasetPtr(v *JobQueryDefaultDatasetArgs) JobQueryDefaultDatasetPtrInput {
+	return (*jobQueryDefaultDatasetPtrType)(v)
+}
+
+func (*jobQueryDefaultDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQueryDefaultDataset)(nil)).Elem()
+}
+
+func (i *jobQueryDefaultDatasetPtrType) ToJobQueryDefaultDatasetPtrOutput() JobQueryDefaultDatasetPtrOutput {
+	return i.ToJobQueryDefaultDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *jobQueryDefaultDatasetPtrType) ToJobQueryDefaultDatasetPtrOutputWithContext(ctx context.Context) JobQueryDefaultDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryDefaultDatasetPtrOutput)
+}
+
+type JobQueryDefaultDatasetOutput struct{ *pulumi.OutputState }
+
+func (JobQueryDefaultDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryDefaultDataset)(nil)).Elem()
+}
+
+func (o JobQueryDefaultDatasetOutput) ToJobQueryDefaultDatasetOutput() JobQueryDefaultDatasetOutput {
+	return o
+}
+
+func (o JobQueryDefaultDatasetOutput) ToJobQueryDefaultDatasetOutputWithContext(ctx context.Context) JobQueryDefaultDatasetOutput {
+	return o
+}
+
+func (o JobQueryDefaultDatasetOutput) ToJobQueryDefaultDatasetPtrOutput() JobQueryDefaultDatasetPtrOutput {
+	return o.ToJobQueryDefaultDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o JobQueryDefaultDatasetOutput) ToJobQueryDefaultDatasetPtrOutputWithContext(ctx context.Context) JobQueryDefaultDatasetPtrOutput {
+	return o.ApplyT(func(v JobQueryDefaultDataset) *JobQueryDefaultDataset {
+		return &v
+	}).(JobQueryDefaultDatasetPtrOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobQueryDefaultDatasetOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobQueryDefaultDataset) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobQueryDefaultDatasetOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQueryDefaultDataset) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+type JobQueryDefaultDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (JobQueryDefaultDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQueryDefaultDataset)(nil)).Elem()
+}
+
+func (o JobQueryDefaultDatasetPtrOutput) ToJobQueryDefaultDatasetPtrOutput() JobQueryDefaultDatasetPtrOutput {
+	return o
+}
+
+func (o JobQueryDefaultDatasetPtrOutput) ToJobQueryDefaultDatasetPtrOutputWithContext(ctx context.Context) JobQueryDefaultDatasetPtrOutput {
+	return o
+}
+
+func (o JobQueryDefaultDatasetPtrOutput) Elem() JobQueryDefaultDatasetOutput {
+	return o.ApplyT(func(v *JobQueryDefaultDataset) JobQueryDefaultDataset { return *v }).(JobQueryDefaultDatasetOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobQueryDefaultDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQueryDefaultDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobQueryDefaultDatasetPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQueryDefaultDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobQueryDestinationEncryptionConfiguration struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+	// The BigQuery Service Account associated with your project requires access to this encryption key.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// JobQueryDestinationEncryptionConfigurationInput is an input type that accepts JobQueryDestinationEncryptionConfigurationArgs and JobQueryDestinationEncryptionConfigurationOutput values.
+// You can construct a concrete instance of `JobQueryDestinationEncryptionConfigurationInput` via:
+//
+// 		 JobQueryDestinationEncryptionConfigurationArgs{...}
+//
+type JobQueryDestinationEncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToJobQueryDestinationEncryptionConfigurationOutput() JobQueryDestinationEncryptionConfigurationOutput
+	ToJobQueryDestinationEncryptionConfigurationOutputWithContext(context.Context) JobQueryDestinationEncryptionConfigurationOutput
+}
+
+type JobQueryDestinationEncryptionConfigurationArgs struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+	// The BigQuery Service Account associated with your project requires access to this encryption key.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (JobQueryDestinationEncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i JobQueryDestinationEncryptionConfigurationArgs) ToJobQueryDestinationEncryptionConfigurationOutput() JobQueryDestinationEncryptionConfigurationOutput {
+	return i.ToJobQueryDestinationEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i JobQueryDestinationEncryptionConfigurationArgs) ToJobQueryDestinationEncryptionConfigurationOutputWithContext(ctx context.Context) JobQueryDestinationEncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryDestinationEncryptionConfigurationOutput)
+}
+
+func (i JobQueryDestinationEncryptionConfigurationArgs) ToJobQueryDestinationEncryptionConfigurationPtrOutput() JobQueryDestinationEncryptionConfigurationPtrOutput {
+	return i.ToJobQueryDestinationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i JobQueryDestinationEncryptionConfigurationArgs) ToJobQueryDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobQueryDestinationEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryDestinationEncryptionConfigurationOutput).ToJobQueryDestinationEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// JobQueryDestinationEncryptionConfigurationPtrInput is an input type that accepts JobQueryDestinationEncryptionConfigurationArgs, JobQueryDestinationEncryptionConfigurationPtr and JobQueryDestinationEncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `JobQueryDestinationEncryptionConfigurationPtrInput` via:
+//
+// 		 JobQueryDestinationEncryptionConfigurationArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobQueryDestinationEncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToJobQueryDestinationEncryptionConfigurationPtrOutput() JobQueryDestinationEncryptionConfigurationPtrOutput
+	ToJobQueryDestinationEncryptionConfigurationPtrOutputWithContext(context.Context) JobQueryDestinationEncryptionConfigurationPtrOutput
+}
+
+type jobQueryDestinationEncryptionConfigurationPtrType JobQueryDestinationEncryptionConfigurationArgs
+
+func JobQueryDestinationEncryptionConfigurationPtr(v *JobQueryDestinationEncryptionConfigurationArgs) JobQueryDestinationEncryptionConfigurationPtrInput {
+	return (*jobQueryDestinationEncryptionConfigurationPtrType)(v)
+}
+
+func (*jobQueryDestinationEncryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQueryDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *jobQueryDestinationEncryptionConfigurationPtrType) ToJobQueryDestinationEncryptionConfigurationPtrOutput() JobQueryDestinationEncryptionConfigurationPtrOutput {
+	return i.ToJobQueryDestinationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *jobQueryDestinationEncryptionConfigurationPtrType) ToJobQueryDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobQueryDestinationEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryDestinationEncryptionConfigurationPtrOutput)
+}
+
+type JobQueryDestinationEncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (JobQueryDestinationEncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o JobQueryDestinationEncryptionConfigurationOutput) ToJobQueryDestinationEncryptionConfigurationOutput() JobQueryDestinationEncryptionConfigurationOutput {
+	return o
+}
+
+func (o JobQueryDestinationEncryptionConfigurationOutput) ToJobQueryDestinationEncryptionConfigurationOutputWithContext(ctx context.Context) JobQueryDestinationEncryptionConfigurationOutput {
+	return o
+}
+
+func (o JobQueryDestinationEncryptionConfigurationOutput) ToJobQueryDestinationEncryptionConfigurationPtrOutput() JobQueryDestinationEncryptionConfigurationPtrOutput {
+	return o.ToJobQueryDestinationEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o JobQueryDestinationEncryptionConfigurationOutput) ToJobQueryDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobQueryDestinationEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v JobQueryDestinationEncryptionConfiguration) *JobQueryDestinationEncryptionConfiguration {
+		return &v
+	}).(JobQueryDestinationEncryptionConfigurationPtrOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+// The BigQuery Service Account associated with your project requires access to this encryption key.
+func (o JobQueryDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v JobQueryDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type JobQueryDestinationEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (JobQueryDestinationEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQueryDestinationEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o JobQueryDestinationEncryptionConfigurationPtrOutput) ToJobQueryDestinationEncryptionConfigurationPtrOutput() JobQueryDestinationEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o JobQueryDestinationEncryptionConfigurationPtrOutput) ToJobQueryDestinationEncryptionConfigurationPtrOutputWithContext(ctx context.Context) JobQueryDestinationEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o JobQueryDestinationEncryptionConfigurationPtrOutput) Elem() JobQueryDestinationEncryptionConfigurationOutput {
+	return o.ApplyT(func(v *JobQueryDestinationEncryptionConfiguration) JobQueryDestinationEncryptionConfiguration {
+		return *v
+	}).(JobQueryDestinationEncryptionConfigurationOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+// The BigQuery Service Account associated with your project requires access to this encryption key.
+func (o JobQueryDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQueryDestinationEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobQueryDestinationTable struct {
+	// The ID of the dataset containing this model.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId string `pulumi:"projectId"`
+	// The ID of the table.
+	TableId string `pulumi:"tableId"`
+}
+
+// JobQueryDestinationTableInput is an input type that accepts JobQueryDestinationTableArgs and JobQueryDestinationTableOutput values.
+// You can construct a concrete instance of `JobQueryDestinationTableInput` via:
+//
+// 		 JobQueryDestinationTableArgs{...}
+//
+type JobQueryDestinationTableInput interface {
+	pulumi.Input
+
+	ToJobQueryDestinationTableOutput() JobQueryDestinationTableOutput
+	ToJobQueryDestinationTableOutputWithContext(context.Context) JobQueryDestinationTableOutput
+}
+
+type JobQueryDestinationTableArgs struct {
+	// The ID of the dataset containing this model.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this model.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The ID of the table.
+	TableId pulumi.StringInput `pulumi:"tableId"`
+}
+
+func (JobQueryDestinationTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryDestinationTable)(nil)).Elem()
+}
+
+func (i JobQueryDestinationTableArgs) ToJobQueryDestinationTableOutput() JobQueryDestinationTableOutput {
+	return i.ToJobQueryDestinationTableOutputWithContext(context.Background())
+}
+
+func (i JobQueryDestinationTableArgs) ToJobQueryDestinationTableOutputWithContext(ctx context.Context) JobQueryDestinationTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryDestinationTableOutput)
+}
+
+func (i JobQueryDestinationTableArgs) ToJobQueryDestinationTablePtrOutput() JobQueryDestinationTablePtrOutput {
+	return i.ToJobQueryDestinationTablePtrOutputWithContext(context.Background())
+}
+
+func (i JobQueryDestinationTableArgs) ToJobQueryDestinationTablePtrOutputWithContext(ctx context.Context) JobQueryDestinationTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryDestinationTableOutput).ToJobQueryDestinationTablePtrOutputWithContext(ctx)
+}
+
+// JobQueryDestinationTablePtrInput is an input type that accepts JobQueryDestinationTableArgs, JobQueryDestinationTablePtr and JobQueryDestinationTablePtrOutput values.
+// You can construct a concrete instance of `JobQueryDestinationTablePtrInput` via:
+//
+// 		 JobQueryDestinationTableArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobQueryDestinationTablePtrInput interface {
+	pulumi.Input
+
+	ToJobQueryDestinationTablePtrOutput() JobQueryDestinationTablePtrOutput
+	ToJobQueryDestinationTablePtrOutputWithContext(context.Context) JobQueryDestinationTablePtrOutput
+}
+
+type jobQueryDestinationTablePtrType JobQueryDestinationTableArgs
+
+func JobQueryDestinationTablePtr(v *JobQueryDestinationTableArgs) JobQueryDestinationTablePtrInput {
+	return (*jobQueryDestinationTablePtrType)(v)
+}
+
+func (*jobQueryDestinationTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQueryDestinationTable)(nil)).Elem()
+}
+
+func (i *jobQueryDestinationTablePtrType) ToJobQueryDestinationTablePtrOutput() JobQueryDestinationTablePtrOutput {
+	return i.ToJobQueryDestinationTablePtrOutputWithContext(context.Background())
+}
+
+func (i *jobQueryDestinationTablePtrType) ToJobQueryDestinationTablePtrOutputWithContext(ctx context.Context) JobQueryDestinationTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryDestinationTablePtrOutput)
+}
+
+type JobQueryDestinationTableOutput struct{ *pulumi.OutputState }
+
+func (JobQueryDestinationTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryDestinationTable)(nil)).Elem()
+}
+
+func (o JobQueryDestinationTableOutput) ToJobQueryDestinationTableOutput() JobQueryDestinationTableOutput {
+	return o
+}
+
+func (o JobQueryDestinationTableOutput) ToJobQueryDestinationTableOutputWithContext(ctx context.Context) JobQueryDestinationTableOutput {
+	return o
+}
+
+func (o JobQueryDestinationTableOutput) ToJobQueryDestinationTablePtrOutput() JobQueryDestinationTablePtrOutput {
+	return o.ToJobQueryDestinationTablePtrOutputWithContext(context.Background())
+}
+
+func (o JobQueryDestinationTableOutput) ToJobQueryDestinationTablePtrOutputWithContext(ctx context.Context) JobQueryDestinationTablePtrOutput {
+	return o.ApplyT(func(v JobQueryDestinationTable) *JobQueryDestinationTable {
+		return &v
+	}).(JobQueryDestinationTablePtrOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobQueryDestinationTableOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobQueryDestinationTable) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobQueryDestinationTableOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobQueryDestinationTable) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The ID of the table.
+func (o JobQueryDestinationTableOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobQueryDestinationTable) string { return v.TableId }).(pulumi.StringOutput)
+}
+
+type JobQueryDestinationTablePtrOutput struct{ *pulumi.OutputState }
+
+func (JobQueryDestinationTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQueryDestinationTable)(nil)).Elem()
+}
+
+func (o JobQueryDestinationTablePtrOutput) ToJobQueryDestinationTablePtrOutput() JobQueryDestinationTablePtrOutput {
+	return o
+}
+
+func (o JobQueryDestinationTablePtrOutput) ToJobQueryDestinationTablePtrOutputWithContext(ctx context.Context) JobQueryDestinationTablePtrOutput {
+	return o
+}
+
+func (o JobQueryDestinationTablePtrOutput) Elem() JobQueryDestinationTableOutput {
+	return o.ApplyT(func(v *JobQueryDestinationTable) JobQueryDestinationTable { return *v }).(JobQueryDestinationTableOutput)
+}
+
+// The ID of the dataset containing this model.
+func (o JobQueryDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQueryDestinationTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this model.
+func (o JobQueryDestinationTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQueryDestinationTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the table.
+func (o JobQueryDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQueryDestinationTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TableId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobQueryScriptOptions struct {
+	// Determines which statement in the script represents the "key result",
+	// used to populate the schema and query results of the script job. Default is LAST.
+	KeyResultStatement *string `pulumi:"keyResultStatement"`
+	// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
+	StatementByteBudget *string `pulumi:"statementByteBudget"`
+	// Timeout period for each statement in a script.
+	StatementTimeoutMs *string `pulumi:"statementTimeoutMs"`
+}
+
+// JobQueryScriptOptionsInput is an input type that accepts JobQueryScriptOptionsArgs and JobQueryScriptOptionsOutput values.
+// You can construct a concrete instance of `JobQueryScriptOptionsInput` via:
+//
+// 		 JobQueryScriptOptionsArgs{...}
+//
+type JobQueryScriptOptionsInput interface {
+	pulumi.Input
+
+	ToJobQueryScriptOptionsOutput() JobQueryScriptOptionsOutput
+	ToJobQueryScriptOptionsOutputWithContext(context.Context) JobQueryScriptOptionsOutput
+}
+
+type JobQueryScriptOptionsArgs struct {
+	// Determines which statement in the script represents the "key result",
+	// used to populate the schema and query results of the script job. Default is LAST.
+	KeyResultStatement pulumi.StringPtrInput `pulumi:"keyResultStatement"`
+	// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
+	StatementByteBudget pulumi.StringPtrInput `pulumi:"statementByteBudget"`
+	// Timeout period for each statement in a script.
+	StatementTimeoutMs pulumi.StringPtrInput `pulumi:"statementTimeoutMs"`
+}
+
+func (JobQueryScriptOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryScriptOptions)(nil)).Elem()
+}
+
+func (i JobQueryScriptOptionsArgs) ToJobQueryScriptOptionsOutput() JobQueryScriptOptionsOutput {
+	return i.ToJobQueryScriptOptionsOutputWithContext(context.Background())
+}
+
+func (i JobQueryScriptOptionsArgs) ToJobQueryScriptOptionsOutputWithContext(ctx context.Context) JobQueryScriptOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryScriptOptionsOutput)
+}
+
+func (i JobQueryScriptOptionsArgs) ToJobQueryScriptOptionsPtrOutput() JobQueryScriptOptionsPtrOutput {
+	return i.ToJobQueryScriptOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i JobQueryScriptOptionsArgs) ToJobQueryScriptOptionsPtrOutputWithContext(ctx context.Context) JobQueryScriptOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryScriptOptionsOutput).ToJobQueryScriptOptionsPtrOutputWithContext(ctx)
+}
+
+// JobQueryScriptOptionsPtrInput is an input type that accepts JobQueryScriptOptionsArgs, JobQueryScriptOptionsPtr and JobQueryScriptOptionsPtrOutput values.
+// You can construct a concrete instance of `JobQueryScriptOptionsPtrInput` via:
+//
+// 		 JobQueryScriptOptionsArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type JobQueryScriptOptionsPtrInput interface {
+	pulumi.Input
+
+	ToJobQueryScriptOptionsPtrOutput() JobQueryScriptOptionsPtrOutput
+	ToJobQueryScriptOptionsPtrOutputWithContext(context.Context) JobQueryScriptOptionsPtrOutput
+}
+
+type jobQueryScriptOptionsPtrType JobQueryScriptOptionsArgs
+
+func JobQueryScriptOptionsPtr(v *JobQueryScriptOptionsArgs) JobQueryScriptOptionsPtrInput {
+	return (*jobQueryScriptOptionsPtrType)(v)
+}
+
+func (*jobQueryScriptOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQueryScriptOptions)(nil)).Elem()
+}
+
+func (i *jobQueryScriptOptionsPtrType) ToJobQueryScriptOptionsPtrOutput() JobQueryScriptOptionsPtrOutput {
+	return i.ToJobQueryScriptOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobQueryScriptOptionsPtrType) ToJobQueryScriptOptionsPtrOutputWithContext(ctx context.Context) JobQueryScriptOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryScriptOptionsPtrOutput)
+}
+
+type JobQueryScriptOptionsOutput struct{ *pulumi.OutputState }
+
+func (JobQueryScriptOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryScriptOptions)(nil)).Elem()
+}
+
+func (o JobQueryScriptOptionsOutput) ToJobQueryScriptOptionsOutput() JobQueryScriptOptionsOutput {
+	return o
+}
+
+func (o JobQueryScriptOptionsOutput) ToJobQueryScriptOptionsOutputWithContext(ctx context.Context) JobQueryScriptOptionsOutput {
+	return o
+}
+
+func (o JobQueryScriptOptionsOutput) ToJobQueryScriptOptionsPtrOutput() JobQueryScriptOptionsPtrOutput {
+	return o.ToJobQueryScriptOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o JobQueryScriptOptionsOutput) ToJobQueryScriptOptionsPtrOutputWithContext(ctx context.Context) JobQueryScriptOptionsPtrOutput {
+	return o.ApplyT(func(v JobQueryScriptOptions) *JobQueryScriptOptions {
+		return &v
+	}).(JobQueryScriptOptionsPtrOutput)
+}
+
+// Determines which statement in the script represents the "key result",
+// used to populate the schema and query results of the script job. Default is LAST.
+func (o JobQueryScriptOptionsOutput) KeyResultStatement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQueryScriptOptions) *string { return v.KeyResultStatement }).(pulumi.StringPtrOutput)
+}
+
+// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
+func (o JobQueryScriptOptionsOutput) StatementByteBudget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQueryScriptOptions) *string { return v.StatementByteBudget }).(pulumi.StringPtrOutput)
+}
+
+// Timeout period for each statement in a script.
+func (o JobQueryScriptOptionsOutput) StatementTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQueryScriptOptions) *string { return v.StatementTimeoutMs }).(pulumi.StringPtrOutput)
+}
+
+type JobQueryScriptOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobQueryScriptOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobQueryScriptOptions)(nil)).Elem()
+}
+
+func (o JobQueryScriptOptionsPtrOutput) ToJobQueryScriptOptionsPtrOutput() JobQueryScriptOptionsPtrOutput {
+	return o
+}
+
+func (o JobQueryScriptOptionsPtrOutput) ToJobQueryScriptOptionsPtrOutputWithContext(ctx context.Context) JobQueryScriptOptionsPtrOutput {
+	return o
+}
+
+func (o JobQueryScriptOptionsPtrOutput) Elem() JobQueryScriptOptionsOutput {
+	return o.ApplyT(func(v *JobQueryScriptOptions) JobQueryScriptOptions { return *v }).(JobQueryScriptOptionsOutput)
+}
+
+// Determines which statement in the script represents the "key result",
+// used to populate the schema and query results of the script job. Default is LAST.
+func (o JobQueryScriptOptionsPtrOutput) KeyResultStatement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQueryScriptOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyResultStatement
+	}).(pulumi.StringPtrOutput)
+}
+
+// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
+func (o JobQueryScriptOptionsPtrOutput) StatementByteBudget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQueryScriptOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StatementByteBudget
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timeout period for each statement in a script.
+func (o JobQueryScriptOptionsPtrOutput) StatementTimeoutMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobQueryScriptOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StatementTimeoutMs
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobQueryUserDefinedFunctionResource struct {
+	// An inline resource that contains code for a user-defined function (UDF).
+	// Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
+	InlineCode *string `pulumi:"inlineCode"`
+	// A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
+	ResourceUri *string `pulumi:"resourceUri"`
+}
+
+// JobQueryUserDefinedFunctionResourceInput is an input type that accepts JobQueryUserDefinedFunctionResourceArgs and JobQueryUserDefinedFunctionResourceOutput values.
+// You can construct a concrete instance of `JobQueryUserDefinedFunctionResourceInput` via:
+//
+// 		 JobQueryUserDefinedFunctionResourceArgs{...}
+//
+type JobQueryUserDefinedFunctionResourceInput interface {
+	pulumi.Input
+
+	ToJobQueryUserDefinedFunctionResourceOutput() JobQueryUserDefinedFunctionResourceOutput
+	ToJobQueryUserDefinedFunctionResourceOutputWithContext(context.Context) JobQueryUserDefinedFunctionResourceOutput
+}
+
+type JobQueryUserDefinedFunctionResourceArgs struct {
+	// An inline resource that contains code for a user-defined function (UDF).
+	// Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
+	InlineCode pulumi.StringPtrInput `pulumi:"inlineCode"`
+	// A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
+	ResourceUri pulumi.StringPtrInput `pulumi:"resourceUri"`
+}
+
+func (JobQueryUserDefinedFunctionResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryUserDefinedFunctionResource)(nil)).Elem()
+}
+
+func (i JobQueryUserDefinedFunctionResourceArgs) ToJobQueryUserDefinedFunctionResourceOutput() JobQueryUserDefinedFunctionResourceOutput {
+	return i.ToJobQueryUserDefinedFunctionResourceOutputWithContext(context.Background())
+}
+
+func (i JobQueryUserDefinedFunctionResourceArgs) ToJobQueryUserDefinedFunctionResourceOutputWithContext(ctx context.Context) JobQueryUserDefinedFunctionResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryUserDefinedFunctionResourceOutput)
+}
+
+// JobQueryUserDefinedFunctionResourceArrayInput is an input type that accepts JobQueryUserDefinedFunctionResourceArray and JobQueryUserDefinedFunctionResourceArrayOutput values.
+// You can construct a concrete instance of `JobQueryUserDefinedFunctionResourceArrayInput` via:
+//
+// 		 JobQueryUserDefinedFunctionResourceArray{ JobQueryUserDefinedFunctionResourceArgs{...} }
+//
+type JobQueryUserDefinedFunctionResourceArrayInput interface {
+	pulumi.Input
+
+	ToJobQueryUserDefinedFunctionResourceArrayOutput() JobQueryUserDefinedFunctionResourceArrayOutput
+	ToJobQueryUserDefinedFunctionResourceArrayOutputWithContext(context.Context) JobQueryUserDefinedFunctionResourceArrayOutput
+}
+
+type JobQueryUserDefinedFunctionResourceArray []JobQueryUserDefinedFunctionResourceInput
+
+func (JobQueryUserDefinedFunctionResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobQueryUserDefinedFunctionResource)(nil)).Elem()
+}
+
+func (i JobQueryUserDefinedFunctionResourceArray) ToJobQueryUserDefinedFunctionResourceArrayOutput() JobQueryUserDefinedFunctionResourceArrayOutput {
+	return i.ToJobQueryUserDefinedFunctionResourceArrayOutputWithContext(context.Background())
+}
+
+func (i JobQueryUserDefinedFunctionResourceArray) ToJobQueryUserDefinedFunctionResourceArrayOutputWithContext(ctx context.Context) JobQueryUserDefinedFunctionResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobQueryUserDefinedFunctionResourceArrayOutput)
+}
+
+type JobQueryUserDefinedFunctionResourceOutput struct{ *pulumi.OutputState }
+
+func (JobQueryUserDefinedFunctionResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobQueryUserDefinedFunctionResource)(nil)).Elem()
+}
+
+func (o JobQueryUserDefinedFunctionResourceOutput) ToJobQueryUserDefinedFunctionResourceOutput() JobQueryUserDefinedFunctionResourceOutput {
+	return o
+}
+
+func (o JobQueryUserDefinedFunctionResourceOutput) ToJobQueryUserDefinedFunctionResourceOutputWithContext(ctx context.Context) JobQueryUserDefinedFunctionResourceOutput {
+	return o
+}
+
+// An inline resource that contains code for a user-defined function (UDF).
+// Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
+func (o JobQueryUserDefinedFunctionResourceOutput) InlineCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQueryUserDefinedFunctionResource) *string { return v.InlineCode }).(pulumi.StringPtrOutput)
+}
+
+// A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
+func (o JobQueryUserDefinedFunctionResourceOutput) ResourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQueryUserDefinedFunctionResource) *string { return v.ResourceUri }).(pulumi.StringPtrOutput)
+}
+
+type JobQueryUserDefinedFunctionResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (JobQueryUserDefinedFunctionResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobQueryUserDefinedFunctionResource)(nil)).Elem()
+}
+
+func (o JobQueryUserDefinedFunctionResourceArrayOutput) ToJobQueryUserDefinedFunctionResourceArrayOutput() JobQueryUserDefinedFunctionResourceArrayOutput {
+	return o
+}
+
+func (o JobQueryUserDefinedFunctionResourceArrayOutput) ToJobQueryUserDefinedFunctionResourceArrayOutputWithContext(ctx context.Context) JobQueryUserDefinedFunctionResourceArrayOutput {
+	return o
+}
+
+func (o JobQueryUserDefinedFunctionResourceArrayOutput) Index(i pulumi.IntInput) JobQueryUserDefinedFunctionResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobQueryUserDefinedFunctionResource {
+		return vs[0].([]JobQueryUserDefinedFunctionResource)[vs[1].(int)]
+	}).(JobQueryUserDefinedFunctionResourceOutput)
+}
+
 type TableEncryptionConfiguration struct {
 	// The self link or full name of a key which should be used to
 	// encrypt this table.  Note that the default bigquery service account will need to have
@@ -2292,6 +6015,40 @@ func init() {
 	pulumi.RegisterOutputType(DatasetAccessViewPtrOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(JobCopyOutput{})
+	pulumi.RegisterOutputType(JobCopyPtrOutput{})
+	pulumi.RegisterOutputType(JobCopyDestinationEncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(JobCopyDestinationEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(JobCopyDestinationTableOutput{})
+	pulumi.RegisterOutputType(JobCopyDestinationTablePtrOutput{})
+	pulumi.RegisterOutputType(JobCopySourceTableOutput{})
+	pulumi.RegisterOutputType(JobCopySourceTableArrayOutput{})
+	pulumi.RegisterOutputType(JobExtractOutput{})
+	pulumi.RegisterOutputType(JobExtractPtrOutput{})
+	pulumi.RegisterOutputType(JobExtractSourceModelOutput{})
+	pulumi.RegisterOutputType(JobExtractSourceModelPtrOutput{})
+	pulumi.RegisterOutputType(JobExtractSourceTableOutput{})
+	pulumi.RegisterOutputType(JobExtractSourceTablePtrOutput{})
+	pulumi.RegisterOutputType(JobLoadOutput{})
+	pulumi.RegisterOutputType(JobLoadPtrOutput{})
+	pulumi.RegisterOutputType(JobLoadDestinationEncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(JobLoadDestinationEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(JobLoadDestinationTableOutput{})
+	pulumi.RegisterOutputType(JobLoadDestinationTablePtrOutput{})
+	pulumi.RegisterOutputType(JobLoadTimePartitioningOutput{})
+	pulumi.RegisterOutputType(JobLoadTimePartitioningPtrOutput{})
+	pulumi.RegisterOutputType(JobQueryOutput{})
+	pulumi.RegisterOutputType(JobQueryPtrOutput{})
+	pulumi.RegisterOutputType(JobQueryDefaultDatasetOutput{})
+	pulumi.RegisterOutputType(JobQueryDefaultDatasetPtrOutput{})
+	pulumi.RegisterOutputType(JobQueryDestinationEncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(JobQueryDestinationEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(JobQueryDestinationTableOutput{})
+	pulumi.RegisterOutputType(JobQueryDestinationTablePtrOutput{})
+	pulumi.RegisterOutputType(JobQueryScriptOptionsOutput{})
+	pulumi.RegisterOutputType(JobQueryScriptOptionsPtrOutput{})
+	pulumi.RegisterOutputType(JobQueryUserDefinedFunctionResourceOutput{})
+	pulumi.RegisterOutputType(JobQueryUserDefinedFunctionResourceArrayOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationOutput{})

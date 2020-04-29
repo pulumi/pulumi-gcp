@@ -200,6 +200,9 @@ func GetSecurityCenterCustomEndpoint(ctx *pulumi.Context) string {
 func GetSecurityScannerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:securityScannerCustomEndpoint")
 }
+func GetServiceDirectoryCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:serviceDirectoryCustomEndpoint")
+}
 func GetServiceManagementCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:serviceManagementCustomEndpoint")
 }

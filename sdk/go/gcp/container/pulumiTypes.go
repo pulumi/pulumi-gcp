@@ -19,6 +19,9 @@ type ClusterAddonsConfig struct {
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
 	// Set `enabled = true` to enable.
 	DnsCacheConfig *ClusterAddonsConfigDnsCacheConfig `pulumi:"dnsCacheConfig"`
+	// .
+	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+	GcePersistentDiskCsiDriverConfig *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// The status of the Horizontal Pod Autoscaling
 	// addon, which increases or decreases the number of replica pods a replication controller
 	// has based on the resource usage of the existing pods.
@@ -63,6 +66,9 @@ type ClusterAddonsConfigArgs struct {
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
 	// Set `enabled = true` to enable.
 	DnsCacheConfig ClusterAddonsConfigDnsCacheConfigPtrInput `pulumi:"dnsCacheConfig"`
+	// .
+	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+	GcePersistentDiskCsiDriverConfig ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// The status of the Horizontal Pod Autoscaling
 	// addon, which increases or decreases the number of replica pods a replication controller
 	// has based on the resource usage of the existing pods.
@@ -178,6 +184,14 @@ func (o ClusterAddonsConfigOutput) DnsCacheConfig() ClusterAddonsConfigDnsCacheC
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigDnsCacheConfig { return v.DnsCacheConfig }).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
 }
 
+// .
+// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+func (o ClusterAddonsConfigOutput) GcePersistentDiskCsiDriverConfig() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
+		return v.GcePersistentDiskCsiDriverConfig
+	}).(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput)
+}
+
 // The status of the Horizontal Pod Autoscaling
 // addon, which increases or decreases the number of replica pods a replication controller
 // has based on the resource usage of the existing pods.
@@ -253,6 +267,17 @@ func (o ClusterAddonsConfigPtrOutput) DnsCacheConfig() ClusterAddonsConfigDnsCac
 		}
 		return v.DnsCacheConfig
 	}).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
+}
+
+// .
+// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+func (o ClusterAddonsConfigPtrOutput) GcePersistentDiskCsiDriverConfig() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcePersistentDiskCsiDriverConfig
+	}).(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput)
 }
 
 // The status of the Horizontal Pod Autoscaling
@@ -575,6 +600,145 @@ func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Elem() ClusterAddonsConfigDn
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigDnsCacheConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigGcePersistentDiskCsiDriverConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput is an input type that accepts ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs and ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput` via:
+//
+// 		 ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs{...}
+//
+type ClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput
+	ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutputWithContext(context.Context) ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput
+}
+
+type ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigGcePersistentDiskCsiDriverConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput {
+	return i.ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput)
+}
+
+func (i ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
+	return i.ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput).ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput is an input type that accepts ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs, ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtr and ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput` via:
+//
+// 		 ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput
+	ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput
+}
+
+type clusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrType ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs
+
+func ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtr(v *ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs) ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput {
+	return (*clusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigGcePersistentDiskCsiDriverConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrType) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
+	return i.ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrType) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput)
+}
+
+type ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigGcePersistentDiskCsiDriverConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
+	return o.ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigGcePersistentDiskCsiDriverConfig) *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
+		return &v
+	}).(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigGcePersistentDiskCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigGcePersistentDiskCsiDriverConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) ToClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Elem() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig) ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
+		return *v
+	}).(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig) *bool {
 		if v == nil {
 			return nil
 		}
@@ -9237,13 +9401,14 @@ func (o NodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
 }
 
 type GetClusterAddonsConfig struct {
-	CloudrunConfigs           []GetClusterAddonsConfigCloudrunConfig           `pulumi:"cloudrunConfigs"`
-	DnsCacheConfigs           []GetClusterAddonsConfigDnsCacheConfig           `pulumi:"dnsCacheConfigs"`
-	HorizontalPodAutoscalings []GetClusterAddonsConfigHorizontalPodAutoscaling `pulumi:"horizontalPodAutoscalings"`
-	HttpLoadBalancings        []GetClusterAddonsConfigHttpLoadBalancing        `pulumi:"httpLoadBalancings"`
-	IstioConfigs              []GetClusterAddonsConfigIstioConfig              `pulumi:"istioConfigs"`
-	KubernetesDashboards      []GetClusterAddonsConfigKubernetesDashboard      `pulumi:"kubernetesDashboards"`
-	NetworkPolicyConfigs      []GetClusterAddonsConfigNetworkPolicyConfig      `pulumi:"networkPolicyConfigs"`
+	CloudrunConfigs                   []GetClusterAddonsConfigCloudrunConfig                   `pulumi:"cloudrunConfigs"`
+	DnsCacheConfigs                   []GetClusterAddonsConfigDnsCacheConfig                   `pulumi:"dnsCacheConfigs"`
+	GcePersistentDiskCsiDriverConfigs []GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfigs"`
+	HorizontalPodAutoscalings         []GetClusterAddonsConfigHorizontalPodAutoscaling         `pulumi:"horizontalPodAutoscalings"`
+	HttpLoadBalancings                []GetClusterAddonsConfigHttpLoadBalancing                `pulumi:"httpLoadBalancings"`
+	IstioConfigs                      []GetClusterAddonsConfigIstioConfig                      `pulumi:"istioConfigs"`
+	KubernetesDashboards              []GetClusterAddonsConfigKubernetesDashboard              `pulumi:"kubernetesDashboards"`
+	NetworkPolicyConfigs              []GetClusterAddonsConfigNetworkPolicyConfig              `pulumi:"networkPolicyConfigs"`
 }
 
 // GetClusterAddonsConfigInput is an input type that accepts GetClusterAddonsConfigArgs and GetClusterAddonsConfigOutput values.
@@ -9259,13 +9424,14 @@ type GetClusterAddonsConfigInput interface {
 }
 
 type GetClusterAddonsConfigArgs struct {
-	CloudrunConfigs           GetClusterAddonsConfigCloudrunConfigArrayInput           `pulumi:"cloudrunConfigs"`
-	DnsCacheConfigs           GetClusterAddonsConfigDnsCacheConfigArrayInput           `pulumi:"dnsCacheConfigs"`
-	HorizontalPodAutoscalings GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput `pulumi:"horizontalPodAutoscalings"`
-	HttpLoadBalancings        GetClusterAddonsConfigHttpLoadBalancingArrayInput        `pulumi:"httpLoadBalancings"`
-	IstioConfigs              GetClusterAddonsConfigIstioConfigArrayInput              `pulumi:"istioConfigs"`
-	KubernetesDashboards      GetClusterAddonsConfigKubernetesDashboardArrayInput      `pulumi:"kubernetesDashboards"`
-	NetworkPolicyConfigs      GetClusterAddonsConfigNetworkPolicyConfigArrayInput      `pulumi:"networkPolicyConfigs"`
+	CloudrunConfigs                   GetClusterAddonsConfigCloudrunConfigArrayInput                   `pulumi:"cloudrunConfigs"`
+	DnsCacheConfigs                   GetClusterAddonsConfigDnsCacheConfigArrayInput                   `pulumi:"dnsCacheConfigs"`
+	GcePersistentDiskCsiDriverConfigs GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput `pulumi:"gcePersistentDiskCsiDriverConfigs"`
+	HorizontalPodAutoscalings         GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput         `pulumi:"horizontalPodAutoscalings"`
+	HttpLoadBalancings                GetClusterAddonsConfigHttpLoadBalancingArrayInput                `pulumi:"httpLoadBalancings"`
+	IstioConfigs                      GetClusterAddonsConfigIstioConfigArrayInput                      `pulumi:"istioConfigs"`
+	KubernetesDashboards              GetClusterAddonsConfigKubernetesDashboardArrayInput              `pulumi:"kubernetesDashboards"`
+	NetworkPolicyConfigs              GetClusterAddonsConfigNetworkPolicyConfigArrayInput              `pulumi:"networkPolicyConfigs"`
 }
 
 func (GetClusterAddonsConfigArgs) ElementType() reflect.Type {
@@ -9326,6 +9492,12 @@ func (o GetClusterAddonsConfigOutput) CloudrunConfigs() GetClusterAddonsConfigCl
 
 func (o GetClusterAddonsConfigOutput) DnsCacheConfigs() GetClusterAddonsConfigDnsCacheConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigDnsCacheConfig { return v.DnsCacheConfigs }).(GetClusterAddonsConfigDnsCacheConfigArrayOutput)
+}
+
+func (o GetClusterAddonsConfigOutput) GcePersistentDiskCsiDriverConfigs() GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
+		return v.GcePersistentDiskCsiDriverConfigs
+	}).(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) HorizontalPodAutoscalings() GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput {
@@ -9564,6 +9736,102 @@ func (o GetClusterAddonsConfigDnsCacheConfigArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigDnsCacheConfig {
 		return vs[0].([]GetClusterAddonsConfigDnsCacheConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigDnsCacheConfigOutput)
+}
+
+type GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput is an input type that accepts GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs and GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput` via:
+//
+// 		 GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs{...}
+//
+type GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput() GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput
+	ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutputWithContext(context.Context) GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput
+}
+
+type GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs) ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput() GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput {
+	return i.ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs) ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput)
+}
+
+// GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput is an input type that accepts GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArray and GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput` via:
+//
+// 		 GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArray{ GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs{...} }
+//
+type GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput() GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput
+	ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput
+}
+
+type GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArray []GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput
+
+func (GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArray) ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput() GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArray) ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput() GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput) ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput() GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput) ToGetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
+		return vs[0].([]GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput)
 }
 
 type GetClusterAddonsConfigHorizontalPodAutoscaling struct {
@@ -14156,6 +14424,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigCloudrunConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigDnsCacheConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigDnsCacheConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHttpLoadBalancingOutput{})
@@ -14262,6 +14532,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigCloudrunConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigDnsCacheConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigDnsCacheConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHttpLoadBalancingOutput{})

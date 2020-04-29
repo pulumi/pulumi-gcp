@@ -144,6 +144,7 @@ export interface GetInstanceResult {
      */
     readonly networkInterfaces: outputs.compute.GetInstanceNetworkInterface[];
     readonly project?: string;
+    readonly resourcePolicies: string[];
     /**
      * The scheduling strategy being used by the instance.
      */

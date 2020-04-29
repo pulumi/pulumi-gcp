@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * 
  * To get more information about FhirStore, see:
  * 
- * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores)
+ * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.fhirStores)
  * * How-to Guides
  *     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
  *

@@ -53,9 +53,10 @@ type VPNTunnel struct {
 	PeerExternalGateway pulumi.StringPtrOutput `pulumi:"peerExternalGateway"`
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGatewayInterface pulumi.IntPtrOutput `pulumi:"peerExternalGatewayInterface"`
-	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-	// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-	// 'google_compute_ha_vpn_gateway' resource.
+	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+	// If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
+	// ID in the peer GCP VPN gateway.
+	// This field must reference a `compute.HaVpnGateway` resource.
 	PeerGcpGateway pulumi.StringPtrOutput `pulumi:"peerGcpGateway"`
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp pulumi.StringOutput `pulumi:"peerIp"`
@@ -83,8 +84,9 @@ type VPNTunnel struct {
 	TargetVpnGateway pulumi.StringPtrOutput `pulumi:"targetVpnGateway"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
-	// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
-	// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+	// URL of the VPN gateway with which this VPN tunnel is associated.
+	// This must be used if a High Availability VPN gateway resource is created.
+	// This field must reference a `compute.HaVpnGateway` resource.
 	VpnGateway pulumi.StringPtrOutput `pulumi:"vpnGateway"`
 	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 	VpnGatewayInterface pulumi.IntPtrOutput `pulumi:"vpnGatewayInterface"`
@@ -152,9 +154,10 @@ type vpntunnelState struct {
 	PeerExternalGateway *string `pulumi:"peerExternalGateway"`
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGatewayInterface *int `pulumi:"peerExternalGatewayInterface"`
-	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-	// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-	// 'google_compute_ha_vpn_gateway' resource.
+	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+	// If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
+	// ID in the peer GCP VPN gateway.
+	// This field must reference a `compute.HaVpnGateway` resource.
 	PeerGcpGateway *string `pulumi:"peerGcpGateway"`
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp *string `pulumi:"peerIp"`
@@ -182,8 +185,9 @@ type vpntunnelState struct {
 	TargetVpnGateway *string `pulumi:"targetVpnGateway"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	TunnelId *string `pulumi:"tunnelId"`
-	// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
-	// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+	// URL of the VPN gateway with which this VPN tunnel is associated.
+	// This must be used if a High Availability VPN gateway resource is created.
+	// This field must reference a `compute.HaVpnGateway` resource.
 	VpnGateway *string `pulumi:"vpnGateway"`
 	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 	VpnGatewayInterface *int `pulumi:"vpnGatewayInterface"`
@@ -221,9 +225,10 @@ type VPNTunnelState struct {
 	PeerExternalGateway pulumi.StringPtrInput
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGatewayInterface pulumi.IntPtrInput
-	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-	// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-	// 'google_compute_ha_vpn_gateway' resource.
+	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+	// If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
+	// ID in the peer GCP VPN gateway.
+	// This field must reference a `compute.HaVpnGateway` resource.
 	PeerGcpGateway pulumi.StringPtrInput
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp pulumi.StringPtrInput
@@ -251,8 +256,9 @@ type VPNTunnelState struct {
 	TargetVpnGateway pulumi.StringPtrInput
 	// The unique identifier for the resource. This identifier is defined by the server.
 	TunnelId pulumi.StringPtrInput
-	// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
-	// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+	// URL of the VPN gateway with which this VPN tunnel is associated.
+	// This must be used if a High Availability VPN gateway resource is created.
+	// This field must reference a `compute.HaVpnGateway` resource.
 	VpnGateway pulumi.StringPtrInput
 	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 	VpnGatewayInterface pulumi.IntPtrInput
@@ -288,9 +294,10 @@ type vpntunnelArgs struct {
 	PeerExternalGateway *string `pulumi:"peerExternalGateway"`
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGatewayInterface *int `pulumi:"peerExternalGatewayInterface"`
-	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-	// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-	// 'google_compute_ha_vpn_gateway' resource.
+	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+	// If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
+	// ID in the peer GCP VPN gateway.
+	// This field must reference a `compute.HaVpnGateway` resource.
 	PeerGcpGateway *string `pulumi:"peerGcpGateway"`
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp *string `pulumi:"peerIp"`
@@ -312,8 +319,9 @@ type vpntunnelArgs struct {
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
 	TargetVpnGateway *string `pulumi:"targetVpnGateway"`
-	// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
-	// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+	// URL of the VPN gateway with which this VPN tunnel is associated.
+	// This must be used if a High Availability VPN gateway resource is created.
+	// This field must reference a `compute.HaVpnGateway` resource.
 	VpnGateway *string `pulumi:"vpnGateway"`
 	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 	VpnGatewayInterface *int `pulumi:"vpnGatewayInterface"`
@@ -346,9 +354,10 @@ type VPNTunnelArgs struct {
 	PeerExternalGateway pulumi.StringPtrInput
 	// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
 	PeerExternalGatewayInterface pulumi.IntPtrInput
-	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-	// automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-	// 'google_compute_ha_vpn_gateway' resource.
+	// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+	// If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
+	// ID in the peer GCP VPN gateway.
+	// This field must reference a `compute.HaVpnGateway` resource.
 	PeerGcpGateway pulumi.StringPtrInput
 	// IP address of the peer VPN gateway. Only IPv4 is supported.
 	PeerIp pulumi.StringPtrInput
@@ -370,8 +379,9 @@ type VPNTunnelArgs struct {
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
 	TargetVpnGateway pulumi.StringPtrInput
-	// URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
-	// resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+	// URL of the VPN gateway with which this VPN tunnel is associated.
+	// This must be used if a High Availability VPN gateway resource is created.
+	// This field must reference a `compute.HaVpnGateway` resource.
 	VpnGateway pulumi.StringPtrInput
 	// The interface ID of the VPN gateway with which this VPN tunnel is associated.
 	VpnGatewayInterface pulumi.IntPtrInput

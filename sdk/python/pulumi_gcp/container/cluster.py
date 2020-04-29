@@ -27,6 +27,11 @@ class Cluster(pulumi.CustomResource):
         * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
           If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
+      * `gcePersistentDiskCsiDriverConfig` (`dict`) - .
+        Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+        * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
+          If enabled, pods must be valid under a PodSecurityPolicy to be created.
+
       * `horizontalPodAutoscaling` (`dict`) - The status of the Horizontal Pod Autoscaling
         addon, which increases or decreases the number of replica pods a replication controller
         has based on the resource usage of the existing pods.
@@ -820,6 +825,11 @@ class Cluster(pulumi.CustomResource):
             * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
               If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
+          * `gcePersistentDiskCsiDriverConfig` (`pulumi.Input[dict]`) - .
+            Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
+              If enabled, pods must be valid under a PodSecurityPolicy to be created.
+
           * `horizontalPodAutoscaling` (`pulumi.Input[dict]`) - The status of the Horizontal Pod Autoscaling
             addon, which increases or decreases the number of replica pods a replication controller
             has based on the resource usage of the existing pods.
@@ -1436,6 +1446,11 @@ class Cluster(pulumi.CustomResource):
           * `dnsCacheConfig` (`pulumi.Input[dict]`) - .
             The status of the NodeLocal DNSCache addon. It is disabled by default.
             Set `enabled = true` to enable.
+            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
+              If enabled, pods must be valid under a PodSecurityPolicy to be created.
+
+          * `gcePersistentDiskCsiDriverConfig` (`pulumi.Input[dict]`) - .
+            Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
             * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
               If enabled, pods must be valid under a PodSecurityPolicy to be created.
 

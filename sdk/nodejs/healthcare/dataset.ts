@@ -9,9 +9,22 @@ import * as utilities from "../utilities";
  * 
  * To get more information about Dataset, see:
  * 
- * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets)
+ * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets)
  * * How-to Guides
  *     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
+ * 
+ * ## Example Usage - Healthcare Dataset Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultDataset = new gcp.healthcare.Dataset("default", {
+ *     location: "us-central1",
+ *     timeZone: "UTC",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_dataset.html.markdown.
  */

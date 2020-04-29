@@ -36,21 +36,27 @@ type BackendService struct {
 	Backends BackendServiceBackendArrayOutput `pulumi:"backends"`
 	// Cloud CDN configuration for this BackendService.  Structure is documented below.
 	CdnPolicy BackendServiceCdnPolicyOutput `pulumi:"cdnPolicy"`
-	// Settings controlling the volume of connections to a backend service. This field is applicable only when the
-	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+	// Settings controlling the volume of connections to a backend service. This field
+	// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.  Structure is documented below.
 	CircuitBreakers BackendServiceCircuitBreakersPtrOutput `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrOutput `pulumi:"connectionDrainingTimeoutSec"`
-	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
-	// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
-	// destination host will be lost when one or more hosts are added/removed from the destination service. This field
-	// specifies parameters that control consistent hashing. This field only applies if the load_balancing_scheme is set to
-	// INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is set to MAGLEV or RING_HASH.
+	// -
+	// (Optional))
+	// Consistent Hash-based load balancing can be used to provide soft session
+	// affinity based on HTTP headers, cookies or other properties. This load balancing
+	// policy is applicable only for HTTP connections. The affinity to a particular
+	// destination host will be lost when one or more hosts are added/removed from the
+	// destination service. This field specifies parameters that control consistent
+	// hashing. This field only applies if the loadBalancingScheme is set to
+	// INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
+	// set to MAGLEV or RING_HASH.  Structure is documented below.
 	ConsistentHash BackendServiceConsistentHashPtrOutput `pulumi:"consistentHash"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// Headers that the HTTP/S load balancer should add to proxied requests.
+	// Headers that the HTTP/S load balancer should add to proxied
+	// requests.
 	CustomRequestHeaders pulumi.StringArrayOutput `pulumi:"customRequestHeaders"`
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
@@ -71,25 +77,37 @@ type BackendService struct {
 	// load balancing cannot be used with the other. Must be `EXTERNAL` or
 	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
-	// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
-	// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
-	// selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The ring/modulo hash
-	// load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a
-	// host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer selects a random healthy host.
-	// ORIGINAL_DESTINATION - Backend host is selected based on the client connection metadata, i.e., connections are opened to
-	// the same address as the destination address of the incoming connection before the connection was redirected to the load
-	// balancer. MAGLEV - used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash
-	// but has faster table lookup build times and host selection times. For more information about Maglev, refer to
-	// https://ai.google/research/pubs/pub44824 This field is applicable only when the load_balancing_scheme is set to
+	// The load balancing algorithm used within the scope of the locality.
+	// The possible values are -
+	// ROUND_ROBIN - This is a simple policy in which each healthy backend
+	// is selected in round robin order.
+	// LEAST_REQUEST - An O(1) algorithm which selects two random healthy
+	// hosts and picks the host which has fewer active requests.
+	// RING_HASH - The ring/modulo hash load balancer implements consistent
+	// hashing to backends. The algorithm has the property that the
+	// addition/removal of a host from a set of N hosts only affects
+	// 1/N of the requests.
+	// RANDOM - The load balancer selects a random healthy host.
+	// ORIGINAL_DESTINATION - Backend host is selected based on the client
+	// connection metadata, i.e., connections are opened
+	// to the same address as the destination address of
+	// the incoming connection before the connection
+	// was redirected to the load balancer.
+	// MAGLEV - used as a drop in replacement for the ring hash load balancer.
+	// Maglev is not as stable as ring hash but has faster table lookup
+	// build times and host selection times. For more information about
+	// Maglev, refer to https://ai.google/research/pubs/pub44824
+	// This field is applicable only when the loadBalancingScheme is set to
 	// INTERNAL_SELF_MANAGED.
 	LocalityLbPolicy pulumi.StringPtrOutput `pulumi:"localityLbPolicy"`
-	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
-	// enabled, logs will be exported to Stackdriver.
+	// This field denotes the logging options for the load balancer traffic served by this backend service.
+	// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
 	LogConfig BackendServiceLogConfigOutput `pulumi:"logConfig"`
 	// Name of the cookie.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
-	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+	// This field is applicable only when the loadBalancingScheme is set
+	// to INTERNAL_SELF_MANAGED.  Structure is documented below.
 	OutlierDetection BackendServiceOutlierDetectionPtrOutput `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
 	// groups referenced by this service. Required when the load balancing
@@ -156,21 +174,27 @@ type backendServiceState struct {
 	Backends []BackendServiceBackend `pulumi:"backends"`
 	// Cloud CDN configuration for this BackendService.  Structure is documented below.
 	CdnPolicy *BackendServiceCdnPolicy `pulumi:"cdnPolicy"`
-	// Settings controlling the volume of connections to a backend service. This field is applicable only when the
-	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+	// Settings controlling the volume of connections to a backend service. This field
+	// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.  Structure is documented below.
 	CircuitBreakers *BackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
-	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
-	// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
-	// destination host will be lost when one or more hosts are added/removed from the destination service. This field
-	// specifies parameters that control consistent hashing. This field only applies if the load_balancing_scheme is set to
-	// INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is set to MAGLEV or RING_HASH.
+	// -
+	// (Optional))
+	// Consistent Hash-based load balancing can be used to provide soft session
+	// affinity based on HTTP headers, cookies or other properties. This load balancing
+	// policy is applicable only for HTTP connections. The affinity to a particular
+	// destination host will be lost when one or more hosts are added/removed from the
+	// destination service. This field specifies parameters that control consistent
+	// hashing. This field only applies if the loadBalancingScheme is set to
+	// INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
+	// set to MAGLEV or RING_HASH.  Structure is documented below.
 	ConsistentHash *BackendServiceConsistentHash `pulumi:"consistentHash"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// Headers that the HTTP/S load balancer should add to proxied requests.
+	// Headers that the HTTP/S load balancer should add to proxied
+	// requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
@@ -191,25 +215,37 @@ type backendServiceState struct {
 	// load balancing cannot be used with the other. Must be `EXTERNAL` or
 	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
-	// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
-	// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
-	// selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The ring/modulo hash
-	// load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a
-	// host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer selects a random healthy host.
-	// ORIGINAL_DESTINATION - Backend host is selected based on the client connection metadata, i.e., connections are opened to
-	// the same address as the destination address of the incoming connection before the connection was redirected to the load
-	// balancer. MAGLEV - used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash
-	// but has faster table lookup build times and host selection times. For more information about Maglev, refer to
-	// https://ai.google/research/pubs/pub44824 This field is applicable only when the load_balancing_scheme is set to
+	// The load balancing algorithm used within the scope of the locality.
+	// The possible values are -
+	// ROUND_ROBIN - This is a simple policy in which each healthy backend
+	// is selected in round robin order.
+	// LEAST_REQUEST - An O(1) algorithm which selects two random healthy
+	// hosts and picks the host which has fewer active requests.
+	// RING_HASH - The ring/modulo hash load balancer implements consistent
+	// hashing to backends. The algorithm has the property that the
+	// addition/removal of a host from a set of N hosts only affects
+	// 1/N of the requests.
+	// RANDOM - The load balancer selects a random healthy host.
+	// ORIGINAL_DESTINATION - Backend host is selected based on the client
+	// connection metadata, i.e., connections are opened
+	// to the same address as the destination address of
+	// the incoming connection before the connection
+	// was redirected to the load balancer.
+	// MAGLEV - used as a drop in replacement for the ring hash load balancer.
+	// Maglev is not as stable as ring hash but has faster table lookup
+	// build times and host selection times. For more information about
+	// Maglev, refer to https://ai.google/research/pubs/pub44824
+	// This field is applicable only when the loadBalancingScheme is set to
 	// INTERNAL_SELF_MANAGED.
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
-	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
-	// enabled, logs will be exported to Stackdriver.
+	// This field denotes the logging options for the load balancer traffic served by this backend service.
+	// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
 	LogConfig *BackendServiceLogConfig `pulumi:"logConfig"`
 	// Name of the cookie.
 	Name *string `pulumi:"name"`
-	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
-	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+	// This field is applicable only when the loadBalancingScheme is set
+	// to INTERNAL_SELF_MANAGED.  Structure is documented below.
 	OutlierDetection *BackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
 	// groups referenced by this service. Required when the load balancing
@@ -246,21 +282,27 @@ type BackendServiceState struct {
 	Backends BackendServiceBackendArrayInput
 	// Cloud CDN configuration for this BackendService.  Structure is documented below.
 	CdnPolicy BackendServiceCdnPolicyPtrInput
-	// Settings controlling the volume of connections to a backend service. This field is applicable only when the
-	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+	// Settings controlling the volume of connections to a backend service. This field
+	// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.  Structure is documented below.
 	CircuitBreakers BackendServiceCircuitBreakersPtrInput
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
-	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
-	// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
-	// destination host will be lost when one or more hosts are added/removed from the destination service. This field
-	// specifies parameters that control consistent hashing. This field only applies if the load_balancing_scheme is set to
-	// INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is set to MAGLEV or RING_HASH.
+	// -
+	// (Optional))
+	// Consistent Hash-based load balancing can be used to provide soft session
+	// affinity based on HTTP headers, cookies or other properties. This load balancing
+	// policy is applicable only for HTTP connections. The affinity to a particular
+	// destination host will be lost when one or more hosts are added/removed from the
+	// destination service. This field specifies parameters that control consistent
+	// hashing. This field only applies if the loadBalancingScheme is set to
+	// INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
+	// set to MAGLEV or RING_HASH.  Structure is documented below.
 	ConsistentHash BackendServiceConsistentHashPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// Headers that the HTTP/S load balancer should add to proxied requests.
+	// Headers that the HTTP/S load balancer should add to proxied
+	// requests.
 	CustomRequestHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
@@ -281,25 +323,37 @@ type BackendServiceState struct {
 	// load balancing cannot be used with the other. Must be `EXTERNAL` or
 	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
 	LoadBalancingScheme pulumi.StringPtrInput
-	// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
-	// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
-	// selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The ring/modulo hash
-	// load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a
-	// host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer selects a random healthy host.
-	// ORIGINAL_DESTINATION - Backend host is selected based on the client connection metadata, i.e., connections are opened to
-	// the same address as the destination address of the incoming connection before the connection was redirected to the load
-	// balancer. MAGLEV - used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash
-	// but has faster table lookup build times and host selection times. For more information about Maglev, refer to
-	// https://ai.google/research/pubs/pub44824 This field is applicable only when the load_balancing_scheme is set to
+	// The load balancing algorithm used within the scope of the locality.
+	// The possible values are -
+	// ROUND_ROBIN - This is a simple policy in which each healthy backend
+	// is selected in round robin order.
+	// LEAST_REQUEST - An O(1) algorithm which selects two random healthy
+	// hosts and picks the host which has fewer active requests.
+	// RING_HASH - The ring/modulo hash load balancer implements consistent
+	// hashing to backends. The algorithm has the property that the
+	// addition/removal of a host from a set of N hosts only affects
+	// 1/N of the requests.
+	// RANDOM - The load balancer selects a random healthy host.
+	// ORIGINAL_DESTINATION - Backend host is selected based on the client
+	// connection metadata, i.e., connections are opened
+	// to the same address as the destination address of
+	// the incoming connection before the connection
+	// was redirected to the load balancer.
+	// MAGLEV - used as a drop in replacement for the ring hash load balancer.
+	// Maglev is not as stable as ring hash but has faster table lookup
+	// build times and host selection times. For more information about
+	// Maglev, refer to https://ai.google/research/pubs/pub44824
+	// This field is applicable only when the loadBalancingScheme is set to
 	// INTERNAL_SELF_MANAGED.
 	LocalityLbPolicy pulumi.StringPtrInput
-	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
-	// enabled, logs will be exported to Stackdriver.
+	// This field denotes the logging options for the load balancer traffic served by this backend service.
+	// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
 	LogConfig BackendServiceLogConfigPtrInput
 	// Name of the cookie.
 	Name pulumi.StringPtrInput
-	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
-	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+	// This field is applicable only when the loadBalancingScheme is set
+	// to INTERNAL_SELF_MANAGED.  Structure is documented below.
 	OutlierDetection BackendServiceOutlierDetectionPtrInput
 	// Name of backend port. The same name should appear in the instance
 	// groups referenced by this service. Required when the load balancing
@@ -340,19 +394,25 @@ type backendServiceArgs struct {
 	Backends []BackendServiceBackend `pulumi:"backends"`
 	// Cloud CDN configuration for this BackendService.  Structure is documented below.
 	CdnPolicy *BackendServiceCdnPolicy `pulumi:"cdnPolicy"`
-	// Settings controlling the volume of connections to a backend service. This field is applicable only when the
-	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+	// Settings controlling the volume of connections to a backend service. This field
+	// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.  Structure is documented below.
 	CircuitBreakers *BackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
-	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
-	// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
-	// destination host will be lost when one or more hosts are added/removed from the destination service. This field
-	// specifies parameters that control consistent hashing. This field only applies if the load_balancing_scheme is set to
-	// INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is set to MAGLEV or RING_HASH.
+	// -
+	// (Optional))
+	// Consistent Hash-based load balancing can be used to provide soft session
+	// affinity based on HTTP headers, cookies or other properties. This load balancing
+	// policy is applicable only for HTTP connections. The affinity to a particular
+	// destination host will be lost when one or more hosts are added/removed from the
+	// destination service. This field specifies parameters that control consistent
+	// hashing. This field only applies if the loadBalancingScheme is set to
+	// INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
+	// set to MAGLEV or RING_HASH.  Structure is documented below.
 	ConsistentHash *BackendServiceConsistentHash `pulumi:"consistentHash"`
-	// Headers that the HTTP/S load balancer should add to proxied requests.
+	// Headers that the HTTP/S load balancer should add to proxied
+	// requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
@@ -371,25 +431,37 @@ type backendServiceArgs struct {
 	// load balancing cannot be used with the other. Must be `EXTERNAL` or
 	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
-	// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
-	// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
-	// selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The ring/modulo hash
-	// load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a
-	// host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer selects a random healthy host.
-	// ORIGINAL_DESTINATION - Backend host is selected based on the client connection metadata, i.e., connections are opened to
-	// the same address as the destination address of the incoming connection before the connection was redirected to the load
-	// balancer. MAGLEV - used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash
-	// but has faster table lookup build times and host selection times. For more information about Maglev, refer to
-	// https://ai.google/research/pubs/pub44824 This field is applicable only when the load_balancing_scheme is set to
+	// The load balancing algorithm used within the scope of the locality.
+	// The possible values are -
+	// ROUND_ROBIN - This is a simple policy in which each healthy backend
+	// is selected in round robin order.
+	// LEAST_REQUEST - An O(1) algorithm which selects two random healthy
+	// hosts and picks the host which has fewer active requests.
+	// RING_HASH - The ring/modulo hash load balancer implements consistent
+	// hashing to backends. The algorithm has the property that the
+	// addition/removal of a host from a set of N hosts only affects
+	// 1/N of the requests.
+	// RANDOM - The load balancer selects a random healthy host.
+	// ORIGINAL_DESTINATION - Backend host is selected based on the client
+	// connection metadata, i.e., connections are opened
+	// to the same address as the destination address of
+	// the incoming connection before the connection
+	// was redirected to the load balancer.
+	// MAGLEV - used as a drop in replacement for the ring hash load balancer.
+	// Maglev is not as stable as ring hash but has faster table lookup
+	// build times and host selection times. For more information about
+	// Maglev, refer to https://ai.google/research/pubs/pub44824
+	// This field is applicable only when the loadBalancingScheme is set to
 	// INTERNAL_SELF_MANAGED.
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
-	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
-	// enabled, logs will be exported to Stackdriver.
+	// This field denotes the logging options for the load balancer traffic served by this backend service.
+	// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
 	LogConfig *BackendServiceLogConfig `pulumi:"logConfig"`
 	// Name of the cookie.
 	Name *string `pulumi:"name"`
-	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
-	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+	// This field is applicable only when the loadBalancingScheme is set
+	// to INTERNAL_SELF_MANAGED.  Structure is documented below.
 	OutlierDetection *BackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// Name of backend port. The same name should appear in the instance
 	// groups referenced by this service. Required when the load balancing
@@ -425,19 +497,25 @@ type BackendServiceArgs struct {
 	Backends BackendServiceBackendArrayInput
 	// Cloud CDN configuration for this BackendService.  Structure is documented below.
 	CdnPolicy BackendServiceCdnPolicyPtrInput
-	// Settings controlling the volume of connections to a backend service. This field is applicable only when the
-	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+	// Settings controlling the volume of connections to a backend service. This field
+	// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.  Structure is documented below.
 	CircuitBreakers BackendServiceCircuitBreakersPtrInput
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
-	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or
-	// other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular
-	// destination host will be lost when one or more hosts are added/removed from the destination service. This field
-	// specifies parameters that control consistent hashing. This field only applies if the load_balancing_scheme is set to
-	// INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is set to MAGLEV or RING_HASH.
+	// -
+	// (Optional))
+	// Consistent Hash-based load balancing can be used to provide soft session
+	// affinity based on HTTP headers, cookies or other properties. This load balancing
+	// policy is applicable only for HTTP connections. The affinity to a particular
+	// destination host will be lost when one or more hosts are added/removed from the
+	// destination service. This field specifies parameters that control consistent
+	// hashing. This field only applies if the loadBalancingScheme is set to
+	// INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
+	// set to MAGLEV or RING_HASH.  Structure is documented below.
 	ConsistentHash BackendServiceConsistentHashPtrInput
-	// Headers that the HTTP/S load balancer should add to proxied requests.
+	// Headers that the HTTP/S load balancer should add to proxied
+	// requests.
 	CustomRequestHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
@@ -456,25 +534,37 @@ type BackendServiceArgs struct {
 	// load balancing cannot be used with the other. Must be `EXTERNAL` or
 	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
 	LoadBalancingScheme pulumi.StringPtrInput
-	// The load balancing algorithm used within the scope of the locality. The possible values are - ROUND_ROBIN - This is a
-	// simple policy in which each healthy backend is selected in round robin order. LEAST_REQUEST - An O(1) algorithm which
-	// selects two random healthy hosts and picks the host which has fewer active requests. RING_HASH - The ring/modulo hash
-	// load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a
-	// host from a set of N hosts only affects 1/N of the requests. RANDOM - The load balancer selects a random healthy host.
-	// ORIGINAL_DESTINATION - Backend host is selected based on the client connection metadata, i.e., connections are opened to
-	// the same address as the destination address of the incoming connection before the connection was redirected to the load
-	// balancer. MAGLEV - used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash
-	// but has faster table lookup build times and host selection times. For more information about Maglev, refer to
-	// https://ai.google/research/pubs/pub44824 This field is applicable only when the load_balancing_scheme is set to
+	// The load balancing algorithm used within the scope of the locality.
+	// The possible values are -
+	// ROUND_ROBIN - This is a simple policy in which each healthy backend
+	// is selected in round robin order.
+	// LEAST_REQUEST - An O(1) algorithm which selects two random healthy
+	// hosts and picks the host which has fewer active requests.
+	// RING_HASH - The ring/modulo hash load balancer implements consistent
+	// hashing to backends. The algorithm has the property that the
+	// addition/removal of a host from a set of N hosts only affects
+	// 1/N of the requests.
+	// RANDOM - The load balancer selects a random healthy host.
+	// ORIGINAL_DESTINATION - Backend host is selected based on the client
+	// connection metadata, i.e., connections are opened
+	// to the same address as the destination address of
+	// the incoming connection before the connection
+	// was redirected to the load balancer.
+	// MAGLEV - used as a drop in replacement for the ring hash load balancer.
+	// Maglev is not as stable as ring hash but has faster table lookup
+	// build times and host selection times. For more information about
+	// Maglev, refer to https://ai.google/research/pubs/pub44824
+	// This field is applicable only when the loadBalancingScheme is set to
 	// INTERNAL_SELF_MANAGED.
 	LocalityLbPolicy pulumi.StringPtrInput
-	// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is
-	// enabled, logs will be exported to Stackdriver.
+	// This field denotes the logging options for the load balancer traffic served by this backend service.
+	// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
 	LogConfig BackendServiceLogConfigPtrInput
 	// Name of the cookie.
 	Name pulumi.StringPtrInput
-	// Settings controlling eviction of unhealthy hosts from the load balancing pool. This field is applicable only when the
-	// load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
+	// This field is applicable only when the loadBalancingScheme is set
+	// to INTERNAL_SELF_MANAGED.  Structure is documented below.
 	OutlierDetection BackendServiceOutlierDetectionPtrInput
 	// Name of backend port. The same name should appear in the instance
 	// groups referenced by this service. Required when the load balancing

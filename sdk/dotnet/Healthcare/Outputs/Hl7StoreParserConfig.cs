@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.Healthcare.Outputs
         /// </summary>
         public readonly bool? AllowNullHeader;
         /// <summary>
+        /// JSON encoded string for schemas used to parse messages in this
+        /// store if schematized parsing is desired.
+        /// </summary>
+        public readonly string? Schema;
+        /// <summary>
         /// Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
         /// A base64-encoded string.
         /// </summary>
@@ -27,9 +32,12 @@ namespace Pulumi.Gcp.Healthcare.Outputs
         private Hl7StoreParserConfig(
             bool? allowNullHeader,
 
+            string? schema,
+
             string? segmentTerminator)
         {
             AllowNullHeader = allowNullHeader;
+            Schema = schema;
             SegmentTerminator = segmentTerminator;
         }
     }

@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * 
  * To get more information about Hl7V2Store, see:
  * 
- * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.hl7V2Stores)
+ * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.hl7V2Stores)
  * * How-to Guides
  *     * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
  *

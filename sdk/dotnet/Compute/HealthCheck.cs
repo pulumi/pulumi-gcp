@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.HealthCheckHttpsHealthCheck?> HttpsHealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// Configure logging on this health check.
+        /// Configure logging on this health check.  Structure is documented below.
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.HealthCheckLogConfig?> LogConfig { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.HealthCheckHttpsHealthCheckArgs>? HttpsHealthCheck { get; set; }
 
         /// <summary>
-        /// Configure logging on this health check.
+        /// Configure logging on this health check.  Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.HealthCheckLogConfigArgs>? LogConfig { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.HealthCheckHttpsHealthCheckGetArgs>? HttpsHealthCheck { get; set; }
 
         /// <summary>
-        /// Configure logging on this health check.
+        /// Configure logging on this health check.  Structure is documented below.
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.HealthCheckLogConfigGetArgs>? LogConfig { get; set; }

@@ -66,6 +66,7 @@ export let scopes: string[] | undefined = __config.getObject<string[]>("scopes")
 export let secretManagerCustomEndpoint: string | undefined = __config.get("secretManagerCustomEndpoint");
 export let securityCenterCustomEndpoint: string | undefined = __config.get("securityCenterCustomEndpoint");
 export let securityScannerCustomEndpoint: string | undefined = __config.get("securityScannerCustomEndpoint");
+export let serviceDirectoryCustomEndpoint: string | undefined = __config.get("serviceDirectoryCustomEndpoint");
 export let serviceManagementCustomEndpoint: string | undefined = __config.get("serviceManagementCustomEndpoint");
 export let serviceNetworkingCustomEndpoint: string | undefined = __config.get("serviceNetworkingCustomEndpoint");
 export let serviceUsageCustomEndpoint: string | undefined = __config.get("serviceUsageCustomEndpoint");

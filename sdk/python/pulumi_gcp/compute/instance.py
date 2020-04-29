@@ -221,6 +221,10 @@ class Instance(pulumi.CustomResource):
     The ID of the project in which the resource belongs. If it
     is not provided, the provider project is used.
     """
+    resource_policies: pulumi.Output[str]
+    """
+    -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+    """
     scheduling: pulumi.Output[dict]
     """
     The scheduling strategy to use. More details about
@@ -292,7 +296,7 @@ class Instance(pulumi.CustomResource):
     """
     The zone that the machine should be created in.
     """
-    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, tags=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, labels=None, machine_type=None, metadata=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, scheduling=None, scratch_disks=None, service_account=None, shielded_instance_config=None, tags=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a VM instance resource within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -349,6 +353,7 @@ class Instance(pulumi.CustomResource):
                be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[str] resource_policies: -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[dict] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[list] scratch_disks: Scratch disks to attach to the instance. This can be
@@ -547,6 +552,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'network_interfaces'")
             __props__['network_interfaces'] = network_interfaces
             __props__['project'] = project
+            __props__['resource_policies'] = resource_policies
             __props__['scheduling'] = scheduling
             __props__['scratch_disks'] = scratch_disks
             __props__['service_account'] = service_account
@@ -567,7 +573,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None, zone=None):
+    def get(resource_name, id, opts=None, allow_stopping_for_update=None, attached_disks=None, boot_disk=None, can_ip_forward=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, scheduling=None, scratch_disks=None, self_link=None, service_account=None, shielded_instance_config=None, tags=None, tags_fingerprint=None, zone=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -624,6 +630,7 @@ class Instance(pulumi.CustomResource):
                be specified multiple times. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[str] resource_policies: -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[dict] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[list] scratch_disks: Scratch disks to attach to the instance. This can be
@@ -810,6 +817,7 @@ class Instance(pulumi.CustomResource):
         __props__["name"] = name
         __props__["network_interfaces"] = network_interfaces
         __props__["project"] = project
+        __props__["resource_policies"] = resource_policies
         __props__["scheduling"] = scheduling
         __props__["scratch_disks"] = scratch_disks
         __props__["self_link"] = self_link

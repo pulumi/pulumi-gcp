@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         public Input<bool>? AllowNullHeader { get; set; }
 
         /// <summary>
+        /// JSON encoded string for schemas used to parse messages in this
+        /// store if schematized parsing is desired.
+        /// </summary>
+        [Input("schema")]
+        public Input<string>? Schema { get; set; }
+
+        /// <summary>
         /// Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
         /// A base64-encoded string.
         /// </summary>

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const productionInstance = new gcp.bigtable.Instance("production-instance", {
  *     clusters: [{
  *         clusterId: "tf-instance-cluster",
- *         numNodes: 3,
+ *         numNodes: 1,
  *         storageType: "HDD",
  *         zone: "us-central1-b",
  *     }],

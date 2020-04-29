@@ -54,7 +54,26 @@ class AwaitableGetAppEngineServiceResult(GetAppEngineServiceResult):
 
 def get_app_engine_service(module_id=None,project=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    A Monitoring Service is the root resource under which operational aspects of a
+    generic service are accessible. A service is some discrete, autonomous, and
+    network-accessible unit, designed to solve an individual concern
+
+    An App Engine monitoring service is automatically created by GCP to monitor
+    App Engine services.
+
+
+    To get more information about Service, see:
+
+    * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+    * How-to Guides
+        * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+
+
+    :param str module_id: The ID of the App Engine module underlying this
+           service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+    :param str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     __args__ = dict()
 

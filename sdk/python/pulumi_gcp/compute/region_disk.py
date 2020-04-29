@@ -31,7 +31,7 @@ class RegionDisk(pulumi.CustomResource):
     the disk will be encrypted using an automatically generated key and
     you do not need to provide a key to use the disk later.  Structure is documented below.
 
-      * `kms_key_name` (`str`)
+      * `kms_key_name` (`str`) - The name of the encryption key that is stored in Google Cloud KMS.
       * `rawKey` (`str`) - Specifies a 256-bit customer-supplied encryption key, encoded in
         RFC 4648 base64 to either encrypt or decrypt this resource.
       * `sha256` (`str`) - -
@@ -115,7 +115,7 @@ class RegionDisk(pulumi.CustomResource):
     if the source snapshot is protected by a customer-supplied encryption
     key.  Structure is documented below.
 
-      * `kms_key_name` (`str`)
+      * `kms_key_name` (`str`) - The name of the encryption key that is stored in Google Cloud KMS.
       * `rawKey` (`str`) - Specifies a 256-bit customer-supplied encryption key, encoded in
         RFC 4648 base64 to either encrypt or decrypt this resource.
       * `sha256` (`str`) - -
@@ -218,7 +218,7 @@ class RegionDisk(pulumi.CustomResource):
 
         The **disk_encryption_key** object supports the following:
 
-          * `kms_key_name` (`pulumi.Input[str]`)
+          * `kms_key_name` (`pulumi.Input[str]`) - The name of the encryption key that is stored in Google Cloud KMS.
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
             RFC 4648 base64 to either encrypt or decrypt this resource.
           * `sha256` (`pulumi.Input[str]`) - -
@@ -227,7 +227,7 @@ class RegionDisk(pulumi.CustomResource):
 
         The **source_snapshot_encryption_key** object supports the following:
 
-          * `kms_key_name` (`pulumi.Input[str]`)
+          * `kms_key_name` (`pulumi.Input[str]`) - The name of the encryption key that is stored in Google Cloud KMS.
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
             RFC 4648 base64 to either encrypt or decrypt this resource.
           * `sha256` (`pulumi.Input[str]`) - -
@@ -346,7 +346,7 @@ class RegionDisk(pulumi.CustomResource):
 
         The **disk_encryption_key** object supports the following:
 
-          * `kms_key_name` (`pulumi.Input[str]`)
+          * `kms_key_name` (`pulumi.Input[str]`) - The name of the encryption key that is stored in Google Cloud KMS.
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
             RFC 4648 base64 to either encrypt or decrypt this resource.
           * `sha256` (`pulumi.Input[str]`) - -
@@ -355,7 +355,7 @@ class RegionDisk(pulumi.CustomResource):
 
         The **source_snapshot_encryption_key** object supports the following:
 
-          * `kms_key_name` (`pulumi.Input[str]`)
+          * `kms_key_name` (`pulumi.Input[str]`) - The name of the encryption key that is stored in Google Cloud KMS.
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
             RFC 4648 base64 to either encrypt or decrypt this resource.
           * `sha256` (`pulumi.Input[str]`) - -

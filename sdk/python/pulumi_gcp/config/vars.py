@@ -131,6 +131,8 @@ security_center_custom_endpoint = __config__.get('securityCenterCustomEndpoint')
 
 security_scanner_custom_endpoint = __config__.get('securityScannerCustomEndpoint')
 
+service_directory_custom_endpoint = __config__.get('serviceDirectoryCustomEndpoint')
+
 service_management_custom_endpoint = __config__.get('serviceManagementCustomEndpoint')
 
 service_networking_custom_endpoint = __config__.get('serviceNetworkingCustomEndpoint')

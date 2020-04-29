@@ -41,7 +41,7 @@ class GlobalAddress(pulumi.CustomResource):
     """
     labels: pulumi.Output[dict]
     """
-    Labels to apply to this address. A list of key->value pairs.
+    Labels to apply to this address.  A list of key->value pairs.
     """
     name: pulumi.Output[str]
     """
@@ -104,7 +104,7 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. Valid options are
                `IPV4` or `IPV6`. The default value is `IPV4`.
-        :param pulumi.Input[dict] labels: Labels to apply to this address. A list of key->value pairs.
+        :param pulumi.Input[dict] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -181,7 +181,7 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. Valid options are
                `IPV4` or `IPV6`. The default value is `IPV4`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
-        :param pulumi.Input[dict] labels: Labels to apply to this address. A list of key->value pairs.
+        :param pulumi.Input[dict] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and

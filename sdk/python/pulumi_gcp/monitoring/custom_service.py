@@ -19,28 +19,52 @@ class CustomService(pulumi.CustomResource):
     The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
     """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs.
+    If it is not provided, the provider project is used.
+    """
     service_id: pulumi.Output[str]
     """
-    An optional service ID to use. If not given, the server will generate a service ID.
+    An optional service ID to use. If not given, the server will generate a
+    service ID.
     """
     telemetry: pulumi.Output[dict]
     """
-    Configuration for how to query telemetry on a Service.
+    Configuration for how to query telemetry on a Service.  Structure is documented below.
 
-      * `resourceName` (`str`)
+      * `resourceName` (`str`) - The full name of the resource that defines this service.
+        Formatted as described in
+        https://cloud.google.com/apis/design/resource_names.
     """
     def __init__(__self__, resource_name, opts=None, display_name=None, project=None, service_id=None, telemetry=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a CustomService resource with the given unique name, props, and options.
+        A Service is a discrete, autonomous, and network-accessible unit,
+        designed to solve an individual concern (Wikipedia). In Cloud Monitoring,
+        a Service acts as the root resource under which operational aspects of
+        the service are accessible
+
+
+        To get more information about Service, see:
+
+        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+        * How-to Guides
+            * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+            * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
-        :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a service ID.
-        :param pulumi.Input[dict] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
+               service ID.
+        :param pulumi.Input[dict] telemetry: Configuration for how to query telemetry on a Service.  Structure is documented below.
 
         The **telemetry** object supports the following:
 
-          * `resourceName` (`pulumi.Input[str]`)
+          * `resourceName` (`pulumi.Input[str]`) - The full name of the resource that defines this service.
+            Formatted as described in
+            https://cloud.google.com/apis/design/resource_names.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,12 +105,17 @@ class CustomService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
         :param pulumi.Input[str] name: The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
-        :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a service ID.
-        :param pulumi.Input[dict] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
+               service ID.
+        :param pulumi.Input[dict] telemetry: Configuration for how to query telemetry on a Service.  Structure is documented below.
 
         The **telemetry** object supports the following:
 
-          * `resourceName` (`pulumi.Input[str]`)
+          * `resourceName` (`pulumi.Input[str]`) - The full name of the resource that defines this service.
+            Formatted as described in
+            https://cloud.google.com/apis/design/resource_names.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

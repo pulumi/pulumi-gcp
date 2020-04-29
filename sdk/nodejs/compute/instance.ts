@@ -201,6 +201,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     */
+    public readonly resourcePolicies!: pulumi.Output<string | undefined>;
+    /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
@@ -273,6 +277,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             inputs["scheduling"] = state ? state.scheduling : undefined;
             inputs["scratchDisks"] = state ? state.scratchDisks : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -310,6 +315,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["scratchDisks"] = args ? args.scratchDisks : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -456,6 +462,10 @@ export interface InstanceState {
      */
     readonly project?: pulumi.Input<string>;
     /**
+     * -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     */
+    readonly resourcePolicies?: pulumi.Input<string>;
+    /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
@@ -597,6 +607,10 @@ export interface InstanceArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * -- A list of short names or selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     */
+    readonly resourcePolicies?: pulumi.Input<string>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.

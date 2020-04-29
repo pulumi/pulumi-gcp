@@ -13,8 +13,21 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     [OutputType]
     public sealed class GetUptimeCheckIPsUptimeCheckIpResult
     {
+        /// <summary>
+        /// The IP address from which the Uptime check originates. This is a fully specified IP address
+        /// (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not
+        /// rely on the IP addresses being in IPv4 format indefinitely, and should support interpreting this field in either
+        /// IPv4 or IPv6 format.
+        /// </summary>
         public readonly string IpAddress;
+        /// <summary>
+        /// A more specific location within the region that typically encodes a particular city/town/metro
+        /// (and its containing state/province or country) within the broader umbrella region category.
+        /// </summary>
         public readonly string Location;
+        /// <summary>
+        /// A broad region category in which the IP address is located.
+        /// </summary>
         public readonly string Region;
 
         [OutputConstructor]

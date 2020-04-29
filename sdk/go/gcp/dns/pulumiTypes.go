@@ -889,6 +889,7 @@ func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) NetworkUrl() pulumi.Stri
 }
 
 type ManagedZonePrivateVisibilityConfig struct {
+	// The list of VPC networks that can see this zone. Structure is documented below.
 	Networks []ManagedZonePrivateVisibilityConfigNetwork `pulumi:"networks"`
 }
 
@@ -905,6 +906,7 @@ type ManagedZonePrivateVisibilityConfigInput interface {
 }
 
 type ManagedZonePrivateVisibilityConfigArgs struct {
+	// The list of VPC networks that can see this zone. Structure is documented below.
 	Networks ManagedZonePrivateVisibilityConfigNetworkArrayInput `pulumi:"networks"`
 }
 
@@ -985,6 +987,8 @@ func (o ManagedZonePrivateVisibilityConfigOutput) ToManagedZonePrivateVisibility
 		return &v
 	}).(ManagedZonePrivateVisibilityConfigPtrOutput)
 }
+
+// The list of VPC networks that can see this zone. Structure is documented below.
 func (o ManagedZonePrivateVisibilityConfigOutput) Networks() ManagedZonePrivateVisibilityConfigNetworkArrayOutput {
 	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigNetwork {
 		return v.Networks
@@ -1009,6 +1013,7 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) Elem() ManagedZonePrivateVi
 	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) ManagedZonePrivateVisibilityConfig { return *v }).(ManagedZonePrivateVisibilityConfigOutput)
 }
 
+// The list of VPC networks that can see this zone. Structure is documented below.
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) Networks() ManagedZonePrivateVisibilityConfigNetworkArrayOutput {
 	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigNetwork {
 		if v == nil {

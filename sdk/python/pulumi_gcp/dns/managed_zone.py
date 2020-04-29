@@ -12,7 +12,7 @@ from .. import utilities, tables
 class ManagedZone(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
-    A textual description field. Defaults to 'Managed by Terraform'.
+    A textual description field. Defaults to 'Managed by Pulumi'.
     """
     dns_name: pulumi.Output[str]
     """
@@ -43,8 +43,9 @@ class ManagedZone(pulumi.CustomResource):
     """
     forwarding_config: pulumi.Output[dict]
     """
-    The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-    contains the set of destinations to forward to.
+    The presence for this field indicates that outbound forwarding is enabled
+    for this zone. The value of this field contains the set of destinations
+    to forward to.  Structure is documented below.
 
       * `targetNameServers` (`list`) - List of target name servers to forward to. Cloud DNS will
         select the best available name server if more than
@@ -69,8 +70,8 @@ class ManagedZone(pulumi.CustomResource):
     """
     peering_config: pulumi.Output[dict]
     """
-    The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-    network to peer with.
+    The presence of this field indicates that DNS Peering is enabled for this
+    zone. The value of this field contains the network to peer with.  Structure is documented below.
 
       * `targetNetwork` (`dict`) - The network with which to peer.  Structure is documented below.
         * `networkUrl` (`str`) - The fully qualified URL of the VPC network to forward queries to.
@@ -82,7 +83,7 @@ class ManagedZone(pulumi.CustomResource):
     For privately visible zones, the set of Virtual Private Cloud
     resources that the zone is visible from.  Structure is documented below.
 
-      * `networks` (`list`)
+      * `networks` (`list`) - The list of VPC networks that can see this zone. Structure is documented below.
         * `networkUrl` (`str`) - The fully qualified URL of the VPC network to forward queries to.
           This should be formatted like
           `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
@@ -94,9 +95,9 @@ class ManagedZone(pulumi.CustomResource):
     """
     reverse_lookup: pulumi.Output[bool]
     """
-    Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-    automatically configured records for VPC resources. This only applies to networks listed under
-    'private_visibility_config'.
+    Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+    lookup queries using automatically configured records for VPC resources. This only applies
+    to networks listed under `private_visibility_config`.
     """
     visibility: pulumi.Output[str]
     """
@@ -119,23 +120,24 @@ class ManagedZone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[dict] dnssec_config: DNSSEC configuration  Structure is documented below.
-        :param pulumi.Input[dict] forwarding_config: The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-               contains the set of destinations to forward to.
+        :param pulumi.Input[dict] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
+               for this zone. The value of this field contains the set of destinations
+               to forward to.  Structure is documented below.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this ManagedZone.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
-        :param pulumi.Input[dict] peering_config: The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-               network to peer with.
+        :param pulumi.Input[dict] peering_config: The presence of this field indicates that DNS Peering is enabled for this
+               zone. The value of this field contains the network to peer with.  Structure is documented below.
         :param pulumi.Input[dict] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
                resources that the zone is visible from.  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-               automatically configured records for VPC resources. This only applies to networks listed under
-               'private_visibility_config'.
+        :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+               lookup queries using automatically configured records for VPC resources. This only applies
+               to networks listed under `private_visibility_config`.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Must be one of: `public`, `private`.
@@ -180,7 +182,7 @@ class ManagedZone(pulumi.CustomResource):
 
         The **private_visibility_config** object supports the following:
 
-          * `networks` (`pulumi.Input[list]`)
+          * `networks` (`pulumi.Input[list]`) - The list of VPC networks that can see this zone. Structure is documented below.
             * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to forward queries to.
               This should be formatted like
               `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
@@ -233,24 +235,25 @@ class ManagedZone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Terraform'.
+        :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[dict] dnssec_config: DNSSEC configuration  Structure is documented below.
-        :param pulumi.Input[dict] forwarding_config: The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-               contains the set of destinations to forward to.
+        :param pulumi.Input[dict] forwarding_config: The presence for this field indicates that outbound forwarding is enabled
+               for this zone. The value of this field contains the set of destinations
+               to forward to.  Structure is documented below.
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this ManagedZone.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
         :param pulumi.Input[list] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
-        :param pulumi.Input[dict] peering_config: The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-               network to peer with.
+        :param pulumi.Input[dict] peering_config: The presence of this field indicates that DNS Peering is enabled for this
+               zone. The value of this field contains the network to peer with.  Structure is documented below.
         :param pulumi.Input[dict] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
                resources that the zone is visible from.  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-               automatically configured records for VPC resources. This only applies to networks listed under
-               'private_visibility_config'.
+        :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+               lookup queries using automatically configured records for VPC resources. This only applies
+               to networks listed under `private_visibility_config`.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Must be one of: `public`, `private`.
@@ -295,7 +298,7 @@ class ManagedZone(pulumi.CustomResource):
 
         The **private_visibility_config** object supports the following:
 
-          * `networks` (`pulumi.Input[list]`)
+          * `networks` (`pulumi.Input[list]`) - The list of VPC networks that can see this zone. Structure is documented below.
             * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to forward queries to.
               This should be formatted like
               `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`

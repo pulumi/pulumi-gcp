@@ -7,6 +7,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Google Cloud Firebase web application configuration
+//
+// To get more information about WebApp, see:
+//
+// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+// * How-to Guides
+//     * [Official Documentation](https://firebase.google.com/)
 func GetWebAppConfig(ctx *pulumi.Context, args *GetWebAppConfigArgs, opts ...pulumi.InvokeOption) (*GetWebAppConfigResult, error) {
 	var rv GetWebAppConfigResult
 	err := ctx.Invoke("gcp:firebase/getWebAppConfig:getWebAppConfig", args, &rv, opts...)
@@ -18,8 +25,11 @@ func GetWebAppConfig(ctx *pulumi.Context, args *GetWebAppConfigArgs, opts ...pul
 
 // A collection of arguments for invoking getWebAppConfig.
 type GetWebAppConfigArgs struct {
-	Project  *string `pulumi:"project"`
-	WebAppId string  `pulumi:"webAppId"`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// the id of the firebase web app
+	WebAppId string `pulumi:"webAppId"`
 }
 
 // A collection of values returned by getWebAppConfig.

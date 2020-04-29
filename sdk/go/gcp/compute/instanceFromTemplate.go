@@ -46,6 +46,7 @@ type InstanceFromTemplate struct {
 	Name                   pulumi.StringOutput                              `pulumi:"name"`
 	NetworkInterfaces      InstanceFromTemplateNetworkInterfaceArrayOutput  `pulumi:"networkInterfaces"`
 	Project                pulumi.StringOutput                              `pulumi:"project"`
+	ResourcePolicies       pulumi.StringOutput                              `pulumi:"resourcePolicies"`
 	Scheduling             InstanceFromTemplateSchedulingOutput             `pulumi:"scheduling"`
 	ScratchDisks           InstanceFromTemplateScratchDiskArrayOutput       `pulumi:"scratchDisks"`
 	SelfLink               pulumi.StringOutput                              `pulumi:"selfLink"`
@@ -117,6 +118,7 @@ type instanceFromTemplateState struct {
 	Name                   *string                                     `pulumi:"name"`
 	NetworkInterfaces      []InstanceFromTemplateNetworkInterface      `pulumi:"networkInterfaces"`
 	Project                *string                                     `pulumi:"project"`
+	ResourcePolicies       *string                                     `pulumi:"resourcePolicies"`
 	Scheduling             *InstanceFromTemplateScheduling             `pulumi:"scheduling"`
 	ScratchDisks           []InstanceFromTemplateScratchDisk           `pulumi:"scratchDisks"`
 	SelfLink               *string                                     `pulumi:"selfLink"`
@@ -158,6 +160,7 @@ type InstanceFromTemplateState struct {
 	Name                   pulumi.StringPtrInput
 	NetworkInterfaces      InstanceFromTemplateNetworkInterfaceArrayInput
 	Project                pulumi.StringPtrInput
+	ResourcePolicies       pulumi.StringPtrInput
 	Scheduling             InstanceFromTemplateSchedulingPtrInput
 	ScratchDisks           InstanceFromTemplateScratchDiskArrayInput
 	SelfLink               pulumi.StringPtrInput
@@ -198,6 +201,7 @@ type instanceFromTemplateArgs struct {
 	Name                   *string                                     `pulumi:"name"`
 	NetworkInterfaces      []InstanceFromTemplateNetworkInterface      `pulumi:"networkInterfaces"`
 	Project                *string                                     `pulumi:"project"`
+	ResourcePolicies       *string                                     `pulumi:"resourcePolicies"`
 	Scheduling             *InstanceFromTemplateScheduling             `pulumi:"scheduling"`
 	ScratchDisks           []InstanceFromTemplateScratchDisk           `pulumi:"scratchDisks"`
 	ServiceAccount         *InstanceFromTemplateServiceAccount         `pulumi:"serviceAccount"`
@@ -233,6 +237,7 @@ type InstanceFromTemplateArgs struct {
 	Name                   pulumi.StringPtrInput
 	NetworkInterfaces      InstanceFromTemplateNetworkInterfaceArrayInput
 	Project                pulumi.StringPtrInput
+	ResourcePolicies       pulumi.StringPtrInput
 	Scheduling             InstanceFromTemplateSchedulingPtrInput
 	ScratchDisks           InstanceFromTemplateScratchDiskArrayInput
 	ServiceAccount         InstanceFromTemplateServiceAccountPtrInput

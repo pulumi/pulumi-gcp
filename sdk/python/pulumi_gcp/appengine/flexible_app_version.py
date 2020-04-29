@@ -113,8 +113,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     env_variables: pulumi.Output[dict]
     """
-    Environment variables available to the application. As these are not returned in the API request, Terraform will not
-    detect any changes made outside of the Terraform config.
+    Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
     """
     inbound_services: pulumi.Output[list]
     """
@@ -266,8 +265,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] endpoints_api_service: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
-        :param pulumi.Input[dict] env_variables: Environment variables available to the application. As these are not returned in the API request, Terraform will not
-               detect any changes made outside of the Terraform config.
+        :param pulumi.Input[dict] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input[list] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
@@ -498,8 +496,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] endpoints_api_service: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
-        :param pulumi.Input[dict] env_variables: Environment variables available to the application. As these are not returned in the API request, Terraform will not
-               detect any changes made outside of the Terraform config.
+        :param pulumi.Input[dict] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
         :param pulumi.Input[list] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G

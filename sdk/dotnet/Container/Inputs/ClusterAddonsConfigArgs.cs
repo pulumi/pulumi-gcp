@@ -29,6 +29,13 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterAddonsConfigDnsCacheConfigArgs>? DnsCacheConfig { get; set; }
 
         /// <summary>
+        /// .
+        /// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+        /// </summary>
+        [Input("gcePersistentDiskCsiDriverConfig")]
+        public Input<Inputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs>? GcePersistentDiskCsiDriverConfig { get; set; }
+
+        /// <summary>
         /// The status of the Horizontal Pod Autoscaling
         /// addon, which increases or decreases the number of replica pods a replication controller
         /// has based on the resource usage of the existing pods.

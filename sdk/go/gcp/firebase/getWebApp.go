@@ -7,6 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Google Cloud Firebase web application instance
 func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.InvokeOption) (*LookupWebAppResult, error) {
 	var rv LookupWebAppResult
 	err := ctx.Invoke("gcp:firebase/getWebApp:getWebApp", args, &rv, opts...)
@@ -18,6 +19,7 @@ func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getWebApp.
 type LookupWebAppArgs struct {
+	// The appIp of name of the Firebase webApp.
 	AppId string `pulumi:"appId"`
 }
 

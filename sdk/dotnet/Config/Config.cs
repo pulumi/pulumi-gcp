@@ -128,6 +128,8 @@ namespace Pulumi.Gcp
 
         public static string? SecurityScannerCustomEndpoint { get; set; } = __config.Get("securityScannerCustomEndpoint");
 
+        public static string? ServiceDirectoryCustomEndpoint { get; set; } = __config.Get("serviceDirectoryCustomEndpoint");
+
         public static string? ServiceManagementCustomEndpoint { get; set; } = __config.Get("serviceManagementCustomEndpoint");
 
         public static string? ServiceNetworkingCustomEndpoint { get; set; } = __config.Get("serviceNetworkingCustomEndpoint");

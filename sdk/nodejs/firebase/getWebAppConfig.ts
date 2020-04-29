@@ -4,6 +4,17 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A Google Cloud Firebase web application configuration
+ * 
+ * To get more information about WebApp, see:
+ * 
+ * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+ * * How-to Guides
+ *     * [Official Documentation](https://firebase.google.com/)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_firebase_web_app_config.html.markdown.
+ */
 export function getWebAppConfig(args: GetWebAppConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppConfigResult> {
     if (!opts) {
         opts = {}
@@ -22,7 +33,14 @@ export function getWebAppConfig(args: GetWebAppConfigArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getWebAppConfig.
  */
 export interface GetWebAppConfigArgs {
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     */
     readonly project?: string;
+    /**
+     * the id of the firebase web app
+     */
     readonly webAppId: string;
 }
 

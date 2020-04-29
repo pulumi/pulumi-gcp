@@ -98,9 +98,10 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public readonly peerExternalGatewayInterface!: pulumi.Output<number | undefined>;
     /**
-     * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-     * automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-     * 'google_compute_ha_vpn_gateway' resource.
+     * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+     * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
+     * ID in the peer GCP VPN gateway.
+     * This field must reference a `gcp.compute.HaVpnGateway` resource.
      */
     public readonly peerGcpGateway!: pulumi.Output<string | undefined>;
     /**
@@ -150,8 +151,9 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public /*out*/ readonly tunnelId!: pulumi.Output<string>;
     /**
-     * URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN
-     * gateway resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+     * URL of the VPN gateway with which this VPN tunnel is associated.
+     * This must be used if a High Availability VPN gateway resource is created.
+     * This field must reference a `gcp.compute.HaVpnGateway` resource.
      */
     public readonly vpnGateway!: pulumi.Output<string | undefined>;
     /**
@@ -290,9 +292,10 @@ export interface VPNTunnelState {
      */
     readonly peerExternalGatewayInterface?: pulumi.Input<number>;
     /**
-     * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-     * automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-     * 'google_compute_ha_vpn_gateway' resource.
+     * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+     * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
+     * ID in the peer GCP VPN gateway.
+     * This field must reference a `gcp.compute.HaVpnGateway` resource.
      */
     readonly peerGcpGateway?: pulumi.Input<string>;
     /**
@@ -342,8 +345,9 @@ export interface VPNTunnelState {
      */
     readonly tunnelId?: pulumi.Input<string>;
     /**
-     * URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN
-     * gateway resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+     * URL of the VPN gateway with which this VPN tunnel is associated.
+     * This must be used if a High Availability VPN gateway resource is created.
+     * This field must reference a `gcp.compute.HaVpnGateway` resource.
      */
     readonly vpnGateway?: pulumi.Input<string>;
     /**
@@ -396,9 +400,10 @@ export interface VPNTunnelArgs {
      */
     readonly peerExternalGatewayInterface?: pulumi.Input<number>;
     /**
-     * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-     * automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-     * 'google_compute_ha_vpn_gateway' resource.
+     * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+     * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
+     * ID in the peer GCP VPN gateway.
+     * This field must reference a `gcp.compute.HaVpnGateway` resource.
      */
     readonly peerGcpGateway?: pulumi.Input<string>;
     /**
@@ -436,8 +441,9 @@ export interface VPNTunnelArgs {
      */
     readonly targetVpnGateway?: pulumi.Input<string>;
     /**
-     * URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN
-     * gateway resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+     * URL of the VPN gateway with which this VPN tunnel is associated.
+     * This must be used if a High Availability VPN gateway resource is created.
+     * This field must reference a `gcp.compute.HaVpnGateway` resource.
      */
     readonly vpnGateway?: pulumi.Input<string>;
     /**

@@ -13,7 +13,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
+    def __init__(__self__, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, project=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if allow_stopping_for_update and not isinstance(allow_stopping_for_update, bool):
             raise TypeError("Expected argument 'allow_stopping_for_update' to be a bool")
         __self__.allow_stopping_for_update = allow_stopping_for_update
@@ -134,6 +134,9 @@ class GetInstanceResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+        if resource_policies and not isinstance(resource_policies, list):
+            raise TypeError("Expected argument 'resource_policies' to be a list")
+        __self__.resource_policies = resource_policies
         if schedulings and not isinstance(schedulings, list):
             raise TypeError("Expected argument 'schedulings' to be a list")
         __self__.schedulings = schedulings
@@ -209,6 +212,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             name=self.name,
             network_interfaces=self.network_interfaces,
             project=self.project,
+            resource_policies=self.resource_policies,
             schedulings=self.schedulings,
             scratch_disks=self.scratch_disks,
             self_link=self.self_link,
@@ -276,6 +280,7 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
         name=__ret__.get('name'),
         network_interfaces=__ret__.get('networkInterfaces'),
         project=__ret__.get('project'),
+        resource_policies=__ret__.get('resourcePolicies'),
         schedulings=__ret__.get('schedulings'),
         scratch_disks=__ret__.get('scratchDisks'),
         self_link=__ret__.get('selfLink'),

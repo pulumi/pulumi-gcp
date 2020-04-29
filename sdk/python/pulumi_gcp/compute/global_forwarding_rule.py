@@ -17,17 +17,26 @@ class GlobalForwardingRule(pulumi.CustomResource):
     """
     ip_address: pulumi.Output[str]
     """
-    The IP address that this forwarding rule is serving on behalf of. Addresses are restricted based on the forwarding
-    rule's load balancing scheme (EXTERNAL or INTERNAL) and scope (global or regional). When the load balancing scheme is
-    EXTERNAL, for global forwarding rules, the address must be a global IP, and for regional forwarding rules, the address
-    must live in the same region as the forwarding rule. If this field is empty, an ephemeral IPv4 address from the same
-    scope (global or regional) will be assigned. A regional forwarding rule supports IPv4 only. A global forwarding rule
-    supports either IPv4 or IPv6. When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address
-    belonging to the network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral
-    internal IP address will be automatically allocated from the IP range of the subnet or network configured for this
-    forwarding rule. An address must be specified by a literal IP address. ~> **NOTE**: While the API allows you to specify
-    various resource paths for an address resource instead, Terraform requires this to specifically be an IP address to
-    avoid needing to fetching the IP address from resource paths on refresh or unnecessary diffs.
+    The IP address that this forwarding rule is serving on behalf of.
+    Addresses are restricted based on the forwarding rule's load balancing
+    scheme (EXTERNAL or INTERNAL) and scope (global or regional).
+    When the load balancing scheme is EXTERNAL, for global forwarding
+    rules, the address must be a global IP, and for regional forwarding
+    rules, the address must live in the same region as the forwarding
+    rule. If this field is empty, an ephemeral IPv4 address from the same
+    scope (global or regional) will be assigned. A regional forwarding
+    rule supports IPv4 only. A global forwarding rule supports either IPv4
+    or IPv6.
+    When the load balancing scheme is INTERNAL, this can only be an RFC
+    1918 IP address belonging to the network/subnet configured for the
+    forwarding rule. By default, if this field is empty, an ephemeral
+    internal IP address will be automatically allocated from the IP range
+    of the subnet or network configured for this forwarding rule.
+    An address must be specified by a literal IP address. > **NOTE**: While
+    the API allows you to specify various resource paths for an address resource
+    instead, this provider requires this to specifically be an IP address to
+    avoid needing to fetching the IP address from resource paths on refresh
+    or unnecessary diffs.
     """
     ip_protocol: pulumi.Output[str]
     """
@@ -46,7 +55,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
     """
     labels: pulumi.Output[dict]
     """
-    Labels to apply to this forwarding rule. A list of key->value pairs.
+    Labels to apply to this forwarding rule.  A list of key->value pairs.
     """
     load_balancing_scheme: pulumi.Output[str]
     """
@@ -97,9 +106,11 @@ class GlobalForwardingRule(pulumi.CustomResource):
     """
     network: pulumi.Output[str]
     """
-    This field is not used for external load balancing. For INTERNAL_SELF_MANAGED load balancing, this field identifies the
-    network that the load balanced IP should belong to for this global forwarding rule. If this field is not specified, the
-    default network will be used.
+    This field is not used for external load balancing.
+    For INTERNAL_SELF_MANAGED load balancing, this field
+    identifies the network that the load balanced IP should belong to
+    for this global forwarding rule. If this field is not specified,
+    the default network will be used.
     """
     port_range: pulumi.Output[str]
     """
@@ -150,23 +161,32 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[str] ip_address: The IP address that this forwarding rule is serving on behalf of. Addresses are restricted based on the forwarding
-               rule's load balancing scheme (EXTERNAL or INTERNAL) and scope (global or regional). When the load balancing scheme is
-               EXTERNAL, for global forwarding rules, the address must be a global IP, and for regional forwarding rules, the address
-               must live in the same region as the forwarding rule. If this field is empty, an ephemeral IPv4 address from the same
-               scope (global or regional) will be assigned. A regional forwarding rule supports IPv4 only. A global forwarding rule
-               supports either IPv4 or IPv6. When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address
-               belonging to the network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral
-               internal IP address will be automatically allocated from the IP range of the subnet or network configured for this
-               forwarding rule. An address must be specified by a literal IP address. ~> **NOTE**: While the API allows you to specify
-               various resource paths for an address resource instead, Terraform requires this to specifically be an IP address to
-               avoid needing to fetching the IP address from resource paths on refresh or unnecessary diffs.
+        :param pulumi.Input[str] ip_address: The IP address that this forwarding rule is serving on behalf of.
+               Addresses are restricted based on the forwarding rule's load balancing
+               scheme (EXTERNAL or INTERNAL) and scope (global or regional).
+               When the load balancing scheme is EXTERNAL, for global forwarding
+               rules, the address must be a global IP, and for regional forwarding
+               rules, the address must live in the same region as the forwarding
+               rule. If this field is empty, an ephemeral IPv4 address from the same
+               scope (global or regional) will be assigned. A regional forwarding
+               rule supports IPv4 only. A global forwarding rule supports either IPv4
+               or IPv6.
+               When the load balancing scheme is INTERNAL, this can only be an RFC
+               1918 IP address belonging to the network/subnet configured for the
+               forwarding rule. By default, if this field is empty, an ephemeral
+               internal IP address will be automatically allocated from the IP range
+               of the subnet or network configured for this forwarding rule.
+               An address must be specified by a literal IP address. > **NOTE**: While
+               the API allows you to specify various resource paths for an address resource
+               instead, this provider requires this to specifically be an IP address to
+               avoid needing to fetching the IP address from resource paths on refresh
+               or unnecessary diffs.
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. Valid options are TCP,
                UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
                INTERNAL_SELF_MANAGED, only TCP is valid.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Valid options are IPV4 or IPV6.
-        :param pulumi.Input[dict] labels: Labels to apply to this forwarding rule. A list of key->value pairs.
+        :param pulumi.Input[dict] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
                The value of INTERNAL_SELF_MANAGED means that this will be used for
                Internal Global HTTP(S) LB. The value of EXTERNAL means that this
@@ -190,9 +210,11 @@ class GlobalForwardingRule(pulumi.CustomResource):
                loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
         :param pulumi.Input[str] name: Name of the metadata label. The length must be between
                1 and 1024 characters, inclusive.
-        :param pulumi.Input[str] network: This field is not used for external load balancing. For INTERNAL_SELF_MANAGED load balancing, this field identifies the
-               network that the load balanced IP should belong to for this global forwarding rule. If this field is not specified, the
-               default network will be used.
+        :param pulumi.Input[str] network: This field is not used for external load balancing.
+               For INTERNAL_SELF_MANAGED load balancing, this field
+               identifies the network that the load balanced IP should belong to
+               for this global forwarding rule. If this field is not specified,
+               the default network will be used.
         :param pulumi.Input[str] port_range: This field is used along with the target field for TargetHttpProxy,
                TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
                TargetPool, TargetInstance.
@@ -283,24 +305,33 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[str] ip_address: The IP address that this forwarding rule is serving on behalf of. Addresses are restricted based on the forwarding
-               rule's load balancing scheme (EXTERNAL or INTERNAL) and scope (global or regional). When the load balancing scheme is
-               EXTERNAL, for global forwarding rules, the address must be a global IP, and for regional forwarding rules, the address
-               must live in the same region as the forwarding rule. If this field is empty, an ephemeral IPv4 address from the same
-               scope (global or regional) will be assigned. A regional forwarding rule supports IPv4 only. A global forwarding rule
-               supports either IPv4 or IPv6. When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address
-               belonging to the network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral
-               internal IP address will be automatically allocated from the IP range of the subnet or network configured for this
-               forwarding rule. An address must be specified by a literal IP address. ~> **NOTE**: While the API allows you to specify
-               various resource paths for an address resource instead, Terraform requires this to specifically be an IP address to
-               avoid needing to fetching the IP address from resource paths on refresh or unnecessary diffs.
+        :param pulumi.Input[str] ip_address: The IP address that this forwarding rule is serving on behalf of.
+               Addresses are restricted based on the forwarding rule's load balancing
+               scheme (EXTERNAL or INTERNAL) and scope (global or regional).
+               When the load balancing scheme is EXTERNAL, for global forwarding
+               rules, the address must be a global IP, and for regional forwarding
+               rules, the address must live in the same region as the forwarding
+               rule. If this field is empty, an ephemeral IPv4 address from the same
+               scope (global or regional) will be assigned. A regional forwarding
+               rule supports IPv4 only. A global forwarding rule supports either IPv4
+               or IPv6.
+               When the load balancing scheme is INTERNAL, this can only be an RFC
+               1918 IP address belonging to the network/subnet configured for the
+               forwarding rule. By default, if this field is empty, an ephemeral
+               internal IP address will be automatically allocated from the IP range
+               of the subnet or network configured for this forwarding rule.
+               An address must be specified by a literal IP address. > **NOTE**: While
+               the API allows you to specify various resource paths for an address resource
+               instead, this provider requires this to specifically be an IP address to
+               avoid needing to fetching the IP address from resource paths on refresh
+               or unnecessary diffs.
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. Valid options are TCP,
                UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
                INTERNAL_SELF_MANAGED, only TCP is valid.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Valid options are IPV4 or IPV6.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
-        :param pulumi.Input[dict] labels: Labels to apply to this forwarding rule. A list of key->value pairs.
+        :param pulumi.Input[dict] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
                The value of INTERNAL_SELF_MANAGED means that this will be used for
                Internal Global HTTP(S) LB. The value of EXTERNAL means that this
@@ -324,9 +355,11 @@ class GlobalForwardingRule(pulumi.CustomResource):
                loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
         :param pulumi.Input[str] name: Name of the metadata label. The length must be between
                1 and 1024 characters, inclusive.
-        :param pulumi.Input[str] network: This field is not used for external load balancing. For INTERNAL_SELF_MANAGED load balancing, this field identifies the
-               network that the load balanced IP should belong to for this global forwarding rule. If this field is not specified, the
-               default network will be used.
+        :param pulumi.Input[str] network: This field is not used for external load balancing.
+               For INTERNAL_SELF_MANAGED load balancing, this field
+               identifies the network that the load balanced IP should belong to
+               for this global forwarding rule. If this field is not specified,
+               the default network will be used.
         :param pulumi.Input[str] port_range: This field is used along with the target field for TargetHttpProxy,
                TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
                TargetPool, TargetInstance.

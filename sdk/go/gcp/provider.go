@@ -104,6 +104,7 @@ type providerArgs struct {
 	SecretManagerCustomEndpoint          *string           `pulumi:"secretManagerCustomEndpoint"`
 	SecurityCenterCustomEndpoint         *string           `pulumi:"securityCenterCustomEndpoint"`
 	SecurityScannerCustomEndpoint        *string           `pulumi:"securityScannerCustomEndpoint"`
+	ServiceDirectoryCustomEndpoint       *string           `pulumi:"serviceDirectoryCustomEndpoint"`
 	ServiceManagementCustomEndpoint      *string           `pulumi:"serviceManagementCustomEndpoint"`
 	ServiceNetworkingCustomEndpoint      *string           `pulumi:"serviceNetworkingCustomEndpoint"`
 	ServiceUsageCustomEndpoint           *string           `pulumi:"serviceUsageCustomEndpoint"`
@@ -180,6 +181,7 @@ type ProviderArgs struct {
 	SecretManagerCustomEndpoint          pulumi.StringPtrInput
 	SecurityCenterCustomEndpoint         pulumi.StringPtrInput
 	SecurityScannerCustomEndpoint        pulumi.StringPtrInput
+	ServiceDirectoryCustomEndpoint       pulumi.StringPtrInput
 	ServiceManagementCustomEndpoint      pulumi.StringPtrInput
 	ServiceNetworkingCustomEndpoint      pulumi.StringPtrInput
 	ServiceUsageCustomEndpoint           pulumi.StringPtrInput

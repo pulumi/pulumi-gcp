@@ -64,7 +64,7 @@ export class ManagedZone extends pulumi.CustomResource {
     }
 
     /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
+     * A textual description field. Defaults to 'Managed by Pulumi'.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -76,8 +76,9 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly dnssecConfig!: pulumi.Output<outputs.dns.ManagedZoneDnssecConfig | undefined>;
     /**
-     * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-     * contains the set of destinations to forward to.
+     * The presence for this field indicates that outbound forwarding is enabled
+     * for this zone. The value of this field contains the set of destinations
+     * to forward to.  Structure is documented below.
      */
     public readonly forwardingConfig!: pulumi.Output<outputs.dns.ManagedZoneForwardingConfig | undefined>;
     /**
@@ -94,8 +95,8 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
     /**
-     * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-     * network to peer with.
+     * The presence of this field indicates that DNS Peering is enabled for this
+     * zone. The value of this field contains the network to peer with.  Structure is documented below.
      */
     public readonly peeringConfig!: pulumi.Output<outputs.dns.ManagedZonePeeringConfig | undefined>;
     /**
@@ -109,9 +110,9 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-     * automatically configured records for VPC resources. This only applies to networks listed under
-     * 'private_visibility_config'.
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+     * lookup queries using automatically configured records for VPC resources. This only applies
+     * to networks listed under `privateVisibilityConfig`.
      */
     public readonly reverseLookup!: pulumi.Output<boolean | undefined>;
     /**
@@ -179,7 +180,7 @@ export class ManagedZone extends pulumi.CustomResource {
  */
 export interface ManagedZoneState {
     /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
+     * A textual description field. Defaults to 'Managed by Pulumi'.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -191,8 +192,9 @@ export interface ManagedZoneState {
      */
     readonly dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
     /**
-     * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-     * contains the set of destinations to forward to.
+     * The presence for this field indicates that outbound forwarding is enabled
+     * for this zone. The value of this field contains the set of destinations
+     * to forward to.  Structure is documented below.
      */
     readonly forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig>;
     /**
@@ -209,8 +211,8 @@ export interface ManagedZoneState {
      */
     readonly nameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-     * network to peer with.
+     * The presence of this field indicates that DNS Peering is enabled for this
+     * zone. The value of this field contains the network to peer with.  Structure is documented below.
      */
     readonly peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig>;
     /**
@@ -224,9 +226,9 @@ export interface ManagedZoneState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-     * automatically configured records for VPC resources. This only applies to networks listed under
-     * 'private_visibility_config'.
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+     * lookup queries using automatically configured records for VPC resources. This only applies
+     * to networks listed under `privateVisibilityConfig`.
      */
     readonly reverseLookup?: pulumi.Input<boolean>;
     /**
@@ -242,7 +244,7 @@ export interface ManagedZoneState {
  */
 export interface ManagedZoneArgs {
     /**
-     * A textual description field. Defaults to 'Managed by Terraform'.
+     * A textual description field. Defaults to 'Managed by Pulumi'.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -254,8 +256,9 @@ export interface ManagedZoneArgs {
      */
     readonly dnssecConfig?: pulumi.Input<inputs.dns.ManagedZoneDnssecConfig>;
     /**
-     * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-     * contains the set of destinations to forward to.
+     * The presence for this field indicates that outbound forwarding is enabled
+     * for this zone. The value of this field contains the set of destinations
+     * to forward to.  Structure is documented below.
      */
     readonly forwardingConfig?: pulumi.Input<inputs.dns.ManagedZoneForwardingConfig>;
     /**
@@ -268,8 +271,8 @@ export interface ManagedZoneArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-     * network to peer with.
+     * The presence of this field indicates that DNS Peering is enabled for this
+     * zone. The value of this field contains the network to peer with.  Structure is documented below.
      */
     readonly peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig>;
     /**
@@ -283,9 +286,9 @@ export interface ManagedZoneArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-     * automatically configured records for VPC resources. This only applies to networks listed under
-     * 'private_visibility_config'.
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+     * lookup queries using automatically configured records for VPC resources. This only applies
+     * to networks listed under `privateVisibilityConfig`.
      */
     readonly reverseLookup?: pulumi.Input<boolean>;
     /**

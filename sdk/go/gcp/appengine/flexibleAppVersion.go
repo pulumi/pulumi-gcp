@@ -44,8 +44,7 @@ type FlexibleAppVersion struct {
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrOutput `pulumi:"endpointsApiService"`
 	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint FlexibleAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
-	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-	// detect any changes made outside of the Terraform config.
+	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 	EnvVariables pulumi.StringMapOutput `pulumi:"envVariables"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices pulumi.StringArrayOutput `pulumi:"inboundServices"`
@@ -148,8 +147,7 @@ type flexibleAppVersionState struct {
 	EndpointsApiService *FlexibleAppVersionEndpointsApiService `pulumi:"endpointsApiService"`
 	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
-	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-	// detect any changes made outside of the Terraform config.
+	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 	EnvVariables map[string]string `pulumi:"envVariables"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices []string `pulumi:"inboundServices"`
@@ -216,8 +214,7 @@ type FlexibleAppVersionState struct {
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrInput
 	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint FlexibleAppVersionEntrypointPtrInput
-	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-	// detect any changes made outside of the Terraform config.
+	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 	EnvVariables pulumi.StringMapInput
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices pulumi.StringArrayInput
@@ -288,8 +285,7 @@ type flexibleAppVersionArgs struct {
 	EndpointsApiService *FlexibleAppVersionEndpointsApiService `pulumi:"endpointsApiService"`
 	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
-	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-	// detect any changes made outside of the Terraform config.
+	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 	EnvVariables map[string]string `pulumi:"envVariables"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices []string `pulumi:"inboundServices"`
@@ -355,8 +351,7 @@ type FlexibleAppVersionArgs struct {
 	EndpointsApiService FlexibleAppVersionEndpointsApiServicePtrInput
 	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint FlexibleAppVersionEntrypointPtrInput
-	// Environment variables available to the application. As these are not returned in the API request, Terraform will not
-	// detect any changes made outside of the Terraform config.
+	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 	EnvVariables pulumi.StringMapInput
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices pulumi.StringArrayInput

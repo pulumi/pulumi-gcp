@@ -229,6 +229,9 @@ namespace Pulumi.Gcp
         [Input("securityScannerCustomEndpoint")]
         public Input<string>? SecurityScannerCustomEndpoint { get; set; }
 
+        [Input("serviceDirectoryCustomEndpoint")]
+        public Input<string>? ServiceDirectoryCustomEndpoint { get; set; }
+
         [Input("serviceManagementCustomEndpoint")]
         public Input<string>? ServiceManagementCustomEndpoint { get; set; }
 

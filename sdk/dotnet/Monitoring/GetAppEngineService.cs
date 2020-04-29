@@ -11,6 +11,22 @@ namespace Pulumi.Gcp.Monitoring
 {
     public static class GetAppEngineService
     {
+        /// <summary>
+        /// A Monitoring Service is the root resource under which operational aspects of a
+        /// generic service are accessible. A service is some discrete, autonomous, and
+        /// network-accessible unit, designed to solve an individual concern
+        /// 
+        /// An App Engine monitoring service is automatically created by GCP to monitor
+        /// App Engine services.
+        /// 
+        /// 
+        /// To get more information about Service, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+        /// * How-to Guides
+        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        /// </summary>
         public static Task<GetAppEngineServiceResult> InvokeAsync(GetAppEngineServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppEngineServiceResult>("gcp:monitoring/getAppEngineService:getAppEngineService", args ?? new GetAppEngineServiceArgs(), options.WithVersion());
     }
@@ -18,9 +34,17 @@ namespace Pulumi.Gcp.Monitoring
 
     public sealed class GetAppEngineServiceArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the App Engine module underlying this
+        /// service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+        /// </summary>
         [Input("moduleId", required: true)]
         public string ModuleId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
