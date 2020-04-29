@@ -499,8 +499,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.0.0 h1:3VMXbEo3bqeaU+YDt8ufVBLD0WhLYE3tG3t/nI
 github.com/pulumi/pulumi/sdk/v2 v2.0.0/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+oQrQefWt+2RF4=
 github.com/pulumi/pulumi/sdk/v2 v2.0.1-0.20200424001829-090f390d7b1a h1:UpokAduE4dOhqTN//WfueV6BHlkH/F4sOWJc0vqT8w4=
 github.com/pulumi/pulumi/sdk/v2 v2.0.1-0.20200424001829-090f390d7b1a/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+oQrQefWt+2RF4=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20200420214442-be0084c1cf8f h1:Hr1vlrtaZIsiwHkmjVZPZjBeaufrVYnSGCMyHumqmJo=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20200420214442-be0084c1cf8f/go.mod h1:qDvM6QtDMVB8SkF5So58kFo1ctO67PDTvXdGKtH8ltM=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20200429200105-be4d9fcc4a4e h1:/3wxCxagWN7+zVmt6oQQLiIiwe25XYJoQG8Uzbqljnc=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20200429200105-be4d9fcc4a4e/go.mod h1:LBpkpXSTIpMasOk5ISUnpS9lvWfzxbe4mN4OpZMjyOA=
 github.com/quasilyte/go-consistent v0.0.0-20190521200055-c6f3937de18c/go.mod h1:5STLWrekHfjyYwxBRVRXNOSewLJ3PWfDJd1VyTS21fI=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
@@ -788,8 +788,8 @@ golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7/go.mod h1:I/5z698sn9Ka8T
 golang.org/x/xerrors v0.0.0-20191011141410-1b5146add898/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
 golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543 h1:E7g+9GITq07hpfrRu66IVDexMakfv52eLZ2CXBWiKr4=
 golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
-google.golang.org/api v0.16.0 h1:hhRbpE9nkabqMxGCewz2sikMYxm8yYWov7h2Eo4j3Is=
-google.golang.org/api v0.16.0/go.mod h1:BwFmGc8tA3vsd7r/7kR8DY7iEEGSU04BFxCo5jP/sfE=
+google.golang.org/api v0.20.0 h1:jz2KixHX7EcCPiQrySzPdnYT7DbINAypCqKZ1Z7GM40=
+google.golang.org/api v0.20.0/go.mod h1:BwFmGc8tA3vsd7r/7kR8DY7iEEGSU04BFxCo5jP/sfE=
 google.golang.org/appengine v1.1.0/go.mod h1:EbEs0AVv82hx2wNQdGPgUI5lhzA/G0D9YwlJXL52JkM=
 google.golang.org/appengine v1.4.0/go.mod h1:xpcJRLb0r/rnEns0DIKYYv+WjYCduHsrkT7/EB5XEv4=
 google.golang.org/appengine v1.5.0/go.mod h1:xpcJRLb0r/rnEns0DIKYYv+WjYCduHsrkT7/EB5XEv4=
