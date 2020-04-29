@@ -1070,8 +1070,8 @@ export namespace bigquery {
          */
         maxBadRecords?: number;
         /**
-         * Specifies a string that represents a null value in a CSV file. For example, if you specify `\N`, BigQuery interprets `\N` as a null value
-         * when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
+         * Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
+         * property to a custom value, BigQuery throws an error if an
          * empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
          * an empty value.
          */

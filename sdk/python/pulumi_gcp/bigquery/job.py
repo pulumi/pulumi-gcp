@@ -116,8 +116,8 @@ class Job(pulumi.CustomResource):
         JSON: Named values that don't match any column names
       * `maxBadRecords` (`float`) - The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
         an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
-      * `nullMarker` (`str`) - Specifies a string that represents a null value in a CSV file. For example, if you specify `\N`, BigQuery interprets `\N` as a null value
-        when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
+      * `nullMarker` (`str`) - Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
+        property to a custom value, BigQuery throws an error if an
         empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
         an empty value.
       * `projectionFields` (`list`) - If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
@@ -342,8 +342,8 @@ class Job(pulumi.CustomResource):
             JSON: Named values that don't match any column names
           * `maxBadRecords` (`pulumi.Input[float]`) - The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
             an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
-          * `nullMarker` (`pulumi.Input[str]`) - Specifies a string that represents a null value in a CSV file. For example, if you specify `\N`, BigQuery interprets `\N` as a null value
-            when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
+          * `nullMarker` (`pulumi.Input[str]`) - Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
+            property to a custom value, BigQuery throws an error if an
             empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
             an empty value.
           * `projectionFields` (`pulumi.Input[list]`) - If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
@@ -593,8 +593,8 @@ class Job(pulumi.CustomResource):
             JSON: Named values that don't match any column names
           * `maxBadRecords` (`pulumi.Input[float]`) - The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
             an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
-          * `nullMarker` (`pulumi.Input[str]`) - Specifies a string that represents a null value in a CSV file. For example, if you specify `\N`, BigQuery interprets `\N` as a null value
-            when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
+          * `nullMarker` (`pulumi.Input[str]`) - Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
+            property to a custom value, BigQuery throws an error if an
             empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
             an empty value.
           * `projectionFields` (`pulumi.Input[list]`) - If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
