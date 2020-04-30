@@ -74,6 +74,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceFromTemplateNetworkInterface[]>;
     public readonly project!: pulumi.Output<string>;
+    public readonly resourcePolicies!: pulumi.Output<string>;
     public readonly scheduling!: pulumi.Output<outputs.compute.InstanceFromTemplateScheduling>;
     public readonly scratchDisks!: pulumi.Output<outputs.compute.InstanceFromTemplateScratchDisk[]>;
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -127,6 +128,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             inputs["scheduling"] = state ? state.scheduling : undefined;
             inputs["scratchDisks"] = state ? state.scratchDisks : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -159,6 +161,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["scheduling"] = args ? args.scheduling : undefined;
             inputs["scratchDisks"] = args ? args.scratchDisks : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -216,6 +219,7 @@ export interface InstanceFromTemplateState {
     readonly name?: pulumi.Input<string>;
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterface>[]>;
     readonly project?: pulumi.Input<string>;
+    readonly resourcePolicies?: pulumi.Input<string>;
     readonly scheduling?: pulumi.Input<inputs.compute.InstanceFromTemplateScheduling>;
     readonly scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateScratchDisk>[]>;
     readonly selfLink?: pulumi.Input<string>;
@@ -261,6 +265,7 @@ export interface InstanceFromTemplateArgs {
     readonly name?: pulumi.Input<string>;
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterface>[]>;
     readonly project?: pulumi.Input<string>;
+    readonly resourcePolicies?: pulumi.Input<string>;
     readonly scheduling?: pulumi.Input<inputs.compute.InstanceFromTemplateScheduling>;
     readonly scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateScratchDisk>[]>;
     readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceFromTemplateServiceAccount>;

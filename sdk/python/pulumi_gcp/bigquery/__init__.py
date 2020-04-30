@@ -8,5 +8,6 @@ from .data_transfer_config import *
 from .dataset import *
 from .dataset_access import *
 from .get_default_service_account import *
+from .job import *
 from .reservation import *
 from .table import *

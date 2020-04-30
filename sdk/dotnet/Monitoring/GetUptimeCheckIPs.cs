@@ -11,6 +11,13 @@ namespace Pulumi.Gcp.Monitoring
 {
     public static class GetUptimeCheckIPs
     {
+        /// <summary>
+        /// Returns the list of IP addresses that checkers run from. For more information see
+        /// the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
+        /// 
+        /// {{% examples %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetUptimeCheckIPsResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUptimeCheckIPsResult>("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", InvokeArgs.Empty, options.WithVersion());
     }
@@ -23,6 +30,9 @@ namespace Pulumi.Gcp.Monitoring
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUptimeCheckIPsUptimeCheckIpResult> UptimeCheckIps;
 
         [OutputConstructor]

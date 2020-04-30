@@ -30,7 +30,14 @@ class WebApp(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, display_name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a WebApp resource with the given unique name, props, and options.
+        A Google Cloud Firebase web application instance
+
+        To get more information about WebApp, see:
+
+        * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+        * How-to Guides
+            * [Official Documentation](https://firebase.google.com/)
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.

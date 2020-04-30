@@ -1736,6 +1736,9 @@ func (o Hl7StoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutpu
 type Hl7StoreParserConfig struct {
 	// Determines whether messages with no header are allowed.
 	AllowNullHeader *bool `pulumi:"allowNullHeader"`
+	// JSON encoded string for schemas used to parse messages in this
+	// store if schematized parsing is desired.
+	Schema *string `pulumi:"schema"`
 	// Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
 	// A base64-encoded string.
 	SegmentTerminator *string `pulumi:"segmentTerminator"`
@@ -1756,6 +1759,9 @@ type Hl7StoreParserConfigInput interface {
 type Hl7StoreParserConfigArgs struct {
 	// Determines whether messages with no header are allowed.
 	AllowNullHeader pulumi.BoolPtrInput `pulumi:"allowNullHeader"`
+	// JSON encoded string for schemas used to parse messages in this
+	// store if schematized parsing is desired.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
 	// A base64-encoded string.
 	SegmentTerminator pulumi.StringPtrInput `pulumi:"segmentTerminator"`
@@ -1844,6 +1850,12 @@ func (o Hl7StoreParserConfigOutput) AllowNullHeader() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Hl7StoreParserConfig) *bool { return v.AllowNullHeader }).(pulumi.BoolPtrOutput)
 }
 
+// JSON encoded string for schemas used to parse messages in this
+// store if schematized parsing is desired.
+func (o Hl7StoreParserConfigOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Hl7StoreParserConfig) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
 // Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
 // A base64-encoded string.
 func (o Hl7StoreParserConfigOutput) SegmentTerminator() pulumi.StringPtrOutput {
@@ -1876,6 +1888,17 @@ func (o Hl7StoreParserConfigPtrOutput) AllowNullHeader() pulumi.BoolPtrOutput {
 		}
 		return v.AllowNullHeader
 	}).(pulumi.BoolPtrOutput)
+}
+
+// JSON encoded string for schemas used to parse messages in this
+// store if schematized parsing is desired.
+func (o Hl7StoreParserConfigPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Hl7StoreParserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
 }
 
 // Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.

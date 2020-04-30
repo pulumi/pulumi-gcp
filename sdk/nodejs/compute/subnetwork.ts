@@ -124,10 +124,12 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with
-     * purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load
-     * Balancing. If unspecified, the purpose defaults to PRIVATE. If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set
-     * the role.
+     * The purpose of the resource. This field can be either PRIVATE
+     * or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+     * INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
+     * reserved for Internal HTTP(S) Load Balancing. If unspecified, the
+     * purpose defaults to PRIVATE.
+     * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
      */
     public readonly purpose!: pulumi.Output<string>;
     /**
@@ -135,19 +137,18 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value
-     * can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load
-     * Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
+     * The role of subnetwork. Currently, this field is only used when
+     * purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
+     * or BACKUP. An ACTIVE subnetwork is one that is currently being used
+     * for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
+     * is ready to be promoted to ACTIVE or is currently draining.
      */
     public readonly role!: pulumi.Output<string | undefined>;
     /**
-     * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of
-     * such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or
-     * secondary ranges. **Note**: This field uses [attr-as-block
-     * mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html) to avoid breaking users during the 0.12
-     * upgrade. To explicitly send a list of zero objects you must use the following syntax: 'example=[]' For more details
-     * about this behavior, see [this
-     * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+     * An array of configurations for secondary IP ranges for VM instances
+     * contained in this subnetwork. The primary IP of such VM must belong
+     * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+     * to either primary or secondary ranges. Structure is documented below.
      */
     public readonly secondaryIpRanges!: pulumi.Output<outputs.compute.SubnetworkSecondaryIpRange[]>;
     /**
@@ -280,10 +281,12 @@ export interface SubnetworkState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with
-     * purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load
-     * Balancing. If unspecified, the purpose defaults to PRIVATE. If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set
-     * the role.
+     * The purpose of the resource. This field can be either PRIVATE
+     * or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+     * INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
+     * reserved for Internal HTTP(S) Load Balancing. If unspecified, the
+     * purpose defaults to PRIVATE.
+     * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
@@ -291,19 +294,18 @@ export interface SubnetworkState {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value
-     * can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load
-     * Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
+     * The role of subnetwork. Currently, this field is only used when
+     * purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
+     * or BACKUP. An ACTIVE subnetwork is one that is currently being used
+     * for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
+     * is ready to be promoted to ACTIVE or is currently draining.
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of
-     * such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or
-     * secondary ranges. **Note**: This field uses [attr-as-block
-     * mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html) to avoid breaking users during the 0.12
-     * upgrade. To explicitly send a list of zero objects you must use the following syntax: 'example=[]' For more details
-     * about this behavior, see [this
-     * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+     * An array of configurations for secondary IP ranges for VM instances
+     * contained in this subnetwork. The primary IP of such VM must belong
+     * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+     * to either primary or secondary ranges. Structure is documented below.
      */
     readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
     /**
@@ -361,10 +363,12 @@ export interface SubnetworkArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with
-     * purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load
-     * Balancing. If unspecified, the purpose defaults to PRIVATE. If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set
-     * the role.
+     * The purpose of the resource. This field can be either PRIVATE
+     * or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+     * INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
+     * reserved for Internal HTTP(S) Load Balancing. If unspecified, the
+     * purpose defaults to PRIVATE.
+     * If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
@@ -372,19 +376,18 @@ export interface SubnetworkArgs {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value
-     * can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load
-     * Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
+     * The role of subnetwork. Currently, this field is only used when
+     * purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
+     * or BACKUP. An ACTIVE subnetwork is one that is currently being used
+     * for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
+     * is ready to be promoted to ACTIVE or is currently draining.
      */
     readonly role?: pulumi.Input<string>;
     /**
-     * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of
-     * such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or
-     * secondary ranges. **Note**: This field uses [attr-as-block
-     * mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html) to avoid breaking users during the 0.12
-     * upgrade. To explicitly send a list of zero objects you must use the following syntax: 'example=[]' For more details
-     * about this behavior, see [this
-     * section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+     * An array of configurations for secondary IP ranges for VM instances
+     * contained in this subnetwork. The primary IP of such VM must belong
+     * to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+     * to either primary or secondary ranges. Structure is documented below.
      */
     readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
 }

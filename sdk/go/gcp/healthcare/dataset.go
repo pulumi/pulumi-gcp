@@ -14,7 +14,7 @@ import (
 //
 // To get more information about Dataset, see:
 //
-// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets)
+// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets)
 // * How-to Guides
 //     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
 type Dataset struct {

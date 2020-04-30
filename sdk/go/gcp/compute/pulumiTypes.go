@@ -593,11 +593,52 @@ func (o AutoscalarAutoscalingPolicyLoadBalancingUtilizationPtrOutput) Target() p
 }
 
 type AutoscalarAutoscalingPolicyMetric struct {
+	// A filter string to be used as the filter string for
+	// a Stackdriver Monitoring TimeSeries.list API call.
+	// This filter is used to select a specific TimeSeries for
+	// the purpose of autoscaling and to determine whether the metric
+	// is exporting per-instance or per-group data.
+	// You can only use the AND operator for joining selectors.
+	// You can only use direct equality comparison operator (=) without
+	// any functions for each selector.
+	// You can specify the metric in both the filter string and in the
+	// metric field. However, if specified in both places, the metric must
+	// be identical.
+	// The monitored resource type determines what kind of values are
+	// expected for the metric. If it is a gce_instance, the autoscaler
+	// expects the metric to include a separate TimeSeries for each
+	// instance in a group. In such a case, you cannot filter on resource
+	// labels.
+	// If the resource type is any other value, the autoscaler expects
+	// this metric to contain values that apply to the entire autoscaled
+	// instance group and resource label filtering can be performed to
+	// point autoscaler at the correct TimeSeries to scale upon.
+	// This is called a per-group metric for the purpose of autoscaling.
+	// If not specified, the type defaults to gce_instance.
+	// You should provide a filter that is selective enough to pick just
+	// one TimeSeries for the autoscaled group or for each of the instances
+	// (if you are using gceInstance resource type). If multiple
+	// TimeSeries are returned upon the query execution, the autoscaler
+	// will sum their respective values to obtain its scaling value.
 	Filter *string `pulumi:"filter"`
 	// The identifier (type) of the Stackdriver Monitoring metric.
 	// The metric cannot have negative values.
 	// The metric must have a value type of INT64 or DOUBLE.
-	Name                     string   `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// If scaling is based on a per-group metric value that represents the
+	// total amount of work to be done or resource usage, set this value to
+	// an amount assigned for a single instance of the scaled group.
+	// The autoscaler will keep the number of instances proportional to the
+	// value of this metric, the metric itself should not change value due
+	// to group resizing.
+	// For example, a good metric to use with the target is
+	// `pubsub.googleapis.com/subscription/num_undelivered_messages`
+	// or a custom metric exporting the total number of requests coming to
+	// your instances.
+	// A bad example would be a metric exporting an average or median
+	// latency, since this value can't include a chunk assignable to a
+	// single instance, it could be better used with utilizationTarget
+	// instead.
 	SingleInstanceAssignment *float64 `pulumi:"singleInstanceAssignment"`
 	// Fraction of backend capacity utilization (set in HTTP(s) load
 	// balancing configuration) that autoscaler should maintain. Must
@@ -622,11 +663,52 @@ type AutoscalarAutoscalingPolicyMetricInput interface {
 }
 
 type AutoscalarAutoscalingPolicyMetricArgs struct {
+	// A filter string to be used as the filter string for
+	// a Stackdriver Monitoring TimeSeries.list API call.
+	// This filter is used to select a specific TimeSeries for
+	// the purpose of autoscaling and to determine whether the metric
+	// is exporting per-instance or per-group data.
+	// You can only use the AND operator for joining selectors.
+	// You can only use direct equality comparison operator (=) without
+	// any functions for each selector.
+	// You can specify the metric in both the filter string and in the
+	// metric field. However, if specified in both places, the metric must
+	// be identical.
+	// The monitored resource type determines what kind of values are
+	// expected for the metric. If it is a gce_instance, the autoscaler
+	// expects the metric to include a separate TimeSeries for each
+	// instance in a group. In such a case, you cannot filter on resource
+	// labels.
+	// If the resource type is any other value, the autoscaler expects
+	// this metric to contain values that apply to the entire autoscaled
+	// instance group and resource label filtering can be performed to
+	// point autoscaler at the correct TimeSeries to scale upon.
+	// This is called a per-group metric for the purpose of autoscaling.
+	// If not specified, the type defaults to gce_instance.
+	// You should provide a filter that is selective enough to pick just
+	// one TimeSeries for the autoscaled group or for each of the instances
+	// (if you are using gceInstance resource type). If multiple
+	// TimeSeries are returned upon the query execution, the autoscaler
+	// will sum their respective values to obtain its scaling value.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The identifier (type) of the Stackdriver Monitoring metric.
 	// The metric cannot have negative values.
 	// The metric must have a value type of INT64 or DOUBLE.
-	Name                     pulumi.StringInput     `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// If scaling is based on a per-group metric value that represents the
+	// total amount of work to be done or resource usage, set this value to
+	// an amount assigned for a single instance of the scaled group.
+	// The autoscaler will keep the number of instances proportional to the
+	// value of this metric, the metric itself should not change value due
+	// to group resizing.
+	// For example, a good metric to use with the target is
+	// `pubsub.googleapis.com/subscription/num_undelivered_messages`
+	// or a custom metric exporting the total number of requests coming to
+	// your instances.
+	// A bad example would be a metric exporting an average or median
+	// latency, since this value can't include a chunk assignable to a
+	// single instance, it could be better used with utilizationTarget
+	// instead.
 	SingleInstanceAssignment pulumi.Float64PtrInput `pulumi:"singleInstanceAssignment"`
 	// Fraction of backend capacity utilization (set in HTTP(s) load
 	// balancing configuration) that autoscaler should maintain. Must
@@ -690,6 +772,33 @@ func (o AutoscalarAutoscalingPolicyMetricOutput) ToAutoscalarAutoscalingPolicyMe
 	return o
 }
 
+// A filter string to be used as the filter string for
+// a Stackdriver Monitoring TimeSeries.list API call.
+// This filter is used to select a specific TimeSeries for
+// the purpose of autoscaling and to determine whether the metric
+// is exporting per-instance or per-group data.
+// You can only use the AND operator for joining selectors.
+// You can only use direct equality comparison operator (=) without
+// any functions for each selector.
+// You can specify the metric in both the filter string and in the
+// metric field. However, if specified in both places, the metric must
+// be identical.
+// The monitored resource type determines what kind of values are
+// expected for the metric. If it is a gce_instance, the autoscaler
+// expects the metric to include a separate TimeSeries for each
+// instance in a group. In such a case, you cannot filter on resource
+// labels.
+// If the resource type is any other value, the autoscaler expects
+// this metric to contain values that apply to the entire autoscaled
+// instance group and resource label filtering can be performed to
+// point autoscaler at the correct TimeSeries to scale upon.
+// This is called a per-group metric for the purpose of autoscaling.
+// If not specified, the type defaults to gce_instance.
+// You should provide a filter that is selective enough to pick just
+// one TimeSeries for the autoscaled group or for each of the instances
+// (if you are using gceInstance resource type). If multiple
+// TimeSeries are returned upon the query execution, the autoscaler
+// will sum their respective values to obtain its scaling value.
 func (o AutoscalarAutoscalingPolicyMetricOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicyMetric) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -701,6 +810,20 @@ func (o AutoscalarAutoscalingPolicyMetricOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicyMetric) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// If scaling is based on a per-group metric value that represents the
+// total amount of work to be done or resource usage, set this value to
+// an amount assigned for a single instance of the scaled group.
+// The autoscaler will keep the number of instances proportional to the
+// value of this metric, the metric itself should not change value due
+// to group resizing.
+// For example, a good metric to use with the target is
+// `pubsub.googleapis.com/subscription/num_undelivered_messages`
+// or a custom metric exporting the total number of requests coming to
+// your instances.
+// A bad example would be a metric exporting an average or median
+// latency, since this value can't include a chunk assignable to a
+// single instance, it could be better used with utilizationTarget
+// instead.
 func (o AutoscalarAutoscalingPolicyMetricOutput) SingleInstanceAssignment() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicyMetric) *float64 { return v.SingleInstanceAssignment }).(pulumi.Float64PtrOutput)
 }
@@ -1322,11 +1445,52 @@ func (o AutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput) Target() p
 }
 
 type AutoscalerAutoscalingPolicyMetric struct {
+	// A filter string to be used as the filter string for
+	// a Stackdriver Monitoring TimeSeries.list API call.
+	// This filter is used to select a specific TimeSeries for
+	// the purpose of autoscaling and to determine whether the metric
+	// is exporting per-instance or per-group data.
+	// You can only use the AND operator for joining selectors.
+	// You can only use direct equality comparison operator (=) without
+	// any functions for each selector.
+	// You can specify the metric in both the filter string and in the
+	// metric field. However, if specified in both places, the metric must
+	// be identical.
+	// The monitored resource type determines what kind of values are
+	// expected for the metric. If it is a gce_instance, the autoscaler
+	// expects the metric to include a separate TimeSeries for each
+	// instance in a group. In such a case, you cannot filter on resource
+	// labels.
+	// If the resource type is any other value, the autoscaler expects
+	// this metric to contain values that apply to the entire autoscaled
+	// instance group and resource label filtering can be performed to
+	// point autoscaler at the correct TimeSeries to scale upon.
+	// This is called a per-group metric for the purpose of autoscaling.
+	// If not specified, the type defaults to gce_instance.
+	// You should provide a filter that is selective enough to pick just
+	// one TimeSeries for the autoscaled group or for each of the instances
+	// (if you are using gceInstance resource type). If multiple
+	// TimeSeries are returned upon the query execution, the autoscaler
+	// will sum their respective values to obtain its scaling value.
 	Filter *string `pulumi:"filter"`
 	// The identifier (type) of the Stackdriver Monitoring metric.
 	// The metric cannot have negative values.
 	// The metric must have a value type of INT64 or DOUBLE.
-	Name                     string   `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// If scaling is based on a per-group metric value that represents the
+	// total amount of work to be done or resource usage, set this value to
+	// an amount assigned for a single instance of the scaled group.
+	// The autoscaler will keep the number of instances proportional to the
+	// value of this metric, the metric itself should not change value due
+	// to group resizing.
+	// For example, a good metric to use with the target is
+	// `pubsub.googleapis.com/subscription/num_undelivered_messages`
+	// or a custom metric exporting the total number of requests coming to
+	// your instances.
+	// A bad example would be a metric exporting an average or median
+	// latency, since this value can't include a chunk assignable to a
+	// single instance, it could be better used with utilizationTarget
+	// instead.
 	SingleInstanceAssignment *float64 `pulumi:"singleInstanceAssignment"`
 	// Fraction of backend capacity utilization (set in HTTP(s) load
 	// balancing configuration) that autoscaler should maintain. Must
@@ -1351,11 +1515,52 @@ type AutoscalerAutoscalingPolicyMetricInput interface {
 }
 
 type AutoscalerAutoscalingPolicyMetricArgs struct {
+	// A filter string to be used as the filter string for
+	// a Stackdriver Monitoring TimeSeries.list API call.
+	// This filter is used to select a specific TimeSeries for
+	// the purpose of autoscaling and to determine whether the metric
+	// is exporting per-instance or per-group data.
+	// You can only use the AND operator for joining selectors.
+	// You can only use direct equality comparison operator (=) without
+	// any functions for each selector.
+	// You can specify the metric in both the filter string and in the
+	// metric field. However, if specified in both places, the metric must
+	// be identical.
+	// The monitored resource type determines what kind of values are
+	// expected for the metric. If it is a gce_instance, the autoscaler
+	// expects the metric to include a separate TimeSeries for each
+	// instance in a group. In such a case, you cannot filter on resource
+	// labels.
+	// If the resource type is any other value, the autoscaler expects
+	// this metric to contain values that apply to the entire autoscaled
+	// instance group and resource label filtering can be performed to
+	// point autoscaler at the correct TimeSeries to scale upon.
+	// This is called a per-group metric for the purpose of autoscaling.
+	// If not specified, the type defaults to gce_instance.
+	// You should provide a filter that is selective enough to pick just
+	// one TimeSeries for the autoscaled group or for each of the instances
+	// (if you are using gceInstance resource type). If multiple
+	// TimeSeries are returned upon the query execution, the autoscaler
+	// will sum their respective values to obtain its scaling value.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The identifier (type) of the Stackdriver Monitoring metric.
 	// The metric cannot have negative values.
 	// The metric must have a value type of INT64 or DOUBLE.
-	Name                     pulumi.StringInput     `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// If scaling is based on a per-group metric value that represents the
+	// total amount of work to be done or resource usage, set this value to
+	// an amount assigned for a single instance of the scaled group.
+	// The autoscaler will keep the number of instances proportional to the
+	// value of this metric, the metric itself should not change value due
+	// to group resizing.
+	// For example, a good metric to use with the target is
+	// `pubsub.googleapis.com/subscription/num_undelivered_messages`
+	// or a custom metric exporting the total number of requests coming to
+	// your instances.
+	// A bad example would be a metric exporting an average or median
+	// latency, since this value can't include a chunk assignable to a
+	// single instance, it could be better used with utilizationTarget
+	// instead.
 	SingleInstanceAssignment pulumi.Float64PtrInput `pulumi:"singleInstanceAssignment"`
 	// Fraction of backend capacity utilization (set in HTTP(s) load
 	// balancing configuration) that autoscaler should maintain. Must
@@ -1419,6 +1624,33 @@ func (o AutoscalerAutoscalingPolicyMetricOutput) ToAutoscalerAutoscalingPolicyMe
 	return o
 }
 
+// A filter string to be used as the filter string for
+// a Stackdriver Monitoring TimeSeries.list API call.
+// This filter is used to select a specific TimeSeries for
+// the purpose of autoscaling and to determine whether the metric
+// is exporting per-instance or per-group data.
+// You can only use the AND operator for joining selectors.
+// You can only use direct equality comparison operator (=) without
+// any functions for each selector.
+// You can specify the metric in both the filter string and in the
+// metric field. However, if specified in both places, the metric must
+// be identical.
+// The monitored resource type determines what kind of values are
+// expected for the metric. If it is a gce_instance, the autoscaler
+// expects the metric to include a separate TimeSeries for each
+// instance in a group. In such a case, you cannot filter on resource
+// labels.
+// If the resource type is any other value, the autoscaler expects
+// this metric to contain values that apply to the entire autoscaled
+// instance group and resource label filtering can be performed to
+// point autoscaler at the correct TimeSeries to scale upon.
+// This is called a per-group metric for the purpose of autoscaling.
+// If not specified, the type defaults to gce_instance.
+// You should provide a filter that is selective enough to pick just
+// one TimeSeries for the autoscaled group or for each of the instances
+// (if you are using gceInstance resource type). If multiple
+// TimeSeries are returned upon the query execution, the autoscaler
+// will sum their respective values to obtain its scaling value.
 func (o AutoscalerAutoscalingPolicyMetricOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -1430,6 +1662,20 @@ func (o AutoscalerAutoscalingPolicyMetricOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// If scaling is based on a per-group metric value that represents the
+// total amount of work to be done or resource usage, set this value to
+// an amount assigned for a single instance of the scaled group.
+// The autoscaler will keep the number of instances proportional to the
+// value of this metric, the metric itself should not change value due
+// to group resizing.
+// For example, a good metric to use with the target is
+// `pubsub.googleapis.com/subscription/num_undelivered_messages`
+// or a custom metric exporting the total number of requests coming to
+// your instances.
+// A bad example would be a metric exporting an average or median
+// latency, since this value can't include a chunk assignable to a
+// single instance, it could be better used with utilizationTarget
+// instead.
 func (o AutoscalerAutoscalingPolicyMetricOutput) SingleInstanceAssignment() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) *float64 { return v.SingleInstanceAssignment }).(pulumi.Float64PtrOutput)
 }
@@ -19463,6 +19709,7 @@ func (o RegionBackendServiceOutlierDetectionIntervalPtrOutput) Seconds() pulumi.
 }
 
 type RegionDiskDiskEncryptionKey struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
@@ -19486,6 +19733,7 @@ type RegionDiskDiskEncryptionKeyInput interface {
 }
 
 type RegionDiskDiskEncryptionKeyArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
@@ -19573,6 +19821,8 @@ func (o RegionDiskDiskEncryptionKeyOutput) ToRegionDiskDiskEncryptionKeyPtrOutpu
 		return &v
 	}).(RegionDiskDiskEncryptionKeyPtrOutput)
 }
+
+// The name of the encryption key that is stored in Google Cloud KMS.
 func (o RegionDiskDiskEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionDiskDiskEncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
@@ -19608,6 +19858,7 @@ func (o RegionDiskDiskEncryptionKeyPtrOutput) Elem() RegionDiskDiskEncryptionKey
 	return o.ApplyT(func(v *RegionDiskDiskEncryptionKey) RegionDiskDiskEncryptionKey { return *v }).(RegionDiskDiskEncryptionKeyOutput)
 }
 
+// The name of the encryption key that is stored in Google Cloud KMS.
 func (o RegionDiskDiskEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionDiskDiskEncryptionKey) *string {
 		if v == nil {
@@ -19641,6 +19892,7 @@ func (o RegionDiskDiskEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutput {
 }
 
 type RegionDiskSourceSnapshotEncryptionKey struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
@@ -19664,6 +19916,7 @@ type RegionDiskSourceSnapshotEncryptionKeyInput interface {
 }
 
 type RegionDiskSourceSnapshotEncryptionKeyArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
@@ -19751,6 +20004,8 @@ func (o RegionDiskSourceSnapshotEncryptionKeyOutput) ToRegionDiskSourceSnapshotE
 		return &v
 	}).(RegionDiskSourceSnapshotEncryptionKeyPtrOutput)
 }
+
+// The name of the encryption key that is stored in Google Cloud KMS.
 func (o RegionDiskSourceSnapshotEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionDiskSourceSnapshotEncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
@@ -19786,6 +20041,7 @@ func (o RegionDiskSourceSnapshotEncryptionKeyPtrOutput) Elem() RegionDiskSourceS
 	return o.ApplyT(func(v *RegionDiskSourceSnapshotEncryptionKey) RegionDiskSourceSnapshotEncryptionKey { return *v }).(RegionDiskSourceSnapshotEncryptionKeyOutput)
 }
 
+// The name of the encryption key that is stored in Google Cloud KMS.
 func (o RegionDiskSourceSnapshotEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionDiskSourceSnapshotEncryptionKey) *string {
 		if v == nil {
@@ -31430,6 +31686,193 @@ func (o ReservationSpecificReservationInstancePropertiesLocalSsdArrayOutput) Ind
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReservationSpecificReservationInstancePropertiesLocalSsd {
 		return vs[0].([]ReservationSpecificReservationInstancePropertiesLocalSsd)[vs[1].(int)]
 	}).(ReservationSpecificReservationInstancePropertiesLocalSsdOutput)
+}
+
+type ResourcePolicyGroupPlacementPolicy struct {
+	// The number of availability domains instances will be spread across. If two instances are in different
+	// availability domain, they will not be put in the same low latency network
+	AvailabilityDomainCount *int `pulumi:"availabilityDomainCount"`
+	// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+	// Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
+	// with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
+	// attached.
+	Collocation *string `pulumi:"collocation"`
+	// Number of vms in this placement group.
+	VmCount *int `pulumi:"vmCount"`
+}
+
+// ResourcePolicyGroupPlacementPolicyInput is an input type that accepts ResourcePolicyGroupPlacementPolicyArgs and ResourcePolicyGroupPlacementPolicyOutput values.
+// You can construct a concrete instance of `ResourcePolicyGroupPlacementPolicyInput` via:
+//
+// 		 ResourcePolicyGroupPlacementPolicyArgs{...}
+//
+type ResourcePolicyGroupPlacementPolicyInput interface {
+	pulumi.Input
+
+	ToResourcePolicyGroupPlacementPolicyOutput() ResourcePolicyGroupPlacementPolicyOutput
+	ToResourcePolicyGroupPlacementPolicyOutputWithContext(context.Context) ResourcePolicyGroupPlacementPolicyOutput
+}
+
+type ResourcePolicyGroupPlacementPolicyArgs struct {
+	// The number of availability domains instances will be spread across. If two instances are in different
+	// availability domain, they will not be put in the same low latency network
+	AvailabilityDomainCount pulumi.IntPtrInput `pulumi:"availabilityDomainCount"`
+	// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+	// Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
+	// with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
+	// attached.
+	Collocation pulumi.StringPtrInput `pulumi:"collocation"`
+	// Number of vms in this placement group.
+	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
+}
+
+func (ResourcePolicyGroupPlacementPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (i ResourcePolicyGroupPlacementPolicyArgs) ToResourcePolicyGroupPlacementPolicyOutput() ResourcePolicyGroupPlacementPolicyOutput {
+	return i.ToResourcePolicyGroupPlacementPolicyOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyGroupPlacementPolicyArgs) ToResourcePolicyGroupPlacementPolicyOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyGroupPlacementPolicyOutput)
+}
+
+func (i ResourcePolicyGroupPlacementPolicyArgs) ToResourcePolicyGroupPlacementPolicyPtrOutput() ResourcePolicyGroupPlacementPolicyPtrOutput {
+	return i.ToResourcePolicyGroupPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyGroupPlacementPolicyArgs) ToResourcePolicyGroupPlacementPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyGroupPlacementPolicyOutput).ToResourcePolicyGroupPlacementPolicyPtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyGroupPlacementPolicyPtrInput is an input type that accepts ResourcePolicyGroupPlacementPolicyArgs, ResourcePolicyGroupPlacementPolicyPtr and ResourcePolicyGroupPlacementPolicyPtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyGroupPlacementPolicyPtrInput` via:
+//
+// 		 ResourcePolicyGroupPlacementPolicyArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ResourcePolicyGroupPlacementPolicyPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyGroupPlacementPolicyPtrOutput() ResourcePolicyGroupPlacementPolicyPtrOutput
+	ToResourcePolicyGroupPlacementPolicyPtrOutputWithContext(context.Context) ResourcePolicyGroupPlacementPolicyPtrOutput
+}
+
+type resourcePolicyGroupPlacementPolicyPtrType ResourcePolicyGroupPlacementPolicyArgs
+
+func ResourcePolicyGroupPlacementPolicyPtr(v *ResourcePolicyGroupPlacementPolicyArgs) ResourcePolicyGroupPlacementPolicyPtrInput {
+	return (*resourcePolicyGroupPlacementPolicyPtrType)(v)
+}
+
+func (*resourcePolicyGroupPlacementPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (i *resourcePolicyGroupPlacementPolicyPtrType) ToResourcePolicyGroupPlacementPolicyPtrOutput() ResourcePolicyGroupPlacementPolicyPtrOutput {
+	return i.ToResourcePolicyGroupPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyGroupPlacementPolicyPtrType) ToResourcePolicyGroupPlacementPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyGroupPlacementPolicyPtrOutput)
+}
+
+type ResourcePolicyGroupPlacementPolicyOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyGroupPlacementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyGroupPlacementPolicyOutput) ToResourcePolicyGroupPlacementPolicyOutput() ResourcePolicyGroupPlacementPolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyGroupPlacementPolicyOutput) ToResourcePolicyGroupPlacementPolicyOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyGroupPlacementPolicyOutput) ToResourcePolicyGroupPlacementPolicyPtrOutput() ResourcePolicyGroupPlacementPolicyPtrOutput {
+	return o.ToResourcePolicyGroupPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyGroupPlacementPolicyOutput) ToResourcePolicyGroupPlacementPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *ResourcePolicyGroupPlacementPolicy {
+		return &v
+	}).(ResourcePolicyGroupPlacementPolicyPtrOutput)
+}
+
+// The number of availability domains instances will be spread across. If two instances are in different
+// availability domain, they will not be put in the same low latency network
+func (o ResourcePolicyGroupPlacementPolicyOutput) AvailabilityDomainCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *int { return v.AvailabilityDomainCount }).(pulumi.IntPtrOutput)
+}
+
+// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+// Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
+// with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
+// attached.
+func (o ResourcePolicyGroupPlacementPolicyOutput) Collocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *string { return v.Collocation }).(pulumi.StringPtrOutput)
+}
+
+// Number of vms in this placement group.
+func (o ResourcePolicyGroupPlacementPolicyOutput) VmCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *int { return v.VmCount }).(pulumi.IntPtrOutput)
+}
+
+type ResourcePolicyGroupPlacementPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyGroupPlacementPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyGroupPlacementPolicyPtrOutput) ToResourcePolicyGroupPlacementPolicyPtrOutput() ResourcePolicyGroupPlacementPolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyGroupPlacementPolicyPtrOutput) ToResourcePolicyGroupPlacementPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyGroupPlacementPolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyGroupPlacementPolicyPtrOutput) Elem() ResourcePolicyGroupPlacementPolicyOutput {
+	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) ResourcePolicyGroupPlacementPolicy { return *v }).(ResourcePolicyGroupPlacementPolicyOutput)
+}
+
+// The number of availability domains instances will be spread across. If two instances are in different
+// availability domain, they will not be put in the same low latency network
+func (o ResourcePolicyGroupPlacementPolicyPtrOutput) AvailabilityDomainCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityDomainCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+// Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
+// with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
+// attached.
+func (o ResourcePolicyGroupPlacementPolicyPtrOutput) Collocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Collocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of vms in this placement group.
+func (o ResourcePolicyGroupPlacementPolicyPtrOutput) VmCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VmCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type ResourcePolicySnapshotSchedulePolicy struct {
@@ -49058,6 +49501,8 @@ func init() {
 	pulumi.RegisterOutputType(ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ReservationSpecificReservationInstancePropertiesLocalSsdOutput{})
 	pulumi.RegisterOutputType(ReservationSpecificReservationInstancePropertiesLocalSsdArrayOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput{})

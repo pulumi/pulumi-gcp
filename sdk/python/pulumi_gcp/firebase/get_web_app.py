@@ -46,7 +46,10 @@ class AwaitableGetWebAppResult(GetWebAppResult):
 
 def get_web_app(app_id=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    A Google Cloud Firebase web application instance
+
+
+    :param str app_id: The app_ip of name of the Firebase webApp.
     """
     __args__ = dict()
 

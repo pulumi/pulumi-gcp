@@ -10,6 +10,18 @@ from typing import Union
 from .. import utilities, tables
 
 class ResourcePolicy(pulumi.CustomResource):
+    group_placement_policy: pulumi.Output[dict]
+    """
+    Policy for creating snapshots of persistent disks.  Structure is documented below.
+
+      * `availabilityDomainCount` (`float`) - The number of availability domains instances will be spread across. If two instances are in different
+        availability domain, they will not be put in the same low latency network
+      * `collocation` (`str`) - Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+        Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
+        with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
+        attached.
+      * `vmCount` (`float`) - Number of vms in this placement group.
+    """
     name: pulumi.Output[str]
     """
     The name of the resource, provided by the client when initially creating
@@ -66,12 +78,13 @@ class ResourcePolicy(pulumi.CustomResource):
         * `storageLocations` (`str`) - Cloud Storage bucket location to store the auto snapshot
           (regional or multi-regional)
     """
-    def __init__(__self__, resource_name, opts=None, name=None, project=None, region=None, snapshot_schedule_policy=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, group_placement_policy=None, name=None, project=None, region=None, snapshot_schedule_policy=None, __props__=None, __name__=None, __opts__=None):
         """
         A policy that can be attached to a resource to specify or schedule actions on that resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] group_placement_policy: Policy for creating snapshots of persistent disks.  Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
                with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -83,6 +96,16 @@ class ResourcePolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
         :param pulumi.Input[dict] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.  Structure is documented below.
+
+        The **group_placement_policy** object supports the following:
+
+          * `availabilityDomainCount` (`pulumi.Input[float]`) - The number of availability domains instances will be spread across. If two instances are in different
+            availability domain, they will not be put in the same low latency network
+          * `collocation` (`pulumi.Input[str]`) - Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+            Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
+            with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
+            attached.
+          * `vmCount` (`pulumi.Input[float]`) - Number of vms in this placement group.
 
         The **snapshot_schedule_policy** object supports the following:
 
@@ -132,6 +155,7 @@ class ResourcePolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['group_placement_policy'] = group_placement_policy
             __props__['name'] = name
             __props__['project'] = project
             __props__['region'] = region
@@ -144,7 +168,7 @@ class ResourcePolicy(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policy=None):
+    def get(resource_name, id, opts=None, group_placement_policy=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policy=None):
         """
         Get an existing ResourcePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -152,6 +176,7 @@ class ResourcePolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] group_placement_policy: Policy for creating snapshots of persistent disks.  Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
                with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -164,6 +189,16 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] region: Region where resource policy resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[dict] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.  Structure is documented below.
+
+        The **group_placement_policy** object supports the following:
+
+          * `availabilityDomainCount` (`pulumi.Input[float]`) - The number of availability domains instances will be spread across. If two instances are in different
+            availability domain, they will not be put in the same low latency network
+          * `collocation` (`pulumi.Input[str]`) - Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+            Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
+            with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
+            attached.
+          * `vmCount` (`pulumi.Input[float]`) - Number of vms in this placement group.
 
         The **snapshot_schedule_policy** object supports the following:
 
@@ -200,6 +235,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["group_placement_policy"] = group_placement_policy
         __props__["name"] = name
         __props__["project"] = project
         __props__["region"] = region

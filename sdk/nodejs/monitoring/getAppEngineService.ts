@@ -6,6 +6,24 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Monitoring Service is the root resource under which operational aspects of a
+ * generic service are accessible. A service is some discrete, autonomous, and
+ * network-accessible unit, designed to solve an individual concern
+ * 
+ * An App Engine monitoring service is automatically created by GCP to monitor
+ * App Engine services.
+ * 
+ * 
+ * To get more information about Service, see:
+ * 
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+ * * How-to Guides
+ *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_monitoring_app_engine_service.html.markdown.
+ */
 export function getAppEngineService(args: GetAppEngineServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAppEngineServiceResult> {
     if (!opts) {
         opts = {}
@@ -24,7 +42,15 @@ export function getAppEngineService(args: GetAppEngineServiceArgs, opts?: pulumi
  * A collection of arguments for invoking getAppEngineService.
  */
 export interface GetAppEngineServiceArgs {
+    /**
+     * The ID of the App Engine module underlying this
+     * service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+     */
     readonly moduleId: string;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: string;
 }
 

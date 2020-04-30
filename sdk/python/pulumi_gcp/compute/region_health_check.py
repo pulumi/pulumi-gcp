@@ -118,7 +118,7 @@ class RegionHealthCheck(pulumi.CustomResource):
     """
     log_config: pulumi.Output[dict]
     """
-    Configure logging on this health check.
+    Configure logging on this health check.  Structure is documented below.
 
       * `enable` (`bool`) - Indicates whether or not to export logs. This is false by default,
         which means no health check logging will be done.
@@ -250,7 +250,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[dict] http2_health_check: A nested object resource  Structure is documented below.
         :param pulumi.Input[dict] http_health_check: A nested object resource  Structure is documented below.
         :param pulumi.Input[dict] https_health_check: A nested object resource  Structure is documented below.
-        :param pulumi.Input[dict] log_config: Configure logging on this health check.
+        :param pulumi.Input[dict] log_config: Configure logging on this health check.  Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -467,7 +467,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[dict] http2_health_check: A nested object resource  Structure is documented below.
         :param pulumi.Input[dict] http_health_check: A nested object resource  Structure is documented below.
         :param pulumi.Input[dict] https_health_check: A nested object resource  Structure is documented below.
-        :param pulumi.Input[dict] log_config: Configure logging on this health check.
+        :param pulumi.Input[dict] log_config: Configure logging on this health check.  Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and

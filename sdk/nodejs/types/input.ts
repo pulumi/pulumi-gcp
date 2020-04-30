@@ -879,6 +879,465 @@ export namespace bigquery {
         kmsKeyName: pulumi.Input<string>;
     }
 
+    export interface JobCopy {
+        /**
+         * Specifies whether the job is allowed to create new tables. The following values are supported:
+         * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+         * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+         * The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+         */
+        createDisposition?: pulumi.Input<string>;
+        /**
+         * Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+         */
+        destinationEncryptionConfiguration?: pulumi.Input<inputs.bigquery.JobCopyDestinationEncryptionConfiguration>;
+        /**
+         * The destination table.  Structure is documented below.
+         */
+        destinationTable?: pulumi.Input<inputs.bigquery.JobCopyDestinationTable>;
+        /**
+         * Source tables to copy.  Structure is documented below.
+         */
+        sourceTables: pulumi.Input<pulumi.Input<inputs.bigquery.JobCopySourceTable>[]>;
+        /**
+         * Specifies the action that occurs if the destination table already exists. The following values are supported:
+         * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+         * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+         * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+         * The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+         * Creation, truncation and append actions occur as one atomic update upon job completion.
+         */
+        writeDisposition?: pulumi.Input<string>;
+    }
+
+    export interface JobCopyDestinationEncryptionConfiguration {
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+         * The BigQuery Service Account associated with your project requires access to this encryption key.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface JobCopyDestinationTable {
+        /**
+         * The ID of the dataset containing this model.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The ID of the project containing this model.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * The ID of the table.
+         */
+        tableId: pulumi.Input<string>;
+    }
+
+    export interface JobCopySourceTable {
+        /**
+         * The ID of the dataset containing this model.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The ID of the project containing this model.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * The ID of the table.
+         */
+        tableId: pulumi.Input<string>;
+    }
+
+    export interface JobExtract {
+        /**
+         * The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
+         * The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
+         */
+        compression?: pulumi.Input<string>;
+        /**
+         * The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
+         * The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
+         * The default value for models is SAVED_MODEL.
+         */
+        destinationFormat?: pulumi.Input<string>;
+        /**
+         * A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
+         */
+        destinationUris: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+         * Default is ','
+         */
+        fieldDelimiter?: pulumi.Input<string>;
+        /**
+         * Whether to print out a header row in the results. Default is true.
+         */
+        printHeader?: pulumi.Input<boolean>;
+        /**
+         * A reference to the model being exported.  Structure is documented below.
+         */
+        sourceModel?: pulumi.Input<inputs.bigquery.JobExtractSourceModel>;
+        /**
+         * A reference to the table being exported.  Structure is documented below.
+         */
+        sourceTable?: pulumi.Input<inputs.bigquery.JobExtractSourceTable>;
+        /**
+         * Whether to use logical types when extracting to AVRO format.
+         */
+        useAvroLogicalTypes?: pulumi.Input<boolean>;
+    }
+
+    export interface JobExtractSourceModel {
+        /**
+         * The ID of the dataset containing this model.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The ID of the model.
+         */
+        modelId: pulumi.Input<string>;
+        /**
+         * The ID of the project containing this model.
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface JobExtractSourceTable {
+        /**
+         * The ID of the dataset containing this model.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The ID of the project containing this model.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * The ID of the table.
+         */
+        tableId: pulumi.Input<string>;
+    }
+
+    export interface JobLoad {
+        /**
+         * Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
+         * If false, records with missing trailing columns are treated as bad records, and if there are too many bad records,
+         * an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
+         */
+        allowJaggedRows?: pulumi.Input<boolean>;
+        /**
+         * Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file.
+         * The default value is false.
+         */
+        allowQuotedNewlines?: pulumi.Input<boolean>;
+        /**
+         * Indicates if we should automatically infer the options and schema for CSV and JSON sources.
+         */
+        autodetect?: pulumi.Input<boolean>;
+        /**
+         * Specifies whether the job is allowed to create new tables. The following values are supported:
+         * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+         * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+         * The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+         */
+        createDisposition?: pulumi.Input<string>;
+        /**
+         * Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+         */
+        destinationEncryptionConfiguration?: pulumi.Input<inputs.bigquery.JobLoadDestinationEncryptionConfiguration>;
+        /**
+         * The destination table.  Structure is documented below.
+         */
+        destinationTable: pulumi.Input<inputs.bigquery.JobLoadDestinationTable>;
+        /**
+         * The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
+         * The default value is UTF-8. BigQuery decodes the data after the raw, binary data
+         * has been split using the values of the quote and fieldDelimiter properties.
+         */
+        encoding?: pulumi.Input<string>;
+        /**
+         * When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
+         * Default is ','
+         */
+        fieldDelimiter?: pulumi.Input<string>;
+        /**
+         * Indicates if BigQuery should allow extra values that are not represented in the table schema.
+         * If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
+         * and if there are too many bad records, an invalid error is returned in the job result.
+         * The default value is false. The sourceFormat property determines what BigQuery treats as an extra value:
+         * CSV: Trailing columns
+         * JSON: Named values that don't match any column names
+         */
+        ignoreUnknownValues?: pulumi.Input<boolean>;
+        /**
+         * The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
+         * an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
+         */
+        maxBadRecords?: pulumi.Input<number>;
+        /**
+         * Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
+         * property to a custom value, BigQuery throws an error if an
+         * empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
+         * an empty value.
+         */
+        nullMarker?: pulumi.Input<string>;
+        /**
+         * If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
+         * Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
+         * If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
+         */
+        projectionFields?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
+         * and then uses the first byte of the encoded string to split the data in its raw, binary state.
+         * The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
+         * If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
+         */
+        quote?: pulumi.Input<string>;
+        /**
+         * Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+         * supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+         * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+         * For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+         * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+         * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+         */
+        schemaUpdateOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The number of rows at the top of a CSV file that BigQuery will skip when loading the data.
+         * The default value is 0. This property is useful if you have header rows in the file that should be skipped.
+         * When autodetect is on, the behavior is the following:
+         * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected,
+         * the row is read as data. Otherwise data is read starting from the second row.
+         * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row.
+         * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected,
+         * row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+         */
+        skipLeadingRows?: pulumi.Input<number>;
+        /**
+         * The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP".
+         * For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET".
+         * For orc, specify "ORC". The default value is CSV.
+         */
+        sourceFormat?: pulumi.Input<string>;
+        /**
+         * The fully-qualified URIs that point to your data in Google Cloud.
+         * For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character
+         * and it must come after the 'bucket' name. Size limits related to load jobs apply
+         * to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
+         * specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
+         * For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+         */
+        sourceUris: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Time-based partitioning specification for the destination table.  Structure is documented below.
+         */
+        timePartitioning?: pulumi.Input<inputs.bigquery.JobLoadTimePartitioning>;
+        /**
+         * Specifies the action that occurs if the destination table already exists. The following values are supported:
+         * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+         * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+         * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+         * The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+         * Creation, truncation and append actions occur as one atomic update upon job completion.
+         */
+        writeDisposition?: pulumi.Input<string>;
+    }
+
+    export interface JobLoadDestinationEncryptionConfiguration {
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+         * The BigQuery Service Account associated with your project requires access to this encryption key.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface JobLoadDestinationTable {
+        /**
+         * The ID of the dataset containing this model.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The ID of the project containing this model.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * The ID of the table.
+         */
+        tableId: pulumi.Input<string>;
+    }
+
+    export interface JobLoadTimePartitioning {
+        /**
+         * Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
+         */
+        expirationMs?: pulumi.Input<string>;
+        /**
+         * If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field.
+         * The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
+         * A wrapper is used here because an empty string is an invalid value.
+         */
+        field?: pulumi.Input<string>;
+        /**
+         * The only type supported is DAY, which will generate one partition per day. Providing an empty string used to cause an error,
+         * but in OnePlatform the field will be treated as unset.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface JobQuery {
+        /**
+         * If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
+         * Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
+         * However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+         */
+        allowLargeResults?: pulumi.Input<boolean>;
+        /**
+         * Specifies whether the job is allowed to create new tables. The following values are supported:
+         * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
+         * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
+         * The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+         */
+        createDisposition?: pulumi.Input<string>;
+        /**
+         * Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+         */
+        defaultDataset?: pulumi.Input<inputs.bigquery.JobQueryDefaultDataset>;
+        /**
+         * Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+         */
+        destinationEncryptionConfiguration?: pulumi.Input<inputs.bigquery.JobQueryDestinationEncryptionConfiguration>;
+        /**
+         * The destination table.  Structure is documented below.
+         */
+        destinationTable?: pulumi.Input<inputs.bigquery.JobQueryDestinationTable>;
+        /**
+         * If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
+         * allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
+         */
+        flattenResults?: pulumi.Input<boolean>;
+        /**
+         * Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge).
+         * If unspecified, this will be set to your project default.
+         */
+        maximumBillingTier?: pulumi.Input<number>;
+        /**
+         * Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
+         * If unspecified, this will be set to your project default.
+         */
+        maximumBytesBilled?: pulumi.Input<string>;
+        /**
+         * Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+         */
+        parameterMode?: pulumi.Input<string>;
+        /**
+         * Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+         */
+        priority?: pulumi.Input<string>;
+        /**
+         * Configures a query job.  Structure is documented below.
+         */
+        query: pulumi.Input<string>;
+        /**
+         * Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
+         * supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+         * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
+         * For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+         * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+         * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+         */
+        schemaUpdateOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Options controlling the execution of scripts.  Structure is documented below.
+         */
+        scriptOptions?: pulumi.Input<inputs.bigquery.JobQueryScriptOptions>;
+        /**
+         * Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
+         * If set to false, the query will use BigQuery's standard SQL.
+         */
+        useLegacySql?: pulumi.Input<boolean>;
+        /**
+         * Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever
+         * tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
+         * The default value is true.
+         */
+        useQueryCache?: pulumi.Input<boolean>;
+        /**
+         * Describes user-defined function resources used in the query.  Structure is documented below.
+         */
+        userDefinedFunctionResources?: pulumi.Input<pulumi.Input<inputs.bigquery.JobQueryUserDefinedFunctionResource>[]>;
+        /**
+         * Specifies the action that occurs if the destination table already exists. The following values are supported:
+         * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
+         * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
+         * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
+         * The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+         * Creation, truncation and append actions occur as one atomic update upon job completion.
+         */
+        writeDisposition?: pulumi.Input<string>;
+    }
+
+    export interface JobQueryDefaultDataset {
+        /**
+         * The ID of the dataset containing this model.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The ID of the project containing this model.
+         */
+        projectId?: pulumi.Input<string>;
+    }
+
+    export interface JobQueryDestinationEncryptionConfiguration {
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+         * The BigQuery Service Account associated with your project requires access to this encryption key.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface JobQueryDestinationTable {
+        /**
+         * The ID of the dataset containing this model.
+         */
+        datasetId: pulumi.Input<string>;
+        /**
+         * The ID of the project containing this model.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * The ID of the table.
+         */
+        tableId: pulumi.Input<string>;
+    }
+
+    export interface JobQueryScriptOptions {
+        /**
+         * Determines which statement in the script represents the "key result",
+         * used to populate the schema and query results of the script job. Default is LAST.
+         */
+        keyResultStatement?: pulumi.Input<string>;
+        /**
+         * Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
+         */
+        statementByteBudget?: pulumi.Input<string>;
+        /**
+         * Timeout period for each statement in a script.
+         */
+        statementTimeoutMs?: pulumi.Input<string>;
+    }
+
+    export interface JobQueryUserDefinedFunctionResource {
+        /**
+         * An inline resource that contains code for a user-defined function (UDF).
+         * Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
+         */
+        inlineCode?: pulumi.Input<string>;
+        /**
+         * A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
+         */
+        resourceUri?: pulumi.Input<string>;
+    }
+
     export interface TableEncryptionConfiguration {
         /**
          * The self link or full name of a key which should be used to
@@ -1081,7 +1540,7 @@ export namespace bigtable {
         clusterId: pulumi.Input<string>;
         /**
          * The number of nodes in your Cloud Bigtable cluster.
-         * Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+         * Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
          * for a `DEVELOPMENT` instance.
          */
         numNodes?: pulumi.Input<number>;
@@ -2575,6 +3034,35 @@ export namespace compute {
     }
 
     export interface AutoscalarAutoscalingPolicyMetric {
+        /**
+         * A filter string to be used as the filter string for
+         * a Stackdriver Monitoring TimeSeries.list API call.
+         * This filter is used to select a specific TimeSeries for
+         * the purpose of autoscaling and to determine whether the metric
+         * is exporting per-instance or per-group data.
+         * You can only use the AND operator for joining selectors.
+         * You can only use direct equality comparison operator (=) without
+         * any functions for each selector.
+         * You can specify the metric in both the filter string and in the
+         * metric field. However, if specified in both places, the metric must
+         * be identical.
+         * The monitored resource type determines what kind of values are
+         * expected for the metric. If it is a gce_instance, the autoscaler
+         * expects the metric to include a separate TimeSeries for each
+         * instance in a group. In such a case, you cannot filter on resource
+         * labels.
+         * If the resource type is any other value, the autoscaler expects
+         * this metric to contain values that apply to the entire autoscaled
+         * instance group and resource label filtering can be performed to
+         * point autoscaler at the correct TimeSeries to scale upon.
+         * This is called a per-group metric for the purpose of autoscaling.
+         * If not specified, the type defaults to gce_instance.
+         * You should provide a filter that is selective enough to pick just
+         * one TimeSeries for the autoscaled group or for each of the instances
+         * (if you are using gceInstance resource type). If multiple
+         * TimeSeries are returned upon the query execution, the autoscaler
+         * will sum their respective values to obtain its scaling value.
+         */
         filter?: pulumi.Input<string>;
         /**
          * The identifier (type) of the Stackdriver Monitoring metric.
@@ -2582,6 +3070,22 @@ export namespace compute {
          * The metric must have a value type of INT64 or DOUBLE.
          */
         name: pulumi.Input<string>;
+        /**
+         * If scaling is based on a per-group metric value that represents the
+         * total amount of work to be done or resource usage, set this value to
+         * an amount assigned for a single instance of the scaled group.
+         * The autoscaler will keep the number of instances proportional to the
+         * value of this metric, the metric itself should not change value due
+         * to group resizing.
+         * For example, a good metric to use with the target is
+         * `pubsub.googleapis.com/subscription/num_undelivered_messages`
+         * or a custom metric exporting the total number of requests coming to
+         * your instances.
+         * A bad example would be a metric exporting an average or median
+         * latency, since this value can't include a chunk assignable to a
+         * single instance, it could be better used with utilizationTarget
+         * instead.
+         */
         singleInstanceAssignment?: pulumi.Input<number>;
         /**
          * Fraction of backend capacity utilization (set in HTTP(s) load
@@ -2659,6 +3163,35 @@ export namespace compute {
     }
 
     export interface AutoscalerAutoscalingPolicyMetric {
+        /**
+         * A filter string to be used as the filter string for
+         * a Stackdriver Monitoring TimeSeries.list API call.
+         * This filter is used to select a specific TimeSeries for
+         * the purpose of autoscaling and to determine whether the metric
+         * is exporting per-instance or per-group data.
+         * You can only use the AND operator for joining selectors.
+         * You can only use direct equality comparison operator (=) without
+         * any functions for each selector.
+         * You can specify the metric in both the filter string and in the
+         * metric field. However, if specified in both places, the metric must
+         * be identical.
+         * The monitored resource type determines what kind of values are
+         * expected for the metric. If it is a gce_instance, the autoscaler
+         * expects the metric to include a separate TimeSeries for each
+         * instance in a group. In such a case, you cannot filter on resource
+         * labels.
+         * If the resource type is any other value, the autoscaler expects
+         * this metric to contain values that apply to the entire autoscaled
+         * instance group and resource label filtering can be performed to
+         * point autoscaler at the correct TimeSeries to scale upon.
+         * This is called a per-group metric for the purpose of autoscaling.
+         * If not specified, the type defaults to gce_instance.
+         * You should provide a filter that is selective enough to pick just
+         * one TimeSeries for the autoscaled group or for each of the instances
+         * (if you are using gceInstance resource type). If multiple
+         * TimeSeries are returned upon the query execution, the autoscaler
+         * will sum their respective values to obtain its scaling value.
+         */
         filter?: pulumi.Input<string>;
         /**
          * The identifier (type) of the Stackdriver Monitoring metric.
@@ -2666,6 +3199,22 @@ export namespace compute {
          * The metric must have a value type of INT64 or DOUBLE.
          */
         name: pulumi.Input<string>;
+        /**
+         * If scaling is based on a per-group metric value that represents the
+         * total amount of work to be done or resource usage, set this value to
+         * an amount assigned for a single instance of the scaled group.
+         * The autoscaler will keep the number of instances proportional to the
+         * value of this metric, the metric itself should not change value due
+         * to group resizing.
+         * For example, a good metric to use with the target is
+         * `pubsub.googleapis.com/subscription/num_undelivered_messages`
+         * or a custom metric exporting the total number of requests coming to
+         * your instances.
+         * A bad example would be a metric exporting an average or median
+         * latency, since this value can't include a chunk assignable to a
+         * single instance, it could be better used with utilizationTarget
+         * instead.
+         */
         singleInstanceAssignment?: pulumi.Input<number>;
         /**
          * Fraction of backend capacity utilization (set in HTTP(s) load
@@ -4838,6 +5387,9 @@ export namespace compute {
     }
 
     export interface RegionDiskDiskEncryptionKey {
+        /**
+         * The name of the encryption key that is stored in Google Cloud KMS.
+         */
         kmsKeyName?: pulumi.Input<string>;
         /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -4853,6 +5405,9 @@ export namespace compute {
     }
 
     export interface RegionDiskSourceSnapshotEncryptionKey {
+        /**
+         * The name of the encryption key that is stored in Google Cloud KMS.
+         */
         kmsKeyName?: pulumi.Input<string>;
         /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
@@ -6355,6 +6910,25 @@ export namespace compute {
          * of `SCSI` or `NVME`. The default is `SCSI`.
          */
         interface?: pulumi.Input<string>;
+    }
+
+    export interface ResourcePolicyGroupPlacementPolicy {
+        /**
+         * The number of availability domains instances will be spread across. If two instances are in different
+         * availability domain, they will not be put in the same low latency network
+         */
+        availabilityDomainCount?: pulumi.Input<number>;
+        /**
+         * Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+         * Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
+         * with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
+         * attached.
+         */
+        collocation?: pulumi.Input<string>;
+        /**
+         * Number of vms in this placement group.
+         */
+        vmCount?: pulumi.Input<number>;
     }
 
     export interface ResourcePolicySnapshotSchedulePolicy {
@@ -7990,6 +8564,11 @@ export namespace container {
          */
         dnsCacheConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigDnsCacheConfig>;
         /**
+         * .
+         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+         */
+        gcePersistentDiskCsiDriverConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig>;
+        /**
          * The status of the Horizontal Pod Autoscaling
          * addon, which increases or decreases the number of replica pods a replication controller
          * has based on the resource usage of the existing pods.
@@ -8029,6 +8608,14 @@ export namespace container {
     }
 
     export interface ClusterAddonsConfigDnsCacheConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
         /**
          * Enable the PodSecurityPolicy controller for this cluster.
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -9839,6 +10426,9 @@ export namespace dns {
     }
 
     export interface ManagedZonePrivateVisibilityConfig {
+        /**
+         * The list of VPC networks that can see this zone. Structure is documented below.
+         */
         networks: pulumi.Input<pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfigNetwork>[]>;
     }
 
@@ -10242,6 +10832,11 @@ export namespace healthcare {
          * Determines whether messages with no header are allowed.
          */
         allowNullHeader?: pulumi.Input<boolean>;
+        /**
+         * JSON encoded string for schemas used to parse messages in this
+         * store if schematized parsing is desired.
+         */
+        schema?: pulumi.Input<string>;
         /**
          * Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
          * A base64-encoded string.
@@ -11400,6 +11995,11 @@ export namespace monitoring {
     }
 
     export interface CustomServiceTelemetry {
+        /**
+         * The full name of the resource that defines this service.
+         * Formatted as described in
+         * https://cloud.google.com/apis/design/resource_names.
+         */
         resourceName?: pulumi.Input<string>;
     }
 
@@ -11978,6 +12578,32 @@ export namespace serviceAccount {
         /**
          * A title for the expression, i.e. a short string describing its purpose.
          */
+        title: pulumi.Input<string>;
+    }
+}
+
+export namespace servicedirectory {
+    export interface NamespaceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface NamespaceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ServiceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ServiceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 }

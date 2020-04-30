@@ -137,6 +137,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceNetworkInterfaceResult> NetworkInterfaces;
         public readonly string? Project;
+        public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
         /// The scheduling strategy being used by the instance.
         /// </summary>
@@ -217,6 +218,8 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            ImmutableArray<string> resourcePolicies,
+
             ImmutableArray<Outputs.GetInstanceSchedulingResult> schedulings,
 
             ImmutableArray<Outputs.GetInstanceScratchDiskResult> scratchDisks,
@@ -257,6 +260,7 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             NetworkInterfaces = networkInterfaces;
             Project = project;
+            ResourcePolicies = resourcePolicies;
             Schedulings = schedulings;
             ScratchDisks = scratchDisks;
             SelfLink = selfLink;

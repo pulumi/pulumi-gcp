@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigCloudrunConfigResult> CloudrunConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigDnsCacheConfigResult> DnsCacheConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult> GcePersistentDiskCsiDriverConfigs;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigHorizontalPodAutoscalingResult> HorizontalPodAutoscalings;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigHttpLoadBalancingResult> HttpLoadBalancings;
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigIstioConfigResult> IstioConfigs;
@@ -26,6 +27,8 @@ namespace Pulumi.Gcp.Container.Outputs
             ImmutableArray<Outputs.GetClusterAddonsConfigCloudrunConfigResult> cloudrunConfigs,
 
             ImmutableArray<Outputs.GetClusterAddonsConfigDnsCacheConfigResult> dnsCacheConfigs,
+
+            ImmutableArray<Outputs.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult> gcePersistentDiskCsiDriverConfigs,
 
             ImmutableArray<Outputs.GetClusterAddonsConfigHorizontalPodAutoscalingResult> horizontalPodAutoscalings,
 
@@ -39,6 +42,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             CloudrunConfigs = cloudrunConfigs;
             DnsCacheConfigs = dnsCacheConfigs;
+            GcePersistentDiskCsiDriverConfigs = gcePersistentDiskCsiDriverConfigs;
             HorizontalPodAutoscalings = horizontalPodAutoscalings;
             HttpLoadBalancings = httpLoadBalancings;
             IstioConfigs = istioConfigs;

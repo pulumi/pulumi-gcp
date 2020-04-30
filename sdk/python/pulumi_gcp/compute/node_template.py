@@ -60,8 +60,8 @@ class NodeTemplate(pulumi.CustomResource):
     """
     server_binding: pulumi.Output[dict]
     """
-    The server binding policy for nodes using this template. Determines where the nodes should restart following a
-    maintenance event.
+    The server binding policy for nodes using this template. Determines
+    where the nodes should restart following a maintenance event.  Structure is documented below.
 
       * `type` (`str`) - Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
         nodes using this template will restart on any physical server
@@ -104,8 +104,8 @@ class NodeTemplate(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where nodes using the node template will be created.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[dict] server_binding: The server binding policy for nodes using this template. Determines where the nodes should restart following a
-               maintenance event.
+        :param pulumi.Input[dict] server_binding: The server binding policy for nodes using this template. Determines
+               where the nodes should restart following a maintenance event.  Structure is documented below.
 
         The **node_type_flexibility** object supports the following:
 
@@ -186,8 +186,8 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] region: Region where nodes using the node template will be created.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[dict] server_binding: The server binding policy for nodes using this template. Determines where the nodes should restart following a
-               maintenance event.
+        :param pulumi.Input[dict] server_binding: The server binding policy for nodes using this template. Determines
+               where the nodes should restart following a maintenance event.  Structure is documented below.
 
         The **node_type_flexibility** object supports the following:
 

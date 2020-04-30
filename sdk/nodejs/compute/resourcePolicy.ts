@@ -60,6 +60,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ## Example Usage - Resource Policy Placement Policy
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const baz = new gcp.compute.ResourcePolicy("baz", {
+ *     groupPlacementPolicy: {
+ *         collocation: "COLLOCATED",
+ *         vmCount: 2,
+ *     },
+ *     region: "us-central1",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
  */
@@ -90,6 +105,10 @@ export class ResourcePolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResourcePolicy.__pulumiType;
     }
 
+    /**
+     * Policy for creating snapshots of persistent disks.  Structure is documented below.
+     */
+    public readonly groupPlacementPolicy!: pulumi.Output<outputs.compute.ResourcePolicyGroupPlacementPolicy | undefined>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply
@@ -130,6 +149,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ResourcePolicyState | undefined;
+            inputs["groupPlacementPolicy"] = state ? state.groupPlacementPolicy : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -137,6 +157,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
             inputs["snapshotSchedulePolicy"] = state ? state.snapshotSchedulePolicy : undefined;
         } else {
             const args = argsOrState as ResourcePolicyArgs | undefined;
+            inputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -158,6 +179,10 @@ export class ResourcePolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ResourcePolicy resources.
  */
 export interface ResourcePolicyState {
+    /**
+     * Policy for creating snapshots of persistent disks.  Structure is documented below.
+     */
+    readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply
@@ -191,6 +216,10 @@ export interface ResourcePolicyState {
  * The set of arguments for constructing a ResourcePolicy resource.
  */
 export interface ResourcePolicyArgs {
+    /**
+     * Policy for creating snapshots of persistent disks.  Structure is documented below.
+     */
+    readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply

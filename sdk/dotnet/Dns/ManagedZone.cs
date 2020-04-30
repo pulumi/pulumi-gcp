@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Dns
     public partial class ManagedZone : Pulumi.CustomResource
     {
         /// <summary>
-        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// A textual description field. Defaults to 'Managed by Pulumi'.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -42,8 +42,9 @@ namespace Pulumi.Gcp.Dns
         public Output<Outputs.ManagedZoneDnssecConfig?> DnssecConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-        /// contains the set of destinations to forward to.
+        /// The presence for this field indicates that outbound forwarding is enabled
+        /// for this zone. The value of this field contains the set of destinations
+        /// to forward to.  Structure is documented below.
         /// </summary>
         [Output("forwardingConfig")]
         public Output<Outputs.ManagedZoneForwardingConfig?> ForwardingConfig { get; private set; } = null!;
@@ -68,8 +69,8 @@ namespace Pulumi.Gcp.Dns
         public Output<ImmutableArray<string>> NameServers { get; private set; } = null!;
 
         /// <summary>
-        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-        /// network to peer with.
+        /// The presence of this field indicates that DNS Peering is enabled for this
+        /// zone. The value of this field contains the network to peer with.  Structure is documented below.
         /// </summary>
         [Output("peeringConfig")]
         public Output<Outputs.ManagedZonePeeringConfig?> PeeringConfig { get; private set; } = null!;
@@ -89,9 +90,9 @@ namespace Pulumi.Gcp.Dns
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-        /// automatically configured records for VPC resources. This only applies to networks listed under
-        /// 'private_visibility_config'.
+        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+        /// lookup queries using automatically configured records for VPC resources. This only applies
+        /// to networks listed under `private_visibility_config`.
         /// </summary>
         [Output("reverseLookup")]
         public Output<bool?> ReverseLookup { get; private set; } = null!;
@@ -151,7 +152,7 @@ namespace Pulumi.Gcp.Dns
     public sealed class ManagedZoneArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// A textual description field. Defaults to 'Managed by Pulumi'.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -169,8 +170,9 @@ namespace Pulumi.Gcp.Dns
         public Input<Inputs.ManagedZoneDnssecConfigArgs>? DnssecConfig { get; set; }
 
         /// <summary>
-        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-        /// contains the set of destinations to forward to.
+        /// The presence for this field indicates that outbound forwarding is enabled
+        /// for this zone. The value of this field contains the set of destinations
+        /// to forward to.  Structure is documented below.
         /// </summary>
         [Input("forwardingConfig")]
         public Input<Inputs.ManagedZoneForwardingConfigArgs>? ForwardingConfig { get; set; }
@@ -195,8 +197,8 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-        /// network to peer with.
+        /// The presence of this field indicates that DNS Peering is enabled for this
+        /// zone. The value of this field contains the network to peer with.  Structure is documented below.
         /// </summary>
         [Input("peeringConfig")]
         public Input<Inputs.ManagedZonePeeringConfigArgs>? PeeringConfig { get; set; }
@@ -216,9 +218,9 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-        /// automatically configured records for VPC resources. This only applies to networks listed under
-        /// 'private_visibility_config'.
+        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+        /// lookup queries using automatically configured records for VPC resources. This only applies
+        /// to networks listed under `private_visibility_config`.
         /// </summary>
         [Input("reverseLookup")]
         public Input<bool>? ReverseLookup { get; set; }
@@ -240,7 +242,7 @@ namespace Pulumi.Gcp.Dns
     public sealed class ManagedZoneState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A textual description field. Defaults to 'Managed by Terraform'.
+        /// A textual description field. Defaults to 'Managed by Pulumi'.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -258,8 +260,9 @@ namespace Pulumi.Gcp.Dns
         public Input<Inputs.ManagedZoneDnssecConfigGetArgs>? DnssecConfig { get; set; }
 
         /// <summary>
-        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-        /// contains the set of destinations to forward to.
+        /// The presence for this field indicates that outbound forwarding is enabled
+        /// for this zone. The value of this field contains the set of destinations
+        /// to forward to.  Structure is documented below.
         /// </summary>
         [Input("forwardingConfig")]
         public Input<Inputs.ManagedZoneForwardingConfigGetArgs>? ForwardingConfig { get; set; }
@@ -296,8 +299,8 @@ namespace Pulumi.Gcp.Dns
         }
 
         /// <summary>
-        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-        /// network to peer with.
+        /// The presence of this field indicates that DNS Peering is enabled for this
+        /// zone. The value of this field contains the network to peer with.  Structure is documented below.
         /// </summary>
         [Input("peeringConfig")]
         public Input<Inputs.ManagedZonePeeringConfigGetArgs>? PeeringConfig { get; set; }
@@ -317,9 +320,9 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-        /// automatically configured records for VPC resources. This only applies to networks listed under
-        /// 'private_visibility_config'.
+        /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+        /// lookup queries using automatically configured records for VPC resources. This only applies
+        /// to networks listed under `private_visibility_config`.
         /// </summary>
         [Input("reverseLookup")]
         public Input<bool>? ReverseLookup { get; set; }

@@ -15,6 +15,12 @@ namespace Pulumi.Gcp.Compute
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// Policy for creating snapshots of persistent disks.  Structure is documented below.
+        /// </summary>
+        [Output("groupPlacementPolicy")]
+        public Output<Outputs.ResourcePolicyGroupPlacementPolicy?> GroupPlacementPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the resource, provided by the client when initially creating
         /// the resource. The resource name must be 1-63 characters long, and comply
         /// with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -98,6 +104,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class ResourcePolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Policy for creating snapshots of persistent disks.  Structure is documented below.
+        /// </summary>
+        [Input("groupPlacementPolicy")]
+        public Input<Inputs.ResourcePolicyGroupPlacementPolicyArgs>? GroupPlacementPolicy { get; set; }
+
+        /// <summary>
         /// The name of the resource, provided by the client when initially creating
         /// the resource. The resource name must be 1-63 characters long, and comply
         /// with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -135,6 +147,12 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class ResourcePolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Policy for creating snapshots of persistent disks.  Structure is documented below.
+        /// </summary>
+        [Input("groupPlacementPolicy")]
+        public Input<Inputs.ResourcePolicyGroupPlacementPolicyGetArgs>? GroupPlacementPolicy { get; set; }
+
         /// <summary>
         /// The name of the resource, provided by the client when initially creating
         /// the resource. The resource name must be 1-63 characters long, and comply

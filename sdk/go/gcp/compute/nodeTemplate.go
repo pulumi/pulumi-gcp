@@ -47,8 +47,8 @@ type NodeTemplate struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The server binding policy for nodes using this template. Determines where the nodes should restart following a
-	// maintenance event.
+	// The server binding policy for nodes using this template. Determines
+	// where the nodes should restart following a maintenance event.  Structure is documented below.
 	ServerBinding NodeTemplateServerBindingOutput `pulumi:"serverBinding"`
 }
 
@@ -105,8 +105,8 @@ type nodeTemplateState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The server binding policy for nodes using this template. Determines where the nodes should restart following a
-	// maintenance event.
+	// The server binding policy for nodes using this template. Determines
+	// where the nodes should restart following a maintenance event.  Structure is documented below.
 	ServerBinding *NodeTemplateServerBinding `pulumi:"serverBinding"`
 }
 
@@ -136,8 +136,8 @@ type NodeTemplateState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The server binding policy for nodes using this template. Determines where the nodes should restart following a
-	// maintenance event.
+	// The server binding policy for nodes using this template. Determines
+	// where the nodes should restart following a maintenance event.  Structure is documented below.
 	ServerBinding NodeTemplateServerBindingPtrInput
 }
 
@@ -167,8 +167,8 @@ type nodeTemplateArgs struct {
 	// Region where nodes using the node template will be created.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
-	// The server binding policy for nodes using this template. Determines where the nodes should restart following a
-	// maintenance event.
+	// The server binding policy for nodes using this template. Determines
+	// where the nodes should restart following a maintenance event.  Structure is documented below.
 	ServerBinding *NodeTemplateServerBinding `pulumi:"serverBinding"`
 }
 
@@ -195,8 +195,8 @@ type NodeTemplateArgs struct {
 	// Region where nodes using the node template will be created.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
-	// The server binding policy for nodes using this template. Determines where the nodes should restart following a
-	// maintenance event.
+	// The server binding policy for nodes using this template. Determines
+	// where the nodes should restart following a maintenance event.  Structure is documented below.
 	ServerBinding NodeTemplateServerBindingPtrInput
 }
 

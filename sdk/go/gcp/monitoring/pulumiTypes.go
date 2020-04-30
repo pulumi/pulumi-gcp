@@ -2795,6 +2795,9 @@ func (o AlertPolicyDocumentationPtrOutput) MimeType() pulumi.StringPtrOutput {
 }
 
 type CustomServiceTelemetry struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName *string `pulumi:"resourceName"`
 }
 
@@ -2811,6 +2814,9 @@ type CustomServiceTelemetryInput interface {
 }
 
 type CustomServiceTelemetryArgs struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
 }
 
@@ -2891,6 +2897,10 @@ func (o CustomServiceTelemetryOutput) ToCustomServiceTelemetryPtrOutputWithConte
 		return &v
 	}).(CustomServiceTelemetryPtrOutput)
 }
+
+// The full name of the resource that defines this service.
+// Formatted as described in
+// https://cloud.google.com/apis/design/resource_names.
 func (o CustomServiceTelemetryOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomServiceTelemetry) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
 }
@@ -2913,6 +2923,9 @@ func (o CustomServiceTelemetryPtrOutput) Elem() CustomServiceTelemetryOutput {
 	return o.ApplyT(func(v *CustomServiceTelemetry) CustomServiceTelemetry { return *v }).(CustomServiceTelemetryOutput)
 }
 
+// The full name of the resource that defines this service.
+// Formatted as described in
+// https://cloud.google.com/apis/design/resource_names.
 func (o CustomServiceTelemetryPtrOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomServiceTelemetry) *string {
 		if v == nil {
@@ -4624,9 +4637,16 @@ func (o GetNotificationChannelSensitiveLabelArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetUptimeCheckIPsUptimeCheckIp struct {
+	// The IP address from which the Uptime check originates. This is a fully specified IP address
+	// (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not
+	// rely on the IP addresses being in IPv4 format indefinitely, and should support interpreting this field in either
+	// IPv4 or IPv6 format.
 	IpAddress string `pulumi:"ipAddress"`
-	Location  string `pulumi:"location"`
-	Region    string `pulumi:"region"`
+	// A more specific location within the region that typically encodes a particular city/town/metro
+	// (and its containing state/province or country) within the broader umbrella region category.
+	Location string `pulumi:"location"`
+	// A broad region category in which the IP address is located.
+	Region string `pulumi:"region"`
 }
 
 // GetUptimeCheckIPsUptimeCheckIpInput is an input type that accepts GetUptimeCheckIPsUptimeCheckIpArgs and GetUptimeCheckIPsUptimeCheckIpOutput values.
@@ -4642,9 +4662,16 @@ type GetUptimeCheckIPsUptimeCheckIpInput interface {
 }
 
 type GetUptimeCheckIPsUptimeCheckIpArgs struct {
+	// The IP address from which the Uptime check originates. This is a fully specified IP address
+	// (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not
+	// rely on the IP addresses being in IPv4 format indefinitely, and should support interpreting this field in either
+	// IPv4 or IPv6 format.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	Location  pulumi.StringInput `pulumi:"location"`
-	Region    pulumi.StringInput `pulumi:"region"`
+	// A more specific location within the region that typically encodes a particular city/town/metro
+	// (and its containing state/province or country) within the broader umbrella region category.
+	Location pulumi.StringInput `pulumi:"location"`
+	// A broad region category in which the IP address is located.
+	Region pulumi.StringInput `pulumi:"region"`
 }
 
 func (GetUptimeCheckIPsUptimeCheckIpArgs) ElementType() reflect.Type {
@@ -4699,14 +4726,21 @@ func (o GetUptimeCheckIPsUptimeCheckIpOutput) ToGetUptimeCheckIPsUptimeCheckIpOu
 	return o
 }
 
+// The IP address from which the Uptime check originates. This is a fully specified IP address
+// (not an IP address range). Most IP addresses, as of this publication, are in IPv4 format; however, one should not
+// rely on the IP addresses being in IPv4 format indefinitely, and should support interpreting this field in either
+// IPv4 or IPv6 format.
 func (o GetUptimeCheckIPsUptimeCheckIpOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUptimeCheckIPsUptimeCheckIp) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// A more specific location within the region that typically encodes a particular city/town/metro
+// (and its containing state/province or country) within the broader umbrella region category.
 func (o GetUptimeCheckIPsUptimeCheckIpOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUptimeCheckIPsUptimeCheckIp) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// A broad region category in which the IP address is located.
 func (o GetUptimeCheckIPsUptimeCheckIpOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUptimeCheckIPsUptimeCheckIp) string { return v.Region }).(pulumi.StringOutput)
 }

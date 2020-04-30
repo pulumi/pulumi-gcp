@@ -7,6 +7,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Monitoring Service is the root resource under which operational aspects of a
+// generic service are accessible. A service is some discrete, autonomous, and
+// network-accessible unit, designed to solve an individual concern
+//
+// An App Engine monitoring service is automatically created by GCP to monitor
+// App Engine services.
+//
+//
+// To get more information about Service, see:
+//
+// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+// * How-to Guides
+//     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+//     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 func GetAppEngineService(ctx *pulumi.Context, args *GetAppEngineServiceArgs, opts ...pulumi.InvokeOption) (*GetAppEngineServiceResult, error) {
 	var rv GetAppEngineServiceResult
 	err := ctx.Invoke("gcp:monitoring/getAppEngineService:getAppEngineService", args, &rv, opts...)
@@ -18,8 +32,12 @@ func GetAppEngineService(ctx *pulumi.Context, args *GetAppEngineServiceArgs, opt
 
 // A collection of arguments for invoking getAppEngineService.
 type GetAppEngineServiceArgs struct {
-	ModuleId string  `pulumi:"moduleId"`
-	Project  *string `pulumi:"project"`
+	// The ID of the App Engine module underlying this
+	// service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+	ModuleId string `pulumi:"moduleId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getAppEngineService.

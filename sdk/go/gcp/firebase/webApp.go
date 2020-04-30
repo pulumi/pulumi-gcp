@@ -10,6 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Google Cloud Firebase web application instance
+//
+// To get more information about WebApp, see:
+//
+// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+// * How-to Guides
+//     * [Official Documentation](https://firebase.google.com/)
 type WebApp struct {
 	pulumi.CustomResourceState
 

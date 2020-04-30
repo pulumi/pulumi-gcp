@@ -99,6 +99,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["secretManagerCustomEndpoint"] = args ? args.secretManagerCustomEndpoint : undefined;
             inputs["securityCenterCustomEndpoint"] = args ? args.securityCenterCustomEndpoint : undefined;
             inputs["securityScannerCustomEndpoint"] = args ? args.securityScannerCustomEndpoint : undefined;
+            inputs["serviceDirectoryCustomEndpoint"] = args ? args.serviceDirectoryCustomEndpoint : undefined;
             inputs["serviceManagementCustomEndpoint"] = args ? args.serviceManagementCustomEndpoint : undefined;
             inputs["serviceNetworkingCustomEndpoint"] = args ? args.serviceNetworkingCustomEndpoint : undefined;
             inputs["serviceUsageCustomEndpoint"] = args ? args.serviceUsageCustomEndpoint : undefined;
@@ -187,6 +188,7 @@ export interface ProviderArgs {
     readonly secretManagerCustomEndpoint?: pulumi.Input<string>;
     readonly securityCenterCustomEndpoint?: pulumi.Input<string>;
     readonly securityScannerCustomEndpoint?: pulumi.Input<string>;
+    readonly serviceDirectoryCustomEndpoint?: pulumi.Input<string>;
     readonly serviceManagementCustomEndpoint?: pulumi.Input<string>;
     readonly serviceNetworkingCustomEndpoint?: pulumi.Input<string>;
     readonly serviceUsageCustomEndpoint?: pulumi.Input<string>;

@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> LabelFingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// Labels to apply to this address. A list of key-&gt;value pairs.
+        /// Labels to apply to this address.  A list of key-&gt;value pairs.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels to apply to this address. A list of key-&gt;value pairs.
+        /// Labels to apply to this address.  A list of key-&gt;value pairs.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -302,7 +302,7 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels to apply to this address. A list of key-&gt;value pairs.
+        /// Labels to apply to this address.  A list of key-&gt;value pairs.
         /// </summary>
         public InputMap<string> Labels
         {

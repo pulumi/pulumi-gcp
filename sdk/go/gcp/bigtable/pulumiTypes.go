@@ -212,7 +212,7 @@ type InstanceCluster struct {
 	// The ID of the Cloud Bigtable cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// The number of nodes in your Cloud Bigtable cluster.
-	// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+	// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
 	// for a `DEVELOPMENT` instance.
 	NumNodes *int `pulumi:"numNodes"`
 	// The storage type to use. One of `"SSD"` or
@@ -240,7 +240,7 @@ type InstanceClusterArgs struct {
 	// The ID of the Cloud Bigtable cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The number of nodes in your Cloud Bigtable cluster.
-	// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+	// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
 	// for a `DEVELOPMENT` instance.
 	NumNodes pulumi.IntPtrInput `pulumi:"numNodes"`
 	// The storage type to use. One of `"SSD"` or
@@ -310,7 +310,7 @@ func (o InstanceClusterOutput) ClusterId() pulumi.StringOutput {
 }
 
 // The number of nodes in your Cloud Bigtable cluster.
-// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
 // for a `DEVELOPMENT` instance.
 func (o InstanceClusterOutput) NumNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *int { return v.NumNodes }).(pulumi.IntPtrOutput)

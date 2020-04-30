@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.BigTable.Inputs
 
         /// <summary>
         /// The number of nodes in your Cloud Bigtable cluster.
-        /// Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+        /// Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
         /// for a `DEVELOPMENT` instance.
         /// </summary>
         [Input("numNodes")]

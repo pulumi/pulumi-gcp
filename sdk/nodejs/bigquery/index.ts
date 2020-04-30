@@ -7,5 +7,6 @@ export * from "./dataTransferConfig";
 export * from "./dataset";
 export * from "./datasetAccess";
 export * from "./getDefaultServiceAccount";
+export * from "./job";
 export * from "./reservation";
 export * from "./table";

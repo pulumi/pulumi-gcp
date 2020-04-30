@@ -85,8 +85,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The server binding policy for nodes using this template. Determines where the nodes should restart following a
-        /// maintenance event.
+        /// The server binding policy for nodes using this template. Determines
+        /// where the nodes should restart following a maintenance event.  Structure is documented below.
         /// </summary>
         [Output("serverBinding")]
         public Output<Outputs.NodeTemplateServerBinding> ServerBinding { get; private set; } = null!;
@@ -193,8 +193,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The server binding policy for nodes using this template. Determines where the nodes should restart following a
-        /// maintenance event.
+        /// The server binding policy for nodes using this template. Determines
+        /// where the nodes should restart following a maintenance event.  Structure is documented below.
         /// </summary>
         [Input("serverBinding")]
         public Input<Inputs.NodeTemplateServerBindingArgs>? ServerBinding { get; set; }
@@ -274,8 +274,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The server binding policy for nodes using this template. Determines where the nodes should restart following a
-        /// maintenance event.
+        /// The server binding policy for nodes using this template. Determines
+        /// where the nodes should restart following a maintenance event.  Structure is documented below.
         /// </summary>
         [Input("serverBinding")]
         public Input<Inputs.NodeTemplateServerBindingGetArgs>? ServerBinding { get; set; }

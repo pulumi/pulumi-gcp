@@ -63,9 +63,10 @@ class VPNTunnel(pulumi.CustomResource):
     """
     peer_gcp_gateway: pulumi.Output[str]
     """
-    URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-    automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-    'google_compute_ha_vpn_gateway' resource.
+    URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+    If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+    ID in the peer GCP VPN gateway.
+    This field must reference a `compute.HaVpnGateway` resource.
     """
     peer_ip: pulumi.Output[str]
     """
@@ -115,8 +116,9 @@ class VPNTunnel(pulumi.CustomResource):
     """
     vpn_gateway: pulumi.Output[str]
     """
-    URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
-    resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+    URL of the VPN gateway with which this VPN tunnel is associated.
+    This must be used if a High Availability VPN gateway resource is created.
+    This field must reference a `compute.HaVpnGateway` resource.
     """
     vpn_gateway_interface: pulumi.Output[float]
     """
@@ -154,9 +156,10 @@ class VPNTunnel(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[float] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
-        :param pulumi.Input[str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-               automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-               'google_compute_ha_vpn_gateway' resource.
+        :param pulumi.Input[str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+               If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+               ID in the peer GCP VPN gateway.
+               This field must reference a `compute.HaVpnGateway` resource.
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -170,8 +173,9 @@ class VPNTunnel(pulumi.CustomResource):
                gateway and the peer VPN gateway.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
-        :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
-               resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+        :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated.
+               This must be used if a High Availability VPN gateway resource is created.
+               This field must reference a `compute.HaVpnGateway` resource.
         :param pulumi.Input[float] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """
         if __name__ is not None:
@@ -252,9 +256,10 @@ class VPNTunnel(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] peer_external_gateway: URL of the peer side external VPN gateway to which this VPN tunnel is connected.
         :param pulumi.Input[float] peer_external_gateway_interface: The interface ID of the external VPN gateway to which this VPN tunnel is connected.
-        :param pulumi.Input[str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will
-               automatically use the same vpn_gateway_interface ID in the peer GCP VPN gateway. This field must reference a
-               'google_compute_ha_vpn_gateway' resource.
+        :param pulumi.Input[str] peer_gcp_gateway: URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
+               If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+               ID in the peer GCP VPN gateway.
+               This field must reference a `compute.HaVpnGateway` resource.
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -271,8 +276,9 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
         :param pulumi.Input[str] tunnel_id: The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway
-               resource is created. This field must reference a 'google_compute_ha_vpn_gateway' resource.
+        :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated.
+               This must be used if a High Availability VPN gateway resource is created.
+               This field must reference a `compute.HaVpnGateway` resource.
         :param pulumi.Input[float] vpn_gateway_interface: The interface ID of the VPN gateway with which this VPN tunnel is associated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

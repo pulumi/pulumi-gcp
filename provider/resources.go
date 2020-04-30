@@ -64,6 +64,7 @@ const (
 	gcpResourceManager      = "ResourceManager"      // Resource Manager resources
 	gcpRuntimeConfig        = "RuntimeConfig"        // Runtime Config resources
 	gcpSecretManager        = "SecretManager"        // Secret Manager resources
+	gcpServiceDirectory     = "ServiceDirectory"     // Service Directory resources
 	gcpServiceNetworking    = "ServiceNetworking"    // Service Networking resources
 	gcpSecurityCenter       = "SecurityCenter"       // Security Center
 	gcpSQL                  = "Sql"                  // SQL resources
@@ -200,6 +201,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_bigquery_reservation":          {Tok: gcpResource(gcpBigQuery, "Reservation")},
 			"google_bigtable_app_profile":          {Tok: gcpResource(gcpBigQuery, "AppProfile")},
 			"google_bigquery_dataset_access":       {Tok: gcpResource(gcpBigQuery, "DatasetAccess")},
+			"google_bigquery_job":                  {Tok: gcpResource(gcpBigQuery, "Job")},
 
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
@@ -766,8 +768,13 @@ func Provider() tfbridge.ProviderInfo {
 			"google_monitoring_group":                {Tok: gcpResource(gcpMonitoring, "Group")},
 			"google_monitoring_notification_channel": {Tok: gcpResource(gcpMonitoring, "NotificationChannel")},
 			"google_monitoring_uptime_check_config":  {Tok: gcpResource(gcpMonitoring, "UptimeCheckConfig")},
-			"google_monitoring_custom_service":       {Tok: gcpResource(gcpMonitoring, "CustomService")},
-			"google_monitoring_slo":                  {Tok: gcpResource(gcpMonitoring, "Slo")},
+			"google_monitoring_custom_service": {
+				Tok: gcpResource(gcpMonitoring, "CustomService"),
+				Docs: &tfbridge.DocInfo{
+					Source: "monitoring_service.html.markdown",
+				},
+			},
+			"google_monitoring_slo": {Tok: gcpResource(gcpMonitoring, "Slo")},
 
 			// PubSub resources
 			"google_pubsub_topic": {Tok: gcpResource(gcpPubSub, "Topic")},
@@ -1348,6 +1355,47 @@ func Provider() tfbridge.ProviderInfo {
 
 			// OS Login
 			"google_os_login_ssh_public_key": {Tok: gcpResource(gcpOsLogin, "SshPublicKey")},
+
+			// Service Directory
+			"google_service_directory_endpoint":  {Tok: gcpResource(gcpServiceDirectory, "Endpoint")},
+			"google_service_directory_namespace": {Tok: gcpResource(gcpServiceDirectory, "Namespace")},
+			"google_service_directory_namespace_iam_binding": {
+				Tok: gcpResource(gcpServiceDirectory, "NamespaceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "service_directory_namespace_iam.html.markdown",
+				},
+			},
+			"google_service_directory_namespace_iam_member": {
+				Tok: gcpResource(gcpServiceDirectory, "NamespaceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "service_directory_namespace_iam.html.markdown",
+				},
+			},
+			"google_service_directory_namespace_iam_policy": {
+				Tok: gcpResource(gcpServiceDirectory, "NamespaceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "service_directory_namespace_iam.html.markdown",
+				},
+			},
+			"google_service_directory_service": {Tok: gcpResource(gcpServiceDirectory, "Service")},
+			"google_service_directory_service_iam_binding": {
+				Tok: gcpResource(gcpServiceDirectory, "ServiceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "service_directory_service_iam.html.markdown",
+				},
+			},
+			"google_service_directory_service_iam_member": {
+				Tok: gcpResource(gcpServiceDirectory, "ServiceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "service_directory_service_iam.html.markdown",
+				},
+			},
+			"google_service_directory_service_iam_policy": {
+				Tok: gcpResource(gcpServiceDirectory, "ServiceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "service_directory_service_iam.html.markdown",
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1707,12 +1755,30 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_monitoring_uptime_check_ips": {
 				Tok: gcpDataSource(gcpMonitoring, "getUptimeCheckIPs"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_monitoring_uptime_check_ips.html.markdown",
+				},
 			},
-			"google_monitoring_app_engine_service": {Tok: gcpDataSource(gcpMonitoring, "getAppEngineService")},
+			"google_monitoring_app_engine_service": {
+				Tok: gcpDataSource(gcpMonitoring, "getAppEngineService"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_monitoring_app_engine_service.html.markdown",
+				},
+			},
 
 			// Firebase
-			"google_firebase_web_app_config": {Tok: gcpDataSource(gcpFirebase, "getWebAppConfig")},
-			"google_firebase_web_app":        {Tok: gcpDataSource(gcpFirebase, "getWebApp")},
+			"google_firebase_web_app_config": {
+				Tok: gcpDataSource(gcpFirebase, "getWebAppConfig"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_firebase_web_app_config.html.markdown",
+				},
+			},
+			"google_firebase_web_app": {
+				Tok: gcpDataSource(gcpFirebase, "getWebApp"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_firebase_web_app.html.markdown",
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			AsyncDataSources: true,

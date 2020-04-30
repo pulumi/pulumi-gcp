@@ -16,7 +16,7 @@ class Instance(pulumi.CustomResource):
 
       * `cluster_id` (`str`) - The ID of the Cloud Bigtable cluster.
       * `num_nodes` (`float`) - The number of nodes in your Cloud Bigtable cluster.
-        Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+        Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
         for a `DEVELOPMENT` instance.
       * `storageType` (`str`) - The storage type to use. One of `"SSD"` or
         `"HDD"`. Defaults to `"SSD"`.
@@ -60,7 +60,7 @@ class Instance(pulumi.CustomResource):
 
           * `cluster_id` (`pulumi.Input[str]`) - The ID of the Cloud Bigtable cluster.
           * `num_nodes` (`pulumi.Input[float]`) - The number of nodes in your Cloud Bigtable cluster.
-            Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+            Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
             for a `DEVELOPMENT` instance.
           * `storageType` (`pulumi.Input[str]`) - The storage type to use. One of `"SSD"` or
             `"HDD"`. Defaults to `"SSD"`.
@@ -116,7 +116,7 @@ class Instance(pulumi.CustomResource):
 
           * `cluster_id` (`pulumi.Input[str]`) - The ID of the Cloud Bigtable cluster.
           * `num_nodes` (`pulumi.Input[float]`) - The number of nodes in your Cloud Bigtable cluster.
-            Required, with a minimum of `3` for a `PRODUCTION` instance. Must be left unset
+            Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
             for a `DEVELOPMENT` instance.
           * `storageType` (`pulumi.Input[str]`) - The storage type to use. One of `"SSD"` or
             `"HDD"`. Defaults to `"SSD"`.

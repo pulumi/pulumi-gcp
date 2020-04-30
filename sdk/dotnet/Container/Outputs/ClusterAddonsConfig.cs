@@ -26,6 +26,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigDnsCacheConfig? DnsCacheConfig;
         /// <summary>
+        /// .
+        /// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enable.
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig? GcePersistentDiskCsiDriverConfig;
+        /// <summary>
         /// The status of the Horizontal Pod Autoscaling
         /// addon, which increases or decreases the number of replica pods a replication controller
         /// has based on the resource usage of the existing pods.
@@ -61,6 +66,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigDnsCacheConfig? dnsCacheConfig,
 
+            Outputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig? gcePersistentDiskCsiDriverConfig,
+
             Outputs.ClusterAddonsConfigHorizontalPodAutoscaling? horizontalPodAutoscaling,
 
             Outputs.ClusterAddonsConfigHttpLoadBalancing? httpLoadBalancing,
@@ -71,6 +78,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             CloudrunConfig = cloudrunConfig;
             DnsCacheConfig = dnsCacheConfig;
+            GcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;
             IstioConfig = istioConfig;

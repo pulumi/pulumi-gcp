@@ -23,6 +23,9 @@ class GetUptimeCheckIPsResult:
         if uptime_check_ips and not isinstance(uptime_check_ips, list):
             raise TypeError("Expected argument 'uptime_check_ips' to be a list")
         __self__.uptime_check_ips = uptime_check_ips
+        """
+        A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
+        """
 class AwaitableGetUptimeCheckIPsResult(GetUptimeCheckIPsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -34,7 +37,8 @@ class AwaitableGetUptimeCheckIPsResult(GetUptimeCheckIPsResult):
 
 def get_uptime_check_i_ps(opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Returns the list of IP addresses that checkers run from. For more information see
+    the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
     """
     __args__ = dict()
 

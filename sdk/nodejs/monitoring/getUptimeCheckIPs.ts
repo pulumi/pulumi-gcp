@@ -6,6 +6,13 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Returns the list of IP addresses that checkers run from. For more information see
+ * the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
+ * 
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_monitoring_uptime_check_ips.html.markdown.
+ */
 export function getUptimeCheckIPs(opts?: pulumi.InvokeOptions): Promise<GetUptimeCheckIPsResult> {
     if (!opts) {
         opts = {}
@@ -22,6 +29,9 @@ export function getUptimeCheckIPs(opts?: pulumi.InvokeOptions): Promise<GetUptim
  * A collection of values returned by getUptimeCheckIPs.
  */
 export interface GetUptimeCheckIPsResult {
+    /**
+     * A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
+     */
     readonly uptimeCheckIps: outputs.monitoring.GetUptimeCheckIPsUptimeCheckIp[];
     /**
      * The provider-assigned unique ID for this managed resource.

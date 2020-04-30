@@ -23,14 +23,15 @@ import (
 type ManagedZone struct {
 	pulumi.CustomResourceState
 
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// DNSSEC configuration  Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrOutput `pulumi:"dnssecConfig"`
-	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-	// contains the set of destinations to forward to.
+	// The presence for this field indicates that outbound forwarding is enabled
+	// for this zone. The value of this field contains the set of destinations
+	// to forward to.  Structure is documented below.
 	ForwardingConfig ManagedZoneForwardingConfigPtrOutput `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -39,8 +40,8 @@ type ManagedZone struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Delegate your managed_zone to these virtual name servers; defined by the server
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
-	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-	// network to peer with.
+	// The presence of this field indicates that DNS Peering is enabled for this
+	// zone. The value of this field contains the network to peer with.  Structure is documented below.
 	PeeringConfig ManagedZonePeeringConfigPtrOutput `pulumi:"peeringConfig"`
 	// For privately visible zones, the set of Virtual Private Cloud
 	// resources that the zone is visible from.  Structure is documented below.
@@ -48,9 +49,9 @@ type ManagedZone struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-	// automatically configured records for VPC resources. This only applies to networks listed under
-	// 'private_visibility_config'.
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+	// lookup queries using automatically configured records for VPC resources. This only applies
+	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrOutput `pulumi:"reverseLookup"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -92,14 +93,15 @@ func GetManagedZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ManagedZone resources.
 type managedZoneState struct {
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName *string `pulumi:"dnsName"`
 	// DNSSEC configuration  Structure is documented below.
 	DnssecConfig *ManagedZoneDnssecConfig `pulumi:"dnssecConfig"`
-	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-	// contains the set of destinations to forward to.
+	// The presence for this field indicates that outbound forwarding is enabled
+	// for this zone. The value of this field contains the set of destinations
+	// to forward to.  Structure is documented below.
 	ForwardingConfig *ManagedZoneForwardingConfig `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels map[string]string `pulumi:"labels"`
@@ -108,8 +110,8 @@ type managedZoneState struct {
 	Name *string `pulumi:"name"`
 	// Delegate your managed_zone to these virtual name servers; defined by the server
 	NameServers []string `pulumi:"nameServers"`
-	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-	// network to peer with.
+	// The presence of this field indicates that DNS Peering is enabled for this
+	// zone. The value of this field contains the network to peer with.  Structure is documented below.
 	PeeringConfig *ManagedZonePeeringConfig `pulumi:"peeringConfig"`
 	// For privately visible zones, the set of Virtual Private Cloud
 	// resources that the zone is visible from.  Structure is documented below.
@@ -117,9 +119,9 @@ type managedZoneState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-	// automatically configured records for VPC resources. This only applies to networks listed under
-	// 'private_visibility_config'.
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+	// lookup queries using automatically configured records for VPC resources. This only applies
+	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup *bool `pulumi:"reverseLookup"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -128,14 +130,15 @@ type managedZoneState struct {
 }
 
 type ManagedZoneState struct {
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringPtrInput
 	// DNSSEC configuration  Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrInput
-	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-	// contains the set of destinations to forward to.
+	// The presence for this field indicates that outbound forwarding is enabled
+	// for this zone. The value of this field contains the set of destinations
+	// to forward to.  Structure is documented below.
 	ForwardingConfig ManagedZoneForwardingConfigPtrInput
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels pulumi.StringMapInput
@@ -144,8 +147,8 @@ type ManagedZoneState struct {
 	Name pulumi.StringPtrInput
 	// Delegate your managed_zone to these virtual name servers; defined by the server
 	NameServers pulumi.StringArrayInput
-	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-	// network to peer with.
+	// The presence of this field indicates that DNS Peering is enabled for this
+	// zone. The value of this field contains the network to peer with.  Structure is documented below.
 	PeeringConfig ManagedZonePeeringConfigPtrInput
 	// For privately visible zones, the set of Virtual Private Cloud
 	// resources that the zone is visible from.  Structure is documented below.
@@ -153,9 +156,9 @@ type ManagedZoneState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-	// automatically configured records for VPC resources. This only applies to networks listed under
-	// 'private_visibility_config'.
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+	// lookup queries using automatically configured records for VPC resources. This only applies
+	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrInput
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -168,22 +171,23 @@ func (ManagedZoneState) ElementType() reflect.Type {
 }
 
 type managedZoneArgs struct {
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName string `pulumi:"dnsName"`
 	// DNSSEC configuration  Structure is documented below.
 	DnssecConfig *ManagedZoneDnssecConfig `pulumi:"dnssecConfig"`
-	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-	// contains the set of destinations to forward to.
+	// The presence for this field indicates that outbound forwarding is enabled
+	// for this zone. The value of this field contains the set of destinations
+	// to forward to.  Structure is documented below.
 	ForwardingConfig *ManagedZoneForwardingConfig `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels map[string]string `pulumi:"labels"`
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	Name *string `pulumi:"name"`
-	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-	// network to peer with.
+	// The presence of this field indicates that DNS Peering is enabled for this
+	// zone. The value of this field contains the network to peer with.  Structure is documented below.
 	PeeringConfig *ManagedZonePeeringConfig `pulumi:"peeringConfig"`
 	// For privately visible zones, the set of Virtual Private Cloud
 	// resources that the zone is visible from.  Structure is documented below.
@@ -191,9 +195,9 @@ type managedZoneArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-	// automatically configured records for VPC resources. This only applies to networks listed under
-	// 'private_visibility_config'.
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+	// lookup queries using automatically configured records for VPC resources. This only applies
+	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup *bool `pulumi:"reverseLookup"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
@@ -203,22 +207,23 @@ type managedZoneArgs struct {
 
 // The set of arguments for constructing a ManagedZone resource.
 type ManagedZoneArgs struct {
-	// A textual description field. Defaults to 'Managed by Terraform'.
+	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
 	// The DNS name of this managed zone, for instance "example.com.".
 	DnsName pulumi.StringInput
 	// DNSSEC configuration  Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrInput
-	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field
-	// contains the set of destinations to forward to.
+	// The presence for this field indicates that outbound forwarding is enabled
+	// for this zone. The value of this field contains the set of destinations
+	// to forward to.  Structure is documented below.
 	ForwardingConfig ManagedZoneForwardingConfigPtrInput
 	// A set of key/value label pairs to assign to this ManagedZone.
 	Labels pulumi.StringMapInput
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	Name pulumi.StringPtrInput
-	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the
-	// network to peer with.
+	// The presence of this field indicates that DNS Peering is enabled for this
+	// zone. The value of this field contains the network to peer with.  Structure is documented below.
 	PeeringConfig ManagedZonePeeringConfigPtrInput
 	// For privately visible zones, the set of Virtual Private Cloud
 	// resources that the zone is visible from.  Structure is documented below.
@@ -226,9 +231,9 @@ type ManagedZoneArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using
-	// automatically configured records for VPC resources. This only applies to networks listed under
-	// 'private_visibility_config'.
+	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+	// lookup queries using automatically configured records for VPC resources. This only applies
+	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrInput
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.

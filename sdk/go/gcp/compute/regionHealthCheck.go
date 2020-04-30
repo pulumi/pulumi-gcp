@@ -47,7 +47,7 @@ type RegionHealthCheck struct {
 	HttpHealthCheck RegionHealthCheckHttpHealthCheckPtrOutput `pulumi:"httpHealthCheck"`
 	// A nested object resource  Structure is documented below.
 	HttpsHealthCheck RegionHealthCheckHttpsHealthCheckPtrOutput `pulumi:"httpsHealthCheck"`
-	// Configure logging on this health check.
+	// Configure logging on this health check.  Structure is documented below.
 	LogConfig RegionHealthCheckLogConfigPtrOutput `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -125,7 +125,7 @@ type regionHealthCheckState struct {
 	HttpHealthCheck *RegionHealthCheckHttpHealthCheck `pulumi:"httpHealthCheck"`
 	// A nested object resource  Structure is documented below.
 	HttpsHealthCheck *RegionHealthCheckHttpsHealthCheck `pulumi:"httpsHealthCheck"`
-	// Configure logging on this health check.
+	// Configure logging on this health check.  Structure is documented below.
 	LogConfig *RegionHealthCheckLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -176,7 +176,7 @@ type RegionHealthCheckState struct {
 	HttpHealthCheck RegionHealthCheckHttpHealthCheckPtrInput
 	// A nested object resource  Structure is documented below.
 	HttpsHealthCheck RegionHealthCheckHttpsHealthCheckPtrInput
-	// Configure logging on this health check.
+	// Configure logging on this health check.  Structure is documented below.
 	LogConfig RegionHealthCheckLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -229,7 +229,7 @@ type regionHealthCheckArgs struct {
 	HttpHealthCheck *RegionHealthCheckHttpHealthCheck `pulumi:"httpHealthCheck"`
 	// A nested object resource  Structure is documented below.
 	HttpsHealthCheck *RegionHealthCheckHttpsHealthCheck `pulumi:"httpsHealthCheck"`
-	// Configure logging on this health check.
+	// Configure logging on this health check.  Structure is documented below.
 	LogConfig *RegionHealthCheckLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -275,7 +275,7 @@ type RegionHealthCheckArgs struct {
 	HttpHealthCheck RegionHealthCheckHttpHealthCheckPtrInput
 	// A nested object resource  Structure is documented below.
 	HttpsHealthCheck RegionHealthCheckHttpsHealthCheckPtrInput
-	// Configure logging on this health check.
+	// Configure logging on this health check.  Structure is documented below.
 	LogConfig RegionHealthCheckLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with

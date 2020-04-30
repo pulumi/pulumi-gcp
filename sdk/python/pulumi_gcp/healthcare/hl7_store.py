@@ -47,6 +47,8 @@ class Hl7Store(pulumi.CustomResource):
     A nested object resource  Structure is documented below.
 
       * `allowNullHeader` (`bool`) - Determines whether messages with no header are allowed.
+      * `schema` (`str`) - JSON encoded string for schemas used to parse messages in this
+        store if schematized parsing is desired.
       * `segmentTerminator` (`str`) - Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
         A base64-encoded string.
     """
@@ -61,7 +63,7 @@ class Hl7Store(pulumi.CustomResource):
 
         To get more information about Hl7V2Store, see:
 
-        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.hl7V2Stores)
+        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.hl7V2Stores)
         * How-to Guides
             * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 
@@ -94,6 +96,8 @@ class Hl7Store(pulumi.CustomResource):
         The **parser_config** object supports the following:
 
           * `allowNullHeader` (`pulumi.Input[bool]`) - Determines whether messages with no header are allowed.
+          * `schema` (`pulumi.Input[str]`) - JSON encoded string for schemas used to parse messages in this
+            store if schematized parsing is desired.
           * `segmentTerminator` (`pulumi.Input[str]`) - Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
             A base64-encoded string.
         """
@@ -165,6 +169,8 @@ class Hl7Store(pulumi.CustomResource):
         The **parser_config** object supports the following:
 
           * `allowNullHeader` (`pulumi.Input[bool]`) - Determines whether messages with no header are allowed.
+          * `schema` (`pulumi.Input[str]`) - JSON encoded string for schemas used to parse messages in this
+            store if schematized parsing is desired.
           * `segmentTerminator` (`pulumi.Input[str]`) - Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
             A base64-encoded string.
         """

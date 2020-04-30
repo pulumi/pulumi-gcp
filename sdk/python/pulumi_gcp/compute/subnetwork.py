@@ -83,9 +83,12 @@ class Subnetwork(pulumi.CustomResource):
     """
     purpose: pulumi.Output[str]
     """
-    The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose
-    set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
-    If unspecified, the purpose defaults to PRIVATE. If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+    The purpose of the resource. This field can be either PRIVATE
+    or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+    INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
+    reserved for Internal HTTP(S) Load Balancing. If unspecified, the
+    purpose defaults to PRIVATE.
+    If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
     """
     region: pulumi.Output[str]
     """
@@ -93,18 +96,18 @@ class Subnetwork(pulumi.CustomResource):
     """
     role: pulumi.Output[str]
     """
-    The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be
-    set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A
-    BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
+    The role of subnetwork. Currently, this field is only used when
+    purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
+    or BACKUP. An ACTIVE subnetwork is one that is currently being used
+    for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
+    is ready to be promoted to ACTIVE or is currently draining.
     """
     secondary_ip_ranges: pulumi.Output[list]
     """
-    An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-    VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-    ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-    to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-    syntax: 'example=[]' For more details about this behavior, see [this
-    section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+    An array of configurations for secondary IP ranges for VM instances
+    contained in this subnetwork. The primary IP of such VM must belong
+    to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+    to either primary or secondary ranges. Structure is documented below.
 
       * `ip_cidr_range` (`str`) - The range of IP addresses belonging to this subnetwork secondary
         range. Provide this property when you create the subnetwork.
@@ -177,19 +180,22 @@ class Subnetwork(pulumi.CustomResource):
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose
-               set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
-               If unspecified, the purpose defaults to PRIVATE. If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE
+               or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+               INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
+               reserved for Internal HTTP(S) Load Balancing. If unspecified, the
+               purpose defaults to PRIVATE.
+               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
         :param pulumi.Input[str] region: URL of the GCP region for this subnetwork.
-        :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be
-               set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A
-               BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
-        :param pulumi.Input[list] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-               VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-               ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-               to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-               syntax: 'example=[]' For more details about this behavior, see [this
-               section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
+               purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
+               or BACKUP. An ACTIVE subnetwork is one that is currently being used
+               for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
+               is ready to be promoted to ACTIVE or is currently draining.
+        :param pulumi.Input[list] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
+               contained in this subnetwork. The primary IP of such VM must belong
+               to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+               to either primary or secondary ranges. Structure is documented below.
 
         The **log_config** object supports the following:
 
@@ -296,19 +302,22 @@ class Subnetwork(pulumi.CustomResource):
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose
-               set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
-               If unspecified, the purpose defaults to PRIVATE. If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either PRIVATE
+               or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
+               INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
+               reserved for Internal HTTP(S) Load Balancing. If unspecified, the
+               purpose defaults to PRIVATE.
+               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
         :param pulumi.Input[str] region: URL of the GCP region for this subnetwork.
-        :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be
-               set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A
-               BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.
-        :param pulumi.Input[list] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such
-               VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary
-               ranges. **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html)
-               to avoid breaking users during the 0.12 upgrade. To explicitly send a list of zero objects you must use the following
-               syntax: 'example=[]' For more details about this behavior, see [this
-               section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+        :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
+               purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
+               or BACKUP. An ACTIVE subnetwork is one that is currently being used
+               for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
+               is ready to be promoted to ACTIVE or is currently draining.
+        :param pulumi.Input[list] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
+               contained in this subnetwork. The primary IP of such VM must belong
+               to the primary ipCidrRange of the subnetwork. The alias IPs may belong
+               to either primary or secondary ranges. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
 
         The **log_config** object supports the following:

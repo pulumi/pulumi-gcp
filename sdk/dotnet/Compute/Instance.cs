@@ -180,6 +180,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// </summary>
+        [Output("resourcePolicies")]
+        public Output<string?> ResourcePolicies { get; private set; } = null!;
+
+        /// <summary>
         /// The scheduling strategy to use. More details about
         /// this configuration option are detailed below.
         /// </summary>
@@ -444,6 +450,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// </summary>
+        [Input("resourcePolicies")]
+        public Input<string>? ResourcePolicies { get; set; }
+
+        /// <summary>
         /// The scheduling strategy to use. More details about
         /// this configuration option are detailed below.
         /// </summary>
@@ -694,6 +706,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// -- A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// </summary>
+        [Input("resourcePolicies")]
+        public Input<string>? ResourcePolicies { get; set; }
 
         /// <summary>
         /// The scheduling strategy to use. More details about

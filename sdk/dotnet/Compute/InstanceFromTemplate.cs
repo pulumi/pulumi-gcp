@@ -94,6 +94,9 @@ namespace Pulumi.Gcp.Compute
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        [Output("resourcePolicies")]
+        public Output<string> ResourcePolicies { get; private set; } = null!;
+
         [Output("scheduling")]
         public Output<Outputs.InstanceFromTemplateScheduling> Scheduling { get; private set; } = null!;
 
@@ -258,6 +261,9 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("resourcePolicies")]
+        public Input<string>? ResourcePolicies { get; set; }
+
         [Input("scheduling")]
         public Input<Inputs.InstanceFromTemplateSchedulingArgs>? Scheduling { get; set; }
 
@@ -401,6 +407,9 @@ namespace Pulumi.Gcp.Compute
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("resourcePolicies")]
+        public Input<string>? ResourcePolicies { get; set; }
 
         [Input("scheduling")]
         public Input<Inputs.InstanceFromTemplateSchedulingGetArgs>? Scheduling { get; set; }

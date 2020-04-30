@@ -38,7 +38,7 @@ type GlobalAddress struct {
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
-	// Labels to apply to this address. A list of key->value pairs.
+	// Labels to apply to this address.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -113,7 +113,7 @@ type globalAddressState struct {
 	IpVersion *string `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
-	// Labels to apply to this address. A list of key->value pairs.
+	// Labels to apply to this address.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -161,7 +161,7 @@ type GlobalAddressState struct {
 	IpVersion pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
-	// Labels to apply to this address. A list of key->value pairs.
+	// Labels to apply to this address.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -209,7 +209,7 @@ type globalAddressArgs struct {
 	// The IP Version that will be used by this address. Valid options are
 	// `IPV4` or `IPV6`. The default value is `IPV4`.
 	IpVersion *string `pulumi:"ipVersion"`
-	// Labels to apply to this address. A list of key->value pairs.
+	// Labels to apply to this address.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -252,7 +252,7 @@ type GlobalAddressArgs struct {
 	// The IP Version that will be used by this address. Valid options are
 	// `IPV4` or `IPV6`. The default value is `IPV4`.
 	IpVersion pulumi.StringPtrInput
-	// Labels to apply to this address. A list of key->value pairs.
+	// Labels to apply to this address.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with

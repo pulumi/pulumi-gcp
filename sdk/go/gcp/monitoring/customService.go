@@ -9,17 +9,32 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Service is a discrete, autonomous, and network-accessible unit,
+// designed to solve an individual concern (Wikipedia). In Cloud Monitoring,
+// a Service acts as the root resource under which operational aspects of
+// the service are accessible
+//
+//
+// To get more information about Service, see:
+//
+// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+// * How-to Guides
+//     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+//     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 type CustomService struct {
 	pulumi.CustomResourceState
 
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
-	Name    pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// An optional service ID to use. If not given, the server will generate a service ID.
+	// An optional service ID to use. If not given, the server will generate a
+	// service ID.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
-	// Configuration for how to query telemetry on a Service.
+	// Configuration for how to query telemetry on a Service.  Structure is documented below.
 	Telemetry CustomServiceTelemetryPtrOutput `pulumi:"telemetry"`
 }
 
@@ -54,11 +69,14 @@ type customServiceState struct {
 	// Name used for UI elements listing this Service.
 	DisplayName *string `pulumi:"displayName"`
 	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
-	Name    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// An optional service ID to use. If not given, the server will generate a service ID.
+	// An optional service ID to use. If not given, the server will generate a
+	// service ID.
 	ServiceId *string `pulumi:"serviceId"`
-	// Configuration for how to query telemetry on a Service.
+	// Configuration for how to query telemetry on a Service.  Structure is documented below.
 	Telemetry *CustomServiceTelemetry `pulumi:"telemetry"`
 }
 
@@ -66,11 +84,14 @@ type CustomServiceState struct {
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrInput
 	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// An optional service ID to use. If not given, the server will generate a service ID.
+	// An optional service ID to use. If not given, the server will generate a
+	// service ID.
 	ServiceId pulumi.StringPtrInput
-	// Configuration for how to query telemetry on a Service.
+	// Configuration for how to query telemetry on a Service.  Structure is documented below.
 	Telemetry CustomServiceTelemetryPtrInput
 }
 
@@ -81,10 +102,13 @@ func (CustomServiceState) ElementType() reflect.Type {
 type customServiceArgs struct {
 	// Name used for UI elements listing this Service.
 	DisplayName *string `pulumi:"displayName"`
-	Project     *string `pulumi:"project"`
-	// An optional service ID to use. If not given, the server will generate a service ID.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// An optional service ID to use. If not given, the server will generate a
+	// service ID.
 	ServiceId *string `pulumi:"serviceId"`
-	// Configuration for how to query telemetry on a Service.
+	// Configuration for how to query telemetry on a Service.  Structure is documented below.
 	Telemetry *CustomServiceTelemetry `pulumi:"telemetry"`
 }
 
@@ -92,10 +116,13 @@ type customServiceArgs struct {
 type CustomServiceArgs struct {
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrInput
-	Project     pulumi.StringPtrInput
-	// An optional service ID to use. If not given, the server will generate a service ID.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// An optional service ID to use. If not given, the server will generate a
+	// service ID.
 	ServiceId pulumi.StringPtrInput
-	// Configuration for how to query telemetry on a Service.
+	// Configuration for how to query telemetry on a Service.  Structure is documented below.
 	Telemetry CustomServiceTelemetryPtrInput
 }
 

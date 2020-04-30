@@ -9,6 +9,20 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Monitoring
 {
+    /// <summary>
+    /// A Service is a discrete, autonomous, and network-accessible unit,
+    /// designed to solve an individual concern (Wikipedia). In Cloud Monitoring,
+    /// a Service acts as the root resource under which operational aspects of
+    /// the service are accessible
+    /// 
+    /// 
+    /// To get more information about Service, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+    /// * How-to Guides
+    ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+    ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+    /// </summary>
     public partial class CustomService : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,17 +37,22 @@ namespace Pulumi.Gcp.Monitoring
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// An optional service ID to use. If not given, the server will generate a service ID.
+        /// An optional service ID to use. If not given, the server will generate a
+        /// service ID.
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for how to query telemetry on a Service.
+        /// Configuration for how to query telemetry on a Service.  Structure is documented below.
         /// </summary>
         [Output("telemetry")]
         public Output<Outputs.CustomServiceTelemetry?> Telemetry { get; private set; } = null!;
@@ -90,17 +109,22 @@ namespace Pulumi.Gcp.Monitoring
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// An optional service ID to use. If not given, the server will generate a service ID.
+        /// An optional service ID to use. If not given, the server will generate a
+        /// service ID.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// Configuration for how to query telemetry on a Service.
+        /// Configuration for how to query telemetry on a Service.  Structure is documented below.
         /// </summary>
         [Input("telemetry")]
         public Input<Inputs.CustomServiceTelemetryArgs>? Telemetry { get; set; }
@@ -124,17 +148,22 @@ namespace Pulumi.Gcp.Monitoring
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// An optional service ID to use. If not given, the server will generate a service ID.
+        /// An optional service ID to use. If not given, the server will generate a
+        /// service ID.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// Configuration for how to query telemetry on a Service.
+        /// Configuration for how to query telemetry on a Service.  Structure is documented below.
         /// </summary>
         [Input("telemetry")]
         public Input<Inputs.CustomServiceTelemetryGetArgs>? Telemetry { get; set; }

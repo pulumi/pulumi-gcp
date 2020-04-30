@@ -6,6 +6,38 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Service is a discrete, autonomous, and network-accessible unit,
+ * designed to solve an individual concern (Wikipedia). In Cloud Monitoring,
+ * a Service acts as the root resource under which operational aspects of
+ * the service are accessible
+ * 
+ * 
+ * To get more information about Service, see:
+ * 
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+ * * How-to Guides
+ *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ * 
+ * ## Example Usage - Monitoring Service Custom
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const custom = new gcp.monitoring.CustomService("custom", {
+ *     displayName: "My Custom Service custom-srv",
+ *     serviceId: "custom-srv",
+ *     telemetry: {
+ *         resourceName: "//product.googleapis.com/foo/foo/services/test",
+ *     },
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_service.html.markdown.
+ */
 export class CustomService extends pulumi.CustomResource {
     /**
      * Get an existing CustomService resource's state with the given name, ID, and optional extra
@@ -41,13 +73,18 @@ export class CustomService extends pulumi.CustomResource {
      * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * An optional service ID to use. If not given, the server will generate a service ID.
+     * An optional service ID to use. If not given, the server will generate a
+     * service ID.
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
-     * Configuration for how to query telemetry on a Service.
+     * Configuration for how to query telemetry on a Service.  Structure is documented below.
      */
     public readonly telemetry!: pulumi.Output<outputs.monitoring.CustomServiceTelemetry | undefined>;
 
@@ -99,13 +136,18 @@ export interface CustomServiceState {
      * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
-     * An optional service ID to use. If not given, the server will generate a service ID.
+     * An optional service ID to use. If not given, the server will generate a
+     * service ID.
      */
     readonly serviceId?: pulumi.Input<string>;
     /**
-     * Configuration for how to query telemetry on a Service.
+     * Configuration for how to query telemetry on a Service.  Structure is documented below.
      */
     readonly telemetry?: pulumi.Input<inputs.monitoring.CustomServiceTelemetry>;
 }
@@ -118,13 +160,18 @@ export interface CustomServiceArgs {
      * Name used for UI elements listing this Service.
      */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
     /**
-     * An optional service ID to use. If not given, the server will generate a service ID.
+     * An optional service ID to use. If not given, the server will generate a
+     * service ID.
      */
     readonly serviceId?: pulumi.Input<string>;
     /**
-     * Configuration for how to query telemetry on a Service.
+     * Configuration for how to query telemetry on a Service.  Structure is documented below.
      */
     readonly telemetry?: pulumi.Input<inputs.monitoring.CustomServiceTelemetry>;
 }
