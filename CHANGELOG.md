@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.19.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
+
+## 3.3.0 (2020-04-30)
+* Upgrade to v3.19.0 of the Google Beta Terraform Provider
 
 ## 3.2.0 (2020-04-28)
 * Regenerate datasource examples to be async
