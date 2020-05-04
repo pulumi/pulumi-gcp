@@ -11,9 +11,9 @@ namespace Pulumi.Gcp.Compute
 {
     /// <summary>
     /// 
-    /// Deprecated: gcp.MangedSslCertificate has been deprecated in favour of gcp.ManagedSslCertificate
+    /// Deprecated: gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate
     /// </summary>
-    [Obsolete(@"gcp.MangedSslCertificate has been deprecated in favour of gcp.ManagedSslCertificate")]
+    [Obsolete(@"gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate")]
     public partial class MangedSslCertificate : Pulumi.CustomResource
     {
         /// <summary>

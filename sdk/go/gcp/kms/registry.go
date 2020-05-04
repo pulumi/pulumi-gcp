@@ -10,7 +10,7 @@ import (
 )
 
 //
-// Deprecated: gcp.Registry has been deprecated in favour of gcp.Registry
+// Deprecated: gcp.kms.Registry has been deprecated in favour of gcp.iot.Registry
 type Registry struct {
 	pulumi.CustomResourceState
 

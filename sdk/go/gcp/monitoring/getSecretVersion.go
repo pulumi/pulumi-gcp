@@ -11,7 +11,7 @@ import (
 //
 //
 //
-// Deprecated: gcp.getSecretVersion has been deprecated in favour of gcp.getSecretVersion
+// Deprecated: gcp.monitoring.getSecretVersion has been deprecated in favour of gcp.secretmanager.getSecretVersion
 func GetSecretVersion(ctx *pulumi.Context, args *GetSecretVersionArgs, opts ...pulumi.InvokeOption) (*GetSecretVersionResult, error) {
 	var rv GetSecretVersionResult
 	err := ctx.Invoke("gcp:monitoring/getSecretVersion:getSecretVersion", args, &rv, opts...)
