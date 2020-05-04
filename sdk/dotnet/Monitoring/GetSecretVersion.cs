@@ -9,7 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Monitoring
 {
-    [Obsolete(@"gcp.getSecretVersion has been deprecated in favour of gcp.getSecretVersion")]
+    [Obsolete(@"gcp.monitoring.getSecretVersion has been deprecated in favour of gcp.secretmanager.getSecretVersion")]
     public static class GetSecretVersion
     {
         /// <summary>
@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Monitoring
         /// {{% examples %}}
         /// {{% /examples %}}
         /// 
-        /// Deprecated: gcp.getSecretVersion has been deprecated in favour of gcp.getSecretVersion
+        /// Deprecated: gcp.monitoring.getSecretVersion has been deprecated in favour of gcp.secretmanager.getSecretVersion
         /// </summary>
         public static Task<GetSecretVersionResult> InvokeAsync(GetSecretVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionResult>("gcp:monitoring/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionArgs(), options.WithVersion());

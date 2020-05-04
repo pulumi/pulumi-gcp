@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_autoscaler.html.markdown.
  */
-/** @deprecated gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler */
+/** @deprecated gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler */
 export class Autoscalar extends pulumi.CustomResource {
     /**
      * Get an existing Autoscalar resource's state with the given name, ID, and optional extra
@@ -33,7 +33,7 @@ export class Autoscalar extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AutoscalarState, opts?: pulumi.CustomResourceOptions): Autoscalar {
-        pulumi.log.warn("Autoscalar is deprecated: gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler")
+        pulumi.log.warn("Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler")
         return new Autoscalar(name, <any>state, { ...opts, id: id });
     }
 
@@ -100,11 +100,11 @@ export class Autoscalar extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler */
+    /** @deprecated gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler */
     constructor(name: string, args: AutoscalarArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler */
+    /** @deprecated gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler */
     constructor(name: string, argsOrState?: AutoscalarArgs | AutoscalarState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("Autoscalar is deprecated: gcp.Autoscalar has been deprecated in favour of gcp.Autoscaler")
+        pulumi.log.warn("Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as AutoscalarState | undefined;

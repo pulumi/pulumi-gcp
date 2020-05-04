@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-warnings.warn("gcp.MangedSslCertificate has been deprecated in favour of gcp.ManagedSslCertificate", DeprecationWarning)
+warnings.warn("gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate", DeprecationWarning)
 class MangedSslCertificate(pulumi.CustomResource):
     certificate_id: pulumi.Output[float]
     """
@@ -52,11 +52,11 @@ class MangedSslCertificate(pulumi.CustomResource):
     """
     Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
     """
-    warnings.warn("gcp.MangedSslCertificate has been deprecated in favour of gcp.ManagedSslCertificate", DeprecationWarning)
+    warnings.warn("gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, certificate_id=None, description=None, managed=None, name=None, project=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
 
-        Deprecated: gcp.MangedSslCertificate has been deprecated in favour of gcp.ManagedSslCertificate
+        Deprecated: gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -75,7 +75,7 @@ class MangedSslCertificate(pulumi.CustomResource):
 
           * `domains` (`pulumi.Input[list]`)
         """
-        pulumi.log.warn("MangedSslCertificate is deprecated: gcp.MangedSslCertificate has been deprecated in favour of gcp.ManagedSslCertificate")
+        pulumi.log.warn("MangedSslCertificate is deprecated: gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -1781,7 +1781,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi":    "^2.0.0",
 				"read-package-json": "^2.0.13",

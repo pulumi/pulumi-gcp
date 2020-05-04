@@ -10,7 +10,7 @@ import (
 )
 
 //
-// Deprecated: gcp.MangedSslCertificate has been deprecated in favour of gcp.ManagedSslCertificate
+// Deprecated: gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate
 type MangedSslCertificate struct {
 	pulumi.CustomResourceState
 

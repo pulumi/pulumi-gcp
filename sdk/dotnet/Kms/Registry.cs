@@ -11,9 +11,9 @@ namespace Pulumi.Gcp.Kms
 {
     /// <summary>
     /// 
-    /// Deprecated: gcp.Registry has been deprecated in favour of gcp.Registry
+    /// Deprecated: gcp.kms.Registry has been deprecated in favour of gcp.iot.Registry
     /// </summary>
-    [Obsolete(@"gcp.Registry has been deprecated in favour of gcp.Registry")]
+    [Obsolete(@"gcp.kms.Registry has been deprecated in favour of gcp.iot.Registry")]
     public partial class Registry : Pulumi.CustomResource
     {
         [Output("credentials")]
