@@ -76,7 +76,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly ingressSettings!: pulumi.Output<string | undefined>;
     /**
-     * A set of key/value label pairs to assign to the function.
+     * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      */
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -238,7 +238,7 @@ export interface FunctionState {
      */
     readonly ingressSettings?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs to assign to the function.
+     * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -330,7 +330,7 @@ export interface FunctionArgs {
      */
     readonly ingressSettings?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs to assign to the function.
+     * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      */
     readonly labels?: pulumi.Input<{[key: string]: any}>;
     /**

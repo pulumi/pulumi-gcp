@@ -25,6 +25,8 @@ import (
 type Job struct {
 	pulumi.CustomResourceState
 
+	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
+	AdditionalExperiments pulumi.StringArrayOutput `pulumi:"additionalExperiments"`
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration pulumi.StringPtrOutput `pulumi:"ipConfiguration"`
 	// The unique ID of this job.
@@ -99,6 +101,8 @@ func GetJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Job resources.
 type jobState struct {
+	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
+	AdditionalExperiments []string `pulumi:"additionalExperiments"`
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration *string `pulumi:"ipConfiguration"`
 	// The unique ID of this job.
@@ -140,6 +144,8 @@ type jobState struct {
 }
 
 type JobState struct {
+	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
+	AdditionalExperiments pulumi.StringArrayInput
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration pulumi.StringPtrInput
 	// The unique ID of this job.
@@ -185,6 +191,8 @@ func (JobState) ElementType() reflect.Type {
 }
 
 type jobArgs struct {
+	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
+	AdditionalExperiments []string `pulumi:"additionalExperiments"`
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration *string `pulumi:"ipConfiguration"`
 	// User labels to be specified for the job. Keys and values should follow the restrictions
@@ -221,6 +229,8 @@ type jobArgs struct {
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
+	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
+	AdditionalExperiments pulumi.StringArrayInput
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration pulumi.StringPtrInput
 	// User labels to be specified for the job. Keys and values should follow the restrictions

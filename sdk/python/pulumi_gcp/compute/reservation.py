@@ -60,8 +60,7 @@ class Reservation(pulumi.CustomResource):
         * `localSsds` (`list`) - The amount of local ssd to reserve with each instance. This
           reserves disks of type `local-ssd`.  Structure is documented below.
           * `disk_size_gb` (`float`) - The size of the disk in base-2 GB.
-          * `interface` (`str`) - The disk interface to use for attaching this disk, one
-            of `SCSI` or `NVME`. The default is `SCSI`.
+          * `interface` (`str`) - The disk interface to use for attaching this disk.
 
         * `machine_type` (`str`) - The name of the machine type to reserve.
         * `min_cpu_platform` (`str`) - The minimum CPU platform for the reservation. For example,
@@ -136,8 +135,7 @@ class Reservation(pulumi.CustomResource):
             * `localSsds` (`pulumi.Input[list]`) - The amount of local ssd to reserve with each instance. This
               reserves disks of type `local-ssd`.  Structure is documented below.
               * `disk_size_gb` (`pulumi.Input[float]`) - The size of the disk in base-2 GB.
-              * `interface` (`pulumi.Input[str]`) - The disk interface to use for attaching this disk, one
-                of `SCSI` or `NVME`. The default is `SCSI`.
+              * `interface` (`pulumi.Input[str]`) - The disk interface to use for attaching this disk.
 
             * `machine_type` (`pulumi.Input[str]`) - The name of the machine type to reserve.
             * `min_cpu_platform` (`pulumi.Input[str]`) - The minimum CPU platform for the reservation. For example,
@@ -228,8 +226,7 @@ class Reservation(pulumi.CustomResource):
             * `localSsds` (`pulumi.Input[list]`) - The amount of local ssd to reserve with each instance. This
               reserves disks of type `local-ssd`.  Structure is documented below.
               * `disk_size_gb` (`pulumi.Input[float]`) - The size of the disk in base-2 GB.
-              * `interface` (`pulumi.Input[str]`) - The disk interface to use for attaching this disk, one
-                of `SCSI` or `NVME`. The default is `SCSI`.
+              * `interface` (`pulumi.Input[str]`) - The disk interface to use for attaching this disk.
 
             * `machine_type` (`pulumi.Input[str]`) - The name of the machine type to reserve.
             * `min_cpu_platform` (`pulumi.Input[str]`) - The minimum CPU platform for the reservation. For example,

@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the address to reserve, default is EXTERNAL.
+        /// The type of the address to reserve.
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
         /// </summary>
@@ -51,8 +51,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The IP Version that will be used by this address. Valid options are
-        /// `IPV4` or `IPV6`. The default value is `IPV4`.
+        /// The IP Version that will be used by this address. The default value is `IPV4`.
         /// </summary>
         [Output("ipVersion")]
         public Output<string?> IpVersion { get; private set; } = null!;
@@ -174,7 +173,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The type of the address to reserve, default is EXTERNAL.
+        /// The type of the address to reserve.
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
         /// </summary>
@@ -188,8 +187,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IP Version that will be used by this address. Valid options are
-        /// `IPV4` or `IPV6`. The default value is `IPV4`.
+        /// The IP Version that will be used by this address. The default value is `IPV4`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -266,7 +264,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The type of the address to reserve, default is EXTERNAL.
+        /// The type of the address to reserve.
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
         /// </summary>
@@ -286,8 +284,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IP Version that will be used by this address. Valid options are
-        /// `IPV4` or `IPV6`. The default value is `IPV4`.
+        /// The IP Version that will be used by this address. The default value is `IPV4`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }

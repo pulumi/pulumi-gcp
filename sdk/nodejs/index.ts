@@ -8,6 +8,7 @@ export * from "./utils";
 // Export sub-modules:
 import * as accesscontextmanager from "./accesscontextmanager/index";
 import * as appengine from "./appengine/index";
+import * as artifactregistry from "./artifactregistry/index";
 import * as bigquery from "./bigquery/index";
 import * as bigtable from "./bigtable/index";
 import * as billing from "./billing/index";
@@ -64,4 +65,4 @@ import * as storage from "./storage/index";
 import * as tpu from "./tpu/index";
 import * as types from "./types/index";
 import * as vpcaccess from "./vpcaccess/index";
-export {accesscontextmanager, appengine, bigquery, bigtable, billing, binaryauthorization, cloudbuild, cloudfunctions, cloudrun, cloudscheduler, cloudtasks, composer, compute, config, container, containeranalysis, dataflow, datafusion, dataproc, datastore, deploymentmanager, diagflow, dns, endpoints, filestore, firebase, firestore, folder, gameservices, healthcare, iam, iap, identityplatform, iot, kms, logging, ml, monitoring, organizations, oslogin, projects, pubsub, redis, resourcemanager, runtimeconfig, secretmanager, securitycenter, serviceAccount, servicedirectory, servicenetworking, serviceusage, sourcerepo, spanner, sql, storage, tpu, types, vpcaccess};
+export {accesscontextmanager, appengine, artifactregistry, bigquery, bigtable, billing, binaryauthorization, cloudbuild, cloudfunctions, cloudrun, cloudscheduler, cloudtasks, composer, compute, config, container, containeranalysis, dataflow, datafusion, dataproc, datastore, deploymentmanager, diagflow, dns, endpoints, filestore, firebase, firestore, folder, gameservices, healthcare, iam, iap, identityplatform, iot, kms, logging, ml, monitoring, organizations, oslogin, projects, pubsub, redis, resourcemanager, runtimeconfig, secretmanager, securitycenter, serviceAccount, servicedirectory, servicenetworking, serviceusage, sourcerepo, spanner, sql, storage, tpu, types, vpcaccess};

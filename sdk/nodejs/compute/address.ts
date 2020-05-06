@@ -86,8 +86,7 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly address!: pulumi.Output<string>;
     /**
-     * The type of address to reserve, either INTERNAL or EXTERNAL.
-     * If unspecified, defaults to EXTERNAL.
+     * The type of address to reserve.
      */
     public readonly addressType!: pulumi.Output<string | undefined>;
     /**
@@ -116,8 +115,7 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The networking tier used for configuring this address. This field can
-     * take the following values: PREMIUM or STANDARD. If this field is not
+     * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      */
     public readonly networkTier!: pulumi.Output<string>;
@@ -219,8 +217,7 @@ export interface AddressState {
      */
     readonly address?: pulumi.Input<string>;
     /**
-     * The type of address to reserve, either INTERNAL or EXTERNAL.
-     * If unspecified, defaults to EXTERNAL.
+     * The type of address to reserve.
      */
     readonly addressType?: pulumi.Input<string>;
     /**
@@ -249,8 +246,7 @@ export interface AddressState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The networking tier used for configuring this address. This field can
-     * take the following values: PREMIUM or STANDARD. If this field is not
+     * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      */
     readonly networkTier?: pulumi.Input<string>;
@@ -299,8 +295,7 @@ export interface AddressArgs {
      */
     readonly address?: pulumi.Input<string>;
     /**
-     * The type of address to reserve, either INTERNAL or EXTERNAL.
-     * If unspecified, defaults to EXTERNAL.
+     * The type of address to reserve.
      */
     readonly addressType?: pulumi.Input<string>;
     /**
@@ -321,8 +316,7 @@ export interface AddressArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The networking tier used for configuring this address. This field can
-     * take the following values: PREMIUM or STANDARD. If this field is not
+     * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      */
     readonly networkTier?: pulumi.Input<string>;

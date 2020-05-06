@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// is granted this AccessLevel. If AND is used, each Condition in
         /// conditions must be satisfied for the AccessLevel to be applied. If
         /// OR is used, at least one Condition in conditions must be satisfied
-        /// for the AccessLevel to be applied. Defaults to AND if unspecified.
+        /// for the AccessLevel to be applied.
         /// </summary>
         public readonly string? CombiningFunction;
         /// <summary>

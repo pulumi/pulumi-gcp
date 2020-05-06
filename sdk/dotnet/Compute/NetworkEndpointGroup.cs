@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+        /// Type of network endpoints in this network endpoint group.
         /// </summary>
         [Output("networkEndpointType")]
         public Output<string?> NetworkEndpointType { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+        /// Type of network endpoints in this network endpoint group.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
@@ -245,7 +245,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+        /// Type of network endpoints in this network endpoint group.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }

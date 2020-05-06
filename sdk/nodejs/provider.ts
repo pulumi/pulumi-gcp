@@ -42,8 +42,10 @@ export class Provider extends pulumi.ProviderResource {
             inputs["accessContextManagerCustomEndpoint"] = args ? args.accessContextManagerCustomEndpoint : undefined;
             inputs["accessToken"] = args ? args.accessToken : undefined;
             inputs["appEngineCustomEndpoint"] = args ? args.appEngineCustomEndpoint : undefined;
+            inputs["artifactRegistryCustomEndpoint"] = args ? args.artifactRegistryCustomEndpoint : undefined;
             inputs["batching"] = pulumi.output(args ? args.batching : undefined).apply(JSON.stringify);
             inputs["bigQueryCustomEndpoint"] = args ? args.bigQueryCustomEndpoint : undefined;
+            inputs["bigqueryConnectionCustomEndpoint"] = args ? args.bigqueryConnectionCustomEndpoint : undefined;
             inputs["bigqueryDataTransferCustomEndpoint"] = args ? args.bigqueryDataTransferCustomEndpoint : undefined;
             inputs["bigqueryReservationCustomEndpoint"] = args ? args.bigqueryReservationCustomEndpoint : undefined;
             inputs["bigtableCustomEndpoint"] = args ? args.bigtableCustomEndpoint : undefined;
@@ -131,8 +133,10 @@ export interface ProviderArgs {
     readonly accessContextManagerCustomEndpoint?: pulumi.Input<string>;
     readonly accessToken?: pulumi.Input<string>;
     readonly appEngineCustomEndpoint?: pulumi.Input<string>;
+    readonly artifactRegistryCustomEndpoint?: pulumi.Input<string>;
     readonly batching?: pulumi.Input<inputs.ProviderBatching>;
     readonly bigQueryCustomEndpoint?: pulumi.Input<string>;
+    readonly bigqueryConnectionCustomEndpoint?: pulumi.Input<string>;
     readonly bigqueryDataTransferCustomEndpoint?: pulumi.Input<string>;
     readonly bigqueryReservationCustomEndpoint?: pulumi.Input<string>;
     readonly bigtableCustomEndpoint?: pulumi.Input<string>;

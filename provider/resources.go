@@ -21,6 +21,7 @@ const (
 	// https://github.com/GoogleCloudPlatform/google-cloud-go
 	gcpAccessContextManager = "AccessContextManager" // Access Context Manager resources
 	gcpAppEngine            = "AppEngine"            // AppEngine resources
+	gcpArtifactRegistry     = "ArtifactRegistry"     // ArtifactRegistry resources
 	gcpBigQuery             = "BigQuery"             // BigQuery resources
 	gcpBigTable             = "BigTable"             // BitTable resources
 	gcpBilling              = "Billing"              // Billing resources
@@ -118,6 +119,10 @@ func gcpResource(mod string, res string) tokens.Type {
 // managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
 var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
+func boolRef(b bool) *bool {
+	return &b
+}
+
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
 	p := google.Provider().(*schema.Provider)
@@ -202,6 +207,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_bigtable_app_profile":          {Tok: gcpResource(gcpBigQuery, "AppProfile")},
 			"google_bigquery_dataset_access":       {Tok: gcpResource(gcpBigQuery, "DatasetAccess")},
 			"google_bigquery_job":                  {Tok: gcpResource(gcpBigQuery, "Job")},
+			"google_bigquery_connection":           {Tok: gcpResource(gcpBigQuery, "Connection")},
 
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
@@ -925,15 +931,19 @@ func Provider() tfbridge.ProviderInfo {
 			"google_sql_source_representation_instance": {Tok: gcpResource(gcpSQL, "SourceRepresentationInstance")},
 
 			// Stackdriver Logging resources
-			"google_logging_billing_account_exclusion": {Tok: gcpResource(gcpLogging, "BillingAccountExclusion")},
-			"google_logging_billing_account_sink":      {Tok: gcpResource(gcpLogging, "BillingAccountSink")},
-			"google_logging_folder_exclusion":          {Tok: gcpResource(gcpLogging, "FolderExclusion")},
-			"google_logging_folder_sink":               {Tok: gcpResource(gcpLogging, "FolderSink")},
-			"google_logging_metric":                    {Tok: gcpResource(gcpLogging, "Metric")},
-			"google_logging_organization_exclusion":    {Tok: gcpResource(gcpLogging, "OrganizationExclusion")},
-			"google_logging_organization_sink":         {Tok: gcpResource(gcpLogging, "OrganizationSink")},
-			"google_logging_project_exclusion":         {Tok: gcpResource(gcpLogging, "ProjectExclusion")},
-			"google_logging_project_sink":              {Tok: gcpResource(gcpLogging, "ProjectSink")},
+			"google_logging_billing_account_exclusion":     {Tok: gcpResource(gcpLogging, "BillingAccountExclusion")},
+			"google_logging_billing_account_sink":          {Tok: gcpResource(gcpLogging, "BillingAccountSink")},
+			"google_logging_folder_exclusion":              {Tok: gcpResource(gcpLogging, "FolderExclusion")},
+			"google_logging_folder_sink":                   {Tok: gcpResource(gcpLogging, "FolderSink")},
+			"google_logging_metric":                        {Tok: gcpResource(gcpLogging, "Metric")},
+			"google_logging_organization_exclusion":        {Tok: gcpResource(gcpLogging, "OrganizationExclusion")},
+			"google_logging_organization_sink":             {Tok: gcpResource(gcpLogging, "OrganizationSink")},
+			"google_logging_project_exclusion":             {Tok: gcpResource(gcpLogging, "ProjectExclusion")},
+			"google_logging_project_sink":                  {Tok: gcpResource(gcpLogging, "ProjectSink")},
+			"google_logging_billing_account_bucket_config": {Tok: gcpResource(gcpLogging, "BillingAccountBucketConfig")},
+			"google_logging_folder_bucket_config":          {Tok: gcpResource(gcpLogging, "FolderBucketConfig")},
+			"google_logging_organization_bucket_config":    {Tok: gcpResource(gcpLogging, "OrganizationBucketConfig")},
+			"google_logging_project_bucket_config":         {Tok: gcpResource(gcpLogging, "ProjectBucketConfig")},
 
 			// Storage resources
 			"google_storage_bucket": {
@@ -1253,6 +1263,15 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_healthcare_hl7_v2_store": {
 				Tok: gcpResource(gcpHealthcare, "Hl7Store"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					// Prevent unwanted singularization of the property type to `Hl7StoreNotificationConfig` as that
+					// clashes with an existing deprecated property
+					"notification_configs": {
+						Elem: &tfbridge.SchemaInfo{
+							NestedType: "Hl7StoreNotificationConfigs",
+						},
+					},
+				},
 				Docs: &tfbridge.DocInfo{
 					Source: "healthcare_hl7_v2_store.html.markdown",
 				},
@@ -1394,6 +1413,27 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpServiceDirectory, "ServiceIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "service_directory_service_iam.html.markdown",
+				},
+			},
+
+			// ArtifactRegistry
+			"google_artifact_registry_repository": {Tok: gcpResource(gcpArtifactRegistry, "Repository")},
+			"google_artifact_registry_repository_iam_policy": {
+				Tok: gcpResource(gcpArtifactRegistry, "RepositoryIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "artifact_registry_repository_iam.html.markdown",
+				},
+			},
+			"google_artifact_registry_repository_iam_binding": {
+				Tok: gcpResource(gcpArtifactRegistry, "RepositoryIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "artifact_registry_repository_iam.html.markdown",
+				},
+			},
+			"google_artifact_registry_repository_iam_member": {
+				Tok: gcpResource(gcpArtifactRegistry, "RepositoryIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "artifact_registry_repository_iam.html.markdown",
 				},
 			},
 		},

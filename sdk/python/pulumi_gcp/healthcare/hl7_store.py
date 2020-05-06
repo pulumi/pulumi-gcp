@@ -33,8 +33,32 @@ class Hl7Store(pulumi.CustomResource):
     """
     notification_config: pulumi.Output[dict]
     """
+    -
+    (Optional, Deprecated)
     A nested object resource  Structure is documented below.
 
+      * `pubsubTopic` (`str`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+        PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+        It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+        was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+        project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+        Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+    """
+    notification_configs: pulumi.Output[list]
+    """
+    A list of notification configs. Each configuration uses a filter to determine whether to publish a
+    message (both Ingest & Create) on the corresponding notification destination. Only the message name
+    is sent as part of the notification. Supplied by the client.  Structure is documented below.
+
+      * `filter` (`str`) - Restricts notifications sent for messages matching a filter. If this is empty, all messages
+        are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+        Fields/functions available for filtering are:
+        * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
+        * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date < "2017-01-02".
+        * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
+        * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
+        * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
+        * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
       * `pubsubTopic` (`str`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
         It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
@@ -56,7 +80,7 @@ class Hl7Store(pulumi.CustomResource):
     """
     The fully qualified name of this dataset
     """
-    def __init__(__self__, resource_name, opts=None, dataset=None, labels=None, name=None, notification_config=None, parser_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, dataset=None, labels=None, name=None, notification_config=None, notification_configs=None, parser_config=None, __props__=None, __name__=None, __opts__=None):
         """
         A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
         standard for Healthcare information exchange
@@ -81,11 +105,34 @@ class Hl7Store(pulumi.CustomResource):
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input[dict] notification_config: A nested object resource  Structure is documented below.
+        :param pulumi.Input[dict] notification_config: -
+               (Optional, Deprecated)
+               A nested object resource  Structure is documented below.
+        :param pulumi.Input[list] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
+               message (both Ingest & Create) on the corresponding notification destination. Only the message name
+               is sent as part of the notification. Supplied by the client.  Structure is documented below.
         :param pulumi.Input[dict] parser_config: A nested object resource  Structure is documented below.
 
         The **notification_config** object supports the following:
 
+          * `pubsubTopic` (`pulumi.Input[str]`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+            PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+            It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+            was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+            project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+            Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+
+        The **notification_configs** object supports the following:
+
+          * `filter` (`pulumi.Input[str]`) - Restricts notifications sent for messages matching a filter. If this is empty, all messages
+            are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+            Fields/functions available for filtering are:
+            * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
+            * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date < "2017-01-02".
+            * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
+            * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
+            * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
+            * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
           * `pubsubTopic` (`pulumi.Input[str]`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
             PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
             It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
@@ -124,6 +171,7 @@ class Hl7Store(pulumi.CustomResource):
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['notification_config'] = notification_config
+            __props__['notification_configs'] = notification_configs
             __props__['parser_config'] = parser_config
             __props__['self_link'] = None
         super(Hl7Store, __self__).__init__(
@@ -133,7 +181,7 @@ class Hl7Store(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, dataset=None, labels=None, name=None, notification_config=None, parser_config=None, self_link=None):
+    def get(resource_name, id, opts=None, dataset=None, labels=None, name=None, notification_config=None, notification_configs=None, parser_config=None, self_link=None):
         """
         Get an existing Hl7Store resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -153,12 +201,35 @@ class Hl7Store(pulumi.CustomResource):
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input[dict] notification_config: A nested object resource  Structure is documented below.
+        :param pulumi.Input[dict] notification_config: -
+               (Optional, Deprecated)
+               A nested object resource  Structure is documented below.
+        :param pulumi.Input[list] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
+               message (both Ingest & Create) on the corresponding notification destination. Only the message name
+               is sent as part of the notification. Supplied by the client.  Structure is documented below.
         :param pulumi.Input[dict] parser_config: A nested object resource  Structure is documented below.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
 
         The **notification_config** object supports the following:
 
+          * `pubsubTopic` (`pulumi.Input[str]`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+            PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+            It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+            was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+            project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+            Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+
+        The **notification_configs** object supports the following:
+
+          * `filter` (`pulumi.Input[str]`) - Restricts notifications sent for messages matching a filter. If this is empty, all messages
+            are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+            Fields/functions available for filtering are:
+            * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
+            * send_date or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, send_date < "2017-01-02".
+            * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
+            * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
+            * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
+            * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
           * `pubsubTopic` (`pulumi.Input[str]`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
             PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
             It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
@@ -182,6 +253,7 @@ class Hl7Store(pulumi.CustomResource):
         __props__["labels"] = labels
         __props__["name"] = name
         __props__["notification_config"] = notification_config
+        __props__["notification_configs"] = notification_configs
         __props__["parser_config"] = parser_config
         __props__["self_link"] = self_link
         return Hl7Store(resource_name, opts=opts, __props__=__props__)

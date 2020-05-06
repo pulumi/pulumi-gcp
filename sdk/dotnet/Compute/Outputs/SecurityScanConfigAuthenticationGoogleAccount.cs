@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// The password of the custom account. The credential is stored encrypted
-        /// in GCP.
+        /// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string Password;
         /// <summary>

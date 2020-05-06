@@ -24,11 +24,14 @@ namespace Pulumi.Gcp.Kms
     /// * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
     /// * How-to Guides
     ///     * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
+    /// 
+    /// &gt; **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw
+    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// </summary>
     public partial class SecretCiphertext : Pulumi.CustomResource
     {
         /// <summary>
-        /// The additional authenticated data used for integrity checks during encryption and decryption.
+        /// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("additionalAuthenticatedData")]
         public Output<string?> AdditionalAuthenticatedData { get; private set; } = null!;
@@ -47,7 +50,7 @@ namespace Pulumi.Gcp.Kms
         public Output<string> CryptoKey { get; private set; } = null!;
 
         /// <summary>
-        /// The plaintext to be encrypted.
+        /// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("plaintext")]
         public Output<string> Plaintext { get; private set; } = null!;
@@ -99,7 +102,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class SecretCiphertextArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The additional authenticated data used for integrity checks during encryption and decryption.
+        /// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("additionalAuthenticatedData")]
         public Input<string>? AdditionalAuthenticatedData { get; set; }
@@ -112,7 +115,7 @@ namespace Pulumi.Gcp.Kms
         public Input<string> CryptoKey { get; set; } = null!;
 
         /// <summary>
-        /// The plaintext to be encrypted.
+        /// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("plaintext", required: true)]
         public Input<string> Plaintext { get; set; } = null!;
@@ -125,7 +128,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class SecretCiphertextState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The additional authenticated data used for integrity checks during encryption and decryption.
+        /// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("additionalAuthenticatedData")]
         public Input<string>? AdditionalAuthenticatedData { get; set; }
@@ -144,7 +147,7 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? CryptoKey { get; set; }
 
         /// <summary>
-        /// The plaintext to be encrypted.
+        /// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("plaintext")]
         public Input<string>? Plaintext { get; set; }

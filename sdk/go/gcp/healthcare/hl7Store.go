@@ -36,8 +36,14 @@ type Hl7Store struct {
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name pulumi.StringOutput `pulumi:"name"`
+	// -
+	// (Optional, Deprecated)
 	// A nested object resource  Structure is documented below.
 	NotificationConfig Hl7StoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
+	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
+	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
+	// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+	NotificationConfigs Hl7StoreNotificationConfigsArrayOutput `pulumi:"notificationConfigs"`
 	// A nested object resource  Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrOutput `pulumi:"parserConfig"`
 	// The fully qualified name of this dataset
@@ -90,8 +96,14 @@ type hl7StoreState struct {
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name *string `pulumi:"name"`
+	// -
+	// (Optional, Deprecated)
 	// A nested object resource  Structure is documented below.
 	NotificationConfig *Hl7StoreNotificationConfig `pulumi:"notificationConfig"`
+	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
+	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
+	// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+	NotificationConfigs []Hl7StoreNotificationConfigs `pulumi:"notificationConfigs"`
 	// A nested object resource  Structure is documented below.
 	ParserConfig *Hl7StoreParserConfig `pulumi:"parserConfig"`
 	// The fully qualified name of this dataset
@@ -114,8 +126,14 @@ type Hl7StoreState struct {
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name pulumi.StringPtrInput
+	// -
+	// (Optional, Deprecated)
 	// A nested object resource  Structure is documented below.
 	NotificationConfig Hl7StoreNotificationConfigPtrInput
+	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
+	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
+	// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+	NotificationConfigs Hl7StoreNotificationConfigsArrayInput
 	// A nested object resource  Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrInput
 	// The fully qualified name of this dataset
@@ -142,8 +160,14 @@ type hl7StoreArgs struct {
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name *string `pulumi:"name"`
+	// -
+	// (Optional, Deprecated)
 	// A nested object resource  Structure is documented below.
 	NotificationConfig *Hl7StoreNotificationConfig `pulumi:"notificationConfig"`
+	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
+	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
+	// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+	NotificationConfigs []Hl7StoreNotificationConfigs `pulumi:"notificationConfigs"`
 	// A nested object resource  Structure is documented below.
 	ParserConfig *Hl7StoreParserConfig `pulumi:"parserConfig"`
 }
@@ -165,8 +189,14 @@ type Hl7StoreArgs struct {
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name pulumi.StringPtrInput
+	// -
+	// (Optional, Deprecated)
 	// A nested object resource  Structure is documented below.
 	NotificationConfig Hl7StoreNotificationConfigPtrInput
+	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
+	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
+	// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+	NotificationConfigs Hl7StoreNotificationConfigsArrayInput
 	// A nested object resource  Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrInput
 }

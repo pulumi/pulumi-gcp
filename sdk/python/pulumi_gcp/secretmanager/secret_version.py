@@ -32,17 +32,20 @@ class SecretVersion(pulumi.CustomResource):
     """
     secret_data: pulumi.Output[str]
     """
-    The secret data. Must be no larger than 64KiB.
+    The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
     """
     def __init__(__self__, resource_name, opts=None, enabled=None, secret=None, secret_data=None, __props__=None, __name__=None, __opts__=None):
         """
         A secret version resource.
 
+        > **Warning:** All arguments including `payload.secret_data` will be stored in the raw
+        state as plain-text.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[str] secret: Secret Manager secret resource
-        :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
+        :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,7 +92,7 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[str] name: The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
         :param pulumi.Input[str] secret: Secret Manager secret resource
-        :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
+        :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -24,8 +24,7 @@ class RouterNat(pulumi.CustomResource):
     Configuration for logging on NAT  Structure is documented below.
 
       * `enable` (`bool`) - Indicates whether or not to export logs.
-      * `filter` (`str`) - Specifies the desired filtering of logs on this NAT. Valid
-        values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+      * `filter` (`str`) - Specifies the desired filtering of logs on this NAT.
     """
     min_ports_per_vm: pulumi.Output[float]
     """
@@ -150,8 +149,7 @@ class RouterNat(pulumi.CustomResource):
         The **log_config** object supports the following:
 
           * `enable` (`pulumi.Input[bool]`) - Indicates whether or not to export logs.
-          * `filter` (`pulumi.Input[str]`) - Specifies the desired filtering of logs on this NAT. Valid
-            values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+          * `filter` (`pulumi.Input[str]`) - Specifies the desired filtering of logs on this NAT.
 
         The **subnetworks** object supports the following:
 
@@ -254,8 +252,7 @@ class RouterNat(pulumi.CustomResource):
         The **log_config** object supports the following:
 
           * `enable` (`pulumi.Input[bool]`) - Indicates whether or not to export logs.
-          * `filter` (`pulumi.Input[str]`) - Specifies the desired filtering of logs on this NAT. Valid
-            values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+          * `filter` (`pulumi.Input[str]`) - Specifies the desired filtering of logs on this NAT.
 
         The **subnetworks** object supports the following:
 

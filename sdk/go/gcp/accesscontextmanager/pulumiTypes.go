@@ -15,7 +15,7 @@ type AccessLevelBasic struct {
 	// is granted this AccessLevel. If AND is used, each Condition in
 	// conditions must be satisfied for the AccessLevel to be applied. If
 	// OR is used, at least one Condition in conditions must be satisfied
-	// for the AccessLevel to be applied. Defaults to AND if unspecified.
+	// for the AccessLevel to be applied.
 	CombiningFunction *string `pulumi:"combiningFunction"`
 	// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
 	Conditions []AccessLevelBasicCondition `pulumi:"conditions"`
@@ -38,7 +38,7 @@ type AccessLevelBasicArgs struct {
 	// is granted this AccessLevel. If AND is used, each Condition in
 	// conditions must be satisfied for the AccessLevel to be applied. If
 	// OR is used, at least one Condition in conditions must be satisfied
-	// for the AccessLevel to be applied. Defaults to AND if unspecified.
+	// for the AccessLevel to be applied.
 	CombiningFunction pulumi.StringPtrInput `pulumi:"combiningFunction"`
 	// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
 	Conditions AccessLevelBasicConditionArrayInput `pulumi:"conditions"`
@@ -126,7 +126,7 @@ func (o AccessLevelBasicOutput) ToAccessLevelBasicPtrOutputWithContext(ctx conte
 // is granted this AccessLevel. If AND is used, each Condition in
 // conditions must be satisfied for the AccessLevel to be applied. If
 // OR is used, at least one Condition in conditions must be satisfied
-// for the AccessLevel to be applied. Defaults to AND if unspecified.
+// for the AccessLevel to be applied.
 func (o AccessLevelBasicOutput) CombiningFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
 }
@@ -158,7 +158,7 @@ func (o AccessLevelBasicPtrOutput) Elem() AccessLevelBasicOutput {
 // is granted this AccessLevel. If AND is used, each Condition in
 // conditions must be satisfied for the AccessLevel to be applied. If
 // OR is used, at least one Condition in conditions must be satisfied
-// for the AccessLevel to be applied. Defaults to AND if unspecified.
+// for the AccessLevel to be applied.
 func (o AccessLevelBasicPtrOutput) CombiningFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessLevelBasic) *string {
 		if v == nil {

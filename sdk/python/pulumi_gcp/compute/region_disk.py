@@ -162,9 +162,8 @@ class RegionDisk(pulumi.CustomResource):
         * How-to Guides
             * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
 
-        > **Warning:** All arguments including the disk encryption key will be stored in the raw
-        state as plain-text.
-        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

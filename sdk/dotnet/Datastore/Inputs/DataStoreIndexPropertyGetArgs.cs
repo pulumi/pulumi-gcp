@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Datastore.Inputs
     public sealed class DataStoreIndexPropertyGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The direction the index should optimize for sorting. Possible values are ASCENDING and DESCENDING.
+        /// The direction the index should optimize for sorting.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;

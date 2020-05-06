@@ -11,8 +11,9 @@ namespace Pulumi.Gcp.AppEngine
 {
     /// <summary>
     /// Standard App Version resource to create a new version of standard GAE Application.
+    /// Learn about the differences between the standard environment and the flexible environment
+    /// at https://cloud.google.com/appengine/docs/the-appengine-environments.
     /// Currently supporting Zip and File Containers.
-    /// Currently does not support async operation checking.
     /// 
     /// 
     /// To get more information about StandardAppVersion, see:
@@ -24,6 +25,18 @@ namespace Pulumi.Gcp.AppEngine
     public partial class StandardAppVersion : Pulumi.CustomResource
     {
         /// <summary>
+        /// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+        /// </summary>
+        [Output("automaticScaling")]
+        public Output<Outputs.StandardAppVersionAutomaticScaling?> AutomaticScaling { get; private set; } = null!;
+
+        /// <summary>
+        /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+        /// </summary>
+        [Output("basicScaling")]
+        public Output<Outputs.StandardAppVersionBasicScaling?> BasicScaling { get; private set; } = null!;
+
+        /// <summary>
         /// If set to `true`, the service will be deleted if it is the last version.    
         /// </summary>
         [Output("deleteServiceOnDestroy")]
@@ -33,7 +46,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Code and application artifacts that make up this version.  Structure is documented below.
         /// </summary>
         [Output("deployment")]
-        public Output<Outputs.StandardAppVersionDeployment?> Deployment { get; private set; } = null!;
+        public Output<Outputs.StandardAppVersionDeployment> Deployment { get; private set; } = null!;
 
         /// <summary>
         /// The entrypoint for the application.  Structure is documented below.
@@ -56,11 +69,12 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Instance class that is used to run this version. Valid values are
-        /// AutomaticScaling F1, F2, F4, F4_1G
-        /// (Only AutomaticScaling is supported at the moment)
+        /// AutomaticScaling: F1, F2, F4, F4_1G
+        /// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+        /// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
         /// </summary>
         [Output("instanceClass")]
-        public Output<string?> InstanceClass { get; private set; } = null!;
+        public Output<string> InstanceClass { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
@@ -69,7 +83,13 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableArray<Outputs.StandardAppVersionLibrary>> Libraries { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+        /// </summary>
+        [Output("manualScaling")]
+        public Output<Outputs.StandardAppVersionManualScaling?> ManualScaling { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the library. Example "django".
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -165,6 +185,18 @@ namespace Pulumi.Gcp.AppEngine
     public sealed class StandardAppVersionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+        /// </summary>
+        [Input("automaticScaling")]
+        public Input<Inputs.StandardAppVersionAutomaticScalingArgs>? AutomaticScaling { get; set; }
+
+        /// <summary>
+        /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+        /// </summary>
+        [Input("basicScaling")]
+        public Input<Inputs.StandardAppVersionBasicScalingArgs>? BasicScaling { get; set; }
+
+        /// <summary>
         /// If set to `true`, the service will be deleted if it is the last version.    
         /// </summary>
         [Input("deleteServiceOnDestroy")]
@@ -173,8 +205,8 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// Code and application artifacts that make up this version.  Structure is documented below.
         /// </summary>
-        [Input("deployment")]
-        public Input<Inputs.StandardAppVersionDeploymentArgs>? Deployment { get; set; }
+        [Input("deployment", required: true)]
+        public Input<Inputs.StandardAppVersionDeploymentArgs> Deployment { get; set; } = null!;
 
         /// <summary>
         /// The entrypoint for the application.  Structure is documented below.
@@ -209,8 +241,9 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Instance class that is used to run this version. Valid values are
-        /// AutomaticScaling F1, F2, F4, F4_1G
-        /// (Only AutomaticScaling is supported at the moment)
+        /// AutomaticScaling: F1, F2, F4, F4_1G
+        /// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+        /// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -226,6 +259,12 @@ namespace Pulumi.Gcp.AppEngine
             get => _libraries ?? (_libraries = new InputList<Inputs.StandardAppVersionLibraryArgs>());
             set => _libraries = value;
         }
+
+        /// <summary>
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+        /// </summary>
+        [Input("manualScaling")]
+        public Input<Inputs.StandardAppVersionManualScalingArgs>? ManualScaling { get; set; }
 
         /// <summary>
         /// If set to `true`, the application version will not be deleted.
@@ -279,6 +318,18 @@ namespace Pulumi.Gcp.AppEngine
     public sealed class StandardAppVersionState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+        /// </summary>
+        [Input("automaticScaling")]
+        public Input<Inputs.StandardAppVersionAutomaticScalingGetArgs>? AutomaticScaling { get; set; }
+
+        /// <summary>
+        /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+        /// </summary>
+        [Input("basicScaling")]
+        public Input<Inputs.StandardAppVersionBasicScalingGetArgs>? BasicScaling { get; set; }
+
+        /// <summary>
         /// If set to `true`, the service will be deleted if it is the last version.    
         /// </summary>
         [Input("deleteServiceOnDestroy")]
@@ -323,8 +374,9 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Instance class that is used to run this version. Valid values are
-        /// AutomaticScaling F1, F2, F4, F4_1G
-        /// (Only AutomaticScaling is supported at the moment)
+        /// AutomaticScaling: F1, F2, F4, F4_1G
+        /// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+        /// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -342,7 +394,13 @@ namespace Pulumi.Gcp.AppEngine
         }
 
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+        /// </summary>
+        [Input("manualScaling")]
+        public Input<Inputs.StandardAppVersionManualScalingGetArgs>? ManualScaling { get; set; }
+
+        /// <summary>
+        /// Name of the library. Example "django".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

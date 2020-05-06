@@ -27,7 +27,15 @@ namespace Pulumi.Gcp.Compute
         /// the URL's path portion.
         /// </summary>
         [Output("defaultService")]
-        public Output<string> DefaultService { get; private set; } = null!;
+        public Output<string?> DefaultService { get; private set; } = null!;
+
+        /// <summary>
+        /// When none of the specified hostRules match, the request is redirected to a URL specified
+        /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// </summary>
+        [Output("defaultUrlRedirect")]
+        public Output<Outputs.RegionUrlMapDefaultUrlRedirect?> DefaultUrlRedirect { get; private set; } = null!;
 
         /// <summary>
         /// Description of this test case.
@@ -102,7 +110,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public RegionUrlMap(string name, RegionUrlMapArgs args, CustomResourceOptions? options = null)
+        public RegionUrlMap(string name, RegionUrlMapArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:compute/regionUrlMap:RegionUrlMap", name, args ?? new RegionUrlMapArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -145,8 +153,16 @@ namespace Pulumi.Gcp.Compute
         /// none of the pathRules defined by this PathMatcher is matched by
         /// the URL's path portion.
         /// </summary>
-        [Input("defaultService", required: true)]
-        public Input<string> DefaultService { get; set; } = null!;
+        [Input("defaultService")]
+        public Input<string>? DefaultService { get; set; }
+
+        /// <summary>
+        /// When none of the specified hostRules match, the request is redirected to a URL specified
+        /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// </summary>
+        [Input("defaultUrlRedirect")]
+        public Input<Inputs.RegionUrlMapDefaultUrlRedirectArgs>? DefaultUrlRedirect { get; set; }
 
         /// <summary>
         /// Description of this test case.
@@ -233,6 +249,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("defaultService")]
         public Input<string>? DefaultService { get; set; }
+
+        /// <summary>
+        /// When none of the specified hostRules match, the request is redirected to a URL specified
+        /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// </summary>
+        [Input("defaultUrlRedirect")]
+        public Input<Inputs.RegionUrlMapDefaultUrlRedirectGetArgs>? DefaultUrlRedirect { get; set; }
 
         /// <summary>
         /// Description of this test case.

@@ -17,9 +17,13 @@ access_token = __config__.get('accessToken')
 
 app_engine_custom_endpoint = __config__.get('appEngineCustomEndpoint')
 
+artifact_registry_custom_endpoint = __config__.get('artifactRegistryCustomEndpoint')
+
 batching = __config__.get('batching')
 
 big_query_custom_endpoint = __config__.get('bigQueryCustomEndpoint')
+
+bigquery_connection_custom_endpoint = __config__.get('bigqueryConnectionCustomEndpoint')
 
 bigquery_data_transfer_custom_endpoint = __config__.get('bigqueryDataTransferCustomEndpoint')
 

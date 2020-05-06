@@ -65,6 +65,10 @@ export class Job extends pulumi.CustomResource {
     }
 
     /**
+     * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
+     */
+    public readonly additionalExperiments!: pulumi.Output<string[] | undefined>;
+    /**
      * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
     public readonly ipConfiguration!: pulumi.Output<string | undefined>;
@@ -149,6 +153,7 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as JobState | undefined;
+            inputs["additionalExperiments"] = state ? state.additionalExperiments : undefined;
             inputs["ipConfiguration"] = state ? state.ipConfiguration : undefined;
             inputs["jobId"] = state ? state.jobId : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -175,6 +180,7 @@ export class Job extends pulumi.CustomResource {
             if (!args || args.templateGcsPath === undefined) {
                 throw new Error("Missing required property 'templateGcsPath'");
             }
+            inputs["additionalExperiments"] = args ? args.additionalExperiments : undefined;
             inputs["ipConfiguration"] = args ? args.ipConfiguration : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["machineType"] = args ? args.machineType : undefined;
@@ -209,6 +215,10 @@ export class Job extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Job resources.
  */
 export interface JobState {
+    /**
+     * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
+     */
+    readonly additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
@@ -287,6 +297,10 @@ export interface JobState {
  * The set of arguments for constructing a Job resource.
  */
 export interface JobArgs {
+    /**
+     * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
+     */
+    readonly additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */

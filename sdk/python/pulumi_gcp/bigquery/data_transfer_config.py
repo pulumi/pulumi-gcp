@@ -65,7 +65,13 @@ class DataTransferConfig(pulumi.CustomResource):
     https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
     NOTE: the granularity should be at least 8 hours, or less frequent.
     """
-    def __init__(__self__, resource_name, opts=None, data_refresh_window_days=None, data_source_id=None, destination_dataset_id=None, disabled=None, display_name=None, location=None, params=None, project=None, schedule=None, __props__=None, __name__=None, __opts__=None):
+    service_account_name: pulumi.Output[str]
+    """
+    Optional service account name. If this field is set, transfer config will
+    be created with this service account credentials. It requires that
+    requesting user calling this API has permissions to act as this service account.
+    """
+    def __init__(__self__, resource_name, opts=None, data_refresh_window_days=None, data_source_id=None, destination_dataset_id=None, disabled=None, display_name=None, location=None, params=None, project=None, schedule=None, service_account_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Represents a data transfer configuration. A transfer configuration
         contains all metadata needed to perform a data transfer.
@@ -101,6 +107,9 @@ class DataTransferConfig(pulumi.CustomResource):
                about the format here:
                https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
                NOTE: the granularity should be at least 8 hours, or less frequent.
+        :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will
+               be created with this service account credentials. It requires that
+               requesting user calling this API has permissions to act as this service account.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -136,6 +145,7 @@ class DataTransferConfig(pulumi.CustomResource):
             __props__['params'] = params
             __props__['project'] = project
             __props__['schedule'] = schedule
+            __props__['service_account_name'] = service_account_name
             __props__['name'] = None
         super(DataTransferConfig, __self__).__init__(
             'gcp:bigquery/dataTransferConfig:DataTransferConfig',
@@ -144,7 +154,7 @@ class DataTransferConfig(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, data_refresh_window_days=None, data_source_id=None, destination_dataset_id=None, disabled=None, display_name=None, location=None, name=None, params=None, project=None, schedule=None):
+    def get(resource_name, id, opts=None, data_refresh_window_days=None, data_source_id=None, destination_dataset_id=None, disabled=None, display_name=None, location=None, name=None, params=None, project=None, schedule=None, service_account_name=None):
         """
         Get an existing DataTransferConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -177,6 +187,9 @@ class DataTransferConfig(pulumi.CustomResource):
                about the format here:
                https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
                NOTE: the granularity should be at least 8 hours, or less frequent.
+        :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will
+               be created with this service account credentials. It requires that
+               requesting user calling this API has permissions to act as this service account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -192,6 +205,7 @@ class DataTransferConfig(pulumi.CustomResource):
         __props__["params"] = params
         __props__["project"] = project
         __props__["schedule"] = schedule
+        __props__["service_account_name"] = service_account_name
         return DataTransferConfig(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

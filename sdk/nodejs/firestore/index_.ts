@@ -102,8 +102,7 @@ export class Index extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The scope at which a query is run. One of `"COLLECTION"` or
-     * `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+     * The scope at which a query is run.
      */
     public readonly queryScope!: pulumi.Output<string | undefined>;
 
@@ -183,8 +182,7 @@ export interface IndexState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The scope at which a query is run. One of `"COLLECTION"` or
-     * `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+     * The scope at which a query is run.
      */
     readonly queryScope?: pulumi.Input<string>;
 }
@@ -216,8 +214,7 @@ export interface IndexArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The scope at which a query is run. One of `"COLLECTION"` or
-     * `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+     * The scope at which a query is run.
      */
     readonly queryScope?: pulumi.Input<string>;
 }

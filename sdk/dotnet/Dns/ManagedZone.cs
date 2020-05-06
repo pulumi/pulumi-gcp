@@ -98,9 +98,15 @@ namespace Pulumi.Gcp.Dns
         public Output<bool?> ReverseLookup { get; private set; } = null!;
 
         /// <summary>
+        /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+        /// information related to the namespace associated with the zone.
+        /// </summary>
+        [Output("serviceDirectoryConfig")]
+        public Output<Outputs.ManagedZoneServiceDirectoryConfig?> ServiceDirectoryConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
-        /// Must be one of: `public`, `private`.
         /// </summary>
         [Output("visibility")]
         public Output<string?> Visibility { get; private set; } = null!;
@@ -226,9 +232,15 @@ namespace Pulumi.Gcp.Dns
         public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
+        /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+        /// information related to the namespace associated with the zone.
+        /// </summary>
+        [Input("serviceDirectoryConfig")]
+        public Input<Inputs.ManagedZoneServiceDirectoryConfigArgs>? ServiceDirectoryConfig { get; set; }
+
+        /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
-        /// Must be one of: `public`, `private`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
@@ -328,9 +340,15 @@ namespace Pulumi.Gcp.Dns
         public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
+        /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+        /// information related to the namespace associated with the zone.
+        /// </summary>
+        [Input("serviceDirectoryConfig")]
+        public Input<Inputs.ManagedZoneServiceDirectoryConfigGetArgs>? ServiceDirectoryConfig { get; set; }
+
+        /// <summary>
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
-        /// Must be one of: `public`, `private`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }

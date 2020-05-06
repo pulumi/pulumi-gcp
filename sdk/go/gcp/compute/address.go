@@ -38,8 +38,7 @@ type Address struct {
 	// address types. The IP address must be inside the specified subnetwork,
 	// if any.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// The type of address to reserve, either INTERNAL or EXTERNAL.
-	// If unspecified, defaults to EXTERNAL.
+	// The type of address to reserve.
 	AddressType pulumi.StringPtrOutput `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -56,8 +55,7 @@ type Address struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The networking tier used for configuring this address. This field can
-	// take the following values: PREMIUM or STANDARD. If this field is not
+	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs.
@@ -114,8 +112,7 @@ type addressState struct {
 	// address types. The IP address must be inside the specified subnetwork,
 	// if any.
 	Address *string `pulumi:"address"`
-	// The type of address to reserve, either INTERNAL or EXTERNAL.
-	// If unspecified, defaults to EXTERNAL.
+	// The type of address to reserve.
 	AddressType *string `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -132,8 +129,7 @@ type addressState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The networking tier used for configuring this address. This field can
-	// take the following values: PREMIUM or STANDARD. If this field is not
+	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs.
@@ -163,8 +159,7 @@ type AddressState struct {
 	// address types. The IP address must be inside the specified subnetwork,
 	// if any.
 	Address pulumi.StringPtrInput
-	// The type of address to reserve, either INTERNAL or EXTERNAL.
-	// If unspecified, defaults to EXTERNAL.
+	// The type of address to reserve.
 	AddressType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -181,8 +176,7 @@ type AddressState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The networking tier used for configuring this address. This field can
-	// take the following values: PREMIUM or STANDARD. If this field is not
+	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -216,8 +210,7 @@ type addressArgs struct {
 	// address types. The IP address must be inside the specified subnetwork,
 	// if any.
 	Address *string `pulumi:"address"`
-	// The type of address to reserve, either INTERNAL or EXTERNAL.
-	// If unspecified, defaults to EXTERNAL.
+	// The type of address to reserve.
 	AddressType *string `pulumi:"addressType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -230,8 +223,7 @@ type addressArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The networking tier used for configuring this address. This field can
-	// take the following values: PREMIUM or STANDARD. If this field is not
+	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The ID of the project in which the resource belongs.
@@ -258,8 +250,7 @@ type AddressArgs struct {
 	// address types. The IP address must be inside the specified subnetwork,
 	// if any.
 	Address pulumi.StringPtrInput
-	// The type of address to reserve, either INTERNAL or EXTERNAL.
-	// If unspecified, defaults to EXTERNAL.
+	// The type of address to reserve.
 	AddressType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -272,8 +263,7 @@ type AddressArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The networking tier used for configuring this address. This field can
-	// take the following values: PREMIUM or STANDARD. If this field is not
+	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.

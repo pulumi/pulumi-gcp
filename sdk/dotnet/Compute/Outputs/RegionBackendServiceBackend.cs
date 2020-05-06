@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionBackendServiceBackend
     {
         /// <summary>
-        /// Specifies the balancing mode for this backend. Defaults to CONNECTION.
+        /// Specifies the balancing mode for this backend.
         /// </summary>
         public readonly string? BalancingMode;
         /// <summary>

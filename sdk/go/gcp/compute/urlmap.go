@@ -23,6 +23,10 @@ type URLMap struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService pulumi.StringPtrOutput `pulumi:"defaultService"`
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect URLMapDefaultUrlRedirectPtrOutput `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
@@ -84,6 +88,10 @@ type urlmapState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService *string `pulumi:"defaultService"`
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect *URLMapDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description *string `pulumi:"description"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
@@ -118,6 +126,10 @@ type URLMapState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService pulumi.StringPtrInput
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect URLMapDefaultUrlRedirectPtrInput
 	// Description of this test case.
 	Description pulumi.StringPtrInput
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
@@ -154,6 +166,10 @@ func (URLMapState) ElementType() reflect.Type {
 type urlmapArgs struct {
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService *string `pulumi:"defaultService"`
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect *URLMapDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description *string `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for
@@ -181,6 +197,10 @@ type urlmapArgs struct {
 type URLMapArgs struct {
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService pulumi.StringPtrInput
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect URLMapDefaultUrlRedirectPtrInput
 	// Description of this test case.
 	Description pulumi.StringPtrInput
 	// Specifies changes to request and response headers that need to take effect for

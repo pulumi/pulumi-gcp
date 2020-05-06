@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Sql
     public partial class SourceRepresentationInstance : Pulumi.CustomResource
     {
         /// <summary>
-        /// The MySQL version running on your source database server: MYSQL_5_6 or MYSQL_5_7.
+        /// The MySQL version running on your source database server.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.Sql
     public sealed class SourceRepresentationInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The MySQL version running on your source database server: MYSQL_5_6 or MYSQL_5_7.
+        /// The MySQL version running on your source database server.
         /// </summary>
         [Input("databaseVersion", required: true)]
         public Input<string> DatabaseVersion { get; set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.Sql
     public sealed class SourceRepresentationInstanceState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The MySQL version running on your source database server: MYSQL_5_6 or MYSQL_5_7.
+        /// The MySQL version running on your source database server.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }

@@ -48,7 +48,13 @@ export class RegionUrlMap extends pulumi.CustomResource {
      * none of the pathRules defined by this PathMatcher is matched by
      * the URL's path portion.
      */
-    public readonly defaultService!: pulumi.Output<string>;
+    public readonly defaultService!: pulumi.Output<string | undefined>;
+    /**
+     * When none of the specified hostRules match, the request is redirected to a URL specified
+     * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+     * defaultRouteAction must not be set.  Structure is documented below.
+     */
+    public readonly defaultUrlRedirect!: pulumi.Output<outputs.compute.RegionUrlMapDefaultUrlRedirect | undefined>;
     /**
      * Description of this test case.
      */
@@ -102,13 +108,14 @@ export class RegionUrlMap extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RegionUrlMapArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: RegionUrlMapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionUrlMapArgs | RegionUrlMapState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as RegionUrlMapState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["defaultService"] = state ? state.defaultService : undefined;
+            inputs["defaultUrlRedirect"] = state ? state.defaultUrlRedirect : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["hostRules"] = state ? state.hostRules : undefined;
@@ -121,10 +128,8 @@ export class RegionUrlMap extends pulumi.CustomResource {
             inputs["tests"] = state ? state.tests : undefined;
         } else {
             const args = argsOrState as RegionUrlMapArgs | undefined;
-            if (!args || args.defaultService === undefined) {
-                throw new Error("Missing required property 'defaultService'");
-            }
             inputs["defaultService"] = args ? args.defaultService : undefined;
+            inputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["hostRules"] = args ? args.hostRules : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -162,6 +167,12 @@ export interface RegionUrlMapState {
      * the URL's path portion.
      */
     readonly defaultService?: pulumi.Input<string>;
+    /**
+     * When none of the specified hostRules match, the request is redirected to a URL specified
+     * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+     * defaultRouteAction must not be set.  Structure is documented below.
+     */
+    readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect>;
     /**
      * Description of this test case.
      */
@@ -218,7 +229,13 @@ export interface RegionUrlMapArgs {
      * none of the pathRules defined by this PathMatcher is matched by
      * the URL's path portion.
      */
-    readonly defaultService: pulumi.Input<string>;
+    readonly defaultService?: pulumi.Input<string>;
+    /**
+     * When none of the specified hostRules match, the request is redirected to a URL specified
+     * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+     * defaultRouteAction must not be set.  Structure is documented below.
+     */
+    readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect>;
     /**
      * Description of this test case.
      */

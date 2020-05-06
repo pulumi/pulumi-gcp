@@ -16,7 +16,7 @@ export namespace accesscontextmanager {
          * is granted this AccessLevel. If AND is used, each Condition in
          * conditions must be satisfied for the AccessLevel to be applied. If
          * OR is used, at least one Condition in conditions must be satisfied
-         * for the AccessLevel to be applied. Defaults to AND if unspecified.
+         * for the AccessLevel to be applied.
          */
         combiningFunction?: pulumi.Input<string>;
         /**
@@ -301,11 +301,11 @@ export namespace appengine {
 
     export interface FlexibleAppVersionApiConfig {
         /**
-         * Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
+         * Action to take when users access resources that require authentication.
          */
         authFailAction?: pulumi.Input<string>;
         /**
-         * Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+         * Level of login required to access this resource.
          */
         login?: pulumi.Input<string>;
         /**
@@ -521,7 +521,7 @@ export namespace appengine {
          */
         name: pulumi.Input<string>;
         /**
-         * Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
+         * Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
          */
         rolloutStrategy?: pulumi.Input<string>;
     }
@@ -566,7 +566,9 @@ export namespace appengine {
 
     export interface FlexibleAppVersionManualScaling {
         /**
-         * Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+         * Number of instances to assign to the service at the start.
+         * **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+         * Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
          */
         instances: pulumi.Input<number>;
     }
@@ -671,6 +673,67 @@ export namespace appengine {
         name: pulumi.Input<string>;
     }
 
+    export interface StandardAppVersionAutomaticScaling {
+        /**
+         * Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+         * Defaults to a runtime-specific value.
+         */
+        maxConcurrentRequests?: pulumi.Input<number>;
+        /**
+         * Maximum number of idle instances that should be maintained for this version.
+         */
+        maxIdleInstances?: pulumi.Input<number>;
+        /**
+         * Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        maxPendingLatency?: pulumi.Input<string>;
+        /**
+         * Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+         */
+        minIdleInstances?: pulumi.Input<number>;
+        /**
+         * Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        minPendingLatency?: pulumi.Input<string>;
+        /**
+         * Scheduler settings for standard environment.  Structure is documented below.
+         */
+        standardSchedulerSettings?: pulumi.Input<inputs.appengine.StandardAppVersionAutomaticScalingStandardSchedulerSettings>;
+    }
+
+    export interface StandardAppVersionAutomaticScalingStandardSchedulerSettings {
+        /**
+         * Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+         */
+        maxInstances?: pulumi.Input<number>;
+        /**
+         * Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
+         */
+        minInstances?: pulumi.Input<number>;
+        /**
+         * Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+         */
+        targetCpuUtilization?: pulumi.Input<number>;
+        /**
+         * Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+         */
+        targetThroughputUtilization?: pulumi.Input<number>;
+    }
+
+    export interface StandardAppVersionBasicScaling {
+        /**
+         * Duration of time after the last request that an instance must wait before the instance is shut down.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+         */
+        idleTimeout?: pulumi.Input<string>;
+        /**
+         * Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+         */
+        maxInstances: pulumi.Input<number>;
+    }
+
     export interface StandardAppVersionDeployment {
         /**
          * Manifest of the files stored in Google Cloud Storage that are included as part of this version.
@@ -685,7 +748,7 @@ export namespace appengine {
 
     export interface StandardAppVersionDeploymentFile {
         /**
-         * The identifier for this object. Format specified above.
+         * Name of the library. Example "django".
          */
         name: pulumi.Input<string>;
         /**
@@ -792,13 +855,36 @@ export namespace appengine {
 
     export interface StandardAppVersionLibrary {
         /**
-         * The identifier for this object. Format specified above.
+         * Name of the library. Example "django".
          */
         name?: pulumi.Input<string>;
         /**
          * Version of the library to select, or "latest".
          */
         version?: pulumi.Input<string>;
+    }
+
+    export interface StandardAppVersionManualScaling {
+        /**
+         * Number of instances to assign to the service at the start.
+         * **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+         * Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
+         */
+        instances: pulumi.Input<number>;
+    }
+}
+
+export namespace artifactregistry {
+    export interface RepositoryIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface RepositoryIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 }
 
@@ -813,6 +899,21 @@ export namespace bigquery {
          * The cluster to which read/write requests should be routed.
          */
         clusterId: pulumi.Input<string>;
+    }
+
+    export interface ConnectionCloudSql {
+        /**
+         * Database name.
+         */
+        database: pulumi.Input<string>;
+        /**
+         * Cloud SQL instance ID in the form project:location:instance.
+         */
+        instanceId: pulumi.Input<string>;
+        /**
+         * Type of the Cloud SQL database.
+         */
+        type: pulumi.Input<string>;
     }
 
     export interface DatasetAccess {
@@ -884,7 +985,7 @@ export namespace bigquery {
          * Specifies whether the job is allowed to create new tables. The following values are supported:
          * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
          * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-         * The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+         * Creation, truncation and append actions occur as one atomic update upon job completion
          */
         createDisposition?: pulumi.Input<string>;
         /**
@@ -904,7 +1005,7 @@ export namespace bigquery {
          * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
          * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
          * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-         * The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+         * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
          * Creation, truncation and append actions occur as one atomic update upon job completion.
          */
         writeDisposition?: pulumi.Input<string>;
@@ -1037,7 +1138,7 @@ export namespace bigquery {
          * Specifies whether the job is allowed to create new tables. The following values are supported:
          * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
          * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-         * The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+         * Creation, truncation and append actions occur as one atomic update upon job completion
          */
         createDisposition?: pulumi.Input<string>;
         /**
@@ -1137,7 +1238,7 @@ export namespace bigquery {
          * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
          * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
          * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-         * The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+         * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
          * Creation, truncation and append actions occur as one atomic update upon job completion.
          */
         writeDisposition?: pulumi.Input<string>;
@@ -1195,7 +1296,7 @@ export namespace bigquery {
          * Specifies whether the job is allowed to create new tables. The following values are supported:
          * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
          * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-         * The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+         * Creation, truncation and append actions occur as one atomic update upon job completion
          */
         createDisposition?: pulumi.Input<string>;
         /**
@@ -1230,7 +1331,7 @@ export namespace bigquery {
          */
         parameterMode?: pulumi.Input<string>;
         /**
-         * Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+         * Specifies a priority for the query.
          */
         priority?: pulumi.Input<string>;
         /**
@@ -1270,7 +1371,7 @@ export namespace bigquery {
          * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
          * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
          * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-         * The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+         * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
          * Creation, truncation and append actions occur as one atomic update upon job completion.
          */
         writeDisposition?: pulumi.Input<string>;
@@ -1313,7 +1414,7 @@ export namespace bigquery {
     export interface JobQueryScriptOptions {
         /**
          * Determines which statement in the script represents the "key result",
-         * used to populate the schema and query results of the script job. Default is LAST.
+         * used to populate the schema and query results of the script job.
          */
         keyResultStatement?: pulumi.Input<string>;
         /**
@@ -3095,8 +3196,7 @@ export namespace compute {
         target?: pulumi.Input<number>;
         /**
          * Defines how target utilization value is expressed for a
-         * Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-         * or DELTA_PER_MINUTE.
+         * Stackdriver Monitoring metric.
          */
         type?: pulumi.Input<string>;
     }
@@ -3224,8 +3324,7 @@ export namespace compute {
         target?: pulumi.Input<number>;
         /**
          * Defines how target utilization value is expressed for a
-         * Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-         * or DELTA_PER_MINUTE.
+         * Stackdriver Monitoring metric.
          */
         type?: pulumi.Input<string>;
     }
@@ -3498,12 +3597,12 @@ export namespace compute {
          */
         oauth2ClientId: pulumi.Input<string>;
         /**
-         * OAuth2 Client Secret for IAP
+         * OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
          */
         oauth2ClientSecret: pulumi.Input<string>;
         /**
          * -
-         * OAuth2 Client Secret SHA-256 for IAP
+         * OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
          */
         oauth2ClientSecretSha256?: pulumi.Input<string>;
     }
@@ -3816,7 +3915,7 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
-         * backend, either NONE or PROXY_V1. The default is NONE.
+         * backend.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -3864,7 +3963,7 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
-         * backend, either NONE or PROXY_V1. The default is NONE.
+         * backend.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -3912,7 +4011,7 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
-         * backend, either NONE or PROXY_V1. The default is NONE.
+         * backend.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -3962,7 +4061,7 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
-         * backend, either NONE or PROXY_V1. The default is NONE.
+         * backend.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -4006,7 +4105,7 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
-         * backend, either NONE or PROXY_V1. The default is NONE.
+         * backend.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -4264,6 +4363,17 @@ export namespace compute {
          * - - -
          */
         port: pulumi.Input<number>;
+    }
+
+    export interface InstanceGroupManagerStatefulDisk {
+        /**
+         * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+         */
+        deleteRule?: pulumi.Input<string>;
+        /**
+         * , The device name of the disk to be attached.
+         */
+        deviceName: pulumi.Input<string>;
     }
 
     export interface InstanceGroupManagerUpdatePolicy {
@@ -5029,15 +5139,14 @@ export namespace compute {
         target?: pulumi.Input<number>;
         /**
          * Defines how target utilization value is expressed for a
-         * Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-         * or DELTA_PER_MINUTE.
+         * Stackdriver Monitoring metric.
          */
         type?: pulumi.Input<string>;
     }
 
     export interface RegionBackendServiceBackend {
         /**
-         * Specifies the balancing mode for this backend. Defaults to CONNECTION.
+         * Specifies the balancing mode for this backend.
          */
         balancingMode?: pulumi.Input<string>;
         /**
@@ -5454,7 +5563,7 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
-         * backend, either NONE or PROXY_V1. The default is NONE.
+         * backend.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -5502,7 +5611,7 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
-         * backend, either NONE or PROXY_V1. The default is NONE.
+         * backend.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -5550,7 +5659,7 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
-         * backend, either NONE or PROXY_V1. The default is NONE.
+         * backend.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -5600,7 +5709,7 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
-         * backend, either NONE or PROXY_V1. The default is NONE.
+         * backend.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -5644,7 +5753,7 @@ export namespace compute {
         portSpecification?: pulumi.Input<string>;
         /**
          * Specifies the type of proxy header to append before sending data to the
-         * backend, either NONE or PROXY_V1. The default is NONE.
+         * backend.
          */
         proxyHeader?: pulumi.Input<string>;
         /**
@@ -5684,6 +5793,17 @@ export namespace compute {
          * - - -
          */
         port: pulumi.Input<number>;
+    }
+
+    export interface RegionInstanceGroupManagerStatefulDisk {
+        /**
+         * , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+         */
+        deleteRule?: pulumi.Input<string>;
+        /**
+         * , The device name of the disk to be attached.
+         */
+        deviceName: pulumi.Input<string>;
     }
 
     export interface RegionInstanceGroupManagerUpdatePolicy {
@@ -5750,6 +5870,55 @@ export namespace compute {
         percent?: pulumi.Input<number>;
     }
 
+    export interface RegionUrlMapDefaultUrlRedirect {
+        /**
+         * The host that will be used in the redirect response instead of the one that was
+         * supplied in the request. The value must be between 1 and 255 characters.
+         */
+        hostRedirect?: pulumi.Input<string>;
+        /**
+         * If set to true, the URL scheme in the redirected request is set to https. If set to
+         * false, the URL scheme of the redirected request will remain the same as that of the
+         * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+         * true for TargetHttpsProxy is not permitted. The default is set to false.
+         */
+        httpsRedirect?: pulumi.Input<boolean>;
+        /**
+         * The path that will be used in the redirect response instead of the one that was
+         * supplied in the request. pathRedirect cannot be supplied together with
+         * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+         * original request will be used for the redirect. The value must be between 1 and 1024
+         * characters.
+         */
+        pathRedirect?: pulumi.Input<string>;
+        /**
+         * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+         * retaining the remaining portion of the URL before redirecting the request.
+         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+         * neither. If neither is supplied, the path of the original request will be used for
+         * the redirect. The value must be between 1 and 1024 characters.
+         */
+        prefixRedirect?: pulumi.Input<string>;
+        /**
+         * The HTTP Status code to use for this RedirectAction. Supported values are:
+         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * - FOUND, which corresponds to 302.
+         * - SEE_OTHER which corresponds to 303.
+         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * will be retained.
+         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * the request method will be retained.
+         */
+        redirectResponseCode?: pulumi.Input<string>;
+        /**
+         * If set to true, any accompanying query portion of the original URL is removed prior
+         * to redirecting the request. If set to false, the query portion of the original URL is
+         * retained.
+         * This field is required to ensure an empty block is not set. The normal default value is false.
+         */
+        stripQuery: pulumi.Input<boolean>;
+    }
+
     export interface RegionUrlMapHostRule {
         /**
          * Description of this test case.
@@ -5776,6 +5945,12 @@ export namespace compute {
          * the URL's path portion.
          */
         defaultService: pulumi.Input<string>;
+        /**
+         * When none of the specified hostRules match, the request is redirected to a URL specified
+         * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+         * defaultRouteAction must not be set.  Structure is documented below.
+         */
+        defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherDefaultUrlRedirect>;
         /**
          * Description of this test case.
          */
@@ -5805,6 +5980,55 @@ export namespace compute {
         routeRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRule>[]>;
     }
 
+    export interface RegionUrlMapPathMatcherDefaultUrlRedirect {
+        /**
+         * The host that will be used in the redirect response instead of the one that was
+         * supplied in the request. The value must be between 1 and 255 characters.
+         */
+        hostRedirect?: pulumi.Input<string>;
+        /**
+         * If set to true, the URL scheme in the redirected request is set to https. If set to
+         * false, the URL scheme of the redirected request will remain the same as that of the
+         * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+         * true for TargetHttpsProxy is not permitted. The default is set to false.
+         */
+        httpsRedirect?: pulumi.Input<boolean>;
+        /**
+         * The path that will be used in the redirect response instead of the one that was
+         * supplied in the request. pathRedirect cannot be supplied together with
+         * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+         * original request will be used for the redirect. The value must be between 1 and 1024
+         * characters.
+         */
+        pathRedirect?: pulumi.Input<string>;
+        /**
+         * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+         * retaining the remaining portion of the URL before redirecting the request.
+         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+         * neither. If neither is supplied, the path of the original request will be used for
+         * the redirect. The value must be between 1 and 1024 characters.
+         */
+        prefixRedirect?: pulumi.Input<string>;
+        /**
+         * The HTTP Status code to use for this RedirectAction. Supported values are:
+         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * - FOUND, which corresponds to 302.
+         * - SEE_OTHER which corresponds to 303.
+         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * will be retained.
+         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * the request method will be retained.
+         */
+        redirectResponseCode?: pulumi.Input<string>;
+        /**
+         * If set to true, any accompanying query portion of the original URL is removed prior
+         * to redirecting the request. If set to false, the query portion of the original URL is
+         * retained.
+         * This field is required to ensure an empty block is not set. The normal default value is false.
+         */
+        stripQuery: pulumi.Input<boolean>;
+    }
+
     export interface RegionUrlMapPathMatcherPathRule {
         /**
          * The list of path patterns to match. Each must start with / and the only place a
@@ -5827,9 +6051,9 @@ export namespace compute {
          */
         service?: pulumi.Input<string>;
         /**
-         * When a path pattern is matched, the request is redirected to a URL specified by
-         * urlRedirect. If urlRedirect is specified, service or routeAction must not be
-         * set.  Structure is documented below.
+         * When a path pattern is matched, the request is redirected to a URL specified
+         * by urlRedirect. If urlRedirect is specified, service or routeAction must not
+         * be set.  Structure is documented below.
          */
         urlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherPathRuleUrlRedirect>;
     }
@@ -6155,21 +6379,26 @@ export namespace compute {
          */
         hostRedirect?: pulumi.Input<string>;
         /**
-         * If set to true, the URL scheme in the redirected request is set to https. If set
-         * to false, the URL scheme of the redirected request will remain the same as that
-         * of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-         * Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+         * If set to true, the URL scheme in the redirected request is set to https. If set to
+         * false, the URL scheme of the redirected request will remain the same as that of the
+         * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+         * true for TargetHttpsProxy is not permitted. The default is set to false.
          */
         httpsRedirect?: pulumi.Input<boolean>;
         /**
          * The path that will be used in the redirect response instead of the one that was
-         * supplied in the request. Only one of pathRedirect or prefixRedirect must be
-         * specified. The value must be between 1 and 1024 characters.
+         * supplied in the request. pathRedirect cannot be supplied together with
+         * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+         * original request will be used for the redirect. The value must be between 1 and 1024
+         * characters.
          */
         pathRedirect?: pulumi.Input<string>;
         /**
          * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
          * retaining the remaining portion of the URL before redirecting the request.
+         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+         * neither. If neither is supplied, the path of the original request will be used for
+         * the redirect. The value must be between 1 and 1024 characters.
          */
         prefixRedirect?: pulumi.Input<string>;
         /**
@@ -6184,9 +6413,10 @@ export namespace compute {
          */
         redirectResponseCode?: pulumi.Input<string>;
         /**
-         * If set to true, any accompanying query portion of the original URL is removed
-         * prior to redirecting the request. If set to false, the query portion of the
-         * original URL is retained.
+         * If set to true, any accompanying query portion of the original URL is removed prior
+         * to redirecting the request. If set to false, the query portion of the original URL is
+         * retained.
+         * This field is required to ensure an empty block is not set. The normal default value is false.
          */
         stripQuery: pulumi.Input<boolean>;
     }
@@ -6232,9 +6462,9 @@ export namespace compute {
          */
         service?: pulumi.Input<string>;
         /**
-         * When a path pattern is matched, the request is redirected to a URL specified by
-         * urlRedirect. If urlRedirect is specified, service or routeAction must not be
-         * set.  Structure is documented below.
+         * When a path pattern is matched, the request is redirected to a URL specified
+         * by urlRedirect. If urlRedirect is specified, service or routeAction must not
+         * be set.  Structure is documented below.
          */
         urlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleUrlRedirect>;
     }
@@ -6791,21 +7021,26 @@ export namespace compute {
          */
         hostRedirect?: pulumi.Input<string>;
         /**
-         * If set to true, the URL scheme in the redirected request is set to https. If set
-         * to false, the URL scheme of the redirected request will remain the same as that
-         * of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-         * Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+         * If set to true, the URL scheme in the redirected request is set to https. If set to
+         * false, the URL scheme of the redirected request will remain the same as that of the
+         * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+         * true for TargetHttpsProxy is not permitted. The default is set to false.
          */
         httpsRedirect?: pulumi.Input<boolean>;
         /**
          * The path that will be used in the redirect response instead of the one that was
-         * supplied in the request. Only one of pathRedirect or prefixRedirect must be
-         * specified. The value must be between 1 and 1024 characters.
+         * supplied in the request. pathRedirect cannot be supplied together with
+         * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+         * original request will be used for the redirect. The value must be between 1 and 1024
+         * characters.
          */
         pathRedirect?: pulumi.Input<string>;
         /**
          * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
          * retaining the remaining portion of the URL before redirecting the request.
+         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+         * neither. If neither is supplied, the path of the original request will be used for
+         * the redirect. The value must be between 1 and 1024 characters.
          */
         prefixRedirect?: pulumi.Input<string>;
         /**
@@ -6820,9 +7055,10 @@ export namespace compute {
          */
         redirectResponseCode?: pulumi.Input<string>;
         /**
-         * If set to true, any accompanying query portion of the original URL is removed
-         * prior to redirecting the request. If set to false, the query portion of the
-         * original URL is retained.
+         * If set to true, any accompanying query portion of the original URL is removed prior
+         * to redirecting the request. If set to false, the query portion of the original URL is
+         * retained.
+         * This field is required to ensure an empty block is not set. The normal default value is false.
          */
         stripQuery?: pulumi.Input<boolean>;
     }
@@ -6906,8 +7142,7 @@ export namespace compute {
          */
         diskSizeGb: pulumi.Input<number>;
         /**
-         * The disk interface to use for attaching this disk, one
-         * of `SCSI` or `NVME`. The default is `SCSI`.
+         * The disk interface to use for attaching this disk.
          */
         interface?: pulumi.Input<string>;
     }
@@ -6954,7 +7189,6 @@ export namespace compute {
         /**
          * Specifies the behavior to apply to scheduled snapshots when
          * the source disk is deleted.
-         * Valid options are KEEP_AUTO_SNAPSHOTS and APPLY_RETENTION_POLICY
          */
         onSourceDiskDelete?: pulumi.Input<string>;
     }
@@ -7036,7 +7270,6 @@ export namespace compute {
     export interface RouterBgp {
         /**
          * User-specified flag to indicate which mode to use for advertisement.
-         * Valid values of this enum field are: DEFAULT, CUSTOM
          */
         advertiseMode?: pulumi.Input<string>;
         /**
@@ -7083,8 +7316,7 @@ export namespace compute {
          */
         enable: pulumi.Input<boolean>;
         /**
-         * Specifies the desired filtering of logs on this NAT. Valid
-         * values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+         * Specifies the desired filtering of logs on this NAT.
          */
         filter: pulumi.Input<string>;
     }
@@ -7206,7 +7438,7 @@ export namespace compute {
         loginUrl: pulumi.Input<string>;
         /**
          * The password of the custom account. The credential is stored encrypted
-         * in GCP.
+         * in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
          */
         password: pulumi.Input<string>;
         /**
@@ -7218,7 +7450,7 @@ export namespace compute {
     export interface SecurityScanConfigAuthenticationGoogleAccount {
         /**
          * The password of the custom account. The credential is stored encrypted
-         * in GCP.
+         * in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
          */
         password: pulumi.Input<string>;
         /**
@@ -7243,7 +7475,7 @@ export namespace compute {
     export interface SnapshotSnapshotEncryptionKey {
         /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
-         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
          */
         rawKey: pulumi.Input<string>;
         /**
@@ -7257,7 +7489,7 @@ export namespace compute {
     export interface SnapshotSourceDiskEncryptionKey {
         /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
-         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
          */
         rawKey?: pulumi.Input<string>;
     }
@@ -7313,7 +7545,7 @@ export namespace compute {
         /**
          * Can only be specified if VPC flow logging for this subnetwork is enabled.
          * Configures whether metadata fields should be added to the reported VPC
-         * flow logs. Default is `INCLUDE_ALL_METADATA`.
+         * flow logs.
          */
         metadata?: pulumi.Input<string>;
     }
@@ -7333,6 +7565,55 @@ export namespace compute {
          * must be unique within the subnetwork.
          */
         rangeName: pulumi.Input<string>;
+    }
+
+    export interface URLMapDefaultUrlRedirect {
+        /**
+         * The host that will be used in the redirect response instead of the one that was
+         * supplied in the request. The value must be between 1 and 255 characters.
+         */
+        hostRedirect?: pulumi.Input<string>;
+        /**
+         * If set to true, the URL scheme in the redirected request is set to https. If set to
+         * false, the URL scheme of the redirected request will remain the same as that of the
+         * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+         * true for TargetHttpsProxy is not permitted. The default is set to false.
+         */
+        httpsRedirect?: pulumi.Input<boolean>;
+        /**
+         * The path that will be used in the redirect response instead of the one that was
+         * supplied in the request. pathRedirect cannot be supplied together with
+         * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+         * original request will be used for the redirect. The value must be between 1 and 1024
+         * characters.
+         */
+        pathRedirect?: pulumi.Input<string>;
+        /**
+         * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+         * retaining the remaining portion of the URL before redirecting the request.
+         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+         * neither. If neither is supplied, the path of the original request will be used for
+         * the redirect. The value must be between 1 and 1024 characters.
+         */
+        prefixRedirect?: pulumi.Input<string>;
+        /**
+         * The HTTP Status code to use for this RedirectAction. Supported values are:
+         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * - FOUND, which corresponds to 302.
+         * - SEE_OTHER which corresponds to 303.
+         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * will be retained.
+         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * the request method will be retained.
+         */
+        redirectResponseCode?: pulumi.Input<string>;
+        /**
+         * If set to true, any accompanying query portion of the original URL is removed prior
+         * to redirecting the request. If set to false, the query portion of the original URL is
+         * retained. The default is set to false.
+         * This field is required to ensure an empty block is not set. The normal default value is false.
+         */
+        stripQuery: pulumi.Input<boolean>;
     }
 
     export interface URLMapHeaderAction {
@@ -7415,6 +7696,12 @@ export namespace compute {
          */
         defaultService?: pulumi.Input<string>;
         /**
+         * When none of the specified hostRules match, the request is redirected to a URL specified
+         * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+         * defaultRouteAction must not be set.  Structure is documented below.
+         */
+        defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapPathMatcherDefaultUrlRedirect>;
+        /**
          * Description of this test case.
          */
         description?: pulumi.Input<string>;
@@ -7447,6 +7734,55 @@ export namespace compute {
          * External load balancers.  Structure is documented below.
          */
         routeRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcherRouteRule>[]>;
+    }
+
+    export interface URLMapPathMatcherDefaultUrlRedirect {
+        /**
+         * The host that will be used in the redirect response instead of the one that was
+         * supplied in the request. The value must be between 1 and 255 characters.
+         */
+        hostRedirect?: pulumi.Input<string>;
+        /**
+         * If set to true, the URL scheme in the redirected request is set to https. If set to
+         * false, the URL scheme of the redirected request will remain the same as that of the
+         * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+         * true for TargetHttpsProxy is not permitted. The default is set to false.
+         */
+        httpsRedirect?: pulumi.Input<boolean>;
+        /**
+         * The path that will be used in the redirect response instead of the one that was
+         * supplied in the request. pathRedirect cannot be supplied together with
+         * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+         * original request will be used for the redirect. The value must be between 1 and 1024
+         * characters.
+         */
+        pathRedirect?: pulumi.Input<string>;
+        /**
+         * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+         * retaining the remaining portion of the URL before redirecting the request.
+         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+         * neither. If neither is supplied, the path of the original request will be used for
+         * the redirect. The value must be between 1 and 1024 characters.
+         */
+        prefixRedirect?: pulumi.Input<string>;
+        /**
+         * The HTTP Status code to use for this RedirectAction. Supported values are:
+         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * - FOUND, which corresponds to 302.
+         * - SEE_OTHER which corresponds to 303.
+         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * will be retained.
+         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * the request method will be retained.
+         */
+        redirectResponseCode?: pulumi.Input<string>;
+        /**
+         * If set to true, any accompanying query portion of the original URL is removed prior
+         * to redirecting the request. If set to false, the query portion of the original URL is
+         * retained. The default is set to false.
+         * This field is required to ensure an empty block is not set. The normal default value is false.
+         */
+        stripQuery: pulumi.Input<boolean>;
     }
 
     export interface URLMapPathMatcherHeaderAction {
@@ -7858,36 +8194,44 @@ export namespace compute {
          */
         hostRedirect?: pulumi.Input<string>;
         /**
-         * If set to true, the URL scheme in the redirected request is set to https. If set
-         * to false, the URL scheme of the redirected request will remain the same as that
-         * of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-         * Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+         * If set to true, the URL scheme in the redirected request is set to https. If set to
+         * false, the URL scheme of the redirected request will remain the same as that of the
+         * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+         * true for TargetHttpsProxy is not permitted. The default is set to false.
          */
         httpsRedirect?: pulumi.Input<boolean>;
         /**
          * The path that will be used in the redirect response instead of the one that was
-         * supplied in the request. Only one of pathRedirect or prefixRedirect must be
-         * specified. The value must be between 1 and 1024 characters.
+         * supplied in the request. pathRedirect cannot be supplied together with
+         * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+         * original request will be used for the redirect. The value must be between 1 and 1024
+         * characters.
          */
         pathRedirect?: pulumi.Input<string>;
         /**
          * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
          * retaining the remaining portion of the URL before redirecting the request.
+         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+         * neither. If neither is supplied, the path of the original request will be used for
+         * the redirect. The value must be between 1 and 1024 characters.
          */
         prefixRedirect?: pulumi.Input<string>;
         /**
-         * The HTTP Status code to use for this RedirectAction. Supported values are:   -
-         * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-         * FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-         * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-         * will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * The HTTP Status code to use for this RedirectAction. Supported values are:
+         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * - FOUND, which corresponds to 302.
+         * - SEE_OTHER which corresponds to 303.
+         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * will be retained.
+         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: pulumi.Input<string>;
         /**
-         * If set to true, any accompanying query portion of the original URL is removed
-         * prior to redirecting the request. If set to false, the query portion of the
-         * original URL is retained. Defaults to false.
+         * If set to true, any accompanying query portion of the original URL is removed prior
+         * to redirecting the request. If set to false, the query portion of the original URL is
+         * retained. The default is set to false.
+         * This field is required to ensure an empty block is not set. The normal default value is false.
          */
         stripQuery: pulumi.Input<boolean>;
     }
@@ -8495,36 +8839,44 @@ export namespace compute {
          */
         hostRedirect?: pulumi.Input<string>;
         /**
-         * If set to true, the URL scheme in the redirected request is set to https. If set
-         * to false, the URL scheme of the redirected request will remain the same as that
-         * of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-         * Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+         * If set to true, the URL scheme in the redirected request is set to https. If set to
+         * false, the URL scheme of the redirected request will remain the same as that of the
+         * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+         * true for TargetHttpsProxy is not permitted. The default is set to false.
          */
         httpsRedirect?: pulumi.Input<boolean>;
         /**
          * The path that will be used in the redirect response instead of the one that was
-         * supplied in the request. Only one of pathRedirect or prefixRedirect must be
-         * specified. The value must be between 1 and 1024 characters.
+         * supplied in the request. pathRedirect cannot be supplied together with
+         * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+         * original request will be used for the redirect. The value must be between 1 and 1024
+         * characters.
          */
         pathRedirect?: pulumi.Input<string>;
         /**
          * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
          * retaining the remaining portion of the URL before redirecting the request.
+         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+         * neither. If neither is supplied, the path of the original request will be used for
+         * the redirect. The value must be between 1 and 1024 characters.
          */
         prefixRedirect?: pulumi.Input<string>;
         /**
-         * The HTTP Status code to use for this RedirectAction. Supported values are:   -
-         * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-         * FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-         * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-         * will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * The HTTP Status code to use for this RedirectAction. Supported values are:
+         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * - FOUND, which corresponds to 302.
+         * - SEE_OTHER which corresponds to 303.
+         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * will be retained.
+         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: pulumi.Input<string>;
         /**
-         * If set to true, any accompanying query portion of the original URL is removed
-         * prior to redirecting the request. If set to false, the query portion of the
-         * original URL is retained. Defaults to false.
+         * If set to true, any accompanying query portion of the original URL is removed prior
+         * to redirecting the request. If set to false, the query portion of the original URL is
+         * retained. The default is set to false.
+         * This field is required to ensure an empty block is not set. The normal default value is false.
          */
         stripQuery?: pulumi.Input<boolean>;
     }
@@ -10273,7 +10625,7 @@ export namespace dataproc {
 export namespace datastore {
     export interface DataStoreIndexProperty {
         /**
-         * The direction the index should optimize for sorting. Possible values are ASCENDING and DESCENDING.
+         * The direction the index should optimize for sorting.
          */
         direction: pulumi.Input<string>;
         /**
@@ -10439,6 +10791,24 @@ export namespace dns {
          * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
          */
         networkUrl: pulumi.Input<string>;
+    }
+
+    export interface ManagedZoneServiceDirectoryConfig {
+        /**
+         * The namespace associated with the zone.  Structure is documented below.
+         */
+        namespace: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfigNamespace>;
+    }
+
+    export interface ManagedZoneServiceDirectoryConfigNamespace {
+        /**
+         * The fully qualified or partial URL of the service directory namespace that should be
+         * associated with the zone. This should be formatted like
+         * `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
+         * or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
+         * Ignored for `public` visibility zones.
+         */
+        namespaceUrl: pulumi.Input<string>;
     }
 
     export interface PolicyAlternativeNameServerConfig {
@@ -10816,6 +11186,30 @@ export namespace healthcare {
     }
 
     export interface Hl7StoreNotificationConfig {
+        /**
+         * The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+         * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+         * It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+         * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+         * project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+         * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+         */
+        pubsubTopic: pulumi.Input<string>;
+    }
+
+    export interface Hl7StoreNotificationConfigs {
+        /**
+         * Restricts notifications sent for messages matching a filter. If this is empty, all messages
+         * are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+         * Fields/functions available for filtering are:
+         * * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
+         * * sendDate or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, sendDate < "2017-01-02".
+         * * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
+         * * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
+         * * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
+         * * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
+         */
+        filter?: pulumi.Input<string>;
         /**
          * The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
          * PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -12005,15 +12399,15 @@ export namespace monitoring {
 
     export interface NotificationChannelSensitiveLabels {
         /**
-         * An authorization token for a notification channel. Channel types that support this field include: slack
+         * An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
          */
         authToken?: pulumi.Input<string>;
         /**
-         * An password for a notification channel. Channel types that support this field include: webhook_basicauth
+         * An password for a notification channel. Channel types that support this field include: webhookBasicauth  **Note**: This property is sensitive and will not be displayed in the plan.
          */
         password?: pulumi.Input<string>;
         /**
-         * An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+         * An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
          */
         serviceKey?: pulumi.Input<string>;
     }
@@ -12101,7 +12495,7 @@ export namespace monitoring {
 
     export interface UptimeCheckConfigHttpCheckAuthInfo {
         /**
-         * The password to authenticate.
+         * The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
          */
         password: pulumi.Input<string>;
         /**

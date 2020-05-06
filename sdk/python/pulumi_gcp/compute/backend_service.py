@@ -212,16 +212,15 @@ class BackendService(pulumi.CustomResource):
     Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
 
       * `oauth2ClientId` (`str`) - OAuth2 Client ID for IAP
-      * `oauth2ClientSecret` (`str`) - OAuth2 Client Secret for IAP
+      * `oauth2ClientSecret` (`str`) - OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
       * `oauth2ClientSecretSha256` (`str`) - -
-        OAuth2 Client Secret SHA-256 for IAP
+        OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
     """
     load_balancing_scheme: pulumi.Output[str]
     """
     Indicates whether the backend service will be used with internal or
     external load balancing. A backend service created for one type of
-    load balancing cannot be used with the other. Must be `EXTERNAL` or
-    `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+    load balancing cannot be used with the other.
     """
     locality_lb_policy: pulumi.Output[str]
     """
@@ -333,8 +332,7 @@ class BackendService(pulumi.CustomResource):
     protocol: pulumi.Output[str]
     """
     The protocol this BackendService uses to communicate with backends.
-    Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-    HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+    The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
     types and may result in errors if used with the GA API.
     """
     security_policy: pulumi.Output[str]
@@ -371,6 +369,9 @@ class BackendService(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
+        > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is
@@ -406,8 +407,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
                external load balancing. A backend service created for one type of
-               load balancing cannot be used with the other. Must be `EXTERNAL` or
-               `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+               load balancing cannot be used with the other.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are -
                ROUND_ROBIN - This is a simple policy in which each healthy backend
@@ -442,8 +442,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
-               Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-               HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
@@ -591,9 +590,9 @@ class BackendService(pulumi.CustomResource):
         The **iap** object supports the following:
 
           * `oauth2ClientId` (`pulumi.Input[str]`) - OAuth2 Client ID for IAP
-          * `oauth2ClientSecret` (`pulumi.Input[str]`) - OAuth2 Client Secret for IAP
+          * `oauth2ClientSecret` (`pulumi.Input[str]`) - OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
           * `oauth2ClientSecretSha256` (`pulumi.Input[str]`) - -
-            OAuth2 Client Secret SHA-256 for IAP
+            OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
 
         The **log_config** object supports the following:
 
@@ -749,8 +748,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
                external load balancing. A backend service created for one type of
-               load balancing cannot be used with the other. Must be `EXTERNAL` or
-               `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+               load balancing cannot be used with the other.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are -
                ROUND_ROBIN - This is a simple policy in which each healthy backend
@@ -785,8 +783,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
-               Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-               HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -935,9 +932,9 @@ class BackendService(pulumi.CustomResource):
         The **iap** object supports the following:
 
           * `oauth2ClientId` (`pulumi.Input[str]`) - OAuth2 Client ID for IAP
-          * `oauth2ClientSecret` (`pulumi.Input[str]`) - OAuth2 Client Secret for IAP
+          * `oauth2ClientSecret` (`pulumi.Input[str]`) - OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
           * `oauth2ClientSecretSha256` (`pulumi.Input[str]`) - -
-            OAuth2 Client Secret SHA-256 for IAP
+            OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
 
         The **log_config** object supports the following:
 

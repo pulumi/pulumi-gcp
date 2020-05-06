@@ -22,7 +22,7 @@ class RegionBackendService(pulumi.CustomResource):
     """
     The set of backends that serve this RegionBackendService.  Structure is documented below.
 
-      * `balancingMode` (`str`) - Specifies the balancing mode for this backend. Defaults to CONNECTION.
+      * `balancingMode` (`str`) - Specifies the balancing mode for this backend.
       * `capacityScaler` (`float`) - A multiplier applied to the group's maximum servicing capacity
         (based on UTILIZATION, RATE or CONNECTION).
         ~>**NOTE**: This field cannot be set for
@@ -198,8 +198,7 @@ class RegionBackendService(pulumi.CustomResource):
     """
     Indicates what kind of load balancing this regional backend service
     will be used for. A backend service created for one type of load
-    balancing cannot be used with the other(s). Must be `INTERNAL` or
-    `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+    balancing cannot be used with the other(s).
     """
     locality_lb_policy: pulumi.Output[str]
     """
@@ -310,8 +309,7 @@ class RegionBackendService(pulumi.CustomResource):
     protocol: pulumi.Output[str]
     """
     The protocol this RegionBackendService uses to communicate with backends.
-    Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-    HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+    The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
     types and may result in errors if used with the GA API.
     """
     region: pulumi.Output[str]
@@ -373,8 +371,7 @@ class RegionBackendService(pulumi.CustomResource):
                check can be specified, and a health check is required.
         :param pulumi.Input[str] load_balancing_scheme: Indicates what kind of load balancing this regional backend service
                will be used for. A backend service created for one type of load
-               balancing cannot be used with the other(s). Must be `INTERNAL` or
-               `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+               balancing cannot be used with the other(s).
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are -
                ROUND_ROBIN - This is a simple policy in which each healthy backend
@@ -408,8 +405,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol this RegionBackendService uses to communicate with backends.
-               Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-               HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
@@ -420,7 +416,7 @@ class RegionBackendService(pulumi.CustomResource):
 
         The **backends** object supports the following:
 
-          * `balancingMode` (`pulumi.Input[str]`) - Specifies the balancing mode for this backend. Defaults to CONNECTION.
+          * `balancingMode` (`pulumi.Input[str]`) - Specifies the balancing mode for this backend.
           * `capacityScaler` (`pulumi.Input[float]`) - A multiplier applied to the group's maximum servicing capacity
             (based on UTILIZATION, RATE or CONNECTION).
             ~>**NOTE**: This field cannot be set for
@@ -698,8 +694,7 @@ class RegionBackendService(pulumi.CustomResource):
                check can be specified, and a health check is required.
         :param pulumi.Input[str] load_balancing_scheme: Indicates what kind of load balancing this regional backend service
                will be used for. A backend service created for one type of load
-               balancing cannot be used with the other(s). Must be `INTERNAL` or
-               `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+               balancing cannot be used with the other(s).
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are -
                ROUND_ROBIN - This is a simple policy in which each healthy backend
@@ -733,8 +728,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol this RegionBackendService uses to communicate with backends.
-               Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-               HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+               The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
@@ -746,7 +740,7 @@ class RegionBackendService(pulumi.CustomResource):
 
         The **backends** object supports the following:
 
-          * `balancingMode` (`pulumi.Input[str]`) - Specifies the balancing mode for this backend. Defaults to CONNECTION.
+          * `balancingMode` (`pulumi.Input[str]`) - Specifies the balancing mode for this backend.
           * `capacityScaler` (`pulumi.Input[float]`) - A multiplier applied to the group's maximum servicing capacity
             (based on UTILIZATION, RATE or CONNECTION).
             ~>**NOTE**: This field cannot be set for

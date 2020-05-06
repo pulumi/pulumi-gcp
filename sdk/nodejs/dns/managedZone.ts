@@ -116,9 +116,13 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly reverseLookup!: pulumi.Output<boolean | undefined>;
     /**
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+     * information related to the namespace associated with the zone.
+     */
+    public readonly serviceDirectoryConfig!: pulumi.Output<outputs.dns.ManagedZoneServiceDirectoryConfig | undefined>;
+    /**
      * The zone's visibility: public zones are exposed to the Internet,
      * while private zones are visible only to Virtual Private Cloud resources.
-     * Must be one of: `public`, `private`.
      */
     public readonly visibility!: pulumi.Output<string | undefined>;
 
@@ -145,6 +149,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["privateVisibilityConfig"] = state ? state.privateVisibilityConfig : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["reverseLookup"] = state ? state.reverseLookup : undefined;
+            inputs["serviceDirectoryConfig"] = state ? state.serviceDirectoryConfig : undefined;
             inputs["visibility"] = state ? state.visibility : undefined;
         } else {
             const args = argsOrState as ManagedZoneArgs | undefined;
@@ -161,6 +166,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["privateVisibilityConfig"] = args ? args.privateVisibilityConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["reverseLookup"] = args ? args.reverseLookup : undefined;
+            inputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
             inputs["visibility"] = args ? args.visibility : undefined;
             inputs["nameServers"] = undefined /*out*/;
         }
@@ -232,9 +238,13 @@ export interface ManagedZoneState {
      */
     readonly reverseLookup?: pulumi.Input<boolean>;
     /**
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+     * information related to the namespace associated with the zone.
+     */
+    readonly serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig>;
+    /**
      * The zone's visibility: public zones are exposed to the Internet,
      * while private zones are visible only to Virtual Private Cloud resources.
-     * Must be one of: `public`, `private`.
      */
     readonly visibility?: pulumi.Input<string>;
 }
@@ -292,9 +302,13 @@ export interface ManagedZoneArgs {
      */
     readonly reverseLookup?: pulumi.Input<boolean>;
     /**
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+     * information related to the namespace associated with the zone.
+     */
+    readonly serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig>;
+    /**
      * The zone's visibility: public zones are exposed to the Internet,
      * while private zones are visible only to Virtual Private Cloud resources.
-     * Must be one of: `public`, `private`.
      */
     readonly visibility?: pulumi.Input<string>;
 }

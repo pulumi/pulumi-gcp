@@ -86,8 +86,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The IP protocol to which this rule applies. Valid options are TCP,
-        /// UDP, ESP, AH, SCTP or ICMP.
+        /// The IP protocol to which this rule applies.
         /// When the load balancing scheme is INTERNAL, only TCP and UDP are
         /// valid.
         /// </summary>
@@ -151,8 +150,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The networking tier used for configuring this address. This field can
-        /// take the following values: PREMIUM or STANDARD. If this field is not
+        /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
         /// </summary>
         [Output("networkTier")]
@@ -354,8 +352,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The IP protocol to which this rule applies. Valid options are TCP,
-        /// UDP, ESP, AH, SCTP or ICMP.
+        /// The IP protocol to which this rule applies.
         /// When the load balancing scheme is INTERNAL, only TCP and UDP are
         /// valid.
         /// </summary>
@@ -419,8 +416,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The networking tier used for configuring this address. This field can
-        /// take the following values: PREMIUM or STANDARD. If this field is not
+        /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
         /// </summary>
         [Input("networkTier")]
@@ -583,8 +579,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The IP protocol to which this rule applies. Valid options are TCP,
-        /// UDP, ESP, AH, SCTP or ICMP.
+        /// The IP protocol to which this rule applies.
         /// When the load balancing scheme is INTERNAL, only TCP and UDP are
         /// valid.
         /// </summary>
@@ -654,8 +649,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The networking tier used for configuring this address. This field can
-        /// take the following values: PREMIUM or STANDARD. If this field is not
+        /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
         /// </summary>
         [Input("networkTier")]

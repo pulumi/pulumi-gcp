@@ -71,7 +71,8 @@ export class MangedSslCertificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly subjectAlternativeNames!: pulumi.Output<string[]>;
     /**
-     * Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+     * Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+     * Possible values: ["MANAGED"]
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -164,7 +165,8 @@ export interface MangedSslCertificateState {
      */
     readonly subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+     * Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+     * Possible values: ["MANAGED"]
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -196,7 +198,8 @@ export interface MangedSslCertificateArgs {
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     /**
-     * Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+     * Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+     * Possible values: ["MANAGED"]
      */
     readonly type?: pulumi.Input<string>;
 }

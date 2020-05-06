@@ -50,7 +50,8 @@ class MangedSslCertificate(pulumi.CustomResource):
     """
     type: pulumi.Output[str]
     """
-    Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+    Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+    Possible values: ["MANAGED"]
     """
     warnings.warn("gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, certificate_id=None, description=None, managed=None, name=None, project=None, type=None, __props__=None, __name__=None, __opts__=None):
@@ -69,7 +70,8 @@ class MangedSslCertificate(pulumi.CustomResource):
                '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
                must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
                namespace as the managed SSL certificates.
-        :param pulumi.Input[str] type: Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+        :param pulumi.Input[str] type: Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+               Possible values: ["MANAGED"]
 
         The **managed** object supports the following:
 
@@ -130,7 +132,8 @@ class MangedSslCertificate(pulumi.CustomResource):
                must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
                namespace as the managed SSL certificates.
         :param pulumi.Input[list] subject_alternative_names: Domains associated with the certificate via Subject Alternative Name.
-        :param pulumi.Input[str] type: Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+        :param pulumi.Input[str] type: Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+               Possible values: ["MANAGED"]
 
         The **managed** object supports the following:
 

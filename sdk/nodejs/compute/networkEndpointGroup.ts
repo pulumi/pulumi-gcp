@@ -80,7 +80,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+     * Type of network endpoints in this network endpoint group.
      */
     public readonly networkEndpointType!: pulumi.Output<string | undefined>;
     /**
@@ -184,7 +184,7 @@ export interface NetworkEndpointGroupState {
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+     * Type of network endpoints in this network endpoint group.
      */
     readonly networkEndpointType?: pulumi.Input<string>;
     /**
@@ -240,7 +240,7 @@ export interface NetworkEndpointGroupArgs {
      */
     readonly network: pulumi.Input<string>;
     /**
-     * Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+     * Type of network endpoints in this network endpoint group.
      */
     readonly networkEndpointType?: pulumi.Input<string>;
     /**

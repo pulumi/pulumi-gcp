@@ -20,6 +20,9 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+ * 
+ * > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
  */
@@ -126,8 +129,7 @@ export class BackendService extends pulumi.CustomResource {
     /**
      * Indicates whether the backend service will be used with internal or
      * external load balancing. A backend service created for one type of
-     * load balancing cannot be used with the other. Must be `EXTERNAL` or
-     * `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+     * load balancing cannot be used with the other.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -183,8 +185,7 @@ export class BackendService extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The protocol this BackendService uses to communicate with backends.
-     * Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-     * HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
      */
     public readonly protocol!: pulumi.Output<string>;
@@ -366,8 +367,7 @@ export interface BackendServiceState {
     /**
      * Indicates whether the backend service will be used with internal or
      * external load balancing. A backend service created for one type of
-     * load balancing cannot be used with the other. Must be `EXTERNAL` or
-     * `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+     * load balancing cannot be used with the other.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -423,8 +423,7 @@ export interface BackendServiceState {
     readonly project?: pulumi.Input<string>;
     /**
      * The protocol this BackendService uses to communicate with backends.
-     * Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-     * HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
      */
     readonly protocol?: pulumi.Input<string>;
@@ -519,8 +518,7 @@ export interface BackendServiceArgs {
     /**
      * Indicates whether the backend service will be used with internal or
      * external load balancing. A backend service created for one type of
-     * load balancing cannot be used with the other. Must be `EXTERNAL` or
-     * `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+     * load balancing cannot be used with the other.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -576,8 +574,7 @@ export interface BackendServiceArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The protocol this BackendService uses to communicate with backends.
-     * Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-     * HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
      */
     readonly protocol?: pulumi.Input<string>;

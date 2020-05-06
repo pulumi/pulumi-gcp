@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Three different resources help you manage your IAM policy for ServiceDirectory Service. Each of these resources serves a different use case:
+// Three different resources help you manage your IAM policy for Service Directory Service. Each of these resources serves a different use case:
 //
 // * `servicedirectory.ServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
 // * `servicedirectory.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ServiceDirectory
 {
     /// <summary>
-    /// Three different resources help you manage your IAM policy for ServiceDirectory Namespace. Each of these resources serves a different use case:
+    /// Three different resources help you manage your IAM policy for Service Directory Namespace. Each of these resources serves a different use case:
     /// 
     /// * `gcp.servicedirectory.NamespaceIamPolicy`: Authoritative. Sets the IAM policy for the namespace and replaces any existing policy already attached.
     /// * `gcp.servicedirectory.NamespaceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the namespace are preserved.

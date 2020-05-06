@@ -8,6 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * A secret version resource.
+ * 
+ * > **Warning:** All arguments including `payload.secret_data` will be stored in the raw
+ * state as plain-text.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret_version.html.markdown.
  */
@@ -59,7 +62,7 @@ export class SecretVersion extends pulumi.CustomResource {
      */
     public readonly secret!: pulumi.Output<string>;
     /**
-     * The secret data. Must be no larger than 64KiB.
+     * The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly secretData!: pulumi.Output<string | undefined>;
 
@@ -129,7 +132,7 @@ export interface SecretVersionState {
      */
     readonly secret?: pulumi.Input<string>;
     /**
-     * The secret data. Must be no larger than 64KiB.
+     * The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly secretData?: pulumi.Input<string>;
 }
@@ -147,7 +150,7 @@ export interface SecretVersionArgs {
      */
     readonly secret: pulumi.Input<string>;
     /**
-     * The secret data. Must be no larger than 64KiB.
+     * The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly secretData?: pulumi.Input<string>;
 }

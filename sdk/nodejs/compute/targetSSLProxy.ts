@@ -76,7 +76,7 @@ export class TargetSSLProxy extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Specifies the type of proxy header to append before sending data to
-     * the backend, either NONE or PROXY_V1. The default is NONE.
+     * the backend.
      */
     public readonly proxyHeader!: pulumi.Output<string | undefined>;
     /**
@@ -185,7 +185,7 @@ export interface TargetSSLProxyState {
     readonly project?: pulumi.Input<string>;
     /**
      * Specifies the type of proxy header to append before sending data to
-     * the backend, either NONE or PROXY_V1. The default is NONE.
+     * the backend.
      */
     readonly proxyHeader?: pulumi.Input<string>;
     /**
@@ -239,7 +239,7 @@ export interface TargetSSLProxyArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * Specifies the type of proxy header to append before sending data to
-     * the backend, either NONE or PROXY_V1. The default is NONE.
+     * the backend.
      */
     readonly proxyHeader?: pulumi.Input<string>;
     /**

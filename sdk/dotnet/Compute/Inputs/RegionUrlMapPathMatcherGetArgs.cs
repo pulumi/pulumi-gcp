@@ -21,6 +21,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string> DefaultService { get; set; } = null!;
 
         /// <summary>
+        /// When none of the specified hostRules match, the request is redirected to a URL specified
+        /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// </summary>
+        [Input("defaultUrlRedirect")]
+        public Input<Inputs.RegionUrlMapPathMatcherDefaultUrlRedirectGetArgs>? DefaultUrlRedirect { get; set; }
+
+        /// <summary>
         /// Description of this test case.
         /// </summary>
         [Input("description")]

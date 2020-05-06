@@ -73,14 +73,12 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly ipAddress!: pulumi.Output<string>;
     /**
-     * The IP protocol to which this rule applies. Valid options are TCP,
-     * UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+     * The IP protocol to which this rule applies. When the load balancing scheme is
      * INTERNAL_SELF_MANAGED, only TCP is valid.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
-     * Valid options are IPV4 or IPV6.
      */
     public readonly ipVersion!: pulumi.Output<string | undefined>;
     /**
@@ -257,14 +255,12 @@ export interface GlobalForwardingRuleState {
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
-     * The IP protocol to which this rule applies. Valid options are TCP,
-     * UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+     * The IP protocol to which this rule applies. When the load balancing scheme is
      * INTERNAL_SELF_MANAGED, only TCP is valid.
      */
     readonly ipProtocol?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
-     * Valid options are IPV4 or IPV6.
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**
@@ -385,14 +381,12 @@ export interface GlobalForwardingRuleArgs {
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
-     * The IP protocol to which this rule applies. Valid options are TCP,
-     * UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+     * The IP protocol to which this rule applies. When the load balancing scheme is
      * INTERNAL_SELF_MANAGED, only TCP is valid.
      */
     readonly ipProtocol?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
-     * Valid options are IPV4 or IPV6.
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**

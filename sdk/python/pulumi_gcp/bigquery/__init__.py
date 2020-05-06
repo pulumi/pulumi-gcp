@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .app_profile import *
+from .connection import *
 from .data_transfer_config import *
 from .dataset import *
 from .dataset_access import *

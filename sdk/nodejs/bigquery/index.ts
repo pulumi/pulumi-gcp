@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./appProfile";
+export * from "./connection";
 export * from "./dataTransferConfig";
 export * from "./dataset";
 export * from "./datasetAccess";

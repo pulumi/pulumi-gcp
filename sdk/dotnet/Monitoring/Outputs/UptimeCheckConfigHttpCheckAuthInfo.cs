@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class UptimeCheckConfigHttpCheckAuthInfo
     {
         /// <summary>
-        /// The password to authenticate.
+        /// The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string Password;
         /// <summary>

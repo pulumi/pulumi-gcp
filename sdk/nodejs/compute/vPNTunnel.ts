@@ -16,6 +16,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
  *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
+ * 
+ * > **Warning:** All arguments including `sharedSecret` will be stored in the raw
+ * state as plain-text.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_tunnel.html.markdown.
  */
@@ -134,7 +137,7 @@ export class VPNTunnel extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Shared secret used to set the secure session between the Cloud VPN
-     * gateway and the peer VPN gateway.
+     * gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly sharedSecret!: pulumi.Output<string>;
     /**
@@ -328,7 +331,7 @@ export interface VPNTunnelState {
     readonly selfLink?: pulumi.Input<string>;
     /**
      * Shared secret used to set the secure session between the Cloud VPN
-     * gateway and the peer VPN gateway.
+     * gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly sharedSecret?: pulumi.Input<string>;
     /**
@@ -432,7 +435,7 @@ export interface VPNTunnelArgs {
     readonly router?: pulumi.Input<string>;
     /**
      * Shared secret used to set the secure session between the Cloud VPN
-     * gateway and the peer VPN gateway.
+     * gateway and the peer VPN gateway.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly sharedSecret: pulumi.Input<string>;
     /**

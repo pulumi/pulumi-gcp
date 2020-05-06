@@ -68,7 +68,7 @@ type FhirStore struct {
 	NotificationConfig FhirStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+	// The FHIR specification version.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -150,7 +150,7 @@ type fhirStoreState struct {
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
-	// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+	// The FHIR specification version.
 	Version *string `pulumi:"version"`
 }
 
@@ -202,7 +202,7 @@ type FhirStoreState struct {
 	NotificationConfig FhirStoreNotificationConfigPtrInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
-	// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+	// The FHIR specification version.
 	Version pulumi.StringPtrInput
 }
 
@@ -256,7 +256,7 @@ type fhirStoreArgs struct {
 	Name *string `pulumi:"name"`
 	// A nested object resource  Structure is documented below.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
-	// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+	// The FHIR specification version.
 	Version *string `pulumi:"version"`
 }
 
@@ -307,7 +307,7 @@ type FhirStoreArgs struct {
 	Name pulumi.StringPtrInput
 	// A nested object resource  Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
-	// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+	// The FHIR specification version.
 	Version pulumi.StringPtrInput
 }
 

@@ -53,7 +53,6 @@ class ResourcePolicy(pulumi.CustomResource):
         * `maxRetentionDays` (`float`) - Maximum age of the snapshot that is allowed to be kept.
         * `onSourceDiskDelete` (`str`) - Specifies the behavior to apply to scheduled snapshots when
           the source disk is deleted.
-          Valid options are KEEP_AUTO_SNAPSHOTS and APPLY_RETENTION_POLICY
 
       * `schedule` (`dict`) - Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
         * `dailySchedule` (`dict`) - The policy will execute every nth day at the specified time.  Structure is documented below.
@@ -113,7 +112,6 @@ class ResourcePolicy(pulumi.CustomResource):
             * `maxRetentionDays` (`pulumi.Input[float]`) - Maximum age of the snapshot that is allowed to be kept.
             * `onSourceDiskDelete` (`pulumi.Input[str]`) - Specifies the behavior to apply to scheduled snapshots when
               the source disk is deleted.
-              Valid options are KEEP_AUTO_SNAPSHOTS and APPLY_RETENTION_POLICY
 
           * `schedule` (`pulumi.Input[dict]`) - Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
             * `dailySchedule` (`pulumi.Input[dict]`) - The policy will execute every nth day at the specified time.  Structure is documented below.
@@ -206,7 +204,6 @@ class ResourcePolicy(pulumi.CustomResource):
             * `maxRetentionDays` (`pulumi.Input[float]`) - Maximum age of the snapshot that is allowed to be kept.
             * `onSourceDiskDelete` (`pulumi.Input[str]`) - Specifies the behavior to apply to scheduled snapshots when
               the source disk is deleted.
-              Valid options are KEEP_AUTO_SNAPSHOTS and APPLY_RETENTION_POLICY
 
           * `schedule` (`pulumi.Input[dict]`) - Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
             * `dailySchedule` (`pulumi.Input[dict]`) - The policy will execute every nth day at the specified time.  Structure is documented below.

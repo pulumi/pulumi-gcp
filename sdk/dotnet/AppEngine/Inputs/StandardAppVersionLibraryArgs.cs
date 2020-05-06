@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class StandardAppVersionLibraryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// Name of the library. Example "django".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

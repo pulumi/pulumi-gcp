@@ -111,7 +111,7 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+     * The FHIR specification version.
      */
     public readonly version!: pulumi.Output<string | undefined>;
 
@@ -234,7 +234,7 @@ export interface FhirStoreState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+     * The FHIR specification version.
      */
     readonly version?: pulumi.Input<string>;
 }
@@ -305,7 +305,7 @@ export interface FhirStoreArgs {
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**
-     * The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+     * The FHIR specification version.
      */
     readonly version?: pulumi.Input<string>;
 }

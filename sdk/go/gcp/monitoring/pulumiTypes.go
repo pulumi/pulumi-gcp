@@ -2936,11 +2936,11 @@ func (o CustomServiceTelemetryPtrOutput) ResourceName() pulumi.StringPtrOutput {
 }
 
 type NotificationChannelSensitiveLabels struct {
-	// An authorization token for a notification channel. Channel types that support this field include: slack
+	// An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
 	AuthToken *string `pulumi:"authToken"`
-	// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+	// An password for a notification channel. Channel types that support this field include: webhookBasicauth  **Note**: This property is sensitive and will not be displayed in the plan.
 	Password *string `pulumi:"password"`
-	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
 	ServiceKey *string `pulumi:"serviceKey"`
 }
 
@@ -2957,11 +2957,11 @@ type NotificationChannelSensitiveLabelsInput interface {
 }
 
 type NotificationChannelSensitiveLabelsArgs struct {
-	// An authorization token for a notification channel. Channel types that support this field include: slack
+	// An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
 	AuthToken pulumi.StringPtrInput `pulumi:"authToken"`
-	// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+	// An password for a notification channel. Channel types that support this field include: webhookBasicauth  **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
 	ServiceKey pulumi.StringPtrInput `pulumi:"serviceKey"`
 }
 
@@ -3043,17 +3043,17 @@ func (o NotificationChannelSensitiveLabelsOutput) ToNotificationChannelSensitive
 	}).(NotificationChannelSensitiveLabelsPtrOutput)
 }
 
-// An authorization token for a notification channel. Channel types that support this field include: slack
+// An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsOutput) AuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.AuthToken }).(pulumi.StringPtrOutput)
 }
 
-// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+// An password for a notification channel. Channel types that support this field include: webhookBasicauth  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+// An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsOutput) ServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationChannelSensitiveLabels) *string { return v.ServiceKey }).(pulumi.StringPtrOutput)
 }
@@ -3076,7 +3076,7 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) Elem() NotificationChannelS
 	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) NotificationChannelSensitiveLabels { return *v }).(NotificationChannelSensitiveLabelsOutput)
 }
 
-// An authorization token for a notification channel. Channel types that support this field include: slack
+// An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsPtrOutput) AuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
 		if v == nil {
@@ -3086,7 +3086,7 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) AuthToken() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+// An password for a notification channel. Channel types that support this field include: webhookBasicauth  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
 		if v == nil {
@@ -3096,7 +3096,7 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) Password() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+// An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o NotificationChannelSensitiveLabelsPtrOutput) ServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationChannelSensitiveLabels) *string {
 		if v == nil {
@@ -3844,7 +3844,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) ValidateSsl() pulumi.BoolPtrOutput 
 }
 
 type UptimeCheckConfigHttpCheckAuthInfo struct {
-	// The password to authenticate.
+	// The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
 	Password string `pulumi:"password"`
 	// The username to authenticate.
 	Username string `pulumi:"username"`
@@ -3863,7 +3863,7 @@ type UptimeCheckConfigHttpCheckAuthInfoInput interface {
 }
 
 type UptimeCheckConfigHttpCheckAuthInfoArgs struct {
-	// The password to authenticate.
+	// The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringInput `pulumi:"password"`
 	// The username to authenticate.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -3947,7 +3947,7 @@ func (o UptimeCheckConfigHttpCheckAuthInfoOutput) ToUptimeCheckConfigHttpCheckAu
 	}).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
-// The password to authenticate.
+// The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o UptimeCheckConfigHttpCheckAuthInfoOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAuthInfo) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -3975,7 +3975,7 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Elem() UptimeCheckConfigHtt
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) UptimeCheckConfigHttpCheckAuthInfo { return *v }).(UptimeCheckConfigHttpCheckAuthInfoOutput)
 }
 
-// The password to authenticate.
+// The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheckAuthInfo) *string {
 		if v == nil {

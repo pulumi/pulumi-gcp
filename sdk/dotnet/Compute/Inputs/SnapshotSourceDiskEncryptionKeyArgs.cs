@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// Specifies a 256-bit customer-supplied encryption key, encoded in
-        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("rawKey")]
         public Input<string>? RawKey { get; set; }

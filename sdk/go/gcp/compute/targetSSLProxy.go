@@ -41,7 +41,7 @@ type TargetSSLProxy struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the type of proxy header to append before sending data to
-	// the backend, either NONE or PROXY_V1. The default is NONE.
+	// the backend.
 	ProxyHeader pulumi.StringPtrOutput `pulumi:"proxyHeader"`
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntOutput `pulumi:"proxyId"`
@@ -109,7 +109,7 @@ type targetSSLProxyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Specifies the type of proxy header to append before sending data to
-	// the backend, either NONE or PROXY_V1. The default is NONE.
+	// the backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The unique identifier for the resource.
 	ProxyId *int `pulumi:"proxyId"`
@@ -144,7 +144,7 @@ type TargetSSLProxyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Specifies the type of proxy header to append before sending data to
-	// the backend, either NONE or PROXY_V1. The default is NONE.
+	// the backend.
 	ProxyHeader pulumi.StringPtrInput
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntPtrInput
@@ -181,7 +181,7 @@ type targetSSLProxyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Specifies the type of proxy header to append before sending data to
-	// the backend, either NONE or PROXY_V1. The default is NONE.
+	// the backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. Currently, exactly
@@ -211,7 +211,7 @@ type TargetSSLProxyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Specifies the type of proxy header to append before sending data to
-	// the backend, either NONE or PROXY_V1. The default is NONE.
+	// the backend.
 	ProxyHeader pulumi.StringPtrInput
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. Currently, exactly

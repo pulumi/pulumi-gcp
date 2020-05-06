@@ -44,12 +44,10 @@ type GlobalForwardingRule struct {
 	// avoid needing to fetching the IP address from resource paths on refresh
 	// or unnecessary diffs.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// The IP protocol to which this rule applies. Valid options are TCP,
-	// UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+	// The IP protocol to which this rule applies. When the load balancing scheme is
 	// INTERNAL_SELF_MANAGED, only TCP is valid.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
-	// Valid options are IPV4 or IPV6.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -171,12 +169,10 @@ type globalForwardingRuleState struct {
 	// avoid needing to fetching the IP address from resource paths on refresh
 	// or unnecessary diffs.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The IP protocol to which this rule applies. Valid options are TCP,
-	// UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+	// The IP protocol to which this rule applies. When the load balancing scheme is
 	// INTERNAL_SELF_MANAGED, only TCP is valid.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
-	// Valid options are IPV4 or IPV6.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -268,12 +264,10 @@ type GlobalForwardingRuleState struct {
 	// avoid needing to fetching the IP address from resource paths on refresh
 	// or unnecessary diffs.
 	IpAddress pulumi.StringPtrInput
-	// The IP protocol to which this rule applies. Valid options are TCP,
-	// UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+	// The IP protocol to which this rule applies. When the load balancing scheme is
 	// INTERNAL_SELF_MANAGED, only TCP is valid.
 	IpProtocol pulumi.StringPtrInput
 	// The IP Version that will be used by this global forwarding rule.
-	// Valid options are IPV4 or IPV6.
 	IpVersion pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -369,12 +363,10 @@ type globalForwardingRuleArgs struct {
 	// avoid needing to fetching the IP address from resource paths on refresh
 	// or unnecessary diffs.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The IP protocol to which this rule applies. Valid options are TCP,
-	// UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+	// The IP protocol to which this rule applies. When the load balancing scheme is
 	// INTERNAL_SELF_MANAGED, only TCP is valid.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
-	// Valid options are IPV4 or IPV6.
 	IpVersion *string `pulumi:"ipVersion"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -463,12 +455,10 @@ type GlobalForwardingRuleArgs struct {
 	// avoid needing to fetching the IP address from resource paths on refresh
 	// or unnecessary diffs.
 	IpAddress pulumi.StringPtrInput
-	// The IP protocol to which this rule applies. Valid options are TCP,
-	// UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+	// The IP protocol to which this rule applies. When the load balancing scheme is
 	// INTERNAL_SELF_MANAGED, only TCP is valid.
 	IpProtocol pulumi.StringPtrInput
 	// The IP Version that will be used by this global forwarding rule.
-	// Valid options are IPV4 or IPV6.
 	IpVersion pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput

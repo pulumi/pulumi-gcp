@@ -18,7 +18,7 @@ class GlobalAddress(pulumi.CustomResource):
     """
     address_type: pulumi.Output[str]
     """
-    The type of the address to reserve, default is EXTERNAL.
+    The type of the address to reserve.
     * EXTERNAL indicates public/external single IP address.
     * INTERNAL indicates internal IP ranges belonging to some network.
     """
@@ -32,8 +32,7 @@ class GlobalAddress(pulumi.CustomResource):
     """
     ip_version: pulumi.Output[str]
     """
-    The IP Version that will be used by this address. Valid options are
-    `IPV4` or `IPV6`. The default value is `IPV4`.
+    The IP Version that will be used by this address. The default value is `IPV4`.
     """
     label_fingerprint: pulumi.Output[str]
     """
@@ -98,12 +97,11 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] address: The IP address or beginning of the address range represented by this
                resource. This can be supplied as an input to reserve a specific
                address or omitted to allow GCP to choose a valid one for you.
-        :param pulumi.Input[str] address_type: The type of the address to reserve, default is EXTERNAL.
+        :param pulumi.Input[str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. Valid options are
-               `IPV4` or `IPV6`. The default value is `IPV4`.
+        :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
         :param pulumi.Input[dict] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -173,13 +171,12 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] address: The IP address or beginning of the address range represented by this
                resource. This can be supplied as an input to reserve a specific
                address or omitted to allow GCP to choose a valid one for you.
-        :param pulumi.Input[str] address_type: The type of the address to reserve, default is EXTERNAL.
+        :param pulumi.Input[str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. Valid options are
-               `IPV4` or `IPV6`. The default value is `IPV4`.
+        :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[dict] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is

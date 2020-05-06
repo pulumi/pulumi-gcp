@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.Dataflow
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
+        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        /// </summary>
+        [Output("additionalExperiments")]
+        public Output<ImmutableArray<string>> AdditionalExperiments { get; private set; } = null!;
+
+        /// <summary>
         /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         /// </summary>
         [Output("ipConfiguration")]
@@ -179,6 +185,18 @@ namespace Pulumi.Gcp.Dataflow
 
     public sealed class JobArgs : Pulumi.ResourceArgs
     {
+        [Input("additionalExperiments")]
+        private InputList<string>? _additionalExperiments;
+
+        /// <summary>
+        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        /// </summary>
+        public InputList<string> AdditionalExperiments
+        {
+            get => _additionalExperiments ?? (_additionalExperiments = new InputList<string>());
+            set => _additionalExperiments = value;
+        }
+
         /// <summary>
         /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         /// </summary>
@@ -288,6 +306,18 @@ namespace Pulumi.Gcp.Dataflow
 
     public sealed class JobState : Pulumi.ResourceArgs
     {
+        [Input("additionalExperiments")]
+        private InputList<string>? _additionalExperiments;
+
+        /// <summary>
+        /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        /// </summary>
+        public InputList<string> AdditionalExperiments
+        {
+            get => _additionalExperiments ?? (_additionalExperiments = new InputList<string>());
+            set => _additionalExperiments = value;
+        }
+
         /// <summary>
         /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         /// </summary>

@@ -51,7 +51,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         If not specified, HTTP2 health check follows behavior specified in `port` and
         `portName` fields.
       * `proxy_header` (`str`) - Specifies the type of proxy header to append before sending data to the
-        backend, either NONE or PROXY_V1. The default is NONE.
+        backend.
       * `request_path` (`str`) - The request path of the HTTP2 health check request.
         The default value is /.
       * `response` (`str`) - The bytes to match against the beginning of the response data. If left empty
@@ -80,7 +80,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         If not specified, HTTP2 health check follows behavior specified in `port` and
         `portName` fields.
       * `proxy_header` (`str`) - Specifies the type of proxy header to append before sending data to the
-        backend, either NONE or PROXY_V1. The default is NONE.
+        backend.
       * `request_path` (`str`) - The request path of the HTTP2 health check request.
         The default value is /.
       * `response` (`str`) - The bytes to match against the beginning of the response data. If left empty
@@ -109,7 +109,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         If not specified, HTTP2 health check follows behavior specified in `port` and
         `portName` fields.
       * `proxy_header` (`str`) - Specifies the type of proxy header to append before sending data to the
-        backend, either NONE or PROXY_V1. The default is NONE.
+        backend.
       * `request_path` (`str`) - The request path of the HTTP2 health check request.
         The default value is /.
       * `response` (`str`) - The bytes to match against the beginning of the response data. If left empty
@@ -166,7 +166,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         If not specified, HTTP2 health check follows behavior specified in `port` and
         `portName` fields.
       * `proxy_header` (`str`) - Specifies the type of proxy header to append before sending data to the
-        backend, either NONE or PROXY_V1. The default is NONE.
+        backend.
       * `request` (`str`) - The application data to send once the SSL connection has been
         established (default value is empty). If both request and response are
         empty, the connection establishment alone will indicate health. The request
@@ -194,7 +194,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         If not specified, HTTP2 health check follows behavior specified in `port` and
         `portName` fields.
       * `proxy_header` (`str`) - Specifies the type of proxy header to append before sending data to the
-        backend, either NONE or PROXY_V1. The default is NONE.
+        backend.
       * `request` (`str`) - The application data to send once the SSL connection has been
         established (default value is empty). If both request and response are
         empty, the connection establishment alone will indicate health. The request
@@ -290,7 +290,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
-            backend, either NONE or PROXY_V1. The default is NONE.
+            backend.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -317,7 +317,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
-            backend, either NONE or PROXY_V1. The default is NONE.
+            backend.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -344,7 +344,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
-            backend, either NONE or PROXY_V1. The default is NONE.
+            backend.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -373,7 +373,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
-            backend, either NONE or PROXY_V1. The default is NONE.
+            backend.
           * `request` (`pulumi.Input[str]`) - The application data to send once the SSL connection has been
             established (default value is empty). If both request and response are
             empty, the connection establishment alone will indicate health. The request
@@ -399,7 +399,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
-            backend, either NONE or PROXY_V1. The default is NONE.
+            backend.
           * `request` (`pulumi.Input[str]`) - The application data to send once the SSL connection has been
             established (default value is empty). If both request and response are
             empty, the connection establishment alone will indicate health. The request
@@ -509,7 +509,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
-            backend, either NONE or PROXY_V1. The default is NONE.
+            backend.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -536,7 +536,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
-            backend, either NONE or PROXY_V1. The default is NONE.
+            backend.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -563,7 +563,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
-            backend, either NONE or PROXY_V1. The default is NONE.
+            backend.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -592,7 +592,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
-            backend, either NONE or PROXY_V1. The default is NONE.
+            backend.
           * `request` (`pulumi.Input[str]`) - The application data to send once the SSL connection has been
             established (default value is empty). If both request and response are
             empty, the connection establishment alone will indicate health. The request
@@ -618,7 +618,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
-            backend, either NONE or PROXY_V1. The default is NONE.
+            backend.
           * `request` (`pulumi.Input[str]`) - The application data to send once the SSL connection has been
             established (default value is empty). If both request and response are
             empty, the connection establishment alone will indicate health. The request

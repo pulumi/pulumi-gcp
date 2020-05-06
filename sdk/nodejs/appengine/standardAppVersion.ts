@@ -8,8 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Standard App Version resource to create a new version of standard GAE Application.
+ * Learn about the differences between the standard environment and the flexible environment
+ * at https://cloud.google.com/appengine/docs/the-appengine-environments.
  * Currently supporting Zip and File Containers.
- * Currently does not support async operation checking.
  * 
  * 
  * To get more information about StandardAppVersion, see:
@@ -48,13 +49,21 @@ export class StandardAppVersion extends pulumi.CustomResource {
     }
 
     /**
+     * Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+     */
+    public readonly automaticScaling!: pulumi.Output<outputs.appengine.StandardAppVersionAutomaticScaling | undefined>;
+    /**
+     * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+     */
+    public readonly basicScaling!: pulumi.Output<outputs.appengine.StandardAppVersionBasicScaling | undefined>;
+    /**
      * If set to `true`, the service will be deleted if it is the last version.    
      */
     public readonly deleteServiceOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * Code and application artifacts that make up this version.  Structure is documented below.
      */
-    public readonly deployment!: pulumi.Output<outputs.appengine.StandardAppVersionDeployment | undefined>;
+    public readonly deployment!: pulumi.Output<outputs.appengine.StandardAppVersionDeployment>;
     /**
      * The entrypoint for the application.  Structure is documented below.
      */
@@ -70,16 +79,21 @@ export class StandardAppVersion extends pulumi.CustomResource {
     public readonly handlers!: pulumi.Output<outputs.appengine.StandardAppVersionHandler[] | undefined>;
     /**
      * Instance class that is used to run this version. Valid values are
-     * AutomaticScaling F1, F2, F4, F4_1G
-     * (Only AutomaticScaling is supported at the moment)
+     * AutomaticScaling: F1, F2, F4, F4_1G
+     * BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+     * Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
      */
-    public readonly instanceClass!: pulumi.Output<string | undefined>;
+    public readonly instanceClass!: pulumi.Output<string>;
     /**
      * Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
      */
     public readonly libraries!: pulumi.Output<outputs.appengine.StandardAppVersionLibrary[] | undefined>;
     /**
-     * The identifier for this object. Format specified above.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+     */
+    public readonly manualScaling!: pulumi.Output<outputs.appengine.StandardAppVersionManualScaling | undefined>;
+    /**
+     * Name of the library. Example "django".
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -125,6 +139,8 @@ export class StandardAppVersion extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as StandardAppVersionState | undefined;
+            inputs["automaticScaling"] = state ? state.automaticScaling : undefined;
+            inputs["basicScaling"] = state ? state.basicScaling : undefined;
             inputs["deleteServiceOnDestroy"] = state ? state.deleteServiceOnDestroy : undefined;
             inputs["deployment"] = state ? state.deployment : undefined;
             inputs["entrypoint"] = state ? state.entrypoint : undefined;
@@ -132,6 +148,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             inputs["handlers"] = state ? state.handlers : undefined;
             inputs["instanceClass"] = state ? state.instanceClass : undefined;
             inputs["libraries"] = state ? state.libraries : undefined;
+            inputs["manualScaling"] = state ? state.manualScaling : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["noopOnDestroy"] = state ? state.noopOnDestroy : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -142,9 +159,14 @@ export class StandardAppVersion extends pulumi.CustomResource {
             inputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as StandardAppVersionArgs | undefined;
+            if (!args || args.deployment === undefined) {
+                throw new Error("Missing required property 'deployment'");
+            }
             if (!args || args.runtime === undefined) {
                 throw new Error("Missing required property 'runtime'");
             }
+            inputs["automaticScaling"] = args ? args.automaticScaling : undefined;
+            inputs["basicScaling"] = args ? args.basicScaling : undefined;
             inputs["deleteServiceOnDestroy"] = args ? args.deleteServiceOnDestroy : undefined;
             inputs["deployment"] = args ? args.deployment : undefined;
             inputs["entrypoint"] = args ? args.entrypoint : undefined;
@@ -152,6 +174,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             inputs["handlers"] = args ? args.handlers : undefined;
             inputs["instanceClass"] = args ? args.instanceClass : undefined;
             inputs["libraries"] = args ? args.libraries : undefined;
+            inputs["manualScaling"] = args ? args.manualScaling : undefined;
             inputs["noopOnDestroy"] = args ? args.noopOnDestroy : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["runtime"] = args ? args.runtime : undefined;
@@ -177,6 +200,14 @@ export class StandardAppVersion extends pulumi.CustomResource {
  */
 export interface StandardAppVersionState {
     /**
+     * Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+     */
+    readonly automaticScaling?: pulumi.Input<inputs.appengine.StandardAppVersionAutomaticScaling>;
+    /**
+     * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+     */
+    readonly basicScaling?: pulumi.Input<inputs.appengine.StandardAppVersionBasicScaling>;
+    /**
      * If set to `true`, the service will be deleted if it is the last version.    
      */
     readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
@@ -199,8 +230,9 @@ export interface StandardAppVersionState {
     readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionHandler>[]>;
     /**
      * Instance class that is used to run this version. Valid values are
-     * AutomaticScaling F1, F2, F4, F4_1G
-     * (Only AutomaticScaling is supported at the moment)
+     * AutomaticScaling: F1, F2, F4, F4_1G
+     * BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+     * Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
      */
     readonly instanceClass?: pulumi.Input<string>;
     /**
@@ -208,7 +240,11 @@ export interface StandardAppVersionState {
      */
     readonly libraries?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionLibrary>[]>;
     /**
-     * The identifier for this object. Format specified above.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+     */
+    readonly manualScaling?: pulumi.Input<inputs.appengine.StandardAppVersionManualScaling>;
+    /**
+     * Name of the library. Example "django".
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -248,13 +284,21 @@ export interface StandardAppVersionState {
  */
 export interface StandardAppVersionArgs {
     /**
+     * Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+     */
+    readonly automaticScaling?: pulumi.Input<inputs.appengine.StandardAppVersionAutomaticScaling>;
+    /**
+     * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+     */
+    readonly basicScaling?: pulumi.Input<inputs.appengine.StandardAppVersionBasicScaling>;
+    /**
      * If set to `true`, the service will be deleted if it is the last version.    
      */
     readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
     /**
      * Code and application artifacts that make up this version.  Structure is documented below.
      */
-    readonly deployment?: pulumi.Input<inputs.appengine.StandardAppVersionDeployment>;
+    readonly deployment: pulumi.Input<inputs.appengine.StandardAppVersionDeployment>;
     /**
      * The entrypoint for the application.  Structure is documented below.
      */
@@ -270,14 +314,19 @@ export interface StandardAppVersionArgs {
     readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionHandler>[]>;
     /**
      * Instance class that is used to run this version. Valid values are
-     * AutomaticScaling F1, F2, F4, F4_1G
-     * (Only AutomaticScaling is supported at the moment)
+     * AutomaticScaling: F1, F2, F4, F4_1G
+     * BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+     * Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
      */
     readonly instanceClass?: pulumi.Input<string>;
     /**
      * Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
      */
     readonly libraries?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionLibrary>[]>;
+    /**
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+     */
+    readonly manualScaling?: pulumi.Input<inputs.appengine.StandardAppVersionManualScaling>;
     /**
      * If set to `true`, the application version will not be deleted.
      */

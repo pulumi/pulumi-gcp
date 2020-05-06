@@ -14,8 +14,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     Serving configuration for Google Cloud Endpoints.  Structure is documented below.
 
-      * `authFailAction` (`str`) - Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
-      * `login` (`str`) - Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+      * `authFailAction` (`str`) - Action to take when users access resources that require authentication.
+      * `login` (`str`) - Level of login required to access this resource.
       * `script` (`str`) - Path to the script from the application root directory.
       * `securityLevel` (`str`) - Security (HTTPS) enforcement for this URL.
       * `url` (`str`) - URL to serve the endpoint at.
@@ -103,7 +103,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         the configuration ID. In this case, configId must be omitted.
       * `disableTraceSampling` (`bool`) - Enable or disable trace sampling. By default, this is set to false for enabled.
       * `name` (`str`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
-      * `rolloutStrategy` (`str`) - Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
+      * `rolloutStrategy` (`str`) - Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
     """
     entrypoint: pulumi.Output[dict]
     """
@@ -142,7 +142,9 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
 
-      * `instances` (`float`) - Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+      * `instances` (`float`) - Number of instances to assign to the service at the start.
+        **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+        Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
     """
     name: pulumi.Output[str]
     """
@@ -224,7 +226,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
     serving_status: pulumi.Output[str]
     """
     Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-    Defaults to SERVING.
     """
     version_id: pulumi.Output[str]
     """
@@ -287,15 +288,14 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-               Defaults to SERVING.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[dict] vpc_access_connector: Enables VPC connectivity for standard apps.  Structure is documented below.
 
         The **api_config** object supports the following:
 
-          * `authFailAction` (`pulumi.Input[str]`) - Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
-          * `login` (`pulumi.Input[str]`) - Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+          * `authFailAction` (`pulumi.Input[str]`) - Action to take when users access resources that require authentication.
+          * `login` (`pulumi.Input[str]`) - Level of login required to access this resource.
           * `script` (`pulumi.Input[str]`) - Path to the script from the application root directory.
           * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
           * `url` (`pulumi.Input[str]`) - URL to serve the endpoint at.
@@ -364,7 +364,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             the configuration ID. In this case, configId must be omitted.
           * `disableTraceSampling` (`pulumi.Input[bool]`) - Enable or disable trace sampling. By default, this is set to false for enabled.
           * `name` (`pulumi.Input[str]`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
-          * `rolloutStrategy` (`pulumi.Input[str]`) - Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
+          * `rolloutStrategy` (`pulumi.Input[str]`) - Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 
         The **entrypoint** object supports the following:
 
@@ -382,7 +382,9 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
         The **manual_scaling** object supports the following:
 
-          * `instances` (`pulumi.Input[float]`) - Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+          * `instances` (`pulumi.Input[float]`) - Number of instances to assign to the service at the start.
+            **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+            Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
 
         The **network** object supports the following:
 
@@ -519,15 +521,14 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] runtime_main_executable_path: The path or name of the app's main executable.
         :param pulumi.Input[str] service: AppEngine service resource
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-               Defaults to SERVING.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[dict] vpc_access_connector: Enables VPC connectivity for standard apps.  Structure is documented below.
 
         The **api_config** object supports the following:
 
-          * `authFailAction` (`pulumi.Input[str]`) - Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
-          * `login` (`pulumi.Input[str]`) - Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+          * `authFailAction` (`pulumi.Input[str]`) - Action to take when users access resources that require authentication.
+          * `login` (`pulumi.Input[str]`) - Level of login required to access this resource.
           * `script` (`pulumi.Input[str]`) - Path to the script from the application root directory.
           * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
           * `url` (`pulumi.Input[str]`) - URL to serve the endpoint at.
@@ -596,7 +597,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             the configuration ID. In this case, configId must be omitted.
           * `disableTraceSampling` (`pulumi.Input[bool]`) - Enable or disable trace sampling. By default, this is set to false for enabled.
           * `name` (`pulumi.Input[str]`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
-          * `rolloutStrategy` (`pulumi.Input[str]`) - Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
+          * `rolloutStrategy` (`pulumi.Input[str]`) - Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 
         The **entrypoint** object supports the following:
 
@@ -614,7 +615,9 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
         The **manual_scaling** object supports the following:
 
-          * `instances` (`pulumi.Input[float]`) - Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+          * `instances` (`pulumi.Input[float]`) - Number of instances to assign to the service at the start.
+            **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+            Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manual_scaling"[0].instances]` to prevent drift detection.
 
         The **network** object supports the following:
 

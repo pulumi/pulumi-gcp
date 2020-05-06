@@ -19,8 +19,7 @@ class Address(pulumi.CustomResource):
     """
     address_type: pulumi.Output[str]
     """
-    The type of address to reserve, either INTERNAL or EXTERNAL.
-    If unspecified, defaults to EXTERNAL.
+    The type of address to reserve.
     """
     creation_timestamp: pulumi.Output[str]
     """
@@ -49,8 +48,7 @@ class Address(pulumi.CustomResource):
     """
     network_tier: pulumi.Output[str]
     """
-    The networking tier used for configuring this address. This field can
-    take the following values: PREMIUM or STANDARD. If this field is not
+    The networking tier used for configuring this address. If this field is not
     specified, it is assumed to be PREMIUM.
     """
     project: pulumi.Output[str]
@@ -114,8 +112,7 @@ class Address(pulumi.CustomResource):
                IPv4 is supported. An address may only be specified for INTERNAL
                address types. The IP address must be inside the specified subnetwork,
                if any.
-        :param pulumi.Input[str] address_type: The type of address to reserve, either INTERNAL or EXTERNAL.
-               If unspecified, defaults to EXTERNAL.
+        :param pulumi.Input[str] address_type: The type of address to reserve.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[dict] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -124,8 +121,7 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. This field can
-               take the following values: PREMIUM or STANDARD. If this field is not
+        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -189,8 +185,7 @@ class Address(pulumi.CustomResource):
                IPv4 is supported. An address may only be specified for INTERNAL
                address types. The IP address must be inside the specified subnetwork,
                if any.
-        :param pulumi.Input[str] address_type: The type of address to reserve, either INTERNAL or EXTERNAL.
-               If unspecified, defaults to EXTERNAL.
+        :param pulumi.Input[str] address_type: The type of address to reserve.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
@@ -201,8 +196,7 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. This field can
-               take the following values: PREMIUM or STANDARD. If this field is not
+        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

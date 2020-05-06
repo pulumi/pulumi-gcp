@@ -106,8 +106,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
-     * balancing cannot be used with the other(s). Must be `INTERNAL` or
-     * `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+     * balancing cannot be used with the other(s).
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -162,8 +161,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The protocol this RegionBackendService uses to communicate with backends.
-     * Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-     * HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
      */
     public readonly protocol!: pulumi.Output<string>;
@@ -324,8 +322,7 @@ export interface RegionBackendServiceState {
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
-     * balancing cannot be used with the other(s). Must be `INTERNAL` or
-     * `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+     * balancing cannot be used with the other(s).
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -380,8 +377,7 @@ export interface RegionBackendServiceState {
     readonly project?: pulumi.Input<string>;
     /**
      * The protocol this RegionBackendService uses to communicate with backends.
-     * Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-     * HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
      */
     readonly protocol?: pulumi.Input<string>;
@@ -461,8 +457,7 @@ export interface RegionBackendServiceArgs {
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
-     * balancing cannot be used with the other(s). Must be `INTERNAL` or
-     * `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+     * balancing cannot be used with the other(s).
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -517,8 +512,7 @@ export interface RegionBackendServiceArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * The protocol this RegionBackendService uses to communicate with backends.
-     * Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-     * HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+     * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
      */
     readonly protocol?: pulumi.Input<string>;

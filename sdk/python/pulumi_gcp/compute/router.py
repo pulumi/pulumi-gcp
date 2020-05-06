@@ -15,7 +15,6 @@ class Router(pulumi.CustomResource):
     BGP information specific to this router.  Structure is documented below.
 
       * `advertise_mode` (`str`) - User-specified flag to indicate which mode to use for advertisement.
-        Valid values of this enum field are: DEFAULT, CUSTOM
       * `advertised_groups` (`list`) - User-specified list of prefix groups to advertise in custom mode.
         This field can only be populated if advertiseMode is CUSTOM and
         is advertised to all peers of the router. These groups will be
@@ -99,7 +98,6 @@ class Router(pulumi.CustomResource):
         The **bgp** object supports the following:
 
           * `advertise_mode` (`pulumi.Input[str]`) - User-specified flag to indicate which mode to use for advertisement.
-            Valid values of this enum field are: DEFAULT, CUSTOM
           * `advertised_groups` (`pulumi.Input[list]`) - User-specified list of prefix groups to advertise in custom mode.
             This field can only be populated if advertiseMode is CUSTOM and
             is advertised to all peers of the router. These groups will be
@@ -180,7 +178,6 @@ class Router(pulumi.CustomResource):
         The **bgp** object supports the following:
 
           * `advertise_mode` (`pulumi.Input[str]`) - User-specified flag to indicate which mode to use for advertisement.
-            Valid values of this enum field are: DEFAULT, CUSTOM
           * `advertised_groups` (`pulumi.Input[list]`) - User-specified list of prefix groups to advertise in custom mode.
             This field can only be populated if advertiseMode is CUSTOM and
             is advertised to all peers of the router. These groups will be

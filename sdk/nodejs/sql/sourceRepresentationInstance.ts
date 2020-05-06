@@ -60,7 +60,7 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
     }
 
     /**
-     * The MySQL version running on your source database server: MYSQL_5_6 or MYSQL_5_7.
+     * The MySQL version running on your source database server.
      */
     public readonly databaseVersion!: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
  */
 export interface SourceRepresentationInstanceState {
     /**
-     * The MySQL version running on your source database server: MYSQL_5_6 or MYSQL_5_7.
+     * The MySQL version running on your source database server.
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
@@ -169,7 +169,7 @@ export interface SourceRepresentationInstanceState {
  */
 export interface SourceRepresentationInstanceArgs {
     /**
-     * The MySQL version running on your source database server: MYSQL_5_6 or MYSQL_5_7.
+     * The MySQL version running on your source database server.
      */
     readonly databaseVersion: pulumi.Input<string>;
     /**

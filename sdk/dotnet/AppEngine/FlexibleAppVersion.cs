@@ -185,7 +185,6 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-        /// Defaults to SERVING.
         /// </summary>
         [Output("servingStatus")]
         public Output<string?> ServingStatus { get; private set; } = null!;
@@ -419,7 +418,6 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-        /// Defaults to SERVING.
         /// </summary>
         [Input("servingStatus")]
         public Input<string>? ServingStatus { get; set; }
@@ -620,7 +618,6 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-        /// Defaults to SERVING.
         /// </summary>
         [Input("servingStatus")]
         public Input<string>? ServingStatus { get; set; }

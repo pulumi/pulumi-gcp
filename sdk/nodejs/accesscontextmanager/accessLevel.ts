@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *                 osConstraints: [{
  *                     osType: "DESKTOP_CHROME_OS",
  *                 }],
- *                 requireScreenLock: false,
+ *                 requireScreenLock: true,
  *             },
  *             regions: [
  *                 "CH",

@@ -60,8 +60,7 @@ type ForwardingRule struct {
 	// avoid needing to fetching the IP address from resource paths on refresh
 	// or unnecessary diffs.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// The IP protocol to which this rule applies. Valid options are TCP,
-	// UDP, ESP, AH, SCTP or ICMP.
+	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
@@ -97,8 +96,7 @@ type ForwardingRule struct {
 	// this field is not specified, the default network will be used.
 	// This field is only used for INTERNAL load balancing.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// The networking tier used for configuring this address. This field can
-	// take the following values: PREMIUM or STANDARD. If this field is not
+	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// This field is used along with the target field for TargetHttpProxy,
@@ -226,8 +224,7 @@ type forwardingRuleState struct {
 	// avoid needing to fetching the IP address from resource paths on refresh
 	// or unnecessary diffs.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The IP protocol to which this rule applies. Valid options are TCP,
-	// UDP, ESP, AH, SCTP or ICMP.
+	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
 	IpProtocol *string `pulumi:"ipProtocol"`
@@ -263,8 +260,7 @@ type forwardingRuleState struct {
 	// this field is not specified, the default network will be used.
 	// This field is only used for INTERNAL load balancing.
 	Network *string `pulumi:"network"`
-	// The networking tier used for configuring this address. This field can
-	// take the following values: PREMIUM or STANDARD. If this field is not
+	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	NetworkTier *string `pulumi:"networkTier"`
 	// This field is used along with the target field for TargetHttpProxy,
@@ -365,8 +361,7 @@ type ForwardingRuleState struct {
 	// avoid needing to fetching the IP address from resource paths on refresh
 	// or unnecessary diffs.
 	IpAddress pulumi.StringPtrInput
-	// The IP protocol to which this rule applies. Valid options are TCP,
-	// UDP, ESP, AH, SCTP or ICMP.
+	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
 	IpProtocol pulumi.StringPtrInput
@@ -402,8 +397,7 @@ type ForwardingRuleState struct {
 	// this field is not specified, the default network will be used.
 	// This field is only used for INTERNAL load balancing.
 	Network pulumi.StringPtrInput
-	// The networking tier used for configuring this address. This field can
-	// take the following values: PREMIUM or STANDARD. If this field is not
+	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringPtrInput
 	// This field is used along with the target field for TargetHttpProxy,
@@ -506,8 +500,7 @@ type forwardingRuleArgs struct {
 	// avoid needing to fetching the IP address from resource paths on refresh
 	// or unnecessary diffs.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The IP protocol to which this rule applies. Valid options are TCP,
-	// UDP, ESP, AH, SCTP or ICMP.
+	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
 	IpProtocol *string `pulumi:"ipProtocol"`
@@ -541,8 +534,7 @@ type forwardingRuleArgs struct {
 	// this field is not specified, the default network will be used.
 	// This field is only used for INTERNAL load balancing.
 	Network *string `pulumi:"network"`
-	// The networking tier used for configuring this address. This field can
-	// take the following values: PREMIUM or STANDARD. If this field is not
+	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	NetworkTier *string `pulumi:"networkTier"`
 	// This field is used along with the target field for TargetHttpProxy,
@@ -638,8 +630,7 @@ type ForwardingRuleArgs struct {
 	// avoid needing to fetching the IP address from resource paths on refresh
 	// or unnecessary diffs.
 	IpAddress pulumi.StringPtrInput
-	// The IP protocol to which this rule applies. Valid options are TCP,
-	// UDP, ESP, AH, SCTP or ICMP.
+	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
 	IpProtocol pulumi.StringPtrInput
@@ -673,8 +664,7 @@ type ForwardingRuleArgs struct {
 	// this field is not specified, the default network will be used.
 	// This field is only used for INTERNAL load balancing.
 	Network pulumi.StringPtrInput
-	// The networking tier used for configuring this address. This field can
-	// take the following values: PREMIUM or STANDARD. If this field is not
+	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringPtrInput
 	// This field is used along with the target field for TargetHttpProxy,

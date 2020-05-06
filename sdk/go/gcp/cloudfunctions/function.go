@@ -37,7 +37,7 @@ type Function struct {
 	HttpsTriggerUrl pulumi.StringOutput `pulumi:"httpsTriggerUrl"`
 	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrOutput `pulumi:"ingressSettings"`
-	// A set of key/value label pairs to assign to the function.
+	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntPtrOutput `pulumi:"maxInstances"`
@@ -114,7 +114,7 @@ type functionState struct {
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
 	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
 	IngressSettings *string `pulumi:"ingressSettings"`
-	// A set of key/value label pairs to assign to the function.
+	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances *int `pulumi:"maxInstances"`
@@ -161,7 +161,7 @@ type FunctionState struct {
 	HttpsTriggerUrl pulumi.StringPtrInput
 	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrInput
-	// A set of key/value label pairs to assign to the function.
+	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntPtrInput
@@ -212,7 +212,7 @@ type functionArgs struct {
 	HttpsTriggerUrl *string `pulumi:"httpsTriggerUrl"`
 	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
 	IngressSettings *string `pulumi:"ingressSettings"`
-	// A set of key/value label pairs to assign to the function.
+	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances *int `pulumi:"maxInstances"`
@@ -260,7 +260,7 @@ type FunctionArgs struct {
 	HttpsTriggerUrl pulumi.StringPtrInput
 	// String value that controls what traffic can reach the function. Allowed values are ALLOW_ALL and ALLOW_INTERNAL_ONLY. Changes to this field will recreate the cloud function.
 	IngressSettings pulumi.StringPtrInput
-	// A set of key/value label pairs to assign to the function.
+	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
 	Labels pulumi.MapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntPtrInput

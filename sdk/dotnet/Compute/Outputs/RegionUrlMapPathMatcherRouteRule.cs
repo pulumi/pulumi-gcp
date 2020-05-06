@@ -53,9 +53,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Service;
         /// <summary>
-        /// When a path pattern is matched, the request is redirected to a URL specified by
-        /// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-        /// set.  Structure is documented below.
+        /// When a path pattern is matched, the request is redirected to a URL specified
+        /// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+        /// be set.  Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherRouteRuleUrlRedirect? UrlRedirect;
 

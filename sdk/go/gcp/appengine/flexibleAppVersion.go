@@ -84,7 +84,6 @@ type FlexibleAppVersion struct {
 	// AppEngine service resource
 	Service pulumi.StringPtrOutput `pulumi:"service"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-	// Defaults to SERVING.
 	ServingStatus pulumi.StringPtrOutput `pulumi:"servingStatus"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
 	// Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -187,7 +186,6 @@ type flexibleAppVersionState struct {
 	// AppEngine service resource
 	Service *string `pulumi:"service"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-	// Defaults to SERVING.
 	ServingStatus *string `pulumi:"servingStatus"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
 	// Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -254,7 +252,6 @@ type FlexibleAppVersionState struct {
 	// AppEngine service resource
 	Service pulumi.StringPtrInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-	// Defaults to SERVING.
 	ServingStatus pulumi.StringPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
 	// Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -323,7 +320,6 @@ type flexibleAppVersionArgs struct {
 	// AppEngine service resource
 	Service *string `pulumi:"service"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-	// Defaults to SERVING.
 	ServingStatus *string `pulumi:"servingStatus"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
 	// Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -389,7 +385,6 @@ type FlexibleAppVersionArgs struct {
 	// AppEngine service resource
 	Service pulumi.StringPtrInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-	// Defaults to SERVING.
 	ServingStatus pulumi.StringPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
 	// Reserved names,"default", "latest", and any name with the prefix "ah-".

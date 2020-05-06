@@ -30,9 +30,8 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  * 
- * > **Warning:** All arguments including the disk encryption key will be stored in the raw
- * state as plain-text.
- * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  * 
  * ## Example Usage - Disk Basic
  * 

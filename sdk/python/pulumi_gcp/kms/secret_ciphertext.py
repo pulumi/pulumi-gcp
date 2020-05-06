@@ -12,7 +12,7 @@ from .. import utilities, tables
 class SecretCiphertext(pulumi.CustomResource):
     additional_authenticated_data: pulumi.Output[str]
     """
-    The additional authenticated data used for integrity checks during encryption and decryption.
+    The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
     """
     ciphertext: pulumi.Output[str]
     """
@@ -25,7 +25,7 @@ class SecretCiphertext(pulumi.CustomResource):
     """
     plaintext: pulumi.Output[str]
     """
-    The plaintext to be encrypted.
+    The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
     """
     def __init__(__self__, resource_name, opts=None, additional_authenticated_data=None, crypto_key=None, plaintext=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -44,12 +44,15 @@ class SecretCiphertext(pulumi.CustomResource):
         * How-to Guides
             * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
 
+        > **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.
+        :param pulumi.Input[str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-        :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
+        :param pulumi.Input[str] plaintext: The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,11 +94,11 @@ class SecretCiphertext(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.
+        :param pulumi.Input[str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] ciphertext: Contains the result of encrypting the provided plaintext, encoded in base64.
         :param pulumi.Input[str] crypto_key: The full name of the CryptoKey that will be used to encrypt the provided plaintext.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-        :param pulumi.Input[str] plaintext: The plaintext to be encrypted.
+        :param pulumi.Input[str] plaintext: The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

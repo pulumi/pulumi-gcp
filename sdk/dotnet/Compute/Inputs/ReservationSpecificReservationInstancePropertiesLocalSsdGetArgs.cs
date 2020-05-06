@@ -19,8 +19,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int> DiskSizeGb { get; set; } = null!;
 
         /// <summary>
-        /// The disk interface to use for attaching this disk, one
-        /// of `SCSI` or `NVME`. The default is `SCSI`.
+        /// The disk interface to use for attaching this disk.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }

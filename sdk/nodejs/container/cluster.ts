@@ -6,55 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Google Kubernetes Engine (GKE) cluster. For more information see
- * [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
- * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
- * 
- * > **Note:** All arguments and attributes, including basic auth username and
- * passwords as well as certificate outputs will be stored in the raw state as
- * plaintext. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
- * ## Example Usage - with the default node pool
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const primary = new gcp.container.Cluster("primary", {
- *     initialNodeCount: 3,
- *     location: "us-central1-a",
- *     masterAuth: {
- *         clientCertificateConfig: {
- *             issueClientCertificate: false,
- *         },
- *         password: "",
- *         username: "",
- *     },
- *     nodeConfig: {
- *         labels: {
- *             foo: "bar",
- *         },
- *         metadata: {
- *             "disable-legacy-endpoints": "true",
- *         },
- *         oauthScopes: [
- *             "https://www.googleapis.com/auth/logging.write",
- *             "https://www.googleapis.com/auth/monitoring",
- *         ],
- *         tags: [
- *             "foo",
- *             "bar",
- *         ],
- *     },
- * }, { timeouts: {
- *     create: "30m",
- *     update: "40m",
- * } });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.
- */
 export class Cluster extends pulumi.CustomResource {
     /**
      * Get an existing Cluster resource's state with the given name, ID, and optional extra

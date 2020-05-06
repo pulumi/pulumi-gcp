@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/security-scanner/docs/reference/rest/v1beta/projects.scanConfigs)
     /// * How-to Guides
     ///     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
+    /// 
+    /// &gt; **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw
+    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// </summary>
     public partial class SecurityScanConfig : Pulumi.CustomResource
     {

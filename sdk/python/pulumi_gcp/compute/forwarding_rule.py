@@ -62,8 +62,7 @@ class ForwardingRule(pulumi.CustomResource):
     """
     ip_protocol: pulumi.Output[str]
     """
-    The IP protocol to which this rule applies. Valid options are TCP,
-    UDP, ESP, AH, SCTP or ICMP.
+    The IP protocol to which this rule applies.
     When the load balancing scheme is INTERNAL, only TCP and UDP are
     valid.
     """
@@ -113,8 +112,7 @@ class ForwardingRule(pulumi.CustomResource):
     """
     network_tier: pulumi.Output[str]
     """
-    The networking tier used for configuring this address. This field can
-    take the following values: PREMIUM or STANDARD. If this field is not
+    The networking tier used for configuring this address. If this field is not
     specified, it is assumed to be PREMIUM.
     """
     port_range: pulumi.Output[str]
@@ -238,8 +236,7 @@ class ForwardingRule(pulumi.CustomResource):
                instead, this provider requires this to specifically be an IP address to
                avoid needing to fetching the IP address from resource paths on refresh
                or unnecessary diffs.
-        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. Valid options are TCP,
-               UDP, ESP, AH, SCTP or ICMP.
+        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                When the load balancing scheme is INTERNAL, only TCP and UDP are
                valid.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used
@@ -267,8 +264,7 @@ class ForwardingRule(pulumi.CustomResource):
                the load balanced IP should belong to for this Forwarding Rule. If
                this field is not specified, the default network will be used.
                This field is only used for INTERNAL load balancing.
-        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. This field can
-               take the following values: PREMIUM or STANDARD. If this field is not
+        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
         :param pulumi.Input[str] port_range: This field is used along with the target field for TargetHttpProxy,
                TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -404,8 +400,7 @@ class ForwardingRule(pulumi.CustomResource):
                instead, this provider requires this to specifically be an IP address to
                avoid needing to fetching the IP address from resource paths on refresh
                or unnecessary diffs.
-        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. Valid options are TCP,
-               UDP, ESP, AH, SCTP or ICMP.
+        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                When the load balancing scheme is INTERNAL, only TCP and UDP are
                valid.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used
@@ -434,8 +429,7 @@ class ForwardingRule(pulumi.CustomResource):
                the load balanced IP should belong to for this Forwarding Rule. If
                this field is not specified, the default network will be used.
                This field is only used for INTERNAL load balancing.
-        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. This field can
-               take the following values: PREMIUM or STANDARD. If this field is not
+        :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
         :param pulumi.Input[str] port_range: This field is used along with the target field for TargetHttpProxy,
                TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,

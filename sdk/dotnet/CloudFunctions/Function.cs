@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string?> IngressSettings { get; private set; } = null!;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the function.
+        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
@@ -249,7 +249,7 @@ namespace Pulumi.Gcp.CloudFunctions
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the function.
+        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         /// </summary>
         public InputMap<object> Labels
         {
@@ -396,7 +396,7 @@ namespace Pulumi.Gcp.CloudFunctions
         private InputMap<object>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the function.
+        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         /// </summary>
         public InputMap<object> Labels
         {

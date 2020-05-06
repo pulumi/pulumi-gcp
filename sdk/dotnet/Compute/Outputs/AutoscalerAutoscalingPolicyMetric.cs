@@ -74,8 +74,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly double? Target;
         /// <summary>
         /// Defines how target utilization value is expressed for a
-        /// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-        /// or DELTA_PER_MINUTE.
+        /// Stackdriver Monitoring metric.
         /// </summary>
         public readonly string? Type;
 

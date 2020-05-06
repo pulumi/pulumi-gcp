@@ -92,8 +92,7 @@ class Autoscaler(pulumi.CustomResource):
           balancing configuration) that autoscaler should maintain. Must
           be a positive float value. If not defined, the default is 0.8.
         * `type` (`str`) - Defines how target utilization value is expressed for a
-          Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-          or DELTA_PER_MINUTE.
+          Stackdriver Monitoring metric.
 
       * `minReplicas` (`float`) - The minimum number of replicas that the autoscaler can scale down
         to. This cannot be less than 0. If not provided, autoscaler will
@@ -242,8 +241,7 @@ class Autoscaler(pulumi.CustomResource):
               balancing configuration) that autoscaler should maintain. Must
               be a positive float value. If not defined, the default is 0.8.
             * `type` (`pulumi.Input[str]`) - Defines how target utilization value is expressed for a
-              Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-              or DELTA_PER_MINUTE.
+              Stackdriver Monitoring metric.
 
           * `minReplicas` (`pulumi.Input[float]`) - The minimum number of replicas that the autoscaler can scale down
             to. This cannot be less than 0. If not provided, autoscaler will
@@ -390,8 +388,7 @@ class Autoscaler(pulumi.CustomResource):
               balancing configuration) that autoscaler should maintain. Must
               be a positive float value. If not defined, the default is 0.8.
             * `type` (`pulumi.Input[str]`) - Defines how target utilization value is expressed for a
-              Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-              or DELTA_PER_MINUTE.
+              Stackdriver Monitoring metric.
 
           * `minReplicas` (`pulumi.Input[float]`) - The minimum number of replicas that the autoscaler can scale down
             to. This cannot be less than 0. If not provided, autoscaler will

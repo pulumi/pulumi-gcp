@@ -18,6 +18,41 @@ class URLMap(pulumi.CustomResource):
     """
     The backend service or backend bucket to use when none of the given paths match.
     """
+    default_url_redirect: pulumi.Output[dict]
+    """
+    When none of the specified hostRules match, the request is redirected to a URL specified
+    by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+    defaultRouteAction must not be set.  Structure is documented below.
+
+      * `hostRedirect` (`str`) - The host that will be used in the redirect response instead of the one that was
+        supplied in the request. The value must be between 1 and 255 characters.
+      * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+        false, the URL scheme of the redirected request will remain the same as that of the
+        request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+        true for TargetHttpsProxy is not permitted. The default is set to false.
+      * `pathRedirect` (`str`) - The path that will be used in the redirect response instead of the one that was
+        supplied in the request. pathRedirect cannot be supplied together with
+        prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+        original request will be used for the redirect. The value must be between 1 and 1024
+        characters.
+      * `prefixRedirect` (`str`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+        retaining the remaining portion of the URL before redirecting the request.
+        prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+        neither. If neither is supplied, the path of the original request will be used for
+        the redirect. The value must be between 1 and 1024 characters.
+      * `redirectResponseCode` (`str`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+        - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        - FOUND, which corresponds to 302.
+        - SEE_OTHER which corresponds to 303.
+        - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+        will be retained.
+        - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+        the request method will be retained.
+      * `stripQuery` (`bool`) - If set to true, any accompanying query portion of the original URL is removed prior
+        to redirecting the request. If set to false, the query portion of the original URL is
+        retained. The default is set to false.
+        This field is required to ensure an empty block is not set. The normal default value is false.
+    """
     description: pulumi.Output[str]
     """
     Description of this test case.
@@ -78,6 +113,38 @@ class URLMap(pulumi.CustomResource):
     hostRule matches the URL's host portion.
 
       * `default_service` (`str`) - The backend service or backend bucket to use when none of the given paths match.
+      * `default_url_redirect` (`dict`) - When none of the specified hostRules match, the request is redirected to a URL specified
+        by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        defaultRouteAction must not be set.  Structure is documented below.
+        * `hostRedirect` (`str`) - The host that will be used in the redirect response instead of the one that was
+          supplied in the request. The value must be between 1 and 255 characters.
+        * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+          false, the URL scheme of the redirected request will remain the same as that of the
+          request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+          true for TargetHttpsProxy is not permitted. The default is set to false.
+        * `pathRedirect` (`str`) - The path that will be used in the redirect response instead of the one that was
+          supplied in the request. pathRedirect cannot be supplied together with
+          prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+          original request will be used for the redirect. The value must be between 1 and 1024
+          characters.
+        * `prefixRedirect` (`str`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+          retaining the remaining portion of the URL before redirecting the request.
+          prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+          neither. If neither is supplied, the path of the original request will be used for
+          the redirect. The value must be between 1 and 1024 characters.
+        * `redirectResponseCode` (`str`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+          - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+          - FOUND, which corresponds to 302.
+          - SEE_OTHER which corresponds to 303.
+          - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+          will be retained.
+          - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+          the request method will be retained.
+        * `stripQuery` (`bool`) - If set to true, any accompanying query portion of the original URL is removed prior
+          to redirecting the request. If set to false, the query portion of the original URL is
+          retained. The default is set to false.
+          This field is required to ensure an empty block is not set. The normal default value is false.
+
       * `description` (`str`) - Description of this test case.
       * `header_action` (`dict`) - Specifies changes to request and response headers that need to take effect for
         the selected backendService. headerAction specified here take effect before
@@ -273,24 +340,32 @@ class URLMap(pulumi.CustomResource):
           set.  Structure is documented below.
           * `hostRedirect` (`str`) - The host that will be used in the redirect response instead of the one that was
             supplied in the request. The value must be between 1 and 255 characters.
-          * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set
-            to false, the URL scheme of the redirected request will remain the same as that
-            of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-            Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+          * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+            false, the URL scheme of the redirected request will remain the same as that of the
+            request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+            true for TargetHttpsProxy is not permitted. The default is set to false.
           * `pathRedirect` (`str`) - The path that will be used in the redirect response instead of the one that was
-            supplied in the request. Only one of pathRedirect or prefixRedirect must be
-            specified. The value must be between 1 and 1024 characters.
+            supplied in the request. pathRedirect cannot be supplied together with
+            prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+            original request will be used for the redirect. The value must be between 1 and 1024
+            characters.
           * `prefixRedirect` (`str`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
             retaining the remaining portion of the URL before redirecting the request.
-          * `redirectResponseCode` (`str`) - The HTTP Status code to use for this RedirectAction. Supported values are:   -
-            MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-            FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-            TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-            will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+            prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+            neither. If neither is supplied, the path of the original request will be used for
+            the redirect. The value must be between 1 and 1024 characters.
+          * `redirectResponseCode` (`str`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+            - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+            - FOUND, which corresponds to 302.
+            - SEE_OTHER which corresponds to 303.
+            - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+            will be retained.
+            - PERMANENT_REDIRECT, which corresponds to 308. In this case,
             the request method will be retained.
-          * `stripQuery` (`bool`) - If set to true, any accompanying query portion of the original URL is removed
-            prior to redirecting the request. If set to false, the query portion of the
-            original URL is retained. Defaults to false.
+          * `stripQuery` (`bool`) - If set to true, any accompanying query portion of the original URL is removed prior
+            to redirecting the request. If set to false, the query portion of the original URL is
+            retained. The default is set to false.
+            This field is required to ensure an empty block is not set. The normal default value is false.
 
       * `routeRules` (`list`) - The list of ordered HTTP route rules. Use this list instead of pathRules when
         advanced route matching and routing actions are desired. The order of specifying
@@ -582,24 +657,32 @@ class URLMap(pulumi.CustomResource):
           set.  Structure is documented below.
           * `hostRedirect` (`str`) - The host that will be used in the redirect response instead of the one that was
             supplied in the request. The value must be between 1 and 255 characters.
-          * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set
-            to false, the URL scheme of the redirected request will remain the same as that
-            of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-            Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+          * `httpsRedirect` (`bool`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+            false, the URL scheme of the redirected request will remain the same as that of the
+            request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+            true for TargetHttpsProxy is not permitted. The default is set to false.
           * `pathRedirect` (`str`) - The path that will be used in the redirect response instead of the one that was
-            supplied in the request. Only one of pathRedirect or prefixRedirect must be
-            specified. The value must be between 1 and 1024 characters.
+            supplied in the request. pathRedirect cannot be supplied together with
+            prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+            original request will be used for the redirect. The value must be between 1 and 1024
+            characters.
           * `prefixRedirect` (`str`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
             retaining the remaining portion of the URL before redirecting the request.
-          * `redirectResponseCode` (`str`) - The HTTP Status code to use for this RedirectAction. Supported values are:   -
-            MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-            FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-            TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-            will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+            prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+            neither. If neither is supplied, the path of the original request will be used for
+            the redirect. The value must be between 1 and 1024 characters.
+          * `redirectResponseCode` (`str`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+            - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+            - FOUND, which corresponds to 302.
+            - SEE_OTHER which corresponds to 303.
+            - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+            will be retained.
+            - PERMANENT_REDIRECT, which corresponds to 308. In this case,
             the request method will be retained.
-          * `stripQuery` (`bool`) - If set to true, any accompanying query portion of the original URL is removed
-            prior to redirecting the request. If set to false, the query portion of the
-            original URL is retained. Defaults to false.
+          * `stripQuery` (`bool`) - If set to true, any accompanying query portion of the original URL is removed prior
+            to redirecting the request. If set to false, the query portion of the original URL is
+            retained. The default is set to false.
+            This field is required to ensure an empty block is not set. The normal default value is false.
     """
     project: pulumi.Output[str]
     """
@@ -621,7 +704,7 @@ class URLMap(pulumi.CustomResource):
       * `path` (`str`) - Path portion of the URL.
       * `service` (`str`) - The backend service or backend bucket link that should be matched by this test.
     """
-    def __init__(__self__, resource_name, opts=None, default_service=None, description=None, header_action=None, host_rules=None, name=None, path_matchers=None, project=None, tests=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, default_service=None, default_url_redirect=None, description=None, header_action=None, host_rules=None, name=None, path_matchers=None, project=None, tests=None, __props__=None, __name__=None, __opts__=None):
         """
         UrlMaps are used to route requests to a backend service based on rules
         that you define for the host and path of an incoming URL.
@@ -634,6 +717,9 @@ class URLMap(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given paths match.
+        :param pulumi.Input[dict] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+               by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+               defaultRouteAction must not be set.  Structure is documented below.
         :param pulumi.Input[str] description: Description of this test case.
         :param pulumi.Input[dict] header_action: Specifies changes to request and response headers that need to take effect for
                the selected backendService. headerAction specified here take effect before
@@ -648,6 +734,37 @@ class URLMap(pulumi.CustomResource):
         :param pulumi.Input[list] tests: The list of expected URL mapping tests. Request to update this UrlMap will
                succeed only if all of the test cases pass. You can specify a maximum of 100
                tests per UrlMap.  Structure is documented below.
+
+        The **default_url_redirect** object supports the following:
+
+          * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
+            supplied in the request. The value must be between 1 and 255 characters.
+          * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+            false, the URL scheme of the redirected request will remain the same as that of the
+            request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+            true for TargetHttpsProxy is not permitted. The default is set to false.
+          * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
+            supplied in the request. pathRedirect cannot be supplied together with
+            prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+            original request will be used for the redirect. The value must be between 1 and 1024
+            characters.
+          * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+            retaining the remaining portion of the URL before redirecting the request.
+            prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+            neither. If neither is supplied, the path of the original request will be used for
+            the redirect. The value must be between 1 and 1024 characters.
+          * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+            - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+            - FOUND, which corresponds to 302.
+            - SEE_OTHER which corresponds to 303.
+            - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+            will be retained.
+            - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+            the request method will be retained.
+          * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed prior
+            to redirecting the request. If set to false, the query portion of the original URL is
+            retained. The default is set to false.
+            This field is required to ensure an empty block is not set. The normal default value is false.
 
         The **header_action** object supports the following:
 
@@ -683,6 +800,38 @@ class URLMap(pulumi.CustomResource):
         The **path_matchers** object supports the following:
 
           * `default_service` (`pulumi.Input[str]`) - The backend service or backend bucket to use when none of the given paths match.
+          * `default_url_redirect` (`pulumi.Input[dict]`) - When none of the specified hostRules match, the request is redirected to a URL specified
+            by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+            defaultRouteAction must not be set.  Structure is documented below.
+            * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
+              supplied in the request. The value must be between 1 and 255 characters.
+            * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+              false, the URL scheme of the redirected request will remain the same as that of the
+              request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+              true for TargetHttpsProxy is not permitted. The default is set to false.
+            * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
+              supplied in the request. pathRedirect cannot be supplied together with
+              prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+              original request will be used for the redirect. The value must be between 1 and 1024
+              characters.
+            * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+              retaining the remaining portion of the URL before redirecting the request.
+              prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+              neither. If neither is supplied, the path of the original request will be used for
+              the redirect. The value must be between 1 and 1024 characters.
+            * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+              - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+              - FOUND, which corresponds to 302.
+              - SEE_OTHER which corresponds to 303.
+              - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+              will be retained.
+              - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+              the request method will be retained.
+            * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed prior
+              to redirecting the request. If set to false, the query portion of the original URL is
+              retained. The default is set to false.
+              This field is required to ensure an empty block is not set. The normal default value is false.
+
           * `description` (`pulumi.Input[str]`) - Description of this test case.
           * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
             the selected backendService. headerAction specified here take effect before
@@ -878,24 +1027,32 @@ class URLMap(pulumi.CustomResource):
               set.  Structure is documented below.
               * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
                 supplied in the request. The value must be between 1 and 255 characters.
-              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set
-                to false, the URL scheme of the redirected request will remain the same as that
-                of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-                Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+                false, the URL scheme of the redirected request will remain the same as that of the
+                request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+                true for TargetHttpsProxy is not permitted. The default is set to false.
               * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
-                supplied in the request. Only one of pathRedirect or prefixRedirect must be
-                specified. The value must be between 1 and 1024 characters.
+                supplied in the request. pathRedirect cannot be supplied together with
+                prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+                original request will be used for the redirect. The value must be between 1 and 1024
+                characters.
               * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
                 retaining the remaining portion of the URL before redirecting the request.
-              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:   -
-                MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-                FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-                TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-                will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+                prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+                neither. If neither is supplied, the path of the original request will be used for
+                the redirect. The value must be between 1 and 1024 characters.
+              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+                - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+                - FOUND, which corresponds to 302.
+                - SEE_OTHER which corresponds to 303.
+                - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+                will be retained.
+                - PERMANENT_REDIRECT, which corresponds to 308. In this case,
                 the request method will be retained.
-              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed
-                prior to redirecting the request. If set to false, the query portion of the
-                original URL is retained. Defaults to false.
+              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed prior
+                to redirecting the request. If set to false, the query portion of the original URL is
+                retained. The default is set to false.
+                This field is required to ensure an empty block is not set. The normal default value is false.
 
           * `routeRules` (`pulumi.Input[list]`) - The list of ordered HTTP route rules. Use this list instead of pathRules when
             advanced route matching and routing actions are desired. The order of specifying
@@ -1187,24 +1344,32 @@ class URLMap(pulumi.CustomResource):
               set.  Structure is documented below.
               * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
                 supplied in the request. The value must be between 1 and 255 characters.
-              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set
-                to false, the URL scheme of the redirected request will remain the same as that
-                of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-                Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+                false, the URL scheme of the redirected request will remain the same as that of the
+                request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+                true for TargetHttpsProxy is not permitted. The default is set to false.
               * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
-                supplied in the request. Only one of pathRedirect or prefixRedirect must be
-                specified. The value must be between 1 and 1024 characters.
+                supplied in the request. pathRedirect cannot be supplied together with
+                prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+                original request will be used for the redirect. The value must be between 1 and 1024
+                characters.
               * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
                 retaining the remaining portion of the URL before redirecting the request.
-              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:   -
-                MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-                FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-                TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-                will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+                prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+                neither. If neither is supplied, the path of the original request will be used for
+                the redirect. The value must be between 1 and 1024 characters.
+              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+                - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+                - FOUND, which corresponds to 302.
+                - SEE_OTHER which corresponds to 303.
+                - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+                will be retained.
+                - PERMANENT_REDIRECT, which corresponds to 308. In this case,
                 the request method will be retained.
-              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed
-                prior to redirecting the request. If set to false, the query portion of the
-                original URL is retained. Defaults to false.
+              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed prior
+                to redirecting the request. If set to false, the query portion of the original URL is
+                retained. The default is set to false.
+                This field is required to ensure an empty block is not set. The normal default value is false.
 
         The **tests** object supports the following:
 
@@ -1231,6 +1396,7 @@ class URLMap(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['default_service'] = default_service
+            __props__['default_url_redirect'] = default_url_redirect
             __props__['description'] = description
             __props__['header_action'] = header_action
             __props__['host_rules'] = host_rules
@@ -1249,7 +1415,7 @@ class URLMap(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, creation_timestamp=None, default_service=None, description=None, fingerprint=None, header_action=None, host_rules=None, map_id=None, name=None, path_matchers=None, project=None, self_link=None, tests=None):
+    def get(resource_name, id, opts=None, creation_timestamp=None, default_service=None, default_url_redirect=None, description=None, fingerprint=None, header_action=None, host_rules=None, map_id=None, name=None, path_matchers=None, project=None, self_link=None, tests=None):
         """
         Get an existing URLMap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1259,6 +1425,9 @@ class URLMap(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given paths match.
+        :param pulumi.Input[dict] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+               by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+               defaultRouteAction must not be set.  Structure is documented below.
         :param pulumi.Input[str] description: Description of this test case.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         :param pulumi.Input[dict] header_action: Specifies changes to request and response headers that need to take effect for
@@ -1276,6 +1445,37 @@ class URLMap(pulumi.CustomResource):
         :param pulumi.Input[list] tests: The list of expected URL mapping tests. Request to update this UrlMap will
                succeed only if all of the test cases pass. You can specify a maximum of 100
                tests per UrlMap.  Structure is documented below.
+
+        The **default_url_redirect** object supports the following:
+
+          * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
+            supplied in the request. The value must be between 1 and 255 characters.
+          * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+            false, the URL scheme of the redirected request will remain the same as that of the
+            request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+            true for TargetHttpsProxy is not permitted. The default is set to false.
+          * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
+            supplied in the request. pathRedirect cannot be supplied together with
+            prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+            original request will be used for the redirect. The value must be between 1 and 1024
+            characters.
+          * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+            retaining the remaining portion of the URL before redirecting the request.
+            prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+            neither. If neither is supplied, the path of the original request will be used for
+            the redirect. The value must be between 1 and 1024 characters.
+          * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+            - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+            - FOUND, which corresponds to 302.
+            - SEE_OTHER which corresponds to 303.
+            - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+            will be retained.
+            - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+            the request method will be retained.
+          * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed prior
+            to redirecting the request. If set to false, the query portion of the original URL is
+            retained. The default is set to false.
+            This field is required to ensure an empty block is not set. The normal default value is false.
 
         The **header_action** object supports the following:
 
@@ -1311,6 +1511,38 @@ class URLMap(pulumi.CustomResource):
         The **path_matchers** object supports the following:
 
           * `default_service` (`pulumi.Input[str]`) - The backend service or backend bucket to use when none of the given paths match.
+          * `default_url_redirect` (`pulumi.Input[dict]`) - When none of the specified hostRules match, the request is redirected to a URL specified
+            by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+            defaultRouteAction must not be set.  Structure is documented below.
+            * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
+              supplied in the request. The value must be between 1 and 255 characters.
+            * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+              false, the URL scheme of the redirected request will remain the same as that of the
+              request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+              true for TargetHttpsProxy is not permitted. The default is set to false.
+            * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
+              supplied in the request. pathRedirect cannot be supplied together with
+              prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+              original request will be used for the redirect. The value must be between 1 and 1024
+              characters.
+            * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+              retaining the remaining portion of the URL before redirecting the request.
+              prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+              neither. If neither is supplied, the path of the original request will be used for
+              the redirect. The value must be between 1 and 1024 characters.
+            * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+              - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+              - FOUND, which corresponds to 302.
+              - SEE_OTHER which corresponds to 303.
+              - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+              will be retained.
+              - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+              the request method will be retained.
+            * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed prior
+              to redirecting the request. If set to false, the query portion of the original URL is
+              retained. The default is set to false.
+              This field is required to ensure an empty block is not set. The normal default value is false.
+
           * `description` (`pulumi.Input[str]`) - Description of this test case.
           * `header_action` (`pulumi.Input[dict]`) - Specifies changes to request and response headers that need to take effect for
             the selected backendService. headerAction specified here take effect before
@@ -1506,24 +1738,32 @@ class URLMap(pulumi.CustomResource):
               set.  Structure is documented below.
               * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
                 supplied in the request. The value must be between 1 and 255 characters.
-              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set
-                to false, the URL scheme of the redirected request will remain the same as that
-                of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-                Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+                false, the URL scheme of the redirected request will remain the same as that of the
+                request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+                true for TargetHttpsProxy is not permitted. The default is set to false.
               * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
-                supplied in the request. Only one of pathRedirect or prefixRedirect must be
-                specified. The value must be between 1 and 1024 characters.
+                supplied in the request. pathRedirect cannot be supplied together with
+                prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+                original request will be used for the redirect. The value must be between 1 and 1024
+                characters.
               * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
                 retaining the remaining portion of the URL before redirecting the request.
-              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:   -
-                MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-                FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-                TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-                will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+                prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+                neither. If neither is supplied, the path of the original request will be used for
+                the redirect. The value must be between 1 and 1024 characters.
+              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+                - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+                - FOUND, which corresponds to 302.
+                - SEE_OTHER which corresponds to 303.
+                - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+                will be retained.
+                - PERMANENT_REDIRECT, which corresponds to 308. In this case,
                 the request method will be retained.
-              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed
-                prior to redirecting the request. If set to false, the query portion of the
-                original URL is retained. Defaults to false.
+              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed prior
+                to redirecting the request. If set to false, the query portion of the original URL is
+                retained. The default is set to false.
+                This field is required to ensure an empty block is not set. The normal default value is false.
 
           * `routeRules` (`pulumi.Input[list]`) - The list of ordered HTTP route rules. Use this list instead of pathRules when
             advanced route matching and routing actions are desired. The order of specifying
@@ -1815,24 +2055,32 @@ class URLMap(pulumi.CustomResource):
               set.  Structure is documented below.
               * `hostRedirect` (`pulumi.Input[str]`) - The host that will be used in the redirect response instead of the one that was
                 supplied in the request. The value must be between 1 and 255 characters.
-              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set
-                to false, the URL scheme of the redirected request will remain the same as that
-                of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-                Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+              * `httpsRedirect` (`pulumi.Input[bool]`) - If set to true, the URL scheme in the redirected request is set to https. If set to
+                false, the URL scheme of the redirected request will remain the same as that of the
+                request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+                true for TargetHttpsProxy is not permitted. The default is set to false.
               * `pathRedirect` (`pulumi.Input[str]`) - The path that will be used in the redirect response instead of the one that was
-                supplied in the request. Only one of pathRedirect or prefixRedirect must be
-                specified. The value must be between 1 and 1024 characters.
+                supplied in the request. pathRedirect cannot be supplied together with
+                prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+                original request will be used for the redirect. The value must be between 1 and 1024
+                characters.
               * `prefixRedirect` (`pulumi.Input[str]`) - The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
                 retaining the remaining portion of the URL before redirecting the request.
-              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:   -
-                MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-                FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-                TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-                will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+                prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+                neither. If neither is supplied, the path of the original request will be used for
+                the redirect. The value must be between 1 and 1024 characters.
+              * `redirectResponseCode` (`pulumi.Input[str]`) - The HTTP Status code to use for this RedirectAction. Supported values are:
+                - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+                - FOUND, which corresponds to 302.
+                - SEE_OTHER which corresponds to 303.
+                - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+                will be retained.
+                - PERMANENT_REDIRECT, which corresponds to 308. In this case,
                 the request method will be retained.
-              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed
-                prior to redirecting the request. If set to false, the query portion of the
-                original URL is retained. Defaults to false.
+              * `stripQuery` (`pulumi.Input[bool]`) - If set to true, any accompanying query portion of the original URL is removed prior
+                to redirecting the request. If set to false, the query portion of the original URL is
+                retained. The default is set to false.
+                This field is required to ensure an empty block is not set. The normal default value is false.
 
         The **tests** object supports the following:
 
@@ -1847,6 +2095,7 @@ class URLMap(pulumi.CustomResource):
 
         __props__["creation_timestamp"] = creation_timestamp
         __props__["default_service"] = default_service
+        __props__["default_url_redirect"] = default_url_redirect
         __props__["description"] = description
         __props__["fingerprint"] = fingerprint
         __props__["header_action"] = header_action

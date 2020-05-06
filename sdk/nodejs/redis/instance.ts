@@ -69,9 +69,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly authorizedNetwork!: pulumi.Output<string>;
     /**
-     * The connection mode of the Redis instance. Can be either
-     * `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-     * connect mode if not provided is `DIRECT_PEERING`.
+     * The connection mode of the Redis instance.
      */
     public readonly connectMode!: pulumi.Output<string | undefined>;
     /**
@@ -236,9 +234,7 @@ export interface InstanceState {
      */
     readonly authorizedNetwork?: pulumi.Input<string>;
     /**
-     * The connection mode of the Redis instance. Can be either
-     * `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-     * connect mode if not provided is `DIRECT_PEERING`.
+     * The connection mode of the Redis instance.
      */
     readonly connectMode?: pulumi.Input<string>;
     /**
@@ -339,9 +335,7 @@ export interface InstanceArgs {
      */
     readonly authorizedNetwork?: pulumi.Input<string>;
     /**
-     * The connection mode of the Redis instance. Can be either
-     * `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-     * connect mode if not provided is `DIRECT_PEERING`.
+     * The connection mode of the Redis instance.
      */
     readonly connectMode?: pulumi.Input<string>;
     /**

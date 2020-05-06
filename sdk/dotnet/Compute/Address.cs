@@ -44,8 +44,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IPAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The type of address to reserve, either INTERNAL or EXTERNAL.
-        /// If unspecified, defaults to EXTERNAL.
+        /// The type of address to reserve.
         /// </summary>
         [Output("addressType")]
         public Output<string?> AddressType { get; private set; } = null!;
@@ -86,8 +85,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The networking tier used for configuring this address. This field can
-        /// take the following values: PREMIUM or STANDARD. If this field is not
+        /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
         /// </summary>
         [Output("networkTier")]
@@ -192,8 +190,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IPAddress { get; set; }
 
         /// <summary>
-        /// The type of address to reserve, either INTERNAL or EXTERNAL.
-        /// If unspecified, defaults to EXTERNAL.
+        /// The type of address to reserve.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -228,8 +225,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The networking tier used for configuring this address. This field can
-        /// take the following values: PREMIUM or STANDARD. If this field is not
+        /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
         /// </summary>
         [Input("networkTier")]
@@ -283,8 +279,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IPAddress { get; set; }
 
         /// <summary>
-        /// The type of address to reserve, either INTERNAL or EXTERNAL.
-        /// If unspecified, defaults to EXTERNAL.
+        /// The type of address to reserve.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -331,8 +326,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The networking tier used for configuring this address. This field can
-        /// take the following values: PREMIUM or STANDARD. If this field is not
+        /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
         /// </summary>
         [Input("networkTier")]

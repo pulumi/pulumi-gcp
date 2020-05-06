@@ -34,7 +34,6 @@ type RegionInstanceGroupManager struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-	// - - -
 	DistributionPolicyZones pulumi.StringArrayOutput `pulumi:"distributionPolicyZones"`
 	// The fingerprint of the instance group manager.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
@@ -52,6 +51,8 @@ type RegionInstanceGroupManager struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
+	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayOutput `pulumi:"statefulDisks"`
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -122,7 +123,6 @@ type regionInstanceGroupManagerState struct {
 	Description *string `pulumi:"description"`
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-	// - - -
 	DistributionPolicyZones []string `pulumi:"distributionPolicyZones"`
 	// The fingerprint of the instance group manager.
 	Fingerprint *string `pulumi:"fingerprint"`
@@ -140,6 +140,8 @@ type regionInstanceGroupManagerState struct {
 	Region *string `pulumi:"region"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
+	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -174,7 +176,6 @@ type RegionInstanceGroupManagerState struct {
 	Description pulumi.StringPtrInput
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-	// - - -
 	DistributionPolicyZones pulumi.StringArrayInput
 	// The fingerprint of the instance group manager.
 	Fingerprint pulumi.StringPtrInput
@@ -192,6 +193,8 @@ type RegionInstanceGroupManagerState struct {
 	Region pulumi.StringPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
+	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -230,7 +233,6 @@ type regionInstanceGroupManagerArgs struct {
 	Description *string `pulumi:"description"`
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-	// - - -
 	DistributionPolicyZones []string `pulumi:"distributionPolicyZones"`
 	// - Version name.
 	Name *string `pulumi:"name"`
@@ -242,6 +244,8 @@ type regionInstanceGroupManagerArgs struct {
 	Project *string `pulumi:"project"`
 	// The region where the managed instance group resides.
 	Region string `pulumi:"region"`
+	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
+	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
@@ -277,7 +281,6 @@ type RegionInstanceGroupManagerArgs struct {
 	Description pulumi.StringPtrInput
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-	// - - -
 	DistributionPolicyZones pulumi.StringArrayInput
 	// - Version name.
 	Name pulumi.StringPtrInput
@@ -289,6 +292,8 @@ type RegionInstanceGroupManagerArgs struct {
 	Project pulumi.StringPtrInput
 	// The region where the managed instance group resides.
 	Region pulumi.StringInput
+	// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
+	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
 	// The full URL of all target pools to which new
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.

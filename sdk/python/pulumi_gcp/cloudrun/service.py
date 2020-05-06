@@ -200,7 +200,7 @@ class Service(pulumi.CustomResource):
             If not specified, the container runtime's default will be used, which
             might be configured in the container image.
 
-        * `serviceAccountName` (`str`) - Email address of the IAM service account associated with the revision of the
+        * `service_account_name` (`str`) - Email address of the IAM service account associated with the revision of the
           service. The service account represents the identity of the running revision,
           and determines what permissions the revision has. If not provided, the revision
           will use the project's default service account.
@@ -411,7 +411,7 @@ class Service(pulumi.CustomResource):
                 If not specified, the container runtime's default will be used, which
                 might be configured in the container image.
 
-            * `serviceAccountName` (`pulumi.Input[str]`) - Email address of the IAM service account associated with the revision of the
+            * `service_account_name` (`pulumi.Input[str]`) - Email address of the IAM service account associated with the revision of the
               service. The service account represents the identity of the running revision,
               and determines what permissions the revision has. If not provided, the revision
               will use the project's default service account.
@@ -650,7 +650,7 @@ class Service(pulumi.CustomResource):
                 If not specified, the container runtime's default will be used, which
                 might be configured in the container image.
 
-            * `serviceAccountName` (`pulumi.Input[str]`) - Email address of the IAM service account associated with the revision of the
+            * `service_account_name` (`pulumi.Input[str]`) - Email address of the IAM service account associated with the revision of the
               service. The service account represents the identity of the running revision,
               and determines what permissions the revision has. If not provided, the revision
               will use the project's default service account.

@@ -1128,6 +1128,292 @@ func (o ManagedZonePrivateVisibilityConfigNetworkArrayOutput) Index(i pulumi.Int
 	}).(ManagedZonePrivateVisibilityConfigNetworkOutput)
 }
 
+type ManagedZoneServiceDirectoryConfig struct {
+	// The namespace associated with the zone.  Structure is documented below.
+	Namespace ManagedZoneServiceDirectoryConfigNamespace `pulumi:"namespace"`
+}
+
+// ManagedZoneServiceDirectoryConfigInput is an input type that accepts ManagedZoneServiceDirectoryConfigArgs and ManagedZoneServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigInput` via:
+//
+// 		 ManagedZoneServiceDirectoryConfigArgs{...}
+//
+type ManagedZoneServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToManagedZoneServiceDirectoryConfigOutput() ManagedZoneServiceDirectoryConfigOutput
+	ToManagedZoneServiceDirectoryConfigOutputWithContext(context.Context) ManagedZoneServiceDirectoryConfigOutput
+}
+
+type ManagedZoneServiceDirectoryConfigArgs struct {
+	// The namespace associated with the zone.  Structure is documented below.
+	Namespace ManagedZoneServiceDirectoryConfigNamespaceInput `pulumi:"namespace"`
+}
+
+func (ManagedZoneServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ManagedZoneServiceDirectoryConfigArgs) ToManagedZoneServiceDirectoryConfigOutput() ManagedZoneServiceDirectoryConfigOutput {
+	return i.ToManagedZoneServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneServiceDirectoryConfigArgs) ToManagedZoneServiceDirectoryConfigOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigOutput)
+}
+
+func (i ManagedZoneServiceDirectoryConfigArgs) ToManagedZoneServiceDirectoryConfigPtrOutput() ManagedZoneServiceDirectoryConfigPtrOutput {
+	return i.ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneServiceDirectoryConfigArgs) ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigOutput).ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedZoneServiceDirectoryConfigPtrInput is an input type that accepts ManagedZoneServiceDirectoryConfigArgs, ManagedZoneServiceDirectoryConfigPtr and ManagedZoneServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigPtrInput` via:
+//
+// 		 ManagedZoneServiceDirectoryConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ManagedZoneServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedZoneServiceDirectoryConfigPtrOutput() ManagedZoneServiceDirectoryConfigPtrOutput
+	ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(context.Context) ManagedZoneServiceDirectoryConfigPtrOutput
+}
+
+type managedZoneServiceDirectoryConfigPtrType ManagedZoneServiceDirectoryConfigArgs
+
+func ManagedZoneServiceDirectoryConfigPtr(v *ManagedZoneServiceDirectoryConfigArgs) ManagedZoneServiceDirectoryConfigPtrInput {
+	return (*managedZoneServiceDirectoryConfigPtrType)(v)
+}
+
+func (*managedZoneServiceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *managedZoneServiceDirectoryConfigPtrType) ToManagedZoneServiceDirectoryConfigPtrOutput() ManagedZoneServiceDirectoryConfigPtrOutput {
+	return i.ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedZoneServiceDirectoryConfigPtrType) ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigPtrOutput)
+}
+
+type ManagedZoneServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ManagedZoneServiceDirectoryConfigOutput) ToManagedZoneServiceDirectoryConfigOutput() ManagedZoneServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigOutput) ToManagedZoneServiceDirectoryConfigOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigOutput) ToManagedZoneServiceDirectoryConfigPtrOutput() ManagedZoneServiceDirectoryConfigPtrOutput {
+	return o.ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneServiceDirectoryConfigOutput) ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfig) *ManagedZoneServiceDirectoryConfig {
+		return &v
+	}).(ManagedZoneServiceDirectoryConfigPtrOutput)
+}
+
+// The namespace associated with the zone.  Structure is documented below.
+func (o ManagedZoneServiceDirectoryConfigOutput) Namespace() ManagedZoneServiceDirectoryConfigNamespaceOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfig) ManagedZoneServiceDirectoryConfigNamespace {
+		return v.Namespace
+	}).(ManagedZoneServiceDirectoryConfigNamespaceOutput)
+}
+
+type ManagedZoneServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ManagedZoneServiceDirectoryConfigPtrOutput) ToManagedZoneServiceDirectoryConfigPtrOutput() ManagedZoneServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigPtrOutput) ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigPtrOutput) Elem() ManagedZoneServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfig) ManagedZoneServiceDirectoryConfig { return *v }).(ManagedZoneServiceDirectoryConfigOutput)
+}
+
+// The namespace associated with the zone.  Structure is documented below.
+func (o ManagedZoneServiceDirectoryConfigPtrOutput) Namespace() ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfig) *ManagedZoneServiceDirectoryConfigNamespace {
+		if v == nil {
+			return nil
+		}
+		return &v.Namespace
+	}).(ManagedZoneServiceDirectoryConfigNamespacePtrOutput)
+}
+
+type ManagedZoneServiceDirectoryConfigNamespace struct {
+	// The fully qualified or partial URL of the service directory namespace that should be
+	// associated with the zone. This should be formatted like
+	// `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
+	// or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
+	// Ignored for `public` visibility zones.
+	NamespaceUrl string `pulumi:"namespaceUrl"`
+}
+
+// ManagedZoneServiceDirectoryConfigNamespaceInput is an input type that accepts ManagedZoneServiceDirectoryConfigNamespaceArgs and ManagedZoneServiceDirectoryConfigNamespaceOutput values.
+// You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigNamespaceInput` via:
+//
+// 		 ManagedZoneServiceDirectoryConfigNamespaceArgs{...}
+//
+type ManagedZoneServiceDirectoryConfigNamespaceInput interface {
+	pulumi.Input
+
+	ToManagedZoneServiceDirectoryConfigNamespaceOutput() ManagedZoneServiceDirectoryConfigNamespaceOutput
+	ToManagedZoneServiceDirectoryConfigNamespaceOutputWithContext(context.Context) ManagedZoneServiceDirectoryConfigNamespaceOutput
+}
+
+type ManagedZoneServiceDirectoryConfigNamespaceArgs struct {
+	// The fully qualified or partial URL of the service directory namespace that should be
+	// associated with the zone. This should be formatted like
+	// `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
+	// or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
+	// Ignored for `public` visibility zones.
+	NamespaceUrl pulumi.StringInput `pulumi:"namespaceUrl"`
+}
+
+func (ManagedZoneServiceDirectoryConfigNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneServiceDirectoryConfigNamespace)(nil)).Elem()
+}
+
+func (i ManagedZoneServiceDirectoryConfigNamespaceArgs) ToManagedZoneServiceDirectoryConfigNamespaceOutput() ManagedZoneServiceDirectoryConfigNamespaceOutput {
+	return i.ToManagedZoneServiceDirectoryConfigNamespaceOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneServiceDirectoryConfigNamespaceArgs) ToManagedZoneServiceDirectoryConfigNamespaceOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigNamespaceOutput)
+}
+
+func (i ManagedZoneServiceDirectoryConfigNamespaceArgs) ToManagedZoneServiceDirectoryConfigNamespacePtrOutput() ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
+	return i.ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneServiceDirectoryConfigNamespaceArgs) ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigNamespaceOutput).ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(ctx)
+}
+
+// ManagedZoneServiceDirectoryConfigNamespacePtrInput is an input type that accepts ManagedZoneServiceDirectoryConfigNamespaceArgs, ManagedZoneServiceDirectoryConfigNamespacePtr and ManagedZoneServiceDirectoryConfigNamespacePtrOutput values.
+// You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigNamespacePtrInput` via:
+//
+// 		 ManagedZoneServiceDirectoryConfigNamespaceArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ManagedZoneServiceDirectoryConfigNamespacePtrInput interface {
+	pulumi.Input
+
+	ToManagedZoneServiceDirectoryConfigNamespacePtrOutput() ManagedZoneServiceDirectoryConfigNamespacePtrOutput
+	ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(context.Context) ManagedZoneServiceDirectoryConfigNamespacePtrOutput
+}
+
+type managedZoneServiceDirectoryConfigNamespacePtrType ManagedZoneServiceDirectoryConfigNamespaceArgs
+
+func ManagedZoneServiceDirectoryConfigNamespacePtr(v *ManagedZoneServiceDirectoryConfigNamespaceArgs) ManagedZoneServiceDirectoryConfigNamespacePtrInput {
+	return (*managedZoneServiceDirectoryConfigNamespacePtrType)(v)
+}
+
+func (*managedZoneServiceDirectoryConfigNamespacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneServiceDirectoryConfigNamespace)(nil)).Elem()
+}
+
+func (i *managedZoneServiceDirectoryConfigNamespacePtrType) ToManagedZoneServiceDirectoryConfigNamespacePtrOutput() ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
+	return i.ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZoneServiceDirectoryConfigNamespacePtrType) ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigNamespacePtrOutput)
+}
+
+type ManagedZoneServiceDirectoryConfigNamespaceOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneServiceDirectoryConfigNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneServiceDirectoryConfigNamespace)(nil)).Elem()
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToManagedZoneServiceDirectoryConfigNamespaceOutput() ManagedZoneServiceDirectoryConfigNamespaceOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToManagedZoneServiceDirectoryConfigNamespaceOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespaceOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToManagedZoneServiceDirectoryConfigNamespacePtrOutput() ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
+	return o.ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespace) *ManagedZoneServiceDirectoryConfigNamespace {
+		return &v
+	}).(ManagedZoneServiceDirectoryConfigNamespacePtrOutput)
+}
+
+// The fully qualified or partial URL of the service directory namespace that should be
+// associated with the zone. This should be formatted like
+// `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
+// or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
+// Ignored for `public` visibility zones.
+func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) NamespaceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespace) string { return v.NamespaceUrl }).(pulumi.StringOutput)
+}
+
+type ManagedZoneServiceDirectoryConfigNamespacePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneServiceDirectoryConfigNamespacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneServiceDirectoryConfigNamespace)(nil)).Elem()
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) ToManagedZoneServiceDirectoryConfigNamespacePtrOutput() ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) Elem() ManagedZoneServiceDirectoryConfigNamespaceOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespace) ManagedZoneServiceDirectoryConfigNamespace {
+		return *v
+	}).(ManagedZoneServiceDirectoryConfigNamespaceOutput)
+}
+
+// The fully qualified or partial URL of the service directory namespace that should be
+// associated with the zone. This should be formatted like
+// `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
+// or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
+// Ignored for `public` visibility zones.
+func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) NamespaceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespace) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NamespaceUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 type PolicyAlternativeNameServerConfig struct {
 	// Sets an alternative name server for the associated networks. When specified,
 	// all DNS queries are forwarded to a name server that you choose. Names such as .internal
@@ -2059,6 +2345,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigNamespaceOutput{})
+	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigNamespacePtrOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigPtrOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerOutput{})

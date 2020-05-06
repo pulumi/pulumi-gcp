@@ -33,6 +33,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> DefaultService { get; private set; } = null!;
 
         /// <summary>
+        /// When none of the specified hostRules match, the request is redirected to a URL specified
+        /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// </summary>
+        [Output("defaultUrlRedirect")]
+        public Output<Outputs.URLMapDefaultUrlRedirect?> DefaultUrlRedirect { get; private set; } = null!;
+
+        /// <summary>
         /// Description of this test case.
         /// </summary>
         [Output("description")]
@@ -152,6 +160,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? DefaultService { get; set; }
 
         /// <summary>
+        /// When none of the specified hostRules match, the request is redirected to a URL specified
+        /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// </summary>
+        [Input("defaultUrlRedirect")]
+        public Input<Inputs.URLMapDefaultUrlRedirectArgs>? DefaultUrlRedirect { get; set; }
+
+        /// <summary>
         /// Description of this test case.
         /// </summary>
         [Input("description")]
@@ -236,6 +252,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("defaultService")]
         public Input<string>? DefaultService { get; set; }
+
+        /// <summary>
+        /// When none of the specified hostRules match, the request is redirected to a URL specified
+        /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// </summary>
+        [Input("defaultUrlRedirect")]
+        public Input<Inputs.URLMapDefaultUrlRedirectGetArgs>? DefaultUrlRedirect { get; set; }
 
         /// <summary>
         /// Description of this test case.

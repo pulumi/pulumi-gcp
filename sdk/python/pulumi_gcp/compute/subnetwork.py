@@ -54,7 +54,7 @@ class Subnetwork(pulumi.CustomResource):
         half of all collected logs are reported.
       * `metadata` (`str`) - Can only be specified if VPC flow logging for this subnetwork is enabled.
         Configures whether metadata fields should be added to the reported VPC
-        flow logs. Default is `INCLUDE_ALL_METADATA`.
+        flow logs.
     """
     name: pulumi.Output[str]
     """
@@ -212,7 +212,7 @@ class Subnetwork(pulumi.CustomResource):
             half of all collected logs are reported.
           * `metadata` (`pulumi.Input[str]`) - Can only be specified if VPC flow logging for this subnetwork is enabled.
             Configures whether metadata fields should be added to the reported VPC
-            flow logs. Default is `INCLUDE_ALL_METADATA`.
+            flow logs.
 
         The **secondary_ip_ranges** object supports the following:
 
@@ -335,7 +335,7 @@ class Subnetwork(pulumi.CustomResource):
             half of all collected logs are reported.
           * `metadata` (`pulumi.Input[str]`) - Can only be specified if VPC flow logging for this subnetwork is enabled.
             Configures whether metadata fields should be added to the reported VPC
-            flow logs. Default is `INCLUDE_ALL_METADATA`.
+            flow logs.
 
         The **secondary_ip_ranges** object supports the following:
 
