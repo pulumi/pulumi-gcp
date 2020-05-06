@@ -30,9 +30,7 @@ type Instance struct {
 	// instance is connected. If left unspecified, the default network
 	// will be used.
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
-	// The connection mode of the Redis instance. Can be either
-	// `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-	// connect mode if not provided is `DIRECT_PEERING`.
+	// The connection mode of the Redis instance.
 	ConnectMode pulumi.StringPtrOutput `pulumi:"connectMode"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -124,9 +122,7 @@ type instanceState struct {
 	// instance is connected. If left unspecified, the default network
 	// will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
-	// The connection mode of the Redis instance. Can be either
-	// `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-	// connect mode if not provided is `DIRECT_PEERING`.
+	// The connection mode of the Redis instance.
 	ConnectMode *string `pulumi:"connectMode"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime *string `pulumi:"createTime"`
@@ -188,9 +184,7 @@ type InstanceState struct {
 	// instance is connected. If left unspecified, the default network
 	// will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
-	// The connection mode of the Redis instance. Can be either
-	// `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-	// connect mode if not provided is `DIRECT_PEERING`.
+	// The connection mode of the Redis instance.
 	ConnectMode pulumi.StringPtrInput
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringPtrInput
@@ -256,9 +250,7 @@ type instanceArgs struct {
 	// instance is connected. If left unspecified, the default network
 	// will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
-	// The connection mode of the Redis instance. Can be either
-	// `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-	// connect mode if not provided is `DIRECT_PEERING`.
+	// The connection mode of the Redis instance.
 	ConnectMode *string `pulumi:"connectMode"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
@@ -311,9 +303,7 @@ type InstanceArgs struct {
 	// instance is connected. If left unspecified, the default network
 	// will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
-	// The connection mode of the Redis instance. Can be either
-	// `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-	// connect mode if not provided is `DIRECT_PEERING`.
+	// The connection mode of the Redis instance.
 	ConnectMode pulumi.StringPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput

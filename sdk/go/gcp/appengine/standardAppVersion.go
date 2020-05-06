@@ -11,8 +11,9 @@ import (
 )
 
 // Standard App Version resource to create a new version of standard GAE Application.
+// Learn about the differences between the standard environment and the flexible environment
+// at https://cloud.google.com/appengine/docs/the-appengine-environments.
 // Currently supporting Zip and File Containers.
-// Currently does not support async operation checking.
 //
 //
 // To get more information about StandardAppVersion, see:
@@ -23,10 +24,14 @@ import (
 type StandardAppVersion struct {
 	pulumi.CustomResourceState
 
+	// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+	AutomaticScaling StandardAppVersionAutomaticScalingPtrOutput `pulumi:"automaticScaling"`
+	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+	BasicScaling StandardAppVersionBasicScalingPtrOutput `pulumi:"basicScaling"`
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.  Structure is documented below.
-	Deployment StandardAppVersionDeploymentPtrOutput `pulumi:"deployment"`
+	Deployment StandardAppVersionDeploymentOutput `pulumi:"deployment"`
 	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint StandardAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
 	// Environment variables available to the application.
@@ -35,12 +40,15 @@ type StandardAppVersion struct {
 	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayOutput `pulumi:"handlers"`
 	// Instance class that is used to run this version. Valid values are
-	// AutomaticScaling F1, F2, F4, F4_1G
-	// (Only AutomaticScaling is supported at the moment)
-	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+	// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
+	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 	Libraries StandardAppVersionLibraryArrayOutput `pulumi:"libraries"`
-	// The identifier for this object. Format specified above.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+	ManualScaling StandardAppVersionManualScalingPtrOutput `pulumi:"manualScaling"`
+	// Name of the library. Example "django".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrOutput `pulumi:"noopOnDestroy"`
@@ -63,6 +71,9 @@ type StandardAppVersion struct {
 // NewStandardAppVersion registers a new resource with the given unique name, arguments, and options.
 func NewStandardAppVersion(ctx *pulumi.Context,
 	name string, args *StandardAppVersionArgs, opts ...pulumi.ResourceOption) (*StandardAppVersion, error) {
+	if args == nil || args.Deployment == nil {
+		return nil, errors.New("missing required argument 'Deployment'")
+	}
 	if args == nil || args.Runtime == nil {
 		return nil, errors.New("missing required argument 'Runtime'")
 	}
@@ -91,6 +102,10 @@ func GetStandardAppVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StandardAppVersion resources.
 type standardAppVersionState struct {
+	// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+	AutomaticScaling *StandardAppVersionAutomaticScaling `pulumi:"automaticScaling"`
+	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+	BasicScaling *StandardAppVersionBasicScaling `pulumi:"basicScaling"`
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.  Structure is documented below.
@@ -103,12 +118,15 @@ type standardAppVersionState struct {
 	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers []StandardAppVersionHandler `pulumi:"handlers"`
 	// Instance class that is used to run this version. Valid values are
-	// AutomaticScaling F1, F2, F4, F4_1G
-	// (Only AutomaticScaling is supported at the moment)
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+	// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 	Libraries []StandardAppVersionLibrary `pulumi:"libraries"`
-	// The identifier for this object. Format specified above.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+	ManualScaling *StandardAppVersionManualScaling `pulumi:"manualScaling"`
+	// Name of the library. Example "django".
 	Name *string `pulumi:"name"`
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy *bool `pulumi:"noopOnDestroy"`
@@ -129,6 +147,10 @@ type standardAppVersionState struct {
 }
 
 type StandardAppVersionState struct {
+	// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+	AutomaticScaling StandardAppVersionAutomaticScalingPtrInput
+	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+	BasicScaling StandardAppVersionBasicScalingPtrInput
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
 	// Code and application artifacts that make up this version.  Structure is documented below.
@@ -141,12 +163,15 @@ type StandardAppVersionState struct {
 	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayInput
 	// Instance class that is used to run this version. Valid values are
-	// AutomaticScaling F1, F2, F4, F4_1G
-	// (Only AutomaticScaling is supported at the moment)
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+	// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 	InstanceClass pulumi.StringPtrInput
 	// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 	Libraries StandardAppVersionLibraryArrayInput
-	// The identifier for this object. Format specified above.
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+	ManualScaling StandardAppVersionManualScalingPtrInput
+	// Name of the library. Example "django".
 	Name pulumi.StringPtrInput
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrInput
@@ -171,10 +196,14 @@ func (StandardAppVersionState) ElementType() reflect.Type {
 }
 
 type standardAppVersionArgs struct {
+	// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+	AutomaticScaling *StandardAppVersionAutomaticScaling `pulumi:"automaticScaling"`
+	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+	BasicScaling *StandardAppVersionBasicScaling `pulumi:"basicScaling"`
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
 	// Code and application artifacts that make up this version.  Structure is documented below.
-	Deployment *StandardAppVersionDeployment `pulumi:"deployment"`
+	Deployment StandardAppVersionDeployment `pulumi:"deployment"`
 	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint *StandardAppVersionEntrypoint `pulumi:"entrypoint"`
 	// Environment variables available to the application.
@@ -183,11 +212,14 @@ type standardAppVersionArgs struct {
 	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers []StandardAppVersionHandler `pulumi:"handlers"`
 	// Instance class that is used to run this version. Valid values are
-	// AutomaticScaling F1, F2, F4, F4_1G
-	// (Only AutomaticScaling is supported at the moment)
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+	// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 	Libraries []StandardAppVersionLibrary `pulumi:"libraries"`
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+	ManualScaling *StandardAppVersionManualScaling `pulumi:"manualScaling"`
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy *bool `pulumi:"noopOnDestroy"`
 	// The ID of the project in which the resource belongs.
@@ -208,10 +240,14 @@ type standardAppVersionArgs struct {
 
 // The set of arguments for constructing a StandardAppVersion resource.
 type StandardAppVersionArgs struct {
+	// Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+	AutomaticScaling StandardAppVersionAutomaticScalingPtrInput
+	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+	BasicScaling StandardAppVersionBasicScalingPtrInput
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
 	// Code and application artifacts that make up this version.  Structure is documented below.
-	Deployment StandardAppVersionDeploymentPtrInput
+	Deployment StandardAppVersionDeploymentInput
 	// The entrypoint for the application.  Structure is documented below.
 	Entrypoint StandardAppVersionEntrypointPtrInput
 	// Environment variables available to the application.
@@ -220,11 +256,14 @@ type StandardAppVersionArgs struct {
 	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayInput
 	// Instance class that is used to run this version. Valid values are
-	// AutomaticScaling F1, F2, F4, F4_1G
-	// (Only AutomaticScaling is supported at the moment)
+	// AutomaticScaling: F1, F2, F4, F4_1G
+	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
+	// Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
 	InstanceClass pulumi.StringPtrInput
 	// Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
 	Libraries StandardAppVersionLibraryArrayInput
+	// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+	ManualScaling StandardAppVersionManualScalingPtrInput
 	// If set to `true`, the application version will not be deleted.
 	NoopOnDestroy pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.

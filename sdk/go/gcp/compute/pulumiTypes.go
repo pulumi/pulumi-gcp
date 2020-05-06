@@ -645,8 +645,7 @@ type AutoscalarAutoscalingPolicyMetric struct {
 	// be a positive float value. If not defined, the default is 0.8.
 	Target *float64 `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
-	// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-	// or DELTA_PER_MINUTE.
+	// Stackdriver Monitoring metric.
 	Type *string `pulumi:"type"`
 }
 
@@ -715,8 +714,7 @@ type AutoscalarAutoscalingPolicyMetricArgs struct {
 	// be a positive float value. If not defined, the default is 0.8.
 	Target pulumi.Float64PtrInput `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
-	// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-	// or DELTA_PER_MINUTE.
+	// Stackdriver Monitoring metric.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -836,8 +834,7 @@ func (o AutoscalarAutoscalingPolicyMetricOutput) Target() pulumi.Float64PtrOutpu
 }
 
 // Defines how target utilization value is expressed for a
-// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-// or DELTA_PER_MINUTE.
+// Stackdriver Monitoring metric.
 func (o AutoscalarAutoscalingPolicyMetricOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicyMetric) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1497,8 +1494,7 @@ type AutoscalerAutoscalingPolicyMetric struct {
 	// be a positive float value. If not defined, the default is 0.8.
 	Target *float64 `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
-	// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-	// or DELTA_PER_MINUTE.
+	// Stackdriver Monitoring metric.
 	Type *string `pulumi:"type"`
 }
 
@@ -1567,8 +1563,7 @@ type AutoscalerAutoscalingPolicyMetricArgs struct {
 	// be a positive float value. If not defined, the default is 0.8.
 	Target pulumi.Float64PtrInput `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
-	// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-	// or DELTA_PER_MINUTE.
+	// Stackdriver Monitoring metric.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1688,8 +1683,7 @@ func (o AutoscalerAutoscalingPolicyMetricOutput) Target() pulumi.Float64PtrOutpu
 }
 
 // Defines how target utilization value is expressed for a
-// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-// or DELTA_PER_MINUTE.
+// Stackdriver Monitoring metric.
 func (o AutoscalerAutoscalingPolicyMetricOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -3617,10 +3611,10 @@ func (o BackendServiceConsistentHashHttpCookieTtlPtrOutput) Seconds() pulumi.Int
 type BackendServiceIap struct {
 	// OAuth2 Client ID for IAP
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
-	// OAuth2 Client Secret for IAP
+	// OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
 	// -
-	// OAuth2 Client Secret SHA-256 for IAP
+	// OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecretSha256 *string `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -3639,10 +3633,10 @@ type BackendServiceIapInput interface {
 type BackendServiceIapArgs struct {
 	// OAuth2 Client ID for IAP
 	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
-	// OAuth2 Client Secret for IAP
+	// OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
 	// -
-	// OAuth2 Client Secret SHA-256 for IAP
+	// OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
 	Oauth2ClientSecretSha256 pulumi.StringPtrInput `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -3729,13 +3723,13 @@ func (o BackendServiceIapOutput) Oauth2ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
 }
 
-// OAuth2 Client Secret for IAP
+// OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapOutput) Oauth2ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
 }
 
 // -
-// OAuth2 Client Secret SHA-256 for IAP
+// OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServiceIap) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
 }
@@ -3768,7 +3762,7 @@ func (o BackendServiceIapPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// OAuth2 Client Secret for IAP
+// OAuth2 Client Secret for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapPtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceIap) *string {
 		if v == nil {
@@ -3779,7 +3773,7 @@ func (o BackendServiceIapPtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput 
 }
 
 // -
-// OAuth2 Client Secret SHA-256 for IAP
+// OAuth2 Client Secret SHA-256 for IAP  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o BackendServiceIapPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceIap) *string {
 		if v == nil {
@@ -6075,7 +6069,7 @@ type HealthCheckHttp2HealthCheck struct {
 	// `portName` fields.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -6121,7 +6115,7 @@ type HealthCheckHttp2HealthCheckArgs struct {
 	// `portName` fields.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -6244,7 +6238,7 @@ func (o HealthCheckHttp2HealthCheckOutput) PortSpecification() pulumi.StringPtrO
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o HealthCheckHttp2HealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttp2HealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -6334,7 +6328,7 @@ func (o HealthCheckHttp2HealthCheckPtrOutput) PortSpecification() pulumi.StringP
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o HealthCheckHttp2HealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttp2HealthCheck) *string {
 		if v == nil {
@@ -6390,7 +6384,7 @@ type HealthCheckHttpHealthCheck struct {
 	// `portName` fields.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -6436,7 +6430,7 @@ type HealthCheckHttpHealthCheckArgs struct {
 	// `portName` fields.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -6559,7 +6553,7 @@ func (o HealthCheckHttpHealthCheckOutput) PortSpecification() pulumi.StringPtrOu
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o HealthCheckHttpHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttpHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -6649,7 +6643,7 @@ func (o HealthCheckHttpHealthCheckPtrOutput) PortSpecification() pulumi.StringPt
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o HealthCheckHttpHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttpHealthCheck) *string {
 		if v == nil {
@@ -6705,7 +6699,7 @@ type HealthCheckHttpsHealthCheck struct {
 	// `portName` fields.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -6751,7 +6745,7 @@ type HealthCheckHttpsHealthCheckArgs struct {
 	// `portName` fields.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -6874,7 +6868,7 @@ func (o HealthCheckHttpsHealthCheckOutput) PortSpecification() pulumi.StringPtrO
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o HealthCheckHttpsHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckHttpsHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -6964,7 +6958,7 @@ func (o HealthCheckHttpsHealthCheckPtrOutput) PortSpecification() pulumi.StringP
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o HealthCheckHttpsHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckHttpsHealthCheck) *string {
 		if v == nil {
@@ -7153,7 +7147,7 @@ type HealthCheckSslHealthCheck struct {
 	// `portName` fields.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -7197,7 +7191,7 @@ type HealthCheckSslHealthCheckArgs struct {
 	// `portName` fields.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -7315,7 +7309,7 @@ func (o HealthCheckSslHealthCheckOutput) PortSpecification() pulumi.StringPtrOut
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o HealthCheckSslHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckSslHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -7395,7 +7389,7 @@ func (o HealthCheckSslHealthCheckPtrOutput) PortSpecification() pulumi.StringPtr
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o HealthCheckSslHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckSslHealthCheck) *string {
 		if v == nil {
@@ -7449,7 +7443,7 @@ type HealthCheckTcpHealthCheck struct {
 	// `portName` fields.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -7493,7 +7487,7 @@ type HealthCheckTcpHealthCheckArgs struct {
 	// `portName` fields.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -7611,7 +7605,7 @@ func (o HealthCheckTcpHealthCheckOutput) PortSpecification() pulumi.StringPtrOut
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o HealthCheckTcpHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HealthCheckTcpHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -7691,7 +7685,7 @@ func (o HealthCheckTcpHealthCheckPtrOutput) PortSpecification() pulumi.StringPtr
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o HealthCheckTcpHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheckTcpHealthCheck) *string {
 		if v == nil {
@@ -10661,6 +10655,114 @@ func (o InstanceGroupManagerNamedPortArrayOutput) Index(i pulumi.IntInput) Insta
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManagerNamedPort {
 		return vs[0].([]InstanceGroupManagerNamedPort)[vs[1].(int)]
 	}).(InstanceGroupManagerNamedPortOutput)
+}
+
+type InstanceGroupManagerStatefulDisk struct {
+	// , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+	DeleteRule *string `pulumi:"deleteRule"`
+	// , The device name of the disk to be attached.
+	DeviceName string `pulumi:"deviceName"`
+}
+
+// InstanceGroupManagerStatefulDiskInput is an input type that accepts InstanceGroupManagerStatefulDiskArgs and InstanceGroupManagerStatefulDiskOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStatefulDiskInput` via:
+//
+// 		 InstanceGroupManagerStatefulDiskArgs{...}
+//
+type InstanceGroupManagerStatefulDiskInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStatefulDiskOutput() InstanceGroupManagerStatefulDiskOutput
+	ToInstanceGroupManagerStatefulDiskOutputWithContext(context.Context) InstanceGroupManagerStatefulDiskOutput
+}
+
+type InstanceGroupManagerStatefulDiskArgs struct {
+	// , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+	DeleteRule pulumi.StringPtrInput `pulumi:"deleteRule"`
+	// , The device name of the disk to be attached.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+}
+
+func (InstanceGroupManagerStatefulDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerStatefulDiskArgs) ToInstanceGroupManagerStatefulDiskOutput() InstanceGroupManagerStatefulDiskOutput {
+	return i.ToInstanceGroupManagerStatefulDiskOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerStatefulDiskArgs) ToInstanceGroupManagerStatefulDiskOutputWithContext(ctx context.Context) InstanceGroupManagerStatefulDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatefulDiskOutput)
+}
+
+// InstanceGroupManagerStatefulDiskArrayInput is an input type that accepts InstanceGroupManagerStatefulDiskArray and InstanceGroupManagerStatefulDiskArrayOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerStatefulDiskArrayInput` via:
+//
+// 		 InstanceGroupManagerStatefulDiskArray{ InstanceGroupManagerStatefulDiskArgs{...} }
+//
+type InstanceGroupManagerStatefulDiskArrayInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerStatefulDiskArrayOutput() InstanceGroupManagerStatefulDiskArrayOutput
+	ToInstanceGroupManagerStatefulDiskArrayOutputWithContext(context.Context) InstanceGroupManagerStatefulDiskArrayOutput
+}
+
+type InstanceGroupManagerStatefulDiskArray []InstanceGroupManagerStatefulDiskInput
+
+func (InstanceGroupManagerStatefulDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerStatefulDiskArray) ToInstanceGroupManagerStatefulDiskArrayOutput() InstanceGroupManagerStatefulDiskArrayOutput {
+	return i.ToInstanceGroupManagerStatefulDiskArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerStatefulDiskArray) ToInstanceGroupManagerStatefulDiskArrayOutputWithContext(ctx context.Context) InstanceGroupManagerStatefulDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerStatefulDiskArrayOutput)
+}
+
+type InstanceGroupManagerStatefulDiskOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStatefulDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStatefulDiskOutput) ToInstanceGroupManagerStatefulDiskOutput() InstanceGroupManagerStatefulDiskOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatefulDiskOutput) ToInstanceGroupManagerStatefulDiskOutputWithContext(ctx context.Context) InstanceGroupManagerStatefulDiskOutput {
+	return o
+}
+
+// , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+func (o InstanceGroupManagerStatefulDiskOutput) DeleteRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStatefulDisk) *string { return v.DeleteRule }).(pulumi.StringPtrOutput)
+}
+
+// , The device name of the disk to be attached.
+func (o InstanceGroupManagerStatefulDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStatefulDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+type InstanceGroupManagerStatefulDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerStatefulDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerStatefulDiskArrayOutput) ToInstanceGroupManagerStatefulDiskArrayOutput() InstanceGroupManagerStatefulDiskArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatefulDiskArrayOutput) ToInstanceGroupManagerStatefulDiskArrayOutputWithContext(ctx context.Context) InstanceGroupManagerStatefulDiskArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerStatefulDiskArrayOutput) Index(i pulumi.IntInput) InstanceGroupManagerStatefulDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManagerStatefulDisk {
+		return vs[0].([]InstanceGroupManagerStatefulDisk)[vs[1].(int)]
+	}).(InstanceGroupManagerStatefulDiskOutput)
 }
 
 type InstanceGroupManagerUpdatePolicy struct {
@@ -16997,8 +17099,7 @@ type RegionAutoscalerAutoscalingPolicyMetric struct {
 	// be a positive float value. If not defined, the default is 0.8.
 	Target *float64 `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
-	// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-	// or DELTA_PER_MINUTE.
+	// Stackdriver Monitoring metric.
 	Type *string `pulumi:"type"`
 }
 
@@ -17067,8 +17168,7 @@ type RegionAutoscalerAutoscalingPolicyMetricArgs struct {
 	// be a positive float value. If not defined, the default is 0.8.
 	Target pulumi.Float64PtrInput `pulumi:"target"`
 	// Defines how target utilization value is expressed for a
-	// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-	// or DELTA_PER_MINUTE.
+	// Stackdriver Monitoring metric.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -17188,8 +17288,7 @@ func (o RegionAutoscalerAutoscalingPolicyMetricOutput) Target() pulumi.Float64Pt
 }
 
 // Defines how target utilization value is expressed for a
-// Stackdriver Monitoring metric. Either GAUGE, DELTA_PER_SECOND,
-// or DELTA_PER_MINUTE.
+// Stackdriver Monitoring metric.
 func (o RegionAutoscalerAutoscalingPolicyMetricOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyMetric) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -17215,7 +17314,7 @@ func (o RegionAutoscalerAutoscalingPolicyMetricArrayOutput) Index(i pulumi.IntIn
 }
 
 type RegionBackendServiceBackend struct {
-	// Specifies the balancing mode for this backend. Defaults to CONNECTION.
+	// Specifies the balancing mode for this backend.
 	BalancingMode *string `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -17306,7 +17405,7 @@ type RegionBackendServiceBackendInput interface {
 }
 
 type RegionBackendServiceBackendArgs struct {
-	// Specifies the balancing mode for this backend. Defaults to CONNECTION.
+	// Specifies the balancing mode for this backend.
 	BalancingMode pulumi.StringPtrInput `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -17436,7 +17535,7 @@ func (o RegionBackendServiceBackendOutput) ToRegionBackendServiceBackendOutputWi
 	return o
 }
 
-// Specifies the balancing mode for this backend. Defaults to CONNECTION.
+// Specifies the balancing mode for this backend.
 func (o RegionBackendServiceBackendOutput) BalancingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceBackend) *string { return v.BalancingMode }).(pulumi.StringPtrOutput)
 }
@@ -20097,7 +20196,7 @@ type RegionHealthCheckHttp2HealthCheck struct {
 	// `portName` fields.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -20143,7 +20242,7 @@ type RegionHealthCheckHttp2HealthCheckArgs struct {
 	// `portName` fields.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -20266,7 +20365,7 @@ func (o RegionHealthCheckHttp2HealthCheckOutput) PortSpecification() pulumi.Stri
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o RegionHealthCheckHttp2HealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttp2HealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -20356,7 +20455,7 @@ func (o RegionHealthCheckHttp2HealthCheckPtrOutput) PortSpecification() pulumi.S
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o RegionHealthCheckHttp2HealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttp2HealthCheck) *string {
 		if v == nil {
@@ -20412,7 +20511,7 @@ type RegionHealthCheckHttpHealthCheck struct {
 	// `portName` fields.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -20458,7 +20557,7 @@ type RegionHealthCheckHttpHealthCheckArgs struct {
 	// `portName` fields.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -20581,7 +20680,7 @@ func (o RegionHealthCheckHttpHealthCheckOutput) PortSpecification() pulumi.Strin
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o RegionHealthCheckHttpHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -20671,7 +20770,7 @@ func (o RegionHealthCheckHttpHealthCheckPtrOutput) PortSpecification() pulumi.St
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o RegionHealthCheckHttpHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttpHealthCheck) *string {
 		if v == nil {
@@ -20727,7 +20826,7 @@ type RegionHealthCheckHttpsHealthCheck struct {
 	// `portName` fields.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -20773,7 +20872,7 @@ type RegionHealthCheckHttpsHealthCheckArgs struct {
 	// `portName` fields.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The request path of the HTTP2 health check request.
 	// The default value is /.
@@ -20896,7 +20995,7 @@ func (o RegionHealthCheckHttpsHealthCheckOutput) PortSpecification() pulumi.Stri
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o RegionHealthCheckHttpsHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckHttpsHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -20986,7 +21085,7 @@ func (o RegionHealthCheckHttpsHealthCheckPtrOutput) PortSpecification() pulumi.S
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o RegionHealthCheckHttpsHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckHttpsHealthCheck) *string {
 		if v == nil {
@@ -21175,7 +21274,7 @@ type RegionHealthCheckSslHealthCheck struct {
 	// `portName` fields.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -21219,7 +21318,7 @@ type RegionHealthCheckSslHealthCheckArgs struct {
 	// `portName` fields.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -21337,7 +21436,7 @@ func (o RegionHealthCheckSslHealthCheckOutput) PortSpecification() pulumi.String
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o RegionHealthCheckSslHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckSslHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -21417,7 +21516,7 @@ func (o RegionHealthCheckSslHealthCheckPtrOutput) PortSpecification() pulumi.Str
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o RegionHealthCheckSslHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckSslHealthCheck) *string {
 		if v == nil {
@@ -21471,7 +21570,7 @@ type RegionHealthCheckTcpHealthCheck struct {
 	// `portName` fields.
 	PortSpecification *string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -21515,7 +21614,7 @@ type RegionHealthCheckTcpHealthCheckArgs struct {
 	// `portName` fields.
 	PortSpecification pulumi.StringPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the
-	// backend, either NONE or PROXY_V1. The default is NONE.
+	// backend.
 	ProxyHeader pulumi.StringPtrInput `pulumi:"proxyHeader"`
 	// The application data to send once the SSL connection has been
 	// established (default value is empty). If both request and response are
@@ -21633,7 +21732,7 @@ func (o RegionHealthCheckTcpHealthCheckOutput) PortSpecification() pulumi.String
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o RegionHealthCheckTcpHealthCheckOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionHealthCheckTcpHealthCheck) *string { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }
@@ -21713,7 +21812,7 @@ func (o RegionHealthCheckTcpHealthCheckPtrOutput) PortSpecification() pulumi.Str
 }
 
 // Specifies the type of proxy header to append before sending data to the
-// backend, either NONE or PROXY_V1. The default is NONE.
+// backend.
 func (o RegionHealthCheckTcpHealthCheckPtrOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheckTcpHealthCheck) *string {
 		if v == nil {
@@ -22015,6 +22114,114 @@ func (o RegionInstanceGroupManagerNamedPortArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceGroupManagerNamedPort {
 		return vs[0].([]RegionInstanceGroupManagerNamedPort)[vs[1].(int)]
 	}).(RegionInstanceGroupManagerNamedPortOutput)
+}
+
+type RegionInstanceGroupManagerStatefulDisk struct {
+	// , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+	DeleteRule *string `pulumi:"deleteRule"`
+	// , The device name of the disk to be attached.
+	DeviceName string `pulumi:"deviceName"`
+}
+
+// RegionInstanceGroupManagerStatefulDiskInput is an input type that accepts RegionInstanceGroupManagerStatefulDiskArgs and RegionInstanceGroupManagerStatefulDiskOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerStatefulDiskInput` via:
+//
+// 		 RegionInstanceGroupManagerStatefulDiskArgs{...}
+//
+type RegionInstanceGroupManagerStatefulDiskInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerStatefulDiskOutput() RegionInstanceGroupManagerStatefulDiskOutput
+	ToRegionInstanceGroupManagerStatefulDiskOutputWithContext(context.Context) RegionInstanceGroupManagerStatefulDiskOutput
+}
+
+type RegionInstanceGroupManagerStatefulDiskArgs struct {
+	// , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+	DeleteRule pulumi.StringPtrInput `pulumi:"deleteRule"`
+	// , The device name of the disk to be attached.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+}
+
+func (RegionInstanceGroupManagerStatefulDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManagerStatefulDiskArgs) ToRegionInstanceGroupManagerStatefulDiskOutput() RegionInstanceGroupManagerStatefulDiskOutput {
+	return i.ToRegionInstanceGroupManagerStatefulDiskOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerStatefulDiskArgs) ToRegionInstanceGroupManagerStatefulDiskOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatefulDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerStatefulDiskOutput)
+}
+
+// RegionInstanceGroupManagerStatefulDiskArrayInput is an input type that accepts RegionInstanceGroupManagerStatefulDiskArray and RegionInstanceGroupManagerStatefulDiskArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerStatefulDiskArrayInput` via:
+//
+// 		 RegionInstanceGroupManagerStatefulDiskArray{ RegionInstanceGroupManagerStatefulDiskArgs{...} }
+//
+type RegionInstanceGroupManagerStatefulDiskArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerStatefulDiskArrayOutput() RegionInstanceGroupManagerStatefulDiskArrayOutput
+	ToRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(context.Context) RegionInstanceGroupManagerStatefulDiskArrayOutput
+}
+
+type RegionInstanceGroupManagerStatefulDiskArray []RegionInstanceGroupManagerStatefulDiskInput
+
+func (RegionInstanceGroupManagerStatefulDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManagerStatefulDiskArray) ToRegionInstanceGroupManagerStatefulDiskArrayOutput() RegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return i.ToRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerStatefulDiskArray) ToRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerStatefulDiskArrayOutput)
+}
+
+type RegionInstanceGroupManagerStatefulDiskOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerStatefulDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerStatefulDiskOutput) ToRegionInstanceGroupManagerStatefulDiskOutput() RegionInstanceGroupManagerStatefulDiskOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatefulDiskOutput) ToRegionInstanceGroupManagerStatefulDiskOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatefulDiskOutput {
+	return o
+}
+
+// , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+func (o RegionInstanceGroupManagerStatefulDiskOutput) DeleteRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManagerStatefulDisk) *string { return v.DeleteRule }).(pulumi.StringPtrOutput)
+}
+
+// , The device name of the disk to be attached.
+func (o RegionInstanceGroupManagerStatefulDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManagerStatefulDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+type RegionInstanceGroupManagerStatefulDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerStatefulDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerStatefulDiskArrayOutput) ToRegionInstanceGroupManagerStatefulDiskArrayOutput() RegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatefulDiskArrayOutput) ToRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerStatefulDiskArrayOutput) Index(i pulumi.IntInput) RegionInstanceGroupManagerStatefulDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceGroupManagerStatefulDisk {
+		return vs[0].([]RegionInstanceGroupManagerStatefulDisk)[vs[1].(int)]
+	}).(RegionInstanceGroupManagerStatefulDiskOutput)
 }
 
 type RegionInstanceGroupManagerUpdatePolicy struct {
@@ -22568,6 +22775,322 @@ func (o RegionInstanceGroupManagerVersionTargetSizePtrOutput) Percent() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+type RegionUrlMapDefaultUrlRedirect struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect *string `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
+	HttpsRedirect *bool `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
+	PathRedirect *string `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
+	PrefixRedirect *string `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// the request method will be retained.
+	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
+	StripQuery bool `pulumi:"stripQuery"`
+}
+
+// RegionUrlMapDefaultUrlRedirectInput is an input type that accepts RegionUrlMapDefaultUrlRedirectArgs and RegionUrlMapDefaultUrlRedirectOutput values.
+// You can construct a concrete instance of `RegionUrlMapDefaultUrlRedirectInput` via:
+//
+// 		 RegionUrlMapDefaultUrlRedirectArgs{...}
+//
+type RegionUrlMapDefaultUrlRedirectInput interface {
+	pulumi.Input
+
+	ToRegionUrlMapDefaultUrlRedirectOutput() RegionUrlMapDefaultUrlRedirectOutput
+	ToRegionUrlMapDefaultUrlRedirectOutputWithContext(context.Context) RegionUrlMapDefaultUrlRedirectOutput
+}
+
+type RegionUrlMapDefaultUrlRedirectArgs struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
+	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
+	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
+	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// the request method will be retained.
+	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
+	StripQuery pulumi.BoolInput `pulumi:"stripQuery"`
+}
+
+func (RegionUrlMapDefaultUrlRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionUrlMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (i RegionUrlMapDefaultUrlRedirectArgs) ToRegionUrlMapDefaultUrlRedirectOutput() RegionUrlMapDefaultUrlRedirectOutput {
+	return i.ToRegionUrlMapDefaultUrlRedirectOutputWithContext(context.Background())
+}
+
+func (i RegionUrlMapDefaultUrlRedirectArgs) ToRegionUrlMapDefaultUrlRedirectOutputWithContext(ctx context.Context) RegionUrlMapDefaultUrlRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapDefaultUrlRedirectOutput)
+}
+
+func (i RegionUrlMapDefaultUrlRedirectArgs) ToRegionUrlMapDefaultUrlRedirectPtrOutput() RegionUrlMapDefaultUrlRedirectPtrOutput {
+	return i.ToRegionUrlMapDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i RegionUrlMapDefaultUrlRedirectArgs) ToRegionUrlMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) RegionUrlMapDefaultUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapDefaultUrlRedirectOutput).ToRegionUrlMapDefaultUrlRedirectPtrOutputWithContext(ctx)
+}
+
+// RegionUrlMapDefaultUrlRedirectPtrInput is an input type that accepts RegionUrlMapDefaultUrlRedirectArgs, RegionUrlMapDefaultUrlRedirectPtr and RegionUrlMapDefaultUrlRedirectPtrOutput values.
+// You can construct a concrete instance of `RegionUrlMapDefaultUrlRedirectPtrInput` via:
+//
+// 		 RegionUrlMapDefaultUrlRedirectArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type RegionUrlMapDefaultUrlRedirectPtrInput interface {
+	pulumi.Input
+
+	ToRegionUrlMapDefaultUrlRedirectPtrOutput() RegionUrlMapDefaultUrlRedirectPtrOutput
+	ToRegionUrlMapDefaultUrlRedirectPtrOutputWithContext(context.Context) RegionUrlMapDefaultUrlRedirectPtrOutput
+}
+
+type regionUrlMapDefaultUrlRedirectPtrType RegionUrlMapDefaultUrlRedirectArgs
+
+func RegionUrlMapDefaultUrlRedirectPtr(v *RegionUrlMapDefaultUrlRedirectArgs) RegionUrlMapDefaultUrlRedirectPtrInput {
+	return (*regionUrlMapDefaultUrlRedirectPtrType)(v)
+}
+
+func (*regionUrlMapDefaultUrlRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionUrlMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (i *regionUrlMapDefaultUrlRedirectPtrType) ToRegionUrlMapDefaultUrlRedirectPtrOutput() RegionUrlMapDefaultUrlRedirectPtrOutput {
+	return i.ToRegionUrlMapDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *regionUrlMapDefaultUrlRedirectPtrType) ToRegionUrlMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) RegionUrlMapDefaultUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapDefaultUrlRedirectPtrOutput)
+}
+
+type RegionUrlMapDefaultUrlRedirectOutput struct{ *pulumi.OutputState }
+
+func (RegionUrlMapDefaultUrlRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionUrlMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (o RegionUrlMapDefaultUrlRedirectOutput) ToRegionUrlMapDefaultUrlRedirectOutput() RegionUrlMapDefaultUrlRedirectOutput {
+	return o
+}
+
+func (o RegionUrlMapDefaultUrlRedirectOutput) ToRegionUrlMapDefaultUrlRedirectOutputWithContext(ctx context.Context) RegionUrlMapDefaultUrlRedirectOutput {
+	return o
+}
+
+func (o RegionUrlMapDefaultUrlRedirectOutput) ToRegionUrlMapDefaultUrlRedirectPtrOutput() RegionUrlMapDefaultUrlRedirectPtrOutput {
+	return o.ToRegionUrlMapDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o RegionUrlMapDefaultUrlRedirectOutput) ToRegionUrlMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) RegionUrlMapDefaultUrlRedirectPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapDefaultUrlRedirect) *RegionUrlMapDefaultUrlRedirect {
+		return &v
+	}).(RegionUrlMapDefaultUrlRedirectPtrOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o RegionUrlMapDefaultUrlRedirectOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapDefaultUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
+func (o RegionUrlMapDefaultUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapDefaultUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
+func (o RegionUrlMapDefaultUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapDefaultUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
+func (o RegionUrlMapDefaultUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapDefaultUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// the request method will be retained.
+func (o RegionUrlMapDefaultUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapDefaultUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained.
+// This field is required to ensure an empty block is not set. The normal default value is false.
+func (o RegionUrlMapDefaultUrlRedirectOutput) StripQuery() pulumi.BoolOutput {
+	return o.ApplyT(func(v RegionUrlMapDefaultUrlRedirect) bool { return v.StripQuery }).(pulumi.BoolOutput)
+}
+
+type RegionUrlMapDefaultUrlRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionUrlMapDefaultUrlRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionUrlMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (o RegionUrlMapDefaultUrlRedirectPtrOutput) ToRegionUrlMapDefaultUrlRedirectPtrOutput() RegionUrlMapDefaultUrlRedirectPtrOutput {
+	return o
+}
+
+func (o RegionUrlMapDefaultUrlRedirectPtrOutput) ToRegionUrlMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) RegionUrlMapDefaultUrlRedirectPtrOutput {
+	return o
+}
+
+func (o RegionUrlMapDefaultUrlRedirectPtrOutput) Elem() RegionUrlMapDefaultUrlRedirectOutput {
+	return o.ApplyT(func(v *RegionUrlMapDefaultUrlRedirect) RegionUrlMapDefaultUrlRedirect { return *v }).(RegionUrlMapDefaultUrlRedirectOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o RegionUrlMapDefaultUrlRedirectPtrOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
+func (o RegionUrlMapDefaultUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapDefaultUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsRedirect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
+func (o RegionUrlMapDefaultUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
+func (o RegionUrlMapDefaultUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// the request method will be retained.
+func (o RegionUrlMapDefaultUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectResponseCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained.
+// This field is required to ensure an empty block is not set. The normal default value is false.
+func (o RegionUrlMapDefaultUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapDefaultUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.StripQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
 type RegionUrlMapHostRule struct {
 	// Description of this test case.
 	Description *string `pulumi:"description"`
@@ -22702,6 +23225,10 @@ type RegionUrlMapPathMatcher struct {
 	// none of the pathRules defined by this PathMatcher is matched by
 	// the URL's path portion.
 	DefaultService string `pulumi:"defaultService"`
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect *RegionUrlMapPathMatcherDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description *string `pulumi:"description"`
 	// The name of the query parameter to match. The query parameter must exist in the
@@ -22740,6 +23267,10 @@ type RegionUrlMapPathMatcherArgs struct {
 	// none of the pathRules defined by this PathMatcher is matched by
 	// the URL's path portion.
 	DefaultService pulumi.StringInput `pulumi:"defaultService"`
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect RegionUrlMapPathMatcherDefaultUrlRedirectPtrInput `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The name of the query parameter to match. The query parameter must exist in the
@@ -22820,6 +23351,15 @@ func (o RegionUrlMapPathMatcherOutput) DefaultService() pulumi.StringOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcher) string { return v.DefaultService }).(pulumi.StringOutput)
 }
 
+// When none of the specified hostRules match, the request is redirected to a URL specified
+// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+// defaultRouteAction must not be set.  Structure is documented below.
+func (o RegionUrlMapPathMatcherOutput) DefaultUrlRedirect() RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcher) *RegionUrlMapPathMatcherDefaultUrlRedirect {
+		return v.DefaultUrlRedirect
+	}).(RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput)
+}
+
 // Description of this test case.
 func (o RegionUrlMapPathMatcherOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcher) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -22871,6 +23411,324 @@ func (o RegionUrlMapPathMatcherArrayOutput) Index(i pulumi.IntInput) RegionUrlMa
 	}).(RegionUrlMapPathMatcherOutput)
 }
 
+type RegionUrlMapPathMatcherDefaultUrlRedirect struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect *string `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
+	HttpsRedirect *bool `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
+	PathRedirect *string `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
+	PrefixRedirect *string `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// the request method will be retained.
+	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
+	StripQuery bool `pulumi:"stripQuery"`
+}
+
+// RegionUrlMapPathMatcherDefaultUrlRedirectInput is an input type that accepts RegionUrlMapPathMatcherDefaultUrlRedirectArgs and RegionUrlMapPathMatcherDefaultUrlRedirectOutput values.
+// You can construct a concrete instance of `RegionUrlMapPathMatcherDefaultUrlRedirectInput` via:
+//
+// 		 RegionUrlMapPathMatcherDefaultUrlRedirectArgs{...}
+//
+type RegionUrlMapPathMatcherDefaultUrlRedirectInput interface {
+	pulumi.Input
+
+	ToRegionUrlMapPathMatcherDefaultUrlRedirectOutput() RegionUrlMapPathMatcherDefaultUrlRedirectOutput
+	ToRegionUrlMapPathMatcherDefaultUrlRedirectOutputWithContext(context.Context) RegionUrlMapPathMatcherDefaultUrlRedirectOutput
+}
+
+type RegionUrlMapPathMatcherDefaultUrlRedirectArgs struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
+	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
+	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
+	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// the request method will be retained.
+	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
+	StripQuery pulumi.BoolInput `pulumi:"stripQuery"`
+}
+
+func (RegionUrlMapPathMatcherDefaultUrlRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionUrlMapPathMatcherDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (i RegionUrlMapPathMatcherDefaultUrlRedirectArgs) ToRegionUrlMapPathMatcherDefaultUrlRedirectOutput() RegionUrlMapPathMatcherDefaultUrlRedirectOutput {
+	return i.ToRegionUrlMapPathMatcherDefaultUrlRedirectOutputWithContext(context.Background())
+}
+
+func (i RegionUrlMapPathMatcherDefaultUrlRedirectArgs) ToRegionUrlMapPathMatcherDefaultUrlRedirectOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherDefaultUrlRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapPathMatcherDefaultUrlRedirectOutput)
+}
+
+func (i RegionUrlMapPathMatcherDefaultUrlRedirectArgs) ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput() RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return i.ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i RegionUrlMapPathMatcherDefaultUrlRedirectArgs) ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapPathMatcherDefaultUrlRedirectOutput).ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(ctx)
+}
+
+// RegionUrlMapPathMatcherDefaultUrlRedirectPtrInput is an input type that accepts RegionUrlMapPathMatcherDefaultUrlRedirectArgs, RegionUrlMapPathMatcherDefaultUrlRedirectPtr and RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput values.
+// You can construct a concrete instance of `RegionUrlMapPathMatcherDefaultUrlRedirectPtrInput` via:
+//
+// 		 RegionUrlMapPathMatcherDefaultUrlRedirectArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type RegionUrlMapPathMatcherDefaultUrlRedirectPtrInput interface {
+	pulumi.Input
+
+	ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput() RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput
+	ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(context.Context) RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput
+}
+
+type regionUrlMapPathMatcherDefaultUrlRedirectPtrType RegionUrlMapPathMatcherDefaultUrlRedirectArgs
+
+func RegionUrlMapPathMatcherDefaultUrlRedirectPtr(v *RegionUrlMapPathMatcherDefaultUrlRedirectArgs) RegionUrlMapPathMatcherDefaultUrlRedirectPtrInput {
+	return (*regionUrlMapPathMatcherDefaultUrlRedirectPtrType)(v)
+}
+
+func (*regionUrlMapPathMatcherDefaultUrlRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionUrlMapPathMatcherDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (i *regionUrlMapPathMatcherDefaultUrlRedirectPtrType) ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput() RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return i.ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *regionUrlMapPathMatcherDefaultUrlRedirectPtrType) ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput)
+}
+
+type RegionUrlMapPathMatcherDefaultUrlRedirectOutput struct{ *pulumi.OutputState }
+
+func (RegionUrlMapPathMatcherDefaultUrlRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionUrlMapPathMatcherDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) ToRegionUrlMapPathMatcherDefaultUrlRedirectOutput() RegionUrlMapPathMatcherDefaultUrlRedirectOutput {
+	return o
+}
+
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) ToRegionUrlMapPathMatcherDefaultUrlRedirectOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherDefaultUrlRedirectOutput {
+	return o
+}
+
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput() RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return o.ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcherDefaultUrlRedirect) *RegionUrlMapPathMatcherDefaultUrlRedirect {
+		return &v
+	}).(RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcherDefaultUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcherDefaultUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcherDefaultUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcherDefaultUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// the request method will be retained.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcherDefaultUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained.
+// This field is required to ensure an empty block is not set. The normal default value is false.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) StripQuery() pulumi.BoolOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcherDefaultUrlRedirect) bool { return v.StripQuery }).(pulumi.BoolOutput)
+}
+
+type RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionUrlMapPathMatcherDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput() RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return o
+}
+
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) ToRegionUrlMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return o
+}
+
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) Elem() RegionUrlMapPathMatcherDefaultUrlRedirectOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherDefaultUrlRedirect) RegionUrlMapPathMatcherDefaultUrlRedirect {
+		return *v
+	}).(RegionUrlMapPathMatcherDefaultUrlRedirectOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherDefaultUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsRedirect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// the request method will be retained.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectResponseCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained.
+// This field is required to ensure an empty block is not set. The normal default value is false.
+func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherDefaultUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.StripQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
 type RegionUrlMapPathMatcherPathRule struct {
 	// The list of path patterns to match. Each must start with / and the only place a
 	// * is allowed is at the end following a /. The string fed to the path matcher
@@ -22886,9 +23744,9 @@ type RegionUrlMapPathMatcherPathRule struct {
 	RouteAction *RegionUrlMapPathMatcherPathRuleRouteAction `pulumi:"routeAction"`
 	// A reference to expected RegionBackendService resource the given URL should be mapped to.
 	Service *string `pulumi:"service"`
-	// When a path pattern is matched, the request is redirected to a URL specified by
-	// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-	// set.  Structure is documented below.
+	// When a path pattern is matched, the request is redirected to a URL specified
+	// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+	// be set.  Structure is documented below.
 	UrlRedirect *RegionUrlMapPathMatcherPathRuleUrlRedirect `pulumi:"urlRedirect"`
 }
 
@@ -22919,9 +23777,9 @@ type RegionUrlMapPathMatcherPathRuleArgs struct {
 	RouteAction RegionUrlMapPathMatcherPathRuleRouteActionPtrInput `pulumi:"routeAction"`
 	// A reference to expected RegionBackendService resource the given URL should be mapped to.
 	Service pulumi.StringPtrInput `pulumi:"service"`
-	// When a path pattern is matched, the request is redirected to a URL specified by
-	// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-	// set.  Structure is documented below.
+	// When a path pattern is matched, the request is redirected to a URL specified
+	// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+	// be set.  Structure is documented below.
 	UrlRedirect RegionUrlMapPathMatcherPathRuleUrlRedirectPtrInput `pulumi:"urlRedirect"`
 }
 
@@ -23002,9 +23860,9 @@ func (o RegionUrlMapPathMatcherPathRuleOutput) Service() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRule) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
-// When a path pattern is matched, the request is redirected to a URL specified by
-// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-// set.  Structure is documented below.
+// When a path pattern is matched, the request is redirected to a URL specified
+// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+// be set.  Structure is documented below.
 func (o RegionUrlMapPathMatcherPathRuleOutput) UrlRedirect() RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRule) *RegionUrlMapPathMatcherPathRuleUrlRedirect {
 		return v.UrlRedirect
@@ -25862,17 +26720,22 @@ type RegionUrlMapPathMatcherPathRuleUrlRedirect struct {
 	// The host that will be used in the redirect response instead of the one that was
 	// supplied in the request. The value must be between 1 and 255 characters.
 	HostRedirect *string `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set
-	// to false, the URL scheme of the redirected request will remain the same as that
-	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect *bool `pulumi:"httpsRedirect"`
 	// The path that will be used in the redirect response instead of the one that was
-	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-	// specified. The value must be between 1 and 1024 characters.
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
 	PathRedirect *string `pulumi:"pathRedirect"`
 	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
 	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
@@ -25883,9 +26746,10 @@ type RegionUrlMapPathMatcherPathRuleUrlRedirect struct {
 	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	// the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed
-	// prior to redirecting the request. If set to false, the query portion of the
-	// original URL is retained.
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
 	StripQuery bool `pulumi:"stripQuery"`
 }
 
@@ -25905,17 +26769,22 @@ type RegionUrlMapPathMatcherPathRuleUrlRedirectArgs struct {
 	// The host that will be used in the redirect response instead of the one that was
 	// supplied in the request. The value must be between 1 and 255 characters.
 	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set
-	// to false, the URL scheme of the redirected request will remain the same as that
-	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
 	// The path that will be used in the redirect response instead of the one that was
-	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-	// specified. The value must be between 1 and 1024 characters.
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
 	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
 	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
 	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
@@ -25926,9 +26795,10 @@ type RegionUrlMapPathMatcherPathRuleUrlRedirectArgs struct {
 	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	// the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed
-	// prior to redirecting the request. If set to false, the query portion of the
-	// original URL is retained.
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
 	StripQuery pulumi.BoolInput `pulumi:"stripQuery"`
 }
 
@@ -26016,23 +26886,28 @@ func (o RegionUrlMapPathMatcherPathRuleUrlRedirectOutput) HostRedirect() pulumi.
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set
-// to false, the URL scheme of the redirected request will remain the same as that
-// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o RegionUrlMapPathMatcherPathRuleUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
 }
 
 // The path that will be used in the redirect response instead of the one that was
-// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-// specified. The value must be between 1 and 1024 characters.
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
 func (o RegionUrlMapPathMatcherPathRuleUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
 }
 
 // The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 // retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
 func (o RegionUrlMapPathMatcherPathRuleUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
 }
@@ -26049,9 +26924,10 @@ func (o RegionUrlMapPathMatcherPathRuleUrlRedirectOutput) RedirectResponseCode()
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed
-// prior to redirecting the request. If set to false, the query portion of the
-// original URL is retained.
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained.
+// This field is required to ensure an empty block is not set. The normal default value is false.
 func (o RegionUrlMapPathMatcherPathRuleUrlRedirectOutput) StripQuery() pulumi.BoolOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleUrlRedirect) bool { return v.StripQuery }).(pulumi.BoolOutput)
 }
@@ -26087,10 +26963,10 @@ func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) HostRedirect() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set
-// to false, the URL scheme of the redirected request will remain the same as that
-// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleUrlRedirect) *bool {
 		if v == nil {
@@ -26101,8 +26977,10 @@ func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) HttpsRedirect() pul
 }
 
 // The path that will be used in the redirect response instead of the one that was
-// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-// specified. The value must be between 1 and 1024 characters.
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
 func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleUrlRedirect) *string {
 		if v == nil {
@@ -26114,6 +26992,9 @@ func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) PathRedirect() pulu
 
 // The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 // retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
 func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleUrlRedirect) *string {
 		if v == nil {
@@ -26140,9 +27021,10 @@ func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) RedirectResponseCod
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed
-// prior to redirecting the request. If set to false, the query portion of the
-// original URL is retained.
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained.
+// This field is required to ensure an empty block is not set. The normal default value is false.
 func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleUrlRedirect) *bool {
 		if v == nil {
@@ -26182,9 +27064,9 @@ type RegionUrlMapPathMatcherRouteRule struct {
 	RouteAction *RegionUrlMapPathMatcherRouteRuleRouteAction `pulumi:"routeAction"`
 	// A reference to expected RegionBackendService resource the given URL should be mapped to.
 	Service *string `pulumi:"service"`
-	// When a path pattern is matched, the request is redirected to a URL specified by
-	// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-	// set.  Structure is documented below.
+	// When a path pattern is matched, the request is redirected to a URL specified
+	// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+	// be set.  Structure is documented below.
 	UrlRedirect *RegionUrlMapPathMatcherRouteRuleUrlRedirect `pulumi:"urlRedirect"`
 }
 
@@ -26230,9 +27112,9 @@ type RegionUrlMapPathMatcherRouteRuleArgs struct {
 	RouteAction RegionUrlMapPathMatcherRouteRuleRouteActionPtrInput `pulumi:"routeAction"`
 	// A reference to expected RegionBackendService resource the given URL should be mapped to.
 	Service pulumi.StringPtrInput `pulumi:"service"`
-	// When a path pattern is matched, the request is redirected to a URL specified by
-	// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-	// set.  Structure is documented below.
+	// When a path pattern is matched, the request is redirected to a URL specified
+	// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+	// be set.  Structure is documented below.
 	UrlRedirect RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrInput `pulumi:"urlRedirect"`
 }
 
@@ -26338,9 +27220,9 @@ func (o RegionUrlMapPathMatcherRouteRuleOutput) Service() pulumi.StringPtrOutput
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRule) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
-// When a path pattern is matched, the request is redirected to a URL specified by
-// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-// set.  Structure is documented below.
+// When a path pattern is matched, the request is redirected to a URL specified
+// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+// be set.  Structure is documented below.
 func (o RegionUrlMapPathMatcherRouteRuleOutput) UrlRedirect() RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRule) *RegionUrlMapPathMatcherRouteRuleUrlRedirect {
 		return v.UrlRedirect
@@ -30648,17 +31530,22 @@ type RegionUrlMapPathMatcherRouteRuleUrlRedirect struct {
 	// The host that will be used in the redirect response instead of the one that was
 	// supplied in the request. The value must be between 1 and 255 characters.
 	HostRedirect *string `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set
-	// to false, the URL scheme of the redirected request will remain the same as that
-	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect *bool `pulumi:"httpsRedirect"`
 	// The path that will be used in the redirect response instead of the one that was
-	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-	// specified. The value must be between 1 and 1024 characters.
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
 	PathRedirect *string `pulumi:"pathRedirect"`
 	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
 	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
@@ -30669,9 +31556,10 @@ type RegionUrlMapPathMatcherRouteRuleUrlRedirect struct {
 	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	// the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed
-	// prior to redirecting the request. If set to false, the query portion of the
-	// original URL is retained.
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
 	StripQuery *bool `pulumi:"stripQuery"`
 }
 
@@ -30691,17 +31579,22 @@ type RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs struct {
 	// The host that will be used in the redirect response instead of the one that was
 	// supplied in the request. The value must be between 1 and 255 characters.
 	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set
-	// to false, the URL scheme of the redirected request will remain the same as that
-	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
 	// The path that will be used in the redirect response instead of the one that was
-	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-	// specified. The value must be between 1 and 1024 characters.
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
 	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
 	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
 	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
@@ -30712,9 +31605,10 @@ type RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs struct {
 	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	// the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed
-	// prior to redirecting the request. If set to false, the query portion of the
-	// original URL is retained.
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
 	StripQuery pulumi.BoolPtrInput `pulumi:"stripQuery"`
 }
 
@@ -30802,23 +31696,28 @@ func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectOutput) HostRedirect() pulumi
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set
-// to false, the URL scheme of the redirected request will remain the same as that
-// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
 }
 
 // The path that will be used in the redirect response instead of the one that was
-// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-// specified. The value must be between 1 and 1024 characters.
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
 func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
 }
 
 // The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 // retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
 func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
 }
@@ -30835,9 +31734,10 @@ func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectOutput) RedirectResponseCode(
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed
-// prior to redirecting the request. If set to false, the query portion of the
-// original URL is retained.
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained.
+// This field is required to ensure an empty block is not set. The normal default value is false.
 func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleUrlRedirect) *bool { return v.StripQuery }).(pulumi.BoolPtrOutput)
 }
@@ -30873,10 +31773,10 @@ func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput) HostRedirect() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set
-// to false, the URL scheme of the redirected request will remain the same as that
-// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleUrlRedirect) *bool {
 		if v == nil {
@@ -30887,8 +31787,10 @@ func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput) HttpsRedirect() pu
 }
 
 // The path that will be used in the redirect response instead of the one that was
-// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-// specified. The value must be between 1 and 1024 characters.
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
 func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleUrlRedirect) *string {
 		if v == nil {
@@ -30900,6 +31802,9 @@ func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput) PathRedirect() pul
 
 // The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 // retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
 func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleUrlRedirect) *string {
 		if v == nil {
@@ -30926,9 +31831,10 @@ func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput) RedirectResponseCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed
-// prior to redirecting the request. If set to false, the query portion of the
-// original URL is retained.
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained.
+// This field is required to ensure an empty block is not set. The normal default value is false.
 func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleUrlRedirect) *bool {
 		if v == nil {
@@ -31580,8 +32486,7 @@ func (o ReservationSpecificReservationInstancePropertiesGuestAcceleratorArrayOut
 type ReservationSpecificReservationInstancePropertiesLocalSsd struct {
 	// The size of the disk in base-2 GB.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
-	// The disk interface to use for attaching this disk, one
-	// of `SCSI` or `NVME`. The default is `SCSI`.
+	// The disk interface to use for attaching this disk.
 	Interface *string `pulumi:"interface"`
 }
 
@@ -31600,8 +32505,7 @@ type ReservationSpecificReservationInstancePropertiesLocalSsdInput interface {
 type ReservationSpecificReservationInstancePropertiesLocalSsdArgs struct {
 	// The size of the disk in base-2 GB.
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
-	// The disk interface to use for attaching this disk, one
-	// of `SCSI` or `NVME`. The default is `SCSI`.
+	// The disk interface to use for attaching this disk.
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
 }
 
@@ -31662,8 +32566,7 @@ func (o ReservationSpecificReservationInstancePropertiesLocalSsdOutput) DiskSize
 	return o.ApplyT(func(v ReservationSpecificReservationInstancePropertiesLocalSsd) int { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
-// The disk interface to use for attaching this disk, one
-// of `SCSI` or `NVME`. The default is `SCSI`.
+// The disk interface to use for attaching this disk.
 func (o ReservationSpecificReservationInstancePropertiesLocalSsdOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReservationSpecificReservationInstancePropertiesLocalSsd) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
@@ -32057,7 +32960,6 @@ type ResourcePolicySnapshotSchedulePolicyRetentionPolicy struct {
 	MaxRetentionDays int `pulumi:"maxRetentionDays"`
 	// Specifies the behavior to apply to scheduled snapshots when
 	// the source disk is deleted.
-	// Valid options are KEEP_AUTO_SNAPSHOTS and APPLY_RETENTION_POLICY
 	OnSourceDiskDelete *string `pulumi:"onSourceDiskDelete"`
 }
 
@@ -32078,7 +32980,6 @@ type ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs struct {
 	MaxRetentionDays pulumi.IntInput `pulumi:"maxRetentionDays"`
 	// Specifies the behavior to apply to scheduled snapshots when
 	// the source disk is deleted.
-	// Valid options are KEEP_AUTO_SNAPSHOTS and APPLY_RETENTION_POLICY
 	OnSourceDiskDelete pulumi.StringPtrInput `pulumi:"onSourceDiskDelete"`
 }
 
@@ -32167,7 +33068,6 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) MaxRetentionD
 
 // Specifies the behavior to apply to scheduled snapshots when
 // the source disk is deleted.
-// Valid options are KEEP_AUTO_SNAPSHOTS and APPLY_RETENTION_POLICY
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) OnSourceDiskDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyRetentionPolicy) *string { return v.OnSourceDiskDelete }).(pulumi.StringPtrOutput)
 }
@@ -32204,7 +33104,6 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) MaxRetenti
 
 // Specifies the behavior to apply to scheduled snapshots when
 // the source disk is deleted.
-// Valid options are KEEP_AUTO_SNAPSHOTS and APPLY_RETENTION_POLICY
 func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyPtrOutput) OnSourceDiskDelete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicySnapshotSchedulePolicyRetentionPolicy) *string {
 		if v == nil {
@@ -33138,7 +34037,6 @@ func (o ResourcePolicySnapshotSchedulePolicySnapshotPropertiesPtrOutput) Storage
 
 type RouterBgp struct {
 	// User-specified flag to indicate which mode to use for advertisement.
-	// Valid values of this enum field are: DEFAULT, CUSTOM
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom mode.
 	// This field can only be populated if advertiseMode is CUSTOM and
@@ -33174,7 +34072,6 @@ type RouterBgpInput interface {
 
 type RouterBgpArgs struct {
 	// User-specified flag to indicate which mode to use for advertisement.
-	// Valid values of this enum field are: DEFAULT, CUSTOM
 	AdvertiseMode pulumi.StringPtrInput `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom mode.
 	// This field can only be populated if advertiseMode is CUSTOM and
@@ -33275,7 +34172,6 @@ func (o RouterBgpOutput) ToRouterBgpPtrOutputWithContext(ctx context.Context) Ro
 }
 
 // User-specified flag to indicate which mode to use for advertisement.
-// Valid values of this enum field are: DEFAULT, CUSTOM
 func (o RouterBgpOutput) AdvertiseMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgp) *string { return v.AdvertiseMode }).(pulumi.StringPtrOutput)
 }
@@ -33326,7 +34222,6 @@ func (o RouterBgpPtrOutput) Elem() RouterBgpOutput {
 }
 
 // User-specified flag to indicate which mode to use for advertisement.
-// Valid values of this enum field are: DEFAULT, CUSTOM
 func (o RouterBgpPtrOutput) AdvertiseMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterBgp) *string {
 		if v == nil {
@@ -33492,8 +34387,7 @@ func (o RouterBgpAdvertisedIpRangeArrayOutput) Index(i pulumi.IntInput) RouterBg
 type RouterNatLogConfig struct {
 	// Indicates whether or not to export logs.
 	Enable bool `pulumi:"enable"`
-	// Specifies the desired filtering of logs on this NAT. Valid
-	// values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+	// Specifies the desired filtering of logs on this NAT.
 	Filter string `pulumi:"filter"`
 }
 
@@ -33512,8 +34406,7 @@ type RouterNatLogConfigInput interface {
 type RouterNatLogConfigArgs struct {
 	// Indicates whether or not to export logs.
 	Enable pulumi.BoolInput `pulumi:"enable"`
-	// Specifies the desired filtering of logs on this NAT. Valid
-	// values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+	// Specifies the desired filtering of logs on this NAT.
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -33600,8 +34493,7 @@ func (o RouterNatLogConfigOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v RouterNatLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// Specifies the desired filtering of logs on this NAT. Valid
-// values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+// Specifies the desired filtering of logs on this NAT.
 func (o RouterNatLogConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatLogConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -33634,8 +34526,7 @@ func (o RouterNatLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the desired filtering of logs on this NAT. Valid
-// values are: `"ERRORS_ONLY"`, `"TRANSLATIONS_ONLY"`, `"ALL"`
+// Specifies the desired filtering of logs on this NAT.
 func (o RouterNatLogConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterNatLogConfig) *string {
 		if v == nil {
@@ -34568,7 +35459,7 @@ type SecurityScanConfigAuthenticationCustomAccount struct {
 	// The login form URL of the website.
 	LoginUrl string `pulumi:"loginUrl"`
 	// The password of the custom account. The credential is stored encrypted
-	// in GCP.
+	// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
 	Password string `pulumi:"password"`
 	// The user name of the custom account.
 	Username string `pulumi:"username"`
@@ -34590,7 +35481,7 @@ type SecurityScanConfigAuthenticationCustomAccountArgs struct {
 	// The login form URL of the website.
 	LoginUrl pulumi.StringInput `pulumi:"loginUrl"`
 	// The password of the custom account. The credential is stored encrypted
-	// in GCP.
+	// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringInput `pulumi:"password"`
 	// The user name of the custom account.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -34680,7 +35571,7 @@ func (o SecurityScanConfigAuthenticationCustomAccountOutput) LoginUrl() pulumi.S
 }
 
 // The password of the custom account. The credential is stored encrypted
-// in GCP.
+// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SecurityScanConfigAuthenticationCustomAccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityScanConfigAuthenticationCustomAccount) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -34721,7 +35612,7 @@ func (o SecurityScanConfigAuthenticationCustomAccountPtrOutput) LoginUrl() pulum
 }
 
 // The password of the custom account. The credential is stored encrypted
-// in GCP.
+// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SecurityScanConfigAuthenticationCustomAccountPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityScanConfigAuthenticationCustomAccount) *string {
 		if v == nil {
@@ -34743,7 +35634,7 @@ func (o SecurityScanConfigAuthenticationCustomAccountPtrOutput) Username() pulum
 
 type SecurityScanConfigAuthenticationGoogleAccount struct {
 	// The password of the custom account. The credential is stored encrypted
-	// in GCP.
+	// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
 	Password string `pulumi:"password"`
 	// The user name of the custom account.
 	Username string `pulumi:"username"`
@@ -34763,7 +35654,7 @@ type SecurityScanConfigAuthenticationGoogleAccountInput interface {
 
 type SecurityScanConfigAuthenticationGoogleAccountArgs struct {
 	// The password of the custom account. The credential is stored encrypted
-	// in GCP.
+	// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringInput `pulumi:"password"`
 	// The user name of the custom account.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -34848,7 +35739,7 @@ func (o SecurityScanConfigAuthenticationGoogleAccountOutput) ToSecurityScanConfi
 }
 
 // The password of the custom account. The credential is stored encrypted
-// in GCP.
+// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SecurityScanConfigAuthenticationGoogleAccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityScanConfigAuthenticationGoogleAccount) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -34879,7 +35770,7 @@ func (o SecurityScanConfigAuthenticationGoogleAccountPtrOutput) Elem() SecurityS
 }
 
 // The password of the custom account. The credential is stored encrypted
-// in GCP.
+// in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SecurityScanConfigAuthenticationGoogleAccountPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityScanConfigAuthenticationGoogleAccount) *string {
 		if v == nil {
@@ -35061,7 +35952,7 @@ func (o SecurityScanConfigSchedulePtrOutput) ScheduleTime() pulumi.StringPtrOutp
 
 type SnapshotSnapshotEncryptionKey struct {
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey string `pulumi:"rawKey"`
 	// -
 	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -35083,7 +35974,7 @@ type SnapshotSnapshotEncryptionKeyInput interface {
 
 type SnapshotSnapshotEncryptionKeyArgs struct {
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey pulumi.StringInput `pulumi:"rawKey"`
 	// -
 	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -35170,7 +36061,7 @@ func (o SnapshotSnapshotEncryptionKeyOutput) ToSnapshotSnapshotEncryptionKeyPtrO
 }
 
 // Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.
+// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SnapshotSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
 }
@@ -35201,7 +36092,7 @@ func (o SnapshotSnapshotEncryptionKeyPtrOutput) Elem() SnapshotSnapshotEncryptio
 }
 
 // Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.
+// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SnapshotSnapshotEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) *string {
 		if v == nil {
@@ -35225,7 +36116,7 @@ func (o SnapshotSnapshotEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutput 
 
 type SnapshotSourceDiskEncryptionKey struct {
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey *string `pulumi:"rawKey"`
 }
 
@@ -35243,7 +36134,7 @@ type SnapshotSourceDiskEncryptionKeyInput interface {
 
 type SnapshotSourceDiskEncryptionKeyArgs struct {
 	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
 }
 
@@ -35326,7 +36217,7 @@ func (o SnapshotSourceDiskEncryptionKeyOutput) ToSnapshotSourceDiskEncryptionKey
 }
 
 // Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.
+// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SnapshotSourceDiskEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapshotSourceDiskEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
@@ -35350,7 +36241,7 @@ func (o SnapshotSourceDiskEncryptionKeyPtrOutput) Elem() SnapshotSourceDiskEncry
 }
 
 // Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.
+// RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
 func (o SnapshotSourceDiskEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SnapshotSourceDiskEncryptionKey) *string {
 		if v == nil {
@@ -35718,7 +36609,7 @@ type SubnetworkLogConfig struct {
 	FlowSampling *float64 `pulumi:"flowSampling"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled.
 	// Configures whether metadata fields should be added to the reported VPC
-	// flow logs. Default is `INCLUDE_ALL_METADATA`.
+	// flow logs.
 	Metadata *string `pulumi:"metadata"`
 }
 
@@ -35750,7 +36641,7 @@ type SubnetworkLogConfigArgs struct {
 	FlowSampling pulumi.Float64PtrInput `pulumi:"flowSampling"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled.
 	// Configures whether metadata fields should be added to the reported VPC
-	// flow logs. Default is `INCLUDE_ALL_METADATA`.
+	// flow logs.
 	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
 }
 
@@ -35853,7 +36744,7 @@ func (o SubnetworkLogConfigOutput) FlowSampling() pulumi.Float64PtrOutput {
 
 // Can only be specified if VPC flow logging for this subnetwork is enabled.
 // Configures whether metadata fields should be added to the reported VPC
-// flow logs. Default is `INCLUDE_ALL_METADATA`.
+// flow logs.
 func (o SubnetworkLogConfigOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.Metadata }).(pulumi.StringPtrOutput)
 }
@@ -35907,7 +36798,7 @@ func (o SubnetworkLogConfigPtrOutput) FlowSampling() pulumi.Float64PtrOutput {
 
 // Can only be specified if VPC flow logging for this subnetwork is enabled.
 // Configures whether metadata fields should be added to the reported VPC
-// flow logs. Default is `INCLUDE_ALL_METADATA`.
+// flow logs.
 func (o SubnetworkLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
 		if v == nil {
@@ -36041,6 +36932,322 @@ func (o SubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) Subnetwo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetworkSecondaryIpRange {
 		return vs[0].([]SubnetworkSecondaryIpRange)[vs[1].(int)]
 	}).(SubnetworkSecondaryIpRangeOutput)
+}
+
+type URLMapDefaultUrlRedirect struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect *string `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
+	HttpsRedirect *bool `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
+	PathRedirect *string `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
+	PrefixRedirect *string `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// the request method will be retained.
+	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
+	StripQuery bool `pulumi:"stripQuery"`
+}
+
+// URLMapDefaultUrlRedirectInput is an input type that accepts URLMapDefaultUrlRedirectArgs and URLMapDefaultUrlRedirectOutput values.
+// You can construct a concrete instance of `URLMapDefaultUrlRedirectInput` via:
+//
+// 		 URLMapDefaultUrlRedirectArgs{...}
+//
+type URLMapDefaultUrlRedirectInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultUrlRedirectOutput() URLMapDefaultUrlRedirectOutput
+	ToURLMapDefaultUrlRedirectOutputWithContext(context.Context) URLMapDefaultUrlRedirectOutput
+}
+
+type URLMapDefaultUrlRedirectArgs struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
+	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
+	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
+	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// the request method will be retained.
+	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
+	StripQuery pulumi.BoolInput `pulumi:"stripQuery"`
+}
+
+func (URLMapDefaultUrlRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (i URLMapDefaultUrlRedirectArgs) ToURLMapDefaultUrlRedirectOutput() URLMapDefaultUrlRedirectOutput {
+	return i.ToURLMapDefaultUrlRedirectOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultUrlRedirectArgs) ToURLMapDefaultUrlRedirectOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultUrlRedirectOutput)
+}
+
+func (i URLMapDefaultUrlRedirectArgs) ToURLMapDefaultUrlRedirectPtrOutput() URLMapDefaultUrlRedirectPtrOutput {
+	return i.ToURLMapDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultUrlRedirectArgs) ToURLMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultUrlRedirectOutput).ToURLMapDefaultUrlRedirectPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultUrlRedirectPtrInput is an input type that accepts URLMapDefaultUrlRedirectArgs, URLMapDefaultUrlRedirectPtr and URLMapDefaultUrlRedirectPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultUrlRedirectPtrInput` via:
+//
+// 		 URLMapDefaultUrlRedirectArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type URLMapDefaultUrlRedirectPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultUrlRedirectPtrOutput() URLMapDefaultUrlRedirectPtrOutput
+	ToURLMapDefaultUrlRedirectPtrOutputWithContext(context.Context) URLMapDefaultUrlRedirectPtrOutput
+}
+
+type urlmapDefaultUrlRedirectPtrType URLMapDefaultUrlRedirectArgs
+
+func URLMapDefaultUrlRedirectPtr(v *URLMapDefaultUrlRedirectArgs) URLMapDefaultUrlRedirectPtrInput {
+	return (*urlmapDefaultUrlRedirectPtrType)(v)
+}
+
+func (*urlmapDefaultUrlRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (i *urlmapDefaultUrlRedirectPtrType) ToURLMapDefaultUrlRedirectPtrOutput() URLMapDefaultUrlRedirectPtrOutput {
+	return i.ToURLMapDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultUrlRedirectPtrType) ToURLMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultUrlRedirectPtrOutput)
+}
+
+type URLMapDefaultUrlRedirectOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultUrlRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (o URLMapDefaultUrlRedirectOutput) ToURLMapDefaultUrlRedirectOutput() URLMapDefaultUrlRedirectOutput {
+	return o
+}
+
+func (o URLMapDefaultUrlRedirectOutput) ToURLMapDefaultUrlRedirectOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectOutput {
+	return o
+}
+
+func (o URLMapDefaultUrlRedirectOutput) ToURLMapDefaultUrlRedirectPtrOutput() URLMapDefaultUrlRedirectPtrOutput {
+	return o.ToURLMapDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultUrlRedirectOutput) ToURLMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *URLMapDefaultUrlRedirect {
+		return &v
+	}).(URLMapDefaultUrlRedirectPtrOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o URLMapDefaultUrlRedirectOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
+func (o URLMapDefaultUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
+func (o URLMapDefaultUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
+func (o URLMapDefaultUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// the request method will be retained.
+func (o URLMapDefaultUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
+func (o URLMapDefaultUrlRedirectOutput) StripQuery() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) bool { return v.StripQuery }).(pulumi.BoolOutput)
+}
+
+type URLMapDefaultUrlRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultUrlRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (o URLMapDefaultUrlRedirectPtrOutput) ToURLMapDefaultUrlRedirectPtrOutput() URLMapDefaultUrlRedirectPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultUrlRedirectPtrOutput) ToURLMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultUrlRedirectPtrOutput) Elem() URLMapDefaultUrlRedirectOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) URLMapDefaultUrlRedirect { return *v }).(URLMapDefaultUrlRedirectOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o URLMapDefaultUrlRedirectPtrOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
+func (o URLMapDefaultUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsRedirect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
+func (o URLMapDefaultUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
+func (o URLMapDefaultUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// the request method will be retained.
+func (o URLMapDefaultUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectResponseCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
+func (o URLMapDefaultUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.StripQuery
+	}).(pulumi.BoolPtrOutput)
 }
 
 type URLMapHeaderAction struct {
@@ -36620,6 +37827,10 @@ func (o URLMapHostRuleArrayOutput) Index(i pulumi.IntInput) URLMapHostRuleOutput
 type URLMapPathMatcher struct {
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService *string `pulumi:"defaultService"`
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect *URLMapPathMatcherDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description *string `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for
@@ -36660,6 +37871,10 @@ type URLMapPathMatcherInput interface {
 type URLMapPathMatcherArgs struct {
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService pulumi.StringPtrInput `pulumi:"defaultService"`
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect URLMapPathMatcherDefaultUrlRedirectPtrInput `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for
@@ -36742,6 +37957,13 @@ func (o URLMapPathMatcherOutput) DefaultService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcher) *string { return v.DefaultService }).(pulumi.StringPtrOutput)
 }
 
+// When none of the specified hostRules match, the request is redirected to a URL specified
+// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+// defaultRouteAction must not be set.  Structure is documented below.
+func (o URLMapPathMatcherOutput) DefaultUrlRedirect() URLMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcher) *URLMapPathMatcherDefaultUrlRedirect { return v.DefaultUrlRedirect }).(URLMapPathMatcherDefaultUrlRedirectPtrOutput)
+}
+
 // Description of this test case.
 func (o URLMapPathMatcherOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcher) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -36798,6 +38020,322 @@ func (o URLMapPathMatcherArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcher
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcher {
 		return vs[0].([]URLMapPathMatcher)[vs[1].(int)]
 	}).(URLMapPathMatcherOutput)
+}
+
+type URLMapPathMatcherDefaultUrlRedirect struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect *string `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
+	HttpsRedirect *bool `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
+	PathRedirect *string `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
+	PrefixRedirect *string `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// the request method will be retained.
+	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
+	StripQuery bool `pulumi:"stripQuery"`
+}
+
+// URLMapPathMatcherDefaultUrlRedirectInput is an input type that accepts URLMapPathMatcherDefaultUrlRedirectArgs and URLMapPathMatcherDefaultUrlRedirectOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherDefaultUrlRedirectInput` via:
+//
+// 		 URLMapPathMatcherDefaultUrlRedirectArgs{...}
+//
+type URLMapPathMatcherDefaultUrlRedirectInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherDefaultUrlRedirectOutput() URLMapPathMatcherDefaultUrlRedirectOutput
+	ToURLMapPathMatcherDefaultUrlRedirectOutputWithContext(context.Context) URLMapPathMatcherDefaultUrlRedirectOutput
+}
+
+type URLMapPathMatcherDefaultUrlRedirectArgs struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
+	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
+	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
+	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// the request method will be retained.
+	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
+	StripQuery pulumi.BoolInput `pulumi:"stripQuery"`
+}
+
+func (URLMapPathMatcherDefaultUrlRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherDefaultUrlRedirectArgs) ToURLMapPathMatcherDefaultUrlRedirectOutput() URLMapPathMatcherDefaultUrlRedirectOutput {
+	return i.ToURLMapPathMatcherDefaultUrlRedirectOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherDefaultUrlRedirectArgs) ToURLMapPathMatcherDefaultUrlRedirectOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultUrlRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultUrlRedirectOutput)
+}
+
+func (i URLMapPathMatcherDefaultUrlRedirectArgs) ToURLMapPathMatcherDefaultUrlRedirectPtrOutput() URLMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return i.ToURLMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherDefaultUrlRedirectArgs) ToURLMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultUrlRedirectOutput).ToURLMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherDefaultUrlRedirectPtrInput is an input type that accepts URLMapPathMatcherDefaultUrlRedirectArgs, URLMapPathMatcherDefaultUrlRedirectPtr and URLMapPathMatcherDefaultUrlRedirectPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherDefaultUrlRedirectPtrInput` via:
+//
+// 		 URLMapPathMatcherDefaultUrlRedirectArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type URLMapPathMatcherDefaultUrlRedirectPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherDefaultUrlRedirectPtrOutput() URLMapPathMatcherDefaultUrlRedirectPtrOutput
+	ToURLMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(context.Context) URLMapPathMatcherDefaultUrlRedirectPtrOutput
+}
+
+type urlmapPathMatcherDefaultUrlRedirectPtrType URLMapPathMatcherDefaultUrlRedirectArgs
+
+func URLMapPathMatcherDefaultUrlRedirectPtr(v *URLMapPathMatcherDefaultUrlRedirectArgs) URLMapPathMatcherDefaultUrlRedirectPtrInput {
+	return (*urlmapPathMatcherDefaultUrlRedirectPtrType)(v)
+}
+
+func (*urlmapPathMatcherDefaultUrlRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherDefaultUrlRedirectPtrType) ToURLMapPathMatcherDefaultUrlRedirectPtrOutput() URLMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return i.ToURLMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherDefaultUrlRedirectPtrType) ToURLMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultUrlRedirectPtrOutput)
+}
+
+type URLMapPathMatcherDefaultUrlRedirectOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherDefaultUrlRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherDefaultUrlRedirectOutput) ToURLMapPathMatcherDefaultUrlRedirectOutput() URLMapPathMatcherDefaultUrlRedirectOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultUrlRedirectOutput) ToURLMapPathMatcherDefaultUrlRedirectOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultUrlRedirectOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultUrlRedirectOutput) ToURLMapPathMatcherDefaultUrlRedirectPtrOutput() URLMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return o.ToURLMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherDefaultUrlRedirectOutput) ToURLMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultUrlRedirect) *URLMapPathMatcherDefaultUrlRedirect {
+		return &v
+	}).(URLMapPathMatcherDefaultUrlRedirectPtrOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o URLMapPathMatcherDefaultUrlRedirectOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
+func (o URLMapPathMatcherDefaultUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
+func (o URLMapPathMatcherDefaultUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
+func (o URLMapPathMatcherDefaultUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// the request method will be retained.
+func (o URLMapPathMatcherDefaultUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
+func (o URLMapPathMatcherDefaultUrlRedirectOutput) StripQuery() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultUrlRedirect) bool { return v.StripQuery }).(pulumi.BoolOutput)
+}
+
+type URLMapPathMatcherDefaultUrlRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherDefaultUrlRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) ToURLMapPathMatcherDefaultUrlRedirectPtrOutput() URLMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) ToURLMapPathMatcherDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultUrlRedirectPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) Elem() URLMapPathMatcherDefaultUrlRedirectOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultUrlRedirect) URLMapPathMatcherDefaultUrlRedirect { return *v }).(URLMapPathMatcherDefaultUrlRedirectOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
+func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsRedirect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
+func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
+func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// the request method will be retained.
+func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectResponseCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
+func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.StripQuery
+	}).(pulumi.BoolPtrOutput)
 }
 
 type URLMapPathMatcherHeaderAction struct {
@@ -40241,28 +41779,36 @@ type URLMapPathMatcherPathRuleUrlRedirect struct {
 	// The host that will be used in the redirect response instead of the one that was
 	// supplied in the request. The value must be between 1 and 255 characters.
 	HostRedirect *string `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set
-	// to false, the URL scheme of the redirected request will remain the same as that
-	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect *bool `pulumi:"httpsRedirect"`
 	// The path that will be used in the redirect response instead of the one that was
-	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-	// specified. The value must be between 1 and 1024 characters.
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
 	PathRedirect *string `pulumi:"pathRedirect"`
 	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
-	// The HTTP Status code to use for this RedirectAction. Supported values are:   -
-	// MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-	// FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-	// TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-	// will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	// the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed
-	// prior to redirecting the request. If set to false, the query portion of the
-	// original URL is retained. Defaults to false.
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
 	StripQuery bool `pulumi:"stripQuery"`
 }
 
@@ -40282,28 +41828,36 @@ type URLMapPathMatcherPathRuleUrlRedirectArgs struct {
 	// The host that will be used in the redirect response instead of the one that was
 	// supplied in the request. The value must be between 1 and 255 characters.
 	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set
-	// to false, the URL scheme of the redirected request will remain the same as that
-	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
 	// The path that will be used in the redirect response instead of the one that was
-	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-	// specified. The value must be between 1 and 1024 characters.
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
 	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
 	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
-	// The HTTP Status code to use for this RedirectAction. Supported values are:   -
-	// MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-	// FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-	// TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-	// will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	// the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed
-	// prior to redirecting the request. If set to false, the query portion of the
-	// original URL is retained. Defaults to false.
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
 	StripQuery pulumi.BoolInput `pulumi:"stripQuery"`
 }
 
@@ -40391,40 +41945,48 @@ func (o URLMapPathMatcherPathRuleUrlRedirectOutput) HostRedirect() pulumi.String
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set
-// to false, the URL scheme of the redirected request will remain the same as that
-// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o URLMapPathMatcherPathRuleUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
 }
 
 // The path that will be used in the redirect response instead of the one that was
-// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-// specified. The value must be between 1 and 1024 characters.
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
 func (o URLMapPathMatcherPathRuleUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
 }
 
 // The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 // retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
 func (o URLMapPathMatcherPathRuleUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
 }
 
-// The HTTP Status code to use for this RedirectAction. Supported values are:   -
-// MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-// FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-// TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-// will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 // the request method will be retained.
 func (o URLMapPathMatcherPathRuleUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed
-// prior to redirecting the request. If set to false, the query portion of the
-// original URL is retained. Defaults to false.
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
 func (o URLMapPathMatcherPathRuleUrlRedirectOutput) StripQuery() pulumi.BoolOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) bool { return v.StripQuery }).(pulumi.BoolOutput)
 }
@@ -40458,10 +42020,10 @@ func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) HostRedirect() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set
-// to false, the URL scheme of the redirected request will remain the same as that
-// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *bool {
 		if v == nil {
@@ -40472,8 +42034,10 @@ func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) HttpsRedirect() pulumi.Bo
 }
 
 // The path that will be used in the redirect response instead of the one that was
-// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-// specified. The value must be between 1 and 1024 characters.
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
 func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *string {
 		if v == nil {
@@ -40485,6 +42049,9 @@ func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) PathRedirect() pulumi.Str
 
 // The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 // retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
 func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *string {
 		if v == nil {
@@ -40494,11 +42061,13 @@ func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) PrefixRedirect() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The HTTP Status code to use for this RedirectAction. Supported values are:   -
-// MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-// FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-// TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-// will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 // the request method will be retained.
 func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *string {
@@ -40509,9 +42078,10 @@ func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) RedirectResponseCode() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed
-// prior to redirecting the request. If set to false, the query portion of the
-// original URL is retained. Defaults to false.
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
 func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *bool {
 		if v == nil {
@@ -45005,28 +46575,36 @@ type URLMapPathMatcherRouteRuleUrlRedirect struct {
 	// The host that will be used in the redirect response instead of the one that was
 	// supplied in the request. The value must be between 1 and 255 characters.
 	HostRedirect *string `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set
-	// to false, the URL scheme of the redirected request will remain the same as that
-	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect *bool `pulumi:"httpsRedirect"`
 	// The path that will be used in the redirect response instead of the one that was
-	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-	// specified. The value must be between 1 and 1024 characters.
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
 	PathRedirect *string `pulumi:"pathRedirect"`
 	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
-	// The HTTP Status code to use for this RedirectAction. Supported values are:   -
-	// MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-	// FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-	// TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-	// will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	// the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed
-	// prior to redirecting the request. If set to false, the query portion of the
-	// original URL is retained. Defaults to false.
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
 	StripQuery *bool `pulumi:"stripQuery"`
 }
 
@@ -45046,28 +46624,36 @@ type URLMapPathMatcherRouteRuleUrlRedirectArgs struct {
 	// The host that will be used in the redirect response instead of the one that was
 	// supplied in the request. The value must be between 1 and 255 characters.
 	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
-	// If set to true, the URL scheme in the redirected request is set to https. If set
-	// to false, the URL scheme of the redirected request will remain the same as that
-	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
 	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
 	// The path that will be used in the redirect response instead of the one that was
-	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-	// specified. The value must be between 1 and 1024 characters.
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
 	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
 	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
-	// The HTTP Status code to use for this RedirectAction. Supported values are:   -
-	// MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-	// FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-	// TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-	// will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// - FOUND, which corresponds to 302.
+	// - SEE_OTHER which corresponds to 303.
+	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// will be retained.
+	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	// the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed
-	// prior to redirecting the request. If set to false, the query portion of the
-	// original URL is retained. Defaults to false.
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
 	StripQuery pulumi.BoolPtrInput `pulumi:"stripQuery"`
 }
 
@@ -45155,40 +46741,48 @@ func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) HostRedirect() pulumi.Strin
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set
-// to false, the URL scheme of the redirected request will remain the same as that
-// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
 }
 
 // The path that will be used in the redirect response instead of the one that was
-// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-// specified. The value must be between 1 and 1024 characters.
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
 func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
 }
 
 // The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 // retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
 func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
 }
 
-// The HTTP Status code to use for this RedirectAction. Supported values are:   -
-// MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-// FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-// TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-// will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 // the request method will be retained.
 func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed
-// prior to redirecting the request. If set to false, the query portion of the
-// original URL is retained. Defaults to false.
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
 func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *bool { return v.StripQuery }).(pulumi.BoolPtrOutput)
 }
@@ -45222,10 +46816,10 @@ func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) HostRedirect() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, the URL scheme in the redirected request is set to https. If set
-// to false, the URL scheme of the redirected request will remain the same as that
-// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
 func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *bool {
 		if v == nil {
@@ -45236,8 +46830,10 @@ func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) HttpsRedirect() pulumi.B
 }
 
 // The path that will be used in the redirect response instead of the one that was
-// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-// specified. The value must be between 1 and 1024 characters.
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
 func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *string {
 		if v == nil {
@@ -45249,6 +46845,9 @@ func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) PathRedirect() pulumi.St
 
 // The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
 // retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
 func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *string {
 		if v == nil {
@@ -45258,11 +46857,13 @@ func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) PrefixRedirect() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// The HTTP Status code to use for this RedirectAction. Supported values are:   -
-// MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.  -
-// FOUND, which corresponds to 302.  - SEE_OTHER which corresponds to 303.  -
-// TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-// will be retained.  - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// - FOUND, which corresponds to 302.
+// - SEE_OTHER which corresponds to 303.
+// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// will be retained.
+// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
 // the request method will be retained.
 func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *string {
@@ -45273,9 +46874,10 @@ func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) RedirectResponseCode() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed
-// prior to redirecting the request. If set to false, the query portion of the
-// original URL is retained. Defaults to false.
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
 func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *bool {
 		if v == nil {
@@ -49271,6 +50873,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPoliciesPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerNamedPortOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStatefulDiskOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerStatefulDiskArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerVersionOutput{})
@@ -49395,16 +50999,22 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerAutoHealingPoliciesPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerNamedPortOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatefulDiskOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerStatefulDiskArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerUpdatePolicyOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerUpdatePolicyPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionTargetSizeOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionTargetSizePtrOutput{})
+	pulumi.RegisterOutputType(RegionUrlMapDefaultUrlRedirectOutput{})
+	pulumi.RegisterOutputType(RegionUrlMapDefaultUrlRedirectPtrOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapHostRuleOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapHostRuleArrayOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherArrayOutput{})
+	pulumi.RegisterOutputType(RegionUrlMapPathMatcherDefaultUrlRedirectOutput{})
+	pulumi.RegisterOutputType(RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherPathRuleOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherPathRuleArrayOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherPathRuleRouteActionOutput{})
@@ -49556,6 +51166,8 @@ func init() {
 	pulumi.RegisterOutputType(SubnetworkLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkSecondaryIpRangeOutput{})
 	pulumi.RegisterOutputType(SubnetworkSecondaryIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultUrlRedirectOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultUrlRedirectPtrOutput{})
 	pulumi.RegisterOutputType(URLMapHeaderActionOutput{})
 	pulumi.RegisterOutputType(URLMapHeaderActionPtrOutput{})
 	pulumi.RegisterOutputType(URLMapHeaderActionRequestHeadersToAddOutput{})
@@ -49566,6 +51178,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapHostRuleArrayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherDefaultUrlRedirectOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherDefaultUrlRedirectPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherHeaderActionOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherHeaderActionPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherHeaderActionRequestHeadersToAddOutput{})

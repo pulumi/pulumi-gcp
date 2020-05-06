@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+        /// The FHIR specification version.
         /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.Gcp.Healthcare
         public Input<Inputs.FhirStoreNotificationConfigArgs>? NotificationConfig { get; set; }
 
         /// <summary>
-        /// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+        /// The FHIR specification version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -342,7 +342,7 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+        /// The FHIR specification version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

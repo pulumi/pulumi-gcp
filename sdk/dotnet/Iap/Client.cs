@@ -11,6 +11,11 @@ namespace Pulumi.Gcp.Iap
 {
     /// <summary>
     /// Contains the data that describes an Identity Aware Proxy owned client.
+    /// 
+    /// 
+    /// 
+    /// &gt; **Warning:** All arguments including `secret` will be stored in the raw
+    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// </summary>
     public partial class Client : Pulumi.CustomResource
     {

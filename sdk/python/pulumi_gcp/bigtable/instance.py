@@ -43,10 +43,7 @@ class Instance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, clusters=None, display_name=None, instance_type=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Creates a Google Bigtable instance. For more information see
-        [the official documentation](https://cloud.google.com/bigtable/) and
-        [API](https://cloud.google.com/bigtable/docs/go/reference).
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.

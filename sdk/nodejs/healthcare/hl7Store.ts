@@ -67,9 +67,17 @@ export class Hl7Store extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * -
+     * (Optional, Deprecated)
      * A nested object resource  Structure is documented below.
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.Hl7StoreNotificationConfig | undefined>;
+    /**
+     * A list of notification configs. Each configuration uses a filter to determine whether to publish a
+     * message (both Ingest & Create) on the corresponding notification destination. Only the message name
+     * is sent as part of the notification. Supplied by the client.  Structure is documented below.
+     */
+    public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.Hl7StoreNotificationConfigs[] | undefined>;
     /**
      * A nested object resource  Structure is documented below.
      */
@@ -95,6 +103,7 @@ export class Hl7Store extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["notificationConfig"] = state ? state.notificationConfig : undefined;
+            inputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
             inputs["parserConfig"] = state ? state.parserConfig : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
@@ -106,6 +115,7 @@ export class Hl7Store extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            inputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
             inputs["parserConfig"] = args ? args.parserConfig : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
@@ -146,9 +156,19 @@ export interface Hl7StoreState {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * -
+     * (Optional, Deprecated)
      * A nested object resource  Structure is documented below.
+     * 
+     * @deprecated This field has been replaced by notificationConfigs
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
+    /**
+     * A list of notification configs. Each configuration uses a filter to determine whether to publish a
+     * message (both Ingest & Create) on the corresponding notification destination. Only the message name
+     * is sent as part of the notification. Supplied by the client.  Structure is documented below.
+     */
+    readonly notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[]>;
     /**
      * A nested object resource  Structure is documented below.
      */
@@ -185,9 +205,19 @@ export interface Hl7StoreArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
+     * -
+     * (Optional, Deprecated)
      * A nested object resource  Structure is documented below.
+     * 
+     * @deprecated This field has been replaced by notificationConfigs
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
+    /**
+     * A list of notification configs. Each configuration uses a filter to determine whether to publish a
+     * message (both Ingest & Create) on the corresponding notification destination. Only the message name
+     * is sent as part of the notification. Supplied by the client.  Structure is documented below.
+     */
+    readonly notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[]>;
     /**
      * A nested object resource  Structure is documented below.
      */

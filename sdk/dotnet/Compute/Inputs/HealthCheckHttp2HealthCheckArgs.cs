@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Specifies the type of proxy header to append before sending data to the
-        /// backend, either NONE or PROXY_V1. The default is NONE.
+        /// backend.
         /// </summary>
         [Input("proxyHeader")]
         public Input<string>? ProxyHeader { get; set; }

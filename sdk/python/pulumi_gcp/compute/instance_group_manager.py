@@ -63,6 +63,13 @@ class InstanceGroupManager(pulumi.CustomResource):
     """
     The URL of the created resource.
     """
+    stateful_disks: pulumi.Output[list]
+    """
+    ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+
+      * `deleteRule` (`str`) - , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+      * `device_name` (`str`) - , The device name of the disk to be attached.
+    """
     target_pools: pulumi.Output[list]
     """
     The full URL of all target pools to which new
@@ -76,7 +83,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     update_policy: pulumi.Output[dict]
     """
     The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-    - - -
 
       * `maxSurgeFixed` (`float`) - , The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with `max_surge_percent`. If neither is set, defaults to 1
       * `maxSurgePercent` (`float`) - , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
@@ -112,7 +118,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     The zone that instances in this group should be created
     in.
     """
-    def __init__(__self__, resource_name, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, name=None, named_ports=None, project=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, name=None, named_ports=None, project=None, stateful_disks=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         The Google Compute Engine Instance Group Manager API creates and manages pools
         of homogeneous Compute Engine virtual machine instances from a common instance
@@ -138,12 +144,12 @@ class InstanceGroupManager(pulumi.CustomResource):
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[list] stateful_disks: ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[list] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
         :param pulumi.Input[float] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         :param pulumi.Input[dict] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-               - - -
         :param pulumi.Input[list] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
@@ -164,6 +170,11 @@ class InstanceGroupManager(pulumi.CustomResource):
           * `name` (`pulumi.Input[str]`) - - Version name.
           * `port` (`pulumi.Input[float]`) - The port number.
             - - -
+
+        The **stateful_disks** object supports the following:
+
+          * `deleteRule` (`pulumi.Input[str]`) - , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+          * `device_name` (`pulumi.Input[str]`) - , The device name of the disk to be attached.
 
         The **update_policy** object supports the following:
 
@@ -211,6 +222,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__['name'] = name
             __props__['named_ports'] = named_ports
             __props__['project'] = project
+            __props__['stateful_disks'] = stateful_disks
             __props__['target_pools'] = target_pools
             __props__['target_size'] = target_size
             __props__['update_policy'] = update_policy
@@ -229,7 +241,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, fingerprint=None, instance_group=None, name=None, named_ports=None, project=None, self_link=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None, zone=None):
+    def get(resource_name, id, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, fingerprint=None, instance_group=None, name=None, named_ports=None, project=None, self_link=None, stateful_disks=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None, zone=None):
         """
         Get an existing InstanceGroupManager resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -255,12 +267,12 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
+        :param pulumi.Input[list] stateful_disks: ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[list] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
         :param pulumi.Input[float] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         :param pulumi.Input[dict] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-               - - -
         :param pulumi.Input[list] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
@@ -281,6 +293,11 @@ class InstanceGroupManager(pulumi.CustomResource):
           * `name` (`pulumi.Input[str]`) - - Version name.
           * `port` (`pulumi.Input[float]`) - The port number.
             - - -
+
+        The **stateful_disks** object supports the following:
+
+          * `deleteRule` (`pulumi.Input[str]`) - , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+          * `device_name` (`pulumi.Input[str]`) - , The device name of the disk to be attached.
 
         The **update_policy** object supports the following:
 
@@ -316,6 +333,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__["named_ports"] = named_ports
         __props__["project"] = project
         __props__["self_link"] = self_link
+        __props__["stateful_disks"] = stateful_disks
         __props__["target_pools"] = target_pools
         __props__["target_size"] = target_size
         __props__["update_policy"] = update_policy

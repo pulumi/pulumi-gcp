@@ -62,9 +62,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The minimum version of SSL protocol that can be used by the clients
-        /// to establish a connection with the load balancer. This can be one of
-        /// `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
-        /// Default is `TLS_1_0`.
+        /// to establish a connection with the load balancer.
         /// </summary>
         [Output("minTlsVersion")]
         public Output<string?> MinTlsVersion { get; private set; } = null!;
@@ -83,14 +81,12 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Profile specifies the set of SSL features that can be used by the
-        /// load balancer when negotiating SSL with clients. This can be one of
-        /// `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+        /// load balancer when negotiating SSL with clients. If using `CUSTOM`,
         /// the set of SSL features to enable must be specified in the
         /// `customFeatures` field.
         /// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
         /// for information on what cipher suites each profile provides. If
         /// `CUSTOM` is used, the `custom_features` attribute **must be set**.
-        /// Default is `COMPATIBLE`.
         /// </summary>
         [Output("profile")]
         public Output<string?> Profile { get; private set; } = null!;
@@ -182,9 +178,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The minimum version of SSL protocol that can be used by the clients
-        /// to establish a connection with the load balancer. This can be one of
-        /// `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
-        /// Default is `TLS_1_0`.
+        /// to establish a connection with the load balancer.
         /// </summary>
         [Input("minTlsVersion")]
         public Input<string>? MinTlsVersion { get; set; }
@@ -203,14 +197,12 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Profile specifies the set of SSL features that can be used by the
-        /// load balancer when negotiating SSL with clients. This can be one of
-        /// `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+        /// load balancer when negotiating SSL with clients. If using `CUSTOM`,
         /// the set of SSL features to enable must be specified in the
         /// `customFeatures` field.
         /// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
         /// for information on what cipher suites each profile provides. If
         /// `CUSTOM` is used, the `custom_features` attribute **must be set**.
-        /// Default is `COMPATIBLE`.
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }
@@ -281,9 +273,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The minimum version of SSL protocol that can be used by the clients
-        /// to establish a connection with the load balancer. This can be one of
-        /// `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
-        /// Default is `TLS_1_0`.
+        /// to establish a connection with the load balancer.
         /// </summary>
         [Input("minTlsVersion")]
         public Input<string>? MinTlsVersion { get; set; }
@@ -302,14 +292,12 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Profile specifies the set of SSL features that can be used by the
-        /// load balancer when negotiating SSL with clients. This can be one of
-        /// `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+        /// load balancer when negotiating SSL with clients. If using `CUSTOM`,
         /// the set of SSL features to enable must be specified in the
         /// `customFeatures` field.
         /// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
         /// for information on what cipher suites each profile provides. If
         /// `CUSTOM` is used, the `custom_features` attribute **must be set**.
-        /// Default is `COMPATIBLE`.
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

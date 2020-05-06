@@ -99,13 +99,24 @@ class ManagedZone(pulumi.CustomResource):
     lookup queries using automatically configured records for VPC resources. This only applies
     to networks listed under `private_visibility_config`.
     """
+    service_directory_config: pulumi.Output[dict]
+    """
+    The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+    information related to the namespace associated with the zone.
+
+      * `namespace` (`dict`) - The namespace associated with the zone.  Structure is documented below.
+        * `namespaceUrl` (`str`) - The fully qualified or partial URL of the service directory namespace that should be
+          associated with the zone. This should be formatted like
+          `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
+          or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
+          Ignored for `public` visibility zones.
+    """
     visibility: pulumi.Output[str]
     """
     The zone's visibility: public zones are exposed to the Internet,
     while private zones are visible only to Virtual Private Cloud resources.
-    Must be one of: `public`, `private`.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, peering_config=None, private_visibility_config=None, project=None, reverse_lookup=None, visibility=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, peering_config=None, private_visibility_config=None, project=None, reverse_lookup=None, service_directory_config=None, visibility=None, __props__=None, __name__=None, __opts__=None):
         """
         A zone is a subtree of the DNS namespace under one administrative
         responsibility. A ManagedZone is a resource that represents a DNS zone
@@ -138,9 +149,10 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
+        :param pulumi.Input[dict] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+               information related to the namespace associated with the zone.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
-               Must be one of: `public`, `private`.
 
         The **dnssec_config** object supports the following:
 
@@ -186,6 +198,15 @@ class ManagedZone(pulumi.CustomResource):
             * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to forward queries to.
               This should be formatted like
               `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+
+        The **service_directory_config** object supports the following:
+
+          * `namespace` (`pulumi.Input[dict]`) - The namespace associated with the zone.  Structure is documented below.
+            * `namespaceUrl` (`pulumi.Input[str]`) - The fully qualified or partial URL of the service directory namespace that should be
+              associated with the zone. This should be formatted like
+              `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
+              or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
+              Ignored for `public` visibility zones.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -218,6 +239,7 @@ class ManagedZone(pulumi.CustomResource):
             __props__['private_visibility_config'] = private_visibility_config
             __props__['project'] = project
             __props__['reverse_lookup'] = reverse_lookup
+            __props__['service_directory_config'] = service_directory_config
             __props__['visibility'] = visibility
             __props__['name_servers'] = None
         super(ManagedZone, __self__).__init__(
@@ -227,7 +249,7 @@ class ManagedZone(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, name_servers=None, peering_config=None, private_visibility_config=None, project=None, reverse_lookup=None, visibility=None):
+    def get(resource_name, id, opts=None, description=None, dns_name=None, dnssec_config=None, forwarding_config=None, labels=None, name=None, name_servers=None, peering_config=None, private_visibility_config=None, project=None, reverse_lookup=None, service_directory_config=None, visibility=None):
         """
         Get an existing ManagedZone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -254,9 +276,10 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
+        :param pulumi.Input[dict] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
+               information related to the namespace associated with the zone.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
-               Must be one of: `public`, `private`.
 
         The **dnssec_config** object supports the following:
 
@@ -302,6 +325,15 @@ class ManagedZone(pulumi.CustomResource):
             * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to forward queries to.
               This should be formatted like
               `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
+
+        The **service_directory_config** object supports the following:
+
+          * `namespace` (`pulumi.Input[dict]`) - The namespace associated with the zone.  Structure is documented below.
+            * `namespaceUrl` (`pulumi.Input[str]`) - The fully qualified or partial URL of the service directory namespace that should be
+              associated with the zone. This should be formatted like
+              `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
+              or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
+              Ignored for `public` visibility zones.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -318,6 +350,7 @@ class ManagedZone(pulumi.CustomResource):
         __props__["private_visibility_config"] = private_visibility_config
         __props__["project"] = project
         __props__["reverse_lookup"] = reverse_lookup
+        __props__["service_directory_config"] = service_directory_config
         __props__["visibility"] = visibility
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

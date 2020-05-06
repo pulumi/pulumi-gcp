@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     {
         /// <summary>
         /// Determines which statement in the script represents the "key result",
-        /// used to populate the schema and query results of the script job. Default is LAST.
+        /// used to populate the schema and query results of the script job.
         /// </summary>
         [Input("keyResultStatement")]
         public Input<string>? KeyResultStatement { get; set; }

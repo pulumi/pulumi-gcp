@@ -159,7 +159,6 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
     public readonly service!: pulumi.Output<string | undefined>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-     * Defaults to SERVING.
      */
     public readonly servingStatus!: pulumi.Output<string | undefined>;
     /**
@@ -375,7 +374,6 @@ export interface FlexibleAppVersionState {
     readonly service?: pulumi.Input<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-     * Defaults to SERVING.
      */
     readonly servingStatus?: pulumi.Input<string>;
     /**
@@ -497,7 +495,6 @@ export interface FlexibleAppVersionArgs {
     readonly service?: pulumi.Input<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
-     * Defaults to SERVING.
      */
     readonly servingStatus?: pulumi.Input<string>;
     /**

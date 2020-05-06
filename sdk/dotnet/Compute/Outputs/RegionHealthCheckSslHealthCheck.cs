@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? PortSpecification;
         /// <summary>
         /// Specifies the type of proxy header to append before sending data to the
-        /// backend, either NONE or PROXY_V1. The default is NONE.
+        /// backend.
         /// </summary>
         public readonly string? ProxyHeader;
         /// <summary>

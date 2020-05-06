@@ -17,7 +17,7 @@ class Job(pulumi.CustomResource):
       * `createDisposition` (`str`) - Specifies whether the job is allowed to create new tables. The following values are supported:
         CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
         CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-        The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+        Creation, truncation and append actions occur as one atomic update upon job completion
       * `destinationEncryptionConfiguration` (`dict`) - Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
         * `kms_key_name` (`str`) - Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
           The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -36,7 +36,7 @@ class Job(pulumi.CustomResource):
         WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
         WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
         WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-        The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+        Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
         Creation, truncation and append actions occur as one atomic update upon job completion.
     """
     extract: pulumi.Output[dict]
@@ -93,7 +93,7 @@ class Job(pulumi.CustomResource):
       * `createDisposition` (`str`) - Specifies whether the job is allowed to create new tables. The following values are supported:
         CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
         CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-        The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+        Creation, truncation and append actions occur as one atomic update upon job completion
       * `destinationEncryptionConfiguration` (`dict`) - Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
         * `kms_key_name` (`str`) - Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
           The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -162,7 +162,7 @@ class Job(pulumi.CustomResource):
         WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
         WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
         WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-        The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+        Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
         Creation, truncation and append actions occur as one atomic update upon job completion.
     """
     location: pulumi.Output[str]
@@ -184,7 +184,7 @@ class Job(pulumi.CustomResource):
       * `createDisposition` (`str`) - Specifies whether the job is allowed to create new tables. The following values are supported:
         CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
         CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-        The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+        Creation, truncation and append actions occur as one atomic update upon job completion
       * `defaultDataset` (`dict`) - Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
         * `dataset_id` (`str`) - The ID of the dataset containing this model.
         * `project_id` (`str`) - The ID of the project containing this model.
@@ -205,7 +205,7 @@ class Job(pulumi.CustomResource):
       * `maximumBytesBilled` (`str`) - Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
         If unspecified, this will be set to your project default.
       * `parameterMode` (`str`) - Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
-      * `priority` (`str`) - Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+      * `priority` (`str`) - Specifies a priority for the query.
       * `query` (`str`) - Configures a query job.  Structure is documented below.
       * `schemaUpdateOptions` (`list`) - Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
         supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -215,7 +215,7 @@ class Job(pulumi.CustomResource):
         ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
       * `scriptOptions` (`dict`) - Options controlling the execution of scripts.  Structure is documented below.
         * `keyResultStatement` (`str`) - Determines which statement in the script represents the "key result",
-          used to populate the schema and query results of the script job. Default is LAST.
+          used to populate the schema and query results of the script job.
         * `statementByteBudget` (`str`) - Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
         * `statementTimeoutMs` (`str`) - Timeout period for each statement in a script.
 
@@ -233,7 +233,7 @@ class Job(pulumi.CustomResource):
         WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
         WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
         WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-        The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+        Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
         Creation, truncation and append actions occur as one atomic update upon job completion.
     """
     user_email: pulumi.Output[str]
@@ -263,7 +263,7 @@ class Job(pulumi.CustomResource):
           * `createDisposition` (`pulumi.Input[str]`) - Specifies whether the job is allowed to create new tables. The following values are supported:
             CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
             CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-            The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+            Creation, truncation and append actions occur as one atomic update upon job completion
           * `destinationEncryptionConfiguration` (`pulumi.Input[dict]`) - Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
             * `kms_key_name` (`pulumi.Input[str]`) - Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
               The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -282,7 +282,7 @@ class Job(pulumi.CustomResource):
             WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
             WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
             WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-            The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+            Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
             Creation, truncation and append actions occur as one atomic update upon job completion.
 
         The **extract** object supports the following:
@@ -319,7 +319,7 @@ class Job(pulumi.CustomResource):
           * `createDisposition` (`pulumi.Input[str]`) - Specifies whether the job is allowed to create new tables. The following values are supported:
             CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
             CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-            The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+            Creation, truncation and append actions occur as one atomic update upon job completion
           * `destinationEncryptionConfiguration` (`pulumi.Input[dict]`) - Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
             * `kms_key_name` (`pulumi.Input[str]`) - Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
               The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -388,7 +388,7 @@ class Job(pulumi.CustomResource):
             WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
             WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
             WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-            The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+            Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
             Creation, truncation and append actions occur as one atomic update upon job completion.
 
         The **query** object supports the following:
@@ -399,7 +399,7 @@ class Job(pulumi.CustomResource):
           * `createDisposition` (`pulumi.Input[str]`) - Specifies whether the job is allowed to create new tables. The following values are supported:
             CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
             CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-            The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+            Creation, truncation and append actions occur as one atomic update upon job completion
           * `defaultDataset` (`pulumi.Input[dict]`) - Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
@@ -420,7 +420,7 @@ class Job(pulumi.CustomResource):
           * `maximumBytesBilled` (`pulumi.Input[str]`) - Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
             If unspecified, this will be set to your project default.
           * `parameterMode` (`pulumi.Input[str]`) - Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
-          * `priority` (`pulumi.Input[str]`) - Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+          * `priority` (`pulumi.Input[str]`) - Specifies a priority for the query.
           * `query` (`pulumi.Input[str]`) - Configures a query job.  Structure is documented below.
           * `schemaUpdateOptions` (`pulumi.Input[list]`) - Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
             supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -430,7 +430,7 @@ class Job(pulumi.CustomResource):
             ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
           * `scriptOptions` (`pulumi.Input[dict]`) - Options controlling the execution of scripts.  Structure is documented below.
             * `keyResultStatement` (`pulumi.Input[str]`) - Determines which statement in the script represents the "key result",
-              used to populate the schema and query results of the script job. Default is LAST.
+              used to populate the schema and query results of the script job.
             * `statementByteBudget` (`pulumi.Input[str]`) - Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
             * `statementTimeoutMs` (`pulumi.Input[str]`) - Timeout period for each statement in a script.
 
@@ -448,7 +448,7 @@ class Job(pulumi.CustomResource):
             WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
             WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
             WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-            The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+            Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
             Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         if __name__ is not None:
@@ -514,7 +514,7 @@ class Job(pulumi.CustomResource):
           * `createDisposition` (`pulumi.Input[str]`) - Specifies whether the job is allowed to create new tables. The following values are supported:
             CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
             CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-            The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+            Creation, truncation and append actions occur as one atomic update upon job completion
           * `destinationEncryptionConfiguration` (`pulumi.Input[dict]`) - Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
             * `kms_key_name` (`pulumi.Input[str]`) - Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
               The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -533,7 +533,7 @@ class Job(pulumi.CustomResource):
             WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
             WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
             WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-            The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+            Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
             Creation, truncation and append actions occur as one atomic update upon job completion.
 
         The **extract** object supports the following:
@@ -570,7 +570,7 @@ class Job(pulumi.CustomResource):
           * `createDisposition` (`pulumi.Input[str]`) - Specifies whether the job is allowed to create new tables. The following values are supported:
             CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
             CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-            The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+            Creation, truncation and append actions occur as one atomic update upon job completion
           * `destinationEncryptionConfiguration` (`pulumi.Input[dict]`) - Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
             * `kms_key_name` (`pulumi.Input[str]`) - Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
               The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -639,7 +639,7 @@ class Job(pulumi.CustomResource):
             WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
             WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
             WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-            The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+            Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
             Creation, truncation and append actions occur as one atomic update upon job completion.
 
         The **query** object supports the following:
@@ -650,7 +650,7 @@ class Job(pulumi.CustomResource):
           * `createDisposition` (`pulumi.Input[str]`) - Specifies whether the job is allowed to create new tables. The following values are supported:
             CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
             CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-            The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+            Creation, truncation and append actions occur as one atomic update upon job completion
           * `defaultDataset` (`pulumi.Input[dict]`) - Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
@@ -671,7 +671,7 @@ class Job(pulumi.CustomResource):
           * `maximumBytesBilled` (`pulumi.Input[str]`) - Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge).
             If unspecified, this will be set to your project default.
           * `parameterMode` (`pulumi.Input[str]`) - Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
-          * `priority` (`pulumi.Input[str]`) - Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+          * `priority` (`pulumi.Input[str]`) - Specifies a priority for the query.
           * `query` (`pulumi.Input[str]`) - Configures a query job.  Structure is documented below.
           * `schemaUpdateOptions` (`pulumi.Input[list]`) - Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
             supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -681,7 +681,7 @@ class Job(pulumi.CustomResource):
             ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
           * `scriptOptions` (`pulumi.Input[dict]`) - Options controlling the execution of scripts.  Structure is documented below.
             * `keyResultStatement` (`pulumi.Input[str]`) - Determines which statement in the script represents the "key result",
-              used to populate the schema and query results of the script job. Default is LAST.
+              used to populate the schema and query results of the script job.
             * `statementByteBudget` (`pulumi.Input[str]`) - Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
             * `statementTimeoutMs` (`pulumi.Input[str]`) - Timeout period for each statement in a script.
 
@@ -699,7 +699,7 @@ class Job(pulumi.CustomResource):
             WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
             WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
             WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-            The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+            Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
             Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

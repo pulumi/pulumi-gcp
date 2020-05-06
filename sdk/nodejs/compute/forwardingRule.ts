@@ -136,8 +136,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly ipAddress!: pulumi.Output<string>;
     /**
-     * The IP protocol to which this rule applies. Valid options are TCP,
-     * UDP, ESP, AH, SCTP or ICMP.
+     * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
      */
@@ -187,8 +186,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * The networking tier used for configuring this address. This field can
-     * take the following values: PREMIUM or STANDARD. If this field is not
+     * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      */
     public readonly networkTier!: pulumi.Output<string>;
@@ -396,8 +394,7 @@ export interface ForwardingRuleState {
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
-     * The IP protocol to which this rule applies. Valid options are TCP,
-     * UDP, ESP, AH, SCTP or ICMP.
+     * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
      */
@@ -447,8 +444,7 @@ export interface ForwardingRuleState {
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * The networking tier used for configuring this address. This field can
-     * take the following values: PREMIUM or STANDARD. If this field is not
+     * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      */
     readonly networkTier?: pulumi.Input<string>;
@@ -581,8 +577,7 @@ export interface ForwardingRuleArgs {
      */
     readonly ipAddress?: pulumi.Input<string>;
     /**
-     * The IP protocol to which this rule applies. Valid options are TCP,
-     * UDP, ESP, AH, SCTP or ICMP.
+     * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
      */
@@ -628,8 +623,7 @@ export interface ForwardingRuleArgs {
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * The networking tier used for configuring this address. This field can
-     * take the following values: PREMIUM or STANDARD. If this field is not
+     * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      */
     readonly networkTier?: pulumi.Input<string>;

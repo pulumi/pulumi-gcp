@@ -47,7 +47,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The distribution policy for this managed instance
         /// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-        /// - - -
         /// </summary>
         [Output("distributionPolicyZones")]
         public Output<ImmutableArray<string>> DistributionPolicyZones { get; private set; } = null!;
@@ -95,6 +94,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+        /// </summary>
+        [Output("statefulDisks")]
+        public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatefulDisk>> StatefulDisks { get; private set; } = null!;
 
         /// <summary>
         /// The full URL of all target pools to which new
@@ -209,7 +214,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The distribution policy for this managed instance
         /// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-        /// - - -
         /// </summary>
         public InputList<string> DistributionPolicyZones
         {
@@ -248,6 +252,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
+
+        [Input("statefulDisks")]
+        private InputList<Inputs.RegionInstanceGroupManagerStatefulDiskArgs>? _statefulDisks;
+
+        /// <summary>
+        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerStatefulDiskArgs> StatefulDisks
+        {
+            get => _statefulDisks ?? (_statefulDisks = new InputList<Inputs.RegionInstanceGroupManagerStatefulDiskArgs>());
+            set => _statefulDisks = value;
+        }
 
         [Input("targetPools")]
         private InputList<string>? _targetPools;
@@ -335,7 +351,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The distribution policy for this managed instance
         /// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-        /// - - -
         /// </summary>
         public InputList<string> DistributionPolicyZones
         {
@@ -392,6 +407,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        [Input("statefulDisks")]
+        private InputList<Inputs.RegionInstanceGroupManagerStatefulDiskGetArgs>? _statefulDisks;
+
+        /// <summary>
+        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerStatefulDiskGetArgs> StatefulDisks
+        {
+            get => _statefulDisks ?? (_statefulDisks = new InputList<Inputs.RegionInstanceGroupManagerStatefulDiskGetArgs>());
+            set => _statefulDisks = value;
+        }
 
         [Input("targetPools")]
         private InputList<string>? _targetPools;

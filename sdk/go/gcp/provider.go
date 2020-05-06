@@ -47,8 +47,10 @@ type providerArgs struct {
 	AccessContextManagerCustomEndpoint   *string           `pulumi:"accessContextManagerCustomEndpoint"`
 	AccessToken                          *string           `pulumi:"accessToken"`
 	AppEngineCustomEndpoint              *string           `pulumi:"appEngineCustomEndpoint"`
+	ArtifactRegistryCustomEndpoint       *string           `pulumi:"artifactRegistryCustomEndpoint"`
 	Batching                             *ProviderBatching `pulumi:"batching"`
 	BigQueryCustomEndpoint               *string           `pulumi:"bigQueryCustomEndpoint"`
+	BigqueryConnectionCustomEndpoint     *string           `pulumi:"bigqueryConnectionCustomEndpoint"`
 	BigqueryDataTransferCustomEndpoint   *string           `pulumi:"bigqueryDataTransferCustomEndpoint"`
 	BigqueryReservationCustomEndpoint    *string           `pulumi:"bigqueryReservationCustomEndpoint"`
 	BigtableCustomEndpoint               *string           `pulumi:"bigtableCustomEndpoint"`
@@ -124,8 +126,10 @@ type ProviderArgs struct {
 	AccessContextManagerCustomEndpoint   pulumi.StringPtrInput
 	AccessToken                          pulumi.StringPtrInput
 	AppEngineCustomEndpoint              pulumi.StringPtrInput
+	ArtifactRegistryCustomEndpoint       pulumi.StringPtrInput
 	Batching                             ProviderBatchingPtrInput
 	BigQueryCustomEndpoint               pulumi.StringPtrInput
+	BigqueryConnectionCustomEndpoint     pulumi.StringPtrInput
 	BigqueryDataTransferCustomEndpoint   pulumi.StringPtrInput
 	BigqueryReservationCustomEndpoint    pulumi.StringPtrInput
 	BigtableCustomEndpoint               pulumi.StringPtrInput

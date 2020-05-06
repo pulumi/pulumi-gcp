@@ -49,10 +49,20 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// -
+        /// (Optional, Deprecated)
         /// A nested object resource  Structure is documented below.
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.Hl7StoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        /// message (both Ingest &amp; Create) on the corresponding notification destination. Only the message name
+        /// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+        /// </summary>
+        [Output("notificationConfigs")]
+        public Output<ImmutableArray<Outputs.Hl7StoreNotificationConfigs>> NotificationConfigs { get; private set; } = null!;
 
         /// <summary>
         /// A nested object resource  Structure is documented below.
@@ -146,10 +156,26 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// -
+        /// (Optional, Deprecated)
         /// A nested object resource  Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.Hl7StoreNotificationConfigArgs>? NotificationConfig { get; set; }
+
+        [Input("notificationConfigs")]
+        private InputList<Inputs.Hl7StoreNotificationConfigsArgs>? _notificationConfigs;
+
+        /// <summary>
+        /// A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        /// message (both Ingest &amp; Create) on the corresponding notification destination. Only the message name
+        /// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.Hl7StoreNotificationConfigsArgs> NotificationConfigs
+        {
+            get => _notificationConfigs ?? (_notificationConfigs = new InputList<Inputs.Hl7StoreNotificationConfigsArgs>());
+            set => _notificationConfigs = value;
+        }
 
         /// <summary>
         /// A nested object resource  Structure is documented below.
@@ -198,10 +224,26 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// -
+        /// (Optional, Deprecated)
         /// A nested object resource  Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.Hl7StoreNotificationConfigGetArgs>? NotificationConfig { get; set; }
+
+        [Input("notificationConfigs")]
+        private InputList<Inputs.Hl7StoreNotificationConfigsGetArgs>? _notificationConfigs;
+
+        /// <summary>
+        /// A list of notification configs. Each configuration uses a filter to determine whether to publish a
+        /// message (both Ingest &amp; Create) on the corresponding notification destination. Only the message name
+        /// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.Hl7StoreNotificationConfigsGetArgs> NotificationConfigs
+        {
+            get => _notificationConfigs ?? (_notificationConfigs = new InputList<Inputs.Hl7StoreNotificationConfigsGetArgs>());
+            set => _notificationConfigs = value;
+        }
 
         /// <summary>
         /// A nested object resource  Structure is documented below.

@@ -18,12 +18,12 @@ class SecurityScanConfig(pulumi.CustomResource):
       * `customAccount` (`dict`) - Describes authentication configuration that uses a custom account.  Structure is documented below.
         * `loginUrl` (`str`) - The login form URL of the website.
         * `password` (`str`) - The password of the custom account. The credential is stored encrypted
-          in GCP.
+          in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
         * `username` (`str`) - The user name of the custom account.
 
       * `googleAccount` (`dict`) - Describes authentication configuration that uses a Google account.  Structure is documented below.
         * `password` (`str`) - The password of the custom account. The credential is stored encrypted
-          in GCP.
+          in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
         * `username` (`str`) - The user name of the custom account.
     """
     blacklist_patterns: pulumi.Output[list]
@@ -84,6 +84,9 @@ class SecurityScanConfig(pulumi.CustomResource):
         * How-to Guides
             * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
 
+        > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] authentication: The authentication configuration.
@@ -106,12 +109,12 @@ class SecurityScanConfig(pulumi.CustomResource):
           * `customAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a custom account.  Structure is documented below.
             * `loginUrl` (`pulumi.Input[str]`) - The login form URL of the website.
             * `password` (`pulumi.Input[str]`) - The password of the custom account. The credential is stored encrypted
-              in GCP.
+              in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The user name of the custom account.
 
           * `googleAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a Google account.  Structure is documented below.
             * `password` (`pulumi.Input[str]`) - The password of the custom account. The credential is stored encrypted
-              in GCP.
+              in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The user name of the custom account.
 
         The **schedule** object supports the following:
@@ -189,12 +192,12 @@ class SecurityScanConfig(pulumi.CustomResource):
           * `customAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a custom account.  Structure is documented below.
             * `loginUrl` (`pulumi.Input[str]`) - The login form URL of the website.
             * `password` (`pulumi.Input[str]`) - The password of the custom account. The credential is stored encrypted
-              in GCP.
+              in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The user name of the custom account.
 
           * `googleAccount` (`pulumi.Input[dict]`) - Describes authentication configuration that uses a Google account.  Structure is documented below.
             * `password` (`pulumi.Input[str]`) - The password of the custom account. The credential is stored encrypted
-              in GCP.
+              in GCP.  **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The user name of the custom account.
 
         The **schedule** object supports the following:

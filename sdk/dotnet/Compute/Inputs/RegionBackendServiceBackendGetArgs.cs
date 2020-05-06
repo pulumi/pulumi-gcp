@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionBackendServiceBackendGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the balancing mode for this backend. Defaults to CONNECTION.
+        /// Specifies the balancing mode for this backend.
         /// </summary>
         [Input("balancingMode")]
         public Input<string>? BalancingMode { get; set; }

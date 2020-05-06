@@ -22,8 +22,7 @@ namespace Pulumi.Gcp.Datastore
     public partial class DataStoreIndex : Pulumi.CustomResource
     {
         /// <summary>
-        /// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-        /// the default is `NONE`.
+        /// Policy for including ancestors in the index.
         /// </summary>
         [Output("ancestor")]
         public Output<string?> Ancestor { get; private set; } = null!;
@@ -100,8 +99,7 @@ namespace Pulumi.Gcp.Datastore
     public sealed class DataStoreIndexArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-        /// the default is `NONE`.
+        /// Policy for including ancestors in the index.
         /// </summary>
         [Input("ancestor")]
         public Input<string>? Ancestor { get; set; }
@@ -139,8 +137,7 @@ namespace Pulumi.Gcp.Datastore
     public sealed class DataStoreIndexState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-        /// the default is `NONE`.
+        /// Policy for including ancestors in the index.
         /// </summary>
         [Input("ancestor")]
         public Input<string>? Ancestor { get; set; }

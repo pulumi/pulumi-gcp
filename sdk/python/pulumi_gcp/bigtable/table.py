@@ -30,18 +30,9 @@ class Table(pulumi.CustomResource):
     is not provided, the provider project is used.
     """
     split_keys: pulumi.Output[list]
-    """
-    A list of predefined keys to split the table on.
-    """
     def __init__(__self__, resource_name, opts=None, column_families=None, instance_name=None, name=None, project=None, split_keys=None, __props__=None, __name__=None, __opts__=None):
         """
-        Creates a Google Cloud Bigtable table inside an instance. For more information see
-        [the official documentation](https://cloud.google.com/bigtable/) and
-        [API](https://cloud.google.com/bigtable/docs/go/reference).
-
-
-
-
+        Create a Table resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
@@ -49,7 +40,6 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[list] split_keys: A list of predefined keys to split the table on.
 
         The **column_families** object supports the following:
 
@@ -99,7 +89,6 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[list] split_keys: A list of predefined keys to split the table on.
 
         The **column_families** object supports the following:
 

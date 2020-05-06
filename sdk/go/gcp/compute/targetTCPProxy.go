@@ -41,7 +41,7 @@ type TargetTCPProxy struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the type of proxy header to append before sending data to
-	// the backend, either NONE or PROXY_V1. The default is NONE.
+	// the backend.
 	ProxyHeader pulumi.StringPtrOutput `pulumi:"proxyHeader"`
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntOutput `pulumi:"proxyId"`
@@ -98,7 +98,7 @@ type targetTCPProxyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Specifies the type of proxy header to append before sending data to
-	// the backend, either NONE or PROXY_V1. The default is NONE.
+	// the backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The unique identifier for the resource.
 	ProxyId *int `pulumi:"proxyId"`
@@ -125,7 +125,7 @@ type TargetTCPProxyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Specifies the type of proxy header to append before sending data to
-	// the backend, either NONE or PROXY_V1. The default is NONE.
+	// the backend.
 	ProxyHeader pulumi.StringPtrInput
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntPtrInput
@@ -154,7 +154,7 @@ type targetTCPProxyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Specifies the type of proxy header to append before sending data to
-	// the backend, either NONE or PROXY_V1. The default is NONE.
+	// the backend.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 }
 
@@ -176,7 +176,7 @@ type TargetTCPProxyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Specifies the type of proxy header to append before sending data to
-	// the backend, either NONE or PROXY_V1. The default is NONE.
+	// the backend.
 	ProxyHeader pulumi.StringPtrInput
 }
 

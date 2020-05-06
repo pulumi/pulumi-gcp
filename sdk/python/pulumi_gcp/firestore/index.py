@@ -45,8 +45,7 @@ class Index(pulumi.CustomResource):
     """
     query_scope: pulumi.Output[str]
     """
-    The scope at which a query is run. One of `"COLLECTION"` or
-    `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+    The scope at which a query is run.
     """
     def __init__(__self__, resource_name, opts=None, collection=None, database=None, fields=None, project=None, query_scope=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -73,8 +72,7 @@ class Index(pulumi.CustomResource):
                ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] query_scope: The scope at which a query is run. One of `"COLLECTION"` or
-               `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+        :param pulumi.Input[str] query_scope: The scope at which a query is run.
 
         The **fields** object supports the following:
 
@@ -138,8 +136,7 @@ class Index(pulumi.CustomResource):
                'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] query_scope: The scope at which a query is run. One of `"COLLECTION"` or
-               `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+        :param pulumi.Input[str] query_scope: The scope at which a query is run.
 
         The **fields** object supports the following:
 

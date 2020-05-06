@@ -12,8 +12,7 @@ from .. import utilities, tables
 class DataStoreIndex(pulumi.CustomResource):
     ancestor: pulumi.Output[str]
     """
-    Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-    the default is `NONE`.
+    Policy for including ancestors in the index.
     """
     index_id: pulumi.Output[str]
     """
@@ -32,7 +31,7 @@ class DataStoreIndex(pulumi.CustomResource):
     """
     An ordered list of properties to index on.  Structure is documented below.
 
-      * `direction` (`str`) - The direction the index should optimize for sorting. Possible values are ASCENDING and DESCENDING.
+      * `direction` (`str`) - The direction the index should optimize for sorting.
       * `name` (`str`) - The property name to index.
     """
     def __init__(__self__, resource_name, opts=None, ancestor=None, kind=None, project=None, properties=None, __props__=None, __name__=None, __opts__=None):
@@ -48,8 +47,7 @@ class DataStoreIndex(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ancestor: Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-               the default is `NONE`.
+        :param pulumi.Input[str] ancestor: Policy for including ancestors in the index.
         :param pulumi.Input[str] kind: The entity kind which the index applies to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -57,7 +55,7 @@ class DataStoreIndex(pulumi.CustomResource):
 
         The **properties** object supports the following:
 
-          * `direction` (`pulumi.Input[str]`) - The direction the index should optimize for sorting. Possible values are ASCENDING and DESCENDING.
+          * `direction` (`pulumi.Input[str]`) - The direction the index should optimize for sorting.
           * `name` (`pulumi.Input[str]`) - The property name to index.
         """
         if __name__ is not None:
@@ -99,8 +97,7 @@ class DataStoreIndex(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] ancestor: Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-               the default is `NONE`.
+        :param pulumi.Input[str] ancestor: Policy for including ancestors in the index.
         :param pulumi.Input[str] index_id: The index id.
         :param pulumi.Input[str] kind: The entity kind which the index applies to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -109,7 +106,7 @@ class DataStoreIndex(pulumi.CustomResource):
 
         The **properties** object supports the following:
 
-          * `direction` (`pulumi.Input[str]`) - The direction the index should optimize for sorting. Possible values are ASCENDING and DESCENDING.
+          * `direction` (`pulumi.Input[str]`) - The direction the index should optimize for sorting.
           * `name` (`pulumi.Input[str]`) - The property name to index.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

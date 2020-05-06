@@ -14,9 +14,13 @@ namespace Pulumi.Gcp
 
         public static string? AppEngineCustomEndpoint { get; set; } = __config.Get("appEngineCustomEndpoint");
 
+        public static string? ArtifactRegistryCustomEndpoint { get; set; } = __config.Get("artifactRegistryCustomEndpoint");
+
         public static Pulumi.Gcp.Config.Types.Batching? Batching { get; set; } = __config.GetObject<Pulumi.Gcp.Config.Types.Batching>("batching");
 
         public static string? BigQueryCustomEndpoint { get; set; } = __config.Get("bigQueryCustomEndpoint");
+
+        public static string? BigqueryConnectionCustomEndpoint { get; set; } = __config.Get("bigqueryConnectionCustomEndpoint");
 
         public static string? BigqueryDataTransferCustomEndpoint { get; set; } = __config.Get("bigqueryDataTransferCustomEndpoint");
 

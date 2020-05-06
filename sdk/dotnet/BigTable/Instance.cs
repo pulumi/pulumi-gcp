@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.BigTable
 {
-    /// <summary>
-    /// Creates a Google Bigtable instance. For more information see
-    /// [the official documentation](https://cloud.google.com/bigtable/) and
-    /// [API](https://cloud.google.com/bigtable/docs/go/reference).
-    /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

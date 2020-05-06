@@ -47,7 +47,7 @@ type NetworkEndpointGroup struct {
 	// The network to which all network endpoints in the NEG belong.
 	// Uses "default" project network if unspecified.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType pulumi.StringPtrOutput `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -110,7 +110,7 @@ type networkEndpointGroupState struct {
 	// The network to which all network endpoints in the NEG belong.
 	// Uses "default" project network if unspecified.
 	Network *string `pulumi:"network"`
-	// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -143,7 +143,7 @@ type NetworkEndpointGroupState struct {
 	// The network to which all network endpoints in the NEG belong.
 	// Uses "default" project network if unspecified.
 	Network pulumi.StringPtrInput
-	// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -180,7 +180,7 @@ type networkEndpointGroupArgs struct {
 	// The network to which all network endpoints in the NEG belong.
 	// Uses "default" project network if unspecified.
 	Network string `pulumi:"network"`
-	// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -210,7 +210,7 @@ type NetworkEndpointGroupArgs struct {
 	// The network to which all network endpoints in the NEG belong.
 	// Uses "default" project network if unspecified.
 	Network pulumi.StringInput
-	// Type of network endpoints in this network endpoint group. The only supported value is GCE_VM_IP_PORT
+	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

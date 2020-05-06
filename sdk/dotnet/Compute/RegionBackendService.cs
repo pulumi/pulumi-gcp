@@ -101,8 +101,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Indicates what kind of load balancing this regional backend service
         /// will be used for. A backend service created for one type of load
-        /// balancing cannot be used with the other(s). Must be `INTERNAL` or
-        /// `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+        /// balancing cannot be used with the other(s).
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -171,8 +170,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The protocol this RegionBackendService uses to communicate with backends.
-        /// Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-        /// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+        /// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         /// types and may result in errors if used with the GA API.
         /// </summary>
         [Output("protocol")]
@@ -324,8 +322,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Indicates what kind of load balancing this regional backend service
         /// will be used for. A backend service created for one type of load
-        /// balancing cannot be used with the other(s). Must be `INTERNAL` or
-        /// `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+        /// balancing cannot be used with the other(s).
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -394,8 +391,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The protocol this RegionBackendService uses to communicate with backends.
-        /// Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-        /// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+        /// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         /// types and may result in errors if used with the GA API.
         /// </summary>
         [Input("protocol")]
@@ -514,8 +510,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Indicates what kind of load balancing this regional backend service
         /// will be used for. A backend service created for one type of load
-        /// balancing cannot be used with the other(s). Must be `INTERNAL` or
-        /// `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+        /// balancing cannot be used with the other(s).
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -584,8 +579,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The protocol this RegionBackendService uses to communicate with backends.
-        /// Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-        /// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+        /// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         /// types and may result in errors if used with the GA API.
         /// </summary>
         [Input("protocol")]

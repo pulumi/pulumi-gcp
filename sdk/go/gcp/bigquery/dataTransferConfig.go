@@ -57,6 +57,10 @@ type DataTransferConfig struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
+	// Optional service account name. If this field is set, transfer config will
+	// be created with this service account credentials. It requires that
+	// requesting user calling this API has permissions to act as this service account.
+	ServiceAccountName pulumi.StringPtrOutput `pulumi:"serviceAccountName"`
 }
 
 // NewDataTransferConfig registers a new resource with the given unique name, arguments, and options.
@@ -134,6 +138,10 @@ type dataTransferConfigState struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
+	// Optional service account name. If this field is set, transfer config will
+	// be created with this service account credentials. It requires that
+	// requesting user calling this API has permissions to act as this service account.
+	ServiceAccountName *string `pulumi:"serviceAccountName"`
 }
 
 type DataTransferConfigState struct {
@@ -172,6 +180,10 @@ type DataTransferConfigState struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
+	// Optional service account name. If this field is set, transfer config will
+	// be created with this service account credentials. It requires that
+	// requesting user calling this API has permissions to act as this service account.
+	ServiceAccountName pulumi.StringPtrInput
 }
 
 func (DataTransferConfigState) ElementType() reflect.Type {
@@ -210,6 +222,10 @@ type dataTransferConfigArgs struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
+	// Optional service account name. If this field is set, transfer config will
+	// be created with this service account credentials. It requires that
+	// requesting user calling this API has permissions to act as this service account.
+	ServiceAccountName *string `pulumi:"serviceAccountName"`
 }
 
 // The set of arguments for constructing a DataTransferConfig resource.
@@ -245,6 +261,10 @@ type DataTransferConfigArgs struct {
 	// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
 	// NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
+	// Optional service account name. If this field is set, transfer config will
+	// be created with this service account credentials. It requires that
+	// requesting user calling this API has permissions to act as this service account.
+	ServiceAccountName pulumi.StringPtrInput
 }
 
 func (DataTransferConfigArgs) ElementType() reflect.Type {

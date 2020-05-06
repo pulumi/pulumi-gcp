@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -99,6 +101,12 @@ export class DataTransferConfig extends pulumi.CustomResource {
      * NOTE: the granularity should be at least 8 hours, or less frequent.
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
+    /**
+     * Optional service account name. If this field is set, transfer config will
+     * be created with this service account credentials. It requires that
+     * requesting user calling this API has permissions to act as this service account.
+     */
+    public readonly serviceAccountName!: pulumi.Output<string | undefined>;
 
     /**
      * Create a DataTransferConfig resource with the given unique name, arguments, and options.
@@ -122,6 +130,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["params"] = state ? state.params : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["schedule"] = state ? state.schedule : undefined;
+            inputs["serviceAccountName"] = state ? state.serviceAccountName : undefined;
         } else {
             const args = argsOrState as DataTransferConfigArgs | undefined;
             if (!args || args.dataSourceId === undefined) {
@@ -145,6 +154,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["params"] = args ? args.params : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
+            inputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
             inputs["name"] = undefined /*out*/;
         }
         if (!opts) {
@@ -217,6 +227,12 @@ export interface DataTransferConfigState {
      * NOTE: the granularity should be at least 8 hours, or less frequent.
      */
     readonly schedule?: pulumi.Input<string>;
+    /**
+     * Optional service account name. If this field is set, transfer config will
+     * be created with this service account credentials. It requires that
+     * requesting user calling this API has permissions to act as this service account.
+     */
+    readonly serviceAccountName?: pulumi.Input<string>;
 }
 
 /**
@@ -272,4 +288,10 @@ export interface DataTransferConfigArgs {
      * NOTE: the granularity should be at least 8 hours, or less frequent.
      */
     readonly schedule?: pulumi.Input<string>;
+    /**
+     * Optional service account name. If this field is set, transfer config will
+     * be created with this service account credentials. It requires that
+     * requesting user calling this API has permissions to act as this service account.
+     */
+    readonly serviceAccountName?: pulumi.Input<string>;
 }

@@ -21,8 +21,7 @@ import (
 type DataStoreIndex struct {
 	pulumi.CustomResourceState
 
-	// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-	// the default is `NONE`.
+	// Policy for including ancestors in the index.
 	Ancestor pulumi.StringPtrOutput `pulumi:"ancestor"`
 	// The index id.
 	IndexId pulumi.StringOutput `pulumi:"indexId"`
@@ -66,8 +65,7 @@ func GetDataStoreIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataStoreIndex resources.
 type dataStoreIndexState struct {
-	// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-	// the default is `NONE`.
+	// Policy for including ancestors in the index.
 	Ancestor *string `pulumi:"ancestor"`
 	// The index id.
 	IndexId *string `pulumi:"indexId"`
@@ -81,8 +79,7 @@ type dataStoreIndexState struct {
 }
 
 type DataStoreIndexState struct {
-	// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-	// the default is `NONE`.
+	// Policy for including ancestors in the index.
 	Ancestor pulumi.StringPtrInput
 	// The index id.
 	IndexId pulumi.StringPtrInput
@@ -100,8 +97,7 @@ func (DataStoreIndexState) ElementType() reflect.Type {
 }
 
 type dataStoreIndexArgs struct {
-	// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-	// the default is `NONE`.
+	// Policy for including ancestors in the index.
 	Ancestor *string `pulumi:"ancestor"`
 	// The entity kind which the index applies to.
 	Kind string `pulumi:"kind"`
@@ -114,8 +110,7 @@ type dataStoreIndexArgs struct {
 
 // The set of arguments for constructing a DataStoreIndex resource.
 type DataStoreIndexArgs struct {
-	// Policy for including ancestors in the index.  Either `ALL_ANCESTORS` or `NONE`,
-	// the default is `NONE`.
+	// Policy for including ancestors in the index.
 	Ancestor pulumi.StringPtrInput
 	// The entity kind which the index applies to.
 	Kind pulumi.StringInput

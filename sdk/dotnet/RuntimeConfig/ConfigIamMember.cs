@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.RuntimeConfig
 {
     /// <summary>
-    /// Three different resources help you manage your IAM policy for Cloud Runtime Configuration Config. Each of these resources serves a different use case:
+    /// Three different resources help you manage your IAM policy for Runtime Configurator Config. Each of these resources serves a different use case:
     /// 
     /// * `gcp.runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
     /// * `gcp.runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.

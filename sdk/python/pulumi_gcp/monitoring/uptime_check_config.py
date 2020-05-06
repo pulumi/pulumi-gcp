@@ -25,7 +25,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
 
       * `authInfo` (`dict`) - The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
-        * `password` (`str`) - The password to authenticate.
+        * `password` (`str`) - The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
         * `username` (`str`) - The username to authenticate.
 
       * `headers` (`dict`) - The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
@@ -92,6 +92,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
 
+        > **Warning:** All arguments including `http_check.auth_info.password` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
@@ -113,7 +116,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         The **http_check** object supports the following:
 
           * `authInfo` (`pulumi.Input[dict]`) - The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
-            * `password` (`pulumi.Input[str]`) - The password to authenticate.
+            * `password` (`pulumi.Input[str]`) - The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The username to authenticate.
 
           * `headers` (`pulumi.Input[dict]`) - The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
@@ -207,7 +210,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         The **http_check** object supports the following:
 
           * `authInfo` (`pulumi.Input[dict]`) - The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
-            * `password` (`pulumi.Input[str]`) - The password to authenticate.
+            * `password` (`pulumi.Input[str]`) - The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The username to authenticate.
 
           * `headers` (`pulumi.Input[dict]`) - The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.

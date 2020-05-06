@@ -53,6 +53,12 @@ export class URLMap extends pulumi.CustomResource {
      */
     public readonly defaultService!: pulumi.Output<string | undefined>;
     /**
+     * When none of the specified hostRules match, the request is redirected to a URL specified
+     * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+     * defaultRouteAction must not be set.  Structure is documented below.
+     */
+    public readonly defaultUrlRedirect!: pulumi.Output<outputs.compute.URLMapDefaultUrlRedirect | undefined>;
+    /**
      * Description of this test case.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -115,6 +121,7 @@ export class URLMap extends pulumi.CustomResource {
             const state = argsOrState as URLMapState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["defaultService"] = state ? state.defaultService : undefined;
+            inputs["defaultUrlRedirect"] = state ? state.defaultUrlRedirect : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["headerAction"] = state ? state.headerAction : undefined;
@@ -128,6 +135,7 @@ export class URLMap extends pulumi.CustomResource {
         } else {
             const args = argsOrState as URLMapArgs | undefined;
             inputs["defaultService"] = args ? args.defaultService : undefined;
+            inputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["headerAction"] = args ? args.headerAction : undefined;
             inputs["hostRules"] = args ? args.hostRules : undefined;
@@ -163,6 +171,12 @@ export interface URLMapState {
      * The backend service or backend bucket to use when none of the given paths match.
      */
     readonly defaultService?: pulumi.Input<string>;
+    /**
+     * When none of the specified hostRules match, the request is redirected to a URL specified
+     * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+     * defaultRouteAction must not be set.  Structure is documented below.
+     */
+    readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapDefaultUrlRedirect>;
     /**
      * Description of this test case.
      */
@@ -221,6 +235,12 @@ export interface URLMapArgs {
      * The backend service or backend bucket to use when none of the given paths match.
      */
     readonly defaultService?: pulumi.Input<string>;
+    /**
+     * When none of the specified hostRules match, the request is redirected to a URL specified
+     * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+     * defaultRouteAction must not be set.  Structure is documented below.
+     */
+    readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapDefaultUrlRedirect>;
     /**
      * Description of this test case.
      */

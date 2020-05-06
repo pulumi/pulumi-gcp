@@ -36,9 +36,7 @@ type GlobalNetworkEndpointGroup struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Type of network endpoints in this network endpoint group. Supported values are:
-	// * INTERNET_IP_PORT
-	// * INTERNET_FQDN_PORT
+	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType pulumi.StringOutput `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -92,9 +90,7 @@ type globalNetworkEndpointGroupState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// Type of network endpoints in this network endpoint group. Supported values are:
-	// * INTERNET_IP_PORT
-	// * INTERNET_FQDN_PORT
+	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -118,9 +114,7 @@ type GlobalNetworkEndpointGroupState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// Type of network endpoints in this network endpoint group. Supported values are:
-	// * INTERNET_IP_PORT
-	// * INTERNET_FQDN_PORT
+	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -148,9 +142,7 @@ type globalNetworkEndpointGroupArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// Type of network endpoints in this network endpoint group. Supported values are:
-	// * INTERNET_IP_PORT
-	// * INTERNET_FQDN_PORT
+	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -173,9 +165,7 @@ type GlobalNetworkEndpointGroupArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// Type of network endpoints in this network endpoint group. Supported values are:
-	// * INTERNET_IP_PORT
-	// * INTERNET_FQDN_PORT
+	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

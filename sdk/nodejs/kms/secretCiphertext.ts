@@ -21,6 +21,9 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
  * * How-to Guides
  *     * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
+ * 
+ * > **Warning:** All arguments including `plaintext` and `additionalAuthenticatedData` will be stored in the raw
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/kms_secret_ciphertext.html.markdown.
  */
@@ -52,7 +55,7 @@ export class SecretCiphertext extends pulumi.CustomResource {
     }
 
     /**
-     * The additional authenticated data used for integrity checks during encryption and decryption.
+     * The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly additionalAuthenticatedData!: pulumi.Output<string | undefined>;
     /**
@@ -65,7 +68,7 @@ export class SecretCiphertext extends pulumi.CustomResource {
      */
     public readonly cryptoKey!: pulumi.Output<string>;
     /**
-     * The plaintext to be encrypted.
+     * The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly plaintext!: pulumi.Output<string>;
 
@@ -114,7 +117,7 @@ export class SecretCiphertext extends pulumi.CustomResource {
  */
 export interface SecretCiphertextState {
     /**
-     * The additional authenticated data used for integrity checks during encryption and decryption.
+     * The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly additionalAuthenticatedData?: pulumi.Input<string>;
     /**
@@ -127,7 +130,7 @@ export interface SecretCiphertextState {
      */
     readonly cryptoKey?: pulumi.Input<string>;
     /**
-     * The plaintext to be encrypted.
+     * The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly plaintext?: pulumi.Input<string>;
 }
@@ -137,7 +140,7 @@ export interface SecretCiphertextState {
  */
 export interface SecretCiphertextArgs {
     /**
-     * The additional authenticated data used for integrity checks during encryption and decryption.
+     * The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly additionalAuthenticatedData?: pulumi.Input<string>;
     /**
@@ -146,7 +149,7 @@ export interface SecretCiphertextArgs {
      */
     readonly cryptoKey: pulumi.Input<string>;
     /**
-     * The plaintext to be encrypted.
+     * The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly plaintext: pulumi.Input<string>;
 }

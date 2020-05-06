@@ -70,7 +70,8 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> SubjectAlternativeNames { get; private set; } = null!;
 
         /// <summary>
-        /// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+        /// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+        /// Possible values: ["MANAGED"]
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -154,7 +155,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+        /// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+        /// Possible values: ["MANAGED"]
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -226,7 +228,8 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+        /// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+        /// Possible values: ["MANAGED"]
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

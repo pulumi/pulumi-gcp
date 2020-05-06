@@ -32,6 +32,11 @@ class Client(pulumi.CustomResource):
         """
         Contains the data that describes an Identity Aware Proxy owned client.
 
+
+
+        > **Warning:** All arguments including `secret` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] brand: Identifier of the brand to which this client

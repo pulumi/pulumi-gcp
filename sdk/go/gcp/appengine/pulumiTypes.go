@@ -1030,9 +1030,9 @@ func (o EngineSplitTrafficSplitPtrOutput) ShardBy() pulumi.StringPtrOutput {
 }
 
 type FlexibleAppVersionApiConfig struct {
-	// Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
+	// Action to take when users access resources that require authentication.
 	AuthFailAction *string `pulumi:"authFailAction"`
-	// Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+	// Level of login required to access this resource.
 	Login *string `pulumi:"login"`
 	// Path to the script from the application root directory.
 	Script string `pulumi:"script"`
@@ -1055,9 +1055,9 @@ type FlexibleAppVersionApiConfigInput interface {
 }
 
 type FlexibleAppVersionApiConfigArgs struct {
-	// Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
+	// Action to take when users access resources that require authentication.
 	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
-	// Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+	// Level of login required to access this resource.
 	Login pulumi.StringPtrInput `pulumi:"login"`
 	// Path to the script from the application root directory.
 	Script pulumi.StringInput `pulumi:"script"`
@@ -1145,12 +1145,12 @@ func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigPtrOutpu
 	}).(FlexibleAppVersionApiConfigPtrOutput)
 }
 
-// Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
+// Action to take when users access resources that require authentication.
 func (o FlexibleAppVersionApiConfigOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
-// Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+// Level of login required to access this resource.
 func (o FlexibleAppVersionApiConfigOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
@@ -1188,7 +1188,7 @@ func (o FlexibleAppVersionApiConfigPtrOutput) Elem() FlexibleAppVersionApiConfig
 	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) FlexibleAppVersionApiConfig { return *v }).(FlexibleAppVersionApiConfigOutput)
 }
 
-// Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
+// Action to take when users access resources that require authentication.
 func (o FlexibleAppVersionApiConfigPtrOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
 		if v == nil {
@@ -1198,7 +1198,7 @@ func (o FlexibleAppVersionApiConfigPtrOutput) AuthFailAction() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+// Level of login required to access this resource.
 func (o FlexibleAppVersionApiConfigPtrOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
 		if v == nil {
@@ -3074,7 +3074,7 @@ type FlexibleAppVersionEndpointsApiService struct {
 	DisableTraceSampling *bool `pulumi:"disableTraceSampling"`
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name string `pulumi:"name"`
-	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
+	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 	RolloutStrategy *string `pulumi:"rolloutStrategy"`
 }
 
@@ -3102,7 +3102,7 @@ type FlexibleAppVersionEndpointsApiServiceArgs struct {
 	DisableTraceSampling pulumi.BoolPtrInput `pulumi:"disableTraceSampling"`
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
+	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 	RolloutStrategy pulumi.StringPtrInput `pulumi:"rolloutStrategy"`
 }
 
@@ -3204,7 +3204,7 @@ func (o FlexibleAppVersionEndpointsApiServiceOutput) Name() pulumi.StringOutput 
 	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
+// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 func (o FlexibleAppVersionEndpointsApiServiceOutput) RolloutStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.RolloutStrategy }).(pulumi.StringPtrOutput)
 }
@@ -3262,7 +3262,7 @@ func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Name() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted. Default is "FIXED".
+// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 func (o FlexibleAppVersionEndpointsApiServicePtrOutput) RolloutStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) *string {
 		if v == nil {
@@ -3653,7 +3653,9 @@ func (o FlexibleAppVersionLivenessCheckPtrOutput) Timeout() pulumi.StringPtrOutp
 }
 
 type FlexibleAppVersionManualScaling struct {
-	// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+	// Number of instances to assign to the service at the start.
+	// **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+	// Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
 	Instances int `pulumi:"instances"`
 }
 
@@ -3670,7 +3672,9 @@ type FlexibleAppVersionManualScalingInput interface {
 }
 
 type FlexibleAppVersionManualScalingArgs struct {
-	// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+	// Number of instances to assign to the service at the start.
+	// **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+	// Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
 	Instances pulumi.IntInput `pulumi:"instances"`
 }
 
@@ -3752,7 +3756,9 @@ func (o FlexibleAppVersionManualScalingOutput) ToFlexibleAppVersionManualScaling
 	}).(FlexibleAppVersionManualScalingPtrOutput)
 }
 
-// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+// Number of instances to assign to the service at the start.
+// **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+// Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
 func (o FlexibleAppVersionManualScalingOutput) Instances() pulumi.IntOutput {
 	return o.ApplyT(func(v FlexibleAppVersionManualScaling) int { return v.Instances }).(pulumi.IntOutput)
 }
@@ -3775,7 +3781,9 @@ func (o FlexibleAppVersionManualScalingPtrOutput) Elem() FlexibleAppVersionManua
 	return o.ApplyT(func(v *FlexibleAppVersionManualScaling) FlexibleAppVersionManualScaling { return *v }).(FlexibleAppVersionManualScalingOutput)
 }
 
-// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API set_num_instances() function.
+// Number of instances to assign to the service at the start.
+// **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+// Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
 func (o FlexibleAppVersionManualScalingPtrOutput) Instances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionManualScaling) *int {
 		if v == nil {
@@ -4701,6 +4709,600 @@ func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) Name() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type StandardAppVersionAutomaticScaling struct {
+	// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+	// Defaults to a runtime-specific value.
+	MaxConcurrentRequests *int `pulumi:"maxConcurrentRequests"`
+	// Maximum number of idle instances that should be maintained for this version.
+	MaxIdleInstances *int `pulumi:"maxIdleInstances"`
+	// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MaxPendingLatency *string `pulumi:"maxPendingLatency"`
+	// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+	MinIdleInstances *int `pulumi:"minIdleInstances"`
+	// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MinPendingLatency *string `pulumi:"minPendingLatency"`
+	// Scheduler settings for standard environment.  Structure is documented below.
+	StandardSchedulerSettings *StandardAppVersionAutomaticScalingStandardSchedulerSettings `pulumi:"standardSchedulerSettings"`
+}
+
+// StandardAppVersionAutomaticScalingInput is an input type that accepts StandardAppVersionAutomaticScalingArgs and StandardAppVersionAutomaticScalingOutput values.
+// You can construct a concrete instance of `StandardAppVersionAutomaticScalingInput` via:
+//
+// 		 StandardAppVersionAutomaticScalingArgs{...}
+//
+type StandardAppVersionAutomaticScalingInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionAutomaticScalingOutput() StandardAppVersionAutomaticScalingOutput
+	ToStandardAppVersionAutomaticScalingOutputWithContext(context.Context) StandardAppVersionAutomaticScalingOutput
+}
+
+type StandardAppVersionAutomaticScalingArgs struct {
+	// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+	// Defaults to a runtime-specific value.
+	MaxConcurrentRequests pulumi.IntPtrInput `pulumi:"maxConcurrentRequests"`
+	// Maximum number of idle instances that should be maintained for this version.
+	MaxIdleInstances pulumi.IntPtrInput `pulumi:"maxIdleInstances"`
+	// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MaxPendingLatency pulumi.StringPtrInput `pulumi:"maxPendingLatency"`
+	// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+	MinIdleInstances pulumi.IntPtrInput `pulumi:"minIdleInstances"`
+	// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MinPendingLatency pulumi.StringPtrInput `pulumi:"minPendingLatency"`
+	// Scheduler settings for standard environment.  Structure is documented below.
+	StandardSchedulerSettings StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrInput `pulumi:"standardSchedulerSettings"`
+}
+
+func (StandardAppVersionAutomaticScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionAutomaticScaling)(nil)).Elem()
+}
+
+func (i StandardAppVersionAutomaticScalingArgs) ToStandardAppVersionAutomaticScalingOutput() StandardAppVersionAutomaticScalingOutput {
+	return i.ToStandardAppVersionAutomaticScalingOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionAutomaticScalingArgs) ToStandardAppVersionAutomaticScalingOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionAutomaticScalingOutput)
+}
+
+func (i StandardAppVersionAutomaticScalingArgs) ToStandardAppVersionAutomaticScalingPtrOutput() StandardAppVersionAutomaticScalingPtrOutput {
+	return i.ToStandardAppVersionAutomaticScalingPtrOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionAutomaticScalingArgs) ToStandardAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionAutomaticScalingOutput).ToStandardAppVersionAutomaticScalingPtrOutputWithContext(ctx)
+}
+
+// StandardAppVersionAutomaticScalingPtrInput is an input type that accepts StandardAppVersionAutomaticScalingArgs, StandardAppVersionAutomaticScalingPtr and StandardAppVersionAutomaticScalingPtrOutput values.
+// You can construct a concrete instance of `StandardAppVersionAutomaticScalingPtrInput` via:
+//
+// 		 StandardAppVersionAutomaticScalingArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type StandardAppVersionAutomaticScalingPtrInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionAutomaticScalingPtrOutput() StandardAppVersionAutomaticScalingPtrOutput
+	ToStandardAppVersionAutomaticScalingPtrOutputWithContext(context.Context) StandardAppVersionAutomaticScalingPtrOutput
+}
+
+type standardAppVersionAutomaticScalingPtrType StandardAppVersionAutomaticScalingArgs
+
+func StandardAppVersionAutomaticScalingPtr(v *StandardAppVersionAutomaticScalingArgs) StandardAppVersionAutomaticScalingPtrInput {
+	return (*standardAppVersionAutomaticScalingPtrType)(v)
+}
+
+func (*standardAppVersionAutomaticScalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionAutomaticScaling)(nil)).Elem()
+}
+
+func (i *standardAppVersionAutomaticScalingPtrType) ToStandardAppVersionAutomaticScalingPtrOutput() StandardAppVersionAutomaticScalingPtrOutput {
+	return i.ToStandardAppVersionAutomaticScalingPtrOutputWithContext(context.Background())
+}
+
+func (i *standardAppVersionAutomaticScalingPtrType) ToStandardAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionAutomaticScalingPtrOutput)
+}
+
+type StandardAppVersionAutomaticScalingOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionAutomaticScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionAutomaticScaling)(nil)).Elem()
+}
+
+func (o StandardAppVersionAutomaticScalingOutput) ToStandardAppVersionAutomaticScalingOutput() StandardAppVersionAutomaticScalingOutput {
+	return o
+}
+
+func (o StandardAppVersionAutomaticScalingOutput) ToStandardAppVersionAutomaticScalingOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingOutput {
+	return o
+}
+
+func (o StandardAppVersionAutomaticScalingOutput) ToStandardAppVersionAutomaticScalingPtrOutput() StandardAppVersionAutomaticScalingPtrOutput {
+	return o.ToStandardAppVersionAutomaticScalingPtrOutputWithContext(context.Background())
+}
+
+func (o StandardAppVersionAutomaticScalingOutput) ToStandardAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScaling) *StandardAppVersionAutomaticScaling {
+		return &v
+	}).(StandardAppVersionAutomaticScalingPtrOutput)
+}
+
+// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+// Defaults to a runtime-specific value.
+func (o StandardAppVersionAutomaticScalingOutput) MaxConcurrentRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScaling) *int { return v.MaxConcurrentRequests }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of idle instances that should be maintained for this version.
+func (o StandardAppVersionAutomaticScalingOutput) MaxIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScaling) *int { return v.MaxIdleInstances }).(pulumi.IntPtrOutput)
+}
+
+// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o StandardAppVersionAutomaticScalingOutput) MaxPendingLatency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScaling) *string { return v.MaxPendingLatency }).(pulumi.StringPtrOutput)
+}
+
+// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+func (o StandardAppVersionAutomaticScalingOutput) MinIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScaling) *int { return v.MinIdleInstances }).(pulumi.IntPtrOutput)
+}
+
+// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o StandardAppVersionAutomaticScalingOutput) MinPendingLatency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScaling) *string { return v.MinPendingLatency }).(pulumi.StringPtrOutput)
+}
+
+// Scheduler settings for standard environment.  Structure is documented below.
+func (o StandardAppVersionAutomaticScalingOutput) StandardSchedulerSettings() StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScaling) *StandardAppVersionAutomaticScalingStandardSchedulerSettings {
+		return v.StandardSchedulerSettings
+	}).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput)
+}
+
+type StandardAppVersionAutomaticScalingPtrOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionAutomaticScalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionAutomaticScaling)(nil)).Elem()
+}
+
+func (o StandardAppVersionAutomaticScalingPtrOutput) ToStandardAppVersionAutomaticScalingPtrOutput() StandardAppVersionAutomaticScalingPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionAutomaticScalingPtrOutput) ToStandardAppVersionAutomaticScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionAutomaticScalingPtrOutput) Elem() StandardAppVersionAutomaticScalingOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScaling) StandardAppVersionAutomaticScaling { return *v }).(StandardAppVersionAutomaticScalingOutput)
+}
+
+// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
+// Defaults to a runtime-specific value.
+func (o StandardAppVersionAutomaticScalingPtrOutput) MaxConcurrentRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentRequests
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of idle instances that should be maintained for this version.
+func (o StandardAppVersionAutomaticScalingPtrOutput) MaxIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIdleInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o StandardAppVersionAutomaticScalingPtrOutput) MaxPendingLatency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScaling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPendingLatency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+func (o StandardAppVersionAutomaticScalingPtrOutput) MinIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinIdleInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o StandardAppVersionAutomaticScalingPtrOutput) MinPendingLatency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScaling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinPendingLatency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheduler settings for standard environment.  Structure is documented below.
+func (o StandardAppVersionAutomaticScalingPtrOutput) StandardSchedulerSettings() StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScaling) *StandardAppVersionAutomaticScalingStandardSchedulerSettings {
+		if v == nil {
+			return nil
+		}
+		return v.StandardSchedulerSettings
+	}).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput)
+}
+
+type StandardAppVersionAutomaticScalingStandardSchedulerSettings struct {
+	// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+	MaxInstances *int `pulumi:"maxInstances"`
+	// Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
+	MinInstances *int `pulumi:"minInstances"`
+	// Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+	TargetCpuUtilization *float64 `pulumi:"targetCpuUtilization"`
+	// Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+	TargetThroughputUtilization *float64 `pulumi:"targetThroughputUtilization"`
+}
+
+// StandardAppVersionAutomaticScalingStandardSchedulerSettingsInput is an input type that accepts StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs and StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput values.
+// You can construct a concrete instance of `StandardAppVersionAutomaticScalingStandardSchedulerSettingsInput` via:
+//
+// 		 StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs{...}
+//
+type StandardAppVersionAutomaticScalingStandardSchedulerSettingsInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput() StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput
+	ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsOutputWithContext(context.Context) StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput
+}
+
+type StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs struct {
+	// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+	MaxInstances pulumi.IntPtrInput `pulumi:"maxInstances"`
+	// Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
+	MinInstances pulumi.IntPtrInput `pulumi:"minInstances"`
+	// Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+	TargetCpuUtilization pulumi.Float64PtrInput `pulumi:"targetCpuUtilization"`
+	// Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+	TargetThroughputUtilization pulumi.Float64PtrInput `pulumi:"targetThroughputUtilization"`
+}
+
+func (StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionAutomaticScalingStandardSchedulerSettings)(nil)).Elem()
+}
+
+func (i StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput() StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput {
+	return i.ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput)
+}
+
+func (i StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput() StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
+	return i.ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput).ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(ctx)
+}
+
+// StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrInput is an input type that accepts StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs, StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtr and StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput values.
+// You can construct a concrete instance of `StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrInput` via:
+//
+// 		 StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput() StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput
+	ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(context.Context) StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput
+}
+
+type standardAppVersionAutomaticScalingStandardSchedulerSettingsPtrType StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs
+
+func StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtr(v *StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs) StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrInput {
+	return (*standardAppVersionAutomaticScalingStandardSchedulerSettingsPtrType)(v)
+}
+
+func (*standardAppVersionAutomaticScalingStandardSchedulerSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionAutomaticScalingStandardSchedulerSettings)(nil)).Elem()
+}
+
+func (i *standardAppVersionAutomaticScalingStandardSchedulerSettingsPtrType) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput() StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
+	return i.ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *standardAppVersionAutomaticScalingStandardSchedulerSettingsPtrType) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput)
+}
+
+type StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionAutomaticScalingStandardSchedulerSettings)(nil)).Elem()
+}
+
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput() StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput {
+	return o
+}
+
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput {
+	return o
+}
+
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput() StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
+	return o.ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScalingStandardSchedulerSettings) *StandardAppVersionAutomaticScalingStandardSchedulerSettings {
+		return &v
+	}).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput)
+}
+
+// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScalingStandardSchedulerSettings) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScalingStandardSchedulerSettings) *int { return v.MinInstances }).(pulumi.IntPtrOutput)
+}
+
+// Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) TargetCpuUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScalingStandardSchedulerSettings) *float64 {
+		return v.TargetCpuUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) TargetThroughputUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StandardAppVersionAutomaticScalingStandardSchedulerSettings) *float64 {
+		return v.TargetThroughputUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
+type StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionAutomaticScalingStandardSchedulerSettings)(nil)).Elem()
+}
+
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput() StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) ToStandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutputWithContext(ctx context.Context) StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) Elem() StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScalingStandardSchedulerSettings) StandardAppVersionAutomaticScalingStandardSchedulerSettings {
+		return *v
+	}).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput)
+}
+
+// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScalingStandardSchedulerSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScalingStandardSchedulerSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) TargetCpuUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScalingStandardSchedulerSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TargetCpuUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
+func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) TargetThroughputUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionAutomaticScalingStandardSchedulerSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TargetThroughputUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
+type StandardAppVersionBasicScaling struct {
+	// Duration of time after the last request that an instance must wait before the instance is shut down.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+	IdleTimeout *string `pulumi:"idleTimeout"`
+	// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+	MaxInstances int `pulumi:"maxInstances"`
+}
+
+// StandardAppVersionBasicScalingInput is an input type that accepts StandardAppVersionBasicScalingArgs and StandardAppVersionBasicScalingOutput values.
+// You can construct a concrete instance of `StandardAppVersionBasicScalingInput` via:
+//
+// 		 StandardAppVersionBasicScalingArgs{...}
+//
+type StandardAppVersionBasicScalingInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionBasicScalingOutput() StandardAppVersionBasicScalingOutput
+	ToStandardAppVersionBasicScalingOutputWithContext(context.Context) StandardAppVersionBasicScalingOutput
+}
+
+type StandardAppVersionBasicScalingArgs struct {
+	// Duration of time after the last request that an instance must wait before the instance is shut down.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
+	// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+	MaxInstances pulumi.IntInput `pulumi:"maxInstances"`
+}
+
+func (StandardAppVersionBasicScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionBasicScaling)(nil)).Elem()
+}
+
+func (i StandardAppVersionBasicScalingArgs) ToStandardAppVersionBasicScalingOutput() StandardAppVersionBasicScalingOutput {
+	return i.ToStandardAppVersionBasicScalingOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionBasicScalingArgs) ToStandardAppVersionBasicScalingOutputWithContext(ctx context.Context) StandardAppVersionBasicScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionBasicScalingOutput)
+}
+
+func (i StandardAppVersionBasicScalingArgs) ToStandardAppVersionBasicScalingPtrOutput() StandardAppVersionBasicScalingPtrOutput {
+	return i.ToStandardAppVersionBasicScalingPtrOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionBasicScalingArgs) ToStandardAppVersionBasicScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionBasicScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionBasicScalingOutput).ToStandardAppVersionBasicScalingPtrOutputWithContext(ctx)
+}
+
+// StandardAppVersionBasicScalingPtrInput is an input type that accepts StandardAppVersionBasicScalingArgs, StandardAppVersionBasicScalingPtr and StandardAppVersionBasicScalingPtrOutput values.
+// You can construct a concrete instance of `StandardAppVersionBasicScalingPtrInput` via:
+//
+// 		 StandardAppVersionBasicScalingArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type StandardAppVersionBasicScalingPtrInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionBasicScalingPtrOutput() StandardAppVersionBasicScalingPtrOutput
+	ToStandardAppVersionBasicScalingPtrOutputWithContext(context.Context) StandardAppVersionBasicScalingPtrOutput
+}
+
+type standardAppVersionBasicScalingPtrType StandardAppVersionBasicScalingArgs
+
+func StandardAppVersionBasicScalingPtr(v *StandardAppVersionBasicScalingArgs) StandardAppVersionBasicScalingPtrInput {
+	return (*standardAppVersionBasicScalingPtrType)(v)
+}
+
+func (*standardAppVersionBasicScalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionBasicScaling)(nil)).Elem()
+}
+
+func (i *standardAppVersionBasicScalingPtrType) ToStandardAppVersionBasicScalingPtrOutput() StandardAppVersionBasicScalingPtrOutput {
+	return i.ToStandardAppVersionBasicScalingPtrOutputWithContext(context.Background())
+}
+
+func (i *standardAppVersionBasicScalingPtrType) ToStandardAppVersionBasicScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionBasicScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionBasicScalingPtrOutput)
+}
+
+type StandardAppVersionBasicScalingOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionBasicScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionBasicScaling)(nil)).Elem()
+}
+
+func (o StandardAppVersionBasicScalingOutput) ToStandardAppVersionBasicScalingOutput() StandardAppVersionBasicScalingOutput {
+	return o
+}
+
+func (o StandardAppVersionBasicScalingOutput) ToStandardAppVersionBasicScalingOutputWithContext(ctx context.Context) StandardAppVersionBasicScalingOutput {
+	return o
+}
+
+func (o StandardAppVersionBasicScalingOutput) ToStandardAppVersionBasicScalingPtrOutput() StandardAppVersionBasicScalingPtrOutput {
+	return o.ToStandardAppVersionBasicScalingPtrOutputWithContext(context.Background())
+}
+
+func (o StandardAppVersionBasicScalingOutput) ToStandardAppVersionBasicScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionBasicScalingPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionBasicScaling) *StandardAppVersionBasicScaling {
+		return &v
+	}).(StandardAppVersionBasicScalingPtrOutput)
+}
+
+// Duration of time after the last request that an instance must wait before the instance is shut down.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+func (o StandardAppVersionBasicScalingOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionBasicScaling) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+func (o StandardAppVersionBasicScalingOutput) MaxInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v StandardAppVersionBasicScaling) int { return v.MaxInstances }).(pulumi.IntOutput)
+}
+
+type StandardAppVersionBasicScalingPtrOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionBasicScalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionBasicScaling)(nil)).Elem()
+}
+
+func (o StandardAppVersionBasicScalingPtrOutput) ToStandardAppVersionBasicScalingPtrOutput() StandardAppVersionBasicScalingPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionBasicScalingPtrOutput) ToStandardAppVersionBasicScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionBasicScalingPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionBasicScalingPtrOutput) Elem() StandardAppVersionBasicScalingOutput {
+	return o.ApplyT(func(v *StandardAppVersionBasicScaling) StandardAppVersionBasicScaling { return *v }).(StandardAppVersionBasicScalingOutput)
+}
+
+// Duration of time after the last request that an instance must wait before the instance is shut down.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
+func (o StandardAppVersionBasicScalingPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionBasicScaling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+func (o StandardAppVersionBasicScalingPtrOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionBasicScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxInstances
+	}).(pulumi.IntPtrOutput)
+}
+
 type StandardAppVersionDeployment struct {
 	// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
 	// All files must be readable using the credentials supplied with this call.  Structure is documented below.
@@ -4858,7 +5460,7 @@ func (o StandardAppVersionDeploymentPtrOutput) Zip() StandardAppVersionDeploymen
 }
 
 type StandardAppVersionDeploymentFile struct {
-	// The identifier for this object. Format specified above.
+	// Name of the library. Example "django".
 	Name string `pulumi:"name"`
 	// SHA1 checksum of the file
 	Sha1Sum *string `pulumi:"sha1Sum"`
@@ -4879,7 +5481,7 @@ type StandardAppVersionDeploymentFileInput interface {
 }
 
 type StandardAppVersionDeploymentFileArgs struct {
-	// The identifier for this object. Format specified above.
+	// Name of the library. Example "django".
 	Name pulumi.StringInput `pulumi:"name"`
 	// SHA1 checksum of the file
 	Sha1Sum pulumi.StringPtrInput `pulumi:"sha1Sum"`
@@ -4939,7 +5541,7 @@ func (o StandardAppVersionDeploymentFileOutput) ToStandardAppVersionDeploymentFi
 	return o
 }
 
-// The identifier for this object. Format specified above.
+// Name of the library. Example "django".
 func (o StandardAppVersionDeploymentFileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionDeploymentFile) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5811,7 +6413,7 @@ func (o StandardAppVersionHandlerStaticFilesPtrOutput) UploadPathRegex() pulumi.
 }
 
 type StandardAppVersionLibrary struct {
-	// The identifier for this object. Format specified above.
+	// Name of the library. Example "django".
 	Name *string `pulumi:"name"`
 	// Version of the library to select, or "latest".
 	Version *string `pulumi:"version"`
@@ -5830,7 +6432,7 @@ type StandardAppVersionLibraryInput interface {
 }
 
 type StandardAppVersionLibraryArgs struct {
-	// The identifier for this object. Format specified above.
+	// Name of the library. Example "django".
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Version of the library to select, or "latest".
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -5888,7 +6490,7 @@ func (o StandardAppVersionLibraryOutput) ToStandardAppVersionLibraryOutputWithCo
 	return o
 }
 
-// The identifier for this object. Format specified above.
+// Name of the library. Example "django".
 func (o StandardAppVersionLibraryOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionLibrary) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -5916,6 +6518,147 @@ func (o StandardAppVersionLibraryArrayOutput) Index(i pulumi.IntInput) StandardA
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StandardAppVersionLibrary {
 		return vs[0].([]StandardAppVersionLibrary)[vs[1].(int)]
 	}).(StandardAppVersionLibraryOutput)
+}
+
+type StandardAppVersionManualScaling struct {
+	// Number of instances to assign to the service at the start.
+	// **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+	// Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
+	Instances int `pulumi:"instances"`
+}
+
+// StandardAppVersionManualScalingInput is an input type that accepts StandardAppVersionManualScalingArgs and StandardAppVersionManualScalingOutput values.
+// You can construct a concrete instance of `StandardAppVersionManualScalingInput` via:
+//
+// 		 StandardAppVersionManualScalingArgs{...}
+//
+type StandardAppVersionManualScalingInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionManualScalingOutput() StandardAppVersionManualScalingOutput
+	ToStandardAppVersionManualScalingOutputWithContext(context.Context) StandardAppVersionManualScalingOutput
+}
+
+type StandardAppVersionManualScalingArgs struct {
+	// Number of instances to assign to the service at the start.
+	// **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+	// Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
+	Instances pulumi.IntInput `pulumi:"instances"`
+}
+
+func (StandardAppVersionManualScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionManualScaling)(nil)).Elem()
+}
+
+func (i StandardAppVersionManualScalingArgs) ToStandardAppVersionManualScalingOutput() StandardAppVersionManualScalingOutput {
+	return i.ToStandardAppVersionManualScalingOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionManualScalingArgs) ToStandardAppVersionManualScalingOutputWithContext(ctx context.Context) StandardAppVersionManualScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionManualScalingOutput)
+}
+
+func (i StandardAppVersionManualScalingArgs) ToStandardAppVersionManualScalingPtrOutput() StandardAppVersionManualScalingPtrOutput {
+	return i.ToStandardAppVersionManualScalingPtrOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersionManualScalingArgs) ToStandardAppVersionManualScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionManualScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionManualScalingOutput).ToStandardAppVersionManualScalingPtrOutputWithContext(ctx)
+}
+
+// StandardAppVersionManualScalingPtrInput is an input type that accepts StandardAppVersionManualScalingArgs, StandardAppVersionManualScalingPtr and StandardAppVersionManualScalingPtrOutput values.
+// You can construct a concrete instance of `StandardAppVersionManualScalingPtrInput` via:
+//
+// 		 StandardAppVersionManualScalingArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type StandardAppVersionManualScalingPtrInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionManualScalingPtrOutput() StandardAppVersionManualScalingPtrOutput
+	ToStandardAppVersionManualScalingPtrOutputWithContext(context.Context) StandardAppVersionManualScalingPtrOutput
+}
+
+type standardAppVersionManualScalingPtrType StandardAppVersionManualScalingArgs
+
+func StandardAppVersionManualScalingPtr(v *StandardAppVersionManualScalingArgs) StandardAppVersionManualScalingPtrInput {
+	return (*standardAppVersionManualScalingPtrType)(v)
+}
+
+func (*standardAppVersionManualScalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionManualScaling)(nil)).Elem()
+}
+
+func (i *standardAppVersionManualScalingPtrType) ToStandardAppVersionManualScalingPtrOutput() StandardAppVersionManualScalingPtrOutput {
+	return i.ToStandardAppVersionManualScalingPtrOutputWithContext(context.Background())
+}
+
+func (i *standardAppVersionManualScalingPtrType) ToStandardAppVersionManualScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionManualScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionManualScalingPtrOutput)
+}
+
+type StandardAppVersionManualScalingOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionManualScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionManualScaling)(nil)).Elem()
+}
+
+func (o StandardAppVersionManualScalingOutput) ToStandardAppVersionManualScalingOutput() StandardAppVersionManualScalingOutput {
+	return o
+}
+
+func (o StandardAppVersionManualScalingOutput) ToStandardAppVersionManualScalingOutputWithContext(ctx context.Context) StandardAppVersionManualScalingOutput {
+	return o
+}
+
+func (o StandardAppVersionManualScalingOutput) ToStandardAppVersionManualScalingPtrOutput() StandardAppVersionManualScalingPtrOutput {
+	return o.ToStandardAppVersionManualScalingPtrOutputWithContext(context.Background())
+}
+
+func (o StandardAppVersionManualScalingOutput) ToStandardAppVersionManualScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionManualScalingPtrOutput {
+	return o.ApplyT(func(v StandardAppVersionManualScaling) *StandardAppVersionManualScaling {
+		return &v
+	}).(StandardAppVersionManualScalingPtrOutput)
+}
+
+// Number of instances to assign to the service at the start.
+// **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+// Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
+func (o StandardAppVersionManualScalingOutput) Instances() pulumi.IntOutput {
+	return o.ApplyT(func(v StandardAppVersionManualScaling) int { return v.Instances }).(pulumi.IntOutput)
+}
+
+type StandardAppVersionManualScalingPtrOutput struct{ *pulumi.OutputState }
+
+func (StandardAppVersionManualScalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardAppVersionManualScaling)(nil)).Elem()
+}
+
+func (o StandardAppVersionManualScalingPtrOutput) ToStandardAppVersionManualScalingPtrOutput() StandardAppVersionManualScalingPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionManualScalingPtrOutput) ToStandardAppVersionManualScalingPtrOutputWithContext(ctx context.Context) StandardAppVersionManualScalingPtrOutput {
+	return o
+}
+
+func (o StandardAppVersionManualScalingPtrOutput) Elem() StandardAppVersionManualScalingOutput {
+	return o.ApplyT(func(v *StandardAppVersionManualScaling) StandardAppVersionManualScaling { return *v }).(StandardAppVersionManualScalingOutput)
+}
+
+// Number of instances to assign to the service at the start.
+// **Note:** When managing the number of instances at runtime through the App Engine Admin API or the (now deprecated) Python 2
+// Modules API set_num_instances() you must use `lifecycle.ignore_changes = ["manualScaling"[0].instances]` to prevent drift detection.
+func (o StandardAppVersionManualScalingPtrOutput) Instances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StandardAppVersionManualScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Instances
+	}).(pulumi.IntPtrOutput)
 }
 
 func init() {
@@ -5973,6 +6716,12 @@ func init() {
 	pulumi.RegisterOutputType(FlexibleAppVersionResourcesVolumeArrayOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionVpcAccessConnectorOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionVpcAccessConnectorPtrOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionAutomaticScalingOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionAutomaticScalingPtrOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionBasicScalingOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionBasicScalingPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionDeploymentFileOutput{})
@@ -5989,4 +6738,6 @@ func init() {
 	pulumi.RegisterOutputType(StandardAppVersionHandlerStaticFilesPtrOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionLibraryOutput{})
 	pulumi.RegisterOutputType(StandardAppVersionLibraryArrayOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionManualScalingOutput{})
+	pulumi.RegisterOutputType(StandardAppVersionManualScalingPtrOutput{})
 }

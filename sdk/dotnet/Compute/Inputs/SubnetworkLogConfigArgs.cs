@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Can only be specified if VPC flow logging for this subnetwork is enabled.
         /// Configures whether metadata fields should be added to the reported VPC
-        /// flow logs. Default is `INCLUDE_ALL_METADATA`.
+        /// flow logs.
         /// </summary>
         [Input("metadata")]
         public Input<string>? Metadata { get; set; }

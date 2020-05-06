@@ -43,8 +43,7 @@ type TargetHttpsProxy struct {
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
 	// specified, uses the QUIC policy with no user overrides, which is
-	// equivalent to DISABLE. Not specifying this field is equivalent to
-	// specifying NONE.
+	// equivalent to DISABLE.
 	QuicOverride pulumi.StringPtrOutput `pulumi:"quicOverride"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -116,8 +115,7 @@ type targetHttpsProxyState struct {
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
 	// specified, uses the QUIC policy with no user overrides, which is
-	// equivalent to DISABLE. Not specifying this field is equivalent to
-	// specifying NONE.
+	// equivalent to DISABLE.
 	QuicOverride *string `pulumi:"quicOverride"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -156,8 +154,7 @@ type TargetHttpsProxyState struct {
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
 	// specified, uses the QUIC policy with no user overrides, which is
-	// equivalent to DISABLE. Not specifying this field is equivalent to
-	// specifying NONE.
+	// equivalent to DISABLE.
 	QuicOverride pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -196,8 +193,7 @@ type targetHttpsProxyArgs struct {
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
 	// specified, uses the QUIC policy with no user overrides, which is
-	// equivalent to DISABLE. Not specifying this field is equivalent to
-	// specifying NONE.
+	// equivalent to DISABLE.
 	QuicOverride *string `pulumi:"quicOverride"`
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one SSL
@@ -231,8 +227,7 @@ type TargetHttpsProxyArgs struct {
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
 	// specified, uses the QUIC policy with no user overrides, which is
-	// equivalent to DISABLE. Not specifying this field is equivalent to
-	// specifying NONE.
+	// equivalent to DISABLE.
 	QuicOverride pulumi.StringPtrInput
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one SSL

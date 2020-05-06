@@ -53,8 +53,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The IP protocol to which this rule applies. Valid options are TCP,
-        /// UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+        /// The IP protocol to which this rule applies. When the load balancing scheme is
         /// INTERNAL_SELF_MANAGED, only TCP is valid.
         /// </summary>
         [Output("ipProtocol")]
@@ -62,7 +61,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP Version that will be used by this global forwarding rule.
-        /// Valid options are IPV4 or IPV6.
         /// </summary>
         [Output("ipVersion")]
         public Output<string?> IpVersion { get; private set; } = null!;
@@ -249,8 +247,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The IP protocol to which this rule applies. Valid options are TCP,
-        /// UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+        /// The IP protocol to which this rule applies. When the load balancing scheme is
         /// INTERNAL_SELF_MANAGED, only TCP is valid.
         /// </summary>
         [Input("ipProtocol")]
@@ -258,7 +255,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP Version that will be used by this global forwarding rule.
-        /// Valid options are IPV4 or IPV6.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -406,8 +402,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The IP protocol to which this rule applies. Valid options are TCP,
-        /// UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+        /// The IP protocol to which this rule applies. When the load balancing scheme is
         /// INTERNAL_SELF_MANAGED, only TCP is valid.
         /// </summary>
         [Input("ipProtocol")]
@@ -415,7 +410,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP Version that will be used by this global forwarding rule.
-        /// Valid options are IPV4 or IPV6.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }

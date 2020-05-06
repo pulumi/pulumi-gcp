@@ -35,7 +35,8 @@ type MangedSslCertificate struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames pulumi.StringArrayOutput `pulumi:"subjectAlternativeNames"`
-	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+	// Possible values: ["MANAGED"]
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -88,7 +89,8 @@ type mangedSslCertificateState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
-	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+	// Possible values: ["MANAGED"]
 	Type *string `pulumi:"type"`
 }
 
@@ -114,7 +116,8 @@ type MangedSslCertificateState struct {
 	SelfLink pulumi.StringPtrInput
 	// Domains associated with the certificate via Subject Alternative Name.
 	SubjectAlternativeNames pulumi.StringArrayInput
-	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+	// Possible values: ["MANAGED"]
 	Type pulumi.StringPtrInput
 }
 
@@ -137,7 +140,8 @@ type mangedSslCertificateArgs struct {
 	// namespace as the managed SSL certificates.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+	// Possible values: ["MANAGED"]
 	Type *string `pulumi:"type"`
 }
 
@@ -157,7 +161,8 @@ type MangedSslCertificateArgs struct {
 	// namespace as the managed SSL certificates.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is.
+	// Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
+	// Possible values: ["MANAGED"]
 	Type pulumi.StringPtrInput
 }
 

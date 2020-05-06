@@ -18,7 +18,7 @@ class AccessLevel(pulumi.CustomResource):
         is granted this AccessLevel. If AND is used, each Condition in
         conditions must be satisfied for the AccessLevel to be applied. If
         OR is used, at least one Condition in conditions must be satisfied
-        for the AccessLevel to be applied. Defaults to AND if unspecified.
+        for the AccessLevel to be applied.
       * `conditions` (`list`) - A set of requirements for the AccessLevel to be granted.  Structure is documented below.
         * `devicePolicy` (`dict`) - Device specific restrictions, all restrictions must hold for
           the Condition to be true. If not specified, all devices are
@@ -116,7 +116,7 @@ class AccessLevel(pulumi.CustomResource):
             is granted this AccessLevel. If AND is used, each Condition in
             conditions must be satisfied for the AccessLevel to be applied. If
             OR is used, at least one Condition in conditions must be satisfied
-            for the AccessLevel to be applied. Defaults to AND if unspecified.
+            for the AccessLevel to be applied.
           * `conditions` (`pulumi.Input[list]`) - A set of requirements for the AccessLevel to be granted.  Structure is documented below.
             * `devicePolicy` (`pulumi.Input[dict]`) - Device specific restrictions, all restrictions must hold for
               the Condition to be true. If not specified, all devices are
@@ -222,7 +222,7 @@ class AccessLevel(pulumi.CustomResource):
             is granted this AccessLevel. If AND is used, each Condition in
             conditions must be satisfied for the AccessLevel to be applied. If
             OR is used, at least one Condition in conditions must be satisfied
-            for the AccessLevel to be applied. Defaults to AND if unspecified.
+            for the AccessLevel to be applied.
           * `conditions` (`pulumi.Input[list]`) - A set of requirements for the AccessLevel to be granted.  Structure is documented below.
             * `devicePolicy` (`pulumi.Input[dict]`) - Device specific restrictions, all restrictions must hold for
               the Condition to be true. If not specified, all devices are

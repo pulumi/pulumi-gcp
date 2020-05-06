@@ -60,8 +60,7 @@ type RegionBackendService struct {
 	HealthChecks pulumi.StringOutput `pulumi:"healthChecks"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
-	// balancing cannot be used with the other(s). Must be `INTERNAL` or
-	// `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+	// balancing cannot be used with the other(s).
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -102,8 +101,7 @@ type RegionBackendService struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The protocol this RegionBackendService uses to communicate with backends.
-	// Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
@@ -188,8 +186,7 @@ type regionBackendServiceState struct {
 	HealthChecks *string `pulumi:"healthChecks"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
-	// balancing cannot be used with the other(s). Must be `INTERNAL` or
-	// `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+	// balancing cannot be used with the other(s).
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -230,8 +227,7 @@ type regionBackendServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The protocol this RegionBackendService uses to communicate with backends.
-	// Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
 	Protocol *string `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
@@ -286,8 +282,7 @@ type RegionBackendServiceState struct {
 	HealthChecks pulumi.StringPtrInput
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
-	// balancing cannot be used with the other(s). Must be `INTERNAL` or
-	// `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+	// balancing cannot be used with the other(s).
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -328,8 +323,7 @@ type RegionBackendServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The protocol this RegionBackendService uses to communicate with backends.
-	// Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
 	Protocol pulumi.StringPtrInput
 	// The Region in which the created backend service should reside.
@@ -384,8 +378,7 @@ type regionBackendServiceArgs struct {
 	HealthChecks string `pulumi:"healthChecks"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
-	// balancing cannot be used with the other(s). Must be `INTERNAL` or
-	// `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+	// balancing cannot be used with the other(s).
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -426,8 +419,7 @@ type regionBackendServiceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The protocol this RegionBackendService uses to communicate with backends.
-	// Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
 	Protocol *string `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
@@ -477,8 +469,7 @@ type RegionBackendServiceArgs struct {
 	HealthChecks pulumi.StringInput
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
-	// balancing cannot be used with the other(s). Must be `INTERNAL` or
-	// `INTERNAL_MANAGED`. Defaults to `INTERNAL`.
+	// balancing cannot be used with the other(s).
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -519,8 +510,7 @@ type RegionBackendServiceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The protocol this RegionBackendService uses to communicate with backends.
-	// Possible values are HTTP, HTTPS, HTTP2, SSL, TCP, and UDP. The default is
-	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
 	Protocol pulumi.StringPtrInput
 	// The Region in which the created backend service should reside.

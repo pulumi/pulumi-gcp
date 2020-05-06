@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Endpoints
 {
     /// <summary>
-    /// Three different resources help you manage your IAM policy for Service Management Service. Each of these resources serves a different use case:
+    /// Three different resources help you manage your IAM policy for Cloud Endpoints Service. Each of these resources serves a different use case:
     /// 
     /// * `gcp.endpoints.ServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
     /// * `gcp.endpoints.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.

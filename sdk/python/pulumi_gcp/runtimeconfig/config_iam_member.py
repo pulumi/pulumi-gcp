@@ -33,7 +33,7 @@ class ConfigIamMember(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, condition=None, config=None, member=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Three different resources help you manage your IAM policy for Cloud Runtime Configuration Config. Each of these resources serves a different use case:
+        Three different resources help you manage your IAM policy for Runtime Configurator Config. Each of these resources serves a different use case:
 
         * `runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
         * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.

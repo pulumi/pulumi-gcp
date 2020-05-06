@@ -6,7 +6,6 @@ package compute
 import (
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -20,7 +19,11 @@ type RegionUrlMap struct {
 	// A reference to a RegionBackendService resource. This will be used if
 	// none of the pathRules defined by this PathMatcher is matched by
 	// the URL's path portion.
-	DefaultService pulumi.StringOutput `pulumi:"defaultService"`
+	DefaultService pulumi.StringPtrOutput `pulumi:"defaultService"`
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect RegionUrlMapDefaultUrlRedirectPtrOutput `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
@@ -51,9 +54,6 @@ type RegionUrlMap struct {
 // NewRegionUrlMap registers a new resource with the given unique name, arguments, and options.
 func NewRegionUrlMap(ctx *pulumi.Context,
 	name string, args *RegionUrlMapArgs, opts ...pulumi.ResourceOption) (*RegionUrlMap, error) {
-	if args == nil || args.DefaultService == nil {
-		return nil, errors.New("missing required argument 'DefaultService'")
-	}
 	if args == nil {
 		args = &RegionUrlMapArgs{}
 	}
@@ -85,6 +85,10 @@ type regionUrlMapState struct {
 	// none of the pathRules defined by this PathMatcher is matched by
 	// the URL's path portion.
 	DefaultService *string `pulumi:"defaultService"`
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect *RegionUrlMapDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description *string `pulumi:"description"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
@@ -119,6 +123,10 @@ type RegionUrlMapState struct {
 	// none of the pathRules defined by this PathMatcher is matched by
 	// the URL's path portion.
 	DefaultService pulumi.StringPtrInput
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect RegionUrlMapDefaultUrlRedirectPtrInput
 	// Description of this test case.
 	Description pulumi.StringPtrInput
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
@@ -154,7 +162,11 @@ type regionUrlMapArgs struct {
 	// A reference to a RegionBackendService resource. This will be used if
 	// none of the pathRules defined by this PathMatcher is matched by
 	// the URL's path portion.
-	DefaultService string `pulumi:"defaultService"`
+	DefaultService *string `pulumi:"defaultService"`
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect *RegionUrlMapDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description *string `pulumi:"description"`
 	// The list of HostRules to use against the URL.  Structure is documented below.
@@ -181,7 +193,11 @@ type RegionUrlMapArgs struct {
 	// A reference to a RegionBackendService resource. This will be used if
 	// none of the pathRules defined by this PathMatcher is matched by
 	// the URL's path portion.
-	DefaultService pulumi.StringInput
+	DefaultService pulumi.StringPtrInput
+	// When none of the specified hostRules match, the request is redirected to a URL specified
+	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+	// defaultRouteAction must not be set.  Structure is documented below.
+	DefaultUrlRedirect RegionUrlMapDefaultUrlRedirectPtrInput
 	// Description of this test case.
 	Description pulumi.StringPtrInput
 	// The list of HostRules to use against the URL.  Structure is documented below.

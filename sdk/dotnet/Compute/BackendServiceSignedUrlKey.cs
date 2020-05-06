@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
     /// * How-to Guides
     ///     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+    /// 
+    /// &gt; **Warning:** All arguments including `key_value` will be stored in the raw
+    /// state as plain-text.
     /// </summary>
     public partial class BackendServiceSignedUrlKey : Pulumi.CustomResource
     {
@@ -29,7 +32,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// 128-bit key value used for signing the URL. The key value must be a
-        /// valid RFC 4648 Section 5 base64url encoded string.
+        /// valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("keyValue")]
         public Output<string> KeyValue { get; private set; } = null!;
@@ -101,7 +104,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// 128-bit key value used for signing the URL. The key value must be a
-        /// valid RFC 4648 Section 5 base64url encoded string.
+        /// valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("keyValue", required: true)]
         public Input<string> KeyValue { get; set; } = null!;
@@ -134,7 +137,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// 128-bit key value used for signing the URL. The key value must be a
-        /// valid RFC 4648 Section 5 base64url encoded string.
+        /// valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("keyValue")]
         public Input<string>? KeyValue { get; set; }

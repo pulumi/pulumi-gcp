@@ -25,7 +25,7 @@ type GlobalAddress struct {
 	// resource. This can be supplied as an input to reserve a specific
 	// address or omitted to allow GCP to choose a valid one for you.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// The type of the address to reserve, default is EXTERNAL.
+	// The type of the address to reserve.
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
 	AddressType pulumi.StringPtrOutput `pulumi:"addressType"`
@@ -33,8 +33,7 @@ type GlobalAddress struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The IP Version that will be used by this address. Valid options are
-	// `IPV4` or `IPV6`. The default value is `IPV4`.
+	// The IP Version that will be used by this address. The default value is `IPV4`.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -100,7 +99,7 @@ type globalAddressState struct {
 	// resource. This can be supplied as an input to reserve a specific
 	// address or omitted to allow GCP to choose a valid one for you.
 	Address *string `pulumi:"address"`
-	// The type of the address to reserve, default is EXTERNAL.
+	// The type of the address to reserve.
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
 	AddressType *string `pulumi:"addressType"`
@@ -108,8 +107,7 @@ type globalAddressState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// The IP Version that will be used by this address. Valid options are
-	// `IPV4` or `IPV6`. The default value is `IPV4`.
+	// The IP Version that will be used by this address. The default value is `IPV4`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -148,7 +146,7 @@ type GlobalAddressState struct {
 	// resource. This can be supplied as an input to reserve a specific
 	// address or omitted to allow GCP to choose a valid one for you.
 	Address pulumi.StringPtrInput
-	// The type of the address to reserve, default is EXTERNAL.
+	// The type of the address to reserve.
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
 	AddressType pulumi.StringPtrInput
@@ -156,8 +154,7 @@ type GlobalAddressState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// The IP Version that will be used by this address. Valid options are
-	// `IPV4` or `IPV6`. The default value is `IPV4`.
+	// The IP Version that will be used by this address. The default value is `IPV4`.
 	IpVersion pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -200,14 +197,13 @@ type globalAddressArgs struct {
 	// resource. This can be supplied as an input to reserve a specific
 	// address or omitted to allow GCP to choose a valid one for you.
 	Address *string `pulumi:"address"`
-	// The type of the address to reserve, default is EXTERNAL.
+	// The type of the address to reserve.
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
 	AddressType *string `pulumi:"addressType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// The IP Version that will be used by this address. Valid options are
-	// `IPV4` or `IPV6`. The default value is `IPV4`.
+	// The IP Version that will be used by this address. The default value is `IPV4`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// Labels to apply to this address.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -243,14 +239,13 @@ type GlobalAddressArgs struct {
 	// resource. This can be supplied as an input to reserve a specific
 	// address or omitted to allow GCP to choose a valid one for you.
 	Address pulumi.StringPtrInput
-	// The type of the address to reserve, default is EXTERNAL.
+	// The type of the address to reserve.
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
 	AddressType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// The IP Version that will be used by this address. Valid options are
-	// `IPV4` or `IPV6`. The default value is `IPV4`.
+	// The IP Version that will be used by this address. The default value is `IPV4`.
 	IpVersion pulumi.StringPtrInput
 	// Labels to apply to this address.  A list of key->value pairs.
 	Labels pulumi.StringMapInput

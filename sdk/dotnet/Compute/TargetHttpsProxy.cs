@@ -64,8 +64,7 @@ namespace Pulumi.Gcp.Compute
         /// whether the load balancer will attempt to negotiate QUIC with clients
         /// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
         /// specified, uses the QUIC policy with no user overrides, which is
-        /// equivalent to DISABLE. Not specifying this field is equivalent to
-        /// specifying NONE.
+        /// equivalent to DISABLE.
         /// </summary>
         [Output("quicOverride")]
         public Output<string?> QuicOverride { get; private set; } = null!;
@@ -175,8 +174,7 @@ namespace Pulumi.Gcp.Compute
         /// whether the load balancer will attempt to negotiate QUIC with clients
         /// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
         /// specified, uses the QUIC policy with no user overrides, which is
-        /// equivalent to DISABLE. Not specifying this field is equivalent to
-        /// specifying NONE.
+        /// equivalent to DISABLE.
         /// </summary>
         [Input("quicOverride")]
         public Input<string>? QuicOverride { get; set; }
@@ -259,8 +257,7 @@ namespace Pulumi.Gcp.Compute
         /// whether the load balancer will attempt to negotiate QUIC with clients
         /// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
         /// specified, uses the QUIC policy with no user overrides, which is
-        /// equivalent to DISABLE. Not specifying this field is equivalent to
-        /// specifying NONE.
+        /// equivalent to DISABLE.
         /// </summary>
         [Input("quicOverride")]
         public Input<string>? QuicOverride { get; set; }

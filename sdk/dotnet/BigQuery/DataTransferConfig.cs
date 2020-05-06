@@ -97,6 +97,14 @@ namespace Pulumi.Gcp.BigQuery
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional service account name. If this field is set, transfer config will
+        /// be created with this service account credentials. It requires that
+        /// requesting user calling this API has permissions to act as this service account.
+        /// </summary>
+        [Output("serviceAccountName")]
+        public Output<string?> ServiceAccountName { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DataTransferConfig resource with the given unique name, arguments, and options.
@@ -216,6 +224,14 @@ namespace Pulumi.Gcp.BigQuery
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
+        /// <summary>
+        /// Optional service account name. If this field is set, transfer config will
+        /// be created with this service account credentials. It requires that
+        /// requesting user calling this API has permissions to act as this service account.
+        /// </summary>
+        [Input("serviceAccountName")]
+        public Input<string>? ServiceAccountName { get; set; }
+
         public DataTransferConfigArgs()
         {
         }
@@ -303,6 +319,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
+
+        /// <summary>
+        /// Optional service account name. If this field is set, transfer config will
+        /// be created with this service account credentials. It requires that
+        /// requesting user calling this API has permissions to act as this service account.
+        /// </summary>
+        [Input("serviceAccountName")]
+        public Input<string>? ServiceAccountName { get; set; }
 
         public DataTransferConfigState()
         {

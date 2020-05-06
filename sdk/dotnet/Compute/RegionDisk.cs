@@ -33,9 +33,8 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
     /// 
-    /// &gt; **Warning:** All arguments including the disk encryption key will be stored in the raw
-    /// state as plain-text.
-    /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// &gt; **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
+    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// </summary>
     public partial class RegionDisk : Pulumi.CustomResource
     {

@@ -20,18 +20,20 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? HostRedirect { get; set; }
 
         /// <summary>
-        /// If set to true, the URL scheme in the redirected request is set to https. If set
-        /// to false, the URL scheme of the redirected request will remain the same as that
-        /// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
-        /// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+        /// If set to true, the URL scheme in the redirected request is set to https. If set to
+        /// false, the URL scheme of the redirected request will remain the same as that of the
+        /// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+        /// true for TargetHttpsProxy is not permitted. The default is set to false.
         /// </summary>
         [Input("httpsRedirect")]
         public Input<bool>? HttpsRedirect { get; set; }
 
         /// <summary>
         /// The path that will be used in the redirect response instead of the one that was
-        /// supplied in the request. Only one of pathRedirect or prefixRedirect must be
-        /// specified. The value must be between 1 and 1024 characters.
+        /// supplied in the request. pathRedirect cannot be supplied together with
+        /// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+        /// original request will be used for the redirect. The value must be between 1 and 1024
+        /// characters.
         /// </summary>
         [Input("pathRedirect")]
         public Input<string>? PathRedirect { get; set; }
@@ -39,6 +41,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
         /// retaining the remaining portion of the URL before redirecting the request.
+        /// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+        /// neither. If neither is supplied, the path of the original request will be used for
+        /// the redirect. The value must be between 1 and 1024 characters.
         /// </summary>
         [Input("prefixRedirect")]
         public Input<string>? PrefixRedirect { get; set; }
@@ -57,9 +62,10 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? RedirectResponseCode { get; set; }
 
         /// <summary>
-        /// If set to true, any accompanying query portion of the original URL is removed
-        /// prior to redirecting the request. If set to false, the query portion of the
-        /// original URL is retained.
+        /// If set to true, any accompanying query portion of the original URL is removed prior
+        /// to redirecting the request. If set to false, the query portion of the original URL is
+        /// retained.
+        /// This field is required to ensure an empty block is not set. The normal default value is false.
         /// </summary>
         [Input("stripQuery", required: true)]
         public Input<bool> StripQuery { get; set; } = null!;

@@ -17,6 +17,9 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+ * 
+ * > **Warning:** All arguments including `certificate` and `privateKey` will be stored in the raw
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ssl_certificate.html.markdown.
  */
@@ -50,7 +53,7 @@ export class SSLCertificate extends pulumi.CustomResource {
     /**
      * The certificate in PEM format.
      * The certificate chain must be no greater than 5 certs long.
-     * The chain must include at least one intermediate cert.
+     * The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly certificate!: pulumi.Output<string>;
     /**
@@ -81,7 +84,7 @@ export class SSLCertificate extends pulumi.CustomResource {
      */
     public readonly namePrefix!: pulumi.Output<string>;
     /**
-     * The write-only private key in PEM format.
+     * The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly privateKey!: pulumi.Output<string>;
     /**
@@ -151,7 +154,7 @@ export interface SSLCertificateState {
     /**
      * The certificate in PEM format.
      * The certificate chain must be no greater than 5 certs long.
-     * The chain must include at least one intermediate cert.
+     * The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly certificate?: pulumi.Input<string>;
     /**
@@ -182,7 +185,7 @@ export interface SSLCertificateState {
      */
     readonly namePrefix?: pulumi.Input<string>;
     /**
-     * The write-only private key in PEM format.
+     * The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly privateKey?: pulumi.Input<string>;
     /**
@@ -203,7 +206,7 @@ export interface SSLCertificateArgs {
     /**
      * The certificate in PEM format.
      * The certificate chain must be no greater than 5 certs long.
-     * The chain must include at least one intermediate cert.
+     * The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly certificate: pulumi.Input<string>;
     /**
@@ -226,7 +229,7 @@ export interface SSLCertificateArgs {
      */
     readonly namePrefix?: pulumi.Input<string>;
     /**
-     * The write-only private key in PEM format.
+     * The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly privateKey: pulumi.Input<string>;
     /**

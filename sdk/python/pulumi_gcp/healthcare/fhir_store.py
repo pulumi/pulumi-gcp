@@ -84,7 +84,7 @@ class FhirStore(pulumi.CustomResource):
     """
     version: pulumi.Output[str]
     """
-    The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+    The FHIR specification version.
     """
     def __init__(__self__, resource_name, opts=None, dataset=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_import=None, enable_update_create=None, labels=None, name=None, notification_config=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -136,7 +136,7 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[dict] notification_config: A nested object resource  Structure is documented below.
-        :param pulumi.Input[str] version: The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+        :param pulumi.Input[str] version: The FHIR specification version.
 
         The **notification_config** object supports the following:
 
@@ -229,7 +229,7 @@ class FhirStore(pulumi.CustomResource):
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[dict] notification_config: A nested object resource  Structure is documented below.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
-        :param pulumi.Input[str] version: The FHIR specification version. Supported values include DSTU2, STU3 and R4. Defaults to STU3.
+        :param pulumi.Input[str] version: The FHIR specification version.
 
         The **notification_config** object supports the following:
 

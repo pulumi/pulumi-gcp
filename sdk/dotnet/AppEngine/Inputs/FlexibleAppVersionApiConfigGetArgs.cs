@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class FlexibleAppVersionApiConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to take when users access resources that require authentication. Defaults to "AUTH_FAIL_ACTION_REDIRECT".
+        /// Action to take when users access resources that require authentication.
         /// </summary>
         [Input("authFailAction")]
         public Input<string>? AuthFailAction { get; set; }
 
         /// <summary>
-        /// Level of login required to access this resource. Defaults to "LOGIN_OPTIONAL".
+        /// Level of login required to access this resource.
         /// </summary>
         [Input("login")]
         public Input<string>? Login { get; set; }

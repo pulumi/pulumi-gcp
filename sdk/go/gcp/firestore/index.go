@@ -40,8 +40,7 @@ type Index struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The scope at which a query is run. One of `"COLLECTION"` or
-	// `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+	// The scope at which a query is run.
 	QueryScope pulumi.StringPtrOutput `pulumi:"queryScope"`
 }
 
@@ -96,8 +95,7 @@ type indexState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The scope at which a query is run. One of `"COLLECTION"` or
-	// `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+	// The scope at which a query is run.
 	QueryScope *string `pulumi:"queryScope"`
 }
 
@@ -119,8 +117,7 @@ type IndexState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The scope at which a query is run. One of `"COLLECTION"` or
-	// `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+	// The scope at which a query is run.
 	QueryScope pulumi.StringPtrInput
 }
 
@@ -143,8 +140,7 @@ type indexArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The scope at which a query is run. One of `"COLLECTION"` or
-	// `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+	// The scope at which a query is run.
 	QueryScope *string `pulumi:"queryScope"`
 }
 
@@ -164,8 +160,7 @@ type IndexArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The scope at which a query is run. One of `"COLLECTION"` or
-	// `"COLLECTION_GROUP"`. Defaults to `"COLLECTION"`.
+	// The scope at which a query is run.
 	QueryScope pulumi.StringPtrInput
 }
 

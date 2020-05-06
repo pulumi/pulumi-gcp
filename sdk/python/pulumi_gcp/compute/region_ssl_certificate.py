@@ -14,7 +14,7 @@ class RegionSslCertificate(pulumi.CustomResource):
     """
     The certificate in PEM format.
     The certificate chain must be no greater than 5 certs long.
-    The chain must include at least one intermediate cert.
+    The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
     """
     certificate_id: pulumi.Output[float]
     """
@@ -45,7 +45,7 @@ class RegionSslCertificate(pulumi.CustomResource):
     """
     private_key: pulumi.Output[str]
     """
-    The write-only private key in PEM format.
+    The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
     """
     project: pulumi.Output[str]
     """
@@ -74,11 +74,14 @@ class RegionSslCertificate(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 
+        > **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: The certificate in PEM format.
                The certificate chain must be no greater than 5 certs long.
-               The chain must include at least one intermediate cert.
+               The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -89,7 +92,7 @@ class RegionSslCertificate(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
                specified prefix. Conflicts with `name`.
-        :param pulumi.Input[str] private_key: The write-only private key in PEM format.
+        :param pulumi.Input[str] private_key: The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created regional ssl certificate should reside.
@@ -143,7 +146,7 @@ class RegionSslCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: The certificate in PEM format.
                The certificate chain must be no greater than 5 certs long.
-               The chain must include at least one intermediate cert.
+               The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[float] certificate_id: The unique identifier for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -156,7 +159,7 @@ class RegionSslCertificate(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
                specified prefix. Conflicts with `name`.
-        :param pulumi.Input[str] private_key: The write-only private key in PEM format.
+        :param pulumi.Input[str] private_key: The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created regional ssl certificate should reside.

@@ -61,7 +61,7 @@ class Snapshot(pulumi.CustomResource):
     source snapshot is protected by a customer-supplied encryption key.  Structure is documented below.
 
       * `rawKey` (`str`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-        RFC 4648 base64 to either encrypt or decrypt this resource.
+        RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
       * `sha256` (`str`) - -
         The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         encryption key that protects this resource.
@@ -81,7 +81,7 @@ class Snapshot(pulumi.CustomResource):
     key.  Structure is documented below.
 
       * `rawKey` (`str`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-        RFC 4648 base64 to either encrypt or decrypt this resource.
+        RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
     """
     source_disk_link: pulumi.Output[str]
     storage_bytes: pulumi.Output[float]
@@ -115,6 +115,9 @@ class Snapshot(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 
+        > **Warning:** All arguments including `snapshot_encryption_key.raw_key` and `source_disk_encryption_key.raw_key` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -139,7 +142,7 @@ class Snapshot(pulumi.CustomResource):
         The **snapshot_encryption_key** object supports the following:
 
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-            RFC 4648 base64 to either encrypt or decrypt this resource.
+            RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
           * `sha256` (`pulumi.Input[str]`) - -
             The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
             encryption key that protects this resource.
@@ -147,7 +150,7 @@ class Snapshot(pulumi.CustomResource):
         The **source_disk_encryption_key** object supports the following:
 
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-            RFC 4648 base64 to either encrypt or decrypt this resource.
+            RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -231,7 +234,7 @@ class Snapshot(pulumi.CustomResource):
         The **snapshot_encryption_key** object supports the following:
 
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-            RFC 4648 base64 to either encrypt or decrypt this resource.
+            RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
           * `sha256` (`pulumi.Input[str]`) - -
             The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
             encryption key that protects this resource.
@@ -239,7 +242,7 @@ class Snapshot(pulumi.CustomResource):
         The **source_disk_encryption_key** object supports the following:
 
           * `rawKey` (`pulumi.Input[str]`) - Specifies a 256-bit customer-supplied encryption key, encoded in
-            RFC 4648 base64 to either encrypt or decrypt this resource.
+            RFC 4648 base64 to either encrypt or decrypt this resource.  **Note**: This property is sensitive and will not be displayed in the plan.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

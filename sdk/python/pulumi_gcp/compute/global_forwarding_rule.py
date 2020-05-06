@@ -40,14 +40,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
     """
     ip_protocol: pulumi.Output[str]
     """
-    The IP protocol to which this rule applies. Valid options are TCP,
-    UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+    The IP protocol to which this rule applies. When the load balancing scheme is
     INTERNAL_SELF_MANAGED, only TCP is valid.
     """
     ip_version: pulumi.Output[str]
     """
     The IP Version that will be used by this global forwarding rule.
-    Valid options are IPV4 or IPV6.
     """
     label_fingerprint: pulumi.Output[str]
     """
@@ -181,11 +179,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                instead, this provider requires this to specifically be an IP address to
                avoid needing to fetching the IP address from resource paths on refresh
                or unnecessary diffs.
-        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. Valid options are TCP,
-               UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. When the load balancing scheme is
                INTERNAL_SELF_MANAGED, only TCP is valid.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
-               Valid options are IPV4 or IPV6.
         :param pulumi.Input[dict] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
                The value of INTERNAL_SELF_MANAGED means that this will be used for
@@ -325,11 +321,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                instead, this provider requires this to specifically be an IP address to
                avoid needing to fetching the IP address from resource paths on refresh
                or unnecessary diffs.
-        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. Valid options are TCP,
-               UDP, ESP, AH, SCTP or ICMP. When the load balancing scheme is
+        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. When the load balancing scheme is
                INTERNAL_SELF_MANAGED, only TCP is valid.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
-               Valid options are IPV4 or IPV6.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[dict] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.

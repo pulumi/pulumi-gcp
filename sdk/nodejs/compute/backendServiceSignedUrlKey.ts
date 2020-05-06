@@ -15,6 +15,9 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
  * * How-to Guides
  *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
+ * 
+ * > **Warning:** All arguments including `keyValue` will be stored in the raw
+ * state as plain-text.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service_signed_url_key.html.markdown.
  */
@@ -51,7 +54,7 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
     public readonly backendService!: pulumi.Output<string>;
     /**
      * 128-bit key value used for signing the URL. The key value must be a
-     * valid RFC 4648 Section 5 base64url encoded string.
+     * valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly keyValue!: pulumi.Output<string>;
     /**
@@ -114,7 +117,7 @@ export interface BackendServiceSignedUrlKeyState {
     readonly backendService?: pulumi.Input<string>;
     /**
      * 128-bit key value used for signing the URL. The key value must be a
-     * valid RFC 4648 Section 5 base64url encoded string.
+     * valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly keyValue?: pulumi.Input<string>;
     /**
@@ -138,7 +141,7 @@ export interface BackendServiceSignedUrlKeyArgs {
     readonly backendService: pulumi.Input<string>;
     /**
      * 128-bit key value used for signing the URL. The key value must be a
-     * valid RFC 4648 Section 5 base64url encoded string.
+     * valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly keyValue: pulumi.Input<string>;
     /**

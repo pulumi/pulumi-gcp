@@ -1733,6 +1733,153 @@ func (o Hl7StoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+type Hl7StoreNotificationConfigs struct {
+	// Restricts notifications sent for messages matching a filter. If this is empty, all messages
+	// are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+	// Fields/functions available for filtering are:
+	// * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
+	// * sendDate or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, sendDate < "2017-01-02".
+	// * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
+	// * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
+	// * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
+	// * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
+	Filter *string `pulumi:"filter"`
+	// The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+	// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+	// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+	// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+	PubsubTopic string `pulumi:"pubsubTopic"`
+}
+
+// Hl7StoreNotificationConfigsInput is an input type that accepts Hl7StoreNotificationConfigsArgs and Hl7StoreNotificationConfigsOutput values.
+// You can construct a concrete instance of `Hl7StoreNotificationConfigsInput` via:
+//
+// 		 Hl7StoreNotificationConfigsArgs{...}
+//
+type Hl7StoreNotificationConfigsInput interface {
+	pulumi.Input
+
+	ToHl7StoreNotificationConfigsOutput() Hl7StoreNotificationConfigsOutput
+	ToHl7StoreNotificationConfigsOutputWithContext(context.Context) Hl7StoreNotificationConfigsOutput
+}
+
+type Hl7StoreNotificationConfigsArgs struct {
+	// Restricts notifications sent for messages matching a filter. If this is empty, all messages
+	// are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+	// Fields/functions available for filtering are:
+	// * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
+	// * sendDate or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, sendDate < "2017-01-02".
+	// * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
+	// * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
+	// * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
+	// * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+	// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+	// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+	// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
+}
+
+func (Hl7StoreNotificationConfigsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7StoreNotificationConfigs)(nil)).Elem()
+}
+
+func (i Hl7StoreNotificationConfigsArgs) ToHl7StoreNotificationConfigsOutput() Hl7StoreNotificationConfigsOutput {
+	return i.ToHl7StoreNotificationConfigsOutputWithContext(context.Background())
+}
+
+func (i Hl7StoreNotificationConfigsArgs) ToHl7StoreNotificationConfigsOutputWithContext(ctx context.Context) Hl7StoreNotificationConfigsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreNotificationConfigsOutput)
+}
+
+// Hl7StoreNotificationConfigsArrayInput is an input type that accepts Hl7StoreNotificationConfigsArray and Hl7StoreNotificationConfigsArrayOutput values.
+// You can construct a concrete instance of `Hl7StoreNotificationConfigsArrayInput` via:
+//
+// 		 Hl7StoreNotificationConfigsArray{ Hl7StoreNotificationConfigsArgs{...} }
+//
+type Hl7StoreNotificationConfigsArrayInput interface {
+	pulumi.Input
+
+	ToHl7StoreNotificationConfigsArrayOutput() Hl7StoreNotificationConfigsArrayOutput
+	ToHl7StoreNotificationConfigsArrayOutputWithContext(context.Context) Hl7StoreNotificationConfigsArrayOutput
+}
+
+type Hl7StoreNotificationConfigsArray []Hl7StoreNotificationConfigsInput
+
+func (Hl7StoreNotificationConfigsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hl7StoreNotificationConfigs)(nil)).Elem()
+}
+
+func (i Hl7StoreNotificationConfigsArray) ToHl7StoreNotificationConfigsArrayOutput() Hl7StoreNotificationConfigsArrayOutput {
+	return i.ToHl7StoreNotificationConfigsArrayOutputWithContext(context.Background())
+}
+
+func (i Hl7StoreNotificationConfigsArray) ToHl7StoreNotificationConfigsArrayOutputWithContext(ctx context.Context) Hl7StoreNotificationConfigsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreNotificationConfigsArrayOutput)
+}
+
+type Hl7StoreNotificationConfigsOutput struct{ *pulumi.OutputState }
+
+func (Hl7StoreNotificationConfigsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7StoreNotificationConfigs)(nil)).Elem()
+}
+
+func (o Hl7StoreNotificationConfigsOutput) ToHl7StoreNotificationConfigsOutput() Hl7StoreNotificationConfigsOutput {
+	return o
+}
+
+func (o Hl7StoreNotificationConfigsOutput) ToHl7StoreNotificationConfigsOutputWithContext(ctx context.Context) Hl7StoreNotificationConfigsOutput {
+	return o
+}
+
+// Restricts notifications sent for messages matching a filter. If this is empty, all messages
+// are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+// Fields/functions available for filtering are:
+// * messageType, from the MSH-9.1 field. For example, NOT messageType = "ADT".
+// * sendDate or sendDate, the YYYY-MM-DD date the message was sent in the dataset's timeZone, from the MSH-7 segment. For example, sendDate < "2017-01-02".
+// * sendTime, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, sendTime < "2017-01-02T00:00:00-05:00".
+// * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
+// * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
+// * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
+func (o Hl7StoreNotificationConfigsOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Hl7StoreNotificationConfigs) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
+// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
+// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
+// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
+// project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
+// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+func (o Hl7StoreNotificationConfigsOutput) PubsubTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v Hl7StoreNotificationConfigs) string { return v.PubsubTopic }).(pulumi.StringOutput)
+}
+
+type Hl7StoreNotificationConfigsArrayOutput struct{ *pulumi.OutputState }
+
+func (Hl7StoreNotificationConfigsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hl7StoreNotificationConfigs)(nil)).Elem()
+}
+
+func (o Hl7StoreNotificationConfigsArrayOutput) ToHl7StoreNotificationConfigsArrayOutput() Hl7StoreNotificationConfigsArrayOutput {
+	return o
+}
+
+func (o Hl7StoreNotificationConfigsArrayOutput) ToHl7StoreNotificationConfigsArrayOutputWithContext(ctx context.Context) Hl7StoreNotificationConfigsArrayOutput {
+	return o
+}
+
+func (o Hl7StoreNotificationConfigsArrayOutput) Index(i pulumi.IntInput) Hl7StoreNotificationConfigsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hl7StoreNotificationConfigs {
+		return vs[0].([]Hl7StoreNotificationConfigs)[vs[1].(int)]
+	}).(Hl7StoreNotificationConfigsOutput)
+}
+
 type Hl7StoreParserConfig struct {
 	// Determines whether messages with no header are allowed.
 	AllowNullHeader *bool `pulumi:"allowNullHeader"`
@@ -1935,6 +2082,8 @@ func init() {
 	pulumi.RegisterOutputType(Hl7StoreIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(Hl7StoreNotificationConfigOutput{})
 	pulumi.RegisterOutputType(Hl7StoreNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(Hl7StoreNotificationConfigsOutput{})
+	pulumi.RegisterOutputType(Hl7StoreNotificationConfigsArrayOutput{})
 	pulumi.RegisterOutputType(Hl7StoreParserConfigOutput{})
 	pulumi.RegisterOutputType(Hl7StoreParserConfigPtrOutput{})
 }

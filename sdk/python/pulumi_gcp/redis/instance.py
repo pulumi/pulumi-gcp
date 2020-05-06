@@ -25,9 +25,7 @@ class Instance(pulumi.CustomResource):
     """
     connect_mode: pulumi.Output[str]
     """
-    The connection mode of the Redis instance. Can be either
-    `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-    connect mode if not provided is `DIRECT_PEERING`.
+    The connection mode of the Redis instance.
     """
     create_time: pulumi.Output[str]
     """
@@ -127,9 +125,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine network to which the
                instance is connected. If left unspecified, the default network
                will be used.
-        :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance. Can be either
-               `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-               connect mode if not provided is `DIRECT_PEERING`.
+        :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[dict] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
@@ -217,9 +213,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine network to which the
                instance is connected. If left unspecified, the default network
                will be used.
-        :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance. Can be either
-               `DIRECT_PEERING` or `PRIVATE_SERVICE_ACCESS`. The default
-               connect mode if not provided is `DIRECT_PEERING`.
+        :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
                [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or

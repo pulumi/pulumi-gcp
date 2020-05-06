@@ -17,11 +17,17 @@ func GetAccessToken(ctx *pulumi.Context) string {
 func GetAppEngineCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:appEngineCustomEndpoint")
 }
+func GetArtifactRegistryCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:artifactRegistryCustomEndpoint")
+}
 func GetBatching(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:batching")
 }
 func GetBigQueryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigQueryCustomEndpoint")
+}
+func GetBigqueryConnectionCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:bigqueryConnectionCustomEndpoint")
 }
 func GetBigqueryDataTransferCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigqueryDataTransferCustomEndpoint")

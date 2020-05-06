@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? DefaultService;
         /// <summary>
+        /// When none of the specified hostRules match, the request is redirected to a URL specified
+        /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// </summary>
+        public readonly Outputs.URLMapPathMatcherDefaultUrlRedirect? DefaultUrlRedirect;
+        /// <summary>
         /// Description of this test case.
         /// </summary>
         public readonly string? Description;
@@ -55,6 +61,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private URLMapPathMatcher(
             string? defaultService,
 
+            Outputs.URLMapPathMatcherDefaultUrlRedirect? defaultUrlRedirect,
+
             string? description,
 
             Outputs.URLMapPathMatcherHeaderAction? headerAction,
@@ -66,6 +74,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             ImmutableArray<Outputs.URLMapPathMatcherRouteRule> routeRules)
         {
             DefaultService = defaultService;
+            DefaultUrlRedirect = defaultUrlRedirect;
             Description = description;
             HeaderAction = headerAction;
             Name = name;

@@ -166,6 +166,177 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionCloudSql struct {
+	// Database name.
+	Database string `pulumi:"database"`
+	// Cloud SQL instance ID in the form project:location:instance.
+	InstanceId string `pulumi:"instanceId"`
+	// Type of the Cloud SQL database.
+	Type string `pulumi:"type"`
+}
+
+// ConnectionCloudSqlInput is an input type that accepts ConnectionCloudSqlArgs and ConnectionCloudSqlOutput values.
+// You can construct a concrete instance of `ConnectionCloudSqlInput` via:
+//
+// 		 ConnectionCloudSqlArgs{...}
+//
+type ConnectionCloudSqlInput interface {
+	pulumi.Input
+
+	ToConnectionCloudSqlOutput() ConnectionCloudSqlOutput
+	ToConnectionCloudSqlOutputWithContext(context.Context) ConnectionCloudSqlOutput
+}
+
+type ConnectionCloudSqlArgs struct {
+	// Database name.
+	Database pulumi.StringInput `pulumi:"database"`
+	// Cloud SQL instance ID in the form project:location:instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Type of the Cloud SQL database.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ConnectionCloudSqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCloudSql)(nil)).Elem()
+}
+
+func (i ConnectionCloudSqlArgs) ToConnectionCloudSqlOutput() ConnectionCloudSqlOutput {
+	return i.ToConnectionCloudSqlOutputWithContext(context.Background())
+}
+
+func (i ConnectionCloudSqlArgs) ToConnectionCloudSqlOutputWithContext(ctx context.Context) ConnectionCloudSqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSqlOutput)
+}
+
+func (i ConnectionCloudSqlArgs) ToConnectionCloudSqlPtrOutput() ConnectionCloudSqlPtrOutput {
+	return i.ToConnectionCloudSqlPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionCloudSqlArgs) ToConnectionCloudSqlPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSqlOutput).ToConnectionCloudSqlPtrOutputWithContext(ctx)
+}
+
+// ConnectionCloudSqlPtrInput is an input type that accepts ConnectionCloudSqlArgs, ConnectionCloudSqlPtr and ConnectionCloudSqlPtrOutput values.
+// You can construct a concrete instance of `ConnectionCloudSqlPtrInput` via:
+//
+// 		 ConnectionCloudSqlArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ConnectionCloudSqlPtrInput interface {
+	pulumi.Input
+
+	ToConnectionCloudSqlPtrOutput() ConnectionCloudSqlPtrOutput
+	ToConnectionCloudSqlPtrOutputWithContext(context.Context) ConnectionCloudSqlPtrOutput
+}
+
+type connectionCloudSqlPtrType ConnectionCloudSqlArgs
+
+func ConnectionCloudSqlPtr(v *ConnectionCloudSqlArgs) ConnectionCloudSqlPtrInput {
+	return (*connectionCloudSqlPtrType)(v)
+}
+
+func (*connectionCloudSqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCloudSql)(nil)).Elem()
+}
+
+func (i *connectionCloudSqlPtrType) ToConnectionCloudSqlPtrOutput() ConnectionCloudSqlPtrOutput {
+	return i.ToConnectionCloudSqlPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionCloudSqlPtrType) ToConnectionCloudSqlPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCloudSqlPtrOutput)
+}
+
+type ConnectionCloudSqlOutput struct{ *pulumi.OutputState }
+
+func (ConnectionCloudSqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCloudSql)(nil)).Elem()
+}
+
+func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlOutput() ConnectionCloudSqlOutput {
+	return o
+}
+
+func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlOutputWithContext(ctx context.Context) ConnectionCloudSqlOutput {
+	return o
+}
+
+func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlPtrOutput() ConnectionCloudSqlPtrOutput {
+	return o.ToConnectionCloudSqlPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlPtrOutput {
+	return o.ApplyT(func(v ConnectionCloudSql) *ConnectionCloudSql {
+		return &v
+	}).(ConnectionCloudSqlPtrOutput)
+}
+
+// Database name.
+func (o ConnectionCloudSqlOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionCloudSql) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Cloud SQL instance ID in the form project:location:instance.
+func (o ConnectionCloudSqlOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionCloudSql) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Type of the Cloud SQL database.
+func (o ConnectionCloudSqlOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionCloudSql) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ConnectionCloudSqlPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionCloudSqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCloudSql)(nil)).Elem()
+}
+
+func (o ConnectionCloudSqlPtrOutput) ToConnectionCloudSqlPtrOutput() ConnectionCloudSqlPtrOutput {
+	return o
+}
+
+func (o ConnectionCloudSqlPtrOutput) ToConnectionCloudSqlPtrOutputWithContext(ctx context.Context) ConnectionCloudSqlPtrOutput {
+	return o
+}
+
+func (o ConnectionCloudSqlPtrOutput) Elem() ConnectionCloudSqlOutput {
+	return o.ApplyT(func(v *ConnectionCloudSql) ConnectionCloudSql { return *v }).(ConnectionCloudSqlOutput)
+}
+
+// Database name.
+func (o ConnectionCloudSqlPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionCloudSql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud SQL instance ID in the form project:location:instance.
+func (o ConnectionCloudSqlPtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionCloudSql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the Cloud SQL database.
+func (o ConnectionCloudSqlPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionCloudSql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatasetAccessType struct {
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -667,7 +838,7 @@ type JobCopy struct {
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	// Creation, truncation and append actions occur as one atomic update upon job completion
 	CreateDisposition *string `pulumi:"createDisposition"`
 	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
 	DestinationEncryptionConfiguration *JobCopyDestinationEncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
@@ -679,7 +850,7 @@ type JobCopy struct {
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	WriteDisposition *string `pulumi:"writeDisposition"`
 }
@@ -700,7 +871,7 @@ type JobCopyArgs struct {
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	// Creation, truncation and append actions occur as one atomic update upon job completion
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
 	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
 	DestinationEncryptionConfiguration JobCopyDestinationEncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
@@ -712,7 +883,7 @@ type JobCopyArgs struct {
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
@@ -798,7 +969,7 @@ func (o JobCopyOutput) ToJobCopyPtrOutputWithContext(ctx context.Context) JobCop
 // Specifies whether the job is allowed to create new tables. The following values are supported:
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+// Creation, truncation and append actions occur as one atomic update upon job completion
 func (o JobCopyOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopy) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
 }
@@ -824,7 +995,7 @@ func (o JobCopyOutput) SourceTables() JobCopySourceTableArrayOutput {
 // WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 // WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 func (o JobCopyOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopy) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
@@ -851,7 +1022,7 @@ func (o JobCopyPtrOutput) Elem() JobCopyOutput {
 // Specifies whether the job is allowed to create new tables. The following values are supported:
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+// Creation, truncation and append actions occur as one atomic update upon job completion
 func (o JobCopyPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopy) *string {
 		if v == nil {
@@ -895,7 +1066,7 @@ func (o JobCopyPtrOutput) SourceTables() JobCopySourceTableArrayOutput {
 // WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 // WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 func (o JobCopyPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopy) *string {
@@ -1970,7 +2141,7 @@ type JobLoad struct {
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	// Creation, truncation and append actions occur as one atomic update upon job completion
 	CreateDisposition *string `pulumi:"createDisposition"`
 	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
 	DestinationEncryptionConfiguration *JobLoadDestinationEncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
@@ -2040,7 +2211,7 @@ type JobLoad struct {
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	WriteDisposition *string `pulumi:"writeDisposition"`
 }
@@ -2070,7 +2241,7 @@ type JobLoadArgs struct {
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	// Creation, truncation and append actions occur as one atomic update upon job completion
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
 	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
 	DestinationEncryptionConfiguration JobLoadDestinationEncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
@@ -2140,7 +2311,7 @@ type JobLoadArgs struct {
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
@@ -2244,7 +2415,7 @@ func (o JobLoadOutput) Autodetect() pulumi.BoolPtrOutput {
 // Specifies whether the job is allowed to create new tables. The following values are supported:
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+// Creation, truncation and append actions occur as one atomic update upon job completion
 func (o JobLoadOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoad) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
 }
@@ -2361,7 +2532,7 @@ func (o JobLoadOutput) TimePartitioning() JobLoadTimePartitioningPtrOutput {
 // WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 // WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 func (o JobLoadOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoad) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
@@ -2421,7 +2592,7 @@ func (o JobLoadPtrOutput) Autodetect() pulumi.BoolPtrOutput {
 // Specifies whether the job is allowed to create new tables. The following values are supported:
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+// Creation, truncation and append actions occur as one atomic update upon job completion
 func (o JobLoadPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoad) *string {
 		if v == nil {
@@ -2611,7 +2782,7 @@ func (o JobLoadPtrOutput) TimePartitioning() JobLoadTimePartitioningPtrOutput {
 // WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 // WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 func (o JobLoadPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoad) *string {
@@ -3123,7 +3294,7 @@ type JobQuery struct {
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	// Creation, truncation and append actions occur as one atomic update upon job completion
 	CreateDisposition *string `pulumi:"createDisposition"`
 	// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
 	DefaultDataset *JobQueryDefaultDataset `pulumi:"defaultDataset"`
@@ -3142,7 +3313,7 @@ type JobQuery struct {
 	MaximumBytesBilled *string `pulumi:"maximumBytesBilled"`
 	// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
 	ParameterMode *string `pulumi:"parameterMode"`
-	// Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+	// Specifies a priority for the query.
 	Priority *string `pulumi:"priority"`
 	// Configures a query job.  Structure is documented below.
 	Query string `pulumi:"query"`
@@ -3168,7 +3339,7 @@ type JobQuery struct {
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	WriteDisposition *string `pulumi:"writeDisposition"`
 }
@@ -3193,7 +3364,7 @@ type JobQueryArgs struct {
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-	// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+	// Creation, truncation and append actions occur as one atomic update upon job completion
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
 	// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
 	DefaultDataset JobQueryDefaultDatasetPtrInput `pulumi:"defaultDataset"`
@@ -3212,7 +3383,7 @@ type JobQueryArgs struct {
 	MaximumBytesBilled pulumi.StringPtrInput `pulumi:"maximumBytesBilled"`
 	// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
 	ParameterMode pulumi.StringPtrInput `pulumi:"parameterMode"`
-	// Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+	// Specifies a priority for the query.
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
 	// Configures a query job.  Structure is documented below.
 	Query pulumi.StringInput `pulumi:"query"`
@@ -3238,7 +3409,7 @@ type JobQueryArgs struct {
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 	// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-	// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
@@ -3331,7 +3502,7 @@ func (o JobQueryOutput) AllowLargeResults() pulumi.BoolPtrOutput {
 // Specifies whether the job is allowed to create new tables. The following values are supported:
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+// Creation, truncation and append actions occur as one atomic update upon job completion
 func (o JobQueryOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
 }
@@ -3376,7 +3547,7 @@ func (o JobQueryOutput) ParameterMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.ParameterMode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+// Specifies a priority for the query.
 func (o JobQueryOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
@@ -3423,7 +3594,7 @@ func (o JobQueryOutput) UserDefinedFunctionResources() JobQueryUserDefinedFuncti
 // WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 // WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 func (o JobQueryOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
@@ -3462,7 +3633,7 @@ func (o JobQueryPtrOutput) AllowLargeResults() pulumi.BoolPtrOutput {
 // Specifies whether the job is allowed to create new tables. The following values are supported:
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
-// The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion
+// Creation, truncation and append actions occur as one atomic update upon job completion
 func (o JobQueryPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
 		if v == nil {
@@ -3545,7 +3716,7 @@ func (o JobQueryPtrOutput) ParameterMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+// Specifies a priority for the query.
 func (o JobQueryPtrOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
 		if v == nil {
@@ -3627,7 +3798,7 @@ func (o JobQueryPtrOutput) UserDefinedFunctionResources() JobQueryUserDefinedFun
 // WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
 // WRITE_APPEND: If the table already exists, BigQuery appends the data to the table.
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
-// The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
+// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 func (o JobQueryPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
@@ -4102,7 +4273,7 @@ func (o JobQueryDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
 
 type JobQueryScriptOptions struct {
 	// Determines which statement in the script represents the "key result",
-	// used to populate the schema and query results of the script job. Default is LAST.
+	// used to populate the schema and query results of the script job.
 	KeyResultStatement *string `pulumi:"keyResultStatement"`
 	// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
 	StatementByteBudget *string `pulumi:"statementByteBudget"`
@@ -4124,7 +4295,7 @@ type JobQueryScriptOptionsInput interface {
 
 type JobQueryScriptOptionsArgs struct {
 	// Determines which statement in the script represents the "key result",
-	// used to populate the schema and query results of the script job. Default is LAST.
+	// used to populate the schema and query results of the script job.
 	KeyResultStatement pulumi.StringPtrInput `pulumi:"keyResultStatement"`
 	// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
 	StatementByteBudget pulumi.StringPtrInput `pulumi:"statementByteBudget"`
@@ -4211,7 +4382,7 @@ func (o JobQueryScriptOptionsOutput) ToJobQueryScriptOptionsPtrOutputWithContext
 }
 
 // Determines which statement in the script represents the "key result",
-// used to populate the schema and query results of the script job. Default is LAST.
+// used to populate the schema and query results of the script job.
 func (o JobQueryScriptOptionsOutput) KeyResultStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQueryScriptOptions) *string { return v.KeyResultStatement }).(pulumi.StringPtrOutput)
 }
@@ -4245,7 +4416,7 @@ func (o JobQueryScriptOptionsPtrOutput) Elem() JobQueryScriptOptionsOutput {
 }
 
 // Determines which statement in the script represents the "key result",
-// used to populate the schema and query results of the script job. Default is LAST.
+// used to populate the schema and query results of the script job.
 func (o JobQueryScriptOptionsPtrOutput) KeyResultStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQueryScriptOptions) *string {
 		if v == nil {
@@ -6009,6 +6180,8 @@ func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionCloudSqlOutput{})
+	pulumi.RegisterOutputType(ConnectionCloudSqlPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessTypeOutput{})
 	pulumi.RegisterOutputType(DatasetAccessTypeArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessViewOutput{})

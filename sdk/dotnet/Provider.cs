@@ -53,11 +53,17 @@ namespace Pulumi.Gcp
         [Input("appEngineCustomEndpoint")]
         public Input<string>? AppEngineCustomEndpoint { get; set; }
 
+        [Input("artifactRegistryCustomEndpoint")]
+        public Input<string>? ArtifactRegistryCustomEndpoint { get; set; }
+
         [Input("batching", json: true)]
         public Input<Inputs.ProviderBatchingArgs>? Batching { get; set; }
 
         [Input("bigQueryCustomEndpoint")]
         public Input<string>? BigQueryCustomEndpoint { get; set; }
+
+        [Input("bigqueryConnectionCustomEndpoint")]
+        public Input<string>? BigqueryConnectionCustomEndpoint { get; set; }
 
         [Input("bigqueryDataTransferCustomEndpoint")]
         public Input<string>? BigqueryDataTransferCustomEndpoint { get; set; }

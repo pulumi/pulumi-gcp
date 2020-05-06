@@ -37,7 +37,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     """
     The distribution policy for this managed instance
     group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-    - - -
     """
     fingerprint: pulumi.Output[str]
     """
@@ -72,6 +71,13 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     self_link: pulumi.Output[str]
     """
     The URL of the created resource.
+    """
+    stateful_disks: pulumi.Output[list]
+    """
+    ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
+
+      * `deleteRule` (`str`) - , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+      * `device_name` (`str`) - , The device name of the disk to be attached.
     """
     target_pools: pulumi.Output[list]
     """
@@ -117,7 +123,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     returning. Note that if this is set to true and the operation does not succeed, the provider will
     continue trying until it times out.
     """
-    def __init__(__self__, resource_name, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, name=None, named_ports=None, project=None, region=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, name=None, named_ports=None, project=None, region=None, stateful_disks=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None, __props__=None, __name__=None, __opts__=None):
         """
         The Google Compute Engine Regional Instance Group Manager API creates and manages pools
         of homogeneous Compute Engine virtual machine instances from a common instance
@@ -140,13 +146,13 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                group manager.
         :param pulumi.Input[list] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-               - - -
         :param pulumi.Input[str] name: - Version name.
         :param pulumi.Input[list] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides.
+        :param pulumi.Input[list] stateful_disks: ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[list] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
@@ -170,6 +176,11 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
           * `name` (`pulumi.Input[str]`) - - Version name.
           * `port` (`pulumi.Input[float]`) - The port number.
             - - -
+
+        The **stateful_disks** object supports the following:
+
+          * `deleteRule` (`pulumi.Input[str]`) - , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+          * `device_name` (`pulumi.Input[str]`) - , The device name of the disk to be attached.
 
         The **update_policy** object supports the following:
 
@@ -222,6 +233,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             if region is None:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
+            __props__['stateful_disks'] = stateful_disks
             __props__['target_pools'] = target_pools
             __props__['target_size'] = target_size
             __props__['update_policy'] = update_policy
@@ -239,7 +251,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, fingerprint=None, instance_group=None, name=None, named_ports=None, project=None, region=None, self_link=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None):
+    def get(resource_name, id, opts=None, auto_healing_policies=None, base_instance_name=None, description=None, distribution_policy_zones=None, fingerprint=None, instance_group=None, name=None, named_ports=None, project=None, region=None, self_link=None, stateful_disks=None, target_pools=None, target_size=None, update_policy=None, versions=None, wait_for_instances=None):
         """
         Get an existing RegionInstanceGroupManager resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -259,7 +271,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                group manager.
         :param pulumi.Input[list] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
-               - - -
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
         :param pulumi.Input[str] name: - Version name.
@@ -269,6 +280,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides.
         :param pulumi.Input[str] self_link: The URL of the created resource.
+        :param pulumi.Input[list] stateful_disks: ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[list] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
@@ -292,6 +304,11 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
           * `name` (`pulumi.Input[str]`) - - Version name.
           * `port` (`pulumi.Input[float]`) - The port number.
             - - -
+
+        The **stateful_disks** object supports the following:
+
+          * `deleteRule` (`pulumi.Input[str]`) - , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
+          * `device_name` (`pulumi.Input[str]`) - , The device name of the disk to be attached.
 
         The **update_policy** object supports the following:
 
@@ -330,6 +347,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__["project"] = project
         __props__["region"] = region
         __props__["self_link"] = self_link
+        __props__["stateful_disks"] = stateful_disks
         __props__["target_pools"] = target_pools
         __props__["target_size"] = target_size
         __props__["update_policy"] = update_policy

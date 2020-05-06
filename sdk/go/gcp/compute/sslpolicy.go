@@ -40,9 +40,7 @@ type SSLPolicy struct {
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The minimum version of SSL protocol that can be used by the clients
-	// to establish a connection with the load balancer. This can be one of
-	// `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
-	// Default is `TLS_1_0`.
+	// to establish a connection with the load balancer.
 	MinTlsVersion pulumi.StringPtrOutput `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -53,14 +51,12 @@ type SSLPolicy struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the
-	// load balancer when negotiating SSL with clients. This can be one of
-	// `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
 	// the set of SSL features to enable must be specified in the
 	// `customFeatures` field.
 	// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
-	// Default is `COMPATIBLE`.
 	Profile pulumi.StringPtrOutput `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -116,9 +112,7 @@ type sslpolicyState struct {
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The minimum version of SSL protocol that can be used by the clients
-	// to establish a connection with the load balancer. This can be one of
-	// `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
-	// Default is `TLS_1_0`.
+	// to establish a connection with the load balancer.
 	MinTlsVersion *string `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -129,14 +123,12 @@ type sslpolicyState struct {
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the
-	// load balancer when negotiating SSL with clients. This can be one of
-	// `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
 	// the set of SSL features to enable must be specified in the
 	// `customFeatures` field.
 	// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
-	// Default is `COMPATIBLE`.
 	Profile *string `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -165,9 +157,7 @@ type SSLPolicyState struct {
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringPtrInput
 	// The minimum version of SSL protocol that can be used by the clients
-	// to establish a connection with the load balancer. This can be one of
-	// `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
-	// Default is `TLS_1_0`.
+	// to establish a connection with the load balancer.
 	MinTlsVersion pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -178,14 +168,12 @@ type SSLPolicyState struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// Profile specifies the set of SSL features that can be used by the
-	// load balancer when negotiating SSL with clients. This can be one of
-	// `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
 	// the set of SSL features to enable must be specified in the
 	// `customFeatures` field.
 	// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
-	// Default is `COMPATIBLE`.
 	Profile pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -212,9 +200,7 @@ type sslpolicyArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The minimum version of SSL protocol that can be used by the clients
-	// to establish a connection with the load balancer. This can be one of
-	// `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
-	// Default is `TLS_1_0`.
+	// to establish a connection with the load balancer.
 	MinTlsVersion *string `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -225,14 +211,12 @@ type sslpolicyArgs struct {
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the
-	// load balancer when negotiating SSL with clients. This can be one of
-	// `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
 	// the set of SSL features to enable must be specified in the
 	// `customFeatures` field.
 	// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
-	// Default is `COMPATIBLE`.
 	Profile *string `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -254,9 +238,7 @@ type SSLPolicyArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The minimum version of SSL protocol that can be used by the clients
-	// to establish a connection with the load balancer. This can be one of
-	// `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
-	// Default is `TLS_1_0`.
+	// to establish a connection with the load balancer.
 	MinTlsVersion pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -267,14 +249,12 @@ type SSLPolicyArgs struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// Profile specifies the set of SSL features that can be used by the
-	// load balancer when negotiating SSL with clients. This can be one of
-	// `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
+	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
 	// the set of SSL features to enable must be specified in the
 	// `customFeatures` field.
 	// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
-	// Default is `COMPATIBLE`.
 	Profile pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

@@ -23,6 +23,9 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+//
+// > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
+// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 type BackendService struct {
 	pulumi.CustomResourceState
 
@@ -74,8 +77,7 @@ type BackendService struct {
 	Iap BackendServiceIapPtrOutput `pulumi:"iap"`
 	// Indicates whether the backend service will be used with internal or
 	// external load balancing. A backend service created for one type of
-	// load balancing cannot be used with the other. Must be `EXTERNAL` or
-	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+	// load balancing cannot be used with the other.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -117,8 +119,7 @@ type BackendService struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The protocol this BackendService uses to communicate with backends.
-	// Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The security policy associated with this backend service.
@@ -212,8 +213,7 @@ type backendServiceState struct {
 	Iap *BackendServiceIap `pulumi:"iap"`
 	// Indicates whether the backend service will be used with internal or
 	// external load balancing. A backend service created for one type of
-	// load balancing cannot be used with the other. Must be `EXTERNAL` or
-	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+	// load balancing cannot be used with the other.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -255,8 +255,7 @@ type backendServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The protocol this BackendService uses to communicate with backends.
-	// Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
@@ -320,8 +319,7 @@ type BackendServiceState struct {
 	Iap BackendServiceIapPtrInput
 	// Indicates whether the backend service will be used with internal or
 	// external load balancing. A backend service created for one type of
-	// load balancing cannot be used with the other. Must be `EXTERNAL` or
-	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+	// load balancing cannot be used with the other.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -363,8 +361,7 @@ type BackendServiceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The protocol this BackendService uses to communicate with backends.
-	// Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
@@ -428,8 +425,7 @@ type backendServiceArgs struct {
 	Iap *BackendServiceIap `pulumi:"iap"`
 	// Indicates whether the backend service will be used with internal or
 	// external load balancing. A backend service created for one type of
-	// load balancing cannot be used with the other. Must be `EXTERNAL` or
-	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+	// load balancing cannot be used with the other.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -471,8 +467,7 @@ type backendServiceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The protocol this BackendService uses to communicate with backends.
-	// Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
@@ -531,8 +526,7 @@ type BackendServiceArgs struct {
 	Iap BackendServiceIapPtrInput
 	// Indicates whether the backend service will be used with internal or
 	// external load balancing. A backend service created for one type of
-	// load balancing cannot be used with the other. Must be `EXTERNAL` or
-	// `INTERNAL_SELF_MANAGED` for a global backend service. Defaults to `EXTERNAL`.
+	// load balancing cannot be used with the other.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -574,8 +568,7 @@ type BackendServiceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The protocol this BackendService uses to communicate with backends.
-	// Possible values are HTTP, HTTPS, HTTP2, TCP, and SSL. The default is
-	// HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
+	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.

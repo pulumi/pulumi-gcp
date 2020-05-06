@@ -83,6 +83,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        /// </summary>
+        [Output("statefulDisks")]
+        public Output<ImmutableArray<Outputs.InstanceGroupManagerStatefulDisk>> StatefulDisks { get; private set; } = null!;
+
+        /// <summary>
         /// The full URL of all target pools to which new
         /// instances in the group are added. Updating the target pools attribute does
         /// not affect existing instances.
@@ -98,7 +104,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-        /// - - -
         /// </summary>
         [Output("updatePolicy")]
         public Output<Outputs.InstanceGroupManagerUpdatePolicy> UpdatePolicy { get; private set; } = null!;
@@ -223,6 +228,18 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("statefulDisks")]
+        private InputList<Inputs.InstanceGroupManagerStatefulDiskArgs>? _statefulDisks;
+
+        /// <summary>
+        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        /// </summary>
+        public InputList<Inputs.InstanceGroupManagerStatefulDiskArgs> StatefulDisks
+        {
+            get => _statefulDisks ?? (_statefulDisks = new InputList<Inputs.InstanceGroupManagerStatefulDiskArgs>());
+            set => _statefulDisks = value;
+        }
+
         [Input("targetPools")]
         private InputList<string>? _targetPools;
 
@@ -245,7 +262,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-        /// - - -
         /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.InstanceGroupManagerUpdatePolicyArgs>? UpdatePolicy { get; set; }
@@ -355,6 +371,18 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        [Input("statefulDisks")]
+        private InputList<Inputs.InstanceGroupManagerStatefulDiskGetArgs>? _statefulDisks;
+
+        /// <summary>
+        /// ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        /// </summary>
+        public InputList<Inputs.InstanceGroupManagerStatefulDiskGetArgs> StatefulDisks
+        {
+            get => _statefulDisks ?? (_statefulDisks = new InputList<Inputs.InstanceGroupManagerStatefulDiskGetArgs>());
+            set => _statefulDisks = value;
+        }
+
         [Input("targetPools")]
         private InputList<string>? _targetPools;
 
@@ -377,7 +405,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/patch)
-        /// - - -
         /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.InstanceGroupManagerUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
