@@ -12,6 +12,93 @@ import * as utilities from "../utilities";
  * To get more information about ExternalVpnGateway, see:
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/externalVpnGateways)
+ * 
+ * ## Example Usage - External Vpn Gateway
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const network = new gcp.compute.Network("network", {
+ *     routingMode: "GLOBAL",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const haGateway = new gcp.compute.HaVpnGateway("haGateway", {
+ *     region: "us-central1",
+ *     network: network.selfLink,
+ * });
+ * const externalGateway = new gcp.compute.ExternalVpnGateway("externalGateway", {
+ *     redundancyType: "SINGLE_IP_INTERNALLY_REDUNDANT",
+ *     description: "An externally managed VPN gateway",
+ *     "interface": [{
+ *         id: 0,
+ *         ipAddress: "8.8.8.8",
+ *     }],
+ * });
+ * const networkSubnet1 = new gcp.compute.Subnetwork("networkSubnet1", {
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: network.selfLink,
+ * });
+ * const networkSubnet2 = new gcp.compute.Subnetwork("networkSubnet2", {
+ *     ipCidrRange: "10.0.2.0/24",
+ *     region: "us-west1",
+ *     network: network.selfLink,
+ * });
+ * const router1 = new gcp.compute.Router("router1", {
+ *     network: network.name,
+ *     bgp: {
+ *         asn: 64514,
+ *     },
+ * });
+ * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
+ *     region: "us-central1",
+ *     vpnGateway: haGateway.selfLink,
+ *     peerExternalGateway: externalGateway.selfLink,
+ *     peerExternalGatewayInterface: 0,
+ *     sharedSecret: "a secret message",
+ *     router: router1.selfLink,
+ *     vpnGatewayInterface: 0,
+ * });
+ * const tunnel2 = new gcp.compute.VPNTunnel("tunnel2", {
+ *     region: "us-central1",
+ *     vpnGateway: haGateway.selfLink,
+ *     peerExternalGateway: externalGateway.selfLink,
+ *     peerExternalGatewayInterface: 0,
+ *     sharedSecret: "a secret message",
+ *     router: router1.selfLink.apply(selfLink => ` ${selfLink}`),
+ *     vpnGatewayInterface: 1,
+ * });
+ * const router1Interface1 = new gcp.compute.RouterInterface("router1Interface1", {
+ *     router: router1.name,
+ *     region: "us-central1",
+ *     ipRange: "169.254.0.1/30",
+ *     vpnTunnel: tunnel1.name,
+ * });
+ * const router1Peer1 = new gcp.compute.RouterPeer("router1Peer1", {
+ *     router: router1.name,
+ *     region: "us-central1",
+ *     peerIpAddress: "169.254.0.2",
+ *     peerAsn: 64515,
+ *     advertisedRoutePriority: 100,
+ *     "interface": router1Interface1.name,
+ * });
+ * const router1Interface2 = new gcp.compute.RouterInterface("router1Interface2", {
+ *     router: router1.name,
+ *     region: "us-central1",
+ *     ipRange: "169.254.1.1/30",
+ *     vpnTunnel: tunnel2.name,
+ * });
+ * const router1Peer2 = new gcp.compute.RouterPeer("router1Peer2", {
+ *     router: router1.name,
+ *     region: "us-central1",
+ *     peerIpAddress: "169.254.1.2",
+ *     peerAsn: 64515,
+ *     advertisedRoutePriority: 100,
+ *     "interface": router1Interface2.name,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_external_vpn_gateway.html.markdown.
  */

@@ -80,6 +80,31 @@ class Router(pulumi.CustomResource):
         * How-to Guides
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
+        ## Example Usage - Router Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
+        foobar_router = gcp.compute.Router("foobarRouter",
+            network=foobar_network.name,
+            bgp={
+                "asn": 64514,
+                "advertiseMode": "CUSTOM",
+                "advertisedGroups": ["ALL_SUBNETS"],
+                "advertised_ip_ranges": [
+                    {
+                        "range": "1.2.3.4",
+                    },
+                    {
+                        "range": "6.7.0.0/16",
+                    },
+                ],
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bgp: BGP information specific to this router.  Structure is documented below.

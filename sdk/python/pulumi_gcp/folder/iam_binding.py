@@ -48,6 +48,22 @@ class IAMBinding(pulumi.CustomResource):
             Use `pulumi import` and inspect the output to ensure
             your existing members are preserved.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        admin = gcp.folder.IAMBinding("admin",
+            folder=department1.name,
+            role="roles/editor",
+            members=["user:alice@gmail.com"])
+        ```
 
 
         :param str resource_name: The name of the resource.

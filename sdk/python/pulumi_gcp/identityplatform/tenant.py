@@ -48,6 +48,20 @@ class Tenant(pulumi.CustomResource):
         You must [enable multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy-quickstart) via
         the Cloud Console prior to creating tenants.
 
+
+
+        ## Example Usage - Identity Platform Tenant Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant",
+            allow_password_signup=True,
+            display_name="tenant")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_password_signup: Whether to allow email/password user authentication.

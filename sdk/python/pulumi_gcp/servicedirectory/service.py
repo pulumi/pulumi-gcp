@@ -40,6 +40,25 @@ class Service(pulumi.CustomResource):
         * How-to Guides
             * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 
+        ## Example Usage - Service Directory Service Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
+            namespace_id="example-namespace",
+            location="us-central1")
+        example_service = gcp.servicedirectory.Service("exampleService",
+            service_id="example-service",
+            namespace=example_namespace.id,
+            metadata={
+                "stage": "prod",
+                "region": "us-central1",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] metadata: Metadata for the service. This data can be consumed

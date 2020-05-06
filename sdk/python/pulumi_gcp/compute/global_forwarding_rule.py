@@ -155,6 +155,123 @@ class GlobalForwardingRule(pulumi.CustomResource):
         For more information, see
         https://cloud.google.com/compute/docs/load-balancing/http/
 
+
+
+        ## Example Usage - Global Forwarding Rule Http
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_http_health_check.self_link])
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            description="a description",
+            default_service=default_backend_service.self_link,
+            host_rule=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.self_link,
+                "path_rule": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.self_link,
+                }],
+            }])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
+            description="a description",
+            url_map=default_url_map.self_link)
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            target=default_target_http_proxy.self_link,
+            port_range="80")
+        ```
+        ## Example Usage - Global Forwarding Rule Internal
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="n1-standard-1",
+            network_interface=[{
+                "network": "default",
+            }],
+            disk=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }])
+        igm = gcp.compute.InstanceGroupManager("igm",
+            version=[{
+                "instanceTemplate": instance_template.self_link,
+                "name": "primary",
+            }],
+            base_instance_name="internal-glb",
+            zone="us-central1-f",
+            target_size=1)
+        default_health_check = gcp.compute.HealthCheck("defaultHealthCheck",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": "80",
+            })
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            backend=[{
+                "group": igm.instance_group,
+                "balancingMode": "RATE",
+                "capacityScaler": 0.4,
+                "maxRatePerInstance": 50,
+            }],
+            health_checks=[default_health_check.self_link])
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            description="a description",
+            default_service=default_backend_service.self_link,
+            host_rule=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.self_link,
+                "path_rule": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.self_link,
+                }],
+            }])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
+            description="a description",
+            url_map=default_url_map.self_link)
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            target=default_target_http_proxy.self_link,
+            port_range="80",
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            ip_address="0.0.0.0",
+            metadata_filters=[{
+                "filterMatchCriteria": "MATCH_ANY",
+                "filter_labels": [{
+                    "name": "PLANET",
+                    "value": "MARS",
+                }],
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when

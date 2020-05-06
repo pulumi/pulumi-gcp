@@ -203,6 +203,212 @@ class ForwardingRule(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
+        ## Example Usage - Forwarding Rule Global Internallb
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hc = gcp.compute.HealthCheck("hc",
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": "80",
+            },
+            timeout_sec=1)
+        backend = gcp.compute.RegionBackendService("backend",
+            health_checks=hc.self_link,
+            region="us-central1")
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            network=default_network.self_link,
+            region="us-central1")
+        # Forwarding rule for Internal Load Balancing
+        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+            all_ports=True,
+            allow_global_access=True,
+            backend_service=backend.self_link,
+            load_balancing_scheme="INTERNAL",
+            network=default_network.name,
+            region="us-central1",
+            subnetwork=default_subnetwork.name)
+        ```
+        ## Example Usage - Forwarding Rule Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_target_pool = gcp.compute.TargetPool("defaultTargetPool")
+        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+            target=default_target_pool.self_link,
+            port_range="80")
+        ```
+        ## Example Usage - Forwarding Rule Internallb
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hc = gcp.compute.HealthCheck("hc",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": "80",
+            })
+        backend = gcp.compute.RegionBackendService("backend",
+            region="us-central1",
+            health_checks=[hc.self_link])
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.self_link)
+        # Forwarding rule for Internal Load Balancing
+        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.self_link,
+            all_ports=True,
+            network=default_network.name,
+            subnetwork=default_subnetwork.name)
+        ```
+        ## Example Usage - Forwarding Rule Http Lb
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("defaultNetwork",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL")
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default_network.self_link)
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="n1-standard-1",
+            network_interface=[{
+                "network": default_network.self_link,
+                "subnetwork": default_subnetwork.self_link,
+            }],
+            disk=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
+            tags=[
+                "allow-ssh",
+                "load-balanced-backend",
+            ])
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            region="us-central1",
+            version=[{
+                "instanceTemplate": instance_template.self_link,
+                "name": "primary",
+            }],
+            base_instance_name="internal-glb",
+            target_size=1)
+        fw1 = gcp.compute.Firewall("fw1",
+            network=default_network.self_link,
+            source_ranges=["10.1.2.0/24"],
+            allow=[
+                {
+                    "protocol": "tcp",
+                },
+                {
+                    "protocol": "udp",
+                },
+                {
+                    "protocol": "icmp",
+                },
+            ],
+            direction="INGRESS")
+        fw2 = gcp.compute.Firewall("fw2",
+            network=default_network.self_link,
+            source_ranges=["0.0.0.0/0"],
+            allow=[{
+                "protocol": "tcp",
+                "ports": ["22"],
+            }],
+            target_tags=["allow-ssh"],
+            direction="INGRESS")
+        fw3 = gcp.compute.Firewall("fw3",
+            network=default_network.self_link,
+            source_ranges=[
+                "130.211.0.0/22",
+                "35.191.0.0/16",
+            ],
+            allow=[{
+                "protocol": "tcp",
+            }],
+            target_tags=["load-balanced-backend"],
+            direction="INGRESS")
+        fw4 = gcp.compute.Firewall("fw4",
+            network=default_network.self_link,
+            source_ranges=["10.129.0.0/26"],
+            target_tags=["load-balanced-backend"],
+            allow=[
+                {
+                    "protocol": "tcp",
+                    "ports": ["80"],
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": ["443"],
+                },
+                {
+                    "protocol": "tcp",
+                    "ports": ["8000"],
+                },
+            ],
+            direction="INGRESS")
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="us-central1",
+            http_health_check={
+                "portSpecification": "USE_SERVING_PORT",
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            backend=[{
+                "group": rigm.instance_group,
+                "balancingMode": "UTILIZATION",
+                "capacityScaler": 1,
+            }],
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_region_health_check.self_link])
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="us-central1",
+            default_service=default_region_backend_service.self_link)
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
+            region="us-central1",
+            url_map=default_region_url_map.self_link)
+        proxy = gcp.compute.Subnetwork("proxy",
+            ip_cidr_range="10.129.0.0/26",
+            region="us-central1",
+            network=default_network.self_link,
+            purpose="INTERNAL_HTTPS_LOAD_BALANCER",
+            role="ACTIVE")
+        # Forwarding rule for Internal Load Balancing
+        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+            region="us-central1",
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_range="80",
+            target=default_region_target_http_proxy.self_link,
+            network=default_network.self_link,
+            subnetwork=default_subnetwork.self_link,
+            network_tier="PREMIUM")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] all_ports: For internal TCP/UDP load balancing (i.e. load balancing scheme is

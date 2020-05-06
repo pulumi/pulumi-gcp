@@ -147,6 +147,115 @@ class Autoscaler(pulumi.CustomResource):
         * How-to Guides
             * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 
+        ## Example Usage - Autoscaler Single Instance
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian9 = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
+            machine_type="n1-standard-1",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disk=[{
+                "sourceImage": debian9.self_link,
+            }],
+            network_interface=[{
+                "network": "default",
+            }],
+            metadata={
+                "foo": "bar",
+            },
+            service_account={
+                "scopes": [
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            })
+        default_target_pool = gcp.compute.TargetPool("defaultTargetPool")
+        default_instance_group_manager = gcp.compute.InstanceGroupManager("defaultInstanceGroupManager",
+            zone="us-central1-f",
+            version=[{
+                "instanceTemplate": default_instance_template.id,
+                "name": "primary",
+            }],
+            target_pools=[default_target_pool.id],
+            base_instance_name="autoscaler-sample")
+        default_autoscaler = gcp.compute.Autoscaler("defaultAutoscaler",
+            zone="us-central1-f",
+            target=default_instance_group_manager.id,
+            autoscaling_policy={
+                "maxReplicas": 5,
+                "minReplicas": 1,
+                "cooldownPeriod": 60,
+                "metric": [{
+                    "name": "pubsub.googleapis.com/subscription/num_undelivered_messages",
+                    "filter": "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
+                    "singleInstanceAssignment": 65535,
+                }],
+            })
+        ```
+        ## Example Usage - Autoscaler Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian9 = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
+            machine_type="n1-standard-1",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disk=[{
+                "sourceImage": debian9.self_link,
+            }],
+            network_interface=[{
+                "network": "default",
+            }],
+            metadata={
+                "foo": "bar",
+            },
+            service_account={
+                "scopes": [
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            })
+        foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
+        foobar_instance_group_manager = gcp.compute.InstanceGroupManager("foobarInstanceGroupManager",
+            zone="us-central1-f",
+            version=[{
+                "instanceTemplate": foobar_instance_template.id,
+                "name": "primary",
+            }],
+            target_pools=[foobar_target_pool.id],
+            base_instance_name="foobar")
+        foobar_autoscaler = gcp.compute.Autoscaler("foobarAutoscaler",
+            zone="us-central1-f",
+            target=foobar_instance_group_manager.id,
+            autoscaling_policy={
+                "maxReplicas": 5,
+                "minReplicas": 1,
+                "cooldownPeriod": 60,
+                "cpu_utilization": {
+                    "target": 0.5,
+                },
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can

@@ -50,6 +50,23 @@ class Database(pulumi.CustomResource):
         Represents a SQL database inside the Cloud SQL instance, hosted in
         Google's cloud.
 
+
+
+        ## Example Usage - Sql Database Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+            })
+        database = gcp.sql.Database("database", instance=instance.name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] charset: The charset value. See MySQL's

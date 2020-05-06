@@ -12,6 +12,35 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
  * 
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const instance = new gcp.bigtable.Instance("instance", {cluster: [{
+ *     clusterId: "tf-instance-cluster",
+ *     zone: "us-central1-b",
+ *     numNodes: 3,
+ *     storageType: "HDD",
+ * }]});
+ * const table = new gcp.bigtable.Table("table", {
+ *     instanceName: instance.name,
+ *     column_family: [{
+ *         family: "name",
+ *     }],
+ * });
+ * const policy = new gcp.bigtable.GCPolicy("policy", {
+ *     instanceName: instance.name,
+ *     table: table.name,
+ *     columnFamily: "name",
+ *     max_age: [{
+ *         days: 7,
+ *     }],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_gc_policy.html.markdown.
  */

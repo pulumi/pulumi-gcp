@@ -54,6 +54,50 @@ class AppProfile(pulumi.CustomResource):
         """
         App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
 
+
+
+        ## Example Usage - Bigtable App Profile Multicluster
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance", cluster=[{
+            "clusterId": "bt-instance",
+            "zone": "us-central1-b",
+            "numNodes": 3,
+            "storageType": "HDD",
+        }])
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            multi_cluster_routing_use_any=True,
+            ignore_warnings=True)
+        ```
+        ## Example Usage - Bigtable App Profile Singlecluster
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance", cluster=[{
+            "clusterId": "bt-instance",
+            "zone": "us-central1-b",
+            "numNodes": 3,
+            "storageType": "HDD",
+        }])
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            single_cluster_routing={
+                "clusterId": "bt-instance",
+                "allowTransactionalWrites": True,
+            },
+            ignore_warnings=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.

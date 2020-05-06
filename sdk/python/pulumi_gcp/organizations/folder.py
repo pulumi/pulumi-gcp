@@ -49,6 +49,23 @@ class Folder(pulumi.CustomResource):
         [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
         doc for more information.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Top-level folder under an organization.
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        # Folder nested under another folder.
+        team_abc = gcp.organizations.Folder("team-abc",
+            display_name="Team ABC",
+            parent=department1.name)
+        ```
 
 
         :param str resource_name: The name of the resource.

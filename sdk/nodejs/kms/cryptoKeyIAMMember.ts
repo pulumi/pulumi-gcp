@@ -17,6 +17,27 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const key = new gcp.kms.CryptoKey("key", {
+ *     keyRing: keyring.id,
+ *     rotationPeriod: "100000s",
+ * });
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/cloudkms.cryptoKeyEncrypter",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMPolicy("cryptoKey", {
+ *     cryptoKeyId: key.id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * 
  * With IAM Conditions:
  * 
  * ```typescript
@@ -36,10 +57,63 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * ```
  * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("cryptoKey", {
+ *     cryptoKeyId: google_kms_crypto_key.key.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypter",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * 
  * With IAM Conditions:
  * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("cryptoKey", {
+ *     cryptoKeyId: google_kms_crypto_key.key.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypter",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expiresAfter20191231",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
+ *     cryptoKeyId: google_kms_crypto_key.key.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypter",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
  * 
  * With IAM Conditions:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
+ *     cryptoKeyId: google_kms_crypto_key.key.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypter",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expiresAfter20191231",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_kms_crypto_key_iam.html.markdown.
  */

@@ -67,6 +67,37 @@ class InstanceFromTemplate(pulumi.CustomResource):
         `compute.Instance` resource.
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tpl_instance_template = gcp.compute.InstanceTemplate("tplInstanceTemplate",
+            machine_type="n1-standard-1",
+            disk=[{
+                "sourceImage": "debian-cloud/debian-9",
+                "autoDelete": True,
+                "diskSizeGb": 100,
+                "boot": True,
+            }],
+            network_interface=[{
+                "network": "default",
+            }],
+            metadata={
+                "foo": "bar",
+            },
+            can_ip_forward=True)
+        tpl_instance_from_template = gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate",
+            zone="us-central1-a",
+            source_instance_template=tpl_instance_template.self_link,
+            can_ip_forward=False,
+            labels={
+                "my_key": "my_value",
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

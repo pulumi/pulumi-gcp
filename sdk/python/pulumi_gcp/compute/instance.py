@@ -304,6 +304,45 @@ class Instance(pulumi.CustomResource):
         [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Instance("default",
+            boot_disk={
+                "initializeParams": {
+                    "image": "debian-cloud/debian-9",
+                },
+            },
+            machine_type="n1-standard-1",
+            metadata={
+                "foo": "bar",
+            },
+            metadata_startup_script="echo hi > /test.txt",
+            network_interfaces=[{
+                "accessConfig": [{}],
+                "network": "default",
+            }],
+            scratch_disks=[{
+                "interface": "SCSI",
+            }],
+            service_account={
+                "scopes": [
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            },
+            tags=[
+                "foo",
+                "bar",
+            ],
+            zone="us-central1-a")
+        ```
 
 
         :param str resource_name: The name of the resource.

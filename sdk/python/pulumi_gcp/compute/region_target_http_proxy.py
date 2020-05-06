@@ -62,6 +62,59 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
+        ## Example Usage - Region Target Http Proxy Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="us-central1",
+            http_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_region_health_check.self_link])
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="us-central1",
+            default_service=default_region_backend_service.self_link,
+            host_rule=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": default_region_backend_service.self_link,
+                "path_rule": [{
+                    "paths": ["/*"],
+                    "service": default_region_backend_service.self_link,
+                }],
+            }])
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
+            region="us-central1",
+            url_map=default_region_url_map.self_link)
+        ```
+        ## Example Usage - Region Target Http Proxy Https Redirect
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="us-central1",
+            default_url_redirect={
+                "httpsRedirect": True,
+            })
+        default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
+            region="us-central1",
+            url_map=default_region_url_map.self_link)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.

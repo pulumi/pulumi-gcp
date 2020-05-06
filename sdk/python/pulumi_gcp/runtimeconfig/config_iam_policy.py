@@ -40,6 +40,50 @@ class ConfigIamPolicy(pulumi.CustomResource):
 
         > **Note:** `runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
 
+
+
+        ## google\_runtimeconfig\_config\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.runtimeconfig.ConfigIamPolicy("policy",
+            project=google_runtimeconfig_config["config"]["project"],
+            config=google_runtimeconfig_config["config"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_runtimeconfig\_config\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.runtimeconfig.ConfigIamBinding("binding",
+            project=google_runtimeconfig_config["config"]["project"],
+            config=google_runtimeconfig_config["config"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_runtimeconfig\_config\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.runtimeconfig.ConfigIamMember("member",
+            project=google_runtimeconfig_config["config"]["project"],
+            config=google_runtimeconfig_config["config"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: Used to find the parent resource to bind the IAM policy to

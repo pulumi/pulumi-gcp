@@ -208,6 +208,23 @@ class Disk(pulumi.CustomResource):
         > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+        ## Example Usage - Disk Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Disk("default",
+            image="debian-8-jessie-v20170523",
+            labels={
+                "environment": "dev",
+            },
+            physical_block_size_bytes=4096,
+            type="pd-ssd",
+            zone="us-central1-a")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when

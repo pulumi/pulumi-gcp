@@ -35,6 +35,47 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
 
+        ## Example Usage - App Engine Application Url Dispatch Rules Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+        admin_v3 = gcp.appengine.StandardAppVersion("adminV3",
+            version_id="v3",
+            service="admin",
+            runtime="nodejs10",
+            entrypoint={
+                "shell": "node ./app.js",
+            },
+            deployment={
+                "zip": {
+                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                },
+            },
+            env_variables={
+                "port": "8080",
+            },
+            noop_on_destroy=True)
+        web_service = gcp.appengine.ApplicationUrlDispatchRules("webService", dispatch_rules=[
+            {
+                "domain": "*",
+                "path": "/*",
+                "service": "default",
+            },
+            {
+                "domain": "*",
+                "path": "/admin/*",
+                "service": admin_v3.service,
+            },
+        ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.

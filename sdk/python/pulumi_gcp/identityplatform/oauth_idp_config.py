@@ -47,6 +47,23 @@ class OauthIdpConfig(pulumi.CustomResource):
         [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
         the marketplace prior to using this resource.
 
+
+
+        ## Example Usage - Identity Platform Oauth Idp Config Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        oauth_idp_config = gcp.identityplatform.OauthIdpConfig("oauthIdpConfig",
+            client_id="client-id",
+            client_secret="secret",
+            display_name="Display Name",
+            enabled=True,
+            issuer="issuer")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: The client id of an OAuth client.

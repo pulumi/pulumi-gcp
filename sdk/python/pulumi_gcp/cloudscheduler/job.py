@@ -153,6 +153,88 @@ class Job(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/scheduler/)
 
+        ## Example Usage - Scheduler Job Http
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        job = gcp.cloudscheduler.Job("job",
+            attempt_deadline="320s",
+            description="test http job",
+            http_target={
+                "httpMethod": "POST",
+                "uri": "https://example.com/ping",
+            },
+            schedule="*/8 * * * *",
+            time_zone="America/New_York")
+        ```
+        ## Example Usage - Scheduler Job App Engine
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        job = gcp.cloudscheduler.Job("job",
+            app_engine_http_target={
+                "appEngineRouting": {
+                    "instance": "my-instance-001",
+                    "service": "web",
+                    "version": "prod",
+                },
+                "httpMethod": "POST",
+                "relativeUri": "/ping",
+            },
+            attempt_deadline="320s",
+            description="test app engine job",
+            schedule="*/4 * * * *",
+            time_zone="Europe/London")
+        ```
+        ## Example Usage - Scheduler Job Oauth
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_default_service_account()
+        job = gcp.cloudscheduler.Job("job",
+            description="test http job",
+            schedule="*/8 * * * *",
+            time_zone="America/New_York",
+            attempt_deadline="320s",
+            http_target={
+                "httpMethod": "GET",
+                "uri": "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
+                "oauth_token": {
+                    "serviceAccountEmail": default.email,
+                },
+            })
+        ```
+        ## Example Usage - Scheduler Job Oidc
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_default_service_account()
+        job = gcp.cloudscheduler.Job("job",
+            description="test http job",
+            schedule="*/8 * * * *",
+            time_zone="America/New_York",
+            attempt_deadline="320s",
+            http_target={
+                "httpMethod": "GET",
+                "uri": "https://example.com/ping",
+                "oidc_token": {
+                    "serviceAccountEmail": default.email,
+                },
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] app_engine_http_target: App Engine HTTP target.

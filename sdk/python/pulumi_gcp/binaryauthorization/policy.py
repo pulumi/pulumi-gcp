@@ -83,6 +83,60 @@ class Policy(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
+        ## Example Usage - Binary Authorization Policy Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority={
+            "hint": {
+                "humanReadableName": "My attestor",
+            },
+        })
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note={
+            "noteReference": note.name,
+        })
+        policy = gcp.binaryauthorization.Policy("policy",
+            admission_whitelist_patterns=[{
+                "namePattern": "gcr.io/google_containers/*",
+            }],
+            default_admission_rule={
+                "evaluationMode": "ALWAYS_ALLOW",
+                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+            },
+            cluster_admission_rules=[{
+                "cluster": "us-central1-a.prod-cluster",
+                "evaluationMode": "REQUIRE_ATTESTATION",
+                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "requireAttestationsBies": [attestor.name],
+            }])
+        ```
+        ## Example Usage - Binary Authorization Policy Global Evaluation
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        note = gcp.containeranalysis.Note("note", attestation_authority={
+            "hint": {
+                "humanReadableName": "My attestor",
+            },
+        })
+        attestor = gcp.binaryauthorization.Attestor("attestor", attestation_authority_note={
+            "noteReference": note.name,
+        })
+        policy = gcp.binaryauthorization.Policy("policy",
+            default_admission_rule={
+                "evaluationMode": "REQUIRE_ATTESTATION",
+                "enforcementMode": "ENFORCED_BLOCK_AND_AUDIT_LOG",
+                "requireAttestationsBies": [attestor.name],
+            },
+            global_policy_evaluation_mode="ENABLE")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] admission_whitelist_patterns: A whitelist of image patterns to exclude from admission rules. If an

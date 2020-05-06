@@ -15,6 +15,31 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.fhirStores)
  * * How-to Guides
  *     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
+ * 
+ * ## Example Usage - Healthcare Fhir Store Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const default = new gcp.healthcare.FhirStore("default", {
+ *     dataset: dataset.id,
+ *     version: "R4",
+ *     enableUpdateCreate: false,
+ *     disableReferentialIntegrity: false,
+ *     disableResourceVersioning: false,
+ *     enableHistoryImport: false,
+ *     notification_config: {
+ *         pubsubTopic: topic.id,
+ *     },
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_fhir_store.html.markdown.
  */

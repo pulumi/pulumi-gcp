@@ -47,6 +47,95 @@ class RecordSet(pulumi.CustomResource):
         In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider 
         will not actually remove NS records during destroy but will report that it did.
 
+        ## Example Usage
+
+        ### Binding a DNS name to the ephemeral IP of a new instance:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        frontend_instance = gcp.compute.Instance("frontendInstance",
+            machine_type="g1-small",
+            zone="us-central1-b",
+            boot_disk={
+                "initialize_params": {
+                    "image": "debian-cloud/debian-9",
+                },
+            },
+            network_interface=[{
+                "network": "default",
+                "access_config": [{}],
+            }])
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        frontend_record_set = gcp.dns.RecordSet("frontendRecordSet",
+            type="A",
+            ttl=300,
+            managed_zone=prod.name,
+            rrdatas=[frontend_instance.network_interfaces[0]["accessConfigs"][0]["natIp"]])
+        ```
+
+        ### Adding an A record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        record_set = gcp.dns.RecordSet("recordSet",
+            managed_zone=prod.name,
+            type="A",
+            ttl=300,
+            rrdatas=["8.8.8.8"])
+        ```
+
+        ### Adding an MX record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        mx = gcp.dns.RecordSet("mx",
+            managed_zone=prod.name,
+            type="MX",
+            ttl=3600,
+            rrdatas=[
+                "1 aspmx.l.google.com.",
+                "5 alt1.aspmx.l.google.com.",
+                "5 alt2.aspmx.l.google.com.",
+                "10 alt3.aspmx.l.google.com.",
+                "10 alt4.aspmx.l.google.com.",
+            ])
+        ```
+
+        ### Adding an SPF record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        spf = gcp.dns.RecordSet("spf",
+            managed_zone=prod.name,
+            type="TXT",
+            ttl=300,
+            rrdatas=["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""])
+        ```
+
+        ### Adding a CNAME record
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+        cname = gcp.dns.RecordSet("cname",
+            managed_zone=prod.name,
+            type="CNAME",
+            ttl=300,
+            rrdatas=["frontend.mydomain.com."])
+        ```
 
 
         :param str resource_name: The name of the resource.

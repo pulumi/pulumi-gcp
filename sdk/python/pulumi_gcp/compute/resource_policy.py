@@ -81,6 +81,70 @@ class ResourcePolicy(pulumi.CustomResource):
         """
         A policy that can be attached to a resource to specify or schedule actions on that resource.
 
+
+
+        ## Example Usage - Resource Policy Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foo = gcp.compute.ResourcePolicy("foo",
+            region="us-central1",
+            snapshot_schedule_policy={
+                "schedule": {
+                    "dailySchedule": {
+                        "daysInCycle": 1,
+                        "startTime": "04:00",
+                    },
+                },
+            })
+        ```
+        ## Example Usage - Resource Policy Full
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            region="us-central1",
+            snapshot_schedule_policy={
+                "retentionPolicy": {
+                    "maxRetentionDays": 10,
+                    "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
+                },
+                "schedule": {
+                    "hourlySchedule": {
+                        "hoursInCycle": 20,
+                        "startTime": "23:00",
+                    },
+                },
+                "snapshotProperties": {
+                    "guestFlush": True,
+                    "labels": {
+                        "myLabel": "value",
+                    },
+                    "storageLocations": "us",
+                },
+            })
+        ```
+        ## Example Usage - Resource Policy Placement Policy
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            group_placement_policy={
+                "collocation": "COLLOCATED",
+                "vmCount": 2,
+            },
+            region="us-central1")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] group_placement_policy: Policy for creating snapshots of persistent disks.  Structure is documented below.

@@ -62,6 +62,50 @@ import * as utilities from "../utilities";
  *     timeZone: "Europe/London",
  * });
  * ```
+ * ## Example Usage - Scheduler Job Oauth
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const default = gcp.compute.getDefaultServiceAccount({});
+ * const job = new gcp.cloudscheduler.Job("job", {
+ *     description: "test http job",
+ *     schedule: "*&#47;8 * * * *",
+ *     timeZone: "America/New_York",
+ *     attemptDeadline: "320s",
+ *     http_target: {
+ *         httpMethod: "GET",
+ *         uri: "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
+ *         oauth_token: {
+ *             serviceAccountEmail: default.then(_default => _default.email),
+ *         },
+ *     },
+ * });
+ * ```
+ * ## Example Usage - Scheduler Job Oidc
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const default = gcp.compute.getDefaultServiceAccount({});
+ * const job = new gcp.cloudscheduler.Job("job", {
+ *     description: "test http job",
+ *     schedule: "*&#47;8 * * * *",
+ *     timeZone: "America/New_York",
+ *     attemptDeadline: "320s",
+ *     http_target: {
+ *         httpMethod: "GET",
+ *         uri: "https://example.com/ping",
+ *         oidc_token: {
+ *             serviceAccountEmail: default.then(_default => _default.email),
+ *         },
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
  */

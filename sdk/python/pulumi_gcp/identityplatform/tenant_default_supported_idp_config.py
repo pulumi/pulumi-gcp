@@ -57,6 +57,24 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
         the marketplace prior to using this resource.
 
+
+
+        ## Example Usage - Identity Platform Tenant Default Supported Idp Config Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
+        idp_config = gcp.identityplatform.TenantDefaultSupportedIdpConfig("idpConfig",
+            enabled=True,
+            tenant=tenant.name,
+            idp_id="playgames.google.com",
+            client_id="my-client-id",
+            client_secret="secret")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: OAuth client ID

@@ -21,6 +21,40 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ * 
+ * ## Example Usage - Monitoring App Engine Service
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ * });
+ * const myapp = new gcp.appengine.StandardAppVersion("myapp", {
+ *     versionId: "v1",
+ *     service: "myapp",
+ *     runtime: "nodejs10",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.all([bucket.name, object.name]).apply(([bucketName, objectName]) => `https://storage.googleapis.com/${bucketName}/${objectName}`),
+ *         },
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     deleteServiceOnDestroy: false,
+ * });
+ * const srv = myapp.service.apply(service => gcp.monitoring.getAppEngineService({
+ *     moduleId: service,
+ * }));
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_monitoring_app_engine_service.html.markdown.
  */

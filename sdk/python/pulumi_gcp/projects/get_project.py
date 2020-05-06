@@ -45,6 +45,16 @@ def get_project(filter=None,opts=None):
     [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
     for more details.
 
+    ## Example Usage - searching for projects about to be deleted in an org
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_org_projects = gcp.projects.get_project(filter="parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
+    deletion_candidate = gcp.organizations.get_project(project_id=my_org_projects.projects[0]["project_id"])
+    ```
+
 
     :param str filter: A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
     """

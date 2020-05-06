@@ -15,6 +15,121 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.hl7V2Stores)
  * * How-to Guides
  *     * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
+ * 
+ * ## Example Usage - Healthcare Hl7 V2 Store Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const default = new gcp.healthcare.Hl7Store("default", {
+ *     dataset: dataset.id,
+ *     notification_configs: [{
+ *         pubsubTopic: topic.id,
+ *     }],
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ * });
+ * ```
+ * ## Example Usage - Healthcare Hl7 V2 Store Parser Config
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const default = new gcp.healthcare.Hl7Store("default", {
+ *     dataset: dataset.id,
+ *     parser_config: {
+ *         allowNullHeader: false,
+ *         segmentTerminator: "Jw==",
+ *         schema: `{
+ *   "schemas": [{
+ *     "messageSchemaConfigs": {
+ *       "ADT_A01": {
+ *         "name": "ADT_A01",
+ *         "minOccurs": 1,
+ *         "maxOccurs": 1,
+ *         "members": [{
+ *             "segment": {
+ *               "type": "MSH",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
+ *             }
+ *           },
+ *           {
+ *             "segment": {
+ *               "type": "EVN",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
+ *             }
+ *           },
+ *           {
+ *             "segment": {
+ *               "type": "PID",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
+ *             }
+ *           },
+ *           {
+ *             "segment": {
+ *               "type": "ZPD",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
+ *             }
+ *           },
+ *           {
+ *             "segment": {
+ *               "type": "OBX"
+ *             }
+ *           },
+ *           {
+ *             "group": {
+ *               "name": "PROCEDURE",
+ *               "members": [{
+ *                   "segment": {
+ *                     "type": "PR1",
+ *                     "minOccurs": 1,
+ *                     "maxOccurs": 1
+ *                   }
+ *                 },
+ *                 {
+ *                   "segment": {
+ *                     "type": "ROL"
+ *                   }
+ *                 }
+ *               ]
+ *             }
+ *           },
+ *           {
+ *             "segment": {
+ *               "type": "PDA",
+ *               "maxOccurs": 1
+ *             }
+ *           }
+ *         ]
+ *       }
+ *     }
+ *   }],
+ *   "types": [{
+ *     "type": [{
+ *         "name": "ZPD",
+ *         "primitive": "VARIES"
+ *       }
+ * 
+ *     ]
+ *   }],
+ *   "ignoreMinOccurs": true
+ * }
+ * `,
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_hl7_v2_store.html.markdown.
  */

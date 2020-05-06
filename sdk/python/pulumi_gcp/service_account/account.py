@@ -49,11 +49,25 @@ class Account(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_id=None, description=None, display_name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
-        
+
         > Creation of service accounts is eventually consistent, and that can lead to
         errors when you try to apply ACLs to service accounts immediately after
         creation.
-        
+
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.service_account.Account("serviceAccount",
+            account_id="service_account_id",
+            display_name="Service Account")
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account id that is used to generate the service
@@ -66,8 +80,6 @@ class Account(pulumi.CustomResource):
                Can be updated without creating a new resource.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
                Defaults to the provider project configuration.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_account.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -106,7 +118,7 @@ class Account(pulumi.CustomResource):
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -125,12 +137,11 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
                Defaults to the provider project configuration.
         :param pulumi.Input[str] unique_id: The unique id of the service account.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_account.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_id"] = account_id
         __props__["description"] = description
         __props__["display_name"] = display_name

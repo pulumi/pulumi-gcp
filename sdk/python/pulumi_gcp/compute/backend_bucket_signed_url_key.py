@@ -42,6 +42,23 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         > **Warning:** All arguments including `key_value` will be stored in the raw
         state as plain-text.
 
+        ## Example Usage - Backend Bucket Signed Url Key
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", location="EU")
+        test_backend = gcp.compute.BackendBucket("testBackend",
+            description="Contains beautiful images",
+            bucket_name=bucket.name,
+            enable_cdn=True)
+        backend_key = gcp.compute.BackendBucketSignedUrlKey("backendKey",
+            key_value="pPsVemX8GM46QVeezid6Rw==",
+            backend_bucket=test_backend.name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_bucket: The backend bucket this signed URL key belongs.

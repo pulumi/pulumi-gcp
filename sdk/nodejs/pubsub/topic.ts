@@ -29,6 +29,17 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ## Example Usage - Pubsub Topic Cmek
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "global"});
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.selfLink});
+ * const example = new gcp.pubsub.Topic("example", {kmsKeyName: cryptoKey.selfLink});
+ * ```
  * ## Example Usage - Pubsub Topic Geo Restricted
  * 
  * 

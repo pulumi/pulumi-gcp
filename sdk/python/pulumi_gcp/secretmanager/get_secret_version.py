@@ -80,6 +80,16 @@ def get_secret_version(project=None,secret=None,version=None,opts=None):
     """
     Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets.versions).
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    basic = gcp.secretmanager.get_secret_version(secret="my-secret")
+    ```
 
 
 

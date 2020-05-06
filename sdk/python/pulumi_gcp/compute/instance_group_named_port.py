@@ -46,6 +46,37 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
 
+        ## Example Usage - Instance Group Named Port Gke
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        container_network = gcp.compute.Network("containerNetwork", auto_create_subnetworks=False)
+        container_subnetwork = gcp.compute.Subnetwork("containerSubnetwork",
+            region="us-central1",
+            network=container_network.name,
+            ip_cidr_range="10.0.36.0/24")
+        my_cluster = gcp.container.Cluster("myCluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            network=container_network.name,
+            subnetwork=container_subnetwork.name,
+            ip_allocation_policy={
+                "clusterIpv4CidrBlock": "/19",
+                "servicesIpv4CidrBlock": "/22",
+            })
+        my_port = gcp.compute.InstanceGroupNamedPort("myPort",
+            group=my_cluster.instance_group_urls[0],
+            zone="us-central1-a",
+            port=8080)
+        my_ports = gcp.compute.InstanceGroupNamedPort("myPorts",
+            group=my_cluster.instance_group_urls[0],
+            zone="us-central1-a",
+            port=4443)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group: The name of the instance group.

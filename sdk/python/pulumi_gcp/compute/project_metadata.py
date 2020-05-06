@@ -31,6 +31,20 @@ class ProjectMetadata(pulumi.CustomResource):
         key/value pairs within the project metadata rather than the entire set, then use
         google_compute_project_metadata_item.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.ProjectMetadata("default", metadata={
+            "13": "42",
+            "fizz": "buzz",
+            "foo": "bar",
+        })
+        ```
 
 
         :param str resource_name: The name of the resource.

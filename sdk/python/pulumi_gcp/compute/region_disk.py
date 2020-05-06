@@ -165,6 +165,32 @@ class RegionDisk(pulumi.CustomResource):
         > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+        ## Example Usage - Region Disk Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        disk = gcp.compute.Disk("disk",
+            image="debian-cloud/debian-9",
+            size=50,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapdisk = gcp.compute.Snapshot("snapdisk",
+            source_disk=disk.name,
+            zone="us-central1-a")
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            snapshot=snapdisk.self_link,
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when

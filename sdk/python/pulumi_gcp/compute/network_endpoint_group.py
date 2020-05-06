@@ -80,6 +80,25 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
+        ## Example Usage - Network Endpoint Group
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.self_link)
+        neg = gcp.compute.NetworkEndpointGroup("neg",
+            network=default_network.self_link,
+            subnetwork=default_subnetwork.self_link,
+            default_port="90",
+            zone="us-central1-a")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] default_port: The default port used if the port number is not specified in the

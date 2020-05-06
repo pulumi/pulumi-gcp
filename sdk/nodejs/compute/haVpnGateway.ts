@@ -17,6 +17,164 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
+ * 
+ * ## Example Usage - Ha Vpn Gateway Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const network1 = new gcp.compute.Network("network1", {autoCreateSubnetworks: false});
+ * const haGateway1 = new gcp.compute.HaVpnGateway("haGateway1", {
+ *     region: "us-central1",
+ *     network: network1.selfLink,
+ * });
+ * ```
+ * ## Example Usage - Ha Vpn Gateway Gcp To Gcp
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const network1 = new gcp.compute.Network("network1", {
+ *     routingMode: "GLOBAL",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const haGateway1 = new gcp.compute.HaVpnGateway("haGateway1", {
+ *     region: "us-central1",
+ *     network: network1.selfLink,
+ * });
+ * const network2 = new gcp.compute.Network("network2", {
+ *     routingMode: "GLOBAL",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const haGateway2 = new gcp.compute.HaVpnGateway("haGateway2", {
+ *     region: "us-central1",
+ *     network: network2.selfLink,
+ * });
+ * const network1Subnet1 = new gcp.compute.Subnetwork("network1Subnet1", {
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: network1.selfLink,
+ * });
+ * const network1Subnet2 = new gcp.compute.Subnetwork("network1Subnet2", {
+ *     ipCidrRange: "10.0.2.0/24",
+ *     region: "us-west1",
+ *     network: network1.selfLink,
+ * });
+ * const network2Subnet1 = new gcp.compute.Subnetwork("network2Subnet1", {
+ *     ipCidrRange: "192.168.1.0/24",
+ *     region: "us-central1",
+ *     network: network2.selfLink,
+ * });
+ * const network2Subnet2 = new gcp.compute.Subnetwork("network2Subnet2", {
+ *     ipCidrRange: "192.168.2.0/24",
+ *     region: "us-east1",
+ *     network: network2.selfLink,
+ * });
+ * const router1 = new gcp.compute.Router("router1", {
+ *     network: network1.name,
+ *     bgp: {
+ *         asn: 64514,
+ *     },
+ * });
+ * const router2 = new gcp.compute.Router("router2", {
+ *     network: network2.name,
+ *     bgp: {
+ *         asn: 64515,
+ *     },
+ * });
+ * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
+ *     region: "us-central1",
+ *     vpnGateway: haGateway1.selfLink,
+ *     peerGcpGateway: haGateway2.selfLink,
+ *     sharedSecret: "a secret message",
+ *     router: router1.selfLink,
+ *     vpnGatewayInterface: 0,
+ * });
+ * const tunnel2 = new gcp.compute.VPNTunnel("tunnel2", {
+ *     region: "us-central1",
+ *     vpnGateway: haGateway1.selfLink,
+ *     peerGcpGateway: haGateway2.selfLink,
+ *     sharedSecret: "a secret message",
+ *     router: router1.selfLink,
+ *     vpnGatewayInterface: 1,
+ * });
+ * const tunnel3 = new gcp.compute.VPNTunnel("tunnel3", {
+ *     region: "us-central1",
+ *     vpnGateway: haGateway2.selfLink,
+ *     peerGcpGateway: haGateway1.selfLink,
+ *     sharedSecret: "a secret message",
+ *     router: router2.selfLink,
+ *     vpnGatewayInterface: 0,
+ * });
+ * const tunnel4 = new gcp.compute.VPNTunnel("tunnel4", {
+ *     region: "us-central1",
+ *     vpnGateway: haGateway2.selfLink,
+ *     peerGcpGateway: haGateway1.selfLink,
+ *     sharedSecret: "a secret message",
+ *     router: router2.selfLink,
+ *     vpnGatewayInterface: 1,
+ * });
+ * const router1Interface1 = new gcp.compute.RouterInterface("router1Interface1", {
+ *     router: router1.name,
+ *     region: "us-central1",
+ *     ipRange: "169.254.0.1/30",
+ *     vpnTunnel: tunnel1.name,
+ * });
+ * const router1Peer1 = new gcp.compute.RouterPeer("router1Peer1", {
+ *     router: router1.name,
+ *     region: "us-central1",
+ *     peerIpAddress: "169.254.0.2",
+ *     peerAsn: 64515,
+ *     advertisedRoutePriority: 100,
+ *     "interface": router1Interface1.name,
+ * });
+ * const router1Interface2 = new gcp.compute.RouterInterface("router1Interface2", {
+ *     router: router1.name,
+ *     region: "us-central1",
+ *     ipRange: "169.254.1.1/30",
+ *     vpnTunnel: tunnel2.name,
+ * });
+ * const router1Peer2 = new gcp.compute.RouterPeer("router1Peer2", {
+ *     router: router1.name,
+ *     region: "us-central1",
+ *     peerIpAddress: "169.254.1.2",
+ *     peerAsn: 64515,
+ *     advertisedRoutePriority: 100,
+ *     "interface": router1Interface2.name,
+ * });
+ * const router2Interface1 = new gcp.compute.RouterInterface("router2Interface1", {
+ *     router: router2.name,
+ *     region: "us-central1",
+ *     ipRange: "169.254.0.1/30",
+ *     vpnTunnel: tunnel3.name,
+ * });
+ * const router2Peer1 = new gcp.compute.RouterPeer("router2Peer1", {
+ *     router: router2.name,
+ *     region: "us-central1",
+ *     peerIpAddress: "169.254.0.2",
+ *     peerAsn: 64514,
+ *     advertisedRoutePriority: 100,
+ *     "interface": router2Interface1.name,
+ * });
+ * const router2Interface2 = new gcp.compute.RouterInterface("router2Interface2", {
+ *     router: router2.name,
+ *     region: "us-central1",
+ *     ipRange: "169.254.1.1/30",
+ *     vpnTunnel: tunnel4.name,
+ * });
+ * const router2Peer2 = new gcp.compute.RouterPeer("router2Peer2", {
+ *     router: router2.name,
+ *     region: "us-central1",
+ *     peerIpAddress: "169.254.1.2",
+ *     peerAsn: 64514,
+ *     advertisedRoutePriority: 100,
+ *     "interface": router2Interface2.name,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ha_vpn_gateway.html.markdown.
  */

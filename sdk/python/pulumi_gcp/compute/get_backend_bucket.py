@@ -82,6 +82,16 @@ def get_backend_bucket(name=None,project=None,opts=None):
     """
     Get information about a BackendBucket.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_backend_bucket = gcp.compute.get_backend_bucket(name="my-backend")
+    ```
 
 
 

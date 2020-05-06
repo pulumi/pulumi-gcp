@@ -43,6 +43,17 @@ def get_transfer_project_servie_account(project=None,opts=None):
     """
     Use this data source to retrieve Storage Transfer service account for this project
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.storage.get_transfer_project_servie_account()
+    pulumi.export("defaultAccount", default.email)
+    ```
 
 
 

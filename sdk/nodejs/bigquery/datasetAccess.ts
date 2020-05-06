@@ -21,6 +21,48 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
  * * How-to Guides
  *     * [Controlling access to datasets](https://cloud.google.com/bigquery/docs/dataset-access-controls)
+ * 
+ * ## Example Usage - Bigquery Dataset Access Basic User
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "exampleDataset"});
+ * const bqowner = new gcp.serviceAccount.Account("bqowner", {accountId: "bqowner"});
+ * const access = new gcp.bigquery.DatasetAccess("access", {
+ *     datasetId: dataset.datasetId,
+ *     role: "OWNER",
+ *     userByEmail: bqowner.email,
+ * });
+ * ```
+ * ## Example Usage - Bigquery Dataset Access View
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const private = new gcp.bigquery.Dataset("private", {datasetId: "exampleDataset"});
+ * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {datasetId: "exampleDataset2"});
+ * const publicTable = new gcp.bigquery.Table("publicTable", {
+ *     datasetId: publicDataset.datasetId,
+ *     tableId: "exampleTable",
+ *     view: {
+ *         query: "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+ *         useLegacySql: false,
+ *     },
+ * });
+ * const access = new gcp.bigquery.DatasetAccess("access", {
+ *     datasetId: private.datasetId,
+ *     view: {
+ *         projectId: publicTable.project,
+ *         datasetId: publicDataset.datasetId,
+ *         tableId: publicTable.tableId,
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset_access.html.markdown.
  */

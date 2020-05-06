@@ -86,6 +86,21 @@ class Application(pulumi.CustomResource):
            successfully deleted; this is a limitation of the provider, and will go away in the future.
            This provider is not able to delete App Engine applications.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="your-project-id",
+            org_id="1234567")
+        app = gcp.appengine.Application("app",
+            project=my_project.project_id,
+            location_id="us-central")
+        ```
 
 
         :param str resource_name: The name of the resource.

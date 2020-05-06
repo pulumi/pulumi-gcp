@@ -68,6 +68,16 @@ def get_network(name=None,project=None,opts=None):
     """
     Get a network within GCE from its name.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_network = gcp.compute.get_network(name="default-us-east1")
+    ```
 
 
 

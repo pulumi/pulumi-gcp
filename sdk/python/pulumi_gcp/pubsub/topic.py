@@ -55,6 +55,40 @@ class Topic(pulumi.CustomResource):
         * How-to Guides
             * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
 
+        ## Example Usage - Pubsub Topic Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", labels={
+            "foo": "bar",
+        })
+        ```
+        ## Example Usage - Pubsub Topic Cmek
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="global")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.self_link)
+        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.self_link)
+        ```
+        ## Example Usage - Pubsub Topic Geo Restricted
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", message_storage_policy={
+            "allowedPersistenceRegions": ["europe-west3"],
+        })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey to be used to protect access

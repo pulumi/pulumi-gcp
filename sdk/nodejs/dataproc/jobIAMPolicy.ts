@@ -17,6 +17,26 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * ## google\_pubsub\_subscription\_iam\_policy
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const editor = new gcp.dataproc.JobIAMPolicy("editor", {
+ *     project: "your-project",
+ *     region: "your-region",
+ *     jobId: "your-dataproc-job",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * 
  * ## google\_pubsub\_subscription\_iam\_binding
  * 
  * ```typescript

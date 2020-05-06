@@ -49,6 +49,33 @@ class GCPolicy(pulumi.CustomResource):
         [API](https://cloud.google.com/bigtable/docs/go/reference).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance", cluster=[{
+            "clusterId": "tf-instance-cluster",
+            "zone": "us-central1-b",
+            "numNodes": 3,
+            "storageType": "HDD",
+        }])
+        table = gcp.bigtable.Table("table",
+            instance_name=instance.name,
+            column_family=[{
+                "family": "name",
+            }])
+        policy = gcp.bigtable.GCPolicy("policy",
+            instance_name=instance.name,
+            table=table.name,
+            column_family="name",
+            max_age=[{
+                "days": 7,
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

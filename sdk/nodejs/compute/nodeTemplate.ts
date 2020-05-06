@@ -17,6 +17,43 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
  * * How-to Guides
  *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+ * 
+ * ## Example Usage - Node Template Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const central1a = gcp.compute.getNodeTypes({
+ *     zone: "us-central1-a",
+ * });
+ * const template = new gcp.compute.NodeTemplate("template", {
+ *     region: "us-central1",
+ *     nodeType: central1a.then(central1a => central1a.names[0]),
+ * });
+ * ```
+ * ## Example Usage - Node Template Server Binding
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const central1a = gcp.compute.getNodeTypes({
+ *     zone: "us-central1-a",
+ * });
+ * const template = new gcp.compute.NodeTemplate("template", {
+ *     region: "us-central1",
+ *     nodeType: central1a.then(central1a => central1a.names[0]),
+ *     nodeAffinityLabels: {
+ *         foo: "baz",
+ *     },
+ *     server_binding: {
+ *         type: "RESTART_NODE_ON_MINIMAL_SERVERS",
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_template.html.markdown.
  */

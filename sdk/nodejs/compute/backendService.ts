@@ -23,6 +23,69 @@ import * as utilities from "../utilities";
  * 
  * > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
  * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * 
+ * ## Example Usage - Backend Service Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {healthChecks: [defaultHttpHealthCheck.selfLink]});
+ * ```
+ * ## Example Usage - Backend Service Traffic Director Round Robin
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
+ *     port: 80,
+ * }});
+ * const default = new gcp.compute.BackendService("default", {
+ *     healthChecks: [healthCheck.selfLink],
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     localityLbPolicy: "ROUND_ROBIN",
+ * });
+ * ```
+ * ## Example Usage - Backend Service Traffic Director Ring Hash
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
+ *     port: 80,
+ * }});
+ * const default = new gcp.compute.BackendService("default", {
+ *     healthChecks: [healthCheck.selfLink],
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     localityLbPolicy: "RING_HASH",
+ *     sessionAffinity: "HTTP_COOKIE",
+ *     circuit_breakers: {
+ *         maxConnections: 10,
+ *     },
+ *     consistent_hash: {
+ *         http_cookie: {
+ *             ttl: {
+ *                 seconds: 11,
+ *                 nanos: 1111,
+ *             },
+ *             name: "mycookie",
+ *         },
+ *     },
+ *     outlier_detection: {
+ *         consecutiveErrors: 2,
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
  */

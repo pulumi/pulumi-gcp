@@ -37,6 +37,60 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
  *     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
+ * 
+ * ## Example Usage - Subnetwork Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const custom-test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
+ * const network-with-private-secondary-ip-ranges = new gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges", {
+ *     ipCidrRange: "10.2.0.0/16",
+ *     region: "us-central1",
+ *     network: custom-test.selfLink,
+ *     secondary_ip_range: [{
+ *         rangeName: "tf-test-secondary-range-update1",
+ *         ipCidrRange: "192.168.10.0/24",
+ *     }],
+ * });
+ * ```
+ * ## Example Usage - Subnetwork Logging Config
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const custom-test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
+ * const subnet-with-logging = new gcp.compute.Subnetwork("subnet-with-logging", {
+ *     ipCidrRange: "10.2.0.0/16",
+ *     region: "us-central1",
+ *     network: custom-test.selfLink,
+ *     log_config: {
+ *         aggregationInterval: "INTERVAL_10_MIN",
+ *         flowSampling: 0.5,
+ *         metadata: "INCLUDE_ALL_METADATA",
+ *     },
+ * });
+ * ```
+ * ## Example Usage - Subnetwork Internal L7lb
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const custom-test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
+ * const network-for-l7lb = new gcp.compute.Subnetwork("network-for-l7lb", {
+ *     ipCidrRange: "10.0.0.0/22",
+ *     region: "us-central1",
+ *     purpose: "INTERNAL_HTTPS_LOAD_BALANCER",
+ *     role: "ACTIVE",
+ *     network: custom-test.selfLink,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork.html.markdown.
  */

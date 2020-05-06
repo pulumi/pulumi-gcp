@@ -11,6 +11,42 @@ import * as utilities from "../utilities";
  * which will be applied to this disk for scheduling snapshot creation.
  * 
  * > **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`).
+ * 
+ * 
+ * 
+ * ## Example Usage - Disk Resource Policy Attachment Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const ssd = new gcp.compute.Disk("ssd", {
+ *     image: myImage.then(myImage => myImage.selfLink),
+ *     size: 50,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const attachment = new gcp.compute.DiskResourcePolicyAttachment("attachment", {
+ *     disk: ssd.name,
+ *     zone: "us-central1-a",
+ * });
+ * const policy = new gcp.compute.ResourcePolicy("policy", {
+ *     region: "us-central1",
+ *     snapshot_schedule_policy: {
+ *         schedule: {
+ *             daily_schedule: {
+ *                 daysInCycle: 1,
+ *                 startTime: "04:00",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_disk_resource_policy_attachment.html.markdown.
  */

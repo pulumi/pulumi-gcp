@@ -18,6 +18,33 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/updatePeering)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
+ * 
+ * ## Example Usage - Network Peering Routes Config Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const networkPrimary = new gcp.compute.Network("networkPrimary", {autoCreateSubnetworks: "false"});
+ * const networkSecondary = new gcp.compute.Network("networkSecondary", {autoCreateSubnetworks: "false"});
+ * const peeringPrimary = new gcp.compute.NetworkPeering("peeringPrimary", {
+ *     network: networkPrimary.selfLink,
+ *     peerNetwork: networkSecondary.selfLink,
+ *     importCustomRoutes: true,
+ *     exportCustomRoutes: true,
+ * });
+ * const peeringPrimaryRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes", {
+ *     peering: peeringPrimary.name,
+ *     network: networkPrimary.name,
+ *     importCustomRoutes: true,
+ *     exportCustomRoutes: true,
+ * });
+ * const peeringSecondary = new gcp.compute.NetworkPeering("peeringSecondary", {
+ *     network: networkSecondary.selfLink,
+ *     peerNetwork: networkPrimary.selfLink,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering_routes_config.html.markdown.
  */

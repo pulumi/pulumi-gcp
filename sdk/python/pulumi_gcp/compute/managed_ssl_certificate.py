@@ -90,6 +90,54 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
         In conclusion: Be extremely cautious.
 
+        ## Example Usage - Managed Ssl Certificate Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_managed_ssl_certificate = gcp.compute.ManagedSslCertificate("defaultManagedSslCertificate", managed={
+            "domains": ["sslcert.tf-test.club."],
+        })
+        default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_http_health_check.self_link])
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            description="a description",
+            default_service=default_backend_service.self_link,
+            host_rule=[{
+                "hosts": ["sslcert.tf-test.club"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.self_link,
+                "path_rule": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.self_link,
+                }],
+            }])
+        default_target_https_proxy = gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy",
+            url_map=default_url_map.self_link,
+            ssl_certificates=[default_managed_ssl_certificate.self_link])
+        zone = gcp.dns.ManagedZone("zone", dns_name="sslcert.tf-test.club.")
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            target=default_target_https_proxy.self_link,
+            port_range=443)
+        set = gcp.dns.RecordSet("set",
+            type="A",
+            ttl=3600,
+            managed_zone=zone.name,
+            rrdatas=[default_global_forwarding_rule.ip_address])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] certificate_id: The unique identifier for the resource.

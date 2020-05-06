@@ -91,7 +91,11 @@ namespace Pulumi.Gcp.Iot
         {
             var defaultOptions = new CustomResourceOptions
             {
-                Version = Utilities.Version,                Aliases = { new Alias { Type = "gcp:kms/registry:Registry"} },
+                Version = Utilities.Version,
+                Aliases =
+                {
+                    new Alias { Type = "gcp:kms/registry:Registry"},
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

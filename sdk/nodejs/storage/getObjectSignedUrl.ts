@@ -25,6 +25,26 @@ import * as utilities from "../utilities";
  * }, { async: true }));
  * const vm = new gcp.compute.Instance("vm", {});
  * ```
+ * 
+ * ## Full Example
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ * 
+ * const getUrl = gcp.storage.getObjectSignedUrl({
+ *     bucket: "friedChicken",
+ *     path: "path/to/file",
+ *     contentMd5: "pRviqwS4c4OTJRTe03FD1w==",
+ *     contentType: "text/plain",
+ *     duration: "2d",
+ *     credentials: fs.readFileSync("path/to/credentials.json"),
+ *     extensionHeaders: {
+ *         "x-goog-if-generation-match": 1,
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/signed_url.html.markdown.
  */

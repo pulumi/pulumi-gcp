@@ -62,6 +62,29 @@ class AttachedDisk(pulumi.CustomResource):
 
         **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_instance = gcp.compute.Instance("defaultInstance",
+            machine_type="n1-standard-1",
+            zone="us-west1-a",
+            boot_disk={
+                "initialize_params": {
+                    "image": "debian-cloud/debian-9",
+                },
+            },
+            network_interface=[{
+                "network": "default",
+            }])
+        default_attached_disk = gcp.compute.AttachedDisk("defaultAttachedDisk",
+            disk=google_compute_disk["default"]["id"],
+            instance=default_instance.id)
+        ```
 
 
         :param str resource_name: The name of the resource.

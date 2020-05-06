@@ -13,6 +13,21 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
+ * 
+ * ## Example Usage - Os Login Ssh Key Provided User
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ * 
+ * const me = gcp.organizations.getClientOpenIdUserInfo({});
+ * const cache = new gcp.oslogin.SshPublicKey("cache", {
+ *     user: me.then(me => me.email),
+ *     key: fs.readFileSync("path/to/id_rsa.pub"),
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/os_login_ssh_public_key.html.markdown.
  */

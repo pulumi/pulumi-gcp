@@ -17,6 +17,23 @@ import * as utilities from "../utilities";
  * 
  * > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const mySink = new gcp.logging.ProjectSink("my-sink", {
+ *     // Can export to pubsub, cloud storage, or bigquery
+ *     destination: "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
+ *     // Log all WARN or higher severity messages relating to instances
+ *     filter: "resource.type = gceInstance AND severity >= WARN",
+ *     // Use a unique writer (creates a unique service account used for writing)
+ *     uniqueWriterIdentity: true,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_project_sink.html.markdown.
  */

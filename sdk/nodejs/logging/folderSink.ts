@@ -14,6 +14,29 @@ import * as utilities from "../utilities";
  * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * granted to the credentials used with this provider.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const log-bucket = new gcp.storage.Bucket("log-bucket", {});
+ * const my-folder = new gcp.organizations.Folder("my-folder", {
+ *     displayName: "My folder",
+ *     parent: "organizations/123456",
+ * });
+ * const my-sink = new gcp.logging.FolderSink("my-sink", {
+ *     folder: my-folder.name,
+ *     destination: log-bucket.name.apply(name => `storage.googleapis.com/${name}`),
+ *     filter: "resource.type = gceInstance AND severity >= WARN",
+ * });
+ * const log-writer = new gcp.projects.IAMBinding("log-writer", {
+ *     role: "roles/storage.objectCreator",
+ *     members: [my-sink.writerIdentity],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_folder_sink.html.markdown.
  */

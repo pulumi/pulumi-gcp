@@ -66,6 +66,21 @@ class OrganizationPolicy(pulumi.CustomResource):
         documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
         [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        serial_port_policy = gcp.folder.OrganizationPolicy("serialPortPolicy",
+            boolean_policy={
+                "enforced": True,
+            },
+            constraint="compute.disableSerialPortAccess",
+            folder="folders/123456789")
+        ```
 
 
         :param str resource_name: The name of the resource.

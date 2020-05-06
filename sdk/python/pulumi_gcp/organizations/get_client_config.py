@@ -59,6 +59,18 @@ class AwaitableGetClientConfigResult(GetClientConfigResult):
 def get_client_config(opts=None):
     """
     Use this data source to access the configuration of the Google Cloud provider.
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    current = gcp.organizations.get_client_config()
+    pulumi.export("project", current.project)
+    ```
     """
     __args__ = dict()
 

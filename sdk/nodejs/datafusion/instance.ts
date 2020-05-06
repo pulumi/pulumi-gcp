@@ -14,6 +14,42 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+ * 
+ * ## Example Usage - Data Fusion Instance Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const basicInstance = new gcp.datafusion.Instance("basicInstance", {
+ *     region: "us-central1",
+ *     type: "BASIC",
+ * });
+ * ```
+ * ## Example Usage - Data Fusion Instance Full
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const extendedInstance = new gcp.datafusion.Instance("extendedInstance", {
+ *     description: "My Data Fusion instance",
+ *     region: "us-central1",
+ *     type: "BASIC",
+ *     enableStackdriverLogging: true,
+ *     enableStackdriverMonitoring: true,
+ *     labels: {
+ *         example_key: "exampleValue",
+ *     },
+ *     privateInstance: true,
+ *     network_config: {
+ *         network: "default",
+ *         ipAllocation: "10.89.48.0/22",
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/data_fusion_instance.html.markdown.
  */

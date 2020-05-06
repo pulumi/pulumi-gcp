@@ -13,7 +13,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, account_id=None, display_name=None, email=None, name=None, project=None, unique_id=None, id=None):
+    def __init__(__self__, account_id=None, display_name=None, email=None, id=None, name=None, project=None, unique_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         __self__.account_id = account_id
@@ -31,6 +31,12 @@ class GetAccountResult:
         should be referenced from any `organizations.getIAMPolicy` data sources
         that would grant the service account privileges.
         """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        The provider-assigned unique ID for this managed resource.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -46,12 +52,6 @@ class GetAccountResult:
         """
         The unique id of the service account.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -61,23 +61,35 @@ class AwaitableGetAccountResult(GetAccountResult):
             account_id=self.account_id,
             display_name=self.display_name,
             email=self.email,
+            id=self.id,
             name=self.name,
             project=self.project,
-            unique_id=self.unique_id,
-            id=self.id)
+            unique_id=self.unique_id)
 
 def get_account(account_id=None,project=None,opts=None):
     """
     Get the service account from a project. For more information see
     the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
-    
+
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    object_viewer = gcp.serviceAccount.get_account(account_id="object-viewer")
+    ```
+
+
+
     :param str account_id: The Service account id.  (This is the part of the service account's email field that comes before the @ symbol.)
     :param str project: The ID of the project that the service account is present in.
            Defaults to the provider project configuration.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['accountId'] = account_id
     __args__['project'] = project
@@ -91,7 +103,7 @@ def get_account(account_id=None,project=None,opts=None):
         account_id=__ret__.get('accountId'),
         display_name=__ret__.get('displayName'),
         email=__ret__.get('email'),
+        id=__ret__.get('id'),
         name=__ret__.get('name'),
         project=__ret__.get('project'),
-        unique_id=__ret__.get('uniqueId'),
-        id=__ret__.get('id'))
+        unique_id=__ret__.get('uniqueId'))

@@ -71,6 +71,29 @@ class TargetInstance(pulumi.CustomResource):
         * How-to Guides
             * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
 
+        ## Example Usage - Target Instance Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vmimage = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        target_vm = gcp.compute.Instance("target-vm",
+            machine_type="n1-standard-1",
+            zone="us-central1-a",
+            boot_disk={
+                "initialize_params": {
+                    "image": vmimage.self_link,
+                },
+            },
+            network_interface=[{
+                "network": "default",
+            }])
+        default = gcp.compute.TargetInstance("default", instance=target_vm.self_link)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.

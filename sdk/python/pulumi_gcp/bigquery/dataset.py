@@ -117,6 +117,54 @@ class Dataset(pulumi.CustomResource):
         * How-to Guides
             * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
 
+        ## Example Usage - Bigquery Dataset Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bqowner = gcp.service_account.Account("bqowner", account_id="bqowner")
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            },
+            access=[
+                {
+                    "role": "OWNER",
+                    "userByEmail": bqowner.email,
+                },
+                {
+                    "role": "READER",
+                    "domain": "hashicorp.com",
+                },
+            ])
+        ```
+        ## Example Usage - Bigquery Dataset Cmek
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.self_link)
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            default_table_expiration_ms=3600000,
+            default_encryption_configuration={
+                "kmsKeyName": crypto_key.self_link,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] accesses: An array of objects that define dataset access for one or more entities.  Structure is documented below.

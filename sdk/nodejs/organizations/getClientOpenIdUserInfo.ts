@@ -18,6 +18,16 @@ import * as utilities from "../utilities";
  * > This resource will only work as expected if the provider is configured to
  * use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
  * receive an error otherwise.
+ * 
+ * ## Example Usage - exporting an email
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const me = gcp.organizations.getClientOpenIdUserInfo({});
+ * export const myEmail = me.then(me => me.email);
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_client_openid_userinfo.html.markdown.
  */

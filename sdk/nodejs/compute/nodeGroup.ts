@@ -20,6 +20,54 @@ import * as utilities from "../utilities";
  * number of nodes in a node group and changes to node group size either
  * through provider config or through external changes will cause
  * the provider to delete and recreate the node group.
+ * 
+ * ## Example Usage - Node Group Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const central1a = gcp.compute.getNodeTypes({
+ *     zone: "us-central1-a",
+ * });
+ * const soletenant-tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ *     region: "us-central1",
+ *     nodeType: central1a.then(central1a => central1a.names[0]),
+ * });
+ * const nodes = new gcp.compute.NodeGroup("nodes", {
+ *     zone: "us-central1-a",
+ *     description: "example gcp.compute.NodeGroup for the Google Provider",
+ *     size: 1,
+ *     nodeTemplate: soletenant-tmpl.selfLink,
+ * });
+ * ```
+ * ## Example Usage - Node Group Autoscaling Policy
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const central1a = gcp.compute.getNodeTypes({
+ *     zone: "us-central1-a",
+ * });
+ * const soletenant-tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ *     region: "us-central1",
+ *     nodeType: central1a.then(central1a => central1a.names[0]),
+ * });
+ * const nodes = new gcp.compute.NodeGroup("nodes", {
+ *     zone: "us-central1-a",
+ *     description: "example gcp.compute.NodeGroup for the Google Provider",
+ *     size: 1,
+ *     nodeTemplate: soletenant-tmpl.selfLink,
+ *     autoscaling_policy: {
+ *         mode: "ON",
+ *         minNodes: 1,
+ *         maxNodes: 10,
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_node_group.html.markdown.
  */

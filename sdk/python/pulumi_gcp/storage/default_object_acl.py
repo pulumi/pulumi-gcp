@@ -36,6 +36,22 @@ class DefaultObjectACL(pulumi.CustomResource):
         > Want fine-grained control over default object ACLs? Use `storage.DefaultObjectAccessControl`
         to control individual role entity pairs.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store_default_acl = gcp.storage.DefaultObjectACL("image-store-default-acl",
+            bucket=image_store.name,
+            role_entities=[
+                "OWNER:user-my.email@gmail.com",
+                "READER:group-mygroup",
+            ])
+        ```
 
 
         :param str resource_name: The name of the resource.

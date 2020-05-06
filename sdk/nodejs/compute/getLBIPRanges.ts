@@ -11,6 +11,25 @@ import * as utilities from "../utilities";
  * 
  * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const ranges = gcp.compute.getLBIPRanges({});
+ * const lb = new gcp.compute.Firewall("lb", {
+ *     network: google_compute_network.main.name,
+ *     allow: [{
+ *         protocol: "tcp",
+ *         ports: ["80"],
+ *     }],
+ *     sourceRanges: ranges.then(ranges => ranges.networks),
+ *     targetTags: ["InstanceBehindLoadBalancer"],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_lb_ip_ranges.html.markdown.
  */

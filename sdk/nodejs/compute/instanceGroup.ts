@@ -10,6 +10,96 @@ import * as utilities from "../utilities";
  * Creates a group of dissimilar Compute Engine virtual machine instances.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+ * 
+ * 
+ * ## Example Usage - Empty instance group
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const test = new gcp.compute.InstanceGroup("test", {
+ *     description: "Test instance group",
+ *     zone: "us-central1-a",
+ *     network: google_compute_network["default"].self_link,
+ * });
+ * ```
+ * 
+ * ### Example Usage - With instances and named ports
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const webservers = new gcp.compute.InstanceGroup("webservers", {
+ *     description: "Test instance group",
+ *     instances: [
+ *         google_compute_instance.test.self_link,
+ *         google_compute_instance.test2.self_link,
+ *     ],
+ *     named_port: [
+ *         {
+ *             name: "http",
+ *             port: "8080",
+ *         },
+ *         {
+ *             name: "https",
+ *             port: "8443",
+ *         },
+ *     ],
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ * 
+ * ### Example Usage - Recreating an instance group in use
+ * Recreating an instance group that's in use by another resource will give a
+ * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+ * as shown in this example to avoid this type of error.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const debianImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const stagingVm = new gcp.compute.Instance("stagingVm", {
+ *     machineType: "n1-standard-1",
+ *     zone: "us-central1-c",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: debianImage.then(debianImage => debianImage.selfLink),
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const stagingGroup = new gcp.compute.InstanceGroup("stagingGroup", {
+ *     zone: "us-central1-c",
+ *     instances: [stagingVm.selfLink],
+ *     named_port: [
+ *         {
+ *             name: "http",
+ *             port: "8080",
+ *         },
+ *         {
+ *             name: "https",
+ *             port: "8443",
+ *         },
+ *     ],
+ * });
+ * const stagingHealth = new gcp.compute.HttpsHealthCheck("stagingHealth", {requestPath: "/health_check"});
+ * const stagingService = new gcp.compute.BackendService("stagingService", {
+ *     portName: "https",
+ *     protocol: "HTTPS",
+ *     backend: [{
+ *         group: stagingGroup.selfLink,
+ *     }],
+ *     healthChecks: [stagingHealth.selfLink],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group.html.markdown.
  */

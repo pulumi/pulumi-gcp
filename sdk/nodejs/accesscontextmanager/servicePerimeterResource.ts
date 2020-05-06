@@ -22,6 +22,30 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
  * * How-to Guides
  *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+ * 
+ * ## Example Usage - Access Context Manager Service Perimeter Resource Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const access-policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * const service-perimeter-resourceServicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter-resourceServicePerimeter", {
+ *     parent: access-policy.name.apply(name => `accessPolicies/${name}`),
+ *     title: "restrictAll",
+ *     status: {
+ *         restrictedServices: ["storage.googleapis.com"],
+ *     },
+ * });
+ * const service-perimeter-resourceServicePerimeterResource = new gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource", {
+ *     perimeterName: service-perimeter-resourceServicePerimeter.name,
+ *     resource: "projects/987654321",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_service_perimeter_resource.html.markdown.
  */

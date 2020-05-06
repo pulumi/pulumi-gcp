@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about a Google Cloud Organization.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const org = gcp.organizations.getOrganization({
+ *     domain: "example.com",
+ * });
+ * const sales = new gcp.organizations.Folder("sales", {
+ *     displayName: "Sales",
+ *     parent: org.then(org => org.name),
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_organization.html.markdown.
  */

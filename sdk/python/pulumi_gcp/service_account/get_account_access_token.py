@@ -13,7 +13,7 @@ class GetAccountAccessTokenResult:
     """
     A collection of values returned by getAccountAccessToken.
     """
-    def __init__(__self__, access_token=None, delegates=None, lifetime=None, scopes=None, target_service_account=None, id=None):
+    def __init__(__self__, access_token=None, delegates=None, id=None, lifetime=None, scopes=None, target_service_account=None):
         if access_token and not isinstance(access_token, str):
             raise TypeError("Expected argument 'access_token' to be a str")
         __self__.access_token = access_token
@@ -23,6 +23,12 @@ class GetAccountAccessTokenResult:
         if delegates and not isinstance(delegates, list):
             raise TypeError("Expected argument 'delegates' to be a list")
         __self__.delegates = delegates
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        The provider-assigned unique ID for this managed resource.
+        """
         if lifetime and not isinstance(lifetime, str):
             raise TypeError("Expected argument 'lifetime' to be a str")
         __self__.lifetime = lifetime
@@ -32,12 +38,6 @@ class GetAccountAccessTokenResult:
         if target_service_account and not isinstance(target_service_account, str):
             raise TypeError("Expected argument 'target_service_account' to be a str")
         __self__.target_service_account = target_service_account
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetAccountAccessTokenResult(GetAccountAccessTokenResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,26 +46,28 @@ class AwaitableGetAccountAccessTokenResult(GetAccountAccessTokenResult):
         return GetAccountAccessTokenResult(
             access_token=self.access_token,
             delegates=self.delegates,
+            id=self.id,
             lifetime=self.lifetime,
             scopes=self.scopes,
-            target_service_account=self.target_service_account,
-            id=self.id)
+            target_service_account=self.target_service_account)
 
 def get_account_access_token(delegates=None,lifetime=None,scopes=None,target_service_account=None,opts=None):
     """
     This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
-    
+
     For more information see
     [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
-    
+
+
+
+
     :param list delegates: Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
     :param str lifetime: Lifetime of the impersonated token (defaults to its max: `3600s`).
     :param list scopes: The scopes the new credential should have (e.g. `["storage-ro", "cloud-platform"]`)
     :param str target_service_account: The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/service_account_access_token.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['delegates'] = delegates
     __args__['lifetime'] = lifetime
@@ -80,7 +82,7 @@ def get_account_access_token(delegates=None,lifetime=None,scopes=None,target_ser
     return AwaitableGetAccountAccessTokenResult(
         access_token=__ret__.get('accessToken'),
         delegates=__ret__.get('delegates'),
+        id=__ret__.get('id'),
         lifetime=__ret__.get('lifetime'),
         scopes=__ret__.get('scopes'),
-        target_service_account=__ret__.get('targetServiceAccount'),
-        id=__ret__.get('id'))
+        target_service_account=__ret__.get('targetServiceAccount'))

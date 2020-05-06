@@ -58,6 +58,18 @@ def get_billing_account(billing_account=None,display_name=None,open=None,opts=No
     """
     Use this data source to get information about a Google Billing Account.
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    acct = gcp.organizations.get_billing_account(display_name="My Billing Account",
+        open=True)
+    my_project = gcp.organizations.Project("myProject",
+        project_id="your-project-id",
+        org_id="1234567",
+        billing_account=acct.id)
+    ```
+
 
     :param str billing_account: The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
     :param str display_name: The display name of the billing account.

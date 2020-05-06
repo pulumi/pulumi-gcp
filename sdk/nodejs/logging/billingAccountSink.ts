@@ -16,6 +16,24 @@ import * as utilities from "../utilities";
  * the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
  * typical IAM roles granted on a project.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const log-bucket = new gcp.storage.Bucket("log-bucket", {});
+ * const my-sink = new gcp.logging.BillingAccountSink("my-sink", {
+ *     billingAccount: "ABCDEF-012345-GHIJKL",
+ *     destination: log-bucket.name.apply(name => `storage.googleapis.com/${name}`),
+ * });
+ * const log-writer = new gcp.projects.IAMBinding("log-writer", {
+ *     role: "roles/storage.objectCreator",
+ *     members: [my-sink.writerIdentity],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_billing_account_sink.html.markdown.
  */

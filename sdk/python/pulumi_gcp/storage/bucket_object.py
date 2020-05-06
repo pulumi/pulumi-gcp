@@ -86,6 +86,18 @@ class BucketObject(pulumi.CustomResource):
         [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        picture = gcp.storage.BucketObject("picture",
+            bucket="image-store",
+            source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"))
+        ```
 
 
         :param str resource_name: The name of the resource.

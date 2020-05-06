@@ -18,6 +18,55 @@ import * as utilities from "../utilities";
  * 
  * > **Warning:** All arguments including `keyValue` will be stored in the raw
  * state as plain-text.
+ * 
+ * ## Example Usage - Backend Service Signed Url Key
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const webserver = new gcp.compute.InstanceTemplate("webserver", {
+ *     machineType: "n1-standard-1",
+ *     network_interface: [{
+ *         network: "default",
+ *     }],
+ *     disk: [{
+ *         sourceImage: "debian-cloud/debian-9",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ * });
+ * const webservers = new gcp.compute.InstanceGroupManager("webservers", {
+ *     version: [{
+ *         instanceTemplate: webserver.selfLink,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "webserver",
+ *     zone: "us-central1-f",
+ *     targetSize: 1,
+ * });
+ * const default = new gcp.compute.HttpHealthCheck("default", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const exampleBackend = new gcp.compute.BackendService("exampleBackend", {
+ *     description: "Our company website",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     enableCdn: true,
+ *     backend: [{
+ *         group: webservers.instanceGroup,
+ *     }],
+ *     healthChecks: [default.selfLink],
+ * });
+ * const backendKey = new gcp.compute.BackendServiceSignedUrlKey("backendKey", {
+ *     keyValue: "pPsVemX8GM46QVeezid6Rw==",
+ *     backendService: exampleBackend.name,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service_signed_url_key.html.markdown.
  */
