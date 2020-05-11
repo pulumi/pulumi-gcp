@@ -30,6 +30,18 @@ class ProjectMetadataItem(pulumi.CustomResource):
         manage a single key/value setting in the provider rather than the entire
         project metadata map.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.ProjectMetadataItem("default",
+            key="my_metadata",
+            value="my_value")
+        ```
 
 
         :param str resource_name: The name of the resource.

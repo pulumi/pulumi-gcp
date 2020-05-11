@@ -21,6 +21,21 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
  * * How-to Guides
  *     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+ * 
+ * ## Example Usage - Backend Bucket Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const imageBucket = new gcp.storage.Bucket("imageBucket", {location: "EU"});
+ * const imageBackend = new gcp.compute.BackendBucket("imageBackend", {
+ *     description: "Contains beautiful images",
+ *     bucketName: imageBucket.name,
+ *     enableCdn: true,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_bucket.html.markdown.
  */

@@ -129,6 +129,54 @@ class Bucket(pulumi.CustomResource):
         **Note**: If the project id is not set on the resource or in the provider block it will be dynamically
         determined which will require enabling the compute api.
 
+
+        ## Example Usage - creating a private bucket in standard storage, in the EU region. Bucket configured as static website and CORS configurations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        static_site = gcp.storage.Bucket("static-site",
+            bucket_policy_only=True,
+            cors=[{
+                "maxAgeSeconds": 3600,
+                "method": [
+                    "GET",
+                    "HEAD",
+                    "PUT",
+                    "POST",
+                    "DELETE",
+                ],
+                "origin": ["http://image-store.com"],
+                "responseHeader": ["*"],
+            }],
+            force_destroy=True,
+            location="EU",
+            website={
+                "mainPageSuffix": "index.html",
+                "notFoundPage": "404.html",
+            })
+        ```
+
+        ## Example Usage - Life cycle settings for storage bucket objects
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        auto_expire = gcp.storage.Bucket("auto-expire",
+            force_destroy=True,
+            lifecycle_rules=[{
+                "action": {
+                    "type": "Delete",
+                },
+                "condition": {
+                    "age": "3",
+                },
+            }],
+            location="US")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] bucket_policy_only: Enables [Bucket Policy Only](https://cloud.google.com/storage/docs/bucket-policy-only) access to a bucket.

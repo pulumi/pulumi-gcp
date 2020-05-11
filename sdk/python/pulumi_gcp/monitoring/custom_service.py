@@ -51,6 +51,21 @@ class CustomService(pulumi.CustomResource):
             * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
+        ## Example Usage - Monitoring Service Custom
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom = gcp.monitoring.CustomService("custom",
+            display_name="My Custom Service custom-srv",
+            service_id="custom-srv",
+            telemetry={
+                "resourceName": "//product.googleapis.com/foo/foo/services/test",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.

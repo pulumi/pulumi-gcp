@@ -52,6 +52,20 @@ def get_zones(project=None,region=None,status=None,opts=None):
     Provides access to available Google Compute zones in a region for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    available = gcp.compute.get_zones()
+    foo = []
+    for range in [{"value": i} for i in range(0, len(available.names))]:
+        foo.append(gcp.compute.InstanceGroupManager(f"foo-{range['value']}",
+            instance_template=google_compute_instance_template["foobar"]["self_link"],
+            base_instance_name=f"foobar-{range['value']}",
+            zone=available.names[range["value"]],
+            target_size=1))
+    ```
+
 
     :param str project: Project from which to list available zones. Defaults to project declared in the provider.
     :param str region: Region from which to list available zones. Defaults to region declared in the provider.

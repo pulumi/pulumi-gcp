@@ -15,6 +15,101 @@ import * as utilities from "../utilities";
  * In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider 
  * will not actually remove NS records during destroy but will report that it did.
  * 
+ * ## Example Usage
+ * 
+ * ### Binding a DNS name to the ephemeral IP of a new instance:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const frontendInstance = new gcp.compute.Instance("frontendInstance", {
+ *     machineType: "g1-small",
+ *     zone: "us-central1-b",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: "default",
+ *         access_config: [{}],
+ *     }],
+ * });
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const frontendRecordSet = new gcp.dns.RecordSet("frontendRecordSet", {
+ *     type: "A",
+ *     ttl: 300,
+ *     managedZone: prod.name,
+ *     rrdatas: [frontendInstance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].accessConfigs?[0]?.natIp)],
+ * });
+ * ```
+ * 
+ * ### Adding an A record
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const recordSet = new gcp.dns.RecordSet("recordSet", {
+ *     managedZone: prod.name,
+ *     type: "A",
+ *     ttl: 300,
+ *     rrdatas: ["8.8.8.8"],
+ * });
+ * ```
+ * 
+ * ### Adding an MX record
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const mx = new gcp.dns.RecordSet("mx", {
+ *     managedZone: prod.name,
+ *     type: "MX",
+ *     ttl: 3600,
+ *     rrdatas: [
+ *         "1 aspmx.l.google.com.",
+ *         "5 alt1.aspmx.l.google.com.",
+ *         "5 alt2.aspmx.l.google.com.",
+ *         "10 alt3.aspmx.l.google.com.",
+ *         "10 alt4.aspmx.l.google.com.",
+ *     ],
+ * });
+ * ```
+ * 
+ * ### Adding an SPF record
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const spf = new gcp.dns.RecordSet("spf", {
+ *     managedZone: prod.name,
+ *     type: "TXT",
+ *     ttl: 300,
+ *     rrdatas: ["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""],
+ * });
+ * ```
+ * 
+ * ### Adding a CNAME record
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const cname = new gcp.dns.RecordSet("cname", {
+ *     managedZone: prod.name,
+ *     type: "CNAME",
+ *     ttl: 300,
+ *     rrdatas: ["frontend.mydomain.com."],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_record_set.html.markdown.
  */

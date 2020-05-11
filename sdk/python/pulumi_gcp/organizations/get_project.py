@@ -70,6 +70,17 @@ def get_project(project_id=None,opts=None):
     For more information see
     [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    project = gcp.organizations.get_project()
+    pulumi.export("projectNumber", project.number)
+    ```
 
 
 

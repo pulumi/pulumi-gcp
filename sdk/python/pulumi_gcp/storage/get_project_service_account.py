@@ -54,6 +54,20 @@ def get_project_service_account(project=None,user_project=None,opts=None):
     For more information see
     [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    gcs_account = gcp.storage.get_project_service_account()
+    binding = gcp.pubsub.TopicIAMBinding("binding",
+        topic=google_pubsub_topic["topic"]["name"],
+        role="roles/pubsub.publisher",
+        members=[f"serviceAccount:{gcs_account.email_address}"])
+    ```
 
 
 

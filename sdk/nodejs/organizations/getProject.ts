@@ -11,6 +11,17 @@ import * as utilities from "../utilities";
  * For more information see
  * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const project = gcp.organizations.getProject({});
+ * export const projectNumber = project.then(project => project.number);
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_project.html.markdown.
  */

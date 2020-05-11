@@ -230,6 +230,17 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
     [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    appserver = gcp.compute.get_instance(name="primary-application-server",
+        zone="us-central1-a")
+    ```
 
 
 

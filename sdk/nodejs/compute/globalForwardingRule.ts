@@ -14,6 +14,137 @@ import * as utilities from "../utilities";
  * 
  * For more information, see
  * https://cloud.google.com/compute/docs/load-balancing/http/
+ * 
+ * 
+ * 
+ * ## Example Usage - Global Forwarding Rule Http
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.selfLink],
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ *     description: "a description",
+ *     defaultService: defaultBackendService.selfLink,
+ *     host_rule: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.selfLink,
+ *         path_rule: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.selfLink,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {
+ *     description: "a description",
+ *     urlMap: defaultURLMap.selfLink,
+ * });
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ *     target: defaultTargetHttpProxy.selfLink,
+ *     portRange: "80",
+ * });
+ * ```
+ * ## Example Usage - Global Forwarding Rule Internal
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const debianImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
+ *     machineType: "n1-standard-1",
+ *     network_interface: [{
+ *         network: "default",
+ *     }],
+ *     disk: [{
+ *         sourceImage: debianImage.then(debianImage => debianImage.selfLink),
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ * });
+ * const igm = new gcp.compute.InstanceGroupManager("igm", {
+ *     version: [{
+ *         instanceTemplate: instanceTemplate.selfLink,
+ *         name: "primary",
+ *     }],
+ *     baseInstanceName: "internal-glb",
+ *     zone: "us-central1-f",
+ *     targetSize: 1,
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcp_health_check: {
+ *         port: "80",
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     backend: [{
+ *         group: igm.instanceGroup,
+ *         balancingMode: "RATE",
+ *         capacityScaler: 0.4,
+ *         maxRatePerInstance: 50,
+ *     }],
+ *     healthChecks: [defaultHealthCheck.selfLink],
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ *     description: "a description",
+ *     defaultService: defaultBackendService.selfLink,
+ *     host_rule: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.selfLink,
+ *         path_rule: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.selfLink,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {
+ *     description: "a description",
+ *     urlMap: defaultURLMap.selfLink,
+ * });
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ *     target: defaultTargetHttpProxy.selfLink,
+ *     portRange: "80",
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     ipAddress: "0.0.0.0",
+ *     metadata_filters: [{
+ *         filterMatchCriteria: "MATCH_ANY",
+ *         filter_labels: [{
+ *             name: "PLANET",
+ *             value: "MARS",
+ *         }],
+ *     }],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_forwarding_rule.html.markdown.
  */

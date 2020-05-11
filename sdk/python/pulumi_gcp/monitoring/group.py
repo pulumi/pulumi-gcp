@@ -55,6 +55,33 @@ class Group(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/monitoring/groups/)
 
+        ## Example Usage - Monitoring Group Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.monitoring.Group("basic",
+            display_name="tf-test MonitoringGroup",
+            filter="resource.metadata.region=\"europe-west2\"")
+        ```
+        ## Example Usage - Monitoring Group Subgroup
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        parent = gcp.monitoring.Group("parent",
+            display_name="tf-test MonitoringParentGroup",
+            filter="resource.metadata.region=\"europe-west2\"")
+        subgroup = gcp.monitoring.Group("subgroup",
+            display_name="tf-test MonitoringSubGroup",
+            filter="resource.metadata.region=\"europe-west2\"",
+            parent_name=parent.name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: A user-assigned name for this group, used only for display

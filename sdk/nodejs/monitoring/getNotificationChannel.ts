@@ -19,6 +19,36 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ * 
+ * 
+ * ## Example Usage - Notification Channel Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const basic = gcp.monitoring.getNotificationChannel({
+ *     displayName: "Test Notification Channel",
+ * });
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ *     displayName: "My Alert Policy",
+ *     notificationChannels: [basic.then(basic => basic.name)],
+ *     combiner: "OR",
+ *     conditions: [{
+ *         displayName: "test condition",
+ *         condition_threshold: {
+ *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+ *             duration: "60s",
+ *             comparison: "COMPARISON_GT",
+ *             aggregations: [{
+ *                 alignmentPeriod: "60s",
+ *                 perSeriesAligner: "ALIGN_RATE",
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_monitoring_notification_channel.html.markdown.
  */

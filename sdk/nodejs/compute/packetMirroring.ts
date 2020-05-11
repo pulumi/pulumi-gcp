@@ -16,6 +16,69 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirroring)
  * * How-to Guides
  *     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
+ * 
+ * ## Example Usage - Compute Packet Mirroring Full
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const mirror = new gcp.compute.Instance("mirror", {
+ *     machineType: "n1-standard-1",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: defaultNetwork.selfLink,
+ *         access_config: [{}],
+ *     }],
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     network: defaultNetwork.selfLink,
+ *     ipCidrRange: "10.2.0.0/16",
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcp_health_check: {
+ *         port: "80",
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {healthChecks: [defaultHealthCheck.selfLink]});
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
+ *     isMirroringCollector: true,
+ *     ipProtocol: "TCP",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: defaultRegionBackendService.selfLink,
+ *     allPorts: true,
+ *     network: defaultNetwork.selfLink,
+ *     subnetwork: defaultSubnetwork.selfLink,
+ *     networkTier: "PREMIUM",
+ * });
+ * const foobar = new gcp.compute.PacketMirroring("foobar", {
+ *     description: "bar",
+ *     network: {
+ *         url: defaultNetwork.selfLink,
+ *     },
+ *     collector_ilb: {
+ *         url: defaultForwardingRule.selfLink,
+ *     },
+ *     mirrored_resources: {
+ *         tags: ["foo"],
+ *         instances: [{
+ *             url: mirror.selfLink,
+ *         }],
+ *     },
+ *     filter: {
+ *         ipProtocols: ["tcp"],
+ *         cidrRanges: ["0.0.0.0/0"],
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_packet_mirroring.html.markdown.
  */

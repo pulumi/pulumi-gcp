@@ -225,6 +225,50 @@ class DatabaseInstance(pulumi.CustomResource):
         instance creation. You should use `sql.User` to define a custom user with
         a restricted host and strong password.
 
+        ## Example Usage
+
+        ### SQL Second Generation Instance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        master = gcp.sql.DatabaseInstance("master",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+            })
+        ```
+
+        ### Private IP Instance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        private_network = gcp.compute.Network("privateNetwork")
+        private_ip_address = gcp.compute.GlobalAddress("privateIpAddress",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=private_network.self_link)
+        private_vpc_connection = gcp.servicenetworking.Connection("privateVpcConnection",
+            network=private_network.self_link,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_address.name])
+        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+                "ip_configuration": {
+                    "ipv4Enabled": False,
+                    "privateNetwork": private_network.self_link,
+                },
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -7,6 +7,24 @@ import * as utilities from "../utilities";
 /**
  * Represents a SQL database inside the Cloud SQL instance, hosted in
  * Google's cloud.
+ * 
+ * 
+ * 
+ * ## Example Usage - Sql Database Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ * });
+ * const database = new gcp.sql.Database("database", {instance: instance.name});
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database.html.markdown.
  */

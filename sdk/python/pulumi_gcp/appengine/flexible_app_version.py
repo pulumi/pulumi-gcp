@@ -255,6 +255,63 @@ class FlexibleAppVersion(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
 
+        ## Example Usage - App Engine Flexible App Version
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="appeng-flex",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        app = gcp.appengine.Application("app",
+            project=my_project.project_id,
+            location_id="us-central")
+        service = gcp.projects.Service("service",
+            project=my_project.project_id,
+            service="appengineflex.googleapis.com",
+            disable_dependent_services=False)
+        gae_api = gcp.projects.IAMMember("gaeApi",
+            project=service.project,
+            role="roles/compute.networkUser",
+            member=my_project.number.apply(lambda number: f"serviceAccount:service-{number}@gae-api-prod.google.com.iam.gserviceaccount.com"))
+        bucket = gcp.storage.Bucket("bucket", project=my_project.project_id)
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+        myapp_v1 = gcp.appengine.FlexibleAppVersion("myappV1",
+            version_id="v1",
+            project=gae_api.project,
+            service="default",
+            runtime="nodejs",
+            entrypoint={
+                "shell": "node ./app.js",
+            },
+            deployment={
+                "zip": {
+                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                },
+            },
+            liveness_check={
+                "path": "/",
+            },
+            readiness_check={
+                "path": "/",
+            },
+            env_variables={
+                "port": "8080",
+            },
+            automatic_scaling={
+                "coolDownPeriod": "120s",
+                "cpu_utilization": {
+                    "targetUtilization": 0.5,
+                },
+            },
+            noop_on_destroy=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] api_config: Serving configuration for Google Cloud Endpoints.  Structure is documented below.

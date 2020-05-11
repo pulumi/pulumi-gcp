@@ -17,6 +17,73 @@ import * as utilities from "../utilities";
  * to be invoked. See below examples for how to set up the appropriate permissions,
  * or view the [Cloud Functions IAM resources](https://www.terraform.io/docs/providers/google/r/cloudfunctions_cloud_function_iam.html)
  * for Cloud Functions.
+ * 
+ * ## Example Usage - Public Function
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const archive = new gcp.storage.BucketObject("archive", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),
+ * });
+ * const function = new gcp.cloudfunctions.Function("function", {
+ *     description: "My function",
+ *     runtime: "nodejs10",
+ *     availableMemoryMb: 128,
+ *     sourceArchiveBucket: bucket.name,
+ *     sourceArchiveObject: archive.name,
+ *     triggerHttp: true,
+ *     entryPoint: "helloGET",
+ * });
+ * // IAM entry for all users to invoke the function
+ * const invoker = new gcp.cloudfunctions.FunctionIamMember("invoker", {
+ *     project: function.project,
+ *     region: function.region,
+ *     cloudFunction: function.name,
+ *     role: "roles/cloudfunctions.invoker",
+ *     member: "allUsers",
+ * });
+ * ```
+ * 
+ * ## Example Usage - Single User
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const archive = new gcp.storage.BucketObject("archive", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),
+ * });
+ * const function = new gcp.cloudfunctions.Function("function", {
+ *     description: "My function",
+ *     runtime: "nodejs10",
+ *     availableMemoryMb: 128,
+ *     sourceArchiveBucket: bucket.name,
+ *     sourceArchiveObject: archive.name,
+ *     triggerHttp: true,
+ *     timeout: 60,
+ *     entryPoint: "helloGET",
+ *     labels: {
+ *         "my-label": "my-label-value",
+ *     },
+ *     environmentVariables: {
+ *         MY_ENV_VAR: "my-env-var-value",
+ *     },
+ * });
+ * // IAM entry for a single user to invoke the function
+ * const invoker = new gcp.cloudfunctions.FunctionIamMember("invoker", {
+ *     project: function.project,
+ *     region: function.region,
+ *     cloudFunction: function.name,
+ *     role: "roles/cloudfunctions.invoker",
+ *     member: "user:myFunctionInvoker@example.com",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function.html.markdown.
  */

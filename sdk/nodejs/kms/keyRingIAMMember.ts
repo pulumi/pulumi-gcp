@@ -17,6 +17,49 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * ## google\_kms\_key\_ring\_iam\_policy
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const keyRing = new gcp.kms.KeyRingIAMPolicy("keyRing", {
+ *     keyRingId: keyring.id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * 
+ * With IAM Conditions:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expiresAfter20191231",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const keyRing = new gcp.kms.KeyRingIAMPolicy("keyRing", {
+ *     keyRingId: keyring.id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * 
  * ## google\_kms\_key\_ring\_iam\_binding
  * 
  * ```typescript

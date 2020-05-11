@@ -8,6 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about a Google Billing Account.
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const acct = gcp.organizations.getBillingAccount({
+ *     displayName: "My Billing Account",
+ *     open: true,
+ * });
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "your-project-id",
+ *     orgId: "1234567",
+ *     billingAccount: acct.then(acct => acct.id),
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_billing_account.html.markdown.
  */

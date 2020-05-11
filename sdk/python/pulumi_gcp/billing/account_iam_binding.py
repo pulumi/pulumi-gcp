@@ -40,6 +40,19 @@ class AccountIamBinding(pulumi.CustomResource):
             Use `pulumi import` and inspect the output to ensure
             your existing members are preserved.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.billing.AccountIamBinding("binding",
+            billing_account_id="00AA00-000AAA-00AA0A",
+            members=["user:alice@gmail.com"],
+            role="roles/billing.viewer")
+        ```
 
 
         :param str resource_name: The name of the resource.

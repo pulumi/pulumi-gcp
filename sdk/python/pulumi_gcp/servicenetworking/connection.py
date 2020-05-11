@@ -34,6 +34,24 @@ class Connection(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
 
+        ## Example usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        peering_network = gcp.compute.Network("peeringNetwork")
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=peering_network.self_link)
+        foobar = gcp.servicenetworking.Connection("foobar",
+            network=peering_network.self_link,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.

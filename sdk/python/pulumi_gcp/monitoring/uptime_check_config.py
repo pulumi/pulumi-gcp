@@ -95,6 +95,80 @@ class UptimeCheckConfig(pulumi.CustomResource):
         > **Warning:** All arguments including `http_check.auth_info.password` will be stored in the raw
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+        ## Example Usage - Uptime Check Config Http
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http = gcp.monitoring.UptimeCheckConfig("http",
+            content_matchers=[{
+                "content": "example",
+            }],
+            display_name="http-uptime-check",
+            http_check={
+                "path": "/some-path",
+                "port": "8010",
+            },
+            monitored_resource={
+                "labels": {
+                    "host": "192.168.1.1",
+                    "project_id": "my-project-name",
+                },
+                "type": "uptime_url",
+            },
+            timeout="60s")
+        ```
+        ## Example Usage - Uptime Check Config Https
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https = gcp.monitoring.UptimeCheckConfig("https",
+            content_matchers=[{
+                "content": "example",
+            }],
+            display_name="https-uptime-check",
+            http_check={
+                "path": "/some-path",
+                "port": "443",
+                "useSsl": True,
+                "validateSsl": True,
+            },
+            monitored_resource={
+                "labels": {
+                    "host": "192.168.1.1",
+                    "project_id": "my-project-name",
+                },
+                "type": "uptime_url",
+            },
+            timeout="60s")
+        ```
+        ## Example Usage - Uptime Check Tcp
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        check = gcp.monitoring.Group("check",
+            display_name="uptime-check-group",
+            filter="resource.metadata.name=has_substring(\"foo\")")
+        tcp_group = gcp.monitoring.UptimeCheckConfig("tcpGroup",
+            display_name="tcp-uptime-check",
+            timeout="60s",
+            tcp_check={
+                "port": 888,
+            },
+            resource_group={
+                "resourceType": "INSTANCE",
+                "groupId": check.name,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.

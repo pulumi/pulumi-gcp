@@ -80,22 +80,7 @@ class Slo(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, basic_sli=None, calendar_period=None, display_name=None, goal=None, project=None, rolling_period_days=None, service=None, slo_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        A Service-Level Objective (SLO) describes the level of desired good
-        service. It consists of a service-level indicator (SLI), a performance
-        goal, and a period over which the objective is to be evaluated against
-        that goal. The SLO can use SLIs defined in a number of different manners.
-        Typical SLOs might include "99% of requests in each rolling week have
-        latency below 200 milliseconds" or "99.5% of requests in each calendar
-        month return successfully."
-
-
-        To get more information about Slo, see:
-
-        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services.serviceLevelObjectives)
-        * How-to Guides
-            * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
-            * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-
+        Create a Slo resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.

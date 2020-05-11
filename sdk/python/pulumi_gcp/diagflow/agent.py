@@ -100,6 +100,31 @@ class Agent(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
+        ## Example Usage - Dialogflow Agent Full
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        full_agent = gcp.diagflow.Agent("fullAgent",
+            api_version="API_VERSION_V2_BETA_1",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            classification_threshold=0.3,
+            default_language_code="en",
+            description="Example description.",
+            display_name="dialogflow-agent",
+            enable_logging=True,
+            match_mode="MATCH_MODE_ML_ONLY",
+            supported_language_codes=[
+                "fr",
+                "de",
+                "es",
+            ],
+            tier="TIER_STANDARD",
+            time_zone="America/New_York")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query

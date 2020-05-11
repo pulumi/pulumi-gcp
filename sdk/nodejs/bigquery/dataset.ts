@@ -15,6 +15,56 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
  * * How-to Guides
  *     * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
+ * 
+ * ## Example Usage - Bigquery Dataset Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const bqowner = new gcp.serviceAccount.Account("bqowner", {accountId: "bqowner"});
+ * const dataset = new gcp.bigquery.Dataset("dataset", {
+ *     datasetId: "exampleDataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "EU",
+ *     defaultTableExpirationMs: 3600000,
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     access: [
+ *         {
+ *             role: "OWNER",
+ *             userByEmail: bqowner.email,
+ *         },
+ *         {
+ *             role: "READER",
+ *             domain: "hashicorp.com",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ## Example Usage - Bigquery Dataset Cmek
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us"});
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.selfLink});
+ * const dataset = new gcp.bigquery.Dataset("dataset", {
+ *     datasetId: "exampleDataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     defaultTableExpirationMs: 3600000,
+ *     default_encryption_configuration: {
+ *         kmsKeyName: cryptoKey.selfLink,
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
  */

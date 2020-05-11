@@ -38,6 +38,22 @@ class IAMPolicy(pulumi.CustomResource):
            `organizations.IAMMember` or `organizations.IAMBinding`
            or they will fight over what your policy should be.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.organizations.IAMPolicy("policy",
+            org_id="123456789",
+            policy_data=admin.policy_data)
+        ```
 
 
         :param str resource_name: The name of the resource.

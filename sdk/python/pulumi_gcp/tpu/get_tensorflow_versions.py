@@ -47,7 +47,30 @@ def get_tensorflow_versions(project=None,zone=None,opts=None):
     """
     Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
 
+    ## Example Usage
 
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    available = gcp.tpu.get_tensorflow_versions()
+    ```
+
+    ## Example Usage: Configure Basic TPU Node with available version
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    available = gcp.tpu.get_tensorflow_versions()
+    tpu = gcp.tpu.Node("tpu",
+        zone="us-central1-b",
+        accelerator_type="v3-8",
+        tensorflow_version=available.versions[0],
+        cidr_block="10.2.0.0/29")
+    ```
 
 
     :param str project: The project to list versions for. If it

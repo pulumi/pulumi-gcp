@@ -22,6 +22,27 @@ import * as utilities from "../utilities";
  * deployments in preview as recreate-only for any update operation other
  * than actually deploying an in-preview deployment (i.e. `preview=true` to
  * `preview=false`).
+ * 
+ * ## Example Usage - Deployment Manager Deployment Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ * 
+ * const deployment = new gcp.deploymentmanager.Deployment("deployment", {
+ *     target: {
+ *         config: {
+ *             content: fs.readFileSync("path/to/config.yml"),
+ *         },
+ *     },
+ *     labels: [{
+ *         key: "foo",
+ *         value: "bar",
+ *     }],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/deployment_manager_deployment.html.markdown.
  */

@@ -343,6 +343,132 @@ class RegionBackendService(pulumi.CustomResource):
         * How-to Guides
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
+        ## Example Usage - Region Backend Service Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("defaultHealthCheck",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": "80",
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            region="us-central1",
+            health_checks=[default_health_check.self_link],
+            connection_draining_timeout_sec=10,
+            session_affinity="CLIENT_IP")
+        ```
+        ## Example Usage - Region Backend Service Ilb Round Robin
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("healthCheck", http_health_check={
+            "port": 80,
+        })
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            health_checks=[health_check.self_link],
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="ROUND_ROBIN")
+        ```
+        ## Example Usage - Region Backend Service Ilb Ring Hash
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("healthCheck", http_health_check={
+            "port": 80,
+        })
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            health_checks=[health_check.self_link],
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="HTTP_COOKIE",
+            protocol="HTTP",
+            circuit_breakers={
+                "maxConnections": 10,
+            },
+            consistent_hash={
+                "http_cookie": {
+                    "ttl": {
+                        "seconds": 11,
+                        "nanos": 1111,
+                    },
+                    "name": "mycookie",
+                },
+            },
+            outlier_detection={
+                "consecutiveErrors": 2,
+            })
+        ```
+        ## Example Usage - Region Backend Service Balancing Mode
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("defaultNetwork",
+            auto_create_subnetworks=False,
+            routing_mode="REGIONAL")
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.1.2.0/24",
+            region="us-central1",
+            network=default_network.self_link)
+        instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
+            machine_type="n1-standard-1",
+            network_interface=[{
+                "network": default_network.self_link,
+                "subnetwork": default_subnetwork.self_link,
+            }],
+            disk=[{
+                "sourceImage": debian_image.self_link,
+                "autoDelete": True,
+                "boot": True,
+            }],
+            tags=[
+                "allow-ssh",
+                "load-balanced-backend",
+            ])
+        rigm = gcp.compute.RegionInstanceGroupManager("rigm",
+            region="us-central1",
+            version=[{
+                "instanceTemplate": instance_template.self_link,
+                "name": "primary",
+            }],
+            base_instance_name="internal-glb",
+            target_size=1)
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="us-central1",
+            http_health_check={
+                "portSpecification": "USE_SERVING_PORT",
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            backend=[{
+                "group": rigm.instance_group,
+                "balancingMode": "UTILIZATION",
+                "capacityScaler": 1,
+            }],
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_region_health_check.self_link])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] affinity_cookie_ttl_sec: Lifetime of cookies in seconds if session_affinity is

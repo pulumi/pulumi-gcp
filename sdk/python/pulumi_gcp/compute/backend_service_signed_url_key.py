@@ -42,6 +42,50 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
         > **Warning:** All arguments including `key_value` will be stored in the raw
         state as plain-text.
 
+        ## Example Usage - Backend Service Signed Url Key
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        webserver = gcp.compute.InstanceTemplate("webserver",
+            machine_type="n1-standard-1",
+            network_interface=[{
+                "network": "default",
+            }],
+            disk=[{
+                "sourceImage": "debian-cloud/debian-9",
+                "autoDelete": True,
+                "boot": True,
+            }])
+        webservers = gcp.compute.InstanceGroupManager("webservers",
+            version=[{
+                "instanceTemplate": webserver.self_link,
+                "name": "primary",
+            }],
+            base_instance_name="webserver",
+            zone="us-central1-f",
+            target_size=1)
+        default = gcp.compute.HttpHealthCheck("default",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        example_backend = gcp.compute.BackendService("exampleBackend",
+            description="Our company website",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            enable_cdn=True,
+            backend=[{
+                "group": webservers.instance_group,
+            }],
+            health_checks=[default.self_link])
+        backend_key = gcp.compute.BackendServiceSignedUrlKey("backendKey",
+            key_value="pPsVemX8GM46QVeezid6Rw==",
+            backend_service=example_backend.name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_service: The backend service this signed URL key belongs.

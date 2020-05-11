@@ -42,6 +42,19 @@ class IAMBinding(pulumi.CustomResource):
             Use `pulumi import` and inspect the `output to ensure
             your existing members are preserved.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.organizations.IAMBinding("binding",
+            members=["user:alice@gmail.com"],
+            org_id="123456789",
+            role="roles/browser")
+        ```
 
 
         :param str resource_name: The name of the resource.

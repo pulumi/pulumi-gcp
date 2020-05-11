@@ -47,6 +47,22 @@ class Namespace(pulumi.CustomResource):
         * How-to Guides
             * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 
+        ## Example Usage - Service Directory Namespace Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.servicedirectory.Namespace("example",
+            namespace_id="example-namespace",
+            location="us-central1",
+            labels={
+                "key": "value",
+                "foo": "bar",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] labels: Resource labels associated with this Namespace. No more than 64 user

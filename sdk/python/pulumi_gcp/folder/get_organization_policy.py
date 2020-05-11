@@ -66,6 +66,18 @@ def get_organization_policy(constraint=None,folder=None,opts=None):
     [the official
     documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.folder.get_organization_policy(folder="folders/folderid",
+        constraint="constraints/compute.trustedImageProjects")
+    pulumi.export("version", policy.version)
+    ```
 
 
 

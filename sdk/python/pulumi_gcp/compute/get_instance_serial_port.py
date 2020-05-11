@@ -56,6 +56,19 @@ def get_instance_serial_port(instance=None,port=None,project=None,zone=None,opts
     Get the serial port output from a Compute Instance. For more information see
     the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    serial = gcp.compute.get_instance_serial_port(instance="my-instance",
+        zone="us-central1-a",
+        port=1)
+    pulumi.export("serialOut", serial.contents)
+    ```
 
 
 

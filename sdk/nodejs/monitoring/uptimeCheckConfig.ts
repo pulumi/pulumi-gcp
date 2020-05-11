@@ -73,6 +73,29 @@ import * as utilities from "../utilities";
  *     timeout: "60s",
  * });
  * ```
+ * ## Example Usage - Uptime Check Tcp
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const check = new gcp.monitoring.Group("check", {
+ *     displayName: "uptime-check-group",
+ *     filter: "resource.metadata.name=has_substring(\"foo\")",
+ * });
+ * const tcpGroup = new gcp.monitoring.UptimeCheckConfig("tcpGroup", {
+ *     displayName: "tcp-uptime-check",
+ *     timeout: "60s",
+ *     tcp_check: {
+ *         port: 888,
+ *     },
+ *     resource_group: {
+ *         resourceType: "INSTANCE",
+ *         groupId: check.name,
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_uptime_check_config.html.markdown.
  */

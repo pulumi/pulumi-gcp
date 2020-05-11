@@ -12,6 +12,38 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
  * 
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ * 
+ * const default-devicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
+ * const default-telemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const default-registry = new gcp.iot.Registry("default-registry", {
+ *     event_notification_configs: [{
+ *         pubsubTopicName: default-telemetry.id,
+ *     }],
+ *     stateNotificationConfig: {
+ *         pubsub_topic_name: default-devicestatus.id,
+ *     },
+ *     httpConfig: {
+ *         http_enabled_state: "HTTP_ENABLED",
+ *     },
+ *     mqttConfig: {
+ *         mqtt_enabled_state: "MQTT_ENABLED",
+ *     },
+ *     credentials: [{
+ *         publicKeyCertificate: {
+ *             format: "X509_CERTIFICATE_PEM",
+ *             certificate: fs.readFileSync("rsa_cert.pem"),
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudiot_registry.html.markdown.
  */

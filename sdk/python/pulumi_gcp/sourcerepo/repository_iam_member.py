@@ -40,6 +40,50 @@ class RepositoryIamMember(pulumi.CustomResource):
 
         > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
 
+
+
+        ## google\_pubsub\_topic\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.pubsub.TopicIAMPolicy("policy",
+            project=google_pubsub_topic["example"]["project"],
+            topic=google_pubsub_topic["example"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_pubsub\_topic\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.pubsub.TopicIAMBinding("binding",
+            project=google_pubsub_topic["example"]["project"],
+            topic=google_pubsub_topic["example"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_pubsub\_topic\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.pubsub.TopicIAMMember("member",
+            project=google_pubsub_topic["example"]["project"],
+            topic=google_pubsub_topic["example"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

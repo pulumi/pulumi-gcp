@@ -11,6 +11,28 @@ import * as utilities from "../utilities";
  * 
  * > **Warning:** All arguments including `payload.secret_data` will be stored in the raw
  * state as plain-text.
+ * 
+ * ## Example Usage - Secret Version Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const secret-basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-version",
+ *     labels: {
+ *         label: "my-label",
+ *     },
+ *     replication: {
+ *         automatic: true,
+ *     },
+ * });
+ * const secret-version-basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {
+ *     secret: secret-basic.id,
+ *     secretData: "secret-data",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret_version.html.markdown.
  */

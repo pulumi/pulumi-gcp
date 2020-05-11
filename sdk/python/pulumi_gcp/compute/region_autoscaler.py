@@ -147,6 +147,60 @@ class RegionAutoscaler(pulumi.CustomResource):
         * How-to Guides
             * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 
+        ## Example Usage - Region Autoscaler Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian9 = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
+            machine_type="n1-standard-1",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disk=[{
+                "sourceImage": debian9.self_link,
+            }],
+            network_interface=[{
+                "network": "default",
+            }],
+            metadata={
+                "foo": "bar",
+            },
+            service_account={
+                "scopes": [
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            })
+        foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
+        foobar_region_instance_group_manager = gcp.compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager",
+            region="us-central1",
+            version=[{
+                "instanceTemplate": foobar_instance_template.id,
+                "name": "primary",
+            }],
+            target_pools=[foobar_target_pool.id],
+            base_instance_name="foobar")
+        foobar_region_autoscaler = gcp.compute.RegionAutoscaler("foobarRegionAutoscaler",
+            region="us-central1",
+            target=foobar_region_instance_group_manager.id,
+            autoscaling_policy={
+                "maxReplicas": 5,
+                "minReplicas": 1,
+                "cooldownPeriod": 60,
+                "cpu_utilization": {
+                    "target": 0.5,
+                },
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can

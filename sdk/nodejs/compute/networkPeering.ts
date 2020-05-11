@@ -17,6 +17,25 @@ import * as utilities from "../utilities";
  * 
  * > Subnets IP ranges across peered VPC networks cannot overlap.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const default = new gcp.compute.Network("default", {autoCreateSubnetworks: "false"});
+ * const other = new gcp.compute.Network("other", {autoCreateSubnetworks: "false"});
+ * const peering1 = new gcp.compute.NetworkPeering("peering1", {
+ *     network: default.selfLink,
+ *     peerNetwork: other.selfLink,
+ * });
+ * const peering2 = new gcp.compute.NetworkPeering("peering2", {
+ *     network: other.selfLink,
+ *     peerNetwork: default.selfLink,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering.html.markdown.
  */

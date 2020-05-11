@@ -115,6 +115,24 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  * });
  * ```
+ * ## Example Usage - Region Health Check Http Logs
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const http-region-health-check = new gcp.compute.RegionHealthCheck("http-region-health-check", {
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     http_health_check: {
+ *         port: "80",
+ *     },
+ *     log_config: {
+ *         enable: true,
+ *     },
+ * });
+ * ```
  * ## Example Usage - Region Health Check Http Full
  * 
  * 

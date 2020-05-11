@@ -155,6 +155,57 @@ class Subnetwork(pulumi.CustomResource):
             * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
             * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
 
+        ## Example Usage - Subnetwork Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        network_with_private_secondary_ip_ranges = gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges",
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=custom_test.self_link,
+            secondary_ip_range=[{
+                "rangeName": "tf-test-secondary-range-update1",
+                "ipCidrRange": "192.168.10.0/24",
+            }])
+        ```
+        ## Example Usage - Subnetwork Logging Config
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        subnet_with_logging = gcp.compute.Subnetwork("subnet-with-logging",
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=custom_test.self_link,
+            log_config={
+                "aggregationInterval": "INTERVAL_10_MIN",
+                "flowSampling": 0.5,
+                "metadata": "INCLUDE_ALL_METADATA",
+            })
+        ```
+        ## Example Usage - Subnetwork Internal L7lb
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_test = gcp.compute.Network("custom-test", auto_create_subnetworks=False)
+        network_for_l7lb = gcp.compute.Subnetwork("network-for-l7lb",
+            ip_cidr_range="10.0.0.0/22",
+            region="us-central1",
+            purpose="INTERNAL_HTTPS_LOAD_BALANCER",
+            role="ACTIVE",
+            network=custom_test.self_link)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when

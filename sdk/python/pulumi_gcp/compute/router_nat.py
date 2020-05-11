@@ -111,6 +111,64 @@ class RouterNat(pulumi.CustomResource):
         * How-to Guides
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
+        ## Example Usage - Router Nat Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net")
+        subnet = gcp.compute.Subnetwork("subnet",
+            network=net.self_link,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1")
+        router = gcp.compute.Router("router",
+            region=subnet.region,
+            network=net.self_link,
+            bgp={
+                "asn": 64514,
+            })
+        nat = gcp.compute.RouterNat("nat",
+            router=router.name,
+            region=router.region,
+            nat_ip_allocate_option="AUTO_ONLY",
+            source_subnetwork_ip_ranges_to_nat="ALL_SUBNETWORKS_ALL_IP_RANGES",
+            log_config={
+                "enable": True,
+                "filter": "ERRORS_ONLY",
+            })
+        ```
+        ## Example Usage - Router Nat Manual Ips
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net")
+        subnet = gcp.compute.Subnetwork("subnet",
+            network=net.self_link,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1")
+        router = gcp.compute.Router("router",
+            region=subnet.region,
+            network=net.self_link)
+        address = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            address.append(gcp.compute.Address(f"address-{range['value']}", region=subnet.region))
+        nat_manual = gcp.compute.RouterNat("natManual",
+            router=router.name,
+            region=router.region,
+            nat_ip_allocate_option="MANUAL_ONLY",
+            nat_ips=[__item.self_link for __item in address],
+            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
+            subnetwork=[{
+                "name": google_compute_subnetwork["default"]["self_link"],
+                "sourceIpRangesToNats": ["ALL_IP_RANGES"],
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be

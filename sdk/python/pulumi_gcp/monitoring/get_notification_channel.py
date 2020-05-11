@@ -84,6 +84,33 @@ def get_notification_channel(display_name=None,labels=None,project=None,type=Non
         * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
 
+    ## Example Usage - Notification Channel Basic
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    basic = gcp.monitoring.get_notification_channel(display_name="Test Notification Channel")
+    alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+        display_name="My Alert Policy",
+        notification_channels=[basic.name],
+        combiner="OR",
+        conditions=[{
+            "displayName": "test condition",
+            "condition_threshold": {
+                "filter": "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+                "duration": "60s",
+                "comparison": "COMPARISON_GT",
+                "aggregations": [{
+                    "alignmentPeriod": "60s",
+                    "perSeriesAligner": "ALIGN_RATE",
+                }],
+            },
+        }])
+    ```
+
+
     :param str display_name: The display name for this notification channel.
     :param dict labels: Labels (corresponding to the
            NotificationChannelDescriptor schema) to filter the notification channels by.

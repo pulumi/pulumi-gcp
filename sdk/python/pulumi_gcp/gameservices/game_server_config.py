@@ -88,6 +88,69 @@ class GameServerConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
+        ## Example Usage - Game Service Config Basic
+
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default_game_server_deployment = gcp.gameservices.GameServerDeployment("defaultGameServerDeployment",
+            deployment_id="tf-test-deployment",
+            description="a deployment description")
+        default_game_server_config = gcp.gameservices.GameServerConfig("defaultGameServerConfig",
+            config_id="tf-test-config",
+            deployment_id=default_game_server_deployment.deployment_id,
+            description="a config description",
+            fleet_configs=[{
+                "name": "something-unique",
+                "fleetSpec": json.dumps({
+                    "replicas": 1,
+                    "scheduling": "Packed",
+                    "template": {
+                        "metadata": {
+                            "name": "tf-test-game-server-template",
+                        },
+                        "spec": {
+                            "template": {
+                                "spec": {
+                                    "containers": [{
+                                        "name": "simple-udp-server",
+                                        "image": "gcr.io/agones-images/udp-server:0.14",
+                                    }],
+                                },
+                            },
+                        },
+                    },
+                }),
+            }],
+            scaling_configs=[{
+                "name": "scaling-config-name",
+                "fleetAutoscalerSpec": json.dumps({
+                    "policy": {
+                        "type": "Webhook",
+                        "webhook": {
+                            "service": {
+                                "name": "autoscaler-webhook-service",
+                                "namespace": "default",
+                                "path": "scale",
+                            },
+                        },
+                    },
+                }),
+                "selectors": [{
+                    "labels": {
+                        "one": "two",
+                    },
+                }],
+                "schedules": [{
+                    "cronJobDuration": "3.500s",
+                    "cronSpec": "0 0 * * 0",
+                }],
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_id: A unique id for the deployment config.

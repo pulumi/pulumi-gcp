@@ -48,6 +48,18 @@ class GameServerDeployment(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
+        ## Example Usage - Game Service Deployment Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.gameservices.GameServerDeployment("default",
+            deployment_id="tf-test-deployment",
+            description="a deployment description")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] deployment_id: A unique id for the deployment.

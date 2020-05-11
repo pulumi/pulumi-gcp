@@ -66,6 +66,18 @@ def get_organization_policy(constraint=None,project=None,opts=None):
     [the official
     documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.projects.get_organization_policy(project="project-id",
+        constraint="constraints/serviceuser.services")
+    pulumi.export("version", policy.version)
+    ```
 
 
 

@@ -71,6 +71,25 @@ class TargetPool(pulumi.CustomResource):
         and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_target_pool = gcp.compute.TargetPool("defaultTargetPool",
+            instances=[
+                "us-central1-a/myinstance1",
+                "us-central1-b/myinstance2",
+            ],
+            health_checks=[default_http_health_check.name])
+        ```
 
 
         :param str resource_name: The name of the resource.

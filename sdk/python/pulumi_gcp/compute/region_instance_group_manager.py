@@ -132,6 +132,66 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
 
+        ## Example Usage with top level instance template (`google` provider)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        autohealing = gcp.compute.HealthCheck("autohealing",
+            check_interval_sec=5,
+            timeout_sec=5,
+            healthy_threshold=2,
+            unhealthy_threshold=10,
+            http_health_check={
+                "requestPath": "/healthz",
+                "port": "8080",
+            })
+        appserver = gcp.compute.RegionInstanceGroupManager("appserver",
+            base_instance_name="app",
+            region="us-central1",
+            distribution_policy_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ],
+            version=[{
+                "instanceTemplate": google_compute_instance_template["appserver"]["self_link"],
+            }],
+            target_pools=[google_compute_target_pool["appserver"]["self_link"]],
+            target_size=2,
+            named_port=[{
+                "name": "custom",
+                "port": 8888,
+            }],
+            auto_healing_policies={
+                "healthCheck": autohealing.self_link,
+                "initialDelaySec": 300,
+            })
+        ```
+
+        ## Example Usage with multiple versions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        appserver = gcp.compute.RegionInstanceGroupManager("appserver",
+            base_instance_name="app",
+            region="us-central1",
+            target_size=5,
+            version=[
+                {
+                    "instanceTemplate": google_compute_instance_template["appserver"]["self_link"],
+                },
+                {
+                    "instanceTemplate": google_compute_instance_template["appserver-canary"]["self_link"],
+                    "target_size": {
+                        "fixed": 1,
+                    },
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] auto_healing_policies: The autohealing policies for this managed instance

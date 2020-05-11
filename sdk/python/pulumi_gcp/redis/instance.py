@@ -107,15 +107,7 @@ class Instance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, alternative_location_id=None, authorized_network=None, connect_mode=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None, __props__=None, __name__=None, __opts__=None):
         """
-        A Google Cloud Redis instance.
-
-
-        To get more information about Instance, see:
-
-        * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternative_location_id: Only applicable to STANDARD_HA tier which protects the instance

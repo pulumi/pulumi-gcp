@@ -47,6 +47,53 @@ class IamMember(pulumi.CustomResource):
 
         > **Note:** `cloudrun.IamBinding` resources **can be** used in conjunction with `cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
 
+
+
+        ## google\_cloud\_run\_service\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.cloudrun.IamPolicy("policy",
+            location=google_cloud_run_service["default"]["location"],
+            project=google_cloud_run_service["default"]["project"],
+            service=google_cloud_run_service["default"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_cloud\_run\_service\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.cloudrun.IamBinding("binding",
+            location=google_cloud_run_service["default"]["location"],
+            project=google_cloud_run_service["default"]["project"],
+            service=google_cloud_run_service["default"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_cloud\_run\_service\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.cloudrun.IamMember("member",
+            location=google_cloud_run_service["default"]["location"],
+            project=google_cloud_run_service["default"]["project"],
+            service=google_cloud_run_service["default"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to

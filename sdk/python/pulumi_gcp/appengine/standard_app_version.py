@@ -162,6 +162,67 @@ class StandardAppVersion(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
 
+        ## Example Usage - App Engine Standard App Version
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket")
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+        myapp_v1 = gcp.appengine.StandardAppVersion("myappV1",
+            version_id="v1",
+            service="myapp",
+            runtime="nodejs10",
+            entrypoint={
+                "shell": "node ./app.js",
+            },
+            deployment={
+                "zip": {
+                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                },
+            },
+            env_variables={
+                "port": "8080",
+            },
+            automatic_scaling={
+                "maxConcurrentRequests": 10,
+                "minIdleInstances": 1,
+                "maxIdleInstances": 3,
+                "minPendingLatency": "1s",
+                "maxPendingLatency": "5s",
+                "standard_scheduler_settings": {
+                    "targetCpuUtilization": 0.5,
+                    "targetThroughputUtilization": 0.75,
+                    "minInstances": 2,
+                    "maxInstances": 10,
+                },
+            },
+            delete_service_on_destroy=True)
+        myapp_v2 = gcp.appengine.StandardAppVersion("myappV2",
+            version_id="v2",
+            service="myapp",
+            runtime="nodejs10",
+            entrypoint={
+                "shell": "node ./app.js",
+            },
+            deployment={
+                "zip": {
+                    "sourceUrl": pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                },
+            },
+            env_variables={
+                "port": "8080",
+            },
+            basic_scaling={
+                "maxInstances": 5,
+            },
+            noop_on_destroy=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.

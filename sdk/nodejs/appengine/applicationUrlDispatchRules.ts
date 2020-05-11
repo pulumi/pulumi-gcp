@@ -13,6 +13,49 @@ import * as utilities from "../utilities";
  * To get more information about ApplicationUrlDispatchRules, see:
  * 
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
+ * 
+ * ## Example Usage - App Engine Application Url Dispatch Rules Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ * });
+ * const adminV3 = new gcp.appengine.StandardAppVersion("adminV3", {
+ *     versionId: "v3",
+ *     service: "admin",
+ *     runtime: "nodejs10",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
+ *         },
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     noopOnDestroy: true,
+ * });
+ * const webService = new gcp.appengine.ApplicationUrlDispatchRules("webService", {dispatch_rules: [
+ *     {
+ *         domain: "*",
+ *         path: "/*",
+ *         service: "default",
+ *     },
+ *     {
+ *         domain: "*",
+ *         path: "/admin/*",
+ *         service: adminV3.service,
+ *     },
+ * ]});
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application_url_dispatch_rules.html.markdown.
  */

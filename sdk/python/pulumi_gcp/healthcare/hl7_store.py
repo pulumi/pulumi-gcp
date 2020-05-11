@@ -91,6 +91,119 @@ class Hl7Store(pulumi.CustomResource):
         * How-to Guides
             * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 
+        ## Example Usage - Healthcare Hl7 V2 Store Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic")
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        default = gcp.healthcare.Hl7Store("default",
+            dataset=dataset.id,
+            notification_configs=[{
+                "pubsubTopic": topic.id,
+            }],
+            labels={
+                "label1": "labelvalue1",
+            })
+        ```
+        ## Example Usage - Healthcare Hl7 V2 Store Parser Config
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        default = gcp.healthcare.Hl7Store("default",
+            dataset=dataset.id,
+            parser_config={
+                "allowNullHeader": False,
+                "segmentTerminator": "Jw==",
+                "schema": \"\"\"{
+          "schemas": [{
+            "messageSchemaConfigs": {
+              "ADT_A01": {
+                "name": "ADT_A01",
+                "minOccurs": 1,
+                "maxOccurs": 1,
+                "members": [{
+                    "segment": {
+                      "type": "MSH",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "EVN",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "PID",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "ZPD",
+                      "minOccurs": 1,
+                      "maxOccurs": 1
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "OBX"
+                    }
+                  },
+                  {
+                    "group": {
+                      "name": "PROCEDURE",
+                      "members": [{
+                          "segment": {
+                            "type": "PR1",
+                            "minOccurs": 1,
+                            "maxOccurs": 1
+                          }
+                        },
+                        {
+                          "segment": {
+                            "type": "ROL"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "segment": {
+                      "type": "PDA",
+                      "maxOccurs": 1
+                    }
+                  }
+                ]
+              }
+            }
+          }],
+          "types": [{
+            "type": [{
+                "name": "ZPD",
+                "primitive": "VARIES"
+              }
+
+            ]
+          }],
+          "ignoreMinOccurs": true
+        }
+        \"\"\",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format

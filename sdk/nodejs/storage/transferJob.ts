@@ -16,6 +16,68 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const default = gcp.storage.getTransferProjectServieAccount({
+ *     project: var.project,
+ * });
+ * const s3-backup-bucketBucket = new gcp.storage.Bucket("s3-backup-bucketBucket", {
+ *     storageClass: "NEARLINE",
+ *     project: var.project,
+ * });
+ * const s3-backup-bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", {
+ *     bucket: s3-backup-bucketBucket.name,
+ *     role: "roles/storage.admin",
+ *     member: default.then(_default => `serviceAccount:${_default.email}`),
+ * });
+ * const s3-bucket-nightly-backup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
+ *     description: "Nightly backup of S3 bucket",
+ *     project: var.project,
+ *     transfer_spec: {
+ *         object_conditions: {
+ *             maxTimeElapsedSinceLastModification: "600s",
+ *             excludePrefixes: ["requests.gz"],
+ *         },
+ *         transfer_options: {
+ *             deleteObjectsUniqueInSink: false,
+ *         },
+ *         aws_s3_data_source: {
+ *             bucketName: var.aws_s3_bucket,
+ *             aws_access_key: {
+ *                 accessKeyId: var.aws_access_key,
+ *                 secretAccessKey: var.aws_secret_key,
+ *             },
+ *         },
+ *         gcs_data_sink: {
+ *             bucketName: s3-backup-bucketBucket.name,
+ *         },
+ *     },
+ *     schedule: {
+ *         schedule_start_date: {
+ *             year: 2018,
+ *             month: 10,
+ *             day: 1,
+ *         },
+ *         schedule_end_date: {
+ *             year: 2019,
+ *             month: 1,
+ *             day: 15,
+ *         },
+ *         start_time_of_day: {
+ *             hours: 23,
+ *             minutes: 30,
+ *             seconds: 0,
+ *             nanos: 0,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_transfer_job.html.markdown.
  */

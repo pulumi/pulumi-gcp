@@ -62,6 +62,22 @@ def get_global_address(name=None,project=None,opts=None):
     Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
     the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_address = gcp.compute.get_global_address(name="foobar")
+    prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
+    frontend = gcp.dns.RecordSet("frontend",
+        type="A",
+        ttl=300,
+        managed_zone=prod.name,
+        rrdatas=[my_address.address])
+    ```
 
 
 

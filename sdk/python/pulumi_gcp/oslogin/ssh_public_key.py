@@ -37,6 +37,19 @@ class SshPublicKey(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
 
+        ## Example Usage - Os Login Ssh Key Provided User
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        me = gcp.organizations.get_client_open_id_user_info()
+        cache = gcp.oslogin.SshPublicKey("cache",
+            user=me.email,
+            key=(lambda path: open(path).read())("path/to/id_rsa.pub"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expiration_time_usec: An expiration time in microseconds since epoch.

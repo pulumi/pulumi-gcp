@@ -37,6 +37,19 @@ class IAMMember(pulumi.CustomResource):
            `organizations.IAMBinding` for the __same role__ or they will fight over
            what your policy should be.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.organizations.IAMMember("binding",
+            member="user:alice@gmail.com",
+            org_id="0123456789",
+            role="roles/editor")
+        ```
 
 
         :param str resource_name: The name of the resource.

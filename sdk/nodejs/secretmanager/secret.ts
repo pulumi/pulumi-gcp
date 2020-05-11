@@ -12,6 +12,33 @@ import * as utilities from "../utilities";
  * To get more information about Secret, see:
  * 
  * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets)
+ * 
+ * ## Example Usage - Secret Config Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const secret-basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret",
+ *     labels: {
+ *         label: "my-label",
+ *     },
+ *     replication: {
+ *         user_managed: {
+ *             replicas: [
+ *                 {
+ *                     location: "us-central1",
+ *                 },
+ *                 {
+ *                     location: "us-east1",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/secret_manager_secret.html.markdown.
  */

@@ -15,6 +15,71 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
+ * 
+ * ## Example Usage - Router Nat Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const net = new gcp.compute.Network("net", {});
+ * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     network: net.selfLink,
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ * });
+ * const router = new gcp.compute.Router("router", {
+ *     region: subnet.region,
+ *     network: net.selfLink,
+ *     bgp: {
+ *         asn: 64514,
+ *     },
+ * });
+ * const nat = new gcp.compute.RouterNat("nat", {
+ *     router: router.name,
+ *     region: router.region,
+ *     natIpAllocateOption: "AUTO_ONLY",
+ *     sourceSubnetworkIpRangesToNat: "ALL_SUBNETWORKS_ALL_IP_RANGES",
+ *     log_config: {
+ *         enable: true,
+ *         filter: "ERRORS_ONLY",
+ *     },
+ * });
+ * ```
+ * ## Example Usage - Router Nat Manual Ips
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const net = new gcp.compute.Network("net", {});
+ * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     network: net.selfLink,
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ * });
+ * const router = new gcp.compute.Router("router", {
+ *     region: subnet.region,
+ *     network: net.selfLink,
+ * });
+ * const address: gcp.compute.Address[];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     address.push(new gcp.compute.Address(`address-${range.value}`, {region: subnet.region}));
+ * }
+ * const natManual = new gcp.compute.RouterNat("natManual", {
+ *     router: router.name,
+ *     region: router.region,
+ *     natIpAllocateOption: "MANUAL_ONLY",
+ *     natIps: address.map(__item => __item.selfLink),
+ *     sourceSubnetworkIpRangesToNat: "LIST_OF_SUBNETWORKS",
+ *     subnetwork: [{
+ *         name: google_compute_subnetwork["default"].self_link,
+ *         sourceIpRangesToNats: ["ALL_IP_RANGES"],
+ *     }],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_nat.html.markdown.
  */

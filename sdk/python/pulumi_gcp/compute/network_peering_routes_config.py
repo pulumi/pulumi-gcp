@@ -45,6 +45,30 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 
+        ## Example Usage - Network Peering Routes Config Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_primary = gcp.compute.Network("networkPrimary", auto_create_subnetworks="false")
+        network_secondary = gcp.compute.Network("networkSecondary", auto_create_subnetworks="false")
+        peering_primary = gcp.compute.NetworkPeering("peeringPrimary",
+            network=network_primary.self_link,
+            peer_network=network_secondary.self_link,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_primary_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes",
+            peering=peering_primary.name,
+            network=network_primary.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_secondary = gcp.compute.NetworkPeering("peeringSecondary",
+            network=network_secondary.self_link,
+            peer_network=network_primary.self_link)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network.

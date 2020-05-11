@@ -102,6 +102,38 @@ class NotificationChannel(pulumi.CustomResource):
         > **Warning:** All arguments including `sensitive_labels.auth_token`, `sensitive_labels.password`, and `sensitive_labels.service_key` will be stored in the raw
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+        ## Example Usage - Notification Channel Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.monitoring.NotificationChannel("basic",
+            display_name="Test Notification Channel",
+            labels={
+                "email_address": "fake_email@blahblah.com",
+            },
+            type="email")
+        ```
+        ## Example Usage - Notification Channel Sensitive
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.monitoring.NotificationChannel("default",
+            display_name="Test Slack Channel",
+            labels={
+                "channel_name": "#foobar",
+            },
+            sensitive_labels={
+                "authToken": "one",
+            },
+            type="slack")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.

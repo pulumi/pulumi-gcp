@@ -68,6 +68,36 @@ class Registry(pulumi.CustomResource):
         [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_devicestatus = gcp.pubsub.Topic("default-devicestatus")
+        default_telemetry = gcp.pubsub.Topic("default-telemetry")
+        default_registry = gcp.iot.Registry("default-registry",
+            event_notification_configs=[{
+                "pubsubTopicName": default_telemetry.id,
+            }],
+            state_notification_config={
+                "pubsub_topic_name": default_devicestatus.id,
+            },
+            http_config={
+                "http_enabled_state": "HTTP_ENABLED",
+            },
+            mqtt_config={
+                "mqtt_enabled_state": "MQTT_ENABLED",
+            },
+            credentials=[{
+                "publicKeyCertificate": {
+                    "format": "X509_CERTIFICATE_PEM",
+                    "certificate": (lambda path: open(path).read())("rsa_cert.pem"),
+                },
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

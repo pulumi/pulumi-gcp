@@ -18,6 +18,23 @@ import * as utilities from "../utilities";
  * 
  * **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const image-store = new gcp.storage.Bucket("image-store", {location: "EU"});
+ * const image-store-acl = new gcp.storage.BucketACL("image-store-acl", {
+ *     bucket: image-store.name,
+ *     roleEntities: [
+ *         "OWNER:user-my.email@gmail.com",
+ *         "READER:group-mygroup",
+ *     ],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_acl.html.markdown.
  */
