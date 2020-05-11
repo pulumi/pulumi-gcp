@@ -192,6 +192,25 @@ class Trigger(pulumi.CustomResource):
         * How-to Guides
             * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
 
+        ## Example Usage - Cloudbuild Trigger Filename
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        filename_trigger = gcp.cloudbuild.Trigger("filename-trigger",
+            filename="cloudbuild.yaml",
+            substitutions={
+                "_BAZ": "qux",
+                "_FOO": "bar",
+            },
+            trigger_template={
+                "branchName": "master",
+                "repoName": "my-repo",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] build: Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.

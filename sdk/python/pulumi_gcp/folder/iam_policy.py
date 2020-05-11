@@ -29,6 +29,25 @@ class IAMPolicy(pulumi.CustomResource):
         Allows creation and management of the IAM policy for an existing Google Cloud
         Platform folder.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        folder_admin_policy = gcp.folder.IAMPolicy("folderAdminPolicy",
+            folder=department1.name,
+            policy_data=admin.policy_data)
+        ```
 
 
         :param str resource_name: The name of the resource.

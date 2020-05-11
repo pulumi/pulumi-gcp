@@ -663,6 +663,351 @@ class RegionUrlMap(pulumi.CustomResource):
         UrlMaps are used to route requests to a backend service based on rules
         that you define for the host and path of an incoming URL.
 
+        ## Example Usage - Region Url Map Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            check_interval_sec=1,
+            timeout_sec=1,
+            http_health_check={
+                "port": 80,
+                "requestPath": "/",
+            })
+        login = gcp.compute.RegionBackendService("login",
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.self_link])
+        home = gcp.compute.RegionBackendService("home",
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.self_link])
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            region="us-central1",
+            description="a description",
+            default_service=home.self_link,
+            host_rule=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": home.self_link,
+                "path_rule": [
+                    {
+                        "paths": ["/home"],
+                        "service": home.self_link,
+                    },
+                    {
+                        "paths": ["/login"],
+                        "service": login.self_link,
+                    },
+                ],
+            }],
+            test=[{
+                "service": home.self_link,
+                "host": "hi.com",
+                "path": "/home",
+            }])
+        ```
+        ## Example Usage - Region Url Map L7 Ilb Path
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default", http_health_check={
+            "port": 80,
+        })
+        home = gcp.compute.RegionBackendService("home",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.self_link],
+            load_balancing_scheme="INTERNAL_MANAGED")
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            description="a description",
+            default_service=home.self_link,
+            host_rule=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": home.self_link,
+                "path_rule": [{
+                    "paths": ["/home"],
+                    "route_action": {
+                        "cors_policy": {
+                            "allowCredentials": True,
+                            "allowHeaders": ["Allowed content"],
+                            "allowMethods": ["GET"],
+                            "allowOrigins": ["Allowed origin"],
+                            "exposeHeaders": ["Exposed header"],
+                            "maxAge": 30,
+                            "disabled": False,
+                        },
+                        "fault_injection_policy": {
+                            "abort": {
+                                "httpStatus": 234,
+                                "percentage": 5.6,
+                            },
+                            "delay": {
+                                "fixed_delay": {
+                                    "seconds": 0,
+                                    "nanos": 50000,
+                                },
+                                "percentage": 7.8,
+                            },
+                        },
+                        "request_mirror_policy": {
+                            "backendService": home.self_link,
+                        },
+                        "retry_policy": {
+                            "numRetries": 4,
+                            "per_try_timeout": {
+                                "seconds": 30,
+                            },
+                            "retryConditions": [
+                                "5xx",
+                                "deadline-exceeded",
+                            ],
+                        },
+                        "timeout": {
+                            "seconds": 20,
+                            "nanos": 750000000,
+                        },
+                        "url_rewrite": {
+                            "hostRewrite": "A replacement header",
+                            "pathPrefixRewrite": "A replacement path",
+                        },
+                        "weighted_backend_services": [{
+                            "backendService": home.self_link,
+                            "weight": 400,
+                            "header_action": {
+                                "requestHeadersToRemoves": ["RemoveMe"],
+                                "request_headers_to_add": [{
+                                    "headerName": "AddMe",
+                                    "headerValue": "MyValue",
+                                    "replace": True,
+                                }],
+                                "responseHeadersToRemoves": ["RemoveMe"],
+                                "response_headers_to_add": [{
+                                    "headerName": "AddMe",
+                                    "headerValue": "MyValue",
+                                    "replace": False,
+                                }],
+                            },
+                        }],
+                    },
+                }],
+            }],
+            test=[{
+                "service": home.self_link,
+                "host": "hi.com",
+                "path": "/home",
+            }])
+        ```
+        ## Example Usage - Region Url Map L7 Ilb Path Partial
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default", http_health_check={
+            "port": 80,
+        })
+        home = gcp.compute.RegionBackendService("home",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.self_link],
+            load_balancing_scheme="INTERNAL_MANAGED")
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            description="a description",
+            default_service=home.self_link,
+            host_rule=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": home.self_link,
+                "path_rule": [{
+                    "paths": ["/home"],
+                    "route_action": {
+                        "retry_policy": {
+                            "numRetries": 4,
+                            "per_try_timeout": {
+                                "seconds": 30,
+                            },
+                            "retryConditions": [
+                                "5xx",
+                                "deadline-exceeded",
+                            ],
+                        },
+                        "timeout": {
+                            "seconds": 20,
+                            "nanos": 750000000,
+                        },
+                        "url_rewrite": {
+                            "hostRewrite": "A replacement header",
+                            "pathPrefixRewrite": "A replacement path",
+                        },
+                        "weighted_backend_services": [{
+                            "backendService": home.self_link,
+                            "weight": 400,
+                            "header_action": {
+                                "response_headers_to_add": [{
+                                    "headerName": "AddMe",
+                                    "headerValue": "MyValue",
+                                    "replace": False,
+                                }],
+                            },
+                        }],
+                    },
+                }],
+            }],
+            test=[{
+                "service": home.self_link,
+                "host": "hi.com",
+                "path": "/home",
+            }])
+        ```
+        ## Example Usage - Region Url Map L7 Ilb Route
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default", http_health_check={
+            "port": 80,
+        })
+        home = gcp.compute.RegionBackendService("home",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.self_link],
+            load_balancing_scheme="INTERNAL_MANAGED")
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            description="a description",
+            default_service=home.self_link,
+            host_rule=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": home.self_link,
+                "route_rules": [{
+                    "priority": 1,
+                    "header_action": {
+                        "requestHeadersToRemoves": ["RemoveMe2"],
+                        "request_headers_to_add": [{
+                            "headerName": "AddSomethingElse",
+                            "headerValue": "MyOtherValue",
+                            "replace": True,
+                        }],
+                        "responseHeadersToRemoves": ["RemoveMe3"],
+                        "response_headers_to_add": [{
+                            "headerName": "AddMe",
+                            "headerValue": "MyValue",
+                            "replace": False,
+                        }],
+                    },
+                    "match_rules": [{
+                        "fullPathMatch": "a full path",
+                        "header_matches": [{
+                            "headerName": "someheader",
+                            "exactMatch": "match this exactly",
+                            "invertMatch": True,
+                        }],
+                        "ignoreCase": True,
+                        "metadata_filters": [{
+                            "filterMatchCriteria": "MATCH_ANY",
+                            "filter_labels": [{
+                                "name": "PLANET",
+                                "value": "MARS",
+                            }],
+                        }],
+                        "query_parameter_matches": [{
+                            "name": "a query parameter",
+                            "presentMatch": True,
+                        }],
+                    }],
+                    "url_redirect": {
+                        "hostRedirect": "A host",
+                        "httpsRedirect": False,
+                        "pathRedirect": "some/path",
+                        "redirectResponseCode": "TEMPORARY_REDIRECT",
+                        "stripQuery": True,
+                    },
+                }],
+            }],
+            test=[{
+                "service": home.self_link,
+                "host": "hi.com",
+                "path": "/home",
+            }])
+        ```
+        ## Example Usage - Region Url Map L7 Ilb Route Partial
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default", http_health_check={
+            "port": 80,
+        })
+        home = gcp.compute.RegionBackendService("home",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.self_link],
+            load_balancing_scheme="INTERNAL_MANAGED")
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            description="a description",
+            default_service=home.self_link,
+            host_rule=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": home.self_link,
+                "route_rules": [{
+                    "priority": 1,
+                    "service": home.self_link,
+                    "header_action": {
+                        "requestHeadersToRemoves": ["RemoveMe2"],
+                    },
+                    "match_rules": [{
+                        "fullPathMatch": "a full path",
+                        "header_matches": [{
+                            "headerName": "someheader",
+                            "exactMatch": "match this exactly",
+                            "invertMatch": True,
+                        }],
+                        "query_parameter_matches": [{
+                            "name": "a query parameter",
+                            "presentMatch": True,
+                        }],
+                    }],
+                }],
+            }],
+            test=[{
+                "service": home.self_link,
+                "host": "hi.com",
+                "path": "/home",
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_service: A reference to a RegionBackendService resource. This will be used if

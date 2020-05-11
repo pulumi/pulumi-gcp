@@ -214,6 +214,24 @@ import * as utilities from "../utilities";
  *     unhealthyThreshold: 5,
  * });
  * ```
+ * ## Example Usage - Health Check With Logging
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const health-check-with-logging = new gcp.compute.HealthCheck("health-check-with-logging", {
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcp_health_check: {
+ *         port: "22",
+ *     },
+ *     log_config: {
+ *         enable: true,
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_health_check.html.markdown.
  */

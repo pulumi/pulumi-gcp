@@ -17,6 +17,35 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
  * * How-to Guides
  *     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
+ * 
+ * ## Example Usage - Target Ssl Proxy Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ * 
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("defaultSSLCertificate", {
+ *     privateKey: fs.readFileSync("path/to/private.key"),
+ *     certificate: fs.readFileSync("path/to/certificate.crt"),
+ * });
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcp_health_check: {
+ *         port: "443",
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     protocol: "SSL",
+ *     healthChecks: [defaultHealthCheck.selfLink],
+ * });
+ * const defaultTargetSSLProxy = new gcp.compute.TargetSSLProxy("defaultTargetSSLProxy", {
+ *     backendService: defaultBackendService.selfLink,
+ *     sslCertificates: [defaultSSLCertificate.selfLink],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_ssl_proxy.html.markdown.
  */

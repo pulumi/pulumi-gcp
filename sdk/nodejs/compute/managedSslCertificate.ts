@@ -32,6 +32,60 @@ import * as utilities from "../utilities";
  * certificates may entail some downtime while the certificate provisions.
  * 
  * In conclusion: Be extremely cautious.
+ * 
+ * ## Example Usage - Managed Ssl Certificate Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultManagedSslCertificate = new gcp.compute.ManagedSslCertificate("defaultManagedSslCertificate", {managed: {
+ *     domains: ["sslcert.tf-test.club."],
+ * }});
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.selfLink],
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ *     description: "a description",
+ *     defaultService: defaultBackendService.selfLink,
+ *     host_rule: [{
+ *         hosts: ["sslcert.tf-test.club"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.selfLink,
+ *         path_rule: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.selfLink,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy", {
+ *     urlMap: defaultURLMap.selfLink,
+ *     sslCertificates: [defaultManagedSslCertificate.selfLink],
+ * });
+ * const zone = new gcp.dns.ManagedZone("zone", {dnsName: "sslcert.tf-test.club."});
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ *     target: defaultTargetHttpsProxy.selfLink,
+ *     portRange: 443,
+ * });
+ * const set = new gcp.dns.RecordSet("set", {
+ *     type: "A",
+ *     ttl: 3600,
+ *     managedZone: zone.name,
+ *     rrdatas: [defaultGlobalForwardingRule.ipAddress],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_managed_ssl_certificate.html.markdown.
  */

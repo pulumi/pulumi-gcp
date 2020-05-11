@@ -19,6 +19,125 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
  * * How-to Guides
  *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+ * 
+ * ## Example Usage - Autoscaler Single Instance
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const debian9 = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("defaultInstanceTemplate", {
+ *     machineType: "n1-standard-1",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disk: [{
+ *         sourceImage: debian9.then(debian9 => debian9.selfLink),
+ *     }],
+ *     network_interface: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     service_account: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ * });
+ * const defaultTargetPool = new gcp.compute.TargetPool("defaultTargetPool", {});
+ * const defaultInstanceGroupManager = new gcp.compute.InstanceGroupManager("defaultInstanceGroupManager", {
+ *     zone: "us-central1-f",
+ *     version: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     targetPools: [defaultTargetPool.id],
+ *     baseInstanceName: "autoscaler-sample",
+ * });
+ * const defaultAutoscaler = new gcp.compute.Autoscaler("defaultAutoscaler", {
+ *     zone: "us-central1-f",
+ *     target: defaultInstanceGroupManager.id,
+ *     autoscaling_policy: {
+ *         maxReplicas: 5,
+ *         minReplicas: 1,
+ *         cooldownPeriod: 60,
+ *         metric: [{
+ *             name: "pubsub.googleapis.com/subscription/num_undelivered_messages",
+ *             filter: "resource.type = pubsubSubscription AND resource.label.subscription_id = our-subscription",
+ *             singleInstanceAssignment: 65535,
+ *         }],
+ *     },
+ * });
+ * ```
+ * ## Example Usage - Autoscaler Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const debian9 = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobarInstanceTemplate", {
+ *     machineType: "n1-standard-1",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     disk: [{
+ *         sourceImage: debian9.then(debian9 => debian9.selfLink),
+ *     }],
+ *     network_interface: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     service_account: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ * });
+ * const foobarTargetPool = new gcp.compute.TargetPool("foobarTargetPool", {});
+ * const foobarInstanceGroupManager = new gcp.compute.InstanceGroupManager("foobarInstanceGroupManager", {
+ *     zone: "us-central1-f",
+ *     version: [{
+ *         instanceTemplate: foobarInstanceTemplate.id,
+ *         name: "primary",
+ *     }],
+ *     targetPools: [foobarTargetPool.id],
+ *     baseInstanceName: "foobar",
+ * });
+ * const foobarAutoscaler = new gcp.compute.Autoscaler("foobarAutoscaler", {
+ *     zone: "us-central1-f",
+ *     target: foobarInstanceGroupManager.id,
+ *     autoscaling_policy: {
+ *         maxReplicas: 5,
+ *         minReplicas: 1,
+ *         cooldownPeriod: 60,
+ *         cpu_utilization: {
+ *             target: 0.5,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_autoscaler.html.markdown.
  */

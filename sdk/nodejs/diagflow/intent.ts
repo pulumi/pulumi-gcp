@@ -16,6 +16,21 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+ * 
+ * ## Example Usage - Dialogflow Intent Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
+ *     displayName: "exampleAgent",
+ *     defaultLanguageCode: "en",
+ *     timeZone: "America/New_York",
+ * });
+ * const basicIntent = new gcp.diagflow.Intent("basicIntent", {displayName: "basic-intent"});
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dialogflow_intent.html.markdown.
  */

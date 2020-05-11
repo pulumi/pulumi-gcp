@@ -15,6 +15,50 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+ * 
+ * ## Example Usage - Game Service Deployment Rollout Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultGameServerDeployment = new gcp.gameservices.GameServerDeployment("defaultGameServerDeployment", {
+ *     deploymentId: "tf-test-deployment",
+ *     description: "a deployment description",
+ * });
+ * const defaultGameServerConfig = new gcp.gameservices.GameServerConfig("defaultGameServerConfig", {
+ *     configId: "tf-test-config",
+ *     deploymentId: defaultGameServerDeployment.deploymentId,
+ *     description: "a config description",
+ *     fleet_configs: [{
+ *         name: "some-non-guid",
+ *         fleetSpec: JSON.stringify({
+ *             replicas: 1,
+ *             scheduling: "Packed",
+ *             template: {
+ *                 metadata: {
+ *                     name: "tf-test-game-server-template",
+ *                 },
+ *                 spec: {
+ *                     template: {
+ *                         spec: {
+ *                             containers: [{
+ *                                 name: "simple-udp-server",
+ *                                 image: "gcr.io/agones-images/udp-server:0.14",
+ *                             }],
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *         }),
+ *     }],
+ * });
+ * const defaultGameServerDeploymentRollout = new gcp.gameservices.GameServerDeploymentRollout("defaultGameServerDeploymentRollout", {
+ *     deploymentId: defaultGameServerDeployment.deploymentId,
+ *     defaultGameServerConfig: defaultGameServerConfig.name,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_deployment_rollout.html.markdown.
  */

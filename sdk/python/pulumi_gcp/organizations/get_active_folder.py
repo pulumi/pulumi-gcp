@@ -47,6 +47,17 @@ def get_active_folder(display_name=None,parent=None,opts=None):
     """
     Get an active folder within GCP by `display_name` and `parent`.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    department1 = gcp.organizations.get_active_folder(display_name="Department 1",
+        parent="organizations/1234567")
+    ```
 
 
 

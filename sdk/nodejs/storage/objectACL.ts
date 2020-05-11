@@ -19,6 +19,28 @@ import * as utilities from "../utilities";
  * > Want fine-grained control over object ACLs? Use `gcp.storage.ObjectAccessControl` to control individual
  * role entity pairs.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const image-store = new gcp.storage.Bucket("image-store", {location: "EU"});
+ * const image = new gcp.storage.BucketObject("image", {
+ *     bucket: image-store.name,
+ *     source: new pulumi.asset.FileAsset("image1.jpg"),
+ * });
+ * const image-store-acl = new gcp.storage.ObjectACL("image-store-acl", {
+ *     bucket: image-store.name,
+ *     object: image.outputName,
+ *     roleEntities: [
+ *         "OWNER:user-my.email@gmail.com",
+ *         "READER:group-mygroup",
+ *     ],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_object_acl.html.markdown.
  */

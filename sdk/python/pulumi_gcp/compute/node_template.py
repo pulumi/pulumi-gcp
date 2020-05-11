@@ -88,6 +88,37 @@ class NodeTemplate(pulumi.CustomResource):
         * How-to Guides
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
+        ## Example Usage - Node Template Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        central1a = gcp.compute.get_node_types(zone="us-central1-a")
+        template = gcp.compute.NodeTemplate("template",
+            region="us-central1",
+            node_type=central1a.names[0])
+        ```
+        ## Example Usage - Node Template Server Binding
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        central1a = gcp.compute.get_node_types(zone="us-central1-a")
+        template = gcp.compute.NodeTemplate("template",
+            region="us-central1",
+            node_type=central1a.names[0],
+            node_affinity_labels={
+                "foo": "baz",
+            },
+            server_binding={
+                "type": "RESTART_NODE_ON_MINIMAL_SERVERS",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional textual description of the resource.

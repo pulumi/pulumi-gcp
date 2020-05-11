@@ -22,6 +22,25 @@ import * as utilities from "../utilities";
  *    `gcp.organizations.IAMMember` or `gcp.organizations.IAMBinding`
  *    or they will fight over what your policy should be.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.organizations.IAMPolicy("policy", {
+ *     orgId: "123456789",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_policy.html.markdown.
  */

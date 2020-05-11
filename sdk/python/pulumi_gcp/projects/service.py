@@ -34,6 +34,19 @@ class Service(pulumi.CustomResource):
         For a list of services available, visit the
         [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.Service("project",
+            disable_dependent_services=True,
+            project="your-project-id",
+            service="iam.googleapis.com")
+        ```
 
 
         :param str resource_name: The name of the resource.

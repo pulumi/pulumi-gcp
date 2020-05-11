@@ -45,6 +45,22 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         contains no data, requires no configuration or maintenance, and does not
         affect billing. You cannot update the source representation instance.
 
+
+
+        ## Example Usage - Sql Source Representation Instance Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.SourceRepresentationInstance("instance",
+            database_version="MYSQL_5_7",
+            host="10.20.30.40",
+            port=3306,
+            region="us-central1")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.

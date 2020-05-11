@@ -75,6 +75,30 @@ class TargetSSLProxy(pulumi.CustomResource):
         * How-to Guides
             * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
 
+        ## Example Usage - Target Ssl Proxy Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_ssl_certificate = gcp.compute.SSLCertificate("defaultSSLCertificate",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        default_health_check = gcp.compute.HealthCheck("defaultHealthCheck",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": "443",
+            })
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            protocol="SSL",
+            health_checks=[default_health_check.self_link])
+        default_target_ssl_proxy = gcp.compute.TargetSSLProxy("defaultTargetSSLProxy",
+            backend_service=default_backend_service.self_link,
+            ssl_certificates=[default_ssl_certificate.self_link])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_service: A reference to the BackendService resource.

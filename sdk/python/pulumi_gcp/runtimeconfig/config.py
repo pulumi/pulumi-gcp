@@ -31,6 +31,16 @@ class Config(pulumi.CustomResource):
         or the
         [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        ```
 
 
         :param str resource_name: The name of the resource.

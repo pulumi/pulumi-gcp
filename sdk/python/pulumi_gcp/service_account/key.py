@@ -56,7 +56,22 @@ class Key(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, key_algorithm=None, private_key_type=None, public_key_type=None, service_account_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
-        
+
+
+        ## Example Usage, creating a new Key Pair
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        myaccount = gcp.service_account.Account("myaccount",
+            account_id="myaccount",
+            display_name="My Service Account")
+        mykey = gcp.service_account.Key("mykey",
+            service_account_id=myaccount.name,
+            public_key_type="TYPE_X509_PEM_FILE")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_algorithm: The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
@@ -68,8 +83,6 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] service_account_id: The Service account id of the Key Pair. This can be a string in the format
                `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
                unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_account_key.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -110,7 +123,7 @@ class Key(pulumi.CustomResource):
         """
         Get an existing Key resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -130,12 +143,11 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] valid_after: The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] valid_before: The key can be used before this timestamp.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_account_key.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["key_algorithm"] = key_algorithm
         __props__["name"] = name
         __props__["private_key"] = private_key

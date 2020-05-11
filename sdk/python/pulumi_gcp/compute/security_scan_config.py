@@ -87,6 +87,20 @@ class SecurityScanConfig(pulumi.CustomResource):
         > **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+        ## Example Usage - Scan Config Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scanner_static_ip = gcp.compute.Address("scannerStaticIp")
+        scan_config = gcp.compute.SecurityScanConfig("scan-config",
+            display_name="scan-config",
+            starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
+            target_platforms=["COMPUTE"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] authentication: The authentication configuration.

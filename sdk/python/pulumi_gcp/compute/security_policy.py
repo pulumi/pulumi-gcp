@@ -71,6 +71,39 @@ class SecurityPolicy(pulumi.CustomResource):
         see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
         and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy", rules=[
+            {
+                "action": "deny(403)",
+                "description": "Deny access to IPs in 9.9.9.0/24",
+                "match": {
+                    "config": {
+                        "srcIpRanges": ["9.9.9.0/24"],
+                    },
+                    "versionedExpr": "SRC_IPS_V1",
+                },
+                "priority": "1000",
+            },
+            {
+                "action": "allow",
+                "description": "default rule",
+                "match": {
+                    "config": {
+                        "srcIpRanges": ["*"],
+                    },
+                    "versionedExpr": "SRC_IPS_V1",
+                },
+                "priority": "2147483647",
+            },
+        ])
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -14,6 +14,66 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
  * * How-to Guides
  *     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
+ * 
+ * ## Example Usage - Billing Budget Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     amount: {
+ *         specified_amount: {
+ *             currencyCode: "USD",
+ *             units: "100000",
+ *         },
+ *     },
+ *     threshold_rules: [{
+ *         thresholdPercent: 0.5,
+ *     }],
+ * });
+ * ```
+ * ## Example Usage - Billing Budget Filter
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     budget_filter: {
+ *         projects: ["projects/my-project-name"],
+ *         creditTypesTreatment: "EXCLUDE_ALL_CREDITS",
+ *         services: ["services/24E6-581D-38E5"],
+ *     },
+ *     amount: {
+ *         specified_amount: {
+ *             currencyCode: "USD",
+ *             units: "100000",
+ *         },
+ *     },
+ *     threshold_rules: [
+ *         {
+ *             thresholdPercent: 0.5,
+ *         },
+ *         {
+ *             thresholdPercent: 0.9,
+ *             spendBasis: "FORECASTED_SPEND",
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_budget.html.markdown.
  */

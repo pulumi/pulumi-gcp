@@ -26,6 +26,18 @@ class UsageExportBucket(pulumi.CustomResource):
         doc for more information.
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            org_id="1234567",
+            project_id="your-project-id")
+        ```
 
 
         :param str resource_name: The name of the resource.

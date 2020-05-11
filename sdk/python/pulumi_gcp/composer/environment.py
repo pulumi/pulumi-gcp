@@ -172,6 +172,71 @@ class Environment(pulumi.CustomResource):
           * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment 
             deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
 
+        ## Example Usage
+
+        ### Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.composer.Environment("test", region="us-central1")
+        ```
+
+        ### With GKE and Compute Resource Dependencies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_network = gcp.compute.Network("testNetwork", auto_create_subnetworks=False)
+        test_subnetwork = gcp.compute.Subnetwork("testSubnetwork",
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=test_network.id)
+        test_account = gcp.service_account.Account("testAccount",
+            account_id="composer-env-account",
+            display_name="Test Service Account for Composer Environment")
+        composer_worker = gcp.projects.IAMMember("composer-worker",
+            role="roles/composer.worker",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        test_environment = gcp.composer.Environment("testEnvironment",
+            region="us-central1",
+            config={
+                "nodeCount": 4,
+                "node_config": {
+                    "zone": "us-central1-a",
+                    "machineType": "n1-standard-1",
+                    "network": test_network.id,
+                    "subnetwork": test_subnetwork.id,
+                    "serviceAccount": test_account.name,
+                },
+            })
+        ```
+
+        ### With Software (Airflow) Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.composer.Environment("test",
+            config={
+                "softwareConfig": {
+                    "airflowConfigOverrides": {
+                        "core-loadExample": "True",
+                    },
+                    "envVariables": {
+                        "FOO": "bar",
+                    },
+                    "pypiPackages": {
+                        "numpy": "",
+                        "scipy": "==1.1.0",
+                    },
+                },
+            },
+            region="us-central1")
+        ```
 
 
         :param str resource_name: The name of the resource.

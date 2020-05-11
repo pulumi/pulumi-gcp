@@ -61,6 +61,141 @@ class HaVpnGateway(pulumi.CustomResource):
             * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
             * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
 
+        ## Example Usage - Ha Vpn Gateway Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network1 = gcp.compute.Network("network1", auto_create_subnetworks=False)
+        ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
+            region="us-central1",
+            network=network1.self_link)
+        ```
+        ## Example Usage - Ha Vpn Gateway Gcp To Gcp
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network1 = gcp.compute.Network("network1",
+            routing_mode="GLOBAL",
+            auto_create_subnetworks=False)
+        ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
+            region="us-central1",
+            network=network1.self_link)
+        network2 = gcp.compute.Network("network2",
+            routing_mode="GLOBAL",
+            auto_create_subnetworks=False)
+        ha_gateway2 = gcp.compute.HaVpnGateway("haGateway2",
+            region="us-central1",
+            network=network2.self_link)
+        network1_subnet1 = gcp.compute.Subnetwork("network1Subnet1",
+            ip_cidr_range="10.0.1.0/24",
+            region="us-central1",
+            network=network1.self_link)
+        network1_subnet2 = gcp.compute.Subnetwork("network1Subnet2",
+            ip_cidr_range="10.0.2.0/24",
+            region="us-west1",
+            network=network1.self_link)
+        network2_subnet1 = gcp.compute.Subnetwork("network2Subnet1",
+            ip_cidr_range="192.168.1.0/24",
+            region="us-central1",
+            network=network2.self_link)
+        network2_subnet2 = gcp.compute.Subnetwork("network2Subnet2",
+            ip_cidr_range="192.168.2.0/24",
+            region="us-east1",
+            network=network2.self_link)
+        router1 = gcp.compute.Router("router1",
+            network=network1.name,
+            bgp={
+                "asn": 64514,
+            })
+        router2 = gcp.compute.Router("router2",
+            network=network2.name,
+            bgp={
+                "asn": 64515,
+            })
+        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            region="us-central1",
+            vpn_gateway=ha_gateway1.self_link,
+            peer_gcp_gateway=ha_gateway2.self_link,
+            shared_secret="a secret message",
+            router=router1.self_link,
+            vpn_gateway_interface=0)
+        tunnel2 = gcp.compute.VPNTunnel("tunnel2",
+            region="us-central1",
+            vpn_gateway=ha_gateway1.self_link,
+            peer_gcp_gateway=ha_gateway2.self_link,
+            shared_secret="a secret message",
+            router=router1.self_link,
+            vpn_gateway_interface=1)
+        tunnel3 = gcp.compute.VPNTunnel("tunnel3",
+            region="us-central1",
+            vpn_gateway=ha_gateway2.self_link,
+            peer_gcp_gateway=ha_gateway1.self_link,
+            shared_secret="a secret message",
+            router=router2.self_link,
+            vpn_gateway_interface=0)
+        tunnel4 = gcp.compute.VPNTunnel("tunnel4",
+            region="us-central1",
+            vpn_gateway=ha_gateway2.self_link,
+            peer_gcp_gateway=ha_gateway1.self_link,
+            shared_secret="a secret message",
+            router=router2.self_link,
+            vpn_gateway_interface=1)
+        router1_interface1 = gcp.compute.RouterInterface("router1Interface1",
+            router=router1.name,
+            region="us-central1",
+            ip_range="169.254.0.1/30",
+            vpn_tunnel=tunnel1.name)
+        router1_peer1 = gcp.compute.RouterPeer("router1Peer1",
+            router=router1.name,
+            region="us-central1",
+            peer_ip_address="169.254.0.2",
+            peer_asn=64515,
+            advertised_route_priority=100,
+            interface=router1_interface1.name)
+        router1_interface2 = gcp.compute.RouterInterface("router1Interface2",
+            router=router1.name,
+            region="us-central1",
+            ip_range="169.254.1.1/30",
+            vpn_tunnel=tunnel2.name)
+        router1_peer2 = gcp.compute.RouterPeer("router1Peer2",
+            router=router1.name,
+            region="us-central1",
+            peer_ip_address="169.254.1.2",
+            peer_asn=64515,
+            advertised_route_priority=100,
+            interface=router1_interface2.name)
+        router2_interface1 = gcp.compute.RouterInterface("router2Interface1",
+            router=router2.name,
+            region="us-central1",
+            ip_range="169.254.0.1/30",
+            vpn_tunnel=tunnel3.name)
+        router2_peer1 = gcp.compute.RouterPeer("router2Peer1",
+            router=router2.name,
+            region="us-central1",
+            peer_ip_address="169.254.0.2",
+            peer_asn=64514,
+            advertised_route_priority=100,
+            interface=router2_interface1.name)
+        router2_interface2 = gcp.compute.RouterInterface("router2Interface2",
+            router=router2.name,
+            region="us-central1",
+            ip_range="169.254.1.1/30",
+            vpn_tunnel=tunnel4.name)
+        router2_peer2 = gcp.compute.RouterPeer("router2Peer2",
+            router=router2.name,
+            region="us-central1",
+            peer_ip_address="169.254.1.2",
+            peer_asn=64514,
+            advertised_route_priority=100,
+            interface=router2_interface2.name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.

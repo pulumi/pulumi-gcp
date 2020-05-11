@@ -245,6 +245,116 @@ class Service(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
+        ## Example Usage - Cloud Run Service Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template={
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                    }],
+                },
+            },
+            traffics=[{
+                "latestRevision": True,
+                "percent": 100,
+            }])
+        ```
+        ## Example Usage - Cloud Run Service Sql
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-east1",
+            settings={
+                "tier": "db-f1-micro",
+            })
+        default = gcp.cloudrun.Service("default",
+            autogenerate_revision_name=True,
+            location="us-central1",
+            template={
+                "metadata": {
+                    "annotations": {
+                        "autoscaling.knative.dev/maxScale": "1000",
+                        "run.googleapis.com/client-name": "cloud-console",
+                        "run.googleapis.com/cloudsql-instances": instance.name.apply(lambda name: f"my-project-name:us-central1:{name}"),
+                    },
+                },
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                    }],
+                },
+            })
+        ```
+        ## Example Usage - Cloud Run Service Noauth
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template={
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                    }],
+                },
+            })
+        noauth_iam_policy = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/run.invoker",
+            "members": ["allUsers"],
+        }])
+        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauthIamPolicy",
+            location=default.location,
+            project=default.project,
+            service=default.name,
+            policy_data=noauth_iam_policy.policy_data)
+        ```
+        ## Example Usage - Cloud Run Service Multiple Environment Variables
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            autogenerate_revision_name=True,
+            location="us-central1",
+            template={
+                "spec": {
+                    "containers": [{
+                        "env": [
+                            {
+                                "name": "SOURCE",
+                                "value": "remote",
+                            },
+                            {
+                                "name": "TARGET",
+                                "value": "home",
+                            },
+                        ],
+                        "image": "gcr.io/cloudrun/hello",
+                    }],
+                },
+            },
+            traffics=[{
+                "latestRevision": True,
+                "percent": 100,
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] autogenerate_revision_name: If set to `true`, the revision name (template.metadata.name) will be omitted and 

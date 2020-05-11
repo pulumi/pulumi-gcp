@@ -15,6 +15,39 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/dns/docs/reference/v1beta2/policies)
  * * How-to Guides
  *     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
+ * 
+ * ## Example Usage - Dns Policy Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const network-1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network-2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const example-policy = new gcp.dns.Policy("example-policy", {
+ *     enableInboundForwarding: true,
+ *     enableLogging: true,
+ *     alternative_name_server_config: {
+ *         target_name_servers: [
+ *             {
+ *                 ipv4Address: "172.16.1.10",
+ *             },
+ *             {
+ *                 ipv4Address: "172.16.1.20",
+ *             },
+ *         ],
+ *     },
+ *     networks: [
+ *         {
+ *             networkUrl: network-1.selfLink,
+ *         },
+ *         {
+ *             networkUrl: network-2.selfLink,
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_policy.html.markdown.
  */

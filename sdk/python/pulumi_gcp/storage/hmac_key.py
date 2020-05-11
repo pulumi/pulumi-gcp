@@ -59,6 +59,17 @@ class HmacKey(pulumi.CustomResource):
         > **Warning:** All arguments including `secret` will be stored in the raw
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+        ## Example Usage - Storage Hmac Key
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.service_account.Account("serviceAccount", account_id="my-svc-acc")
+        key = gcp.storage.HmacKey("key", service_account_email=service_account.email)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

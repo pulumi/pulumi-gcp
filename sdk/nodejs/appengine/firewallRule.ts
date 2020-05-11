@@ -16,6 +16,29 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.firewall.ingressRules)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
+ * 
+ * ## Example Usage - App Engine Firewall Rule Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "ae-project",
+ *     orgId: "123456789",
+ * });
+ * const app = new gcp.appengine.Application("app", {
+ *     project: myProject.projectId,
+ *     locationId: "us-central",
+ * });
+ * const rule = new gcp.appengine.FirewallRule("rule", {
+ *     project: app.project,
+ *     priority: 1000,
+ *     action: "ALLOW",
+ *     sourceRange: "*",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_firewall_rule.html.markdown.
  */

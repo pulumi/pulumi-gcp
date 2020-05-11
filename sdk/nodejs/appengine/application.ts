@@ -14,6 +14,23 @@ import * as utilities from "../utilities";
  *    successfully deleted; this is a limitation of the provider, and will go away in the future.
  *    This provider is not able to delete App Engine applications.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "your-project-id",
+ *     orgId: "1234567",
+ * });
+ * const app = new gcp.appengine.Application("app", {
+ *     project: myProject.projectId,
+ *     locationId: "us-central",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_application.html.markdown.
  */

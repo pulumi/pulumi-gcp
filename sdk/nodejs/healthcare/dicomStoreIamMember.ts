@@ -17,6 +17,24 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `gcp.healthcare.DicomStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DicomStoreIamMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * ## google\_healthcare\_dicom\_store\_iam\_policy
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const dicomStore = new gcp.healthcare.DicomStoreIamPolicy("dicomStore", {
+ *     dicomStoreId: "your-dicom-store-id",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * 
  * ## google\_healthcare\_dicom\_store\_iam\_binding
  * 
  * ```typescript

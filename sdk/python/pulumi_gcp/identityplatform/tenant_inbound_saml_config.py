@@ -66,6 +66,33 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
         the marketplace prior to using this resource.
 
+
+
+        ## Example Usage - Identity Platform Tenant Inbound Saml Config Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
+        tenant_saml_config = gcp.identityplatform.TenantInboundSamlConfig("tenantSamlConfig",
+            display_name="Display Name",
+            tenant=tenant.name,
+            idp_config={
+                "idpEntityId": "tf-idp",
+                "signRequest": True,
+                "ssoUrl": "https://example.com",
+                "idp_certificates": [{
+                    "x509Certificate": (lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                }],
+            },
+            sp_config={
+                "spEntityId": "tf-sp",
+                "callbackUri": "https://example.com",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human friendly display name.

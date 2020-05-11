@@ -92,6 +92,22 @@ class Job(pulumi.CustomResource):
         the official documentation for
         [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        big_data_job = gcp.dataflow.Job("bigDataJob",
+            parameters={
+                "baz": "qux",
+                "foo": "bar",
+            },
+            temp_gcs_location="gs://my-bucket/tmp_dir",
+            template_gcs_path="gs://my-bucket/templates/template_file")
+        ```
 
         ## Note on "destroy" / "apply"
 

@@ -17,6 +17,24 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `gcp.healthcare.DatasetIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * ## google\_healthcare\_dataset\_iam\_policy
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const dataset = new gcp.healthcare.DatasetIamPolicy("dataset", {
+ *     datasetId: "your-dataset-id",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * 
  * ## google\_healthcare\_dataset\_iam\_binding
  * 
  * ```typescript

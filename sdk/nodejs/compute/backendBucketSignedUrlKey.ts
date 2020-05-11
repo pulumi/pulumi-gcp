@@ -18,6 +18,25 @@ import * as utilities from "../utilities";
  * 
  * > **Warning:** All arguments including `keyValue` will be stored in the raw
  * state as plain-text.
+ * 
+ * ## Example Usage - Backend Bucket Signed Url Key
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const bucket = new gcp.storage.Bucket("bucket", {location: "EU"});
+ * const testBackend = new gcp.compute.BackendBucket("testBackend", {
+ *     description: "Contains beautiful images",
+ *     bucketName: bucket.name,
+ *     enableCdn: true,
+ * });
+ * const backendKey = new gcp.compute.BackendBucketSignedUrlKey("backendKey", {
+ *     keyValue: "pPsVemX8GM46QVeezid6Rw==",
+ *     backendBucket: testBackend.name,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_bucket_signed_url_key.html.markdown.
  */

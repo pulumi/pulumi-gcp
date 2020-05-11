@@ -56,6 +56,20 @@ class Realm(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
+        ## Example Usage - Game Service Realm Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.gameservices.Realm("default",
+            realm_id="tf-test-realm",
+            time_zone="EST",
+            location="global",
+            description="one of the nine")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Human readable description of the realm.

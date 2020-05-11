@@ -24,6 +24,17 @@ import * as utilities from "../utilities";
  * 
  * > **Warning:** All arguments including `secret` will be stored in the raw
  * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * 
+ * ## Example Usage - Storage Hmac Key
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const serviceAccount = new gcp.serviceAccount.Account("serviceAccount", {accountId: "my-svc-acc"});
+ * const key = new gcp.storage.HmacKey("key", {serviceAccountEmail: serviceAccount.email});
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_hmac_key.html.markdown.
  */

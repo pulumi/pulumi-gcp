@@ -14,6 +14,27 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Getting Started](https://cloud.google.com/service-usage/docs/getting-started)
  *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
+ * 
+ * ## Example Usage - Consumer Quota Override
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "quota",
+ *     orgId: "123456789",
+ * });
+ * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
+ *     project: myProject.projectId,
+ *     service: "servicemanagement.googleapis.com",
+ *     metric: `servicemanagement.googleapis.com%2Fdefault_requests`,
+ *     limit: `%2Fmin%2Fproject`,
+ *     overrideValue: "95",
+ *     force: true,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_usage_consumer_quota_override.html.markdown.
  */

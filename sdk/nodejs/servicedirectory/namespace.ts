@@ -13,6 +13,23 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
  * * How-to Guides
  *     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
+ * 
+ * ## Example Usage - Service Directory Namespace Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const example = new gcp.servicedirectory.Namespace("example", {
+ *     namespaceId: "example-namespace",
+ *     location: "us-central1",
+ *     labels: {
+ *         key: "value",
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_directory_namespace.html.markdown.
  */

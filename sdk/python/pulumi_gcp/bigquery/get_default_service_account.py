@@ -52,6 +52,20 @@ def get_default_service_account(project=None,opts=None):
     For more information see
     [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    bq_sa = gcp.bigquery.get_default_service_account()
+    key_sa_user = gcp.kms.CryptoKeyIAMMember("keySaUser",
+        crypto_key_id=google_kms_crypto_key["key"]["id"],
+        role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+        member=f"serviceAccount:{bq_sa.email}")
+    ```
 
 
 

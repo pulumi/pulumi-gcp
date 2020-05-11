@@ -43,6 +43,22 @@ class IAMMember(pulumi.CustomResource):
            should be. Similarly, roles controlled by `folder.IAMBinding`
            should not be assigned to using `folder.IAMMember`.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        admin = gcp.folder.IAMMember("admin",
+            folder=department1.name,
+            role="roles/editor",
+            member="user:alice@gmail.com")
+        ```
 
 
         :param str resource_name: The name of the resource.

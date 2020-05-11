@@ -58,6 +58,51 @@ class TargetHttpProxy(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
+        ## Example Usage - Target Http Proxy Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_http_health_check.self_link])
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            default_service=default_backend_service.self_link,
+            host_rule=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.self_link,
+                "path_rule": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.self_link,
+                }],
+            }])
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.self_link)
+        ```
+        ## Example Usage - Target Http Proxy Https Redirect
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect={
+            "httpsRedirect": True,
+        })
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.self_link)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.

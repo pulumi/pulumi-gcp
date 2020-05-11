@@ -19,6 +19,49 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+ * 
+ * ## Example Usage - Network Endpoint
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.0.0.1/16",
+ *     region: "us-central1",
+ *     network: defaultNetwork.selfLink,
+ * });
+ * const endpoint-instance = new gcp.compute.Instance("endpoint-instance", {
+ *     machineType: "n1-standard-1",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: myImage.then(myImage => myImage.selfLink),
+ *         },
+ *     },
+ *     network_interface: [{
+ *         subnetwork: defaultSubnetwork.selfLink,
+ *         access_config: [{}],
+ *     }],
+ * });
+ * const default-endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
+ *     networkEndpointGroup: google_compute_network_endpoint_group.neg.name,
+ *     instance: endpoint-instance.name,
+ *     port: google_compute_network_endpoint_group.neg.default_port,
+ *     ipAddress: endpoint-instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+ * });
+ * const group = new gcp.compute.NetworkEndpointGroup("group", {
+ *     network: defaultNetwork.selfLink,
+ *     subnetwork: defaultSubnetwork.selfLink,
+ *     defaultPort: "90",
+ *     zone: "us-central1-a",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_endpoint.html.markdown.
  */

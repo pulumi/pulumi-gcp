@@ -103,6 +103,63 @@ class TransferJob(pulumi.CustomResource):
         * How-to Guides
             * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.storage.get_transfer_project_servie_account(project=var["project"])
+        s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
+            storage_class="NEARLINE",
+            project=var["project"])
+        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember",
+            bucket=s3_backup_bucket_bucket.name,
+            role="roles/storage.admin",
+            member=f"serviceAccount:{default.email}")
+        s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
+            description="Nightly backup of S3 bucket",
+            project=var["project"],
+            transfer_spec={
+                "object_conditions": {
+                    "maxTimeElapsedSinceLastModification": "600s",
+                    "excludePrefixes": ["requests.gz"],
+                },
+                "transfer_options": {
+                    "deleteObjectsUniqueInSink": False,
+                },
+                "aws_s3_data_source": {
+                    "bucketName": var["aws_s3_bucket"],
+                    "aws_access_key": {
+                        "accessKeyId": var["aws_access_key"],
+                        "secretAccessKey": var["aws_secret_key"],
+                    },
+                },
+                "gcs_data_sink": {
+                    "bucketName": s3_backup_bucket_bucket.name,
+                },
+            },
+            schedule={
+                "schedule_start_date": {
+                    "year": 2018,
+                    "month": 10,
+                    "day": 1,
+                },
+                "schedule_end_date": {
+                    "year": 2019,
+                    "month": 1,
+                    "day": 15,
+                },
+                "start_time_of_day": {
+                    "hours": 23,
+                    "minutes": 30,
+                    "seconds": 0,
+                    "nanos": 0,
+                },
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

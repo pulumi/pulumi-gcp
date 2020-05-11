@@ -15,6 +15,21 @@ import * as utilities from "../utilities";
  * For more information see
  * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const gcsAccount = gcp.storage.getProjectServiceAccount({});
+ * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
+ *     topic: google_pubsub_topic.topic.name,
+ *     role: "roles/pubsub.publisher",
+ *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_project_service_account.html.markdown.
  */

@@ -56,6 +56,25 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             * [Getting Started](https://cloud.google.com/service-usage/docs/getting-started)
             * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
 
+        ## Example Usage - Consumer Quota Override
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="quota",
+            org_id="123456789")
+        override = gcp.serviceusage.ConsumerQuotaOverride("override",
+            project=my_project.project_id,
+            service="servicemanagement.googleapis.com",
+            metric="servicemanagement.googleapis.com%2Fdefault_requests",
+            limit="%2Fmin%2Fproject",
+            override_value="95",
+            force=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] dimensions: If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.

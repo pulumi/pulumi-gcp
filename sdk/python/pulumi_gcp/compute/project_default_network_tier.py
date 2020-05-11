@@ -29,6 +29,16 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
         For more information, see,
         [the Project API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/projects/setDefaultNetworkTier).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.ProjectDefaultNetworkTier("default", network_tier="PREMIUM")
+        ```
 
 
         :param str resource_name: The name of the resource.

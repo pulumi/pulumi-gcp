@@ -66,6 +66,12 @@ def get_region_instance_group(name=None,project=None,region=None,self_link=None,
     Get a Compute Region Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    group = gcp.compute.get_region_instance_group(name="instance-group-name")
+    ```
 
     The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
 

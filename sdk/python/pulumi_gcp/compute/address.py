@@ -106,6 +106,70 @@ class Address(pulumi.CustomResource):
             * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
             * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 
+        ## Example Usage - Address Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ip_address = gcp.compute.Address("ipAddress")
+        ```
+        ## Example Usage - Address With Subnetwork
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        internal_with_subnet_and_address = gcp.compute.Address("internalWithSubnetAndAddress",
+            subnetwork=default_subnetwork.id,
+            address_type="INTERNAL",
+            address="10.0.42.42",
+            region="us-central1")
+        ```
+        ## Example Usage - Address With Gce Endpoint
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        internal_with_gce_endpoint = gcp.compute.Address("internalWithGceEndpoint",
+            address_type="INTERNAL",
+            purpose="GCE_ENDPOINT")
+        ```
+        ## Example Usage - Instance With Ip
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        static = gcp.compute.Address("static")
+        debian_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        instance_with_ip = gcp.compute.Instance("instanceWithIp",
+            machine_type="f1-micro",
+            zone="us-central1-a",
+            boot_disk={
+                "initialize_params": {
+                    "image": debian_image.self_link,
+                },
+            },
+            network_interface=[{
+                "network": "default",
+                "access_config": [{
+                    "natIp": static.address,
+                }],
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The static external IP address represented by this resource. Only

@@ -121,6 +121,67 @@ class Function(pulumi.CustomResource):
         or view the [Cloud Functions IAM resources](https://www.terraform.io/docs/providers/google/r/cloudfunctions_cloud_function_iam.html)
         for Cloud Functions.
 
+        ## Example Usage - Public Function
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket")
+        archive = gcp.storage.BucketObject("archive",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
+        function = gcp.cloudfunctions.Function("function",
+            description="My function",
+            runtime="nodejs10",
+            available_memory_mb=128,
+            source_archive_bucket=bucket.name,
+            source_archive_object=archive.name,
+            trigger_http=True,
+            entry_point="helloGET")
+        # IAM entry for all users to invoke the function
+        invoker = gcp.cloudfunctions.FunctionIamMember("invoker",
+            project=function.project,
+            region=function.region,
+            cloud_function=function.name,
+            role="roles/cloudfunctions.invoker",
+            member="allUsers")
+        ```
+
+        ## Example Usage - Single User
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket")
+        archive = gcp.storage.BucketObject("archive",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
+        function = gcp.cloudfunctions.Function("function",
+            description="My function",
+            runtime="nodejs10",
+            available_memory_mb=128,
+            source_archive_bucket=bucket.name,
+            source_archive_object=archive.name,
+            trigger_http=True,
+            timeout=60,
+            entry_point="helloGET",
+            labels={
+                "my-label": "my-label-value",
+            },
+            environment_variables={
+                "MY_ENV_VAR": "my-env-var-value",
+            })
+        # IAM entry for a single user to invoke the function
+        invoker = gcp.cloudfunctions.FunctionIamMember("invoker",
+            project=function.project,
+            region=function.region,
+            cloud_function=function.name,
+            role="roles/cloudfunctions.invoker",
+            member="user:myFunctionInvoker@example.com")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] available_memory_mb: Memory (in MB), available to the function. Default value is 256MB. Allowed values are: 128MB, 256MB, 512MB, 1024MB, and 2048MB.

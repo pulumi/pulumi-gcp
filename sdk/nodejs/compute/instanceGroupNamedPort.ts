@@ -18,6 +18,41 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroup)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
+ * 
+ * ## Example Usage - Instance Group Named Port Gke
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const containerNetwork = new gcp.compute.Network("containerNetwork", {autoCreateSubnetworks: false});
+ * const containerSubnetwork = new gcp.compute.Subnetwork("containerSubnetwork", {
+ *     region: "us-central1",
+ *     network: containerNetwork.name,
+ *     ipCidrRange: "10.0.36.0/24",
+ * });
+ * const myCluster = new gcp.container.Cluster("myCluster", {
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ *     network: containerNetwork.name,
+ *     subnetwork: containerSubnetwork.name,
+ *     ip_allocation_policy: {
+ *         clusterIpv4CidrBlock: "/19",
+ *         servicesIpv4CidrBlock: "/22",
+ *     },
+ * });
+ * const myPort = new gcp.compute.InstanceGroupNamedPort("myPort", {
+ *     group: myCluster.instanceGroupUrls[0],
+ *     zone: "us-central1-a",
+ *     port: 8080,
+ * });
+ * const myPorts = new gcp.compute.InstanceGroupNamedPort("myPorts", {
+ *     group: myCluster.instanceGroupUrls[0],
+ *     zone: "us-central1-a",
+ *     port: 4443,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group_named_port.html.markdown.
  */

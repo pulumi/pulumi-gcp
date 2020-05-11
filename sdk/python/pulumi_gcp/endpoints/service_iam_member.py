@@ -38,6 +38,47 @@ class ServiceIamMember(pulumi.CustomResource):
 
         > **Note:** `endpoints.ServiceIamBinding` resources **can be** used in conjunction with `endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
 
+
+
+        ## google\_endpoints\_service\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.endpoints.ServiceIamPolicy("policy",
+            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_endpoints\_service\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.endpoints.ServiceIamBinding("binding",
+            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_endpoints\_service\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.endpoints.ServiceIamMember("member",
+            service_name=google_endpoints_service["endpoints_service"]["service_name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one

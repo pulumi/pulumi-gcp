@@ -15,6 +15,62 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+ * 
+ * ## Example Usage - Binary Authorization Policy Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const note = new gcp.containeranalysis.Note("note", {attestation_authority: {
+ *     hint: {
+ *         humanReadableName: "My attestor",
+ *     },
+ * }});
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestation_authority_note: {
+ *     noteReference: note.name,
+ * }});
+ * const policy = new gcp.binaryauthorization.Policy("policy", {
+ *     admission_whitelist_patterns: [{
+ *         namePattern: "gcr.io/google_containers/*",
+ *     }],
+ *     default_admission_rule: {
+ *         evaluationMode: "ALWAYS_ALLOW",
+ *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
+ *     },
+ *     cluster_admission_rules: [{
+ *         cluster: "us-central1-a.prod-cluster",
+ *         evaluationMode: "REQUIRE_ATTESTATION",
+ *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
+ *         requireAttestationsBies: [attestor.name],
+ *     }],
+ * });
+ * ```
+ * ## Example Usage - Binary Authorization Policy Global Evaluation
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const note = new gcp.containeranalysis.Note("note", {attestation_authority: {
+ *     hint: {
+ *         humanReadableName: "My attestor",
+ *     },
+ * }});
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestation_authority_note: {
+ *     noteReference: note.name,
+ * }});
+ * const policy = new gcp.binaryauthorization.Policy("policy", {
+ *     default_admission_rule: {
+ *         evaluationMode: "REQUIRE_ATTESTATION",
+ *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
+ *         requireAttestationsBies: [attestor.name],
+ *     },
+ *     globalPolicyEvaluationMode: "ENABLE",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
  */

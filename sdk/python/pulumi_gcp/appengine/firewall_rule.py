@@ -47,6 +47,26 @@ class FirewallRule(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
 
+        ## Example Usage - App Engine Firewall Rule Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="ae-project",
+            org_id="123456789")
+        app = gcp.appengine.Application("app",
+            project=my_project.project_id,
+            location_id="us-central")
+        rule = gcp.appengine.FirewallRule("rule",
+            project=app.project,
+            priority=1000,
+            action="ALLOW",
+            source_range="*")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to take if this rule matches.

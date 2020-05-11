@@ -14,6 +14,20 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1beta1/projects.locations.reservations/create)
  * * How-to Guides
  *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+ * 
+ * ## Example Usage - Bigquery Reservation Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const reservation = new gcp.bigquery.Reservation("reservation", {
+ *     location: "asia-northeast1",
+ *     slotCapacity: 0,
+ *     ignoreIdleSlots: true,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_reservation.html.markdown.
  */

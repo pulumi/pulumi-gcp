@@ -47,6 +47,37 @@ class SecretCiphertext(pulumi.CustomResource):
         > **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+        ## Example Usage - Kms Secret Ciphertext Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring", location="global")
+        cryptokey = gcp.kms.CryptoKey("cryptokey",
+            key_ring=keyring.id,
+            rotation_period="100000s")
+        my_password = gcp.kms.SecretCiphertext("myPassword",
+            crypto_key=cryptokey.id,
+            plaintext="my-secret-password")
+        instance = gcp.compute.Instance("instance",
+            machine_type="n1-standard-1",
+            zone="us-central1-a",
+            boot_disk={
+                "initialize_params": {
+                    "image": "debian-cloud/debian-9",
+                },
+            },
+            network_interface=[{
+                "network": "default",
+                "access_config": [{}],
+            }],
+            metadata={
+                "password": my_password.ciphertext,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_authenticated_data: The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.

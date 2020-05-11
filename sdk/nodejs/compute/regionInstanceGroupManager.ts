@@ -13,6 +13,69 @@ import * as utilities from "../utilities";
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
  * 
  * > **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
+ * 
+ * ## Example Usage with top level instance template (`google` provider)
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const autohealing = new gcp.compute.HealthCheck("autohealing", {
+ *     checkIntervalSec: 5,
+ *     timeoutSec: 5,
+ *     healthyThreshold: 2,
+ *     unhealthyThreshold: 10,
+ *     http_health_check: {
+ *         requestPath: "/healthz",
+ *         port: "8080",
+ *     },
+ * });
+ * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {
+ *     baseInstanceName: "app",
+ *     region: "us-central1",
+ *     distributionPolicyZones: [
+ *         "us-central1-a",
+ *         "us-central1-f",
+ *     ],
+ *     version: [{
+ *         instanceTemplate: google_compute_instance_template.appserver.self_link,
+ *     }],
+ *     targetPools: [google_compute_target_pool.appserver.self_link],
+ *     targetSize: 2,
+ *     named_port: [{
+ *         name: "custom",
+ *         port: 8888,
+ *     }],
+ *     auto_healing_policies: {
+ *         healthCheck: autohealing.selfLink,
+ *         initialDelaySec: 300,
+ *     },
+ * });
+ * ```
+ * 
+ * ## Example Usage with multiple versions
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {
+ *     baseInstanceName: "app",
+ *     region: "us-central1",
+ *     targetSize: 5,
+ *     version: [
+ *         {
+ *             instanceTemplate: google_compute_instance_template.appserver.self_link,
+ *         },
+ *         {
+ *             instanceTemplate: google_compute_instance_template["appserver-canary"].self_link,
+ *             target_size: {
+ *                 fixed: 1,
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_instance_group_manager.html.markdown.
  */

@@ -14,6 +14,19 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.gameServerDeployments)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+ * 
+ * ## Example Usage - Game Service Deployment Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const default = new gcp.gameservices.GameServerDeployment("default", {
+ *     deploymentId: "tf-test-deployment",
+ *     description: "a deployment description",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_deployment.html.markdown.
  */

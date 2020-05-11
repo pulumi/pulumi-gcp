@@ -19,6 +19,25 @@ import * as utilities from "../utilities";
  * [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
  * doc for more information.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * // Top-level folder under an organization.
+ * const department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * // Folder nested under another folder.
+ * const team-abc = new gcp.organizations.Folder("team-abc", {
+ *     displayName: "Team ABC",
+ *     parent: department1.name,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder.html.markdown.
  */

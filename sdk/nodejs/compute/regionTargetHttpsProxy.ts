@@ -15,6 +15,55 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionTargetHttpsProxies)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
+ * 
+ * ## Example Usage - Region Target Https Proxy Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ * 
+ * const defaultRegionSslCertificate = new gcp.compute.RegionSslCertificate("defaultRegionSslCertificate", {
+ *     region: "us-central1",
+ *     privateKey: fs.readFileSync("path/to/private.key"),
+ *     certificate: fs.readFileSync("path/to/certificate.crt"),
+ * });
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("defaultRegionHealthCheck", {
+ *     region: "us-central1",
+ *     http_health_check: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {
+ *     region: "us-central1",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultRegionHealthCheck.selfLink],
+ * });
+ * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
+ *     region: "us-central1",
+ *     description: "a description",
+ *     defaultService: defaultRegionBackendService.selfLink,
+ *     host_rule: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: defaultRegionBackendService.selfLink,
+ *         path_rule: [{
+ *             paths: ["/*"],
+ *             service: defaultRegionBackendService.selfLink,
+ *         }],
+ *     }],
+ * });
+ * const defaultRegionTargetHttpsProxy = new gcp.compute.RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy", {
+ *     region: "us-central1",
+ *     urlMap: defaultRegionUrlMap.selfLink,
+ *     sslCertificates: [defaultRegionSslCertificate.selfLink],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_target_https_proxy.html.markdown.
  */

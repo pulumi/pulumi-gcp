@@ -76,6 +76,46 @@ class NodeGroup(pulumi.CustomResource):
         through provider config or through external changes will cause
         the provider to delete and recreate the node group.
 
+        ## Example Usage - Node Group Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        central1a = gcp.compute.get_node_types(zone="us-central1-a")
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type=central1a.names[0])
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example compute.NodeGroup for the Google Provider",
+            size=1,
+            node_template=soletenant_tmpl.self_link)
+        ```
+        ## Example Usage - Node Group Autoscaling Policy
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        central1a = gcp.compute.get_node_types(zone="us-central1-a")
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type=central1a.names[0])
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example compute.NodeGroup for the Google Provider",
+            size=1,
+            node_template=soletenant_tmpl.self_link,
+            autoscaling_policy={
+                "mode": "ON",
+                "minNodes": 1,
+                "maxNodes": 10,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling_policy: -

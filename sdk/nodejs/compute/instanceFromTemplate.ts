@@ -17,6 +17,39 @@ import * as utilities from "../utilities";
  * `gcp.compute.Instance` resource.
  * 
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const tplInstanceTemplate = new gcp.compute.InstanceTemplate("tplInstanceTemplate", {
+ *     machineType: "n1-standard-1",
+ *     disk: [{
+ *         sourceImage: "debian-cloud/debian-9",
+ *         autoDelete: true,
+ *         diskSizeGb: 100,
+ *         boot: true,
+ *     }],
+ *     network_interface: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     canIpForward: true,
+ * });
+ * const tplInstanceFromTemplate = new gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate", {
+ *     zone: "us-central1-a",
+ *     sourceInstanceTemplate: tplInstanceTemplate.selfLink,
+ *     canIpForward: false,
+ *     labels: {
+ *         my_key: "myValue",
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_from_template.html.markdown.
  */

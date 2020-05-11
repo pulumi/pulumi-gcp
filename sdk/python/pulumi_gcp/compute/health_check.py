@@ -234,6 +234,202 @@ class HealthCheck(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
 
+        ## Example Usage - Health Check Tcp
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tcp_health_check = gcp.compute.HealthCheck("tcp-health-check",
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": "80",
+            },
+            timeout_sec=1)
+        ```
+        ## Example Usage - Health Check Tcp Full
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tcp_health_check = gcp.compute.HealthCheck("tcp-health-check",
+            check_interval_sec=1,
+            description="Health check via tcp",
+            healthy_threshold=4,
+            tcp_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "proxyHeader": "NONE",
+                "request": "ARE YOU HEALTHY?",
+                "response": "I AM HEALTHY",
+            },
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ## Example Usage - Health Check Ssl
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ssl_health_check = gcp.compute.HealthCheck("ssl-health-check",
+            check_interval_sec=1,
+            ssl_health_check={
+                "port": "443",
+            },
+            timeout_sec=1)
+        ```
+        ## Example Usage - Health Check Ssl Full
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ssl_health_check = gcp.compute.HealthCheck("ssl-health-check",
+            check_interval_sec=1,
+            description="Health check via ssl",
+            healthy_threshold=4,
+            ssl_health_check={
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "proxyHeader": "NONE",
+                "request": "ARE YOU HEALTHY?",
+                "response": "I AM HEALTHY",
+            },
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ## Example Usage - Health Check Http
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http_health_check = gcp.compute.HealthCheck("http-health-check",
+            check_interval_sec=1,
+            http_health_check={
+                "port": 80,
+            },
+            timeout_sec=1)
+        ```
+        ## Example Usage - Health Check Http Full
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http_health_check = gcp.compute.HealthCheck("http-health-check",
+            check_interval_sec=1,
+            description="Health check via http",
+            healthy_threshold=4,
+            http_health_check={
+                "host": "1.2.3.4",
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "proxyHeader": "NONE",
+                "requestPath": "/mypath",
+                "response": "I AM HEALTHY",
+            },
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ## Example Usage - Health Check Https
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https_health_check = gcp.compute.HealthCheck("https-health-check",
+            check_interval_sec=1,
+            https_health_check={
+                "port": "443",
+            },
+            timeout_sec=1)
+        ```
+        ## Example Usage - Health Check Https Full
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https_health_check = gcp.compute.HealthCheck("https-health-check",
+            check_interval_sec=1,
+            description="Health check via https",
+            healthy_threshold=4,
+            https_health_check={
+                "host": "1.2.3.4",
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "proxyHeader": "NONE",
+                "requestPath": "/mypath",
+                "response": "I AM HEALTHY",
+            },
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ## Example Usage - Health Check Http2
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http2_health_check = gcp.compute.HealthCheck("http2-health-check",
+            check_interval_sec=1,
+            http2_health_check={
+                "port": "443",
+            },
+            timeout_sec=1)
+        ```
+        ## Example Usage - Health Check Http2 Full
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http2_health_check = gcp.compute.HealthCheck("http2-health-check",
+            check_interval_sec=1,
+            description="Health check via http2",
+            healthy_threshold=4,
+            http2_health_check={
+                "host": "1.2.3.4",
+                "portName": "health-check-port",
+                "portSpecification": "USE_NAMED_PORT",
+                "proxyHeader": "NONE",
+                "requestPath": "/mypath",
+                "response": "I AM HEALTHY",
+            },
+            timeout_sec=1,
+            unhealthy_threshold=5)
+        ```
+        ## Example Usage - Health Check With Logging
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check_with_logging = gcp.compute.HealthCheck("health-check-with-logging",
+            timeout_sec=1,
+            check_interval_sec=1,
+            tcp_health_check={
+                "port": "22",
+            },
+            log_config={
+                "enable": True,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] check_interval_sec: How often (in seconds) to send a health check. The default value is 5

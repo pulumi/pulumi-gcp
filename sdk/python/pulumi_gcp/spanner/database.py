@@ -46,6 +46,24 @@ class Database(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/spanner/)
 
+        ## Example Usage - Spanner Database Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.spanner.Instance("main",
+            config="regional-europe-west1",
+            display_name="main-instance")
+        database = gcp.spanner.Database("database",
+            instance=main.name,
+            ddls=[
+                "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
+                "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] ddls: An optional list of DDL statements to run inside the newly created

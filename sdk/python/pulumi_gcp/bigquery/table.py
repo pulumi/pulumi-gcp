@@ -214,6 +214,59 @@ class Table(pulumi.CustomResource):
         [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_dataset = gcp.bigquery.Dataset("defaultDataset",
+            dataset_id="foo",
+            friendly_name="test",
+            description="This is a test description",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            })
+        default_table = gcp.bigquery.Table("defaultTable",
+            dataset_id=default_dataset.dataset_id,
+            table_id="bar",
+            time_partitioning={
+                "type": "DAY",
+            },
+            labels={
+                "env": "default",
+            },
+            schema=\"\"\"[
+          {
+            "name": "permalink",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The Permalink"
+          },
+          {
+            "name": "state",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "State where the head office is located"
+          }
+        ]
+        \"\"\")
+        sheet = gcp.bigquery.Table("sheet",
+            dataset_id=default_dataset.dataset_id,
+            table_id="sheet",
+            external_data_configuration={
+                "autodetect": True,
+                "sourceFormat": "GOOGLE_SHEETS",
+                "google_sheets_options": {
+                    "skipLeadingRows": 1,
+                },
+                "sourceUris": ["https://docs.google.com/spreadsheets/d/123456789012345"],
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

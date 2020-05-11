@@ -17,6 +17,28 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetTcpProxies)
  * * How-to Guides
  *     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
+ * 
+ * ## Example Usage - Target Tcp Proxy Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcp_health_check: {
+ *         port: "443",
+ *     },
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     protocol: "TCP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHealthCheck.selfLink],
+ * });
+ * const defaultTargetTCPProxy = new gcp.compute.TargetTCPProxy("defaultTargetTCPProxy", {backendService: defaultBackendService.selfLink});
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_tcp_proxy.html.markdown.
  */

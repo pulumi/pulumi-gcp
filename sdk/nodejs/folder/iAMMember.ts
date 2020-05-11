@@ -15,6 +15,24 @@ import * as utilities from "../utilities";
  *    should be. Similarly, roles controlled by `gcp.folder.IAMBinding`
  *    should not be assigned to using `gcp.folder.IAMMember`.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const admin = new gcp.folder.IAMMember("admin", {
+ *     folder: department1.name,
+ *     role: "roles/editor",
+ *     member: "user:alice@gmail.com",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_folder_iam_member.html.markdown.
  */

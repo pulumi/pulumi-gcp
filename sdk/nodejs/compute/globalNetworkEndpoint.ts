@@ -17,6 +17,26 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
+ * 
+ * ## Example Usage - Global Network Endpoint
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const default-endpoint = new gcp.compute.GlobalNetworkEndpoint("default-endpoint", {
+ *     globalNetworkEndpointGroup: google_compute_network_endpoint_group.neg.name,
+ *     fqdn: "www.example.com",
+ *     port: google_compute_network_endpoint_group.neg.default_port,
+ *     ipAddress: google_compute_instance["endpoint-instance"].network_interface[0].network_ip,
+ * });
+ * const default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
+ * const group = new gcp.compute.GlobalNetworkEndpointGroup("group", {
+ *     network: default.selfLink,
+ *     defaultPort: "90",
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_network_endpoint.html.markdown.
  */

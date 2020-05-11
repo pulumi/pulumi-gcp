@@ -17,6 +17,24 @@ import * as utilities from "../utilities";
  * 
  * > **Note:** `gcp.healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
  * 
+ * ## google\_healthcare\_fhir\_store\_iam\_policy
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const fhirStore = new gcp.healthcare.FhirStoreIamPolicy("fhirStore", {
+ *     fhirStoreId: "your-fhir-store-id",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * 
  * ## google\_healthcare\_fhir\_store\_iam\_binding
  * 
  * ```typescript

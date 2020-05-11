@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * A Google Cloud Redis instance.
- * 
- * 
- * To get more information about Instance, see:
- * 
- * * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
- * 
- * ## Example Usage - Redis Instance Basic
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const cache = new gcp.redis.Instance("cache", {
- *     memorySizeGb: 1,
- * });
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/redis_instance.html.markdown.
- */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra

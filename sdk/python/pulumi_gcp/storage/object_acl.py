@@ -41,6 +41,26 @@ class ObjectACL(pulumi.CustomResource):
         > Want fine-grained control over object ACLs? Use `storage.ObjectAccessControl` to control individual
         role entity pairs.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image = gcp.storage.BucketObject("image",
+            bucket=image_store.name,
+            source=pulumi.FileAsset("image1.jpg"))
+        image_store_acl = gcp.storage.ObjectACL("image-store-acl",
+            bucket=image_store.name,
+            object=image.output_name,
+            role_entities=[
+                "OWNER:user-my.email@gmail.com",
+                "READER:group-mygroup",
+            ])
+        ```
 
 
         :param str resource_name: The name of the resource.

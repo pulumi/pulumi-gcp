@@ -58,20 +58,7 @@ class SSLCertificate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, certificate=None, description=None, name=None, name_prefix=None, private_key=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        An SslCertificate resource, used for HTTPS load balancing. This resource
-        provides a mechanism to upload an SSL key and certificate to
-        the load balancer to serve secure connections from the user.
-
-
-        To get more information about SslCertificate, see:
-
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
-
-        > **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-
+        Create a SSLCertificate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: The certificate in PEM format.

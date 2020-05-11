@@ -9,6 +9,25 @@ import * as utilities from "../utilities";
 /**
  * Get info about a GKE cluster from its name and location.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const myCluster = gcp.container.getCluster({
+ *     name: "my-cluster",
+ *     location: "us-east1-a",
+ * });
+ * export const clusterUsername = myCluster.then(myCluster => myCluster.masterAuths[0].username);
+ * export const clusterPassword = myCluster.then(myCluster => myCluster.masterAuths[0].password);
+ * export const endpoint = myCluster.then(myCluster => myCluster.endpoint);
+ * export const instanceGroupUrls = myCluster.then(myCluster => myCluster.instanceGroupUrls);
+ * export const nodeConfig = myCluster.then(myCluster => myCluster.nodeConfigs);
+ * export const nodePools = myCluster.then(myCluster => myCluster.nodePools);
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_cluster.html.markdown.
  */

@@ -36,6 +36,61 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
  * * How-to Guides
  *     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
+ * 
+ * ## Example Usage - Route Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const defaultRoute = new gcp.compute.Route("defaultRoute", {
+ *     destRange: "15.0.0.0/24",
+ *     network: defaultNetwork.name,
+ *     nextHopIp: "10.132.1.5",
+ *     priority: 100,
+ * });
+ * ```
+ * ## Example Usage - Route Ilb
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.selfLink,
+ * });
+ * const hc = new gcp.compute.HealthCheck("hc", {
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcp_health_check: {
+ *         port: "80",
+ *     },
+ * });
+ * const backend = new gcp.compute.RegionBackendService("backend", {
+ *     region: "us-central1",
+ *     healthChecks: [hc.selfLink],
+ * });
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: backend.selfLink,
+ *     allPorts: true,
+ *     network: defaultNetwork.name,
+ *     subnetwork: defaultSubnetwork.name,
+ * });
+ * const route-ilb = new gcp.compute.Route("route-ilb", {
+ *     destRange: "0.0.0.0/0",
+ *     network: defaultNetwork.name,
+ *     nextHopIlb: defaultForwardingRule.selfLink,
+ *     priority: 2000,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_route.html.markdown.
  */

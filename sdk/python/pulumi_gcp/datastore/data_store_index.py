@@ -45,6 +45,27 @@ class DataStoreIndex(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
 
+        ## Example Usage - Datastore Index
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.datastore.DataStoreIndex("default",
+            kind="foo",
+            properties=[
+                {
+                    "direction": "ASCENDING",
+                    "name": "property_a",
+                },
+                {
+                    "direction": "ASCENDING",
+                    "name": "property_b",
+                },
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ancestor: Policy for including ancestors in the index.
