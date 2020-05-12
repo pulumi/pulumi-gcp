@@ -6,6 +6,81 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
+ * the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
+ * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
+ * 
+ * ## Example Usage - using a separately managed node pool (recommended)
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     removeDefaultNodePool: true,
+ *     initialNodeCount: 1,
+ * });
+ * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
+ *     location: "us-central1",
+ *     cluster: primary.name,
+ *     nodeCount: 1,
+ *     node_config: {
+ *         preemptible: true,
+ *         machineType: "n1-standard-1",
+ *         oauthScopes: [
+ *             "https://www.googleapis.com/auth/logging.write",
+ *             "https://www.googleapis.com/auth/monitoring",
+ *         ],
+ *     },
+ * });
+ * ```
+ * 
+ * ## Example Usage - 2 node pools, 1 separately managed + the default node pool
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1-a",
+ *     initialNodeCount: 3,
+ *     nodeLocations: ["us-central1-c"],
+ *     master_auth: {
+ *         username: "",
+ *         password: "",
+ *         client_certificate_config: {
+ *             issueClientCertificate: false,
+ *         },
+ *     },
+ *     node_config: {
+ *         oauthScopes: [
+ *             "https://www.googleapis.com/auth/logging.write",
+ *             "https://www.googleapis.com/auth/monitoring",
+ *         ],
+ *         metadata: {
+ *             "disable-legacy-endpoints": "true",
+ *         },
+ *         guest_accelerator: [{
+ *             type: "nvidia-tesla-k80",
+ *             count: 1,
+ *         }],
+ *     },
+ * });
+ * const np = new gcp.container.NodePool("np", {
+ *     location: "us-central1-a",
+ *     cluster: primary.name,
+ *     nodeCount: 3,
+ *     timeouts: [{
+ *         create: "30m",
+ *         update: "20m",
+ *     }],
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_node_pool.html.markdown.
+ */
 export class NodePool extends pulumi.CustomResource {
     /**
      * Get an existing NodePool resource's state with the given name, ID, and optional extra

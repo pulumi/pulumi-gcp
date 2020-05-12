@@ -927,7 +927,7 @@ export namespace bigquery {
          * member of the access object. Primitive, Predefined and custom
          * roles are supported. Predefined roles that have equivalent
          * primitive roles are swapped by the API to their Primitive
-         * counterparts, and will show a diff post-create. See
+         * counterparts. See
          * [official docs](https://cloud.google.com/bigquery/docs/access-control).
          */
         role?: string;
@@ -2783,31 +2783,31 @@ export namespace cloudscheduler {
          * The maximum amount of time to wait before retrying a job after it fails.
          * A duration in seconds with up to nine fractional digits, terminated by 's'.
          */
-        maxBackoffDuration?: string;
+        maxBackoffDuration: string;
         /**
          * The time between retries will double maxDoublings times.
          * A job's retry interval starts at minBackoffDuration,
          * then doubles maxDoublings times, then increases linearly,
          * and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
          */
-        maxDoublings?: number;
+        maxDoublings: number;
         /**
          * The time limit for retrying a failed job, measured from time when an execution was first attempted.
          * If specified with retryCount, the job will be retried until both limits are reached.
          * A duration in seconds with up to nine fractional digits, terminated by 's'.
          */
-        maxRetryDuration?: string;
+        maxRetryDuration: string;
         /**
          * The minimum amount of time to wait before retrying a job after it fails.
          * A duration in seconds with up to nine fractional digits, terminated by 's'.
          */
-        minBackoffDuration?: string;
+        minBackoffDuration: string;
         /**
          * The number of attempts that the system will make to run a
          * job using the exponential backoff procedure described by maxDoublings.
          * Values greater than 5 and negative values are not allowed.
          */
-        retryCount?: number;
+        retryCount: number;
     }
 }
 
@@ -5402,6 +5402,41 @@ export namespace compute {
          * The URL of the instances where this rule should be active.
          */
         url: string;
+    }
+
+    export interface PerInstanceConfigPreservedState {
+        /**
+         * Stateful disks for the instance.  Structure is documented below.
+         */
+        disks?: outputs.compute.PerInstanceConfigPreservedStateDisk[];
+        /**
+         * Preserved metadata defined for this instance. This is a list of key->value pairs.
+         */
+        metadata?: {[key: string]: string};
+    }
+
+    export interface PerInstanceConfigPreservedStateDisk {
+        /**
+         * A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+         * The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+         * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+         * deleted from the instance group.
+         */
+        deleteRule?: string;
+        /**
+         * A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+         */
+        deviceName: string;
+        /**
+         * The mode of the disk.
+         */
+        mode?: string;
+        /**
+         * The URI of an existing persistent disk to attach under the specified device-name in the format
+         * `projects/project-id/zones/zone/disks/disk-name`.
+         */
+        source: string;
     }
 
     export interface RegionAutoscalerAutoscalingPolicy {
@@ -9293,8 +9328,8 @@ export namespace container {
     export interface ClusterAddonsConfig {
         /**
          * .
-         * The status of the CloudRun addon. It requires `istioConfig` enabled. It is disabled by default.
-         * Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+         * The status of the CloudRun addon. It is disabled by default.
+         * Set `disabled = false` to enable.
          */
         cloudrunConfig: outputs.container.ClusterAddonsConfigCloudrunConfig;
         /**
@@ -9328,6 +9363,11 @@ export namespace container {
          * Structure is documented below.
          */
         istioConfig: outputs.container.ClusterAddonsConfigIstioConfig;
+        /**
+         * .
+         * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+         */
+        kalmConfig: outputs.container.ClusterAddonsConfigKalmConfig;
         /**
          * Whether we should enable the network policy addon
          * for the master.  This must be enabled in order to enable network policy for the nodes.
@@ -9391,6 +9431,14 @@ export namespace container {
         disabled: boolean;
     }
 
+    export interface ClusterAddonsConfigKalmConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
+    }
+
     export interface ClusterAddonsConfigNetworkPolicyConfig {
         /**
          * The status of the Istio addon, which makes it easy to set up Istio for services in a
@@ -9413,7 +9461,7 @@ export namespace container {
          */
         autoProvisioningDefaults: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults;
         /**
-         * Configuration
+         * ) Configuration
          * options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
          * feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
          * when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -9786,8 +9834,8 @@ export namespace container {
          * Parameters used in creating the default node pool.
          * Generally, this field should not be used at the same time as a
          * `gcp.container.NodePool` or a `nodePool` block; this configuration
-         * manages the default node pool, which isn't recommended to be used with
-         * this provider. Structure is documented below.
+         * manages the default node pool, which isn't recommended to be used.
+         * Structure is documented below.
          */
         nodeConfig: outputs.container.ClusterNodePoolNodeConfig;
         nodeCount: number;
@@ -10088,6 +10136,7 @@ export namespace container {
         horizontalPodAutoscalings: outputs.container.GetClusterAddonsConfigHorizontalPodAutoscaling[];
         httpLoadBalancings: outputs.container.GetClusterAddonsConfigHttpLoadBalancing[];
         istioConfigs: outputs.container.GetClusterAddonsConfigIstioConfig[];
+        kalmConfigs: outputs.container.GetClusterAddonsConfigKalmConfig[];
         kubernetesDashboards: outputs.container.GetClusterAddonsConfigKubernetesDashboard[];
         networkPolicyConfigs: outputs.container.GetClusterAddonsConfigNetworkPolicyConfig[];
     }
@@ -10115,6 +10164,10 @@ export namespace container {
     export interface GetClusterAddonsConfigIstioConfig {
         auth: string;
         disabled: boolean;
+    }
+
+    export interface GetClusterAddonsConfigKalmConfig {
+        enabled: boolean;
     }
 
     export interface GetClusterAddonsConfigKubernetesDashboard {
@@ -10613,6 +10666,12 @@ export namespace dataproc {
          */
         encryptionConfig?: outputs.dataproc.ClusterClusterConfigEncryptionConfig;
         /**
+         * The config settings for port access on the cluster.
+         * Structure defined below.
+         * - - -
+         */
+        endpointConfig: outputs.dataproc.ClusterClusterConfigEndpointConfig;
+        /**
          * Common config settings for resources of Google Compute Engine cluster
          * instances, applicable to all instances in the cluster. Structure defined below.
          */
@@ -10676,6 +10735,15 @@ export namespace dataproc {
          * all instances in the cluster.
          */
         kmsKeyName: string;
+    }
+
+    export interface ClusterClusterConfigEndpointConfig {
+        /**
+         * The flag to enable http access to specific ports
+         * on the cluster from external sources (aka Component Gateway). Defaults to false.
+         */
+        enableHttpPortAccess: boolean;
+        httpPorts: {[key: string]: any};
     }
 
     export interface ClusterClusterConfigGceClusterConfig {

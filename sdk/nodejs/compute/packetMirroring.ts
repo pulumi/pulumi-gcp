@@ -33,12 +33,12 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     network_interface: [{
- *         network: defaultNetwork.selfLink,
+ *         network: defaultNetwork.id,
  *         access_config: [{}],
  *     }],
  * });
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  *     ipCidrRange: "10.2.0.0/16",
  * });
  * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
@@ -48,29 +48,29 @@ import * as utilities from "../utilities";
  *         port: "80",
  *     },
  * });
- * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {healthChecks: [defaultHealthCheck.selfLink]});
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {healthChecks: [defaultHealthCheck.id]});
  * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
  *     isMirroringCollector: true,
  *     ipProtocol: "TCP",
  *     loadBalancingScheme: "INTERNAL",
- *     backendService: defaultRegionBackendService.selfLink,
+ *     backendService: defaultRegionBackendService.id,
  *     allPorts: true,
- *     network: defaultNetwork.selfLink,
- *     subnetwork: defaultSubnetwork.selfLink,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
  *     networkTier: "PREMIUM",
  * });
  * const foobar = new gcp.compute.PacketMirroring("foobar", {
  *     description: "bar",
  *     network: {
- *         url: defaultNetwork.selfLink,
+ *         url: defaultNetwork.id,
  *     },
  *     collector_ilb: {
- *         url: defaultForwardingRule.selfLink,
+ *         url: defaultForwardingRule.id,
  *     },
  *     mirrored_resources: {
  *         tags: ["foo"],
  *         instances: [{
- *             url: mirror.selfLink,
+ *             url: mirror.id,
  *         }],
  *     },
  *     filter: {

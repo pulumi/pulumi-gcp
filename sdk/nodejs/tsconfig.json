@@ -148,6 +148,7 @@
         "compute/nodeGroup.ts",
         "compute/nodeTemplate.ts",
         "compute/packetMirroring.ts",
+        "compute/perInstanceConfig.ts",
         "compute/projectDefaultNetworkTier.ts",
         "compute/projectMetadata.ts",
         "compute/projectMetadataItem.ts",

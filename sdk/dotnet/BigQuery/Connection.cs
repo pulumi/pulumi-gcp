@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.BigQuery
 {
+    /// <summary>
+    /// A connection allows BigQuery connections to external data sources..
+    /// 
+    /// To get more information about Connection, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1beta1/projects.locations.connections/create)
+    /// * How-to Guides
+    ///     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
+    /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

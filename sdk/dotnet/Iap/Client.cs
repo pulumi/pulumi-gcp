@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// 
     /// &gt; **Warning:** All arguments including `secret` will be stored in the raw
-    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// </summary>
     public partial class Client : Pulumi.CustomResource
     {

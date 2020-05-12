@@ -6,6 +6,37 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a Google Cloud Bigtable table inside an instance. For more information see
+ * [the official documentation](https://cloud.google.com/bigtable/) and
+ * [API](https://cloud.google.com/bigtable/docs/go/reference).
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const instance = new gcp.bigtable.Instance("instance", {cluster: [{
+ *     clusterId: "tf-instance-cluster",
+ *     zone: "us-central1-b",
+ *     numNodes: 3,
+ *     storageType: "HDD",
+ * }]});
+ * const table = new gcp.bigtable.Table("table", {
+ *     instanceName: instance.name,
+ *     splitKeys: [
+ *         "a",
+ *         "b",
+ *         "c",
+ *     ],
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_table.html.markdown.
+ */
 export class Table extends pulumi.CustomResource {
     /**
      * Get an existing Table resource's state with the given name, ID, and optional extra
@@ -50,6 +81,11 @@ export class Table extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * A list of predefined keys to split the table on.
+     * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+     * to delete/recreate the entire `gcp.bigtable.Table` resource.
+     */
     public readonly splitKeys!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -112,6 +148,11 @@ export interface TableState {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * A list of predefined keys to split the table on.
+     * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+     * to delete/recreate the entire `gcp.bigtable.Table` resource.
+     */
     readonly splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -136,5 +177,10 @@ export interface TableArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * A list of predefined keys to split the table on.
+     * !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+     * to delete/recreate the entire `gcp.bigtable.Table` resource.
+     */
     readonly splitKeys?: pulumi.Input<pulumi.Input<string>[]>;
 }

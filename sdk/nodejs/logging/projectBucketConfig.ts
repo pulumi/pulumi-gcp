@@ -6,6 +6,35 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a project-level logging bucket config. For more information see
+ * [the official logging documentation](https://cloud.google.com/logging/docs/) and
+ * [Storing Logs](https://cloud.google.com/logging/docs/storage).
+ * 
+ * > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+ * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const default = new gcp.organizations.Project("default", {
+ *     projectId: "your-project-id",
+ *     orgId: "123456789",
+ * });
+ * const basic = new gcp.logging.ProjectBucketConfig("basic", {
+ *     project: default.name,
+ *     location: "global",
+ *     retentionDays: 30,
+ *     bucketId: "_Default",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_project_bucket_config.html.markdown.
+ */
 export class ProjectBucketConfig extends pulumi.CustomResource {
     /**
      * Get an existing ProjectBucketConfig resource's state with the given name, ID, and optional extra

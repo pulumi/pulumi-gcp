@@ -61,6 +61,7 @@ import * as utilities from "../utilities";
  * 
  * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {default_url_redirect: {
  *     httpsRedirect: true,
+ *     stripQuery: false,
  * }});
  * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {urlMap: defaultURLMap.selfLink});
  * ```

@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * 
  * To get more information about RegionTargetHttpProxy, see:
  * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionTargetHttpProxies)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  * 
@@ -67,6 +67,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     default_url_redirect: {
  *         httpsRedirect: true,
+ *         stripQuery: false,
  *     },
  * });
  * const defaultRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", {

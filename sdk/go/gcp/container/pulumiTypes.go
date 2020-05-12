@@ -12,8 +12,8 @@ import (
 
 type ClusterAddonsConfig struct {
 	// .
-	// The status of the CloudRun addon. It requires `istioConfig` enabled. It is disabled by default.
-	// Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+	// The status of the CloudRun addon. It is disabled by default.
+	// Set `disabled = false` to enable.
 	CloudrunConfig *ClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfig"`
 	// .
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -36,6 +36,9 @@ type ClusterAddonsConfig struct {
 	// .
 	// Structure is documented below.
 	IstioConfig *ClusterAddonsConfigIstioConfig `pulumi:"istioConfig"`
+	// .
+	// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+	KalmConfig *ClusterAddonsConfigKalmConfig `pulumi:"kalmConfig"`
 	// Whether we should enable the network policy addon
 	// for the master.  This must be enabled in order to enable network policy for the nodes.
 	// To enable this, you must also define a `networkPolicy` block,
@@ -59,8 +62,8 @@ type ClusterAddonsConfigInput interface {
 
 type ClusterAddonsConfigArgs struct {
 	// .
-	// The status of the CloudRun addon. It requires `istioConfig` enabled. It is disabled by default.
-	// Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+	// The status of the CloudRun addon. It is disabled by default.
+	// Set `disabled = false` to enable.
 	CloudrunConfig ClusterAddonsConfigCloudrunConfigPtrInput `pulumi:"cloudrunConfig"`
 	// .
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -83,6 +86,9 @@ type ClusterAddonsConfigArgs struct {
 	// .
 	// Structure is documented below.
 	IstioConfig ClusterAddonsConfigIstioConfigPtrInput `pulumi:"istioConfig"`
+	// .
+	// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+	KalmConfig ClusterAddonsConfigKalmConfigPtrInput `pulumi:"kalmConfig"`
 	// Whether we should enable the network policy addon
 	// for the master.  This must be enabled in order to enable network policy for the nodes.
 	// To enable this, you must also define a `networkPolicy` block,
@@ -171,8 +177,8 @@ func (o ClusterAddonsConfigOutput) ToClusterAddonsConfigPtrOutputWithContext(ctx
 }
 
 // .
-// The status of the CloudRun addon. It requires `istioConfig` enabled. It is disabled by default.
-// Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+// The status of the CloudRun addon. It is disabled by default.
+// Set `disabled = false` to enable.
 func (o ClusterAddonsConfigOutput) CloudrunConfig() ClusterAddonsConfigCloudrunConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig { return v.CloudrunConfig }).(ClusterAddonsConfigCloudrunConfigPtrOutput)
 }
@@ -217,6 +223,12 @@ func (o ClusterAddonsConfigOutput) IstioConfig() ClusterAddonsConfigIstioConfigP
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigIstioConfig { return v.IstioConfig }).(ClusterAddonsConfigIstioConfigPtrOutput)
 }
 
+// .
+// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+func (o ClusterAddonsConfigOutput) KalmConfig() ClusterAddonsConfigKalmConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigKalmConfig { return v.KalmConfig }).(ClusterAddonsConfigKalmConfigPtrOutput)
+}
+
 // Whether we should enable the network policy addon
 // for the master.  This must be enabled in order to enable network policy for the nodes.
 // To enable this, you must also define a `networkPolicy` block,
@@ -246,8 +258,8 @@ func (o ClusterAddonsConfigPtrOutput) Elem() ClusterAddonsConfigOutput {
 }
 
 // .
-// The status of the CloudRun addon. It requires `istioConfig` enabled. It is disabled by default.
-// Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+// The status of the CloudRun addon. It is disabled by default.
+// Set `disabled = false` to enable.
 func (o ClusterAddonsConfigPtrOutput) CloudrunConfig() ClusterAddonsConfigCloudrunConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigCloudrunConfig {
 		if v == nil {
@@ -316,6 +328,17 @@ func (o ClusterAddonsConfigPtrOutput) IstioConfig() ClusterAddonsConfigIstioConf
 		}
 		return v.IstioConfig
 	}).(ClusterAddonsConfigIstioConfigPtrOutput)
+}
+
+// .
+// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+func (o ClusterAddonsConfigPtrOutput) KalmConfig() ClusterAddonsConfigKalmConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigKalmConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KalmConfig
+	}).(ClusterAddonsConfigKalmConfigPtrOutput)
 }
 
 // Whether we should enable the network policy addon
@@ -1178,6 +1201,143 @@ func (o ClusterAddonsConfigIstioConfigPtrOutput) Disabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ClusterAddonsConfigKalmConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigKalmConfigInput is an input type that accepts ClusterAddonsConfigKalmConfigArgs and ClusterAddonsConfigKalmConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigKalmConfigInput` via:
+//
+// 		 ClusterAddonsConfigKalmConfigArgs{...}
+//
+type ClusterAddonsConfigKalmConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigKalmConfigOutput() ClusterAddonsConfigKalmConfigOutput
+	ToClusterAddonsConfigKalmConfigOutputWithContext(context.Context) ClusterAddonsConfigKalmConfigOutput
+}
+
+type ClusterAddonsConfigKalmConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigKalmConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigKalmConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigKalmConfigArgs) ToClusterAddonsConfigKalmConfigOutput() ClusterAddonsConfigKalmConfigOutput {
+	return i.ToClusterAddonsConfigKalmConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigKalmConfigArgs) ToClusterAddonsConfigKalmConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigKalmConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigKalmConfigOutput)
+}
+
+func (i ClusterAddonsConfigKalmConfigArgs) ToClusterAddonsConfigKalmConfigPtrOutput() ClusterAddonsConfigKalmConfigPtrOutput {
+	return i.ToClusterAddonsConfigKalmConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigKalmConfigArgs) ToClusterAddonsConfigKalmConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigKalmConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigKalmConfigOutput).ToClusterAddonsConfigKalmConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigKalmConfigPtrInput is an input type that accepts ClusterAddonsConfigKalmConfigArgs, ClusterAddonsConfigKalmConfigPtr and ClusterAddonsConfigKalmConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigKalmConfigPtrInput` via:
+//
+// 		 ClusterAddonsConfigKalmConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterAddonsConfigKalmConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigKalmConfigPtrOutput() ClusterAddonsConfigKalmConfigPtrOutput
+	ToClusterAddonsConfigKalmConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigKalmConfigPtrOutput
+}
+
+type clusterAddonsConfigKalmConfigPtrType ClusterAddonsConfigKalmConfigArgs
+
+func ClusterAddonsConfigKalmConfigPtr(v *ClusterAddonsConfigKalmConfigArgs) ClusterAddonsConfigKalmConfigPtrInput {
+	return (*clusterAddonsConfigKalmConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigKalmConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigKalmConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigKalmConfigPtrType) ToClusterAddonsConfigKalmConfigPtrOutput() ClusterAddonsConfigKalmConfigPtrOutput {
+	return i.ToClusterAddonsConfigKalmConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigKalmConfigPtrType) ToClusterAddonsConfigKalmConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigKalmConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigKalmConfigPtrOutput)
+}
+
+type ClusterAddonsConfigKalmConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigKalmConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigKalmConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigKalmConfigOutput) ToClusterAddonsConfigKalmConfigOutput() ClusterAddonsConfigKalmConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigKalmConfigOutput) ToClusterAddonsConfigKalmConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigKalmConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigKalmConfigOutput) ToClusterAddonsConfigKalmConfigPtrOutput() ClusterAddonsConfigKalmConfigPtrOutput {
+	return o.ToClusterAddonsConfigKalmConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigKalmConfigOutput) ToClusterAddonsConfigKalmConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigKalmConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigKalmConfig) *ClusterAddonsConfigKalmConfig {
+		return &v
+	}).(ClusterAddonsConfigKalmConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigKalmConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigKalmConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigKalmConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigKalmConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigKalmConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigKalmConfigPtrOutput) ToClusterAddonsConfigKalmConfigPtrOutput() ClusterAddonsConfigKalmConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigKalmConfigPtrOutput) ToClusterAddonsConfigKalmConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigKalmConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigKalmConfigPtrOutput) Elem() ClusterAddonsConfigKalmConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigKalmConfig) ClusterAddonsConfigKalmConfig { return *v }).(ClusterAddonsConfigKalmConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigKalmConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigKalmConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterAddonsConfigNetworkPolicyConfig struct {
 	// The status of the Istio addon, which makes it easy to set up Istio for services in a
 	// cluster. It is disabled by default. Set `disabled = false` to enable.
@@ -1452,7 +1612,7 @@ type ClusterClusterAutoscaling struct {
 	// Contains defaults for a node pool created by NAP.
 	// Structure is documented below.
 	AutoProvisioningDefaults *ClusterClusterAutoscalingAutoProvisioningDefaults `pulumi:"autoProvisioningDefaults"`
-	// Configuration
+	// ) Configuration
 	// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 	// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
 	// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -1483,7 +1643,7 @@ type ClusterClusterAutoscalingArgs struct {
 	// Contains defaults for a node pool created by NAP.
 	// Structure is documented below.
 	AutoProvisioningDefaults ClusterClusterAutoscalingAutoProvisioningDefaultsPtrInput `pulumi:"autoProvisioningDefaults"`
-	// Configuration
+	// ) Configuration
 	// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 	// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
 	// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -1584,7 +1744,7 @@ func (o ClusterClusterAutoscalingOutput) AutoProvisioningDefaults() ClusterClust
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
-// Configuration
+// ) Configuration
 // options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 // feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
 // when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -1635,7 +1795,7 @@ func (o ClusterClusterAutoscalingPtrOutput) AutoProvisioningDefaults() ClusterCl
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
-// Configuration
+// ) Configuration
 // options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 // feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
 // when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -4877,8 +5037,8 @@ type ClusterNodePool struct {
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used with
-	// this provider. Structure is documented below.
+	// manages the default node pool, which isn't recommended to be used.
+	// Structure is documented below.
 	NodeConfig *ClusterNodePoolNodeConfig `pulumi:"nodeConfig"`
 	NodeCount  *int                       `pulumi:"nodeCount"`
 	// The list of zones in which the cluster's nodes
@@ -4923,8 +5083,8 @@ type ClusterNodePoolArgs struct {
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used with
-	// this provider. Structure is documented below.
+	// manages the default node pool, which isn't recommended to be used.
+	// Structure is documented below.
 	NodeConfig ClusterNodePoolNodeConfigPtrInput `pulumi:"nodeConfig"`
 	NodeCount  pulumi.IntPtrInput                `pulumi:"nodeCount"`
 	// The list of zones in which the cluster's nodes
@@ -5029,8 +5189,8 @@ func (o ClusterNodePoolOutput) NamePrefix() pulumi.StringPtrOutput {
 // Parameters used in creating the default node pool.
 // Generally, this field should not be used at the same time as a
 // `container.NodePool` or a `nodePool` block; this configuration
-// manages the default node pool, which isn't recommended to be used with
-// this provider. Structure is documented below.
+// manages the default node pool, which isn't recommended to be used.
+// Structure is documented below.
 func (o ClusterNodePoolOutput) NodeConfig() ClusterNodePoolNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolNodeConfig { return v.NodeConfig }).(ClusterNodePoolNodeConfigPtrOutput)
 }
@@ -9407,6 +9567,7 @@ type GetClusterAddonsConfig struct {
 	HorizontalPodAutoscalings         []GetClusterAddonsConfigHorizontalPodAutoscaling         `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings                []GetClusterAddonsConfigHttpLoadBalancing                `pulumi:"httpLoadBalancings"`
 	IstioConfigs                      []GetClusterAddonsConfigIstioConfig                      `pulumi:"istioConfigs"`
+	KalmConfigs                       []GetClusterAddonsConfigKalmConfig                       `pulumi:"kalmConfigs"`
 	KubernetesDashboards              []GetClusterAddonsConfigKubernetesDashboard              `pulumi:"kubernetesDashboards"`
 	NetworkPolicyConfigs              []GetClusterAddonsConfigNetworkPolicyConfig              `pulumi:"networkPolicyConfigs"`
 }
@@ -9430,6 +9591,7 @@ type GetClusterAddonsConfigArgs struct {
 	HorizontalPodAutoscalings         GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput         `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings                GetClusterAddonsConfigHttpLoadBalancingArrayInput                `pulumi:"httpLoadBalancings"`
 	IstioConfigs                      GetClusterAddonsConfigIstioConfigArrayInput                      `pulumi:"istioConfigs"`
+	KalmConfigs                       GetClusterAddonsConfigKalmConfigArrayInput                       `pulumi:"kalmConfigs"`
 	KubernetesDashboards              GetClusterAddonsConfigKubernetesDashboardArrayInput              `pulumi:"kubernetesDashboards"`
 	NetworkPolicyConfigs              GetClusterAddonsConfigNetworkPolicyConfigArrayInput              `pulumi:"networkPolicyConfigs"`
 }
@@ -9512,6 +9674,10 @@ func (o GetClusterAddonsConfigOutput) HttpLoadBalancings() GetClusterAddonsConfi
 
 func (o GetClusterAddonsConfigOutput) IstioConfigs() GetClusterAddonsConfigIstioConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigIstioConfig { return v.IstioConfigs }).(GetClusterAddonsConfigIstioConfigArrayOutput)
+}
+
+func (o GetClusterAddonsConfigOutput) KalmConfigs() GetClusterAddonsConfigKalmConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigKalmConfig { return v.KalmConfigs }).(GetClusterAddonsConfigKalmConfigArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) KubernetesDashboards() GetClusterAddonsConfigKubernetesDashboardArrayOutput {
@@ -10126,6 +10292,102 @@ func (o GetClusterAddonsConfigIstioConfigArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigIstioConfig {
 		return vs[0].([]GetClusterAddonsConfigIstioConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigIstioConfigOutput)
+}
+
+type GetClusterAddonsConfigKalmConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigKalmConfigInput is an input type that accepts GetClusterAddonsConfigKalmConfigArgs and GetClusterAddonsConfigKalmConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigKalmConfigInput` via:
+//
+// 		 GetClusterAddonsConfigKalmConfigArgs{...}
+//
+type GetClusterAddonsConfigKalmConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigKalmConfigOutput() GetClusterAddonsConfigKalmConfigOutput
+	ToGetClusterAddonsConfigKalmConfigOutputWithContext(context.Context) GetClusterAddonsConfigKalmConfigOutput
+}
+
+type GetClusterAddonsConfigKalmConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigKalmConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigKalmConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigKalmConfigArgs) ToGetClusterAddonsConfigKalmConfigOutput() GetClusterAddonsConfigKalmConfigOutput {
+	return i.ToGetClusterAddonsConfigKalmConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigKalmConfigArgs) ToGetClusterAddonsConfigKalmConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigKalmConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigKalmConfigOutput)
+}
+
+// GetClusterAddonsConfigKalmConfigArrayInput is an input type that accepts GetClusterAddonsConfigKalmConfigArray and GetClusterAddonsConfigKalmConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigKalmConfigArrayInput` via:
+//
+// 		 GetClusterAddonsConfigKalmConfigArray{ GetClusterAddonsConfigKalmConfigArgs{...} }
+//
+type GetClusterAddonsConfigKalmConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigKalmConfigArrayOutput() GetClusterAddonsConfigKalmConfigArrayOutput
+	ToGetClusterAddonsConfigKalmConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigKalmConfigArrayOutput
+}
+
+type GetClusterAddonsConfigKalmConfigArray []GetClusterAddonsConfigKalmConfigInput
+
+func (GetClusterAddonsConfigKalmConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigKalmConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigKalmConfigArray) ToGetClusterAddonsConfigKalmConfigArrayOutput() GetClusterAddonsConfigKalmConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigKalmConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigKalmConfigArray) ToGetClusterAddonsConfigKalmConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigKalmConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigKalmConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigKalmConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigKalmConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigKalmConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigKalmConfigOutput) ToGetClusterAddonsConfigKalmConfigOutput() GetClusterAddonsConfigKalmConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigKalmConfigOutput) ToGetClusterAddonsConfigKalmConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigKalmConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigKalmConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigKalmConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigKalmConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigKalmConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigKalmConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigKalmConfigArrayOutput) ToGetClusterAddonsConfigKalmConfigArrayOutput() GetClusterAddonsConfigKalmConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigKalmConfigArrayOutput) ToGetClusterAddonsConfigKalmConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigKalmConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigKalmConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigKalmConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigKalmConfig {
+		return vs[0].([]GetClusterAddonsConfigKalmConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigKalmConfigOutput)
 }
 
 type GetClusterAddonsConfigKubernetesDashboard struct {
@@ -14432,6 +14694,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigHttpLoadBalancingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigIstioConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigIstioConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigKalmConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigKalmConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAuthenticatorGroupsConfigOutput{})
@@ -14540,6 +14804,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHttpLoadBalancingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigIstioConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigIstioConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigKalmConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigKalmConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigKubernetesDashboardOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigKubernetesDashboardArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigOutput{})

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
  * 
  * > **Warning:** All arguments including `certificate` and `privateKey` will be stored in the raw
- * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  * 
  * ## Example Usage - Region Ssl Certificate Basic
  * 

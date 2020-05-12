@@ -10,6 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Creates a Google Cloud Bigtable table inside an instance. For more information see
+// [the official documentation](https://cloud.google.com/bigtable/) and
+// [API](https://cloud.google.com/bigtable/docs/go/reference).
 type Table struct {
 	pulumi.CustomResourceState
 
@@ -21,7 +24,10 @@ type Table struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project   pulumi.StringOutput      `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// A list of predefined keys to split the table on.
+	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+	// to delete/recreate the entire `bigtable.Table` resource.
 	SplitKeys pulumi.StringArrayOutput `pulumi:"splitKeys"`
 }
 
@@ -64,7 +70,10 @@ type tableState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project   *string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// A list of predefined keys to split the table on.
+	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+	// to delete/recreate the entire `bigtable.Table` resource.
 	SplitKeys []string `pulumi:"splitKeys"`
 }
 
@@ -77,7 +86,10 @@ type TableState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project   pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// A list of predefined keys to split the table on.
+	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+	// to delete/recreate the entire `bigtable.Table` resource.
 	SplitKeys pulumi.StringArrayInput
 }
 
@@ -94,7 +106,10 @@ type tableArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project   *string  `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// A list of predefined keys to split the table on.
+	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+	// to delete/recreate the entire `bigtable.Table` resource.
 	SplitKeys []string `pulumi:"splitKeys"`
 }
 
@@ -108,7 +123,10 @@ type TableArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
-	Project   pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// A list of predefined keys to split the table on.
+	// !> **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+	// to delete/recreate the entire `bigtable.Table` resource.
 	SplitKeys pulumi.StringArrayInput
 }
 

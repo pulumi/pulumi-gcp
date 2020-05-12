@@ -68,6 +68,7 @@ export * from "./networkPeeringRoutesConfig";
 export * from "./nodeGroup";
 export * from "./nodeTemplate";
 export * from "./packetMirroring";
+export * from "./perInstanceConfig";
 export * from "./projectDefaultNetworkTier";
 export * from "./projectMetadata";
 export * from "./projectMetadataItem";

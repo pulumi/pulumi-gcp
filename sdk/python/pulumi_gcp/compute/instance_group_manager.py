@@ -65,7 +65,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     """
     stateful_disks: pulumi.Output[list]
     """
-    ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+    Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 
       * `deleteRule` (`str`) - , A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` detatch the disk when the VM is deleted, but not delete the disk. `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently deleted from the instance group. The default is `NEVER`.
       * `device_name` (`str`) - , The device name of the disk to be attached.
@@ -90,7 +90,7 @@ class InstanceGroupManager(pulumi.CustomResource):
       * `maxUnavailablePercent` (`float`) - , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
       * `minReadySec` (`float`) - , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         - - -
-      * `minimalAction` (`str`) - - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+      * `minimal_action` (`str`) - - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
       * `type` (`str`) - - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
     """
     versions: pulumi.Output[list]
@@ -202,7 +202,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[list] stateful_disks: ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[list] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[list] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
@@ -242,7 +242,7 @@ class InstanceGroupManager(pulumi.CustomResource):
           * `maxUnavailablePercent` (`pulumi.Input[float]`) - , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
           * `minReadySec` (`pulumi.Input[float]`) - , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
             - - -
-          * `minimalAction` (`pulumi.Input[str]`) - - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+          * `minimal_action` (`pulumi.Input[str]`) - - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
           * `type` (`pulumi.Input[str]`) - - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 
         The **versions** object supports the following:
@@ -325,7 +325,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
-        :param pulumi.Input[list] stateful_disks: ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+        :param pulumi.Input[list] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[list] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
@@ -365,7 +365,7 @@ class InstanceGroupManager(pulumi.CustomResource):
           * `maxUnavailablePercent` (`pulumi.Input[float]`) - , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
           * `minReadySec` (`pulumi.Input[float]`) - , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
             - - -
-          * `minimalAction` (`pulumi.Input[str]`) - - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+          * `minimal_action` (`pulumi.Input[str]`) - - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
           * `type` (`pulumi.Input[str]`) - - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 
         The **versions** object supports the following:

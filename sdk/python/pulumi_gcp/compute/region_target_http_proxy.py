@@ -58,7 +58,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
 
         To get more information about RegionTargetHttpProxy, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionTargetHttpProxies)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
@@ -109,6 +109,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             region="us-central1",
             default_url_redirect={
                 "httpsRedirect": True,
+                "stripQuery": False,
             })
         default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
             region="us-central1",

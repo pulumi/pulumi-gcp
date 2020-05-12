@@ -212,26 +212,26 @@ class ForwardingRule(pulumi.CustomResource):
 
         hc = gcp.compute.HealthCheck("hc",
             check_interval_sec=1,
+            timeout_sec=1,
             tcp_health_check={
                 "port": "80",
-            },
-            timeout_sec=1)
+            })
         backend = gcp.compute.RegionBackendService("backend",
-            health_checks=hc.self_link,
-            region="us-central1")
+            region="us-central1",
+            health_checks=[hc.id])
         default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             ip_cidr_range="10.0.0.0/16",
-            network=default_network.self_link,
-            region="us-central1")
+            region="us-central1",
+            network=default_network.id)
         # Forwarding rule for Internal Load Balancing
         default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=backend.id,
             all_ports=True,
             allow_global_access=True,
-            backend_service=backend.self_link,
-            load_balancing_scheme="INTERNAL",
             network=default_network.name,
-            region="us-central1",
             subnetwork=default_subnetwork.name)
         ```
         ## Example Usage - Forwarding Rule Basic
@@ -243,7 +243,7 @@ class ForwardingRule(pulumi.CustomResource):
 
         default_target_pool = gcp.compute.TargetPool("defaultTargetPool")
         default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
-            target=default_target_pool.self_link,
+            target=default_target_pool.id,
             port_range="80")
         ```
         ## Example Usage - Forwarding Rule Internallb
@@ -261,17 +261,17 @@ class ForwardingRule(pulumi.CustomResource):
             })
         backend = gcp.compute.RegionBackendService("backend",
             region="us-central1",
-            health_checks=[hc.self_link])
+            health_checks=[hc.id])
         default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             ip_cidr_range="10.0.0.0/16",
             region="us-central1",
-            network=default_network.self_link)
+            network=default_network.id)
         # Forwarding rule for Internal Load Balancing
         default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
             region="us-central1",
             load_balancing_scheme="INTERNAL",
-            backend_service=backend.self_link,
+            backend_service=backend.id,
             all_ports=True,
             network=default_network.name,
             subnetwork=default_subnetwork.name)
@@ -291,12 +291,12 @@ class ForwardingRule(pulumi.CustomResource):
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             ip_cidr_range="10.1.2.0/24",
             region="us-central1",
-            network=default_network.self_link)
+            network=default_network.id)
         instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
             machine_type="n1-standard-1",
             network_interface=[{
-                "network": default_network.self_link,
-                "subnetwork": default_subnetwork.self_link,
+                "network": default_network.id,
+                "subnetwork": default_subnetwork.id,
             }],
             disk=[{
                 "sourceImage": debian_image.self_link,
@@ -316,7 +316,7 @@ class ForwardingRule(pulumi.CustomResource):
             base_instance_name="internal-glb",
             target_size=1)
         fw1 = gcp.compute.Firewall("fw1",
-            network=default_network.self_link,
+            network=default_network.id,
             source_ranges=["10.1.2.0/24"],
             allow=[
                 {
@@ -331,7 +331,7 @@ class ForwardingRule(pulumi.CustomResource):
             ],
             direction="INGRESS")
         fw2 = gcp.compute.Firewall("fw2",
-            network=default_network.self_link,
+            network=default_network.id,
             source_ranges=["0.0.0.0/0"],
             allow=[{
                 "protocol": "tcp",
@@ -340,7 +340,7 @@ class ForwardingRule(pulumi.CustomResource):
             target_tags=["allow-ssh"],
             direction="INGRESS")
         fw3 = gcp.compute.Firewall("fw3",
-            network=default_network.self_link,
+            network=default_network.id,
             source_ranges=[
                 "130.211.0.0/22",
                 "35.191.0.0/16",
@@ -351,7 +351,7 @@ class ForwardingRule(pulumi.CustomResource):
             target_tags=["load-balanced-backend"],
             direction="INGRESS")
         fw4 = gcp.compute.Firewall("fw4",
-            network=default_network.self_link,
+            network=default_network.id,
             source_ranges=["10.129.0.0/26"],
             target_tags=["load-balanced-backend"],
             allow=[
@@ -384,17 +384,17 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default_region_health_check.self_link])
+            health_checks=[default_region_health_check.id])
         default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
             region="us-central1",
-            default_service=default_region_backend_service.self_link)
+            default_service=default_region_backend_service.id)
         default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
             region="us-central1",
-            url_map=default_region_url_map.self_link)
+            url_map=default_region_url_map.id)
         proxy = gcp.compute.Subnetwork("proxy",
             ip_cidr_range="10.129.0.0/26",
             region="us-central1",
-            network=default_network.self_link,
+            network=default_network.id,
             purpose="INTERNAL_HTTPS_LOAD_BALANCER",
             role="ACTIVE")
         # Forwarding rule for Internal Load Balancing
@@ -403,9 +403,9 @@ class ForwardingRule(pulumi.CustomResource):
             ip_protocol="TCP",
             load_balancing_scheme="INTERNAL_MANAGED",
             port_range="80",
-            target=default_region_target_http_proxy.self_link,
-            network=default_network.self_link,
-            subnetwork=default_subnetwork.self_link,
+            target=default_region_target_http_proxy.id,
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
             network_tier="PREMIUM")
         ```
 

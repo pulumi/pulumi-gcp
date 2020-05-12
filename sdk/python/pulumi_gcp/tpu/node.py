@@ -78,7 +78,52 @@ class Node(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, accelerator_type=None, cidr_block=None, description=None, labels=None, name=None, network=None, project=None, scheduling_config=None, tensorflow_version=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Node resource with the given unique name, props, and options.
+        A Cloud TPU instance.
+
+
+        To get more information about Node, see:
+
+        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/tpu/docs/)
+
+        ## Example Usage - TPU Node Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        available = gcp.tpu.get_tensorflow_versions()
+        tpu = gcp.tpu.Node("tpu",
+            zone="us-central1-b",
+            accelerator_type="v3-8",
+            tensorflow_version=available.versions[0],
+            cidr_block="10.2.0.0/29")
+        ```
+        ## Example Usage - TPU Node Full
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        available = gcp.tpu.get_tensorflow_versions()
+        tpu = gcp.tpu.Node("tpu",
+            zone="us-central1-b",
+            accelerator_type="v3-8",
+            cidr_block="10.3.0.0/29",
+            tensorflow_version=available.versions[0],
+            description="Google Provider test TPU",
+            network="default",
+            labels={
+                "foo": "bar",
+            },
+            scheduling_config={
+                "preemptible": True,
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.

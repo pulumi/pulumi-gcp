@@ -21,9 +21,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * 
- * > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
- * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
- * 
  * ## Example Usage - Backend Service Basic
  * 
  * 
@@ -36,7 +33,7 @@ import * as utilities from "../utilities";
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  * });
- * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {healthChecks: [defaultHttpHealthCheck.selfLink]});
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {healthChecks: [defaultHttpHealthCheck.id]});
  * ```
  * ## Example Usage - Backend Service Traffic Director Round Robin
  * 
@@ -49,7 +46,7 @@ import * as utilities from "../utilities";
  *     port: 80,
  * }});
  * const default = new gcp.compute.BackendService("default", {
- *     healthChecks: [healthCheck.selfLink],
+ *     healthChecks: [healthCheck.id],
  *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
  *     localityLbPolicy: "ROUND_ROBIN",
  * });
@@ -65,7 +62,7 @@ import * as utilities from "../utilities";
  *     port: 80,
  * }});
  * const default = new gcp.compute.BackendService("default", {
- *     healthChecks: [healthCheck.selfLink],
+ *     healthChecks: [healthCheck.id],
  *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
  *     localityLbPolicy: "RING_HASH",
  *     sessionAffinity: "HTTP_COOKIE",
@@ -143,8 +140,6 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly connectionDrainingTimeoutSec!: pulumi.Output<number | undefined>;
     /**
-     * -
-     * (Optional))
      * Consistent Hash-based load balancing can be used to provide soft session
      * affinity based on HTTP headers, cookies or other properties. This load balancing
      * policy is applicable only for HTTP connections. The affinity to a particular
@@ -381,8 +376,6 @@ export interface BackendServiceState {
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * -
-     * (Optional))
      * Consistent Hash-based load balancing can be used to provide soft session
      * affinity based on HTTP headers, cookies or other properties. This load balancing
      * policy is applicable only for HTTP connections. The affinity to a particular
@@ -541,8 +534,6 @@ export interface BackendServiceArgs {
      */
     readonly connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
-     * -
-     * (Optional))
      * Consistent Hash-based load balancing can be used to provide soft session
      * affinity based on HTTP headers, cookies or other properties. This load balancing
      * policy is applicable only for HTTP connections. The affinity to a particular

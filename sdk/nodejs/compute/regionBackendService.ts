@@ -45,15 +45,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
- *     port: 80,
- * }});
- * const default = new gcp.compute.RegionBackendService("default", {
- *     region: "us-central1",
- *     healthChecks: [healthCheck.selfLink],
- *     protocol: "HTTP",
+ * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     healthChecks: healthCheck.selfLink,
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  *     localityLbPolicy: "ROUND_ROBIN",
+ *     protocol: "HTTP",
+ *     region: "us-central1",
  * });
  * ```
  * ## Example Usage - Region Backend Service Ilb Ring Hash
@@ -63,31 +65,33 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
- *     port: 80,
- * }});
- * const default = new gcp.compute.RegionBackendService("default", {
- *     region: "us-central1",
- *     healthChecks: [healthCheck.selfLink],
- *     loadBalancingScheme: "INTERNAL_MANAGED",
- *     localityLbPolicy: "RING_HASH",
- *     sessionAffinity: "HTTP_COOKIE",
- *     protocol: "HTTP",
- *     circuit_breakers: {
+ * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     circuitBreakers: {
  *         maxConnections: 10,
  *     },
- *     consistent_hash: {
- *         http_cookie: {
- *             ttl: {
- *                 seconds: 11,
- *                 nanos: 1111,
- *             },
+ *     consistentHash: {
+ *         httpCookie: {
  *             name: "mycookie",
+ *             ttl: {
+ *                 nanos: 1111,
+ *                 seconds: 11,
+ *             },
  *         },
  *     },
- *     outlier_detection: {
+ *     healthChecks: healthCheck.selfLink,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     localityLbPolicy: "RING_HASH",
+ *     outlierDetection: {
  *         consecutiveErrors: 2,
  *     },
+ *     protocol: "HTTP",
+ *     region: "us-central1",
+ *     sessionAffinity: "HTTP_COOKIE",
  * });
  * ```
  * ## Example Usage - Region Backend Service Balancing Mode

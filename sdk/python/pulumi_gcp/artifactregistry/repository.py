@@ -54,7 +54,49 @@ class Repository(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, format=None, labels=None, location=None, project=None, repository_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Repository resource with the given unique name, props, and options.
+        A repository for storing artifacts
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+
+        ## Example Usage - Artifact Registry Repository Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository",
+            format="DOCKER")
+        ```
+        ## Example Usage - Artifact Registry Repository Iam
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository with iam",
+            format="DOCKER")
+        test_account = gcp.service_account.Account("test-account",
+            account_id="my-account",
+            display_name="Test Service Account")
+        test_iam = gcp.artifactregistry.RepositoryIamMember("test-iam",
+            location=my_repo.location,
+            repository=my_repo.name,
+            role="roles/artifactregistry.reader",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-provided description of the repository.

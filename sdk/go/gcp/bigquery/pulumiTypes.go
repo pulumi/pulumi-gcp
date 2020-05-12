@@ -347,7 +347,7 @@ type DatasetAccessType struct {
 	// member of the access object. Primitive, Predefined and custom
 	// roles are supported. Predefined roles that have equivalent
 	// primitive roles are swapped by the API to their Primitive
-	// counterparts, and will show a diff post-create. See
+	// counterparts. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role *string `pulumi:"role"`
 	// A special group to grant access to. Possible values include:
@@ -385,7 +385,7 @@ type DatasetAccessTypeArgs struct {
 	// member of the access object. Primitive, Predefined and custom
 	// roles are supported. Predefined roles that have equivalent
 	// primitive roles are swapped by the API to their Primitive
-	// counterparts, and will show a diff post-create. See
+	// counterparts. See
 	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 	// A special group to grant access to. Possible values include:
@@ -468,7 +468,7 @@ func (o DatasetAccessTypeOutput) GroupByEmail() pulumi.StringPtrOutput {
 // member of the access object. Primitive, Predefined and custom
 // roles are supported. Predefined roles that have equivalent
 // primitive roles are swapped by the API to their Primitive
-// counterparts, and will show a diff post-create. See
+// counterparts. See
 // [official docs](https://cloud.google.com/bigquery/docs/access-control).
 func (o DatasetAccessTypeOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetAccessType) *string { return v.Role }).(pulumi.StringPtrOutput)

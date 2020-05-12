@@ -4,6 +4,56 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * A repository for storing artifacts
+ * 
+ * To get more information about Repository, see:
+ * 
+ * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+ * 
+ * ## Example Usage - Artifact Registry Repository Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const my-repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example docker repository",
+ *     format: "DOCKER",
+ * });
+ * ```
+ * ## Example Usage - Artifact Registry Repository Iam
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const my-repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example docker repository with iam",
+ *     format: "DOCKER",
+ * });
+ * const test-account = new gcp.serviceAccount.Account("test-account", {
+ *     accountId: "my-account",
+ *     displayName: "Test Service Account",
+ * });
+ * const test-iam = new gcp.artifactregistry.RepositoryIamMember("test-iam", {
+ *     location: my-repo.location,
+ *     repository: my-repo.name,
+ *     role: "roles/artifactregistry.reader",
+ *     member: pulumi.interpolate`serviceAccount:${test-account.email}`,
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/artifact_registry_repository.html.markdown.
+ */
 export class Repository extends pulumi.CustomResource {
     /**
      * Get an existing Repository resource's state with the given name, ID, and optional extra

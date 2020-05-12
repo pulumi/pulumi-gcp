@@ -657,6 +657,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_packet_mirroring":          {Tok: gcpResource(gcpCompute, "PacketMirroring")},
 			"google_compute_instance_group_named_port": {Tok: gcpResource(gcpCompute, "InstanceGroupNamedPort")},
+			"google_compute_per_instance_config":       {Tok: gcpResource(gcpCompute, "PerInstanceConfig")},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {

@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.ArtifactRegistry
 {
+    /// <summary>
+    /// A repository for storing artifacts
+    /// 
+    /// To get more information about Repository, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+    /// </summary>
     public partial class Repository : Pulumi.CustomResource
     {
         /// <summary>

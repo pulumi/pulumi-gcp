@@ -116,7 +116,7 @@ class Snapshot(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 
         > **Warning:** All arguments including `snapshot_encryption_key.raw_key` and `source_disk_encryption_key.raw_key` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage - Snapshot Basic
 

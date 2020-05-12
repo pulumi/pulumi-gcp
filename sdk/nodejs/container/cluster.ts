@@ -6,6 +6,91 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a Google Kubernetes Engine (GKE) cluster. For more information see
+ * [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
+ * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
+ * 
+ * > **Note:** All arguments and attributes, including basic auth username and
+ * passwords as well as certificate outputs will be stored in the raw state as
+ * plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+ * 
+ * ## Example Usage - with a separately managed node pool (recommended)
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     removeDefaultNodePool: true,
+ *     initialNodeCount: 1,
+ *     master_auth: {
+ *         username: "",
+ *         password: "",
+ *         client_certificate_config: {
+ *             issueClientCertificate: false,
+ *         },
+ *     },
+ * });
+ * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
+ *     location: "us-central1",
+ *     cluster: primary.name,
+ *     nodeCount: 1,
+ *     node_config: {
+ *         preemptible: true,
+ *         machineType: "n1-standard-1",
+ *         metadata: {
+ *             "disable-legacy-endpoints": "true",
+ *         },
+ *         oauthScopes: [
+ *             "https://www.googleapis.com/auth/logging.write",
+ *             "https://www.googleapis.com/auth/monitoring",
+ *         ],
+ *     },
+ * });
+ * ```
+ * 
+ * ## Example Usage - with the default node pool
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const primary = new gcp.container.Cluster("primary", {
+ *     initialNodeCount: 3,
+ *     location: "us-central1-a",
+ *     masterAuth: {
+ *         clientCertificateConfig: {
+ *             issueClientCertificate: false,
+ *         },
+ *         password: "",
+ *         username: "",
+ *     },
+ *     nodeConfig: {
+ *         labels: {
+ *             foo: "bar",
+ *         },
+ *         metadata: {
+ *             "disable-legacy-endpoints": "true",
+ *         },
+ *         oauthScopes: [
+ *             "https://www.googleapis.com/auth/logging.write",
+ *             "https://www.googleapis.com/auth/monitoring",
+ *         ],
+ *         tags: [
+ *             "foo",
+ *             "bar",
+ *         ],
+ *     },
+ * }, { timeouts: {
+ *     create: "30m",
+ *     update: "40m",
+ * } });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.
+ */
 export class Cluster extends pulumi.CustomResource {
     /**
      * Get an existing Cluster resource's state with the given name, ID, and optional extra
@@ -185,8 +270,7 @@ export class Cluster extends pulumi.CustomResource {
      * If unset, the cluster's version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
      * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available, and can be use to approximate fuzzy versions in a
-     * provider-compatible way. If you intend to specify versions manually,
+     * are available. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
      */
@@ -222,8 +306,8 @@ export class Cluster extends pulumi.CustomResource {
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn't recommended to be used with
-     * this provider. Structure is documented below.
+     * manages the default node pool, which isn't recommended to be used.
+     * Structure is documented below.
      */
     public readonly nodeConfig!: pulumi.Output<outputs.container.ClusterNodeConfig>;
     /**
@@ -249,7 +333,7 @@ export class Cluster extends pulumi.CustomResource {
      * nodes in the default node pool. While a fuzzy version can be specified, it's
      * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+     * `versionPrefix` field to approximate fuzzy versions.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     public readonly nodeVersion!: pulumi.Output<string>;
@@ -306,7 +390,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
-     * (Optional) The IP address range of the Cloud TPUs in this cluster, in
+     * The IP address range of the Cloud TPUs in this cluster, in
      * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`).
      */
@@ -599,8 +683,7 @@ export interface ClusterState {
      * If unset, the cluster's version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
      * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available, and can be use to approximate fuzzy versions in a
-     * provider-compatible way. If you intend to specify versions manually,
+     * are available. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
      */
@@ -636,8 +719,8 @@ export interface ClusterState {
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn't recommended to be used with
-     * this provider. Structure is documented below.
+     * manages the default node pool, which isn't recommended to be used.
+     * Structure is documented below.
      */
     readonly nodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfig>;
     /**
@@ -663,7 +746,7 @@ export interface ClusterState {
      * nodes in the default node pool. While a fuzzy version can be specified, it's
      * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+     * `versionPrefix` field to approximate fuzzy versions.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     readonly nodeVersion?: pulumi.Input<string>;
@@ -720,7 +803,7 @@ export interface ClusterState {
      */
     readonly subnetwork?: pulumi.Input<string>;
     /**
-     * (Optional) The IP address range of the Cloud TPUs in this cluster, in
+     * The IP address range of the Cloud TPUs in this cluster, in
      * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
      * notation (e.g. `1.2.3.4/29`).
      */
@@ -877,8 +960,7 @@ export interface ClusterArgs {
      * If unset, the cluster's version will be set by GKE to the version of the most recent
      * official release (which is not necessarily the latest version).  Most users will find
      * the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-     * are available, and can be use to approximate fuzzy versions in a
-     * provider-compatible way. If you intend to specify versions manually,
+     * are available. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
      */
@@ -914,8 +996,8 @@ export interface ClusterArgs {
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
-     * manages the default node pool, which isn't recommended to be used with
-     * this provider. Structure is documented below.
+     * manages the default node pool, which isn't recommended to be used.
+     * Structure is documented below.
      */
     readonly nodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfig>;
     /**
@@ -941,7 +1023,7 @@ export interface ClusterArgs {
      * nodes in the default node pool. While a fuzzy version can be specified, it's
      * recommended that you specify explicit versions as the provider will see spurious diffs
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-     * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+     * `versionPrefix` field to approximate fuzzy versions.
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      */
     readonly nodeVersion?: pulumi.Input<string>;

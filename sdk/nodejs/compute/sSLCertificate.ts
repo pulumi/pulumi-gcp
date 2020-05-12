@@ -6,6 +6,89 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * An SslCertificate resource, used for HTTPS load balancing. This resource
+ * provides a mechanism to upload an SSL key and certificate to
+ * the load balancer to serve secure connections from the user.
+ * 
+ * 
+ * To get more information about SslCertificate, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+ * 
+ * > **Warning:** All arguments including `certificate` and `privateKey` will be stored in the raw
+ * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+ * 
+ * ## Example Usage - Ssl Certificate Basic
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ * 
+ * const default = new gcp.compute.SSLCertificate("default", {
+ *     namePrefix: "my-certificate-",
+ *     description: "a description",
+ *     privateKey: fs.readFileSync("path/to/private.key"),
+ *     certificate: fs.readFileSync("path/to/certificate.crt"),
+ * });
+ * ```
+ * ## Example Usage - Ssl Certificate Target Https Proxies
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ * 
+ * // Using with Target HTTPS Proxies
+ * //
+ * // SSL certificates cannot be updated after creation. In order to apply
+ * // the specified configuration, the provider will destroy the existing
+ * // resource and create a replacement. Example:
+ * const defaultSSLCertificate = new gcp.compute.SSLCertificate("defaultSSLCertificate", {
+ *     namePrefix: "my-certificate-",
+ *     privateKey: fs.readFileSync("path/to/private.key"),
+ *     certificate: fs.readFileSync("path/to/certificate.crt"),
+ * });
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.selfLink],
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ *     description: "a description",
+ *     defaultService: defaultBackendService.selfLink,
+ *     host_rule: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     path_matcher: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.selfLink,
+ *         path_rule: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.selfLink,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy", {
+ *     urlMap: defaultURLMap.selfLink,
+ *     sslCertificates: [defaultSSLCertificate.selfLink],
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ssl_certificate.html.markdown.
+ */
 export class SSLCertificate extends pulumi.CustomResource {
     /**
      * Get an existing SSLCertificate resource's state with the given name, ID, and optional extra

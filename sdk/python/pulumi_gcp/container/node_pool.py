@@ -142,7 +142,74 @@ class NodePool(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, autoscaling=None, cluster=None, initial_node_count=None, location=None, management=None, max_pods_per_node=None, name=None, name_prefix=None, node_config=None, node_count=None, node_locations=None, project=None, upgrade_settings=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a NodePool resource with the given unique name, props, and options.
+        Manages a node pool in a Google Kubernetes Engine (GKE) cluster separately from
+        the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
+        and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
+
+        ## Example Usage - using a separately managed node pool (recommended)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            remove_default_node_pool=True,
+            initial_node_count=1)
+        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+            location="us-central1",
+            cluster=primary.name,
+            node_count=1,
+            node_config={
+                "preemptible": True,
+                "machineType": "n1-standard-1",
+                "oauthScopes": [
+                    "https://www.googleapis.com/auth/logging.write",
+                    "https://www.googleapis.com/auth/monitoring",
+                ],
+            })
+        ```
+
+        ## Example Usage - 2 node pools, 1 separately managed + the default node pool
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1-a",
+            initial_node_count=3,
+            node_locations=["us-central1-c"],
+            master_auth={
+                "username": "",
+                "password": "",
+                "client_certificate_config": {
+                    "issueClientCertificate": False,
+                },
+            },
+            node_config={
+                "oauthScopes": [
+                    "https://www.googleapis.com/auth/logging.write",
+                    "https://www.googleapis.com/auth/monitoring",
+                ],
+                "metadata": {
+                    "disable-legacy-endpoints": "true",
+                },
+                "guest_accelerator": [{
+                    "type": "nvidia-tesla-k80",
+                    "count": 1,
+                }],
+            })
+        np = gcp.container.NodePool("np",
+            location="us-central1-a",
+            cluster=primary.name,
+            node_count=3,
+            timeouts=[{
+                "create": "30m",
+                "update": "20m",
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling: Configuration required by cluster autoscaler to adjust

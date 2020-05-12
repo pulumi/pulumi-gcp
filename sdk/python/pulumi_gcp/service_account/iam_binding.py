@@ -36,7 +36,112 @@ class IAMBinding(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, condition=None, members=None, role=None, service_account_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a IAMBinding resource with the given unique name, props, and options.
+        When managing IAM roles, you can treat a service account either as a resource or as an identity. This resource is to add iam policy bindings to a service account resource **to configure permissions for who can edit the service account**. To configure permissions for a service account to act as an identity that can manage other GCP resources, use the google_project_iam set of resources.
+
+        Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
+
+        * `serviceAccount.IAMPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
+        * `serviceAccount.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
+        * `serviceAccount.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
+
+        > **Note:** `serviceAccount.IAMPolicy` **cannot** be used in conjunction with `serviceAccount.IAMBinding` and `serviceAccount.IAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `serviceAccount.IAMBinding` resources **can be** used in conjunction with `serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\_service\_account\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/iam.serviceAccountUser",
+            "members": ["user:jane@example.com"],
+        }])
+        sa = gcp.service_account.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can interact with")
+        admin_account_iam = gcp.service_account.IAMPolicy("admin-account-iam",
+            service_account_id=sa.name,
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_service\_account\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.service_account.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can use")
+        admin_account_iam = gcp.service_account.IAMBinding("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.service_account.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that only Jane can use")
+        admin_account_iam = gcp.service_account.IAMBinding("admin-account-iam",
+            condition={
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+                "title": "expires_after_2019_12_31",
+            },
+            members=["user:jane@example.com"],
+            role="roles/iam.serviceAccountUser",
+            service_account_id=sa.name)
+        ```
+
+        ## google\_service\_account\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_default_service_account()
+        sa = gcp.service_account.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that Jane can use")
+        admin_account_iam = gcp.service_account.IAMMember("admin-account-iam",
+            service_account_id=sa.name,
+            role="roles/iam.serviceAccountUser",
+            member="user:jane@example.com")
+        # Allow SA service account use the default GCE account
+        gce_default_account_iam = gcp.service_account.IAMMember("gce-default-account-iam",
+            service_account_id=default.name,
+            role="roles/iam.serviceAccountUser",
+            member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        sa = gcp.service_account.Account("sa",
+            account_id="my-service-account",
+            display_name="A service account that Jane can use")
+        admin_account_iam = gcp.service_account.IAMMember("admin-account-iam",
+            condition={
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+                "title": "expires_after_2019_12_31",
+            },
+            member="user:jane@example.com",
+            role="roles/iam.serviceAccountUser",
+            service_account_id=sa.name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.

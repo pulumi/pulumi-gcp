@@ -25,6 +25,13 @@ class Cluster(pulumi.CustomResource):
         * `kms_key_name` (`str`) - The Cloud KMS key name to use for PD disk encryption for
           all instances in the cluster.
 
+      * `endpointConfig` (`dict`) - The config settings for port access on the cluster.
+        Structure defined below.
+        - - -
+        * `enableHttpPortAccess` (`bool`) - The flag to enable http access to specific ports
+          on the cluster from external sources (aka Component Gateway). Defaults to false.
+        * `httpPorts` (`dict`)
+
       * `gceClusterConfig` (`dict`) - Common config settings for resources of Google Compute Engine cluster
         instances, applicable to all instances in the cluster. Structure defined below.
         * `internalIpOnly` (`bool`) - By default, clusters are not restricted to internal IP addresses, 
@@ -356,6 +363,13 @@ class Cluster(pulumi.CustomResource):
             * `kms_key_name` (`pulumi.Input[str]`) - The Cloud KMS key name to use for PD disk encryption for
               all instances in the cluster.
 
+          * `endpointConfig` (`pulumi.Input[dict]`) - The config settings for port access on the cluster.
+            Structure defined below.
+            - - -
+            * `enableHttpPortAccess` (`pulumi.Input[bool]`) - The flag to enable http access to specific ports
+              on the cluster from external sources (aka Component Gateway). Defaults to false.
+            * `httpPorts` (`pulumi.Input[dict]`)
+
           * `gceClusterConfig` (`pulumi.Input[dict]`) - Common config settings for resources of Google Compute Engine cluster
             instances, applicable to all instances in the cluster. Structure defined below.
             * `internalIpOnly` (`pulumi.Input[bool]`) - By default, clusters are not restricted to internal IP addresses, 
@@ -602,6 +616,13 @@ class Cluster(pulumi.CustomResource):
             Structure defined below.
             * `kms_key_name` (`pulumi.Input[str]`) - The Cloud KMS key name to use for PD disk encryption for
               all instances in the cluster.
+
+          * `endpointConfig` (`pulumi.Input[dict]`) - The config settings for port access on the cluster.
+            Structure defined below.
+            - - -
+            * `enableHttpPortAccess` (`pulumi.Input[bool]`) - The flag to enable http access to specific ports
+              on the cluster from external sources (aka Component Gateway). Defaults to false.
+            * `httpPorts` (`pulumi.Input[dict]`)
 
           * `gceClusterConfig` (`pulumi.Input[dict]`) - Common config settings for resources of Google Compute Engine cluster
             instances, applicable to all instances in the cluster. Structure defined below.

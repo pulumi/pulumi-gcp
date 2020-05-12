@@ -53,7 +53,63 @@ class Connection(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, cloud_sql=None, connection_id=None, description=None, friendly_name=None, location=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Connection resource with the given unique name, props, and options.
+        A connection allows BigQuery connections to external data sources..
+
+        To get more information about Connection, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1beta1/projects.locations.connections/create)
+        * How-to Guides
+            * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
+
+        ## Example Usage - Bigquery Connection Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+            })
+        db = gcp.sql.Database("db", instance=instance.name)
+        connection = gcp.bigquery.Connection("connection",
+            friendly_name="👋",
+            description="a riveting description",
+            cloud_sql={
+                "instanceId": instance.connection_name,
+                "database": db.name,
+                "type": "POSTGRES",
+            })
+        ```
+        ## Example Usage - Bigquery Connection Full
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+            })
+        db = gcp.sql.Database("db", instance=instance.name)
+        connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="US",
+            friendly_name="👋",
+            description="a riveting description",
+            cloud_sql={
+                "instanceId": instance.connection_name,
+                "database": db.name,
+                "type": "POSTGRES",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] cloud_sql: Cloud SQL properties.  Structure is documented below.

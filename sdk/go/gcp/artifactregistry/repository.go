@@ -10,6 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A repository for storing artifacts
+//
+// To get more information about Repository, see:
+//
+// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 type Repository struct {
 	pulumi.CustomResourceState
 

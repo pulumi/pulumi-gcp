@@ -61,7 +61,7 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             }])
         webservers = gcp.compute.InstanceGroupManager("webservers",
             version=[{
-                "instanceTemplate": webserver.self_link,
+                "instanceTemplate": webserver.id,
                 "name": "primary",
             }],
             base_instance_name="webserver",
@@ -80,7 +80,7 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
             backend=[{
                 "group": webservers.instance_group,
             }],
-            health_checks=[default.self_link])
+            health_checks=[default.id])
         backend_key = gcp.compute.BackendServiceSignedUrlKey("backendKey",
             key_value="pPsVemX8GM46QVeezid6Rw==",
             backend_service=example_backend.name)

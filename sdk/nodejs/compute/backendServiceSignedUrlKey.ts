@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * const webservers = new gcp.compute.InstanceGroupManager("webservers", {
  *     version: [{
- *         instanceTemplate: webserver.selfLink,
+ *         instanceTemplate: webserver.id,
  *         name: "primary",
  *     }],
  *     baseInstanceName: "webserver",
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *     backend: [{
  *         group: webservers.instanceGroup,
  *     }],
- *     healthChecks: [default.selfLink],
+ *     healthChecks: [default.id],
  * });
  * const backendKey = new gcp.compute.BackendServiceSignedUrlKey("backendKey", {
  *     keyValue: "pPsVemX8GM46QVeezid6Rw==",

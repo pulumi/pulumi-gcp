@@ -101,8 +101,7 @@ class ManagedZone(pulumi.CustomResource):
     """
     service_directory_config: pulumi.Output[dict]
     """
-    The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-    information related to the namespace associated with the zone.
+    The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
 
       * `namespace` (`dict`) - The namespace associated with the zone.  Structure is documented below.
         * `namespaceUrl` (`str`) - The fully qualified or partial URL of the service directory namespace that should be
@@ -162,10 +161,10 @@ class ManagedZone(pulumi.CustomResource):
             private_visibility_config={
                 "networks": [
                     {
-                        "networkUrl": network_1.self_link,
+                        "networkUrl": network_1.id,
                     },
                     {
-                        "networkUrl": network_2.self_link,
+                        "networkUrl": network_2.id,
                     },
                 ],
             })
@@ -189,10 +188,10 @@ class ManagedZone(pulumi.CustomResource):
             private_visibility_config={
                 "networks": [
                     {
-                        "networkUrl": network_1.self_link,
+                        "networkUrl": network_1.id,
                     },
                     {
-                        "networkUrl": network_2.self_link,
+                        "networkUrl": network_2.id,
                     },
                 ],
             },
@@ -222,12 +221,12 @@ class ManagedZone(pulumi.CustomResource):
             visibility="private",
             private_visibility_config={
                 "networks": [{
-                    "networkUrl": network_source.self_link,
+                    "networkUrl": network_source.id,
                 }],
             },
             peering_config={
                 "target_network": {
-                    "networkUrl": network_target.self_link,
+                    "networkUrl": network_target.id,
                 },
             })
         ```
@@ -273,8 +272,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
-        :param pulumi.Input[dict] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-               information related to the namespace associated with the zone.
+        :param pulumi.Input[dict] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
 
@@ -400,8 +398,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
-        :param pulumi.Input[dict] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-               information related to the namespace associated with the zone.
+        :param pulumi.Input[dict] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
 

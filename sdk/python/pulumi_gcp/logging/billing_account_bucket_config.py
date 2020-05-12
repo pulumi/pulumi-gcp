@@ -40,7 +40,29 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, billing_account=None, bucket_id=None, description=None, location=None, retention_days=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a BillingAccountBucketConfig resource with the given unique name, props, and options.
+        Manages a billing account level logging bucket config. For more information see
+        [the official logging documentation](https://cloud.google.com/logging/docs/) and
+        [Storing Logs](https://cloud.google.com/logging/docs/storage).
+
+        > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.organizations.get_billing_account(billing_account="00AA00-000AAA-00AA0A")
+        basic = gcp.logging.BillingAccountBucketConfig("basic",
+            billing_account=default.billing_account,
+            location="global",
+            retention_days=30,
+            bucket_id="_Default")
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account: The parent resource that contains the logging bucket.

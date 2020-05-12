@@ -15,8 +15,8 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         /// <summary>
         /// .
-        /// The status of the CloudRun addon. It requires `istio_config` enabled. It is disabled by default.
-        /// Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+        /// The status of the CloudRun addon. It is disabled by default.
+        /// Set `disabled = false` to enable.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigCloudrunConfig? CloudrunConfig;
         /// <summary>
@@ -51,6 +51,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigIstioConfig? IstioConfig;
         /// <summary>
+        /// .
+        /// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigKalmConfig? KalmConfig;
+        /// <summary>
         /// Whether we should enable the network policy addon
         /// for the master.  This must be enabled in order to enable network policy for the nodes.
         /// To enable this, you must also define a `network_policy` block,
@@ -74,6 +79,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigIstioConfig? istioConfig,
 
+            Outputs.ClusterAddonsConfigKalmConfig? kalmConfig,
+
             Outputs.ClusterAddonsConfigNetworkPolicyConfig? networkPolicyConfig)
         {
             CloudrunConfig = cloudrunConfig;
@@ -82,6 +89,7 @@ namespace Pulumi.Gcp.Container.Outputs
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;
             IstioConfig = istioConfig;
+            KalmConfig = kalmConfig;
             NetworkPolicyConfig = networkPolicyConfig;
         }
     }

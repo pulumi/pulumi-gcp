@@ -145,8 +145,6 @@ class BackendService(pulumi.CustomResource):
     """
     consistent_hash: pulumi.Output[dict]
     """
-    -
-    (Optional))
     Consistent Hash-based load balancing can be used to provide soft session
     affinity based on HTTP headers, cookies or other properties. This load balancing
     policy is applicable only for HTTP connections. The affinity to a particular
@@ -369,9 +367,6 @@ class BackendService(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
-        > **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-
         ## Example Usage - Backend Service Basic
 
 
@@ -383,7 +378,7 @@ class BackendService(pulumi.CustomResource):
             request_path="/",
             check_interval_sec=1,
             timeout_sec=1)
-        default_backend_service = gcp.compute.BackendService("defaultBackendService", health_checks=[default_http_health_check.self_link])
+        default_backend_service = gcp.compute.BackendService("defaultBackendService", health_checks=[default_http_health_check.id])
         ```
         ## Example Usage - Backend Service Traffic Director Round Robin
 
@@ -396,7 +391,7 @@ class BackendService(pulumi.CustomResource):
             "port": 80,
         })
         default = gcp.compute.BackendService("default",
-            health_checks=[health_check.self_link],
+            health_checks=[health_check.id],
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
@@ -411,7 +406,7 @@ class BackendService(pulumi.CustomResource):
             "port": 80,
         })
         default = gcp.compute.BackendService("default",
-            health_checks=[health_check.self_link],
+            health_checks=[health_check.id],
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             locality_lb_policy="RING_HASH",
             session_affinity="HTTP_COOKIE",
@@ -445,9 +440,7 @@ class BackendService(pulumi.CustomResource):
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.  Structure is documented below.
         :param pulumi.Input[float] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[dict] consistent_hash: -
-               (Optional))
-               Consistent Hash-based load balancing can be used to provide soft session
+        :param pulumi.Input[dict] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the
@@ -784,9 +777,7 @@ class BackendService(pulumi.CustomResource):
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.  Structure is documented below.
         :param pulumi.Input[float] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[dict] consistent_hash: -
-               (Optional))
-               Consistent Hash-based load balancing can be used to provide soft session
+        :param pulumi.Input[dict] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the
