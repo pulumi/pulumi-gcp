@@ -35,6 +35,9 @@ import * as utilities from "../utilities";
  *         httpMethod: "POST",
  *         uri: "https://example.com/ping",
  *     },
+ *     retryConfig: {
+ *         retryCount: 1,
+ *     },
  *     schedule: "*&#47;8 * * * *",
  *     timeZone: "America/New_York",
  * });
@@ -58,6 +61,12 @@ import * as utilities from "../utilities";
  *     },
  *     attemptDeadline: "320s",
  *     description: "test app engine job",
+ *     retryConfig: {
+ *         maxDoublings: 2,
+ *         maxRetryDuration: "10s",
+ *         minBackoffDuration: "1s",
+ *         retryCount: 3,
+ *     },
  *     schedule: "*&#47;4 * * * *",
  *     timeZone: "Europe/London",
  * });

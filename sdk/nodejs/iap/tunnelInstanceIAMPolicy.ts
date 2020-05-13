@@ -6,6 +6,134 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Three different resources help you manage your IAM policy for Identity-Aware Proxy TunnelInstance. Each of these resources serves a different use case:
+ * 
+ * * `gcp.iap.TunnelInstanceIAMPolicy`: Authoritative. Sets the IAM policy for the tunnelinstance and replaces any existing policy already attached.
+ * * `gcp.iap.TunnelInstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tunnelinstance are preserved.
+ * * `gcp.iap.TunnelInstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tunnelinstance are preserved.
+ * 
+ * > **Note:** `gcp.iap.TunnelInstanceIAMPolicy` **cannot** be used in conjunction with `gcp.iap.TunnelInstanceIAMBinding` and `gcp.iap.TunnelInstanceIAMMember` or they will fight over what your policy should be.
+ * 
+ * > **Note:** `gcp.iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `gcp.iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+ * 
+ * 
+ * 
+ * ## google\_iap\_tunnel\_instance\_iam\_policy
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/iap.tunnelResourceAccessor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.iap.TunnelInstanceIAMPolicy("policy", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * 
+ * With IAM Conditions:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     binding: [{
+ *         role: "roles/iap.tunnelResourceAccessor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expiresAfter20191231",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.iap.TunnelInstanceIAMPolicy("policy", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * ## google\_iap\_tunnel\_instance\_iam\_binding
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const binding = new gcp.iap.TunnelInstanceIAMBinding("binding", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     role: "roles/iap.tunnelResourceAccessor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ * 
+ * With IAM Conditions:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const binding = new gcp.iap.TunnelInstanceIAMBinding("binding", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     role: "roles/iap.tunnelResourceAccessor",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expiresAfter20191231",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * ## google\_iap\_tunnel\_instance\_iam\_member
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const member = new gcp.iap.TunnelInstanceIAMMember("member", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     role: "roles/iap.tunnelResourceAccessor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ * 
+ * With IAM Conditions:
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const member = new gcp.iap.TunnelInstanceIAMMember("member", {
+ *     project: google_compute_instance.tunnelvm.project,
+ *     zone: google_compute_instance.tunnelvm.zone,
+ *     instance: google_compute_instance.tunnelvm.name,
+ *     role: "roles/iap.tunnelResourceAccessor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expiresAfter20191231",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_tunnel_instance_iam.html.markdown.
+ */
 export class TunnelInstanceIAMPolicy extends pulumi.CustomResource {
     /**
      * Get an existing TunnelInstanceIAMPolicy resource's state with the given name, ID, and optional extra

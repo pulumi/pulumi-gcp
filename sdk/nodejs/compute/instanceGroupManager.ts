@@ -150,7 +150,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+     * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      */
     public readonly statefulDisks!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulDisk[] | undefined>;
     /**
@@ -299,7 +299,7 @@ export interface InstanceGroupManagerState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+     * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      */
     readonly statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulDisk>[]>;
     /**
@@ -373,7 +373,7 @@ export interface InstanceGroupManagerArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * ) Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
+     * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
      */
     readonly statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulDisk>[]>;
     /**

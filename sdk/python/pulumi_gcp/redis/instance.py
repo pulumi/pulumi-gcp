@@ -107,7 +107,47 @@ class Instance(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, alternative_location_id=None, authorized_network=None, connect_mode=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        A Google Cloud Redis instance.
+
+
+        To get more information about Instance, see:
+
+        * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
+
+        ## Example Usage - Redis Instance Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cache = gcp.redis.Instance("cache", memory_size_gb=1)
+        ```
+        ## Example Usage - Redis Instance Full
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.self_link,
+            redis_version="REDIS_3_2",
+            display_name="Test Instance",
+            reserved_ip_range="192.168.0.0/29",
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternative_location_id: Only applicable to STANDARD_HA tier which protects the instance

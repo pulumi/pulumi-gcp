@@ -15,7 +15,7 @@ import (
 //
 // To get more information about RegionTargetHttpProxy, see:
 //
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionTargetHttpProxies)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 type RegionTargetHttpProxy struct {

@@ -931,7 +931,7 @@ export namespace bigquery {
          * member of the access object. Primitive, Predefined and custom
          * roles are supported. Predefined roles that have equivalent
          * primitive roles are swapped by the API to their Primitive
-         * counterparts, and will show a diff post-create. See
+         * counterparts. See
          * [official docs](https://cloud.google.com/bigquery/docs/access-control).
          */
         role?: pulumi.Input<string>;
@@ -5016,6 +5016,41 @@ export namespace compute {
         url: pulumi.Input<string>;
     }
 
+    export interface PerInstanceConfigPreservedState {
+        /**
+         * Stateful disks for the instance.  Structure is documented below.
+         */
+        disks?: pulumi.Input<pulumi.Input<inputs.compute.PerInstanceConfigPreservedStateDisk>[]>;
+        /**
+         * Preserved metadata defined for this instance. This is a list of key->value pairs.
+         */
+        metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface PerInstanceConfigPreservedStateDisk {
+        /**
+         * A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+         * The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+         * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+         * deleted from the instance group.
+         */
+        deleteRule?: pulumi.Input<string>;
+        /**
+         * A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+         */
+        deviceName: pulumi.Input<string>;
+        /**
+         * The mode of the disk.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * The URI of an existing persistent disk to attach under the specified device-name in the format
+         * `projects/project-id/zones/zone/disks/disk-name`.
+         */
+        source: pulumi.Input<string>;
+    }
+
     export interface RegionAutoscalerAutoscalingPolicy {
         /**
          * The number of seconds that the autoscaler should wait before it
@@ -8905,8 +8940,8 @@ export namespace container {
     export interface ClusterAddonsConfig {
         /**
          * .
-         * The status of the CloudRun addon. It requires `istioConfig` enabled. It is disabled by default.
-         * Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+         * The status of the CloudRun addon. It is disabled by default.
+         * Set `disabled = false` to enable.
          */
         cloudrunConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigCloudrunConfig>;
         /**
@@ -8940,6 +8975,11 @@ export namespace container {
          * Structure is documented below.
          */
         istioConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigIstioConfig>;
+        /**
+         * .
+         * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+         */
+        kalmConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigKalmConfig>;
         /**
          * Whether we should enable the network policy addon
          * for the master.  This must be enabled in order to enable network policy for the nodes.
@@ -9003,6 +9043,14 @@ export namespace container {
         disabled: pulumi.Input<boolean>;
     }
 
+    export interface ClusterAddonsConfigKalmConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
     export interface ClusterAddonsConfigNetworkPolicyConfig {
         /**
          * The status of the Istio addon, which makes it easy to set up Istio for services in a
@@ -9025,7 +9073,7 @@ export namespace container {
          */
         autoProvisioningDefaults?: pulumi.Input<inputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults>;
         /**
-         * Configuration
+         * ) Configuration
          * options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
          * feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
          * when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -9398,8 +9446,8 @@ export namespace container {
          * Parameters used in creating the default node pool.
          * Generally, this field should not be used at the same time as a
          * `gcp.container.NodePool` or a `nodePool` block; this configuration
-         * manages the default node pool, which isn't recommended to be used with
-         * this provider. Structure is documented below.
+         * manages the default node pool, which isn't recommended to be used.
+         * Structure is documented below.
          */
         nodeConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfig>;
         nodeCount?: pulumi.Input<number>;
@@ -9944,6 +9992,12 @@ export namespace dataproc {
          */
         encryptionConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigEncryptionConfig>;
         /**
+         * The config settings for port access on the cluster.
+         * Structure defined below.
+         * - - -
+         */
+        endpointConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigEndpointConfig>;
+        /**
          * Common config settings for resources of Google Compute Engine cluster
          * instances, applicable to all instances in the cluster. Structure defined below.
          */
@@ -10007,6 +10061,15 @@ export namespace dataproc {
          * all instances in the cluster.
          */
         kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface ClusterClusterConfigEndpointConfig {
+        /**
+         * The flag to enable http access to specific ports
+         * on the cluster from external sources (aka Component Gateway). Defaults to false.
+         */
+        enableHttpPortAccess: pulumi.Input<boolean>;
+        httpPorts?: pulumi.Input<{[key: string]: any}>;
     }
 
     export interface ClusterClusterConfigGceClusterConfig {

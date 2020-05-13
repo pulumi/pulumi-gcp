@@ -52,10 +52,10 @@ import * as utilities from "../utilities";
  *     private_visibility_config: {
  *         networks: [
  *             {
- *                 networkUrl: network-1.selfLink,
+ *                 networkUrl: network-1.id,
  *             },
  *             {
- *                 networkUrl: network-2.selfLink,
+ *                 networkUrl: network-2.id,
  *             },
  *         ],
  *     },
@@ -80,10 +80,10 @@ import * as utilities from "../utilities";
  *     private_visibility_config: {
  *         networks: [
  *             {
- *                 networkUrl: network-1.selfLink,
+ *                 networkUrl: network-1.id,
  *             },
  *             {
- *                 networkUrl: network-2.selfLink,
+ *                 networkUrl: network-2.id,
  *             },
  *         ],
  *     },
@@ -114,12 +114,12 @@ import * as utilities from "../utilities";
  *     visibility: "private",
  *     private_visibility_config: {
  *         networks: [{
- *             networkUrl: network-source.selfLink,
+ *             networkUrl: network-source.id,
  *         }],
  *     },
  *     peering_config: {
  *         target_network: {
- *             networkUrl: network-target.selfLink,
+ *             networkUrl: network-target.id,
  *         },
  *     },
  * });
@@ -230,8 +230,7 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly reverseLookup!: pulumi.Output<boolean | undefined>;
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-     * information related to the namespace associated with the zone.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
      */
     public readonly serviceDirectoryConfig!: pulumi.Output<outputs.dns.ManagedZoneServiceDirectoryConfig | undefined>;
     /**
@@ -352,8 +351,7 @@ export interface ManagedZoneState {
      */
     readonly reverseLookup?: pulumi.Input<boolean>;
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-     * information related to the namespace associated with the zone.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
      */
     readonly serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig>;
     /**
@@ -416,8 +414,7 @@ export interface ManagedZoneArgs {
      */
     readonly reverseLookup?: pulumi.Input<boolean>;
     /**
-     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-     * information related to the namespace associated with the zone.
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
      */
     readonly serviceDirectoryConfig?: pulumi.Input<inputs.dns.ManagedZoneServiceDirectoryConfig>;
     /**

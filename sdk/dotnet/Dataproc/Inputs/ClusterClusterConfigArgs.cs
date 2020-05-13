@@ -30,6 +30,14 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<Inputs.ClusterClusterConfigEncryptionConfigArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
+        /// The config settings for port access on the cluster.
+        /// Structure defined below.
+        /// - - -
+        /// </summary>
+        [Input("endpointConfig")]
+        public Input<Inputs.ClusterClusterConfigEndpointConfigArgs>? EndpointConfig { get; set; }
+
+        /// <summary>
         /// Common config settings for resources of Google Compute Engine cluster
         /// instances, applicable to all instances in the cluster. Structure defined below.
         /// </summary>

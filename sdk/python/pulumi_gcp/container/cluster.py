@@ -16,8 +16,8 @@ class Cluster(pulumi.CustomResource):
     Structure is documented below.
 
       * `cloudrunConfig` (`dict`) - .
-        The status of the CloudRun addon. It requires `istio_config` enabled. It is disabled by default.
-        Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+        The status of the CloudRun addon. It is disabled by default.
+        Set `disabled = false` to enable.
         * `disabled` (`bool`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
           cluster. It is disabled by default. Set `disabled = false` to enable.
 
@@ -52,6 +52,11 @@ class Cluster(pulumi.CustomResource):
         * `auth` (`str`) - The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
         * `disabled` (`bool`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
           cluster. It is disabled by default. Set `disabled = false` to enable.
+
+      * `kalmConfig` (`dict`) - .
+        Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+        * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
+          If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
       * `networkPolicyConfig` (`dict`) - Whether we should enable the network policy addon
         for the master.  This must be enabled in order to enable network policy for the nodes.
@@ -91,7 +96,7 @@ class Cluster(pulumi.CustomResource):
           [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
           [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 
-      * `autoscalingProfile` (`str`) - Configuration
+      * `autoscalingProfile` (`str`) - ) Configuration
         options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
         feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
         when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -290,8 +295,7 @@ class Cluster(pulumi.CustomResource):
     If unset, the cluster's version will be set by GKE to the version of the most recent
     official release (which is not necessarily the latest version).  Most users will find
     the `container.getEngineVersions` data source useful - it indicates which versions
-    are available, and can be use to approximate fuzzy versions in a
-    provider-compatible way. If you intend to specify versions manually,
+    are available. If you intend to specify versions manually,
     [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
     describe the various acceptable formats for this field.
     """
@@ -331,8 +335,8 @@ class Cluster(pulumi.CustomResource):
     Parameters used in creating the default node pool.
     Generally, this field should not be used at the same time as a
     `container.NodePool` or a `node_pool` block; this configuration
-    manages the default node pool, which isn't recommended to be used with
-    this provider. Structure is documented below.
+    manages the default node pool, which isn't recommended to be used.
+    Structure is documented below.
 
       * `bootDiskKmsKey` (`str`) - The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
       * `disk_size_gb` (`float`) - Size of the disk attached to each node, specified
@@ -445,8 +449,8 @@ class Cluster(pulumi.CustomResource):
       * `node_config` (`dict`) - Parameters used in creating the default node pool.
         Generally, this field should not be used at the same time as a
         `container.NodePool` or a `node_pool` block; this configuration
-        manages the default node pool, which isn't recommended to be used with
-        this provider. Structure is documented below.
+        manages the default node pool, which isn't recommended to be used.
+        Structure is documented below.
         * `bootDiskKmsKey` (`str`) - The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         * `disk_size_gb` (`float`) - Size of the disk attached to each node, specified
           in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -538,7 +542,7 @@ class Cluster(pulumi.CustomResource):
     nodes in the default node pool. While a fuzzy version can be specified, it's
     recommended that you specify explicit versions as the provider will see spurious diffs
     when fuzzy versions are used. See the `container.getEngineVersions` data source's
-    `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+    `version_prefix` field to approximate fuzzy versions.
     To update nodes in other node pools, use the `version` attribute on the node pool.
     """
     operation: pulumi.Output[str]
@@ -635,7 +639,7 @@ class Cluster(pulumi.CustomResource):
     """
     tpu_ipv4_cidr_block: pulumi.Output[str]
     """
-    (Optional) The IP address range of the Cloud TPUs in this cluster, in
+    The IP address range of the Cloud TPUs in this cluster, in
     [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
     notation (e.g. `1.2.3.4/29`).
     """
@@ -659,7 +663,82 @@ class Cluster(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Cluster resource with the given unique name, props, and options.
+        Manages a Google Kubernetes Engine (GKE) cluster. For more information see
+        [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
+        and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
+
+        > **Note:** All arguments and attributes, including basic auth username and
+        passwords as well as certificate outputs will be stored in the raw state as
+        plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+
+        ## Example Usage - with a separately managed node pool (recommended)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            remove_default_node_pool=True,
+            initial_node_count=1,
+            master_auth={
+                "username": "",
+                "password": "",
+                "client_certificate_config": {
+                    "issueClientCertificate": False,
+                },
+            })
+        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+            location="us-central1",
+            cluster=primary.name,
+            node_count=1,
+            node_config={
+                "preemptible": True,
+                "machineType": "n1-standard-1",
+                "metadata": {
+                    "disable-legacy-endpoints": "true",
+                },
+                "oauthScopes": [
+                    "https://www.googleapis.com/auth/logging.write",
+                    "https://www.googleapis.com/auth/monitoring",
+                ],
+            })
+        ```
+
+        ## Example Usage - with the default node pool
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            initial_node_count=3,
+            location="us-central1-a",
+            master_auth={
+                "clientCertificateConfig": {
+                    "issueClientCertificate": False,
+                },
+                "password": "",
+                "username": "",
+            },
+            node_config={
+                "labels": {
+                    "foo": "bar",
+                },
+                "metadata": {
+                    "disable-legacy-endpoints": "true",
+                },
+                "oauthScopes": [
+                    "https://www.googleapis.com/auth/logging.write",
+                    "https://www.googleapis.com/auth/monitoring",
+                ],
+                "tags": [
+                    "foo",
+                    "bar",
+                ],
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] addons_config: The configuration for addons supported by GKE.
@@ -734,8 +813,7 @@ class Cluster(pulumi.CustomResource):
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
                the `container.getEngineVersions` data source useful - it indicates which versions
-               are available, and can be use to approximate fuzzy versions in a
-               provider-compatible way. If you intend to specify versions manually,
+               are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
@@ -756,8 +834,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used with
-               this provider. Structure is documented below.
+               manages the default node pool, which isn't recommended to be used.
+               Structure is documented below.
         :param pulumi.Input[list] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -774,7 +852,7 @@ class Cluster(pulumi.CustomResource):
                nodes in the default node pool. While a fuzzy version can be specified, it's
                recommended that you specify explicit versions as the provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
-               `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+               `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[dict] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
@@ -807,8 +885,8 @@ class Cluster(pulumi.CustomResource):
         The **addons_config** object supports the following:
 
           * `cloudrunConfig` (`pulumi.Input[dict]`) - .
-            The status of the CloudRun addon. It requires `istio_config` enabled. It is disabled by default.
-            Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+            The status of the CloudRun addon. It is disabled by default.
+            Set `disabled = false` to enable.
             * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
               cluster. It is disabled by default. Set `disabled = false` to enable.
 
@@ -844,6 +922,11 @@ class Cluster(pulumi.CustomResource):
             * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
               cluster. It is disabled by default. Set `disabled = false` to enable.
 
+          * `kalmConfig` (`pulumi.Input[dict]`) - .
+            Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
+              If enabled, pods must be valid under a PodSecurityPolicy to be created.
+
           * `networkPolicyConfig` (`pulumi.Input[dict]`) - Whether we should enable the network policy addon
             for the master.  This must be enabled in order to enable network policy for the nodes.
             To enable this, you must also define a `network_policy` block,
@@ -871,7 +954,7 @@ class Cluster(pulumi.CustomResource):
               [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
               [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 
-          * `autoscalingProfile` (`pulumi.Input[str]`) - Configuration
+          * `autoscalingProfile` (`pulumi.Input[str]`) - ) Configuration
             options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
             feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
             when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -1052,8 +1135,8 @@ class Cluster(pulumi.CustomResource):
           * `node_config` (`pulumi.Input[dict]`) - Parameters used in creating the default node pool.
             Generally, this field should not be used at the same time as a
             `container.NodePool` or a `node_pool` block; this configuration
-            manages the default node pool, which isn't recommended to be used with
-            this provider. Structure is documented below.
+            manages the default node pool, which isn't recommended to be used.
+            Structure is documented below.
             * `bootDiskKmsKey` (`pulumi.Input[str]`) - The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
             * `disk_size_gb` (`pulumi.Input[float]`) - Size of the disk attached to each node, specified
               in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -1351,8 +1434,7 @@ class Cluster(pulumi.CustomResource):
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
                the `container.getEngineVersions` data source useful - it indicates which versions
-               are available, and can be use to approximate fuzzy versions in a
-               provider-compatible way. If you intend to specify versions manually,
+               are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
@@ -1373,8 +1455,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
-               manages the default node pool, which isn't recommended to be used with
-               this provider. Structure is documented below.
+               manages the default node pool, which isn't recommended to be used.
+               Structure is documented below.
         :param pulumi.Input[list] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -1391,7 +1473,7 @@ class Cluster(pulumi.CustomResource):
                nodes in the default node pool. While a fuzzy version can be specified, it's
                recommended that you specify explicit versions as the provider will see spurious diffs
                when fuzzy versions are used. See the `container.getEngineVersions` data source's
-               `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+               `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[dict] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
@@ -1417,7 +1499,7 @@ class Cluster(pulumi.CustomResource):
                `/16` from the container CIDR.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[str] tpu_ipv4_cidr_block: (Optional) The IP address range of the Cloud TPUs in this cluster, in
+        :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input[dict] vertical_pod_autoscaling: 
@@ -1431,8 +1513,8 @@ class Cluster(pulumi.CustomResource):
         The **addons_config** object supports the following:
 
           * `cloudrunConfig` (`pulumi.Input[dict]`) - .
-            The status of the CloudRun addon. It requires `istio_config` enabled. It is disabled by default.
-            Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+            The status of the CloudRun addon. It is disabled by default.
+            Set `disabled = false` to enable.
             * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
               cluster. It is disabled by default. Set `disabled = false` to enable.
 
@@ -1468,6 +1550,11 @@ class Cluster(pulumi.CustomResource):
             * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
               cluster. It is disabled by default. Set `disabled = false` to enable.
 
+          * `kalmConfig` (`pulumi.Input[dict]`) - .
+            Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
+              If enabled, pods must be valid under a PodSecurityPolicy to be created.
+
           * `networkPolicyConfig` (`pulumi.Input[dict]`) - Whether we should enable the network policy addon
             for the master.  This must be enabled in order to enable network policy for the nodes.
             To enable this, you must also define a `network_policy` block,
@@ -1495,7 +1582,7 @@ class Cluster(pulumi.CustomResource):
               [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
               [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 
-          * `autoscalingProfile` (`pulumi.Input[str]`) - Configuration
+          * `autoscalingProfile` (`pulumi.Input[str]`) - ) Configuration
             options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
             feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
             when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -1676,8 +1763,8 @@ class Cluster(pulumi.CustomResource):
           * `node_config` (`pulumi.Input[dict]`) - Parameters used in creating the default node pool.
             Generally, this field should not be used at the same time as a
             `container.NodePool` or a `node_pool` block; this configuration
-            manages the default node pool, which isn't recommended to be used with
-            this provider. Structure is documented below.
+            manages the default node pool, which isn't recommended to be used.
+            Structure is documented below.
             * `bootDiskKmsKey` (`pulumi.Input[str]`) - The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
             * `disk_size_gb` (`pulumi.Input[float]`) - Size of the disk attached to each node, specified
               in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.

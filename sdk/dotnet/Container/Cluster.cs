@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Container
 {
+    /// <summary>
+    /// Manages a Google Kubernetes Engine (GKE) cluster. For more information see
+    /// [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
+    /// and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
+    /// 
+    /// &gt; **Note:** All arguments and attributes, including basic auth username and
+    /// passwords as well as certificate outputs will be stored in the raw state as
+    /// plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+    /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>
@@ -211,8 +220,7 @@ namespace Pulumi.Gcp.Container
         /// If unset, the cluster's version will be set by GKE to the version of the most recent
         /// official release (which is not necessarily the latest version).  Most users will find
         /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-        /// are available, and can be use to approximate fuzzy versions in a
-        /// provider-compatible way. If you intend to specify versions manually,
+        /// are available. If you intend to specify versions manually,
         /// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         /// describe the various acceptable formats for this field.
         /// </summary>
@@ -258,8 +266,8 @@ namespace Pulumi.Gcp.Container
         /// Parameters used in creating the default node pool.
         /// Generally, this field should not be used at the same time as a
         /// `gcp.container.NodePool` or a `node_pool` block; this configuration
-        /// manages the default node pool, which isn't recommended to be used with
-        /// this provider. Structure is documented below.
+        /// manages the default node pool, which isn't recommended to be used.
+        /// Structure is documented below.
         /// </summary>
         [Output("nodeConfig")]
         public Output<Outputs.ClusterNodeConfig> NodeConfig { get; private set; } = null!;
@@ -291,7 +299,7 @@ namespace Pulumi.Gcp.Container
         /// nodes in the default node pool. While a fuzzy version can be specified, it's
         /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+        /// `version_prefix` field to approximate fuzzy versions.
         /// To update nodes in other node pools, use the `version` attribute on the node pool.
         /// </summary>
         [Output("nodeVersion")]
@@ -370,7 +378,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Subnetwork { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) The IP address range of the Cloud TPUs in this cluster, in
+        /// The IP address range of the Cloud TPUs in this cluster, in
         /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
         /// notation (e.g. `1.2.3.4/29`).
         /// </summary>
@@ -613,8 +621,7 @@ namespace Pulumi.Gcp.Container
         /// If unset, the cluster's version will be set by GKE to the version of the most recent
         /// official release (which is not necessarily the latest version).  Most users will find
         /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-        /// are available, and can be use to approximate fuzzy versions in a
-        /// provider-compatible way. If you intend to specify versions manually,
+        /// are available. If you intend to specify versions manually,
         /// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         /// describe the various acceptable formats for this field.
         /// </summary>
@@ -660,8 +667,8 @@ namespace Pulumi.Gcp.Container
         /// Parameters used in creating the default node pool.
         /// Generally, this field should not be used at the same time as a
         /// `gcp.container.NodePool` or a `node_pool` block; this configuration
-        /// manages the default node pool, which isn't recommended to be used with
-        /// this provider. Structure is documented below.
+        /// manages the default node pool, which isn't recommended to be used.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.ClusterNodeConfigArgs>? NodeConfig { get; set; }
@@ -705,7 +712,7 @@ namespace Pulumi.Gcp.Container
         /// nodes in the default node pool. While a fuzzy version can be specified, it's
         /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+        /// `version_prefix` field to approximate fuzzy versions.
         /// To update nodes in other node pools, use the `version` attribute on the node pool.
         /// </summary>
         [Input("nodeVersion")]
@@ -1007,8 +1014,7 @@ namespace Pulumi.Gcp.Container
         /// If unset, the cluster's version will be set by GKE to the version of the most recent
         /// official release (which is not necessarily the latest version).  Most users will find
         /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
-        /// are available, and can be use to approximate fuzzy versions in a
-        /// provider-compatible way. If you intend to specify versions manually,
+        /// are available. If you intend to specify versions manually,
         /// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         /// describe the various acceptable formats for this field.
         /// </summary>
@@ -1054,8 +1060,8 @@ namespace Pulumi.Gcp.Container
         /// Parameters used in creating the default node pool.
         /// Generally, this field should not be used at the same time as a
         /// `gcp.container.NodePool` or a `node_pool` block; this configuration
-        /// manages the default node pool, which isn't recommended to be used with
-        /// this provider. Structure is documented below.
+        /// manages the default node pool, which isn't recommended to be used.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.ClusterNodeConfigGetArgs>? NodeConfig { get; set; }
@@ -1099,7 +1105,7 @@ namespace Pulumi.Gcp.Container
         /// nodes in the default node pool. While a fuzzy version can be specified, it's
         /// recommended that you specify explicit versions as the provider will see spurious diffs
         /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
-        /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
+        /// `version_prefix` field to approximate fuzzy versions.
         /// To update nodes in other node pools, use the `version` attribute on the node pool.
         /// </summary>
         [Input("nodeVersion")]
@@ -1184,7 +1190,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// (Optional) The IP address range of the Cloud TPUs in this cluster, in
+        /// The IP address range of the Cloud TPUs in this cluster, in
         /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
         /// notation (e.g. `1.2.3.4/29`).
         /// </summary>

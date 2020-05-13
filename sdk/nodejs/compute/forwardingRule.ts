@@ -27,31 +27,29 @@ import * as utilities from "../utilities";
  * 
  * const hc = new gcp.compute.HealthCheck("hc", {
  *     checkIntervalSec: 1,
- *     tcpHealthCheck: {
- *         port: 80,
- *     },
  *     timeoutSec: 1,
+ *     tcp_health_check: {
+ *         port: "80",
+ *     },
  * });
  * const backend = new gcp.compute.RegionBackendService("backend", {
- *     healthChecks: hc.selfLink,
  *     region: "us-central1",
+ *     healthChecks: [hc.id],
  * });
- * const defaultNetwork = new gcp.compute.Network("default", {
- *     autoCreateSubnetworks: false,
- * });
- * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     ipCidrRange: "10.0.0.0/16",
- *     network: defaultNetwork.selfLink,
  *     region: "us-central1",
+ *     network: defaultNetwork.id,
  * });
  * // Forwarding rule for Internal Load Balancing
- * const defaultForwardingRule = new gcp.compute.ForwardingRule("default", {
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: backend.id,
  *     allPorts: true,
  *     allowGlobalAccess: true,
- *     backendService: backend.selfLink,
- *     loadBalancingScheme: "INTERNAL",
  *     network: defaultNetwork.name,
- *     region: "us-central1",
  *     subnetwork: defaultSubnetwork.name,
  * });
  * ```
@@ -64,7 +62,7 @@ import * as utilities from "../utilities";
  * 
  * const defaultTargetPool = new gcp.compute.TargetPool("defaultTargetPool", {});
  * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
- *     target: defaultTargetPool.selfLink,
+ *     target: defaultTargetPool.id,
  *     portRange: "80",
  * });
  * ```
@@ -84,19 +82,19 @@ import * as utilities from "../utilities";
  * });
  * const backend = new gcp.compute.RegionBackendService("backend", {
  *     region: "us-central1",
- *     healthChecks: [hc.selfLink],
+ *     healthChecks: [hc.id],
  * });
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  * });
  * // Forwarding rule for Internal Load Balancing
  * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
  *     region: "us-central1",
  *     loadBalancingScheme: "INTERNAL",
- *     backendService: backend.selfLink,
+ *     backendService: backend.id,
  *     allPorts: true,
  *     network: defaultNetwork.name,
  *     subnetwork: defaultSubnetwork.name,
@@ -120,13 +118,13 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     ipCidrRange: "10.1.2.0/24",
  *     region: "us-central1",
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  * });
  * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
  *     machineType: "n1-standard-1",
  *     network_interface: [{
- *         network: defaultNetwork.selfLink,
- *         subnetwork: defaultSubnetwork.selfLink,
+ *         network: defaultNetwork.id,
+ *         subnetwork: defaultSubnetwork.id,
  *     }],
  *     disk: [{
  *         sourceImage: debianImage.then(debianImage => debianImage.selfLink),
@@ -148,7 +146,7 @@ import * as utilities from "../utilities";
  *     targetSize: 1,
  * });
  * const fw1 = new gcp.compute.Firewall("fw1", {
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  *     sourceRanges: ["10.1.2.0/24"],
  *     allow: [
  *         {
@@ -164,7 +162,7 @@ import * as utilities from "../utilities";
  *     direction: "INGRESS",
  * });
  * const fw2 = new gcp.compute.Firewall("fw2", {
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  *     sourceRanges: ["0.0.0.0/0"],
  *     allow: [{
  *         protocol: "tcp",
@@ -174,7 +172,7 @@ import * as utilities from "../utilities";
  *     direction: "INGRESS",
  * });
  * const fw3 = new gcp.compute.Firewall("fw3", {
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  *     sourceRanges: [
  *         "130.211.0.0/22",
  *         "35.191.0.0/16",
@@ -186,7 +184,7 @@ import * as utilities from "../utilities";
  *     direction: "INGRESS",
  * });
  * const fw4 = new gcp.compute.Firewall("fw4", {
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  *     sourceRanges: ["10.129.0.0/26"],
  *     targetTags: ["load-balanced-backend"],
  *     allow: [
@@ -221,20 +219,20 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [defaultRegionHealthCheck.selfLink],
+ *     healthChecks: [defaultRegionHealthCheck.id],
  * });
  * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
  *     region: "us-central1",
- *     defaultService: defaultRegionBackendService.selfLink,
+ *     defaultService: defaultRegionBackendService.id,
  * });
  * const defaultRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", {
  *     region: "us-central1",
- *     urlMap: defaultRegionUrlMap.selfLink,
+ *     urlMap: defaultRegionUrlMap.id,
  * });
  * const proxy = new gcp.compute.Subnetwork("proxy", {
  *     ipCidrRange: "10.129.0.0/26",
  *     region: "us-central1",
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  *     purpose: "INTERNAL_HTTPS_LOAD_BALANCER",
  *     role: "ACTIVE",
  * });
@@ -244,9 +242,9 @@ import * as utilities from "../utilities";
  *     ipProtocol: "TCP",
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  *     portRange: "80",
- *     target: defaultRegionTargetHttpProxy.selfLink,
- *     network: defaultNetwork.selfLink,
- *     subnetwork: defaultSubnetwork.selfLink,
+ *     target: defaultRegionTargetHttpProxy.id,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
  *     networkTier: "PREMIUM",
  * });
  * ```

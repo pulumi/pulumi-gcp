@@ -106,6 +106,9 @@ class AccessLevel(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
         access_level = gcp.accesscontextmanager.AccessLevel("access-level",
             basic={
                 "conditions": [{
@@ -122,11 +125,8 @@ class AccessLevel(pulumi.CustomResource):
                     ],
                 }],
             },
-            parent=f"accessPolicies/{google_access_context_manager_access_policy['test-access']['name']}",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="chromeos_no_lock")
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
         ```
 
         :param str resource_name: The name of the resource.

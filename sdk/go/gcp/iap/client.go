@@ -15,7 +15,7 @@ import (
 //
 //
 // > **Warning:** All arguments including `secret` will be stored in the raw
-// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 type Client struct {
 	pulumi.CustomResourceState
 

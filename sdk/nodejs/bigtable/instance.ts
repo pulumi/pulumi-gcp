@@ -6,6 +6,45 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Creates a Google Bigtable instance. For more information see
+ * [the official documentation](https://cloud.google.com/bigtable/) and
+ * [API](https://cloud.google.com/bigtable/docs/go/reference).
+ * 
+ * ## Example Usage - Production Instance
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const productionInstance = new gcp.bigtable.Instance("production-instance", {
+ *     clusters: [{
+ *         clusterId: "tf-instance-cluster",
+ *         numNodes: 1,
+ *         storageType: "HDD",
+ *         zone: "us-central1-b",
+ *     }],
+ * });
+ * ```
+ * 
+ * ## Example Usage - Development Instance
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const developmentInstance = new gcp.bigtable.Instance("development-instance", {
+ *     clusters: [{
+ *         clusterId: "tf-instance-cluster",
+ *         storageType: "HDD",
+ *         zone: "us-central1-b",
+ *     }],
+ *     instanceType: "DEVELOPMENT",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_instance.html.markdown.
+ */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra

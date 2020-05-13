@@ -30,7 +30,115 @@ class WebBackendServiceIamPolicy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, policy_data=None, project=None, web_backend_service=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a WebBackendServiceIamPolicy resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Identity-Aware Proxy WebBackendService. Each of these resources serves a different use case:
+
+        * `iap.WebBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the webbackendservice and replaces any existing policy already attached.
+        * `iap.WebBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the webbackendservice are preserved.
+        * `iap.WebBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the webbackendservice are preserved.
+
+        > **Note:** `iap.WebBackendServiceIamPolicy` **cannot** be used in conjunction with `iap.WebBackendServiceIamBinding` and `iap.WebBackendServiceIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+
+
+
+        ## google\_iap\_web\_backend\_service\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/iap.httpsResourceAccessor",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.iap.WebBackendServiceIamPolicy("policy",
+            project=google_compute_backend_service["default"]["project"],
+            web_backend_service=google_compute_backend_service["default"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/iap.httpsResourceAccessor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            },
+        }])
+        policy = gcp.iap.WebBackendServiceIamPolicy("policy",
+            project=google_compute_backend_service["default"]["project"],
+            web_backend_service=google_compute_backend_service["default"]["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\_iap\_web\_backend\_service\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iap.WebBackendServiceIamBinding("binding",
+            project=google_compute_backend_service["default"]["project"],
+            web_backend_service=google_compute_backend_service["default"]["name"],
+            role="roles/iap.httpsResourceAccessor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iap.WebBackendServiceIamBinding("binding",
+            project=google_compute_backend_service["default"]["project"],
+            web_backend_service=google_compute_backend_service["default"]["name"],
+            role="roles/iap.httpsResourceAccessor",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            })
+        ```
+        ## google\_iap\_web\_backend\_service\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iap.WebBackendServiceIamMember("member",
+            project=google_compute_backend_service["default"]["project"],
+            web_backend_service=google_compute_backend_service["default"]["name"],
+            role="roles/iap.httpsResourceAccessor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iap.WebBackendServiceIamMember("member",
+            project=google_compute_backend_service["default"]["project"],
+            web_backend_service=google_compute_backend_service["default"]["name"],
+            role="roles/iap.httpsResourceAccessor",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_data: The policy data generated by

@@ -921,6 +921,10 @@ type ClusterClusterConfig struct {
 	// The Customer managed encryption keys settings for the cluster.
 	// Structure defined below.
 	EncryptionConfig *ClusterClusterConfigEncryptionConfig `pulumi:"encryptionConfig"`
+	// The config settings for port access on the cluster.
+	// Structure defined below.
+	// - - -
+	EndpointConfig *ClusterClusterConfigEndpointConfig `pulumi:"endpointConfig"`
 	// Common config settings for resources of Google Compute Engine cluster
 	// instances, applicable to all instances in the cluster. Structure defined below.
 	GceClusterConfig *ClusterClusterConfigGceClusterConfig `pulumi:"gceClusterConfig"`
@@ -974,6 +978,10 @@ type ClusterClusterConfigArgs struct {
 	// The Customer managed encryption keys settings for the cluster.
 	// Structure defined below.
 	EncryptionConfig ClusterClusterConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
+	// The config settings for port access on the cluster.
+	// Structure defined below.
+	// - - -
+	EndpointConfig ClusterClusterConfigEndpointConfigPtrInput `pulumi:"endpointConfig"`
 	// Common config settings for resources of Google Compute Engine cluster
 	// instances, applicable to all instances in the cluster. Structure defined below.
 	GceClusterConfig ClusterClusterConfigGceClusterConfigPtrInput `pulumi:"gceClusterConfig"`
@@ -1101,6 +1109,13 @@ func (o ClusterClusterConfigOutput) EncryptionConfig() ClusterClusterConfigEncry
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigEncryptionConfig { return v.EncryptionConfig }).(ClusterClusterConfigEncryptionConfigPtrOutput)
 }
 
+// The config settings for port access on the cluster.
+// Structure defined below.
+// - - -
+func (o ClusterClusterConfigOutput) EndpointConfig() ClusterClusterConfigEndpointConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigEndpointConfig { return v.EndpointConfig }).(ClusterClusterConfigEndpointConfigPtrOutput)
+}
+
 // Common config settings for resources of Google Compute Engine cluster
 // instances, applicable to all instances in the cluster. Structure defined below.
 func (o ClusterClusterConfigOutput) GceClusterConfig() ClusterClusterConfigGceClusterConfigPtrOutput {
@@ -1210,6 +1225,18 @@ func (o ClusterClusterConfigPtrOutput) EncryptionConfig() ClusterClusterConfigEn
 		}
 		return v.EncryptionConfig
 	}).(ClusterClusterConfigEncryptionConfigPtrOutput)
+}
+
+// The config settings for port access on the cluster.
+// Structure defined below.
+// - - -
+func (o ClusterClusterConfigPtrOutput) EndpointConfig() ClusterClusterConfigEndpointConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) *ClusterClusterConfigEndpointConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointConfig
+	}).(ClusterClusterConfigEndpointConfigPtrOutput)
 }
 
 // Common config settings for resources of Google Compute Engine cluster
@@ -1583,6 +1610,158 @@ func (o ClusterClusterConfigEncryptionConfigPtrOutput) KmsKeyName() pulumi.Strin
 		}
 		return &v.KmsKeyName
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterClusterConfigEndpointConfig struct {
+	// The flag to enable http access to specific ports
+	// on the cluster from external sources (aka Component Gateway). Defaults to false.
+	EnableHttpPortAccess bool                   `pulumi:"enableHttpPortAccess"`
+	HttpPorts            map[string]interface{} `pulumi:"httpPorts"`
+}
+
+// ClusterClusterConfigEndpointConfigInput is an input type that accepts ClusterClusterConfigEndpointConfigArgs and ClusterClusterConfigEndpointConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigEndpointConfigInput` via:
+//
+// 		 ClusterClusterConfigEndpointConfigArgs{...}
+//
+type ClusterClusterConfigEndpointConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigEndpointConfigOutput() ClusterClusterConfigEndpointConfigOutput
+	ToClusterClusterConfigEndpointConfigOutputWithContext(context.Context) ClusterClusterConfigEndpointConfigOutput
+}
+
+type ClusterClusterConfigEndpointConfigArgs struct {
+	// The flag to enable http access to specific ports
+	// on the cluster from external sources (aka Component Gateway). Defaults to false.
+	EnableHttpPortAccess pulumi.BoolInput `pulumi:"enableHttpPortAccess"`
+	HttpPorts            pulumi.MapInput  `pulumi:"httpPorts"`
+}
+
+func (ClusterClusterConfigEndpointConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigEndpointConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigEndpointConfigArgs) ToClusterClusterConfigEndpointConfigOutput() ClusterClusterConfigEndpointConfigOutput {
+	return i.ToClusterClusterConfigEndpointConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigEndpointConfigArgs) ToClusterClusterConfigEndpointConfigOutputWithContext(ctx context.Context) ClusterClusterConfigEndpointConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigEndpointConfigOutput)
+}
+
+func (i ClusterClusterConfigEndpointConfigArgs) ToClusterClusterConfigEndpointConfigPtrOutput() ClusterClusterConfigEndpointConfigPtrOutput {
+	return i.ToClusterClusterConfigEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigEndpointConfigArgs) ToClusterClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigEndpointConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigEndpointConfigOutput).ToClusterClusterConfigEndpointConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigEndpointConfigPtrInput is an input type that accepts ClusterClusterConfigEndpointConfigArgs, ClusterClusterConfigEndpointConfigPtr and ClusterClusterConfigEndpointConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigEndpointConfigPtrInput` via:
+//
+// 		 ClusterClusterConfigEndpointConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterClusterConfigEndpointConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigEndpointConfigPtrOutput() ClusterClusterConfigEndpointConfigPtrOutput
+	ToClusterClusterConfigEndpointConfigPtrOutputWithContext(context.Context) ClusterClusterConfigEndpointConfigPtrOutput
+}
+
+type clusterClusterConfigEndpointConfigPtrType ClusterClusterConfigEndpointConfigArgs
+
+func ClusterClusterConfigEndpointConfigPtr(v *ClusterClusterConfigEndpointConfigArgs) ClusterClusterConfigEndpointConfigPtrInput {
+	return (*clusterClusterConfigEndpointConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigEndpointConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigEndpointConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigEndpointConfigPtrType) ToClusterClusterConfigEndpointConfigPtrOutput() ClusterClusterConfigEndpointConfigPtrOutput {
+	return i.ToClusterClusterConfigEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigEndpointConfigPtrType) ToClusterClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigEndpointConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigEndpointConfigPtrOutput)
+}
+
+type ClusterClusterConfigEndpointConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigEndpointConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigEndpointConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigEndpointConfigOutput) ToClusterClusterConfigEndpointConfigOutput() ClusterClusterConfigEndpointConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigEndpointConfigOutput) ToClusterClusterConfigEndpointConfigOutputWithContext(ctx context.Context) ClusterClusterConfigEndpointConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigEndpointConfigOutput) ToClusterClusterConfigEndpointConfigPtrOutput() ClusterClusterConfigEndpointConfigPtrOutput {
+	return o.ToClusterClusterConfigEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigEndpointConfigOutput) ToClusterClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigEndpointConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigEndpointConfig) *ClusterClusterConfigEndpointConfig {
+		return &v
+	}).(ClusterClusterConfigEndpointConfigPtrOutput)
+}
+
+// The flag to enable http access to specific ports
+// on the cluster from external sources (aka Component Gateway). Defaults to false.
+func (o ClusterClusterConfigEndpointConfigOutput) EnableHttpPortAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterClusterConfigEndpointConfig) bool { return v.EnableHttpPortAccess }).(pulumi.BoolOutput)
+}
+
+func (o ClusterClusterConfigEndpointConfigOutput) HttpPorts() pulumi.MapOutput {
+	return o.ApplyT(func(v ClusterClusterConfigEndpointConfig) map[string]interface{} { return v.HttpPorts }).(pulumi.MapOutput)
+}
+
+type ClusterClusterConfigEndpointConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigEndpointConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigEndpointConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigEndpointConfigPtrOutput) ToClusterClusterConfigEndpointConfigPtrOutput() ClusterClusterConfigEndpointConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigEndpointConfigPtrOutput) ToClusterClusterConfigEndpointConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigEndpointConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigEndpointConfigPtrOutput) Elem() ClusterClusterConfigEndpointConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigEndpointConfig) ClusterClusterConfigEndpointConfig { return *v }).(ClusterClusterConfigEndpointConfigOutput)
+}
+
+// The flag to enable http access to specific ports
+// on the cluster from external sources (aka Component Gateway). Defaults to false.
+func (o ClusterClusterConfigEndpointConfigPtrOutput) EnableHttpPortAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigEndpointConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableHttpPortAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterClusterConfigEndpointConfigPtrOutput) HttpPorts() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigEndpointConfig) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPorts
+	}).(pulumi.MapOutput)
 }
 
 type ClusterClusterConfigGceClusterConfig struct {
@@ -7963,6 +8142,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigAutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigEncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigEndpointConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigEndpointConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigInitializationActionOutput{})

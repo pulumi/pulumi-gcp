@@ -59,8 +59,8 @@ namespace Pulumi.Gcp.Container.Inputs
         /// Parameters used in creating the default node pool.
         /// Generally, this field should not be used at the same time as a
         /// `gcp.container.NodePool` or a `node_pool` block; this configuration
-        /// manages the default node pool, which isn't recommended to be used with
-        /// this provider. Structure is documented below.
+        /// manages the default node pool, which isn't recommended to be used.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigArgs>? NodeConfig { get; set; }

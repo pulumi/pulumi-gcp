@@ -58,7 +58,78 @@ class SSLCertificate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, certificate=None, description=None, name=None, name_prefix=None, private_key=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a SSLCertificate resource with the given unique name, props, and options.
+        An SslCertificate resource, used for HTTPS load balancing. This resource
+        provides a mechanism to upload an SSL key and certificate to
+        the load balancer to serve secure connections from the user.
+
+
+        To get more information about SslCertificate, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+
+        > **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
+        state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+
+        ## Example Usage - Ssl Certificate Basic
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.SSLCertificate("default",
+            name_prefix="my-certificate-",
+            description="a description",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        ```
+        ## Example Usage - Ssl Certificate Target Https Proxies
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Using with Target HTTPS Proxies
+        #
+        # SSL certificates cannot be updated after creation. In order to apply
+        # the specified configuration, the provider will destroy the existing
+        # resource and create a replacement. Example:
+        default_ssl_certificate = gcp.compute.SSLCertificate("defaultSSLCertificate",
+            name_prefix="my-certificate-",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_http_health_check.self_link])
+        default_url_map = gcp.compute.URLMap("defaultURLMap",
+            description="a description",
+            default_service=default_backend_service.self_link,
+            host_rule=[{
+                "hosts": ["mysite.com"],
+                "pathMatcher": "allpaths",
+            }],
+            path_matcher=[{
+                "name": "allpaths",
+                "defaultService": default_backend_service.self_link,
+                "path_rule": [{
+                    "paths": ["/*"],
+                    "service": default_backend_service.self_link,
+                }],
+            }])
+        default_target_https_proxy = gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy",
+            url_map=default_url_map.self_link,
+            ssl_certificates=[default_ssl_certificate.self_link])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate: The certificate in PEM format.

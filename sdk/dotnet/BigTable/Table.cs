@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.BigTable
 {
+    /// <summary>
+    /// Creates a Google Cloud Bigtable table inside an instance. For more information see
+    /// [the official documentation](https://cloud.google.com/bigtable/) and
+    /// [API](https://cloud.google.com/bigtable/docs/go/reference).
+    /// </summary>
     public partial class Table : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,6 +41,11 @@ namespace Pulumi.Gcp.BigTable
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of predefined keys to split the table on.
+        /// !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        /// to delete/recreate the entire `gcp.bigtable.Table` resource.
+        /// </summary>
         [Output("splitKeys")]
         public Output<ImmutableArray<string>> SplitKeys { get; private set; } = null!;
 
@@ -118,6 +128,12 @@ namespace Pulumi.Gcp.BigTable
 
         [Input("splitKeys")]
         private InputList<string>? _splitKeys;
+
+        /// <summary>
+        /// A list of predefined keys to split the table on.
+        /// !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        /// to delete/recreate the entire `gcp.bigtable.Table` resource.
+        /// </summary>
         public InputList<string> SplitKeys
         {
             get => _splitKeys ?? (_splitKeys = new InputList<string>());
@@ -164,6 +180,12 @@ namespace Pulumi.Gcp.BigTable
 
         [Input("splitKeys")]
         private InputList<string>? _splitKeys;
+
+        /// <summary>
+        /// A list of predefined keys to split the table on.
+        /// !&gt; **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        /// to delete/recreate the entire `gcp.bigtable.Table` resource.
+        /// </summary>
         public InputList<string> SplitKeys
         {
             get => _splitKeys ?? (_splitKeys = new InputList<string>());

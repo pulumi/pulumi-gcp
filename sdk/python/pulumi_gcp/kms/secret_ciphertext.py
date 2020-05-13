@@ -45,7 +45,7 @@ class SecretCiphertext(pulumi.CustomResource):
             * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
 
         > **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw
-        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+        state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage - Kms Secret Ciphertext Basic
 

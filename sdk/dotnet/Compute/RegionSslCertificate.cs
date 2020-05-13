@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
     /// 
     /// &gt; **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
-    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// </summary>
     public partial class RegionSslCertificate : Pulumi.CustomResource
     {

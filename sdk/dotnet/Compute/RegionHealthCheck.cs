@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// To get more information about RegionHealthCheck, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionHealthChecks)
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionHealthChecks)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
     /// </summary>

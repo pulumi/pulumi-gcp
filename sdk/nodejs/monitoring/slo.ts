@@ -6,6 +6,49 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Service-Level Objective (SLO) describes the level of desired good
+ * service. It consists of a service-level indicator (SLI), a performance
+ * goal, and a period over which the objective is to be evaluated against
+ * that goal. The SLO can use SLIs defined in a number of different manners.
+ * Typical SLOs might include "99% of requests in each rolling week have
+ * latency below 200 milliseconds" or "99.5% of requests in each calendar
+ * month return successfully."
+ * 
+ * 
+ * To get more information about Slo, see:
+ * 
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services.serviceLevelObjectives)
+ * * How-to Guides
+ *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ * 
+ * ## Example Usage - Monitoring Slo Appengine
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const default = gcp.monitoring.getAppEngineService({
+ *     moduleId: "default",
+ * });
+ * const appengSlo = new gcp.monitoring.Slo("appengSlo", {
+ *     service: default.then(_default => _default.serviceId),
+ *     sloId: "ae-slo",
+ *     displayName: "Test SLO for App Engine",
+ *     goal: 0.9,
+ *     calendarPeriod: "DAY",
+ *     basic_sli: {
+ *         latency: {
+ *             threshold: "1s",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_slo.html.markdown.
+ */
 export class Slo extends pulumi.CustomResource {
     /**
      * Get an existing Slo resource's state with the given name, ID, and optional extra

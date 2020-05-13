@@ -99,6 +99,7 @@ class TargetHttpProxy(pulumi.CustomResource):
 
         default_url_map = gcp.compute.URLMap("defaultURLMap", default_url_redirect={
             "httpsRedirect": True,
+            "stripQuery": False,
         })
         default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.self_link)
         ```

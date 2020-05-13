@@ -9,6 +9,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Manages a Google Kubernetes Engine (GKE) cluster. For more information see
+// [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
+// and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
+//
+// > **Note:** All arguments and attributes, including basic auth username and
+// passwords as well as certificate outputs will be stored in the raw state as
+// plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -115,8 +122,7 @@ type Cluster struct {
 	// If unset, the cluster's version will be set by GKE to the version of the most recent
 	// official release (which is not necessarily the latest version).  Most users will find
 	// the `container.getEngineVersions` data source useful - it indicates which versions
-	// are available, and can be use to approximate fuzzy versions in a
-	// provider-compatible way. If you intend to specify versions manually,
+	// are available. If you intend to specify versions manually,
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
 	MinMasterVersion pulumi.StringPtrOutput `pulumi:"minMasterVersion"`
@@ -142,8 +148,8 @@ type Cluster struct {
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used with
-	// this provider. Structure is documented below.
+	// manages the default node pool, which isn't recommended to be used.
+	// Structure is documented below.
 	NodeConfig ClusterNodeConfigOutput `pulumi:"nodeConfig"`
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
@@ -163,7 +169,7 @@ type Cluster struct {
 	// nodes in the default node pool. While a fuzzy version can be specified, it's
 	// recommended that you specify explicit versions as the provider will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringOutput `pulumi:"nodeVersion"`
 	Operation   pulumi.StringOutput `pulumi:"operation"`
@@ -200,7 +206,7 @@ type Cluster struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
-	// (Optional) The IP address range of the Cloud TPUs in this cluster, in
+	// The IP address range of the Cloud TPUs in this cluster, in
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock pulumi.StringOutput `pulumi:"tpuIpv4CidrBlock"`
@@ -346,8 +352,7 @@ type clusterState struct {
 	// If unset, the cluster's version will be set by GKE to the version of the most recent
 	// official release (which is not necessarily the latest version).  Most users will find
 	// the `container.getEngineVersions` data source useful - it indicates which versions
-	// are available, and can be use to approximate fuzzy versions in a
-	// provider-compatible way. If you intend to specify versions manually,
+	// are available. If you intend to specify versions manually,
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
 	MinMasterVersion *string `pulumi:"minMasterVersion"`
@@ -373,8 +378,8 @@ type clusterState struct {
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used with
-	// this provider. Structure is documented below.
+	// manages the default node pool, which isn't recommended to be used.
+	// Structure is documented below.
 	NodeConfig *ClusterNodeConfig `pulumi:"nodeConfig"`
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
@@ -394,7 +399,7 @@ type clusterState struct {
 	// nodes in the default node pool. While a fuzzy version can be specified, it's
 	// recommended that you specify explicit versions as the provider will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion *string `pulumi:"nodeVersion"`
 	Operation   *string `pulumi:"operation"`
@@ -431,7 +436,7 @@ type clusterState struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// (Optional) The IP address range of the Cloud TPUs in this cluster, in
+	// The IP address range of the Cloud TPUs in this cluster, in
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock *string `pulumi:"tpuIpv4CidrBlock"`
@@ -550,8 +555,7 @@ type ClusterState struct {
 	// If unset, the cluster's version will be set by GKE to the version of the most recent
 	// official release (which is not necessarily the latest version).  Most users will find
 	// the `container.getEngineVersions` data source useful - it indicates which versions
-	// are available, and can be use to approximate fuzzy versions in a
-	// provider-compatible way. If you intend to specify versions manually,
+	// are available. If you intend to specify versions manually,
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
 	MinMasterVersion pulumi.StringPtrInput
@@ -577,8 +581,8 @@ type ClusterState struct {
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used with
-	// this provider. Structure is documented below.
+	// manages the default node pool, which isn't recommended to be used.
+	// Structure is documented below.
 	NodeConfig ClusterNodeConfigPtrInput
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
@@ -598,7 +602,7 @@ type ClusterState struct {
 	// nodes in the default node pool. While a fuzzy version can be specified, it's
 	// recommended that you specify explicit versions as the provider will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringPtrInput
 	Operation   pulumi.StringPtrInput
@@ -635,7 +639,7 @@ type ClusterState struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringPtrInput
-	// (Optional) The IP address range of the Cloud TPUs in this cluster, in
+	// The IP address range of the Cloud TPUs in this cluster, in
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock pulumi.StringPtrInput
@@ -747,8 +751,7 @@ type clusterArgs struct {
 	// If unset, the cluster's version will be set by GKE to the version of the most recent
 	// official release (which is not necessarily the latest version).  Most users will find
 	// the `container.getEngineVersions` data source useful - it indicates which versions
-	// are available, and can be use to approximate fuzzy versions in a
-	// provider-compatible way. If you intend to specify versions manually,
+	// are available. If you intend to specify versions manually,
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
 	MinMasterVersion *string `pulumi:"minMasterVersion"`
@@ -774,8 +777,8 @@ type clusterArgs struct {
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used with
-	// this provider. Structure is documented below.
+	// manages the default node pool, which isn't recommended to be used.
+	// Structure is documented below.
 	NodeConfig *ClusterNodeConfig `pulumi:"nodeConfig"`
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
@@ -795,7 +798,7 @@ type clusterArgs struct {
 	// nodes in the default node pool. While a fuzzy version can be specified, it's
 	// recommended that you specify explicit versions as the provider will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion *string `pulumi:"nodeVersion"`
 	// Configuration for the
@@ -931,8 +934,7 @@ type ClusterArgs struct {
 	// If unset, the cluster's version will be set by GKE to the version of the most recent
 	// official release (which is not necessarily the latest version).  Most users will find
 	// the `container.getEngineVersions` data source useful - it indicates which versions
-	// are available, and can be use to approximate fuzzy versions in a
-	// provider-compatible way. If you intend to specify versions manually,
+	// are available. If you intend to specify versions manually,
 	// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
 	// describe the various acceptable formats for this field.
 	MinMasterVersion pulumi.StringPtrInput
@@ -958,8 +960,8 @@ type ClusterArgs struct {
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
-	// manages the default node pool, which isn't recommended to be used with
-	// this provider. Structure is documented below.
+	// manages the default node pool, which isn't recommended to be used.
+	// Structure is documented below.
 	NodeConfig ClusterNodeConfigPtrInput
 	// The list of zones in which the cluster's nodes
 	// are located. Nodes must be in the region of their regional cluster or in the
@@ -979,7 +981,7 @@ type ClusterArgs struct {
 	// nodes in the default node pool. While a fuzzy version can be specified, it's
 	// recommended that you specify explicit versions as the provider will see spurious diffs
 	// when fuzzy versions are used. See the `container.getEngineVersions` data source's
-	// `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
+	// `versionPrefix` field to approximate fuzzy versions.
 	// To update nodes in other node pools, use the `version` attribute on the node pool.
 	NodeVersion pulumi.StringPtrInput
 	// Configuration for the

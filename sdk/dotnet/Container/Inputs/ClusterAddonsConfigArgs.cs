@@ -14,8 +14,8 @@ namespace Pulumi.Gcp.Container.Inputs
     {
         /// <summary>
         /// .
-        /// The status of the CloudRun addon. It requires `istio_config` enabled. It is disabled by default.
-        /// Set `disabled = false` to enable. This addon can only be enabled at cluster creation time.
+        /// The status of the CloudRun addon. It is disabled by default.
+        /// Set `disabled = false` to enable.
         /// </summary>
         [Input("cloudrunConfig")]
         public Input<Inputs.ClusterAddonsConfigCloudrunConfigArgs>? CloudrunConfig { get; set; }
@@ -60,6 +60,13 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("istioConfig")]
         public Input<Inputs.ClusterAddonsConfigIstioConfigArgs>? IstioConfig { get; set; }
+
+        /// <summary>
+        /// .
+        /// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
+        /// </summary>
+        [Input("kalmConfig")]
+        public Input<Inputs.ClusterAddonsConfigKalmConfigArgs>? KalmConfig { get; set; }
 
         /// <summary>
         /// Whether we should enable the network policy addon

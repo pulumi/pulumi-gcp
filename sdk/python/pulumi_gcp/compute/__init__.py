@@ -69,6 +69,7 @@ from .network_peering_routes_config import *
 from .node_group import *
 from .node_template import *
 from .packet_mirroring import *
+from .per_instance_config import *
 from .project_default_network_tier import *
 from .project_metadata import *
 from .project_metadata_item import *

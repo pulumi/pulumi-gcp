@@ -35,7 +35,62 @@ class RepositoryIamPolicy(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, location=None, policy_data=None, project=None, repository=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a RepositoryIamPolicy resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Artifact Registry Repository. Each of these resources serves a different use case:
+
+        * `artifactregistry.RepositoryIamPolicy`: Authoritative. Sets the IAM policy for the repository and replaces any existing policy already attached.
+        * `artifactregistry.RepositoryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repository are preserved.
+        * `artifactregistry.RepositoryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repository are preserved.
+
+        > **Note:** `artifactregistry.RepositoryIamPolicy` **cannot** be used in conjunction with `artifactregistry.RepositoryIamBinding` and `artifactregistry.RepositoryIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
+
+
+        ## google\_artifact\_registry\_repository\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/viewer",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.artifactregistry.RepositoryIamPolicy("policy",
+            project=google_artifact_registry_repository["my-repo"]["project"],
+            location=google_artifact_registry_repository["my-repo"]["location"],
+            repository=google_artifact_registry_repository["my-repo"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_artifact\_registry\_repository\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.artifactregistry.RepositoryIamBinding("binding",
+            project=google_artifact_registry_repository["my-repo"]["project"],
+            location=google_artifact_registry_repository["my-repo"]["location"],
+            repository=google_artifact_registry_repository["my-repo"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_artifact\_registry\_repository\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.artifactregistry.RepositoryIamMember("member",
+            project=google_artifact_registry_repository["my-repo"]["project"],
+            location=google_artifact_registry_repository["my-repo"]["location"],
+            repository=google_artifact_registry_repository["my-repo"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The name of the location this repository is located in.

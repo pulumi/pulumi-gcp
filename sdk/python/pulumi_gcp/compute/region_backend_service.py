@@ -373,11 +373,11 @@ class RegionBackendService(pulumi.CustomResource):
             "port": 80,
         })
         default = gcp.compute.RegionBackendService("default",
-            region="us-central1",
-            health_checks=[health_check.self_link],
-            protocol="HTTP",
+            health_checks=health_check.self_link,
             load_balancing_scheme="INTERNAL_MANAGED",
-            locality_lb_policy="ROUND_ROBIN")
+            locality_lb_policy="ROUND_ROBIN",
+            protocol="HTTP",
+            region="us-central1")
         ```
         ## Example Usage - Region Backend Service Ilb Ring Hash
 
@@ -390,27 +390,27 @@ class RegionBackendService(pulumi.CustomResource):
             "port": 80,
         })
         default = gcp.compute.RegionBackendService("default",
-            region="us-central1",
-            health_checks=[health_check.self_link],
-            load_balancing_scheme="INTERNAL_MANAGED",
-            locality_lb_policy="RING_HASH",
-            session_affinity="HTTP_COOKIE",
-            protocol="HTTP",
             circuit_breakers={
                 "maxConnections": 10,
             },
             consistent_hash={
-                "http_cookie": {
-                    "ttl": {
-                        "seconds": 11,
-                        "nanos": 1111,
-                    },
+                "httpCookie": {
                     "name": "mycookie",
+                    "ttl": {
+                        "nanos": 1111,
+                        "seconds": 11,
+                    },
                 },
             },
+            health_checks=health_check.self_link,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="RING_HASH",
             outlier_detection={
                 "consecutiveErrors": 2,
-            })
+            },
+            protocol="HTTP",
+            region="us-central1",
+            session_affinity="HTTP_COOKIE")
         ```
         ## Example Usage - Region Backend Service Balancing Mode
 

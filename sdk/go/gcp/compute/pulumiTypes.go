@@ -16464,6 +16464,299 @@ func (o PacketMirroringNetworkPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PerInstanceConfigPreservedState struct {
+	// Stateful disks for the instance.  Structure is documented below.
+	Disks []PerInstanceConfigPreservedStateDisk `pulumi:"disks"`
+	// Preserved metadata defined for this instance. This is a list of key->value pairs.
+	Metadata map[string]string `pulumi:"metadata"`
+}
+
+// PerInstanceConfigPreservedStateInput is an input type that accepts PerInstanceConfigPreservedStateArgs and PerInstanceConfigPreservedStateOutput values.
+// You can construct a concrete instance of `PerInstanceConfigPreservedStateInput` via:
+//
+// 		 PerInstanceConfigPreservedStateArgs{...}
+//
+type PerInstanceConfigPreservedStateInput interface {
+	pulumi.Input
+
+	ToPerInstanceConfigPreservedStateOutput() PerInstanceConfigPreservedStateOutput
+	ToPerInstanceConfigPreservedStateOutputWithContext(context.Context) PerInstanceConfigPreservedStateOutput
+}
+
+type PerInstanceConfigPreservedStateArgs struct {
+	// Stateful disks for the instance.  Structure is documented below.
+	Disks PerInstanceConfigPreservedStateDiskArrayInput `pulumi:"disks"`
+	// Preserved metadata defined for this instance. This is a list of key->value pairs.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+}
+
+func (PerInstanceConfigPreservedStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerInstanceConfigPreservedState)(nil)).Elem()
+}
+
+func (i PerInstanceConfigPreservedStateArgs) ToPerInstanceConfigPreservedStateOutput() PerInstanceConfigPreservedStateOutput {
+	return i.ToPerInstanceConfigPreservedStateOutputWithContext(context.Background())
+}
+
+func (i PerInstanceConfigPreservedStateArgs) ToPerInstanceConfigPreservedStateOutputWithContext(ctx context.Context) PerInstanceConfigPreservedStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigPreservedStateOutput)
+}
+
+func (i PerInstanceConfigPreservedStateArgs) ToPerInstanceConfigPreservedStatePtrOutput() PerInstanceConfigPreservedStatePtrOutput {
+	return i.ToPerInstanceConfigPreservedStatePtrOutputWithContext(context.Background())
+}
+
+func (i PerInstanceConfigPreservedStateArgs) ToPerInstanceConfigPreservedStatePtrOutputWithContext(ctx context.Context) PerInstanceConfigPreservedStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigPreservedStateOutput).ToPerInstanceConfigPreservedStatePtrOutputWithContext(ctx)
+}
+
+// PerInstanceConfigPreservedStatePtrInput is an input type that accepts PerInstanceConfigPreservedStateArgs, PerInstanceConfigPreservedStatePtr and PerInstanceConfigPreservedStatePtrOutput values.
+// You can construct a concrete instance of `PerInstanceConfigPreservedStatePtrInput` via:
+//
+// 		 PerInstanceConfigPreservedStateArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type PerInstanceConfigPreservedStatePtrInput interface {
+	pulumi.Input
+
+	ToPerInstanceConfigPreservedStatePtrOutput() PerInstanceConfigPreservedStatePtrOutput
+	ToPerInstanceConfigPreservedStatePtrOutputWithContext(context.Context) PerInstanceConfigPreservedStatePtrOutput
+}
+
+type perInstanceConfigPreservedStatePtrType PerInstanceConfigPreservedStateArgs
+
+func PerInstanceConfigPreservedStatePtr(v *PerInstanceConfigPreservedStateArgs) PerInstanceConfigPreservedStatePtrInput {
+	return (*perInstanceConfigPreservedStatePtrType)(v)
+}
+
+func (*perInstanceConfigPreservedStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerInstanceConfigPreservedState)(nil)).Elem()
+}
+
+func (i *perInstanceConfigPreservedStatePtrType) ToPerInstanceConfigPreservedStatePtrOutput() PerInstanceConfigPreservedStatePtrOutput {
+	return i.ToPerInstanceConfigPreservedStatePtrOutputWithContext(context.Background())
+}
+
+func (i *perInstanceConfigPreservedStatePtrType) ToPerInstanceConfigPreservedStatePtrOutputWithContext(ctx context.Context) PerInstanceConfigPreservedStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigPreservedStatePtrOutput)
+}
+
+type PerInstanceConfigPreservedStateOutput struct{ *pulumi.OutputState }
+
+func (PerInstanceConfigPreservedStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerInstanceConfigPreservedState)(nil)).Elem()
+}
+
+func (o PerInstanceConfigPreservedStateOutput) ToPerInstanceConfigPreservedStateOutput() PerInstanceConfigPreservedStateOutput {
+	return o
+}
+
+func (o PerInstanceConfigPreservedStateOutput) ToPerInstanceConfigPreservedStateOutputWithContext(ctx context.Context) PerInstanceConfigPreservedStateOutput {
+	return o
+}
+
+func (o PerInstanceConfigPreservedStateOutput) ToPerInstanceConfigPreservedStatePtrOutput() PerInstanceConfigPreservedStatePtrOutput {
+	return o.ToPerInstanceConfigPreservedStatePtrOutputWithContext(context.Background())
+}
+
+func (o PerInstanceConfigPreservedStateOutput) ToPerInstanceConfigPreservedStatePtrOutputWithContext(ctx context.Context) PerInstanceConfigPreservedStatePtrOutput {
+	return o.ApplyT(func(v PerInstanceConfigPreservedState) *PerInstanceConfigPreservedState {
+		return &v
+	}).(PerInstanceConfigPreservedStatePtrOutput)
+}
+
+// Stateful disks for the instance.  Structure is documented below.
+func (o PerInstanceConfigPreservedStateOutput) Disks() PerInstanceConfigPreservedStateDiskArrayOutput {
+	return o.ApplyT(func(v PerInstanceConfigPreservedState) []PerInstanceConfigPreservedStateDisk { return v.Disks }).(PerInstanceConfigPreservedStateDiskArrayOutput)
+}
+
+// Preserved metadata defined for this instance. This is a list of key->value pairs.
+func (o PerInstanceConfigPreservedStateOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PerInstanceConfigPreservedState) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+type PerInstanceConfigPreservedStatePtrOutput struct{ *pulumi.OutputState }
+
+func (PerInstanceConfigPreservedStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerInstanceConfigPreservedState)(nil)).Elem()
+}
+
+func (o PerInstanceConfigPreservedStatePtrOutput) ToPerInstanceConfigPreservedStatePtrOutput() PerInstanceConfigPreservedStatePtrOutput {
+	return o
+}
+
+func (o PerInstanceConfigPreservedStatePtrOutput) ToPerInstanceConfigPreservedStatePtrOutputWithContext(ctx context.Context) PerInstanceConfigPreservedStatePtrOutput {
+	return o
+}
+
+func (o PerInstanceConfigPreservedStatePtrOutput) Elem() PerInstanceConfigPreservedStateOutput {
+	return o.ApplyT(func(v *PerInstanceConfigPreservedState) PerInstanceConfigPreservedState { return *v }).(PerInstanceConfigPreservedStateOutput)
+}
+
+// Stateful disks for the instance.  Structure is documented below.
+func (o PerInstanceConfigPreservedStatePtrOutput) Disks() PerInstanceConfigPreservedStateDiskArrayOutput {
+	return o.ApplyT(func(v *PerInstanceConfigPreservedState) []PerInstanceConfigPreservedStateDisk {
+		if v == nil {
+			return nil
+		}
+		return v.Disks
+	}).(PerInstanceConfigPreservedStateDiskArrayOutput)
+}
+
+// Preserved metadata defined for this instance. This is a list of key->value pairs.
+func (o PerInstanceConfigPreservedStatePtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PerInstanceConfigPreservedState) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+type PerInstanceConfigPreservedStateDisk struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+	// The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+	// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+	// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+	// deleted from the instance group.
+	DeleteRule *string `pulumi:"deleteRule"`
+	// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+	DeviceName string `pulumi:"deviceName"`
+	// The mode of the disk.
+	Mode *string `pulumi:"mode"`
+	// The URI of an existing persistent disk to attach under the specified device-name in the format
+	// `projects/project-id/zones/zone/disks/disk-name`.
+	Source string `pulumi:"source"`
+}
+
+// PerInstanceConfigPreservedStateDiskInput is an input type that accepts PerInstanceConfigPreservedStateDiskArgs and PerInstanceConfigPreservedStateDiskOutput values.
+// You can construct a concrete instance of `PerInstanceConfigPreservedStateDiskInput` via:
+//
+// 		 PerInstanceConfigPreservedStateDiskArgs{...}
+//
+type PerInstanceConfigPreservedStateDiskInput interface {
+	pulumi.Input
+
+	ToPerInstanceConfigPreservedStateDiskOutput() PerInstanceConfigPreservedStateDiskOutput
+	ToPerInstanceConfigPreservedStateDiskOutputWithContext(context.Context) PerInstanceConfigPreservedStateDiskOutput
+}
+
+type PerInstanceConfigPreservedStateDiskArgs struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+	// The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+	// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+	// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+	// deleted from the instance group.
+	DeleteRule pulumi.StringPtrInput `pulumi:"deleteRule"`
+	// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The mode of the disk.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The URI of an existing persistent disk to attach under the specified device-name in the format
+	// `projects/project-id/zones/zone/disks/disk-name`.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (PerInstanceConfigPreservedStateDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerInstanceConfigPreservedStateDisk)(nil)).Elem()
+}
+
+func (i PerInstanceConfigPreservedStateDiskArgs) ToPerInstanceConfigPreservedStateDiskOutput() PerInstanceConfigPreservedStateDiskOutput {
+	return i.ToPerInstanceConfigPreservedStateDiskOutputWithContext(context.Background())
+}
+
+func (i PerInstanceConfigPreservedStateDiskArgs) ToPerInstanceConfigPreservedStateDiskOutputWithContext(ctx context.Context) PerInstanceConfigPreservedStateDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigPreservedStateDiskOutput)
+}
+
+// PerInstanceConfigPreservedStateDiskArrayInput is an input type that accepts PerInstanceConfigPreservedStateDiskArray and PerInstanceConfigPreservedStateDiskArrayOutput values.
+// You can construct a concrete instance of `PerInstanceConfigPreservedStateDiskArrayInput` via:
+//
+// 		 PerInstanceConfigPreservedStateDiskArray{ PerInstanceConfigPreservedStateDiskArgs{...} }
+//
+type PerInstanceConfigPreservedStateDiskArrayInput interface {
+	pulumi.Input
+
+	ToPerInstanceConfigPreservedStateDiskArrayOutput() PerInstanceConfigPreservedStateDiskArrayOutput
+	ToPerInstanceConfigPreservedStateDiskArrayOutputWithContext(context.Context) PerInstanceConfigPreservedStateDiskArrayOutput
+}
+
+type PerInstanceConfigPreservedStateDiskArray []PerInstanceConfigPreservedStateDiskInput
+
+func (PerInstanceConfigPreservedStateDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PerInstanceConfigPreservedStateDisk)(nil)).Elem()
+}
+
+func (i PerInstanceConfigPreservedStateDiskArray) ToPerInstanceConfigPreservedStateDiskArrayOutput() PerInstanceConfigPreservedStateDiskArrayOutput {
+	return i.ToPerInstanceConfigPreservedStateDiskArrayOutputWithContext(context.Background())
+}
+
+func (i PerInstanceConfigPreservedStateDiskArray) ToPerInstanceConfigPreservedStateDiskArrayOutputWithContext(ctx context.Context) PerInstanceConfigPreservedStateDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigPreservedStateDiskArrayOutput)
+}
+
+type PerInstanceConfigPreservedStateDiskOutput struct{ *pulumi.OutputState }
+
+func (PerInstanceConfigPreservedStateDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerInstanceConfigPreservedStateDisk)(nil)).Elem()
+}
+
+func (o PerInstanceConfigPreservedStateDiskOutput) ToPerInstanceConfigPreservedStateDiskOutput() PerInstanceConfigPreservedStateDiskOutput {
+	return o
+}
+
+func (o PerInstanceConfigPreservedStateDiskOutput) ToPerInstanceConfigPreservedStateDiskOutputWithContext(ctx context.Context) PerInstanceConfigPreservedStateDiskOutput {
+	return o
+}
+
+// A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+// The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+// deleted from the instance group.
+func (o PerInstanceConfigPreservedStateDiskOutput) DeleteRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PerInstanceConfigPreservedStateDisk) *string { return v.DeleteRule }).(pulumi.StringPtrOutput)
+}
+
+// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+func (o PerInstanceConfigPreservedStateDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v PerInstanceConfigPreservedStateDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// The mode of the disk.
+func (o PerInstanceConfigPreservedStateDiskOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PerInstanceConfigPreservedStateDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The URI of an existing persistent disk to attach under the specified device-name in the format
+// `projects/project-id/zones/zone/disks/disk-name`.
+func (o PerInstanceConfigPreservedStateDiskOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v PerInstanceConfigPreservedStateDisk) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type PerInstanceConfigPreservedStateDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (PerInstanceConfigPreservedStateDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PerInstanceConfigPreservedStateDisk)(nil)).Elem()
+}
+
+func (o PerInstanceConfigPreservedStateDiskArrayOutput) ToPerInstanceConfigPreservedStateDiskArrayOutput() PerInstanceConfigPreservedStateDiskArrayOutput {
+	return o
+}
+
+func (o PerInstanceConfigPreservedStateDiskArrayOutput) ToPerInstanceConfigPreservedStateDiskArrayOutputWithContext(ctx context.Context) PerInstanceConfigPreservedStateDiskArrayOutput {
+	return o
+}
+
+func (o PerInstanceConfigPreservedStateDiskArrayOutput) Index(i pulumi.IntInput) PerInstanceConfigPreservedStateDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PerInstanceConfigPreservedStateDisk {
+		return vs[0].([]PerInstanceConfigPreservedStateDisk)[vs[1].(int)]
+	}).(PerInstanceConfigPreservedStateDiskOutput)
+}
+
 type RegionAutoscalerAutoscalingPolicy struct {
 	// The number of seconds that the autoscaler should wait before it
 	// starts collecting information from a new instance. This prevents
@@ -50949,6 +51242,10 @@ func init() {
 	pulumi.RegisterOutputType(PacketMirroringMirroredResourcesSubnetworkArrayOutput{})
 	pulumi.RegisterOutputType(PacketMirroringNetworkOutput{})
 	pulumi.RegisterOutputType(PacketMirroringNetworkPtrOutput{})
+	pulumi.RegisterOutputType(PerInstanceConfigPreservedStateOutput{})
+	pulumi.RegisterOutputType(PerInstanceConfigPreservedStatePtrOutput{})
+	pulumi.RegisterOutputType(PerInstanceConfigPreservedStateDiskOutput{})
+	pulumi.RegisterOutputType(PerInstanceConfigPreservedStateDiskArrayOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyCpuUtilizationOutput{})

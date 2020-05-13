@@ -23,9 +23,6 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
-    /// 
-    /// &gt; **Warning:** All arguments including `iap.oauth2_client_secret` and `iap.oauth2_client_secret_sha256` will be stored in the raw
-    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// </summary>
     public partial class BackendService : Pulumi.CustomResource
     {
@@ -66,8 +63,6 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> ConnectionDrainingTimeoutSec { get; private set; } = null!;
 
         /// <summary>
-        /// -
-        /// (Optional))
         /// Consistent Hash-based load balancing can be used to provide soft session
         /// affinity based on HTTP headers, cookies or other properties. This load balancing
         /// policy is applicable only for HTTP connections. The affinity to a particular
@@ -321,8 +316,6 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
-        /// -
-        /// (Optional))
         /// Consistent Hash-based load balancing can be used to provide soft session
         /// affinity based on HTTP headers, cookies or other properties. This load balancing
         /// policy is applicable only for HTTP connections. The affinity to a particular
@@ -525,8 +518,6 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
-        /// -
-        /// (Optional))
         /// Consistent Hash-based load balancing can be used to provide soft session
         /// affinity based on HTTP headers, cookies or other properties. This load balancing
         /// policy is applicable only for HTTP connections. The affinity to a particular

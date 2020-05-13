@@ -37,7 +37,109 @@ class WebIamBinding(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, condition=None, members=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a WebIamBinding resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Identity-Aware Proxy Web. Each of these resources serves a different use case:
+
+        * `iap.WebIamPolicy`: Authoritative. Sets the IAM policy for the web and replaces any existing policy already attached.
+        * `iap.WebIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the web are preserved.
+        * `iap.WebIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the web are preserved.
+
+        > **Note:** `iap.WebIamPolicy` **cannot** be used in conjunction with `iap.WebIamBinding` and `iap.WebIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `iap.WebIamBinding` resources **can be** used in conjunction with `iap.WebIamMember` resources **only if** they do not grant privilege to the same role.
+
+
+
+        ## google\_iap\_web\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/iap.httpsResourceAccessor",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.iap.WebIamPolicy("policy",
+            project=google_project_service["project_service"]["project"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(binding=[{
+            "role": "roles/iap.httpsResourceAccessor",
+            "members": ["user:jane@example.com"],
+            "condition": {
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            },
+        }])
+        policy = gcp.iap.WebIamPolicy("policy",
+            project=google_project_service["project_service"]["project"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\_iap\_web\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iap.WebIamBinding("binding",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.httpsResourceAccessor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iap.WebIamBinding("binding",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.httpsResourceAccessor",
+            members=["user:jane@example.com"],
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            })
+        ```
+        ## google\_iap\_web\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iap.WebIamMember("member",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.httpsResourceAccessor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iap.WebIamMember("member",
+            project=google_project_service["project_service"]["project"],
+            role="roles/iap.httpsResourceAccessor",
+            member="user:jane@example.com",
+            condition={
+                "title": "expires_after_2019_12_31",
+                "description": "Expiring at midnight of 2019-12-31",
+                "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.

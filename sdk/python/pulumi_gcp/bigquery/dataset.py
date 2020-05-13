@@ -21,7 +21,7 @@ class Dataset(pulumi.CustomResource):
         member of the access object. Primitive, Predefined and custom
         roles are supported. Predefined roles that have equivalent
         primitive roles are swapped by the API to their Primitive
-        counterparts, and will show a diff post-create. See
+        counterparts. See
         [official docs](https://cloud.google.com/bigquery/docs/access-control).
       * `special_group` (`str`) - A special group to grant access to. Possible values include:
       * `user_by_email` (`str`) - An email address of a user to grant access to. For example:
@@ -197,7 +197,7 @@ class Dataset(pulumi.CustomResource):
             member of the access object. Primitive, Predefined and custom
             roles are supported. Predefined roles that have equivalent
             primitive roles are swapped by the API to their Primitive
-            counterparts, and will show a diff post-create. See
+            counterparts. See
             [official docs](https://cloud.google.com/bigquery/docs/access-control).
           * `special_group` (`pulumi.Input[str]`) - A special group to grant access to. Possible values include:
           * `user_by_email` (`pulumi.Input[str]`) - An email address of a user to grant access to. For example:
@@ -302,7 +302,7 @@ class Dataset(pulumi.CustomResource):
             member of the access object. Primitive, Predefined and custom
             roles are supported. Predefined roles that have equivalent
             primitive roles are swapped by the API to their Primitive
-            counterparts, and will show a diff post-create. See
+            counterparts. See
             [official docs](https://cloud.google.com/bigquery/docs/access-control).
           * `special_group` (`pulumi.Input[str]`) - A special group to grant access to. Possible values include:
           * `user_by_email` (`pulumi.Input[str]`) - An email address of a user to grant access to. For example:

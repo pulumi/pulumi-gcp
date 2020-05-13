@@ -22,11 +22,11 @@ namespace Pulumi.Gcp.Storage
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
     /// 
     /// &gt; **Warning:** All arguments including the `secret` value will be stored in the raw
-    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// On import, the `secret` value will not be retrieved.
     /// 
     /// &gt; **Warning:** All arguments including `secret` will be stored in the raw
-    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// </summary>
     public partial class HmacKey : Pulumi.CustomResource
     {

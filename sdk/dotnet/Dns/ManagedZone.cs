@@ -98,8 +98,7 @@ namespace Pulumi.Gcp.Dns
         public Output<bool?> ReverseLookup { get; private set; } = null!;
 
         /// <summary>
-        /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-        /// information related to the namespace associated with the zone.
+        /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
         /// </summary>
         [Output("serviceDirectoryConfig")]
         public Output<Outputs.ManagedZoneServiceDirectoryConfig?> ServiceDirectoryConfig { get; private set; } = null!;
@@ -232,8 +231,7 @@ namespace Pulumi.Gcp.Dns
         public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-        /// information related to the namespace associated with the zone.
+        /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
         /// </summary>
         [Input("serviceDirectoryConfig")]
         public Input<Inputs.ManagedZoneServiceDirectoryConfigArgs>? ServiceDirectoryConfig { get; set; }
@@ -340,8 +338,7 @@ namespace Pulumi.Gcp.Dns
         public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains
-        /// information related to the namespace associated with the zone.
+        /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.  Structure is documented below.
         /// </summary>
         [Input("serviceDirectoryConfig")]
         public Input<Inputs.ManagedZoneServiceDirectoryConfigGetArgs>? ServiceDirectoryConfig { get; set; }
