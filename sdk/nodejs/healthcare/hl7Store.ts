@@ -9,20 +9,20 @@ import * as utilities from "../utilities";
 /**
  * A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
  * standard for Healthcare information exchange
- * 
+ *
  * To get more information about Hl7V2Store, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.hl7V2Stores)
  * * How-to Guides
  *     * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
- * 
+ *
  * ## Example Usage - Healthcare Hl7 V2 Store Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const topic = new gcp.pubsub.Topic("topic", {});
  * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
  * const default = new gcp.healthcare.Hl7Store("default", {
@@ -36,12 +36,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Healthcare Hl7 V2 Store Parser Config
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
  * const default = new gcp.healthcare.Hl7Store("default", {
  *     dataset: dataset.id,
@@ -121,7 +121,7 @@ import * as utilities from "../utilities";
  *         "name": "ZPD",
  *         "primitive": "VARIES"
  *       }
- * 
+ *
  *     ]
  *   }],
  *   "ignoreMinOccurs": true
@@ -130,8 +130,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/healthcare_hl7_v2_store.html.markdown.
  */
 export class Hl7Store extends pulumi.CustomResource {
     /**
@@ -274,7 +272,6 @@ export interface Hl7StoreState {
      * -
      * (Optional, Deprecated)
      * A nested object resource  Structure is documented below.
-     * 
      * @deprecated This field has been replaced by notificationConfigs
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
@@ -323,7 +320,6 @@ export interface Hl7StoreArgs {
      * -
      * (Optional, Deprecated)
      * A nested object resource  Structure is documented below.
-     * 
      * @deprecated This field has been replaced by notificationConfigs
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;

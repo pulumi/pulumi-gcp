@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Provides access to available Cloud Composer versions in a region for a given project.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const all = gcp.composer.getImageVersions({});
  * const test = new gcp.composer.Environment("test", {
  *     region: "us-central1",
@@ -27,8 +27,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_composer_image_versions.html.markdown.
  */
 export function getImageVersions(args?: GetImageVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageVersionsResult> {
     args = args || {};

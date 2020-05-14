@@ -8,26 +8,24 @@ import * as utilities from "../utilities";
 
 /**
  * Allows management of a single API service for an existing Google Cloud Platform project. 
- * 
+ *
  * For a list of services available, visit the
  * [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const project = new gcp.projects.Service("project", {
  *     disableDependentServices: true,
  *     project: "your-project-id",
  *     service: "iam.googleapis.com",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project_service.html.markdown.
  */
 export class Service extends pulumi.CustomResource {
     /**

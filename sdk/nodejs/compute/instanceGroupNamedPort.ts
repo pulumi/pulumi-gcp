@@ -11,21 +11,21 @@ import * as utilities from "../utilities";
  * managing the group as whole. This resource is primarily intended for use
  * with GKE-generated groups that shouldn't otherwise be managed by other
  * tools.
- * 
- * 
+ *
+ *
  * To get more information about InstanceGroupNamedPort, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroup)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
- * 
+ *
  * ## Example Usage - Instance Group Named Port Gke
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const containerNetwork = new gcp.compute.Network("containerNetwork", {autoCreateSubnetworks: false});
  * const containerSubnetwork = new gcp.compute.Subnetwork("containerSubnetwork", {
  *     region: "us-central1",
@@ -53,8 +53,6 @@ import * as utilities from "../utilities";
  *     port: 4443,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_group_named_port.html.markdown.
  */
 export class InstanceGroupNamedPort extends pulumi.CustomResource {
     /**

@@ -12,21 +12,21 @@ import * as utilities from "../utilities";
  * collection of these endpoints for GCP resources within a
  * single subnet. **NOTE**: Network endpoints cannot be created outside of a
  * network endpoint group.
- * 
- * 
+ *
+ *
  * To get more information about NetworkEndpoint, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
- * 
+ *
  * ## Example Usage - Network Endpoint
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const myImage = gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
@@ -62,8 +62,6 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_endpoint.html.markdown.
  */
 export class NetworkEndpoint extends pulumi.CustomResource {
     /**

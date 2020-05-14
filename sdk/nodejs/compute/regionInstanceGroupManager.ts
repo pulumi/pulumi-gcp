@@ -11,15 +11,15 @@ import * as utilities from "../utilities";
  * of homogeneous Compute Engine virtual machine instances from a common instance
  * template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
- * 
+ *
  * > **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
- * 
+ *
  * ## Example Usage with top level instance template (`google` provider)
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const autohealing = new gcp.compute.HealthCheck("autohealing", {
  *     checkIntervalSec: 5,
  *     timeoutSec: 5,
@@ -52,13 +52,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ## Example Usage with multiple versions
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const appserver = new gcp.compute.RegionInstanceGroupManager("appserver", {
  *     baseInstanceName: "app",
  *     region: "us-central1",
@@ -76,8 +76,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_instance_group_manager.html.markdown.
  */
 export class RegionInstanceGroupManager extends pulumi.CustomResource {
     /**

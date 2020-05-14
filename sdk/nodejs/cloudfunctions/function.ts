@@ -11,19 +11,19 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/functions/docs/)
  * and
  * [API](https://cloud.google.com/functions/docs/apis).
- * 
+ *
  * > **Warning:** As of November 1, 2019, newly created Functions are
  * private-by-default and will require [appropriate IAM permissions](https://cloud.google.com/functions/docs/reference/iam/roles)
  * to be invoked. See below examples for how to set up the appropriate permissions,
  * or view the [Cloud Functions IAM resources](https://www.terraform.io/docs/providers/google/r/cloudfunctions_cloud_function_iam.html)
  * for Cloud Functions.
- * 
+ *
  * ## Example Usage - Public Function
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const bucket = new gcp.storage.Bucket("bucket", {});
  * const archive = new gcp.storage.BucketObject("archive", {
  *     bucket: bucket.name,
@@ -47,13 +47,13 @@ import * as utilities from "../utilities";
  *     member: "allUsers",
  * });
  * ```
- * 
+ *
  * ## Example Usage - Single User
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const bucket = new gcp.storage.Bucket("bucket", {});
  * const archive = new gcp.storage.BucketObject("archive", {
  *     bucket: bucket.name,
@@ -84,8 +84,6 @@ import * as utilities from "../utilities";
  *     member: "user:myFunctionInvoker@example.com",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudfunctions_function.html.markdown.
  */
 export class Function extends pulumi.CustomResource {
     /**

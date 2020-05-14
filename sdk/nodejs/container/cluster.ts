@@ -10,17 +10,17 @@ import * as utilities from "../utilities";
  * Manages a Google Kubernetes Engine (GKE) cluster. For more information see
  * [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
  * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters).
- * 
+ *
  * > **Note:** All arguments and attributes, including basic auth username and
  * passwords as well as certificate outputs will be stored in the raw state as
  * plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
- * 
+ *
  * ## Example Usage - with a separately managed node pool (recommended)
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const primary = new gcp.container.Cluster("primary", {
  *     location: "us-central1",
  *     removeDefaultNodePool: true,
@@ -50,13 +50,13 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ## Example Usage - with the default node pool
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const primary = new gcp.container.Cluster("primary", {
  *     initialNodeCount: 3,
  *     location: "us-central1-a",
@@ -88,8 +88,6 @@ import * as utilities from "../utilities";
  *     update: "40m",
  * } });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/container_cluster.html.markdown.
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -130,7 +128,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly authenticatorGroupsConfig!: pulumi.Output<outputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
-     * 
+     *
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -167,7 +165,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableBinaryAuthorization!: pulumi.Output<boolean | undefined>;
     /**
-     * 
+     *
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
     public readonly enableIntranodeVisibility!: pulumi.Output<boolean | undefined>;
@@ -396,13 +394,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
     /**
-     * 
+     *
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     public readonly verticalPodAutoscaling!: pulumi.Output<outputs.container.ClusterVerticalPodAutoscaling | undefined>;
     /**
-     * 
+     *
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.
@@ -543,7 +541,7 @@ export interface ClusterState {
      */
     readonly authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
-     * 
+     *
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -580,7 +578,7 @@ export interface ClusterState {
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
     /**
-     * 
+     *
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
     readonly enableIntranodeVisibility?: pulumi.Input<boolean>;
@@ -809,13 +807,13 @@ export interface ClusterState {
      */
     readonly tpuIpv4CidrBlock?: pulumi.Input<string>;
     /**
-     * 
+     *
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     readonly verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
-     * 
+     *
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.
@@ -839,7 +837,7 @@ export interface ClusterArgs {
      */
     readonly authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
-     * 
+     *
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -876,7 +874,7 @@ export interface ClusterArgs {
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
     /**
-     * 
+     *
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
     readonly enableIntranodeVisibility?: pulumi.Input<boolean>;
@@ -1072,13 +1070,13 @@ export interface ClusterArgs {
      */
     readonly subnetwork?: pulumi.Input<string>;
     /**
-     * 
+     *
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     readonly verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
-     * 
+     *
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.

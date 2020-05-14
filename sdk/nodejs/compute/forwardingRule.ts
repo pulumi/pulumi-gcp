@@ -10,21 +10,21 @@ import * as utilities from "../utilities";
  * A ForwardingRule resource. A ForwardingRule resource specifies which pool
  * of target virtual machines to forward a packet to if it matches the given
  * [IPAddress, IPProtocol, portRange] tuple.
- * 
- * 
+ *
+ *
  * To get more information about ForwardingRule, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRules)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
- * 
+ *
  * ## Example Usage - Forwarding Rule Global Internallb
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const hc = new gcp.compute.HealthCheck("hc", {
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
@@ -54,12 +54,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Forwarding Rule Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultTargetPool = new gcp.compute.TargetPool("defaultTargetPool", {});
  * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
  *     target: defaultTargetPool.id,
@@ -67,12 +67,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Forwarding Rule Internallb
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const hc = new gcp.compute.HealthCheck("hc", {
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
@@ -101,12 +101,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Forwarding Rule Http Lb
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const debianImage = gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
@@ -248,8 +248,6 @@ import * as utilities from "../utilities";
  *     networkTier: "PREMIUM",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_forwarding_rule.html.markdown.
  */
 export class ForwardingRule extends pulumi.CustomResource {
     /**

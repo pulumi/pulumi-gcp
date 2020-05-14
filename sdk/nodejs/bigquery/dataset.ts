@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Datasets allow you to organize and control access to your tables.
- * 
- * 
+ *
+ *
  * To get more information about Dataset, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
  * * How-to Guides
  *     * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
- * 
+ *
  * ## Example Usage - Bigquery Dataset Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const bqowner = new gcp.serviceAccount.Account("bqowner", {accountId: "bqowner"});
  * const dataset = new gcp.bigquery.Dataset("dataset", {
  *     datasetId: "exampleDataset",
@@ -46,12 +46,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Bigquery Dataset Cmek
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us"});
  * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
  * const dataset = new gcp.bigquery.Dataset("dataset", {
@@ -65,8 +65,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_dataset.html.markdown.
  */
 export class Dataset extends pulumi.CustomResource {
     /**

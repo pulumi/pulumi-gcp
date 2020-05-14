@@ -10,24 +10,24 @@ import * as utilities from "../utilities";
  * However there may be situations where managing the attached disks via the compute
  * instance config isn't preferable or possible, such as attaching dynamic
  * numbers of disks using the `count` variable.
- * 
- * 
+ *
+ *
  * To get more information about attaching disks, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
  * * How-to Guides
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
- * 
+ *
  * **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attachedDisk"]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultInstance = new gcp.compute.Instance("defaultInstance", {
  *     machineType: "n1-standard-1",
  *     zone: "us-west1-a",
@@ -45,8 +45,6 @@ import * as utilities from "../utilities";
  *     instance: defaultInstance.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_attached_disk.html.markdown.
  */
 export class AttachedDisk extends pulumi.CustomResource {
     /**

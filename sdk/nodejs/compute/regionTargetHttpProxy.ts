@@ -9,20 +9,20 @@ import * as utilities from "../utilities";
 /**
  * Represents a RegionTargetHttpProxy resource, which is used by one or more
  * forwarding rules to route incoming HTTP requests to a URL map.
- * 
+ *
  * To get more information about RegionTargetHttpProxy, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpProxies)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
- * 
+ *
  * ## Example Usage - Region Target Http Proxy Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("defaultRegionHealthCheck", {
  *     region: "us-central1",
  *     http_health_check: {
@@ -57,12 +57,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Region Target Http Proxy Https Redirect
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
  *     region: "us-central1",
  *     default_url_redirect: {
@@ -75,8 +75,6 @@ import * as utilities from "../utilities";
  *     urlMap: defaultRegionUrlMap.selfLink,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_target_http_proxy.html.markdown.
  */
 export class RegionTargetHttpProxy extends pulumi.CustomResource {
     /**

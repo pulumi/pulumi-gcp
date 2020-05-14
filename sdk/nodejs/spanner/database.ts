@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * A Cloud Spanner Database which is hosted on a Spanner instance.
- * 
- * 
+ *
+ *
  * To get more information about Database, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/spanner/)
- * 
+ *
  * ## Example Usage - Spanner Database Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const main = new gcp.spanner.Instance("main", {
  *     config: "regional-europe-west1",
  *     displayName: "main-instance",
@@ -33,8 +33,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_database.html.markdown.
  */
 export class Database extends pulumi.CustomResource {
     /**

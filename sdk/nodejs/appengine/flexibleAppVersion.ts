@@ -11,24 +11,24 @@ import * as utilities from "../utilities";
  * the App Engine flexible environment automatically scales your app up and down while also balancing the load.
  * Learn about the differences between the standard environment and the flexible environment
  * at https://cloud.google.com/appengine/docs/the-appengine-environments.
- * 
+ *
  * > **Note:** The App Engine flexible environment service account uses the member ID `service-[YOUR_PROJECT_NUMBER]@gae-api-prod.google.com.iam.gserviceaccount.com`
  * It should have the App Engine Flexible Environment Service Agent role, which will be applied when the `appengineflex.googleapis.com` service is enabled.
- * 
- * 
+ *
+ *
  * To get more information about FlexibleAppVersion, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
- * 
+ *
  * ## Example Usage - App Engine Flexible App Version
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const myProject = new gcp.organizations.Project("myProject", {
  *     projectId: "appeng-flex",
  *     orgId: "123456789",
@@ -84,8 +84,6 @@ import * as utilities from "../utilities";
  *     noopOnDestroy: true,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/app_engine_flexible_app_version.html.markdown.
  */
 export class FlexibleAppVersion extends pulumi.CustomResource {
     /**

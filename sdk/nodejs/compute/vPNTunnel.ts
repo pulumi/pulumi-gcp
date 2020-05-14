@@ -8,25 +8,25 @@ import * as utilities from "../utilities";
 
 /**
  * VPN tunnel resource.
- * 
- * 
+ *
+ *
  * To get more information about VpnTunnel, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
  * * How-to Guides
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
  *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
- * 
+ *
  * > **Warning:** All arguments including `sharedSecret` will be stored in the raw
  * state as plain-text.
- * 
+ *
  * ## Example Usage - Vpn Tunnel Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const network1 = new gcp.compute.Network("network1", {});
  * const targetGateway = new gcp.compute.VPNGateway("targetGateway", {network: network1.id});
  * const vpnStaticIp = new gcp.compute.Address("vpnStaticIp", {});
@@ -60,12 +60,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Vpn Tunnel Beta
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const network1 = new gcp.compute.Network("network1", {});
  * const targetGateway = new gcp.compute.VPNGateway("targetGateway", {network: network1.id});
  * const vpnStaticIp = new gcp.compute.Address("vpnStaticIp", {});
@@ -101,8 +101,6 @@ import * as utilities from "../utilities";
  *     nextHopVpnTunnel: tunnel1.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_vpn_tunnel.html.markdown.
  */
 export class VPNTunnel extends pulumi.CustomResource {
     /**

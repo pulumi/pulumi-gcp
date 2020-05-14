@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * Budget configuration for a billing account.
- * 
+ *
  * To get more information about Budget, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
  * * How-to Guides
  *     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
- * 
+ *
  * ## Example Usage - Billing Budget Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const account = gcp.organizations.getBillingAccount({
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
@@ -40,12 +40,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Billing Budget Filter
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const account = gcp.organizations.getBillingAccount({
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
@@ -74,8 +74,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/billing_budget.html.markdown.
  */
 export class Budget extends pulumi.CustomResource {
     /**

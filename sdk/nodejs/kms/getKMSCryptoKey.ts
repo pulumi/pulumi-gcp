@@ -11,18 +11,18 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
  * and
  * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
- * 
+ *
  * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
  * Google Cloud KMS KeyRing.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const myKeyRing = gcp.kms.getKMSKeyRing({
  *     name: "my-key-ring",
  *     location: "us-central1",
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  *     keyRing: myKeyRing.selfLink,
  * }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_crypto_key.html.markdown.
  */
 export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyResult> {
     if (!opts) {

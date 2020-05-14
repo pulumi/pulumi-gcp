@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * A connection allows BigQuery connections to external data sources..
- * 
+ *
  * To get more information about Connection, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1beta1/projects.locations.connections/create)
  * * How-to Guides
  *     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
- * 
+ *
  * ## Example Usage - Bigquery Connection Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     databaseVersion: "POSTGRES_11",
  *     region: "us-central1",
@@ -41,12 +41,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Bigquery Connection Full
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     databaseVersion: "POSTGRES_11",
  *     region: "us-central1",
@@ -67,8 +67,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_connection.html.markdown.
  */
 export class Connection extends pulumi.CustomResource {
     /**

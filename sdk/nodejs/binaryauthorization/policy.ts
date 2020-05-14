@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * A policy for container image binary authorization.
- * 
- * 
+ *
+ *
  * To get more information about Policy, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
- * 
+ *
  * ## Example Usage - Binary Authorization Policy Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const note = new gcp.containeranalysis.Note("note", {attestation_authority: {
  *     hint: {
  *         humanReadableName: "My attestor",
@@ -48,12 +48,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Binary Authorization Policy Global Evaluation
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const note = new gcp.containeranalysis.Note("note", {attestation_authority: {
  *     hint: {
  *         humanReadableName: "My attestor",
@@ -71,8 +71,6 @@ import * as utilities from "../utilities";
  *     globalPolicyEvaluationMode: "ENABLE",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_policy.html.markdown.
  */
 export class Policy extends pulumi.CustomResource {
     /**

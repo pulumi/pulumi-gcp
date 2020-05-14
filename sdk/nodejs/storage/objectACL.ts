@@ -10,23 +10,23 @@ import * as utilities from "../utilities";
  * Authoritatively manages the access control list (ACL) for an object in a Google
  * Cloud Storage (GCS) bucket. Removing a `gcp.storage.ObjectACL` sets the
  * acl to the `private` [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl).
- * 
+ *
  * For more information see
  * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
  * and 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls).
- * 
+ *
  * > Want fine-grained control over object ACLs? Use `gcp.storage.ObjectAccessControl` to control individual
  * role entity pairs.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const image-store = new gcp.storage.Bucket("image-store", {location: "EU"});
  * const image = new gcp.storage.BucketObject("image", {
  *     bucket: image-store.name,
@@ -41,8 +41,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_object_acl.html.markdown.
  */
 export class ObjectACL extends pulumi.CustomResource {
     /**

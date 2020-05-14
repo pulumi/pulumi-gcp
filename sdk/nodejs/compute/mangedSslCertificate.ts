@@ -6,7 +6,7 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/** @deprecated gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate */
+/** @deprecated gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate */
 export class MangedSslCertificate extends pulumi.CustomResource {
     /**
      * Get an existing MangedSslCertificate resource's state with the given name, ID, and optional extra
@@ -17,7 +17,7 @@ export class MangedSslCertificate extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MangedSslCertificateState, opts?: pulumi.CustomResourceOptions): MangedSslCertificate {
-        pulumi.log.warn("MangedSslCertificate is deprecated: gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate")
+        pulumi.log.warn("MangedSslCertificate is deprecated: gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate")
         return new MangedSslCertificate(name, <any>state, { ...opts, id: id });
     }
 
@@ -83,11 +83,11 @@ export class MangedSslCertificate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate */
+    /** @deprecated gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate */
     constructor(name: string, args?: MangedSslCertificateArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate */
+    /** @deprecated gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate */
     constructor(name: string, argsOrState?: MangedSslCertificateArgs | MangedSslCertificateState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("MangedSslCertificate is deprecated: gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate")
+        pulumi.log.warn("MangedSslCertificate is deprecated: gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as MangedSslCertificateState | undefined;

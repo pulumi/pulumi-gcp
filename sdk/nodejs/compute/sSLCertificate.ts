@@ -10,25 +10,25 @@ import * as utilities from "../utilities";
  * An SslCertificate resource, used for HTTPS load balancing. This resource
  * provides a mechanism to upload an SSL key and certificate to
  * the load balancer to serve secure connections from the user.
- * 
- * 
+ *
+ *
  * To get more information about SslCertificate, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslCertificates)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
- * 
+ *
  * > **Warning:** All arguments including `certificate` and `privateKey` will be stored in the raw
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
- * 
+ *
  * ## Example Usage - Ssl Certificate Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * import * from "fs";
- * 
+ *
  * const default = new gcp.compute.SSLCertificate("default", {
  *     namePrefix: "my-certificate-",
  *     description: "a description",
@@ -37,13 +37,13 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Ssl Certificate Target Https Proxies
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * import * from "fs";
- * 
+ *
  * // Using with Target HTTPS Proxies
  * //
  * // SSL certificates cannot be updated after creation. In order to apply
@@ -86,8 +86,6 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultSSLCertificate.id],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ssl_certificate.html.markdown.
  */
 export class SSLCertificate extends pulumi.CustomResource {
     /**

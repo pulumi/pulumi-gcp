@@ -6,8 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * A Google Cloud Firebase web application instance
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_firebase_web_app.html.markdown.
  */
 export function getWebApp(args: GetWebAppArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppResult> {
     if (!opts) {

@@ -11,22 +11,22 @@ import * as utilities from "../utilities";
  * designed to solve an individual concern (Wikipedia). In Cloud Monitoring,
  * a Service acts as the root resource under which operational aspects of
  * the service are accessible
- * 
- * 
+ *
+ *
  * To get more information about Service, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
  * * How-to Guides
  *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
- * 
+ *
  * ## Example Usage - Monitoring Service Custom
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const custom = new gcp.monitoring.CustomService("custom", {
  *     displayName: "My Custom Service custom-srv",
  *     serviceId: "custom-srv",
@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_service.html.markdown.
  */
 export class CustomService extends pulumi.CustomResource {
     /**

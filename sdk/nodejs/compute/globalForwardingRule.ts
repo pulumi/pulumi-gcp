@@ -11,19 +11,19 @@ import * as utilities from "../utilities";
  * used to forward traffic to the correct load balancer for HTTP load
  * balancing. Global forwarding rules can only be used for HTTP load
  * balancing.
- * 
+ *
  * For more information, see
  * https://cloud.google.com/compute/docs/load-balancing/http/
- * 
- * 
- * 
+ *
+ *
+ *
  * ## Example Usage - Global Forwarding Rule Http
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
  *     requestPath: "/",
  *     checkIntervalSec: 1,
@@ -61,12 +61,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Global Forwarding Rule Internal
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const debianImage = gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
@@ -145,8 +145,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_global_forwarding_rule.html.markdown.
  */
 export class GlobalForwardingRule extends pulumi.CustomResource {
     /**

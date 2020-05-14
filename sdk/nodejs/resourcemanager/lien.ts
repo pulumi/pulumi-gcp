@@ -6,16 +6,16 @@ import * as utilities from "../utilities";
 
 /**
  * A Lien represents an encumbrance on the actions that can be performed on a resource.
- * 
- * 
- * 
+ *
+ *
+ *
  * ## Example Usage - Resource Manager Lien
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const project = new gcp.organizations.Project("project", {
  *     projectId: "staging-project",
  * });
@@ -26,8 +26,6 @@ import * as utilities from "../utilities";
  *     restrictions: ["resourcemanager.projects.delete"],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/resource_manager_lien.html.markdown.
  */
 export class Lien extends pulumi.CustomResource {
     /**

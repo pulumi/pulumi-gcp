@@ -9,16 +9,16 @@ import * as utilities from "../utilities";
 /**
  * Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
  * Once a BigQuery job is created, it cannot be changed or deleted.
- * 
- * 
- * 
+ *
+ *
+ *
  * ## Example Usage - Bigquery Job Query
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const bar = new gcp.bigquery.Dataset("bar", {
  *     datasetId: "jobQueryDataset",
  *     friendlyName: "test",
@@ -50,12 +50,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Bigquery Job Load
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const bar = new gcp.bigquery.Dataset("bar", {
  *     datasetId: "jobLoadDataset",
  *     friendlyName: "test",
@@ -89,12 +89,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Bigquery Job Extract
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const source-oneDataset = new gcp.bigquery.Dataset("source-oneDataset", {
  *     datasetId: "jobExtractDataset",
  *     friendlyName: "test",
@@ -138,8 +138,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_job.html.markdown.
  */
 export class Job extends pulumi.CustomResource {
     /**

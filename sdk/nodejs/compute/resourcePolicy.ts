@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
 
 /**
  * A policy that can be attached to a resource to specify or schedule actions on that resource.
- * 
- * 
- * 
+ *
+ *
+ *
  * ## Example Usage - Resource Policy Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const foo = new gcp.compute.ResourcePolicy("foo", {
  *     region: "us-central1",
  *     snapshotSchedulePolicy: {
@@ -31,12 +31,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Resource Policy Full
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const bar = new gcp.compute.ResourcePolicy("bar", {
  *     region: "us-central1",
  *     snapshotSchedulePolicy: {
@@ -61,12 +61,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Resource Policy Placement Policy
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const baz = new gcp.compute.ResourcePolicy("baz", {
  *     groupPlacementPolicy: {
  *         collocation: "COLLOCATED",
@@ -75,8 +75,6 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_resource_policy.html.markdown.
  */
 export class ResourcePolicy extends pulumi.CustomResource {
     /**

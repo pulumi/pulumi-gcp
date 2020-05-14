@@ -9,11 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
-    /// <summary>
-    /// 
-    /// Deprecated: gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate
-    /// </summary>
-    [Obsolete(@"gcp.compute.MangedSslCertificate has been deprecated in favour of gcp.compute.ManagedSslCertificate")]
+    [Obsolete(@"gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate")]
     public partial class MangedSslCertificate : Pulumi.CustomResource
     {
         /// <summary>

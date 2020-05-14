@@ -11,21 +11,21 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
- * 
+ *
  * Bucket ACLs can be managed non authoritatively using the `storageBucketAccessControl` resource. Do not use these two resources in conjunction to manage the same bucket.
- * 
+ *
  * Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
- * 
+ *
  * **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const image-store = new gcp.storage.Bucket("image-store", {location: "EU"});
  * const image-store-acl = new gcp.storage.BucketACL("image-store-acl", {
  *     bucket: image-store.name,
@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_acl.html.markdown.
  */
 export class BucketACL extends pulumi.CustomResource {
     /**

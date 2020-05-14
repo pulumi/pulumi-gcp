@@ -9,11 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Kms
 {
-    /// <summary>
-    /// 
-    /// Deprecated: gcp.kms.Registry has been deprecated in favour of gcp.iot.Registry
-    /// </summary>
-    [Obsolete(@"gcp.kms.Registry has been deprecated in favour of gcp.iot.Registry")]
+    [Obsolete(@"gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry")]
     public partial class Registry : Pulumi.CustomResource
     {
         [Output("credentials")]

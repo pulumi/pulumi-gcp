@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * A Cloud TPU instance.
- * 
- * 
+ *
+ *
  * To get more information about Node, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
- * 
+ *
  * ## Example Usage - TPU Node Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const available = gcp.tpu.getTensorflowVersions({});
  * const tpu = new gcp.tpu.Node("tpu", {
  *     zone: "us-central1-b",
@@ -32,12 +32,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - TPU Node Full
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const available = gcp.tpu.getTensorflowVersions({});
  * const tpu = new gcp.tpu.Node("tpu", {
  *     zone: "us-central1-b",
@@ -54,8 +54,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/tpu_node.html.markdown.
  */
 export class Node extends pulumi.CustomResource {
     /**

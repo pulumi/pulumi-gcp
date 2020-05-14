@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-warnings.warn("gcp.kms.Registry has been deprecated in favour of gcp.iot.Registry", DeprecationWarning)
+warnings.warn("gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry", DeprecationWarning)
 class Registry(pulumi.CustomResource):
     credentials: pulumi.Output[list]
     event_notification_configs: pulumi.Output[list]
@@ -20,12 +20,10 @@ class Registry(pulumi.CustomResource):
     project: pulumi.Output[str]
     region: pulumi.Output[str]
     state_notification_config: pulumi.Output[dict]
-    warnings.warn("gcp.kms.Registry has been deprecated in favour of gcp.iot.Registry", DeprecationWarning)
+    warnings.warn("gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, credentials=None, event_notification_configs=None, http_config=None, log_level=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None, __props__=None, __name__=None, __opts__=None):
         """
-
-        Deprecated: gcp.kms.Registry has been deprecated in favour of gcp.iot.Registry
-
+        Create a Registry resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
 
@@ -52,7 +50,7 @@ class Registry(pulumi.CustomResource):
 
           * `pubsub_topic_name` (`pulumi.Input[str]`)
         """
-        pulumi.log.warn("Registry is deprecated: gcp.kms.Registry has been deprecated in favour of gcp.iot.Registry")
+        pulumi.log.warn("Registry is deprecated: gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

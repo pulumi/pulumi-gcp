@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
- * 
+ *
  * * `gcp.dataproc.JobIAMPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
  * * `gcp.dataproc.JobIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
  * * `gcp.dataproc.JobIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
- * 
+ *
  * > **Note:** `gcp.dataproc.JobIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.JobIAMBinding` and `gcp.dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `gcp.dataproc.JobIAMPolicy` replaces the entire policy.
- * 
+ *
  * > **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
- * 
+ *
  * ## google\_pubsub\_subscription\_iam\_policy
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = gcp.organizations.getIAMPolicy({
  *     binding: [{
  *         role: "roles/editor",
@@ -36,34 +36,32 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * 
+ *
  * ## google\_pubsub\_subscription\_iam\_binding
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const editor = new gcp.dataproc.JobIAMBinding("editor", {
  *     jobId: "your-dataproc-job",
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
  * });
  * ```
- * 
+ *
  * ## google\_pubsub\_subscription\_iam\_member
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const editor = new gcp.dataproc.JobIAMMember("editor", {
  *     jobId: "your-dataproc-job",
  *     member: "user:jane@example.com",
  *     role: "roles/editor",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_job_iam.html.markdown.
  */
 export class JobIAMBinding extends pulumi.CustomResource {
     /**

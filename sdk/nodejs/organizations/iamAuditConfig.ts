@@ -8,15 +8,15 @@ import * as utilities from "../utilities";
 
 /**
  * Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const config = new gcp.organizations.IamAuditConfig("config", {
  *     auditLogConfigs: [{
  *         exemptedMembers: ["user:joebloggs@hashicorp.com"],
@@ -26,8 +26,6 @@ import * as utilities from "../utilities";
  *     service: "allServices",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_audit_config.html.markdown.
  */
 export class IamAuditConfig extends pulumi.CustomResource {
     /**

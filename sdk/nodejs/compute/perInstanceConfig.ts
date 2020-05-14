@@ -9,14 +9,12 @@ import * as utilities from "../utilities";
 /**
  * A config defined for a single managed instance that belongs to an instance group manager. It preserves the instance name
  * across instance group manager operations and can define stateful disks or metadata that are unique to the instance.
- * 
+ *
  * To get more information about PerInstanceConfig, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_per_instance_config.html.markdown.
  */
 export class PerInstanceConfig extends pulumi.CustomResource {
     /**

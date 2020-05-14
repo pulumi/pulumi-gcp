@@ -6,20 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * A repository for storing artifacts
- * 
+ *
  * To get more information about Repository, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
- * 
+ *
  * ## Example Usage - Artifact Registry Repository Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const my-repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
  *     repositoryId: "my-repository",
@@ -28,12 +28,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Artifact Registry Repository Iam
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const my-repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
  *     repositoryId: "my-repository",
@@ -51,8 +51,6 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${test-account.email}`,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/artifact_registry_repository.html.markdown.
  */
 export class Repository extends pulumi.CustomResource {
     /**

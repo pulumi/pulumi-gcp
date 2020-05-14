@@ -11,21 +11,21 @@ import * as utilities from "../utilities";
  * establish BGP peering. This information must specify the peer ASN
  * and either the interface name, IP address, or peer IP address.
  * Please refer to RFC4273.
- * 
- * 
+ *
+ *
  * To get more information about RouterBgpPeer, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
- * 
+ *
  * ## Example Usage - Router Peer Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const peer = new gcp.compute.RouterPeer("peer", {
  *     advertisedRoutePriority: 100,
  *     interface: "interface-1",
@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     router: "my-router",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_bgp_peer.html.markdown.
  */
 export class RouterPeer extends pulumi.CustomResource {
     /**

@@ -22,10 +22,8 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
     /// * How-to Guides
     ///     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
-    /// 
-    /// Deprecated: gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler
     /// </summary>
-    [Obsolete(@"gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler")]
+    [Obsolete(@"gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler")]
     public partial class Autoscalar : Pulumi.CustomResource
     {
         /// <summary>

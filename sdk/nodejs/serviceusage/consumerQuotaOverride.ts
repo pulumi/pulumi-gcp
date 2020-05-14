@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
  * A consumer override is applied to the consumer on its own authority to limit its own quota usage.
  * Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides,
  * producer overrides, or the default limit of the service.
- * 
+ *
  * To get more information about ConsumerQuotaOverride, see:
- * 
+ *
  * * How-to Guides
  *     * [Getting Started](https://cloud.google.com/service-usage/docs/getting-started)
  *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
- * 
+ *
  * ## Example Usage - Consumer Quota Override
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const myProject = new gcp.organizations.Project("myProject", {
  *     projectId: "quota",
  *     orgId: "123456789",
@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_usage_consumer_quota_override.html.markdown.
  */
 export class ConsumerQuotaOverride extends pulumi.CustomResource {
     /**

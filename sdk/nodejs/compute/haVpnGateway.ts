@@ -10,21 +10,21 @@ import * as utilities from "../utilities";
  * Represents a VPN gateway running in GCP. This virtual device is managed
  * by Google, but used only by you. This type of VPN Gateway allows for the creation
  * of VPN solutions with higher availability than classic Target VPN Gateways.
- * 
+ *
  * To get more information about HaVpnGateway, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/vpnGateways)
  * * How-to Guides
  *     * [Choosing a VPN](https://cloud.google.com/vpn/docs/how-to/choosing-a-vpn)
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
- * 
+ *
  * ## Example Usage - Ha Vpn Gateway Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const network1 = new gcp.compute.Network("network1", {autoCreateSubnetworks: false});
  * const haGateway1 = new gcp.compute.HaVpnGateway("haGateway1", {
  *     region: "us-central1",
@@ -32,12 +32,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Ha Vpn Gateway Gcp To Gcp
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const network1 = new gcp.compute.Network("network1", {
  *     routingMode: "GLOBAL",
  *     autoCreateSubnetworks: false,
@@ -175,8 +175,6 @@ import * as utilities from "../utilities";
  *     "interface": router2Interface2.name,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_ha_vpn_gateway.html.markdown.
  */
 export class HaVpnGateway extends pulumi.CustomResource {
     /**

@@ -50,6 +50,8 @@ type Subnetwork struct {
 	// creation time.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	//
+	// Deprecated: This field is not useful for users, and has been removed as an output.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress pulumi.StringOutput `pulumi:"gatewayAddress"`
@@ -144,6 +146,8 @@ type subnetworkState struct {
 	// creation time.
 	Description *string `pulumi:"description"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	//
+	// Deprecated: This field is not useful for users, and has been removed as an output.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress *string `pulumi:"gatewayAddress"`
@@ -205,6 +209,8 @@ type SubnetworkState struct {
 	// creation time.
 	Description pulumi.StringPtrInput
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	//
+	// Deprecated: This field is not useful for users, and has been removed as an output.
 	Fingerprint pulumi.StringPtrInput
 	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress pulumi.StringPtrInput

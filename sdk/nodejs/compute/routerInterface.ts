@@ -11,15 +11,15 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/routers).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const foobar = new gcp.compute.RouterInterface("foobar", {
  *     ipRange: "169.254.1.1/30",
  *     region: "us-central1",
@@ -27,8 +27,6 @@ import * as utilities from "../utilities";
  *     vpnTunnel: "tunnel-1",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_router_interface.html.markdown.
  */
 export class RouterInterface extends pulumi.CustomResource {
     /**

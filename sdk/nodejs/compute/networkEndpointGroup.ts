@@ -11,27 +11,27 @@ import * as utilities from "../utilities";
  * collections of IP address and port combinations for GCP resources within a
  * single subnet. Each IP address and port combination is called a network
  * endpoint.
- * 
+ *
  * Network endpoint groups can be used as backends in backend services for
  * HTTP(S), TCP proxy, and SSL proxy load balancers. You cannot use NEGs as a
  * backend with internal load balancers. Because NEG backends allow you to
  * specify IP addresses and ports, you can distribute traffic in a granular
  * fashion among applications or containers running within VM instances.
- * 
- * 
+ *
+ *
  * To get more information about NetworkEndpointGroup, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
- * 
+ *
  * ## Example Usage - Network Endpoint Group
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     ipCidrRange: "10.0.0.0/16",
@@ -45,8 +45,6 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_endpoint_group.html.markdown.
  */
 export class NetworkEndpointGroup extends pulumi.CustomResource {
     /**

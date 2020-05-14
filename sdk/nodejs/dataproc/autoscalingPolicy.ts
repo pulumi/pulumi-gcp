@@ -8,16 +8,16 @@ import * as utilities from "../utilities";
 
 /**
  * Describes an autoscaling policy for Dataproc cluster autoscaler.
- * 
- * 
- * 
+ *
+ *
+ *
  * ## Example Usage - Dataproc Autoscaling Policy
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const asp = new gcp.dataproc.AutoscalingPolicy("asp", {
  *     policyId: "dataproc-policy",
  *     location: "us-central1",
@@ -41,8 +41,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dataproc_autoscaling_policy.html.markdown.
  */
 export class AutoscalingPolicy extends pulumi.CustomResource {
     /**

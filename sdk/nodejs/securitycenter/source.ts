@@ -9,29 +9,27 @@ import * as utilities from "../utilities";
  * source is an entity or a mechanism that can produce a finding. A source is
  * like a container of findings that come from the same scanner, logger,
  * monitor, etc.
- * 
- * 
+ *
+ *
  * To get more information about Source, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1beta1/organizations.sources)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
- * 
+ *
  * ## Example Usage - Scc Source Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const customSource = new gcp.securitycenter.Source("customSource", {
  *     description: "My custom Cloud Security Command Center Finding Source",
  *     displayName: "My Source",
  *     organization: "123456789",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/scc_source.html.markdown.
  */
 export class Source extends pulumi.CustomResource {
     /**

@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Get the email address of a project's unique Google Cloud Storage service account.
- * 
+ *
  * Each Google Cloud project has a unique service account for use with Google Cloud Storage. Only this
  * special service account can be used to set up `gcp.storage.Notification` resources.
- * 
+ *
  * For more information see
  * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
  * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
  *     topic: google_pubsub_topic.topic.name,
@@ -30,8 +30,6 @@ import * as utilities from "../utilities";
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_storage_project_service_account.html.markdown.
  */
 export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> {
     args = args || {};

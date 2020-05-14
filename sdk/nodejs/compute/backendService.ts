@@ -11,23 +11,23 @@ import * as utilities from "../utilities";
  * traffic for load balancing. This resource is a global backend service,
  * appropriate for external load balancing or self-managed internal load balancing.
  * For managed internal load balancing, use a regional backend service instead.
- * 
+ *
  * Currently self-managed internal load balancing is only available in beta.
- * 
- * 
+ *
+ *
  * To get more information about BackendService, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
- * 
+ *
  * ## Example Usage - Backend Service Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
  *     requestPath: "/",
  *     checkIntervalSec: 1,
@@ -36,12 +36,12 @@ import * as utilities from "../utilities";
  * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {healthChecks: [defaultHttpHealthCheck.id]});
  * ```
  * ## Example Usage - Backend Service Traffic Director Round Robin
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
  *     port: 80,
  * }});
@@ -52,12 +52,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Backend Service Traffic Director Ring Hash
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
  *     port: 80,
  * }});
@@ -83,8 +83,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_service.html.markdown.
  */
 export class BackendService extends pulumi.CustomResource {
     /**

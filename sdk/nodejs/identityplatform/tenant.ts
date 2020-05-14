@@ -8,30 +8,28 @@ import * as utilities from "../utilities";
 
 /**
  * Tenant configuration in a multi-tenant project.
- * 
+ *
  * You must enable the
  * [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
  * the marketplace prior to using this resource.
- * 
+ *
  * You must [enable multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy-quickstart) via
  * the Cloud Console prior to creating tenants.
- * 
- * 
- * 
+ *
+ *
+ *
  * ## Example Usage - Identity Platform Tenant Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const tenant = new gcp.identityplatform.Tenant("tenant", {
  *     allowPasswordSignup: true,
  *     displayName: "tenant",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/identity_platform_tenant.html.markdown.
  */
 export class Tenant extends pulumi.CustomResource {
     /**
