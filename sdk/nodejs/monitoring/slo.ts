@@ -80,9 +80,11 @@ export class Slo extends pulumi.CustomResource {
      * Basic Service-Level Indicator (SLI) on a well-known service type.
      * Performance will be computed on the basis of pre-defined metrics.
      * SLIs are used to measure and calculate the quality of the Service's
-     * performance with respect to a single aspect of service quality.  Structure is documented below.
+     * performance with respect to a single aspect of service quality.
+     * Exactly one of the following must be set:
+     * `basicSli`, `requestBasedSli`  Structure is documented below.
      */
-    public readonly basicSli!: pulumi.Output<outputs.monitoring.SloBasicSli>;
+    public readonly basicSli!: pulumi.Output<outputs.monitoring.SloBasicSli | undefined>;
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
@@ -107,6 +109,16 @@ export class Slo extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * A request-based SLI defines a SLI for which atomic units of
+     * service are counted directly.
+     * A SLI describes a good service.
+     * It is used to measure and calculate the quality of the Service's
+     * performance with respect to a single aspect of service quality.
+     * Exactly one of the following must be set:
+     * `basicSli`, `requestBasedSli`  Structure is documented below.
+     */
+    public readonly requestBasedSli!: pulumi.Output<outputs.monitoring.SloRequestBasedSli | undefined>;
     /**
      * A rolling time period, semantically "in the past X days".
      * Must be between 1 to 30 days, inclusive.
@@ -139,14 +151,12 @@ export class Slo extends pulumi.CustomResource {
             inputs["goal"] = state ? state.goal : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["requestBasedSli"] = state ? state.requestBasedSli : undefined;
             inputs["rollingPeriodDays"] = state ? state.rollingPeriodDays : undefined;
             inputs["service"] = state ? state.service : undefined;
             inputs["sloId"] = state ? state.sloId : undefined;
         } else {
             const args = argsOrState as SloArgs | undefined;
-            if (!args || args.basicSli === undefined) {
-                throw new Error("Missing required property 'basicSli'");
-            }
             if (!args || args.goal === undefined) {
                 throw new Error("Missing required property 'goal'");
             }
@@ -158,6 +168,7 @@ export class Slo extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["goal"] = args ? args.goal : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestBasedSli"] = args ? args.requestBasedSli : undefined;
             inputs["rollingPeriodDays"] = args ? args.rollingPeriodDays : undefined;
             inputs["service"] = args ? args.service : undefined;
             inputs["sloId"] = args ? args.sloId : undefined;
@@ -182,7 +193,9 @@ export interface SloState {
      * Basic Service-Level Indicator (SLI) on a well-known service type.
      * Performance will be computed on the basis of pre-defined metrics.
      * SLIs are used to measure and calculate the quality of the Service's
-     * performance with respect to a single aspect of service quality.  Structure is documented below.
+     * performance with respect to a single aspect of service quality.
+     * Exactly one of the following must be set:
+     * `basicSli`, `requestBasedSli`  Structure is documented below.
      */
     readonly basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
     /**
@@ -210,6 +223,16 @@ export interface SloState {
      */
     readonly project?: pulumi.Input<string>;
     /**
+     * A request-based SLI defines a SLI for which atomic units of
+     * service are counted directly.
+     * A SLI describes a good service.
+     * It is used to measure and calculate the quality of the Service's
+     * performance with respect to a single aspect of service quality.
+     * Exactly one of the following must be set:
+     * `basicSli`, `requestBasedSli`  Structure is documented below.
+     */
+    readonly requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
+    /**
      * A rolling time period, semantically "in the past X days".
      * Must be between 1 to 30 days, inclusive.
      */
@@ -232,9 +255,11 @@ export interface SloArgs {
      * Basic Service-Level Indicator (SLI) on a well-known service type.
      * Performance will be computed on the basis of pre-defined metrics.
      * SLIs are used to measure and calculate the quality of the Service's
-     * performance with respect to a single aspect of service quality.  Structure is documented below.
+     * performance with respect to a single aspect of service quality.
+     * Exactly one of the following must be set:
+     * `basicSli`, `requestBasedSli`  Structure is documented below.
      */
-    readonly basicSli: pulumi.Input<inputs.monitoring.SloBasicSli>;
+    readonly basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
@@ -254,6 +279,16 @@ export interface SloArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * A request-based SLI defines a SLI for which atomic units of
+     * service are counted directly.
+     * A SLI describes a good service.
+     * It is used to measure and calculate the quality of the Service's
+     * performance with respect to a single aspect of service quality.
+     * Exactly one of the following must be set:
+     * `basicSli`, `requestBasedSli`  Structure is documented below.
+     */
+    readonly requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
     /**
      * A rolling time period, semantically "in the past X days".
      * Must be between 1 to 30 days, inclusive.

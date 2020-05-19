@@ -125,8 +125,7 @@ class DatabaseInstance(pulumi.CustomResource):
         First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
         for information on how to upgrade to Second Generation instances.
         A list of Google App Engine (GAE) project names that are allowed to access this instance.
-      * `availabilityType` (`str`) - This specifies whether a PostgreSQL instance
-        should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+      * `availabilityType` (`str`) - The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
       * `backupConfiguration` (`dict`)
         * `binaryLogEnabled` (`bool`) - True if binary logging is enabled. If
           `settings.backup_configuration.enabled` is false, this must be as well.
@@ -338,8 +337,7 @@ class DatabaseInstance(pulumi.CustomResource):
             First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
             for information on how to upgrade to Second Generation instances.
             A list of Google App Engine (GAE) project names that are allowed to access this instance.
-          * `availabilityType` (`pulumi.Input[str]`) - This specifies whether a PostgreSQL instance
-            should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+          * `availabilityType` (`pulumi.Input[str]`) - The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
           * `backupConfiguration` (`pulumi.Input[dict]`)
             * `binaryLogEnabled` (`pulumi.Input[bool]`) - True if binary logging is enabled. If
               `settings.backup_configuration.enabled` is false, this must be as well.
@@ -545,8 +543,7 @@ class DatabaseInstance(pulumi.CustomResource):
             First Generation instances are now deprecated, see [here](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
             for information on how to upgrade to Second Generation instances.
             A list of Google App Engine (GAE) project names that are allowed to access this instance.
-          * `availabilityType` (`pulumi.Input[str]`) - This specifies whether a PostgreSQL instance
-            should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+          * `availabilityType` (`pulumi.Input[str]`) - The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
           * `backupConfiguration` (`pulumi.Input[dict]`)
             * `binaryLogEnabled` (`pulumi.Input[bool]`) - True if binary logging is enabled. If
               `settings.backup_configuration.enabled` is false, this must be as well.

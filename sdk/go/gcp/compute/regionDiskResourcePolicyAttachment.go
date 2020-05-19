@@ -13,7 +13,7 @@ import (
 // Adds existing resource policies to a disk. You can only add one policy
 // which will be applied to this disk for scheduling snapshot creation.
 //
-// > **Note:** This resource does not support zonal disks (`compute.Disk`).
+// > **Note:** This resource does not support zonal disks (`compute.Disk`). For zonal disks, please refer to the `compute.DiskResourcePolicyAttachment` resource.
 type RegionDiskResourcePolicyAttachment struct {
 	pulumi.CustomResourceState
 

@@ -26,8 +26,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedGaeApplications;
         /// <summary>
-        /// This specifies whether a PostgreSQL instance
-        /// should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+        /// The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
         /// </summary>
         public readonly string? AvailabilityType;
         public readonly Outputs.DatabaseInstanceSettingsBackupConfiguration? BackupConfiguration;

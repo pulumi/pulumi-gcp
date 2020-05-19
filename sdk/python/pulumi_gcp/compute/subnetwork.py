@@ -166,7 +166,7 @@ class Subnetwork(pulumi.CustomResource):
         network_with_private_secondary_ip_ranges = gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges",
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
-            network=custom_test.self_link,
+            network=custom_test.id,
             secondary_ip_range=[{
                 "rangeName": "tf-test-secondary-range-update1",
                 "ipCidrRange": "192.168.10.0/24",
@@ -183,7 +183,7 @@ class Subnetwork(pulumi.CustomResource):
         subnet_with_logging = gcp.compute.Subnetwork("subnet-with-logging",
             ip_cidr_range="10.2.0.0/16",
             region="us-central1",
-            network=custom_test.self_link,
+            network=custom_test.id,
             log_config={
                 "aggregationInterval": "INTERVAL_10_MIN",
                 "flowSampling": 0.5,
@@ -203,7 +203,7 @@ class Subnetwork(pulumi.CustomResource):
             region="us-central1",
             purpose="INTERNAL_HTTPS_LOAD_BALANCER",
             role="ACTIVE",
-            network=custom_test.self_link)
+            network=custom_test.id)
         ```
 
         :param str resource_name: The name of the resource.

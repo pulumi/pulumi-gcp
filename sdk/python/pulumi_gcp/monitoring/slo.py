@@ -15,7 +15,9 @@ class Slo(pulumi.CustomResource):
     Basic Service-Level Indicator (SLI) on a well-known service type.
     Performance will be computed on the basis of pre-defined metrics.
     SLIs are used to measure and calculate the quality of the Service's
-    performance with respect to a single aspect of service quality.  Structure is documented below.
+    performance with respect to a single aspect of service quality.
+    Exactly one of the following must be set:
+    `basic_sli`, `request_based_sli`  Structure is documented below.
 
       * `latency` (`dict`) - Parameters for a latency threshold SLI.  Structure is documented below.
         * `threshold` (`str`) - A duration string, e.g. 10s.
@@ -65,6 +67,65 @@ class Slo(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
+    request_based_sli: pulumi.Output[dict]
+    """
+    A request-based SLI defines a SLI for which atomic units of
+    service are counted directly.
+    A SLI describes a good service.
+    It is used to measure and calculate the quality of the Service's
+    performance with respect to a single aspect of service quality.
+    Exactly one of the following must be set:
+    `basic_sli`, `request_based_sli`  Structure is documented below.
+
+      * `distributionCut` (`dict`) - Used when good_service is defined by a count of values aggregated in a
+        Distribution that fall into a good range. The total_service is the
+        total count of all values aggregated in the Distribution.
+        Defines a distribution TimeSeries filter and thresholds used for
+        measuring good service and total service.
+        Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+        * `distributionFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+          aggregating values to quantify the good service provided.
+          Must have ValueType = DISTRIBUTION and
+          MetricKind = DELTA or MetricKind = CUMULATIVE.
+        * `range` (`dict`) - Range of numerical values. The computed good_service
+          will be the count of values x in the Distribution such
+          that range.min <= x < range.max. inclusive of min and
+          exclusive of max. Open ranges can be defined by setting
+          just one of min or max.  Structure is documented below.
+          * `max` (`float`) - max value for the range (inclusive). If not given,
+            will be set to "infinity", defining an open range
+            ">= range.min"
+          * `min` (`float`) - Min value for the range (inclusive). If not given,
+            will be set to "-infinity", defining an open range
+            "< range.max"
+
+      * `goodTotalRatio` (`dict`) - A means to compute a ratio of `good_service` to `total_service`.
+        Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+        Must specify exactly two of good, bad, and total service filters.
+        The relationship good_service + bad_service = total_service
+        will be assumed.
+        Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+        * `badServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+          quantifying bad service provided, either demanded service that
+          was not provided or demanded service that was of inadequate
+          quality.
+          Must have ValueType = DOUBLE or ValueType = INT64 and
+          must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+          Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
+          must be set (good + bad = total is assumed).
+        * `goodServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+          quantifying good service provided.
+          Must have ValueType = DOUBLE or ValueType = INT64 and
+          must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+          Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
+          must be set (good + bad = total is assumed).
+        * `totalServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+          quantifying total demanded service.
+          Must have ValueType = DOUBLE or ValueType = INT64 and
+          must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+          Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
+          must be set (good + bad = total is assumed).
+    """
     rolling_period_days: pulumi.Output[float]
     """
     A rolling time period, semantically "in the past X days".
@@ -78,7 +139,7 @@ class Slo(pulumi.CustomResource):
     """
     The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
     """
-    def __init__(__self__, resource_name, opts=None, basic_sli=None, calendar_period=None, display_name=None, goal=None, project=None, rolling_period_days=None, service=None, slo_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, basic_sli=None, calendar_period=None, display_name=None, goal=None, project=None, request_based_sli=None, rolling_period_days=None, service=None, slo_id=None, __props__=None, __name__=None, __opts__=None):
         """
         A Service-Level Objective (SLO) describes the level of desired good
         service. It consists of a service-level indicator (SLI), a performance
@@ -122,7 +183,9 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[dict] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
                Performance will be computed on the basis of pre-defined metrics.
                SLIs are used to measure and calculate the quality of the Service's
-               performance with respect to a single aspect of service quality.  Structure is documented below.
+               performance with respect to a single aspect of service quality.
+               Exactly one of the following must be set:
+               `basic_sli`, `request_based_sli`  Structure is documented below.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
@@ -130,6 +193,13 @@ class Slo(pulumi.CustomResource):
                to be met. 0 < goal <= 0.999
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] request_based_sli: A request-based SLI defines a SLI for which atomic units of
+               service are counted directly.
+               A SLI describes a good service.
+               It is used to measure and calculate the quality of the Service's
+               performance with respect to a single aspect of service quality.
+               Exactly one of the following must be set:
+               `basic_sli`, `request_based_sli`  Structure is documented below.
         :param pulumi.Input[float] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
@@ -160,6 +230,57 @@ class Slo(pulumi.CustomResource):
             this SLI applies to all API versions. For service types
             that don't support breaking down by version, setting this
             field will result in an error.
+
+        The **request_based_sli** object supports the following:
+
+          * `distributionCut` (`pulumi.Input[dict]`) - Used when good_service is defined by a count of values aggregated in a
+            Distribution that fall into a good range. The total_service is the
+            total count of all values aggregated in the Distribution.
+            Defines a distribution TimeSeries filter and thresholds used for
+            measuring good service and total service.
+            Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+            * `distributionFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              aggregating values to quantify the good service provided.
+              Must have ValueType = DISTRIBUTION and
+              MetricKind = DELTA or MetricKind = CUMULATIVE.
+            * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
+              will be the count of values x in the Distribution such
+              that range.min <= x < range.max. inclusive of min and
+              exclusive of max. Open ranges can be defined by setting
+              just one of min or max.  Structure is documented below.
+              * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
+                will be set to "infinity", defining an open range
+                ">= range.min"
+              * `min` (`pulumi.Input[float]`) - Min value for the range (inclusive). If not given,
+                will be set to "-infinity", defining an open range
+                "< range.max"
+
+          * `goodTotalRatio` (`pulumi.Input[dict]`) - A means to compute a ratio of `good_service` to `total_service`.
+            Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+            Must specify exactly two of good, bad, and total service filters.
+            The relationship good_service + bad_service = total_service
+            will be assumed.
+            Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+            * `badServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              quantifying bad service provided, either demanded service that
+              was not provided or demanded service that was of inadequate
+              quality.
+              Must have ValueType = DOUBLE or ValueType = INT64 and
+              must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
+              must be set (good + bad = total is assumed).
+            * `goodServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              quantifying good service provided.
+              Must have ValueType = DOUBLE or ValueType = INT64 and
+              must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
+              must be set (good + bad = total is assumed).
+            * `totalServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              quantifying total demanded service.
+              Must have ValueType = DOUBLE or ValueType = INT64 and
+              must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
+              must be set (good + bad = total is assumed).
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -178,8 +299,6 @@ class Slo(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if basic_sli is None:
-                raise TypeError("Missing required property 'basic_sli'")
             __props__['basic_sli'] = basic_sli
             __props__['calendar_period'] = calendar_period
             __props__['display_name'] = display_name
@@ -187,6 +306,7 @@ class Slo(pulumi.CustomResource):
                 raise TypeError("Missing required property 'goal'")
             __props__['goal'] = goal
             __props__['project'] = project
+            __props__['request_based_sli'] = request_based_sli
             __props__['rolling_period_days'] = rolling_period_days
             if service is None:
                 raise TypeError("Missing required property 'service'")
@@ -200,7 +320,7 @@ class Slo(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, basic_sli=None, calendar_period=None, display_name=None, goal=None, name=None, project=None, rolling_period_days=None, service=None, slo_id=None):
+    def get(resource_name, id, opts=None, basic_sli=None, calendar_period=None, display_name=None, goal=None, name=None, project=None, request_based_sli=None, rolling_period_days=None, service=None, slo_id=None):
         """
         Get an existing Slo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -211,7 +331,9 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[dict] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
                Performance will be computed on the basis of pre-defined metrics.
                SLIs are used to measure and calculate the quality of the Service's
-               performance with respect to a single aspect of service quality.  Structure is documented below.
+               performance with respect to a single aspect of service quality.
+               Exactly one of the following must be set:
+               `basic_sli`, `request_based_sli`  Structure is documented below.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
@@ -221,6 +343,13 @@ class Slo(pulumi.CustomResource):
                projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] request_based_sli: A request-based SLI defines a SLI for which atomic units of
+               service are counted directly.
+               A SLI describes a good service.
+               It is used to measure and calculate the quality of the Service's
+               performance with respect to a single aspect of service quality.
+               Exactly one of the following must be set:
+               `basic_sli`, `request_based_sli`  Structure is documented below.
         :param pulumi.Input[float] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
@@ -251,6 +380,57 @@ class Slo(pulumi.CustomResource):
             this SLI applies to all API versions. For service types
             that don't support breaking down by version, setting this
             field will result in an error.
+
+        The **request_based_sli** object supports the following:
+
+          * `distributionCut` (`pulumi.Input[dict]`) - Used when good_service is defined by a count of values aggregated in a
+            Distribution that fall into a good range. The total_service is the
+            total count of all values aggregated in the Distribution.
+            Defines a distribution TimeSeries filter and thresholds used for
+            measuring good service and total service.
+            Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+            * `distributionFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              aggregating values to quantify the good service provided.
+              Must have ValueType = DISTRIBUTION and
+              MetricKind = DELTA or MetricKind = CUMULATIVE.
+            * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
+              will be the count of values x in the Distribution such
+              that range.min <= x < range.max. inclusive of min and
+              exclusive of max. Open ranges can be defined by setting
+              just one of min or max.  Structure is documented below.
+              * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
+                will be set to "infinity", defining an open range
+                ">= range.min"
+              * `min` (`pulumi.Input[float]`) - Min value for the range (inclusive). If not given,
+                will be set to "-infinity", defining an open range
+                "< range.max"
+
+          * `goodTotalRatio` (`pulumi.Input[dict]`) - A means to compute a ratio of `good_service` to `total_service`.
+            Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+            Must specify exactly two of good, bad, and total service filters.
+            The relationship good_service + bad_service = total_service
+            will be assumed.
+            Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+            * `badServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              quantifying bad service provided, either demanded service that
+              was not provided or demanded service that was of inadequate
+              quality.
+              Must have ValueType = DOUBLE or ValueType = INT64 and
+              must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
+              must be set (good + bad = total is assumed).
+            * `goodServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              quantifying good service provided.
+              Must have ValueType = DOUBLE or ValueType = INT64 and
+              must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
+              must be set (good + bad = total is assumed).
+            * `totalServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              quantifying total demanded service.
+              Must have ValueType = DOUBLE or ValueType = INT64 and
+              must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
+              must be set (good + bad = total is assumed).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -262,6 +442,7 @@ class Slo(pulumi.CustomResource):
         __props__["goal"] = goal
         __props__["name"] = name
         __props__["project"] = project
+        __props__["request_based_sli"] = request_based_sli
         __props__["rolling_period_days"] = rolling_period_days
         __props__["service"] = service
         __props__["slo_id"] = slo_id

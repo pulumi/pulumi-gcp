@@ -33,30 +33,30 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [defaultHttpHealthCheck.selfLink],
+ *     healthChecks: [defaultHttpHealthCheck.id],
  * });
  * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
  *     description: "a description",
- *     defaultService: defaultBackendService.selfLink,
+ *     defaultService: defaultBackendService.id,
  *     host_rule: [{
  *         hosts: ["mysite.com"],
  *         pathMatcher: "allpaths",
  *     }],
  *     path_matcher: [{
  *         name: "allpaths",
- *         defaultService: defaultBackendService.selfLink,
+ *         defaultService: defaultBackendService.id,
  *         path_rule: [{
  *             paths: ["/*"],
- *             service: defaultBackendService.selfLink,
+ *             service: defaultBackendService.id,
  *         }],
  *     }],
  * });
  * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {
  *     description: "a description",
- *     urlMap: defaultURLMap.selfLink,
+ *     urlMap: defaultURLMap.id,
  * });
  * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
- *     target: defaultTargetHttpProxy.selfLink,
+ *     target: defaultTargetHttpProxy.id,
  *     portRange: "80",
  * });
  * ```
@@ -109,30 +109,30 @@ import * as utilities from "../utilities";
  *         capacityScaler: 0.4,
  *         maxRatePerInstance: 50,
  *     }],
- *     healthChecks: [defaultHealthCheck.selfLink],
+ *     healthChecks: [defaultHealthCheck.id],
  * });
  * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
  *     description: "a description",
- *     defaultService: defaultBackendService.selfLink,
+ *     defaultService: defaultBackendService.id,
  *     host_rule: [{
  *         hosts: ["mysite.com"],
  *         pathMatcher: "allpaths",
  *     }],
  *     path_matcher: [{
  *         name: "allpaths",
- *         defaultService: defaultBackendService.selfLink,
+ *         defaultService: defaultBackendService.id,
  *         path_rule: [{
  *             paths: ["/*"],
- *             service: defaultBackendService.selfLink,
+ *             service: defaultBackendService.id,
  *         }],
  *     }],
  * });
  * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {
  *     description: "a description",
- *     urlMap: defaultURLMap.selfLink,
+ *     urlMap: defaultURLMap.id,
  * });
  * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
- *     target: defaultTargetHttpProxy.selfLink,
+ *     target: defaultTargetHttpProxy.id,
  *     portRange: "80",
  *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
  *     ipAddress: "0.0.0.0",

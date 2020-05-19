@@ -28,6 +28,9 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        /// "storage.googleapis.com/[GCS_BUCKET]"
+        /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
         /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Output("destination")]
@@ -123,6 +126,9 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        /// "storage.googleapis.com/[GCS_BUCKET]"
+        /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
         /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination", required: true)]
@@ -172,6 +178,9 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        /// "storage.googleapis.com/[GCS_BUCKET]"
+        /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
         /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination")]

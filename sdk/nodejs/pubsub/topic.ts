@@ -37,8 +37,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "global"});
- * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.selfLink});
- * const example = new gcp.pubsub.Topic("example", {kmsKeyName: cryptoKey.selfLink});
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
+ * const example = new gcp.pubsub.Topic("example", {kmsKeyName: cryptoKey.id});
  * ```
  * ## Example Usage - Pubsub Topic Geo Restricted
  * 

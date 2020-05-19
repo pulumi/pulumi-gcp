@@ -29,8 +29,8 @@ import * as utilities from "../utilities";
  * const networkPrimary = new gcp.compute.Network("networkPrimary", {autoCreateSubnetworks: "false"});
  * const networkSecondary = new gcp.compute.Network("networkSecondary", {autoCreateSubnetworks: "false"});
  * const peeringPrimary = new gcp.compute.NetworkPeering("peeringPrimary", {
- *     network: networkPrimary.selfLink,
- *     peerNetwork: networkSecondary.selfLink,
+ *     network: networkPrimary.id,
+ *     peerNetwork: networkSecondary.id,
  *     importCustomRoutes: true,
  *     exportCustomRoutes: true,
  * });
@@ -41,8 +41,8 @@ import * as utilities from "../utilities";
  *     exportCustomRoutes: true,
  * });
  * const peeringSecondary = new gcp.compute.NetworkPeering("peeringSecondary", {
- *     network: networkSecondary.selfLink,
- *     peerNetwork: networkPrimary.selfLink,
+ *     network: networkSecondary.id,
+ *     peerNetwork: networkPrimary.id,
  * });
  * ```
  *

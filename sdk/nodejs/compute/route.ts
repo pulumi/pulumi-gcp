@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     ipCidrRange: "10.0.1.0/24",
  *     region: "us-central1",
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  * });
  * const hc = new gcp.compute.HealthCheck("hc", {
  *     checkIntervalSec: 1,
@@ -74,12 +74,12 @@ import * as utilities from "../utilities";
  * });
  * const backend = new gcp.compute.RegionBackendService("backend", {
  *     region: "us-central1",
- *     healthChecks: [hc.selfLink],
+ *     healthChecks: [hc.id],
  * });
  * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
  *     region: "us-central1",
  *     loadBalancingScheme: "INTERNAL",
- *     backendService: backend.selfLink,
+ *     backendService: backend.id,
  *     allPorts: true,
  *     network: defaultNetwork.name,
  *     subnetwork: defaultSubnetwork.name,
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * const route-ilb = new gcp.compute.Route("route-ilb", {
  *     destRange: "0.0.0.0/0",
  *     network: defaultNetwork.name,
- *     nextHopIlb: defaultForwardingRule.selfLink,
+ *     nextHopIlb: defaultForwardingRule.id,
  *     priority: 2000,
  * });
  * ```

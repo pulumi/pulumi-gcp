@@ -39,29 +39,29 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [defaultRegionHealthCheck.selfLink],
+ *     healthChecks: [defaultRegionHealthCheck.id],
  * });
  * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
  *     region: "us-central1",
  *     description: "a description",
- *     defaultService: defaultRegionBackendService.selfLink,
+ *     defaultService: defaultRegionBackendService.id,
  *     host_rule: [{
  *         hosts: ["mysite.com"],
  *         pathMatcher: "allpaths",
  *     }],
  *     path_matcher: [{
  *         name: "allpaths",
- *         defaultService: defaultRegionBackendService.selfLink,
+ *         defaultService: defaultRegionBackendService.id,
  *         path_rule: [{
  *             paths: ["/*"],
- *             service: defaultRegionBackendService.selfLink,
+ *             service: defaultRegionBackendService.id,
  *         }],
  *     }],
  * });
  * const defaultRegionTargetHttpsProxy = new gcp.compute.RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy", {
  *     region: "us-central1",
- *     urlMap: defaultRegionUrlMap.selfLink,
- *     sslCertificates: [defaultRegionSslCertificate.selfLink],
+ *     urlMap: defaultRegionUrlMap.id,
+ *     sslCertificates: [defaultRegionSslCertificate.id],
  * });
  * ```
  *

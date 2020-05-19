@@ -36,11 +36,11 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  * });
  * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
- *     network: defaultNetwork.selfLink,
- *     subnetwork: defaultSubnetwork.selfLink,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
  *     defaultPort: "90",
  *     zone: "us-central1-a",
  * });

@@ -79,8 +79,8 @@ class TargetTCPProxy(pulumi.CustomResource):
         default_backend_service = gcp.compute.BackendService("defaultBackendService",
             protocol="TCP",
             timeout_sec=10,
-            health_checks=[default_health_check.self_link])
-        default_target_tcp_proxy = gcp.compute.TargetTCPProxy("defaultTargetTCPProxy", backend_service=default_backend_service.self_link)
+            health_checks=[default_health_check.id])
+        default_target_tcp_proxy = gcp.compute.TargetTCPProxy("defaultTargetTCPProxy", backend_service=default_backend_service.id)
         ```
 
         :param str resource_name: The name of the resource.

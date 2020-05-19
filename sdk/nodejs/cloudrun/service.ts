@@ -28,8 +28,10 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/run/docs/)
  * 
- * ## Example Usage - Cloud Run Service Basic
  * 
+ * ## Example Usage
+ * 
+ * ### Cloud Run Service Basic
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,8 +52,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Cloud Run Service Sql
  * 
+ * ### Cloud Run Service Sql
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -70,7 +72,7 @@ import * as utilities from "../utilities";
  *         metadata: {
  *             annotations: {
  *                 "autoscaling.knative.dev/maxScale": "1000",
- *                 "run.googleapis.com/client-name": "cloud-console",
+ *                 "run.googleapis.com/client-name": "demo",
  *                 "run.googleapis.com/cloudsql-instances": pulumi.interpolate`my-project-name:us-central1:${instance.name}`,
  *             },
  *         },
@@ -82,38 +84,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Cloud Run Service Noauth
  * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const default = new gcp.cloudrun.Service("default", {
- *     location: "us-central1",
- *     template: {
- *         spec: {
- *             containers: [{
- *                 image: "gcr.io/cloudrun/hello",
- *             }],
- *         },
- *     },
- * });
- * const noauthIAMPolicy = gcp.organizations.getIAMPolicy({
- *     binding: [{
- *         role: "roles/run.invoker",
- *         members: ["allUsers"],
- *     }],
- * });
- * const noauthIamPolicy = new gcp.cloudrun.IamPolicy("noauthIamPolicy", {
- *     location: default.location,
- *     project: default.project,
- *     service: default.name,
- *     policyData: noauthIAMPolicy.then(noauthIAMPolicy => noauthIAMPolicy.policyData),
- * });
- * ```
- * ## Example Usage - Cloud Run Service Multiple Environment Variables
- * 
+ * ### Cloud Run Service Multiple Environment Variables
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -143,6 +115,39 @@ import * as utilities from "../utilities";
  *         latestRevision: true,
  *         percent: 100,
  *     }],
+ * });
+ * ```
+ * 
+ * ## Example Usage - Cloud Run Service Traffic Split
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * 
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         metadata: {
+ *             name: "cloudrun-srv-green",
+ *         },
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [
+ *         {
+ *             percent: 25,
+ *             revisionName: "cloudrun-srv-green",
+ *         },
+ *         {
+ *             percent: 75,
+ *             // This revision needs to already exist
+ *             revisionName: "cloudrun-srv-blue",
+ *         },
+ *     ],
  * });
  * ```
  *

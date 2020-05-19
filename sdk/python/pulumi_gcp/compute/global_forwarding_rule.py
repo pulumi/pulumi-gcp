@@ -172,27 +172,27 @@ class GlobalForwardingRule(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default_http_health_check.self_link])
+            health_checks=[default_http_health_check.id])
         default_url_map = gcp.compute.URLMap("defaultURLMap",
             description="a description",
-            default_service=default_backend_service.self_link,
+            default_service=default_backend_service.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.self_link,
+                "defaultService": default_backend_service.id,
                 "path_rule": [{
                     "paths": ["/*"],
-                    "service": default_backend_service.self_link,
+                    "service": default_backend_service.id,
                 }],
             }])
         default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
             description="a description",
-            url_map=default_url_map.self_link)
+            url_map=default_url_map.id)
         default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
-            target=default_target_http_proxy.self_link,
+            target=default_target_http_proxy.id,
             port_range="80")
         ```
         ## Example Usage - Global Forwarding Rule Internal
@@ -239,27 +239,27 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 "capacityScaler": 0.4,
                 "maxRatePerInstance": 50,
             }],
-            health_checks=[default_health_check.self_link])
+            health_checks=[default_health_check.id])
         default_url_map = gcp.compute.URLMap("defaultURLMap",
             description="a description",
-            default_service=default_backend_service.self_link,
+            default_service=default_backend_service.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": default_backend_service.self_link,
+                "defaultService": default_backend_service.id,
                 "path_rule": [{
                     "paths": ["/*"],
-                    "service": default_backend_service.self_link,
+                    "service": default_backend_service.id,
                 }],
             }])
         default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
             description="a description",
-            url_map=default_url_map.self_link)
+            url_map=default_url_map.id)
         default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
-            target=default_target_http_proxy.self_link,
+            target=default_target_http_proxy.id,
             port_range="80",
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             ip_address="0.0.0.0",

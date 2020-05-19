@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {
  *     region: "us-central1",
- *     healthChecks: [defaultHealthCheck.selfLink],
+ *     healthChecks: [defaultHealthCheck.id],
  *     connectionDrainingTimeoutSec: 10,
  *     sessionAffinity: "CLIENT_IP",
  * });
@@ -45,17 +45,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {
- *     httpHealthCheck: {
- *         port: 80,
- *     },
- * });
- * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
- *     healthChecks: healthCheck.selfLink,
+ * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
+ *     port: 80,
+ * }});
+ * const default = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     healthChecks: [healthCheck.id],
+ *     protocol: "HTTP",
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  *     localityLbPolicy: "ROUND_ROBIN",
- *     protocol: "HTTP",
- *     region: "us-central1",
  * });
  * ```
  * ## Example Usage - Region Backend Service Ilb Ring Hash
@@ -65,33 +63,31 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {
- *     httpHealthCheck: {
- *         port: 80,
- *     },
- * });
- * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
- *     circuitBreakers: {
- *         maxConnections: 10,
- *     },
- *     consistentHash: {
- *         httpCookie: {
- *             name: "mycookie",
- *             ttl: {
- *                 nanos: 1111,
- *                 seconds: 11,
- *             },
- *         },
- *     },
- *     healthChecks: healthCheck.selfLink,
+ * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
+ *     port: 80,
+ * }});
+ * const default = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     healthChecks: [healthCheck.id],
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  *     localityLbPolicy: "RING_HASH",
- *     outlierDetection: {
+ *     sessionAffinity: "HTTP_COOKIE",
+ *     protocol: "HTTP",
+ *     circuit_breakers: {
+ *         maxConnections: 10,
+ *     },
+ *     consistent_hash: {
+ *         http_cookie: {
+ *             ttl: {
+ *                 seconds: 11,
+ *                 nanos: 1111,
+ *             },
+ *             name: "mycookie",
+ *         },
+ *     },
+ *     outlier_detection: {
  *         consecutiveErrors: 2,
  *     },
- *     protocol: "HTTP",
- *     region: "us-central1",
- *     sessionAffinity: "HTTP_COOKIE",
  * });
  * ```
  * ## Example Usage - Region Backend Service Balancing Mode
@@ -112,13 +108,13 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     ipCidrRange: "10.1.2.0/24",
  *     region: "us-central1",
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  * });
  * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
  *     machineType: "n1-standard-1",
  *     network_interface: [{
- *         network: defaultNetwork.selfLink,
- *         subnetwork: defaultSubnetwork.selfLink,
+ *         network: defaultNetwork.id,
+ *         subnetwork: defaultSubnetwork.id,
  *     }],
  *     disk: [{
  *         sourceImage: debianImage.then(debianImage => debianImage.selfLink),
@@ -155,7 +151,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [defaultRegionHealthCheck.selfLink],
+ *     healthChecks: [defaultRegionHealthCheck.id],
  * });
  * ```
  *
@@ -297,6 +293,16 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.RegionBackendServiceOutlierDetection | undefined>;
     /**
+     * A named port on a backend instance group representing the port for
+     * communication to the backend VMs in that group. Required when the
+     * loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+     * and the backends are instance groups. The named port must be defined on each
+     * backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
+     * default of "http" if not given.
+     * Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+     */
+    public readonly portName!: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -355,6 +361,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["outlierDetection"] = state ? state.outlierDetection : undefined;
+            inputs["portName"] = state ? state.portName : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["protocol"] = state ? state.protocol : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -380,6 +387,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["outlierDetection"] = args ? args.outlierDetection : undefined;
+            inputs["portName"] = args ? args.portName : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -512,6 +520,16 @@ export interface RegionBackendServiceState {
      * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
      */
     readonly outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
+    /**
+     * A named port on a backend instance group representing the port for
+     * communication to the backend VMs in that group. Required when the
+     * loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+     * and the backends are instance groups. The named port must be defined on each
+     * backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
+     * default of "http" if not given.
+     * Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+     */
+    readonly portName?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -647,6 +665,16 @@ export interface RegionBackendServiceArgs {
      * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
      */
     readonly outlierDetection?: pulumi.Input<inputs.compute.RegionBackendServiceOutlierDetection>;
+    /**
+     * A named port on a backend instance group representing the port for
+     * communication to the backend VMs in that group. Required when the
+     * loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+     * and the backends are instance groups. The named port must be defined on each
+     * backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
+     * default of "http" if not given.
+     * Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+     */
+    readonly portName?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

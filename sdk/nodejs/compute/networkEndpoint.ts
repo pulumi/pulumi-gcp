@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     ipCidrRange: "10.0.0.1/16",
  *     region: "us-central1",
- *     network: defaultNetwork.selfLink,
+ *     network: defaultNetwork.id,
  * });
  * const endpoint-instance = new gcp.compute.Instance("endpoint-instance", {
  *     machineType: "n1-standard-1",
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     network_interface: [{
- *         subnetwork: defaultSubnetwork.selfLink,
+ *         subnetwork: defaultSubnetwork.id,
  *         access_config: [{}],
  *     }],
  * });
@@ -56,8 +56,8 @@ import * as utilities from "../utilities";
  *     ipAddress: endpoint-instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
  * });
  * const group = new gcp.compute.NetworkEndpointGroup("group", {
- *     network: defaultNetwork.selfLink,
- *     subnetwork: defaultSubnetwork.selfLink,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
  *     defaultPort: "90",
  *     zone: "us-central1-a",
  * });

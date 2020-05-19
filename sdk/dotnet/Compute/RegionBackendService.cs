@@ -162,6 +162,18 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionBackendServiceOutlierDetection?> OutlierDetection { get; private set; } = null!;
 
         /// <summary>
+        /// A named port on a backend instance group representing the port for
+        /// communication to the backend VMs in that group. Required when the
+        /// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+        /// and the backends are instance groups. The named port must be defined on each
+        /// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
+        /// default of "http" if not given.
+        /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+        /// </summary>
+        [Output("portName")]
+        public Output<string> PortName { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -383,6 +395,18 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionBackendServiceOutlierDetectionArgs>? OutlierDetection { get; set; }
 
         /// <summary>
+        /// A named port on a backend instance group representing the port for
+        /// communication to the backend VMs in that group. Required when the
+        /// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+        /// and the backends are instance groups. The named port must be defined on each
+        /// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
+        /// default of "http" if not given.
+        /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+        /// </summary>
+        [Input("portName")]
+        public Input<string>? PortName { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -569,6 +593,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.RegionBackendServiceOutlierDetectionGetArgs>? OutlierDetection { get; set; }
+
+        /// <summary>
+        /// A named port on a backend instance group representing the port for
+        /// communication to the backend VMs in that group. Required when the
+        /// loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+        /// and the backends are instance groups. The named port must be defined on each
+        /// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
+        /// default of "http" if not given.
+        /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+        /// </summary>
+        [Input("portName")]
+        public Input<string>? PortName { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

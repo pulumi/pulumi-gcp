@@ -3497,6 +3497,785 @@ func (o SloBasicSliLatencyPtrOutput) Threshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SloRequestBasedSli struct {
+	// Used when goodService is defined by a count of values aggregated in a
+	// Distribution that fall into a good range. The totalService is the
+	// total count of all values aggregated in the Distribution.
+	// Defines a distribution TimeSeries filter and thresholds used for
+	// measuring good service and total service.
+	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+	DistributionCut *SloRequestBasedSliDistributionCut `pulumi:"distributionCut"`
+	// A means to compute a ratio of `goodService` to `totalService`.
+	// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+	// Must specify exactly two of good, bad, and total service filters.
+	// The relationship goodService + badService = totalService
+	// will be assumed.
+	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+	GoodTotalRatio *SloRequestBasedSliGoodTotalRatio `pulumi:"goodTotalRatio"`
+}
+
+// SloRequestBasedSliInput is an input type that accepts SloRequestBasedSliArgs and SloRequestBasedSliOutput values.
+// You can construct a concrete instance of `SloRequestBasedSliInput` via:
+//
+// 		 SloRequestBasedSliArgs{...}
+//
+type SloRequestBasedSliInput interface {
+	pulumi.Input
+
+	ToSloRequestBasedSliOutput() SloRequestBasedSliOutput
+	ToSloRequestBasedSliOutputWithContext(context.Context) SloRequestBasedSliOutput
+}
+
+type SloRequestBasedSliArgs struct {
+	// Used when goodService is defined by a count of values aggregated in a
+	// Distribution that fall into a good range. The totalService is the
+	// total count of all values aggregated in the Distribution.
+	// Defines a distribution TimeSeries filter and thresholds used for
+	// measuring good service and total service.
+	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+	DistributionCut SloRequestBasedSliDistributionCutPtrInput `pulumi:"distributionCut"`
+	// A means to compute a ratio of `goodService` to `totalService`.
+	// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+	// Must specify exactly two of good, bad, and total service filters.
+	// The relationship goodService + badService = totalService
+	// will be assumed.
+	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+	GoodTotalRatio SloRequestBasedSliGoodTotalRatioPtrInput `pulumi:"goodTotalRatio"`
+}
+
+func (SloRequestBasedSliArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloRequestBasedSli)(nil)).Elem()
+}
+
+func (i SloRequestBasedSliArgs) ToSloRequestBasedSliOutput() SloRequestBasedSliOutput {
+	return i.ToSloRequestBasedSliOutputWithContext(context.Background())
+}
+
+func (i SloRequestBasedSliArgs) ToSloRequestBasedSliOutputWithContext(ctx context.Context) SloRequestBasedSliOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliOutput)
+}
+
+func (i SloRequestBasedSliArgs) ToSloRequestBasedSliPtrOutput() SloRequestBasedSliPtrOutput {
+	return i.ToSloRequestBasedSliPtrOutputWithContext(context.Background())
+}
+
+func (i SloRequestBasedSliArgs) ToSloRequestBasedSliPtrOutputWithContext(ctx context.Context) SloRequestBasedSliPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliOutput).ToSloRequestBasedSliPtrOutputWithContext(ctx)
+}
+
+// SloRequestBasedSliPtrInput is an input type that accepts SloRequestBasedSliArgs, SloRequestBasedSliPtr and SloRequestBasedSliPtrOutput values.
+// You can construct a concrete instance of `SloRequestBasedSliPtrInput` via:
+//
+// 		 SloRequestBasedSliArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloRequestBasedSliPtrInput interface {
+	pulumi.Input
+
+	ToSloRequestBasedSliPtrOutput() SloRequestBasedSliPtrOutput
+	ToSloRequestBasedSliPtrOutputWithContext(context.Context) SloRequestBasedSliPtrOutput
+}
+
+type sloRequestBasedSliPtrType SloRequestBasedSliArgs
+
+func SloRequestBasedSliPtr(v *SloRequestBasedSliArgs) SloRequestBasedSliPtrInput {
+	return (*sloRequestBasedSliPtrType)(v)
+}
+
+func (*sloRequestBasedSliPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloRequestBasedSli)(nil)).Elem()
+}
+
+func (i *sloRequestBasedSliPtrType) ToSloRequestBasedSliPtrOutput() SloRequestBasedSliPtrOutput {
+	return i.ToSloRequestBasedSliPtrOutputWithContext(context.Background())
+}
+
+func (i *sloRequestBasedSliPtrType) ToSloRequestBasedSliPtrOutputWithContext(ctx context.Context) SloRequestBasedSliPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliPtrOutput)
+}
+
+type SloRequestBasedSliOutput struct{ *pulumi.OutputState }
+
+func (SloRequestBasedSliOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloRequestBasedSli)(nil)).Elem()
+}
+
+func (o SloRequestBasedSliOutput) ToSloRequestBasedSliOutput() SloRequestBasedSliOutput {
+	return o
+}
+
+func (o SloRequestBasedSliOutput) ToSloRequestBasedSliOutputWithContext(ctx context.Context) SloRequestBasedSliOutput {
+	return o
+}
+
+func (o SloRequestBasedSliOutput) ToSloRequestBasedSliPtrOutput() SloRequestBasedSliPtrOutput {
+	return o.ToSloRequestBasedSliPtrOutputWithContext(context.Background())
+}
+
+func (o SloRequestBasedSliOutput) ToSloRequestBasedSliPtrOutputWithContext(ctx context.Context) SloRequestBasedSliPtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSli) *SloRequestBasedSli {
+		return &v
+	}).(SloRequestBasedSliPtrOutput)
+}
+
+// Used when goodService is defined by a count of values aggregated in a
+// Distribution that fall into a good range. The totalService is the
+// total count of all values aggregated in the Distribution.
+// Defines a distribution TimeSeries filter and thresholds used for
+// measuring good service and total service.
+// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+func (o SloRequestBasedSliOutput) DistributionCut() SloRequestBasedSliDistributionCutPtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSli) *SloRequestBasedSliDistributionCut { return v.DistributionCut }).(SloRequestBasedSliDistributionCutPtrOutput)
+}
+
+// A means to compute a ratio of `goodService` to `totalService`.
+// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+// Must specify exactly two of good, bad, and total service filters.
+// The relationship goodService + badService = totalService
+// will be assumed.
+// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+func (o SloRequestBasedSliOutput) GoodTotalRatio() SloRequestBasedSliGoodTotalRatioPtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSli) *SloRequestBasedSliGoodTotalRatio { return v.GoodTotalRatio }).(SloRequestBasedSliGoodTotalRatioPtrOutput)
+}
+
+type SloRequestBasedSliPtrOutput struct{ *pulumi.OutputState }
+
+func (SloRequestBasedSliPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloRequestBasedSli)(nil)).Elem()
+}
+
+func (o SloRequestBasedSliPtrOutput) ToSloRequestBasedSliPtrOutput() SloRequestBasedSliPtrOutput {
+	return o
+}
+
+func (o SloRequestBasedSliPtrOutput) ToSloRequestBasedSliPtrOutputWithContext(ctx context.Context) SloRequestBasedSliPtrOutput {
+	return o
+}
+
+func (o SloRequestBasedSliPtrOutput) Elem() SloRequestBasedSliOutput {
+	return o.ApplyT(func(v *SloRequestBasedSli) SloRequestBasedSli { return *v }).(SloRequestBasedSliOutput)
+}
+
+// Used when goodService is defined by a count of values aggregated in a
+// Distribution that fall into a good range. The totalService is the
+// total count of all values aggregated in the Distribution.
+// Defines a distribution TimeSeries filter and thresholds used for
+// measuring good service and total service.
+// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+func (o SloRequestBasedSliPtrOutput) DistributionCut() SloRequestBasedSliDistributionCutPtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSli) *SloRequestBasedSliDistributionCut {
+		if v == nil {
+			return nil
+		}
+		return v.DistributionCut
+	}).(SloRequestBasedSliDistributionCutPtrOutput)
+}
+
+// A means to compute a ratio of `goodService` to `totalService`.
+// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+// Must specify exactly two of good, bad, and total service filters.
+// The relationship goodService + badService = totalService
+// will be assumed.
+// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+func (o SloRequestBasedSliPtrOutput) GoodTotalRatio() SloRequestBasedSliGoodTotalRatioPtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSli) *SloRequestBasedSliGoodTotalRatio {
+		if v == nil {
+			return nil
+		}
+		return v.GoodTotalRatio
+	}).(SloRequestBasedSliGoodTotalRatioPtrOutput)
+}
+
+type SloRequestBasedSliDistributionCut struct {
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// aggregating values to quantify the good service provided.
+	// Must have ValueType = DISTRIBUTION and
+	// MetricKind = DELTA or MetricKind = CUMULATIVE.
+	DistributionFilter string `pulumi:"distributionFilter"`
+	// Range of numerical values. The computed goodService
+	// will be the count of values x in the Distribution such
+	// that range.min <= x < range.max. inclusive of min and
+	// exclusive of max. Open ranges can be defined by setting
+	// just one of min or max.  Structure is documented below.
+	Range SloRequestBasedSliDistributionCutRange `pulumi:"range"`
+}
+
+// SloRequestBasedSliDistributionCutInput is an input type that accepts SloRequestBasedSliDistributionCutArgs and SloRequestBasedSliDistributionCutOutput values.
+// You can construct a concrete instance of `SloRequestBasedSliDistributionCutInput` via:
+//
+// 		 SloRequestBasedSliDistributionCutArgs{...}
+//
+type SloRequestBasedSliDistributionCutInput interface {
+	pulumi.Input
+
+	ToSloRequestBasedSliDistributionCutOutput() SloRequestBasedSliDistributionCutOutput
+	ToSloRequestBasedSliDistributionCutOutputWithContext(context.Context) SloRequestBasedSliDistributionCutOutput
+}
+
+type SloRequestBasedSliDistributionCutArgs struct {
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// aggregating values to quantify the good service provided.
+	// Must have ValueType = DISTRIBUTION and
+	// MetricKind = DELTA or MetricKind = CUMULATIVE.
+	DistributionFilter pulumi.StringInput `pulumi:"distributionFilter"`
+	// Range of numerical values. The computed goodService
+	// will be the count of values x in the Distribution such
+	// that range.min <= x < range.max. inclusive of min and
+	// exclusive of max. Open ranges can be defined by setting
+	// just one of min or max.  Structure is documented below.
+	Range SloRequestBasedSliDistributionCutRangeInput `pulumi:"range"`
+}
+
+func (SloRequestBasedSliDistributionCutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloRequestBasedSliDistributionCut)(nil)).Elem()
+}
+
+func (i SloRequestBasedSliDistributionCutArgs) ToSloRequestBasedSliDistributionCutOutput() SloRequestBasedSliDistributionCutOutput {
+	return i.ToSloRequestBasedSliDistributionCutOutputWithContext(context.Background())
+}
+
+func (i SloRequestBasedSliDistributionCutArgs) ToSloRequestBasedSliDistributionCutOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliDistributionCutOutput)
+}
+
+func (i SloRequestBasedSliDistributionCutArgs) ToSloRequestBasedSliDistributionCutPtrOutput() SloRequestBasedSliDistributionCutPtrOutput {
+	return i.ToSloRequestBasedSliDistributionCutPtrOutputWithContext(context.Background())
+}
+
+func (i SloRequestBasedSliDistributionCutArgs) ToSloRequestBasedSliDistributionCutPtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliDistributionCutOutput).ToSloRequestBasedSliDistributionCutPtrOutputWithContext(ctx)
+}
+
+// SloRequestBasedSliDistributionCutPtrInput is an input type that accepts SloRequestBasedSliDistributionCutArgs, SloRequestBasedSliDistributionCutPtr and SloRequestBasedSliDistributionCutPtrOutput values.
+// You can construct a concrete instance of `SloRequestBasedSliDistributionCutPtrInput` via:
+//
+// 		 SloRequestBasedSliDistributionCutArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloRequestBasedSliDistributionCutPtrInput interface {
+	pulumi.Input
+
+	ToSloRequestBasedSliDistributionCutPtrOutput() SloRequestBasedSliDistributionCutPtrOutput
+	ToSloRequestBasedSliDistributionCutPtrOutputWithContext(context.Context) SloRequestBasedSliDistributionCutPtrOutput
+}
+
+type sloRequestBasedSliDistributionCutPtrType SloRequestBasedSliDistributionCutArgs
+
+func SloRequestBasedSliDistributionCutPtr(v *SloRequestBasedSliDistributionCutArgs) SloRequestBasedSliDistributionCutPtrInput {
+	return (*sloRequestBasedSliDistributionCutPtrType)(v)
+}
+
+func (*sloRequestBasedSliDistributionCutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloRequestBasedSliDistributionCut)(nil)).Elem()
+}
+
+func (i *sloRequestBasedSliDistributionCutPtrType) ToSloRequestBasedSliDistributionCutPtrOutput() SloRequestBasedSliDistributionCutPtrOutput {
+	return i.ToSloRequestBasedSliDistributionCutPtrOutputWithContext(context.Background())
+}
+
+func (i *sloRequestBasedSliDistributionCutPtrType) ToSloRequestBasedSliDistributionCutPtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliDistributionCutPtrOutput)
+}
+
+type SloRequestBasedSliDistributionCutOutput struct{ *pulumi.OutputState }
+
+func (SloRequestBasedSliDistributionCutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloRequestBasedSliDistributionCut)(nil)).Elem()
+}
+
+func (o SloRequestBasedSliDistributionCutOutput) ToSloRequestBasedSliDistributionCutOutput() SloRequestBasedSliDistributionCutOutput {
+	return o
+}
+
+func (o SloRequestBasedSliDistributionCutOutput) ToSloRequestBasedSliDistributionCutOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutOutput {
+	return o
+}
+
+func (o SloRequestBasedSliDistributionCutOutput) ToSloRequestBasedSliDistributionCutPtrOutput() SloRequestBasedSliDistributionCutPtrOutput {
+	return o.ToSloRequestBasedSliDistributionCutPtrOutputWithContext(context.Background())
+}
+
+func (o SloRequestBasedSliDistributionCutOutput) ToSloRequestBasedSliDistributionCutPtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutPtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSliDistributionCut) *SloRequestBasedSliDistributionCut {
+		return &v
+	}).(SloRequestBasedSliDistributionCutPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// aggregating values to quantify the good service provided.
+// Must have ValueType = DISTRIBUTION and
+// MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o SloRequestBasedSliDistributionCutOutput) DistributionFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v SloRequestBasedSliDistributionCut) string { return v.DistributionFilter }).(pulumi.StringOutput)
+}
+
+// Range of numerical values. The computed goodService
+// will be the count of values x in the Distribution such
+// that range.min <= x < range.max. inclusive of min and
+// exclusive of max. Open ranges can be defined by setting
+// just one of min or max.  Structure is documented below.
+func (o SloRequestBasedSliDistributionCutOutput) Range() SloRequestBasedSliDistributionCutRangeOutput {
+	return o.ApplyT(func(v SloRequestBasedSliDistributionCut) SloRequestBasedSliDistributionCutRange { return v.Range }).(SloRequestBasedSliDistributionCutRangeOutput)
+}
+
+type SloRequestBasedSliDistributionCutPtrOutput struct{ *pulumi.OutputState }
+
+func (SloRequestBasedSliDistributionCutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloRequestBasedSliDistributionCut)(nil)).Elem()
+}
+
+func (o SloRequestBasedSliDistributionCutPtrOutput) ToSloRequestBasedSliDistributionCutPtrOutput() SloRequestBasedSliDistributionCutPtrOutput {
+	return o
+}
+
+func (o SloRequestBasedSliDistributionCutPtrOutput) ToSloRequestBasedSliDistributionCutPtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutPtrOutput {
+	return o
+}
+
+func (o SloRequestBasedSliDistributionCutPtrOutput) Elem() SloRequestBasedSliDistributionCutOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliDistributionCut) SloRequestBasedSliDistributionCut { return *v }).(SloRequestBasedSliDistributionCutOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// aggregating values to quantify the good service provided.
+// Must have ValueType = DISTRIBUTION and
+// MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o SloRequestBasedSliDistributionCutPtrOutput) DistributionFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliDistributionCut) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DistributionFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Range of numerical values. The computed goodService
+// will be the count of values x in the Distribution such
+// that range.min <= x < range.max. inclusive of min and
+// exclusive of max. Open ranges can be defined by setting
+// just one of min or max.  Structure is documented below.
+func (o SloRequestBasedSliDistributionCutPtrOutput) Range() SloRequestBasedSliDistributionCutRangePtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliDistributionCut) *SloRequestBasedSliDistributionCutRange {
+		if v == nil {
+			return nil
+		}
+		return &v.Range
+	}).(SloRequestBasedSliDistributionCutRangePtrOutput)
+}
+
+type SloRequestBasedSliDistributionCutRange struct {
+	// max value for the range (inclusive). If not given,
+	// will be set to "infinity", defining an open range
+	// ">= range.min"
+	Max *int `pulumi:"max"`
+	// Min value for the range (inclusive). If not given,
+	// will be set to "-infinity", defining an open range
+	// "< range.max"
+	Min *int `pulumi:"min"`
+}
+
+// SloRequestBasedSliDistributionCutRangeInput is an input type that accepts SloRequestBasedSliDistributionCutRangeArgs and SloRequestBasedSliDistributionCutRangeOutput values.
+// You can construct a concrete instance of `SloRequestBasedSliDistributionCutRangeInput` via:
+//
+// 		 SloRequestBasedSliDistributionCutRangeArgs{...}
+//
+type SloRequestBasedSliDistributionCutRangeInput interface {
+	pulumi.Input
+
+	ToSloRequestBasedSliDistributionCutRangeOutput() SloRequestBasedSliDistributionCutRangeOutput
+	ToSloRequestBasedSliDistributionCutRangeOutputWithContext(context.Context) SloRequestBasedSliDistributionCutRangeOutput
+}
+
+type SloRequestBasedSliDistributionCutRangeArgs struct {
+	// max value for the range (inclusive). If not given,
+	// will be set to "infinity", defining an open range
+	// ">= range.min"
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// Min value for the range (inclusive). If not given,
+	// will be set to "-infinity", defining an open range
+	// "< range.max"
+	Min pulumi.IntPtrInput `pulumi:"min"`
+}
+
+func (SloRequestBasedSliDistributionCutRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloRequestBasedSliDistributionCutRange)(nil)).Elem()
+}
+
+func (i SloRequestBasedSliDistributionCutRangeArgs) ToSloRequestBasedSliDistributionCutRangeOutput() SloRequestBasedSliDistributionCutRangeOutput {
+	return i.ToSloRequestBasedSliDistributionCutRangeOutputWithContext(context.Background())
+}
+
+func (i SloRequestBasedSliDistributionCutRangeArgs) ToSloRequestBasedSliDistributionCutRangeOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliDistributionCutRangeOutput)
+}
+
+func (i SloRequestBasedSliDistributionCutRangeArgs) ToSloRequestBasedSliDistributionCutRangePtrOutput() SloRequestBasedSliDistributionCutRangePtrOutput {
+	return i.ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(context.Background())
+}
+
+func (i SloRequestBasedSliDistributionCutRangeArgs) ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliDistributionCutRangeOutput).ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(ctx)
+}
+
+// SloRequestBasedSliDistributionCutRangePtrInput is an input type that accepts SloRequestBasedSliDistributionCutRangeArgs, SloRequestBasedSliDistributionCutRangePtr and SloRequestBasedSliDistributionCutRangePtrOutput values.
+// You can construct a concrete instance of `SloRequestBasedSliDistributionCutRangePtrInput` via:
+//
+// 		 SloRequestBasedSliDistributionCutRangeArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloRequestBasedSliDistributionCutRangePtrInput interface {
+	pulumi.Input
+
+	ToSloRequestBasedSliDistributionCutRangePtrOutput() SloRequestBasedSliDistributionCutRangePtrOutput
+	ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(context.Context) SloRequestBasedSliDistributionCutRangePtrOutput
+}
+
+type sloRequestBasedSliDistributionCutRangePtrType SloRequestBasedSliDistributionCutRangeArgs
+
+func SloRequestBasedSliDistributionCutRangePtr(v *SloRequestBasedSliDistributionCutRangeArgs) SloRequestBasedSliDistributionCutRangePtrInput {
+	return (*sloRequestBasedSliDistributionCutRangePtrType)(v)
+}
+
+func (*sloRequestBasedSliDistributionCutRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloRequestBasedSliDistributionCutRange)(nil)).Elem()
+}
+
+func (i *sloRequestBasedSliDistributionCutRangePtrType) ToSloRequestBasedSliDistributionCutRangePtrOutput() SloRequestBasedSliDistributionCutRangePtrOutput {
+	return i.ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(context.Background())
+}
+
+func (i *sloRequestBasedSliDistributionCutRangePtrType) ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliDistributionCutRangePtrOutput)
+}
+
+type SloRequestBasedSliDistributionCutRangeOutput struct{ *pulumi.OutputState }
+
+func (SloRequestBasedSliDistributionCutRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloRequestBasedSliDistributionCutRange)(nil)).Elem()
+}
+
+func (o SloRequestBasedSliDistributionCutRangeOutput) ToSloRequestBasedSliDistributionCutRangeOutput() SloRequestBasedSliDistributionCutRangeOutput {
+	return o
+}
+
+func (o SloRequestBasedSliDistributionCutRangeOutput) ToSloRequestBasedSliDistributionCutRangeOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutRangeOutput {
+	return o
+}
+
+func (o SloRequestBasedSliDistributionCutRangeOutput) ToSloRequestBasedSliDistributionCutRangePtrOutput() SloRequestBasedSliDistributionCutRangePtrOutput {
+	return o.ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(context.Background())
+}
+
+func (o SloRequestBasedSliDistributionCutRangeOutput) ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutRangePtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSliDistributionCutRange) *SloRequestBasedSliDistributionCutRange {
+		return &v
+	}).(SloRequestBasedSliDistributionCutRangePtrOutput)
+}
+
+// max value for the range (inclusive). If not given,
+// will be set to "infinity", defining an open range
+// ">= range.min"
+func (o SloRequestBasedSliDistributionCutRangeOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSliDistributionCutRange) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// Min value for the range (inclusive). If not given,
+// will be set to "-infinity", defining an open range
+// "< range.max"
+func (o SloRequestBasedSliDistributionCutRangeOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSliDistributionCutRange) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type SloRequestBasedSliDistributionCutRangePtrOutput struct{ *pulumi.OutputState }
+
+func (SloRequestBasedSliDistributionCutRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloRequestBasedSliDistributionCutRange)(nil)).Elem()
+}
+
+func (o SloRequestBasedSliDistributionCutRangePtrOutput) ToSloRequestBasedSliDistributionCutRangePtrOutput() SloRequestBasedSliDistributionCutRangePtrOutput {
+	return o
+}
+
+func (o SloRequestBasedSliDistributionCutRangePtrOutput) ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutRangePtrOutput {
+	return o
+}
+
+func (o SloRequestBasedSliDistributionCutRangePtrOutput) Elem() SloRequestBasedSliDistributionCutRangeOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliDistributionCutRange) SloRequestBasedSliDistributionCutRange { return *v }).(SloRequestBasedSliDistributionCutRangeOutput)
+}
+
+// max value for the range (inclusive). If not given,
+// will be set to "infinity", defining an open range
+// ">= range.min"
+func (o SloRequestBasedSliDistributionCutRangePtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliDistributionCutRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Min value for the range (inclusive). If not given,
+// will be set to "-infinity", defining an open range
+// "< range.max"
+func (o SloRequestBasedSliDistributionCutRangePtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliDistributionCutRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type SloRequestBasedSliGoodTotalRatio struct {
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying bad service provided, either demanded service that
+	// was not provided or demanded service that was of inadequate
+	// quality.
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+	// must be set (good + bad = total is assumed).
+	BadServiceFilter *string `pulumi:"badServiceFilter"`
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying good service provided.
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+	// must be set (good + bad = total is assumed).
+	GoodServiceFilter *string `pulumi:"goodServiceFilter"`
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying total demanded service.
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+	// must be set (good + bad = total is assumed).
+	TotalServiceFilter *string `pulumi:"totalServiceFilter"`
+}
+
+// SloRequestBasedSliGoodTotalRatioInput is an input type that accepts SloRequestBasedSliGoodTotalRatioArgs and SloRequestBasedSliGoodTotalRatioOutput values.
+// You can construct a concrete instance of `SloRequestBasedSliGoodTotalRatioInput` via:
+//
+// 		 SloRequestBasedSliGoodTotalRatioArgs{...}
+//
+type SloRequestBasedSliGoodTotalRatioInput interface {
+	pulumi.Input
+
+	ToSloRequestBasedSliGoodTotalRatioOutput() SloRequestBasedSliGoodTotalRatioOutput
+	ToSloRequestBasedSliGoodTotalRatioOutputWithContext(context.Context) SloRequestBasedSliGoodTotalRatioOutput
+}
+
+type SloRequestBasedSliGoodTotalRatioArgs struct {
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying bad service provided, either demanded service that
+	// was not provided or demanded service that was of inadequate
+	// quality.
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+	// must be set (good + bad = total is assumed).
+	BadServiceFilter pulumi.StringPtrInput `pulumi:"badServiceFilter"`
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying good service provided.
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+	// must be set (good + bad = total is assumed).
+	GoodServiceFilter pulumi.StringPtrInput `pulumi:"goodServiceFilter"`
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying total demanded service.
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+	// must be set (good + bad = total is assumed).
+	TotalServiceFilter pulumi.StringPtrInput `pulumi:"totalServiceFilter"`
+}
+
+func (SloRequestBasedSliGoodTotalRatioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloRequestBasedSliGoodTotalRatio)(nil)).Elem()
+}
+
+func (i SloRequestBasedSliGoodTotalRatioArgs) ToSloRequestBasedSliGoodTotalRatioOutput() SloRequestBasedSliGoodTotalRatioOutput {
+	return i.ToSloRequestBasedSliGoodTotalRatioOutputWithContext(context.Background())
+}
+
+func (i SloRequestBasedSliGoodTotalRatioArgs) ToSloRequestBasedSliGoodTotalRatioOutputWithContext(ctx context.Context) SloRequestBasedSliGoodTotalRatioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliGoodTotalRatioOutput)
+}
+
+func (i SloRequestBasedSliGoodTotalRatioArgs) ToSloRequestBasedSliGoodTotalRatioPtrOutput() SloRequestBasedSliGoodTotalRatioPtrOutput {
+	return i.ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(context.Background())
+}
+
+func (i SloRequestBasedSliGoodTotalRatioArgs) ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloRequestBasedSliGoodTotalRatioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliGoodTotalRatioOutput).ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(ctx)
+}
+
+// SloRequestBasedSliGoodTotalRatioPtrInput is an input type that accepts SloRequestBasedSliGoodTotalRatioArgs, SloRequestBasedSliGoodTotalRatioPtr and SloRequestBasedSliGoodTotalRatioPtrOutput values.
+// You can construct a concrete instance of `SloRequestBasedSliGoodTotalRatioPtrInput` via:
+//
+// 		 SloRequestBasedSliGoodTotalRatioArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloRequestBasedSliGoodTotalRatioPtrInput interface {
+	pulumi.Input
+
+	ToSloRequestBasedSliGoodTotalRatioPtrOutput() SloRequestBasedSliGoodTotalRatioPtrOutput
+	ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(context.Context) SloRequestBasedSliGoodTotalRatioPtrOutput
+}
+
+type sloRequestBasedSliGoodTotalRatioPtrType SloRequestBasedSliGoodTotalRatioArgs
+
+func SloRequestBasedSliGoodTotalRatioPtr(v *SloRequestBasedSliGoodTotalRatioArgs) SloRequestBasedSliGoodTotalRatioPtrInput {
+	return (*sloRequestBasedSliGoodTotalRatioPtrType)(v)
+}
+
+func (*sloRequestBasedSliGoodTotalRatioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloRequestBasedSliGoodTotalRatio)(nil)).Elem()
+}
+
+func (i *sloRequestBasedSliGoodTotalRatioPtrType) ToSloRequestBasedSliGoodTotalRatioPtrOutput() SloRequestBasedSliGoodTotalRatioPtrOutput {
+	return i.ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(context.Background())
+}
+
+func (i *sloRequestBasedSliGoodTotalRatioPtrType) ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloRequestBasedSliGoodTotalRatioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliGoodTotalRatioPtrOutput)
+}
+
+type SloRequestBasedSliGoodTotalRatioOutput struct{ *pulumi.OutputState }
+
+func (SloRequestBasedSliGoodTotalRatioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloRequestBasedSliGoodTotalRatio)(nil)).Elem()
+}
+
+func (o SloRequestBasedSliGoodTotalRatioOutput) ToSloRequestBasedSliGoodTotalRatioOutput() SloRequestBasedSliGoodTotalRatioOutput {
+	return o
+}
+
+func (o SloRequestBasedSliGoodTotalRatioOutput) ToSloRequestBasedSliGoodTotalRatioOutputWithContext(ctx context.Context) SloRequestBasedSliGoodTotalRatioOutput {
+	return o
+}
+
+func (o SloRequestBasedSliGoodTotalRatioOutput) ToSloRequestBasedSliGoodTotalRatioPtrOutput() SloRequestBasedSliGoodTotalRatioPtrOutput {
+	return o.ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(context.Background())
+}
+
+func (o SloRequestBasedSliGoodTotalRatioOutput) ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloRequestBasedSliGoodTotalRatioPtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSliGoodTotalRatio) *SloRequestBasedSliGoodTotalRatio {
+		return &v
+	}).(SloRequestBasedSliGoodTotalRatioPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying bad service provided, either demanded service that
+// was not provided or demanded service that was of inadequate
+// quality.
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+// must be set (good + bad = total is assumed).
+func (o SloRequestBasedSliGoodTotalRatioOutput) BadServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSliGoodTotalRatio) *string { return v.BadServiceFilter }).(pulumi.StringPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying good service provided.
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+// must be set (good + bad = total is assumed).
+func (o SloRequestBasedSliGoodTotalRatioOutput) GoodServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSliGoodTotalRatio) *string { return v.GoodServiceFilter }).(pulumi.StringPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying total demanded service.
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+// must be set (good + bad = total is assumed).
+func (o SloRequestBasedSliGoodTotalRatioOutput) TotalServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloRequestBasedSliGoodTotalRatio) *string { return v.TotalServiceFilter }).(pulumi.StringPtrOutput)
+}
+
+type SloRequestBasedSliGoodTotalRatioPtrOutput struct{ *pulumi.OutputState }
+
+func (SloRequestBasedSliGoodTotalRatioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloRequestBasedSliGoodTotalRatio)(nil)).Elem()
+}
+
+func (o SloRequestBasedSliGoodTotalRatioPtrOutput) ToSloRequestBasedSliGoodTotalRatioPtrOutput() SloRequestBasedSliGoodTotalRatioPtrOutput {
+	return o
+}
+
+func (o SloRequestBasedSliGoodTotalRatioPtrOutput) ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloRequestBasedSliGoodTotalRatioPtrOutput {
+	return o
+}
+
+func (o SloRequestBasedSliGoodTotalRatioPtrOutput) Elem() SloRequestBasedSliGoodTotalRatioOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliGoodTotalRatio) SloRequestBasedSliGoodTotalRatio { return *v }).(SloRequestBasedSliGoodTotalRatioOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying bad service provided, either demanded service that
+// was not provided or demanded service that was of inadequate
+// quality.
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+// must be set (good + bad = total is assumed).
+func (o SloRequestBasedSliGoodTotalRatioPtrOutput) BadServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliGoodTotalRatio) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BadServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying good service provided.
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+// must be set (good + bad = total is assumed).
+func (o SloRequestBasedSliGoodTotalRatioPtrOutput) GoodServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliGoodTotalRatio) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoodServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying total demanded service.
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+// must be set (good + bad = total is assumed).
+func (o SloRequestBasedSliGoodTotalRatioPtrOutput) TotalServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloRequestBasedSliGoodTotalRatio) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TotalServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
 type UptimeCheckConfigContentMatcher struct {
 	// String or regex content to match (max 1024 bytes)
 	Content string `pulumi:"content"`
@@ -4794,6 +5573,14 @@ func init() {
 	pulumi.RegisterOutputType(SloBasicSliPtrOutput{})
 	pulumi.RegisterOutputType(SloBasicSliLatencyOutput{})
 	pulumi.RegisterOutputType(SloBasicSliLatencyPtrOutput{})
+	pulumi.RegisterOutputType(SloRequestBasedSliOutput{})
+	pulumi.RegisterOutputType(SloRequestBasedSliPtrOutput{})
+	pulumi.RegisterOutputType(SloRequestBasedSliDistributionCutOutput{})
+	pulumi.RegisterOutputType(SloRequestBasedSliDistributionCutPtrOutput{})
+	pulumi.RegisterOutputType(SloRequestBasedSliDistributionCutRangeOutput{})
+	pulumi.RegisterOutputType(SloRequestBasedSliDistributionCutRangePtrOutput{})
+	pulumi.RegisterOutputType(SloRequestBasedSliGoodTotalRatioOutput{})
+	pulumi.RegisterOutputType(SloRequestBasedSliGoodTotalRatioPtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherArrayOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckOutput{})

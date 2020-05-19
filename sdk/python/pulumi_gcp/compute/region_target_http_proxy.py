@@ -78,25 +78,25 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             region="us-central1",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default_region_health_check.self_link])
+            health_checks=[default_region_health_check.id])
         default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
             region="us-central1",
-            default_service=default_region_backend_service.self_link,
+            default_service=default_region_backend_service.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": default_region_backend_service.self_link,
+                "defaultService": default_region_backend_service.id,
                 "path_rule": [{
                     "paths": ["/*"],
-                    "service": default_region_backend_service.self_link,
+                    "service": default_region_backend_service.id,
                 }],
             }])
         default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
             region="us-central1",
-            url_map=default_region_url_map.self_link)
+            url_map=default_region_url_map.id)
         ```
         ## Example Usage - Region Target Http Proxy Https Redirect
 

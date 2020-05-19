@@ -14,8 +14,18 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     public sealed class ApplicationIap
     {
         public readonly bool? Enabled;
+        /// <summary>
+        /// OAuth2 client ID to use for the authentication flow.
+        /// </summary>
         public readonly string Oauth2ClientId;
+        /// <summary>
+        /// OAuth2 client secret to use for the authentication flow.
+        /// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+        /// </summary>
         public readonly string Oauth2ClientSecret;
+        /// <summary>
+        /// Hex-encoded SHA-256 hash of the client secret.
+        /// </summary>
         public readonly string? Oauth2ClientSecretSha256;
 
         [OutputConstructor]

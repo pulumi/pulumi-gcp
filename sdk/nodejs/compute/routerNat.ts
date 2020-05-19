@@ -25,13 +25,13 @@ import * as utilities from "../utilities";
  * 
  * const net = new gcp.compute.Network("net", {});
  * const subnet = new gcp.compute.Subnetwork("subnet", {
- *     network: net.selfLink,
+ *     network: net.id,
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
  * });
  * const router = new gcp.compute.Router("router", {
  *     region: subnet.region,
- *     network: net.selfLink,
+ *     network: net.id,
  *     bgp: {
  *         asn: 64514,
  *     },
@@ -56,13 +56,13 @@ import * as utilities from "../utilities";
  * 
  * const net = new gcp.compute.Network("net", {});
  * const subnet = new gcp.compute.Subnetwork("subnet", {
- *     network: net.selfLink,
+ *     network: net.id,
  *     ipCidrRange: "10.0.0.0/16",
  *     region: "us-central1",
  * });
  * const router = new gcp.compute.Router("router", {
  *     region: subnet.region,
- *     network: net.selfLink,
+ *     network: net.id,
  * });
  * const address: gcp.compute.Address[];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
@@ -72,10 +72,10 @@ import * as utilities from "../utilities";
  *     router: router.name,
  *     region: router.region,
  *     natIpAllocateOption: "MANUAL_ONLY",
- *     natIps: address.map(__item => __item.selfLink),
+ *     natIps: address.map(__item => __item.id),
  *     sourceSubnetworkIpRangesToNat: "LIST_OF_SUBNETWORKS",
  *     subnetwork: [{
- *         name: google_compute_subnetwork["default"].self_link,
+ *         name: google_compute_subnetwork["default"].id,
  *         sourceIpRangesToNats: ["ALL_IP_RANGES"],
  *     }],
  * });

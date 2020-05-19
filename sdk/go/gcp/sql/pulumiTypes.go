@@ -682,8 +682,7 @@ type DatabaseInstanceSettings struct {
 	// for information on how to upgrade to Second Generation instances.
 	// A list of Google App Engine (GAE) project names that are allowed to access this instance.
 	AuthorizedGaeApplications []string `pulumi:"authorizedGaeApplications"`
-	// This specifies whether a PostgreSQL instance
-	// should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+	// The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
 	AvailabilityType    *string                                      `pulumi:"availabilityType"`
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// This property is only applicable to First Generation instances.
@@ -739,8 +738,7 @@ type DatabaseInstanceSettingsArgs struct {
 	// for information on how to upgrade to Second Generation instances.
 	// A list of Google App Engine (GAE) project names that are allowed to access this instance.
 	AuthorizedGaeApplications pulumi.StringArrayInput `pulumi:"authorizedGaeApplications"`
-	// This specifies whether a PostgreSQL instance
-	// should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+	// The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
 	AvailabilityType    pulumi.StringPtrInput                               `pulumi:"availabilityType"`
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// This property is only applicable to First Generation instances.
@@ -867,8 +865,7 @@ func (o DatabaseInstanceSettingsOutput) AuthorizedGaeApplications() pulumi.Strin
 	return o.ApplyT(func(v DatabaseInstanceSettings) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
 }
 
-// This specifies whether a PostgreSQL instance
-// should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+// The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
 func (o DatabaseInstanceSettingsOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
 }
@@ -994,8 +991,7 @@ func (o DatabaseInstanceSettingsPtrOutput) AuthorizedGaeApplications() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// This specifies whether a PostgreSQL instance
-// should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+// The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
 func (o DatabaseInstanceSettingsPtrOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {

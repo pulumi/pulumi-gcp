@@ -23,7 +23,6 @@ type OrganizationSink struct {
 	BigqueryOptions OrganizationSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -79,7 +78,6 @@ type organizationSinkState struct {
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -102,7 +100,6 @@ type OrganizationSinkState struct {
 	BigqueryOptions OrganizationSinkBigqueryOptionsPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -129,7 +126,6 @@ type organizationSinkArgs struct {
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -150,7 +146,6 @@ type OrganizationSinkArgs struct {
 	BigqueryOptions OrganizationSinkBigqueryOptionsPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to

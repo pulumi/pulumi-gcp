@@ -3963,10 +3963,13 @@ type ClusterClusterConfigSoftwareConfig struct {
 	// Accepted values are:
 	// * ANACONDA
 	// * DRUID
+	// * HBASE
 	// * HIVE_WEBHCAT
 	// * JUPYTER
 	// * KERBEROS
 	// * PRESTO
+	// * RANGER
+	// * SOLR
 	// * ZEPPELIN
 	// * ZOOKEEPER
 	OptionalComponents []string `pulumi:"optionalComponents"`
@@ -4001,10 +4004,13 @@ type ClusterClusterConfigSoftwareConfigArgs struct {
 	// Accepted values are:
 	// * ANACONDA
 	// * DRUID
+	// * HBASE
 	// * HIVE_WEBHCAT
 	// * JUPYTER
 	// * KERBEROS
 	// * PRESTO
+	// * RANGER
+	// * SOLR
 	// * ZEPPELIN
 	// * ZOOKEEPER
 	OptionalComponents pulumi.StringArrayInput `pulumi:"optionalComponents"`
@@ -4107,10 +4113,13 @@ func (o ClusterClusterConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPt
 // Accepted values are:
 // * ANACONDA
 // * DRUID
+// * HBASE
 // * HIVE_WEBHCAT
 // * JUPYTER
 // * KERBEROS
 // * PRESTO
+// * RANGER
+// * SOLR
 // * ZEPPELIN
 // * ZOOKEEPER
 func (o ClusterClusterConfigSoftwareConfigOutput) OptionalComponents() pulumi.StringArrayOutput {
@@ -4165,10 +4174,13 @@ func (o ClusterClusterConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.Strin
 // Accepted values are:
 // * ANACONDA
 // * DRUID
+// * HBASE
 // * HIVE_WEBHCAT
 // * JUPYTER
 // * KERBEROS
 // * PRESTO
+// * RANGER
+// * SOLR
 // * ZEPPELIN
 // * ZOOKEEPER
 func (o ClusterClusterConfigSoftwareConfigPtrOutput) OptionalComponents() pulumi.StringArrayOutput {

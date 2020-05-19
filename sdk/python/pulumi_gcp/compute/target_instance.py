@@ -91,7 +91,7 @@ class TargetInstance(pulumi.CustomResource):
             network_interface=[{
                 "network": "default",
             }])
-        default = gcp.compute.TargetInstance("default", instance=target_vm.self_link)
+        default = gcp.compute.TargetInstance("default", instance=target_vm.id)
         ```
 
         :param str resource_name: The name of the resource.

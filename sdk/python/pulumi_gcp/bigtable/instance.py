@@ -24,6 +24,11 @@ class Instance(pulumi.CustomResource):
         cluster must have a different zone in the same region. Zones that support
         Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
     """
+    deletion_protection: pulumi.Output[bool]
+    """
+    Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+    in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+    """
     display_name: pulumi.Output[str]
     """
     The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
@@ -41,7 +46,7 @@ class Instance(pulumi.CustomResource):
     The ID of the project in which the resource belongs. If it
     is not provided, the provider project is used.
     """
-    def __init__(__self__, resource_name, opts=None, clusters=None, display_name=None, instance_type=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, clusters=None, deletion_protection=None, display_name=None, instance_type=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a Google Bigtable instance. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
@@ -77,15 +82,14 @@ class Instance(pulumi.CustomResource):
                 "storageType": "HDD",
                 "zone": "us-central1-b",
             }],
-            instance_type="DEVELOPMENT",
-            lifecycle={
-                "preventDestroy": True,
-            })
+            instance_type="DEVELOPMENT")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
         :param pulumi.Input[str] name: The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
@@ -122,6 +126,7 @@ class Instance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['clusters'] = clusters
+            __props__['deletion_protection'] = deletion_protection
             __props__['display_name'] = display_name
             __props__['instance_type'] = instance_type
             __props__['name'] = name
@@ -133,7 +138,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, clusters=None, display_name=None, instance_type=None, name=None, project=None):
+    def get(resource_name, id, opts=None, clusters=None, deletion_protection=None, display_name=None, instance_type=None, name=None, project=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -142,6 +147,8 @@ class Instance(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+               in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
         :param pulumi.Input[str] name: The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
@@ -165,6 +172,7 @@ class Instance(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["clusters"] = clusters
+        __props__["deletion_protection"] = deletion_protection
         __props__["display_name"] = display_name
         __props__["instance_type"] = instance_type
         __props__["name"] = name

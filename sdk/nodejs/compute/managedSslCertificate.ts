@@ -52,31 +52,31 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [defaultHttpHealthCheck.selfLink],
+ *     healthChecks: [defaultHttpHealthCheck.id],
  * });
  * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
  *     description: "a description",
- *     defaultService: defaultBackendService.selfLink,
+ *     defaultService: defaultBackendService.id,
  *     host_rule: [{
  *         hosts: ["sslcert.tf-test.club"],
  *         pathMatcher: "allpaths",
  *     }],
  *     path_matcher: [{
  *         name: "allpaths",
- *         defaultService: defaultBackendService.selfLink,
+ *         defaultService: defaultBackendService.id,
  *         path_rule: [{
  *             paths: ["/*"],
- *             service: defaultBackendService.selfLink,
+ *             service: defaultBackendService.id,
  *         }],
  *     }],
  * });
  * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy", {
- *     urlMap: defaultURLMap.selfLink,
- *     sslCertificates: [defaultManagedSslCertificate.selfLink],
+ *     urlMap: defaultURLMap.id,
+ *     sslCertificates: [defaultManagedSslCertificate.id],
  * });
  * const zone = new gcp.dns.ManagedZone("zone", {dnsName: "sslcert.tf-test.club."});
  * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
- *     target: defaultTargetHttpsProxy.selfLink,
+ *     target: defaultTargetHttpsProxy.id,
  *     portRange: 443,
  * });
  * const set = new gcp.dns.RecordSet("set", {

@@ -39,11 +39,11 @@ import * as utilities from "../utilities";
  * });
  * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
  *     protocol: "SSL",
- *     healthChecks: [defaultHealthCheck.selfLink],
+ *     healthChecks: [defaultHealthCheck.id],
  * });
  * const defaultTargetSSLProxy = new gcp.compute.TargetSSLProxy("defaultTargetSSLProxy", {
- *     backendService: defaultBackendService.selfLink,
- *     sslCertificates: [defaultSSLCertificate.selfLink],
+ *     backendService: defaultBackendService.id,
+ *     sslCertificates: [defaultSSLCertificate.id],
  * });
  * ```
  *

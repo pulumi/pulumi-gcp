@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  *     description: "example gcp.compute.NodeGroup for the Google Provider",
  *     size: 1,
- *     nodeTemplate: soletenant-tmpl.selfLink,
+ *     nodeTemplate: soletenant-tmpl.id,
  * });
  * ```
  * ## Example Usage - Node Group Autoscaling Policy
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  *     description: "example gcp.compute.NodeGroup for the Google Provider",
  *     size: 1,
- *     nodeTemplate: soletenant-tmpl.selfLink,
+ *     nodeTemplate: soletenant-tmpl.id,
  *     autoscaling_policy: {
  *         mode: "ON",
  *         minNodes: 1,

@@ -245,8 +245,10 @@ class Service(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
-        ## Example Usage - Cloud Run Service Basic
 
+        ## Example Usage
+
+        ### Cloud Run Service Basic
 
         ```python
         import pulumi
@@ -266,8 +268,8 @@ class Service(pulumi.CustomResource):
                 "percent": 100,
             }])
         ```
-        ## Example Usage - Cloud Run Service Sql
 
+        ### Cloud Run Service Sql
 
         ```python
         import pulumi
@@ -285,7 +287,7 @@ class Service(pulumi.CustomResource):
                 "metadata": {
                     "annotations": {
                         "autoscaling.knative.dev/maxScale": "1000",
-                        "run.googleapis.com/client-name": "cloud-console",
+                        "run.googleapis.com/client-name": "demo",
                         "run.googleapis.com/cloudsql-instances": instance.name.apply(lambda name: f"my-project-name:us-central1:{name}"),
                     },
                 },
@@ -296,34 +298,8 @@ class Service(pulumi.CustomResource):
                 },
             })
         ```
-        ## Example Usage - Cloud Run Service Noauth
 
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default = gcp.cloudrun.Service("default",
-            location="us-central1",
-            template={
-                "spec": {
-                    "containers": [{
-                        "image": "gcr.io/cloudrun/hello",
-                    }],
-                },
-            })
-        noauth_iam_policy = gcp.organizations.get_iam_policy(binding=[{
-            "role": "roles/run.invoker",
-            "members": ["allUsers"],
-        }])
-        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauthIamPolicy",
-            location=default.location,
-            project=default.project,
-            service=default.name,
-            policy_data=noauth_iam_policy.policy_data)
-        ```
-        ## Example Usage - Cloud Run Service Multiple Environment Variables
-
+        ### Cloud Run Service Multiple Environment Variables
 
         ```python
         import pulumi
@@ -353,6 +329,37 @@ class Service(pulumi.CustomResource):
                 "latestRevision": True,
                 "percent": 100,
             }])
+        ```
+
+        ## Example Usage - Cloud Run Service Traffic Split
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template={
+                "metadata": {
+                    "name": "cloudrun-srv-green",
+                },
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                    }],
+                },
+            },
+            traffics=[
+                {
+                    "percent": 25,
+                    "revisionName": "cloudrun-srv-green",
+                },
+                {
+                    "percent": 75,
+                    "revisionName": "cloudrun-srv-blue",
+                },
+            ])
         ```
 
         :param str resource_name: The name of the resource.

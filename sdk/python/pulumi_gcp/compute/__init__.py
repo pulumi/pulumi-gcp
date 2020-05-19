@@ -79,6 +79,7 @@ from .region_disk import *
 from .region_disk_resource_policy_attachment import *
 from .region_health_check import *
 from .region_instance_group_manager import *
+from .region_per_instance_config import *
 from .region_ssl_certificate import *
 from .region_target_http_proxy import *
 from .region_target_https_proxy import *

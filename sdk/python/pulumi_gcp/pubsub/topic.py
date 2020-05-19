@@ -74,8 +74,8 @@ class Topic(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         key_ring = gcp.kms.KeyRing("keyRing", location="global")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.self_link)
-        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.self_link)
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
         ```
         ## Example Usage - Pubsub Topic Geo Restricted
 

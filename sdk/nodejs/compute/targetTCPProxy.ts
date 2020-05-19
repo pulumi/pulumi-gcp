@@ -35,9 +35,9 @@ import * as utilities from "../utilities";
  * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
  *     protocol: "TCP",
  *     timeoutSec: 10,
- *     healthChecks: [defaultHealthCheck.selfLink],
+ *     healthChecks: [defaultHealthCheck.id],
  * });
- * const defaultTargetTCPProxy = new gcp.compute.TargetTCPProxy("defaultTargetTCPProxy", {backendService: defaultBackendService.selfLink});
+ * const defaultTargetTCPProxy = new gcp.compute.TargetTCPProxy("defaultTargetTCPProxy", {backendService: defaultBackendService.id});
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_tcp_proxy.html.markdown.

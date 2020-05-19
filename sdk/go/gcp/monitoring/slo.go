@@ -31,8 +31,10 @@ type Slo struct {
 	// Basic Service-Level Indicator (SLI) on a well-known service type.
 	// Performance will be computed on the basis of pre-defined metrics.
 	// SLIs are used to measure and calculate the quality of the Service's
-	// performance with respect to a single aspect of service quality.  Structure is documented below.
-	BasicSli SloBasicSliOutput `pulumi:"basicSli"`
+	// performance with respect to a single aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	BasicSli SloBasicSliPtrOutput `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
 	CalendarPeriod pulumi.StringPtrOutput `pulumi:"calendarPeriod"`
@@ -47,6 +49,14 @@ type Slo struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// A request-based SLI defines a SLI for which atomic units of
+	// service are counted directly.
+	// A SLI describes a good service.
+	// It is used to measure and calculate the quality of the Service's
+	// performance with respect to a single aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	RequestBasedSli SloRequestBasedSliPtrOutput `pulumi:"requestBasedSli"`
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
 	RollingPeriodDays pulumi.IntPtrOutput `pulumi:"rollingPeriodDays"`
@@ -59,9 +69,6 @@ type Slo struct {
 // NewSlo registers a new resource with the given unique name, arguments, and options.
 func NewSlo(ctx *pulumi.Context,
 	name string, args *SloArgs, opts ...pulumi.ResourceOption) (*Slo, error) {
-	if args == nil || args.BasicSli == nil {
-		return nil, errors.New("missing required argument 'BasicSli'")
-	}
 	if args == nil || args.Goal == nil {
 		return nil, errors.New("missing required argument 'Goal'")
 	}
@@ -96,7 +103,9 @@ type sloState struct {
 	// Basic Service-Level Indicator (SLI) on a well-known service type.
 	// Performance will be computed on the basis of pre-defined metrics.
 	// SLIs are used to measure and calculate the quality of the Service's
-	// performance with respect to a single aspect of service quality.  Structure is documented below.
+	// performance with respect to a single aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`  Structure is documented below.
 	BasicSli *SloBasicSli `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
@@ -112,6 +121,14 @@ type sloState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// A request-based SLI defines a SLI for which atomic units of
+	// service are counted directly.
+	// A SLI describes a good service.
+	// It is used to measure and calculate the quality of the Service's
+	// performance with respect to a single aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	RequestBasedSli *SloRequestBasedSli `pulumi:"requestBasedSli"`
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
 	RollingPeriodDays *int `pulumi:"rollingPeriodDays"`
@@ -125,7 +142,9 @@ type SloState struct {
 	// Basic Service-Level Indicator (SLI) on a well-known service type.
 	// Performance will be computed on the basis of pre-defined metrics.
 	// SLIs are used to measure and calculate the quality of the Service's
-	// performance with respect to a single aspect of service quality.  Structure is documented below.
+	// performance with respect to a single aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`  Structure is documented below.
 	BasicSli SloBasicSliPtrInput
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
@@ -141,6 +160,14 @@ type SloState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// A request-based SLI defines a SLI for which atomic units of
+	// service are counted directly.
+	// A SLI describes a good service.
+	// It is used to measure and calculate the quality of the Service's
+	// performance with respect to a single aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	RequestBasedSli SloRequestBasedSliPtrInput
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
 	RollingPeriodDays pulumi.IntPtrInput
@@ -158,8 +185,10 @@ type sloArgs struct {
 	// Basic Service-Level Indicator (SLI) on a well-known service type.
 	// Performance will be computed on the basis of pre-defined metrics.
 	// SLIs are used to measure and calculate the quality of the Service's
-	// performance with respect to a single aspect of service quality.  Structure is documented below.
-	BasicSli SloBasicSli `pulumi:"basicSli"`
+	// performance with respect to a single aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	BasicSli *SloBasicSli `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
 	CalendarPeriod *string `pulumi:"calendarPeriod"`
@@ -171,6 +200,14 @@ type sloArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// A request-based SLI defines a SLI for which atomic units of
+	// service are counted directly.
+	// A SLI describes a good service.
+	// It is used to measure and calculate the quality of the Service's
+	// performance with respect to a single aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	RequestBasedSli *SloRequestBasedSli `pulumi:"requestBasedSli"`
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
 	RollingPeriodDays *int `pulumi:"rollingPeriodDays"`
@@ -185,8 +222,10 @@ type SloArgs struct {
 	// Basic Service-Level Indicator (SLI) on a well-known service type.
 	// Performance will be computed on the basis of pre-defined metrics.
 	// SLIs are used to measure and calculate the quality of the Service's
-	// performance with respect to a single aspect of service quality.  Structure is documented below.
-	BasicSli SloBasicSliInput
+	// performance with respect to a single aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	BasicSli SloBasicSliPtrInput
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
 	CalendarPeriod pulumi.StringPtrInput
@@ -198,6 +237,14 @@ type SloArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// A request-based SLI defines a SLI for which atomic units of
+	// service are counted directly.
+	// A SLI describes a good service.
+	// It is used to measure and calculate the quality of the Service's
+	// performance with respect to a single aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	RequestBasedSli SloRequestBasedSliPtrInput
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
 	RollingPeriodDays pulumi.IntPtrInput

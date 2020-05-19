@@ -14,6 +14,9 @@ import * as utilities from "../utilities";
  *    successfully deleted; this is a limitation of the provider, and will go away in the future.
  *    This provider is not able to delete App Engine applications.
  * 
+ * > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
+ * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * 
  * ## Example Usage
  * 
  * 
