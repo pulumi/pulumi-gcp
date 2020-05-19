@@ -223,8 +223,18 @@ export namespace appengine {
 
     export interface ApplicationIap {
         enabled?: boolean;
+        /**
+         * OAuth2 client ID to use for the authentication flow.
+         */
         oauth2ClientId: string;
+        /**
+         * OAuth2 client secret to use for the authentication flow.
+         * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+         */
         oauth2ClientSecret: string;
+        /**
+         * Hex-encoded SHA-256 hash of the client secret.
+         */
         oauth2ClientSecretSha256: string;
     }
 
@@ -6293,6 +6303,41 @@ export namespace compute {
         percent?: number;
     }
 
+    export interface RegionPerInstanceConfigPreservedState {
+        /**
+         * Stateful disks for the instance.  Structure is documented below.
+         */
+        disks?: outputs.compute.RegionPerInstanceConfigPreservedStateDisk[];
+        /**
+         * Preserved metadata defined for this instance. This is a list of key->value pairs.
+         */
+        metadata?: {[key: string]: string};
+    }
+
+    export interface RegionPerInstanceConfigPreservedStateDisk {
+        /**
+         * A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+         * The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+         * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+         * deleted from the instance group.
+         */
+        deleteRule?: string;
+        /**
+         * A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+         */
+        deviceName: string;
+        /**
+         * The mode of the disk.
+         */
+        mode?: string;
+        /**
+         * The URI of an existing persistent disk to attach under the specified device-name in the format
+         * `projects/project-id/zones/zone/disks/disk-name`.
+         */
+        source: string;
+    }
+
     export interface RegionUrlMapDefaultUrlRedirect {
         /**
          * The host that will be used in the redirect response instead of the one that was
@@ -11029,10 +11074,13 @@ export namespace dataproc {
          * Accepted values are:
          * * ANACONDA
          * * DRUID
+         * * HBASE
          * * HIVE_WEBHCAT
          * * JUPYTER
          * * KERBEROS
          * * PRESTO
+         * * RANGER
+         * * SOLR
          * * ZEPPELIN
          * * ZOOKEEPER
          */
@@ -11418,6 +11466,25 @@ export namespace deploymentmanager {
 }
 
 export namespace diagflow {
+    export interface EntityTypeEntity {
+        /**
+         * A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
+         * could be green onions.
+         * For KIND_LIST entity types:
+         * * This collection must contain exactly one synonym equal to value.
+         */
+        synonyms: string[];
+        /**
+         * The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
+         * could be scallions.
+         * For KIND_MAP entity types:
+         * * A reference value to be used in place of synonyms.
+         * For KIND_LIST entity types:
+         * * A string that can contain references to other entity types (with or without aliases).
+         */
+        value: string;
+    }
+
     export interface IntentFollowupIntentInfo {
         followupIntentName?: string;
         /**
@@ -13358,6 +13425,92 @@ export namespace monitoring {
         threshold: string;
     }
 
+    export interface SloRequestBasedSli {
+        /**
+         * Used when goodService is defined by a count of values aggregated in a
+         * Distribution that fall into a good range. The totalService is the
+         * total count of all values aggregated in the Distribution.
+         * Defines a distribution TimeSeries filter and thresholds used for
+         * measuring good service and total service.
+         * Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+         */
+        distributionCut?: outputs.monitoring.SloRequestBasedSliDistributionCut;
+        /**
+         * A means to compute a ratio of `goodService` to `totalService`.
+         * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+         * Must specify exactly two of good, bad, and total service filters.
+         * The relationship goodService + badService = totalService
+         * will be assumed.
+         * Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+         */
+        goodTotalRatio?: outputs.monitoring.SloRequestBasedSliGoodTotalRatio;
+    }
+
+    export interface SloRequestBasedSliDistributionCut {
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * aggregating values to quantify the good service provided.
+         * Must have ValueType = DISTRIBUTION and
+         * MetricKind = DELTA or MetricKind = CUMULATIVE.
+         */
+        distributionFilter: string;
+        /**
+         * Range of numerical values. The computed goodService
+         * will be the count of values x in the Distribution such
+         * that range.min <= x < range.max. inclusive of min and
+         * exclusive of max. Open ranges can be defined by setting
+         * just one of min or max.  Structure is documented below.
+         */
+        range: outputs.monitoring.SloRequestBasedSliDistributionCutRange;
+    }
+
+    export interface SloRequestBasedSliDistributionCutRange {
+        /**
+         * max value for the range (inclusive). If not given,
+         * will be set to "infinity", defining an open range
+         * ">= range.min"
+         */
+        max?: number;
+        /**
+         * Min value for the range (inclusive). If not given,
+         * will be set to "-infinity", defining an open range
+         * "< range.max"
+         */
+        min?: number;
+    }
+
+    export interface SloRequestBasedSliGoodTotalRatio {
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying bad service provided, either demanded service that
+         * was not provided or demanded service that was of inadequate
+         * quality.
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+         * must be set (good + bad = total is assumed).
+         */
+        badServiceFilter?: string;
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying good service provided.
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+         * must be set (good + bad = total is assumed).
+         */
+        goodServiceFilter?: string;
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying total demanded service.
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+         * must be set (good + bad = total is assumed).
+         */
+        totalServiceFilter?: string;
+    }
+
     export interface UptimeCheckConfigContentMatcher {
         /**
          * String or regex content to match (max 1024 bytes)
@@ -14084,8 +14237,7 @@ export namespace sql {
          */
         authorizedGaeApplications?: string[];
         /**
-         * This specifies whether a PostgreSQL instance
-         * should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+         * The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
          */
         availabilityType: string;
         backupConfiguration: outputs.sql.DatabaseInstanceSettingsBackupConfiguration;

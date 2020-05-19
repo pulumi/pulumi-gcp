@@ -121,27 +121,27 @@ class RegionSslCertificate(pulumi.CustomResource):
             region="us-central1",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default_region_health_check.self_link])
+            health_checks=[default_region_health_check.id])
         default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
             region="us-central1",
             description="a description",
-            default_service=default_region_backend_service.self_link,
+            default_service=default_region_backend_service.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": default_region_backend_service.self_link,
+                "defaultService": default_region_backend_service.id,
                 "path_rule": [{
                     "paths": ["/*"],
-                    "service": default_region_backend_service.self_link,
+                    "service": default_region_backend_service.id,
                 }],
             }])
         default_region_target_https_proxy = gcp.compute.RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy",
             region="us-central1",
-            url_map=default_region_url_map.self_link,
-            ssl_certificates=[default_region_ssl_certificate.self_link])
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default_region_ssl_certificate.id])
         ```
 
         :param str resource_name: The name of the resource.

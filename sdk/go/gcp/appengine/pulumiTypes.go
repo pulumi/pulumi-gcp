@@ -148,9 +148,13 @@ func (o ApplicationFeatureSettingsPtrOutput) SplitHealthChecks() pulumi.BoolPtrO
 }
 
 type ApplicationIap struct {
-	Enabled                  *bool   `pulumi:"enabled"`
-	Oauth2ClientId           string  `pulumi:"oauth2ClientId"`
-	Oauth2ClientSecret       string  `pulumi:"oauth2ClientSecret"`
+	Enabled *bool `pulumi:"enabled"`
+	// OAuth2 client ID to use for the authentication flow.
+	Oauth2ClientId string `pulumi:"oauth2ClientId"`
+	// OAuth2 client secret to use for the authentication flow.
+	// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
+	// Hex-encoded SHA-256 hash of the client secret.
 	Oauth2ClientSecretSha256 *string `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -167,9 +171,13 @@ type ApplicationIapInput interface {
 }
 
 type ApplicationIapArgs struct {
-	Enabled                  pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Oauth2ClientId           pulumi.StringInput    `pulumi:"oauth2ClientId"`
-	Oauth2ClientSecret       pulumi.StringInput    `pulumi:"oauth2ClientSecret"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// OAuth2 client ID to use for the authentication flow.
+	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
+	// OAuth2 client secret to use for the authentication flow.
+	// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
+	// Hex-encoded SHA-256 hash of the client secret.
 	Oauth2ClientSecretSha256 pulumi.StringPtrInput `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -254,14 +262,18 @@ func (o ApplicationIapOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationIap) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// OAuth2 client ID to use for the authentication flow.
 func (o ApplicationIapOutput) Oauth2ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
 }
 
+// OAuth2 client secret to use for the authentication flow.
+// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
 func (o ApplicationIapOutput) Oauth2ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
 }
 
+// Hex-encoded SHA-256 hash of the client secret.
 func (o ApplicationIapOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationIap) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
 }
@@ -293,6 +305,7 @@ func (o ApplicationIapPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// OAuth2 client ID to use for the authentication flow.
 func (o ApplicationIapPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationIap) *string {
 		if v == nil {
@@ -302,6 +315,8 @@ func (o ApplicationIapPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// OAuth2 client secret to use for the authentication flow.
+// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
 func (o ApplicationIapPtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationIap) *string {
 		if v == nil {
@@ -311,6 +326,7 @@ func (o ApplicationIapPtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hex-encoded SHA-256 hash of the client secret.
 func (o ApplicationIapPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationIap) *string {
 		if v == nil {

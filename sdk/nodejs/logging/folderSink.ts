@@ -74,9 +74,9 @@ export class FolderSink extends pulumi.CustomResource {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
+     * "storage.googleapis.com/[GCS_BUCKET]"
+     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
      * The writer associated with the sink must have access to write to the above resource.
      */
     public readonly destination!: pulumi.Output<string>;
@@ -163,9 +163,9 @@ export interface FolderSinkState {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
+     * "storage.googleapis.com/[GCS_BUCKET]"
+     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination?: pulumi.Input<string>;
@@ -207,9 +207,9 @@ export interface FolderSinkArgs {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
+     * "storage.googleapis.com/[GCS_BUCKET]"
+     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination: pulumi.Input<string>;

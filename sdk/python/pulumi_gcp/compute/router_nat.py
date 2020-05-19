@@ -120,12 +120,12 @@ class RouterNat(pulumi.CustomResource):
 
         net = gcp.compute.Network("net")
         subnet = gcp.compute.Subnetwork("subnet",
-            network=net.self_link,
+            network=net.id,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1")
         router = gcp.compute.Router("router",
             region=subnet.region,
-            network=net.self_link,
+            network=net.id,
             bgp={
                 "asn": 64514,
             })
@@ -148,12 +148,12 @@ class RouterNat(pulumi.CustomResource):
 
         net = gcp.compute.Network("net")
         subnet = gcp.compute.Subnetwork("subnet",
-            network=net.self_link,
+            network=net.id,
             ip_cidr_range="10.0.0.0/16",
             region="us-central1")
         router = gcp.compute.Router("router",
             region=subnet.region,
-            network=net.self_link)
+            network=net.id)
         address = []
         for range in [{"value": i} for i in range(0, 2)]:
             address.append(gcp.compute.Address(f"address-{range['value']}", region=subnet.region))
@@ -161,10 +161,10 @@ class RouterNat(pulumi.CustomResource):
             router=router.name,
             region=router.region,
             nat_ip_allocate_option="MANUAL_ONLY",
-            nat_ips=[__item.self_link for __item in address],
+            nat_ips=[__item.id for __item in address],
             source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
             subnetwork=[{
-                "name": google_compute_subnetwork["default"]["self_link"],
+                "name": google_compute_subnetwork["default"]["id"],
                 "sourceIpRangesToNats": ["ALL_IP_RANGES"],
             }])
         ```

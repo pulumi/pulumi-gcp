@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const network1 = new gcp.compute.Network("network1", {autoCreateSubnetworks: false});
  * const haGateway1 = new gcp.compute.HaVpnGateway("haGateway1", {
  *     region: "us-central1",
- *     network: network1.selfLink,
+ *     network: network1.id,
  * });
  * ```
  * ## Example Usage - Ha Vpn Gateway Gcp To Gcp
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * });
  * const haGateway1 = new gcp.compute.HaVpnGateway("haGateway1", {
  *     region: "us-central1",
- *     network: network1.selfLink,
+ *     network: network1.id,
  * });
  * const network2 = new gcp.compute.Network("network2", {
  *     routingMode: "GLOBAL",
@@ -52,27 +52,27 @@ import * as utilities from "../utilities";
  * });
  * const haGateway2 = new gcp.compute.HaVpnGateway("haGateway2", {
  *     region: "us-central1",
- *     network: network2.selfLink,
+ *     network: network2.id,
  * });
  * const network1Subnet1 = new gcp.compute.Subnetwork("network1Subnet1", {
  *     ipCidrRange: "10.0.1.0/24",
  *     region: "us-central1",
- *     network: network1.selfLink,
+ *     network: network1.id,
  * });
  * const network1Subnet2 = new gcp.compute.Subnetwork("network1Subnet2", {
  *     ipCidrRange: "10.0.2.0/24",
  *     region: "us-west1",
- *     network: network1.selfLink,
+ *     network: network1.id,
  * });
  * const network2Subnet1 = new gcp.compute.Subnetwork("network2Subnet1", {
  *     ipCidrRange: "192.168.1.0/24",
  *     region: "us-central1",
- *     network: network2.selfLink,
+ *     network: network2.id,
  * });
  * const network2Subnet2 = new gcp.compute.Subnetwork("network2Subnet2", {
  *     ipCidrRange: "192.168.2.0/24",
  *     region: "us-east1",
- *     network: network2.selfLink,
+ *     network: network2.id,
  * });
  * const router1 = new gcp.compute.Router("router1", {
  *     network: network1.name,
@@ -88,34 +88,34 @@ import * as utilities from "../utilities";
  * });
  * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
  *     region: "us-central1",
- *     vpnGateway: haGateway1.selfLink,
- *     peerGcpGateway: haGateway2.selfLink,
+ *     vpnGateway: haGateway1.id,
+ *     peerGcpGateway: haGateway2.id,
  *     sharedSecret: "a secret message",
- *     router: router1.selfLink,
+ *     router: router1.id,
  *     vpnGatewayInterface: 0,
  * });
  * const tunnel2 = new gcp.compute.VPNTunnel("tunnel2", {
  *     region: "us-central1",
- *     vpnGateway: haGateway1.selfLink,
- *     peerGcpGateway: haGateway2.selfLink,
+ *     vpnGateway: haGateway1.id,
+ *     peerGcpGateway: haGateway2.id,
  *     sharedSecret: "a secret message",
- *     router: router1.selfLink,
+ *     router: router1.id,
  *     vpnGatewayInterface: 1,
  * });
  * const tunnel3 = new gcp.compute.VPNTunnel("tunnel3", {
  *     region: "us-central1",
- *     vpnGateway: haGateway2.selfLink,
- *     peerGcpGateway: haGateway1.selfLink,
+ *     vpnGateway: haGateway2.id,
+ *     peerGcpGateway: haGateway1.id,
  *     sharedSecret: "a secret message",
- *     router: router2.selfLink,
+ *     router: router2.id,
  *     vpnGatewayInterface: 0,
  * });
  * const tunnel4 = new gcp.compute.VPNTunnel("tunnel4", {
  *     region: "us-central1",
- *     vpnGateway: haGateway2.selfLink,
- *     peerGcpGateway: haGateway1.selfLink,
+ *     vpnGateway: haGateway2.id,
+ *     peerGcpGateway: haGateway1.id,
  *     sharedSecret: "a secret message",
- *     router: router2.selfLink,
+ *     router: router2.id,
  *     vpnGatewayInterface: 1,
  * });
  * const router1Interface1 = new gcp.compute.RouterInterface("router1Interface1", {

@@ -181,7 +181,7 @@ class RegionDisk(pulumi.CustomResource):
             source_disk=disk.name,
             zone="us-central1-a")
         regiondisk = gcp.compute.RegionDisk("regiondisk",
-            snapshot=snapdisk.self_link,
+            snapshot=snapdisk.id,
             type="pd-ssd",
             region="us-central1",
             physical_block_size_bytes=4096,

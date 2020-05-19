@@ -729,19 +729,19 @@ class URLMap(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link])
+            health_checks=[default.id])
         home = gcp.compute.BackendService("home",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link])
+            health_checks=[default.id])
         static_bucket = gcp.storage.Bucket("staticBucket", location="US")
         static_backend_bucket = gcp.compute.BackendBucket("staticBackendBucket",
             bucket_name=static_bucket.name,
             enable_cdn=True)
         urlmap = gcp.compute.URLMap("urlmap",
             description="a description",
-            default_service=home.self_link,
+            default_service=home.id,
             host_rule=[
                 {
                     "hosts": ["mysite.com"],
@@ -755,29 +755,29 @@ class URLMap(pulumi.CustomResource):
             path_matcher=[
                 {
                     "name": "mysite",
-                    "defaultService": home.self_link,
+                    "defaultService": home.id,
                     "path_rule": [
                         {
                             "paths": ["/home"],
-                            "service": home.self_link,
+                            "service": home.id,
                         },
                         {
                             "paths": ["/login"],
-                            "service": login.self_link,
+                            "service": login.id,
                         },
                         {
                             "paths": ["/static"],
-                            "service": static_backend_bucket.self_link,
+                            "service": static_backend_bucket.id,
                         },
                     ],
                 },
                 {
                     "name": "otherpaths",
-                    "defaultService": home.self_link,
+                    "defaultService": home.id,
                 },
             ],
             test=[{
-                "service": home.self_link,
+                "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
             }])
@@ -796,18 +796,18 @@ class URLMap(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link],
+            health_checks=[default.id],
             load_balancing_scheme="INTERNAL_SELF_MANAGED")
         urlmap = gcp.compute.URLMap("urlmap",
             description="a description",
-            default_service=home.self_link,
+            default_service=home.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.self_link,
+                "defaultService": home.id,
                 "route_rules": [{
                     "priority": 1,
                     "header_action": {
@@ -854,7 +854,7 @@ class URLMap(pulumi.CustomResource):
                 }],
             }],
             test=[{
-                "service": home.self_link,
+                "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
             }])
@@ -873,18 +873,18 @@ class URLMap(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link],
+            health_checks=[default.id],
             load_balancing_scheme="INTERNAL_SELF_MANAGED")
         urlmap = gcp.compute.URLMap("urlmap",
             description="a description",
-            default_service=home.self_link,
+            default_service=home.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.self_link,
+                "defaultService": home.id,
                 "route_rules": [{
                     "priority": 1,
                     "match_rules": [{
@@ -902,7 +902,7 @@ class URLMap(pulumi.CustomResource):
                 }],
             }],
             test=[{
-                "service": home.self_link,
+                "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
             }])
@@ -921,18 +921,18 @@ class URLMap(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link],
+            health_checks=[default.id],
             load_balancing_scheme="INTERNAL_SELF_MANAGED")
         urlmap = gcp.compute.URLMap("urlmap",
             description="a description",
-            default_service=home.self_link,
+            default_service=home.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.self_link,
+                "defaultService": home.id,
                 "path_rule": [{
                     "paths": ["/home"],
                     "route_action": {
@@ -960,7 +960,7 @@ class URLMap(pulumi.CustomResource):
                             },
                         },
                         "request_mirror_policy": {
-                            "backendService": home.self_link,
+                            "backendService": home.id,
                         },
                         "retry_policy": {
                             "numRetries": 4,
@@ -981,7 +981,7 @@ class URLMap(pulumi.CustomResource):
                             "pathPrefixRewrite": "A replacement path",
                         },
                         "weighted_backend_services": [{
-                            "backendService": home.self_link,
+                            "backendService": home.id,
                             "weight": 400,
                             "header_action": {
                                 "requestHeadersToRemoves": ["RemoveMe"],
@@ -1002,7 +1002,7 @@ class URLMap(pulumi.CustomResource):
                 }],
             }],
             test=[{
-                "service": home.self_link,
+                "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
             }])
@@ -1021,18 +1021,18 @@ class URLMap(pulumi.CustomResource):
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link],
+            health_checks=[default.id],
             load_balancing_scheme="INTERNAL_SELF_MANAGED")
         urlmap = gcp.compute.URLMap("urlmap",
             description="a description",
-            default_service=home.self_link,
+            default_service=home.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.self_link,
+                "defaultService": home.id,
                 "path_rule": [{
                     "paths": ["/home"],
                     "route_action": {
@@ -1047,7 +1047,7 @@ class URLMap(pulumi.CustomResource):
                             "disabled": False,
                         },
                         "weighted_backend_services": [{
-                            "backendService": home.self_link,
+                            "backendService": home.id,
                             "weight": 400,
                             "header_action": {
                                 "requestHeadersToRemoves": ["RemoveMe"],
@@ -1068,7 +1068,7 @@ class URLMap(pulumi.CustomResource):
                 }],
             }],
             test=[{
-                "service": home.self_link,
+                "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
             }])

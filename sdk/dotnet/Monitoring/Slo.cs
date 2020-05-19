@@ -32,10 +32,12 @@ namespace Pulumi.Gcp.Monitoring
         /// Basic Service-Level Indicator (SLI) on a well-known service type.
         /// Performance will be computed on the basis of pre-defined metrics.
         /// SLIs are used to measure and calculate the quality of the Service's
-        /// performance with respect to a single aspect of service quality.  Structure is documented below.
+        /// performance with respect to a single aspect of service quality.
+        /// Exactly one of the following must be set:
+        /// `basic_sli`, `request_based_sli`  Structure is documented below.
         /// </summary>
         [Output("basicSli")]
-        public Output<Outputs.SloBasicSli> BasicSli { get; private set; } = null!;
+        public Output<Outputs.SloBasicSli?> BasicSli { get; private set; } = null!;
 
         /// <summary>
         /// A calendar period, semantically "since the start of the current
@@ -70,6 +72,18 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// A request-based SLI defines a SLI for which atomic units of
+        /// service are counted directly.
+        /// A SLI describes a good service.
+        /// It is used to measure and calculate the quality of the Service's
+        /// performance with respect to a single aspect of service quality.
+        /// Exactly one of the following must be set:
+        /// `basic_sli`, `request_based_sli`  Structure is documented below.
+        /// </summary>
+        [Output("requestBasedSli")]
+        public Output<Outputs.SloRequestBasedSli?> RequestBasedSli { get; private set; } = null!;
 
         /// <summary>
         /// A rolling time period, semantically "in the past X days".
@@ -140,10 +154,12 @@ namespace Pulumi.Gcp.Monitoring
         /// Basic Service-Level Indicator (SLI) on a well-known service type.
         /// Performance will be computed on the basis of pre-defined metrics.
         /// SLIs are used to measure and calculate the quality of the Service's
-        /// performance with respect to a single aspect of service quality.  Structure is documented below.
+        /// performance with respect to a single aspect of service quality.
+        /// Exactly one of the following must be set:
+        /// `basic_sli`, `request_based_sli`  Structure is documented below.
         /// </summary>
-        [Input("basicSli", required: true)]
-        public Input<Inputs.SloBasicSliArgs> BasicSli { get; set; } = null!;
+        [Input("basicSli")]
+        public Input<Inputs.SloBasicSliArgs>? BasicSli { get; set; }
 
         /// <summary>
         /// A calendar period, semantically "since the start of the current
@@ -171,6 +187,18 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// A request-based SLI defines a SLI for which atomic units of
+        /// service are counted directly.
+        /// A SLI describes a good service.
+        /// It is used to measure and calculate the quality of the Service's
+        /// performance with respect to a single aspect of service quality.
+        /// Exactly one of the following must be set:
+        /// `basic_sli`, `request_based_sli`  Structure is documented below.
+        /// </summary>
+        [Input("requestBasedSli")]
+        public Input<Inputs.SloRequestBasedSliArgs>? RequestBasedSli { get; set; }
 
         /// <summary>
         /// A rolling time period, semantically "in the past X days".
@@ -202,7 +230,9 @@ namespace Pulumi.Gcp.Monitoring
         /// Basic Service-Level Indicator (SLI) on a well-known service type.
         /// Performance will be computed on the basis of pre-defined metrics.
         /// SLIs are used to measure and calculate the quality of the Service's
-        /// performance with respect to a single aspect of service quality.  Structure is documented below.
+        /// performance with respect to a single aspect of service quality.
+        /// Exactly one of the following must be set:
+        /// `basic_sli`, `request_based_sli`  Structure is documented below.
         /// </summary>
         [Input("basicSli")]
         public Input<Inputs.SloBasicSliGetArgs>? BasicSli { get; set; }
@@ -240,6 +270,18 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// A request-based SLI defines a SLI for which atomic units of
+        /// service are counted directly.
+        /// A SLI describes a good service.
+        /// It is used to measure and calculate the quality of the Service's
+        /// performance with respect to a single aspect of service quality.
+        /// Exactly one of the following must be set:
+        /// `basic_sli`, `request_based_sli`  Structure is documented below.
+        /// </summary>
+        [Input("requestBasedSli")]
+        public Input<Inputs.SloRequestBasedSliGetArgs>? RequestBasedSli { get; set; }
 
         /// <summary>
         /// A rolling time period, semantically "in the past X days".

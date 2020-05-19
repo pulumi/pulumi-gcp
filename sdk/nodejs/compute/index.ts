@@ -78,6 +78,7 @@ export * from "./regionDisk";
 export * from "./regionDiskResourcePolicyAttachment";
 export * from "./regionHealthCheck";
 export * from "./regionInstanceGroupManager";
+export * from "./regionPerInstanceConfig";
 export * from "./regionSslCertificate";
 export * from "./regionTargetHttpProxy";
 export * from "./regionTargetHttpsProxy";

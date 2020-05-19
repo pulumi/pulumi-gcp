@@ -18,12 +18,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const instance = new gcp.bigtable.Instance("instance", {cluster: [{
- *     clusterId: "bt-instance",
- *     zone: "us-central1-b",
- *     numNodes: 3,
- *     storageType: "HDD",
- * }]});
+ * const instance = new gcp.bigtable.Instance("instance", {
+ *     cluster: [{
+ *         clusterId: "bt-instance",
+ *         zone: "us-central1-b",
+ *         numNodes: 3,
+ *         storageType: "HDD",
+ *     }],
+ *     deletionProtection: "true",
+ * });
  * const ap = new gcp.bigquery.AppProfile("ap", {
  *     instance: instance.name,
  *     appProfileId: "bt-profile",
@@ -38,12 +41,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const instance = new gcp.bigtable.Instance("instance", {cluster: [{
- *     clusterId: "bt-instance",
- *     zone: "us-central1-b",
- *     numNodes: 3,
- *     storageType: "HDD",
- * }]});
+ * const instance = new gcp.bigtable.Instance("instance", {
+ *     cluster: [{
+ *         clusterId: "bt-instance",
+ *         zone: "us-central1-b",
+ *         numNodes: 3,
+ *         storageType: "HDD",
+ *     }],
+ *     deletionProtection: "true",
+ * });
  * const ap = new gcp.bigquery.AppProfile("ap", {
  *     instance: instance.name,
  *     appProfileId: "bt-profile",

@@ -682,36 +682,36 @@ class RegionUrlMap(pulumi.CustomResource):
             region="us-central1",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link])
+            health_checks=[default.id])
         home = gcp.compute.RegionBackendService("home",
             region="us-central1",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link])
+            health_checks=[default.id])
         regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
             region="us-central1",
             description="a description",
-            default_service=home.self_link,
+            default_service=home.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.self_link,
+                "defaultService": home.id,
                 "path_rule": [
                     {
                         "paths": ["/home"],
-                        "service": home.self_link,
+                        "service": home.id,
                     },
                     {
                         "paths": ["/login"],
-                        "service": login.self_link,
+                        "service": login.id,
                     },
                 ],
             }],
             test=[{
-                "service": home.self_link,
+                "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
             }])
@@ -729,18 +729,18 @@ class RegionUrlMap(pulumi.CustomResource):
         home = gcp.compute.RegionBackendService("home",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link],
+            health_checks=[default.id],
             load_balancing_scheme="INTERNAL_MANAGED")
         regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
             description="a description",
-            default_service=home.self_link,
+            default_service=home.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.self_link,
+                "defaultService": home.id,
                 "path_rule": [{
                     "paths": ["/home"],
                     "route_action": {
@@ -767,7 +767,7 @@ class RegionUrlMap(pulumi.CustomResource):
                             },
                         },
                         "request_mirror_policy": {
-                            "backendService": home.self_link,
+                            "backendService": home.id,
                         },
                         "retry_policy": {
                             "numRetries": 4,
@@ -788,7 +788,7 @@ class RegionUrlMap(pulumi.CustomResource):
                             "pathPrefixRewrite": "A replacement path",
                         },
                         "weighted_backend_services": [{
-                            "backendService": home.self_link,
+                            "backendService": home.id,
                             "weight": 400,
                             "header_action": {
                                 "requestHeadersToRemoves": ["RemoveMe"],
@@ -809,7 +809,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 }],
             }],
             test=[{
-                "service": home.self_link,
+                "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
             }])
@@ -827,18 +827,18 @@ class RegionUrlMap(pulumi.CustomResource):
         home = gcp.compute.RegionBackendService("home",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link],
+            health_checks=[default.id],
             load_balancing_scheme="INTERNAL_MANAGED")
         regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
             description="a description",
-            default_service=home.self_link,
+            default_service=home.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.self_link,
+                "defaultService": home.id,
                 "path_rule": [{
                     "paths": ["/home"],
                     "route_action": {
@@ -861,7 +861,7 @@ class RegionUrlMap(pulumi.CustomResource):
                             "pathPrefixRewrite": "A replacement path",
                         },
                         "weighted_backend_services": [{
-                            "backendService": home.self_link,
+                            "backendService": home.id,
                             "weight": 400,
                             "header_action": {
                                 "response_headers_to_add": [{
@@ -875,7 +875,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 }],
             }],
             test=[{
-                "service": home.self_link,
+                "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
             }])
@@ -893,18 +893,18 @@ class RegionUrlMap(pulumi.CustomResource):
         home = gcp.compute.RegionBackendService("home",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link],
+            health_checks=[default.id],
             load_balancing_scheme="INTERNAL_MANAGED")
         regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
             description="a description",
-            default_service=home.self_link,
+            default_service=home.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.self_link,
+                "defaultService": home.id,
                 "route_rules": [{
                     "priority": 1,
                     "header_action": {
@@ -951,7 +951,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 }],
             }],
             test=[{
-                "service": home.self_link,
+                "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
             }])
@@ -969,21 +969,21 @@ class RegionUrlMap(pulumi.CustomResource):
         home = gcp.compute.RegionBackendService("home",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default.self_link],
+            health_checks=[default.id],
             load_balancing_scheme="INTERNAL_MANAGED")
         regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
             description="a description",
-            default_service=home.self_link,
+            default_service=home.id,
             host_rule=[{
                 "hosts": ["mysite.com"],
                 "pathMatcher": "allpaths",
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.self_link,
+                "defaultService": home.id,
                 "route_rules": [{
                     "priority": 1,
-                    "service": home.self_link,
+                    "service": home.id,
                     "header_action": {
                         "requestHeadersToRemoves": ["RemoveMe2"],
                     },
@@ -1002,7 +1002,7 @@ class RegionUrlMap(pulumi.CustomResource):
                 }],
             }],
             test=[{
-                "service": home.self_link,
+                "service": home.id,
                 "host": "hi.com",
                 "path": "/home",
             }])

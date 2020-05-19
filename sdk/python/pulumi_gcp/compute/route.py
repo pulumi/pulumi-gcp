@@ -158,7 +158,7 @@ class Route(pulumi.CustomResource):
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             ip_cidr_range="10.0.1.0/24",
             region="us-central1",
-            network=default_network.self_link)
+            network=default_network.id)
         hc = gcp.compute.HealthCheck("hc",
             check_interval_sec=1,
             timeout_sec=1,
@@ -167,18 +167,18 @@ class Route(pulumi.CustomResource):
             })
         backend = gcp.compute.RegionBackendService("backend",
             region="us-central1",
-            health_checks=[hc.self_link])
+            health_checks=[hc.id])
         default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
             region="us-central1",
             load_balancing_scheme="INTERNAL",
-            backend_service=backend.self_link,
+            backend_service=backend.id,
             all_ports=True,
             network=default_network.name,
             subnetwork=default_subnetwork.name)
         route_ilb = gcp.compute.Route("route-ilb",
             dest_range="0.0.0.0/0",
             network=default_network.name,
-            next_hop_ilb=default_forwarding_rule.self_link,
+            next_hop_ilb=default_forwarding_rule.id,
             priority=2000)
         ```
 

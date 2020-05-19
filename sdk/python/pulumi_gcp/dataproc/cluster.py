@@ -170,10 +170,13 @@ class Cluster(pulumi.CustomResource):
           Accepted values are:
           * ANACONDA
           * DRUID
+          * HBASE
           * HIVE_WEBHCAT
           * JUPYTER
           * KERBEROS
           * PRESTO
+          * RANGER
+          * SOLR
           * ZEPPELIN
           * ZOOKEEPER
         * `overrideProperties` (`dict`) - A list of override and additional properties (key/value pairs)
@@ -508,10 +511,13 @@ class Cluster(pulumi.CustomResource):
               Accepted values are:
               * ANACONDA
               * DRUID
+              * HBASE
               * HIVE_WEBHCAT
               * JUPYTER
               * KERBEROS
               * PRESTO
+              * RANGER
+              * SOLR
               * ZEPPELIN
               * ZOOKEEPER
             * `overrideProperties` (`pulumi.Input[dict]`) - A list of override and additional properties (key/value pairs)
@@ -762,10 +768,13 @@ class Cluster(pulumi.CustomResource):
               Accepted values are:
               * ANACONDA
               * DRUID
+              * HBASE
               * HIVE_WEBHCAT
               * JUPYTER
               * KERBEROS
               * PRESTO
+              * RANGER
+              * SOLR
               * ZEPPELIN
               * ZOOKEEPER
             * `overrideProperties` (`pulumi.Input[dict]`) - A list of override and additional properties (key/value pairs)

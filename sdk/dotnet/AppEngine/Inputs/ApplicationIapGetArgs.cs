@@ -15,12 +15,22 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// OAuth2 client ID to use for the authentication flow.
+        /// </summary>
         [Input("oauth2ClientId", required: true)]
         public Input<string> Oauth2ClientId { get; set; } = null!;
 
+        /// <summary>
+        /// OAuth2 client secret to use for the authentication flow.
+        /// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+        /// </summary>
         [Input("oauth2ClientSecret", required: true)]
         public Input<string> Oauth2ClientSecret { get; set; } = null!;
 
+        /// <summary>
+        /// Hex-encoded SHA-256 hash of the client secret.
+        /// </summary>
         [Input("oauth2ClientSecretSha256")]
         public Input<string>? Oauth2ClientSecretSha256 { get; set; }
 

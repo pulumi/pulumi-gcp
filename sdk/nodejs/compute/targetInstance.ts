@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *         network: "default",
  *     }],
  * });
- * const default = new gcp.compute.TargetInstance("default", {instance: target-vm.selfLink});
+ * const default = new gcp.compute.TargetInstance("default", {instance: target-vm.id});
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_instance.html.markdown.

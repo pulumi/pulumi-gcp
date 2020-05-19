@@ -161,10 +161,10 @@ class ManagedZone(pulumi.CustomResource):
             private_visibility_config={
                 "networks": [
                     {
-                        "networkUrl": network_1.id,
+                        "networkUrl": network_1.self_link,
                     },
                     {
-                        "networkUrl": network_2.id,
+                        "networkUrl": network_2.self_link,
                     },
                 ],
             })
@@ -188,10 +188,10 @@ class ManagedZone(pulumi.CustomResource):
             private_visibility_config={
                 "networks": [
                     {
-                        "networkUrl": network_1.id,
+                        "networkUrl": network_1.self_link,
                     },
                     {
-                        "networkUrl": network_2.id,
+                        "networkUrl": network_2.self_link,
                     },
                 ],
             },
@@ -221,12 +221,12 @@ class ManagedZone(pulumi.CustomResource):
             visibility="private",
             private_visibility_config={
                 "networks": [{
-                    "networkUrl": network_source.id,
+                    "networkUrl": network_source.self_link,
                 }],
             },
             peering_config={
                 "target_network": {
-                    "networkUrl": network_target.id,
+                    "networkUrl": network_target.self_link,
                 },
             })
         ```

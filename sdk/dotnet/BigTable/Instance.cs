@@ -23,6 +23,13 @@ namespace Pulumi.Gcp.BigTable
         public Output<ImmutableArray<Outputs.InstanceCluster>> Clusters { get; private set; } = null!;
 
         /// <summary>
+        /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+        /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         /// </summary>
         [Output("displayName")]
@@ -106,6 +113,13 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
+        /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+        /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         /// </summary>
         [Input("displayName")]
@@ -148,6 +162,13 @@ namespace Pulumi.Gcp.BigTable
             get => _clusters ?? (_clusters = new InputList<Inputs.InstanceClusterGetArgs>());
             set => _clusters = value;
         }
+
+        /// <summary>
+        /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+        /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.

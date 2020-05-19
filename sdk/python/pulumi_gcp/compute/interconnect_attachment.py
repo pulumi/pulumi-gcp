@@ -146,7 +146,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         foobar = gcp.compute.Router("foobar", network=google_compute_network["foobar"]["name"])
         on_prem = gcp.compute.InterconnectAttachment("onPrem",
             interconnect="my-interconnect-id",
-            router=foobar.self_link)
+            router=foobar.id)
         ```
 
         :param str resource_name: The name of the resource.

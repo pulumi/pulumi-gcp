@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * const regiondisk = new gcp.compute.RegionDisk("regiondisk", {
- *     snapshot: snapdisk.selfLink,
+ *     snapshot: snapdisk.id,
  *     type: "pd-ssd",
  *     region: "us-central1",
  *     physicalBlockSizeBytes: 4096,

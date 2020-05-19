@@ -301,6 +301,16 @@ class RegionBackendService(pulumi.CustomResource):
         by a thousand to get a double. That is, if the desired factor is 1.9, the
         runtime value should be 1900. Defaults to 1900.
     """
+    port_name: pulumi.Output[str]
+    """
+    A named port on a backend instance group representing the port for
+    communication to the backend VMs in that group. Required when the
+    loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+    and the backends are instance groups. The named port must be defined on each
+    backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
+    default of "http" if not given.
+    Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
+    """
     project: pulumi.Output[str]
     """
     The ID of the project in which the resource belongs.
@@ -331,7 +341,7 @@ class RegionBackendService(pulumi.CustomResource):
     How many seconds to wait for the backend before considering it a
     failed request. Default is 30 seconds. Valid range is [1, 86400].
     """
-    def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, description=None, failover_policy=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, network=None, outlier_detection=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, description=None, failover_policy=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, network=None, outlier_detection=None, port_name=None, project=None, protocol=None, region=None, session_affinity=None, timeout_sec=None, __props__=None, __name__=None, __opts__=None):
         """
         A Region Backend Service defines a regionally-scoped group of virtual
         machines that will serve traffic for load balancing.
@@ -358,7 +368,7 @@ class RegionBackendService(pulumi.CustomResource):
             })
         default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
             region="us-central1",
-            health_checks=[default_health_check.self_link],
+            health_checks=[default_health_check.id],
             connection_draining_timeout_sec=10,
             session_affinity="CLIENT_IP")
         ```
@@ -373,11 +383,11 @@ class RegionBackendService(pulumi.CustomResource):
             "port": 80,
         })
         default = gcp.compute.RegionBackendService("default",
-            health_checks=health_check.self_link,
-            load_balancing_scheme="INTERNAL_MANAGED",
-            locality_lb_policy="ROUND_ROBIN",
+            region="us-central1",
+            health_checks=[health_check.id],
             protocol="HTTP",
-            region="us-central1")
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="ROUND_ROBIN")
         ```
         ## Example Usage - Region Backend Service Ilb Ring Hash
 
@@ -390,27 +400,27 @@ class RegionBackendService(pulumi.CustomResource):
             "port": 80,
         })
         default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            health_checks=[health_check.id],
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="HTTP_COOKIE",
+            protocol="HTTP",
             circuit_breakers={
                 "maxConnections": 10,
             },
             consistent_hash={
-                "httpCookie": {
-                    "name": "mycookie",
+                "http_cookie": {
                     "ttl": {
-                        "nanos": 1111,
                         "seconds": 11,
+                        "nanos": 1111,
                     },
+                    "name": "mycookie",
                 },
             },
-            health_checks=health_check.self_link,
-            load_balancing_scheme="INTERNAL_MANAGED",
-            locality_lb_policy="RING_HASH",
             outlier_detection={
                 "consecutiveErrors": 2,
-            },
-            protocol="HTTP",
-            region="us-central1",
-            session_affinity="HTTP_COOKIE")
+            })
         ```
         ## Example Usage - Region Backend Service Balancing Mode
 
@@ -427,12 +437,12 @@ class RegionBackendService(pulumi.CustomResource):
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             ip_cidr_range="10.1.2.0/24",
             region="us-central1",
-            network=default_network.self_link)
+            network=default_network.id)
         instance_template = gcp.compute.InstanceTemplate("instanceTemplate",
             machine_type="n1-standard-1",
             network_interface=[{
-                "network": default_network.self_link,
-                "subnetwork": default_subnetwork.self_link,
+                "network": default_network.id,
+                "subnetwork": default_subnetwork.id,
             }],
             disk=[{
                 "sourceImage": debian_image.self_link,
@@ -466,7 +476,7 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default_region_health_check.self_link])
+            health_checks=[default_region_health_check.id])
         ```
 
         :param str resource_name: The name of the resource.
@@ -528,6 +538,13 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[dict] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+        :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
+               communication to the backend VMs in that group. Required when the
+               loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+               and the backends are instance groups. The named port must be defined on each
+               backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
+               default of "http" if not given.
+               Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol this RegionBackendService uses to communicate with backends.
@@ -769,6 +786,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__['name'] = name
             __props__['network'] = network
             __props__['outlier_detection'] = outlier_detection
+            __props__['port_name'] = port_name
             __props__['project'] = project
             __props__['protocol'] = protocol
             __props__['region'] = region
@@ -784,7 +802,7 @@ class RegionBackendService(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, description=None, failover_policy=None, fingerprint=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, network=None, outlier_detection=None, project=None, protocol=None, region=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def get(resource_name, id, opts=None, affinity_cookie_ttl_sec=None, backends=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, description=None, failover_policy=None, fingerprint=None, health_checks=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, name=None, network=None, outlier_detection=None, port_name=None, project=None, protocol=None, region=None, self_link=None, session_affinity=None, timeout_sec=None):
         """
         Get an existing RegionBackendService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -851,6 +869,13 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[dict] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
                to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+        :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for
+               communication to the backend VMs in that group. Required when the
+               loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
+               and the backends are instance groups. The named port must be defined on each
+               backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
+               default of "http" if not given.
+               Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol this RegionBackendService uses to communicate with backends.
@@ -1080,6 +1105,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__["name"] = name
         __props__["network"] = network
         __props__["outlier_detection"] = outlier_detection
+        __props__["port_name"] = port_name
         __props__["project"] = project
         __props__["protocol"] = protocol
         __props__["region"] = region

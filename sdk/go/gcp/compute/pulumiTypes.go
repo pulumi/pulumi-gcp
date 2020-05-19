@@ -23068,6 +23068,301 @@ func (o RegionInstanceGroupManagerVersionTargetSizePtrOutput) Percent() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+type RegionPerInstanceConfigPreservedState struct {
+	// Stateful disks for the instance.  Structure is documented below.
+	Disks []RegionPerInstanceConfigPreservedStateDisk `pulumi:"disks"`
+	// Preserved metadata defined for this instance. This is a list of key->value pairs.
+	Metadata map[string]string `pulumi:"metadata"`
+}
+
+// RegionPerInstanceConfigPreservedStateInput is an input type that accepts RegionPerInstanceConfigPreservedStateArgs and RegionPerInstanceConfigPreservedStateOutput values.
+// You can construct a concrete instance of `RegionPerInstanceConfigPreservedStateInput` via:
+//
+// 		 RegionPerInstanceConfigPreservedStateArgs{...}
+//
+type RegionPerInstanceConfigPreservedStateInput interface {
+	pulumi.Input
+
+	ToRegionPerInstanceConfigPreservedStateOutput() RegionPerInstanceConfigPreservedStateOutput
+	ToRegionPerInstanceConfigPreservedStateOutputWithContext(context.Context) RegionPerInstanceConfigPreservedStateOutput
+}
+
+type RegionPerInstanceConfigPreservedStateArgs struct {
+	// Stateful disks for the instance.  Structure is documented below.
+	Disks RegionPerInstanceConfigPreservedStateDiskArrayInput `pulumi:"disks"`
+	// Preserved metadata defined for this instance. This is a list of key->value pairs.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+}
+
+func (RegionPerInstanceConfigPreservedStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionPerInstanceConfigPreservedState)(nil)).Elem()
+}
+
+func (i RegionPerInstanceConfigPreservedStateArgs) ToRegionPerInstanceConfigPreservedStateOutput() RegionPerInstanceConfigPreservedStateOutput {
+	return i.ToRegionPerInstanceConfigPreservedStateOutputWithContext(context.Background())
+}
+
+func (i RegionPerInstanceConfigPreservedStateArgs) ToRegionPerInstanceConfigPreservedStateOutputWithContext(ctx context.Context) RegionPerInstanceConfigPreservedStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigPreservedStateOutput)
+}
+
+func (i RegionPerInstanceConfigPreservedStateArgs) ToRegionPerInstanceConfigPreservedStatePtrOutput() RegionPerInstanceConfigPreservedStatePtrOutput {
+	return i.ToRegionPerInstanceConfigPreservedStatePtrOutputWithContext(context.Background())
+}
+
+func (i RegionPerInstanceConfigPreservedStateArgs) ToRegionPerInstanceConfigPreservedStatePtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPreservedStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigPreservedStateOutput).ToRegionPerInstanceConfigPreservedStatePtrOutputWithContext(ctx)
+}
+
+// RegionPerInstanceConfigPreservedStatePtrInput is an input type that accepts RegionPerInstanceConfigPreservedStateArgs, RegionPerInstanceConfigPreservedStatePtr and RegionPerInstanceConfigPreservedStatePtrOutput values.
+// You can construct a concrete instance of `RegionPerInstanceConfigPreservedStatePtrInput` via:
+//
+// 		 RegionPerInstanceConfigPreservedStateArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type RegionPerInstanceConfigPreservedStatePtrInput interface {
+	pulumi.Input
+
+	ToRegionPerInstanceConfigPreservedStatePtrOutput() RegionPerInstanceConfigPreservedStatePtrOutput
+	ToRegionPerInstanceConfigPreservedStatePtrOutputWithContext(context.Context) RegionPerInstanceConfigPreservedStatePtrOutput
+}
+
+type regionPerInstanceConfigPreservedStatePtrType RegionPerInstanceConfigPreservedStateArgs
+
+func RegionPerInstanceConfigPreservedStatePtr(v *RegionPerInstanceConfigPreservedStateArgs) RegionPerInstanceConfigPreservedStatePtrInput {
+	return (*regionPerInstanceConfigPreservedStatePtrType)(v)
+}
+
+func (*regionPerInstanceConfigPreservedStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionPerInstanceConfigPreservedState)(nil)).Elem()
+}
+
+func (i *regionPerInstanceConfigPreservedStatePtrType) ToRegionPerInstanceConfigPreservedStatePtrOutput() RegionPerInstanceConfigPreservedStatePtrOutput {
+	return i.ToRegionPerInstanceConfigPreservedStatePtrOutputWithContext(context.Background())
+}
+
+func (i *regionPerInstanceConfigPreservedStatePtrType) ToRegionPerInstanceConfigPreservedStatePtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPreservedStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigPreservedStatePtrOutput)
+}
+
+type RegionPerInstanceConfigPreservedStateOutput struct{ *pulumi.OutputState }
+
+func (RegionPerInstanceConfigPreservedStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionPerInstanceConfigPreservedState)(nil)).Elem()
+}
+
+func (o RegionPerInstanceConfigPreservedStateOutput) ToRegionPerInstanceConfigPreservedStateOutput() RegionPerInstanceConfigPreservedStateOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigPreservedStateOutput) ToRegionPerInstanceConfigPreservedStateOutputWithContext(ctx context.Context) RegionPerInstanceConfigPreservedStateOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigPreservedStateOutput) ToRegionPerInstanceConfigPreservedStatePtrOutput() RegionPerInstanceConfigPreservedStatePtrOutput {
+	return o.ToRegionPerInstanceConfigPreservedStatePtrOutputWithContext(context.Background())
+}
+
+func (o RegionPerInstanceConfigPreservedStateOutput) ToRegionPerInstanceConfigPreservedStatePtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPreservedStatePtrOutput {
+	return o.ApplyT(func(v RegionPerInstanceConfigPreservedState) *RegionPerInstanceConfigPreservedState {
+		return &v
+	}).(RegionPerInstanceConfigPreservedStatePtrOutput)
+}
+
+// Stateful disks for the instance.  Structure is documented below.
+func (o RegionPerInstanceConfigPreservedStateOutput) Disks() RegionPerInstanceConfigPreservedStateDiskArrayOutput {
+	return o.ApplyT(func(v RegionPerInstanceConfigPreservedState) []RegionPerInstanceConfigPreservedStateDisk {
+		return v.Disks
+	}).(RegionPerInstanceConfigPreservedStateDiskArrayOutput)
+}
+
+// Preserved metadata defined for this instance. This is a list of key->value pairs.
+func (o RegionPerInstanceConfigPreservedStateOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RegionPerInstanceConfigPreservedState) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+type RegionPerInstanceConfigPreservedStatePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionPerInstanceConfigPreservedStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionPerInstanceConfigPreservedState)(nil)).Elem()
+}
+
+func (o RegionPerInstanceConfigPreservedStatePtrOutput) ToRegionPerInstanceConfigPreservedStatePtrOutput() RegionPerInstanceConfigPreservedStatePtrOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigPreservedStatePtrOutput) ToRegionPerInstanceConfigPreservedStatePtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPreservedStatePtrOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigPreservedStatePtrOutput) Elem() RegionPerInstanceConfigPreservedStateOutput {
+	return o.ApplyT(func(v *RegionPerInstanceConfigPreservedState) RegionPerInstanceConfigPreservedState { return *v }).(RegionPerInstanceConfigPreservedStateOutput)
+}
+
+// Stateful disks for the instance.  Structure is documented below.
+func (o RegionPerInstanceConfigPreservedStatePtrOutput) Disks() RegionPerInstanceConfigPreservedStateDiskArrayOutput {
+	return o.ApplyT(func(v *RegionPerInstanceConfigPreservedState) []RegionPerInstanceConfigPreservedStateDisk {
+		if v == nil {
+			return nil
+		}
+		return v.Disks
+	}).(RegionPerInstanceConfigPreservedStateDiskArrayOutput)
+}
+
+// Preserved metadata defined for this instance. This is a list of key->value pairs.
+func (o RegionPerInstanceConfigPreservedStatePtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionPerInstanceConfigPreservedState) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+type RegionPerInstanceConfigPreservedStateDisk struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+	// The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+	// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+	// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+	// deleted from the instance group.
+	DeleteRule *string `pulumi:"deleteRule"`
+	// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+	DeviceName string `pulumi:"deviceName"`
+	// The mode of the disk.
+	Mode *string `pulumi:"mode"`
+	// The URI of an existing persistent disk to attach under the specified device-name in the format
+	// `projects/project-id/zones/zone/disks/disk-name`.
+	Source string `pulumi:"source"`
+}
+
+// RegionPerInstanceConfigPreservedStateDiskInput is an input type that accepts RegionPerInstanceConfigPreservedStateDiskArgs and RegionPerInstanceConfigPreservedStateDiskOutput values.
+// You can construct a concrete instance of `RegionPerInstanceConfigPreservedStateDiskInput` via:
+//
+// 		 RegionPerInstanceConfigPreservedStateDiskArgs{...}
+//
+type RegionPerInstanceConfigPreservedStateDiskInput interface {
+	pulumi.Input
+
+	ToRegionPerInstanceConfigPreservedStateDiskOutput() RegionPerInstanceConfigPreservedStateDiskOutput
+	ToRegionPerInstanceConfigPreservedStateDiskOutputWithContext(context.Context) RegionPerInstanceConfigPreservedStateDiskOutput
+}
+
+type RegionPerInstanceConfigPreservedStateDiskArgs struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+	// The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+	// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+	// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+	// deleted from the instance group.
+	DeleteRule pulumi.StringPtrInput `pulumi:"deleteRule"`
+	// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The mode of the disk.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The URI of an existing persistent disk to attach under the specified device-name in the format
+	// `projects/project-id/zones/zone/disks/disk-name`.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (RegionPerInstanceConfigPreservedStateDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionPerInstanceConfigPreservedStateDisk)(nil)).Elem()
+}
+
+func (i RegionPerInstanceConfigPreservedStateDiskArgs) ToRegionPerInstanceConfigPreservedStateDiskOutput() RegionPerInstanceConfigPreservedStateDiskOutput {
+	return i.ToRegionPerInstanceConfigPreservedStateDiskOutputWithContext(context.Background())
+}
+
+func (i RegionPerInstanceConfigPreservedStateDiskArgs) ToRegionPerInstanceConfigPreservedStateDiskOutputWithContext(ctx context.Context) RegionPerInstanceConfigPreservedStateDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigPreservedStateDiskOutput)
+}
+
+// RegionPerInstanceConfigPreservedStateDiskArrayInput is an input type that accepts RegionPerInstanceConfigPreservedStateDiskArray and RegionPerInstanceConfigPreservedStateDiskArrayOutput values.
+// You can construct a concrete instance of `RegionPerInstanceConfigPreservedStateDiskArrayInput` via:
+//
+// 		 RegionPerInstanceConfigPreservedStateDiskArray{ RegionPerInstanceConfigPreservedStateDiskArgs{...} }
+//
+type RegionPerInstanceConfigPreservedStateDiskArrayInput interface {
+	pulumi.Input
+
+	ToRegionPerInstanceConfigPreservedStateDiskArrayOutput() RegionPerInstanceConfigPreservedStateDiskArrayOutput
+	ToRegionPerInstanceConfigPreservedStateDiskArrayOutputWithContext(context.Context) RegionPerInstanceConfigPreservedStateDiskArrayOutput
+}
+
+type RegionPerInstanceConfigPreservedStateDiskArray []RegionPerInstanceConfigPreservedStateDiskInput
+
+func (RegionPerInstanceConfigPreservedStateDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionPerInstanceConfigPreservedStateDisk)(nil)).Elem()
+}
+
+func (i RegionPerInstanceConfigPreservedStateDiskArray) ToRegionPerInstanceConfigPreservedStateDiskArrayOutput() RegionPerInstanceConfigPreservedStateDiskArrayOutput {
+	return i.ToRegionPerInstanceConfigPreservedStateDiskArrayOutputWithContext(context.Background())
+}
+
+func (i RegionPerInstanceConfigPreservedStateDiskArray) ToRegionPerInstanceConfigPreservedStateDiskArrayOutputWithContext(ctx context.Context) RegionPerInstanceConfigPreservedStateDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigPreservedStateDiskArrayOutput)
+}
+
+type RegionPerInstanceConfigPreservedStateDiskOutput struct{ *pulumi.OutputState }
+
+func (RegionPerInstanceConfigPreservedStateDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionPerInstanceConfigPreservedStateDisk)(nil)).Elem()
+}
+
+func (o RegionPerInstanceConfigPreservedStateDiskOutput) ToRegionPerInstanceConfigPreservedStateDiskOutput() RegionPerInstanceConfigPreservedStateDiskOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigPreservedStateDiskOutput) ToRegionPerInstanceConfigPreservedStateDiskOutputWithContext(ctx context.Context) RegionPerInstanceConfigPreservedStateDiskOutput {
+	return o
+}
+
+// A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+// The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+// `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+// `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+// deleted from the instance group.
+func (o RegionPerInstanceConfigPreservedStateDiskOutput) DeleteRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionPerInstanceConfigPreservedStateDisk) *string { return v.DeleteRule }).(pulumi.StringPtrOutput)
+}
+
+// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+func (o RegionPerInstanceConfigPreservedStateDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionPerInstanceConfigPreservedStateDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// The mode of the disk.
+func (o RegionPerInstanceConfigPreservedStateDiskOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionPerInstanceConfigPreservedStateDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The URI of an existing persistent disk to attach under the specified device-name in the format
+// `projects/project-id/zones/zone/disks/disk-name`.
+func (o RegionPerInstanceConfigPreservedStateDiskOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionPerInstanceConfigPreservedStateDisk) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type RegionPerInstanceConfigPreservedStateDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionPerInstanceConfigPreservedStateDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionPerInstanceConfigPreservedStateDisk)(nil)).Elem()
+}
+
+func (o RegionPerInstanceConfigPreservedStateDiskArrayOutput) ToRegionPerInstanceConfigPreservedStateDiskArrayOutput() RegionPerInstanceConfigPreservedStateDiskArrayOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigPreservedStateDiskArrayOutput) ToRegionPerInstanceConfigPreservedStateDiskArrayOutputWithContext(ctx context.Context) RegionPerInstanceConfigPreservedStateDiskArrayOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigPreservedStateDiskArrayOutput) Index(i pulumi.IntInput) RegionPerInstanceConfigPreservedStateDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionPerInstanceConfigPreservedStateDisk {
+		return vs[0].([]RegionPerInstanceConfigPreservedStateDisk)[vs[1].(int)]
+	}).(RegionPerInstanceConfigPreservedStateDiskOutput)
+}
+
 type RegionUrlMapDefaultUrlRedirect struct {
 	// The host that will be used in the redirect response instead of the one that was
 	// supplied in the request. The value must be between 1 and 255 characters.
@@ -51304,6 +51599,10 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionTargetSizeOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerVersionTargetSizePtrOutput{})
+	pulumi.RegisterOutputType(RegionPerInstanceConfigPreservedStateOutput{})
+	pulumi.RegisterOutputType(RegionPerInstanceConfigPreservedStatePtrOutput{})
+	pulumi.RegisterOutputType(RegionPerInstanceConfigPreservedStateDiskOutput{})
+	pulumi.RegisterOutputType(RegionPerInstanceConfigPreservedStateDiskArrayOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapDefaultUrlRedirectOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapDefaultUrlRedirectPtrOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapHostRuleOutput{})

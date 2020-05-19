@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * const network-with-private-secondary-ip-ranges = new gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges", {
  *     ipCidrRange: "10.2.0.0/16",
  *     region: "us-central1",
- *     network: custom-test.selfLink,
+ *     network: custom-test.id,
  *     secondary_ip_range: [{
  *         rangeName: "tf-test-secondary-range-update1",
  *         ipCidrRange: "192.168.10.0/24",
@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  * const subnet-with-logging = new gcp.compute.Subnetwork("subnet-with-logging", {
  *     ipCidrRange: "10.2.0.0/16",
  *     region: "us-central1",
- *     network: custom-test.selfLink,
+ *     network: custom-test.id,
  *     log_config: {
  *         aggregationInterval: "INTERVAL_10_MIN",
  *         flowSampling: 0.5,
@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     purpose: "INTERNAL_HTTPS_LOAD_BALANCER",
  *     role: "ACTIVE",
- *     network: custom-test.selfLink,
+ *     network: custom-test.id,
  * });
  * ```
  *

@@ -4,4 +4,5 @@
 
 # Export this package's modules as members:
 from .agent import *
+from .entity_type import *
 from .intent import *

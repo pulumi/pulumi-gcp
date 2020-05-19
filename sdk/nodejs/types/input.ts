@@ -227,8 +227,18 @@ export namespace appengine {
 
     export interface ApplicationIap {
         enabled?: pulumi.Input<boolean>;
+        /**
+         * OAuth2 client ID to use for the authentication flow.
+         */
         oauth2ClientId: pulumi.Input<string>;
+        /**
+         * OAuth2 client secret to use for the authentication flow.
+         * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+         */
         oauth2ClientSecret: pulumi.Input<string>;
+        /**
+         * Hex-encoded SHA-256 hash of the client secret.
+         */
         oauth2ClientSecretSha256?: pulumi.Input<string>;
     }
 
@@ -5905,6 +5915,41 @@ export namespace compute {
         percent?: pulumi.Input<number>;
     }
 
+    export interface RegionPerInstanceConfigPreservedState {
+        /**
+         * Stateful disks for the instance.  Structure is documented below.
+         */
+        disks?: pulumi.Input<pulumi.Input<inputs.compute.RegionPerInstanceConfigPreservedStateDisk>[]>;
+        /**
+         * Preserved metadata defined for this instance. This is a list of key->value pairs.
+         */
+        metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface RegionPerInstanceConfigPreservedStateDisk {
+        /**
+         * A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
+         * The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * `NEVER` detatch the disk when the VM is deleted, but not delete the disk.
+         * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
+         * deleted from the instance group.
+         */
+        deleteRule?: pulumi.Input<string>;
+        /**
+         * A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
+         */
+        deviceName: pulumi.Input<string>;
+        /**
+         * The mode of the disk.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * The URI of an existing persistent disk to attach under the specified device-name in the format
+         * `projects/project-id/zones/zone/disks/disk-name`.
+         */
+        source: pulumi.Input<string>;
+    }
+
     export interface RegionUrlMapDefaultUrlRedirect {
         /**
          * The host that will be used in the redirect response instead of the one that was
@@ -10355,10 +10400,13 @@ export namespace dataproc {
          * Accepted values are:
          * * ANACONDA
          * * DRUID
+         * * HBASE
          * * HIVE_WEBHCAT
          * * JUPYTER
          * * KERBEROS
          * * PRESTO
+         * * RANGER
+         * * SOLR
          * * ZEPPELIN
          * * ZOOKEEPER
          */
@@ -10744,6 +10792,25 @@ export namespace deploymentmanager {
 }
 
 export namespace diagflow {
+    export interface EntityTypeEntity {
+        /**
+         * A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
+         * could be green onions.
+         * For KIND_LIST entity types:
+         * * This collection must contain exactly one synonym equal to value.
+         */
+        synonyms: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
+         * could be scallions.
+         * For KIND_MAP entity types:
+         * * A reference value to be used in place of synonyms.
+         * For KIND_LIST entity types:
+         * * A string that can contain references to other entity types (with or without aliases).
+         */
+        value: pulumi.Input<string>;
+    }
+
     export interface IntentFollowupIntentInfo {
         followupIntentName?: pulumi.Input<string>;
         /**
@@ -12518,6 +12585,92 @@ export namespace monitoring {
         threshold: pulumi.Input<string>;
     }
 
+    export interface SloRequestBasedSli {
+        /**
+         * Used when goodService is defined by a count of values aggregated in a
+         * Distribution that fall into a good range. The totalService is the
+         * total count of all values aggregated in the Distribution.
+         * Defines a distribution TimeSeries filter and thresholds used for
+         * measuring good service and total service.
+         * Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+         */
+        distributionCut?: pulumi.Input<inputs.monitoring.SloRequestBasedSliDistributionCut>;
+        /**
+         * A means to compute a ratio of `goodService` to `totalService`.
+         * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+         * Must specify exactly two of good, bad, and total service filters.
+         * The relationship goodService + badService = totalService
+         * will be assumed.
+         * Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+         */
+        goodTotalRatio?: pulumi.Input<inputs.monitoring.SloRequestBasedSliGoodTotalRatio>;
+    }
+
+    export interface SloRequestBasedSliDistributionCut {
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * aggregating values to quantify the good service provided.
+         * Must have ValueType = DISTRIBUTION and
+         * MetricKind = DELTA or MetricKind = CUMULATIVE.
+         */
+        distributionFilter: pulumi.Input<string>;
+        /**
+         * Range of numerical values. The computed goodService
+         * will be the count of values x in the Distribution such
+         * that range.min <= x < range.max. inclusive of min and
+         * exclusive of max. Open ranges can be defined by setting
+         * just one of min or max.  Structure is documented below.
+         */
+        range: pulumi.Input<inputs.monitoring.SloRequestBasedSliDistributionCutRange>;
+    }
+
+    export interface SloRequestBasedSliDistributionCutRange {
+        /**
+         * max value for the range (inclusive). If not given,
+         * will be set to "infinity", defining an open range
+         * ">= range.min"
+         */
+        max?: pulumi.Input<number>;
+        /**
+         * Min value for the range (inclusive). If not given,
+         * will be set to "-infinity", defining an open range
+         * "< range.max"
+         */
+        min?: pulumi.Input<number>;
+    }
+
+    export interface SloRequestBasedSliGoodTotalRatio {
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying bad service provided, either demanded service that
+         * was not provided or demanded service that was of inadequate
+         * quality.
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+         * must be set (good + bad = total is assumed).
+         */
+        badServiceFilter?: pulumi.Input<string>;
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying good service provided.
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+         * must be set (good + bad = total is assumed).
+         */
+        goodServiceFilter?: pulumi.Input<string>;
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying total demanded service.
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
+         * must be set (good + bad = total is assumed).
+         */
+        totalServiceFilter?: pulumi.Input<string>;
+    }
+
     export interface UptimeCheckConfigContentMatcher {
         /**
          * String or regex content to match (max 1024 bytes)
@@ -13212,8 +13365,7 @@ export namespace sql {
          */
         authorizedGaeApplications?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * This specifies whether a PostgreSQL instance
-         * should be set up for high availability (`REGIONAL`) or single zone (`ZONAL`).
+         * The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
          */
         availabilityType?: pulumi.Input<string>;
         backupConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsBackupConfiguration>;

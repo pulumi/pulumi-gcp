@@ -33,11 +33,14 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
         Adds existing resource policies to a disk. You can only add one policy
         which will be applied to this disk for scheduling snapshot creation.
 
-        > **Note:** This resource does not support zonal disks (`compute.Disk`).
+        > **Note:** This resource does not support zonal disks (`compute.Disk`). For zonal disks, please refer to the `compute.DiskResourcePolicyAttachment` resource.
 
 
 
-        ## Example Usage - Region Disk Resource Policy Attachment Basic
+
+        ## Example Usage 
+
+        ### Region Disk Resource Policy Attachment Basic
 
 
         ```python
@@ -57,7 +60,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
                 "us-central1-a",
                 "us-central1-f",
             ],
-            snapshot=snapdisk.self_link,
+            snapshot=snapdisk.id,
             size=50,
             type="pd-ssd",
             region="us-central1")

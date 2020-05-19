@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     memorySizeGb: 1,
  *     locationId: "us-central1-a",
  *     alternativeLocationId: "us-central1-f",
- *     authorizedNetwork: redis-network.then(redis_network => redis_network.selfLink),
+ *     authorizedNetwork: redis-network.then(redis_network => redis_network.id),
  *     redisVersion: "REDIS_3_2",
  *     displayName: "Test Instance",
  *     reservedIpRange: "192.168.0.0/29",

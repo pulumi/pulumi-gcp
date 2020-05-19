@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * });
  * const default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
  * const group = new gcp.compute.GlobalNetworkEndpointGroup("group", {
- *     network: default.selfLink,
+ *     network: default.id,
  *     defaultPort: "90",
  * });
  * ```

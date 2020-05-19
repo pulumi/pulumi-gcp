@@ -17,6 +17,9 @@ type Instance struct {
 
 	// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
 	Clusters InstanceClusterArrayOutput `pulumi:"clusters"`
+	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
@@ -58,6 +61,9 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
 	Clusters []InstanceCluster `pulumi:"clusters"`
+	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName *string `pulumi:"displayName"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
@@ -72,6 +78,9 @@ type instanceState struct {
 type InstanceState struct {
 	// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
 	Clusters InstanceClusterArrayInput
+	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	DeletionProtection pulumi.BoolPtrInput
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringPtrInput
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
@@ -90,6 +99,9 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
 	Clusters []InstanceCluster `pulumi:"clusters"`
+	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName *string `pulumi:"displayName"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
@@ -105,6 +117,9 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
 	Clusters InstanceClusterArrayInput
+	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+	DeletionProtection pulumi.BoolPtrInput
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringPtrInput
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.

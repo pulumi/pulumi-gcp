@@ -655,9 +655,10 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_disk_resource_policy_attachment": {
 				Tok: gcpResource(gcpCompute, "DiskResourcePolicyAttachment"),
 			},
-			"google_compute_packet_mirroring":          {Tok: gcpResource(gcpCompute, "PacketMirroring")},
-			"google_compute_instance_group_named_port": {Tok: gcpResource(gcpCompute, "InstanceGroupNamedPort")},
-			"google_compute_per_instance_config":       {Tok: gcpResource(gcpCompute, "PerInstanceConfig")},
+			"google_compute_packet_mirroring":           {Tok: gcpResource(gcpCompute, "PacketMirroring")},
+			"google_compute_instance_group_named_port":  {Tok: gcpResource(gcpCompute, "InstanceGroupNamedPort")},
+			"google_compute_per_instance_config":        {Tok: gcpResource(gcpCompute, "PerInstanceConfig")},
+			"google_compute_region_per_instance_config": {Tok: gcpResource(gcpCompute, "RegionPerInstanceConfig")},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {
@@ -1348,8 +1349,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_identity_platform_tenant": {Tok: gcpResource(gcpIdentityPlatform, "Tenant")},
 
 			// Diagflow
-			"google_dialogflow_agent":  {Tok: gcpResource(gcpDiagflow, "Agent")},
-			"google_dialogflow_intent": {Tok: gcpResource(gcpDiagflow, "Intent")},
+			"google_dialogflow_agent":       {Tok: gcpResource(gcpDiagflow, "Agent")},
+			"google_dialogflow_intent":      {Tok: gcpResource(gcpDiagflow, "Intent")},
+			"google_dialogflow_entity_type": {Tok: gcpResource(gcpDiagflow, "EntityType")},
 
 			// Secret Manager
 			"google_secret_manager_secret": {Tok: gcpResource(gcpSecretManager, "Secret")},

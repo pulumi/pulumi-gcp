@@ -33,27 +33,27 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [defaultRegionHealthCheck.selfLink],
+ *     healthChecks: [defaultRegionHealthCheck.id],
  * });
  * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
  *     region: "us-central1",
- *     defaultService: defaultRegionBackendService.selfLink,
+ *     defaultService: defaultRegionBackendService.id,
  *     host_rule: [{
  *         hosts: ["mysite.com"],
  *         pathMatcher: "allpaths",
  *     }],
  *     path_matcher: [{
  *         name: "allpaths",
- *         defaultService: defaultRegionBackendService.selfLink,
+ *         defaultService: defaultRegionBackendService.id,
  *         path_rule: [{
  *             paths: ["/*"],
- *             service: defaultRegionBackendService.selfLink,
+ *             service: defaultRegionBackendService.id,
  *         }],
  *     }],
  * });
  * const defaultRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", {
  *     region: "us-central1",
- *     urlMap: defaultRegionUrlMap.selfLink,
+ *     urlMap: defaultRegionUrlMap.id,
  * });
  * ```
  * ## Example Usage - Region Target Http Proxy Https Redirect

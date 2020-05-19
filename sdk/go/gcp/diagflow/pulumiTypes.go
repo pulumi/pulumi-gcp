@@ -10,6 +10,138 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type EntityTypeEntity struct {
+	// A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
+	// could be green onions.
+	// For KIND_LIST entity types:
+	// * This collection must contain exactly one synonym equal to value.
+	Synonyms []string `pulumi:"synonyms"`
+	// The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
+	// could be scallions.
+	// For KIND_MAP entity types:
+	// * A reference value to be used in place of synonyms.
+	// For KIND_LIST entity types:
+	// * A string that can contain references to other entity types (with or without aliases).
+	Value string `pulumi:"value"`
+}
+
+// EntityTypeEntityInput is an input type that accepts EntityTypeEntityArgs and EntityTypeEntityOutput values.
+// You can construct a concrete instance of `EntityTypeEntityInput` via:
+//
+// 		 EntityTypeEntityArgs{...}
+//
+type EntityTypeEntityInput interface {
+	pulumi.Input
+
+	ToEntityTypeEntityOutput() EntityTypeEntityOutput
+	ToEntityTypeEntityOutputWithContext(context.Context) EntityTypeEntityOutput
+}
+
+type EntityTypeEntityArgs struct {
+	// A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
+	// could be green onions.
+	// For KIND_LIST entity types:
+	// * This collection must contain exactly one synonym equal to value.
+	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
+	// The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
+	// could be scallions.
+	// For KIND_MAP entity types:
+	// * A reference value to be used in place of synonyms.
+	// For KIND_LIST entity types:
+	// * A string that can contain references to other entity types (with or without aliases).
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (EntityTypeEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypeEntity)(nil)).Elem()
+}
+
+func (i EntityTypeEntityArgs) ToEntityTypeEntityOutput() EntityTypeEntityOutput {
+	return i.ToEntityTypeEntityOutputWithContext(context.Background())
+}
+
+func (i EntityTypeEntityArgs) ToEntityTypeEntityOutputWithContext(ctx context.Context) EntityTypeEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeEntityOutput)
+}
+
+// EntityTypeEntityArrayInput is an input type that accepts EntityTypeEntityArray and EntityTypeEntityArrayOutput values.
+// You can construct a concrete instance of `EntityTypeEntityArrayInput` via:
+//
+// 		 EntityTypeEntityArray{ EntityTypeEntityArgs{...} }
+//
+type EntityTypeEntityArrayInput interface {
+	pulumi.Input
+
+	ToEntityTypeEntityArrayOutput() EntityTypeEntityArrayOutput
+	ToEntityTypeEntityArrayOutputWithContext(context.Context) EntityTypeEntityArrayOutput
+}
+
+type EntityTypeEntityArray []EntityTypeEntityInput
+
+func (EntityTypeEntityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntityTypeEntity)(nil)).Elem()
+}
+
+func (i EntityTypeEntityArray) ToEntityTypeEntityArrayOutput() EntityTypeEntityArrayOutput {
+	return i.ToEntityTypeEntityArrayOutputWithContext(context.Background())
+}
+
+func (i EntityTypeEntityArray) ToEntityTypeEntityArrayOutputWithContext(ctx context.Context) EntityTypeEntityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeEntityArrayOutput)
+}
+
+type EntityTypeEntityOutput struct{ *pulumi.OutputState }
+
+func (EntityTypeEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypeEntity)(nil)).Elem()
+}
+
+func (o EntityTypeEntityOutput) ToEntityTypeEntityOutput() EntityTypeEntityOutput {
+	return o
+}
+
+func (o EntityTypeEntityOutput) ToEntityTypeEntityOutputWithContext(ctx context.Context) EntityTypeEntityOutput {
+	return o
+}
+
+// A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
+// could be green onions.
+// For KIND_LIST entity types:
+// * This collection must contain exactly one synonym equal to value.
+func (o EntityTypeEntityOutput) Synonyms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EntityTypeEntity) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
+}
+
+// The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
+// could be scallions.
+// For KIND_MAP entity types:
+// * A reference value to be used in place of synonyms.
+// For KIND_LIST entity types:
+// * A string that can contain references to other entity types (with or without aliases).
+func (o EntityTypeEntityOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeEntity) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EntityTypeEntityArrayOutput struct{ *pulumi.OutputState }
+
+func (EntityTypeEntityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntityTypeEntity)(nil)).Elem()
+}
+
+func (o EntityTypeEntityArrayOutput) ToEntityTypeEntityArrayOutput() EntityTypeEntityArrayOutput {
+	return o
+}
+
+func (o EntityTypeEntityArrayOutput) ToEntityTypeEntityArrayOutputWithContext(ctx context.Context) EntityTypeEntityArrayOutput {
+	return o
+}
+
+func (o EntityTypeEntityArrayOutput) Index(i pulumi.IntInput) EntityTypeEntityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityTypeEntity {
+		return vs[0].([]EntityTypeEntity)[vs[1].(int)]
+	}).(EntityTypeEntityOutput)
+}
+
 type IntentFollowupIntentInfo struct {
 	FollowupIntentName *string `pulumi:"followupIntentName"`
 	// The unique identifier of the parent intent in the chain of followup intents.
@@ -119,6 +251,8 @@ func (o IntentFollowupIntentInfoArrayOutput) Index(i pulumi.IntInput) IntentFoll
 }
 
 func init() {
+	pulumi.RegisterOutputType(EntityTypeEntityOutput{})
+	pulumi.RegisterOutputType(EntityTypeEntityArrayOutput{})
 	pulumi.RegisterOutputType(IntentFollowupIntentInfoOutput{})
 	pulumi.RegisterOutputType(IntentFollowupIntentInfoArrayOutput{})
 }

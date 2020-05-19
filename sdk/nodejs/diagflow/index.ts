@@ -3,4 +3,5 @@
 
 // Export members:
 export * from "./agent";
+export * from "./entityType";
 export * from "./intent";

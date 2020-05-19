@@ -93,10 +93,10 @@ class TargetSSLProxy(pulumi.CustomResource):
             })
         default_backend_service = gcp.compute.BackendService("defaultBackendService",
             protocol="SSL",
-            health_checks=[default_health_check.self_link])
+            health_checks=[default_health_check.id])
         default_target_ssl_proxy = gcp.compute.TargetSSLProxy("defaultTargetSSLProxy",
-            backend_service=default_backend_service.self_link,
-            ssl_certificates=[default_ssl_certificate.self_link])
+            backend_service=default_backend_service.id,
+            ssl_certificates=[default_ssl_certificate.id])
         ```
 
         :param str resource_name: The name of the resource.

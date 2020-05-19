@@ -77,6 +77,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly clusters!: pulumi.Output<outputs.bigtable.InstanceCluster[]>;
     /**
+     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -107,6 +112,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["clusters"] = state ? state.clusters : undefined;
+            inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -114,6 +120,7 @@ export class Instance extends pulumi.CustomResource {
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             inputs["clusters"] = args ? args.clusters : undefined;
+            inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -138,6 +145,11 @@ export interface InstanceState {
      * A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
      */
     readonly clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
+    /**
+     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      */
@@ -165,6 +177,11 @@ export interface InstanceArgs {
      * A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
      */
     readonly clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
+    /**
+     * Whether or not to allow this provider to destroy the instance. Unless this field is set to false
+     * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
+     */
+    readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      */

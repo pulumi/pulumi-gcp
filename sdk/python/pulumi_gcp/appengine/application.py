@@ -46,9 +46,10 @@ class Application(pulumi.CustomResource):
     Settings for enabling Cloud Identity Aware Proxy
 
       * `enabled` (`bool`)
-      * `oauth2ClientId` (`str`)
-      * `oauth2ClientSecret` (`str`)
-      * `oauth2ClientSecretSha256` (`str`)
+      * `oauth2ClientId` (`str`) - OAuth2 client ID to use for the authentication flow.
+      * `oauth2ClientSecret` (`str`) - OAuth2 client secret to use for the authentication flow.
+        The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+      * `oauth2ClientSecretSha256` (`str`) - Hex-encoded SHA-256 hash of the client secret.
     """
     location_id: pulumi.Output[str]
     """
@@ -85,6 +86,9 @@ class Application(pulumi.CustomResource):
            entire project to delete the application. This provider will report the application has been
            successfully deleted; this is a limitation of the provider, and will go away in the future.
            This provider is not able to delete App Engine applications.
+
+        > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
         ## Example Usage
 
@@ -123,9 +127,10 @@ class Application(pulumi.CustomResource):
         The **iap** object supports the following:
 
           * `enabled` (`pulumi.Input[bool]`)
-          * `oauth2ClientId` (`pulumi.Input[str]`)
-          * `oauth2ClientSecret` (`pulumi.Input[str]`)
-          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
+          * `oauth2ClientId` (`pulumi.Input[str]`) - OAuth2 client ID to use for the authentication flow.
+          * `oauth2ClientSecret` (`pulumi.Input[str]`) - OAuth2 client secret to use for the authentication flow.
+            The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`) - Hex-encoded SHA-256 hash of the client secret.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -199,9 +204,10 @@ class Application(pulumi.CustomResource):
         The **iap** object supports the following:
 
           * `enabled` (`pulumi.Input[bool]`)
-          * `oauth2ClientId` (`pulumi.Input[str]`)
-          * `oauth2ClientSecret` (`pulumi.Input[str]`)
-          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`)
+          * `oauth2ClientId` (`pulumi.Input[str]`) - OAuth2 client ID to use for the authentication flow.
+          * `oauth2ClientSecret` (`pulumi.Input[str]`) - OAuth2 client secret to use for the authentication flow.
+            The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+          * `oauth2ClientSecretSha256` (`pulumi.Input[str]`) - Hex-encoded SHA-256 hash of the client secret.
 
         The **url_dispatch_rules** object supports the following:
 

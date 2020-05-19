@@ -153,7 +153,7 @@ class Dataset(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         key_ring = gcp.kms.KeyRing("keyRing", location="us")
-        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.self_link)
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         dataset = gcp.bigquery.Dataset("dataset",
             dataset_id="example_dataset",
             friendly_name="test",
@@ -161,7 +161,7 @@ class Dataset(pulumi.CustomResource):
             location="US",
             default_table_expiration_ms=3600000,
             default_encryption_configuration={
-                "kmsKeyName": crypto_key.self_link,
+                "kmsKeyName": crypto_key.id,
             })
         ```
 

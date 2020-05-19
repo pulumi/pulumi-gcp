@@ -91,7 +91,7 @@ class NodeGroup(pulumi.CustomResource):
             zone="us-central1-a",
             description="example compute.NodeGroup for the Google Provider",
             size=1,
-            node_template=soletenant_tmpl.self_link)
+            node_template=soletenant_tmpl.id)
         ```
         ## Example Usage - Node Group Autoscaling Policy
 
@@ -108,7 +108,7 @@ class NodeGroup(pulumi.CustomResource):
             zone="us-central1-a",
             description="example compute.NodeGroup for the Google Provider",
             size=1,
-            node_template=soletenant_tmpl.self_link,
+            node_template=soletenant_tmpl.id,
             autoscaling_policy={
                 "mode": "ON",
                 "minNodes": 1,
