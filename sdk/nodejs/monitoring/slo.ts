@@ -14,22 +14,22 @@ import * as utilities from "../utilities";
  * Typical SLOs might include "99% of requests in each rolling week have
  * latency below 200 milliseconds" or "99.5% of requests in each calendar
  * month return successfully."
- * 
- * 
+ *
+ *
  * To get more information about Slo, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services.serviceLevelObjectives)
  * * How-to Guides
  *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
- * 
+ *
  * ## Example Usage - Monitoring Slo Appengine
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = gcp.monitoring.getAppEngineService({
  *     moduleId: "default",
  * });
@@ -46,8 +46,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/monitoring_slo.html.markdown.
  */
 export class Slo extends pulumi.CustomResource {
     /**

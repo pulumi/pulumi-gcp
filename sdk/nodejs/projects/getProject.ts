@@ -10,13 +10,13 @@ import * as utilities from "../utilities";
  * Retrieve information about a set of projects based on a filter. See the
  * [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
  * for more details.
- * 
+ *
  * ## Example Usage - searching for projects about to be deleted in an org
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const my-org-projects = gcp.projects.getProject({
  *     filter: "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
  * });
@@ -24,8 +24,6 @@ import * as utilities from "../utilities";
  *     projectId: my_org_projects.projects[0].projectId,
  * }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_projects.html.markdown.
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     if (!opts) {

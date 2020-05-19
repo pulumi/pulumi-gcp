@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Represents an entity type. Entity types serve as a tool for extracting parameter values from natural language queries.
- * 
- * 
+ *
+ *
  * To get more information about EntityType, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.entityTypes)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
- * 
+ *
  * ## Example Usage - Dialogflow Entity Type Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
  *     displayName: "exampleAgent",
  *     defaultLanguageCode: "en",
@@ -49,8 +49,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dialogflow_entity_type.html.markdown.
  */
 export class EntityType extends pulumi.CustomResource {
     /**

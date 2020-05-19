@@ -39,6 +39,8 @@ type Hl7Store struct {
 	// -
 	// (Optional, Deprecated)
 	// A nested object resource  Structure is documented below.
+	//
+	// Deprecated: This field has been replaced by notificationConfigs
 	NotificationConfig Hl7StoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -99,6 +101,8 @@ type hl7StoreState struct {
 	// -
 	// (Optional, Deprecated)
 	// A nested object resource  Structure is documented below.
+	//
+	// Deprecated: This field has been replaced by notificationConfigs
 	NotificationConfig *Hl7StoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -129,6 +133,8 @@ type Hl7StoreState struct {
 	// -
 	// (Optional, Deprecated)
 	// A nested object resource  Structure is documented below.
+	//
+	// Deprecated: This field has been replaced by notificationConfigs
 	NotificationConfig Hl7StoreNotificationConfigPtrInput
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -163,6 +169,8 @@ type hl7StoreArgs struct {
 	// -
 	// (Optional, Deprecated)
 	// A nested object resource  Structure is documented below.
+	//
+	// Deprecated: This field has been replaced by notificationConfigs
 	NotificationConfig *Hl7StoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -192,6 +200,8 @@ type Hl7StoreArgs struct {
 	// -
 	// (Optional, Deprecated)
 	// A nested object resource  Structure is documented below.
+	//
+	// Deprecated: This field has been replaced by notificationConfigs
 	NotificationConfig Hl7StoreNotificationConfigPtrInput
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name

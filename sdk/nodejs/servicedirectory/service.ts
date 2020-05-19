@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * An individual service. A service contains a name and optional metadata.
- * 
+ *
  * To get more information about Service, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services)
  * * How-to Guides
  *     * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
- * 
+ *
  * ## Example Usage - Service Directory Service Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const exampleNamespace = new gcp.servicedirectory.Namespace("exampleNamespace", {
  *     namespaceId: "example-namespace",
  *     location: "us-central1",
@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_directory_service.html.markdown.
  */
 export class Service extends pulumi.CustomResource {
     /**

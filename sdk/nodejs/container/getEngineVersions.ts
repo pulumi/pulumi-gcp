@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
- * 
+ *
  * > If you are using the `gcp.container.getEngineVersions` datasource with a
  * regional cluster, ensure that you have provided a region as the `location` to
  * the datasource. A region can have a different set of supported versions than
  * its component zones, and not all zones in a region are guaranteed to
  * support the same version.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const central1b = gcp.container.getEngineVersions({
  *     location: "us-central1-b",
  *     versionPrefix: "1.12.",
@@ -37,8 +37,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_container_engine_versions.html.markdown.
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};

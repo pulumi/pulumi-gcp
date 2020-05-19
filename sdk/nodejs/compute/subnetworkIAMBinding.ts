@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
- * 
+ *
  * * `gcp.compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
  * * `gcp.compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
  * * `gcp.compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
- * 
+ *
  * > **Note:** `gcp.compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIAMBinding` and `gcp.compute.SubnetworkIAMMember` or they will fight over what your policy should be.
- * 
+ *
  * > **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
- * 
- * 
- * 
+ *
+ *
+ *
  * ## google\_compute\_subnetwork\_iam\_policy
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = gcp.organizations.getIAMPolicy({
  *     binding: [{
  *         role: "roles/compute.networkUser",
@@ -38,13 +38,13 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * 
+ *
  * With IAM Conditions:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = gcp.organizations.getIAMPolicy({
  *     binding: [{
  *         role: "roles/compute.networkUser",
@@ -64,11 +64,11 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## google\_compute\_subnetwork\_iam\_binding
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const binding = new gcp.compute.SubnetworkIAMBinding("binding", {
  *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
  *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
@@ -77,13 +77,13 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
- * 
+ *
  * With IAM Conditions:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const binding = new gcp.compute.SubnetworkIAMBinding("binding", {
  *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
  *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
@@ -98,11 +98,11 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## google\_compute\_subnetwork\_iam\_member
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const member = new gcp.compute.SubnetworkIAMMember("member", {
  *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
  *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
@@ -111,13 +111,13 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
- * 
+ *
  * With IAM Conditions:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const member = new gcp.compute.SubnetworkIAMMember("member", {
  *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
  *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
@@ -131,8 +131,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_subnetwork_iam.html.markdown.
  */
 export class SubnetworkIAMBinding extends pulumi.CustomResource {
     /**

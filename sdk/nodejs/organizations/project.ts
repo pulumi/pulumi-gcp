@@ -8,31 +8,29 @@ import * as utilities from "../utilities";
 
 /**
  * Allows creation and management of a Google Cloud Platform project.
- * 
+ *
  * Projects created with this resource must be associated with an Organization.
  * See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
- * 
+ *
  * The service account used to run this provider when creating a `gcp.organizations.Project`
  * resource must have `roles/resourcemanager.projectCreator`. See the
  * [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
  * doc for more information.
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const myProject = new gcp.organizations.Project("myProject", {
  *     orgId: "1234567",
  *     projectId: "your-project-id",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_project.html.markdown.
  */
 export class Project extends pulumi.CustomResource {
     /**

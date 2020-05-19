@@ -9,15 +9,15 @@ import * as utilities from "../utilities";
 /**
  * Get the IP address from a static address. For more information see
  * the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const myAddress = gcp.compute.getAddress({
  *     name: "foobar",
  * });
@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  *     rrdatas: [myAddress.then(myAddress => myAddress.address)],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_address.html.markdown.
  */
 export function getAddress(args: GetAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressResult> {
     if (!opts) {

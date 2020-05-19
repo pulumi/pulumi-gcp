@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * A game server config resource. Configs are global and immutable.
- * 
+ *
  * To get more information about GameServerConfig, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.gameServerDeployments.configs)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
- * 
+ *
  * ## Example Usage - Game Service Config Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultGameServerDeployment = new gcp.gameservices.GameServerDeployment("defaultGameServerDeployment", {
  *     deploymentId: "tf-test-deployment",
  *     description: "a deployment description",
@@ -78,8 +78,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_game_server_config.html.markdown.
  */
 export class GameServerConfig extends pulumi.CustomResource {
     /**

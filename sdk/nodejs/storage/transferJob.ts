@@ -8,22 +8,22 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a new Transfer Job in Google Cloud Storage Transfer.
- * 
+ *
  * To get more information about Google Cloud Storage Transfer, see:
- * 
+ *
  * * [Overview](https://cloud.google.com/storage-transfer/docs/overview)
  * * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs#TransferJob)
  * * How-to Guides
  *     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = gcp.storage.getTransferProjectServieAccount({
  *     project: var.project,
  * });
@@ -78,8 +78,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_transfer_job.html.markdown.
  */
 export class TransferJob extends pulumi.CustomResource {
     /**

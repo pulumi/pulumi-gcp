@@ -12,28 +12,26 @@ import * as utilities from "../utilities";
  * regions of services able to freely pass data within a perimeter). An
  * access policy is globally visible within an organization, and the
  * restrictions it specifies apply to all projects within an organization.
- * 
- * 
+ *
+ *
  * To get more information about AccessPolicy, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
  * * How-to Guides
  *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
- * 
+ *
  * ## Example Usage - Access Context Manager Access Policy Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const accessPolicy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",
  *     title: "my policy",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/access_context_manager_access_policy.html.markdown.
  */
 export class AccessPolicy extends pulumi.CustomResource {
     /**

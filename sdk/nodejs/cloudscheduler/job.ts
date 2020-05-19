@@ -9,25 +9,25 @@ import * as utilities from "../utilities";
 /**
  * A scheduled job that can publish a pubsub message or a http request
  * every X interval of time, using crontab format string.
- * 
+ *
  * To use Cloud Scheduler your project must contain an App Engine app
  * that is located in one of the supported regions. If your project
  * does not have an App Engine app, you must create one.
- * 
- * 
+ *
+ *
  * To get more information about Job, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/scheduler/)
- * 
+ *
  * ## Example Usage - Scheduler Job Http
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const job = new gcp.cloudscheduler.Job("job", {
  *     attemptDeadline: "320s",
  *     description: "test http job",
@@ -43,12 +43,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Scheduler Job App Engine
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const job = new gcp.cloudscheduler.Job("job", {
  *     appEngineHttpTarget: {
  *         appEngineRouting: {
@@ -72,12 +72,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Scheduler Job Oauth
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = gcp.compute.getDefaultServiceAccount({});
  * const job = new gcp.cloudscheduler.Job("job", {
  *     description: "test http job",
@@ -94,12 +94,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Scheduler Job Oidc
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = gcp.compute.getDefaultServiceAccount({});
  * const job = new gcp.cloudscheduler.Job("job", {
  *     description: "test http job",
@@ -115,8 +115,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_scheduler_job.html.markdown.
  */
 export class Job extends pulumi.CustomResource {
     /**

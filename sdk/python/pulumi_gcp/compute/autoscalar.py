@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
-warnings.warn("gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler", DeprecationWarning)
+warnings.warn("gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler", DeprecationWarning)
 class Autoscalar(pulumi.CustomResource):
     autoscaling_policy: pulumi.Output[dict]
     """
@@ -133,7 +133,7 @@ class Autoscalar(pulumi.CustomResource):
     """
     URL of the zone where the instance group resides.
     """
-    warnings.warn("gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler", DeprecationWarning)
+    warnings.warn("gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler", DeprecationWarning)
     def __init__(__self__, resource_name, opts=None, autoscaling_policy=None, description=None, name=None, project=None, target=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Represents an Autoscaler resource.
@@ -258,8 +258,6 @@ class Autoscalar(pulumi.CustomResource):
             })
         ```
 
-        Deprecated: gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
@@ -361,7 +359,7 @@ class Autoscalar(pulumi.CustomResource):
             choose a default value depending on maximum number of instances
             allowed.
         """
-        pulumi.log.warn("Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler")
+        pulumi.log.warn("Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

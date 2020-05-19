@@ -10,23 +10,21 @@ import * as utilities from "../utilities";
  * Allows management of Organization policies for a Google Folder. For more information see
  * [the official
  * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const policy = gcp.folder.getOrganizationPolicy({
  *     folder: "folders/folderid",
  *     constraint: "constraints/compute.trustedImageProjects",
  * });
  * export const version = policy.then(policy => policy.version);
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_google_folder_organization_policy.html.markdown.
  */
 export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> {
     if (!opts) {

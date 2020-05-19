@@ -11,23 +11,21 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/instances)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const appserver = pulumi.output(gcp.compute.getInstance({
  *     name: "primary-application-server",
  *     zone: "us-central1-a",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_instance.html.markdown.
  */
 export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     args = args || {};

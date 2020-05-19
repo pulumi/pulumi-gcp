@@ -10,16 +10,16 @@ import * as utilities from "../utilities";
  * Creates a table resource in a dataset for Google BigQuery. For more information see
  * [the official documentation](https://cloud.google.com/bigquery/docs/) and
  * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const defaultDataset = new gcp.bigquery.Dataset("defaultDataset", {
  *     datasetId: "foo",
  *     friendlyName: "test",
@@ -68,8 +68,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigquery_table.html.markdown.
  */
 export class Table extends pulumi.CustomResource {
     /**

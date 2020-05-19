@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/iam/docs/understanding-custom-roles)
  * and
  * [API](https://cloud.google.com/iam/reference/rest/v1/organizations.roles).
- * 
+ *
  * > **Warning:** Note that custom roles in GCP have the concept of a soft-delete. There are two issues that may arise
  *  from this and how roles are propagated. 1) creating a role may involve undeleting and then updating a role with the
  *  same name, possibly causing confusing behavior between undelete and update. 2) A deleted role is permanently deleted
@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  *  by the provider, and new roles cannot share that name.
  *  
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const myCustomRole = new gcp.organizations.IAMCustomRole("my-custom-role", {
  *     description: "A description",
  *     orgId: "123456789",
@@ -39,8 +39,6 @@ import * as utilities from "../utilities";
  *     title: "My Custom Role",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/google_organization_iam_custom_role.html.markdown.
  */
 export class IAMCustomRole extends pulumi.CustomResource {
     /**

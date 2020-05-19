@@ -6,20 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * An individual endpoint that provides a service.
- * 
+ *
  * To get more information about Endpoint, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services.endpoints)
  * * How-to Guides
  *     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
- * 
+ *
  * ## Example Usage - Service Directory Endpoint Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const exampleNamespace = new gcp.servicedirectory.Namespace("exampleNamespace", {
  *     namespaceId: "example-namespace",
  *     location: "us-central1",
@@ -39,8 +39,6 @@ import * as utilities from "../utilities";
  *     port: 5353,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/service_directory_endpoint.html.markdown.
  */
 export class Endpoint extends pulumi.CustomResource {
     /**

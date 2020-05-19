@@ -9,21 +9,19 @@ import * as utilities from "../utilities";
 /**
  * Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
  *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const mySslPolicy = pulumi.output(gcp.compute.getSSLPolicy({
  *     name: "production-ssl-policy",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_compute_ssl_policy.html.markdown.
  */
 export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSSLPolicyResult> {
     if (!opts) {

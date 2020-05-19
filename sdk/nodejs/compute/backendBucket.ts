@@ -9,26 +9,26 @@ import * as utilities from "../utilities";
 /**
  * Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
  * load balancing.
- * 
+ *
  * An HTTP(S) load balancer can direct traffic to specified URLs to a
  * backend bucket rather than a backend service. It can send requests for
  * static content to a Cloud Storage bucket and requests for dynamic content
  * to a virtual machine instance.
- * 
- * 
+ *
+ *
  * To get more information about BackendBucket, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
  * * How-to Guides
  *     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
- * 
+ *
  * ## Example Usage - Backend Bucket Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const imageBucket = new gcp.storage.Bucket("imageBucket", {location: "EU"});
  * const imageBackend = new gcp.compute.BackendBucket("imageBackend", {
  *     description: "Contains beautiful images",
@@ -36,8 +36,6 @@ import * as utilities from "../utilities";
  *     enableCdn: true,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_backend_bucket.html.markdown.
  */
 export class BackendBucket extends pulumi.CustomResource {
     /**

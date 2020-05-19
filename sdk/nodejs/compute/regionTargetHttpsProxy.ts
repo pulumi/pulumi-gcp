@@ -9,21 +9,21 @@ import * as utilities from "../utilities";
 /**
  * Represents a RegionTargetHttpsProxy resource, which is used by one or more
  * forwarding rules to route incoming HTTPS requests to a URL map.
- * 
+ *
  * To get more information about RegionTargetHttpsProxy, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionTargetHttpsProxies)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
- * 
+ *
  * ## Example Usage - Region Target Https Proxy Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * import * from "fs";
- * 
+ *
  * const defaultRegionSslCertificate = new gcp.compute.RegionSslCertificate("defaultRegionSslCertificate", {
  *     region: "us-central1",
  *     privateKey: fs.readFileSync("path/to/private.key"),
@@ -64,8 +64,6 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultRegionSslCertificate.id],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_target_https_proxy.html.markdown.
  */
 export class RegionTargetHttpsProxy extends pulumi.CustomResource {
     /**

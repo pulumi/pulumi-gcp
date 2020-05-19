@@ -10,15 +10,15 @@ import * as utilities from "../utilities";
  * Creates a Google Cloud Bigtable table inside an instance. For more information see
  * [the official documentation](https://cloud.google.com/bigtable/) and
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const instance = new gcp.bigtable.Instance("instance", {cluster: [{
  *     clusterId: "tf-instance-cluster",
  *     zone: "us-central1-b",
@@ -34,8 +34,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/bigtable_table.html.markdown.
  */
 export class Table extends pulumi.CustomResource {
     /**

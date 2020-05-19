@@ -11,21 +11,21 @@ import * as utilities from "../utilities";
  * a whole. This resource is primarily intended for use with GCP-generated
  * peerings that shouldn't otherwise be managed by other tools. Deleting this
  * resource is a no-op and the peering will not be modified.
- * 
- * 
+ *
+ *
  * To get more information about NetworkPeeringRoutesConfig, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/updatePeering)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
- * 
+ *
  * ## Example Usage - Network Peering Routes Config Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const networkPrimary = new gcp.compute.Network("networkPrimary", {autoCreateSubnetworks: "false"});
  * const networkSecondary = new gcp.compute.Network("networkSecondary", {autoCreateSubnetworks: "false"});
  * const peeringPrimary = new gcp.compute.NetworkPeering("peeringPrimary", {
@@ -45,8 +45,6 @@ import * as utilities from "../utilities";
  *     peerNetwork: networkPrimary.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_network_peering_routes_config.html.markdown.
  */
 export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
     /**

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
  * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
- * 
+ *
  * > **NOTE on `gcp.sql.DatabaseInstance`:** - First-generation instances have been
  * deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
  * for more details.
@@ -31,20 +31,20 @@ import * as utilities from "../utilities";
  * * `activationPolicy` ("ON_DEMAND" is no longer an option)
  * * `pricingPlan` ("PER_USE" is now the only valid option)
  * Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
- * 
+ *
  * > **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
  * default 'root'@'%' user with no password. This user will be deleted by the provider on
  * instance creation. You should use `gcp.sql.User` to define a custom user with
  * a restricted host and strong password.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### SQL Second Generation Instance
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const master = new gcp.sql.DatabaseInstance("master", {
  *     databaseVersion: "POSTGRES_11",
  *     region: "us-central1",
@@ -55,14 +55,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ### Private IP Instance
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
- * 
+ *
  * const privateNetwork = new gcp.compute.Network("privateNetwork", {});
  * const privateIpAddress = new gcp.compute.GlobalAddress("privateIpAddress", {
  *     purpose: "VPC_PEERING",
@@ -87,8 +87,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/sql_database_instance.html.markdown.
  */
 export class DatabaseInstance extends pulumi.CustomResource {
     /**
@@ -132,7 +130,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly databaseVersion!: pulumi.Output<string | undefined>;
     /**
-     * 
+     *
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order
@@ -287,7 +285,7 @@ export interface DatabaseInstanceState {
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
-     * 
+     *
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order
@@ -375,7 +373,7 @@ export interface DatabaseInstanceArgs {
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
-     * 
+     *
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order

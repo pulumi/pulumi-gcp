@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * A Realm resource.
- * 
+ *
  * To get more information about Realm, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
- * 
+ *
  * ## Example Usage - Game Service Realm Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.gameservices.Realm("default", {
  *     realmId: "tf-test-realm",
  *     timeZone: "EST",
@@ -29,8 +29,6 @@ import * as utilities from "../utilities";
  *     description: "one of the nine",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/game_services_realm.html.markdown.
  */
 export class Realm extends pulumi.CustomResource {
     /**

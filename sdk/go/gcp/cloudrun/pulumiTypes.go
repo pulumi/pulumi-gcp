@@ -2369,6 +2369,8 @@ type ServiceTemplateSpec struct {
 	// are in for this Revision.
 	// It is expected
 	// that the system will manipulate this based on routability and load.
+	//
+	// Deprecated: Not supported by Cloud Run fully managed
 	ServingState *string `pulumi:"servingState"`
 }
 
@@ -2408,6 +2410,8 @@ type ServiceTemplateSpecArgs struct {
 	// are in for this Revision.
 	// It is expected
 	// that the system will manipulate this based on routability and load.
+	//
+	// Deprecated: Not supported by Cloud Run fully managed
 	ServingState pulumi.StringPtrInput `pulumi:"servingState"`
 }
 
@@ -2521,6 +2525,8 @@ func (o ServiceTemplateSpecOutput) ServiceAccountName() pulumi.StringPtrOutput {
 // are in for this Revision.
 // It is expected
 // that the system will manipulate this based on routability and load.
+//
+// Deprecated: Not supported by Cloud Run fully managed
 func (o ServiceTemplateSpecOutput) ServingState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) *string { return v.ServingState }).(pulumi.StringPtrOutput)
 }
@@ -2590,6 +2596,8 @@ func (o ServiceTemplateSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOutpu
 // are in for this Revision.
 // It is expected
 // that the system will manipulate this based on routability and load.
+//
+// Deprecated: Not supported by Cloud Run fully managed
 func (o ServiceTemplateSpecPtrOutput) ServingState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpec) *string {
 		if v == nil {
@@ -2627,6 +2635,8 @@ type ServiceTemplateSpecContainer struct {
 	// When a key exists in multiple sources, the value associated with the last source will
 	// take precedence. Values defined by an Env with a duplicate key will take
 	// precedence.  Structure is documented below.
+	//
+	// Deprecated: Not supported by Cloud Run fully managed
 	EnvFroms []ServiceTemplateSpecContainerEnvFrom `pulumi:"envFroms"`
 	// List of environment variables to set in the container.  Structure is documented below.
 	Envs []ServiceTemplateSpecContainerEnv `pulumi:"envs"`
@@ -2643,6 +2653,8 @@ type ServiceTemplateSpecContainer struct {
 	// Container's working directory.
 	// If not specified, the container runtime's default will be used, which
 	// might be configured in the container image.
+	//
+	// Deprecated: Not supported by Cloud Run fully managed
 	WorkingDir *string `pulumi:"workingDir"`
 }
 
@@ -2686,6 +2698,8 @@ type ServiceTemplateSpecContainerArgs struct {
 	// When a key exists in multiple sources, the value associated with the last source will
 	// take precedence. Values defined by an Env with a duplicate key will take
 	// precedence.  Structure is documented below.
+	//
+	// Deprecated: Not supported by Cloud Run fully managed
 	EnvFroms ServiceTemplateSpecContainerEnvFromArrayInput `pulumi:"envFroms"`
 	// List of environment variables to set in the container.  Structure is documented below.
 	Envs ServiceTemplateSpecContainerEnvArrayInput `pulumi:"envs"`
@@ -2702,6 +2716,8 @@ type ServiceTemplateSpecContainerArgs struct {
 	// Container's working directory.
 	// If not specified, the container runtime's default will be used, which
 	// might be configured in the container image.
+	//
+	// Deprecated: Not supported by Cloud Run fully managed
 	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
 }
 
@@ -2790,6 +2806,8 @@ func (o ServiceTemplateSpecContainerOutput) Commands() pulumi.StringArrayOutput 
 // When a key exists in multiple sources, the value associated with the last source will
 // take precedence. Values defined by an Env with a duplicate key will take
 // precedence.  Structure is documented below.
+//
+// Deprecated: Not supported by Cloud Run fully managed
 func (o ServiceTemplateSpecContainerOutput) EnvFroms() ServiceTemplateSpecContainerEnvFromArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerEnvFrom { return v.EnvFroms }).(ServiceTemplateSpecContainerEnvFromArrayOutput)
 }
@@ -2818,6 +2836,8 @@ func (o ServiceTemplateSpecContainerOutput) Resources() ServiceTemplateSpecConta
 // Container's working directory.
 // If not specified, the container runtime's default will be used, which
 // might be configured in the container image.
+//
+// Deprecated: Not supported by Cloud Run fully managed
 func (o ServiceTemplateSpecContainerOutput) WorkingDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
 }

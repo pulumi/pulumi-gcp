@@ -9,22 +9,22 @@ import * as utilities from "../utilities";
 /**
  * Represents a TargetHttpsProxy resource, which is used by one or more
  * global forwarding rule to route incoming HTTPS requests to a URL map.
- * 
- * 
+ *
+ *
  * To get more information about TargetHttpsProxy, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
- * 
+ *
  * ## Example Usage - Target Https Proxy Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * import * from "fs";
- * 
+ *
  * const defaultSSLCertificate = new gcp.compute.SSLCertificate("defaultSSLCertificate", {
  *     privateKey: fs.readFileSync("path/to/private.key"),
  *     certificate: fs.readFileSync("path/to/certificate.crt"),
@@ -61,8 +61,6 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultSSLCertificate.id],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_target_https_proxy.html.markdown.
  */
 export class TargetHttpsProxy extends pulumi.CustomResource {
     /**

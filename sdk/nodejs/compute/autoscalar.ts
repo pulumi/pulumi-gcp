@@ -8,25 +8,25 @@ import * as utilities from "../utilities";
 
 /**
  * Represents an Autoscaler resource.
- * 
+ *
  * Autoscalers allow you to automatically scale virtual machine instances in
  * managed instance groups according to an autoscaling policy that you
  * define.
- * 
- * 
+ *
+ *
  * To get more information about Autoscaler, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
  * * How-to Guides
  *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
- * 
+ *
  * ## Example Usage - Autoscaler Single Instance
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const debian9 = gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
@@ -81,12 +81,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Autoscaler Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const debian9 = gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
@@ -138,10 +138,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_autoscaler.html.markdown.
  */
-/** @deprecated gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler */
+/** @deprecated gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler */
 export class Autoscalar extends pulumi.CustomResource {
     /**
      * Get an existing Autoscalar resource's state with the given name, ID, and optional extra
@@ -152,7 +150,7 @@ export class Autoscalar extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AutoscalarState, opts?: pulumi.CustomResourceOptions): Autoscalar {
-        pulumi.log.warn("Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler")
+        pulumi.log.warn("Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler")
         return new Autoscalar(name, <any>state, { ...opts, id: id });
     }
 
@@ -219,11 +217,11 @@ export class Autoscalar extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler */
+    /** @deprecated gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler */
     constructor(name: string, args: AutoscalarArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler */
+    /** @deprecated gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler */
     constructor(name: string, argsOrState?: AutoscalarArgs | AutoscalarState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favour of gcp.compute.Autoscaler")
+        pulumi.log.warn("Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler")
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as AutoscalarState | undefined;

@@ -6,14 +6,12 @@ import * as utilities from "../utilities";
 
 /**
  * A Google Cloud Firebase web application configuration
- * 
+ *
  * To get more information about WebApp, see:
- * 
+ *
  * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
  * * How-to Guides
  *     * [Official Documentation](https://firebase.google.com/)
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_firebase_web_app_config.html.markdown.
  */
 export function getWebAppConfig(args: GetWebAppConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppConfigResult> {
     if (!opts) {

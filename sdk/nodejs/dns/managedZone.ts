@@ -10,21 +10,21 @@ import * as utilities from "../utilities";
  * A zone is a subtree of the DNS namespace under one administrative
  * responsibility. A ManagedZone is a resource that represents a DNS zone
  * hosted by the Cloud DNS service.
- * 
- * 
+ *
+ *
  * To get more information about ManagedZone, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
  * * How-to Guides
  *     * [Managing Zones](https://cloud.google.com/dns/zones/)
- * 
+ *
  * ## Example Usage - Dns Managed Zone Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const exampleZone = new gcp.dns.ManagedZone("example-zone", {
  *     description: "Example DNS zone",
  *     dnsName: "my-domain.com.",
@@ -34,12 +34,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Dns Managed Zone Private
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const network-1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
  * const network-2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
  * const private-zone = new gcp.dns.ManagedZone("private-zone", {
@@ -62,12 +62,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Dns Managed Zone Private Forwarding
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const network-1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
  * const network-2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
  * const private-zone = new gcp.dns.ManagedZone("private-zone", {
@@ -100,12 +100,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Dns Managed Zone Private Peering
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const network-source = new gcp.compute.Network("network-source", {autoCreateSubnetworks: false});
  * const network-target = new gcp.compute.Network("network-target", {autoCreateSubnetworks: false});
  * const peering-zone = new gcp.dns.ManagedZone("peering-zone", {
@@ -125,12 +125,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Dns Managed Zone Service Directory
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const example = new gcp.servicedirectory.Namespace("example", {
  *     namespaceId: "example",
  *     location: "us-central1",
@@ -147,8 +147,6 @@ import * as utilities from "../utilities";
  * });
  * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/dns_managed_zone.html.markdown.
  */
 export class ManagedZone extends pulumi.CustomResource {
     /**

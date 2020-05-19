@@ -12,24 +12,24 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications) 
  * and 
  * [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
- * 
+ *
  * In order to enable notifications, a special Google Cloud Storage service account unique to the project
  * must have the IAM permission "projects.topics.publish" for a Cloud Pub/Sub topic in the project. To get the service
  * account's email address, use the `gcp.storage.getProjectServiceAccount` datasource's `emailAddress` value, and see below
  * for an example of enabling notifications by granting the correct IAM permission. See
  * [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
- * 
+ *
  * >**NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
  * making this resource dependent on those IAM resources via `dependsOn`. This will safeguard against errors due to IAM race conditions.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
  * const topic = new gcp.pubsub.Topic("topic", {});
  * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
@@ -53,8 +53,6 @@ import * as utilities from "../utilities";
  * });
  * // Enable notifications by giving the correct IAM permission to the unique service account.
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_notification.html.markdown.
  */
 export class Notification extends pulumi.CustomResource {
     /**

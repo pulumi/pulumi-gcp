@@ -9,9 +9,7 @@ import (
 
 // Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets.versions).
 //
-//
-//
-// Deprecated: gcp.monitoring.getSecretVersion has been deprecated in favour of gcp.secretmanager.getSecretVersion
+// Deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
 func GetSecretVersion(ctx *pulumi.Context, args *GetSecretVersionArgs, opts ...pulumi.InvokeOption) (*GetSecretVersionResult, error) {
 	var rv GetSecretVersionResult
 	err := ctx.Invoke("gcp:monitoring/getSecretVersion:getSecretVersion", args, &rv, opts...)

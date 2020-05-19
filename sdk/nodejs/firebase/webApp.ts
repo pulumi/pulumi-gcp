@@ -6,14 +6,12 @@ import * as utilities from "../utilities";
 
 /**
  * A Google Cloud Firebase web application instance
- * 
+ *
  * To get more information about WebApp, see:
- * 
+ *
  * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
  * * How-to Guides
  *     * [Official Documentation](https://firebase.google.com/)
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/firebase_web_app.html.markdown.
  */
 export class WebApp extends pulumi.CustomResource {
     /**

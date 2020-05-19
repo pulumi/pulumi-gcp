@@ -11,25 +11,23 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_ring)
  * and
  * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
- * 
+ *
  * A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
  * and resides in a specific location.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const myKeyRing = pulumi.output(gcp.kms.getKMSKeyRing({
  *     location: "us-central1",
  *     name: "my-key-ring",
  * }, { async: true }));
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_kms_key_ring.html.markdown.
  */
 export function getKMSKeyRing(args: GetKMSKeyRingArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSKeyRingResult> {
     if (!opts) {

@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
 /**
  * Bucket ACLs can be managed authoritatively using the
  * `storageBucketAcl` resource. Do not use these two resources in conjunction to manage the same bucket.
- * 
+ *
  * The BucketAccessControls resource manages the Access Control List
  * (ACLs) for a single entity/role pairing on a bucket. ACLs let you specify who
  * has access to your data and to what extent.
- * 
+ *
  * There are three roles that can be assigned to an entity:
- * 
+ *
  * READERs can get the bucket, though no acl property will be returned, and
  * list the bucket's objects.  WRITERs are READERs, and they can insert
  * objects into the bucket and delete the bucket's objects.  OWNERs are
@@ -23,21 +23,21 @@ import * as utilities from "../utilities";
  * and call all BucketAccessControls methods on the bucket.  For more
  * information, see Access Control, with the caveat that this API uses
  * READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
- * 
- * 
+ *
+ *
  * To get more information about BucketAccessControl, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
- * 
+ *
  * ## Example Usage - Storage Bucket Access Control Public Bucket
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const bucket = new gcp.storage.Bucket("bucket", {});
  * const publicRule = new gcp.storage.BucketAccessControl("publicRule", {
  *     bucket: bucket.name,
@@ -45,8 +45,6 @@ import * as utilities from "../utilities";
  *     entity: "allUsers",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/storage_bucket_access_control.html.markdown.
  */
 export class BucketAccessControl extends pulumi.CustomResource {
     /**

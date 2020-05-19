@@ -10,16 +10,16 @@ import * as utilities from "../utilities";
  * Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
  * [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
  * and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const foo = new gcp.dns.ManagedZone("foo", {
  *     dnsName: "foo.bar.",
  *     dnssec_config: {
@@ -32,8 +32,6 @@ import * as utilities from "../utilities";
  * }));
  * export const fooDnsDsRecord = fooDnsKeys.keySigningKeys[0].dsRecord;
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/datasource_dns_keys.html.markdown.
  */
 export function getKeys(args: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     if (!opts) {

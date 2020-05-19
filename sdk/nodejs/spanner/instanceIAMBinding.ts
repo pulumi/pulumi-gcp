@@ -8,24 +8,24 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
- * 
+ *
  * * `gcp.spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
- * 
+ *
  * > **Warning:** It's entirely possibly to lock yourself out of your instance using `gcp.spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
- * 
+ *
  * * `gcp.spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
  * * `gcp.spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
- * 
+ *
  * > **Note:** `gcp.spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIAMBinding` and `gcp.spanner.InstanceIAMMember` or they will fight over what your policy should be.
- * 
+ *
  * > **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
- * 
+ *
  * ## google\_spanner\_instance\_iam\_policy
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = gcp.organizations.getIAMPolicy({
  *     binding: [{
  *         role: "roles/editor",
@@ -37,34 +37,32 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * 
+ *
  * ## google\_spanner\_instance\_iam\_binding
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const instance = new gcp.spanner.InstanceIAMBinding("instance", {
  *     instance: "your-instance-name",
  *     members: ["user:jane@example.com"],
  *     role: "roles/compute.networkUser",
  * });
  * ```
- * 
+ *
  * ## google\_spanner\_instance\_iam\_member
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const instance = new gcp.spanner.InstanceIAMMember("instance", {
  *     instance: "your-instance-name",
  *     member: "user:jane@example.com",
  *     role: "roles/compute.networkUser",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/spanner_instance_iam.html.markdown.
  */
 export class InstanceIAMBinding extends pulumi.CustomResource {
     /**

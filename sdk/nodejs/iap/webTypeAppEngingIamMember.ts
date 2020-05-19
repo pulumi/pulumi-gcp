@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeAppEngine. Each of these resources serves a different use case:
- * 
+ *
  * * `gcp.iap.WebTypeAppEngingIamPolicy`: Authoritative. Sets the IAM policy for the webtypeappengine and replaces any existing policy already attached.
  * * `gcp.iap.WebTypeAppEngingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the webtypeappengine are preserved.
  * * `gcp.iap.WebTypeAppEngingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the webtypeappengine are preserved.
- * 
+ *
  * > **Note:** `gcp.iap.WebTypeAppEngingIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebTypeAppEngingIamBinding` and `gcp.iap.WebTypeAppEngingIamMember` or they will fight over what your policy should be.
- * 
+ *
  * > **Note:** `gcp.iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `gcp.iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
- * 
- * 
- * 
+ *
+ *
+ *
  * ## google\_iap\_web\_type\_app\_engine\_iam\_policy
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = gcp.organizations.getIAMPolicy({
  *     binding: [{
  *         role: "roles/iap.httpsResourceAccessor",
@@ -37,13 +37,13 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * 
+ *
  * With IAM Conditions:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = gcp.organizations.getIAMPolicy({
  *     binding: [{
  *         role: "roles/iap.httpsResourceAccessor",
@@ -62,11 +62,11 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## google\_iap\_web\_type\_app\_engine\_iam\_binding
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const binding = new gcp.iap.WebTypeAppEngingIamBinding("binding", {
  *     project: google_app_engine_application.app.project,
  *     appId: google_app_engine_application.app.app_id,
@@ -74,13 +74,13 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
- * 
+ *
  * With IAM Conditions:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const binding = new gcp.iap.WebTypeAppEngingIamBinding("binding", {
  *     project: google_app_engine_application.app.project,
  *     appId: google_app_engine_application.app.app_id,
@@ -94,11 +94,11 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## google\_iap\_web\_type\_app\_engine\_iam\_member
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const member = new gcp.iap.WebTypeAppEngingIamMember("member", {
  *     project: google_app_engine_application.app.project,
  *     appId: google_app_engine_application.app.app_id,
@@ -106,13 +106,13 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
- * 
+ *
  * With IAM Conditions:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const member = new gcp.iap.WebTypeAppEngingIamMember("member", {
  *     project: google_app_engine_application.app.project,
  *     appId: google_app_engine_application.app.app_id,
@@ -125,8 +125,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_web_type_app_engine_iam.html.markdown.
  */
 export class WebTypeAppEngingIamMember extends pulumi.CustomResource {
     /**

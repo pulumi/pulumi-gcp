@@ -9,19 +9,19 @@ import * as utilities from "../utilities";
 /**
  * UrlMaps are used to route requests to a backend service based on rules
  * that you define for the host and path of an incoming URL.
- * 
- * 
+ *
+ *
  * To get more information about UrlMap, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
- * 
+ *
  * ## Example Usage - Url Map Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.compute.HttpHealthCheck("default", {
  *     requestPath: "/",
  *     checkIntervalSec: 1,
@@ -89,12 +89,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Url Map Traffic Director Route
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.compute.HealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
@@ -168,12 +168,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Url Map Traffic Director Route Partial
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.compute.HealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
@@ -218,12 +218,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Url Map Traffic Director Path
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.compute.HealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
@@ -320,12 +320,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Url Map Traffic Director Path Partial
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.compute.HealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
@@ -387,8 +387,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_url_map.html.markdown.
  */
 export class URLMap extends pulumi.CustomResource {
     /**

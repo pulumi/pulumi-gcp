@@ -8,21 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * An attestor that attests to container image artifacts.
- * 
- * 
+ *
+ *
  * To get more information about Attestor, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
- * 
+ *
  * ## Example Usage - Binary Authorization Attestor Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const note = new gcp.containeranalysis.Note("note", {attestation_authority: {
  *     hint: {
  *         humanReadableName: "Attestor Note",
@@ -50,8 +50,6 @@ import * as utilities from "../utilities";
  *     }],
  * }});
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/binary_authorization_attestor.html.markdown.
  */
 export class Attestor extends pulumi.CustomResource {
     /**

@@ -9,21 +9,19 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
  * or the
  * [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const myRuntimeConfig = new gcp.runtimeconfig.Config("my-runtime-config", {
  *     description: "Runtime configuration values for my service",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/runtimeconfig_config.html.markdown.
  */
 export class Config extends pulumi.CustomResource {
     /**

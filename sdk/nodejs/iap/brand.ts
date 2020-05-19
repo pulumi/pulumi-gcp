@@ -10,13 +10,11 @@ import * as utilities from "../utilities";
  * OAuth brand data. Only "Organization Internal" brands can be created
  * programatically via API. To convert it into an external brands
  * please use the GCP Console.
- * 
- * 
+ *
+ *
  * > **Note:** Brands can be created only once for a Google Cloud Platform
  * project and cannot be deleted. Destroying a provider-managed Brand
  * will remove it from state but *will not delete the resource on the server.*
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_brand.html.markdown.
  */
 export class Brand extends pulumi.CustomResource {
     /**

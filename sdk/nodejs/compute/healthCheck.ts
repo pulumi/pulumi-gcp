@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * Health Checks determine whether instances are responsive and able to do work.
  * They are an important part of a comprehensive load balancing configuration,
  * as they enable monitoring instances behind load balancers.
- * 
+ *
  * Health Checks poll instances at a specified interval. Instances that
  * do not respond successfully to some number of probes in a row are marked
  * as unhealthy. No new connections are sent to unhealthy instances,
@@ -18,21 +18,21 @@ import * as utilities from "../utilities";
  * continue to poll unhealthy instances. If an instance later responds
  * successfully to some number of consecutive probes, it is marked
  * healthy again and can receive new connections.
- * 
- * 
+ *
+ *
  * To get more information about HealthCheck, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
- * 
+ *
  * ## Example Usage - Health Check Tcp
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const tcpHealthCheck = new gcp.compute.HealthCheck("tcp-health-check", {
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
@@ -42,12 +42,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Health Check Tcp Full
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const tcpHealthCheck = new gcp.compute.HealthCheck("tcp-health-check", {
  *     checkIntervalSec: 1,
  *     description: "Health check via tcp",
@@ -64,12 +64,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Health Check Ssl
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const sslHealthCheck = new gcp.compute.HealthCheck("ssl-health-check", {
  *     checkIntervalSec: 1,
  *     sslHealthCheck: {
@@ -79,12 +79,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Health Check Ssl Full
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const sslHealthCheck = new gcp.compute.HealthCheck("ssl-health-check", {
  *     checkIntervalSec: 1,
  *     description: "Health check via ssl",
@@ -101,12 +101,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Health Check Http
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const httpHealthCheck = new gcp.compute.HealthCheck("http-health-check", {
  *     checkIntervalSec: 1,
  *     httpHealthCheck: {
@@ -116,12 +116,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Health Check Http Full
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const httpHealthCheck = new gcp.compute.HealthCheck("http-health-check", {
  *     checkIntervalSec: 1,
  *     description: "Health check via http",
@@ -139,12 +139,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Health Check Https
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const httpsHealthCheck = new gcp.compute.HealthCheck("https-health-check", {
  *     checkIntervalSec: 1,
  *     httpsHealthCheck: {
@@ -154,12 +154,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Health Check Https Full
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const httpsHealthCheck = new gcp.compute.HealthCheck("https-health-check", {
  *     checkIntervalSec: 1,
  *     description: "Health check via https",
@@ -177,12 +177,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Health Check Http2
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const http2HealthCheck = new gcp.compute.HealthCheck("http2-health-check", {
  *     checkIntervalSec: 1,
  *     http2HealthCheck: {
@@ -192,12 +192,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Health Check Http2 Full
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const http2HealthCheck = new gcp.compute.HealthCheck("http2-health-check", {
  *     checkIntervalSec: 1,
  *     description: "Health check via http2",
@@ -215,12 +215,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Health Check With Logging
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const health-check-with-logging = new gcp.compute.HealthCheck("health-check-with-logging", {
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
@@ -232,8 +232,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_health_check.html.markdown.
  */
 export class HealthCheck extends pulumi.CustomResource {
     /**

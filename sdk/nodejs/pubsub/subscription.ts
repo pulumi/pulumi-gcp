@@ -9,21 +9,21 @@ import * as utilities from "../utilities";
 /**
  * A named resource representing the stream of messages from a single,
  * specific topic, to be delivered to the subscribing application.
- * 
- * 
+ *
+ *
  * To get more information about Subscription, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
  * * How-to Guides
  *     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
- * 
+ *
  * ## Example Usage - Pubsub Subscription Push
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
  * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
  *     topic: exampleTopic.name,
@@ -40,12 +40,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Pubsub Subscription Pull
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
  * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
  *     topic: exampleTopic.name,
@@ -61,12 +61,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Pubsub Subscription Different Project
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {project: "topic-project"});
  * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
  *     project: "subscription-project",
@@ -74,12 +74,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Pubsub Subscription Dead Letter
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
  * const exampleDeadLetter = new gcp.pubsub.Topic("exampleDeadLetter", {});
  * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
@@ -90,8 +90,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/pubsub_subscription.html.markdown.
  */
 export class Subscription extends pulumi.CustomResource {
     /**

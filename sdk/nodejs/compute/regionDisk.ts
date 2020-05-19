@@ -12,34 +12,34 @@ import * as utilities from "../utilities";
  * hardware behind these devices to ensure data redundancy and optimize
  * performance for you. Persistent disks are available as either standard
  * hard disk drives (HDD) or solid-state drives (SSD).
- * 
+ *
  * Persistent disks are located independently from your virtual machine
  * instances, so you can detach or move persistent disks to keep your data
  * even after you delete your instances. Persistent disk performance scales
  * automatically with size, so you can resize your existing persistent disks
  * or add more persistent disks to an instance to meet your performance and
  * storage space requirements.
- * 
+ *
  * Add a persistent disk to your instance when you need reliable and
  * affordable storage with consistent performance characteristics.
- * 
- * 
+ *
+ *
  * To get more information about RegionDisk, see:
- * 
+ *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
  * * How-to Guides
  *     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
- * 
+ *
  * > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
- * 
+ *
  * ## Example Usage - Region Disk Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const disk = new gcp.compute.Disk("disk", {
  *     image: "debian-cloud/debian-9",
  *     size: 50,
@@ -61,8 +61,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_disk.html.markdown.
  */
 export class RegionDisk extends pulumi.CustomResource {
     /**

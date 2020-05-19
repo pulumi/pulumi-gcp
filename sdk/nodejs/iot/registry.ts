@@ -10,17 +10,17 @@ import * as utilities from "../utilities";
  *  Creates a device registry in Google's Cloud IoT Core platform. For more information see
  * [the official documentation](https://cloud.google.com/iot/docs/) and
  * [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
- * 
- * 
+ *
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * import * from "fs";
- * 
+ *
  * const default-devicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
  * const default-telemetry = new gcp.pubsub.Topic("default-telemetry", {});
  * const default-registry = new gcp.iot.Registry("default-registry", {
@@ -44,8 +44,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloudiot_registry.html.markdown.
  */
 export class Registry extends pulumi.CustomResource {
     /**

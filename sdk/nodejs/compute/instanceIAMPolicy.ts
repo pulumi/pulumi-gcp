@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
- * 
+ *
  * * `gcp.compute.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
  * * `gcp.compute.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
  * * `gcp.compute.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
- * 
+ *
  * > **Note:** `gcp.compute.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.compute.InstanceIAMBinding` and `gcp.compute.InstanceIAMMember` or they will fight over what your policy should be.
- * 
+ *
  * > **Note:** `gcp.compute.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
- * 
- * 
- * 
+ *
+ *
+ *
  * ## google\_compute\_instance\_iam\_policy
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = gcp.organizations.getIAMPolicy({
  *     binding: [{
  *         role: "roles/compute.osLogin",
@@ -38,13 +38,13 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * 
+ *
  * With IAM Conditions:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = gcp.organizations.getIAMPolicy({
  *     binding: [{
  *         role: "roles/compute.osLogin",
@@ -64,11 +64,11 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## google\_compute\_instance\_iam\_binding
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const binding = new gcp.compute.InstanceIAMBinding("binding", {
  *     project: google_compute_instance["default"].project,
  *     zone: google_compute_instance["default"].zone,
@@ -77,13 +77,13 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
- * 
+ *
  * With IAM Conditions:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const binding = new gcp.compute.InstanceIAMBinding("binding", {
  *     project: google_compute_instance["default"].project,
  *     zone: google_compute_instance["default"].zone,
@@ -98,11 +98,11 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## google\_compute\_instance\_iam\_member
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const member = new gcp.compute.InstanceIAMMember("member", {
  *     project: google_compute_instance["default"].project,
  *     zone: google_compute_instance["default"].zone,
@@ -111,13 +111,13 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
- * 
+ *
  * With IAM Conditions:
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const member = new gcp.compute.InstanceIAMMember("member", {
  *     project: google_compute_instance["default"].project,
  *     zone: google_compute_instance["default"].zone,
@@ -131,8 +131,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_instance_iam.html.markdown.
  */
 export class InstanceIAMPolicy extends pulumi.CustomResource {
     /**

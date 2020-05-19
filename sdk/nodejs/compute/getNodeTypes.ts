@@ -9,15 +9,15 @@ import * as utilities from "../utilities";
 /**
  * Provides available node types for Compute Engine sole-tenant nodes in a zone
  * for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const central1b = gcp.compute.getNodeTypes({
  *     zone: "us-central1-b",
  * });
@@ -26,8 +26,6 @@ import * as utilities from "../utilities";
  *     nodeType: data.google_compute_node_types.types.names[0],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/d/google_compute_node_types.html.markdown.
  */
 export function getNodeTypes(args?: GetNodeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypesResult> {
     args = args || {};

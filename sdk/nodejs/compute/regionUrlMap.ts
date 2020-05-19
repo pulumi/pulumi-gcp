@@ -9,14 +9,14 @@ import * as utilities from "../utilities";
 /**
  * UrlMaps are used to route requests to a backend service based on rules
  * that you define for the host and path of an incoming URL.
- * 
+ *
  * ## Example Usage - Region Url Map Basic
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.compute.RegionHealthCheck("default", {
  *     region: "us-central1",
  *     checkIntervalSec: 1,
@@ -68,12 +68,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Region Url Map L7 Ilb Path
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
@@ -168,12 +168,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Region Url Map L7 Ilb Path Partial
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
@@ -236,12 +236,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Region Url Map L7 Ilb Route
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
@@ -314,12 +314,12 @@ import * as utilities from "../utilities";
  * });
  * ```
  * ## Example Usage - Region Url Map L7 Ilb Route Partial
- * 
- * 
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
@@ -366,8 +366,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/compute_region_url_map.html.markdown.
  */
 export class RegionUrlMap extends pulumi.CustomResource {
     /**

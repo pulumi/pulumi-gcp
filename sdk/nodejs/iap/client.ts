@@ -8,13 +8,11 @@ import * as utilities from "../utilities";
 
 /**
  * Contains the data that describes an Identity Aware Proxy owned client.
- * 
- * 
- * 
+ *
+ *
+ *
  * > **Warning:** All arguments including `secret` will be stored in the raw
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/iap_client.html.markdown.
  */
 export class Client extends pulumi.CustomResource {
     /**

@@ -8,23 +8,23 @@ import * as utilities from "../utilities";
 
 /**
  * Three different resources help you manage your IAM policy for Cloud Run Service. Each of these resources serves a different use case:
- * 
+ *
  * * `gcp.cloudrun.IamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
  * * `gcp.cloudrun.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
  * * `gcp.cloudrun.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
- * 
+ *
  * > **Note:** `gcp.cloudrun.IamPolicy` **cannot** be used in conjunction with `gcp.cloudrun.IamBinding` and `gcp.cloudrun.IamMember` or they will fight over what your policy should be.
- * 
+ *
  * > **Note:** `gcp.cloudrun.IamBinding` resources **can be** used in conjunction with `gcp.cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
- * 
- * 
- * 
+ *
+ *
+ *
  * ## google\_cloud\_run\_service\_iam\_policy
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const admin = gcp.organizations.getIAMPolicy({
  *     binding: [{
  *         role: "roles/viewer",
@@ -38,13 +38,13 @@ import * as utilities from "../utilities";
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
- * 
+ *
  * ## google\_cloud\_run\_service\_iam\_binding
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const binding = new gcp.cloudrun.IamBinding("binding", {
  *     location: google_cloud_run_service["default"].location,
  *     project: google_cloud_run_service["default"].project,
@@ -53,13 +53,13 @@ import * as utilities from "../utilities";
  *     members: ["user:jane@example.com"],
  * });
  * ```
- * 
+ *
  * ## google\_cloud\_run\_service\_iam\_member
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const member = new gcp.cloudrun.IamMember("member", {
  *     location: google_cloud_run_service["default"].location,
  *     project: google_cloud_run_service["default"].project,
@@ -68,8 +68,6 @@ import * as utilities from "../utilities";
  *     member: "user:jane@example.com",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/cloud_run_service_iam.html.markdown.
  */
 export class IamBinding extends pulumi.CustomResource {
     /**

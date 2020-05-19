@@ -10,18 +10,18 @@ import * as utilities from "../utilities";
  * Manages a organization-level logging sink. For more information see
  * [the official documentation](https://cloud.google.com/logging/docs/) and
  * [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
- * 
+ *
  * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * granted to the credentials used with this provider.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * 
+ *
  * const log-bucket = new gcp.storage.Bucket("log-bucket", {});
  * const my-sink = new gcp.logging.OrganizationSink("my-sink", {
  *     orgId: "123456789",
@@ -33,8 +33,6 @@ import * as utilities from "../utilities";
  *     member: my-sink.writerIdentity,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-google/blob/master/website/docs/r/logging_organization_sink.html.markdown.
  */
 export class OrganizationSink extends pulumi.CustomResource {
     /**
