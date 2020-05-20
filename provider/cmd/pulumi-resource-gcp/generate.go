@@ -22,6 +22,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"runtime"
 
 	"github.com/pulumi/pulumi/pkg/v2/codegen/schema"
 )

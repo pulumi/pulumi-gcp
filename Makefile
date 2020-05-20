@@ -53,7 +53,7 @@ generate_schema:: tfgen
 	$(TFGEN) schema --out ./provider/cmd/${PROVIDER}
 
 provider:: generate_schema
-	cd provider && GOGC=25 VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go
+	cd provider && GOGC=off VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go
 	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-gcp/provider/v3/pkg/version.Version=${VERSION}" ${PROJECT}/provider/v3/cmd/${PROVIDER}
 
 tfgen::
