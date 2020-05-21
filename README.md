@@ -44,17 +44,10 @@ To use from Go, use `go get` to grab the latest version of the library
 
 ### .NET 
 
-To use from .NET, install using `nuget`:
+To use from .NET, install using `dotnet add package`:
 
    $ dotnet add package Pulumi.Gcp
 
-## Configuring credentials
-
-There are a variety of ways credentials may be configured for the GCP provider, appropriate for
-different use cases. They are enumerated [in the quickstart guide](
-https://pulumi.io/quickstart/gcp/setup/).
-
 ## Reference
 
-For detailed reference documentation, please visit [the API docs](
-https://pulumi.io/reference/gcp).
+For further information, please visit [the GCP provider docs](https://www.pulumi.com/docs/intro/cloud-providers/gcp) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/gcp).
