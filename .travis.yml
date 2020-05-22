@@ -15,6 +15,7 @@ before_install:
     - source ${PULUMI_SCRIPTS}/ci/keep-failed-tests.sh
 install:
     - source ${PULUMI_SCRIPTS}/ci/install-common-toolchain.sh
+    - source ${PULUMI_SCRIPTS}/ci/configure-aws.sh
     - export CLOUDSDK_PYTHON=python3
     # Install GCP SDK and Authenticate
     - if [ ! -d ${HOME}/google-cloud-sdk/bin ]; then
