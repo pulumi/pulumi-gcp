@@ -203,13 +203,13 @@ class Environment(pulumi.CustomResource):
         test_environment = gcp.composer.Environment("testEnvironment",
             region="us-central1",
             config={
-                "nodeCount": 4,
+                "node_count": 4,
                 "node_config": {
                     "zone": "us-central1-a",
-                    "machineType": "n1-standard-1",
+                    "machine_type": "n1-standard-1",
                     "network": test_network.id,
                     "subnetwork": test_subnetwork.id,
-                    "serviceAccount": test_account.name,
+                    "service_account": test_account.name,
                 },
             })
         ```
@@ -226,7 +226,7 @@ class Environment(pulumi.CustomResource):
                     "airflowConfigOverrides": {
                         "core-loadExample": "True",
                     },
-                    "envVariables": {
+                    "env_variables": {
                         "FOO": "bar",
                     },
                     "pypiPackages": {

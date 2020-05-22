@@ -128,7 +128,7 @@ class Metric(pulumi.CustomResource):
                 "sku": "EXTRACT(jsonPayload.id)",
             },
             metric_descriptor={
-                "displayName": "My metric",
+                "display_name": "My metric",
                 "labels": [
                     {
                         "description": "amount of matter",

@@ -76,7 +76,7 @@ class Repository(pulumi.CustomResource):
         my_repo = gcp.sourcerepo.Repository("my-repo", pubsub_configs=[{
             "topic": topic.id,
             "messageFormat": "JSON",
-            "serviceAccountEmail": test_account.email,
+            "service_account_email": test_account.email,
         }])
         ```
 

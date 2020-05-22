@@ -511,7 +511,7 @@ class AlertPolicy(pulumi.CustomResource):
                     "duration": "60s",
                     "filter": "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
                 },
-                "displayName": "test condition",
+                "display_name": "test condition",
             }],
             display_name="My Alert Policy",
             user_labels={

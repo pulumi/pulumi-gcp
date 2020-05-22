@@ -283,14 +283,14 @@ class Cluster(pulumi.CustomResource):
                 },
                 "initializationAction": [{
                     "script": "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-                    "timeoutSec": 500,
+                    "timeout_sec": 500,
                 }],
                 "masterConfig": {
                     "diskConfig": {
                         "bootDiskSizeGb": 15,
                         "bootDiskType": "pd-ssd",
                     },
-                    "machineType": "n1-standard-1",
+                    "machine_type": "n1-standard-1",
                     "numInstances": 1,
                 },
                 "preemptibleWorkerConfig": {
@@ -303,13 +303,13 @@ class Cluster(pulumi.CustomResource):
                     },
                 },
                 "stagingBucket": "dataproc-staging-bucket",
-                "workerConfig": {
+                "worker_config": {
                     "diskConfig": {
                         "bootDiskSizeGb": 15,
                         "numLocalSsds": 1,
                     },
-                    "machineType": "n1-standard-1",
-                    "minCpuPlatform": "Intel Skylake",
+                    "machine_type": "n1-standard-1",
+                    "min_cpu_platform": "Intel Skylake",
                     "numInstances": 2,
                 },
             },
@@ -333,7 +333,7 @@ class Cluster(pulumi.CustomResource):
                 "masterConfig": {
                     "accelerators": [{
                         "acceleratorCount": "1",
-                        "acceleratorType": "nvidia-tesla-k80",
+                        "accelerator_type": "nvidia-tesla-k80",
                     }],
                 },
             },

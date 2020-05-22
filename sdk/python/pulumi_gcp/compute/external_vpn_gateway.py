@@ -77,7 +77,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
             description="An externally managed VPN gateway",
             interface=[{
                 "id": 0,
-                "ipAddress": "8.8.8.8",
+                "ip_address": "8.8.8.8",
             }])
         network_subnet1 = gcp.compute.Subnetwork("networkSubnet1",
             ip_cidr_range="10.0.1.0/24",

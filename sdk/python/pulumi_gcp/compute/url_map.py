@@ -755,7 +755,7 @@ class URLMap(pulumi.CustomResource):
             path_matcher=[
                 {
                     "name": "mysite",
-                    "defaultService": home.id,
+                    "default_service": home.id,
                     "path_rule": [
                         {
                             "paths": ["/home"],
@@ -773,7 +773,7 @@ class URLMap(pulumi.CustomResource):
                 },
                 {
                     "name": "otherpaths",
-                    "defaultService": home.id,
+                    "default_service": home.id,
                 },
             ],
             test=[{
@@ -807,7 +807,7 @@ class URLMap(pulumi.CustomResource):
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.id,
+                "default_service": home.id,
                 "route_rules": [{
                     "priority": 1,
                     "header_action": {
@@ -884,7 +884,7 @@ class URLMap(pulumi.CustomResource):
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.id,
+                "default_service": home.id,
                 "route_rules": [{
                     "priority": 1,
                     "match_rules": [{
@@ -932,7 +932,7 @@ class URLMap(pulumi.CustomResource):
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.id,
+                "default_service": home.id,
                 "path_rule": [{
                     "paths": ["/home"],
                     "route_action": {
@@ -960,7 +960,7 @@ class URLMap(pulumi.CustomResource):
                             },
                         },
                         "request_mirror_policy": {
-                            "backendService": home.id,
+                            "backend_service": home.id,
                         },
                         "retry_policy": {
                             "numRetries": 4,
@@ -981,7 +981,7 @@ class URLMap(pulumi.CustomResource):
                             "pathPrefixRewrite": "A replacement path",
                         },
                         "weighted_backend_services": [{
-                            "backendService": home.id,
+                            "backend_service": home.id,
                             "weight": 400,
                             "header_action": {
                                 "requestHeadersToRemoves": ["RemoveMe"],
@@ -1032,7 +1032,7 @@ class URLMap(pulumi.CustomResource):
             }],
             path_matcher=[{
                 "name": "allpaths",
-                "defaultService": home.id,
+                "default_service": home.id,
                 "path_rule": [{
                     "paths": ["/home"],
                     "route_action": {
@@ -1047,7 +1047,7 @@ class URLMap(pulumi.CustomResource):
                             "disabled": False,
                         },
                         "weighted_backend_services": [{
-                            "backendService": home.id,
+                            "backend_service": home.id,
                             "weight": 400,
                             "header_action": {
                                 "requestHeadersToRemoves": ["RemoveMe"],

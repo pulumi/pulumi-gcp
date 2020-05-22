@@ -144,7 +144,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             healthy_threshold=2,
             unhealthy_threshold=10,
             http_health_check={
-                "requestPath": "/healthz",
+                "request_path": "/healthz",
                 "port": "8080",
             })
         appserver = gcp.compute.RegionInstanceGroupManager("appserver",

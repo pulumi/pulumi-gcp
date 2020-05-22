@@ -162,7 +162,7 @@ class NodePool(pulumi.CustomResource):
             node_count=1,
             node_config={
                 "preemptible": True,
-                "machineType": "n1-standard-1",
+                "machine_type": "n1-standard-1",
                 "oauthScopes": [
                     "https://www.googleapis.com/auth/logging.write",
                     "https://www.googleapis.com/auth/monitoring",

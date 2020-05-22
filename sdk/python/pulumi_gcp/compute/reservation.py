@@ -111,8 +111,8 @@ class Reservation(pulumi.CustomResource):
             specific_reservation={
                 "count": 1,
                 "instanceProperties": {
-                    "machineType": "n2-standard-2",
-                    "minCpuPlatform": "Intel Cascade Lake",
+                    "machine_type": "n2-standard-2",
+                    "min_cpu_platform": "Intel Cascade Lake",
                 },
             },
             zone="us-central1-a")

@@ -50,9 +50,9 @@ class Table(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.bigtable.Instance("instance", cluster=[{
-            "clusterId": "tf-instance-cluster",
+            "cluster_id": "tf-instance-cluster",
             "zone": "us-central1-b",
-            "numNodes": 3,
+            "num_nodes": 3,
             "storageType": "HDD",
         }])
         table = gcp.bigtable.Table("table",

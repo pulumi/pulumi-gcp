@@ -60,8 +60,8 @@ class Instance(pulumi.CustomResource):
 
         production_instance = gcp.bigtable.Instance("production-instance",
             clusters=[{
-                "clusterId": "tf-instance-cluster",
-                "numNodes": 1,
+                "cluster_id": "tf-instance-cluster",
+                "num_nodes": 1,
                 "storageType": "HDD",
                 "zone": "us-central1-b",
             }],
@@ -78,7 +78,7 @@ class Instance(pulumi.CustomResource):
 
         development_instance = gcp.bigtable.Instance("development-instance",
             clusters=[{
-                "clusterId": "tf-instance-cluster",
+                "cluster_id": "tf-instance-cluster",
                 "storageType": "HDD",
                 "zone": "us-central1-b",
             }],
