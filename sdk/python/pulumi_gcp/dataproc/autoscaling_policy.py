@@ -124,7 +124,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
             policy_id="dataproc-policy",
             location="us-central1",
             worker_config={
-                "maxInstances": 3,
+                "max_instances": 3,
             },
             basic_algorithm={
                 "yarn_config": {

@@ -131,14 +131,14 @@ class TransferJob(pulumi.CustomResource):
                     "deleteObjectsUniqueInSink": False,
                 },
                 "aws_s3_data_source": {
-                    "bucketName": var["aws_s3_bucket"],
+                    "bucket_name": var["aws_s3_bucket"],
                     "aws_access_key": {
                         "accessKeyId": var["aws_access_key"],
                         "secretAccessKey": var["aws_secret_key"],
                     },
                 },
                 "gcs_data_sink": {
-                    "bucketName": s3_backup_bucket_bucket.name,
+                    "bucket_name": s3_backup_bucket_bucket.name,
                 },
             },
             schedule={

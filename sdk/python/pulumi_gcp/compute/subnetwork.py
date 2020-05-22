@@ -169,7 +169,7 @@ class Subnetwork(pulumi.CustomResource):
             network=custom_test.id,
             secondary_ip_range=[{
                 "rangeName": "tf-test-secondary-range-update1",
-                "ipCidrRange": "192.168.10.0/24",
+                "ip_cidr_range": "192.168.10.0/24",
             }])
         ```
         ## Example Usage - Subnetwork Logging Config

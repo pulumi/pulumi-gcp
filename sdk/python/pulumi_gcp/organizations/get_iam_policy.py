@@ -58,7 +58,7 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
     import pulumi_gcp as gcp
 
     admin = gcp.organizations.get_iam_policy(audit_configs=[{
-            "auditLogConfigs": [
+            "audit_log_configs": [
                 {
                     "exemptedMembers": ["user:you@domain.com"],
                     "logType": "DATA_READ",

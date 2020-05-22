@@ -111,7 +111,7 @@ class ResourcePolicy(pulumi.CustomResource):
         bar = gcp.compute.ResourcePolicy("bar",
             region="us-central1",
             snapshot_schedule_policy={
-                "retentionPolicy": {
+                "retention_policy": {
                     "maxRetentionDays": 10,
                     "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
                 },

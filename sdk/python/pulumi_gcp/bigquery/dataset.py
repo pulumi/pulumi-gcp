@@ -137,7 +137,7 @@ class Dataset(pulumi.CustomResource):
             access=[
                 {
                     "role": "OWNER",
-                    "userByEmail": bqowner.email,
+                    "user_by_email": bqowner.email,
                 },
                 {
                     "role": "READER",
@@ -161,7 +161,7 @@ class Dataset(pulumi.CustomResource):
             location="US",
             default_table_expiration_ms=3600000,
             default_encryption_configuration={
-                "kmsKeyName": crypto_key.id,
+                "kms_key_name": crypto_key.id,
             })
         ```
 

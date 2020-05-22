@@ -79,7 +79,7 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             cloud_sql={
-                "instanceId": instance.connection_name,
+                "instance_id": instance.connection_name,
                 "database": db.name,
                 "type": "POSTGRES",
             })
@@ -104,7 +104,7 @@ class Connection(pulumi.CustomResource):
             friendly_name="👋",
             description="a riveting description",
             cloud_sql={
-                "instanceId": instance.connection_name,
+                "instance_id": instance.connection_name,
                 "database": db.name,
                 "type": "POSTGRES",
             })

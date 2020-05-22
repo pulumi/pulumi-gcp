@@ -80,7 +80,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             disk=[{
                 "sourceImage": "debian-cloud/debian-9",
                 "autoDelete": True,
-                "diskSizeGb": 100,
+                "disk_size_gb": 100,
                 "boot": True,
             }],
             network_interface=[{

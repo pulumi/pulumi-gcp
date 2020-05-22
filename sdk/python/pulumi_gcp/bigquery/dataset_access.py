@@ -115,9 +115,9 @@ class DatasetAccess(pulumi.CustomResource):
         access = gcp.bigquery.DatasetAccess("access",
             dataset_id=private.dataset_id,
             view={
-                "projectId": public_table.project,
-                "datasetId": public_dataset.dataset_id,
-                "tableId": public_table.table_id,
+                "project_id": public_table.project,
+                "dataset_id": public_dataset.dataset_id,
+                "table_id": public_table.table_id,
             })
         ```
 

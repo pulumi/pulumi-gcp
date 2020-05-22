@@ -80,7 +80,7 @@ class Registry(pulumi.CustomResource):
         default_telemetry = gcp.pubsub.Topic("default-telemetry")
         default_registry = gcp.iot.Registry("default-registry",
             event_notification_configs=[{
-                "pubsubTopicName": default_telemetry.id,
+                "pubsub_topic_name": default_telemetry.id,
             }],
             state_notification_config={
                 "pubsub_topic_name": default_devicestatus.id,

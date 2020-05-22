@@ -198,7 +198,7 @@ class StandardAppVersion(pulumi.CustomResource):
                     "targetCpuUtilization": 0.5,
                     "targetThroughputUtilization": 0.75,
                     "minInstances": 2,
-                    "maxInstances": 10,
+                    "max_instances": 10,
                 },
             },
             delete_service_on_destroy=True)
@@ -218,7 +218,7 @@ class StandardAppVersion(pulumi.CustomResource):
                 "port": "8080",
             },
             basic_scaling={
-                "maxInstances": 5,
+                "max_instances": 5,
             },
             noop_on_destroy=True)
         ```
