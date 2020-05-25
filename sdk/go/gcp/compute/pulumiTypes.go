@@ -30201,9 +30201,7 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutp
 // The HTTP status code used to abort the request. The value must be between 200
 // and 599 inclusive.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput) HttpStatus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort) *int {
-		return v.HttpStatus
-	}).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
 }
 
 // The percentage of traffic (connections/operations/requests) on which delay will
@@ -30702,9 +30700,7 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyOutput) To
 // forwarding the request to backendService, the loadbalancer applies any relevant
 // headerActions specified as part of this backendServiceWeight.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyOutput) BackendService() pulumi.StringOutput {
-	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy) string {
-		return v.BackendService
-	}).(pulumi.StringOutput)
+	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy) string { return v.BackendService }).(pulumi.StringOutput)
 }
 
 type RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -34421,9 +34417,7 @@ func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutpu
 // Time within the window to start the operations.
 // It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 func (o ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string {
-		return v.StartTime
-	}).(pulumi.StringOutput)
+	return o.ApplyT(func(v ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
 type ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput struct{ *pulumi.OutputState }

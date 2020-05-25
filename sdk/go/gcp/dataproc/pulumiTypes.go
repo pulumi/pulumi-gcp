@@ -127,9 +127,7 @@ func (o AutoscalingPolicyBasicAlgorithmOutput) CooldownPeriod() pulumi.StringPtr
 
 // YARN autoscaling configuration.  Structure is documented below.
 func (o AutoscalingPolicyBasicAlgorithmOutput) YarnConfig() AutoscalingPolicyBasicAlgorithmYarnConfigOutput {
-	return o.ApplyT(func(v AutoscalingPolicyBasicAlgorithm) AutoscalingPolicyBasicAlgorithmYarnConfig {
-		return v.YarnConfig
-	}).(AutoscalingPolicyBasicAlgorithmYarnConfigOutput)
+	return o.ApplyT(func(v AutoscalingPolicyBasicAlgorithm) AutoscalingPolicyBasicAlgorithmYarnConfig { return v.YarnConfig }).(AutoscalingPolicyBasicAlgorithmYarnConfigOutput)
 }
 
 type AutoscalingPolicyBasicAlgorithmPtrOutput struct{ *pulumi.OutputState }
