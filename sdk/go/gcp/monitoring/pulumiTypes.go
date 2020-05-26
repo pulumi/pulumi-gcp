@@ -2213,9 +2213,7 @@ func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) ToAl
 // this field must be defined;
 // otherwise an error is returned.
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) AlignmentPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string {
-		return v.AlignmentPeriod
-	}).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string { return v.AlignmentPeriod }).(pulumi.StringPtrOutput)
 }
 
 // The approach to be used to combine
