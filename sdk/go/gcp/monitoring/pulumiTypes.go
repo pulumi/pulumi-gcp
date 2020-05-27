@@ -3500,15 +3500,13 @@ type SloRequestBasedSli struct {
 	// Distribution that fall into a good range. The totalService is the
 	// total count of all values aggregated in the Distribution.
 	// Defines a distribution TimeSeries filter and thresholds used for
-	// measuring good service and total service.
-	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+	// measuring good service and total service.  Structure is documented below.
 	DistributionCut *SloRequestBasedSliDistributionCut `pulumi:"distributionCut"`
 	// A means to compute a ratio of `goodService` to `totalService`.
 	// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 	// Must specify exactly two of good, bad, and total service filters.
 	// The relationship goodService + badService = totalService
-	// will be assumed.
-	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+	// will be assumed.  Structure is documented below.
 	GoodTotalRatio *SloRequestBasedSliGoodTotalRatio `pulumi:"goodTotalRatio"`
 }
 
@@ -3529,15 +3527,13 @@ type SloRequestBasedSliArgs struct {
 	// Distribution that fall into a good range. The totalService is the
 	// total count of all values aggregated in the Distribution.
 	// Defines a distribution TimeSeries filter and thresholds used for
-	// measuring good service and total service.
-	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+	// measuring good service and total service.  Structure is documented below.
 	DistributionCut SloRequestBasedSliDistributionCutPtrInput `pulumi:"distributionCut"`
 	// A means to compute a ratio of `goodService` to `totalService`.
 	// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 	// Must specify exactly two of good, bad, and total service filters.
 	// The relationship goodService + badService = totalService
-	// will be assumed.
-	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+	// will be assumed.  Structure is documented below.
 	GoodTotalRatio SloRequestBasedSliGoodTotalRatioPtrInput `pulumi:"goodTotalRatio"`
 }
 
@@ -3623,8 +3619,7 @@ func (o SloRequestBasedSliOutput) ToSloRequestBasedSliPtrOutputWithContext(ctx c
 // Distribution that fall into a good range. The totalService is the
 // total count of all values aggregated in the Distribution.
 // Defines a distribution TimeSeries filter and thresholds used for
-// measuring good service and total service.
-// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+// measuring good service and total service.  Structure is documented below.
 func (o SloRequestBasedSliOutput) DistributionCut() SloRequestBasedSliDistributionCutPtrOutput {
 	return o.ApplyT(func(v SloRequestBasedSli) *SloRequestBasedSliDistributionCut { return v.DistributionCut }).(SloRequestBasedSliDistributionCutPtrOutput)
 }
@@ -3633,8 +3628,7 @@ func (o SloRequestBasedSliOutput) DistributionCut() SloRequestBasedSliDistributi
 // Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 // Must specify exactly two of good, bad, and total service filters.
 // The relationship goodService + badService = totalService
-// will be assumed.
-// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+// will be assumed.  Structure is documented below.
 func (o SloRequestBasedSliOutput) GoodTotalRatio() SloRequestBasedSliGoodTotalRatioPtrOutput {
 	return o.ApplyT(func(v SloRequestBasedSli) *SloRequestBasedSliGoodTotalRatio { return v.GoodTotalRatio }).(SloRequestBasedSliGoodTotalRatioPtrOutput)
 }
@@ -3661,8 +3655,7 @@ func (o SloRequestBasedSliPtrOutput) Elem() SloRequestBasedSliOutput {
 // Distribution that fall into a good range. The totalService is the
 // total count of all values aggregated in the Distribution.
 // Defines a distribution TimeSeries filter and thresholds used for
-// measuring good service and total service.
-// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+// measuring good service and total service.  Structure is documented below.
 func (o SloRequestBasedSliPtrOutput) DistributionCut() SloRequestBasedSliDistributionCutPtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSli) *SloRequestBasedSliDistributionCut {
 		if v == nil {
@@ -3676,8 +3669,7 @@ func (o SloRequestBasedSliPtrOutput) DistributionCut() SloRequestBasedSliDistrib
 // Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
 // Must specify exactly two of good, bad, and total service filters.
 // The relationship goodService + badService = totalService
-// will be assumed.
-// Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+// will be assumed.  Structure is documented below.
 func (o SloRequestBasedSliPtrOutput) GoodTotalRatio() SloRequestBasedSliGoodTotalRatioPtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSli) *SloRequestBasedSliGoodTotalRatio {
 		if v == nil {
@@ -3697,7 +3689,8 @@ type SloRequestBasedSliDistributionCut struct {
 	// will be the count of values x in the Distribution such
 	// that range.min <= x < range.max. inclusive of min and
 	// exclusive of max. Open ranges can be defined by setting
-	// just one of min or max.  Structure is documented below.
+	// just one of min or max. Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.  Structure is documented below.
 	Range SloRequestBasedSliDistributionCutRange `pulumi:"range"`
 }
 
@@ -3723,7 +3716,8 @@ type SloRequestBasedSliDistributionCutArgs struct {
 	// will be the count of values x in the Distribution such
 	// that range.min <= x < range.max. inclusive of min and
 	// exclusive of max. Open ranges can be defined by setting
-	// just one of min or max.  Structure is documented below.
+	// just one of min or max. Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.  Structure is documented below.
 	Range SloRequestBasedSliDistributionCutRangeInput `pulumi:"range"`
 }
 
@@ -3817,7 +3811,8 @@ func (o SloRequestBasedSliDistributionCutOutput) DistributionFilter() pulumi.Str
 // will be the count of values x in the Distribution such
 // that range.min <= x < range.max. inclusive of min and
 // exclusive of max. Open ranges can be defined by setting
-// just one of min or max.  Structure is documented below.
+// just one of min or max. Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.  Structure is documented below.
 func (o SloRequestBasedSliDistributionCutOutput) Range() SloRequestBasedSliDistributionCutRangeOutput {
 	return o.ApplyT(func(v SloRequestBasedSliDistributionCut) SloRequestBasedSliDistributionCutRange { return v.Range }).(SloRequestBasedSliDistributionCutRangeOutput)
 }
@@ -3857,7 +3852,8 @@ func (o SloRequestBasedSliDistributionCutPtrOutput) DistributionFilter() pulumi.
 // will be the count of values x in the Distribution such
 // that range.min <= x < range.max. inclusive of min and
 // exclusive of max. Open ranges can be defined by setting
-// just one of min or max.  Structure is documented below.
+// just one of min or max. Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.  Structure is documented below.
 func (o SloRequestBasedSliDistributionCutPtrOutput) Range() SloRequestBasedSliDistributionCutRangePtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSliDistributionCut) *SloRequestBasedSliDistributionCutRange {
 		if v == nil {
@@ -4039,25 +4035,25 @@ type SloRequestBasedSliGoodTotalRatio struct {
 	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 	// quantifying bad service provided, either demanded service that
 	// was not provided or demanded service that was of inadequate
-	// quality.
+	// quality. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
 	// Must have ValueType = DOUBLE or ValueType = INT64 and
 	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-	// must be set (good + bad = total is assumed).
 	BadServiceFilter *string `pulumi:"badServiceFilter"`
 	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-	// quantifying good service provided.
+	// quantifying good service provided. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
 	// Must have ValueType = DOUBLE or ValueType = INT64 and
 	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-	// must be set (good + bad = total is assumed).
 	GoodServiceFilter *string `pulumi:"goodServiceFilter"`
 	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-	// quantifying total demanded service.
+	// quantifying total demanded service. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
 	// Must have ValueType = DOUBLE or ValueType = INT64 and
 	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-	// must be set (good + bad = total is assumed).
 	TotalServiceFilter *string `pulumi:"totalServiceFilter"`
 }
 
@@ -4077,25 +4073,25 @@ type SloRequestBasedSliGoodTotalRatioArgs struct {
 	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 	// quantifying bad service provided, either demanded service that
 	// was not provided or demanded service that was of inadequate
-	// quality.
+	// quality. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
 	// Must have ValueType = DOUBLE or ValueType = INT64 and
 	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-	// must be set (good + bad = total is assumed).
 	BadServiceFilter pulumi.StringPtrInput `pulumi:"badServiceFilter"`
 	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-	// quantifying good service provided.
+	// quantifying good service provided. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
 	// Must have ValueType = DOUBLE or ValueType = INT64 and
 	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-	// must be set (good + bad = total is assumed).
 	GoodServiceFilter pulumi.StringPtrInput `pulumi:"goodServiceFilter"`
 	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-	// quantifying total demanded service.
+	// quantifying total demanded service. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
 	// Must have ValueType = DOUBLE or ValueType = INT64 and
 	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-	// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-	// must be set (good + bad = total is assumed).
 	TotalServiceFilter pulumi.StringPtrInput `pulumi:"totalServiceFilter"`
 }
 
@@ -4180,31 +4176,31 @@ func (o SloRequestBasedSliGoodTotalRatioOutput) ToSloRequestBasedSliGoodTotalRat
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 // quantifying bad service provided, either demanded service that
 // was not provided or demanded service that was of inadequate
-// quality.
+// quality. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
 // Must have ValueType = DOUBLE or ValueType = INT64 and
 // must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-// must be set (good + bad = total is assumed).
 func (o SloRequestBasedSliGoodTotalRatioOutput) BadServiceFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SloRequestBasedSliGoodTotalRatio) *string { return v.BadServiceFilter }).(pulumi.StringPtrOutput)
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-// quantifying good service provided.
+// quantifying good service provided. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
 // Must have ValueType = DOUBLE or ValueType = INT64 and
 // must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-// must be set (good + bad = total is assumed).
 func (o SloRequestBasedSliGoodTotalRatioOutput) GoodServiceFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SloRequestBasedSliGoodTotalRatio) *string { return v.GoodServiceFilter }).(pulumi.StringPtrOutput)
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-// quantifying total demanded service.
+// quantifying total demanded service. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
 // Must have ValueType = DOUBLE or ValueType = INT64 and
 // must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-// must be set (good + bad = total is assumed).
 func (o SloRequestBasedSliGoodTotalRatioOutput) TotalServiceFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SloRequestBasedSliGoodTotalRatio) *string { return v.TotalServiceFilter }).(pulumi.StringPtrOutput)
 }
@@ -4230,11 +4226,11 @@ func (o SloRequestBasedSliGoodTotalRatioPtrOutput) Elem() SloRequestBasedSliGood
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 // quantifying bad service provided, either demanded service that
 // was not provided or demanded service that was of inadequate
-// quality.
+// quality. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
 // Must have ValueType = DOUBLE or ValueType = INT64 and
 // must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-// must be set (good + bad = total is assumed).
 func (o SloRequestBasedSliGoodTotalRatioPtrOutput) BadServiceFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSliGoodTotalRatio) *string {
 		if v == nil {
@@ -4245,11 +4241,11 @@ func (o SloRequestBasedSliGoodTotalRatioPtrOutput) BadServiceFilter() pulumi.Str
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-// quantifying good service provided.
+// quantifying good service provided. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
 // Must have ValueType = DOUBLE or ValueType = INT64 and
 // must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-// must be set (good + bad = total is assumed).
 func (o SloRequestBasedSliGoodTotalRatioPtrOutput) GoodServiceFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSliGoodTotalRatio) *string {
 		if v == nil {
@@ -4260,11 +4256,11 @@ func (o SloRequestBasedSliGoodTotalRatioPtrOutput) GoodServiceFilter() pulumi.St
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-// quantifying total demanded service.
+// quantifying total demanded service. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
 // Must have ValueType = DOUBLE or ValueType = INT64 and
 // must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-// Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-// must be set (good + bad = total is assumed).
 func (o SloRequestBasedSliGoodTotalRatioPtrOutput) TotalServiceFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSliGoodTotalRatio) *string {
 		if v == nil {
@@ -4272,6 +4268,2408 @@ func (o SloRequestBasedSliGoodTotalRatioPtrOutput) TotalServiceFilter() pulumi.S
 		}
 		return v.TotalServiceFilter
 	}).(pulumi.StringPtrOutput)
+}
+
+type SloWindowsBasedSli struct {
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// with ValueType = BOOL. The window is good if any true values
+	// appear in the window. One of `goodBadMetricFilter`,
+	// `goodTotalRatioThreshold`, `metricMeanInRange`,
+	// `metricSumInRange` must be set for `windowsBasedSli`.
+	GoodBadMetricFilter *string `pulumi:"goodBadMetricFilter"`
+	// Criterion that describes a window as good if its performance is
+	// high enough. One of `goodBadMetricFilter`,
+	// `goodTotalRatioThreshold`, `metricMeanInRange`,
+	// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+	GoodTotalRatioThreshold *SloWindowsBasedSliGoodTotalRatioThreshold `pulumi:"goodTotalRatioThreshold"`
+	// Criterion that describes a window as good if the metric's value
+	// is in a good range, *averaged* across returned streams.
+	// One of `goodBadMetricFilter`,
+	// `goodTotalRatioThreshold`, `metricMeanInRange`,
+	// `metricSumInRange` must be set for `windowsBasedSli`.
+	// Average value X of `timeSeries` should satisfy
+	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	MetricMeanInRange *SloWindowsBasedSliMetricMeanInRange `pulumi:"metricMeanInRange"`
+	// Criterion that describes a window as good if the metric's value
+	// is in a good range, *summed* across returned streams.
+	// Summed value `X` of `timeSeries` should satisfy
+	// `range.min <= X < range.max` for a good window.
+	// One of `goodBadMetricFilter`,
+	// `goodTotalRatioThreshold`, `metricMeanInRange`,
+	// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+	MetricSumInRange *SloWindowsBasedSliMetricSumInRange `pulumi:"metricSumInRange"`
+	// Duration over which window quality is evaluated, given as a
+	// duration string "{X}s" representing X seconds. Must be an
+	// integer fraction of a day and at least 60s.
+	WindowPeriod *string `pulumi:"windowPeriod"`
+}
+
+// SloWindowsBasedSliInput is an input type that accepts SloWindowsBasedSliArgs and SloWindowsBasedSliOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliInput` via:
+//
+// 		 SloWindowsBasedSliArgs{...}
+//
+type SloWindowsBasedSliInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliOutput() SloWindowsBasedSliOutput
+	ToSloWindowsBasedSliOutputWithContext(context.Context) SloWindowsBasedSliOutput
+}
+
+type SloWindowsBasedSliArgs struct {
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// with ValueType = BOOL. The window is good if any true values
+	// appear in the window. One of `goodBadMetricFilter`,
+	// `goodTotalRatioThreshold`, `metricMeanInRange`,
+	// `metricSumInRange` must be set for `windowsBasedSli`.
+	GoodBadMetricFilter pulumi.StringPtrInput `pulumi:"goodBadMetricFilter"`
+	// Criterion that describes a window as good if its performance is
+	// high enough. One of `goodBadMetricFilter`,
+	// `goodTotalRatioThreshold`, `metricMeanInRange`,
+	// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+	GoodTotalRatioThreshold SloWindowsBasedSliGoodTotalRatioThresholdPtrInput `pulumi:"goodTotalRatioThreshold"`
+	// Criterion that describes a window as good if the metric's value
+	// is in a good range, *averaged* across returned streams.
+	// One of `goodBadMetricFilter`,
+	// `goodTotalRatioThreshold`, `metricMeanInRange`,
+	// `metricSumInRange` must be set for `windowsBasedSli`.
+	// Average value X of `timeSeries` should satisfy
+	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	MetricMeanInRange SloWindowsBasedSliMetricMeanInRangePtrInput `pulumi:"metricMeanInRange"`
+	// Criterion that describes a window as good if the metric's value
+	// is in a good range, *summed* across returned streams.
+	// Summed value `X` of `timeSeries` should satisfy
+	// `range.min <= X < range.max` for a good window.
+	// One of `goodBadMetricFilter`,
+	// `goodTotalRatioThreshold`, `metricMeanInRange`,
+	// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+	MetricSumInRange SloWindowsBasedSliMetricSumInRangePtrInput `pulumi:"metricSumInRange"`
+	// Duration over which window quality is evaluated, given as a
+	// duration string "{X}s" representing X seconds. Must be an
+	// integer fraction of a day and at least 60s.
+	WindowPeriod pulumi.StringPtrInput `pulumi:"windowPeriod"`
+}
+
+func (SloWindowsBasedSliArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSli)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliArgs) ToSloWindowsBasedSliOutput() SloWindowsBasedSliOutput {
+	return i.ToSloWindowsBasedSliOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliArgs) ToSloWindowsBasedSliOutputWithContext(ctx context.Context) SloWindowsBasedSliOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliOutput)
+}
+
+func (i SloWindowsBasedSliArgs) ToSloWindowsBasedSliPtrOutput() SloWindowsBasedSliPtrOutput {
+	return i.ToSloWindowsBasedSliPtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliArgs) ToSloWindowsBasedSliPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliOutput).ToSloWindowsBasedSliPtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliPtrInput is an input type that accepts SloWindowsBasedSliArgs, SloWindowsBasedSliPtr and SloWindowsBasedSliPtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliPtrInput` via:
+//
+// 		 SloWindowsBasedSliArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliPtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliPtrOutput() SloWindowsBasedSliPtrOutput
+	ToSloWindowsBasedSliPtrOutputWithContext(context.Context) SloWindowsBasedSliPtrOutput
+}
+
+type sloWindowsBasedSliPtrType SloWindowsBasedSliArgs
+
+func SloWindowsBasedSliPtr(v *SloWindowsBasedSliArgs) SloWindowsBasedSliPtrInput {
+	return (*sloWindowsBasedSliPtrType)(v)
+}
+
+func (*sloWindowsBasedSliPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSli)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliPtrType) ToSloWindowsBasedSliPtrOutput() SloWindowsBasedSliPtrOutput {
+	return i.ToSloWindowsBasedSliPtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliPtrType) ToSloWindowsBasedSliPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliPtrOutput)
+}
+
+type SloWindowsBasedSliOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSli)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliOutput) ToSloWindowsBasedSliOutput() SloWindowsBasedSliOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliOutput) ToSloWindowsBasedSliOutputWithContext(ctx context.Context) SloWindowsBasedSliOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliOutput) ToSloWindowsBasedSliPtrOutput() SloWindowsBasedSliPtrOutput {
+	return o.ToSloWindowsBasedSliPtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliOutput) ToSloWindowsBasedSliPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSli) *SloWindowsBasedSli {
+		return &v
+	}).(SloWindowsBasedSliPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// with ValueType = BOOL. The window is good if any true values
+// appear in the window. One of `goodBadMetricFilter`,
+// `goodTotalRatioThreshold`, `metricMeanInRange`,
+// `metricSumInRange` must be set for `windowsBasedSli`.
+func (o SloWindowsBasedSliOutput) GoodBadMetricFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSli) *string { return v.GoodBadMetricFilter }).(pulumi.StringPtrOutput)
+}
+
+// Criterion that describes a window as good if its performance is
+// high enough. One of `goodBadMetricFilter`,
+// `goodTotalRatioThreshold`, `metricMeanInRange`,
+// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+func (o SloWindowsBasedSliOutput) GoodTotalRatioThreshold() SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSli) *SloWindowsBasedSliGoodTotalRatioThreshold {
+		return v.GoodTotalRatioThreshold
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput)
+}
+
+// Criterion that describes a window as good if the metric's value
+// is in a good range, *averaged* across returned streams.
+// One of `goodBadMetricFilter`,
+// `goodTotalRatioThreshold`, `metricMeanInRange`,
+// `metricSumInRange` must be set for `windowsBasedSli`.
+// Average value X of `timeSeries` should satisfy
+// `range.min <= X < range.max` for a good window.  Structure is documented below.
+func (o SloWindowsBasedSliOutput) MetricMeanInRange() SloWindowsBasedSliMetricMeanInRangePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSli) *SloWindowsBasedSliMetricMeanInRange { return v.MetricMeanInRange }).(SloWindowsBasedSliMetricMeanInRangePtrOutput)
+}
+
+// Criterion that describes a window as good if the metric's value
+// is in a good range, *summed* across returned streams.
+// Summed value `X` of `timeSeries` should satisfy
+// `range.min <= X < range.max` for a good window.
+// One of `goodBadMetricFilter`,
+// `goodTotalRatioThreshold`, `metricMeanInRange`,
+// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+func (o SloWindowsBasedSliOutput) MetricSumInRange() SloWindowsBasedSliMetricSumInRangePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSli) *SloWindowsBasedSliMetricSumInRange { return v.MetricSumInRange }).(SloWindowsBasedSliMetricSumInRangePtrOutput)
+}
+
+// Duration over which window quality is evaluated, given as a
+// duration string "{X}s" representing X seconds. Must be an
+// integer fraction of a day and at least 60s.
+func (o SloWindowsBasedSliOutput) WindowPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSli) *string { return v.WindowPeriod }).(pulumi.StringPtrOutput)
+}
+
+type SloWindowsBasedSliPtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSli)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliPtrOutput) ToSloWindowsBasedSliPtrOutput() SloWindowsBasedSliPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliPtrOutput) ToSloWindowsBasedSliPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliPtrOutput) Elem() SloWindowsBasedSliOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSli) SloWindowsBasedSli { return *v }).(SloWindowsBasedSliOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// with ValueType = BOOL. The window is good if any true values
+// appear in the window. One of `goodBadMetricFilter`,
+// `goodTotalRatioThreshold`, `metricMeanInRange`,
+// `metricSumInRange` must be set for `windowsBasedSli`.
+func (o SloWindowsBasedSliPtrOutput) GoodBadMetricFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSli) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoodBadMetricFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Criterion that describes a window as good if its performance is
+// high enough. One of `goodBadMetricFilter`,
+// `goodTotalRatioThreshold`, `metricMeanInRange`,
+// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+func (o SloWindowsBasedSliPtrOutput) GoodTotalRatioThreshold() SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSli) *SloWindowsBasedSliGoodTotalRatioThreshold {
+		if v == nil {
+			return nil
+		}
+		return v.GoodTotalRatioThreshold
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput)
+}
+
+// Criterion that describes a window as good if the metric's value
+// is in a good range, *averaged* across returned streams.
+// One of `goodBadMetricFilter`,
+// `goodTotalRatioThreshold`, `metricMeanInRange`,
+// `metricSumInRange` must be set for `windowsBasedSli`.
+// Average value X of `timeSeries` should satisfy
+// `range.min <= X < range.max` for a good window.  Structure is documented below.
+func (o SloWindowsBasedSliPtrOutput) MetricMeanInRange() SloWindowsBasedSliMetricMeanInRangePtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSli) *SloWindowsBasedSliMetricMeanInRange {
+		if v == nil {
+			return nil
+		}
+		return v.MetricMeanInRange
+	}).(SloWindowsBasedSliMetricMeanInRangePtrOutput)
+}
+
+// Criterion that describes a window as good if the metric's value
+// is in a good range, *summed* across returned streams.
+// Summed value `X` of `timeSeries` should satisfy
+// `range.min <= X < range.max` for a good window.
+// One of `goodBadMetricFilter`,
+// `goodTotalRatioThreshold`, `metricMeanInRange`,
+// `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+func (o SloWindowsBasedSliPtrOutput) MetricSumInRange() SloWindowsBasedSliMetricSumInRangePtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSli) *SloWindowsBasedSliMetricSumInRange {
+		if v == nil {
+			return nil
+		}
+		return v.MetricSumInRange
+	}).(SloWindowsBasedSliMetricSumInRangePtrOutput)
+}
+
+// Duration over which window quality is evaluated, given as a
+// duration string "{X}s" representing X seconds. Must be an
+// integer fraction of a day and at least 60s.
+func (o SloWindowsBasedSliPtrOutput) WindowPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSli) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThreshold struct {
+	// Basic SLI to evaluate to judge window quality.  Structure is documented below.
+	BasicSliPerformance *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance `pulumi:"basicSliPerformance"`
+	// Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+	Performance *SloWindowsBasedSliGoodTotalRatioThresholdPerformance `pulumi:"performance"`
+	// A duration string, e.g. 10s.
+	// Good service is defined to be the count of requests made to
+	// this service that return in no more than threshold.
+	Threshold *float64 `pulumi:"threshold"`
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdArgs and SloWindowsBasedSliGoodTotalRatioThresholdOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdArgs{...}
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdOutput() SloWindowsBasedSliGoodTotalRatioThresholdOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdOutput
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdArgs struct {
+	// Basic SLI to evaluate to judge window quality.  Structure is documented below.
+	BasicSliPerformance SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrInput `pulumi:"basicSliPerformance"`
+	// Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+	Performance SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrInput `pulumi:"performance"`
+	// A duration string, e.g. 10s.
+	// Good service is defined to be the count of requests made to
+	// this service that return in no more than threshold.
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
+}
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThreshold)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdOutput() SloWindowsBasedSliGoodTotalRatioThresholdOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdOutput)
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdOutput).ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdPtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdArgs, SloWindowsBasedSliGoodTotalRatioThresholdPtr and SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPtrInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdPtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput
+}
+
+type sloWindowsBasedSliGoodTotalRatioThresholdPtrType SloWindowsBasedSliGoodTotalRatioThresholdArgs
+
+func SloWindowsBasedSliGoodTotalRatioThresholdPtr(v *SloWindowsBasedSliGoodTotalRatioThresholdArgs) SloWindowsBasedSliGoodTotalRatioThresholdPtrInput {
+	return (*sloWindowsBasedSliGoodTotalRatioThresholdPtrType)(v)
+}
+
+func (*sloWindowsBasedSliGoodTotalRatioThresholdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThreshold)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThreshold)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdOutput() SloWindowsBasedSliGoodTotalRatioThresholdOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
+	return o.ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThreshold {
+		return &v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput)
+}
+
+// Basic SLI to evaluate to judge window quality.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) BasicSliPerformance() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
+		return v.BasicSliPerformance
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
+}
+
+// Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) Performance() SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
+		return v.Performance
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput)
+}
+
+// A duration string, e.g. 10s.
+// Good service is defined to be the count of requests made to
+// this service that return in no more than threshold.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThreshold) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThreshold)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThreshold) SloWindowsBasedSliGoodTotalRatioThreshold {
+		return *v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdOutput)
+}
+
+// Basic SLI to evaluate to judge window quality.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) BasicSliPerformance() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
+		if v == nil {
+			return nil
+		}
+		return v.BasicSliPerformance
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
+}
+
+// Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Performance() SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
+		if v == nil {
+			return nil
+		}
+		return v.Performance
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput)
+}
+
+// A duration string, e.g. 10s.
+// Good service is defined to be the count of requests made to
+// this service that return in no more than threshold.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThreshold) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance struct {
+	// Parameters for a latency threshold SLI.  Structure is documented below.
+	Latency SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency `pulumi:"latency"`
+	// An optional set of locations to which this SLI is relevant.
+	// Telemetry from other locations will not be used to calculate
+	// performance for this SLI. If omitted, this SLI applies to all
+	// locations in which the Service has activity. For service types
+	// that don't support breaking down by location, setting this
+	// field will result in an error.
+	Locations []string `pulumi:"locations"`
+	// An optional set of RPCs to which this SLI is relevant.
+	// Telemetry from other methods will not be used to calculate
+	// performance for this SLI. If omitted, this SLI applies to all
+	// the Service's methods. For service types that don't support
+	// breaking down by method, setting this field will result in an
+	// error.
+	Methods []string `pulumi:"methods"`
+	// The set of API versions to which this SLI is relevant.
+	// Telemetry from other API versions will not be used to
+	// calculate performance for this SLI. If omitted,
+	// this SLI applies to all API versions. For service types
+	// that don't support breaking down by version, setting this
+	// field will result in an error.
+	Versions []string `pulumi:"versions"`
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs{...}
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs struct {
+	// Parameters for a latency threshold SLI.  Structure is documented below.
+	Latency SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyInput `pulumi:"latency"`
+	// An optional set of locations to which this SLI is relevant.
+	// Telemetry from other locations will not be used to calculate
+	// performance for this SLI. If omitted, this SLI applies to all
+	// locations in which the Service has activity. For service types
+	// that don't support breaking down by location, setting this
+	// field will result in an error.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+	// An optional set of RPCs to which this SLI is relevant.
+	// Telemetry from other methods will not be used to calculate
+	// performance for this SLI. If omitted, this SLI applies to all
+	// the Service's methods. For service types that don't support
+	// breaking down by method, setting this field will result in an
+	// error.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// The set of API versions to which this SLI is relevant.
+	// Telemetry from other API versions will not be used to
+	// calculate performance for this SLI. If omitted,
+	// this SLI applies to all API versions. For service types
+	// that don't support breaking down by version, setting this
+	// field will result in an error.
+	Versions pulumi.StringArrayInput `pulumi:"versions"`
+}
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput)
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput).ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs, SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtr and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput
+}
+
+type sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrType SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs
+
+func SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtr(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrInput {
+	return (*sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrType)(v)
+}
+
+func (*sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
+	return o.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
+		return &v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
+}
+
+// Parameters for a latency threshold SLI.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) Latency() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
+		return v.Latency
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput)
+}
+
+// An optional set of locations to which this SLI is relevant.
+// Telemetry from other locations will not be used to calculate
+// performance for this SLI. If omitted, this SLI applies to all
+// locations in which the Service has activity. For service types
+// that don't support breaking down by location, setting this
+// field will result in an error.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// An optional set of RPCs to which this SLI is relevant.
+// Telemetry from other methods will not be used to calculate
+// performance for this SLI. If omitted, this SLI applies to all
+// the Service's methods. For service types that don't support
+// breaking down by method, setting this field will result in an
+// error.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// The set of API versions to which this SLI is relevant.
+// Telemetry from other API versions will not be used to
+// calculate performance for this SLI. If omitted,
+// this SLI applies to all API versions. For service types
+// that don't support breaking down by version, setting this
+// field will result in an error.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) []string { return v.Versions }).(pulumi.StringArrayOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
+		return *v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput)
+}
+
+// Parameters for a latency threshold SLI.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) Latency() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
+		if v == nil {
+			return nil
+		}
+		return &v.Latency
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput)
+}
+
+// An optional set of locations to which this SLI is relevant.
+// Telemetry from other locations will not be used to calculate
+// performance for this SLI. If omitted, this SLI applies to all
+// locations in which the Service has activity. For service types
+// that don't support breaking down by location, setting this
+// field will result in an error.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+// An optional set of RPCs to which this SLI is relevant.
+// Telemetry from other methods will not be used to calculate
+// performance for this SLI. If omitted, this SLI applies to all
+// the Service's methods. For service types that don't support
+// breaking down by method, setting this field will result in an
+// error.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Methods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The set of API versions to which this SLI is relevant.
+// Telemetry from other API versions will not be used to
+// calculate performance for this SLI. If omitted,
+// this SLI applies to all API versions. For service types
+// that don't support breaking down by version, setting this
+// field will result in an error.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Versions
+	}).(pulumi.StringArrayOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency struct {
+	// A duration string, e.g. 10s.
+	// Good service is defined to be the count of requests made to
+	// this service that return in no more than threshold.
+	Threshold string `pulumi:"threshold"`
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs{...}
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs struct {
+	// A duration string, e.g. 10s.
+	// Good service is defined to be the count of requests made to
+	// this service that return in no more than threshold.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+}
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput)
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput).ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs, SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtr and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput
+}
+
+type sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrType SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs
+
+func SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtr(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrInput {
+	return (*sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrType)(v)
+}
+
+func (*sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
+	return o.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
+		return &v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput)
+}
+
+// A duration string, e.g. 10s.
+// Good service is defined to be the count of requests made to
+// this service that return in no more than threshold.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
+		return *v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput)
+}
+
+// A duration string, e.g. 10s.
+// Good service is defined to be the count of requests made to
+// this service that return in no more than threshold.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformance struct {
+	// Used when goodService is defined by a count of values aggregated in a
+	// Distribution that fall into a good range. The totalService is the
+	// total count of all values aggregated in the Distribution.
+	// Defines a distribution TimeSeries filter and thresholds used for
+	// measuring good service and total service.  Structure is documented below.
+	DistributionCut *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut `pulumi:"distributionCut"`
+	// A means to compute a ratio of `goodService` to `totalService`.
+	// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+	// Must specify exactly two of good, bad, and total service filters.
+	// The relationship goodService + badService = totalService
+	// will be assumed.  Structure is documented below.
+	GoodTotalRatio *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio `pulumi:"goodTotalRatio"`
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdPerformanceInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs{...}
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs struct {
+	// Used when goodService is defined by a count of values aggregated in a
+	// Distribution that fall into a good range. The totalService is the
+	// total count of all values aggregated in the Distribution.
+	// Defines a distribution TimeSeries filter and thresholds used for
+	// measuring good service and total service.  Structure is documented below.
+	DistributionCut SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrInput `pulumi:"distributionCut"`
+	// A means to compute a ratio of `goodService` to `totalService`.
+	// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+	// Must specify exactly two of good, bad, and total service filters.
+	// The relationship goodService + badService = totalService
+	// will be assumed.  Structure is documented below.
+	GoodTotalRatio SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrInput `pulumi:"goodTotalRatio"`
+}
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdPerformance)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput)
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput).ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs, SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtr and SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput
+}
+
+type sloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrType SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs
+
+func SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtr(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs) SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrInput {
+	return (*sloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrType)(v)
+}
+
+func (*sloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdPerformance)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdPerformance)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
+	return o.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
+		return &v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput)
+}
+
+// Used when goodService is defined by a count of values aggregated in a
+// Distribution that fall into a good range. The totalService is the
+// total count of all values aggregated in the Distribution.
+// Defines a distribution TimeSeries filter and thresholds used for
+// measuring good service and total service.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) DistributionCut() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
+		return v.DistributionCut
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput)
+}
+
+// A means to compute a ratio of `goodService` to `totalService`.
+// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+// Must specify exactly two of good, bad, and total service filters.
+// The relationship goodService + badService = totalService
+// will be assumed.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) GoodTotalRatio() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
+		return v.GoodTotalRatio
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdPerformance)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformance) SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
+		return *v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput)
+}
+
+// Used when goodService is defined by a count of values aggregated in a
+// Distribution that fall into a good range. The totalService is the
+// total count of all values aggregated in the Distribution.
+// Defines a distribution TimeSeries filter and thresholds used for
+// measuring good service and total service.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) DistributionCut() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
+		if v == nil {
+			return nil
+		}
+		return v.DistributionCut
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput)
+}
+
+// A means to compute a ratio of `goodService` to `totalService`.
+// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+// Must specify exactly two of good, bad, and total service filters.
+// The relationship goodService + badService = totalService
+// will be assumed.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) GoodTotalRatio() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
+		if v == nil {
+			return nil
+		}
+		return v.GoodTotalRatio
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut struct {
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// aggregating values to quantify the good service provided.
+	// Must have ValueType = DISTRIBUTION and
+	// MetricKind = DELTA or MetricKind = CUMULATIVE.
+	DistributionFilter string `pulumi:"distributionFilter"`
+	// Range of numerical values. The computed goodService
+	// will be the count of values x in the Distribution such
+	// that range.min <= x < range.max. inclusive of min and
+	// exclusive of max. Open ranges can be defined by setting
+	// just one of min or max. Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	Range SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange `pulumi:"range"`
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs{...}
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs struct {
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// aggregating values to quantify the good service provided.
+	// Must have ValueType = DISTRIBUTION and
+	// MetricKind = DELTA or MetricKind = CUMULATIVE.
+	DistributionFilter pulumi.StringInput `pulumi:"distributionFilter"`
+	// Range of numerical values. The computed goodService
+	// will be the count of values x in the Distribution such
+	// that range.min <= x < range.max. inclusive of min and
+	// exclusive of max. Open ranges can be defined by setting
+	// just one of min or max. Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	Range SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput `pulumi:"range"`
+}
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput)
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput).ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs, SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtr and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput
+}
+
+type sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrType SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs
+
+func SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtr(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrInput {
+	return (*sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrType)(v)
+}
+
+func (*sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
+	return o.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
+		return &v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// aggregating values to quantify the good service provided.
+// Must have ValueType = DISTRIBUTION and
+// MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) DistributionFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) string {
+		return v.DistributionFilter
+	}).(pulumi.StringOutput)
+}
+
+// Range of numerical values. The computed goodService
+// will be the count of values x in the Distribution such
+// that range.min <= x < range.max. inclusive of min and
+// exclusive of max. Open ranges can be defined by setting
+// just one of min or max. Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) Range() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
+		return v.Range
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
+		return *v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// aggregating values to quantify the good service provided.
+// Must have ValueType = DISTRIBUTION and
+// MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) DistributionFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DistributionFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Range of numerical values. The computed goodService
+// will be the count of values x in the Distribution such
+// that range.min <= x < range.max. inclusive of min and
+// exclusive of max. Open ranges can be defined by setting
+// just one of min or max. Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.  Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) Range() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
+		if v == nil {
+			return nil
+		}
+		return &v.Range
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange struct {
+	// max value for the range (inclusive). If not given,
+	// will be set to "infinity", defining an open range
+	// ">= range.min"
+	Max *int `pulumi:"max"`
+	// Min value for the range (inclusive). If not given,
+	// will be set to "-infinity", defining an open range
+	// "< range.max"
+	Min *int `pulumi:"min"`
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs{...}
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs struct {
+	// max value for the range (inclusive). If not given,
+	// will be set to "infinity", defining an open range
+	// ">= range.min"
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// Min value for the range (inclusive). If not given,
+	// will be set to "-infinity", defining an open range
+	// "< range.max"
+	Min pulumi.IntPtrInput `pulumi:"min"`
+}
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput)
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput).ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs, SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtr and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput
+}
+
+type sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrType SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs
+
+func SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtr(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrInput {
+	return (*sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrType)(v)
+}
+
+func (*sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
+	return o.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
+		return &v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput)
+}
+
+// max value for the range (inclusive). If not given,
+// will be set to "infinity", defining an open range
+// ">= range.min"
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// Min value for the range (inclusive). If not given,
+// will be set to "-infinity", defining an open range
+// "< range.max"
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
+		return *v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput)
+}
+
+// max value for the range (inclusive). If not given,
+// will be set to "infinity", defining an open range
+// ">= range.min"
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Min value for the range (inclusive). If not given,
+// will be set to "-infinity", defining an open range
+// "< range.max"
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio struct {
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying bad service provided, either demanded service that
+	// was not provided or demanded service that was of inadequate
+	// quality. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	BadServiceFilter *string `pulumi:"badServiceFilter"`
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying good service provided. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	GoodServiceFilter *string `pulumi:"goodServiceFilter"`
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying total demanded service. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	TotalServiceFilter *string `pulumi:"totalServiceFilter"`
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs{...}
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs struct {
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying bad service provided, either demanded service that
+	// was not provided or demanded service that was of inadequate
+	// quality. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	BadServiceFilter pulumi.StringPtrInput `pulumi:"badServiceFilter"`
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying good service provided. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	GoodServiceFilter pulumi.StringPtrInput `pulumi:"goodServiceFilter"`
+	// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// quantifying total demanded service. Exactly two of
+	// good, bad, or total service filter must be defined (where
+	// good + bad = total is assumed)
+	// Must have ValueType = DOUBLE or ValueType = INT64 and
+	// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	TotalServiceFilter pulumi.StringPtrInput `pulumi:"totalServiceFilter"`
+}
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput)
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput).ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs, SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtr and SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrInput` via:
+//
+// 		 SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput
+}
+
+type sloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrType SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs
+
+func SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtr(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrInput {
+	return (*sloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrType)(v)
+}
+
+func (*sloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
+	return o.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
+		return &v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying bad service provided, either demanded service that
+// was not provided or demanded service that was of inadequate
+// quality. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) BadServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) *string {
+		return v.BadServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying good service provided. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) GoodServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) *string {
+		return v.GoodServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying total demanded service. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) TotalServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) *string {
+		return v.TotalServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
+		return *v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying bad service provided, either demanded service that
+// was not provided or demanded service that was of inadequate
+// quality. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) BadServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BadServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying good service provided. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) GoodServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoodServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// quantifying total demanded service. Exactly two of
+// good, bad, or total service filter must be defined (where
+// good + bad = total is assumed)
+// Must have ValueType = DOUBLE or ValueType = INT64 and
+// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) TotalServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TotalServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+type SloWindowsBasedSliMetricMeanInRange struct {
+	// Range of numerical values. The computed goodService
+	// will be the count of values x in the Distribution such
+	// that range.min <= x < range.max. inclusive of min and
+	// exclusive of max. Open ranges can be defined by setting
+	// just one of min or max. Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	Range SloWindowsBasedSliMetricMeanInRangeRange `pulumi:"range"`
+	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// specifying the TimeSeries to use for evaluating window
+	// quality. The provided TimeSeries must have
+	// ValueType = INT64 or ValueType = DOUBLE and
+	// MetricKind = GAUGE.
+	// Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.
+	TimeSeries string `pulumi:"timeSeries"`
+}
+
+// SloWindowsBasedSliMetricMeanInRangeInput is an input type that accepts SloWindowsBasedSliMetricMeanInRangeArgs and SloWindowsBasedSliMetricMeanInRangeOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliMetricMeanInRangeInput` via:
+//
+// 		 SloWindowsBasedSliMetricMeanInRangeArgs{...}
+//
+type SloWindowsBasedSliMetricMeanInRangeInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliMetricMeanInRangeOutput() SloWindowsBasedSliMetricMeanInRangeOutput
+	ToSloWindowsBasedSliMetricMeanInRangeOutputWithContext(context.Context) SloWindowsBasedSliMetricMeanInRangeOutput
+}
+
+type SloWindowsBasedSliMetricMeanInRangeArgs struct {
+	// Range of numerical values. The computed goodService
+	// will be the count of values x in the Distribution such
+	// that range.min <= x < range.max. inclusive of min and
+	// exclusive of max. Open ranges can be defined by setting
+	// just one of min or max. Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	Range SloWindowsBasedSliMetricMeanInRangeRangeInput `pulumi:"range"`
+	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// specifying the TimeSeries to use for evaluating window
+	// quality. The provided TimeSeries must have
+	// ValueType = INT64 or ValueType = DOUBLE and
+	// MetricKind = GAUGE.
+	// Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.
+	TimeSeries pulumi.StringInput `pulumi:"timeSeries"`
+}
+
+func (SloWindowsBasedSliMetricMeanInRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliMetricMeanInRange)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliMetricMeanInRangeArgs) ToSloWindowsBasedSliMetricMeanInRangeOutput() SloWindowsBasedSliMetricMeanInRangeOutput {
+	return i.ToSloWindowsBasedSliMetricMeanInRangeOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliMetricMeanInRangeArgs) ToSloWindowsBasedSliMetricMeanInRangeOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricMeanInRangeOutput)
+}
+
+func (i SloWindowsBasedSliMetricMeanInRangeArgs) ToSloWindowsBasedSliMetricMeanInRangePtrOutput() SloWindowsBasedSliMetricMeanInRangePtrOutput {
+	return i.ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliMetricMeanInRangeArgs) ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricMeanInRangeOutput).ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliMetricMeanInRangePtrInput is an input type that accepts SloWindowsBasedSliMetricMeanInRangeArgs, SloWindowsBasedSliMetricMeanInRangePtr and SloWindowsBasedSliMetricMeanInRangePtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliMetricMeanInRangePtrInput` via:
+//
+// 		 SloWindowsBasedSliMetricMeanInRangeArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliMetricMeanInRangePtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliMetricMeanInRangePtrOutput() SloWindowsBasedSliMetricMeanInRangePtrOutput
+	ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(context.Context) SloWindowsBasedSliMetricMeanInRangePtrOutput
+}
+
+type sloWindowsBasedSliMetricMeanInRangePtrType SloWindowsBasedSliMetricMeanInRangeArgs
+
+func SloWindowsBasedSliMetricMeanInRangePtr(v *SloWindowsBasedSliMetricMeanInRangeArgs) SloWindowsBasedSliMetricMeanInRangePtrInput {
+	return (*sloWindowsBasedSliMetricMeanInRangePtrType)(v)
+}
+
+func (*sloWindowsBasedSliMetricMeanInRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliMetricMeanInRange)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliMetricMeanInRangePtrType) ToSloWindowsBasedSliMetricMeanInRangePtrOutput() SloWindowsBasedSliMetricMeanInRangePtrOutput {
+	return i.ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliMetricMeanInRangePtrType) ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricMeanInRangePtrOutput)
+}
+
+type SloWindowsBasedSliMetricMeanInRangeOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliMetricMeanInRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliMetricMeanInRange)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToSloWindowsBasedSliMetricMeanInRangeOutput() SloWindowsBasedSliMetricMeanInRangeOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToSloWindowsBasedSliMetricMeanInRangeOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangeOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToSloWindowsBasedSliMetricMeanInRangePtrOutput() SloWindowsBasedSliMetricMeanInRangePtrOutput {
+	return o.ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRange) *SloWindowsBasedSliMetricMeanInRange {
+		return &v
+	}).(SloWindowsBasedSliMetricMeanInRangePtrOutput)
+}
+
+// Range of numerical values. The computed goodService
+// will be the count of values x in the Distribution such
+// that range.min <= x < range.max. inclusive of min and
+// exclusive of max. Open ranges can be defined by setting
+// just one of min or max. Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.  Structure is documented below.
+func (o SloWindowsBasedSliMetricMeanInRangeOutput) Range() SloWindowsBasedSliMetricMeanInRangeRangeOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRange) SloWindowsBasedSliMetricMeanInRangeRange { return v.Range }).(SloWindowsBasedSliMetricMeanInRangeRangeOutput)
+}
+
+// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// specifying the TimeSeries to use for evaluating window
+// quality. The provided TimeSeries must have
+// ValueType = INT64 or ValueType = DOUBLE and
+// MetricKind = GAUGE.
+// Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.
+func (o SloWindowsBasedSliMetricMeanInRangeOutput) TimeSeries() pulumi.StringOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRange) string { return v.TimeSeries }).(pulumi.StringOutput)
+}
+
+type SloWindowsBasedSliMetricMeanInRangePtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliMetricMeanInRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliMetricMeanInRange)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) ToSloWindowsBasedSliMetricMeanInRangePtrOutput() SloWindowsBasedSliMetricMeanInRangePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Elem() SloWindowsBasedSliMetricMeanInRangeOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRange) SloWindowsBasedSliMetricMeanInRange { return *v }).(SloWindowsBasedSliMetricMeanInRangeOutput)
+}
+
+// Range of numerical values. The computed goodService
+// will be the count of values x in the Distribution such
+// that range.min <= x < range.max. inclusive of min and
+// exclusive of max. Open ranges can be defined by setting
+// just one of min or max. Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.  Structure is documented below.
+func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Range() SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRange) *SloWindowsBasedSliMetricMeanInRangeRange {
+		if v == nil {
+			return nil
+		}
+		return &v.Range
+	}).(SloWindowsBasedSliMetricMeanInRangeRangePtrOutput)
+}
+
+// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// specifying the TimeSeries to use for evaluating window
+// quality. The provided TimeSeries must have
+// ValueType = INT64 or ValueType = DOUBLE and
+// MetricKind = GAUGE.
+// Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.
+func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) TimeSeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeSeries
+	}).(pulumi.StringPtrOutput)
+}
+
+type SloWindowsBasedSliMetricMeanInRangeRange struct {
+	// max value for the range (inclusive). If not given,
+	// will be set to "infinity", defining an open range
+	// ">= range.min"
+	Max *int `pulumi:"max"`
+	// Min value for the range (inclusive). If not given,
+	// will be set to "-infinity", defining an open range
+	// "< range.max"
+	Min *int `pulumi:"min"`
+}
+
+// SloWindowsBasedSliMetricMeanInRangeRangeInput is an input type that accepts SloWindowsBasedSliMetricMeanInRangeRangeArgs and SloWindowsBasedSliMetricMeanInRangeRangeOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliMetricMeanInRangeRangeInput` via:
+//
+// 		 SloWindowsBasedSliMetricMeanInRangeRangeArgs{...}
+//
+type SloWindowsBasedSliMetricMeanInRangeRangeInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliMetricMeanInRangeRangeOutput() SloWindowsBasedSliMetricMeanInRangeRangeOutput
+	ToSloWindowsBasedSliMetricMeanInRangeRangeOutputWithContext(context.Context) SloWindowsBasedSliMetricMeanInRangeRangeOutput
+}
+
+type SloWindowsBasedSliMetricMeanInRangeRangeArgs struct {
+	// max value for the range (inclusive). If not given,
+	// will be set to "infinity", defining an open range
+	// ">= range.min"
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// Min value for the range (inclusive). If not given,
+	// will be set to "-infinity", defining an open range
+	// "< range.max"
+	Min pulumi.IntPtrInput `pulumi:"min"`
+}
+
+func (SloWindowsBasedSliMetricMeanInRangeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliMetricMeanInRangeRange)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliMetricMeanInRangeRangeArgs) ToSloWindowsBasedSliMetricMeanInRangeRangeOutput() SloWindowsBasedSliMetricMeanInRangeRangeOutput {
+	return i.ToSloWindowsBasedSliMetricMeanInRangeRangeOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliMetricMeanInRangeRangeArgs) ToSloWindowsBasedSliMetricMeanInRangeRangeOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricMeanInRangeRangeOutput)
+}
+
+func (i SloWindowsBasedSliMetricMeanInRangeRangeArgs) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutput() SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
+	return i.ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliMetricMeanInRangeRangeArgs) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricMeanInRangeRangeOutput).ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliMetricMeanInRangeRangePtrInput is an input type that accepts SloWindowsBasedSliMetricMeanInRangeRangeArgs, SloWindowsBasedSliMetricMeanInRangeRangePtr and SloWindowsBasedSliMetricMeanInRangeRangePtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliMetricMeanInRangeRangePtrInput` via:
+//
+// 		 SloWindowsBasedSliMetricMeanInRangeRangeArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliMetricMeanInRangeRangePtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutput() SloWindowsBasedSliMetricMeanInRangeRangePtrOutput
+	ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(context.Context) SloWindowsBasedSliMetricMeanInRangeRangePtrOutput
+}
+
+type sloWindowsBasedSliMetricMeanInRangeRangePtrType SloWindowsBasedSliMetricMeanInRangeRangeArgs
+
+func SloWindowsBasedSliMetricMeanInRangeRangePtr(v *SloWindowsBasedSliMetricMeanInRangeRangeArgs) SloWindowsBasedSliMetricMeanInRangeRangePtrInput {
+	return (*sloWindowsBasedSliMetricMeanInRangeRangePtrType)(v)
+}
+
+func (*sloWindowsBasedSliMetricMeanInRangeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliMetricMeanInRangeRange)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliMetricMeanInRangeRangePtrType) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutput() SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
+	return i.ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliMetricMeanInRangeRangePtrType) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricMeanInRangeRangePtrOutput)
+}
+
+type SloWindowsBasedSliMetricMeanInRangeRangeOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliMetricMeanInRangeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliMetricMeanInRangeRange)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) ToSloWindowsBasedSliMetricMeanInRangeRangeOutput() SloWindowsBasedSliMetricMeanInRangeRangeOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) ToSloWindowsBasedSliMetricMeanInRangeRangeOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangeRangeOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutput() SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
+	return o.ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRangeRange) *SloWindowsBasedSliMetricMeanInRangeRange {
+		return &v
+	}).(SloWindowsBasedSliMetricMeanInRangeRangePtrOutput)
+}
+
+// max value for the range (inclusive). If not given,
+// will be set to "infinity", defining an open range
+// ">= range.min"
+func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRangeRange) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// Min value for the range (inclusive). If not given,
+// will be set to "-infinity", defining an open range
+// "< range.max"
+func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRangeRange) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type SloWindowsBasedSliMetricMeanInRangeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliMetricMeanInRangeRange)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutput() SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Elem() SloWindowsBasedSliMetricMeanInRangeRangeOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRangeRange) SloWindowsBasedSliMetricMeanInRangeRange { return *v }).(SloWindowsBasedSliMetricMeanInRangeRangeOutput)
+}
+
+// max value for the range (inclusive). If not given,
+// will be set to "infinity", defining an open range
+// ">= range.min"
+func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRangeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Min value for the range (inclusive). If not given,
+// will be set to "-infinity", defining an open range
+// "< range.max"
+func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRangeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type SloWindowsBasedSliMetricSumInRange struct {
+	// Range of numerical values. The computed goodService
+	// will be the count of values x in the Distribution such
+	// that range.min <= x < range.max. inclusive of min and
+	// exclusive of max. Open ranges can be defined by setting
+	// just one of min or max. Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	Range SloWindowsBasedSliMetricSumInRangeRange `pulumi:"range"`
+	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// specifying the TimeSeries to use for evaluating window
+	// quality. The provided TimeSeries must have
+	// ValueType = INT64 or ValueType = DOUBLE and
+	// MetricKind = GAUGE.
+	// Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.
+	TimeSeries string `pulumi:"timeSeries"`
+}
+
+// SloWindowsBasedSliMetricSumInRangeInput is an input type that accepts SloWindowsBasedSliMetricSumInRangeArgs and SloWindowsBasedSliMetricSumInRangeOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliMetricSumInRangeInput` via:
+//
+// 		 SloWindowsBasedSliMetricSumInRangeArgs{...}
+//
+type SloWindowsBasedSliMetricSumInRangeInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliMetricSumInRangeOutput() SloWindowsBasedSliMetricSumInRangeOutput
+	ToSloWindowsBasedSliMetricSumInRangeOutputWithContext(context.Context) SloWindowsBasedSliMetricSumInRangeOutput
+}
+
+type SloWindowsBasedSliMetricSumInRangeArgs struct {
+	// Range of numerical values. The computed goodService
+	// will be the count of values x in the Distribution such
+	// that range.min <= x < range.max. inclusive of min and
+	// exclusive of max. Open ranges can be defined by setting
+	// just one of min or max. Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.  Structure is documented below.
+	Range SloWindowsBasedSliMetricSumInRangeRangeInput `pulumi:"range"`
+	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+	// specifying the TimeSeries to use for evaluating window
+	// quality. The provided TimeSeries must have
+	// ValueType = INT64 or ValueType = DOUBLE and
+	// MetricKind = GAUGE.
+	// Summed value `X` should satisfy
+	// `range.min <= X < range.max` for a good window.
+	TimeSeries pulumi.StringInput `pulumi:"timeSeries"`
+}
+
+func (SloWindowsBasedSliMetricSumInRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliMetricSumInRange)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliMetricSumInRangeArgs) ToSloWindowsBasedSliMetricSumInRangeOutput() SloWindowsBasedSliMetricSumInRangeOutput {
+	return i.ToSloWindowsBasedSliMetricSumInRangeOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliMetricSumInRangeArgs) ToSloWindowsBasedSliMetricSumInRangeOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricSumInRangeOutput)
+}
+
+func (i SloWindowsBasedSliMetricSumInRangeArgs) ToSloWindowsBasedSliMetricSumInRangePtrOutput() SloWindowsBasedSliMetricSumInRangePtrOutput {
+	return i.ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliMetricSumInRangeArgs) ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricSumInRangeOutput).ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliMetricSumInRangePtrInput is an input type that accepts SloWindowsBasedSliMetricSumInRangeArgs, SloWindowsBasedSliMetricSumInRangePtr and SloWindowsBasedSliMetricSumInRangePtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliMetricSumInRangePtrInput` via:
+//
+// 		 SloWindowsBasedSliMetricSumInRangeArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliMetricSumInRangePtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliMetricSumInRangePtrOutput() SloWindowsBasedSliMetricSumInRangePtrOutput
+	ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(context.Context) SloWindowsBasedSliMetricSumInRangePtrOutput
+}
+
+type sloWindowsBasedSliMetricSumInRangePtrType SloWindowsBasedSliMetricSumInRangeArgs
+
+func SloWindowsBasedSliMetricSumInRangePtr(v *SloWindowsBasedSliMetricSumInRangeArgs) SloWindowsBasedSliMetricSumInRangePtrInput {
+	return (*sloWindowsBasedSliMetricSumInRangePtrType)(v)
+}
+
+func (*sloWindowsBasedSliMetricSumInRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliMetricSumInRange)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliMetricSumInRangePtrType) ToSloWindowsBasedSliMetricSumInRangePtrOutput() SloWindowsBasedSliMetricSumInRangePtrOutput {
+	return i.ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliMetricSumInRangePtrType) ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricSumInRangePtrOutput)
+}
+
+type SloWindowsBasedSliMetricSumInRangeOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliMetricSumInRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliMetricSumInRange)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeOutput) ToSloWindowsBasedSliMetricSumInRangeOutput() SloWindowsBasedSliMetricSumInRangeOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeOutput) ToSloWindowsBasedSliMetricSumInRangeOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangeOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeOutput) ToSloWindowsBasedSliMetricSumInRangePtrOutput() SloWindowsBasedSliMetricSumInRangePtrOutput {
+	return o.ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeOutput) ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRange) *SloWindowsBasedSliMetricSumInRange {
+		return &v
+	}).(SloWindowsBasedSliMetricSumInRangePtrOutput)
+}
+
+// Range of numerical values. The computed goodService
+// will be the count of values x in the Distribution such
+// that range.min <= x < range.max. inclusive of min and
+// exclusive of max. Open ranges can be defined by setting
+// just one of min or max. Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.  Structure is documented below.
+func (o SloWindowsBasedSliMetricSumInRangeOutput) Range() SloWindowsBasedSliMetricSumInRangeRangeOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRange) SloWindowsBasedSliMetricSumInRangeRange { return v.Range }).(SloWindowsBasedSliMetricSumInRangeRangeOutput)
+}
+
+// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// specifying the TimeSeries to use for evaluating window
+// quality. The provided TimeSeries must have
+// ValueType = INT64 or ValueType = DOUBLE and
+// MetricKind = GAUGE.
+// Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.
+func (o SloWindowsBasedSliMetricSumInRangeOutput) TimeSeries() pulumi.StringOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRange) string { return v.TimeSeries }).(pulumi.StringOutput)
+}
+
+type SloWindowsBasedSliMetricSumInRangePtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliMetricSumInRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliMetricSumInRange)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliMetricSumInRangePtrOutput) ToSloWindowsBasedSliMetricSumInRangePtrOutput() SloWindowsBasedSliMetricSumInRangePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricSumInRangePtrOutput) ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricSumInRangePtrOutput) Elem() SloWindowsBasedSliMetricSumInRangeOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRange) SloWindowsBasedSliMetricSumInRange { return *v }).(SloWindowsBasedSliMetricSumInRangeOutput)
+}
+
+// Range of numerical values. The computed goodService
+// will be the count of values x in the Distribution such
+// that range.min <= x < range.max. inclusive of min and
+// exclusive of max. Open ranges can be defined by setting
+// just one of min or max. Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.  Structure is documented below.
+func (o SloWindowsBasedSliMetricSumInRangePtrOutput) Range() SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRange) *SloWindowsBasedSliMetricSumInRangeRange {
+		if v == nil {
+			return nil
+		}
+		return &v.Range
+	}).(SloWindowsBasedSliMetricSumInRangeRangePtrOutput)
+}
+
+// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+// specifying the TimeSeries to use for evaluating window
+// quality. The provided TimeSeries must have
+// ValueType = INT64 or ValueType = DOUBLE and
+// MetricKind = GAUGE.
+// Summed value `X` should satisfy
+// `range.min <= X < range.max` for a good window.
+func (o SloWindowsBasedSliMetricSumInRangePtrOutput) TimeSeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeSeries
+	}).(pulumi.StringPtrOutput)
+}
+
+type SloWindowsBasedSliMetricSumInRangeRange struct {
+	// max value for the range (inclusive). If not given,
+	// will be set to "infinity", defining an open range
+	// ">= range.min"
+	Max *int `pulumi:"max"`
+	// Min value for the range (inclusive). If not given,
+	// will be set to "-infinity", defining an open range
+	// "< range.max"
+	Min *int `pulumi:"min"`
+}
+
+// SloWindowsBasedSliMetricSumInRangeRangeInput is an input type that accepts SloWindowsBasedSliMetricSumInRangeRangeArgs and SloWindowsBasedSliMetricSumInRangeRangeOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliMetricSumInRangeRangeInput` via:
+//
+// 		 SloWindowsBasedSliMetricSumInRangeRangeArgs{...}
+//
+type SloWindowsBasedSliMetricSumInRangeRangeInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliMetricSumInRangeRangeOutput() SloWindowsBasedSliMetricSumInRangeRangeOutput
+	ToSloWindowsBasedSliMetricSumInRangeRangeOutputWithContext(context.Context) SloWindowsBasedSliMetricSumInRangeRangeOutput
+}
+
+type SloWindowsBasedSliMetricSumInRangeRangeArgs struct {
+	// max value for the range (inclusive). If not given,
+	// will be set to "infinity", defining an open range
+	// ">= range.min"
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// Min value for the range (inclusive). If not given,
+	// will be set to "-infinity", defining an open range
+	// "< range.max"
+	Min pulumi.IntPtrInput `pulumi:"min"`
+}
+
+func (SloWindowsBasedSliMetricSumInRangeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliMetricSumInRangeRange)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliMetricSumInRangeRangeArgs) ToSloWindowsBasedSliMetricSumInRangeRangeOutput() SloWindowsBasedSliMetricSumInRangeRangeOutput {
+	return i.ToSloWindowsBasedSliMetricSumInRangeRangeOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliMetricSumInRangeRangeArgs) ToSloWindowsBasedSliMetricSumInRangeRangeOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricSumInRangeRangeOutput)
+}
+
+func (i SloWindowsBasedSliMetricSumInRangeRangeArgs) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutput() SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
+	return i.ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliMetricSumInRangeRangeArgs) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricSumInRangeRangeOutput).ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliMetricSumInRangeRangePtrInput is an input type that accepts SloWindowsBasedSliMetricSumInRangeRangeArgs, SloWindowsBasedSliMetricSumInRangeRangePtr and SloWindowsBasedSliMetricSumInRangeRangePtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliMetricSumInRangeRangePtrInput` via:
+//
+// 		 SloWindowsBasedSliMetricSumInRangeRangeArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type SloWindowsBasedSliMetricSumInRangeRangePtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliMetricSumInRangeRangePtrOutput() SloWindowsBasedSliMetricSumInRangeRangePtrOutput
+	ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(context.Context) SloWindowsBasedSliMetricSumInRangeRangePtrOutput
+}
+
+type sloWindowsBasedSliMetricSumInRangeRangePtrType SloWindowsBasedSliMetricSumInRangeRangeArgs
+
+func SloWindowsBasedSliMetricSumInRangeRangePtr(v *SloWindowsBasedSliMetricSumInRangeRangeArgs) SloWindowsBasedSliMetricSumInRangeRangePtrInput {
+	return (*sloWindowsBasedSliMetricSumInRangeRangePtrType)(v)
+}
+
+func (*sloWindowsBasedSliMetricSumInRangeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliMetricSumInRangeRange)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliMetricSumInRangeRangePtrType) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutput() SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
+	return i.ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliMetricSumInRangeRangePtrType) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricSumInRangeRangePtrOutput)
+}
+
+type SloWindowsBasedSliMetricSumInRangeRangeOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliMetricSumInRangeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliMetricSumInRangeRange)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) ToSloWindowsBasedSliMetricSumInRangeRangeOutput() SloWindowsBasedSliMetricSumInRangeRangeOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) ToSloWindowsBasedSliMetricSumInRangeRangeOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangeRangeOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutput() SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
+	return o.ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRangeRange) *SloWindowsBasedSliMetricSumInRangeRange {
+		return &v
+	}).(SloWindowsBasedSliMetricSumInRangeRangePtrOutput)
+}
+
+// max value for the range (inclusive). If not given,
+// will be set to "infinity", defining an open range
+// ">= range.min"
+func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRangeRange) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// Min value for the range (inclusive). If not given,
+// will be set to "-infinity", defining an open range
+// "< range.max"
+func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliMetricSumInRangeRange) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type SloWindowsBasedSliMetricSumInRangeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliMetricSumInRangeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliMetricSumInRangeRange)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutput() SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Elem() SloWindowsBasedSliMetricSumInRangeRangeOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRangeRange) SloWindowsBasedSliMetricSumInRangeRange { return *v }).(SloWindowsBasedSliMetricSumInRangeRangeOutput)
+}
+
+// max value for the range (inclusive). If not given,
+// will be set to "infinity", defining an open range
+// ">= range.min"
+func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRangeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Min value for the range (inclusive). If not given,
+// will be set to "-infinity", defining an open range
+// "< range.max"
+func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliMetricSumInRangeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
 }
 
 type UptimeCheckConfigContentMatcher struct {
@@ -5579,6 +7977,30 @@ func init() {
 	pulumi.RegisterOutputType(SloRequestBasedSliDistributionCutRangePtrOutput{})
 	pulumi.RegisterOutputType(SloRequestBasedSliGoodTotalRatioOutput{})
 	pulumi.RegisterOutputType(SloRequestBasedSliGoodTotalRatioPtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliPtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliMetricMeanInRangeOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliMetricMeanInRangePtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliMetricMeanInRangeRangeOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliMetricMeanInRangeRangePtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliMetricSumInRangeOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliMetricSumInRangePtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliMetricSumInRangeRangeOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliMetricSumInRangeRangePtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigContentMatcherArrayOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigHttpCheckOutput{})

@@ -15,17 +15,18 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// <summary>
         /// The ID of the dataset containing this model.
         /// </summary>
-        [Input("datasetId", required: true)]
-        public Input<string> DatasetId { get; set; } = null!;
+        [Input("datasetId")]
+        public Input<string>? DatasetId { get; set; }
 
         /// <summary>
         /// The ID of the project containing this model.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The ID of the table.
+        /// The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+        /// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
         /// </summary>
         [Input("tableId", required: true)]
         public Input<string> TableId { get; set; } = null!;

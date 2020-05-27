@@ -100,7 +100,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * pairing key so that the provisioned circuit will lie in the specified
      * domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
      */
-    public readonly edgeAvailabilityDomain!: pulumi.Output<string | undefined>;
+    public readonly edgeAvailabilityDomain!: pulumi.Output<string>;
     /**
      * Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
      * issues.

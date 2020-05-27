@@ -183,9 +183,15 @@ type Cluster struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Configuration options for the
-	// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-	// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+	// feature, which provide more control over automatic upgrades of your GKE clusters.
+	// When updating this field, GKE imposes specific version requirements. See
+	// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+	// for more details; the `container.getEngineVersions` datasource can provide
+	// the default version for a channel. Note that removing the `releaseChannel`
+	// field from your config will cause this provider to stop managing your cluster's
+	// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+	// channel. Structure is documented below.
 	ReleaseChannel ClusterReleaseChannelOutput `pulumi:"releaseChannel"`
 	// If `true`, deletes the default node
 	// pool upon cluster creation. If you're using `container.NodePool`
@@ -413,9 +419,15 @@ type clusterState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Configuration options for the
-	// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-	// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+	// feature, which provide more control over automatic upgrades of your GKE clusters.
+	// When updating this field, GKE imposes specific version requirements. See
+	// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+	// for more details; the `container.getEngineVersions` datasource can provide
+	// the default version for a channel. Note that removing the `releaseChannel`
+	// field from your config will cause this provider to stop managing your cluster's
+	// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+	// channel. Structure is documented below.
 	ReleaseChannel *ClusterReleaseChannel `pulumi:"releaseChannel"`
 	// If `true`, deletes the default node
 	// pool upon cluster creation. If you're using `container.NodePool`
@@ -616,9 +628,15 @@ type ClusterState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Configuration options for the
-	// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-	// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+	// feature, which provide more control over automatic upgrades of your GKE clusters.
+	// When updating this field, GKE imposes specific version requirements. See
+	// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+	// for more details; the `container.getEngineVersions` datasource can provide
+	// the default version for a channel. Note that removing the `releaseChannel`
+	// field from your config will cause this provider to stop managing your cluster's
+	// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+	// channel. Structure is documented below.
 	ReleaseChannel ClusterReleaseChannelPtrInput
 	// If `true`, deletes the default node
 	// pool upon cluster creation. If you're using `container.NodePool`
@@ -811,9 +829,15 @@ type clusterArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Configuration options for the
-	// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-	// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+	// feature, which provide more control over automatic upgrades of your GKE clusters.
+	// When updating this field, GKE imposes specific version requirements. See
+	// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+	// for more details; the `container.getEngineVersions` datasource can provide
+	// the default version for a channel. Note that removing the `releaseChannel`
+	// field from your config will cause this provider to stop managing your cluster's
+	// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+	// channel. Structure is documented below.
 	ReleaseChannel *ClusterReleaseChannel `pulumi:"releaseChannel"`
 	// If `true`, deletes the default node
 	// pool upon cluster creation. If you're using `container.NodePool`
@@ -994,9 +1018,15 @@ type ClusterArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Configuration options for the
-	// [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-	// feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+	// feature, which provide more control over automatic upgrades of your GKE clusters.
+	// When updating this field, GKE imposes specific version requirements. See
+	// [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+	// for more details; the `container.getEngineVersions` datasource can provide
+	// the default version for a channel. Note that removing the `releaseChannel`
+	// field from your config will cause this provider to stop managing your cluster's
+	// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+	// channel. Structure is documented below.
 	ReleaseChannel ClusterReleaseChannelPtrInput
 	// If `true`, deletes the default node
 	// pool upon cluster creation. If you're using `container.NodePool`

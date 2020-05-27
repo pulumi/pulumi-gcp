@@ -25,12 +25,14 @@ class Job(pulumi.CustomResource):
       * `destinationTable` (`dict`) - The destination table.  Structure is documented below.
         * `dataset_id` (`str`) - The ID of the dataset containing this model.
         * `project_id` (`str`) - The ID of the project containing this model.
-        * `table_id` (`str`) - The ID of the table.
+        * `table_id` (`str`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+          or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
       * `sourceTables` (`list`) - Source tables to copy.  Structure is documented below.
         * `dataset_id` (`str`) - The ID of the dataset containing this model.
         * `project_id` (`str`) - The ID of the project containing this model.
-        * `table_id` (`str`) - The ID of the table.
+        * `table_id` (`str`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+          or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
       * `writeDisposition` (`str`) - Specifies the action that occurs if the destination table already exists. The following values are supported:
         WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -60,7 +62,8 @@ class Job(pulumi.CustomResource):
       * `sourceTable` (`dict`) - A reference to the table being exported.  Structure is documented below.
         * `dataset_id` (`str`) - The ID of the dataset containing this model.
         * `project_id` (`str`) - The ID of the project containing this model.
-        * `table_id` (`str`) - The ID of the table.
+        * `table_id` (`str`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+          or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
       * `useAvroLogicalTypes` (`bool`) - Whether to use logical types when extracting to AVRO format.
     """
@@ -101,7 +104,8 @@ class Job(pulumi.CustomResource):
       * `destinationTable` (`dict`) - The destination table.  Structure is documented below.
         * `dataset_id` (`str`) - The ID of the dataset containing this model.
         * `project_id` (`str`) - The ID of the project containing this model.
-        * `table_id` (`str`) - The ID of the table.
+        * `table_id` (`str`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+          or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
       * `encoding` (`str`) - The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
         The default value is UTF-8. BigQuery decodes the data after the raw, binary data
@@ -196,7 +200,8 @@ class Job(pulumi.CustomResource):
       * `destinationTable` (`dict`) - The destination table.  Structure is documented below.
         * `dataset_id` (`str`) - The ID of the dataset containing this model.
         * `project_id` (`str`) - The ID of the project containing this model.
-        * `table_id` (`str`) - The ID of the table.
+        * `table_id` (`str`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+          or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
       * `flattenResults` (`bool`) - If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
         allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
@@ -273,6 +278,41 @@ class Job(pulumi.CustomResource):
                     "project_id": foo.project,
                     "dataset_id": foo.dataset_id,
                     "table_id": foo.table_id,
+                },
+                "allowLargeResults": True,
+                "flattenResults": True,
+                "script_options": {
+                    "keyResultStatement": "LAST",
+                },
+            })
+        ```
+        ## Example Usage - Bigquery Job Query Table Reference
+
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.bigquery.Dataset("bar",
+            dataset_id="job_query_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        foo = gcp.bigquery.Table("foo",
+            dataset_id=bar.dataset_id,
+            table_id="job_query_table")
+        job = gcp.bigquery.Job("job",
+            job_id="job_query",
+            labels={
+                "example-label": "example-value",
+            },
+            query={
+                "query": "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+                "destination_table": {
+                    "table_id": foo.id,
+                },
+                "default_dataset": {
+                    "dataset_id": bar.id,
                 },
                 "allowLargeResults": True,
                 "flattenResults": True,
@@ -391,12 +431,14 @@ class Job(pulumi.CustomResource):
           * `destinationTable` (`pulumi.Input[dict]`) - The destination table.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `table_id` (`pulumi.Input[str]`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+              or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
           * `sourceTables` (`pulumi.Input[list]`) - Source tables to copy.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `table_id` (`pulumi.Input[str]`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+              or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
           * `writeDisposition` (`pulumi.Input[str]`) - Specifies the action that occurs if the destination table already exists. The following values are supported:
             WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -424,7 +466,8 @@ class Job(pulumi.CustomResource):
           * `sourceTable` (`pulumi.Input[dict]`) - A reference to the table being exported.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `table_id` (`pulumi.Input[str]`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+              or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
           * `useAvroLogicalTypes` (`pulumi.Input[bool]`) - Whether to use logical types when extracting to AVRO format.
 
@@ -447,7 +490,8 @@ class Job(pulumi.CustomResource):
           * `destinationTable` (`pulumi.Input[dict]`) - The destination table.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `table_id` (`pulumi.Input[str]`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+              or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
           * `encoding` (`pulumi.Input[str]`) - The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
             The default value is UTF-8. BigQuery decodes the data after the raw, binary data
@@ -531,7 +575,8 @@ class Job(pulumi.CustomResource):
           * `destinationTable` (`pulumi.Input[dict]`) - The destination table.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `table_id` (`pulumi.Input[str]`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+              or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
           * `flattenResults` (`pulumi.Input[bool]`) - If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
             allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
@@ -642,12 +687,14 @@ class Job(pulumi.CustomResource):
           * `destinationTable` (`pulumi.Input[dict]`) - The destination table.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `table_id` (`pulumi.Input[str]`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+              or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
           * `sourceTables` (`pulumi.Input[list]`) - Source tables to copy.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `table_id` (`pulumi.Input[str]`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+              or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
           * `writeDisposition` (`pulumi.Input[str]`) - Specifies the action that occurs if the destination table already exists. The following values are supported:
             WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -675,7 +722,8 @@ class Job(pulumi.CustomResource):
           * `sourceTable` (`pulumi.Input[dict]`) - A reference to the table being exported.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `table_id` (`pulumi.Input[str]`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+              or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
           * `useAvroLogicalTypes` (`pulumi.Input[bool]`) - Whether to use logical types when extracting to AVRO format.
 
@@ -698,7 +746,8 @@ class Job(pulumi.CustomResource):
           * `destinationTable` (`pulumi.Input[dict]`) - The destination table.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `table_id` (`pulumi.Input[str]`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+              or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
           * `encoding` (`pulumi.Input[str]`) - The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
             The default value is UTF-8. BigQuery decodes the data after the raw, binary data
@@ -782,7 +831,8 @@ class Job(pulumi.CustomResource):
           * `destinationTable` (`pulumi.Input[dict]`) - The destination table.  Structure is documented below.
             * `dataset_id` (`pulumi.Input[str]`) - The ID of the dataset containing this model.
             * `project_id` (`pulumi.Input[str]`) - The ID of the project containing this model.
-            * `table_id` (`pulumi.Input[str]`) - The ID of the table.
+            * `table_id` (`pulumi.Input[str]`) - The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+              or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 
           * `flattenResults` (`pulumi.Input[bool]`) - If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
             allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.

@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const reservation = new gcp.bigquery.Reservation("reservation", {
  *     location: "asia-northeast1",
  *     slotCapacity: 0,
- *     ignoreIdleSlots: true,
+ *     ignoreIdleSlots: false,
  * });
  * ```
  */

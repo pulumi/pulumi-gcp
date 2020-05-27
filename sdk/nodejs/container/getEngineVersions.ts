@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *         password: "adoy.rm",
  *     },
  * });
+ * export const stableChannelVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion.STABLE);
  * ```
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
@@ -99,6 +100,10 @@ export interface GetEngineVersionsResult {
     readonly latestNodeVersion: string;
     readonly location?: string;
     readonly project?: string;
+    /**
+     * A map from a release channel name to the channel's default version.
+     */
+    readonly releaseChannelDefaultVersion: {[key: string]: string};
     /**
      * A list of versions available in the given zone for use with master instances.
      */

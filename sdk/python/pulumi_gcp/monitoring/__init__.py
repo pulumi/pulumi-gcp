@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .alert_policy import *
 from .custom_service import *
+from .dashboard import *
 from .get_app_engine_service import *
 from .get_notification_channel import *
 from .get_secret_version import *

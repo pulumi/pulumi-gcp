@@ -1218,10 +1218,11 @@ func (o JobCopyDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.
 
 type JobCopyDestinationTable struct {
 	// The ID of the dataset containing this model.
-	DatasetId string `pulumi:"datasetId"`
+	DatasetId *string `pulumi:"datasetId"`
 	// The ID of the project containing this model.
-	ProjectId string `pulumi:"projectId"`
-	// The ID of the table.
+	ProjectId *string `pulumi:"projectId"`
+	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 	TableId string `pulumi:"tableId"`
 }
 
@@ -1239,10 +1240,11 @@ type JobCopyDestinationTableInput interface {
 
 type JobCopyDestinationTableArgs struct {
 	// The ID of the dataset containing this model.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 	// The ID of the project containing this model.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// The ID of the table.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 	TableId pulumi.StringInput `pulumi:"tableId"`
 }
 
@@ -1325,16 +1327,17 @@ func (o JobCopyDestinationTableOutput) ToJobCopyDestinationTablePtrOutputWithCon
 }
 
 // The ID of the dataset containing this model.
-func (o JobCopyDestinationTableOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobCopyDestinationTable) string { return v.DatasetId }).(pulumi.StringOutput)
+func (o JobCopyDestinationTableOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCopyDestinationTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project containing this model.
-func (o JobCopyDestinationTableOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobCopyDestinationTable) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o JobCopyDestinationTableOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCopyDestinationTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the table.
+// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 func (o JobCopyDestinationTableOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobCopyDestinationTable) string { return v.TableId }).(pulumi.StringOutput)
 }
@@ -1363,7 +1366,7 @@ func (o JobCopyDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.DatasetId
+		return v.DatasetId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1373,11 +1376,12 @@ func (o JobCopyDestinationTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return v.ProjectId
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the table.
+// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 func (o JobCopyDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopyDestinationTable) *string {
 		if v == nil {
@@ -1389,10 +1393,11 @@ func (o JobCopyDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
 
 type JobCopySourceTable struct {
 	// The ID of the dataset containing this model.
-	DatasetId string `pulumi:"datasetId"`
+	DatasetId *string `pulumi:"datasetId"`
 	// The ID of the project containing this model.
-	ProjectId string `pulumi:"projectId"`
-	// The ID of the table.
+	ProjectId *string `pulumi:"projectId"`
+	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 	TableId string `pulumi:"tableId"`
 }
 
@@ -1410,10 +1415,11 @@ type JobCopySourceTableInput interface {
 
 type JobCopySourceTableArgs struct {
 	// The ID of the dataset containing this model.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 	// The ID of the project containing this model.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// The ID of the table.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 	TableId pulumi.StringInput `pulumi:"tableId"`
 }
 
@@ -1470,16 +1476,17 @@ func (o JobCopySourceTableOutput) ToJobCopySourceTableOutputWithContext(ctx cont
 }
 
 // The ID of the dataset containing this model.
-func (o JobCopySourceTableOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobCopySourceTable) string { return v.DatasetId }).(pulumi.StringOutput)
+func (o JobCopySourceTableOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCopySourceTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project containing this model.
-func (o JobCopySourceTableOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobCopySourceTable) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o JobCopySourceTableOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobCopySourceTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the table.
+// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 func (o JobCopySourceTableOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobCopySourceTable) string { return v.TableId }).(pulumi.StringOutput)
 }
@@ -1959,10 +1966,11 @@ func (o JobExtractSourceModelPtrOutput) ProjectId() pulumi.StringPtrOutput {
 
 type JobExtractSourceTable struct {
 	// The ID of the dataset containing this model.
-	DatasetId string `pulumi:"datasetId"`
+	DatasetId *string `pulumi:"datasetId"`
 	// The ID of the project containing this model.
-	ProjectId string `pulumi:"projectId"`
-	// The ID of the table.
+	ProjectId *string `pulumi:"projectId"`
+	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 	TableId string `pulumi:"tableId"`
 }
 
@@ -1980,10 +1988,11 @@ type JobExtractSourceTableInput interface {
 
 type JobExtractSourceTableArgs struct {
 	// The ID of the dataset containing this model.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 	// The ID of the project containing this model.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// The ID of the table.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 	TableId pulumi.StringInput `pulumi:"tableId"`
 }
 
@@ -2066,16 +2075,17 @@ func (o JobExtractSourceTableOutput) ToJobExtractSourceTablePtrOutputWithContext
 }
 
 // The ID of the dataset containing this model.
-func (o JobExtractSourceTableOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobExtractSourceTable) string { return v.DatasetId }).(pulumi.StringOutput)
+func (o JobExtractSourceTableOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobExtractSourceTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project containing this model.
-func (o JobExtractSourceTableOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobExtractSourceTable) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o JobExtractSourceTableOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobExtractSourceTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the table.
+// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 func (o JobExtractSourceTableOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobExtractSourceTable) string { return v.TableId }).(pulumi.StringOutput)
 }
@@ -2104,7 +2114,7 @@ func (o JobExtractSourceTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.DatasetId
+		return v.DatasetId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2114,11 +2124,12 @@ func (o JobExtractSourceTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return v.ProjectId
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the table.
+// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 func (o JobExtractSourceTablePtrOutput) TableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobExtractSourceTable) *string {
 		if v == nil {
@@ -2934,10 +2945,11 @@ func (o JobLoadDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.
 
 type JobLoadDestinationTable struct {
 	// The ID of the dataset containing this model.
-	DatasetId string `pulumi:"datasetId"`
+	DatasetId *string `pulumi:"datasetId"`
 	// The ID of the project containing this model.
-	ProjectId string `pulumi:"projectId"`
-	// The ID of the table.
+	ProjectId *string `pulumi:"projectId"`
+	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 	TableId string `pulumi:"tableId"`
 }
 
@@ -2955,10 +2967,11 @@ type JobLoadDestinationTableInput interface {
 
 type JobLoadDestinationTableArgs struct {
 	// The ID of the dataset containing this model.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 	// The ID of the project containing this model.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// The ID of the table.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 	TableId pulumi.StringInput `pulumi:"tableId"`
 }
 
@@ -3041,16 +3054,17 @@ func (o JobLoadDestinationTableOutput) ToJobLoadDestinationTablePtrOutputWithCon
 }
 
 // The ID of the dataset containing this model.
-func (o JobLoadDestinationTableOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobLoadDestinationTable) string { return v.DatasetId }).(pulumi.StringOutput)
+func (o JobLoadDestinationTableOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoadDestinationTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project containing this model.
-func (o JobLoadDestinationTableOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobLoadDestinationTable) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o JobLoadDestinationTableOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLoadDestinationTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the table.
+// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 func (o JobLoadDestinationTableOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobLoadDestinationTable) string { return v.TableId }).(pulumi.StringOutput)
 }
@@ -3079,7 +3093,7 @@ func (o JobLoadDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.DatasetId
+		return v.DatasetId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3089,11 +3103,12 @@ func (o JobLoadDestinationTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return v.ProjectId
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the table.
+// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 func (o JobLoadDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoadDestinationTable) *string {
 		if v == nil {
@@ -4102,10 +4117,11 @@ func (o JobQueryDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi
 
 type JobQueryDestinationTable struct {
 	// The ID of the dataset containing this model.
-	DatasetId string `pulumi:"datasetId"`
+	DatasetId *string `pulumi:"datasetId"`
 	// The ID of the project containing this model.
-	ProjectId string `pulumi:"projectId"`
-	// The ID of the table.
+	ProjectId *string `pulumi:"projectId"`
+	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 	TableId string `pulumi:"tableId"`
 }
 
@@ -4123,10 +4139,11 @@ type JobQueryDestinationTableInput interface {
 
 type JobQueryDestinationTableArgs struct {
 	// The ID of the dataset containing this model.
-	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 	// The ID of the project containing this model.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// The ID of the table.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 	TableId pulumi.StringInput `pulumi:"tableId"`
 }
 
@@ -4209,16 +4226,17 @@ func (o JobQueryDestinationTableOutput) ToJobQueryDestinationTablePtrOutputWithC
 }
 
 // The ID of the dataset containing this model.
-func (o JobQueryDestinationTableOutput) DatasetId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobQueryDestinationTable) string { return v.DatasetId }).(pulumi.StringOutput)
+func (o JobQueryDestinationTableOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQueryDestinationTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project containing this model.
-func (o JobQueryDestinationTableOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobQueryDestinationTable) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o JobQueryDestinationTableOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobQueryDestinationTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the table.
+// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 func (o JobQueryDestinationTableOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobQueryDestinationTable) string { return v.TableId }).(pulumi.StringOutput)
 }
@@ -4247,7 +4265,7 @@ func (o JobQueryDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.DatasetId
+		return v.DatasetId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4257,11 +4275,12 @@ func (o JobQueryDestinationTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return v.ProjectId
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the table.
+// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
 func (o JobQueryDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQueryDestinationTable) *string {
 		if v == nil {

@@ -46,6 +46,12 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("softwareConfig")]
         public Input<Inputs.EnvironmentConfigSoftwareConfigGetArgs>? SoftwareConfig { get; set; }
 
+        /// <summary>
+        /// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+        /// </summary>
+        [Input("webServerNetworkAccessControl")]
+        public Input<Inputs.EnvironmentConfigWebServerNetworkAccessControlGetArgs>? WebServerNetworkAccessControl { get; set; }
+
         public EnvironmentConfigGetArgs()
         {
         }

@@ -13,7 +13,7 @@ class GetEngineVersionsResult:
     """
     A collection of values returned by getEngineVersions.
     """
-    def __init__(__self__, default_cluster_version=None, id=None, latest_master_version=None, latest_node_version=None, location=None, project=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None):
+    def __init__(__self__, default_cluster_version=None, id=None, latest_master_version=None, latest_node_version=None, location=None, project=None, release_channel_default_version=None, valid_master_versions=None, valid_node_versions=None, version_prefix=None):
         if default_cluster_version and not isinstance(default_cluster_version, str):
             raise TypeError("Expected argument 'default_cluster_version' to be a str")
         __self__.default_cluster_version = default_cluster_version
@@ -44,6 +44,12 @@ class GetEngineVersionsResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         __self__.project = project
+        if release_channel_default_version and not isinstance(release_channel_default_version, dict):
+            raise TypeError("Expected argument 'release_channel_default_version' to be a dict")
+        __self__.release_channel_default_version = release_channel_default_version
+        """
+        A map from a release channel name to the channel's default version.
+        """
         if valid_master_versions and not isinstance(valid_master_versions, list):
             raise TypeError("Expected argument 'valid_master_versions' to be a list")
         __self__.valid_master_versions = valid_master_versions
@@ -71,6 +77,7 @@ class AwaitableGetEngineVersionsResult(GetEngineVersionsResult):
             latest_node_version=self.latest_node_version,
             location=self.location,
             project=self.project,
+            release_channel_default_version=self.release_channel_default_version,
             valid_master_versions=self.valid_master_versions,
             valid_node_versions=self.valid_node_versions,
             version_prefix=self.version_prefix)
@@ -103,6 +110,7 @@ def get_engine_versions(location=None,project=None,version_prefix=None,opts=None
             "username": "mr.yoda",
             "password": "adoy.rm",
         })
+    pulumi.export("stableChannelVersion", central1b.release_channel_default_version["STABLE"])
     ```
 
 
@@ -139,6 +147,7 @@ def get_engine_versions(location=None,project=None,version_prefix=None,opts=None
         latest_node_version=__ret__.get('latestNodeVersion'),
         location=__ret__.get('location'),
         project=__ret__.get('project'),
+        release_channel_default_version=__ret__.get('releaseChannelDefaultVersion'),
         valid_master_versions=__ret__.get('validMasterVersions'),
         valid_node_versions=__ret__.get('validNodeVersions'),
         version_prefix=__ret__.get('versionPrefix'))

@@ -3,3 +3,4 @@
 
 // Export members:
 export * from "./getRule";
+export * from "./getTestablePermissions";

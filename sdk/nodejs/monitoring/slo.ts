@@ -80,7 +80,7 @@ export class Slo extends pulumi.CustomResource {
      * SLIs are used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
      */
     public readonly basicSli!: pulumi.Output<outputs.monitoring.SloBasicSli | undefined>;
     /**
@@ -114,7 +114,7 @@ export class Slo extends pulumi.CustomResource {
      * It is used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
      */
     public readonly requestBasedSli!: pulumi.Output<outputs.monitoring.SloRequestBasedSli | undefined>;
     /**
@@ -130,6 +130,17 @@ export class Slo extends pulumi.CustomResource {
      * The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
      */
     public readonly sloId!: pulumi.Output<string>;
+    /**
+     * A windows-based SLI defines the criteria for time windows.
+     * goodService is defined based off the count of these time windows
+     * for which the provided service was of good quality.
+     * A SLI describes a good service. It is used to measure and calculate
+     * the quality of the Service's performance with respect to a single
+     * aspect of service quality.
+     * Exactly one of the following must be set:
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     */
+    public readonly windowsBasedSli!: pulumi.Output<outputs.monitoring.SloWindowsBasedSli | undefined>;
 
     /**
      * Create a Slo resource with the given unique name, arguments, and options.
@@ -153,6 +164,7 @@ export class Slo extends pulumi.CustomResource {
             inputs["rollingPeriodDays"] = state ? state.rollingPeriodDays : undefined;
             inputs["service"] = state ? state.service : undefined;
             inputs["sloId"] = state ? state.sloId : undefined;
+            inputs["windowsBasedSli"] = state ? state.windowsBasedSli : undefined;
         } else {
             const args = argsOrState as SloArgs | undefined;
             if (!args || args.goal === undefined) {
@@ -170,6 +182,7 @@ export class Slo extends pulumi.CustomResource {
             inputs["rollingPeriodDays"] = args ? args.rollingPeriodDays : undefined;
             inputs["service"] = args ? args.service : undefined;
             inputs["sloId"] = args ? args.sloId : undefined;
+            inputs["windowsBasedSli"] = args ? args.windowsBasedSli : undefined;
             inputs["name"] = undefined /*out*/;
         }
         if (!opts) {
@@ -193,7 +206,7 @@ export interface SloState {
      * SLIs are used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
      */
     readonly basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
     /**
@@ -227,7 +240,7 @@ export interface SloState {
      * It is used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
      */
     readonly requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
     /**
@@ -243,6 +256,17 @@ export interface SloState {
      * The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
      */
     readonly sloId?: pulumi.Input<string>;
+    /**
+     * A windows-based SLI defines the criteria for time windows.
+     * goodService is defined based off the count of these time windows
+     * for which the provided service was of good quality.
+     * A SLI describes a good service. It is used to measure and calculate
+     * the quality of the Service's performance with respect to a single
+     * aspect of service quality.
+     * Exactly one of the following must be set:
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     */
+    readonly windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli>;
 }
 
 /**
@@ -255,7 +279,7 @@ export interface SloArgs {
      * SLIs are used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
      */
     readonly basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
     /**
@@ -284,7 +308,7 @@ export interface SloArgs {
      * It is used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
      */
     readonly requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
     /**
@@ -300,4 +324,15 @@ export interface SloArgs {
      * The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
      */
     readonly sloId?: pulumi.Input<string>;
+    /**
+     * A windows-based SLI defines the criteria for time windows.
+     * goodService is defined based off the count of these time windows
+     * for which the provided service was of good quality.
+     * A SLI describes a good service. It is used to measure and calculate
+     * the quality of the Service's performance with respect to a single
+     * aspect of service quality.
+     * Exactly one of the following must be set:
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     */
+    readonly windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli>;
 }

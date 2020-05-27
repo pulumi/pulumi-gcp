@@ -22,6 +22,13 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// .
+        /// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+        /// </summary>
+        [Input("configConnectorConfig")]
+        public Input<Inputs.ClusterAddonsConfigConfigConnectorConfigArgs>? ConfigConnectorConfig { get; set; }
+
+        /// <summary>
+        /// .
         /// The status of the NodeLocal DNSCache addon. It is disabled by default.
         /// Set `enabled = true` to enable.
         /// </summary>

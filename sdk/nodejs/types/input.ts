@@ -1033,13 +1033,14 @@ export namespace bigquery {
         /**
          * The ID of the dataset containing this model.
          */
-        datasetId: pulumi.Input<string>;
+        datasetId?: pulumi.Input<string>;
         /**
          * The ID of the project containing this model.
          */
-        projectId: pulumi.Input<string>;
+        projectId?: pulumi.Input<string>;
         /**
-         * The ID of the table.
+         * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: pulumi.Input<string>;
     }
@@ -1048,13 +1049,14 @@ export namespace bigquery {
         /**
          * The ID of the dataset containing this model.
          */
-        datasetId: pulumi.Input<string>;
+        datasetId?: pulumi.Input<string>;
         /**
          * The ID of the project containing this model.
          */
-        projectId: pulumi.Input<string>;
+        projectId?: pulumi.Input<string>;
         /**
-         * The ID of the table.
+         * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: pulumi.Input<string>;
     }
@@ -1117,13 +1119,14 @@ export namespace bigquery {
         /**
          * The ID of the dataset containing this model.
          */
-        datasetId: pulumi.Input<string>;
+        datasetId?: pulumi.Input<string>;
         /**
          * The ID of the project containing this model.
          */
-        projectId: pulumi.Input<string>;
+        projectId?: pulumi.Input<string>;
         /**
-         * The ID of the table.
+         * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: pulumi.Input<string>;
     }
@@ -1266,13 +1269,14 @@ export namespace bigquery {
         /**
          * The ID of the dataset containing this model.
          */
-        datasetId: pulumi.Input<string>;
+        datasetId?: pulumi.Input<string>;
         /**
          * The ID of the project containing this model.
          */
-        projectId: pulumi.Input<string>;
+        projectId?: pulumi.Input<string>;
         /**
-         * The ID of the table.
+         * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: pulumi.Input<string>;
     }
@@ -1410,13 +1414,14 @@ export namespace bigquery {
         /**
          * The ID of the dataset containing this model.
          */
-        datasetId: pulumi.Input<string>;
+        datasetId?: pulumi.Input<string>;
         /**
          * The ID of the project containing this model.
          */
-        projectId: pulumi.Input<string>;
+        projectId?: pulumi.Input<string>;
         /**
-         * The ID of the table.
+         * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: pulumi.Input<string>;
     }
@@ -2908,6 +2913,10 @@ export namespace composer {
          * The configuration settings for software inside the environment.  Structure is documented below.
          */
         softwareConfig?: pulumi.Input<inputs.composer.EnvironmentConfigSoftwareConfig>;
+        /**
+         * The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+         */
+        webServerNetworkAccessControl?: pulumi.Input<inputs.composer.EnvironmentConfigWebServerNetworkAccessControl>;
     }
 
     export interface EnvironmentConfigNodeConfig {
@@ -3012,6 +3021,10 @@ export namespace composer {
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
         /**
+         * The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `webServerIpv4CidrBlock`
+         */
+        cloudSqlIpv4CidrBlock?: pulumi.Input<string>;
+        /**
          * -
          * If true, access to the public endpoint of the GKE cluster is denied.
          */
@@ -3024,6 +3037,10 @@ export namespace composer {
          * If left blank, the default value of '172.16.0.0/28' is used.
          */
         masterIpv4CidrBlock?: pulumi.Input<string>;
+        /**
+         * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
+         */
+        webServerIpv4CidrBlock?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigSoftwareConfig {
@@ -3079,6 +3096,28 @@ export namespace composer {
          * Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
          */
         pythonVersion?: pulumi.Input<string>;
+    }
+
+    export interface EnvironmentConfigWebServerNetworkAccessControl {
+        /**
+         * -
+         * A collection of allowed IP ranges with descriptions. Structure is documented below.
+         */
+        allowedIpRanges?: pulumi.Input<pulumi.Input<inputs.composer.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange>[]>;
+    }
+
+    export interface EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+        /**
+         * A description of this ip range.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * IP address or range, defined using CIDR notation, of requests that this rule applies to.
+         * Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
+         * IP range prefixes should be properly truncated. For example,
+         * `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
+         */
+        value: pulumi.Input<string>;
     }
 }
 
@@ -8991,6 +9030,11 @@ export namespace container {
         cloudrunConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigCloudrunConfig>;
         /**
          * .
+         * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+         */
+        configConnectorConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigConfigConnectorConfig>;
+        /**
+         * .
          * The status of the NodeLocal DNSCache addon. It is disabled by default.
          * Set `enabled = true` to enable.
          */
@@ -9042,6 +9086,14 @@ export namespace container {
          * cluster. It is disabled by default. Set `disabled = false` to enable.
          */
         disabled: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterAddonsConfigConfigConnectorConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterAddonsConfigDnsCacheConfig {
@@ -9139,6 +9191,14 @@ export namespace container {
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
+        /**
+         * Minimum CPU platform to be used by this instance.
+         * The instance may be scheduled on the specified or newer CPU platform. Applicable
+         * values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+         * [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+         * for more information.
+         */
+        minCpuPlatform?: pulumi.Input<string>;
         /**
          * The set of Google API scopes to be made available
          * on all of the node VMs under the "default" service account. These can be
@@ -11369,6 +11429,9 @@ export namespace healthcare {
     }
 }
 
+export namespace iam {
+}
+
 export namespace iap {
     export interface AppEngineServiceIamBindingCondition {
         /**
@@ -12591,8 +12654,7 @@ export namespace monitoring {
          * Distribution that fall into a good range. The totalService is the
          * total count of all values aggregated in the Distribution.
          * Defines a distribution TimeSeries filter and thresholds used for
-         * measuring good service and total service.
-         * Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+         * measuring good service and total service.  Structure is documented below.
          */
         distributionCut?: pulumi.Input<inputs.monitoring.SloRequestBasedSliDistributionCut>;
         /**
@@ -12600,8 +12662,7 @@ export namespace monitoring {
          * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
          * Must specify exactly two of good, bad, and total service filters.
          * The relationship goodService + badService = totalService
-         * will be assumed.
-         * Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+         * will be assumed.  Structure is documented below.
          */
         goodTotalRatio?: pulumi.Input<inputs.monitoring.SloRequestBasedSliGoodTotalRatio>;
     }
@@ -12619,7 +12680,8 @@ export namespace monitoring {
          * will be the count of values x in the Distribution such
          * that range.min <= x < range.max. inclusive of min and
          * exclusive of max. Open ranges can be defined by setting
-         * just one of min or max.  Structure is documented below.
+         * just one of min or max. Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.  Structure is documented below.
          */
         range: pulumi.Input<inputs.monitoring.SloRequestBasedSliDistributionCutRange>;
     }
@@ -12644,31 +12706,294 @@ export namespace monitoring {
          * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
          * quantifying bad service provided, either demanded service that
          * was not provided or demanded service that was of inadequate
-         * quality.
+         * quality. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
          * Must have ValueType = DOUBLE or ValueType = INT64 and
          * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-         * must be set (good + bad = total is assumed).
          */
         badServiceFilter?: pulumi.Input<string>;
         /**
          * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-         * quantifying good service provided.
+         * quantifying good service provided. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
          * Must have ValueType = DOUBLE or ValueType = INT64 and
          * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-         * must be set (good + bad = total is assumed).
          */
         goodServiceFilter?: pulumi.Input<string>;
         /**
          * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-         * quantifying total demanded service.
+         * quantifying total demanded service. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
          * Must have ValueType = DOUBLE or ValueType = INT64 and
          * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-         * must be set (good + bad = total is assumed).
          */
         totalServiceFilter?: pulumi.Input<string>;
+    }
+
+    export interface SloWindowsBasedSli {
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * with ValueType = BOOL. The window is good if any true values
+         * appear in the window. One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
+         */
+        goodBadMetricFilter?: pulumi.Input<string>;
+        /**
+         * Criterion that describes a window as good if its performance is
+         * high enough. One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+         */
+        goodTotalRatioThreshold?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThreshold>;
+        /**
+         * Criterion that describes a window as good if the metric's value
+         * is in a good range, *averaged* across returned streams.
+         * One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
+         * Average value X of `timeSeries` should satisfy
+         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         */
+        metricMeanInRange?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliMetricMeanInRange>;
+        /**
+         * Criterion that describes a window as good if the metric's value
+         * is in a good range, *summed* across returned streams.
+         * Summed value `X` of `timeSeries` should satisfy
+         * `range.min <= X < range.max` for a good window.
+         * One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+         */
+        metricSumInRange?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliMetricSumInRange>;
+        /**
+         * Duration over which window quality is evaluated, given as a
+         * duration string "{X}s" representing X seconds. Must be an
+         * integer fraction of a day and at least 60s.
+         */
+        windowPeriod?: pulumi.Input<string>;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThreshold {
+        /**
+         * Basic SLI to evaluate to judge window quality.  Structure is documented below.
+         */
+        basicSliPerformance?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance>;
+        /**
+         * Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+         */
+        performance?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformance>;
+        /**
+         * A duration string, e.g. 10s.
+         * Good service is defined to be the count of requests made to
+         * this service that return in no more than threshold.
+         */
+        threshold?: pulumi.Input<number>;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
+        /**
+         * Parameters for a latency threshold SLI.  Structure is documented below.
+         */
+        latency: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency>;
+        /**
+         * An optional set of locations to which this SLI is relevant.
+         * Telemetry from other locations will not be used to calculate
+         * performance for this SLI. If omitted, this SLI applies to all
+         * locations in which the Service has activity. For service types
+         * that don't support breaking down by location, setting this
+         * field will result in an error.
+         */
+        locations?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * An optional set of RPCs to which this SLI is relevant.
+         * Telemetry from other methods will not be used to calculate
+         * performance for this SLI. If omitted, this SLI applies to all
+         * the Service's methods. For service types that don't support
+         * breaking down by method, setting this field will result in an
+         * error.
+         */
+        methods?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The set of API versions to which this SLI is relevant.
+         * Telemetry from other API versions will not be used to
+         * calculate performance for this SLI. If omitted,
+         * this SLI applies to all API versions. For service types
+         * that don't support breaking down by version, setting this
+         * field will result in an error.
+         */
+        versions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
+        /**
+         * A duration string, e.g. 10s.
+         * Good service is defined to be the count of requests made to
+         * this service that return in no more than threshold.
+         */
+        threshold: pulumi.Input<string>;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
+        /**
+         * Used when goodService is defined by a count of values aggregated in a
+         * Distribution that fall into a good range. The totalService is the
+         * total count of all values aggregated in the Distribution.
+         * Defines a distribution TimeSeries filter and thresholds used for
+         * measuring good service and total service.  Structure is documented below.
+         */
+        distributionCut?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut>;
+        /**
+         * A means to compute a ratio of `goodService` to `totalService`.
+         * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+         * Must specify exactly two of good, bad, and total service filters.
+         * The relationship goodService + badService = totalService
+         * will be assumed.  Structure is documented below.
+         */
+        goodTotalRatio?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio>;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * aggregating values to quantify the good service provided.
+         * Must have ValueType = DISTRIBUTION and
+         * MetricKind = DELTA or MetricKind = CUMULATIVE.
+         */
+        distributionFilter: pulumi.Input<string>;
+        /**
+         * Range of numerical values. The computed goodService
+         * will be the count of values x in the Distribution such
+         * that range.min <= x < range.max. inclusive of min and
+         * exclusive of max. Open ranges can be defined by setting
+         * just one of min or max. Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         */
+        range: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange>;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
+        /**
+         * max value for the range (inclusive). If not given,
+         * will be set to "infinity", defining an open range
+         * ">= range.min"
+         */
+        max?: pulumi.Input<number>;
+        /**
+         * Min value for the range (inclusive). If not given,
+         * will be set to "-infinity", defining an open range
+         * "< range.max"
+         */
+        min?: pulumi.Input<number>;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying bad service provided, either demanded service that
+         * was not provided or demanded service that was of inadequate
+         * quality. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         */
+        badServiceFilter?: pulumi.Input<string>;
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying good service provided. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         */
+        goodServiceFilter?: pulumi.Input<string>;
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying total demanded service. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         */
+        totalServiceFilter?: pulumi.Input<string>;
+    }
+
+    export interface SloWindowsBasedSliMetricMeanInRange {
+        /**
+         * Range of numerical values. The computed goodService
+         * will be the count of values x in the Distribution such
+         * that range.min <= x < range.max. inclusive of min and
+         * exclusive of max. Open ranges can be defined by setting
+         * just one of min or max. Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         */
+        range: pulumi.Input<inputs.monitoring.SloWindowsBasedSliMetricMeanInRangeRange>;
+        /**
+         * A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * specifying the TimeSeries to use for evaluating window
+         * quality. The provided TimeSeries must have
+         * ValueType = INT64 or ValueType = DOUBLE and
+         * MetricKind = GAUGE.
+         * Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.
+         */
+        timeSeries: pulumi.Input<string>;
+    }
+
+    export interface SloWindowsBasedSliMetricMeanInRangeRange {
+        /**
+         * max value for the range (inclusive). If not given,
+         * will be set to "infinity", defining an open range
+         * ">= range.min"
+         */
+        max?: pulumi.Input<number>;
+        /**
+         * Min value for the range (inclusive). If not given,
+         * will be set to "-infinity", defining an open range
+         * "< range.max"
+         */
+        min?: pulumi.Input<number>;
+    }
+
+    export interface SloWindowsBasedSliMetricSumInRange {
+        /**
+         * Range of numerical values. The computed goodService
+         * will be the count of values x in the Distribution such
+         * that range.min <= x < range.max. inclusive of min and
+         * exclusive of max. Open ranges can be defined by setting
+         * just one of min or max. Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         */
+        range: pulumi.Input<inputs.monitoring.SloWindowsBasedSliMetricSumInRangeRange>;
+        /**
+         * A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * specifying the TimeSeries to use for evaluating window
+         * quality. The provided TimeSeries must have
+         * ValueType = INT64 or ValueType = DOUBLE and
+         * MetricKind = GAUGE.
+         * Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.
+         */
+        timeSeries: pulumi.Input<string>;
+    }
+
+    export interface SloWindowsBasedSliMetricSumInRangeRange {
+        /**
+         * max value for the range (inclusive). If not given,
+         * will be set to "infinity", defining an open range
+         * ">= range.min"
+         */
+        max?: pulumi.Input<number>;
+        /**
+         * Min value for the range (inclusive). If not given,
+         * will be set to "-infinity", defining an open range
+         * "< range.max"
+         */
+        min?: pulumi.Input<number>;
     }
 
     export interface UptimeCheckConfigContentMatcher {

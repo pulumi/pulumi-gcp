@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.Compute
         /// domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
         /// </summary>
         [Output("edgeAvailabilityDomain")]
-        public Output<string?> EdgeAvailabilityDomain { get; private set; } = null!;
+        public Output<string> EdgeAvailabilityDomain { get; private set; } = null!;
 
         /// <summary>
         /// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity

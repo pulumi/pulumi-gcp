@@ -33,6 +33,10 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// The configuration settings for software inside the environment.  Structure is documented below.
         /// </summary>
         public readonly Outputs.EnvironmentConfigSoftwareConfig? SoftwareConfig;
+        /// <summary>
+        /// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+        /// </summary>
+        public readonly Outputs.EnvironmentConfigWebServerNetworkAccessControl? WebServerNetworkAccessControl;
 
         [OutputConstructor]
         private EnvironmentConfig(
@@ -48,7 +52,9 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             Outputs.EnvironmentConfigPrivateEnvironmentConfig? privateEnvironmentConfig,
 
-            Outputs.EnvironmentConfigSoftwareConfig? softwareConfig)
+            Outputs.EnvironmentConfigSoftwareConfig? softwareConfig,
+
+            Outputs.EnvironmentConfigWebServerNetworkAccessControl? webServerNetworkAccessControl)
         {
             AirflowUri = airflowUri;
             DagGcsPrefix = dagGcsPrefix;
@@ -57,6 +63,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             NodeCount = nodeCount;
             PrivateEnvironmentConfig = privateEnvironmentConfig;
             SoftwareConfig = softwareConfig;
+            WebServerNetworkAccessControl = webServerNetworkAccessControl;
         }
     }
 }
