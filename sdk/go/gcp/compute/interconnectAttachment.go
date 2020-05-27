@@ -46,7 +46,7 @@ type InterconnectAttachment struct {
 	// selected availability domain will be provided to the Partner via the
 	// pairing key so that the provisioned circuit will lie in the specified
 	// domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
-	EdgeAvailabilityDomain pulumi.StringPtrOutput `pulumi:"edgeAvailabilityDomain"`
+	EdgeAvailabilityDomain pulumi.StringOutput `pulumi:"edgeAvailabilityDomain"`
 	// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
 	// issues.
 	GoogleReferenceId pulumi.StringOutput `pulumi:"googleReferenceId"`

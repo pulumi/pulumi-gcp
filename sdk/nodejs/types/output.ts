@@ -1035,7 +1035,8 @@ export namespace bigquery {
          */
         projectId: string;
         /**
-         * The ID of the table.
+         * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: string;
     }
@@ -1050,7 +1051,8 @@ export namespace bigquery {
          */
         projectId: string;
         /**
-         * The ID of the table.
+         * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: string;
     }
@@ -1119,7 +1121,8 @@ export namespace bigquery {
          */
         projectId: string;
         /**
-         * The ID of the table.
+         * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: string;
     }
@@ -1268,7 +1271,8 @@ export namespace bigquery {
          */
         projectId: string;
         /**
-         * The ID of the table.
+         * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: string;
     }
@@ -1391,7 +1395,7 @@ export namespace bigquery {
         /**
          * The ID of the project containing this model.
          */
-        projectId?: string;
+        projectId: string;
     }
 
     export interface JobQueryDestinationEncryptionConfiguration {
@@ -1412,7 +1416,8 @@ export namespace bigquery {
          */
         projectId: string;
         /**
-         * The ID of the table.
+         * The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: string;
     }
@@ -2933,6 +2938,10 @@ export namespace composer {
          * The configuration settings for software inside the environment.  Structure is documented below.
          */
         softwareConfig: outputs.composer.EnvironmentConfigSoftwareConfig;
+        /**
+         * The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+         */
+        webServerNetworkAccessControl: outputs.composer.EnvironmentConfigWebServerNetworkAccessControl;
     }
 
     export interface EnvironmentConfigNodeConfig {
@@ -3037,6 +3046,10 @@ export namespace composer {
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
         /**
+         * The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `webServerIpv4CidrBlock`
+         */
+        cloudSqlIpv4CidrBlock: string;
+        /**
          * -
          * If true, access to the public endpoint of the GKE cluster is denied.
          */
@@ -3049,6 +3062,10 @@ export namespace composer {
          * If left blank, the default value of '172.16.0.0/28' is used.
          */
         masterIpv4CidrBlock?: string;
+        /**
+         * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
+         */
+        webServerIpv4CidrBlock: string;
     }
 
     export interface EnvironmentConfigSoftwareConfig {
@@ -3104,6 +3121,28 @@ export namespace composer {
          * Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
          */
         pythonVersion: string;
+    }
+
+    export interface EnvironmentConfigWebServerNetworkAccessControl {
+        /**
+         * -
+         * A collection of allowed IP ranges with descriptions. Structure is documented below.
+         */
+        allowedIpRanges: outputs.composer.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange[];
+    }
+
+    export interface EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+        /**
+         * A description of this ip range.
+         */
+        description?: string;
+        /**
+         * IP address or range, defined using CIDR notation, of requests that this rule applies to.
+         * Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
+         * IP range prefixes should be properly truncated. For example,
+         * `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
+         */
+        value: string;
     }
 
     export interface GetImageVersionsImageVersion {
@@ -9379,6 +9418,11 @@ export namespace container {
         cloudrunConfig: outputs.container.ClusterAddonsConfigCloudrunConfig;
         /**
          * .
+         * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+         */
+        configConnectorConfig: outputs.container.ClusterAddonsConfigConfigConnectorConfig;
+        /**
+         * .
          * The status of the NodeLocal DNSCache addon. It is disabled by default.
          * Set `enabled = true` to enable.
          */
@@ -9430,6 +9474,14 @@ export namespace container {
          * cluster. It is disabled by default. Set `disabled = false` to enable.
          */
         disabled: boolean;
+    }
+
+    export interface ClusterAddonsConfigConfigConnectorConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterAddonsConfigDnsCacheConfig {
@@ -9527,6 +9579,14 @@ export namespace container {
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaults {
+        /**
+         * Minimum CPU platform to be used by this instance.
+         * The instance may be scheduled on the specified or newer CPU platform. Applicable
+         * values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+         * [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+         * for more information.
+         */
+        minCpuPlatform?: string;
         /**
          * The set of Google API scopes to be made available
          * on all of the node VMs under the "default" service account. These can be
@@ -10176,6 +10236,7 @@ export namespace container {
 
     export interface GetClusterAddonsConfig {
         cloudrunConfigs: outputs.container.GetClusterAddonsConfigCloudrunConfig[];
+        configConnectorConfigs: outputs.container.GetClusterAddonsConfigConfigConnectorConfig[];
         dnsCacheConfigs: outputs.container.GetClusterAddonsConfigDnsCacheConfig[];
         gcePersistentDiskCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig[];
         horizontalPodAutoscalings: outputs.container.GetClusterAddonsConfigHorizontalPodAutoscaling[];
@@ -10188,6 +10249,10 @@ export namespace container {
 
     export interface GetClusterAddonsConfigCloudrunConfig {
         disabled: boolean;
+    }
+
+    export interface GetClusterAddonsConfigConfigConnectorConfig {
+        enabled: boolean;
     }
 
     export interface GetClusterAddonsConfigDnsCacheConfig {
@@ -10235,6 +10300,7 @@ export namespace container {
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefault {
+        minCpuPlatform: string;
         oauthScopes: string[];
         serviceAccount: string;
     }
@@ -12164,6 +12230,16 @@ export namespace healthcare {
     }
 }
 
+export namespace iam {
+    export interface GetTestablePermissionsPermission {
+        apiDisabled: boolean;
+        customSupportLevel: string;
+        name: string;
+        stage: string;
+        title: string;
+    }
+}
+
 export namespace iap {
     export interface AppEngineServiceIamBindingCondition {
         /**
@@ -13431,8 +13507,7 @@ export namespace monitoring {
          * Distribution that fall into a good range. The totalService is the
          * total count of all values aggregated in the Distribution.
          * Defines a distribution TimeSeries filter and thresholds used for
-         * measuring good service and total service.
-         * Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+         * measuring good service and total service.  Structure is documented below.
          */
         distributionCut?: outputs.monitoring.SloRequestBasedSliDistributionCut;
         /**
@@ -13440,8 +13515,7 @@ export namespace monitoring {
          * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
          * Must specify exactly two of good, bad, and total service filters.
          * The relationship goodService + badService = totalService
-         * will be assumed.
-         * Exactly one of `distributionCut` or `goodTotalRatio` can be set.  Structure is documented below.
+         * will be assumed.  Structure is documented below.
          */
         goodTotalRatio?: outputs.monitoring.SloRequestBasedSliGoodTotalRatio;
     }
@@ -13459,7 +13533,8 @@ export namespace monitoring {
          * will be the count of values x in the Distribution such
          * that range.min <= x < range.max. inclusive of min and
          * exclusive of max. Open ranges can be defined by setting
-         * just one of min or max.  Structure is documented below.
+         * just one of min or max. Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.  Structure is documented below.
          */
         range: outputs.monitoring.SloRequestBasedSliDistributionCutRange;
     }
@@ -13484,31 +13559,294 @@ export namespace monitoring {
          * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
          * quantifying bad service provided, either demanded service that
          * was not provided or demanded service that was of inadequate
-         * quality.
+         * quality. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
          * Must have ValueType = DOUBLE or ValueType = INT64 and
          * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-         * must be set (good + bad = total is assumed).
          */
         badServiceFilter?: string;
         /**
          * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-         * quantifying good service provided.
+         * quantifying good service provided. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
          * Must have ValueType = DOUBLE or ValueType = INT64 and
          * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-         * must be set (good + bad = total is assumed).
          */
         goodServiceFilter?: string;
         /**
          * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-         * quantifying total demanded service.
+         * quantifying total demanded service. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
          * Must have ValueType = DOUBLE or ValueType = INT64 and
          * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-         * Exactly two of `goodServiceFilter`,`badServiceFilter`,`totalServiceFilter`
-         * must be set (good + bad = total is assumed).
          */
         totalServiceFilter?: string;
+    }
+
+    export interface SloWindowsBasedSli {
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * with ValueType = BOOL. The window is good if any true values
+         * appear in the window. One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
+         */
+        goodBadMetricFilter?: string;
+        /**
+         * Criterion that describes a window as good if its performance is
+         * high enough. One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+         */
+        goodTotalRatioThreshold?: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThreshold;
+        /**
+         * Criterion that describes a window as good if the metric's value
+         * is in a good range, *averaged* across returned streams.
+         * One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.
+         * Average value X of `timeSeries` should satisfy
+         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         */
+        metricMeanInRange?: outputs.monitoring.SloWindowsBasedSliMetricMeanInRange;
+        /**
+         * Criterion that describes a window as good if the metric's value
+         * is in a good range, *summed* across returned streams.
+         * Summed value `X` of `timeSeries` should satisfy
+         * `range.min <= X < range.max` for a good window.
+         * One of `goodBadMetricFilter`,
+         * `goodTotalRatioThreshold`, `metricMeanInRange`,
+         * `metricSumInRange` must be set for `windowsBasedSli`.  Structure is documented below.
+         */
+        metricSumInRange?: outputs.monitoring.SloWindowsBasedSliMetricSumInRange;
+        /**
+         * Duration over which window quality is evaluated, given as a
+         * duration string "{X}s" representing X seconds. Must be an
+         * integer fraction of a day and at least 60s.
+         */
+        windowPeriod?: string;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThreshold {
+        /**
+         * Basic SLI to evaluate to judge window quality.  Structure is documented below.
+         */
+        basicSliPerformance?: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance;
+        /**
+         * Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+         */
+        performance?: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformance;
+        /**
+         * A duration string, e.g. 10s.
+         * Good service is defined to be the count of requests made to
+         * this service that return in no more than threshold.
+         */
+        threshold?: number;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
+        /**
+         * Parameters for a latency threshold SLI.  Structure is documented below.
+         */
+        latency: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency;
+        /**
+         * An optional set of locations to which this SLI is relevant.
+         * Telemetry from other locations will not be used to calculate
+         * performance for this SLI. If omitted, this SLI applies to all
+         * locations in which the Service has activity. For service types
+         * that don't support breaking down by location, setting this
+         * field will result in an error.
+         */
+        locations?: string[];
+        /**
+         * An optional set of RPCs to which this SLI is relevant.
+         * Telemetry from other methods will not be used to calculate
+         * performance for this SLI. If omitted, this SLI applies to all
+         * the Service's methods. For service types that don't support
+         * breaking down by method, setting this field will result in an
+         * error.
+         */
+        methods?: string[];
+        /**
+         * The set of API versions to which this SLI is relevant.
+         * Telemetry from other API versions will not be used to
+         * calculate performance for this SLI. If omitted,
+         * this SLI applies to all API versions. For service types
+         * that don't support breaking down by version, setting this
+         * field will result in an error.
+         */
+        versions?: string[];
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
+        /**
+         * A duration string, e.g. 10s.
+         * Good service is defined to be the count of requests made to
+         * this service that return in no more than threshold.
+         */
+        threshold: string;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
+        /**
+         * Used when goodService is defined by a count of values aggregated in a
+         * Distribution that fall into a good range. The totalService is the
+         * total count of all values aggregated in the Distribution.
+         * Defines a distribution TimeSeries filter and thresholds used for
+         * measuring good service and total service.  Structure is documented below.
+         */
+        distributionCut?: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut;
+        /**
+         * A means to compute a ratio of `goodService` to `totalService`.
+         * Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+         * Must specify exactly two of good, bad, and total service filters.
+         * The relationship goodService + badService = totalService
+         * will be assumed.  Structure is documented below.
+         */
+        goodTotalRatio?: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * aggregating values to quantify the good service provided.
+         * Must have ValueType = DISTRIBUTION and
+         * MetricKind = DELTA or MetricKind = CUMULATIVE.
+         */
+        distributionFilter: string;
+        /**
+         * Range of numerical values. The computed goodService
+         * will be the count of values x in the Distribution such
+         * that range.min <= x < range.max. inclusive of min and
+         * exclusive of max. Open ranges can be defined by setting
+         * just one of min or max. Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         */
+        range: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
+        /**
+         * max value for the range (inclusive). If not given,
+         * will be set to "infinity", defining an open range
+         * ">= range.min"
+         */
+        max?: number;
+        /**
+         * Min value for the range (inclusive). If not given,
+         * will be set to "-infinity", defining an open range
+         * "< range.max"
+         */
+        min?: number;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying bad service provided, either demanded service that
+         * was not provided or demanded service that was of inadequate
+         * quality. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         */
+        badServiceFilter?: string;
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying good service provided. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         */
+        goodServiceFilter?: string;
+        /**
+         * A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * quantifying total demanded service. Exactly two of
+         * good, bad, or total service filter must be defined (where
+         * good + bad = total is assumed)
+         * Must have ValueType = DOUBLE or ValueType = INT64 and
+         * must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+         */
+        totalServiceFilter?: string;
+    }
+
+    export interface SloWindowsBasedSliMetricMeanInRange {
+        /**
+         * Range of numerical values. The computed goodService
+         * will be the count of values x in the Distribution such
+         * that range.min <= x < range.max. inclusive of min and
+         * exclusive of max. Open ranges can be defined by setting
+         * just one of min or max. Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         */
+        range: outputs.monitoring.SloWindowsBasedSliMetricMeanInRangeRange;
+        /**
+         * A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * specifying the TimeSeries to use for evaluating window
+         * quality. The provided TimeSeries must have
+         * ValueType = INT64 or ValueType = DOUBLE and
+         * MetricKind = GAUGE.
+         * Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.
+         */
+        timeSeries: string;
+    }
+
+    export interface SloWindowsBasedSliMetricMeanInRangeRange {
+        /**
+         * max value for the range (inclusive). If not given,
+         * will be set to "infinity", defining an open range
+         * ">= range.min"
+         */
+        max?: number;
+        /**
+         * Min value for the range (inclusive). If not given,
+         * will be set to "-infinity", defining an open range
+         * "< range.max"
+         */
+        min?: number;
+    }
+
+    export interface SloWindowsBasedSliMetricSumInRange {
+        /**
+         * Range of numerical values. The computed goodService
+         * will be the count of values x in the Distribution such
+         * that range.min <= x < range.max. inclusive of min and
+         * exclusive of max. Open ranges can be defined by setting
+         * just one of min or max. Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.  Structure is documented below.
+         */
+        range: outputs.monitoring.SloWindowsBasedSliMetricSumInRangeRange;
+        /**
+         * A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+         * specifying the TimeSeries to use for evaluating window
+         * quality. The provided TimeSeries must have
+         * ValueType = INT64 or ValueType = DOUBLE and
+         * MetricKind = GAUGE.
+         * Summed value `X` should satisfy
+         * `range.min <= X < range.max` for a good window.
+         */
+        timeSeries: string;
+    }
+
+    export interface SloWindowsBasedSliMetricSumInRangeRange {
+        /**
+         * max value for the range (inclusive). If not given,
+         * will be set to "infinity", defining an open range
+         * ">= range.min"
+         */
+        max?: number;
+        /**
+         * Min value for the range (inclusive). If not given,
+         * will be set to "-infinity", defining an open range
+         * "< range.max"
+         */
+        min?: number;
     }
 
     export interface UptimeCheckConfigContentMatcher {

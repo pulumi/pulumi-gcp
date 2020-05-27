@@ -33,7 +33,7 @@ type Slo struct {
 	// SLIs are used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
 	BasicSli SloBasicSliPtrOutput `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
@@ -55,7 +55,7 @@ type Slo struct {
 	// It is used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
 	RequestBasedSli SloRequestBasedSliPtrOutput `pulumi:"requestBasedSli"`
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
@@ -64,6 +64,15 @@ type Slo struct {
 	Service pulumi.StringOutput `pulumi:"service"`
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId pulumi.StringOutput `pulumi:"sloId"`
+	// A windows-based SLI defines the criteria for time windows.
+	// goodService is defined based off the count of these time windows
+	// for which the provided service was of good quality.
+	// A SLI describes a good service. It is used to measure and calculate
+	// the quality of the Service's performance with respect to a single
+	// aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	WindowsBasedSli SloWindowsBasedSliPtrOutput `pulumi:"windowsBasedSli"`
 }
 
 // NewSlo registers a new resource with the given unique name, arguments, and options.
@@ -105,7 +114,7 @@ type sloState struct {
 	// SLIs are used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
 	BasicSli *SloBasicSli `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
@@ -127,7 +136,7 @@ type sloState struct {
 	// It is used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
 	RequestBasedSli *SloRequestBasedSli `pulumi:"requestBasedSli"`
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
@@ -136,6 +145,15 @@ type sloState struct {
 	Service *string `pulumi:"service"`
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId *string `pulumi:"sloId"`
+	// A windows-based SLI defines the criteria for time windows.
+	// goodService is defined based off the count of these time windows
+	// for which the provided service was of good quality.
+	// A SLI describes a good service. It is used to measure and calculate
+	// the quality of the Service's performance with respect to a single
+	// aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	WindowsBasedSli *SloWindowsBasedSli `pulumi:"windowsBasedSli"`
 }
 
 type SloState struct {
@@ -144,7 +162,7 @@ type SloState struct {
 	// SLIs are used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
 	BasicSli SloBasicSliPtrInput
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
@@ -166,7 +184,7 @@ type SloState struct {
 	// It is used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
 	RequestBasedSli SloRequestBasedSliPtrInput
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
@@ -175,6 +193,15 @@ type SloState struct {
 	Service pulumi.StringPtrInput
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId pulumi.StringPtrInput
+	// A windows-based SLI defines the criteria for time windows.
+	// goodService is defined based off the count of these time windows
+	// for which the provided service was of good quality.
+	// A SLI describes a good service. It is used to measure and calculate
+	// the quality of the Service's performance with respect to a single
+	// aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	WindowsBasedSli SloWindowsBasedSliPtrInput
 }
 
 func (SloState) ElementType() reflect.Type {
@@ -187,7 +214,7 @@ type sloArgs struct {
 	// SLIs are used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
 	BasicSli *SloBasicSli `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
@@ -206,7 +233,7 @@ type sloArgs struct {
 	// It is used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
 	RequestBasedSli *SloRequestBasedSli `pulumi:"requestBasedSli"`
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
@@ -215,6 +242,15 @@ type sloArgs struct {
 	Service string `pulumi:"service"`
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId *string `pulumi:"sloId"`
+	// A windows-based SLI defines the criteria for time windows.
+	// goodService is defined based off the count of these time windows
+	// for which the provided service was of good quality.
+	// A SLI describes a good service. It is used to measure and calculate
+	// the quality of the Service's performance with respect to a single
+	// aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	WindowsBasedSli *SloWindowsBasedSli `pulumi:"windowsBasedSli"`
 }
 
 // The set of arguments for constructing a Slo resource.
@@ -224,7 +260,7 @@ type SloArgs struct {
 	// SLIs are used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
 	BasicSli SloBasicSliPtrInput
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
@@ -243,7 +279,7 @@ type SloArgs struct {
 	// It is used to measure and calculate the quality of the Service's
 	// performance with respect to a single aspect of service quality.
 	// Exactly one of the following must be set:
-	// `basicSli`, `requestBasedSli`  Structure is documented below.
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
 	RequestBasedSli SloRequestBasedSliPtrInput
 	// A rolling time period, semantically "in the past X days".
 	// Must be between 1 to 30 days, inclusive.
@@ -252,6 +288,15 @@ type SloArgs struct {
 	Service pulumi.StringInput
 	// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
 	SloId pulumi.StringPtrInput
+	// A windows-based SLI defines the criteria for time windows.
+	// goodService is defined based off the count of these time windows
+	// for which the provided service was of good quality.
+	// A SLI describes a good service. It is used to measure and calculate
+	// the quality of the Service's performance with respect to a single
+	// aspect of service quality.
+	// Exactly one of the following must be set:
+	// `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+	WindowsBasedSli SloWindowsBasedSliPtrInput
 }
 
 func (SloArgs) ElementType() reflect.Type {

@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Monitoring
         /// SLIs are used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
         /// </summary>
         [Output("basicSli")]
         public Output<Outputs.SloBasicSli?> BasicSli { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.Monitoring
         /// It is used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
         /// </summary>
         [Output("requestBasedSli")]
         public Output<Outputs.SloRequestBasedSli?> RequestBasedSli { get; private set; } = null!;
@@ -103,6 +103,19 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Output("sloId")]
         public Output<string> SloId { get; private set; } = null!;
+
+        /// <summary>
+        /// A windows-based SLI defines the criteria for time windows.
+        /// good_service is defined based off the count of these time windows
+        /// for which the provided service was of good quality.
+        /// A SLI describes a good service. It is used to measure and calculate
+        /// the quality of the Service's performance with respect to a single
+        /// aspect of service quality.
+        /// Exactly one of the following must be set:
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// </summary>
+        [Output("windowsBasedSli")]
+        public Output<Outputs.SloWindowsBasedSli?> WindowsBasedSli { get; private set; } = null!;
 
 
         /// <summary>
@@ -156,7 +169,7 @@ namespace Pulumi.Gcp.Monitoring
         /// SLIs are used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
         /// </summary>
         [Input("basicSli")]
         public Input<Inputs.SloBasicSliArgs>? BasicSli { get; set; }
@@ -195,7 +208,7 @@ namespace Pulumi.Gcp.Monitoring
         /// It is used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
         /// </summary>
         [Input("requestBasedSli")]
         public Input<Inputs.SloRequestBasedSliArgs>? RequestBasedSli { get; set; }
@@ -219,6 +232,19 @@ namespace Pulumi.Gcp.Monitoring
         [Input("sloId")]
         public Input<string>? SloId { get; set; }
 
+        /// <summary>
+        /// A windows-based SLI defines the criteria for time windows.
+        /// good_service is defined based off the count of these time windows
+        /// for which the provided service was of good quality.
+        /// A SLI describes a good service. It is used to measure and calculate
+        /// the quality of the Service's performance with respect to a single
+        /// aspect of service quality.
+        /// Exactly one of the following must be set:
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// </summary>
+        [Input("windowsBasedSli")]
+        public Input<Inputs.SloWindowsBasedSliArgs>? WindowsBasedSli { get; set; }
+
         public SloArgs()
         {
         }
@@ -232,7 +258,7 @@ namespace Pulumi.Gcp.Monitoring
         /// SLIs are used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
         /// </summary>
         [Input("basicSli")]
         public Input<Inputs.SloBasicSliGetArgs>? BasicSli { get; set; }
@@ -278,7 +304,7 @@ namespace Pulumi.Gcp.Monitoring
         /// It is used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
         /// </summary>
         [Input("requestBasedSli")]
         public Input<Inputs.SloRequestBasedSliGetArgs>? RequestBasedSli { get; set; }
@@ -301,6 +327,19 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Input("sloId")]
         public Input<string>? SloId { get; set; }
+
+        /// <summary>
+        /// A windows-based SLI defines the criteria for time windows.
+        /// good_service is defined based off the count of these time windows
+        /// for which the provided service was of good quality.
+        /// A SLI describes a good service. It is used to measure and calculate
+        /// the quality of the Service's performance with respect to a single
+        /// aspect of service quality.
+        /// Exactly one of the following must be set:
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// </summary>
+        [Input("windowsBasedSli")]
+        public Input<Inputs.SloWindowsBasedSliGetArgs>? WindowsBasedSli { get; set; }
 
         public SloState()
         {

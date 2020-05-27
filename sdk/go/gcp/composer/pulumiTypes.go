@@ -23,6 +23,8 @@ type EnvironmentConfig struct {
 	PrivateEnvironmentConfig *EnvironmentConfigPrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
 	// The configuration settings for software inside the environment.  Structure is documented below.
 	SoftwareConfig *EnvironmentConfigSoftwareConfig `pulumi:"softwareConfig"`
+	// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+	WebServerNetworkAccessControl *EnvironmentConfigWebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControl"`
 }
 
 // EnvironmentConfigInput is an input type that accepts EnvironmentConfigArgs and EnvironmentConfigOutput values.
@@ -50,6 +52,8 @@ type EnvironmentConfigArgs struct {
 	PrivateEnvironmentConfig EnvironmentConfigPrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
 	// The configuration settings for software inside the environment.  Structure is documented below.
 	SoftwareConfig EnvironmentConfigSoftwareConfigPtrInput `pulumi:"softwareConfig"`
+	// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+	WebServerNetworkAccessControl EnvironmentConfigWebServerNetworkAccessControlPtrInput `pulumi:"webServerNetworkAccessControl"`
 }
 
 func (EnvironmentConfigArgs) ElementType() reflect.Type {
@@ -164,6 +168,13 @@ func (o EnvironmentConfigOutput) SoftwareConfig() EnvironmentConfigSoftwareConfi
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
+// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+func (o EnvironmentConfigOutput) WebServerNetworkAccessControl() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigWebServerNetworkAccessControl {
+		return v.WebServerNetworkAccessControl
+	}).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
+}
+
 type EnvironmentConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigPtrOutput) ElementType() reflect.Type {
@@ -248,6 +259,16 @@ func (o EnvironmentConfigPtrOutput) SoftwareConfig() EnvironmentConfigSoftwareCo
 		}
 		return v.SoftwareConfig
 	}).(EnvironmentConfigSoftwareConfigPtrOutput)
+}
+
+// The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+func (o EnvironmentConfigPtrOutput) WebServerNetworkAccessControl() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigWebServerNetworkAccessControl {
+		if v == nil {
+			return nil
+		}
+		return v.WebServerNetworkAccessControl
+	}).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
 }
 
 type EnvironmentConfigNodeConfig struct {
@@ -901,6 +922,8 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) UseIpAliases() p
 }
 
 type EnvironmentConfigPrivateEnvironmentConfig struct {
+	// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `webServerIpv4CidrBlock`
+	CloudSqlIpv4CidrBlock *string `pulumi:"cloudSqlIpv4CidrBlock"`
 	// -
 	// If true, access to the public endpoint of the GKE cluster is denied.
 	EnablePrivateEndpoint *bool `pulumi:"enablePrivateEndpoint"`
@@ -910,6 +933,8 @@ type EnvironmentConfigPrivateEnvironmentConfig struct {
 	// in use within the cluster's network.
 	// If left blank, the default value of '172.16.0.0/28' is used.
 	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
+	// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
+	WebServerIpv4CidrBlock *string `pulumi:"webServerIpv4CidrBlock"`
 }
 
 // EnvironmentConfigPrivateEnvironmentConfigInput is an input type that accepts EnvironmentConfigPrivateEnvironmentConfigArgs and EnvironmentConfigPrivateEnvironmentConfigOutput values.
@@ -925,6 +950,8 @@ type EnvironmentConfigPrivateEnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigPrivateEnvironmentConfigArgs struct {
+	// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `webServerIpv4CidrBlock`
+	CloudSqlIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudSqlIpv4CidrBlock"`
 	// -
 	// If true, access to the public endpoint of the GKE cluster is denied.
 	EnablePrivateEndpoint pulumi.BoolPtrInput `pulumi:"enablePrivateEndpoint"`
@@ -934,6 +961,8 @@ type EnvironmentConfigPrivateEnvironmentConfigArgs struct {
 	// in use within the cluster's network.
 	// If left blank, the default value of '172.16.0.0/28' is used.
 	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
+	// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
+	WebServerIpv4CidrBlock pulumi.StringPtrInput `pulumi:"webServerIpv4CidrBlock"`
 }
 
 func (EnvironmentConfigPrivateEnvironmentConfigArgs) ElementType() reflect.Type {
@@ -1014,6 +1043,11 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ToEnvironmentConfigPriv
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
+// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `webServerIpv4CidrBlock`
+func (o EnvironmentConfigPrivateEnvironmentConfigOutput) CloudSqlIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
 // -
 // If true, access to the public endpoint of the GKE cluster is denied.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
@@ -1027,6 +1061,11 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint()
 // If left blank, the default value of '172.16.0.0/28' is used.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
+func (o EnvironmentConfigPrivateEnvironmentConfigOutput) WebServerIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.WebServerIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 type EnvironmentConfigPrivateEnvironmentConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1047,6 +1086,16 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) Elem() EnvironmentCo
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) EnvironmentConfigPrivateEnvironmentConfig {
 		return *v
 	}).(EnvironmentConfigPrivateEnvironmentConfigOutput)
+}
+
+// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `webServerIpv4CidrBlock`
+func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) CloudSqlIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudSqlIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
 }
 
 // -
@@ -1071,6 +1120,16 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) MasterIpv4CidrBlock(
 			return nil
 		}
 		return v.MasterIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `masterIpv4CidrBlock` and `cloudSqlIpv4CidrBlock`.
+func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) WebServerIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebServerIpv4CidrBlock
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1411,6 +1470,264 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) PythonVersion() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+type EnvironmentConfigWebServerNetworkAccessControl struct {
+	// -
+	// A collection of allowed IP ranges with descriptions. Structure is documented below.
+	AllowedIpRanges []EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange `pulumi:"allowedIpRanges"`
+}
+
+// EnvironmentConfigWebServerNetworkAccessControlInput is an input type that accepts EnvironmentConfigWebServerNetworkAccessControlArgs and EnvironmentConfigWebServerNetworkAccessControlOutput values.
+// You can construct a concrete instance of `EnvironmentConfigWebServerNetworkAccessControlInput` via:
+//
+// 		 EnvironmentConfigWebServerNetworkAccessControlArgs{...}
+//
+type EnvironmentConfigWebServerNetworkAccessControlInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigWebServerNetworkAccessControlOutput() EnvironmentConfigWebServerNetworkAccessControlOutput
+	ToEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(context.Context) EnvironmentConfigWebServerNetworkAccessControlOutput
+}
+
+type EnvironmentConfigWebServerNetworkAccessControlArgs struct {
+	// -
+	// A collection of allowed IP ranges with descriptions. Structure is documented below.
+	AllowedIpRanges EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput `pulumi:"allowedIpRanges"`
+}
+
+func (EnvironmentConfigWebServerNetworkAccessControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigWebServerNetworkAccessControl)(nil)).Elem()
+}
+
+func (i EnvironmentConfigWebServerNetworkAccessControlArgs) ToEnvironmentConfigWebServerNetworkAccessControlOutput() EnvironmentConfigWebServerNetworkAccessControlOutput {
+	return i.ToEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigWebServerNetworkAccessControlArgs) ToEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerNetworkAccessControlOutput)
+}
+
+func (i EnvironmentConfigWebServerNetworkAccessControlArgs) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutput() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
+	return i.ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigWebServerNetworkAccessControlArgs) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerNetworkAccessControlOutput).ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigWebServerNetworkAccessControlPtrInput is an input type that accepts EnvironmentConfigWebServerNetworkAccessControlArgs, EnvironmentConfigWebServerNetworkAccessControlPtr and EnvironmentConfigWebServerNetworkAccessControlPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigWebServerNetworkAccessControlPtrInput` via:
+//
+// 		 EnvironmentConfigWebServerNetworkAccessControlArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type EnvironmentConfigWebServerNetworkAccessControlPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigWebServerNetworkAccessControlPtrOutput() EnvironmentConfigWebServerNetworkAccessControlPtrOutput
+	ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(context.Context) EnvironmentConfigWebServerNetworkAccessControlPtrOutput
+}
+
+type environmentConfigWebServerNetworkAccessControlPtrType EnvironmentConfigWebServerNetworkAccessControlArgs
+
+func EnvironmentConfigWebServerNetworkAccessControlPtr(v *EnvironmentConfigWebServerNetworkAccessControlArgs) EnvironmentConfigWebServerNetworkAccessControlPtrInput {
+	return (*environmentConfigWebServerNetworkAccessControlPtrType)(v)
+}
+
+func (*environmentConfigWebServerNetworkAccessControlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigWebServerNetworkAccessControl)(nil)).Elem()
+}
+
+func (i *environmentConfigWebServerNetworkAccessControlPtrType) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutput() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
+	return i.ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigWebServerNetworkAccessControlPtrType) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
+}
+
+type EnvironmentConfigWebServerNetworkAccessControlOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigWebServerNetworkAccessControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigWebServerNetworkAccessControl)(nil)).Elem()
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlOutput) ToEnvironmentConfigWebServerNetworkAccessControlOutput() EnvironmentConfigWebServerNetworkAccessControlOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlOutput) ToEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlOutput) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutput() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
+	return o.ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlOutput) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigWebServerNetworkAccessControl) *EnvironmentConfigWebServerNetworkAccessControl {
+		return &v
+	}).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
+}
+
+// -
+// A collection of allowed IP ranges with descriptions. Structure is documented below.
+func (o EnvironmentConfigWebServerNetworkAccessControlOutput) AllowedIpRanges() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return o.ApplyT(func(v EnvironmentConfigWebServerNetworkAccessControl) []EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+		return v.AllowedIpRanges
+	}).(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
+}
+
+type EnvironmentConfigWebServerNetworkAccessControlPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigWebServerNetworkAccessControlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigWebServerNetworkAccessControl)(nil)).Elem()
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutput() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) ToEnvironmentConfigWebServerNetworkAccessControlPtrOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) Elem() EnvironmentConfigWebServerNetworkAccessControlOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWebServerNetworkAccessControl) EnvironmentConfigWebServerNetworkAccessControl {
+		return *v
+	}).(EnvironmentConfigWebServerNetworkAccessControlOutput)
+}
+
+// -
+// A collection of allowed IP ranges with descriptions. Structure is documented below.
+func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) AllowedIpRanges() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWebServerNetworkAccessControl) []EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedIpRanges
+	}).(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
+}
+
+type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange struct {
+	// A description of this ip range.
+	Description *string `pulumi:"description"`
+	// IP address or range, defined using CIDR notation, of requests that this rule applies to.
+	// Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
+	// IP range prefixes should be properly truncated. For example,
+	// `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
+	Value string `pulumi:"value"`
+}
+
+// EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput is an input type that accepts EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs and EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput values.
+// You can construct a concrete instance of `EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput` via:
+//
+// 		 EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs{...}
+//
+type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput
+	ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(context.Context) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput
+}
+
+type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs struct {
+	// A description of this ip range.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// IP address or range, defined using CIDR notation, of requests that this rule applies to.
+	// Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
+	// IP range prefixes should be properly truncated. For example,
+	// `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange)(nil)).Elem()
+}
+
+func (i EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
+	return i.ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput)
+}
+
+// EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput is an input type that accepts EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray and EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput values.
+// You can construct a concrete instance of `EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput` via:
+//
+// 		 EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray{ EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs{...} }
+//
+type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput
+	ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(context.Context) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput
+}
+
+type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray []EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput
+
+func (EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange)(nil)).Elem()
+}
+
+func (i EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray) ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return i.ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray) ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
+}
+
+type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange)(nil)).Elem()
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
+	return o
+}
+
+// A description of this ip range.
+func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// IP address or range, defined using CIDR notation, of requests that this rule applies to.
+// Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
+// IP range prefixes should be properly truncated. For example,
+// `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
+func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange)(nil)).Elem()
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) ToEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(ctx context.Context) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return o
+}
+
+func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) Index(i pulumi.IntInput) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+		return vs[0].([]EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange)[vs[1].(int)]
+	}).(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput)
+}
+
 type GetImageVersionsImageVersion struct {
 	// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
 	ImageVersionId string `pulumi:"imageVersionId"`
@@ -1530,6 +1847,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigPrivateEnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigSoftwareConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetImageVersionsImageVersionOutput{})
 	pulumi.RegisterOutputType(GetImageVersionsImageVersionArrayOutput{})
 }

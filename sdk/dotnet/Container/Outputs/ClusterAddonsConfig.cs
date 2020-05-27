@@ -21,6 +21,11 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly Outputs.ClusterAddonsConfigCloudrunConfig? CloudrunConfig;
         /// <summary>
         /// .
+        /// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigConfigConnectorConfig? ConfigConnectorConfig;
+        /// <summary>
+        /// .
         /// The status of the NodeLocal DNSCache addon. It is disabled by default.
         /// Set `enabled = true` to enable.
         /// </summary>
@@ -69,6 +74,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterAddonsConfig(
             Outputs.ClusterAddonsConfigCloudrunConfig? cloudrunConfig,
 
+            Outputs.ClusterAddonsConfigConfigConnectorConfig? configConnectorConfig,
+
             Outputs.ClusterAddonsConfigDnsCacheConfig? dnsCacheConfig,
 
             Outputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig? gcePersistentDiskCsiDriverConfig,
@@ -84,6 +91,7 @@ namespace Pulumi.Gcp.Container.Outputs
             Outputs.ClusterAddonsConfigNetworkPolicyConfig? networkPolicyConfig)
         {
             CloudrunConfig = cloudrunConfig;
+            ConfigConnectorConfig = configConnectorConfig;
             DnsCacheConfig = dnsCacheConfig;
             GcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;

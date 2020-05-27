@@ -55,7 +55,7 @@ class Reservation(pulumi.CustomResource):
         reservation = gcp.bigquery.Reservation("reservation",
             location="asia-northeast1",
             slot_capacity=0,
-            ignore_idle_slots=True)
+            ignore_idle_slots=False)
         ```
 
         :param str resource_name: The name of the resource.

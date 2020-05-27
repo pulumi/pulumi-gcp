@@ -4,3 +4,4 @@
 
 # Export this package's modules as members:
 from .get_rule import *
+from .get_testable_permissions import *

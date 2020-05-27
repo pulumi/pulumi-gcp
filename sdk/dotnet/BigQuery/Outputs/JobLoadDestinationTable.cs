@@ -16,21 +16,22 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// <summary>
         /// The ID of the dataset containing this model.
         /// </summary>
-        public readonly string DatasetId;
+        public readonly string? DatasetId;
         /// <summary>
         /// The ID of the project containing this model.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string? ProjectId;
         /// <summary>
-        /// The ID of the table.
+        /// The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
+        /// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
         /// </summary>
         public readonly string TableId;
 
         [OutputConstructor]
         private JobLoadDestinationTable(
-            string datasetId,
+            string? datasetId,
 
-            string projectId,
+            string? projectId,
 
             string tableId)
         {

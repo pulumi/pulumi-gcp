@@ -49,6 +49,44 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ## Example Usage - Bigquery Job Query Table Reference
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = new gcp.bigquery.Dataset("bar", {
+ *     datasetId: "jobQueryDataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * });
+ * const foo = new gcp.bigquery.Table("foo", {
+ *     datasetId: bar.datasetId,
+ *     tableId: "jobQueryTable",
+ * });
+ * const job = new gcp.bigquery.Job("job", {
+ *     jobId: "jobQuery",
+ *     labels: {
+ *         "example-label": "example-value",
+ *     },
+ *     query: {
+ *         query: "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+ *         destination_table: {
+ *             tableId: foo.id,
+ *         },
+ *         default_dataset: {
+ *             datasetId: bar.id,
+ *         },
+ *         allowLargeResults: true,
+ *         flattenResults: true,
+ *         script_options: {
+ *             keyResultStatement: "LAST",
+ *         },
+ *     },
+ * });
+ * ```
  * ## Example Usage - Bigquery Job Load
  *
  *

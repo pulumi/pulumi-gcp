@@ -353,9 +353,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Configuration options for the
-     * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-     * feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+     * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+     * feature, which provide more control over automatic upgrades of your GKE clusters.
+     * When updating this field, GKE imposes specific version requirements. See
+     * [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+     * for more details; the `gcp.container.getEngineVersions` datasource can provide
+     * the default version for a channel. Note that removing the `releaseChannel`
+     * field from your config will cause this provider to stop managing your cluster's
+     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+     * channel. Structure is documented below.
      */
     public readonly releaseChannel!: pulumi.Output<outputs.container.ClusterReleaseChannel>;
     /**
@@ -766,9 +772,15 @@ export interface ClusterState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Configuration options for the
-     * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-     * feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+     * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+     * feature, which provide more control over automatic upgrades of your GKE clusters.
+     * When updating this field, GKE imposes specific version requirements. See
+     * [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+     * for more details; the `gcp.container.getEngineVersions` datasource can provide
+     * the default version for a channel. Note that removing the `releaseChannel`
+     * field from your config will cause this provider to stop managing your cluster's
+     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+     * channel. Structure is documented below.
      */
     readonly releaseChannel?: pulumi.Input<inputs.container.ClusterReleaseChannel>;
     /**
@@ -1042,9 +1054,15 @@ export interface ClusterArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Configuration options for the
-     * [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-     * feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+     * Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+     * feature, which provide more control over automatic upgrades of your GKE clusters.
+     * When updating this field, GKE imposes specific version requirements. See
+     * [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+     * for more details; the `gcp.container.getEngineVersions` datasource can provide
+     * the default version for a channel. Note that removing the `releaseChannel`
+     * field from your config will cause this provider to stop managing your cluster's
+     * release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+     * channel. Structure is documented below.
      */
     readonly releaseChannel?: pulumi.Input<inputs.container.ClusterReleaseChannel>;
     /**

@@ -782,7 +782,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "monitoring_service.html.markdown",
 				},
 			},
-			"google_monitoring_slo": {Tok: gcpResource(gcpMonitoring, "Slo")},
+			"google_monitoring_slo":       {Tok: gcpResource(gcpMonitoring, "Slo")},
+			"google_monitoring_dashboard": {Tok: gcpResource(gcpMonitoring, "Dashboard")},
 
 			// PubSub resources
 			"google_pubsub_topic": {Tok: gcpResource(gcpPubSub, "Topic")},
@@ -1548,6 +1549,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_google_iam_role.html.markdown",
 				},
+			},
+			"google_iam_testable_permissions": {
+				Tok: gcpDataSource(gcpIAM, "getTestablePermissions"),
 			},
 			"google_netblock_ip_ranges": {
 				Tok: gcpDataSource(gcpCompute, "getNetblockIPRanges"),

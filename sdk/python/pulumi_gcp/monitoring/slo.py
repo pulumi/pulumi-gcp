@@ -17,7 +17,7 @@ class Slo(pulumi.CustomResource):
     SLIs are used to measure and calculate the quality of the Service's
     performance with respect to a single aspect of service quality.
     Exactly one of the following must be set:
-    `basic_sli`, `request_based_sli`  Structure is documented below.
+    `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
 
       * `latency` (`dict`) - Parameters for a latency threshold SLI.  Structure is documented below.
         * `threshold` (`str`) - A duration string, e.g. 10s.
@@ -75,14 +75,13 @@ class Slo(pulumi.CustomResource):
     It is used to measure and calculate the quality of the Service's
     performance with respect to a single aspect of service quality.
     Exactly one of the following must be set:
-    `basic_sli`, `request_based_sli`  Structure is documented below.
+    `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
 
       * `distributionCut` (`dict`) - Used when good_service is defined by a count of values aggregated in a
         Distribution that fall into a good range. The total_service is the
         total count of all values aggregated in the Distribution.
         Defines a distribution TimeSeries filter and thresholds used for
-        measuring good service and total service.
-        Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+        measuring good service and total service.  Structure is documented below.
         * `distributionFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
           aggregating values to quantify the good service provided.
           Must have ValueType = DISTRIBUTION and
@@ -91,7 +90,8 @@ class Slo(pulumi.CustomResource):
           will be the count of values x in the Distribution such
           that range.min <= x < range.max. inclusive of min and
           exclusive of max. Open ranges can be defined by setting
-          just one of min or max.  Structure is documented below.
+          just one of min or max. Summed value `X` should satisfy
+          `range.min <= X < range.max` for a good window.  Structure is documented below.
           * `max` (`float`) - max value for the range (inclusive). If not given,
             will be set to "infinity", defining an open range
             ">= range.min"
@@ -103,28 +103,27 @@ class Slo(pulumi.CustomResource):
         Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
         Must specify exactly two of good, bad, and total service filters.
         The relationship good_service + bad_service = total_service
-        will be assumed.
-        Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+        will be assumed.  Structure is documented below.
         * `badServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
           quantifying bad service provided, either demanded service that
           was not provided or demanded service that was of inadequate
-          quality.
+          quality. Exactly two of
+          good, bad, or total service filter must be defined (where
+          good + bad = total is assumed)
           Must have ValueType = DOUBLE or ValueType = INT64 and
           must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-          Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-          must be set (good + bad = total is assumed).
         * `goodServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-          quantifying good service provided.
+          quantifying good service provided. Exactly two of
+          good, bad, or total service filter must be defined (where
+          good + bad = total is assumed)
           Must have ValueType = DOUBLE or ValueType = INT64 and
           must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-          Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-          must be set (good + bad = total is assumed).
         * `totalServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-          quantifying total demanded service.
+          quantifying total demanded service. Exactly two of
+          good, bad, or total service filter must be defined (where
+          good + bad = total is assumed)
           Must have ValueType = DOUBLE or ValueType = INT64 and
           must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-          Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-          must be set (good + bad = total is assumed).
     """
     rolling_period_days: pulumi.Output[float]
     """
@@ -139,7 +138,165 @@ class Slo(pulumi.CustomResource):
     """
     The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
     """
-    def __init__(__self__, resource_name, opts=None, basic_sli=None, calendar_period=None, display_name=None, goal=None, project=None, request_based_sli=None, rolling_period_days=None, service=None, slo_id=None, __props__=None, __name__=None, __opts__=None):
+    windows_based_sli: pulumi.Output[dict]
+    """
+    A windows-based SLI defines the criteria for time windows.
+    good_service is defined based off the count of these time windows
+    for which the provided service was of good quality.
+    A SLI describes a good service. It is used to measure and calculate
+    the quality of the Service's performance with respect to a single
+    aspect of service quality.
+    Exactly one of the following must be set:
+    `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+
+      * `goodBadMetricFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+        with ValueType = BOOL. The window is good if any true values
+        appear in the window. One of `good_bad_metric_filter`,
+        `good_total_ratio_threshold`, `metric_mean_in_range`,
+        `metric_sum_in_range` must be set for `windows_based_sli`.
+      * `goodTotalRatioThreshold` (`dict`) - Criterion that describes a window as good if its performance is
+        high enough. One of `good_bad_metric_filter`,
+        `good_total_ratio_threshold`, `metric_mean_in_range`,
+        `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+        * `basicSliPerformance` (`dict`) - Basic SLI to evaluate to judge window quality.  Structure is documented below.
+          * `latency` (`dict`) - Parameters for a latency threshold SLI.  Structure is documented below.
+            * `threshold` (`str`) - A duration string, e.g. 10s.
+              Good service is defined to be the count of requests made to
+              this service that return in no more than threshold.
+
+          * `locations` (`list`) - An optional set of locations to which this SLI is relevant.
+            Telemetry from other locations will not be used to calculate
+            performance for this SLI. If omitted, this SLI applies to all
+            locations in which the Service has activity. For service types
+            that don't support breaking down by location, setting this
+            field will result in an error.
+          * `methods` (`list`) - An optional set of RPCs to which this SLI is relevant.
+            Telemetry from other methods will not be used to calculate
+            performance for this SLI. If omitted, this SLI applies to all
+            the Service's methods. For service types that don't support
+            breaking down by method, setting this field will result in an
+            error.
+          * `versions` (`list`) - The set of API versions to which this SLI is relevant.
+            Telemetry from other API versions will not be used to
+            calculate performance for this SLI. If omitted,
+            this SLI applies to all API versions. For service types
+            that don't support breaking down by version, setting this
+            field will result in an error.
+
+        * `performance` (`dict`) - Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+          * `distributionCut` (`dict`) - Used when good_service is defined by a count of values aggregated in a
+            Distribution that fall into a good range. The total_service is the
+            total count of all values aggregated in the Distribution.
+            Defines a distribution TimeSeries filter and thresholds used for
+            measuring good service and total service.  Structure is documented below.
+            * `distributionFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              aggregating values to quantify the good service provided.
+              Must have ValueType = DISTRIBUTION and
+              MetricKind = DELTA or MetricKind = CUMULATIVE.
+            * `range` (`dict`) - Range of numerical values. The computed good_service
+              will be the count of values x in the Distribution such
+              that range.min <= x < range.max. inclusive of min and
+              exclusive of max. Open ranges can be defined by setting
+              just one of min or max. Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              * `max` (`float`) - max value for the range (inclusive). If not given,
+                will be set to "infinity", defining an open range
+                ">= range.min"
+              * `min` (`float`) - Min value for the range (inclusive). If not given,
+                will be set to "-infinity", defining an open range
+                "< range.max"
+
+          * `goodTotalRatio` (`dict`) - A means to compute a ratio of `good_service` to `total_service`.
+            Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+            Must specify exactly two of good, bad, and total service filters.
+            The relationship good_service + bad_service = total_service
+            will be assumed.  Structure is documented below.
+            * `badServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              quantifying bad service provided, either demanded service that
+              was not provided or demanded service that was of inadequate
+              quality. Exactly two of
+              good, bad, or total service filter must be defined (where
+              good + bad = total is assumed)
+              Must have ValueType = DOUBLE or ValueType = INT64 and
+              must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+            * `goodServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              quantifying good service provided. Exactly two of
+              good, bad, or total service filter must be defined (where
+              good + bad = total is assumed)
+              Must have ValueType = DOUBLE or ValueType = INT64 and
+              must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+            * `totalServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              quantifying total demanded service. Exactly two of
+              good, bad, or total service filter must be defined (where
+              good + bad = total is assumed)
+              Must have ValueType = DOUBLE or ValueType = INT64 and
+              must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+
+        * `threshold` (`float`) - A duration string, e.g. 10s.
+          Good service is defined to be the count of requests made to
+          this service that return in no more than threshold.
+
+      * `metricMeanInRange` (`dict`) - Criterion that describes a window as good if the metric's value
+        is in a good range, *averaged* across returned streams.
+        One of `good_bad_metric_filter`,
+        `good_total_ratio_threshold`, `metric_mean_in_range`,
+        `metric_sum_in_range` must be set for `windows_based_sli`.
+        Average value X of `time_series` should satisfy
+        `range.min <= X < range.max` for a good window.  Structure is documented below.
+        * `range` (`dict`) - Range of numerical values. The computed good_service
+          will be the count of values x in the Distribution such
+          that range.min <= x < range.max. inclusive of min and
+          exclusive of max. Open ranges can be defined by setting
+          just one of min or max. Summed value `X` should satisfy
+          `range.min <= X < range.max` for a good window.  Structure is documented below.
+          * `max` (`float`) - max value for the range (inclusive). If not given,
+            will be set to "infinity", defining an open range
+            ">= range.min"
+          * `min` (`float`) - Min value for the range (inclusive). If not given,
+            will be set to "-infinity", defining an open range
+            "< range.max"
+
+        * `timeSeries` (`str`) - A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+          specifying the TimeSeries to use for evaluating window
+          quality. The provided TimeSeries must have
+          ValueType = INT64 or ValueType = DOUBLE and
+          MetricKind = GAUGE.
+          Summed value `X` should satisfy
+          `range.min <= X < range.max` for a good window.
+
+      * `metricSumInRange` (`dict`) - Criterion that describes a window as good if the metric's value
+        is in a good range, *summed* across returned streams.
+        Summed value `X` of `time_series` should satisfy
+        `range.min <= X < range.max` for a good window.
+        One of `good_bad_metric_filter`,
+        `good_total_ratio_threshold`, `metric_mean_in_range`,
+        `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+        * `range` (`dict`) - Range of numerical values. The computed good_service
+          will be the count of values x in the Distribution such
+          that range.min <= x < range.max. inclusive of min and
+          exclusive of max. Open ranges can be defined by setting
+          just one of min or max. Summed value `X` should satisfy
+          `range.min <= X < range.max` for a good window.  Structure is documented below.
+          * `max` (`float`) - max value for the range (inclusive). If not given,
+            will be set to "infinity", defining an open range
+            ">= range.min"
+          * `min` (`float`) - Min value for the range (inclusive). If not given,
+            will be set to "-infinity", defining an open range
+            "< range.max"
+
+        * `timeSeries` (`str`) - A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+          specifying the TimeSeries to use for evaluating window
+          quality. The provided TimeSeries must have
+          ValueType = INT64 or ValueType = DOUBLE and
+          MetricKind = GAUGE.
+          Summed value `X` should satisfy
+          `range.min <= X < range.max` for a good window.
+
+      * `windowPeriod` (`str`) - Duration over which window quality is evaluated, given as a
+        duration string "{X}s" representing X seconds. Must be an
+        integer fraction of a day and at least 60s.
+    """
+    def __init__(__self__, resource_name, opts=None, basic_sli=None, calendar_period=None, display_name=None, goal=None, project=None, request_based_sli=None, rolling_period_days=None, service=None, slo_id=None, windows_based_sli=None, __props__=None, __name__=None, __opts__=None):
         """
         A Service-Level Objective (SLO) describes the level of desired good
         service. It consists of a service-level indicator (SLI), a performance
@@ -185,7 +342,7 @@ class Slo(pulumi.CustomResource):
                SLIs are used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
                Exactly one of the following must be set:
-               `basic_sli`, `request_based_sli`  Structure is documented below.
+               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
@@ -199,11 +356,19 @@ class Slo(pulumi.CustomResource):
                It is used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
                Exactly one of the following must be set:
-               `basic_sli`, `request_based_sli`  Structure is documented below.
+               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
         :param pulumi.Input[float] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
+        :param pulumi.Input[dict] windows_based_sli: A windows-based SLI defines the criteria for time windows.
+               good_service is defined based off the count of these time windows
+               for which the provided service was of good quality.
+               A SLI describes a good service. It is used to measure and calculate
+               the quality of the Service's performance with respect to a single
+               aspect of service quality.
+               Exactly one of the following must be set:
+               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
 
         The **basic_sli** object supports the following:
 
@@ -237,8 +402,7 @@ class Slo(pulumi.CustomResource):
             Distribution that fall into a good range. The total_service is the
             total count of all values aggregated in the Distribution.
             Defines a distribution TimeSeries filter and thresholds used for
-            measuring good service and total service.
-            Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+            measuring good service and total service.  Structure is documented below.
             * `distributionFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
               aggregating values to quantify the good service provided.
               Must have ValueType = DISTRIBUTION and
@@ -247,7 +411,8 @@ class Slo(pulumi.CustomResource):
               will be the count of values x in the Distribution such
               that range.min <= x < range.max. inclusive of min and
               exclusive of max. Open ranges can be defined by setting
-              just one of min or max.  Structure is documented below.
+              just one of min or max. Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.  Structure is documented below.
               * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
                 will be set to "infinity", defining an open range
                 ">= range.min"
@@ -259,28 +424,176 @@ class Slo(pulumi.CustomResource):
             Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
             Must specify exactly two of good, bad, and total service filters.
             The relationship good_service + bad_service = total_service
-            will be assumed.
-            Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+            will be assumed.  Structure is documented below.
             * `badServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
               quantifying bad service provided, either demanded service that
               was not provided or demanded service that was of inadequate
-              quality.
+              quality. Exactly two of
+              good, bad, or total service filter must be defined (where
+              good + bad = total is assumed)
               Must have ValueType = DOUBLE or ValueType = INT64 and
               must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-              must be set (good + bad = total is assumed).
             * `goodServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-              quantifying good service provided.
+              quantifying good service provided. Exactly two of
+              good, bad, or total service filter must be defined (where
+              good + bad = total is assumed)
               Must have ValueType = DOUBLE or ValueType = INT64 and
               must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-              must be set (good + bad = total is assumed).
             * `totalServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-              quantifying total demanded service.
+              quantifying total demanded service. Exactly two of
+              good, bad, or total service filter must be defined (where
+              good + bad = total is assumed)
               Must have ValueType = DOUBLE or ValueType = INT64 and
               must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-              must be set (good + bad = total is assumed).
+
+        The **windows_based_sli** object supports the following:
+
+          * `goodBadMetricFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+            with ValueType = BOOL. The window is good if any true values
+            appear in the window. One of `good_bad_metric_filter`,
+            `good_total_ratio_threshold`, `metric_mean_in_range`,
+            `metric_sum_in_range` must be set for `windows_based_sli`.
+          * `goodTotalRatioThreshold` (`pulumi.Input[dict]`) - Criterion that describes a window as good if its performance is
+            high enough. One of `good_bad_metric_filter`,
+            `good_total_ratio_threshold`, `metric_mean_in_range`,
+            `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+            * `basicSliPerformance` (`pulumi.Input[dict]`) - Basic SLI to evaluate to judge window quality.  Structure is documented below.
+              * `latency` (`pulumi.Input[dict]`) - Parameters for a latency threshold SLI.  Structure is documented below.
+                * `threshold` (`pulumi.Input[str]`) - A duration string, e.g. 10s.
+                  Good service is defined to be the count of requests made to
+                  this service that return in no more than threshold.
+
+              * `locations` (`pulumi.Input[list]`) - An optional set of locations to which this SLI is relevant.
+                Telemetry from other locations will not be used to calculate
+                performance for this SLI. If omitted, this SLI applies to all
+                locations in which the Service has activity. For service types
+                that don't support breaking down by location, setting this
+                field will result in an error.
+              * `methods` (`pulumi.Input[list]`) - An optional set of RPCs to which this SLI is relevant.
+                Telemetry from other methods will not be used to calculate
+                performance for this SLI. If omitted, this SLI applies to all
+                the Service's methods. For service types that don't support
+                breaking down by method, setting this field will result in an
+                error.
+              * `versions` (`pulumi.Input[list]`) - The set of API versions to which this SLI is relevant.
+                Telemetry from other API versions will not be used to
+                calculate performance for this SLI. If omitted,
+                this SLI applies to all API versions. For service types
+                that don't support breaking down by version, setting this
+                field will result in an error.
+
+            * `performance` (`pulumi.Input[dict]`) - Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+              * `distributionCut` (`pulumi.Input[dict]`) - Used when good_service is defined by a count of values aggregated in a
+                Distribution that fall into a good range. The total_service is the
+                total count of all values aggregated in the Distribution.
+                Defines a distribution TimeSeries filter and thresholds used for
+                measuring good service and total service.  Structure is documented below.
+                * `distributionFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+                  aggregating values to quantify the good service provided.
+                  Must have ValueType = DISTRIBUTION and
+                  MetricKind = DELTA or MetricKind = CUMULATIVE.
+                * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
+                  will be the count of values x in the Distribution such
+                  that range.min <= x < range.max. inclusive of min and
+                  exclusive of max. Open ranges can be defined by setting
+                  just one of min or max. Summed value `X` should satisfy
+                  `range.min <= X < range.max` for a good window.  Structure is documented below.
+                  * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
+                    will be set to "infinity", defining an open range
+                    ">= range.min"
+                  * `min` (`pulumi.Input[float]`) - Min value for the range (inclusive). If not given,
+                    will be set to "-infinity", defining an open range
+                    "< range.max"
+
+              * `goodTotalRatio` (`pulumi.Input[dict]`) - A means to compute a ratio of `good_service` to `total_service`.
+                Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+                Must specify exactly two of good, bad, and total service filters.
+                The relationship good_service + bad_service = total_service
+                will be assumed.  Structure is documented below.
+                * `badServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+                  quantifying bad service provided, either demanded service that
+                  was not provided or demanded service that was of inadequate
+                  quality. Exactly two of
+                  good, bad, or total service filter must be defined (where
+                  good + bad = total is assumed)
+                  Must have ValueType = DOUBLE or ValueType = INT64 and
+                  must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+                * `goodServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+                  quantifying good service provided. Exactly two of
+                  good, bad, or total service filter must be defined (where
+                  good + bad = total is assumed)
+                  Must have ValueType = DOUBLE or ValueType = INT64 and
+                  must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+                * `totalServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+                  quantifying total demanded service. Exactly two of
+                  good, bad, or total service filter must be defined (where
+                  good + bad = total is assumed)
+                  Must have ValueType = DOUBLE or ValueType = INT64 and
+                  must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+
+            * `threshold` (`pulumi.Input[float]`) - A duration string, e.g. 10s.
+              Good service is defined to be the count of requests made to
+              this service that return in no more than threshold.
+
+          * `metricMeanInRange` (`pulumi.Input[dict]`) - Criterion that describes a window as good if the metric's value
+            is in a good range, *averaged* across returned streams.
+            One of `good_bad_metric_filter`,
+            `good_total_ratio_threshold`, `metric_mean_in_range`,
+            `metric_sum_in_range` must be set for `windows_based_sli`.
+            Average value X of `time_series` should satisfy
+            `range.min <= X < range.max` for a good window.  Structure is documented below.
+            * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
+              will be the count of values x in the Distribution such
+              that range.min <= x < range.max. inclusive of min and
+              exclusive of max. Open ranges can be defined by setting
+              just one of min or max. Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
+                will be set to "infinity", defining an open range
+                ">= range.min"
+              * `min` (`pulumi.Input[float]`) - Min value for the range (inclusive). If not given,
+                will be set to "-infinity", defining an open range
+                "< range.max"
+
+            * `timeSeries` (`pulumi.Input[str]`) - A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              specifying the TimeSeries to use for evaluating window
+              quality. The provided TimeSeries must have
+              ValueType = INT64 or ValueType = DOUBLE and
+              MetricKind = GAUGE.
+              Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.
+
+          * `metricSumInRange` (`pulumi.Input[dict]`) - Criterion that describes a window as good if the metric's value
+            is in a good range, *summed* across returned streams.
+            Summed value `X` of `time_series` should satisfy
+            `range.min <= X < range.max` for a good window.
+            One of `good_bad_metric_filter`,
+            `good_total_ratio_threshold`, `metric_mean_in_range`,
+            `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+            * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
+              will be the count of values x in the Distribution such
+              that range.min <= x < range.max. inclusive of min and
+              exclusive of max. Open ranges can be defined by setting
+              just one of min or max. Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
+                will be set to "infinity", defining an open range
+                ">= range.min"
+              * `min` (`pulumi.Input[float]`) - Min value for the range (inclusive). If not given,
+                will be set to "-infinity", defining an open range
+                "< range.max"
+
+            * `timeSeries` (`pulumi.Input[str]`) - A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              specifying the TimeSeries to use for evaluating window
+              quality. The provided TimeSeries must have
+              ValueType = INT64 or ValueType = DOUBLE and
+              MetricKind = GAUGE.
+              Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.
+
+          * `windowPeriod` (`pulumi.Input[str]`) - Duration over which window quality is evaluated, given as a
+            duration string "{X}s" representing X seconds. Must be an
+            integer fraction of a day and at least 60s.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -312,6 +625,7 @@ class Slo(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['slo_id'] = slo_id
+            __props__['windows_based_sli'] = windows_based_sli
             __props__['name'] = None
         super(Slo, __self__).__init__(
             'gcp:monitoring/slo:Slo',
@@ -320,7 +634,7 @@ class Slo(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, basic_sli=None, calendar_period=None, display_name=None, goal=None, name=None, project=None, request_based_sli=None, rolling_period_days=None, service=None, slo_id=None):
+    def get(resource_name, id, opts=None, basic_sli=None, calendar_period=None, display_name=None, goal=None, name=None, project=None, request_based_sli=None, rolling_period_days=None, service=None, slo_id=None, windows_based_sli=None):
         """
         Get an existing Slo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -333,7 +647,7 @@ class Slo(pulumi.CustomResource):
                SLIs are used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
                Exactly one of the following must be set:
-               `basic_sli`, `request_based_sli`  Structure is documented below.
+               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
@@ -349,11 +663,19 @@ class Slo(pulumi.CustomResource):
                It is used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
                Exactly one of the following must be set:
-               `basic_sli`, `request_based_sli`  Structure is documented below.
+               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
         :param pulumi.Input[float] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
+        :param pulumi.Input[dict] windows_based_sli: A windows-based SLI defines the criteria for time windows.
+               good_service is defined based off the count of these time windows
+               for which the provided service was of good quality.
+               A SLI describes a good service. It is used to measure and calculate
+               the quality of the Service's performance with respect to a single
+               aspect of service quality.
+               Exactly one of the following must be set:
+               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
 
         The **basic_sli** object supports the following:
 
@@ -387,8 +709,7 @@ class Slo(pulumi.CustomResource):
             Distribution that fall into a good range. The total_service is the
             total count of all values aggregated in the Distribution.
             Defines a distribution TimeSeries filter and thresholds used for
-            measuring good service and total service.
-            Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+            measuring good service and total service.  Structure is documented below.
             * `distributionFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
               aggregating values to quantify the good service provided.
               Must have ValueType = DISTRIBUTION and
@@ -397,7 +718,8 @@ class Slo(pulumi.CustomResource):
               will be the count of values x in the Distribution such
               that range.min <= x < range.max. inclusive of min and
               exclusive of max. Open ranges can be defined by setting
-              just one of min or max.  Structure is documented below.
+              just one of min or max. Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.  Structure is documented below.
               * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
                 will be set to "infinity", defining an open range
                 ">= range.min"
@@ -409,28 +731,176 @@ class Slo(pulumi.CustomResource):
             Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
             Must specify exactly two of good, bad, and total service filters.
             The relationship good_service + bad_service = total_service
-            will be assumed.
-            Exactly one of `distribution_cut` or `good_total_ratio` can be set.  Structure is documented below.
+            will be assumed.  Structure is documented below.
             * `badServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
               quantifying bad service provided, either demanded service that
               was not provided or demanded service that was of inadequate
-              quality.
+              quality. Exactly two of
+              good, bad, or total service filter must be defined (where
+              good + bad = total is assumed)
               Must have ValueType = DOUBLE or ValueType = INT64 and
               must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-              must be set (good + bad = total is assumed).
             * `goodServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-              quantifying good service provided.
+              quantifying good service provided. Exactly two of
+              good, bad, or total service filter must be defined (where
+              good + bad = total is assumed)
               Must have ValueType = DOUBLE or ValueType = INT64 and
               must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-              must be set (good + bad = total is assumed).
             * `totalServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-              quantifying total demanded service.
+              quantifying total demanded service. Exactly two of
+              good, bad, or total service filter must be defined (where
+              good + bad = total is assumed)
               Must have ValueType = DOUBLE or ValueType = INT64 and
               must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-              Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-              must be set (good + bad = total is assumed).
+
+        The **windows_based_sli** object supports the following:
+
+          * `goodBadMetricFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+            with ValueType = BOOL. The window is good if any true values
+            appear in the window. One of `good_bad_metric_filter`,
+            `good_total_ratio_threshold`, `metric_mean_in_range`,
+            `metric_sum_in_range` must be set for `windows_based_sli`.
+          * `goodTotalRatioThreshold` (`pulumi.Input[dict]`) - Criterion that describes a window as good if its performance is
+            high enough. One of `good_bad_metric_filter`,
+            `good_total_ratio_threshold`, `metric_mean_in_range`,
+            `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+            * `basicSliPerformance` (`pulumi.Input[dict]`) - Basic SLI to evaluate to judge window quality.  Structure is documented below.
+              * `latency` (`pulumi.Input[dict]`) - Parameters for a latency threshold SLI.  Structure is documented below.
+                * `threshold` (`pulumi.Input[str]`) - A duration string, e.g. 10s.
+                  Good service is defined to be the count of requests made to
+                  this service that return in no more than threshold.
+
+              * `locations` (`pulumi.Input[list]`) - An optional set of locations to which this SLI is relevant.
+                Telemetry from other locations will not be used to calculate
+                performance for this SLI. If omitted, this SLI applies to all
+                locations in which the Service has activity. For service types
+                that don't support breaking down by location, setting this
+                field will result in an error.
+              * `methods` (`pulumi.Input[list]`) - An optional set of RPCs to which this SLI is relevant.
+                Telemetry from other methods will not be used to calculate
+                performance for this SLI. If omitted, this SLI applies to all
+                the Service's methods. For service types that don't support
+                breaking down by method, setting this field will result in an
+                error.
+              * `versions` (`pulumi.Input[list]`) - The set of API versions to which this SLI is relevant.
+                Telemetry from other API versions will not be used to
+                calculate performance for this SLI. If omitted,
+                this SLI applies to all API versions. For service types
+                that don't support breaking down by version, setting this
+                field will result in an error.
+
+            * `performance` (`pulumi.Input[dict]`) - Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+              * `distributionCut` (`pulumi.Input[dict]`) - Used when good_service is defined by a count of values aggregated in a
+                Distribution that fall into a good range. The total_service is the
+                total count of all values aggregated in the Distribution.
+                Defines a distribution TimeSeries filter and thresholds used for
+                measuring good service and total service.  Structure is documented below.
+                * `distributionFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+                  aggregating values to quantify the good service provided.
+                  Must have ValueType = DISTRIBUTION and
+                  MetricKind = DELTA or MetricKind = CUMULATIVE.
+                * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
+                  will be the count of values x in the Distribution such
+                  that range.min <= x < range.max. inclusive of min and
+                  exclusive of max. Open ranges can be defined by setting
+                  just one of min or max. Summed value `X` should satisfy
+                  `range.min <= X < range.max` for a good window.  Structure is documented below.
+                  * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
+                    will be set to "infinity", defining an open range
+                    ">= range.min"
+                  * `min` (`pulumi.Input[float]`) - Min value for the range (inclusive). If not given,
+                    will be set to "-infinity", defining an open range
+                    "< range.max"
+
+              * `goodTotalRatio` (`pulumi.Input[dict]`) - A means to compute a ratio of `good_service` to `total_service`.
+                Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
+                Must specify exactly two of good, bad, and total service filters.
+                The relationship good_service + bad_service = total_service
+                will be assumed.  Structure is documented below.
+                * `badServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+                  quantifying bad service provided, either demanded service that
+                  was not provided or demanded service that was of inadequate
+                  quality. Exactly two of
+                  good, bad, or total service filter must be defined (where
+                  good + bad = total is assumed)
+                  Must have ValueType = DOUBLE or ValueType = INT64 and
+                  must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+                * `goodServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+                  quantifying good service provided. Exactly two of
+                  good, bad, or total service filter must be defined (where
+                  good + bad = total is assumed)
+                  Must have ValueType = DOUBLE or ValueType = INT64 and
+                  must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+                * `totalServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+                  quantifying total demanded service. Exactly two of
+                  good, bad, or total service filter must be defined (where
+                  good + bad = total is assumed)
+                  Must have ValueType = DOUBLE or ValueType = INT64 and
+                  must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+
+            * `threshold` (`pulumi.Input[float]`) - A duration string, e.g. 10s.
+              Good service is defined to be the count of requests made to
+              this service that return in no more than threshold.
+
+          * `metricMeanInRange` (`pulumi.Input[dict]`) - Criterion that describes a window as good if the metric's value
+            is in a good range, *averaged* across returned streams.
+            One of `good_bad_metric_filter`,
+            `good_total_ratio_threshold`, `metric_mean_in_range`,
+            `metric_sum_in_range` must be set for `windows_based_sli`.
+            Average value X of `time_series` should satisfy
+            `range.min <= X < range.max` for a good window.  Structure is documented below.
+            * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
+              will be the count of values x in the Distribution such
+              that range.min <= x < range.max. inclusive of min and
+              exclusive of max. Open ranges can be defined by setting
+              just one of min or max. Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
+                will be set to "infinity", defining an open range
+                ">= range.min"
+              * `min` (`pulumi.Input[float]`) - Min value for the range (inclusive). If not given,
+                will be set to "-infinity", defining an open range
+                "< range.max"
+
+            * `timeSeries` (`pulumi.Input[str]`) - A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              specifying the TimeSeries to use for evaluating window
+              quality. The provided TimeSeries must have
+              ValueType = INT64 or ValueType = DOUBLE and
+              MetricKind = GAUGE.
+              Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.
+
+          * `metricSumInRange` (`pulumi.Input[dict]`) - Criterion that describes a window as good if the metric's value
+            is in a good range, *summed* across returned streams.
+            Summed value `X` of `time_series` should satisfy
+            `range.min <= X < range.max` for a good window.
+            One of `good_bad_metric_filter`,
+            `good_total_ratio_threshold`, `metric_mean_in_range`,
+            `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+            * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
+              will be the count of values x in the Distribution such
+              that range.min <= x < range.max. inclusive of min and
+              exclusive of max. Open ranges can be defined by setting
+              just one of min or max. Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
+                will be set to "infinity", defining an open range
+                ">= range.min"
+              * `min` (`pulumi.Input[float]`) - Min value for the range (inclusive). If not given,
+                will be set to "-infinity", defining an open range
+                "< range.max"
+
+            * `timeSeries` (`pulumi.Input[str]`) - A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
+              specifying the TimeSeries to use for evaluating window
+              quality. The provided TimeSeries must have
+              ValueType = INT64 or ValueType = DOUBLE and
+              MetricKind = GAUGE.
+              Summed value `X` should satisfy
+              `range.min <= X < range.max` for a good window.
+
+          * `windowPeriod` (`pulumi.Input[str]`) - Duration over which window quality is evaluated, given as a
+            duration string "{X}s" representing X seconds. Must be an
+            integer fraction of a day and at least 60s.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -446,6 +916,7 @@ class Slo(pulumi.CustomResource):
         __props__["rolling_period_days"] = rolling_period_days
         __props__["service"] = service
         __props__["slo_id"] = slo_id
+        __props__["windows_based_sli"] = windows_based_sli
         return Slo(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

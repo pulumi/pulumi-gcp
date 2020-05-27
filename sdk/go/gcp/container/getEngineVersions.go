@@ -54,6 +54,8 @@ type GetEngineVersionsResult struct {
 	LatestNodeVersion string  `pulumi:"latestNodeVersion"`
 	Location          *string `pulumi:"location"`
 	Project           *string `pulumi:"project"`
+	// A map from a release channel name to the channel's default version.
+	ReleaseChannelDefaultVersion map[string]string `pulumi:"releaseChannelDefaultVersion"`
 	// A list of versions available in the given zone for use with master instances.
 	ValidMasterVersions []string `pulumi:"validMasterVersions"`
 	// A list of versions available in the given zone for use with node instances.

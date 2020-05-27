@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Composer.Outputs
     public sealed class EnvironmentConfigPrivateEnvironmentConfig
     {
         /// <summary>
+        /// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`
+        /// </summary>
+        public readonly string? CloudSqlIpv4CidrBlock;
+        /// <summary>
         /// -
         /// If true, access to the public endpoint of the GKE cluster is denied.
         /// </summary>
@@ -26,15 +30,25 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// If left blank, the default value of '172.16.0.0/28' is used.
         /// </summary>
         public readonly string? MasterIpv4CidrBlock;
+        /// <summary>
+        /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
+        /// </summary>
+        public readonly string? WebServerIpv4CidrBlock;
 
         [OutputConstructor]
         private EnvironmentConfigPrivateEnvironmentConfig(
+            string? cloudSqlIpv4CidrBlock,
+
             bool? enablePrivateEndpoint,
 
-            string? masterIpv4CidrBlock)
+            string? masterIpv4CidrBlock,
+
+            string? webServerIpv4CidrBlock)
         {
+            CloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
             EnablePrivateEndpoint = enablePrivateEndpoint;
             MasterIpv4CidrBlock = masterIpv4CidrBlock;
+            WebServerIpv4CidrBlock = webServerIpv4CidrBlock;
         }
     }
 }

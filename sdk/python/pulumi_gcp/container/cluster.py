@@ -21,6 +21,11 @@ class Cluster(pulumi.CustomResource):
         * `disabled` (`bool`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
           cluster. It is disabled by default. Set `disabled = false` to enable.
 
+      * `configConnectorConfig` (`dict`) - .
+        The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+        * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
+          If enabled, pods must be valid under a PodSecurityPolicy to be created.
+
       * `dnsCacheConfig` (`dict`) - .
         The status of the NodeLocal DNSCache addon. It is disabled by default.
         Set `enabled = true` to enable.
@@ -86,6 +91,11 @@ class Cluster(pulumi.CustomResource):
 
       * `autoProvisioningDefaults` (`dict`) - Contains defaults for a node pool created by NAP.
         Structure is documented below.
+        * `min_cpu_platform` (`str`) - Minimum CPU platform to be used by this instance.
+          The instance may be scheduled on the specified or newer CPU platform. Applicable
+          values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+          [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+          for more information.
         * `oauthScopes` (`list`) - The set of Google API scopes to be made available
           on all of the node VMs under the "default" service account. These can be
           either FQDNs, or scope aliases. The following scopes are necessary to ensure
@@ -586,9 +596,15 @@ class Cluster(pulumi.CustomResource):
     """
     release_channel: pulumi.Output[dict]
     """
-    Configuration options for the
-    [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-    feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+    Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+    feature, which provide more control over automatic upgrades of your GKE clusters.
+    When updating this field, GKE imposes specific version requirements. See
+    [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+    for more details; the `container.getEngineVersions` datasource can provide
+    the default version for a channel. Note that removing the `release_channel`
+    field from your config will cause this provider to stop managing your cluster's
+    release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+    channel. Structure is documented below.
 
       * `channel` (`str`) - The selected release channel.
         Accepted values are:
@@ -861,9 +877,15 @@ class Cluster(pulumi.CustomResource):
                clusters with private nodes. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[dict] release_channel: Configuration options for the
-               [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-               feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+        :param pulumi.Input[dict] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+               feature, which provide more control over automatic upgrades of your GKE clusters.
+               When updating this field, GKE imposes specific version requirements. See
+               [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+               for more details; the `container.getEngineVersions` datasource can provide
+               the default version for a channel. Note that removing the `release_channel`
+               field from your config will cause this provider to stop managing your cluster's
+               release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+               channel. Structure is documented below.
         :param pulumi.Input[bool] remove_default_node_pool: If `true`, deletes the default node
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
@@ -889,6 +911,11 @@ class Cluster(pulumi.CustomResource):
             Set `disabled = false` to enable.
             * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
               cluster. It is disabled by default. Set `disabled = false` to enable.
+
+          * `configConnectorConfig` (`pulumi.Input[dict]`) - .
+            The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
+              If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
           * `dnsCacheConfig` (`pulumi.Input[dict]`) - .
             The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -944,6 +971,11 @@ class Cluster(pulumi.CustomResource):
 
           * `autoProvisioningDefaults` (`pulumi.Input[dict]`) - Contains defaults for a node pool created by NAP.
             Structure is documented below.
+            * `min_cpu_platform` (`pulumi.Input[str]`) - Minimum CPU platform to be used by this instance.
+              The instance may be scheduled on the specified or newer CPU platform. Applicable
+              values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+              [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+              for more information.
             * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available
               on all of the node VMs under the "default" service account. These can be
               either FQDNs, or scope aliases. The following scopes are necessary to ensure
@@ -1482,9 +1514,15 @@ class Cluster(pulumi.CustomResource):
                clusters with private nodes. Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[dict] release_channel: Configuration options for the
-               [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
-               feature, which provide more control over automatic upgrades of your GKE clusters. Structure is documented below.
+        :param pulumi.Input[dict] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
+               feature, which provide more control over automatic upgrades of your GKE clusters.
+               When updating this field, GKE imposes specific version requirements. See
+               [Migrating between release channels](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#migrating_between_release_channels)
+               for more details; the `container.getEngineVersions` datasource can provide
+               the default version for a channel. Note that removing the `release_channel`
+               field from your config will cause this provider to stop managing your cluster's
+               release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
+               channel. Structure is documented below.
         :param pulumi.Input[bool] remove_default_node_pool: If `true`, deletes the default node
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
@@ -1517,6 +1555,11 @@ class Cluster(pulumi.CustomResource):
             Set `disabled = false` to enable.
             * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
               cluster. It is disabled by default. Set `disabled = false` to enable.
+
+          * `configConnectorConfig` (`pulumi.Input[dict]`) - .
+            The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
+              If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
           * `dnsCacheConfig` (`pulumi.Input[dict]`) - .
             The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -1572,6 +1615,11 @@ class Cluster(pulumi.CustomResource):
 
           * `autoProvisioningDefaults` (`pulumi.Input[dict]`) - Contains defaults for a node pool created by NAP.
             Structure is documented below.
+            * `min_cpu_platform` (`pulumi.Input[str]`) - Minimum CPU platform to be used by this instance.
+              The instance may be scheduled on the specified or newer CPU platform. Applicable
+              values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+              [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+              for more information.
             * `oauthScopes` (`pulumi.Input[list]`) - The set of Google API scopes to be made available
               on all of the node VMs under the "default" service account. These can be
               either FQDNs, or scope aliases. The following scopes are necessary to ensure

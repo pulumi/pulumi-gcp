@@ -17,29 +17,29 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         /// quantifying bad service provided, either demanded service that
         /// was not provided or demanded service that was of inadequate
-        /// quality.
+        /// quality. Exactly two of
+        /// good, bad, or total service filter must be defined (where
+        /// good + bad = total is assumed)
         /// Must have ValueType = DOUBLE or ValueType = INT64 and
         /// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-        /// Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-        /// must be set (good + bad = total is assumed).
         /// </summary>
         public readonly string? BadServiceFilter;
         /// <summary>
         /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        /// quantifying good service provided.
+        /// quantifying good service provided. Exactly two of
+        /// good, bad, or total service filter must be defined (where
+        /// good + bad = total is assumed)
         /// Must have ValueType = DOUBLE or ValueType = INT64 and
         /// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-        /// Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-        /// must be set (good + bad = total is assumed).
         /// </summary>
         public readonly string? GoodServiceFilter;
         /// <summary>
         /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-        /// quantifying total demanded service.
+        /// quantifying total demanded service. Exactly two of
+        /// good, bad, or total service filter must be defined (where
+        /// good + bad = total is assumed)
         /// Must have ValueType = DOUBLE or ValueType = INT64 and
         /// must have MetricKind = DELTA or MetricKind = CUMULATIVE.
-        /// Exactly two of `good_service_filter`,`bad_service_filter`,`total_service_filter`
-        /// must be set (good + bad = total is assumed).
         /// </summary>
         public readonly string? TotalServiceFilter;
 

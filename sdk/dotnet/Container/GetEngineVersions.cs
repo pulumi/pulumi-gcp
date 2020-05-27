@@ -85,6 +85,10 @@ namespace Pulumi.Gcp.Container
         public readonly string? Location;
         public readonly string? Project;
         /// <summary>
+        /// A map from a release channel name to the channel's default version.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ReleaseChannelDefaultVersion;
+        /// <summary>
         /// A list of versions available in the given zone for use with master instances.
         /// </summary>
         public readonly ImmutableArray<string> ValidMasterVersions;
@@ -108,6 +112,8 @@ namespace Pulumi.Gcp.Container
 
             string? project,
 
+            ImmutableDictionary<string, string> releaseChannelDefaultVersion,
+
             ImmutableArray<string> validMasterVersions,
 
             ImmutableArray<string> validNodeVersions,
@@ -120,6 +126,7 @@ namespace Pulumi.Gcp.Container
             LatestNodeVersion = latestNodeVersion;
             Location = location;
             Project = project;
+            ReleaseChannelDefaultVersion = releaseChannelDefaultVersion;
             ValidMasterVersions = validMasterVersions;
             ValidNodeVersions = validNodeVersions;
             VersionPrefix = versionPrefix;

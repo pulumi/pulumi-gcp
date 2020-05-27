@@ -89,10 +89,10 @@ class Policy(pulumi.CustomResource):
             },
             networks=[
                 {
-                    "networkUrl": network_1.id,
+                    "networkUrl": network_1.self_link,
                 },
                 {
-                    "networkUrl": network_2.id,
+                    "networkUrl": network_2.self_link,
                 },
             ])
         ```

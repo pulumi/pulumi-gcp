@@ -14,6 +14,14 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterClusterAutoscalingAutoProvisioningDefaults
     {
         /// <summary>
+        /// Minimum CPU platform to be used by this instance.
+        /// The instance may be scheduled on the specified or newer CPU platform. Applicable
+        /// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+        /// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+        /// for more information.
+        /// </summary>
+        public readonly string? MinCpuPlatform;
+        /// <summary>
         /// The set of Google API scopes to be made available
         /// on all of the node VMs under the "default" service account. These can be
         /// either FQDNs, or scope aliases. The following scopes are necessary to ensure
@@ -31,10 +39,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterClusterAutoscalingAutoProvisioningDefaults(
+            string? minCpuPlatform,
+
             ImmutableArray<string> oauthScopes,
 
             string? serviceAccount)
         {
+            MinCpuPlatform = minCpuPlatform;
             OauthScopes = oauthScopes;
             ServiceAccount = serviceAccount;
         }

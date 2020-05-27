@@ -75,6 +75,7 @@ class Environment(pulumi.CustomResource):
       * `node_count` (`float`) - The number of nodes in the Kubernetes Engine cluster that
         will be used to run this environment.
       * `privateEnvironmentConfig` (`dict`) - The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
+        * `cloudSqlIpv4CidrBlock` (`str`) - The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`
         * `enablePrivateEndpoint` (`bool`) - -
           If true, access to the public endpoint of the GKE cluster is denied.
         * `masterIpv4CidrBlock` (`str`) - The IP range in CIDR notation to use for the hosted master network. This range is used
@@ -82,6 +83,7 @@ class Environment(pulumi.CustomResource):
           internal load balancer virtual IP. This range must not overlap with any other ranges
           in use within the cluster's network.
           If left blank, the default value of '172.16.0.0/28' is used.
+        * `webServerIpv4CidrBlock` (`str`) - The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
 
       * `softwareConfig` (`dict`) - The configuration settings for software inside the environment.  Structure is documented below.
         * `airflowConfigOverrides` (`dict`) - -
@@ -121,6 +123,15 @@ class Environment(pulumi.CustomResource):
         * `pythonVersion` (`str`) - -
           The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
           Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+
+      * `webServerNetworkAccessControl` (`dict`) - The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+        * `allowedIpRanges` (`list`) - -
+          A collection of allowed IP ranges with descriptions. Structure is documented below.
+          * `description` (`str`) - A description of this ip range.
+          * `value` (`str`) - IP address or range, defined using CIDR notation, of requests that this rule applies to.
+            Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
+            IP range prefixes should be properly truncated. For example,
+            `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
     """
     labels: pulumi.Output[dict]
     """
@@ -319,6 +330,7 @@ class Environment(pulumi.CustomResource):
           * `node_count` (`pulumi.Input[float]`) - The number of nodes in the Kubernetes Engine cluster that
             will be used to run this environment.
           * `privateEnvironmentConfig` (`pulumi.Input[dict]`) - The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
+            * `cloudSqlIpv4CidrBlock` (`pulumi.Input[str]`) - The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`
             * `enablePrivateEndpoint` (`pulumi.Input[bool]`) - -
               If true, access to the public endpoint of the GKE cluster is denied.
             * `masterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP range in CIDR notation to use for the hosted master network. This range is used
@@ -326,6 +338,7 @@ class Environment(pulumi.CustomResource):
               internal load balancer virtual IP. This range must not overlap with any other ranges
               in use within the cluster's network.
               If left blank, the default value of '172.16.0.0/28' is used.
+            * `webServerIpv4CidrBlock` (`pulumi.Input[str]`) - The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
 
           * `softwareConfig` (`pulumi.Input[dict]`) - The configuration settings for software inside the environment.  Structure is documented below.
             * `airflowConfigOverrides` (`pulumi.Input[dict]`) - -
@@ -365,6 +378,15 @@ class Environment(pulumi.CustomResource):
             * `pythonVersion` (`pulumi.Input[str]`) - -
               The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
               Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+
+          * `webServerNetworkAccessControl` (`pulumi.Input[dict]`) - The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+            * `allowedIpRanges` (`pulumi.Input[list]`) - -
+              A collection of allowed IP ranges with descriptions. Structure is documented below.
+              * `description` (`pulumi.Input[str]`) - A description of this ip range.
+              * `value` (`pulumi.Input[str]`) - IP address or range, defined using CIDR notation, of requests that this rule applies to.
+                Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
+                IP range prefixes should be properly truncated. For example,
+                `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -481,6 +503,7 @@ class Environment(pulumi.CustomResource):
           * `node_count` (`pulumi.Input[float]`) - The number of nodes in the Kubernetes Engine cluster that
             will be used to run this environment.
           * `privateEnvironmentConfig` (`pulumi.Input[dict]`) - The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
+            * `cloudSqlIpv4CidrBlock` (`pulumi.Input[str]`) - The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`
             * `enablePrivateEndpoint` (`pulumi.Input[bool]`) - -
               If true, access to the public endpoint of the GKE cluster is denied.
             * `masterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP range in CIDR notation to use for the hosted master network. This range is used
@@ -488,6 +511,7 @@ class Environment(pulumi.CustomResource):
               internal load balancer virtual IP. This range must not overlap with any other ranges
               in use within the cluster's network.
               If left blank, the default value of '172.16.0.0/28' is used.
+            * `webServerIpv4CidrBlock` (`pulumi.Input[str]`) - The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`.
 
           * `softwareConfig` (`pulumi.Input[dict]`) - The configuration settings for software inside the environment.  Structure is documented below.
             * `airflowConfigOverrides` (`pulumi.Input[dict]`) - -
@@ -527,6 +551,15 @@ class Environment(pulumi.CustomResource):
             * `pythonVersion` (`pulumi.Input[str]`) - -
               The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes.
               Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+
+          * `webServerNetworkAccessControl` (`pulumi.Input[dict]`) - The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
+            * `allowedIpRanges` (`pulumi.Input[list]`) - -
+              A collection of allowed IP ranges with descriptions. Structure is documented below.
+              * `description` (`pulumi.Input[str]`) - A description of this ip range.
+              * `value` (`pulumi.Input[str]`) - IP address or range, defined using CIDR notation, of requests that this rule applies to.
+                Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
+                IP range prefixes should be properly truncated. For example,
+                `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

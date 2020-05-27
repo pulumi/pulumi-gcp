@@ -16,6 +16,9 @@ type ClusterAddonsConfig struct {
 	// Set `disabled = false` to enable.
 	CloudrunConfig *ClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfig"`
 	// .
+	// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+	ConfigConnectorConfig *ClusterAddonsConfigConfigConnectorConfig `pulumi:"configConnectorConfig"`
+	// .
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
 	// Set `enabled = true` to enable.
 	DnsCacheConfig *ClusterAddonsConfigDnsCacheConfig `pulumi:"dnsCacheConfig"`
@@ -65,6 +68,9 @@ type ClusterAddonsConfigArgs struct {
 	// The status of the CloudRun addon. It is disabled by default.
 	// Set `disabled = false` to enable.
 	CloudrunConfig ClusterAddonsConfigCloudrunConfigPtrInput `pulumi:"cloudrunConfig"`
+	// .
+	// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+	ConfigConnectorConfig ClusterAddonsConfigConfigConnectorConfigPtrInput `pulumi:"configConnectorConfig"`
 	// .
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
 	// Set `enabled = true` to enable.
@@ -184,6 +190,12 @@ func (o ClusterAddonsConfigOutput) CloudrunConfig() ClusterAddonsConfigCloudrunC
 }
 
 // .
+// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+func (o ClusterAddonsConfigOutput) ConfigConnectorConfig() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigConfigConnectorConfig { return v.ConfigConnectorConfig }).(ClusterAddonsConfigConfigConnectorConfigPtrOutput)
+}
+
+// .
 // The status of the NodeLocal DNSCache addon. It is disabled by default.
 // Set `enabled = true` to enable.
 func (o ClusterAddonsConfigOutput) DnsCacheConfig() ClusterAddonsConfigDnsCacheConfigPtrOutput {
@@ -267,6 +279,17 @@ func (o ClusterAddonsConfigPtrOutput) CloudrunConfig() ClusterAddonsConfigCloudr
 		}
 		return v.CloudrunConfig
 	}).(ClusterAddonsConfigCloudrunConfigPtrOutput)
+}
+
+// .
+// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+func (o ClusterAddonsConfigPtrOutput) ConfigConnectorConfig() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigConfigConnectorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigConnectorConfig
+	}).(ClusterAddonsConfigConfigConnectorConfigPtrOutput)
 }
 
 // .
@@ -490,6 +513,143 @@ func (o ClusterAddonsConfigCloudrunConfigPtrOutput) Disabled() pulumi.BoolPtrOut
 			return nil
 		}
 		return &v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigConfigConnectorConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigConfigConnectorConfigInput is an input type that accepts ClusterAddonsConfigConfigConnectorConfigArgs and ClusterAddonsConfigConfigConnectorConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigConfigConnectorConfigInput` via:
+//
+// 		 ClusterAddonsConfigConfigConnectorConfigArgs{...}
+//
+type ClusterAddonsConfigConfigConnectorConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigConfigConnectorConfigOutput() ClusterAddonsConfigConfigConnectorConfigOutput
+	ToClusterAddonsConfigConfigConnectorConfigOutputWithContext(context.Context) ClusterAddonsConfigConfigConnectorConfigOutput
+}
+
+type ClusterAddonsConfigConfigConnectorConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigConfigConnectorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigConfigConnectorConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigConfigConnectorConfigArgs) ToClusterAddonsConfigConfigConnectorConfigOutput() ClusterAddonsConfigConfigConnectorConfigOutput {
+	return i.ToClusterAddonsConfigConfigConnectorConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigConfigConnectorConfigArgs) ToClusterAddonsConfigConfigConnectorConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigConfigConnectorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigConfigConnectorConfigOutput)
+}
+
+func (i ClusterAddonsConfigConfigConnectorConfigArgs) ToClusterAddonsConfigConfigConnectorConfigPtrOutput() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
+	return i.ToClusterAddonsConfigConfigConnectorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigConfigConnectorConfigArgs) ToClusterAddonsConfigConfigConnectorConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigConfigConnectorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigConfigConnectorConfigOutput).ToClusterAddonsConfigConfigConnectorConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigConfigConnectorConfigPtrInput is an input type that accepts ClusterAddonsConfigConfigConnectorConfigArgs, ClusterAddonsConfigConfigConnectorConfigPtr and ClusterAddonsConfigConfigConnectorConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigConfigConnectorConfigPtrInput` via:
+//
+// 		 ClusterAddonsConfigConfigConnectorConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterAddonsConfigConfigConnectorConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigConfigConnectorConfigPtrOutput() ClusterAddonsConfigConfigConnectorConfigPtrOutput
+	ToClusterAddonsConfigConfigConnectorConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigConfigConnectorConfigPtrOutput
+}
+
+type clusterAddonsConfigConfigConnectorConfigPtrType ClusterAddonsConfigConfigConnectorConfigArgs
+
+func ClusterAddonsConfigConfigConnectorConfigPtr(v *ClusterAddonsConfigConfigConnectorConfigArgs) ClusterAddonsConfigConfigConnectorConfigPtrInput {
+	return (*clusterAddonsConfigConfigConnectorConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigConfigConnectorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigConfigConnectorConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigConfigConnectorConfigPtrType) ToClusterAddonsConfigConfigConnectorConfigPtrOutput() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
+	return i.ToClusterAddonsConfigConfigConnectorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigConfigConnectorConfigPtrType) ToClusterAddonsConfigConfigConnectorConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigConfigConnectorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigConfigConnectorConfigPtrOutput)
+}
+
+type ClusterAddonsConfigConfigConnectorConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigConfigConnectorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigConfigConnectorConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigConfigConnectorConfigOutput) ToClusterAddonsConfigConfigConnectorConfigOutput() ClusterAddonsConfigConfigConnectorConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigConfigConnectorConfigOutput) ToClusterAddonsConfigConfigConnectorConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigConfigConnectorConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigConfigConnectorConfigOutput) ToClusterAddonsConfigConfigConnectorConfigPtrOutput() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
+	return o.ToClusterAddonsConfigConfigConnectorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigConfigConnectorConfigOutput) ToClusterAddonsConfigConfigConnectorConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigConfigConnectorConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigConfigConnectorConfig) *ClusterAddonsConfigConfigConnectorConfig {
+		return &v
+	}).(ClusterAddonsConfigConfigConnectorConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigConfigConnectorConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigConfigConnectorConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigConfigConnectorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigConfigConnectorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigConfigConnectorConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) ToClusterAddonsConfigConfigConnectorConfigPtrOutput() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) ToClusterAddonsConfigConfigConnectorConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigConfigConnectorConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) Elem() ClusterAddonsConfigConfigConnectorConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigConfigConnectorConfig) ClusterAddonsConfigConfigConnectorConfig { return *v }).(ClusterAddonsConfigConfigConnectorConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigConfigConnectorConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -1833,6 +1993,12 @@ func (o ClusterClusterAutoscalingPtrOutput) ResourceLimits() ClusterClusterAutos
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
+	// Minimum CPU platform to be used by this instance.
+	// The instance may be scheduled on the specified or newer CPU platform. Applicable
+	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+	// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for more information.
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available
 	// on all of the node VMs under the "default" service account. These can be
 	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
@@ -1859,6 +2025,12 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsInput interface {
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
+	// Minimum CPU platform to be used by this instance.
+	// The instance may be scheduled on the specified or newer CPU platform. Applicable
+	// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+	// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for more information.
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available
 	// on all of the node VMs under the "default" service account. These can be
 	// either FQDNs, or scope aliases. The following scopes are necessary to ensure
@@ -1950,6 +2122,15 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ToClusterCluste
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
+// Minimum CPU platform to be used by this instance.
+// The instance may be scheduled on the specified or newer CPU platform. Applicable
+// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for more information.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+}
+
 // The set of Google API scopes to be made available
 // on all of the node VMs under the "default" service account. These can be
 // either FQDNs, or scope aliases. The following scopes are necessary to ensure
@@ -1985,6 +2166,20 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) Elem() Clust
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) ClusterClusterAutoscalingAutoProvisioningDefaults {
 		return *v
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsOutput)
+}
+
+// Minimum CPU platform to be used by this instance.
+// The instance may be scheduled on the specified or newer CPU platform. Applicable
+// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
+// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for more information.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
 }
 
 // The set of Google API scopes to be made available
@@ -9562,6 +9757,7 @@ func (o NodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
 
 type GetClusterAddonsConfig struct {
 	CloudrunConfigs                   []GetClusterAddonsConfigCloudrunConfig                   `pulumi:"cloudrunConfigs"`
+	ConfigConnectorConfigs            []GetClusterAddonsConfigConfigConnectorConfig            `pulumi:"configConnectorConfigs"`
 	DnsCacheConfigs                   []GetClusterAddonsConfigDnsCacheConfig                   `pulumi:"dnsCacheConfigs"`
 	GcePersistentDiskCsiDriverConfigs []GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfigs"`
 	HorizontalPodAutoscalings         []GetClusterAddonsConfigHorizontalPodAutoscaling         `pulumi:"horizontalPodAutoscalings"`
@@ -9586,6 +9782,7 @@ type GetClusterAddonsConfigInput interface {
 
 type GetClusterAddonsConfigArgs struct {
 	CloudrunConfigs                   GetClusterAddonsConfigCloudrunConfigArrayInput                   `pulumi:"cloudrunConfigs"`
+	ConfigConnectorConfigs            GetClusterAddonsConfigConfigConnectorConfigArrayInput            `pulumi:"configConnectorConfigs"`
 	DnsCacheConfigs                   GetClusterAddonsConfigDnsCacheConfigArrayInput                   `pulumi:"dnsCacheConfigs"`
 	GcePersistentDiskCsiDriverConfigs GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput `pulumi:"gcePersistentDiskCsiDriverConfigs"`
 	HorizontalPodAutoscalings         GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput         `pulumi:"horizontalPodAutoscalings"`
@@ -9650,6 +9847,12 @@ func (o GetClusterAddonsConfigOutput) ToGetClusterAddonsConfigOutputWithContext(
 
 func (o GetClusterAddonsConfigOutput) CloudrunConfigs() GetClusterAddonsConfigCloudrunConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigCloudrunConfig { return v.CloudrunConfigs }).(GetClusterAddonsConfigCloudrunConfigArrayOutput)
+}
+
+func (o GetClusterAddonsConfigOutput) ConfigConnectorConfigs() GetClusterAddonsConfigConfigConnectorConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigConfigConnectorConfig {
+		return v.ConfigConnectorConfigs
+	}).(GetClusterAddonsConfigConfigConnectorConfigArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) DnsCacheConfigs() GetClusterAddonsConfigDnsCacheConfigArrayOutput {
@@ -9806,6 +10009,102 @@ func (o GetClusterAddonsConfigCloudrunConfigArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigCloudrunConfig {
 		return vs[0].([]GetClusterAddonsConfigCloudrunConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigCloudrunConfigOutput)
+}
+
+type GetClusterAddonsConfigConfigConnectorConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigConfigConnectorConfigInput is an input type that accepts GetClusterAddonsConfigConfigConnectorConfigArgs and GetClusterAddonsConfigConfigConnectorConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigConfigConnectorConfigInput` via:
+//
+// 		 GetClusterAddonsConfigConfigConnectorConfigArgs{...}
+//
+type GetClusterAddonsConfigConfigConnectorConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigConfigConnectorConfigOutput() GetClusterAddonsConfigConfigConnectorConfigOutput
+	ToGetClusterAddonsConfigConfigConnectorConfigOutputWithContext(context.Context) GetClusterAddonsConfigConfigConnectorConfigOutput
+}
+
+type GetClusterAddonsConfigConfigConnectorConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigConfigConnectorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigConfigConnectorConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigConfigConnectorConfigArgs) ToGetClusterAddonsConfigConfigConnectorConfigOutput() GetClusterAddonsConfigConfigConnectorConfigOutput {
+	return i.ToGetClusterAddonsConfigConfigConnectorConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigConfigConnectorConfigArgs) ToGetClusterAddonsConfigConfigConnectorConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigConfigConnectorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigConfigConnectorConfigOutput)
+}
+
+// GetClusterAddonsConfigConfigConnectorConfigArrayInput is an input type that accepts GetClusterAddonsConfigConfigConnectorConfigArray and GetClusterAddonsConfigConfigConnectorConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigConfigConnectorConfigArrayInput` via:
+//
+// 		 GetClusterAddonsConfigConfigConnectorConfigArray{ GetClusterAddonsConfigConfigConnectorConfigArgs{...} }
+//
+type GetClusterAddonsConfigConfigConnectorConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigConfigConnectorConfigArrayOutput() GetClusterAddonsConfigConfigConnectorConfigArrayOutput
+	ToGetClusterAddonsConfigConfigConnectorConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigConfigConnectorConfigArrayOutput
+}
+
+type GetClusterAddonsConfigConfigConnectorConfigArray []GetClusterAddonsConfigConfigConnectorConfigInput
+
+func (GetClusterAddonsConfigConfigConnectorConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigConfigConnectorConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigConfigConnectorConfigArray) ToGetClusterAddonsConfigConfigConnectorConfigArrayOutput() GetClusterAddonsConfigConfigConnectorConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigConfigConnectorConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigConfigConnectorConfigArray) ToGetClusterAddonsConfigConfigConnectorConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigConfigConnectorConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigConfigConnectorConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigConfigConnectorConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigConfigConnectorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigConfigConnectorConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigConfigConnectorConfigOutput) ToGetClusterAddonsConfigConfigConnectorConfigOutput() GetClusterAddonsConfigConfigConnectorConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigConfigConnectorConfigOutput) ToGetClusterAddonsConfigConfigConnectorConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigConfigConnectorConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigConfigConnectorConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigConfigConnectorConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigConfigConnectorConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigConfigConnectorConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigConfigConnectorConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigConfigConnectorConfigArrayOutput) ToGetClusterAddonsConfigConfigConnectorConfigArrayOutput() GetClusterAddonsConfigConfigConnectorConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigConfigConnectorConfigArrayOutput) ToGetClusterAddonsConfigConfigConnectorConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigConfigConnectorConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigConfigConnectorConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigConfigConnectorConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigConfigConnectorConfig {
+		return vs[0].([]GetClusterAddonsConfigConfigConnectorConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigConfigConnectorConfigOutput)
 }
 
 type GetClusterAddonsConfigDnsCacheConfig struct {
@@ -10797,6 +11096,7 @@ func (o GetClusterClusterAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClusterClusterAutoscalingAutoProvisioningDefault struct {
+	MinCpuPlatform string   `pulumi:"minCpuPlatform"`
 	OauthScopes    []string `pulumi:"oauthScopes"`
 	ServiceAccount string   `pulumi:"serviceAccount"`
 }
@@ -10814,6 +11114,7 @@ type GetClusterClusterAutoscalingAutoProvisioningDefaultInput interface {
 }
 
 type GetClusterClusterAutoscalingAutoProvisioningDefaultArgs struct {
+	MinCpuPlatform pulumi.StringInput      `pulumi:"minCpuPlatform"`
 	OauthScopes    pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	ServiceAccount pulumi.StringInput      `pulumi:"serviceAccount"`
 }
@@ -10868,6 +11169,10 @@ func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ToGetClusterC
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultOutput {
 	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) MinCpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefault) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
 
 func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) OauthScopes() pulumi.StringArrayOutput {
@@ -14684,6 +14989,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigCloudrunConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigCloudrunConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigConfigConnectorConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigConfigConnectorConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigDnsCacheConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigDnsCacheConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput{})
@@ -14794,6 +15101,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigCloudrunConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigCloudrunConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigConfigConnectorConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigConfigConnectorConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigDnsCacheConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigDnsCacheConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput{})
