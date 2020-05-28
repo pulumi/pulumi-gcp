@@ -33,6 +33,31 @@ namespace Pulumi.Gcp.Storage
     /// * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
+    /// 
+    /// ## Example Usage - Storage Bucket Access Control Public Bucket
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///         });
+    ///         var publicRule = new Gcp.Storage.BucketAccessControl("publicRule", new Gcp.Storage.BucketAccessControlArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             Role = "READER",
+    ///             Entity = "allUsers",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class BucketAccessControl : Pulumi.CustomResource
     {

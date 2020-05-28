@@ -11,6 +11,38 @@ namespace Pulumi.Gcp.ResourceManager
 {
     /// <summary>
     /// A Lien represents an encumbrance on the actions that can be performed on a resource.
+    /// 
+    /// 
+    /// 
+    /// ## Example Usage - Resource Manager Lien
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Organizations.Project("project", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "staging-project",
+    ///         });
+    ///         var lien = new Gcp.ResourceManager.Lien("lien", new Gcp.ResourceManager.LienArgs
+    ///         {
+    ///             Origin = "machine-readable-explanation",
+    ///             Parent = project.Number.Apply(number =&gt; $"projects/{number}"),
+    ///             Reason = "This project is an important environment",
+    ///             Restrictions = 
+    ///             {
+    ///                 "resourcemanager.projects.delete",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Lien : Pulumi.CustomResource
     {

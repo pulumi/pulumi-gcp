@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.gameservices.GameServerDeployment("default", {
+ * const _default = new gcp.gameservices.GameServerDeployment("default", {
  *     deploymentId: "tf-test-deployment",
  *     description: "a deployment description",
  * });

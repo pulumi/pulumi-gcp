@@ -20,6 +20,37 @@ namespace Pulumi.Gcp.Folder
     /// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
     ///     Use `pulumi import` and inspect the output to ensure
     ///     your existing members are preserved.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var department1 = new Gcp.Organizations.Folder("department1", new Gcp.Organizations.FolderArgs
+    ///         {
+    ///             DisplayName = "Department 1",
+    ///             Parent = "organizations/1234567",
+    ///         });
+    ///         var admin = new Gcp.Folder.IAMBinding("admin", new Gcp.Folder.IAMBindingArgs
+    ///         {
+    ///             Folder = department1.Name,
+    ///             Role = "roles/editor",
+    ///             Members = 
+    ///             {
+    ///                 "user:alice@gmail.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class IAMBinding : Pulumi.CustomResource
     {

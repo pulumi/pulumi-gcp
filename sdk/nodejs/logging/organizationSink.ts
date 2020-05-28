@@ -22,15 +22,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const log-bucket = new gcp.storage.Bucket("log-bucket", {});
- * const my-sink = new gcp.logging.OrganizationSink("my-sink", {
+ * const logBucket = new gcp.storage.Bucket("log-bucket", {});
+ * const mySink = new gcp.logging.OrganizationSink("my-sink", {
  *     orgId: "123456789",
- *     destination: pulumi.interpolate`storage.googleapis.com/${log-bucket.name}`,
+ *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
  *     filter: "resource.type = gceInstance AND severity >= WARN",
  * });
- * const log-writer = new gcp.projects.IAMMember("log-writer", {
+ * const logWriter = new gcp.projects.IAMMember("log-writer", {
  *     role: "roles/storage.objectCreator",
- *     member: my-sink.writerIdentity,
+ *     member: my_sink.writerIdentity,
  * });
  * ```
  */

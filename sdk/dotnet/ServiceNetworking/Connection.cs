@@ -14,6 +14,40 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
     /// and
     /// [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
+    /// 
+    /// ## Example usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var peeringNetwork = new Gcp.Compute.Network("peeringNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Purpose = "VPC_PEERING",
+    ///             AddressType = "INTERNAL",
+    ///             PrefixLength = 16,
+    ///             Network = peeringNetwork.SelfLink,
+    ///         });
+    ///         var foobar = new Gcp.ServiceNetworking.Connection("foobar", new Gcp.ServiceNetworking.ConnectionArgs
+    ///         {
+    ///             Network = peeringNetwork.SelfLink,
+    ///             Service = "servicenetworking.googleapis.com",
+    ///             ReservedPeeringRanges = 
+    ///             {
+    ///                 privateIpAlloc.Name,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {

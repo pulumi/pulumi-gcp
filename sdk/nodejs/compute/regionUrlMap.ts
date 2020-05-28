@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.compute.RegionHealthCheck("default", {
+ * const _default = new gcp.compute.RegionHealthCheck("default", {
  *     region: "us-central1",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
@@ -30,13 +30,13 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  * });
  * const home = new gcp.compute.RegionBackendService("home", {
  *     region: "us-central1",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  * });
  * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
  *     region: "us-central1",
@@ -74,13 +74,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
+ * const _default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
  * const home = new gcp.compute.RegionBackendService("home", {
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  * });
  * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
@@ -174,13 +174,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
+ * const _default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
  * const home = new gcp.compute.RegionBackendService("home", {
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  * });
  * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
@@ -242,13 +242,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
+ * const _default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
  * const home = new gcp.compute.RegionBackendService("home", {
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  * });
  * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {
@@ -320,13 +320,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
+ * const _default = new gcp.compute.RegionHealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
  * const home = new gcp.compute.RegionBackendService("home", {
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  * });
  * const regionurlmap = new gcp.compute.RegionUrlMap("regionurlmap", {

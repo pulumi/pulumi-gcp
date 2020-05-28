@@ -21,6 +21,41 @@ namespace Pulumi.Gcp.Diagflow
     /// * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects/agent)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+    /// 
+    /// ## Example Usage - Dialogflow Agent Full
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var fullAgent = new Gcp.Diagflow.Agent("fullAgent", new Gcp.Diagflow.AgentArgs
+    ///         {
+    ///             ApiVersion = "API_VERSION_V2_BETA_1",
+    ///             AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///             ClassificationThreshold = 0.3,
+    ///             DefaultLanguageCode = "en",
+    ///             Description = "Example description.",
+    ///             DisplayName = "dialogflow-agent",
+    ///             EnableLogging = true,
+    ///             MatchMode = "MATCH_MODE_ML_ONLY",
+    ///             SupportedLanguageCodes = 
+    ///             {
+    ///                 "fr",
+    ///                 "de",
+    ///                 "es",
+    ///             },
+    ///             Tier = "TIER_STANDARD",
+    ///             TimeZone = "America/New_York",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Agent : Pulumi.CustomResource
     {

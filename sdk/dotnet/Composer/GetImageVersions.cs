@@ -15,6 +15,35 @@ namespace Pulumi.Gcp.Composer
         /// Provides access to available Cloud Composer versions in a region for a given project.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var all = Output.Create(Gcp.Composer.GetImageVersions.InvokeAsync());
+        ///         var test = new Gcp.Composer.Environment("test", new Gcp.Composer.EnvironmentArgs
+        ///         {
+        ///             Region = "us-central1",
+        ///             Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
+        ///             {
+        ///                 Software_config = 
+        ///                 {
+        ///                     { "imageVersion", all.Apply(all =&gt; all.ImageVersions[0].ImageVersionId) },
+        ///                 },
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageVersionsResult> InvokeAsync(GetImageVersionsArgs? args = null, InvokeOptions? options = null)

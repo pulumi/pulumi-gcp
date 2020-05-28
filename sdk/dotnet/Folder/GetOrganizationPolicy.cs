@@ -17,6 +17,31 @@ namespace Pulumi.Gcp.Folder
         /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var policy = Output.Create(Gcp.Folder.GetOrganizationPolicy.InvokeAsync(new Gcp.Folder.GetOrganizationPolicyArgs
+        ///         {
+        ///             Folder = "folders/folderid",
+        ///             Constraint = "constraints/compute.trustedImageProjects",
+        ///         }));
+        ///         this.Version = policy.Apply(policy =&gt; policy.Version);
+        ///     }
+        /// 
+        ///     [Output("version")]
+        ///     public Output&lt;string&gt; Version { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrganizationPolicyResult> InvokeAsync(GetOrganizationPolicyArgs args, InvokeOptions? options = null)

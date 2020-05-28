@@ -24,6 +24,32 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
     /// * How-to Guides
     ///     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
+    /// 
+    /// ## Example Usage - Backend Bucket Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var imageBucket = new Gcp.Storage.Bucket("imageBucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             Location = "EU",
+    ///         });
+    ///         var imageBackend = new Gcp.Compute.BackendBucket("imageBackend", new Gcp.Compute.BackendBucketArgs
+    ///         {
+    ///             Description = "Contains beautiful images",
+    ///             BucketName = imageBucket.Name,
+    ///             EnableCdn = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class BackendBucket : Pulumi.CustomResource
     {

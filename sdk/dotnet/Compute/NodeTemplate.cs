@@ -20,6 +20,31 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
     /// * How-to Guides
     ///     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+    /// 
+    /// ## Example Usage - Node Template Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var central1a = Output.Create(Gcp.Compute.GetNodeTypes.InvokeAsync(new Gcp.Compute.GetNodeTypesArgs
+    ///         {
+    ///             Zone = "us-central1-a",
+    ///         }));
+    ///         var template = new Gcp.Compute.NodeTemplate("template", new Gcp.Compute.NodeTemplateArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             NodeType = central1a.Apply(central1a =&gt; central1a.Names[0]),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NodeTemplate : Pulumi.CustomResource
     {

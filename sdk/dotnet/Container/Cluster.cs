@@ -17,6 +17,56 @@ namespace Pulumi.Gcp.Container
     /// &gt; **Note:** All arguments and attributes, including basic auth username and
     /// passwords as well as certificate outputs will be stored in the raw state as
     /// plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+    /// 
+    /// ## Example Usage - with the default node pool
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
+    ///         {
+    ///             InitialNodeCount = 3,
+    ///             Location = "us-central1-a",
+    ///             MasterAuth = new Gcp.Container.Inputs.ClusterMasterAuthArgs
+    ///             {
+    ///                 ClientCertificateConfig = new Gcp.Container.Inputs.ClusterMasterAuthClientCertificateConfigArgs
+    ///                 {
+    ///                     IssueClientCertificate = false,
+    ///                 },
+    ///                 Password = "",
+    ///                 Username = "",
+    ///             },
+    ///             NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///             {
+    ///                 Labels = 
+    ///                 {
+    ///                     { "foo", "bar" },
+    ///                 },
+    ///                 Metadata = 
+    ///                 {
+    ///                     { "disable-legacy-endpoints", "true" },
+    ///                 },
+    ///                 OauthScopes = 
+    ///                 {
+    ///                     "https://www.googleapis.com/auth/logging.write",
+    ///                     "https://www.googleapis.com/auth/monitoring",
+    ///                 },
+    ///                 Tags = 
+    ///                 {
+    ///                     "foo",
+    ///                     "bar",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

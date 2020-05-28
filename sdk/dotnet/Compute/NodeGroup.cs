@@ -23,6 +23,38 @@ namespace Pulumi.Gcp.Compute
     /// number of nodes in a node group and changes to node group size either
     /// through provider config or through external changes will cause
     /// the provider to delete and recreate the node group.
+    /// 
+    /// ## Example Usage - Node Group Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var central1a = Output.Create(Gcp.Compute.GetNodeTypes.InvokeAsync(new Gcp.Compute.GetNodeTypesArgs
+    ///         {
+    ///             Zone = "us-central1-a",
+    ///         }));
+    ///         var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new Gcp.Compute.NodeTemplateArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             NodeType = central1a.Apply(central1a =&gt; central1a.Names[0]),
+    ///         });
+    ///         var nodes = new Gcp.Compute.NodeGroup("nodes", new Gcp.Compute.NodeGroupArgs
+    ///         {
+    ///             Zone = "us-central1-a",
+    ///             Description = "example gcp.compute.NodeGroup for the Google Provider",
+    ///             Size = 1,
+    ///             NodeTemplate = soletenant_tmpl.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class NodeGroup : Pulumi.CustomResource
     {

@@ -27,6 +27,30 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// &gt; **Warning:** All arguments including `secret` will be stored in the raw
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+    /// 
+    /// ## Example Usage - Storage Hmac Key
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "my-svc-acc",
+    ///         });
+    ///         var key = new Gcp.Storage.HmacKey("key", new Gcp.Storage.HmacKeyArgs
+    ///         {
+    ///             ServiceAccountEmail = serviceAccount.Email,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class HmacKey : Pulumi.CustomResource
     {

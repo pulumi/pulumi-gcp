@@ -11,6 +11,32 @@ namespace Pulumi.Gcp.ServiceAccount
 {
     /// <summary>
     /// Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
+    /// 
+    /// 
+    /// ## Example Usage, creating a new Key Pair
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myaccount = new Gcp.ServiceAccount.Account("myaccount", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "myaccount",
+    ///             DisplayName = "My Service Account",
+    ///         });
+    ///         var mykey = new Gcp.ServiceAccount.Key("mykey", new Gcp.ServiceAccount.KeyArgs
+    ///         {
+    ///             ServiceAccountId = myaccount.Name,
+    ///             PublicKeyType = "TYPE_X509_PEM_FILE",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Key : Pulumi.CustomResource
     {

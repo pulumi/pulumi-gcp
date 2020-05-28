@@ -18,6 +18,25 @@ namespace Pulumi.Gcp.SourceRepo
     /// * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/source-repositories/)
+    /// 
+    /// ## Example Usage - Sourcerepo Repository Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var my_repo = new Gcp.SourceRepo.Repository("my-repo", new Gcp.SourceRepo.RepositoryArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Repository : Pulumi.CustomResource
     {

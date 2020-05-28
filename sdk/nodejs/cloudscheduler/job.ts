@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  *         httpMethod: "GET",
  *         uri: "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
  *         oauth_token: {
- *             serviceAccountEmail: default.then(_default => _default.email),
+ *             serviceAccountEmail: _default.then(_default => _default.email),
  *         },
  *     },
  * });
@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  *         httpMethod: "GET",
  *         uri: "https://example.com/ping",
  *         oidc_token: {
- *             serviceAccountEmail: default.then(_default => _default.email),
+ *             serviceAccountEmail: _default.then(_default => _default.email),
  *         },
  *     },
  * });

@@ -17,6 +17,31 @@ namespace Pulumi.Gcp.Projects
         /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var policy = Output.Create(Gcp.Projects.GetOrganizationPolicy.InvokeAsync(new Gcp.Projects.GetOrganizationPolicyArgs
+        ///         {
+        ///             Project = "project-id",
+        ///             Constraint = "constraints/serviceuser.services",
+        ///         }));
+        ///         this.Version = policy.Apply(policy =&gt; policy.Version);
+        ///     }
+        /// 
+        ///     [Output("version")]
+        ///     public Output&lt;string&gt; Version { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetOrganizationPolicyResult> InvokeAsync(GetOrganizationPolicyArgs args, InvokeOptions? options = null)

@@ -19,6 +19,30 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Example picture stored within a folder.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var picture = Output.Create(Gcp.Storage.GetBucketObject.InvokeAsync(new Gcp.Storage.GetBucketObjectArgs
+        ///         {
+        ///             Bucket = "image-store",
+        ///             Name = "folder/butterfly01.jpg",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetBucketObjectResult> InvokeAsync(GetBucketObjectArgs? args = null, InvokeOptions? options = null)

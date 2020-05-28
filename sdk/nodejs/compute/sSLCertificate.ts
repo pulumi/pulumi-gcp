@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * from "fs";
  *
- * const default = new gcp.compute.SSLCertificate("default", {
+ * const _default = new gcp.compute.SSLCertificate("default", {
  *     namePrefix: "my-certificate-",
  *     description: "a description",
  *     privateKey: fs.readFileSync("path/to/private.key"),

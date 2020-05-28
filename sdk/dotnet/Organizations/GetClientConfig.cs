@@ -15,6 +15,27 @@ namespace Pulumi.Gcp.Organizations
         /// Use this data source to access the configuration of the Google Cloud provider.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var current = Output.Create(Gcp.Organizations.GetClientConfig.InvokeAsync());
+        ///         this.Project = current.Apply(current =&gt; current.Project);
+        ///     }
+        /// 
+        ///     [Output("project")]
+        ///     public Output&lt;string&gt; Project { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)

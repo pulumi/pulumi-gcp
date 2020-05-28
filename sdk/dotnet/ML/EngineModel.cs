@@ -14,6 +14,55 @@ namespace Pulumi.Gcp.ML
     /// 
     /// A model can have multiple versions, each of which is a deployed, trained model
     /// ready to receive prediction requests. The model itself is just a container.
+    /// 
+    /// 
+    /// 
+    /// ## Example Usage - Ml Model Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.ML.EngineModel("default", new Gcp.ML.EngineModelArgs
+    ///         {
+    ///             Description = "My model",
+    ///             Regions = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Example Usage - Ml Model Full
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.ML.EngineModel("default", new Gcp.ML.EngineModelArgs
+    ///         {
+    ///             Description = "My model",
+    ///             Labels = 
+    ///             {
+    ///                 { "my_model", "foo" },
+    ///             },
+    ///             OnlinePredictionConsoleLogging = true,
+    ///             OnlinePredictionLogging = true,
+    ///             Regions = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class EngineModel : Pulumi.CustomResource
     {

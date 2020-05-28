@@ -39,6 +39,84 @@ namespace Pulumi.Gcp.Sql
     /// default 'root'@'%' user with no password. This user will be deleted by the provider on
     /// instance creation. You should use `gcp.sql.User` to define a custom user with
     /// a restricted host and strong password.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### SQL Second Generation Instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var master = new Gcp.Sql.DatabaseInstance("master", new Gcp.Sql.DatabaseInstanceArgs
+    ///         {
+    ///             DatabaseVersion = "POSTGRES_11",
+    ///             Region = "us-central1",
+    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///             {
+    ///                 Tier = "db-f1-micro",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### Private IP Instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var privateNetwork = new Gcp.Compute.Network("privateNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         var privateIpAddress = new Gcp.Compute.GlobalAddress("privateIpAddress", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Purpose = "VPC_PEERING",
+    ///             AddressType = "INTERNAL",
+    ///             PrefixLength = 16,
+    ///             Network = privateNetwork.SelfLink,
+    ///         });
+    ///         var privateVpcConnection = new Gcp.ServiceNetworking.Connection("privateVpcConnection", new Gcp.ServiceNetworking.ConnectionArgs
+    ///         {
+    ///             Network = privateNetwork.SelfLink,
+    ///             Service = "servicenetworking.googleapis.com",
+    ///             ReservedPeeringRanges = 
+    ///             {
+    ///                 privateIpAddress.Name,
+    ///             },
+    ///         });
+    ///         var dbNameSuffix = new Random.RandomId("dbNameSuffix", new Random.RandomIdArgs
+    ///         {
+    ///             ByteLength = 4,
+    ///         });
+    ///         var instance = new Gcp.Sql.DatabaseInstance("instance", new Gcp.Sql.DatabaseInstanceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///             {
+    ///                 Tier = "db-f1-micro",
+    ///                 Ip_configuration = 
+    ///                 {
+    ///                     { "ipv4Enabled", false },
+    ///                     { "privateNetwork", privateNetwork.SelfLink },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DatabaseInstance : Pulumi.CustomResource
     {

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const secret-basic = new gcp.secretmanager.Secret("secret-basic", {
+ * const secretBasic = new gcp.secretmanager.Secret("secret-basic", {
  *     secretId: "secret-version",
  *     labels: {
  *         label: "my-label",
@@ -28,8 +28,8 @@ import * as utilities from "../utilities";
  *         automatic: true,
  *     },
  * });
- * const secret-version-basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {
- *     secret: secret-basic.id,
+ * const secretVersionBasic = new gcp.secretmanager.SecretVersion("secret-version-basic", {
+ *     secret: secret_basic.id,
  *     secretData: "secret-data",
  * });
  * ```

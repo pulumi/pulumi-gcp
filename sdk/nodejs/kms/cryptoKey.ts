@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
- * const example-key = new gcp.kms.CryptoKey("example-key", {
+ * const exampleKey = new gcp.kms.CryptoKey("example-key", {
  *     keyRing: keyring.id,
  *     rotationPeriod: "100000s",
  * });
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
- * const example-asymmetric-sign-key = new gcp.kms.CryptoKey("example-asymmetric-sign-key", {
+ * const exampleAsymmetricSignKey = new gcp.kms.CryptoKey("example-asymmetric-sign-key", {
  *     keyRing: keyring.id,
  *     purpose: "ASYMMETRIC_SIGN",
  *     version_template: {

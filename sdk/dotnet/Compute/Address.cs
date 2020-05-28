@@ -31,6 +31,76 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
     ///     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
+    /// 
+    /// ## Example Usage - Address Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ipAddress = new Gcp.Compute.Address("ipAddress", new Gcp.Compute.AddressArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Example Usage - Address With Subnetwork
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.0.0/16",
+    ///             Region = "us-central1",
+    ///             Network = defaultNetwork.Id,
+    ///         });
+    ///         var internalWithSubnetAndAddress = new Gcp.Compute.Address("internalWithSubnetAndAddress", new Gcp.Compute.AddressArgs
+    ///         {
+    ///             Subnetwork = defaultSubnetwork.Id,
+    ///             AddressType = "INTERNAL",
+    ///             Address = "10.0.42.42",
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Example Usage - Address With Gce Endpoint
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var internalWithGceEndpoint = new Gcp.Compute.Address("internalWithGceEndpoint", new Gcp.Compute.AddressArgs
+    ///         {
+    ///             AddressType = "INTERNAL",
+    ///             Purpose = "GCE_ENDPOINT",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Address : Pulumi.CustomResource
     {

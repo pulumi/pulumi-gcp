@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     billingAccount: "00AA00-000AAA-00AA0A",
  * });
  * const basic = new gcp.logging.BillingAccountBucketConfig("basic", {
- *     billingAccount: default.then(_default => _default.billingAccount),
+ *     billingAccount: _default.then(_default => _default.billingAccount),
  *     location: "global",
  *     retentionDays: 30,
  *     bucketId: "_Default",

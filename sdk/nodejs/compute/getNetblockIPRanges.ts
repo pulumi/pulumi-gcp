@@ -30,14 +30,14 @@ import * as utilities from "../utilities";
  * const legacy-hcs = gcp.compute.getNetblockIPRanges({
  *     rangeType: "legacy-health-checkers",
  * });
- * const default = new gcp.compute.Network("default", {});
- * const allow-hcs = new gcp.compute.Firewall("allow-hcs", {
- *     network: default.name,
+ * const _default = new gcp.compute.Network("default", {});
+ * const allowHcs = new gcp.compute.Firewall("allow-hcs", {
+ *     network: _default.name,
  *     allow: [{
  *         protocol: "tcp",
  *         ports: ["80"],
  *     }],
- *     sourceRanges: legacy-hcs.then(legacy_hcs => legacy_hcs.cidrBlocksIpv4s),
+ *     sourceRanges: legacy_hcs.then(legacy_hcs => legacy_hcs.cidrBlocksIpv4s),
  * });
  * ```
  */

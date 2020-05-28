@@ -15,6 +15,28 @@ namespace Pulumi.Gcp.ServiceAccount
     /// &gt; Creation of service accounts is eventually consistent, and that can lead to
     /// errors when you try to apply ACLs to service accounts immediately after
     /// creation.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "service_account_id",
+    ///             DisplayName = "Service Account",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Account : Pulumi.CustomResource
     {

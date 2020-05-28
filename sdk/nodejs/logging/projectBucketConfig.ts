@@ -21,12 +21,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.organizations.Project("default", {
+ * const _default = new gcp.organizations.Project("default", {
  *     projectId: "your-project-id",
  *     orgId: "123456789",
  * });
  * const basic = new gcp.logging.ProjectBucketConfig("basic", {
- *     project: default.name,
+ *     project: _default.name,
  *     location: "global",
  *     retentionDays: 30,
  *     bucketId: "_Default",

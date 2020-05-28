@@ -35,6 +35,33 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// &gt; **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+    /// 
+    /// ## Example Usage - Disk Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.Disk("default", new Gcp.Compute.DiskArgs
+    ///         {
+    ///             Image = "debian-8-jessie-v20170523",
+    ///             Labels = 
+    ///             {
+    ///                 { "environment", "dev" },
+    ///             },
+    ///             PhysicalBlockSizeBytes = 4096,
+    ///             Type = "pd-ssd",
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Disk : Pulumi.CustomResource
     {

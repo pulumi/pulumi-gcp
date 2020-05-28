@@ -21,6 +21,28 @@ namespace Pulumi.Gcp.SecurityCenter
     /// * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1beta1/organizations.sources)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+    /// 
+    /// ## Example Usage - Scc Source Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var customSource = new Gcp.SecurityCenter.Source("customSource", new Gcp.SecurityCenter.SourceArgs
+    ///         {
+    ///             Description = "My custom Cloud Security Command Center Finding Source",
+    ///             DisplayName = "My Source",
+    ///             Organization = "123456789",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Source : Pulumi.CustomResource
     {

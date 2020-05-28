@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.name,
  *     subnetwork: defaultSubnetwork.name,
  * });
- * const route-ilb = new gcp.compute.Route("route-ilb", {
+ * const routeIlb = new gcp.compute.Route("route-ilb", {
  *     destRange: "0.0.0.0/0",
  *     network: defaultNetwork.name,
  *     nextHopIlb: defaultForwardingRule.id,

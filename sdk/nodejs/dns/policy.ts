@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network-1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
- * const network-2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
- * const example-policy = new gcp.dns.Policy("example-policy", {
+ * const network1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const examplePolicy = new gcp.dns.Policy("example-policy", {
  *     enableInboundForwarding: true,
  *     enableLogging: true,
  *     alternative_name_server_config: {
@@ -40,10 +40,10 @@ import * as utilities from "../utilities";
  *     },
  *     networks: [
  *         {
- *             networkUrl: network-1.selfLink,
+ *             networkUrl: network_1.selfLink,
  *         },
  *         {
- *             networkUrl: network-2.selfLink,
+ *             networkUrl: network_2.selfLink,
  *         },
  *     ],
  * });

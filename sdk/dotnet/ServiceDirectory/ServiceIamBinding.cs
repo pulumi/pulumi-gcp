@@ -19,6 +19,82 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// &gt; **Note:** `gcp.servicedirectory.ServiceIamPolicy` **cannot** be used in conjunction with `gcp.servicedirectory.ServiceIamBinding` and `gcp.servicedirectory.ServiceIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.servicedirectory.ServiceIamBinding` resources **can be** used in conjunction with `gcp.servicedirectory.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_service\_directory\_service\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/viewer" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.ServiceDirectory.ServiceIamPolicy("policy", new Gcp.ServiceDirectory.ServiceIamPolicyArgs
+    ///         {
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_service\_directory\_service\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.ServiceDirectory.ServiceIamBinding("binding", new Gcp.ServiceDirectory.ServiceIamBindingArgs
+    ///         {
+    ///             Role = "roles/viewer",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_service\_directory\_service\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.ServiceDirectory.ServiceIamMember("member", new Gcp.ServiceDirectory.ServiceIamMemberArgs
+    ///         {
+    ///             Role = "roles/viewer",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ServiceIamBinding : Pulumi.CustomResource
     {

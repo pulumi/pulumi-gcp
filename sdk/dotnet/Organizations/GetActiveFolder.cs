@@ -15,6 +15,28 @@ namespace Pulumi.Gcp.Organizations
         /// Get an active folder within GCP by `display_name` and `parent`.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var department1 = Output.Create(Gcp.Organizations.GetActiveFolder.InvokeAsync(new Gcp.Organizations.GetActiveFolderArgs
+        ///         {
+        ///             DisplayName = "Department 1",
+        ///             Parent = "organizations/1234567",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetActiveFolderResult> InvokeAsync(GetActiveFolderArgs args, InvokeOptions? options = null)

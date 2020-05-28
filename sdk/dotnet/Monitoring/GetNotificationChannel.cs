@@ -24,6 +24,57 @@ namespace Pulumi.Gcp.Monitoring
         /// * How-to Guides
         ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        /// 
+        /// 
+        /// ## Example Usage - Notification Channel Basic
+        /// 
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var basic = Output.Create(Gcp.Monitoring.GetNotificationChannel.InvokeAsync(new Gcp.Monitoring.GetNotificationChannelArgs
+        ///         {
+        ///             DisplayName = "Test Notification Channel",
+        ///         }));
+        ///         var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new Gcp.Monitoring.AlertPolicyArgs
+        ///         {
+        ///             DisplayName = "My Alert Policy",
+        ///             NotificationChannels = 
+        ///             {
+        ///                 basic.Apply(basic =&gt; basic.Name),
+        ///             },
+        ///             Combiner = "OR",
+        ///             Conditions = 
+        ///             {
+        ///                 new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+        ///                 {
+        ///                     DisplayName = "test condition",
+        ///                     Condition_threshold = 
+        ///                     {
+        ///                         { "filter", "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"" },
+        ///                         { "duration", "60s" },
+        ///                         { "comparison", "COMPARISON_GT" },
+        ///                         { "aggregations", 
+        ///                         {
+        ///                             
+        ///                             {
+        ///                                 { "alignmentPeriod", "60s" },
+        ///                                 { "perSeriesAligner", "ALIGN_RATE" },
+        ///                             },
+        ///                         } },
+        ///                     },
+        ///                 },
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
         /// </summary>
         public static Task<GetNotificationChannelResult> InvokeAsync(GetNotificationChannelArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? new GetNotificationChannelArgs(), options.WithVersion());

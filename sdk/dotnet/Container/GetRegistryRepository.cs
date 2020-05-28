@@ -17,6 +17,27 @@ namespace Pulumi.Gcp.Container
         /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Gcp.Container.GetRegistryRepository.InvokeAsync());
+        ///         this.GcrLocation = foo.Apply(foo =&gt; foo.RepositoryUrl);
+        ///     }
+        /// 
+        ///     [Output("gcrLocation")]
+        ///     public Output&lt;string&gt; GcrLocation { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryRepositoryResult> InvokeAsync(GetRegistryRepositoryArgs? args = null, InvokeOptions? options = null)

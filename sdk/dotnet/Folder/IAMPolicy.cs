@@ -12,6 +12,47 @@ namespace Pulumi.Gcp.Folder
     /// <summary>
     /// Allows creation and management of the IAM policy for an existing Google Cloud
     /// Platform folder.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var department1 = new Gcp.Organizations.Folder("department1", new Gcp.Organizations.FolderArgs
+    ///         {
+    ///             DisplayName = "Department 1",
+    ///             Parent = "organizations/1234567",
+    ///         });
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/editor" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var folderAdminPolicy = new Gcp.Folder.IAMPolicy("folderAdminPolicy", new Gcp.Folder.IAMPolicyArgs
+    ///         {
+    ///             Folder = department1.Name,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class IAMPolicy : Pulumi.CustomResource
     {

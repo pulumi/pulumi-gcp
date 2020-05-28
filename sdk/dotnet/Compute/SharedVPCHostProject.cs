@@ -17,6 +17,40 @@ namespace Pulumi.Gcp.Compute
     /// For more information, see,
     /// [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
     /// where the Shared VPC feature is referred to by its former name "XPN".
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // A host project provides network resources to associated service projects.
+    ///         var host = new Gcp.Compute.SharedVPCHostProject("host", new Gcp.Compute.SharedVPCHostProjectArgs
+    ///         {
+    ///             Project = "host-project-id",
+    ///         });
+    ///         // A service project gains access to network resources provided by its
+    ///         // associated host project.
+    ///         var service1 = new Gcp.Compute.SharedVPCServiceProject("service1", new Gcp.Compute.SharedVPCServiceProjectArgs
+    ///         {
+    ///             HostProject = host.Project,
+    ///             ServiceProject = "service-project-id-1",
+    ///         });
+    ///         var service2 = new Gcp.Compute.SharedVPCServiceProject("service2", new Gcp.Compute.SharedVPCServiceProjectArgs
+    ///         {
+    ///             HostProject = host.Project,
+    ///             ServiceProject = "service-project-id-2",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SharedVPCHostProject : Pulumi.CustomResource
     {

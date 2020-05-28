@@ -22,6 +22,88 @@ namespace Pulumi.Gcp.Spanner
     /// &gt; **Note:** `gcp.spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIAMBinding` and `gcp.spanner.DatabaseIAMMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_spanner\_database\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/editor" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var database = new Gcp.Spanner.DatabaseIAMPolicy("database", new Gcp.Spanner.DatabaseIAMPolicyArgs
+    ///         {
+    ///             Instance = "your-instance-name",
+    ///             Database = "your-database-name",
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_spanner\_database\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var database = new Gcp.Spanner.DatabaseIAMBinding("database", new Gcp.Spanner.DatabaseIAMBindingArgs
+    ///         {
+    ///             Database = "your-database-name",
+    ///             Instance = "your-instance-name",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Role = "roles/compute.networkUser",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_spanner\_database\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var database = new Gcp.Spanner.DatabaseIAMMember("database", new Gcp.Spanner.DatabaseIAMMemberArgs
+    ///         {
+    ///             Database = "your-database-name",
+    ///             Instance = "your-instance-name",
+    ///             Member = "user:jane@example.com",
+    ///             Role = "roles/compute.networkUser",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DatabaseIAMMember : Pulumi.CustomResource
     {

@@ -20,6 +20,30 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRules)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
+    /// 
+    /// ## Example Usage - Forwarding Rule Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultTargetPool = new Gcp.Compute.TargetPool("defaultTargetPool", new Gcp.Compute.TargetPoolArgs
+    ///         {
+    ///         });
+    ///         var defaultForwardingRule = new Gcp.Compute.ForwardingRule("defaultForwardingRule", new Gcp.Compute.ForwardingRuleArgs
+    ///         {
+    ///             Target = defaultTargetPool.Id,
+    ///             PortRange = "80",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ForwardingRule : Pulumi.CustomResource
     {

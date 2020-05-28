@@ -21,12 +21,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.organizations.Folder("default", {
+ * const _default = new gcp.organizations.Folder("default", {
  *     displayName: "some-folder-name",
  *     parent: "organizations/123456789",
  * });
  * const basic = new gcp.logging.FolderBucketConfig("basic", {
- *     folder: default.name,
+ *     folder: _default.name,
  *     location: "global",
  *     retentionDays: 30,
  *     bucketId: "_Default",

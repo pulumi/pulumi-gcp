@@ -14,6 +14,32 @@ namespace Pulumi.Gcp.Organizations
     /// [the official
     /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
     /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/setOrgPolicy).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var serialPortPolicy = new Gcp.Organizations.Policy("serialPortPolicy", new Gcp.Organizations.PolicyArgs
+    ///         {
+    ///             BooleanPolicy = new Gcp.Organizations.Inputs.PolicyBooleanPolicyArgs
+    ///             {
+    ///                 Enforced = true,
+    ///             },
+    ///             Constraint = "compute.disableSerialPortAccess",
+    ///             OrgId = "123456789",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Policy : Pulumi.CustomResource
     {

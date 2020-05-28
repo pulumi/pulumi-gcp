@@ -21,14 +21,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * from "fs";
  *
- * const default-devicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
- * const default-telemetry = new gcp.pubsub.Topic("default-telemetry", {});
- * const default-registry = new gcp.iot.Registry("default-registry", {
+ * const defaultDevicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
+ * const defaultTelemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const defaultRegistry = new gcp.iot.Registry("default-registry", {
  *     event_notification_configs: [{
- *         pubsubTopicName: default-telemetry.id,
+ *         pubsubTopicName: default_telemetry.id,
  *     }],
  *     stateNotificationConfig: {
- *         pubsub_topic_name: default-devicestatus.id,
+ *         pubsub_topic_name: default_devicestatus.id,
  *     },
  *     httpConfig: {
  *         http_enabled_state: "HTTP_ENABLED",

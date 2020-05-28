@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     network: defaultNetwork.id,
  * });
- * const endpoint-instance = new gcp.compute.Instance("endpoint-instance", {
+ * const endpointInstance = new gcp.compute.Instance("endpoint-instance", {
  *     machineType: "n1-standard-1",
  *     boot_disk: {
  *         initialize_params: {
@@ -49,11 +49,11 @@ import * as utilities from "../utilities";
  *         access_config: [{}],
  *     }],
  * });
- * const default-endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
+ * const defaultEndpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
  *     networkEndpointGroup: google_compute_network_endpoint_group.neg.name,
- *     instance: endpoint-instance.name,
+ *     instance: endpoint_instance.name,
  *     port: google_compute_network_endpoint_group.neg.default_port,
- *     ipAddress: endpoint-instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+ *     ipAddress: endpoint_instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
  * });
  * const group = new gcp.compute.NetworkEndpointGroup("group", {
  *     network: defaultNetwork.id,
