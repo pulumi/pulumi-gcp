@@ -18,6 +18,36 @@ namespace Pulumi.Gcp.CloudBuild
     /// * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
     /// * How-to Guides
     ///     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+    /// 
+    /// ## Example Usage - Cloudbuild Trigger Filename
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var filename_trigger = new Gcp.CloudBuild.Trigger("filename-trigger", new Gcp.CloudBuild.TriggerArgs
+    ///         {
+    ///             Filename = "cloudbuild.yaml",
+    ///             Substitutions = 
+    ///             {
+    ///                 { "_BAZ", "qux" },
+    ///                 { "_FOO", "bar" },
+    ///             },
+    ///             TriggerTemplate = new Gcp.CloudBuild.Inputs.TriggerTriggerTemplateArgs
+    ///             {
+    ///                 BranchName = "master",
+    ///                 RepoName = "my-repo",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Trigger : Pulumi.CustomResource
     {

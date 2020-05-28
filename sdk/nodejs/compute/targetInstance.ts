@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     family: "debian-9",
  *     project: "debian-cloud",
  * });
- * const target-vm = new gcp.compute.Instance("target-vm", {
+ * const targetVm = new gcp.compute.Instance("target-vm", {
  *     machineType: "n1-standard-1",
  *     zone: "us-central1-a",
  *     boot_disk: {
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *         network: "default",
  *     }],
  * });
- * const default = new gcp.compute.TargetInstance("default", {instance: target-vm.id});
+ * const _default = new gcp.compute.TargetInstance("default", {instance: target_vm.id});
  * ```
  */
 export class TargetInstance extends pulumi.CustomResource {

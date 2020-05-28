@@ -22,12 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-folder = new gcp.organizations.Folder("my-folder", {
+ * const myFolder = new gcp.organizations.Folder("my-folder", {
  *     displayName: "My folder",
  *     parent: "organizations/123456",
  * });
- * const my-exclusion = new gcp.logging.FolderExclusion("my-exclusion", {
- *     folder: my-folder.name,
+ * const myExclusion = new gcp.logging.FolderExclusion("my-exclusion", {
+ *     folder: my_folder.name,
  *     description: "Exclude GCE instance debug logs",
  *     filter: "resource.type = gceInstance AND severity <= DEBUG",
  * });

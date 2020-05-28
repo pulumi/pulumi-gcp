@@ -40,9 +40,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network-1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
- * const network-2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
- * const private-zone = new gcp.dns.ManagedZone("private-zone", {
+ * const network1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const privateZone = new gcp.dns.ManagedZone("private-zone", {
  *     dnsName: "private.example.com.",
  *     description: "Example private DNS zone",
  *     labels: {
@@ -52,10 +52,10 @@ import * as utilities from "../utilities";
  *     private_visibility_config: {
  *         networks: [
  *             {
- *                 networkUrl: network-1.selfLink,
+ *                 networkUrl: network_1.selfLink,
  *             },
  *             {
- *                 networkUrl: network-2.selfLink,
+ *                 networkUrl: network_2.selfLink,
  *             },
  *         ],
  *     },
@@ -68,9 +68,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network-1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
- * const network-2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
- * const private-zone = new gcp.dns.ManagedZone("private-zone", {
+ * const network1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const privateZone = new gcp.dns.ManagedZone("private-zone", {
  *     dnsName: "private.example.com.",
  *     description: "Example private DNS zone",
  *     labels: {
@@ -80,10 +80,10 @@ import * as utilities from "../utilities";
  *     private_visibility_config: {
  *         networks: [
  *             {
- *                 networkUrl: network-1.selfLink,
+ *                 networkUrl: network_1.selfLink,
  *             },
  *             {
- *                 networkUrl: network-2.selfLink,
+ *                 networkUrl: network_2.selfLink,
  *             },
  *         ],
  *     },
@@ -106,20 +106,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network-source = new gcp.compute.Network("network-source", {autoCreateSubnetworks: false});
- * const network-target = new gcp.compute.Network("network-target", {autoCreateSubnetworks: false});
- * const peering-zone = new gcp.dns.ManagedZone("peering-zone", {
+ * const networkSource = new gcp.compute.Network("network-source", {autoCreateSubnetworks: false});
+ * const networkTarget = new gcp.compute.Network("network-target", {autoCreateSubnetworks: false});
+ * const peeringZone = new gcp.dns.ManagedZone("peering-zone", {
  *     dnsName: "peering.example.com.",
  *     description: "Example private DNS peering zone",
  *     visibility: "private",
  *     private_visibility_config: {
  *         networks: [{
- *             networkUrl: network-source.selfLink,
+ *             networkUrl: network_source.selfLink,
  *         }],
  *     },
  *     peering_config: {
  *         target_network: {
- *             networkUrl: network-target.selfLink,
+ *             networkUrl: network_target.selfLink,
  *         },
  *     },
  * });
@@ -135,7 +135,7 @@ import * as utilities from "../utilities";
  *     namespaceId: "example",
  *     location: "us-central1",
  * });
- * const sd-zone = new gcp.dns.ManagedZone("sd-zone", {
+ * const sdZone = new gcp.dns.ManagedZone("sd-zone", {
  *     dnsName: "services.example.com.",
  *     description: "Example private DNS Service Directory zone",
  *     visibility: "private",

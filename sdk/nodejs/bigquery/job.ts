@@ -133,14 +133,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const source-oneDataset = new gcp.bigquery.Dataset("source-oneDataset", {
+ * const source_oneDataset = new gcp.bigquery.Dataset("source-oneDataset", {
  *     datasetId: "jobExtractDataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
  * });
- * const source-oneTable = new gcp.bigquery.Table("source-oneTable", {
- *     datasetId: source-oneDataset.datasetId,
+ * const source_oneTable = new gcp.bigquery.Table("source-oneTable", {
+ *     datasetId: source_oneDataset.datasetId,
  *     tableId: "jobExtractTable",
  *     schema: `[
  *   {
@@ -167,9 +167,9 @@ import * as utilities from "../utilities";
  *     extract: {
  *         destinationUris: [pulumi.interpolate`${dest.url}/extract`],
  *         source_table: {
- *             projectId: source-oneTable.project,
- *             datasetId: source-oneTable.datasetId,
- *             tableId: source-oneTable.tableId,
+ *             projectId: source_oneTable.project,
+ *             datasetId: source_oneTable.datasetId,
+ *             tableId: source_oneTable.tableId,
  *         },
  *         destinationFormat: "NEWLINE_DELIMITED_JSON",
  *         compression: "GZIP",

@@ -19,6 +19,90 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// &gt; **Note:** `gcp.runtimeconfig.ConfigIamPolicy` **cannot** be used in conjunction with `gcp.runtimeconfig.ConfigIamBinding` and `gcp.runtimeconfig.ConfigIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `gcp.runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// 
+    /// 
+    /// ## google\_runtimeconfig\_config\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/viewer" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.RuntimeConfig.ConfigIamPolicy("policy", new Gcp.RuntimeConfig.ConfigIamPolicyArgs
+    ///         {
+    ///             Project = google_runtimeconfig_config.Config.Project,
+    ///             Config = google_runtimeconfig_config.Config.Name,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_runtimeconfig\_config\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.RuntimeConfig.ConfigIamBinding("binding", new Gcp.RuntimeConfig.ConfigIamBindingArgs
+    ///         {
+    ///             Project = google_runtimeconfig_config.Config.Project,
+    ///             Config = google_runtimeconfig_config.Config.Name,
+    ///             Role = "roles/viewer",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_runtimeconfig\_config\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.RuntimeConfig.ConfigIamMember("member", new Gcp.RuntimeConfig.ConfigIamMemberArgs
+    ///         {
+    ///             Project = google_runtimeconfig_config.Config.Project,
+    ///             Config = google_runtimeconfig_config.Config.Name,
+    ///             Role = "roles/viewer",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ConfigIamMember : Pulumi.CustomResource
     {

@@ -17,6 +17,65 @@ namespace Pulumi.Gcp.Compute
     /// To get more information about VpnGateway, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
+    /// 
+    /// ## Example Usage - Target Vpn Gateway Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network1 = new Gcp.Compute.Network("network1", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         var targetGateway = new Gcp.Compute.VPNGateway("targetGateway", new Gcp.Compute.VPNGatewayArgs
+    ///         {
+    ///             Network = network1.Id,
+    ///         });
+    ///         var vpnStaticIp = new Gcp.Compute.Address("vpnStaticIp", new Gcp.Compute.AddressArgs
+    ///         {
+    ///         });
+    ///         var frEsp = new Gcp.Compute.ForwardingRule("frEsp", new Gcp.Compute.ForwardingRuleArgs
+    ///         {
+    ///             IpProtocol = "ESP",
+    ///             IpAddress = vpnStaticIp.IPAddress,
+    ///             Target = targetGateway.Id,
+    ///         });
+    ///         var frUdp500 = new Gcp.Compute.ForwardingRule("frUdp500", new Gcp.Compute.ForwardingRuleArgs
+    ///         {
+    ///             IpProtocol = "UDP",
+    ///             PortRange = "500",
+    ///             IpAddress = vpnStaticIp.IPAddress,
+    ///             Target = targetGateway.Id,
+    ///         });
+    ///         var frUdp4500 = new Gcp.Compute.ForwardingRule("frUdp4500", new Gcp.Compute.ForwardingRuleArgs
+    ///         {
+    ///             IpProtocol = "UDP",
+    ///             PortRange = "4500",
+    ///             IpAddress = vpnStaticIp.IPAddress,
+    ///             Target = targetGateway.Id,
+    ///         });
+    ///         var tunnel1 = new Gcp.Compute.VPNTunnel("tunnel1", new Gcp.Compute.VPNTunnelArgs
+    ///         {
+    ///             PeerIp = "15.0.0.120",
+    ///             SharedSecret = "a secret message",
+    ///             TargetVpnGateway = targetGateway.Id,
+    ///         });
+    ///         var route1 = new Gcp.Compute.Route("route1", new Gcp.Compute.RouteArgs
+    ///         {
+    ///             Network = network1.Name,
+    ///             DestRange = "15.0.0.0/24",
+    ///             Priority = 1000,
+    ///             NextHopVpnTunnel = tunnel1.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class VPNGateway : Pulumi.CustomResource
     {

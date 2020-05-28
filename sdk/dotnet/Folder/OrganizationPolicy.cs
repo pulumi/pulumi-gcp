@@ -14,6 +14,32 @@ namespace Pulumi.Gcp.Folder
     /// [the official
     /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
     /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var serialPortPolicy = new Gcp.Folder.OrganizationPolicy("serialPortPolicy", new Gcp.Folder.OrganizationPolicyArgs
+    ///         {
+    ///             BooleanPolicy = new Gcp.Folder.Inputs.OrganizationPolicyBooleanPolicyArgs
+    ///             {
+    ///                 Enforced = true,
+    ///             },
+    ///             Constraint = "compute.disableSerialPortAccess",
+    ///             Folder = "folders/123456789",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class OrganizationPolicy : Pulumi.CustomResource
     {

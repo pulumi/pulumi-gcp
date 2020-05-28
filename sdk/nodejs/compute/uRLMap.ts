@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.compute.HttpHealthCheck("default", {
+ * const _default = new gcp.compute.HttpHealthCheck("default", {
  *     requestPath: "/",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
@@ -31,13 +31,13 @@ import * as utilities from "../utilities";
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  * });
  * const home = new gcp.compute.BackendService("home", {
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  * });
  * const staticBucket = new gcp.storage.Bucket("staticBucket", {location: "US"});
  * const staticBackendBucket = new gcp.compute.BackendBucket("staticBackendBucket", {
@@ -95,14 +95,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.compute.HealthCheck("default", {http_health_check: {
+ * const _default = new gcp.compute.HealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
  * const home = new gcp.compute.BackendService("home", {
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
  * });
  * const urlmap = new gcp.compute.URLMap("urlmap", {
@@ -174,14 +174,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.compute.HealthCheck("default", {http_health_check: {
+ * const _default = new gcp.compute.HealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
  * const home = new gcp.compute.BackendService("home", {
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
  * });
  * const urlmap = new gcp.compute.URLMap("urlmap", {
@@ -224,14 +224,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.compute.HealthCheck("default", {http_health_check: {
+ * const _default = new gcp.compute.HealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
  * const home = new gcp.compute.BackendService("home", {
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
  * });
  * const urlmap = new gcp.compute.URLMap("urlmap", {
@@ -326,14 +326,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.compute.HealthCheck("default", {http_health_check: {
+ * const _default = new gcp.compute.HealthCheck("default", {http_health_check: {
  *     port: 80,
  * }});
  * const home = new gcp.compute.BackendService("home", {
  *     portName: "http",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
  * });
  * const urlmap = new gcp.compute.URLMap("urlmap", {

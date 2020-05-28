@@ -18,6 +18,81 @@ namespace Pulumi.Gcp.PubSub
     /// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
     /// * How-to Guides
     ///     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+    /// 
+    /// ## Example Usage - Pubsub Topic Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.PubSub.Topic("example", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Example Usage - Pubsub Topic Cmek
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var keyRing = new Gcp.Kms.KeyRing("keyRing", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "global",
+    ///         });
+    ///         var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = keyRing.Id,
+    ///         });
+    ///         var example = new Gcp.PubSub.Topic("example", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///             KmsKeyName = cryptoKey.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Example Usage - Pubsub Topic Geo Restricted
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.PubSub.Topic("example", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///             MessageStoragePolicy = new Gcp.PubSub.Inputs.TopicMessageStoragePolicyArgs
+    ///             {
+    ///                 AllowedPersistenceRegions = 
+    ///                 {
+    ///                     "europe-west3",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Topic : Pulumi.CustomResource
     {

@@ -22,6 +22,31 @@ namespace Pulumi.Gcp.Monitoring
     /// * How-to Guides
     ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
     ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+    /// 
+    /// ## Example Usage - Monitoring Service Custom
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var custom = new Gcp.Monitoring.CustomService("custom", new Gcp.Monitoring.CustomServiceArgs
+    ///         {
+    ///             DisplayName = "My Custom Service custom-srv",
+    ///             ServiceId = "custom-srv",
+    ///             Telemetry = new Gcp.Monitoring.Inputs.CustomServiceTelemetryArgs
+    ///             {
+    ///                 ResourceName = "//product.googleapis.com/foo/foo/services/test",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class CustomService : Pulumi.CustomResource
     {

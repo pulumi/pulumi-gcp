@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * from "fs";
  *
- * const default = new gcp.compute.RegionSslCertificate("default", {
+ * const _default = new gcp.compute.RegionSslCertificate("default", {
  *     region: "us-central1",
  *     namePrefix: "my-certificate-",
  *     description: "a description",

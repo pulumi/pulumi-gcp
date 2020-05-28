@@ -221,7 +221,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const health-check-with-logging = new gcp.compute.HealthCheck("health-check-with-logging", {
+ * const healthCheckWithLogging = new gcp.compute.HealthCheck("health-check-with-logging", {
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     tcp_health_check: {

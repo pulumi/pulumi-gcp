@@ -19,6 +19,92 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// &gt; **Note:** `gcp.artifactregistry.RepositoryIamPolicy` **cannot** be used in conjunction with `gcp.artifactregistry.RepositoryIamBinding` and `gcp.artifactregistry.RepositoryIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// 
+    /// ## google\_artifact\_registry\_repository\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/viewer" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.ArtifactRegistry.RepositoryIamPolicy("policy", new Gcp.ArtifactRegistry.RepositoryIamPolicyArgs
+    ///         {
+    ///             Project = google_artifact_registry_repository.My_repo.Project,
+    ///             Location = google_artifact_registry_repository.My_repo.Location,
+    ///             Repository = google_artifact_registry_repository.My_repo.Name,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_artifact\_registry\_repository\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.ArtifactRegistry.RepositoryIamBinding("binding", new Gcp.ArtifactRegistry.RepositoryIamBindingArgs
+    ///         {
+    ///             Project = google_artifact_registry_repository.My_repo.Project,
+    ///             Location = google_artifact_registry_repository.My_repo.Location,
+    ///             Repository = google_artifact_registry_repository.My_repo.Name,
+    ///             Role = "roles/viewer",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_artifact\_registry\_repository\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.ArtifactRegistry.RepositoryIamMember("member", new Gcp.ArtifactRegistry.RepositoryIamMemberArgs
+    ///         {
+    ///             Project = google_artifact_registry_repository.My_repo.Project,
+    ///             Location = google_artifact_registry_repository.My_repo.Location,
+    ///             Repository = google_artifact_registry_repository.My_repo.Name,
+    ///             Role = "roles/viewer",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class RepositoryIamMember : Pulumi.CustomResource
     {

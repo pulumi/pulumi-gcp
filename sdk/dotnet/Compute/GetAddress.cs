@@ -16,6 +16,41 @@ namespace Pulumi.Gcp.Compute
         /// the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myAddress = Output.Create(Gcp.Compute.GetAddress.InvokeAsync(new Gcp.Compute.GetAddressArgs
+        ///         {
+        ///             Name = "foobar",
+        ///         }));
+        ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+        ///         {
+        ///             DnsName = "prod.mydomain.com.",
+        ///         });
+        ///         var frontend = new Gcp.Dns.RecordSet("frontend", new Gcp.Dns.RecordSetArgs
+        ///         {
+        ///             Type = "A",
+        ///             Ttl = 300,
+        ///             ManagedZone = prod.Name,
+        ///             Rrdatas = 
+        ///             {
+        ///                 myAddress.Apply(myAddress =&gt; myAddress.Address),
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressResult> InvokeAsync(GetAddressArgs args, InvokeOptions? options = null)

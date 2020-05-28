@@ -18,6 +18,30 @@ namespace Pulumi.Gcp.Tpu
     /// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/tpu/docs/)
+    /// 
+    /// ## Example Usage - TPU Node Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
+    ///         var tpu = new Gcp.Tpu.Node("tpu", new Gcp.Tpu.NodeArgs
+    ///         {
+    ///             Zone = "us-central1-b",
+    ///             AcceleratorType = "v3-8",
+    ///             TensorflowVersion = available.Apply(available =&gt; available.Versions[0]),
+    ///             CidrBlock = "10.2.0.0/29",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Node : Pulumi.CustomResource
     {

@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),
  * });
- * const function = new gcp.cloudfunctions.Function("function", {
+ * const _function = new gcp.cloudfunctions.Function("function", {
  *     description: "My function",
  *     runtime: "nodejs10",
  *     availableMemoryMb: 128,
@@ -40,9 +40,9 @@ import * as utilities from "../utilities";
  * });
  * // IAM entry for all users to invoke the function
  * const invoker = new gcp.cloudfunctions.FunctionIamMember("invoker", {
- *     project: function.project,
- *     region: function.region,
- *     cloudFunction: function.name,
+ *     project: _function.project,
+ *     region: _function.region,
+ *     cloudFunction: _function.name,
  *     role: "roles/cloudfunctions.invoker",
  *     member: "allUsers",
  * });
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./path/to/zip/file/which/contains/code"),
  * });
- * const function = new gcp.cloudfunctions.Function("function", {
+ * const _function = new gcp.cloudfunctions.Function("function", {
  *     description: "My function",
  *     runtime: "nodejs10",
  *     availableMemoryMb: 128,
@@ -77,9 +77,9 @@ import * as utilities from "../utilities";
  * });
  * // IAM entry for a single user to invoke the function
  * const invoker = new gcp.cloudfunctions.FunctionIamMember("invoker", {
- *     project: function.project,
- *     region: function.region,
- *     cloudFunction: function.name,
+ *     project: _function.project,
+ *     region: _function.region,
+ *     cloudFunction: _function.name,
  *     role: "roles/cloudfunctions.invoker",
  *     member: "user:myFunctionInvoker@example.com",
  * });

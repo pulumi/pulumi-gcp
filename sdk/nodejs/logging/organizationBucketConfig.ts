@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     organization: "123456789",
  * });
  * const basic = new gcp.logging.OrganizationBucketConfig("basic", {
- *     organization: default.then(_default => _default.organization),
+ *     organization: _default.then(_default => _default.organization),
  *     location: "global",
  *     retentionDays: 30,
  *     bucketId: "_Default",

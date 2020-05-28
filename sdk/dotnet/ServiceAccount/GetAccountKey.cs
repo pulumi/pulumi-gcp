@@ -16,6 +16,36 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myaccount = new Gcp.ServiceAccount.Account("myaccount", new Gcp.ServiceAccount.AccountArgs
+        ///         {
+        ///             AccountId = "dev-foo-account",
+        ///         });
+        ///         var mykeyKey = new Gcp.ServiceAccount.Key("mykeyKey", new Gcp.ServiceAccount.KeyArgs
+        ///         {
+        ///             ServiceAccountId = myaccount.Name,
+        ///         });
+        ///         var mykeyAccountKey = mykeyKey.Name.Apply(name =&gt; Gcp.ServiceAccount.GetAccountKey.InvokeAsync(new Gcp.ServiceAccount.GetAccountKeyArgs
+        ///         {
+        ///             Name = name,
+        ///             PublicKeyType = "TYPE_X509_PEM_FILE",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountKeyResult> InvokeAsync(GetAccountKeyArgs args, InvokeOptions? options = null)

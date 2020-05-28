@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     moduleId: "default",
  * });
  * const appengSlo = new gcp.monitoring.Slo("appengSlo", {
- *     service: default.then(_default => _default.serviceId),
+ *     service: _default.then(_default => _default.serviceId),
  *     sloId: "ae-slo",
  *     displayName: "Test SLO for App Engine",
  *     goal: 0.9,

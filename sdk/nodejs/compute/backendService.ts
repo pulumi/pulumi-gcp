@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
  *     port: 80,
  * }});
- * const default = new gcp.compute.BackendService("default", {
+ * const _default = new gcp.compute.BackendService("default", {
  *     healthChecks: [healthCheck.id],
  *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
  *     localityLbPolicy: "ROUND_ROBIN",
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
  *     port: 80,
  * }});
- * const default = new gcp.compute.BackendService("default", {
+ * const _default = new gcp.compute.BackendService("default", {
  *     healthChecks: [healthCheck.id],
  *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
  *     localityLbPolicy: "RING_HASH",

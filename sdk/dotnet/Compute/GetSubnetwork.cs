@@ -15,6 +15,28 @@ namespace Pulumi.Gcp.Compute
         /// Get a subnetwork within GCE from its name and region.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_subnetwork = Output.Create(Gcp.Compute.GetSubnetwork.InvokeAsync(new Gcp.Compute.GetSubnetworkArgs
+        ///         {
+        ///             Name = "default-us-east1",
+        ///             Region = "us-east1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubnetworkResult> InvokeAsync(GetSubnetworkArgs? args = null, InvokeOptions? options = null)

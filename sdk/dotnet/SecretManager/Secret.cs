@@ -15,6 +15,47 @@ namespace Pulumi.Gcp.SecretManager
     /// To get more information about Secret, see:
     /// 
     /// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets)
+    /// 
+    /// ## Example Usage - Secret Config Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new Gcp.SecretManager.SecretArgs
+    ///         {
+    ///             SecretId = "secret",
+    ///             Labels = 
+    ///             {
+    ///                 { "label", "my-label" },
+    ///             },
+    ///             Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///             {
+    ///                 User_managed = 
+    ///                 {
+    ///                     { "replicas", 
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "location", "us-central1" },
+    ///                         },
+    ///                         
+    ///                         {
+    ///                             { "location", "us-east1" },
+    ///                         },
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Secret : Pulumi.CustomResource
     {

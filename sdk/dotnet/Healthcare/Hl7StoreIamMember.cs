@@ -19,6 +19,85 @@ namespace Pulumi.Gcp.Healthcare
     /// &gt; **Note:** `gcp.healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.Hl7StoreIamBinding` and `gcp.healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Binding = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "role", "roles/editor" },
+    ///                     { "members", 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var hl7V2Store = new Gcp.Healthcare.Hl7StoreIamPolicy("hl7V2Store", new Gcp.Healthcare.Hl7StoreIamPolicyArgs
+    ///         {
+    ///             Hl7V2StoreId = "your-hl7-v2-store-id",
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var hl7V2Store = new Gcp.Healthcare.Hl7StoreIamBinding("hl7V2Store", new Gcp.Healthcare.Hl7StoreIamBindingArgs
+    ///         {
+    ///             Hl7V2StoreId = "your-hl7-v2-store-id",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_healthcare\_hl7\_v2\_store\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var hl7V2Store = new Gcp.Healthcare.Hl7StoreIamMember("hl7V2Store", new Gcp.Healthcare.Hl7StoreIamMemberArgs
+    ///         {
+    ///             Hl7V2StoreId = "your-hl7-v2-store-id",
+    ///             Member = "user:jane@example.com",
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Hl7StoreIamMember : Pulumi.CustomResource
     {

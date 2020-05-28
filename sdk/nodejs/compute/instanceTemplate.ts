@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  * });
- * const default = new gcp.compute.InstanceTemplate("default", {
+ * const _default = new gcp.compute.InstanceTemplate("default", {
  *     description: "This template is used to create app server instances.",
  *     tags: [
  *         "foo",

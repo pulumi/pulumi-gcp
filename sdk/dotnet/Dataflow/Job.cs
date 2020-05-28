@@ -14,6 +14,32 @@ namespace Pulumi.Gcp.Dataflow
     /// the official documentation for
     /// [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
     /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bigDataJob = new Gcp.Dataflow.Job("bigDataJob", new Gcp.Dataflow.JobArgs
+    ///         {
+    ///             Parameters = 
+    ///             {
+    ///                 { "baz", "qux" },
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             TempGcsLocation = "gs://my-bucket/tmp_dir",
+    ///             TemplateGcsPath = "gs://my-bucket/templates/template_file",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Note on "destroy" / "apply"
     /// 

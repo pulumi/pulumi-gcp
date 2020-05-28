@@ -25,15 +25,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default-endpoint = new gcp.compute.GlobalNetworkEndpoint("default-endpoint", {
+ * const defaultEndpoint = new gcp.compute.GlobalNetworkEndpoint("default-endpoint", {
  *     globalNetworkEndpointGroup: google_compute_network_endpoint_group.neg.name,
  *     fqdn: "www.example.com",
  *     port: google_compute_network_endpoint_group.neg.default_port,
  *     ipAddress: google_compute_instance["endpoint-instance"].network_interface[0].network_ip,
  * });
- * const default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
+ * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
  * const group = new gcp.compute.GlobalNetworkEndpointGroup("group", {
- *     network: default.id,
+ *     network: _default.id,
  *     defaultPort: "90",
  * });
  * ```

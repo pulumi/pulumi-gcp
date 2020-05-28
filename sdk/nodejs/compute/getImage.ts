@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     project: "debian-cloud",
  * });
  * // ...
- * const default = new gcp.compute.Instance("default", {boot_disk: {
+ * const _default = new gcp.compute.Instance("default", {boot_disk: {
  *     initialize_params: {
  *         image: myImage.then(myImage => myImage.selfLink),
  *     },

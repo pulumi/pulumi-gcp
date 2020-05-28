@@ -32,15 +32,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const test-account = new gcp.serviceAccount.Account("test-account", {
+ * const testAccount = new gcp.serviceAccount.Account("test-account", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",
  * });
  * const topic = new gcp.pubsub.Topic("topic", {});
- * const my-repo = new gcp.sourcerepo.Repository("my-repo", {pubsub_configs: [{
+ * const myRepo = new gcp.sourcerepo.Repository("my-repo", {pubsub_configs: [{
  *     topic: topic.id,
  *     messageFormat: "JSON",
- *     serviceAccountEmail: test-account.email,
+ *     serviceAccountEmail: test_account.email,
  * }]});
  * ```
  */

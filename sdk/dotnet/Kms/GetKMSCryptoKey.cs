@@ -21,6 +21,33 @@ namespace Pulumi.Gcp.Kms
         /// Google Cloud KMS KeyRing.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myKeyRing = Output.Create(Gcp.Kms.GetKMSKeyRing.InvokeAsync(new Gcp.Kms.GetKMSKeyRingArgs
+        ///         {
+        ///             Name = "my-key-ring",
+        ///             Location = "us-central1",
+        ///         }));
+        ///         var myCryptoKey = myKeyRing.Apply(myKeyRing =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKey.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyArgs
+        ///         {
+        ///             Name = "my-crypto-key",
+        ///             KeyRing = myKeyRing.SelfLink,
+        ///         })));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKMSCryptoKeyResult> InvokeAsync(GetKMSCryptoKeyArgs args, InvokeOptions? options = null)

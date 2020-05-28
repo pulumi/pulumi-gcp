@@ -25,20 +25,20 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const default = gcp.storage.getTransferProjectServieAccount({
- *     project: var.project,
+ *     project: _var.project,
  * });
- * const s3-backup-bucketBucket = new gcp.storage.Bucket("s3-backup-bucketBucket", {
+ * const s3_backup_bucketBucket = new gcp.storage.Bucket("s3-backup-bucketBucket", {
  *     storageClass: "NEARLINE",
- *     project: var.project,
+ *     project: _var.project,
  * });
- * const s3-backup-bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", {
- *     bucket: s3-backup-bucketBucket.name,
+ * const s3_backup_bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", {
+ *     bucket: s3_backup_bucketBucket.name,
  *     role: "roles/storage.admin",
- *     member: default.then(_default => `serviceAccount:${_default.email}`),
+ *     member: _default.then(_default => `serviceAccount:${_default.email}`),
  * });
- * const s3-bucket-nightly-backup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
+ * const s3BucketNightlyBackup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
  *     description: "Nightly backup of S3 bucket",
- *     project: var.project,
+ *     project: _var.project,
  *     transfer_spec: {
  *         object_conditions: {
  *             maxTimeElapsedSinceLastModification: "600s",
@@ -48,14 +48,14 @@ import * as utilities from "../utilities";
  *             deleteObjectsUniqueInSink: false,
  *         },
  *         aws_s3_data_source: {
- *             bucketName: var.aws_s3_bucket,
+ *             bucketName: _var.aws_s3_bucket,
  *             aws_access_key: {
- *                 accessKeyId: var.aws_access_key,
- *                 secretAccessKey: var.aws_secret_key,
+ *                 accessKeyId: _var.aws_access_key,
+ *                 secretAccessKey: _var.aws_secret_key,
  *             },
  *         },
  *         gcs_data_sink: {
- *             bucketName: s3-backup-bucketBucket.name,
+ *             bucketName: s3_backup_bucketBucket.name,
  *         },
  *     },
  *     schedule: {

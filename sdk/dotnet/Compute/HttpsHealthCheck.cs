@@ -26,6 +26,28 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/v1/httpsHealthChecks)
     /// * How-to Guides
     ///     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
+    /// 
+    /// ## Example Usage - Https Health Check Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.HttpsHealthCheck("default", new Gcp.Compute.HttpsHealthCheckArgs
+    ///         {
+    ///             CheckIntervalSec = 1,
+    ///             RequestPath = "/health_check",
+    ///             TimeoutSec = 1,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class HttpsHealthCheck : Pulumi.CustomResource
     {

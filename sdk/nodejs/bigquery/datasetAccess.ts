@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const private = new gcp.bigquery.Dataset("private", {datasetId: "exampleDataset"});
+ * const _private = new gcp.bigquery.Dataset("private", {datasetId: "exampleDataset"});
  * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {datasetId: "exampleDataset2"});
  * const publicTable = new gcp.bigquery.Table("publicTable", {
  *     datasetId: publicDataset.datasetId,
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const access = new gcp.bigquery.DatasetAccess("access", {
- *     datasetId: private.datasetId,
+ *     datasetId: _private.datasetId,
  *     view: {
  *         projectId: publicTable.project,
  *         datasetId: publicDataset.datasetId,

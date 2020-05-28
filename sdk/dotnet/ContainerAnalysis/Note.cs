@@ -18,6 +18,32 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/container-analysis/)
+    /// 
+    /// ## Example Usage - Container Analysis Note Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
+    ///         {
+    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             {
+    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
+    ///                 {
+    ///                     HumanReadableName = "Attestor Note",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Note : Pulumi.CustomResource
     {

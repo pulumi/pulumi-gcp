@@ -18,6 +18,29 @@ namespace Pulumi.Gcp.OsLogin
     /// * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
+    /// 
+    /// ## Example Usage - Os Login Ssh Key Provided User
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var me = Output.Create(Gcp.Organizations.GetClientOpenIdUserInfo.InvokeAsync());
+    ///         var cache = new Gcp.OsLogin.SshPublicKey("cache", new Gcp.OsLogin.SshPublicKeyArgs
+    ///         {
+    ///             User = me.Apply(me =&gt; me.Email),
+    ///             Key = File.ReadAllText("path/to/id_rsa.pub"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SshPublicKey : Pulumi.CustomResource
     {

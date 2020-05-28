@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * const topic = new gcp.pubsub.Topic("topic", {});
  * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
- * const default = new gcp.healthcare.Hl7Store("default", {
+ * const _default = new gcp.healthcare.Hl7Store("default", {
  *     dataset: dataset.id,
  *     notification_configs: [{
  *         pubsubTopic: topic.id,
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
- * const default = new gcp.healthcare.Hl7Store("default", {
+ * const _default = new gcp.healthcare.Hl7Store("default", {
  *     dataset: dataset.id,
  *     parser_config: {
  *         allowNullHeader: false,

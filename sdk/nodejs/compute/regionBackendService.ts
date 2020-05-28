@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
  *     port: 80,
  * }});
- * const default = new gcp.compute.RegionBackendService("default", {
+ * const _default = new gcp.compute.RegionBackendService("default", {
  *     region: "us-central1",
  *     healthChecks: [healthCheck.id],
  *     protocol: "HTTP",
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
  *     port: 80,
  * }});
- * const default = new gcp.compute.RegionBackendService("default", {
+ * const _default = new gcp.compute.RegionBackendService("default", {
  *     region: "us-central1",
  *     healthChecks: [healthCheck.id],
  *     loadBalancingScheme: "INTERNAL_MANAGED",

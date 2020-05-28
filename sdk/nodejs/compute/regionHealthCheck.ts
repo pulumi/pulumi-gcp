@@ -122,7 +122,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const http-region-health-check = new gcp.compute.RegionHealthCheck("http-region-health-check", {
+ * const httpRegionHealthCheck = new gcp.compute.RegionHealthCheck("http-region-health-check", {
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     http_health_check: {

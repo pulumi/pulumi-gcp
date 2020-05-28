@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-f",
  *     targetSize: 1,
  * });
- * const default = new gcp.compute.HttpHealthCheck("default", {
+ * const _default = new gcp.compute.HttpHealthCheck("default", {
  *     requestPath: "/",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *     backend: [{
  *         group: webservers.instanceGroup,
  *     }],
- *     healthChecks: [default.id],
+ *     healthChecks: [_default.id],
  * });
  * const backendKey = new gcp.compute.BackendServiceSignedUrlKey("backendKey", {
  *     keyValue: "pPsVemX8GM46QVeezid6Rw==",

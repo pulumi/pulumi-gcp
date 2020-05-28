@@ -18,6 +18,54 @@ namespace Pulumi.Gcp.Diagflow
     /// * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.entityTypes)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
+    /// 
+    /// ## Example Usage - Dialogflow Entity Type Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new Gcp.Diagflow.AgentArgs
+    ///         {
+    ///             DisplayName = "example_agent",
+    ///             DefaultLanguageCode = "en",
+    ///             TimeZone = "America/New_York",
+    ///         });
+    ///         var basicEntityType = new Gcp.Diagflow.EntityType("basicEntityType", new Gcp.Diagflow.EntityTypeArgs
+    ///         {
+    ///             DisplayName = "",
+    ///             Kind = "KIND_MAP",
+    ///             Entities = 
+    ///             {
+    ///                 new Gcp.Diagflow.Inputs.EntityTypeEntityArgs
+    ///                 {
+    ///                     Value = "value1",
+    ///                     Synonyms = 
+    ///                     {
+    ///                         "synonym1",
+    ///                         "synonym2",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.EntityTypeEntityArgs
+    ///                 {
+    ///                     Value = "value2",
+    ///                     Synonyms = 
+    ///                     {
+    ///                         "synonym3",
+    ///                         "synonym4",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class EntityType : Pulumi.CustomResource
     {

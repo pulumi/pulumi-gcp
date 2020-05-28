@@ -17,6 +17,145 @@ namespace Pulumi.Gcp.Dataproc
     /// !&gt; **Warning:** Due to limitations of the API, all arguments except
     /// `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing others will cause recreation of the
     /// whole cluster!
+    /// 
+    /// ## Example Usage - Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var simplecluster = new Gcp.Dataproc.Cluster("simplecluster", new Gcp.Dataproc.ClusterArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Example Usage - Advanced
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mycluster = new Gcp.Dataproc.Cluster("mycluster", new Gcp.Dataproc.ClusterArgs
+    ///         {
+    ///             ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
+    ///             {
+    ///                 GceClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigGceClusterConfigArgs
+    ///                 {
+    ///                     ServiceAccountScopes = 
+    ///                     {
+    ///                         "https://www.googleapis.com/auth/monitoring",
+    ///                         "useraccounts-ro",
+    ///                         "storage-rw",
+    ///                         "logging-write",
+    ///                     },
+    ///                     Tags = 
+    ///                     {
+    ///                         "foo",
+    ///                         "bar",
+    ///                     },
+    ///                 },
+    ///                 InitializationAction = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "script", "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh" },
+    ///                         { "timeoutSec", 500 },
+    ///                     },
+    ///                 },
+    ///                 MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
+    ///                 {
+    ///                     DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
+    ///                     {
+    ///                         BootDiskSizeGb = 15,
+    ///                         BootDiskType = "pd-ssd",
+    ///                     },
+    ///                     MachineType = "n1-standard-1",
+    ///                     NumInstances = 1,
+    ///                 },
+    ///                 PreemptibleWorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigPreemptibleWorkerConfigArgs
+    ///                 {
+    ///                     NumInstances = 0,
+    ///                 },
+    ///                 SoftwareConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigSoftwareConfigArgs
+    ///                 {
+    ///                     ImageVersion = "1.3.7-deb9",
+    ///                     OverrideProperties = 
+    ///                     {
+    ///                         { "dataproc:dataproc.allow.zero.workers", "true" },
+    ///                     },
+    ///                 },
+    ///                 StagingBucket = "dataproc-staging-bucket",
+    ///                 WorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigArgs
+    ///                 {
+    ///                     DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs
+    ///                     {
+    ///                         BootDiskSizeGb = 15,
+    ///                         NumLocalSsds = 1,
+    ///                     },
+    ///                     MachineType = "n1-standard-1",
+    ///                     MinCpuPlatform = "Intel Skylake",
+    ///                     NumInstances = 2,
+    ///                 },
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Example Usage - Using a GPU accelerator
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var acceleratedCluster = new Gcp.Dataproc.Cluster("acceleratedCluster", new Gcp.Dataproc.ClusterArgs
+    ///         {
+    ///             ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
+    ///             {
+    ///                 GceClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigGceClusterConfigArgs
+    ///                 {
+    ///                     Zone = "us-central1-a",
+    ///                 },
+    ///                 MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
+    ///                 {
+    ///                     Accelerators = 
+    ///                     {
+    ///                         new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigAcceleratorArgs
+    ///                         {
+    ///                             AcceleratorCount = "1",
+    ///                             AcceleratorType = "nvidia-tesla-k80",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

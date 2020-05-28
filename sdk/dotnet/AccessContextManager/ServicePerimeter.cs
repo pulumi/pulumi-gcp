@@ -26,6 +26,110 @@ namespace Pulumi.Gcp.AccessContextManager
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
     /// * How-to Guides
     ///     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
+    /// 
+    /// ## Example Usage - Access Context Manager Service Perimeter Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         {
+    ///             Parent = "organizations/123456789",
+    ///             Title = "my policy",
+    ///         });
+    ///         var service_perimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter", new Gcp.AccessContextManager.ServicePerimeterArgs
+    ///         {
+    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///             Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
+    ///             {
+    ///                 RestrictedServices = 
+    ///                 {
+    ///                     "storage.googleapis.com",
+    ///                 },
+    ///             },
+    ///             Title = "restrict_storage",
+    ///         });
+    ///         var access_level = new Gcp.AccessContextManager.AccessLevel("access-level", new Gcp.AccessContextManager.AccessLevelArgs
+    ///         {
+    ///             Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
+    ///             {
+    ///                 Conditions = 
+    ///                 {
+    ///                     new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionArgs
+    ///                     {
+    ///                         DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
+    ///                         {
+    ///                             OsConstraints = 
+    ///                             {
+    ///                                 new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
+    ///                                 {
+    ///                                     OsType = "DESKTOP_CHROME_OS",
+    ///                                 },
+    ///                             },
+    ///                             RequireScreenLock = false,
+    ///                         },
+    ///                         Regions = 
+    ///                         {
+    ///                             "CH",
+    ///                             "IT",
+    ///                             "US",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///             Title = "chromeos_no_lock",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Example Usage - Access Context Manager Service Perimeter Dry Run
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         {
+    ///             Parent = "organizations/123456789",
+    ///             Title = "my policy",
+    ///         });
+    ///         var service_perimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter", new Gcp.AccessContextManager.ServicePerimeterArgs
+    ///         {
+    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///             Spec = new Gcp.AccessContextManager.Inputs.ServicePerimeterSpecArgs
+    ///             {
+    ///                 RestrictedServices = 
+    ///                 {
+    ///                     "storage.googleapis.com",
+    ///                 },
+    ///             },
+    ///             Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
+    ///             {
+    ///                 RestrictedServices = 
+    ///                 {
+    ///                     "bigquery.googleapis.com",
+    ///                 },
+    ///             },
+    ///             Title = "restrict_bigquery_dryrun_storage",
+    ///             UseExplicitDryRunSpec = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ServicePerimeter : Pulumi.CustomResource
     {

@@ -16,6 +16,27 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// For more information, see,
     /// [the Project API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/projects/setDefaultNetworkTier).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.ProjectDefaultNetworkTier("default", new Gcp.Compute.ProjectDefaultNetworkTierArgs
+    ///         {
+    ///             NetworkTier = "PREMIUM",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ProjectDefaultNetworkTier : Pulumi.CustomResource
     {

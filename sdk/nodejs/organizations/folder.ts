@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     parent: "organizations/1234567",
  * });
  * // Folder nested under another folder.
- * const team-abc = new gcp.organizations.Folder("team-abc", {
+ * const teamAbc = new gcp.organizations.Folder("team-abc", {
  *     displayName: "Team ABC",
  *     parent: department1.name,
  * });

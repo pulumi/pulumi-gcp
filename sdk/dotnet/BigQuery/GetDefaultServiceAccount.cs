@@ -23,6 +23,30 @@ namespace Pulumi.Gcp.BigQuery
         /// [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var bqSa = Output.Create(Gcp.BigQuery.GetDefaultServiceAccount.InvokeAsync());
+        ///         var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("keySaUser", new Gcp.Kms.CryptoKeyIAMMemberArgs
+        ///         {
+        ///             CryptoKeyId = google_kms_crypto_key.Key.Id,
+        ///             Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+        ///             Member = bqSa.Apply(bqSa =&gt; $"serviceAccount:{bqSa.Email}"),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDefaultServiceAccountResult> InvokeAsync(GetDefaultServiceAccountArgs? args = null, InvokeOptions? options = null)

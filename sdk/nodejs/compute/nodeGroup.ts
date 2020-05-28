@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * const central1a = gcp.compute.getNodeTypes({
  *     zone: "us-central1-a",
  * });
- * const soletenant-tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ * const soletenantTmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
  *     region: "us-central1",
  *     nodeType: central1a.then(central1a => central1a.names[0]),
  * });
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  *     description: "example gcp.compute.NodeGroup for the Google Provider",
  *     size: 1,
- *     nodeTemplate: soletenant-tmpl.id,
+ *     nodeTemplate: soletenant_tmpl.id,
  * });
  * ```
  * ## Example Usage - Node Group Autoscaling Policy
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * const central1a = gcp.compute.getNodeTypes({
  *     zone: "us-central1-a",
  * });
- * const soletenant-tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ * const soletenantTmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
  *     region: "us-central1",
  *     nodeType: central1a.then(central1a => central1a.names[0]),
  * });
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  *     description: "example gcp.compute.NodeGroup for the Google Provider",
  *     size: 1,
- *     nodeTemplate: soletenant-tmpl.id,
+ *     nodeTemplate: soletenant_tmpl.id,
  *     autoscaling_policy: {
  *         mode: "ON",
  *         minNodes: 1,

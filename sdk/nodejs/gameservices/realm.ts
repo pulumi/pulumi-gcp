@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = new gcp.gameservices.Realm("default", {
+ * const _default = new gcp.gameservices.Realm("default", {
  *     realmId: "tf-test-realm",
  *     timeZone: "EST",
  *     location: "global",

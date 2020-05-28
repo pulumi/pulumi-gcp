@@ -24,6 +24,79 @@ namespace Pulumi.Gcp.BigQuery
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
     /// * How-to Guides
     ///     * [Controlling access to datasets](https://cloud.google.com/bigquery/docs/dataset-access-controls)
+    /// 
+    /// ## Example Usage - Bigquery Dataset Access Basic User
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dataset = new Gcp.BigQuery.Dataset("dataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "example_dataset",
+    ///         });
+    ///         var bqowner = new Gcp.ServiceAccount.Account("bqowner", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "bqowner",
+    ///         });
+    ///         var access = new Gcp.BigQuery.DatasetAccess("access", new Gcp.BigQuery.DatasetAccessArgs
+    ///         {
+    ///             DatasetId = dataset.DatasetId,
+    ///             Role = "OWNER",
+    ///             UserByEmail = bqowner.Email,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Example Usage - Bigquery Dataset Access View
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @private = new Gcp.BigQuery.Dataset("private", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "example_dataset",
+    ///         });
+    ///         var publicDataset = new Gcp.BigQuery.Dataset("publicDataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "example_dataset2",
+    ///         });
+    ///         var publicTable = new Gcp.BigQuery.Table("publicTable", new Gcp.BigQuery.TableArgs
+    ///         {
+    ///             DatasetId = publicDataset.DatasetId,
+    ///             TableId = "example_table",
+    ///             View = new Gcp.BigQuery.Inputs.TableViewArgs
+    ///             {
+    ///                 Query = "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+    ///                 UseLegacySql = false,
+    ///             },
+    ///         });
+    ///         var access = new Gcp.BigQuery.DatasetAccess("access", new Gcp.BigQuery.DatasetAccessArgs
+    ///         {
+    ///             DatasetId = @private.DatasetId,
+    ///             View = new Gcp.BigQuery.Inputs.DatasetAccessViewArgs
+    ///             {
+    ///                 ProjectId = publicTable.Project,
+    ///                 DatasetId = publicDataset.DatasetId,
+    ///                 TableId = publicTable.TableId,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DatasetAccess : Pulumi.CustomResource
     {

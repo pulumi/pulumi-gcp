@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-repo = new gcp.artifactregistry.Repository("my-repo", {
+ * const myRepo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
  *     repositoryId: "my-repository",
  *     description: "example docker repository",
@@ -34,21 +34,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-repo = new gcp.artifactregistry.Repository("my-repo", {
+ * const myRepo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
  *     repositoryId: "my-repository",
  *     description: "example docker repository with iam",
  *     format: "DOCKER",
  * });
- * const test-account = new gcp.serviceAccount.Account("test-account", {
+ * const testAccount = new gcp.serviceAccount.Account("test-account", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",
  * });
- * const test-iam = new gcp.artifactregistry.RepositoryIamMember("test-iam", {
- *     location: my-repo.location,
- *     repository: my-repo.name,
+ * const testIam = new gcp.artifactregistry.RepositoryIamMember("test-iam", {
+ *     location: my_repo.location,
+ *     repository: my_repo.name,
  *     role: "roles/artifactregistry.reader",
- *     member: pulumi.interpolate`serviceAccount:${test-account.email}`,
+ *     member: pulumi.interpolate`serviceAccount:${test_account.email}`,
  * });
  * ```
  */

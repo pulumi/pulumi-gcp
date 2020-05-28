@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const default = gcp.storage.getTransferProjectServieAccount({});
- * export const defaultAccount = default.then(_default => _default.email);
+ * export const defaultAccount = _default.then(_default => _default.email);
  * ```
  */
 export function getTransferProjectServieAccount(args?: GetTransferProjectServieAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferProjectServieAccountResult> {

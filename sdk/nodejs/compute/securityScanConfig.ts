@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const scannerStaticIp = new gcp.compute.Address("scannerStaticIp", {});
- * const scan-config = new gcp.compute.SecurityScanConfig("scan-config", {
+ * const scanConfig = new gcp.compute.SecurityScanConfig("scan-config", {
  *     displayName: "scan-config",
  *     startingUrls: [pulumi.interpolate`http://${scannerStaticIp.address}`],
  *     targetPlatforms: ["COMPUTE"],

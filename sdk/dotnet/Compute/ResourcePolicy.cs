@@ -11,6 +11,107 @@ namespace Pulumi.Gcp.Compute
 {
     /// <summary>
     /// A policy that can be attached to a resource to specify or schedule actions on that resource.
+    /// 
+    /// 
+    /// 
+    /// ## Example Usage - Resource Policy Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new Gcp.Compute.ResourcePolicy("foo", new Gcp.Compute.ResourcePolicyArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///             {
+    ///                 Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///                 {
+    ///                     DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
+    ///                     {
+    ///                         DaysInCycle = 1,
+    ///                         StartTime = "04:00",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Example Usage - Resource Policy Full
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bar = new Gcp.Compute.ResourcePolicy("bar", new Gcp.Compute.ResourcePolicyArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///             {
+    ///                 RetentionPolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs
+    ///                 {
+    ///                     MaxRetentionDays = 10,
+    ///                     OnSourceDiskDelete = "KEEP_AUTO_SNAPSHOTS",
+    ///                 },
+    ///                 Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///                 {
+    ///                     HourlySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs
+    ///                     {
+    ///                         HoursInCycle = 20,
+    ///                         StartTime = "23:00",
+    ///                     },
+    ///                 },
+    ///                 SnapshotProperties = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs
+    ///                 {
+    ///                     GuestFlush = true,
+    ///                     Labels = 
+    ///                     {
+    ///                         { "myLabel", "value" },
+    ///                     },
+    ///                     StorageLocations = "us",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Example Usage - Resource Policy Placement Policy
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var baz = new Gcp.Compute.ResourcePolicy("baz", new Gcp.Compute.ResourcePolicyArgs
+    ///         {
+    ///             GroupPlacementPolicy = new Gcp.Compute.Inputs.ResourcePolicyGroupPlacementPolicyArgs
+    ///             {
+    ///                 Collocation = "COLLOCATED",
+    ///                 VmCount = 2,
+    ///             },
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ResourcePolicy : Pulumi.CustomResource
     {

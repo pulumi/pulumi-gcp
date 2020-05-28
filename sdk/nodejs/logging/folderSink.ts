@@ -22,19 +22,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const log-bucket = new gcp.storage.Bucket("log-bucket", {});
- * const my-folder = new gcp.organizations.Folder("my-folder", {
+ * const logBucket = new gcp.storage.Bucket("log-bucket", {});
+ * const myFolder = new gcp.organizations.Folder("my-folder", {
  *     displayName: "My folder",
  *     parent: "organizations/123456",
  * });
- * const my-sink = new gcp.logging.FolderSink("my-sink", {
- *     folder: my-folder.name,
- *     destination: pulumi.interpolate`storage.googleapis.com/${log-bucket.name}`,
+ * const mySink = new gcp.logging.FolderSink("my-sink", {
+ *     folder: my_folder.name,
+ *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
  *     filter: "resource.type = gceInstance AND severity >= WARN",
  * });
- * const log-writer = new gcp.projects.IAMBinding("log-writer", {
+ * const logWriter = new gcp.projects.IAMBinding("log-writer", {
  *     role: "roles/storage.objectCreator",
- *     members: [my-sink.writerIdentity],
+ *     members: [my_sink.writerIdentity],
  * });
  * ```
  */
