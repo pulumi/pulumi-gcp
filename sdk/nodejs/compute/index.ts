@@ -58,6 +58,7 @@ export * from "./instanceIAMMember";
 export * from "./instanceIAMPolicy";
 export * from "./instanceTemplate";
 export * from "./interconnectAttachment";
+export * from "./machineImage";
 export * from "./managedSslCertificate";
 export * from "./mangedSslCertificate";
 export * from "./network";

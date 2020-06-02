@@ -122,6 +122,9 @@ namespace Pulumi.Gcp
         [Input("credentials")]
         public Input<string>? Credentials { get; set; }
 
+        [Input("dataCatalogCustomEndpoint")]
+        public Input<string>? DataCatalogCustomEndpoint { get; set; }
+
         [Input("dataFusionCustomEndpoint")]
         public Input<string>? DataFusionCustomEndpoint { get; set; }
 

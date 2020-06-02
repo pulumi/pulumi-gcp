@@ -65,11 +65,11 @@ class NetworkPeering(pulumi.CustomResource):
         default = gcp.compute.Network("default", auto_create_subnetworks="false")
         other = gcp.compute.Network("other", auto_create_subnetworks="false")
         peering1 = gcp.compute.NetworkPeering("peering1",
-            network=default.self_link,
-            peer_network=other.self_link)
+            network=default.id,
+            peer_network=other.id)
         peering2 = gcp.compute.NetworkPeering("peering2",
-            network=other.self_link,
-            peer_network=default.self_link)
+            network=other.id,
+            peer_network=default.id)
         ```
 
 

@@ -115,6 +115,38 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
     """
+    handlers: pulumi.Output[list]
+    """
+    An ordered list of URL-matching patterns that should be applied to incoming requests.
+    The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+
+      * `authFailAction` (`str`) - Action to take when users access resources that require authentication.
+      * `login` (`str`) - Level of login required to access this resource.
+      * `redirectHttpResponseCode` (`str`) - 30x code to use when performing redirects for the secure field.
+      * `script` (`dict`) - Path to the script from the application root directory.
+        * `scriptPath` (`str`) - Path to the script from the application root directory.
+
+      * `securityLevel` (`str`) - Security (HTTPS) enforcement for this URL.
+      * `staticFiles` (`dict`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
+        Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+        * `applicationReadable` (`bool`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are
+          uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
+          uploads are charged against both your code and static data storage resource quotas.
+        * `expiration` (`str`) - Time a static file served by this handler should be cached by web proxies and browsers.
+          A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+          Default is '0s'
+        * `httpHeaders` (`dict`) - HTTP headers to use for all responses from these URLs.
+          An object containing a list of "key:value" value pairs.".
+        * `mimeType` (`str`) - MIME type used to serve all files served by this handler.
+          Defaults to file-specific MIME types, which are derived from each file's filename extension.
+        * `path` (`str`) - Path to the static files matched by the URL pattern, from the application root directory.
+          The path can refer to text matched in groupings in the URL pattern.
+        * `requireMatchingFile` (`bool`) - Whether this handler should match the request if the file referenced by the handler does not exist.
+        * `uploadPathRegex` (`str`) - Regular expression that matches the file paths for all files that should be referenced by this handler.
+
+      * `urlRegex` (`str`) - URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+        All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+    """
     inbound_services: pulumi.Output[list]
     """
     Before an application can receive email or XMPP messages, the application must be configured to enable the service.
@@ -134,7 +166,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
       * `failureThreshold` (`float`) - Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
       * `host` (`str`) - Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
       * `initialDelay` (`str`) - The initial delay before starting to execute the checks. Default: "300s"
-      * `path` (`str`) - The request path.
+      * `path` (`str`) - Path to the static files matched by the URL pattern, from the application root directory.
+        The path can refer to text matched in groupings in the URL pattern.
       * `successThreshold` (`float`) - Number of consecutive successful checks required before considering the VM healthy. Default: 2.
       * `timeout` (`str`) - Time before the check is considered failed. Default: "4s"
     """
@@ -186,7 +219,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
       * `checkInterval` (`str`) - Interval between health checks.
       * `failureThreshold` (`float`) - Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
       * `host` (`str`) - Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
-      * `path` (`str`) - The request path.
+      * `path` (`str`) - Path to the static files matched by the URL pattern, from the application root directory.
+        The path can refer to text matched in groupings in the URL pattern.
       * `successThreshold` (`float`) - Number of consecutive successful checks required before considering the VM healthy. Default: 2.
       * `timeout` (`str`) - Time before the check is considered failed. Default: "4s"
     """
@@ -238,7 +272,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
       * `name` (`str`) - Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
     """
-    def __init__(__self__, resource_name, opts=None, api_config=None, automatic_scaling=None, beta_settings=None, default_expiration=None, delete_service_on_destroy=None, deployment=None, endpoints_api_service=None, entrypoint=None, env_variables=None, inbound_services=None, instance_class=None, liveness_check=None, manual_scaling=None, network=None, nobuild_files_regex=None, noop_on_destroy=None, project=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service=None, serving_status=None, version_id=None, vpc_access_connector=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, api_config=None, automatic_scaling=None, beta_settings=None, default_expiration=None, delete_service_on_destroy=None, deployment=None, endpoints_api_service=None, entrypoint=None, env_variables=None, handlers=None, inbound_services=None, instance_class=None, liveness_check=None, manual_scaling=None, network=None, nobuild_files_regex=None, noop_on_destroy=None, project=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service=None, serving_status=None, version_id=None, vpc_access_connector=None, __props__=None, __name__=None, __opts__=None):
         """
         Flexible App Version resource to create a new version of flexible GAE Application. Based on Google Compute Engine,
         the App Engine flexible environment automatically scales your app up and down while also balancing the load.
@@ -303,6 +337,16 @@ class FlexibleAppVersion(pulumi.CustomResource):
             env_variables={
                 "port": "8080",
             },
+            handlers=[{
+                "urlRegex": ".*\\/my-path\\/*",
+                "securityLevel": "SECURE_ALWAYS",
+                "login": "LOGIN_REQUIRED",
+                "authFailAction": "AUTH_FAIL_ACTION_REDIRECT",
+                "static_files": {
+                    "path": "my-other-path",
+                    "uploadPathRegex": ".*\\/my-path\\/*",
+                },
+            }],
             automatic_scaling={
                 "coolDownPeriod": "120s",
                 "cpu_utilization": {
@@ -324,6 +368,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[dict] endpoints_api_service: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
         :param pulumi.Input[dict] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        :param pulumi.Input[list] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
+               The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
         :param pulumi.Input[list] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
@@ -427,13 +473,43 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
           * `shell` (`pulumi.Input[str]`) - The format should be a shell command that can be fed to bash -c.
 
+        The **handlers** object supports the following:
+
+          * `authFailAction` (`pulumi.Input[str]`) - Action to take when users access resources that require authentication.
+          * `login` (`pulumi.Input[str]`) - Level of login required to access this resource.
+          * `redirectHttpResponseCode` (`pulumi.Input[str]`) - 30x code to use when performing redirects for the secure field.
+          * `script` (`pulumi.Input[dict]`) - Path to the script from the application root directory.
+            * `scriptPath` (`pulumi.Input[str]`) - Path to the script from the application root directory.
+
+          * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
+          * `staticFiles` (`pulumi.Input[dict]`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
+            Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+            * `applicationReadable` (`pulumi.Input[bool]`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are
+              uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
+              uploads are charged against both your code and static data storage resource quotas.
+            * `expiration` (`pulumi.Input[str]`) - Time a static file served by this handler should be cached by web proxies and browsers.
+              A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+              Default is '0s'
+            * `httpHeaders` (`pulumi.Input[dict]`) - HTTP headers to use for all responses from these URLs.
+              An object containing a list of "key:value" value pairs.".
+            * `mimeType` (`pulumi.Input[str]`) - MIME type used to serve all files served by this handler.
+              Defaults to file-specific MIME types, which are derived from each file's filename extension.
+            * `path` (`pulumi.Input[str]`) - Path to the static files matched by the URL pattern, from the application root directory.
+              The path can refer to text matched in groupings in the URL pattern.
+            * `requireMatchingFile` (`pulumi.Input[bool]`) - Whether this handler should match the request if the file referenced by the handler does not exist.
+            * `uploadPathRegex` (`pulumi.Input[str]`) - Regular expression that matches the file paths for all files that should be referenced by this handler.
+
+          * `urlRegex` (`pulumi.Input[str]`) - URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+            All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+
         The **liveness_check** object supports the following:
 
           * `checkInterval` (`pulumi.Input[str]`) - Interval between health checks.
           * `failureThreshold` (`pulumi.Input[float]`) - Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
           * `host` (`pulumi.Input[str]`) - Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
           * `initialDelay` (`pulumi.Input[str]`) - The initial delay before starting to execute the checks. Default: "300s"
-          * `path` (`pulumi.Input[str]`) - The request path.
+          * `path` (`pulumi.Input[str]`) - Path to the static files matched by the URL pattern, from the application root directory.
+            The path can refer to text matched in groupings in the URL pattern.
           * `successThreshold` (`pulumi.Input[float]`) - Number of consecutive successful checks required before considering the VM healthy. Default: 2.
           * `timeout` (`pulumi.Input[str]`) - Time before the check is considered failed. Default: "4s"
 
@@ -462,7 +538,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
           * `checkInterval` (`pulumi.Input[str]`) - Interval between health checks.
           * `failureThreshold` (`pulumi.Input[float]`) - Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
           * `host` (`pulumi.Input[str]`) - Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
-          * `path` (`pulumi.Input[str]`) - The request path.
+          * `path` (`pulumi.Input[str]`) - Path to the static files matched by the URL pattern, from the application root directory.
+            The path can refer to text matched in groupings in the URL pattern.
           * `successThreshold` (`pulumi.Input[float]`) - Number of consecutive successful checks required before considering the VM healthy. Default: 2.
           * `timeout` (`pulumi.Input[str]`) - Time before the check is considered failed. Default: "4s"
 
@@ -506,6 +583,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             __props__['endpoints_api_service'] = endpoints_api_service
             __props__['entrypoint'] = entrypoint
             __props__['env_variables'] = env_variables
+            __props__['handlers'] = handlers
             __props__['inbound_services'] = inbound_services
             __props__['instance_class'] = instance_class
             if liveness_check is None:
@@ -538,7 +616,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, api_config=None, automatic_scaling=None, beta_settings=None, default_expiration=None, delete_service_on_destroy=None, deployment=None, endpoints_api_service=None, entrypoint=None, env_variables=None, inbound_services=None, instance_class=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, noop_on_destroy=None, project=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service=None, serving_status=None, version_id=None, vpc_access_connector=None):
+    def get(resource_name, id, opts=None, api_config=None, automatic_scaling=None, beta_settings=None, default_expiration=None, delete_service_on_destroy=None, deployment=None, endpoints_api_service=None, entrypoint=None, env_variables=None, handlers=None, inbound_services=None, instance_class=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, noop_on_destroy=None, project=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service=None, serving_status=None, version_id=None, vpc_access_connector=None):
         """
         Get an existing FlexibleAppVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -556,6 +634,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[dict] endpoints_api_service: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
         :param pulumi.Input[dict] env_variables: Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
+        :param pulumi.Input[list] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
+               The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
         :param pulumi.Input[list] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
@@ -660,13 +740,43 @@ class FlexibleAppVersion(pulumi.CustomResource):
 
           * `shell` (`pulumi.Input[str]`) - The format should be a shell command that can be fed to bash -c.
 
+        The **handlers** object supports the following:
+
+          * `authFailAction` (`pulumi.Input[str]`) - Action to take when users access resources that require authentication.
+          * `login` (`pulumi.Input[str]`) - Level of login required to access this resource.
+          * `redirectHttpResponseCode` (`pulumi.Input[str]`) - 30x code to use when performing redirects for the secure field.
+          * `script` (`pulumi.Input[dict]`) - Path to the script from the application root directory.
+            * `scriptPath` (`pulumi.Input[str]`) - Path to the script from the application root directory.
+
+          * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
+          * `staticFiles` (`pulumi.Input[dict]`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
+            Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+            * `applicationReadable` (`pulumi.Input[bool]`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are
+              uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
+              uploads are charged against both your code and static data storage resource quotas.
+            * `expiration` (`pulumi.Input[str]`) - Time a static file served by this handler should be cached by web proxies and browsers.
+              A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+              Default is '0s'
+            * `httpHeaders` (`pulumi.Input[dict]`) - HTTP headers to use for all responses from these URLs.
+              An object containing a list of "key:value" value pairs.".
+            * `mimeType` (`pulumi.Input[str]`) - MIME type used to serve all files served by this handler.
+              Defaults to file-specific MIME types, which are derived from each file's filename extension.
+            * `path` (`pulumi.Input[str]`) - Path to the static files matched by the URL pattern, from the application root directory.
+              The path can refer to text matched in groupings in the URL pattern.
+            * `requireMatchingFile` (`pulumi.Input[bool]`) - Whether this handler should match the request if the file referenced by the handler does not exist.
+            * `uploadPathRegex` (`pulumi.Input[str]`) - Regular expression that matches the file paths for all files that should be referenced by this handler.
+
+          * `urlRegex` (`pulumi.Input[str]`) - URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+            All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+
         The **liveness_check** object supports the following:
 
           * `checkInterval` (`pulumi.Input[str]`) - Interval between health checks.
           * `failureThreshold` (`pulumi.Input[float]`) - Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
           * `host` (`pulumi.Input[str]`) - Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
           * `initialDelay` (`pulumi.Input[str]`) - The initial delay before starting to execute the checks. Default: "300s"
-          * `path` (`pulumi.Input[str]`) - The request path.
+          * `path` (`pulumi.Input[str]`) - Path to the static files matched by the URL pattern, from the application root directory.
+            The path can refer to text matched in groupings in the URL pattern.
           * `successThreshold` (`pulumi.Input[float]`) - Number of consecutive successful checks required before considering the VM healthy. Default: 2.
           * `timeout` (`pulumi.Input[str]`) - Time before the check is considered failed. Default: "4s"
 
@@ -695,7 +805,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
           * `checkInterval` (`pulumi.Input[str]`) - Interval between health checks.
           * `failureThreshold` (`pulumi.Input[float]`) - Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
           * `host` (`pulumi.Input[str]`) - Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
-          * `path` (`pulumi.Input[str]`) - The request path.
+          * `path` (`pulumi.Input[str]`) - Path to the static files matched by the URL pattern, from the application root directory.
+            The path can refer to text matched in groupings in the URL pattern.
           * `successThreshold` (`pulumi.Input[float]`) - Number of consecutive successful checks required before considering the VM healthy. Default: 2.
           * `timeout` (`pulumi.Input[str]`) - Time before the check is considered failed. Default: "4s"
 
@@ -726,6 +837,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         __props__["endpoints_api_service"] = endpoints_api_service
         __props__["entrypoint"] = entrypoint
         __props__["env_variables"] = env_variables
+        __props__["handlers"] = handlers
         __props__["inbound_services"] = inbound_services
         __props__["instance_class"] = instance_class
         __props__["liveness_check"] = liveness_check

@@ -38,16 +38,16 @@ import * as utilities from "../utilities";
  *         "us-central1-f",
  *     ],
  *     version: [{
- *         instanceTemplate: google_compute_instance_template.appserver.self_link,
+ *         instanceTemplate: google_compute_instance_template.appserver.id,
  *     }],
- *     targetPools: [google_compute_target_pool.appserver.self_link],
+ *     targetPools: [google_compute_target_pool.appserver.id],
  *     targetSize: 2,
  *     named_port: [{
  *         name: "custom",
  *         port: 8888,
  *     }],
  *     auto_healing_policies: {
- *         healthCheck: autohealing.selfLink,
+ *         healthCheck: autohealing.id,
  *         initialDelaySec: 300,
  *     },
  * });
@@ -65,10 +65,10 @@ import * as utilities from "../utilities";
  *     targetSize: 5,
  *     version: [
  *         {
- *             instanceTemplate: google_compute_instance_template.appserver.self_link,
+ *             instanceTemplate: google_compute_instance_template.appserver.id,
  *         },
  *         {
- *             instanceTemplate: google_compute_instance_template["appserver-canary"].self_link,
+ *             instanceTemplate: google_compute_instance_template["appserver-canary"].id,
  *             target_size: {
  *                 fixed: 1,
  *             },

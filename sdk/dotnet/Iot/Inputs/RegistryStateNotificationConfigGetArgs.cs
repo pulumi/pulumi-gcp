@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Iot.Inputs
     public sealed class RegistryStateNotificationConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// PubSub topic name to publish device state updates.
+        /// PubSub topic name to publish device events.
         /// </summary>
         [Input("pubsubTopicName", required: true)]
         public Input<string> PubsubTopicName { get; set; } = null!;

@@ -28,12 +28,12 @@ import * as utilities from "../utilities";
  * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: "false"});
  * const other = new gcp.compute.Network("other", {autoCreateSubnetworks: "false"});
  * const peering1 = new gcp.compute.NetworkPeering("peering1", {
- *     network: _default.selfLink,
- *     peerNetwork: other.selfLink,
+ *     network: _default.id,
+ *     peerNetwork: other.id,
  * });
  * const peering2 = new gcp.compute.NetworkPeering("peering2", {
- *     network: other.selfLink,
- *     peerNetwork: _default.selfLink,
+ *     network: other.id,
+ *     peerNetwork: _default.id,
  * });
  * ```
  */

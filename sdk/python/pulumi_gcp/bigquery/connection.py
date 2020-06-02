@@ -14,6 +14,10 @@ class Connection(pulumi.CustomResource):
     """
     Cloud SQL properties.  Structure is documented below.
 
+      * `credential` (`dict`) - Cloud SQL properties.  Structure is documented below.
+        * `password` (`str`) - Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+        * `username` (`str`) - Username for database.
+
       * `database` (`str`) - Database name.
       * `instance_id` (`str`) - Cloud SQL instance ID in the form project:location:instance.
       * `type` (`str`) - Type of the Cloud SQL database.
@@ -61,12 +65,16 @@ class Connection(pulumi.CustomResource):
         * How-to Guides
             * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 
+        > **Warning:** All arguments including `cloud_sql.credential.password` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+
         ## Example Usage - Bigquery Connection Basic
 
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_random as random
 
         instance = gcp.sql.DatabaseInstance("instance",
             database_version="POSTGRES_11",
@@ -75,6 +83,12 @@ class Connection(pulumi.CustomResource):
                 "tier": "db-f1-micro",
             })
         db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            password=pwd.result)
         connection = gcp.bigquery.Connection("connection",
             friendly_name="👋",
             description="a riveting description",
@@ -82,6 +96,10 @@ class Connection(pulumi.CustomResource):
                 "instance_id": instance.connection_name,
                 "database": db.name,
                 "type": "POSTGRES",
+                "credential": {
+                    "username": user.name,
+                    "password": user.password,
+                },
             })
         ```
         ## Example Usage - Bigquery Connection Full
@@ -90,6 +108,7 @@ class Connection(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_random as random
 
         instance = gcp.sql.DatabaseInstance("instance",
             database_version="POSTGRES_11",
@@ -98,6 +117,12 @@ class Connection(pulumi.CustomResource):
                 "tier": "db-f1-micro",
             })
         db = gcp.sql.Database("db", instance=instance.name)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            password=pwd.result)
         connection = gcp.bigquery.Connection("connection",
             connection_id="my-connection",
             location="US",
@@ -107,6 +132,10 @@ class Connection(pulumi.CustomResource):
                 "instance_id": instance.connection_name,
                 "database": db.name,
                 "type": "POSTGRES",
+                "credential": {
+                    "username": user.name,
+                    "password": user.password,
+                },
             })
         ```
 
@@ -124,6 +153,10 @@ class Connection(pulumi.CustomResource):
                If it is not provided, the provider project is used.
 
         The **cloud_sql** object supports the following:
+
+          * `credential` (`pulumi.Input[dict]`) - Cloud SQL properties.  Structure is documented below.
+            * `password` (`pulumi.Input[str]`) - Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+            * `username` (`pulumi.Input[str]`) - Username for database.
 
           * `database` (`pulumi.Input[str]`) - Database name.
           * `instance_id` (`pulumi.Input[str]`) - Cloud SQL instance ID in the form project:location:instance.
@@ -186,6 +219,10 @@ class Connection(pulumi.CustomResource):
                If it is not provided, the provider project is used.
 
         The **cloud_sql** object supports the following:
+
+          * `credential` (`pulumi.Input[dict]`) - Cloud SQL properties.  Structure is documented below.
+            * `password` (`pulumi.Input[str]`) - Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+            * `username` (`pulumi.Input[str]`) - Username for database.
 
           * `database` (`pulumi.Input[str]`) - Database name.
           * `instance_id` (`pulumi.Input[str]`) - Cloud SQL instance ID in the form project:location:instance.

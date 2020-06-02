@@ -90,6 +90,9 @@ func GetCredentials(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON").(string)
 }
+func GetDataCatalogCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dataCatalogCustomEndpoint")
+}
 func GetDataFusionCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataFusionCustomEndpoint")
 }

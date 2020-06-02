@@ -42,13 +42,13 @@ namespace Pulumi.Gcp.Compute
     ///         });
     ///         var peering1 = new Gcp.Compute.NetworkPeering("peering1", new Gcp.Compute.NetworkPeeringArgs
     ///         {
-    ///             Network = @default.SelfLink,
-    ///             PeerNetwork = other.SelfLink,
+    ///             Network = @default.Id,
+    ///             PeerNetwork = other.Id,
     ///         });
     ///         var peering2 = new Gcp.Compute.NetworkPeering("peering2", new Gcp.Compute.NetworkPeeringArgs
     ///         {
-    ///             Network = other.SelfLink,
-    ///             PeerNetwork = @default.SelfLink,
+    ///             Network = other.Id,
+    ///             PeerNetwork = @default.Id,
     ///         });
     ///     }
     /// 

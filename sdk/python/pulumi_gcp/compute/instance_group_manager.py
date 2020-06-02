@@ -146,16 +146,16 @@ class InstanceGroupManager(pulumi.CustomResource):
             base_instance_name="app",
             zone="us-central1-a",
             version=[{
-                "instanceTemplate": google_compute_instance_template["appserver"]["self_link"],
+                "instanceTemplate": google_compute_instance_template["appserver"]["id"],
             }],
-            target_pools=[google_compute_target_pool["appserver"]["self_link"]],
+            target_pools=[google_compute_target_pool["appserver"]["id"]],
             target_size=2,
             named_port=[{
                 "name": "customHTTP",
                 "port": 8888,
             }],
             auto_healing_policies={
-                "healthCheck": autohealing.self_link,
+                "healthCheck": autohealing.id,
                 "initialDelaySec": 300,
             })
         ```
@@ -173,11 +173,11 @@ class InstanceGroupManager(pulumi.CustomResource):
             version=[
                 {
                     "name": "appserver",
-                    "instanceTemplate": google_compute_instance_template["appserver"]["self_link"],
+                    "instanceTemplate": google_compute_instance_template["appserver"]["id"],
                 },
                 {
                     "name": "appserver-canary",
-                    "instanceTemplate": google_compute_instance_template["appserver-canary"]["self_link"],
+                    "instanceTemplate": google_compute_instance_template["appserver-canary"]["id"],
                     "target_size": {
                         "fixed": 1,
                     },

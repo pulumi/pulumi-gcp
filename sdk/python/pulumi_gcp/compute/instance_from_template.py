@@ -92,7 +92,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             can_ip_forward=True)
         tpl_instance_from_template = gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate",
             zone="us-central1-a",
-            source_instance_template=tpl_instance_template.self_link,
+            source_instance_template=tpl_instance_template.id,
             can_ip_forward=False,
             labels={
                 "my_key": "my_value",

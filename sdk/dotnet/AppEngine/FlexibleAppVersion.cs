@@ -83,6 +83,13 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableDictionary<string, string>?> EnvVariables { get; private set; } = null!;
 
         /// <summary>
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests.
+        /// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+        /// </summary>
+        [Output("handlers")]
+        public Output<ImmutableArray<Outputs.FlexibleAppVersionHandler>> Handlers { get; private set; } = null!;
+
+        /// <summary>
         /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         /// </summary>
         [Output("inboundServices")]
@@ -315,6 +322,19 @@ namespace Pulumi.Gcp.AppEngine
             set => _envVariables = value;
         }
 
+        [Input("handlers")]
+        private InputList<Inputs.FlexibleAppVersionHandlerArgs>? _handlers;
+
+        /// <summary>
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests.
+        /// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FlexibleAppVersionHandlerArgs> Handlers
+        {
+            get => _handlers ?? (_handlers = new InputList<Inputs.FlexibleAppVersionHandlerArgs>());
+            set => _handlers = value;
+        }
+
         [Input("inboundServices")]
         private InputList<string>? _inboundServices;
 
@@ -507,6 +527,19 @@ namespace Pulumi.Gcp.AppEngine
         {
             get => _envVariables ?? (_envVariables = new InputMap<string>());
             set => _envVariables = value;
+        }
+
+        [Input("handlers")]
+        private InputList<Inputs.FlexibleAppVersionHandlerGetArgs>? _handlers;
+
+        /// <summary>
+        /// An ordered list of URL-matching patterns that should be applied to incoming requests.
+        /// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FlexibleAppVersionHandlerGetArgs> Handlers
+        {
+            get => _handlers ?? (_handlers = new InputList<Inputs.FlexibleAppVersionHandlerGetArgs>());
+            set => _handlers = value;
         }
 
         [Input("inboundServices")]

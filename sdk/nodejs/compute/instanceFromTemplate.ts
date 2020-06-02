@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * });
  * const tplInstanceFromTemplate = new gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate", {
  *     zone: "us-central1-a",
- *     sourceInstanceTemplate: tplInstanceTemplate.selfLink,
+ *     sourceInstanceTemplate: tplInstanceTemplate.id,
  *     canIpForward: false,
  *     labels: {
  *         my_key: "myValue",

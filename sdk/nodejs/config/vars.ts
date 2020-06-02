@@ -32,6 +32,7 @@ export let containerAnalysisCustomEndpoint: string | undefined = __config.get("c
 export let containerBetaCustomEndpoint: string | undefined = __config.get("containerBetaCustomEndpoint");
 export let containerCustomEndpoint: string | undefined = __config.get("containerCustomEndpoint");
 export let credentials: string | undefined = __config.get("credentials") || utilities.getEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON");
+export let dataCatalogCustomEndpoint: string | undefined = __config.get("dataCatalogCustomEndpoint");
 export let dataFusionCustomEndpoint: string | undefined = __config.get("dataFusionCustomEndpoint");
 export let dataflowCustomEndpoint: string | undefined = __config.get("dataflowCustomEndpoint");
 export let dataprocBetaCustomEndpoint: string | undefined = __config.get("dataprocBetaCustomEndpoint");

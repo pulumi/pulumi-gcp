@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Kms.Inputs
 
     public sealed class RegistryCredentialGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A public key certificate format and data.
+        /// </summary>
         [Input("publicKeyCertificate", required: true)]
         public Input<Inputs.RegistryCredentialPublicKeyCertificateGetArgs> PublicKeyCertificate { get; set; } = null!;
 

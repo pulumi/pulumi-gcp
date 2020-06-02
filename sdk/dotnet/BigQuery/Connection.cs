@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.BigQuery
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1beta1/projects.locations.connections/create)
     /// * How-to Guides
     ///     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
+    /// 
+    /// &gt; **Warning:** All arguments including `cloud_sql.credential.password` will be stored in the raw
+    /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// </summary>
     public partial class Connection : Pulumi.CustomResource
     {

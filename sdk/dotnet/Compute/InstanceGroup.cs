@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Description = "Test instance group",
     ///             Zone = "us-central1-a",
-    ///             Network = google_compute_network.Default.Self_link,
+    ///             Network = google_compute_network.Default.Id,
     ///         });
     ///     }
     /// 

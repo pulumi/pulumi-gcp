@@ -35,7 +35,8 @@ const (
 	gcpCompute              = "Compute"              // Compute resources
 	gcpContainerAnalysis    = "ContainerAnalysis"    // Container Analysis resources
 	gcpDNS                  = "Dns"                  // DNS resources
-	gcpDataFolow            = "Dataflow"             // DataFlow resources
+	gcpDataCatalog          = "DataCatalog"          // Data Catalog resources
+	gcpDataFlow             = "Dataflow"             // DataFlow resources
 	gcpDataFusion           = "DataFusion"           // DataFusion resources
 	gcpDataProc             = "Dataproc"             // DataProc resources
 	gcpDatastore            = "Datastore"            // Datastore resources
@@ -659,6 +660,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_instance_group_named_port":  {Tok: gcpResource(gcpCompute, "InstanceGroupNamedPort")},
 			"google_compute_per_instance_config":        {Tok: gcpResource(gcpCompute, "PerInstanceConfig")},
 			"google_compute_region_per_instance_config": {Tok: gcpResource(gcpCompute, "RegionPerInstanceConfig")},
+			"google_compute_machine_image":              {Tok: gcpResource(gcpCompute, "MachineImage")},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {
@@ -674,7 +676,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_container_registry":  {Tok: gcpResource(gcpKubernetes, "Registry")},
 
 			// Data Flow resources
-			"google_dataflow_job": {Tok: gcpResource(gcpDataFolow, "Job")},
+			"google_dataflow_job": {Tok: gcpResource(gcpDataFlow, "Job")},
 
 			// Data Proc resources
 			"google_dataproc_cluster": {Tok: gcpResource(gcpDataProc, "Cluster")},
@@ -1440,6 +1442,28 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "artifact_registry_repository_iam.html.markdown",
 				},
 			},
+
+			// Data Catalog
+			"google_data_catalog_entry":       {Tok: gcpResource(gcpDataCatalog, "Entry")},
+			"google_data_catalog_entry_group": {Tok: gcpResource(gcpDataCatalog, "EntryGroup")},
+			"google_data_catalog_entry_group_iam_binding": {
+				Tok: gcpResource(gcpDataCatalog, "EntryGroupIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_entry_group_iam.html.markdown",
+				},
+			},
+			"google_data_catalog_entry_group_iam_member": {
+				Tok: gcpResource(gcpDataCatalog, "EntryGroupIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_entry_group_iam.html.markdown",
+				},
+			},
+			"google_data_catalog_entry_group_iam_policy": {
+				Tok: gcpResource(gcpDataCatalog, "EntryGroupIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_entry_group_iam.html.markdown",
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1552,6 +1576,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_iam_testable_permissions": {
 				Tok: gcpDataSource(gcpIAM, "getTestablePermissions"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_iam_testable_permissions.html.markdown",
+				},
 			},
 			"google_netblock_ip_ranges": {
 				Tok: gcpDataSource(gcpCompute, "getNetblockIPRanges"),
@@ -1909,6 +1936,9 @@ func Provider() tfbridge.ProviderInfo {
 					NestedType: "RegistryEventNotificationConfigItem",
 				},
 			},
+		},
+		Docs: &tfbridge.DocInfo{
+			Source: "cloudiot_device_registry.html.markdown",
 		},
 	})
 

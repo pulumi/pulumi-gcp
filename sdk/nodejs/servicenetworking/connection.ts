@@ -21,10 +21,10 @@ import * as utilities from "../utilities";
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
- *     network: peeringNetwork.selfLink,
+ *     network: peeringNetwork.id,
  * });
  * const foobar = new gcp.servicenetworking.Connection("foobar", {
- *     network: peeringNetwork.selfLink,
+ *     network: peeringNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });

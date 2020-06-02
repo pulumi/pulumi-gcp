@@ -46,6 +46,9 @@ type FlexibleAppVersion struct {
 	Entrypoint FlexibleAppVersionEntrypointPtrOutput `pulumi:"entrypoint"`
 	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 	EnvVariables pulumi.StringMapOutput `pulumi:"envVariables"`
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+	Handlers FlexibleAppVersionHandlerArrayOutput `pulumi:"handlers"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices pulumi.StringArrayOutput `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
@@ -148,6 +151,9 @@ type flexibleAppVersionState struct {
 	Entrypoint *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
 	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 	EnvVariables map[string]string `pulumi:"envVariables"`
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+	Handlers []FlexibleAppVersionHandler `pulumi:"handlers"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices []string `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
@@ -214,6 +220,9 @@ type FlexibleAppVersionState struct {
 	Entrypoint FlexibleAppVersionEntrypointPtrInput
 	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 	EnvVariables pulumi.StringMapInput
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+	Handlers FlexibleAppVersionHandlerArrayInput
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices pulumi.StringArrayInput
 	// Instance class that is used to run this version. Valid values are
@@ -284,6 +293,9 @@ type flexibleAppVersionArgs struct {
 	Entrypoint *FlexibleAppVersionEntrypoint `pulumi:"entrypoint"`
 	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 	EnvVariables map[string]string `pulumi:"envVariables"`
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+	Handlers []FlexibleAppVersionHandler `pulumi:"handlers"`
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices []string `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
@@ -349,6 +361,9 @@ type FlexibleAppVersionArgs struct {
 	Entrypoint FlexibleAppVersionEntrypointPtrInput
 	// Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
 	EnvVariables pulumi.StringMapInput
+	// An ordered list of URL-matching patterns that should be applied to incoming requests.
+	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+	Handlers FlexibleAppVersionHandlerArrayInput
 	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
 	InboundServices pulumi.StringArrayInput
 	// Instance class that is used to run this version. Valid values are

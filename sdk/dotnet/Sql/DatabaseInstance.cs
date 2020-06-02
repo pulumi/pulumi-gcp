@@ -85,11 +85,11 @@ namespace Pulumi.Gcp.Sql
     ///             Purpose = "VPC_PEERING",
     ///             AddressType = "INTERNAL",
     ///             PrefixLength = 16,
-    ///             Network = privateNetwork.SelfLink,
+    ///             Network = privateNetwork.Id,
     ///         });
     ///         var privateVpcConnection = new Gcp.ServiceNetworking.Connection("privateVpcConnection", new Gcp.ServiceNetworking.ConnectionArgs
     ///         {
-    ///             Network = privateNetwork.SelfLink,
+    ///             Network = privateNetwork.Id,
     ///             Service = "servicenetworking.googleapis.com",
     ///             ReservedPeeringRanges = 
     ///             {
@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Sql
     ///                 Ip_configuration = 
     ///                 {
     ///                     { "ipv4Enabled", false },
-    ///                     { "privateNetwork", privateNetwork.SelfLink },
+    ///                     { "privateNetwork", privateNetwork.Id },
     ///                 },
     ///             },
     ///         });
@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The MySQL, PostgreSQL or
         /// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-        /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+        /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
         /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
         /// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
         /// includes an up-to-date reference of supported versions.
@@ -290,7 +290,7 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The MySQL, PostgreSQL or
         /// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-        /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+        /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
         /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
         /// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
         /// includes an up-to-date reference of supported versions.
@@ -381,7 +381,7 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The MySQL, PostgreSQL or
         /// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-        /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+        /// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
         /// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
         /// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
         /// includes an up-to-date reference of supported versions.

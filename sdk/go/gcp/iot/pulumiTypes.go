@@ -11,7 +11,7 @@ import (
 )
 
 type RegistryCredential struct {
-	// The certificate format and data.
+	// A public key certificate format and data.
 	PublicKeyCertificate RegistryCredentialPublicKeyCertificate `pulumi:"publicKeyCertificate"`
 }
 
@@ -28,7 +28,7 @@ type RegistryCredentialInput interface {
 }
 
 type RegistryCredentialArgs struct {
-	// The certificate format and data.
+	// A public key certificate format and data.
 	PublicKeyCertificate RegistryCredentialPublicKeyCertificateInput `pulumi:"publicKeyCertificate"`
 }
 
@@ -84,7 +84,7 @@ func (o RegistryCredentialOutput) ToRegistryCredentialOutputWithContext(ctx cont
 	return o
 }
 
-// The certificate format and data.
+// A public key certificate format and data.
 func (o RegistryCredentialOutput) PublicKeyCertificate() RegistryCredentialPublicKeyCertificateOutput {
 	return o.ApplyT(func(v RegistryCredential) RegistryCredentialPublicKeyCertificate { return v.PublicKeyCertificate }).(RegistryCredentialPublicKeyCertificateOutput)
 }
@@ -112,7 +112,7 @@ func (o RegistryCredentialArrayOutput) Index(i pulumi.IntInput) RegistryCredenti
 type RegistryCredentialPublicKeyCertificate struct {
 	// The certificate data.
 	Certificate string `pulumi:"certificate"`
-	// The field allows only  `X509_CERTIFICATE_PEM`.
+	// The field allows only `X509_CERTIFICATE_PEM`.
 	Format string `pulumi:"format"`
 }
 
@@ -131,7 +131,7 @@ type RegistryCredentialPublicKeyCertificateInput interface {
 type RegistryCredentialPublicKeyCertificateArgs struct {
 	// The certificate data.
 	Certificate pulumi.StringInput `pulumi:"certificate"`
-	// The field allows only  `X509_CERTIFICATE_PEM`.
+	// The field allows only `X509_CERTIFICATE_PEM`.
 	Format pulumi.StringInput `pulumi:"format"`
 }
 
@@ -166,18 +166,19 @@ func (o RegistryCredentialPublicKeyCertificateOutput) Certificate() pulumi.Strin
 	return o.ApplyT(func(v RegistryCredentialPublicKeyCertificate) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// The field allows only  `X509_CERTIFICATE_PEM`.
+// The field allows only `X509_CERTIFICATE_PEM`.
 func (o RegistryCredentialPublicKeyCertificateOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryCredentialPublicKeyCertificate) string { return v.Format }).(pulumi.StringOutput)
 }
 
 type RegistryEventNotificationConfigItem struct {
-	// PubSub topic name to publish device state updates.
+	// PubSub topic name to publish device events.
 	PubsubTopicName string `pulumi:"pubsubTopicName"`
-	// If the subfolder name matches this string
-	// exactly, this configuration will be used. The string must not include the
-	// leading '/' character. If empty, all strings are matched. Empty value can
-	// only be used for the last `eventNotificationConfigs` item.
+	// If the subfolder name matches this string exactly, this
+	// configuration will be used. The string must not include the
+	// leading '/' character. If empty, all strings are matched. Empty
+	// value can only be used for the last `eventNotificationConfigs`
+	// item.
 	SubfolderMatches *string `pulumi:"subfolderMatches"`
 }
 
@@ -194,12 +195,13 @@ type RegistryEventNotificationConfigItemInput interface {
 }
 
 type RegistryEventNotificationConfigItemArgs struct {
-	// PubSub topic name to publish device state updates.
+	// PubSub topic name to publish device events.
 	PubsubTopicName pulumi.StringInput `pulumi:"pubsubTopicName"`
-	// If the subfolder name matches this string
-	// exactly, this configuration will be used. The string must not include the
-	// leading '/' character. If empty, all strings are matched. Empty value can
-	// only be used for the last `eventNotificationConfigs` item.
+	// If the subfolder name matches this string exactly, this
+	// configuration will be used. The string must not include the
+	// leading '/' character. If empty, all strings are matched. Empty
+	// value can only be used for the last `eventNotificationConfigs`
+	// item.
 	SubfolderMatches pulumi.StringPtrInput `pulumi:"subfolderMatches"`
 }
 
@@ -255,15 +257,16 @@ func (o RegistryEventNotificationConfigItemOutput) ToRegistryEventNotificationCo
 	return o
 }
 
-// PubSub topic name to publish device state updates.
+// PubSub topic name to publish device events.
 func (o RegistryEventNotificationConfigItemOutput) PubsubTopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryEventNotificationConfigItem) string { return v.PubsubTopicName }).(pulumi.StringOutput)
 }
 
-// If the subfolder name matches this string
-// exactly, this configuration will be used. The string must not include the
-// leading '/' character. If empty, all strings are matched. Empty value can
-// only be used for the last `eventNotificationConfigs` item.
+// If the subfolder name matches this string exactly, this
+// configuration will be used. The string must not include the
+// leading '/' character. If empty, all strings are matched. Empty
+// value can only be used for the last `eventNotificationConfigs`
+// item.
 func (o RegistryEventNotificationConfigItemOutput) SubfolderMatches() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegistryEventNotificationConfigItem) *string { return v.SubfolderMatches }).(pulumi.StringPtrOutput)
 }
@@ -555,7 +558,7 @@ func (o RegistryMqttConfigPtrOutput) MqttEnabledState() pulumi.StringPtrOutput {
 }
 
 type RegistryStateNotificationConfig struct {
-	// PubSub topic name to publish device state updates.
+	// PubSub topic name to publish device events.
 	PubsubTopicName string `pulumi:"pubsubTopicName"`
 }
 
@@ -572,7 +575,7 @@ type RegistryStateNotificationConfigInput interface {
 }
 
 type RegistryStateNotificationConfigArgs struct {
-	// PubSub topic name to publish device state updates.
+	// PubSub topic name to publish device events.
 	PubsubTopicName pulumi.StringInput `pulumi:"pubsubTopicName"`
 }
 
@@ -654,7 +657,7 @@ func (o RegistryStateNotificationConfigOutput) ToRegistryStateNotificationConfig
 	}).(RegistryStateNotificationConfigPtrOutput)
 }
 
-// PubSub topic name to publish device state updates.
+// PubSub topic name to publish device events.
 func (o RegistryStateNotificationConfigOutput) PubsubTopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistryStateNotificationConfig) string { return v.PubsubTopicName }).(pulumi.StringOutput)
 }
@@ -677,7 +680,7 @@ func (o RegistryStateNotificationConfigPtrOutput) Elem() RegistryStateNotificati
 	return o.ApplyT(func(v *RegistryStateNotificationConfig) RegistryStateNotificationConfig { return *v }).(RegistryStateNotificationConfigOutput)
 }
 
-// PubSub topic name to publish device state updates.
+// PubSub topic name to publish device events.
 func (o RegistryStateNotificationConfigPtrOutput) PubsubTopicName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryStateNotificationConfig) *string {
 		if v == nil {

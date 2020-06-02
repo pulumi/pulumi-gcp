@@ -54,7 +54,8 @@ class Secret(pulumi.CustomResource):
 
         To get more information about Secret, see:
 
-        * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets)
+        * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
+
 
         ## Example Usage - Secret Config Basic
 
@@ -64,12 +65,11 @@ class Secret(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
-            secret_id="secret",
             labels={
                 "label": "my-label",
             },
             replication={
-                "user_managed": {
+                "userManaged": {
                     "replicas": [
                         {
                             "location": "us-central1",
@@ -79,7 +79,8 @@ class Secret(pulumi.CustomResource):
                         },
                     ],
                 },
-            })
+            },
+            secret_id="secret")
         ```
 
         :param str resource_name: The name of the resource.

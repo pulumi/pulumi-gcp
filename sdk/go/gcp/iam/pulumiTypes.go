@@ -11,11 +11,16 @@ import (
 )
 
 type GetTestablePermissionsPermission struct {
-	ApiDisabled        bool   `pulumi:"apiDisabled"`
+	// Whether the corresponding API has been enabled for the resource.
+	ApiDisabled bool `pulumi:"apiDisabled"`
+	// The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
 	CustomSupportLevel string `pulumi:"customSupportLevel"`
-	Name               string `pulumi:"name"`
-	Stage              string `pulumi:"stage"`
-	Title              string `pulumi:"title"`
+	// Name of the permission.
+	Name string `pulumi:"name"`
+	// Release stage of the permission.
+	Stage string `pulumi:"stage"`
+	// Human readable title of the permission.
+	Title string `pulumi:"title"`
 }
 
 // GetTestablePermissionsPermissionInput is an input type that accepts GetTestablePermissionsPermissionArgs and GetTestablePermissionsPermissionOutput values.
@@ -31,11 +36,16 @@ type GetTestablePermissionsPermissionInput interface {
 }
 
 type GetTestablePermissionsPermissionArgs struct {
-	ApiDisabled        pulumi.BoolInput   `pulumi:"apiDisabled"`
+	// Whether the corresponding API has been enabled for the resource.
+	ApiDisabled pulumi.BoolInput `pulumi:"apiDisabled"`
+	// The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
 	CustomSupportLevel pulumi.StringInput `pulumi:"customSupportLevel"`
-	Name               pulumi.StringInput `pulumi:"name"`
-	Stage              pulumi.StringInput `pulumi:"stage"`
-	Title              pulumi.StringInput `pulumi:"title"`
+	// Name of the permission.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Release stage of the permission.
+	Stage pulumi.StringInput `pulumi:"stage"`
+	// Human readable title of the permission.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (GetTestablePermissionsPermissionArgs) ElementType() reflect.Type {
@@ -90,22 +100,27 @@ func (o GetTestablePermissionsPermissionOutput) ToGetTestablePermissionsPermissi
 	return o
 }
 
+// Whether the corresponding API has been enabled for the resource.
 func (o GetTestablePermissionsPermissionOutput) ApiDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTestablePermissionsPermission) bool { return v.ApiDisabled }).(pulumi.BoolOutput)
 }
 
+// The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
 func (o GetTestablePermissionsPermissionOutput) CustomSupportLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTestablePermissionsPermission) string { return v.CustomSupportLevel }).(pulumi.StringOutput)
 }
 
+// Name of the permission.
 func (o GetTestablePermissionsPermissionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTestablePermissionsPermission) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Release stage of the permission.
 func (o GetTestablePermissionsPermissionOutput) Stage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTestablePermissionsPermission) string { return v.Stage }).(pulumi.StringOutput)
 }
 
+// Human readable title of the permission.
 func (o GetTestablePermissionsPermissionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTestablePermissionsPermission) string { return v.Title }).(pulumi.StringOutput)
 }

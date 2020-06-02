@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class ConnectionCloudSql
     {
         /// <summary>
+        /// Cloud SQL properties.  Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ConnectionCloudSqlCredential Credential;
+        /// <summary>
         /// Database name.
         /// </summary>
         public readonly string Database;
@@ -28,12 +32,15 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
         [OutputConstructor]
         private ConnectionCloudSql(
+            Outputs.ConnectionCloudSqlCredential credential,
+
             string database,
 
             string instanceId,
 
             string type)
         {
+            Credential = credential;
             Database = database;
             InstanceId = instanceId;
             Type = type;

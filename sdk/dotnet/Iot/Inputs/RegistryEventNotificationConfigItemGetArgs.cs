@@ -13,16 +13,17 @@ namespace Pulumi.Gcp.Iot.Inputs
     public sealed class RegistryEventNotificationConfigItemGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// PubSub topic name to publish device state updates.
+        /// PubSub topic name to publish device events.
         /// </summary>
         [Input("pubsubTopicName", required: true)]
         public Input<string> PubsubTopicName { get; set; } = null!;
 
         /// <summary>
-        /// If the subfolder name matches this string
-        /// exactly, this configuration will be used. The string must not include the
-        /// leading '/' character. If empty, all strings are matched. Empty value can
-        /// only be used for the last `event_notification_configs` item.
+        /// If the subfolder name matches this string exactly, this
+        /// configuration will be used. The string must not include the
+        /// leading '/' character. If empty, all strings are matched. Empty
+        /// value can only be used for the last `event_notification_configs`
+        /// item.
         /// </summary>
         [Input("subfolderMatches")]
         public Input<string>? SubfolderMatches { get; set; }

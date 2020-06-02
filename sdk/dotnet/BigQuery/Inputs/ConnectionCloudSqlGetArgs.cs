@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class ConnectionCloudSqlGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Cloud SQL properties.  Structure is documented below.
+        /// </summary>
+        [Input("credential", required: true)]
+        public Input<Inputs.ConnectionCloudSqlCredentialGetArgs> Credential { get; set; } = null!;
+
+        /// <summary>
         /// Database name.
         /// </summary>
         [Input("database", required: true)]

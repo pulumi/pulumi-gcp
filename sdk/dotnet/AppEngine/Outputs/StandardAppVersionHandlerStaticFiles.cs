@@ -14,7 +14,9 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     public sealed class StandardAppVersionHandlerStaticFiles
     {
         /// <summary>
-        /// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+        /// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
+        /// static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
+        /// against both your code and static data storage resource quotas.
         /// </summary>
         public readonly bool? ApplicationReadable;
         /// <summary>
