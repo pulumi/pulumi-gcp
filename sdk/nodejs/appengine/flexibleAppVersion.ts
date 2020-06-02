@@ -75,6 +75,16 @@ import * as utilities from "../utilities";
  *     envVariables: {
  *         port: "8080",
  *     },
+ *     handlers: [{
+ *         urlRegex: ".*\\/my-path\\/*",
+ *         securityLevel: "SECURE_ALWAYS",
+ *         login: "LOGIN_REQUIRED",
+ *         authFailAction: "AUTH_FAIL_ACTION_REDIRECT",
+ *         static_files: {
+ *             path: "my-other-path",
+ *             uploadPathRegex: ".*\\/my-path\\/*",
+ *         },
+ *     }],
  *     automatic_scaling: {
  *         coolDownPeriod: "120s",
  *         cpu_utilization: {
@@ -149,6 +159,11 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
      * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
      */
     public readonly envVariables!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * An ordered list of URL-matching patterns that should be applied to incoming requests.
+     * The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+     */
+    public readonly handlers!: pulumi.Output<outputs.appengine.FlexibleAppVersionHandler[]>;
     /**
      * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
      */
@@ -253,6 +268,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             inputs["endpointsApiService"] = state ? state.endpointsApiService : undefined;
             inputs["entrypoint"] = state ? state.entrypoint : undefined;
             inputs["envVariables"] = state ? state.envVariables : undefined;
+            inputs["handlers"] = state ? state.handlers : undefined;
             inputs["inboundServices"] = state ? state.inboundServices : undefined;
             inputs["instanceClass"] = state ? state.instanceClass : undefined;
             inputs["livenessCheck"] = state ? state.livenessCheck : undefined;
@@ -292,6 +308,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             inputs["endpointsApiService"] = args ? args.endpointsApiService : undefined;
             inputs["entrypoint"] = args ? args.entrypoint : undefined;
             inputs["envVariables"] = args ? args.envVariables : undefined;
+            inputs["handlers"] = args ? args.handlers : undefined;
             inputs["inboundServices"] = args ? args.inboundServices : undefined;
             inputs["instanceClass"] = args ? args.instanceClass : undefined;
             inputs["livenessCheck"] = args ? args.livenessCheck : undefined;
@@ -364,6 +381,11 @@ export interface FlexibleAppVersionState {
      * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
      */
     readonly envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * An ordered list of URL-matching patterns that should be applied to incoming requests.
+     * The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+     */
+    readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionHandler>[]>;
     /**
      * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
      */
@@ -489,6 +511,11 @@ export interface FlexibleAppVersionArgs {
      * Environment variables available to the application.  As these are not returned in the API request, the provider will not detect any changes made outside of the config.
      */
     readonly envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * An ordered list of URL-matching patterns that should be applied to incoming requests.
+     * The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+     */
+    readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionHandler>[]>;
     /**
      * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
      */

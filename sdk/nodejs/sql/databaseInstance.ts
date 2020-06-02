@@ -68,10 +68,10 @@ import * as utilities from "../utilities";
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
- *     network: privateNetwork.selfLink,
+ *     network: privateNetwork.id,
  * });
  * const privateVpcConnection = new gcp.servicenetworking.Connection("privateVpcConnection", {
- *     network: privateNetwork.selfLink,
+ *     network: privateNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAddress.name],
  * });
@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  *         tier: "db-f1-micro",
  *         ip_configuration: {
  *             ipv4Enabled: false,
- *             privateNetwork: privateNetwork.selfLink,
+ *             privateNetwork: privateNetwork.id,
  *         },
  *     },
  * });
@@ -123,7 +123,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * The MySQL, PostgreSQL or
      * SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-     * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+     * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
      * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
      * [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
      * includes an up-to-date reference of supported versions.
@@ -278,7 +278,7 @@ export interface DatabaseInstanceState {
     /**
      * The MySQL, PostgreSQL or
      * SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-     * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+     * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
      * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
      * [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
      * includes an up-to-date reference of supported versions.
@@ -366,7 +366,7 @@ export interface DatabaseInstanceArgs {
     /**
      * The MySQL, PostgreSQL or
      * SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-     * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+     * `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
      * `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
      * [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
      * includes an up-to-date reference of supported versions.

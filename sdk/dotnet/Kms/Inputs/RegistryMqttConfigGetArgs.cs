@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Kms.Inputs
 
     public sealed class RegistryMqttConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
+        /// </summary>
         [Input("mqttEnabledState", required: true)]
         public Input<string> MqttEnabledState { get; set; } = null!;
 

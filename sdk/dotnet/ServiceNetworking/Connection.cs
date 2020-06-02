@@ -33,11 +33,11 @@ namespace Pulumi.Gcp.ServiceNetworking
     ///             Purpose = "VPC_PEERING",
     ///             AddressType = "INTERNAL",
     ///             PrefixLength = 16,
-    ///             Network = peeringNetwork.SelfLink,
+    ///             Network = peeringNetwork.Id,
     ///         });
     ///         var foobar = new Gcp.ServiceNetworking.Connection("foobar", new Gcp.ServiceNetworking.ConnectionArgs
     ///         {
-    ///             Network = peeringNetwork.SelfLink,
+    ///             Network = peeringNetwork.Id,
     ///             Service = "servicenetworking.googleapis.com",
     ///             ReservedPeeringRanges = 
     ///             {

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const test = new gcp.compute.InstanceGroup("test", {
  *     description: "Test instance group",
  *     zone: "us-central1-a",
- *     network: google_compute_network["default"].self_link,
+ *     network: google_compute_network["default"].id,
  * });
  * ```
  *
@@ -34,8 +34,8 @@ import * as utilities from "../utilities";
  * const webservers = new gcp.compute.InstanceGroup("webservers", {
  *     description: "Test instance group",
  *     instances: [
- *         google_compute_instance.test.self_link,
- *         google_compute_instance.test2.self_link,
+ *         google_compute_instance.test.id,
+ *         google_compute_instance.test2.id,
  *     ],
  *     named_port: [
  *         {
@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  * });
  * const stagingGroup = new gcp.compute.InstanceGroup("stagingGroup", {
  *     zone: "us-central1-c",
- *     instances: [stagingVm.selfLink],
+ *     instances: [stagingVm.id],
  *     named_port: [
  *         {
  *             name: "http",
@@ -95,9 +95,9 @@ import * as utilities from "../utilities";
  *     portName: "https",
  *     protocol: "HTTPS",
  *     backend: [{
- *         group: stagingGroup.selfLink,
+ *         group: stagingGroup.id,
  *     }],
- *     healthChecks: [stagingHealth.selfLink],
+ *     healthChecks: [stagingHealth.id],
  * });
  * ```
  */

@@ -316,7 +316,7 @@ class InstanceTemplate(pulumi.CustomResource):
             disk=[{}],
             network_interface=[{}])
         instance_group_manager = gcp.compute.InstanceGroupManager("instanceGroupManager",
-            instance_template=instance_template.self_link,
+            instance_template=instance_template.id,
             base_instance_name="instance-group-manager",
             zone="us-central1-f",
             target_size="1")

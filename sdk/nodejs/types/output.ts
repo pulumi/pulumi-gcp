@@ -539,6 +539,84 @@ export namespace appengine {
         shell: string;
     }
 
+    export interface FlexibleAppVersionHandler {
+        /**
+         * Action to take when users access resources that require authentication.
+         */
+        authFailAction?: string;
+        /**
+         * Level of login required to access this resource.
+         */
+        login?: string;
+        /**
+         * 30x code to use when performing redirects for the secure field.
+         */
+        redirectHttpResponseCode?: string;
+        /**
+         * Path to the script from the application root directory.
+         */
+        script?: outputs.appengine.FlexibleAppVersionHandlerScript;
+        /**
+         * Security (HTTPS) enforcement for this URL.
+         */
+        securityLevel?: string;
+        /**
+         * Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
+         * Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+         */
+        staticFiles?: outputs.appengine.FlexibleAppVersionHandlerStaticFiles;
+        /**
+         * URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+         * All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+         */
+        urlRegex?: string;
+    }
+
+    export interface FlexibleAppVersionHandlerScript {
+        /**
+         * Path to the script from the application root directory.
+         */
+        scriptPath: string;
+    }
+
+    export interface FlexibleAppVersionHandlerStaticFiles {
+        /**
+         * Whether files should also be uploaded as code data. By default, files declared in static file handlers are
+         * uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
+         * uploads are charged against both your code and static data storage resource quotas.
+         */
+        applicationReadable?: boolean;
+        /**
+         * Time a static file served by this handler should be cached by web proxies and browsers.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+         * Default is '0s'
+         */
+        expiration?: string;
+        /**
+         * HTTP headers to use for all responses from these URLs.
+         * An object containing a list of "key:value" value pairs.".
+         */
+        httpHeaders?: {[key: string]: string};
+        /**
+         * MIME type used to serve all files served by this handler.
+         * Defaults to file-specific MIME types, which are derived from each file's filename extension.
+         */
+        mimeType?: string;
+        /**
+         * Path to the static files matched by the URL pattern, from the application root directory.
+         * The path can refer to text matched in groupings in the URL pattern.
+         */
+        path?: string;
+        /**
+         * Whether this handler should match the request if the file referenced by the handler does not exist.
+         */
+        requireMatchingFile?: boolean;
+        /**
+         * Regular expression that matches the file paths for all files that should be referenced by this handler.
+         */
+        uploadPathRegex?: string;
+    }
+
     export interface FlexibleAppVersionLivenessCheck {
         /**
          * Interval between health checks.
@@ -557,7 +635,8 @@ export namespace appengine {
          */
         initialDelay?: string;
         /**
-         * The request path.
+         * Path to the static files matched by the URL pattern, from the application root directory.
+         * The path can refer to text matched in groupings in the URL pattern.
          */
         path: string;
         /**
@@ -625,7 +704,8 @@ export namespace appengine {
          */
         host?: string;
         /**
-         * The request path.
+         * Path to the static files matched by the URL pattern, from the application root directory.
+         * The path can refer to text matched in groupings in the URL pattern.
          */
         path: string;
         /**
@@ -827,7 +907,9 @@ export namespace appengine {
 
     export interface StandardAppVersionHandlerStaticFiles {
         /**
-         * Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+         * Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
+         * static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
+         * against both your code and static data storage resource quotas.
          */
         applicationReadable?: boolean;
         /**
@@ -909,6 +991,10 @@ export namespace bigquery {
 
     export interface ConnectionCloudSql {
         /**
+         * Cloud SQL properties.  Structure is documented below.
+         */
+        credential: outputs.bigquery.ConnectionCloudSqlCredential;
+        /**
          * Database name.
          */
         database: string;
@@ -920,6 +1006,17 @@ export namespace bigquery {
          * Type of the Cloud SQL database.
          */
         type: string;
+    }
+
+    export interface ConnectionCloudSqlCredential {
+        /**
+         * Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: string;
+        /**
+         * Username for database.
+         */
+        username: string;
     }
 
     export interface DatasetAccess {
@@ -10634,6 +10731,75 @@ export namespace containeranalysis {
     }
 }
 
+export namespace datacatalog {
+    export interface EntryBigqueryDateShardedSpec {
+        dataset: string;
+        shardCount: number;
+        tablePrefix: string;
+    }
+
+    export interface EntryBigqueryTableSpec {
+        tableSourceType: string;
+        tableSpec: outputs.datacatalog.EntryBigqueryTableSpecTableSpec;
+        viewSpec: outputs.datacatalog.EntryBigqueryTableSpecViewSpec;
+    }
+
+    export interface EntryBigqueryTableSpecTableSpec {
+        groupedEntry: string;
+    }
+
+    export interface EntryBigqueryTableSpecViewSpec {
+        viewQuery: string;
+    }
+
+    export interface EntryGcsFilesetSpec {
+        /**
+         * Patterns to identify a set of files in Google Cloud Storage.
+         * See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
+         * for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
+         * * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
+         * * gs://bucket_name/dir/**: matches all files in bucket_name/dir spanning all subdirectories.
+         * * gs://bucket_name/file*: matches files prefixed by file in bucketName
+         * * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucketName
+         * * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucketName
+         * * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucketName
+         * * gs://bucket_name/a/*&#47;b: matches all files in bucketName that match a/*&#47;b pattern, such as a/c/b, a/d/b
+         * * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
+         */
+        filePatterns: string[];
+        /**
+         * -
+         * Sample files contained in this fileset, not all files contained in this fileset are represented here.  Structure is documented below.
+         */
+        sampleGcsFileSpecs: outputs.datacatalog.EntryGcsFilesetSpecSampleGcsFileSpec[];
+    }
+
+    export interface EntryGcsFilesetSpecSampleGcsFileSpec {
+        /**
+         * -
+         * The full file path
+         */
+        filePath: string;
+        /**
+         * -
+         * The size of the file, in bytes.
+         */
+        sizeBytes: number;
+    }
+
+    export interface EntryGroupIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface EntryGroupIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+}
+
 export namespace datafusion {
     export interface InstanceNetworkConfig {
         /**
@@ -12232,10 +12398,25 @@ export namespace healthcare {
 
 export namespace iam {
     export interface GetTestablePermissionsPermission {
+        /**
+         * Whether the corresponding API has been enabled for the resource.
+         */
         apiDisabled: boolean;
+        /**
+         * The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
+         */
         customSupportLevel: string;
+        /**
+         * Name of the permission.
+         */
         name: string;
+        /**
+         * Release stage of the permission.
+         */
         stage: string;
+        /**
+         * Human readable title of the permission.
+         */
         title: string;
     }
 }
@@ -12559,7 +12740,7 @@ export namespace identityplatform {
 export namespace iot {
     export interface RegistryCredential {
         /**
-         * The certificate format and data.
+         * A public key certificate format and data.
          */
         publicKeyCertificate: outputs.iot.RegistryCredentialPublicKeyCertificate;
     }
@@ -12570,21 +12751,22 @@ export namespace iot {
          */
         certificate: string;
         /**
-         * The field allows only  `X509_CERTIFICATE_PEM`.
+         * The field allows only `X509_CERTIFICATE_PEM`.
          */
         format: string;
     }
 
     export interface RegistryEventNotificationConfigItem {
         /**
-         * PubSub topic name to publish device state updates.
+         * PubSub topic name to publish device events.
          */
         pubsubTopicName: string;
         /**
-         * If the subfolder name matches this string
-         * exactly, this configuration will be used. The string must not include the
-         * leading '/' character. If empty, all strings are matched. Empty value can
-         * only be used for the last `eventNotificationConfigs` item.
+         * If the subfolder name matches this string exactly, this
+         * configuration will be used. The string must not include the
+         * leading '/' character. If empty, all strings are matched. Empty
+         * value can only be used for the last `eventNotificationConfigs`
+         * item.
          */
         subfolderMatches?: string;
     }
@@ -12605,7 +12787,7 @@ export namespace iot {
 
     export interface RegistryStateNotificationConfig {
         /**
-         * PubSub topic name to publish device state updates.
+         * PubSub topic name to publish device events.
          */
         pubsubTopicName: string;
     }
@@ -12701,28 +12883,56 @@ export namespace kms {
     }
 
     export interface RegistryCredential {
+        /**
+         * A public key certificate format and data.
+         */
         publicKeyCertificate: outputs.kms.RegistryCredentialPublicKeyCertificate;
     }
 
     export interface RegistryCredentialPublicKeyCertificate {
+        /**
+         * The certificate data.
+         */
         certificate: string;
+        /**
+         * The field allows only `X509_CERTIFICATE_PEM`.
+         */
         format: string;
     }
 
     export interface RegistryEventNotificationConfigItem {
+        /**
+         * PubSub topic name to publish device events.
+         */
         pubsubTopicName: string;
+        /**
+         * If the subfolder name matches this string exactly, this
+         * configuration will be used. The string must not include the
+         * leading '/' character. If empty, all strings are matched. Empty
+         * value can only be used for the last `eventNotificationConfigs`
+         * item.
+         */
         subfolderMatches?: string;
     }
 
     export interface RegistryHttpConfig {
+        /**
+         * The field allows `HTTP_ENABLED` or `HTTP_DISABLED`.
+         */
         httpEnabledState: string;
     }
 
     export interface RegistryMqttConfig {
+        /**
+         * The field allows `MQTT_ENABLED` or `MQTT_DISABLED`.
+         */
         mqttEnabledState: string;
     }
 
     export interface RegistryStateNotificationConfig {
+        /**
+         * PubSub topic name to publish device events.
+         */
         pubsubTopicName: string;
     }
 }

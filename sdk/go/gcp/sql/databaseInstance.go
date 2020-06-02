@@ -47,7 +47,7 @@ type DatabaseInstance struct {
 	ConnectionName pulumi.StringOutput `pulumi:"connectionName"`
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
@@ -137,7 +137,7 @@ type databaseInstanceState struct {
 	ConnectionName *string `pulumi:"connectionName"`
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
@@ -197,7 +197,7 @@ type DatabaseInstanceState struct {
 	ConnectionName pulumi.StringPtrInput
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
@@ -258,7 +258,7 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 type databaseInstanceArgs struct {
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.
@@ -303,7 +303,7 @@ type databaseInstanceArgs struct {
 type DatabaseInstanceArgs struct {
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+	// `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
 	// `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
 	// [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
 	// includes an up-to-date reference of supported versions.

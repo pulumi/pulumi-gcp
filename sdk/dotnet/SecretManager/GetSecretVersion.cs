@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.SecretManager
     public static class GetSecretVersion
     {
         /// <summary>
-        /// Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets.versions).
+        /// Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
         /// 
         /// {{% examples %}}
         /// ## Example Usage

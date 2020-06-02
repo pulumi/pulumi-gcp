@@ -13,10 +13,25 @@ namespace Pulumi.Gcp.Iam.Outputs
     [OutputType]
     public sealed class GetTestablePermissionsPermissionResult
     {
+        /// <summary>
+        /// Whether the corresponding API has been enabled for the resource.
+        /// </summary>
         public readonly bool ApiDisabled;
+        /// <summary>
+        /// The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
+        /// </summary>
         public readonly string CustomSupportLevel;
+        /// <summary>
+        /// Name of the permission.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Release stage of the permission.
+        /// </summary>
         public readonly string Stage;
+        /// <summary>
+        /// Human readable title of the permission.
+        /// </summary>
         public readonly string Title;
 
         [OutputConstructor]

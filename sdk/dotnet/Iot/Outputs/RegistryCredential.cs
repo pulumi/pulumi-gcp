@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Iot.Outputs
     public sealed class RegistryCredential
     {
         /// <summary>
-        /// The certificate format and data.
+        /// A public key certificate format and data.
         /// </summary>
         public readonly Outputs.RegistryCredentialPublicKeyCertificate PublicKeyCertificate;
 

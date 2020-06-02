@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Iot.Outputs
         /// </summary>
         public readonly string Certificate;
         /// <summary>
-        /// The field allows only  `X509_CERTIFICATE_PEM`.
+        /// The field allows only `X509_CERTIFICATE_PEM`.
         /// </summary>
         public readonly string Format;
 

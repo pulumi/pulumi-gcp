@@ -11,7 +11,8 @@ import * as utilities from "../utilities";
  *
  * To get more information about Secret, see:
  *
- * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets)
+ * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
+ *
  *
  * ## Example Usage - Secret Config Basic
  *
@@ -21,12 +22,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const secretBasic = new gcp.secretmanager.Secret("secret-basic", {
- *     secretId: "secret",
  *     labels: {
  *         label: "my-label",
  *     },
  *     replication: {
- *         user_managed: {
+ *         userManaged: {
  *             replicas: [
  *                 {
  *                     location: "us-central1",
@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
+ *     secretId: "secret",
  * });
  * ```
  */

@@ -45,9 +45,9 @@ class Connection(pulumi.CustomResource):
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
-            network=peering_network.self_link)
+            network=peering_network.id)
         foobar = gcp.servicenetworking.Connection("foobar",
-            network=peering_network.self_link,
+            network=peering_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_alloc.name])
         ```

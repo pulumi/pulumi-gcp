@@ -17,6 +17,9 @@ class GetTestablePermissionsResult:
         if custom_support_level and not isinstance(custom_support_level, str):
             raise TypeError("Expected argument 'custom_support_level' to be a str")
         __self__.custom_support_level = custom_support_level
+        """
+        The the support level of this permission for custom roles.
+        """
         if full_resource_name and not isinstance(full_resource_name, str):
             raise TypeError("Expected argument 'full_resource_name' to be a str")
         __self__.full_resource_name = full_resource_name
@@ -29,6 +32,9 @@ class GetTestablePermissionsResult:
         if permissions and not isinstance(permissions, list):
             raise TypeError("Expected argument 'permissions' to be a list")
         __self__.permissions = permissions
+        """
+        A list of permissions matching the provided input. Structure is defined below.
+        """
         if stages and not isinstance(stages, list):
             raise TypeError("Expected argument 'stages' to be a list")
         __self__.stages = stages
@@ -46,7 +52,25 @@ class AwaitableGetTestablePermissionsResult(GetTestablePermissionsResult):
 
 def get_testable_permissions(custom_support_level=None,full_resource_name=None,stages=None,opts=None):
     """
-    Use this data source to access information about an existing resource.
+    Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
+
+    ## Example Usage - searching for projects about to be deleted in an org
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    perms = gcp.iam.get_testable_permissions(full_resource_name="//cloudresourcemanager.googleapis.com/projects/my-project",
+        stages=[
+            "GA",
+            "BETA",
+        ])
+    ```
+
+
+    :param str custom_support_level: The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
+    :param str full_resource_name: See [full resource name documentation](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more detail.
+    :param list stages: The acceptable release stages of the permission in the output. Note that `BETA` does not include permissions in `GA`, but you can specify both with `["GA", "BETA"]` for example. Can be a list of `"ALPHA"`, `"BETA"`, `"GA"`, `"DEPRECATED"`. Default is `["GA"]`.
     """
     __args__ = dict()
 

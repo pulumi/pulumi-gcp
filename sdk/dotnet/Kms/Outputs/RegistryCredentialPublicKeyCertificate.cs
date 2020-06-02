@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Kms.Outputs
     [OutputType]
     public sealed class RegistryCredentialPublicKeyCertificate
     {
+        /// <summary>
+        /// The certificate data.
+        /// </summary>
         public readonly string Certificate;
+        /// <summary>
+        /// The field allows only `X509_CERTIFICATE_PEM`.
+        /// </summary>
         public readonly string Format;
 
         [OutputConstructor]

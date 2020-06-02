@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Iot.Outputs
     public sealed class RegistryStateNotificationConfig
     {
         /// <summary>
-        /// PubSub topic name to publish device state updates.
+        /// PubSub topic name to publish device events.
         /// </summary>
         public readonly string PubsubTopicName;
 

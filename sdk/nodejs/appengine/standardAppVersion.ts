@@ -138,7 +138,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
      * An ordered list of URL-matching patterns that should be applied to incoming requests.
      * The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
      */
-    public readonly handlers!: pulumi.Output<outputs.appengine.StandardAppVersionHandler[] | undefined>;
+    public readonly handlers!: pulumi.Output<outputs.appengine.StandardAppVersionHandler[]>;
     /**
      * Instance class that is used to run this version. Valid values are
      * AutomaticScaling: F1, F2, F4, F4_1G

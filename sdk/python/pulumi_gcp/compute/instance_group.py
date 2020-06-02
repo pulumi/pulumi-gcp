@@ -73,7 +73,7 @@ class InstanceGroup(pulumi.CustomResource):
         test = gcp.compute.InstanceGroup("test",
             description="Test instance group",
             zone="us-central1-a",
-            network=google_compute_network["default"]["self_link"])
+            network=google_compute_network["default"]["id"])
         ```
 
         ### Example Usage - With instances and named ports
@@ -85,8 +85,8 @@ class InstanceGroup(pulumi.CustomResource):
         webservers = gcp.compute.InstanceGroup("webservers",
             description="Test instance group",
             instances=[
-                google_compute_instance["test"]["self_link"],
-                google_compute_instance["test2"]["self_link"],
+                google_compute_instance["test"]["id"],
+                google_compute_instance["test2"]["id"],
             ],
             named_port=[
                 {
@@ -125,7 +125,7 @@ class InstanceGroup(pulumi.CustomResource):
             }])
         staging_group = gcp.compute.InstanceGroup("stagingGroup",
             zone="us-central1-c",
-            instances=[staging_vm.self_link],
+            instances=[staging_vm.id],
             named_port=[
                 {
                     "name": "http",
@@ -141,9 +141,9 @@ class InstanceGroup(pulumi.CustomResource):
             port_name="https",
             protocol="HTTPS",
             backend=[{
-                "group": staging_group.self_link,
+                "group": staging_group.id,
             }],
-            health_checks=[staging_health.self_link])
+            health_checks=[staging_health.id])
         ```
 
         :param str resource_name: The name of the resource.

@@ -70,6 +70,7 @@ type providerArgs struct {
 	ContainerBetaCustomEndpoint          *string           `pulumi:"containerBetaCustomEndpoint"`
 	ContainerCustomEndpoint              *string           `pulumi:"containerCustomEndpoint"`
 	Credentials                          *string           `pulumi:"credentials"`
+	DataCatalogCustomEndpoint            *string           `pulumi:"dataCatalogCustomEndpoint"`
 	DataFusionCustomEndpoint             *string           `pulumi:"dataFusionCustomEndpoint"`
 	DataflowCustomEndpoint               *string           `pulumi:"dataflowCustomEndpoint"`
 	DataprocBetaCustomEndpoint           *string           `pulumi:"dataprocBetaCustomEndpoint"`
@@ -149,6 +150,7 @@ type ProviderArgs struct {
 	ContainerBetaCustomEndpoint          pulumi.StringPtrInput
 	ContainerCustomEndpoint              pulumi.StringPtrInput
 	Credentials                          pulumi.StringPtrInput
+	DataCatalogCustomEndpoint            pulumi.StringPtrInput
 	DataFusionCustomEndpoint             pulumi.StringPtrInput
 	DataflowCustomEndpoint               pulumi.StringPtrInput
 	DataprocBetaCustomEndpoint           pulumi.StringPtrInput

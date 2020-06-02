@@ -6,6 +6,79 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Google Cloud IoT Core device registry.
+ *
+ *
+ * To get more information about DeviceRegistry, see:
+ *
+ * * [API documentation](https://cloud.google.com/iot/docs/reference/cloudiot/rest/)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/iot/docs/)
+ *
+ * ## Example Usage - Cloudiot Device Registry Basic
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testRegistry = new gcp.iot.Registry("test-registry", {});
+ * ```
+ * ## Example Usage - Cloudiot Device Registry Single Event Notification Configs
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultTelemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const testRegistry = new gcp.iot.Registry("test-registry", {event_notification_configs: [{
+ *     pubsubTopicName: default_telemetry.id,
+ *     subfolderMatches: "",
+ * }]});
+ * ```
+ * ## Example Usage - Cloudiot Device Registry Full
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const defaultDevicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
+ * const defaultTelemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const additionalTelemetry = new gcp.pubsub.Topic("additional-telemetry", {});
+ * const testRegistry = new gcp.iot.Registry("test-registry", {
+ *     event_notification_configs: [
+ *         {
+ *             pubsubTopicName: additional_telemetry.id,
+ *             subfolderMatches: "test/path",
+ *         },
+ *         {
+ *             pubsubTopicName: default_telemetry.id,
+ *             subfolderMatches: "",
+ *         },
+ *     ],
+ *     stateNotificationConfig: {
+ *         pubsub_topic_name: default_devicestatus.id,
+ *     },
+ *     mqttConfig: {
+ *         mqtt_enabled_state: "MQTT_ENABLED",
+ *     },
+ *     httpConfig: {
+ *         http_enabled_state: "HTTP_ENABLED",
+ *     },
+ *     logLevel: "INFO",
+ *     credentials: [{
+ *         publicKeyCertificate: {
+ *             format: "X509_CERTIFICATE_PEM",
+ *             certificate: fs.readFileSync("test-fixtures/rsa_cert.pem"),
+ *         },
+ *     }],
+ * });
+ * ```
+ */
 /** @deprecated gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry */
 export class Registry extends pulumi.CustomResource {
     /**
@@ -35,14 +108,52 @@ export class Registry extends pulumi.CustomResource {
         return obj['__pulumiType'] === Registry.__pulumiType;
     }
 
+    /**
+     * List of public key certificates to authenticate devices.
+     * The structure is documented below.
+     */
     public readonly credentials!: pulumi.Output<outputs.kms.RegistryCredential[] | undefined>;
+    /**
+     * List of configurations for event notifications, such as PubSub topics
+     * to publish device events to.  Structure is documented below.
+     */
     public readonly eventNotificationConfigs!: pulumi.Output<outputs.kms.RegistryEventNotificationConfigItem[]>;
+    /**
+     * Activate or deactivate HTTP.
+     * The structure is documented below.
+     */
     public readonly httpConfig!: pulumi.Output<outputs.kms.RegistryHttpConfig>;
+    /**
+     * The default logging verbosity for activity from devices in this
+     * registry. Specifies which events should be written to logs. For
+     * example, if the LogLevel is ERROR, only events that terminate in
+     * errors will be logged. LogLevel is inclusive; enabling INFO logging
+     * will also enable ERROR logging.
+     */
     public readonly logLevel!: pulumi.Output<string | undefined>;
+    /**
+     * Activate or deactivate MQTT.
+     * The structure is documented below.
+     */
     public readonly mqttConfig!: pulumi.Output<outputs.kms.RegistryMqttConfig>;
+    /**
+     * A unique name for the resource, required by device registry.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The region in which the created registry should reside.
+     * If it is not provided, the provider region is used.
+     */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * A PubSub topic to publish device state updates.
+     * The structure is documented below.
+     */
     public readonly stateNotificationConfig!: pulumi.Output<outputs.kms.RegistryStateNotificationConfig | undefined>;
 
     /**
@@ -96,14 +207,52 @@ export class Registry extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Registry resources.
  */
 export interface RegistryState {
+    /**
+     * List of public key certificates to authenticate devices.
+     * The structure is documented below.
+     */
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.kms.RegistryCredential>[]>;
+    /**
+     * List of configurations for event notifications, such as PubSub topics
+     * to publish device events to.  Structure is documented below.
+     */
     readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.kms.RegistryEventNotificationConfigItem>[]>;
+    /**
+     * Activate or deactivate HTTP.
+     * The structure is documented below.
+     */
     readonly httpConfig?: pulumi.Input<inputs.kms.RegistryHttpConfig>;
+    /**
+     * The default logging verbosity for activity from devices in this
+     * registry. Specifies which events should be written to logs. For
+     * example, if the LogLevel is ERROR, only events that terminate in
+     * errors will be logged. LogLevel is inclusive; enabling INFO logging
+     * will also enable ERROR logging.
+     */
     readonly logLevel?: pulumi.Input<string>;
+    /**
+     * Activate or deactivate MQTT.
+     * The structure is documented below.
+     */
     readonly mqttConfig?: pulumi.Input<inputs.kms.RegistryMqttConfig>;
+    /**
+     * A unique name for the resource, required by device registry.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The region in which the created registry should reside.
+     * If it is not provided, the provider region is used.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * A PubSub topic to publish device state updates.
+     * The structure is documented below.
+     */
     readonly stateNotificationConfig?: pulumi.Input<inputs.kms.RegistryStateNotificationConfig>;
 }
 
@@ -111,13 +260,51 @@ export interface RegistryState {
  * The set of arguments for constructing a Registry resource.
  */
 export interface RegistryArgs {
+    /**
+     * List of public key certificates to authenticate devices.
+     * The structure is documented below.
+     */
     readonly credentials?: pulumi.Input<pulumi.Input<inputs.kms.RegistryCredential>[]>;
+    /**
+     * List of configurations for event notifications, such as PubSub topics
+     * to publish device events to.  Structure is documented below.
+     */
     readonly eventNotificationConfigs?: pulumi.Input<pulumi.Input<inputs.kms.RegistryEventNotificationConfigItem>[]>;
+    /**
+     * Activate or deactivate HTTP.
+     * The structure is documented below.
+     */
     readonly httpConfig?: pulumi.Input<inputs.kms.RegistryHttpConfig>;
+    /**
+     * The default logging verbosity for activity from devices in this
+     * registry. Specifies which events should be written to logs. For
+     * example, if the LogLevel is ERROR, only events that terminate in
+     * errors will be logged. LogLevel is inclusive; enabling INFO logging
+     * will also enable ERROR logging.
+     */
     readonly logLevel?: pulumi.Input<string>;
+    /**
+     * Activate or deactivate MQTT.
+     * The structure is documented below.
+     */
     readonly mqttConfig?: pulumi.Input<inputs.kms.RegistryMqttConfig>;
+    /**
+     * A unique name for the resource, required by device registry.
+     */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The region in which the created registry should reside.
+     * If it is not provided, the provider region is used.
+     */
     readonly region?: pulumi.Input<string>;
+    /**
+     * A PubSub topic to publish device state updates.
+     * The structure is documented below.
+     */
     readonly stateNotificationConfig?: pulumi.Input<inputs.kms.RegistryStateNotificationConfig>;
 }

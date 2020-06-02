@@ -10,61 +10,97 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iot
 {
     /// <summary>
-    ///  Creates a device registry in Google's Cloud IoT Core platform. For more information see
-    /// [the official documentation](https://cloud.google.com/iot/docs/) and
-    /// [API](https://cloud.google.com/iot/docs/reference/cloudiot/rest/v1/projects.locations.registries).
+    /// A Google Cloud IoT Core device registry.
+    /// 
+    /// 
+    /// To get more information about DeviceRegistry, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/iot/docs/reference/cloudiot/rest/)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/iot/docs/)
+    /// 
+    /// ## Example Usage - Cloudiot Device Registry Basic
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test_registry = new Gcp.Iot.Registry("test-registry", new Gcp.Iot.RegistryArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Registry : Pulumi.CustomResource
     {
         /// <summary>
-        /// List of public key certificates to authenticate devices. Structure is documented below. 
+        /// List of public key certificates to authenticate devices.
+        /// The structure is documented below.
         /// </summary>
         [Output("credentials")]
         public Output<ImmutableArray<Outputs.RegistryCredential>> Credentials { get; private set; } = null!;
 
         /// <summary>
-        /// List of configurations for event notification, such as
-        /// PubSub topics to publish device events to. Structure is documented below.
+        /// List of configurations for event notifications, such as PubSub topics
+        /// to publish device events to.  Structure is documented below.
         /// </summary>
         [Output("eventNotificationConfigs")]
         public Output<ImmutableArray<Outputs.RegistryEventNotificationConfigItem>> EventNotificationConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Activate or deactivate HTTP. Structure is documented below.
+        /// Activate or deactivate HTTP.
+        /// The structure is documented below.
         /// </summary>
         [Output("httpConfig")]
         public Output<Outputs.RegistryHttpConfig> HttpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The default logging verbosity for activity from devices in this
+        /// registry. Specifies which events should be written to logs. For
+        /// example, if the LogLevel is ERROR, only events that terminate in
+        /// errors will be logged. LogLevel is inclusive; enabling INFO logging
+        /// will also enable ERROR logging.
+        /// </summary>
         [Output("logLevel")]
         public Output<string?> LogLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Activate or deactivate MQTT. Structure is documented below.
+        /// Activate or deactivate MQTT.
+        /// The structure is documented below.
         /// </summary>
         [Output("mqttConfig")]
         public Output<Outputs.RegistryMqttConfig> MqttConfig { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the resource, required by device registry.
-        /// Changing this forces a new resource to be created.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project in which the resource belongs. If it is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// The region in which the created registry should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// A PubSub topic to publish device state updates. Structure is documented below.
+        /// A PubSub topic to publish device state updates.
+        /// The structure is documented below.
         /// </summary>
         [Output("stateNotificationConfig")]
         public Output<Outputs.RegistryStateNotificationConfig?> StateNotificationConfig { get; private set; } = null!;
@@ -123,7 +159,8 @@ namespace Pulumi.Gcp.Iot
         private InputList<Inputs.RegistryCredentialArgs>? _credentials;
 
         /// <summary>
-        /// List of public key certificates to authenticate devices. Structure is documented below. 
+        /// List of public key certificates to authenticate devices.
+        /// The structure is documented below.
         /// </summary>
         public InputList<Inputs.RegistryCredentialArgs> Credentials
         {
@@ -135,8 +172,8 @@ namespace Pulumi.Gcp.Iot
         private InputList<Inputs.RegistryEventNotificationConfigItemArgs>? _eventNotificationConfigs;
 
         /// <summary>
-        /// List of configurations for event notification, such as
-        /// PubSub topics to publish device events to. Structure is documented below.
+        /// List of configurations for event notifications, such as PubSub topics
+        /// to publish device events to.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegistryEventNotificationConfigItemArgs> EventNotificationConfigs
         {
@@ -145,41 +182,52 @@ namespace Pulumi.Gcp.Iot
         }
 
         /// <summary>
-        /// Activate or deactivate HTTP. Structure is documented below.
+        /// Activate or deactivate HTTP.
+        /// The structure is documented below.
         /// </summary>
         [Input("httpConfig")]
         public Input<Inputs.RegistryHttpConfigArgs>? HttpConfig { get; set; }
 
+        /// <summary>
+        /// The default logging verbosity for activity from devices in this
+        /// registry. Specifies which events should be written to logs. For
+        /// example, if the LogLevel is ERROR, only events that terminate in
+        /// errors will be logged. LogLevel is inclusive; enabling INFO logging
+        /// will also enable ERROR logging.
+        /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
 
         /// <summary>
-        /// Activate or deactivate MQTT. Structure is documented below.
+        /// Activate or deactivate MQTT.
+        /// The structure is documented below.
         /// </summary>
         [Input("mqttConfig")]
         public Input<Inputs.RegistryMqttConfigArgs>? MqttConfig { get; set; }
 
         /// <summary>
         /// A unique name for the resource, required by device registry.
-        /// Changing this forces a new resource to be created.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project in which the resource belongs. If it is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// The region in which the created registry should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// A PubSub topic to publish device state updates. Structure is documented below.
+        /// A PubSub topic to publish device state updates.
+        /// The structure is documented below.
         /// </summary>
         [Input("stateNotificationConfig")]
         public Input<Inputs.RegistryStateNotificationConfigArgs>? StateNotificationConfig { get; set; }
@@ -195,7 +243,8 @@ namespace Pulumi.Gcp.Iot
         private InputList<Inputs.RegistryCredentialGetArgs>? _credentials;
 
         /// <summary>
-        /// List of public key certificates to authenticate devices. Structure is documented below. 
+        /// List of public key certificates to authenticate devices.
+        /// The structure is documented below.
         /// </summary>
         public InputList<Inputs.RegistryCredentialGetArgs> Credentials
         {
@@ -207,8 +256,8 @@ namespace Pulumi.Gcp.Iot
         private InputList<Inputs.RegistryEventNotificationConfigItemGetArgs>? _eventNotificationConfigs;
 
         /// <summary>
-        /// List of configurations for event notification, such as
-        /// PubSub topics to publish device events to. Structure is documented below.
+        /// List of configurations for event notifications, such as PubSub topics
+        /// to publish device events to.  Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegistryEventNotificationConfigItemGetArgs> EventNotificationConfigs
         {
@@ -217,41 +266,52 @@ namespace Pulumi.Gcp.Iot
         }
 
         /// <summary>
-        /// Activate or deactivate HTTP. Structure is documented below.
+        /// Activate or deactivate HTTP.
+        /// The structure is documented below.
         /// </summary>
         [Input("httpConfig")]
         public Input<Inputs.RegistryHttpConfigGetArgs>? HttpConfig { get; set; }
 
+        /// <summary>
+        /// The default logging verbosity for activity from devices in this
+        /// registry. Specifies which events should be written to logs. For
+        /// example, if the LogLevel is ERROR, only events that terminate in
+        /// errors will be logged. LogLevel is inclusive; enabling INFO logging
+        /// will also enable ERROR logging.
+        /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
 
         /// <summary>
-        /// Activate or deactivate MQTT. Structure is documented below.
+        /// Activate or deactivate MQTT.
+        /// The structure is documented below.
         /// </summary>
         [Input("mqttConfig")]
         public Input<Inputs.RegistryMqttConfigGetArgs>? MqttConfig { get; set; }
 
         /// <summary>
         /// A unique name for the resource, required by device registry.
-        /// Changing this forces a new resource to be created.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project in which the resource belongs. If it is not provided, the provider project is used.
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The Region in which the created address should reside. If it is not provided, the provider region is used.
+        /// The region in which the created registry should reside.
+        /// If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// A PubSub topic to publish device state updates. Structure is documented below.
+        /// A PubSub topic to publish device state updates.
+        /// The structure is documented below.
         /// </summary>
         [Input("stateNotificationConfig")]
         public Input<Inputs.RegistryStateNotificationConfigGetArgs>? StateNotificationConfig { get; set; }

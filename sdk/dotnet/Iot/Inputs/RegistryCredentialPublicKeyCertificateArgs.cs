@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Iot.Inputs
         public Input<string> Certificate { get; set; } = null!;
 
         /// <summary>
-        /// The field allows only  `X509_CERTIFICATE_PEM`.
+        /// The field allows only `X509_CERTIFICATE_PEM`.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;

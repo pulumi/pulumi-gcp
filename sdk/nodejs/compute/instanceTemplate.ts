@@ -96,7 +96,7 @@ import * as utilities from "../utilities";
  *     network_interface: [{}],
  * });
  * const instanceGroupManager = new gcp.compute.InstanceGroupManager("instanceGroupManager", {
- *     instanceTemplate: instanceTemplate.selfLink,
+ *     instanceTemplate: instanceTemplate.id,
  *     baseInstanceName: "instance-group-manager",
  *     zone: "us-central1-f",
  *     targetSize: "1",

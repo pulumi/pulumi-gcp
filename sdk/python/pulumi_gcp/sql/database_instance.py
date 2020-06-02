@@ -19,7 +19,7 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     The MySQL, PostgreSQL or
     SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-    `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+    `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
     `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
     [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
     includes an up-to-date reference of supported versions.
@@ -252,9 +252,9 @@ class DatabaseInstance(pulumi.CustomResource):
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
-            network=private_network.self_link)
+            network=private_network.id)
         private_vpc_connection = gcp.servicenetworking.Connection("privateVpcConnection",
-            network=private_network.self_link,
+            network=private_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[private_ip_address.name])
         db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
@@ -264,7 +264,7 @@ class DatabaseInstance(pulumi.CustomResource):
                 "tier": "db-f1-micro",
                 "ip_configuration": {
                     "ipv4Enabled": False,
-                    "privateNetwork": private_network.self_link,
+                    "privateNetwork": private_network.id,
                 },
             })
         ```
@@ -274,7 +274,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
                SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-               `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+               `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
                includes an up-to-date reference of supported versions.
@@ -459,7 +459,7 @@ class DatabaseInstance(pulumi.CustomResource):
                connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
                SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
-               `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_11`, `SQLSERVER_2017_STANDARD`,
+               `MYSQL_5_7`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `SQLSERVER_2017_STANDARD`,
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
                includes an up-to-date reference of supported versions.

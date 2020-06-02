@@ -3419,6 +3419,573 @@ func (o FlexibleAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type FlexibleAppVersionHandler struct {
+	// Action to take when users access resources that require authentication.
+	AuthFailAction *string `pulumi:"authFailAction"`
+	// Level of login required to access this resource.
+	Login *string `pulumi:"login"`
+	// 30x code to use when performing redirects for the secure field.
+	RedirectHttpResponseCode *string `pulumi:"redirectHttpResponseCode"`
+	// Path to the script from the application root directory.
+	Script *FlexibleAppVersionHandlerScript `pulumi:"script"`
+	// Security (HTTPS) enforcement for this URL.
+	SecurityLevel *string `pulumi:"securityLevel"`
+	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
+	// Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+	StaticFiles *FlexibleAppVersionHandlerStaticFiles `pulumi:"staticFiles"`
+	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+	// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+	UrlRegex *string `pulumi:"urlRegex"`
+}
+
+// FlexibleAppVersionHandlerInput is an input type that accepts FlexibleAppVersionHandlerArgs and FlexibleAppVersionHandlerOutput values.
+// You can construct a concrete instance of `FlexibleAppVersionHandlerInput` via:
+//
+// 		 FlexibleAppVersionHandlerArgs{...}
+//
+type FlexibleAppVersionHandlerInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionHandlerOutput() FlexibleAppVersionHandlerOutput
+	ToFlexibleAppVersionHandlerOutputWithContext(context.Context) FlexibleAppVersionHandlerOutput
+}
+
+type FlexibleAppVersionHandlerArgs struct {
+	// Action to take when users access resources that require authentication.
+	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
+	// Level of login required to access this resource.
+	Login pulumi.StringPtrInput `pulumi:"login"`
+	// 30x code to use when performing redirects for the secure field.
+	RedirectHttpResponseCode pulumi.StringPtrInput `pulumi:"redirectHttpResponseCode"`
+	// Path to the script from the application root directory.
+	Script FlexibleAppVersionHandlerScriptPtrInput `pulumi:"script"`
+	// Security (HTTPS) enforcement for this URL.
+	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
+	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
+	// Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+	StaticFiles FlexibleAppVersionHandlerStaticFilesPtrInput `pulumi:"staticFiles"`
+	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+	// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+	UrlRegex pulumi.StringPtrInput `pulumi:"urlRegex"`
+}
+
+func (FlexibleAppVersionHandlerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionHandler)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionHandlerArgs) ToFlexibleAppVersionHandlerOutput() FlexibleAppVersionHandlerOutput {
+	return i.ToFlexibleAppVersionHandlerOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionHandlerArgs) ToFlexibleAppVersionHandlerOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerOutput)
+}
+
+// FlexibleAppVersionHandlerArrayInput is an input type that accepts FlexibleAppVersionHandlerArray and FlexibleAppVersionHandlerArrayOutput values.
+// You can construct a concrete instance of `FlexibleAppVersionHandlerArrayInput` via:
+//
+// 		 FlexibleAppVersionHandlerArray{ FlexibleAppVersionHandlerArgs{...} }
+//
+type FlexibleAppVersionHandlerArrayInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionHandlerArrayOutput() FlexibleAppVersionHandlerArrayOutput
+	ToFlexibleAppVersionHandlerArrayOutputWithContext(context.Context) FlexibleAppVersionHandlerArrayOutput
+}
+
+type FlexibleAppVersionHandlerArray []FlexibleAppVersionHandlerInput
+
+func (FlexibleAppVersionHandlerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlexibleAppVersionHandler)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionHandlerArray) ToFlexibleAppVersionHandlerArrayOutput() FlexibleAppVersionHandlerArrayOutput {
+	return i.ToFlexibleAppVersionHandlerArrayOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionHandlerArray) ToFlexibleAppVersionHandlerArrayOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerArrayOutput)
+}
+
+type FlexibleAppVersionHandlerOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionHandlerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionHandler)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionHandlerOutput) ToFlexibleAppVersionHandlerOutput() FlexibleAppVersionHandlerOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerOutput) ToFlexibleAppVersionHandlerOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerOutput {
+	return o
+}
+
+// Action to take when users access resources that require authentication.
+func (o FlexibleAppVersionHandlerOutput) AuthFailAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
+}
+
+// Level of login required to access this resource.
+func (o FlexibleAppVersionHandlerOutput) Login() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.Login }).(pulumi.StringPtrOutput)
+}
+
+// 30x code to use when performing redirects for the secure field.
+func (o FlexibleAppVersionHandlerOutput) RedirectHttpResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.RedirectHttpResponseCode }).(pulumi.StringPtrOutput)
+}
+
+// Path to the script from the application root directory.
+func (o FlexibleAppVersionHandlerOutput) Script() FlexibleAppVersionHandlerScriptPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandler) *FlexibleAppVersionHandlerScript { return v.Script }).(FlexibleAppVersionHandlerScriptPtrOutput)
+}
+
+// Security (HTTPS) enforcement for this URL.
+func (o FlexibleAppVersionHandlerOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+}
+
+// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
+// Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+func (o FlexibleAppVersionHandlerOutput) StaticFiles() FlexibleAppVersionHandlerStaticFilesPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandler) *FlexibleAppVersionHandlerStaticFiles { return v.StaticFiles }).(FlexibleAppVersionHandlerStaticFilesPtrOutput)
+}
+
+// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
+// All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+func (o FlexibleAppVersionHandlerOutput) UrlRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.UrlRegex }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionHandlerArrayOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionHandlerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlexibleAppVersionHandler)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionHandlerArrayOutput) ToFlexibleAppVersionHandlerArrayOutput() FlexibleAppVersionHandlerArrayOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerArrayOutput) ToFlexibleAppVersionHandlerArrayOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerArrayOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerArrayOutput) Index(i pulumi.IntInput) FlexibleAppVersionHandlerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlexibleAppVersionHandler {
+		return vs[0].([]FlexibleAppVersionHandler)[vs[1].(int)]
+	}).(FlexibleAppVersionHandlerOutput)
+}
+
+type FlexibleAppVersionHandlerScript struct {
+	// Path to the script from the application root directory.
+	ScriptPath string `pulumi:"scriptPath"`
+}
+
+// FlexibleAppVersionHandlerScriptInput is an input type that accepts FlexibleAppVersionHandlerScriptArgs and FlexibleAppVersionHandlerScriptOutput values.
+// You can construct a concrete instance of `FlexibleAppVersionHandlerScriptInput` via:
+//
+// 		 FlexibleAppVersionHandlerScriptArgs{...}
+//
+type FlexibleAppVersionHandlerScriptInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionHandlerScriptOutput() FlexibleAppVersionHandlerScriptOutput
+	ToFlexibleAppVersionHandlerScriptOutputWithContext(context.Context) FlexibleAppVersionHandlerScriptOutput
+}
+
+type FlexibleAppVersionHandlerScriptArgs struct {
+	// Path to the script from the application root directory.
+	ScriptPath pulumi.StringInput `pulumi:"scriptPath"`
+}
+
+func (FlexibleAppVersionHandlerScriptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionHandlerScript)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionHandlerScriptArgs) ToFlexibleAppVersionHandlerScriptOutput() FlexibleAppVersionHandlerScriptOutput {
+	return i.ToFlexibleAppVersionHandlerScriptOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionHandlerScriptArgs) ToFlexibleAppVersionHandlerScriptOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerScriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerScriptOutput)
+}
+
+func (i FlexibleAppVersionHandlerScriptArgs) ToFlexibleAppVersionHandlerScriptPtrOutput() FlexibleAppVersionHandlerScriptPtrOutput {
+	return i.ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionHandlerScriptArgs) ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerScriptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerScriptOutput).ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(ctx)
+}
+
+// FlexibleAppVersionHandlerScriptPtrInput is an input type that accepts FlexibleAppVersionHandlerScriptArgs, FlexibleAppVersionHandlerScriptPtr and FlexibleAppVersionHandlerScriptPtrOutput values.
+// You can construct a concrete instance of `FlexibleAppVersionHandlerScriptPtrInput` via:
+//
+// 		 FlexibleAppVersionHandlerScriptArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type FlexibleAppVersionHandlerScriptPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionHandlerScriptPtrOutput() FlexibleAppVersionHandlerScriptPtrOutput
+	ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(context.Context) FlexibleAppVersionHandlerScriptPtrOutput
+}
+
+type flexibleAppVersionHandlerScriptPtrType FlexibleAppVersionHandlerScriptArgs
+
+func FlexibleAppVersionHandlerScriptPtr(v *FlexibleAppVersionHandlerScriptArgs) FlexibleAppVersionHandlerScriptPtrInput {
+	return (*flexibleAppVersionHandlerScriptPtrType)(v)
+}
+
+func (*flexibleAppVersionHandlerScriptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionHandlerScript)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionHandlerScriptPtrType) ToFlexibleAppVersionHandlerScriptPtrOutput() FlexibleAppVersionHandlerScriptPtrOutput {
+	return i.ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionHandlerScriptPtrType) ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerScriptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerScriptPtrOutput)
+}
+
+type FlexibleAppVersionHandlerScriptOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionHandlerScriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionHandlerScript)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionHandlerScriptOutput) ToFlexibleAppVersionHandlerScriptOutput() FlexibleAppVersionHandlerScriptOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerScriptOutput) ToFlexibleAppVersionHandlerScriptOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerScriptOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerScriptOutput) ToFlexibleAppVersionHandlerScriptPtrOutput() FlexibleAppVersionHandlerScriptPtrOutput {
+	return o.ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionHandlerScriptOutput) ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerScriptPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandlerScript) *FlexibleAppVersionHandlerScript {
+		return &v
+	}).(FlexibleAppVersionHandlerScriptPtrOutput)
+}
+
+// Path to the script from the application root directory.
+func (o FlexibleAppVersionHandlerScriptOutput) ScriptPath() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandlerScript) string { return v.ScriptPath }).(pulumi.StringOutput)
+}
+
+type FlexibleAppVersionHandlerScriptPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionHandlerScriptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionHandlerScript)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionHandlerScriptPtrOutput) ToFlexibleAppVersionHandlerScriptPtrOutput() FlexibleAppVersionHandlerScriptPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerScriptPtrOutput) ToFlexibleAppVersionHandlerScriptPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerScriptPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerScriptPtrOutput) Elem() FlexibleAppVersionHandlerScriptOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerScript) FlexibleAppVersionHandlerScript { return *v }).(FlexibleAppVersionHandlerScriptOutput)
+}
+
+// Path to the script from the application root directory.
+func (o FlexibleAppVersionHandlerScriptPtrOutput) ScriptPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerScript) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScriptPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionHandlerStaticFiles struct {
+	// Whether files should also be uploaded as code data. By default, files declared in static file handlers are
+	// uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
+	// uploads are charged against both your code and static data storage resource quotas.
+	ApplicationReadable *bool `pulumi:"applicationReadable"`
+	// Time a static file served by this handler should be cached by web proxies and browsers.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+	// Default is '0s'
+	Expiration *string `pulumi:"expiration"`
+	// HTTP headers to use for all responses from these URLs.
+	// An object containing a list of "key:value" value pairs.".
+	HttpHeaders map[string]string `pulumi:"httpHeaders"`
+	// MIME type used to serve all files served by this handler.
+	// Defaults to file-specific MIME types, which are derived from each file's filename extension.
+	MimeType *string `pulumi:"mimeType"`
+	// Path to the static files matched by the URL pattern, from the application root directory.
+	// The path can refer to text matched in groupings in the URL pattern.
+	Path *string `pulumi:"path"`
+	// Whether this handler should match the request if the file referenced by the handler does not exist.
+	RequireMatchingFile *bool `pulumi:"requireMatchingFile"`
+	// Regular expression that matches the file paths for all files that should be referenced by this handler.
+	UploadPathRegex *string `pulumi:"uploadPathRegex"`
+}
+
+// FlexibleAppVersionHandlerStaticFilesInput is an input type that accepts FlexibleAppVersionHandlerStaticFilesArgs and FlexibleAppVersionHandlerStaticFilesOutput values.
+// You can construct a concrete instance of `FlexibleAppVersionHandlerStaticFilesInput` via:
+//
+// 		 FlexibleAppVersionHandlerStaticFilesArgs{...}
+//
+type FlexibleAppVersionHandlerStaticFilesInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionHandlerStaticFilesOutput() FlexibleAppVersionHandlerStaticFilesOutput
+	ToFlexibleAppVersionHandlerStaticFilesOutputWithContext(context.Context) FlexibleAppVersionHandlerStaticFilesOutput
+}
+
+type FlexibleAppVersionHandlerStaticFilesArgs struct {
+	// Whether files should also be uploaded as code data. By default, files declared in static file handlers are
+	// uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
+	// uploads are charged against both your code and static data storage resource quotas.
+	ApplicationReadable pulumi.BoolPtrInput `pulumi:"applicationReadable"`
+	// Time a static file served by this handler should be cached by web proxies and browsers.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+	// Default is '0s'
+	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
+	// HTTP headers to use for all responses from these URLs.
+	// An object containing a list of "key:value" value pairs.".
+	HttpHeaders pulumi.StringMapInput `pulumi:"httpHeaders"`
+	// MIME type used to serve all files served by this handler.
+	// Defaults to file-specific MIME types, which are derived from each file's filename extension.
+	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
+	// Path to the static files matched by the URL pattern, from the application root directory.
+	// The path can refer to text matched in groupings in the URL pattern.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Whether this handler should match the request if the file referenced by the handler does not exist.
+	RequireMatchingFile pulumi.BoolPtrInput `pulumi:"requireMatchingFile"`
+	// Regular expression that matches the file paths for all files that should be referenced by this handler.
+	UploadPathRegex pulumi.StringPtrInput `pulumi:"uploadPathRegex"`
+}
+
+func (FlexibleAppVersionHandlerStaticFilesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionHandlerStaticFiles)(nil)).Elem()
+}
+
+func (i FlexibleAppVersionHandlerStaticFilesArgs) ToFlexibleAppVersionHandlerStaticFilesOutput() FlexibleAppVersionHandlerStaticFilesOutput {
+	return i.ToFlexibleAppVersionHandlerStaticFilesOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionHandlerStaticFilesArgs) ToFlexibleAppVersionHandlerStaticFilesOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerStaticFilesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerStaticFilesOutput)
+}
+
+func (i FlexibleAppVersionHandlerStaticFilesArgs) ToFlexibleAppVersionHandlerStaticFilesPtrOutput() FlexibleAppVersionHandlerStaticFilesPtrOutput {
+	return i.ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleAppVersionHandlerStaticFilesArgs) ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerStaticFilesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerStaticFilesOutput).ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(ctx)
+}
+
+// FlexibleAppVersionHandlerStaticFilesPtrInput is an input type that accepts FlexibleAppVersionHandlerStaticFilesArgs, FlexibleAppVersionHandlerStaticFilesPtr and FlexibleAppVersionHandlerStaticFilesPtrOutput values.
+// You can construct a concrete instance of `FlexibleAppVersionHandlerStaticFilesPtrInput` via:
+//
+// 		 FlexibleAppVersionHandlerStaticFilesArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type FlexibleAppVersionHandlerStaticFilesPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleAppVersionHandlerStaticFilesPtrOutput() FlexibleAppVersionHandlerStaticFilesPtrOutput
+	ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(context.Context) FlexibleAppVersionHandlerStaticFilesPtrOutput
+}
+
+type flexibleAppVersionHandlerStaticFilesPtrType FlexibleAppVersionHandlerStaticFilesArgs
+
+func FlexibleAppVersionHandlerStaticFilesPtr(v *FlexibleAppVersionHandlerStaticFilesArgs) FlexibleAppVersionHandlerStaticFilesPtrInput {
+	return (*flexibleAppVersionHandlerStaticFilesPtrType)(v)
+}
+
+func (*flexibleAppVersionHandlerStaticFilesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionHandlerStaticFiles)(nil)).Elem()
+}
+
+func (i *flexibleAppVersionHandlerStaticFilesPtrType) ToFlexibleAppVersionHandlerStaticFilesPtrOutput() FlexibleAppVersionHandlerStaticFilesPtrOutput {
+	return i.ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleAppVersionHandlerStaticFilesPtrType) ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerStaticFilesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionHandlerStaticFilesPtrOutput)
+}
+
+type FlexibleAppVersionHandlerStaticFilesOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionHandlerStaticFilesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersionHandlerStaticFiles)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionHandlerStaticFilesOutput) ToFlexibleAppVersionHandlerStaticFilesOutput() FlexibleAppVersionHandlerStaticFilesOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerStaticFilesOutput) ToFlexibleAppVersionHandlerStaticFilesOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerStaticFilesOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerStaticFilesOutput) ToFlexibleAppVersionHandlerStaticFilesPtrOutput() FlexibleAppVersionHandlerStaticFilesPtrOutput {
+	return o.ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleAppVersionHandlerStaticFilesOutput) ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerStaticFilesPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandlerStaticFiles) *FlexibleAppVersionHandlerStaticFiles {
+		return &v
+	}).(FlexibleAppVersionHandlerStaticFilesPtrOutput)
+}
+
+// Whether files should also be uploaded as code data. By default, files declared in static file handlers are
+// uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
+// uploads are charged against both your code and static data storage resource quotas.
+func (o FlexibleAppVersionHandlerStaticFilesOutput) ApplicationReadable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandlerStaticFiles) *bool { return v.ApplicationReadable }).(pulumi.BoolPtrOutput)
+}
+
+// Time a static file served by this handler should be cached by web proxies and browsers.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+// Default is '0s'
+func (o FlexibleAppVersionHandlerStaticFilesOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandlerStaticFiles) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+// HTTP headers to use for all responses from these URLs.
+// An object containing a list of "key:value" value pairs.".
+func (o FlexibleAppVersionHandlerStaticFilesOutput) HttpHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandlerStaticFiles) map[string]string { return v.HttpHeaders }).(pulumi.StringMapOutput)
+}
+
+// MIME type used to serve all files served by this handler.
+// Defaults to file-specific MIME types, which are derived from each file's filename extension.
+func (o FlexibleAppVersionHandlerStaticFilesOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandlerStaticFiles) *string { return v.MimeType }).(pulumi.StringPtrOutput)
+}
+
+// Path to the static files matched by the URL pattern, from the application root directory.
+// The path can refer to text matched in groupings in the URL pattern.
+func (o FlexibleAppVersionHandlerStaticFilesOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandlerStaticFiles) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Whether this handler should match the request if the file referenced by the handler does not exist.
+func (o FlexibleAppVersionHandlerStaticFilesOutput) RequireMatchingFile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandlerStaticFiles) *bool { return v.RequireMatchingFile }).(pulumi.BoolPtrOutput)
+}
+
+// Regular expression that matches the file paths for all files that should be referenced by this handler.
+func (o FlexibleAppVersionHandlerStaticFilesOutput) UploadPathRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleAppVersionHandlerStaticFiles) *string { return v.UploadPathRegex }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleAppVersionHandlerStaticFilesPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleAppVersionHandlerStaticFilesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleAppVersionHandlerStaticFiles)(nil)).Elem()
+}
+
+func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) ToFlexibleAppVersionHandlerStaticFilesPtrOutput() FlexibleAppVersionHandlerStaticFilesPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) ToFlexibleAppVersionHandlerStaticFilesPtrOutputWithContext(ctx context.Context) FlexibleAppVersionHandlerStaticFilesPtrOutput {
+	return o
+}
+
+func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) Elem() FlexibleAppVersionHandlerStaticFilesOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerStaticFiles) FlexibleAppVersionHandlerStaticFiles { return *v }).(FlexibleAppVersionHandlerStaticFilesOutput)
+}
+
+// Whether files should also be uploaded as code data. By default, files declared in static file handlers are
+// uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
+// uploads are charged against both your code and static data storage resource quotas.
+func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) ApplicationReadable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerStaticFiles) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationReadable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time a static file served by this handler should be cached by web proxies and browsers.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
+// Default is '0s'
+func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerStaticFiles) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expiration
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP headers to use for all responses from these URLs.
+// An object containing a list of "key:value" value pairs.".
+func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) HttpHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerStaticFiles) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// MIME type used to serve all files served by this handler.
+// Defaults to file-specific MIME types, which are derived from each file's filename extension.
+func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerStaticFiles) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MimeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to the static files matched by the URL pattern, from the application root directory.
+// The path can refer to text matched in groupings in the URL pattern.
+func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerStaticFiles) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether this handler should match the request if the file referenced by the handler does not exist.
+func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) RequireMatchingFile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerStaticFiles) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireMatchingFile
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Regular expression that matches the file paths for all files that should be referenced by this handler.
+func (o FlexibleAppVersionHandlerStaticFilesPtrOutput) UploadPathRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleAppVersionHandlerStaticFiles) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UploadPathRegex
+	}).(pulumi.StringPtrOutput)
+}
+
 type FlexibleAppVersionLivenessCheck struct {
 	// Interval between health checks.
 	CheckInterval *string `pulumi:"checkInterval"`
@@ -3428,7 +3995,8 @@ type FlexibleAppVersionLivenessCheck struct {
 	Host *string `pulumi:"host"`
 	// The initial delay before starting to execute the checks. Default: "300s"
 	InitialDelay *string `pulumi:"initialDelay"`
-	// The request path.
+	// Path to the static files matched by the URL pattern, from the application root directory.
+	// The path can refer to text matched in groupings in the URL pattern.
 	Path string `pulumi:"path"`
 	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 	SuccessThreshold *float64 `pulumi:"successThreshold"`
@@ -3457,7 +4025,8 @@ type FlexibleAppVersionLivenessCheckArgs struct {
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// The initial delay before starting to execute the checks. Default: "300s"
 	InitialDelay pulumi.StringPtrInput `pulumi:"initialDelay"`
-	// The request path.
+	// Path to the static files matched by the URL pattern, from the application root directory.
+	// The path can refer to text matched in groupings in the URL pattern.
 	Path pulumi.StringInput `pulumi:"path"`
 	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 	SuccessThreshold pulumi.Float64PtrInput `pulumi:"successThreshold"`
@@ -3563,7 +4132,8 @@ func (o FlexibleAppVersionLivenessCheckOutput) InitialDelay() pulumi.StringPtrOu
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
 }
 
-// The request path.
+// Path to the static files matched by the URL pattern, from the application root directory.
+// The path can refer to text matched in groupings in the URL pattern.
 func (o FlexibleAppVersionLivenessCheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -3636,7 +4206,8 @@ func (o FlexibleAppVersionLivenessCheckPtrOutput) InitialDelay() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The request path.
+// Path to the static files matched by the URL pattern, from the application root directory.
+// The path can refer to text matched in groupings in the URL pattern.
 func (o FlexibleAppVersionLivenessCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
 		if v == nil {
@@ -4042,7 +4613,8 @@ type FlexibleAppVersionReadinessCheck struct {
 	FailureThreshold *float64 `pulumi:"failureThreshold"`
 	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
 	Host *string `pulumi:"host"`
-	// The request path.
+	// Path to the static files matched by the URL pattern, from the application root directory.
+	// The path can refer to text matched in groupings in the URL pattern.
 	Path string `pulumi:"path"`
 	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 	SuccessThreshold *float64 `pulumi:"successThreshold"`
@@ -4072,7 +4644,8 @@ type FlexibleAppVersionReadinessCheckArgs struct {
 	FailureThreshold pulumi.Float64PtrInput `pulumi:"failureThreshold"`
 	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The request path.
+	// Path to the static files matched by the URL pattern, from the application root directory.
+	// The path can refer to text matched in groupings in the URL pattern.
 	Path pulumi.StringInput `pulumi:"path"`
 	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 	SuccessThreshold pulumi.Float64PtrInput `pulumi:"successThreshold"`
@@ -4179,7 +4752,8 @@ func (o FlexibleAppVersionReadinessCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The request path.
+// Path to the static files matched by the URL pattern, from the application root directory.
+// The path can refer to text matched in groupings in the URL pattern.
 func (o FlexibleAppVersionReadinessCheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -4253,7 +4827,8 @@ func (o FlexibleAppVersionReadinessCheckPtrOutput) Host() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The request path.
+// Path to the static files matched by the URL pattern, from the application root directory.
+// The path can refer to text matched in groupings in the URL pattern.
 func (o FlexibleAppVersionReadinessCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
 		if v == nil {
@@ -6168,7 +6743,9 @@ func (o StandardAppVersionHandlerScriptPtrOutput) ScriptPath() pulumi.StringPtrO
 }
 
 type StandardAppVersionHandlerStaticFiles struct {
-	// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+	// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
+	// static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
+	// against both your code and static data storage resource quotas.
 	ApplicationReadable *bool `pulumi:"applicationReadable"`
 	// Time a static file served by this handler should be cached by web proxies and browsers.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
@@ -6200,7 +6777,9 @@ type StandardAppVersionHandlerStaticFilesInput interface {
 }
 
 type StandardAppVersionHandlerStaticFilesArgs struct {
-	// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+	// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
+	// static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
+	// against both your code and static data storage resource quotas.
 	ApplicationReadable pulumi.BoolPtrInput `pulumi:"applicationReadable"`
 	// Time a static file served by this handler should be cached by web proxies and browsers.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
@@ -6297,7 +6876,9 @@ func (o StandardAppVersionHandlerStaticFilesOutput) ToStandardAppVersionHandlerS
 	}).(StandardAppVersionHandlerStaticFilesPtrOutput)
 }
 
-// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
+// static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
+// against both your code and static data storage resource quotas.
 func (o StandardAppVersionHandlerStaticFilesOutput) ApplicationReadable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandlerStaticFiles) *bool { return v.ApplicationReadable }).(pulumi.BoolPtrOutput)
 }
@@ -6353,7 +6934,9 @@ func (o StandardAppVersionHandlerStaticFilesPtrOutput) Elem() StandardAppVersion
 	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) StandardAppVersionHandlerStaticFiles { return *v }).(StandardAppVersionHandlerStaticFilesOutput)
 }
 
-// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
+// static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
+// against both your code and static data storage resource quotas.
 func (o StandardAppVersionHandlerStaticFilesPtrOutput) ApplicationReadable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersionHandlerStaticFiles) *bool {
 		if v == nil {
@@ -6716,6 +7299,12 @@ func init() {
 	pulumi.RegisterOutputType(FlexibleAppVersionEndpointsApiServicePtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionEntrypointOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionEntrypointPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionHandlerOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionHandlerArrayOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionHandlerScriptOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionHandlerScriptPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionHandlerStaticFilesOutput{})
+	pulumi.RegisterOutputType(FlexibleAppVersionHandlerStaticFilesPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionLivenessCheckOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionLivenessCheckPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleAppVersionManualScalingOutput{})

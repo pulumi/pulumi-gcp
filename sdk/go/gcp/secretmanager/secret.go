@@ -14,7 +14,7 @@ import (
 //
 // To get more information about Secret, see:
 //
-// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1beta1/projects.secrets)
+// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 type Secret struct {
 	pulumi.CustomResourceState
 

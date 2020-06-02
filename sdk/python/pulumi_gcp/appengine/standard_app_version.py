@@ -78,7 +78,9 @@ class StandardAppVersion(pulumi.CustomResource):
 
       * `securityLevel` (`str`) - Security (HTTPS) enforcement for this URL.
       * `staticFiles` (`dict`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
-        * `applicationReadable` (`bool`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+        * `applicationReadable` (`bool`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
+          static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
+          against both your code and static data storage resource quotas.
         * `expiration` (`str`) - Time a static file served by this handler should be cached by web proxies and browsers.
           A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
         * `httpHeaders` (`dict`) - HTTP headers to use for all responses from these URLs.
@@ -298,7 +300,9 @@ class StandardAppVersion(pulumi.CustomResource):
 
           * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
           * `staticFiles` (`pulumi.Input[dict]`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
-            * `applicationReadable` (`pulumi.Input[bool]`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+            * `applicationReadable` (`pulumi.Input[bool]`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
+              static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
+              against both your code and static data storage resource quotas.
             * `expiration` (`pulumi.Input[str]`) - Time a static file served by this handler should be cached by web proxies and browsers.
               A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
             * `httpHeaders` (`pulumi.Input[dict]`) - HTTP headers to use for all responses from these URLs.
@@ -451,7 +455,9 @@ class StandardAppVersion(pulumi.CustomResource):
 
           * `securityLevel` (`pulumi.Input[str]`) - Security (HTTPS) enforcement for this URL.
           * `staticFiles` (`pulumi.Input[dict]`) - Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
-            * `applicationReadable` (`pulumi.Input[bool]`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+            * `applicationReadable` (`pulumi.Input[bool]`) - Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
+              static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
+              against both your code and static data storage resource quotas.
             * `expiration` (`pulumi.Input[str]`) - Time a static file served by this handler should be cached by web proxies and browsers.
               A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
             * `httpHeaders` (`pulumi.Input[dict]`) - HTTP headers to use for all responses from these URLs.
