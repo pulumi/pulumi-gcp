@@ -61,7 +61,7 @@ tfgen::
 
 install_plugins::
 	[ -x "$(shell which pulumi)" ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource $(PACK) $(PROVIDER_VERSION)
+	pulumi plugin install resource $(PACK) 3.7.1
 	pulumi plugin install resource random 2.0.0
 
 lint::
