@@ -3,7 +3,7 @@
 
 // Export members:
 export * from "./getOrganizationPolicy";
-export * from "./iAMBinding";
-export * from "./iAMMember";
-export * from "./iAMPolicy";
+export * from "./iambinding";
+export * from "./iammember";
+export * from "./iampolicy";
 export * from "./organizationPolicy";

@@ -120,13 +120,13 @@ export interface GetObjectSignedUrlResult {
     readonly duration?: string;
     readonly extensionHeaders?: {[key: string]: string};
     readonly httpMethod?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly path: string;
     /**
      * The signed URL that can be used to access the storage object without authentication.
      */
     readonly signedUrl: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

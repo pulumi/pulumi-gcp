@@ -91,6 +91,10 @@ export interface GetEngineVersionsResult {
      */
     readonly defaultClusterVersion: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The latest version available in the given zone for use with master instances.
      */
     readonly latestMasterVersion: string;
@@ -113,8 +117,4 @@ export interface GetEngineVersionsResult {
      */
     readonly validNodeVersions: string[];
     readonly versionPrefix?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

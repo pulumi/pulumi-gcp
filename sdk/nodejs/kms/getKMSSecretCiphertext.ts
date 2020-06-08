@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * resource definitions, but it does not take care of protecting that data in the
  * logging output, plan output, or state output.  Please take care to secure your secret
  * data outside of resource definitions.
- *
  */
 export function getKMSSecretCiphertext(args: GetKMSSecretCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretCiphertextResult> {
     if (!opts) {
@@ -60,9 +59,9 @@ export interface GetKMSSecretCiphertextResult {
      */
     readonly ciphertext: string;
     readonly cryptoKey: string;
-    readonly plaintext: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly plaintext: string;
 }

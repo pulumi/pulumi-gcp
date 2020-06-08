@@ -70,13 +70,13 @@ export interface GetRouterResult {
     readonly bgps: outputs.compute.GetRouterBgp[];
     readonly creationTimestamp: string;
     readonly description: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly network: string;
     readonly project?: string;
     readonly region?: string;
     readonly selfLink: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

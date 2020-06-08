@@ -89,12 +89,12 @@ export interface GetIAMPolicyResult {
     readonly auditConfigs?: outputs.organizations.GetIAMPolicyAuditConfig[];
     readonly bindings?: outputs.organizations.GetIAMPolicyBinding[];
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The above bindings serialized in a format suitable for
      * referencing from a resource that supports IAM.
      */
     readonly policyData: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

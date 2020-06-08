@@ -66,6 +66,10 @@ export interface GetFolderResult {
     readonly displayName: string;
     readonly folder: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The Folder's current lifecycle state.
      */
     readonly lifecycleState: string;
@@ -82,8 +86,4 @@ export interface GetFolderResult {
      * The resource name of the parent Folder or Organization.
      */
     readonly parent: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

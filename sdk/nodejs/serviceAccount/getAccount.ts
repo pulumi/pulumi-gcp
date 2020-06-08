@@ -68,6 +68,10 @@ export interface GetAccountResult {
      */
     readonly email: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The fully-qualified name of the service account.
      */
     readonly name: string;
@@ -76,8 +80,4 @@ export interface GetAccountResult {
      * The unique id of the service account.
      */
     readonly uniqueId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

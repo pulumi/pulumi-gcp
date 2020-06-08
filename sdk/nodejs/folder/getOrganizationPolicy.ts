@@ -62,12 +62,12 @@ export interface GetOrganizationPolicyResult {
     readonly constraint: string;
     readonly etag: string;
     readonly folder: string;
-    readonly listPolicies: outputs.folder.GetOrganizationPolicyListPolicy[];
-    readonly restorePolicies: outputs.folder.GetOrganizationPolicyRestorePolicy[];
-    readonly updateTime: string;
-    readonly version: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly listPolicies: outputs.folder.GetOrganizationPolicyListPolicy[];
+    readonly restorePolicies: outputs.folder.GetOrganizationPolicyRestorePolicy[];
+    readonly updateTime: string;
+    readonly version: number;
 }

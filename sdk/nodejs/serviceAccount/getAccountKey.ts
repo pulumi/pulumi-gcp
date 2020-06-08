@@ -66,6 +66,10 @@ export interface GetAccountKeyArgs {
  * A collection of values returned by getAccountKey.
  */
 export interface GetAccountKeyResult {
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly keyAlgorithm: string;
     readonly name: string;
     readonly project?: string;
@@ -74,8 +78,4 @@ export interface GetAccountKeyResult {
      */
     readonly publicKey: string;
     readonly publicKeyType?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

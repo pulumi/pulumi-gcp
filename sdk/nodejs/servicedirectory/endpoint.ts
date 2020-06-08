@@ -48,6 +48,7 @@ export class Endpoint extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EndpointState, opts?: pulumi.CustomResourceOptions): Endpoint {
         return new Endpoint(name, <any>state, { ...opts, id: id });
@@ -84,8 +85,7 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource name for the endpoint in the format
-     * 'projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*'.
+     * The resource name for the endpoint in the format 'projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*'.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -163,8 +163,7 @@ export interface EndpointState {
      */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The resource name for the endpoint in the format
-     * 'projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*'.
+     * The resource name for the endpoint in the format 'projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*'.
      */
     readonly name?: pulumi.Input<string>;
     /**

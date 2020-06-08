@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Network = defaultNetwork.Id,
     ///             Subnetwork = defaultSubnetwork.Id,
-    ///             DefaultPort = "90",
+    ///             DefaultPort = 90,
     ///             Zone = "us-central1-a",
     ///         });
     ///     }

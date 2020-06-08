@@ -74,12 +74,12 @@ export interface GetInstanceSerialPortResult {
      * The output of the serial port. Serial port output is available only when the VM instance is running, and logs are limited to the most recent 1 MB of output per port.
      */
     readonly contents: string;
-    readonly instance: string;
-    readonly port: number;
-    readonly project: string;
-    readonly zone: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly instance: string;
+    readonly port: number;
+    readonly project: string;
+    readonly zone: string;
 }

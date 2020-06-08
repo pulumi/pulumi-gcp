@@ -68,6 +68,10 @@ export interface GetManagedZoneResult {
      * The fully qualified DNS name of this zone, e.g. `example.io.`.
      */
     readonly dnsName: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     /**
      * The list of nameservers that will be authoritative for this
@@ -81,8 +85,4 @@ export interface GetManagedZoneResult {
      * while private zones are visible only to Virtual Private Cloud resources.
      */
     readonly visibility: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -85,6 +85,10 @@ export interface GetFunctionResult {
      */
     readonly httpsTriggerUrl: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * Controls what traffic can reach the function.
      */
     readonly ingressSettings: string;
@@ -132,8 +136,4 @@ export interface GetFunctionResult {
      * The egress settings for the connector, controlling what traffic is diverted through it.
      */
     readonly vpcConnectorEgressSettings: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

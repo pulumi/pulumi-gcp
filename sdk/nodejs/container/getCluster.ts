@@ -96,6 +96,10 @@ export interface GetClusterResult {
     readonly enableShieldedNodes: boolean;
     readonly enableTpu: boolean;
     readonly endpoint: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly initialNodeCount: number;
     readonly instanceGroupUrls: string[];
     readonly ipAllocationPolicies: outputs.container.GetClusterIpAllocationPolicy[];
@@ -103,8 +107,8 @@ export interface GetClusterResult {
     readonly location?: string;
     readonly loggingService: string;
     readonly maintenancePolicies: outputs.container.GetClusterMaintenancePolicy[];
-    readonly masterAuths: outputs.container.GetClusterMasterAuth[];
     readonly masterAuthorizedNetworksConfigs: outputs.container.GetClusterMasterAuthorizedNetworksConfig[];
+    readonly masterAuths: outputs.container.GetClusterMasterAuth[];
     readonly masterVersion: string;
     readonly minMasterVersion: string;
     readonly monitoringService: string;
@@ -130,8 +134,4 @@ export interface GetClusterResult {
     readonly verticalPodAutoscalings: outputs.container.GetClusterVerticalPodAutoscaling[];
     readonly workloadIdentityConfigs: outputs.container.GetClusterWorkloadIdentityConfig[];
     readonly zone?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

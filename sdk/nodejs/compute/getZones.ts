@@ -68,14 +68,14 @@ export interface GetZonesArgs {
  */
 export interface GetZonesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of zones available in the given region
      */
     readonly names: string[];
     readonly project: string;
     readonly region?: string;
     readonly status?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

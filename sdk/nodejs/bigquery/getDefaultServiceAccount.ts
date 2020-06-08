@@ -66,9 +66,9 @@ export interface GetDefaultServiceAccountResult {
      * in order to grant IAM permissions.
      */
     readonly email: string;
-    readonly project: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly project: string;
 }

@@ -65,6 +65,10 @@ export interface GetVPNGatewayResult {
      * Description of this VPN gateway.
      */
     readonly description: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     /**
      * The network of this VPN gateway.
@@ -79,8 +83,4 @@ export interface GetVPNGatewayResult {
      * The URI of the resource.
      */
     readonly selfLink: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

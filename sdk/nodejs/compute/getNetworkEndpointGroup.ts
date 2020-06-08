@@ -75,6 +75,10 @@ export interface GetNetworkEndpointGroupResult {
      * The NEG description.
      */
     readonly description: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name?: string;
     /**
      * The network to which all network endpoints in the NEG belong.
@@ -95,8 +99,4 @@ export interface GetNetworkEndpointGroupResult {
      */
     readonly subnetwork: string;
     readonly zone?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

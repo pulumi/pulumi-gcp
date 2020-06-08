@@ -69,6 +69,10 @@ export interface GetKMSKeyRingArgs {
  * A collection of values returned by getKMSKeyRing.
  */
 export interface GetKMSKeyRingResult {
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly location: string;
     readonly name: string;
     readonly project?: string;
@@ -76,8 +80,4 @@ export interface GetKMSKeyRingResult {
      * The self link of the created KeyRing. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}`.
      */
     readonly selfLink: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

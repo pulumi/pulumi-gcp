@@ -62,13 +62,13 @@ export interface GetCertificateResult {
     readonly certificateId: number;
     readonly creationTimestamp: string;
     readonly description: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly namePrefix: string;
     readonly privateKey: string;
     readonly project?: string;
     readonly selfLink: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

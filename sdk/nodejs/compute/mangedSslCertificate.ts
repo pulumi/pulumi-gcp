@@ -6,7 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/** @deprecated gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate */
+/**
+ * @deprecated gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate
+ */
 export class MangedSslCertificate extends pulumi.CustomResource {
     /**
      * Get an existing MangedSslCertificate resource's state with the given name, ID, and optional extra
@@ -15,6 +17,7 @@ export class MangedSslCertificate extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: MangedSslCertificateState, opts?: pulumi.CustomResourceOptions): MangedSslCertificate {
         pulumi.log.warn("MangedSslCertificate is deprecated: gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate")
@@ -52,16 +55,16 @@ export class MangedSslCertificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
-     * Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a
-     * value of 'MANAGED' in 'type').
+     * Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
+     * of 'MANAGED' in 'type').
      */
     public readonly managed!: pulumi.Output<outputs.compute.MangedSslCertificateManaged | undefined>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are
-     * in the same namespace as the managed SSL certificates.
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+     * comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+     * must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+     * namespace as the managed SSL certificates.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -146,16 +149,16 @@ export interface MangedSslCertificateState {
      */
     readonly expireTime?: pulumi.Input<string>;
     /**
-     * Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a
-     * value of 'MANAGED' in 'type').
+     * Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
+     * of 'MANAGED' in 'type').
      */
     readonly managed?: pulumi.Input<inputs.compute.MangedSslCertificateManaged>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are
-     * in the same namespace as the managed SSL certificates.
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+     * comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+     * must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+     * namespace as the managed SSL certificates.
      */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
@@ -184,16 +187,16 @@ export interface MangedSslCertificateArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a
-     * value of 'MANAGED' in 'type').
+     * Properties relevant to a managed certificate. These will be used if the certificate is managed (as indicated by a value
+     * of 'MANAGED' in 'type').
      */
     readonly managed?: pulumi.Input<inputs.compute.MangedSslCertificateManaged>;
     /**
-     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long,
-     * and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
-     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are
-     * in the same namespace as the managed SSL certificates.
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and
+     * comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+     * '[a-z]([-a-z0-9]*[a-z0-9])?' which means the first character must be a lowercase letter, and all following characters
+     * must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. These are in the same
+     * namespace as the managed SSL certificates.
      */
     readonly name?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;

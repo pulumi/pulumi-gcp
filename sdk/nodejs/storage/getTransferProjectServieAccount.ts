@@ -53,9 +53,9 @@ export interface GetTransferProjectServieAccountResult {
      * Email address of the default service account used by Storage Transfer Jobs running in this project
      */
     readonly email: string;
-    readonly project: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly project: string;
 }

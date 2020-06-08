@@ -91,13 +91,13 @@ export interface GetAppEngineServiceArgs {
  */
 export interface GetAppEngineServiceResult {
     readonly displayName: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly moduleId: string;
     readonly name: string;
     readonly project?: string;
     readonly serviceId: string;
     readonly telemetries: outputs.monitoring.GetAppEngineServiceTelemetry[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

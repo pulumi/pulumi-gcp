@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Monitoring
     ///             HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
     ///             {
     ///                 Path = "/some-path",
-    ///                 Port = "8010",
+    ///                 Port = 8010,
     ///             },
     ///             MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
     ///             {
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Monitoring
     ///             HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
     ///             {
     ///                 Path = "/some-path",
-    ///                 Port = "443",
+    ///                 Port = 443,
     ///                 UseSsl = true,
     ///                 ValidateSsl = true,
     ///             },

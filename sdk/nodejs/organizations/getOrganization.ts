@@ -65,6 +65,10 @@ export interface GetOrganizationResult {
     readonly directoryCustomerId: string;
     readonly domain: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The Organization's current lifecycle state.
      */
     readonly lifecycleState: string;
@@ -77,8 +81,4 @@ export interface GetOrganizationResult {
      */
     readonly orgId: string;
     readonly organization?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

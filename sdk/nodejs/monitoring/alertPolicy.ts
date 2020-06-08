@@ -54,6 +54,7 @@ export class AlertPolicy extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AlertPolicyState, opts?: pulumi.CustomResourceOptions): AlertPolicy {
         return new AlertPolicy(name, <any>state, { ...opts, id: id });
@@ -86,8 +87,8 @@ export class AlertPolicy extends pulumi.CustomResource {
      */
     public readonly conditions!: pulumi.Output<outputs.monitoring.AlertPolicyCondition[]>;
     /**
-     * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field
-     * will be ignored.
+     * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
+     * ignored.
      */
     public /*out*/ readonly creationRecord!: pulumi.Output<outputs.monitoring.AlertPolicyCreationRecord>;
     /**
@@ -215,8 +216,8 @@ export interface AlertPolicyState {
      */
     readonly conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
     /**
-     * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field
-     * will be ignored.
+     * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
+     * ignored.
      */
     readonly creationRecord?: pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>;
     /**

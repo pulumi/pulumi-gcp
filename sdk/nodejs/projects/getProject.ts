@@ -54,11 +54,11 @@ export interface GetProjectArgs {
 export interface GetProjectResult {
     readonly filter: string;
     /**
-     * A list of projects matching the provided filter. Structure is defined below.
-     */
-    readonly projects: outputs.projects.GetProjectProject[];
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of projects matching the provided filter. Structure is defined below.
+     */
+    readonly projects: outputs.projects.GetProjectProject[];
 }

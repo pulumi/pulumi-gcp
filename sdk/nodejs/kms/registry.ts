@@ -78,8 +78,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * @deprecated gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry
  */
-/** @deprecated gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry */
 export class Registry extends pulumi.CustomResource {
     /**
      * Get an existing Registry resource's state with the given name, ID, and optional extra
@@ -88,6 +89,7 @@ export class Registry extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegistryState, opts?: pulumi.CustomResourceOptions): Registry {
         pulumi.log.warn("Registry is deprecated: gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry")

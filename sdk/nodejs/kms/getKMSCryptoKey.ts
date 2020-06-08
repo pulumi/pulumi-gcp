@@ -66,6 +66,10 @@ export interface GetKMSCryptoKeyArgs {
  * A collection of values returned by getKMSCryptoKey.
  */
 export interface GetKMSCryptoKeyResult {
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly keyRing: string;
     readonly labels: {[key: string]: string};
     readonly name: string;
@@ -84,8 +88,4 @@ export interface GetKMSCryptoKeyResult {
      */
     readonly selfLink: string;
     readonly versionTemplates: outputs.kms.GetKMSCryptoKeyVersionTemplate[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

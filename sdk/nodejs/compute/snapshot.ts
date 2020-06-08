@@ -64,6 +64,7 @@ export class Snapshot extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SnapshotState, opts?: pulumi.CustomResourceOptions): Snapshot {
         return new Snapshot(name, <any>state, { ...opts, id: id });
@@ -105,8 +106,8 @@ export class Snapshot extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-     * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a
-     * customer-supplied encryption key.
+     * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
+     * encryption key.
      */
     public /*out*/ readonly licenses!: pulumi.Output<string[]>;
     /**
@@ -245,8 +246,8 @@ export interface SnapshotState {
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-     * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a
-     * customer-supplied encryption key.
+     * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
+     * encryption key.
      */
     readonly licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -64,13 +64,13 @@ export interface GetImageVersionsArgs {
  */
 export interface GetImageVersionsResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of composer image versions available in the given project and location. Each `imageVersion` contains:
      */
     readonly imageVersions: outputs.composer.GetImageVersionsImageVersion[];
     readonly project: string;
     readonly region: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

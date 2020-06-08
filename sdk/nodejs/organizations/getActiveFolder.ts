@@ -57,12 +57,12 @@ export interface GetActiveFolderArgs {
 export interface GetActiveFolderResult {
     readonly displayName: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The resource name of the Folder. This uniquely identifies the folder.
      */
     readonly name: string;
     readonly parent: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

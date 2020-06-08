@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -49,14 +51,14 @@ export interface GetWebAppConfigResult {
     readonly apiKey: string;
     readonly authDomain: string;
     readonly databaseUrl: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly locationId: string;
     readonly measurementId: string;
     readonly messagingSenderId: string;
     readonly project?: string;
     readonly storageBucket: string;
     readonly webAppId: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

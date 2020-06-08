@@ -70,10 +70,10 @@ export interface GetProjectServiceAccountResult {
      * in order to grant IAM permissions.
      */
     readonly emailAddress: string;
-    readonly project: string;
-    readonly userProject?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly project: string;
+    readonly userProject?: string;
 }

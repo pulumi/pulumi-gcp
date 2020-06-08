@@ -42,6 +42,10 @@ export interface GetClientConfigResult {
      */
     readonly accessToken: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The ID of the project to apply any resources to.
      */
     readonly project: string;
@@ -53,8 +57,4 @@ export interface GetClientConfigResult {
      * The zone to operate under.
      */
     readonly zone: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

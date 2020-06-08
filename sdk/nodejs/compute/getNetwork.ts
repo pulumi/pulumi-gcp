@@ -63,6 +63,10 @@ export interface GetNetworkResult {
      * The IP address of the gateway.
      */
     readonly gatewayIpv4: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly project?: string;
     /**
@@ -73,8 +77,4 @@ export interface GetNetworkResult {
      * the list of subnetworks which belong to the network
      */
     readonly subnetworksSelfLinks: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

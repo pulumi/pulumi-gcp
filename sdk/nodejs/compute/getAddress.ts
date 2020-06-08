@@ -73,6 +73,10 @@ export interface GetAddressResult {
      * The IP of the created resource.
      */
     readonly address: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly project: string;
     readonly region: string;
@@ -84,8 +88,4 @@ export interface GetAddressResult {
      * Indicates if the address is used. Possible values are: RESERVED or IN_USE.
      */
     readonly status: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
