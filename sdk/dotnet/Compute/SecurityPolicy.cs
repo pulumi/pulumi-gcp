@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Compute
     ///                         },
     ///                         VersionedExpr = "SRC_IPS_V1",
     ///                     },
-    ///                     Priority = "1000",
+    ///                     Priority = 1000,
     ///                 },
     ///                 new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
     ///                 {
@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Compute
     ///                         },
     ///                         VersionedExpr = "SRC_IPS_V1",
     ///                     },
-    ///                     Priority = "2147483647",
+    ///                     Priority = 2147483647,
     ///                 },
     ///             },
     ///         });

@@ -94,6 +94,10 @@ export interface GetImageResult {
      */
     readonly family: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
      * encoded SHA-256 hash of the [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption)
      * that protects this image.
@@ -146,8 +150,4 @@ export interface GetImageResult {
      * The status of the image. Possible values are **FAILED**, **PENDING**, or **READY**.
      */
     readonly status: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

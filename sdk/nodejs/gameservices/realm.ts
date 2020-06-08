@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -38,6 +36,7 @@ export class Realm extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RealmState, opts?: pulumi.CustomResourceOptions): Realm {
         return new Realm(name, <any>state, { ...opts, id: id });
@@ -74,8 +73,8 @@ export class Realm extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For
-     * example, 'projects/my-project/locations/{location}/realms/my-realm'.
+     * The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
+     * 'projects/my-project/locations/{location}/realms/my-realm'.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -163,8 +162,8 @@ export interface RealmState {
      */
     readonly location?: pulumi.Input<string>;
     /**
-     * The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For
-     * example, 'projects/my-project/locations/{location}/realms/my-realm'.
+     * The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
+     * 'projects/my-project/locations/{location}/realms/my-realm'.
      */
     readonly name?: pulumi.Input<string>;
     /**

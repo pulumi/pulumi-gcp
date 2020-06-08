@@ -66,6 +66,10 @@ export interface GetKeysArgs {
  */
 export interface GetKeysResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
      */
     readonly keySigningKeys: outputs.dns.GetKeysKeySigningKey[];
@@ -75,8 +79,4 @@ export interface GetKeysResult {
      * A list of Zone-signing key (ZSK) records. Structure is documented below.
      */
     readonly zoneSigningKeys: outputs.dns.GetKeysZoneSigningKey[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

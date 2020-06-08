@@ -139,6 +139,7 @@ export class Hl7Store extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: Hl7StoreState, opts?: pulumi.CustomResourceOptions): Hl7Store {
         return new Hl7Store(name, <any>state, { ...opts, id: id });
@@ -183,6 +184,8 @@ export class Hl7Store extends pulumi.CustomResource {
      * -
      * (Optional, Deprecated)
      * A nested object resource  Structure is documented below.
+     *
+     * @deprecated This field has been replaced by notificationConfigs
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.Hl7StoreNotificationConfig | undefined>;
     /**
@@ -272,6 +275,7 @@ export interface Hl7StoreState {
      * -
      * (Optional, Deprecated)
      * A nested object resource  Structure is documented below.
+     *
      * @deprecated This field has been replaced by notificationConfigs
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;
@@ -320,6 +324,7 @@ export interface Hl7StoreArgs {
      * -
      * (Optional, Deprecated)
      * A nested object resource  Structure is documented below.
+     *
      * @deprecated This field has been replaced by notificationConfigs
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfig>;

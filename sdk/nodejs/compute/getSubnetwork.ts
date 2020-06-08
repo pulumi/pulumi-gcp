@@ -79,6 +79,10 @@ export interface GetSubnetworkResult {
      */
     readonly gatewayAddress: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The range of IP addresses belonging to this subnetwork
      * secondary range.
      */
@@ -103,8 +107,4 @@ export interface GetSubnetworkResult {
      */
     readonly secondaryIpRanges: outputs.compute.GetSubnetworkSecondaryIpRange[];
     readonly selfLink: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

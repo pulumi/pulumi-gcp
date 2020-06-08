@@ -69,6 +69,10 @@ export interface GetRegionInstanceGroupArgs {
  */
 export interface GetRegionInstanceGroupResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * List of instances in the group, as a list of resources, each containing:
      */
     readonly instances: outputs.compute.GetRegionInstanceGroupInstance[];
@@ -83,8 +87,4 @@ export interface GetRegionInstanceGroupResult {
      * The number of instances in the group.
      */
     readonly size: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

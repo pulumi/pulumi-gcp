@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Provide access to a Backend Service's attribute. For more information
  * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
- *
  */
 export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
     if (!opts) {
@@ -75,6 +74,10 @@ export interface GetBackendServiceResult {
      */
     readonly healthChecks: string[];
     readonly iaps: outputs.compute.GetBackendServiceIap[];
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly loadBalancingScheme: string;
     readonly localityLbPolicy: string;
     readonly logConfigs: outputs.compute.GetBackendServiceLogConfig[];
@@ -102,8 +105,4 @@ export interface GetBackendServiceResult {
      * The number of seconds to wait for a backend to respond to a request before considering the request failed.
      */
     readonly timeoutSec: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

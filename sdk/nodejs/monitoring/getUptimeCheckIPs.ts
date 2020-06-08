@@ -39,11 +39,11 @@ export function getUptimeCheckIPs(opts?: pulumi.InvokeOptions): Promise<GetUptim
  */
 export interface GetUptimeCheckIPsResult {
     /**
-     * A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
-     */
-    readonly uptimeCheckIps: outputs.monitoring.GetUptimeCheckIPsUptimeCheckIp[];
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
+     */
+    readonly uptimeCheckIps: outputs.monitoring.GetUptimeCheckIPsUptimeCheckIp[];
 }

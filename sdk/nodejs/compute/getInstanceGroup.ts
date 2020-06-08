@@ -71,6 +71,10 @@ export interface GetInstanceGroupResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * List of instances in the group.
      */
     readonly instances: string[];
@@ -93,8 +97,4 @@ export interface GetInstanceGroupResult {
      */
     readonly size: number;
     readonly zone: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

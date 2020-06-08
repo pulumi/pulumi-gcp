@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/sql/)
  * and
  * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
- *
- *
  */
 export function getCaCerts(args: GetCaCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertsResult> {
     if (!opts) {
@@ -54,10 +52,10 @@ export interface GetCaCertsResult {
      * A list of server CA certificates for the instance. Each contains:
      */
     readonly certs: outputs.sql.GetCaCertsCert[];
-    readonly instance: string;
-    readonly project: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly instance: string;
+    readonly project: string;
 }

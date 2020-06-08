@@ -117,6 +117,7 @@ export class Entry extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EntryState, opts?: pulumi.CustomResourceOptions): Entry {
         return new Entry(name, <any>state, { ...opts, id: id });
@@ -181,8 +182,8 @@ export class Entry extends pulumi.CustomResource {
     public readonly linkedResource!: pulumi.Output<string>;
     /**
      * The Data Catalog resource name of the entry in URL format. Example:
-     * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and
-     * its child resources may not actually be stored in the location in this name.
+     * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
+     * child resources may not actually be stored in the location in this name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -321,8 +322,8 @@ export interface EntryState {
     readonly linkedResource?: pulumi.Input<string>;
     /**
      * The Data Catalog resource name of the entry in URL format. Example:
-     * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and
-     * its child resources may not actually be stored in the location in this name.
+     * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
+     * child resources may not actually be stored in the location in this name.
      */
     readonly name?: pulumi.Input<string>;
     /**

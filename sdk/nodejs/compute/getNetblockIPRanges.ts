@@ -81,9 +81,9 @@ export interface GetNetblockIPRangesResult {
      * Retrieve list of the IPv6 CIDR blocks, if available.
      */
     readonly cidrBlocksIpv6s: string[];
-    readonly rangeType?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly rangeType?: string;
 }

@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Storage
         ///             Credentials = File.ReadAllText("path/to/credentials.json"),
         ///             ExtensionHeaders = 
         ///             {
-        ///                 { "x-goog-if-generation-match", 1 },
+        ///                 { "x-goog-if-generation-match", "1" },
         ///             },
         ///         }));
         ///     }

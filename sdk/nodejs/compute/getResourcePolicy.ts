@@ -60,6 +60,10 @@ export interface GetResourcePolicyResult {
      * Description of this Resource Policy.
      */
     readonly description: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly project?: string;
     readonly region: string;
@@ -67,8 +71,4 @@ export interface GetResourcePolicyResult {
      * The URI of the resource.
      */
     readonly selfLink: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

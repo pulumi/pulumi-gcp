@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("gcp");
@@ -10,7 +12,7 @@ export let accessContextManagerCustomEndpoint: string | undefined = __config.get
 export let accessToken: string | undefined = __config.get("accessToken");
 export let appEngineCustomEndpoint: string | undefined = __config.get("appEngineCustomEndpoint");
 export let artifactRegistryCustomEndpoint: string | undefined = __config.get("artifactRegistryCustomEndpoint");
-export let batching: { enableBatching?: boolean, sendAfter?: string } | undefined = __config.getObject<{ enableBatching?: boolean, sendAfter?: string }>("batching");
+export let batching: outputs.config.Batching | undefined = __config.getObject<outputs.config.Batching>("batching");
 export let bigQueryCustomEndpoint: string | undefined = __config.get("bigQueryCustomEndpoint");
 export let bigqueryConnectionCustomEndpoint: string | undefined = __config.get("bigqueryConnectionCustomEndpoint");
 export let bigqueryDataTransferCustomEndpoint: string | undefined = __config.get("bigqueryDataTransferCustomEndpoint");

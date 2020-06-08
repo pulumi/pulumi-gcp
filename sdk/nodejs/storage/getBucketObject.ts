@@ -89,6 +89,10 @@ export interface GetBucketObjectResult {
     readonly crc32c: string;
     readonly detectMd5hash: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */
     readonly md5hash: string;
@@ -106,8 +110,4 @@ export interface GetBucketObjectResult {
      * storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
      */
     readonly storageClass: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

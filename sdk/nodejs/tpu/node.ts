@@ -63,6 +63,7 @@ export class Node extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NodeState, opts?: pulumi.CustomResourceOptions): Node {
         return new Node(name, <any>state, { ...opts, id: id });
@@ -117,8 +118,8 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of
-     * the node first reach out to the first (index 0) entry.
+     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
+     * node first reach out to the first (index 0) entry.
      */
     public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.NodeNetworkEndpoint[]>;
     /**
@@ -245,8 +246,8 @@ export interface NodeState {
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of
-     * the node first reach out to the first (index 0) entry.
+     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
+     * node first reach out to the first (index 0) entry.
      */
     readonly networkEndpoints?: pulumi.Input<pulumi.Input<inputs.tpu.NodeNetworkEndpoint>[]>;
     /**

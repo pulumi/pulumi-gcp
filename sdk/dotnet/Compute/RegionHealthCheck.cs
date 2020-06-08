@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Compute
     ///             CheckIntervalSec = 1,
     ///             TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
     ///             {
-    ///                 Port = "80",
+    ///                 Port = 80,
     ///             },
     ///             TimeoutSec = 1,
     ///         });
@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.Compute
     ///             CheckIntervalSec = 1,
     ///             SslHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckSslHealthCheckArgs
     ///             {
-    ///                 Port = "443",
+    ///                 Port = 443,
     ///             },
     ///             TimeoutSec = 1,
     ///         });
@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.Compute
     ///             CheckIntervalSec = 1,
     ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
     ///             {
-    ///                 Port = "80",
+    ///                 Port = 80,
     ///             },
     ///             TimeoutSec = 1,
     ///         });
@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.Compute
     ///             CheckIntervalSec = 1,
     ///             HttpsHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpsHealthCheckArgs
     ///             {
-    ///                 Port = "443",
+    ///                 Port = 443,
     ///             },
     ///             TimeoutSec = 1,
     ///         });
@@ -267,7 +267,7 @@ namespace Pulumi.Gcp.Compute
     ///             CheckIntervalSec = 1,
     ///             Http2HealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttp2HealthCheckArgs
     ///             {
-    ///                 Port = "443",
+    ///                 Port = 443,
     ///             },
     ///             TimeoutSec = 1,
     ///         });

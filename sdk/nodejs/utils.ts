@@ -17,5 +17,5 @@ import * as pulumi from "@pulumi/pulumi";
 /** @internal */
 export function ifUndefined<T>(input: pulumi.Input<T> | undefined, value: pulumi.Input<T>) {
     return pulumi.all([input, value])
-                 .apply(([input, value]) => input !== undefined ? input : value);
+        .apply(([input, value]) => input !== undefined ? input : value);
 }

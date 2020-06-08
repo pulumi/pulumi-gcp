@@ -62,13 +62,13 @@ export interface GetRegionsArgs {
  */
 export interface GetRegionsResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of regions available in the given project
      */
     readonly names: string[];
     readonly project: string;
     readonly status?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

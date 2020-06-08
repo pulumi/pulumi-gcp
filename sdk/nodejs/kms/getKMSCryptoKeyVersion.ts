@@ -73,6 +73,10 @@ export interface GetKMSCryptoKeyVersionResult {
     readonly algorithm: string;
     readonly cryptoKey: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
      */
     readonly protectionLevel: string;
@@ -85,8 +89,4 @@ export interface GetKMSCryptoKeyVersionResult {
      */
     readonly state: string;
     readonly version?: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

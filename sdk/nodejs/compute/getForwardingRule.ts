@@ -70,6 +70,10 @@ export interface GetForwardingRuleResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * IP address of this forwarding rule.
      */
     readonly ipAddress: string;
@@ -111,8 +115,4 @@ export interface GetForwardingRuleResult {
      * URL of the target pool, if this forwarding rule has one.
      */
     readonly target: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

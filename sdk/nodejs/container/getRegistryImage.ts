@@ -58,13 +58,13 @@ export interface GetRegistryImageArgs {
  */
 export interface GetRegistryImageResult {
     readonly digest?: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly imageUrl: string;
     readonly name: string;
     readonly project: string;
     readonly region?: string;
     readonly tag?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

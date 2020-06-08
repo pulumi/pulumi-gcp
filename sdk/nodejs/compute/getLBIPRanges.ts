@@ -52,11 +52,11 @@ export interface GetLBIPRangesResult {
      */
     readonly httpSslTcpInternals: string[];
     /**
-     * The IP ranges used for health checks when **Network load balancing** is used
-     */
-    readonly networks: string[];
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The IP ranges used for health checks when **Network load balancing** is used
+     */
+    readonly networks: string[];
 }

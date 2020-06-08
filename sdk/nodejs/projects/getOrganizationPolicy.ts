@@ -61,13 +61,13 @@ export interface GetOrganizationPolicyResult {
     readonly booleanPolicies: outputs.projects.GetOrganizationPolicyBooleanPolicy[];
     readonly constraint: string;
     readonly etag: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly listPolicies: outputs.projects.GetOrganizationPolicyListPolicy[];
     readonly project: string;
     readonly restorePolicies: outputs.projects.GetOrganizationPolicyRestorePolicy[];
     readonly updateTime: string;
     readonly version: number;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

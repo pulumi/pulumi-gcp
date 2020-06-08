@@ -65,6 +65,10 @@ export interface GetBillingAccountResult {
     readonly billingAccount?: string;
     readonly displayName: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
      */
     readonly name: string;
@@ -73,8 +77,4 @@ export interface GetBillingAccountResult {
      * The IDs of any projects associated with the billing account.
      */
     readonly projectIds: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

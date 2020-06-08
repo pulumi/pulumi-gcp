@@ -74,6 +74,10 @@ export interface GetSecretVersionResult {
      */
     readonly enabled: boolean;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The resource name of the SecretVersion. Format:
      * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      */
@@ -85,8 +89,4 @@ export interface GetSecretVersionResult {
      */
     readonly secretData: string;
     readonly version: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

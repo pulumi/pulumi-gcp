@@ -54,14 +54,14 @@ export interface GetProjectResult {
     readonly autoCreateNetwork: boolean;
     readonly billingAccount: string;
     readonly folderId: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly labels: {[key: string]: string};
     readonly name: string;
     readonly number: string;
     readonly orgId: string;
     readonly projectId?: string;
     readonly skipDelete: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

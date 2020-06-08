@@ -4,11 +4,11 @@
 // Export members:
 export * from "./getOrganizationPolicy";
 export * from "./getProject";
-export * from "./iAMAuditConfig";
-export * from "./iAMBinding";
-export * from "./iAMCustomRole";
-export * from "./iAMMember";
-export * from "./iAMPolicy";
+export * from "./iamauditConfig";
+export * from "./iambinding";
+export * from "./iamcustomRole";
+export * from "./iammember";
+export * from "./iampolicy";
 export * from "./organizationPolicy";
 export * from "./service";
 export * from "./usageExportBucket";

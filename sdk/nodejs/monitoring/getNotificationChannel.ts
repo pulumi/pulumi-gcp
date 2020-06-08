@@ -103,6 +103,10 @@ export interface GetNotificationChannelResult {
     readonly description: string;
     readonly displayName?: string;
     readonly enabled: boolean;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly labels?: {[key: string]: string};
     readonly name: string;
     readonly project?: string;
@@ -110,8 +114,4 @@ export interface GetNotificationChannelResult {
     readonly type?: string;
     readonly userLabels?: {[key: string]: string};
     readonly verificationStatus: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

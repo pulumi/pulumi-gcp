@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         var @default = new Gcp.Compute.Network("default", new Gcp.Compute.NetworkArgs
     ///         {
-    ///             AutoCreateSubnetworks = "false",
+    ///             AutoCreateSubnetworks = false,
     ///         });
     ///         var other = new Gcp.Compute.Network("other", new Gcp.Compute.NetworkArgs
     ///         {
-    ///             AutoCreateSubnetworks = "false",
+    ///             AutoCreateSubnetworks = false,
     ///         });
     ///         var peering1 = new Gcp.Compute.NetworkPeering("peering1", new Gcp.Compute.NetworkPeeringArgs
     ///         {

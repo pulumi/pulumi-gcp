@@ -64,13 +64,13 @@ export interface GetNodeTypesArgs {
  */
 export interface GetNodeTypesResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of node types available in the given zone and project.
      */
     readonly names: string[];
     readonly project: string;
     readonly zone: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

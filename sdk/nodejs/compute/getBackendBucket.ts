@@ -75,14 +75,14 @@ export interface GetBackendBucketResult {
      * Whether Cloud CDN is enabled for this BackendBucket.
      */
     readonly enableCdn: boolean;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
     readonly name: string;
     readonly project?: string;
     /**
      * The URI of the created resource.
      */
     readonly selfLink: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

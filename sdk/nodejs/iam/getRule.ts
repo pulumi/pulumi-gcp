@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -45,6 +47,10 @@ export interface GetRuleArgs {
  */
 export interface GetRuleResult {
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * specifies the list of one or more permissions to include in the custom role, such as - `iam.roles.get`
      */
     readonly includedPermissions: string[];
@@ -57,8 +63,4 @@ export interface GetRuleResult {
      * is a friendly title for the role, such as "Role Viewer"
      */
     readonly title: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

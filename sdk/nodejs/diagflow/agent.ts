@@ -51,6 +51,7 @@ export class Agent extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AgentState, opts?: pulumi.CustomResourceOptions): Agent {
         return new Agent(name, <any>state, { ...opts, id: id });
@@ -86,8 +87,8 @@ export class Agent extends pulumi.CustomResource {
      */
     public readonly avatarUri!: pulumi.Output<string | undefined>;
     /**
-     * The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
-     * the [avatarUri] field can be used.
+     * The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
+     * [avatarUri] field can be used.
      */
     public /*out*/ readonly avatarUriBackend!: pulumi.Output<string>;
     /**
@@ -228,8 +229,8 @@ export interface AgentState {
      */
     readonly avatarUri?: pulumi.Input<string>;
     /**
-     * The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
-     * the [avatarUri] field can be used.
+     * The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
+     * [avatarUri] field can be used.
      */
     readonly avatarUriBackend?: pulumi.Input<string>;
     /**

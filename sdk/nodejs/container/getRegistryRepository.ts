@@ -50,11 +50,11 @@ export interface GetRegistryRepositoryArgs {
  * A collection of values returned by getRegistryRepository.
  */
 export interface GetRegistryRepositoryResult {
-    readonly project: string;
-    readonly region?: string;
-    readonly repositoryUrl: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly project: string;
+    readonly region?: string;
+    readonly repositoryUrl: string;
 }

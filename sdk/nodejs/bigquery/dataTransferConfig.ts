@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -57,6 +55,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DataTransferConfigState, opts?: pulumi.CustomResourceOptions): DataTransferConfig {
         return new DataTransferConfig(name, <any>state, { ...opts, id: id });
@@ -107,8 +106,8 @@ export class DataTransferConfig extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The resource name of the transfer config. Transfer config names have the form
-     * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is
-     * not required. The name is ignored when creating a transfer config.
+     * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
+     * required. The name is ignored when creating a transfer config.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -233,8 +232,8 @@ export interface DataTransferConfigState {
     readonly location?: pulumi.Input<string>;
     /**
      * The resource name of the transfer config. Transfer config names have the form
-     * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is
-     * not required. The name is ignored when creating a transfer config.
+     * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
+     * required. The name is ignored when creating a transfer config.
      */
     readonly name?: pulumi.Input<string>;
     /**

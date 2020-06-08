@@ -76,6 +76,10 @@ export interface GetSSLPolicyResult {
      */
     readonly fingerprint: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The minimum supported TLS version of this policy.
      */
     readonly minTlsVersion: string;
@@ -89,8 +93,4 @@ export interface GetSSLPolicyResult {
      * The URI of the created resource.
      */
     readonly selfLink: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

@@ -70,6 +70,7 @@ export class RegionDisk extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RegionDiskState, opts?: pulumi.CustomResourceOptions): RegionDisk {
         return new RegionDisk(name, <any>state, { ...opts, id: id });
@@ -188,10 +189,9 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly sourceSnapshotEncryptionKey!: pulumi.Output<outputs.compute.RegionDiskSourceSnapshotEncryptionKey | undefined>;
     /**
-     * The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to
-     * create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted
-     * and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was
-     * used.
+     * The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
+     * this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
+     * recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
      */
     public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
     /**
@@ -374,10 +374,9 @@ export interface RegionDiskState {
      */
     readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskSourceSnapshotEncryptionKey>;
     /**
-     * The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to
-     * create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted
-     * and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was
-     * used.
+     * The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
+     * this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
+     * recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
      */
     readonly sourceSnapshotId?: pulumi.Input<string>;
     /**

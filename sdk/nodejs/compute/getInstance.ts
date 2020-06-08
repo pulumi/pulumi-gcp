@@ -108,6 +108,10 @@ export interface GetInstanceResult {
     readonly guestAccelerators: outputs.compute.GetInstanceGuestAccelerator[];
     readonly hostname: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The server-assigned unique identifier of this instance.
      */
     readonly instanceId: string;
@@ -172,8 +176,4 @@ export interface GetInstanceResult {
      */
     readonly tagsFingerprint: string;
     readonly zone?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
