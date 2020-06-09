@@ -540,8 +540,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.0.0/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+o
 github.com/pulumi/pulumi/sdk/v2 v2.2.2-0.20200519081838-f66100ce28b0/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
 github.com/pulumi/pulumi/sdk/v2 v2.3.1-0.20200607162109-9754465b04db h1:Q1/Azshl983zTcWXMqkbEcFt1UN88unn9tdMv5ouQ80=
 github.com/pulumi/pulumi/sdk/v2 v2.3.1-0.20200607162109-9754465b04db/go.mod h1:llk6tmXss8kJrt3vEXAkwiwgZOuINEFmKIfMveVIwO8=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20200602083459-589dfea89e25 h1:Nv9HRaKMMTUls5dgRyWDGW6YnVFphcQq/wsFT4WAOqs=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20200602083459-589dfea89e25/go.mod h1:fsu5rVZ4IG/UZ9yI96TEDlINxZ5NopHABodaDx8/Gpo=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20200609115746-9842b00c612c h1:1prs87VaHDokfrVofRzBYqaqCZZts+OcSg3Qrnab/u8=
+github.com/pulumi/terraform-provider-google-beta v0.0.0-20200609115746-9842b00c612c/go.mod h1:Q6y8JjZCsqGUcGOvXQzImBda7kgBUvIE9BEfpTvL10E=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d h1:1JtzB9Gx0YX2UgKKkqJwTgBXxfg2cbLUEqTJKwKBK7s=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d/go.mod h1:yv9XozKsue9ZELHQbrBGgIaFtE3OX3Q4m7koTzTqgpE=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200528170746-c1234defe2b5 h1:h+pUwgEser1Ole6TMCc66njRPcw7SEVXpeoClG+ihEM=
