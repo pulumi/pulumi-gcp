@@ -39,6 +39,8 @@ type StandardAppVersion struct {
 	// An ordered list of URL-matching patterns that should be applied to incoming requests.
 	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayOutput `pulumi:"handlers"`
+	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+	InboundServices pulumi.StringArrayOutput `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
 	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
@@ -117,6 +119,8 @@ type standardAppVersionState struct {
 	// An ordered list of URL-matching patterns that should be applied to incoming requests.
 	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers []StandardAppVersionHandler `pulumi:"handlers"`
+	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+	InboundServices []string `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
 	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
@@ -162,6 +166,8 @@ type StandardAppVersionState struct {
 	// An ordered list of URL-matching patterns that should be applied to incoming requests.
 	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayInput
+	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+	InboundServices pulumi.StringArrayInput
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
 	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
@@ -211,6 +217,8 @@ type standardAppVersionArgs struct {
 	// An ordered list of URL-matching patterns that should be applied to incoming requests.
 	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers []StandardAppVersionHandler `pulumi:"handlers"`
+	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+	InboundServices []string `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
 	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
@@ -255,6 +263,8 @@ type StandardAppVersionArgs struct {
 	// An ordered list of URL-matching patterns that should be applied to incoming requests.
 	// The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
 	Handlers StandardAppVersionHandlerArrayInput
+	// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+	InboundServices pulumi.StringArrayInput
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
 	// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8

@@ -42,6 +42,15 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<Inputs.TableExternalDataConfigurationGoogleSheetsOptionsArgs>? GoogleSheetsOptions { get; set; }
 
         /// <summary>
+        /// When set, configures hive partitioning
+        /// support. Not all storage formats support hive partitioning -- requesting hive
+        /// partitioning on an unsupported format will lead to an error, as will providing
+        /// an invalid specification.
+        /// </summary>
+        [Input("hivePartitioningOptions")]
+        public Input<Inputs.TableExternalDataConfigurationHivePartitioningOptionsArgs>? HivePartitioningOptions { get; set; }
+
+        /// <summary>
         /// Indicates if BigQuery should
         /// allow extra values that are not represented in the table schema.
         /// If true, the extra values are ignored. If false, records with

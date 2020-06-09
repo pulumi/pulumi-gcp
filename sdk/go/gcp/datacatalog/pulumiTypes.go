@@ -1208,6 +1208,477 @@ func (o EntryGroupIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TagTemplateField struct {
+	// The display name for this template.
+	DisplayName *string `pulumi:"displayName"`
+	// The identifier for this object. Format specified above.
+	FieldId string `pulumi:"fieldId"`
+	// Whether this is a required field. Defaults to false.
+	IsRequired *bool `pulumi:"isRequired"`
+	// -
+	// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+	Name *string `pulumi:"name"`
+	// The order of this field with respect to other fields in this tag template.
+	// A higher value indicates a more important field. The value can be negative.
+	// Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+	Order *int `pulumi:"order"`
+	// The type of value this tag field can contain.  Structure is documented below.
+	Type TagTemplateFieldType `pulumi:"type"`
+}
+
+// TagTemplateFieldInput is an input type that accepts TagTemplateFieldArgs and TagTemplateFieldOutput values.
+// You can construct a concrete instance of `TagTemplateFieldInput` via:
+//
+// 		 TagTemplateFieldArgs{...}
+//
+type TagTemplateFieldInput interface {
+	pulumi.Input
+
+	ToTagTemplateFieldOutput() TagTemplateFieldOutput
+	ToTagTemplateFieldOutputWithContext(context.Context) TagTemplateFieldOutput
+}
+
+type TagTemplateFieldArgs struct {
+	// The display name for this template.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The identifier for this object. Format specified above.
+	FieldId pulumi.StringInput `pulumi:"fieldId"`
+	// Whether this is a required field. Defaults to false.
+	IsRequired pulumi.BoolPtrInput `pulumi:"isRequired"`
+	// -
+	// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The order of this field with respect to other fields in this tag template.
+	// A higher value indicates a more important field. The value can be negative.
+	// Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+	Order pulumi.IntPtrInput `pulumi:"order"`
+	// The type of value this tag field can contain.  Structure is documented below.
+	Type TagTemplateFieldTypeInput `pulumi:"type"`
+}
+
+func (TagTemplateFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateField)(nil)).Elem()
+}
+
+func (i TagTemplateFieldArgs) ToTagTemplateFieldOutput() TagTemplateFieldOutput {
+	return i.ToTagTemplateFieldOutputWithContext(context.Background())
+}
+
+func (i TagTemplateFieldArgs) ToTagTemplateFieldOutputWithContext(ctx context.Context) TagTemplateFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldOutput)
+}
+
+// TagTemplateFieldArrayInput is an input type that accepts TagTemplateFieldArray and TagTemplateFieldArrayOutput values.
+// You can construct a concrete instance of `TagTemplateFieldArrayInput` via:
+//
+// 		 TagTemplateFieldArray{ TagTemplateFieldArgs{...} }
+//
+type TagTemplateFieldArrayInput interface {
+	pulumi.Input
+
+	ToTagTemplateFieldArrayOutput() TagTemplateFieldArrayOutput
+	ToTagTemplateFieldArrayOutputWithContext(context.Context) TagTemplateFieldArrayOutput
+}
+
+type TagTemplateFieldArray []TagTemplateFieldInput
+
+func (TagTemplateFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagTemplateField)(nil)).Elem()
+}
+
+func (i TagTemplateFieldArray) ToTagTemplateFieldArrayOutput() TagTemplateFieldArrayOutput {
+	return i.ToTagTemplateFieldArrayOutputWithContext(context.Background())
+}
+
+func (i TagTemplateFieldArray) ToTagTemplateFieldArrayOutputWithContext(ctx context.Context) TagTemplateFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldArrayOutput)
+}
+
+type TagTemplateFieldOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateField)(nil)).Elem()
+}
+
+func (o TagTemplateFieldOutput) ToTagTemplateFieldOutput() TagTemplateFieldOutput {
+	return o
+}
+
+func (o TagTemplateFieldOutput) ToTagTemplateFieldOutputWithContext(ctx context.Context) TagTemplateFieldOutput {
+	return o
+}
+
+// The display name for this template.
+func (o TagTemplateFieldOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagTemplateField) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o TagTemplateFieldOutput) FieldId() pulumi.StringOutput {
+	return o.ApplyT(func(v TagTemplateField) string { return v.FieldId }).(pulumi.StringOutput)
+}
+
+// Whether this is a required field. Defaults to false.
+func (o TagTemplateFieldOutput) IsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TagTemplateField) *bool { return v.IsRequired }).(pulumi.BoolPtrOutput)
+}
+
+// -
+// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+func (o TagTemplateFieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagTemplateField) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The order of this field with respect to other fields in this tag template.
+// A higher value indicates a more important field. The value can be negative.
+// Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+func (o TagTemplateFieldOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TagTemplateField) *int { return v.Order }).(pulumi.IntPtrOutput)
+}
+
+// The type of value this tag field can contain.  Structure is documented below.
+func (o TagTemplateFieldOutput) Type() TagTemplateFieldTypeOutput {
+	return o.ApplyT(func(v TagTemplateField) TagTemplateFieldType { return v.Type }).(TagTemplateFieldTypeOutput)
+}
+
+type TagTemplateFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagTemplateField)(nil)).Elem()
+}
+
+func (o TagTemplateFieldArrayOutput) ToTagTemplateFieldArrayOutput() TagTemplateFieldArrayOutput {
+	return o
+}
+
+func (o TagTemplateFieldArrayOutput) ToTagTemplateFieldArrayOutputWithContext(ctx context.Context) TagTemplateFieldArrayOutput {
+	return o
+}
+
+func (o TagTemplateFieldArrayOutput) Index(i pulumi.IntInput) TagTemplateFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagTemplateField {
+		return vs[0].([]TagTemplateField)[vs[1].(int)]
+	}).(TagTemplateFieldOutput)
+}
+
+type TagTemplateFieldType struct {
+	// Represents an enum type.
+	// Exactly one of `primitiveType` or `enumType` must be set  Structure is documented below.
+	EnumType *TagTemplateFieldTypeEnumType `pulumi:"enumType"`
+	// Represents primitive types - string, bool etc.
+	// Exactly one of `primitiveType` or `enumType` must be set
+	PrimitiveType *string `pulumi:"primitiveType"`
+}
+
+// TagTemplateFieldTypeInput is an input type that accepts TagTemplateFieldTypeArgs and TagTemplateFieldTypeOutput values.
+// You can construct a concrete instance of `TagTemplateFieldTypeInput` via:
+//
+// 		 TagTemplateFieldTypeArgs{...}
+//
+type TagTemplateFieldTypeInput interface {
+	pulumi.Input
+
+	ToTagTemplateFieldTypeOutput() TagTemplateFieldTypeOutput
+	ToTagTemplateFieldTypeOutputWithContext(context.Context) TagTemplateFieldTypeOutput
+}
+
+type TagTemplateFieldTypeArgs struct {
+	// Represents an enum type.
+	// Exactly one of `primitiveType` or `enumType` must be set  Structure is documented below.
+	EnumType TagTemplateFieldTypeEnumTypePtrInput `pulumi:"enumType"`
+	// Represents primitive types - string, bool etc.
+	// Exactly one of `primitiveType` or `enumType` must be set
+	PrimitiveType pulumi.StringPtrInput `pulumi:"primitiveType"`
+}
+
+func (TagTemplateFieldTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateFieldType)(nil)).Elem()
+}
+
+func (i TagTemplateFieldTypeArgs) ToTagTemplateFieldTypeOutput() TagTemplateFieldTypeOutput {
+	return i.ToTagTemplateFieldTypeOutputWithContext(context.Background())
+}
+
+func (i TagTemplateFieldTypeArgs) ToTagTemplateFieldTypeOutputWithContext(ctx context.Context) TagTemplateFieldTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeOutput)
+}
+
+type TagTemplateFieldTypeOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateFieldTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateFieldType)(nil)).Elem()
+}
+
+func (o TagTemplateFieldTypeOutput) ToTagTemplateFieldTypeOutput() TagTemplateFieldTypeOutput {
+	return o
+}
+
+func (o TagTemplateFieldTypeOutput) ToTagTemplateFieldTypeOutputWithContext(ctx context.Context) TagTemplateFieldTypeOutput {
+	return o
+}
+
+// Represents an enum type.
+// Exactly one of `primitiveType` or `enumType` must be set  Structure is documented below.
+func (o TagTemplateFieldTypeOutput) EnumType() TagTemplateFieldTypeEnumTypePtrOutput {
+	return o.ApplyT(func(v TagTemplateFieldType) *TagTemplateFieldTypeEnumType { return v.EnumType }).(TagTemplateFieldTypeEnumTypePtrOutput)
+}
+
+// Represents primitive types - string, bool etc.
+// Exactly one of `primitiveType` or `enumType` must be set
+func (o TagTemplateFieldTypeOutput) PrimitiveType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagTemplateFieldType) *string { return v.PrimitiveType }).(pulumi.StringPtrOutput)
+}
+
+type TagTemplateFieldTypeEnumType struct {
+	// The set of allowed values for this enum. The display names of the
+	// values must be case-insensitively unique within this set. Currently,
+	// enum values can only be added to the list of allowed values. Deletion
+	// and renaming of enum values are not supported.
+	// Can have up to 500 allowed values.  Structure is documented below.
+	AllowedValues []TagTemplateFieldTypeEnumTypeAllowedValue `pulumi:"allowedValues"`
+}
+
+// TagTemplateFieldTypeEnumTypeInput is an input type that accepts TagTemplateFieldTypeEnumTypeArgs and TagTemplateFieldTypeEnumTypeOutput values.
+// You can construct a concrete instance of `TagTemplateFieldTypeEnumTypeInput` via:
+//
+// 		 TagTemplateFieldTypeEnumTypeArgs{...}
+//
+type TagTemplateFieldTypeEnumTypeInput interface {
+	pulumi.Input
+
+	ToTagTemplateFieldTypeEnumTypeOutput() TagTemplateFieldTypeEnumTypeOutput
+	ToTagTemplateFieldTypeEnumTypeOutputWithContext(context.Context) TagTemplateFieldTypeEnumTypeOutput
+}
+
+type TagTemplateFieldTypeEnumTypeArgs struct {
+	// The set of allowed values for this enum. The display names of the
+	// values must be case-insensitively unique within this set. Currently,
+	// enum values can only be added to the list of allowed values. Deletion
+	// and renaming of enum values are not supported.
+	// Can have up to 500 allowed values.  Structure is documented below.
+	AllowedValues TagTemplateFieldTypeEnumTypeAllowedValueArrayInput `pulumi:"allowedValues"`
+}
+
+func (TagTemplateFieldTypeEnumTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateFieldTypeEnumType)(nil)).Elem()
+}
+
+func (i TagTemplateFieldTypeEnumTypeArgs) ToTagTemplateFieldTypeEnumTypeOutput() TagTemplateFieldTypeEnumTypeOutput {
+	return i.ToTagTemplateFieldTypeEnumTypeOutputWithContext(context.Background())
+}
+
+func (i TagTemplateFieldTypeEnumTypeArgs) ToTagTemplateFieldTypeEnumTypeOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeEnumTypeOutput)
+}
+
+func (i TagTemplateFieldTypeEnumTypeArgs) ToTagTemplateFieldTypeEnumTypePtrOutput() TagTemplateFieldTypeEnumTypePtrOutput {
+	return i.ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(context.Background())
+}
+
+func (i TagTemplateFieldTypeEnumTypeArgs) ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeEnumTypeOutput).ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(ctx)
+}
+
+// TagTemplateFieldTypeEnumTypePtrInput is an input type that accepts TagTemplateFieldTypeEnumTypeArgs, TagTemplateFieldTypeEnumTypePtr and TagTemplateFieldTypeEnumTypePtrOutput values.
+// You can construct a concrete instance of `TagTemplateFieldTypeEnumTypePtrInput` via:
+//
+// 		 TagTemplateFieldTypeEnumTypeArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type TagTemplateFieldTypeEnumTypePtrInput interface {
+	pulumi.Input
+
+	ToTagTemplateFieldTypeEnumTypePtrOutput() TagTemplateFieldTypeEnumTypePtrOutput
+	ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(context.Context) TagTemplateFieldTypeEnumTypePtrOutput
+}
+
+type tagTemplateFieldTypeEnumTypePtrType TagTemplateFieldTypeEnumTypeArgs
+
+func TagTemplateFieldTypeEnumTypePtr(v *TagTemplateFieldTypeEnumTypeArgs) TagTemplateFieldTypeEnumTypePtrInput {
+	return (*tagTemplateFieldTypeEnumTypePtrType)(v)
+}
+
+func (*tagTemplateFieldTypeEnumTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagTemplateFieldTypeEnumType)(nil)).Elem()
+}
+
+func (i *tagTemplateFieldTypeEnumTypePtrType) ToTagTemplateFieldTypeEnumTypePtrOutput() TagTemplateFieldTypeEnumTypePtrOutput {
+	return i.ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(context.Background())
+}
+
+func (i *tagTemplateFieldTypeEnumTypePtrType) ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeEnumTypePtrOutput)
+}
+
+type TagTemplateFieldTypeEnumTypeOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateFieldTypeEnumTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateFieldTypeEnumType)(nil)).Elem()
+}
+
+func (o TagTemplateFieldTypeEnumTypeOutput) ToTagTemplateFieldTypeEnumTypeOutput() TagTemplateFieldTypeEnumTypeOutput {
+	return o
+}
+
+func (o TagTemplateFieldTypeEnumTypeOutput) ToTagTemplateFieldTypeEnumTypeOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypeOutput {
+	return o
+}
+
+func (o TagTemplateFieldTypeEnumTypeOutput) ToTagTemplateFieldTypeEnumTypePtrOutput() TagTemplateFieldTypeEnumTypePtrOutput {
+	return o.ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(context.Background())
+}
+
+func (o TagTemplateFieldTypeEnumTypeOutput) ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypePtrOutput {
+	return o.ApplyT(func(v TagTemplateFieldTypeEnumType) *TagTemplateFieldTypeEnumType {
+		return &v
+	}).(TagTemplateFieldTypeEnumTypePtrOutput)
+}
+
+// The set of allowed values for this enum. The display names of the
+// values must be case-insensitively unique within this set. Currently,
+// enum values can only be added to the list of allowed values. Deletion
+// and renaming of enum values are not supported.
+// Can have up to 500 allowed values.  Structure is documented below.
+func (o TagTemplateFieldTypeEnumTypeOutput) AllowedValues() TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput {
+	return o.ApplyT(func(v TagTemplateFieldTypeEnumType) []TagTemplateFieldTypeEnumTypeAllowedValue {
+		return v.AllowedValues
+	}).(TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput)
+}
+
+type TagTemplateFieldTypeEnumTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateFieldTypeEnumTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagTemplateFieldTypeEnumType)(nil)).Elem()
+}
+
+func (o TagTemplateFieldTypeEnumTypePtrOutput) ToTagTemplateFieldTypeEnumTypePtrOutput() TagTemplateFieldTypeEnumTypePtrOutput {
+	return o
+}
+
+func (o TagTemplateFieldTypeEnumTypePtrOutput) ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypePtrOutput {
+	return o
+}
+
+func (o TagTemplateFieldTypeEnumTypePtrOutput) Elem() TagTemplateFieldTypeEnumTypeOutput {
+	return o.ApplyT(func(v *TagTemplateFieldTypeEnumType) TagTemplateFieldTypeEnumType { return *v }).(TagTemplateFieldTypeEnumTypeOutput)
+}
+
+// The set of allowed values for this enum. The display names of the
+// values must be case-insensitively unique within this set. Currently,
+// enum values can only be added to the list of allowed values. Deletion
+// and renaming of enum values are not supported.
+// Can have up to 500 allowed values.  Structure is documented below.
+func (o TagTemplateFieldTypeEnumTypePtrOutput) AllowedValues() TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput {
+	return o.ApplyT(func(v *TagTemplateFieldTypeEnumType) []TagTemplateFieldTypeEnumTypeAllowedValue {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedValues
+	}).(TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput)
+}
+
+type TagTemplateFieldTypeEnumTypeAllowedValue struct {
+	// The display name for this template.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// TagTemplateFieldTypeEnumTypeAllowedValueInput is an input type that accepts TagTemplateFieldTypeEnumTypeAllowedValueArgs and TagTemplateFieldTypeEnumTypeAllowedValueOutput values.
+// You can construct a concrete instance of `TagTemplateFieldTypeEnumTypeAllowedValueInput` via:
+//
+// 		 TagTemplateFieldTypeEnumTypeAllowedValueArgs{...}
+//
+type TagTemplateFieldTypeEnumTypeAllowedValueInput interface {
+	pulumi.Input
+
+	ToTagTemplateFieldTypeEnumTypeAllowedValueOutput() TagTemplateFieldTypeEnumTypeAllowedValueOutput
+	ToTagTemplateFieldTypeEnumTypeAllowedValueOutputWithContext(context.Context) TagTemplateFieldTypeEnumTypeAllowedValueOutput
+}
+
+type TagTemplateFieldTypeEnumTypeAllowedValueArgs struct {
+	// The display name for this template.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+}
+
+func (TagTemplateFieldTypeEnumTypeAllowedValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateFieldTypeEnumTypeAllowedValue)(nil)).Elem()
+}
+
+func (i TagTemplateFieldTypeEnumTypeAllowedValueArgs) ToTagTemplateFieldTypeEnumTypeAllowedValueOutput() TagTemplateFieldTypeEnumTypeAllowedValueOutput {
+	return i.ToTagTemplateFieldTypeEnumTypeAllowedValueOutputWithContext(context.Background())
+}
+
+func (i TagTemplateFieldTypeEnumTypeAllowedValueArgs) ToTagTemplateFieldTypeEnumTypeAllowedValueOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypeAllowedValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeEnumTypeAllowedValueOutput)
+}
+
+// TagTemplateFieldTypeEnumTypeAllowedValueArrayInput is an input type that accepts TagTemplateFieldTypeEnumTypeAllowedValueArray and TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput values.
+// You can construct a concrete instance of `TagTemplateFieldTypeEnumTypeAllowedValueArrayInput` via:
+//
+// 		 TagTemplateFieldTypeEnumTypeAllowedValueArray{ TagTemplateFieldTypeEnumTypeAllowedValueArgs{...} }
+//
+type TagTemplateFieldTypeEnumTypeAllowedValueArrayInput interface {
+	pulumi.Input
+
+	ToTagTemplateFieldTypeEnumTypeAllowedValueArrayOutput() TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput
+	ToTagTemplateFieldTypeEnumTypeAllowedValueArrayOutputWithContext(context.Context) TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput
+}
+
+type TagTemplateFieldTypeEnumTypeAllowedValueArray []TagTemplateFieldTypeEnumTypeAllowedValueInput
+
+func (TagTemplateFieldTypeEnumTypeAllowedValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagTemplateFieldTypeEnumTypeAllowedValue)(nil)).Elem()
+}
+
+func (i TagTemplateFieldTypeEnumTypeAllowedValueArray) ToTagTemplateFieldTypeEnumTypeAllowedValueArrayOutput() TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput {
+	return i.ToTagTemplateFieldTypeEnumTypeAllowedValueArrayOutputWithContext(context.Background())
+}
+
+func (i TagTemplateFieldTypeEnumTypeAllowedValueArray) ToTagTemplateFieldTypeEnumTypeAllowedValueArrayOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput)
+}
+
+type TagTemplateFieldTypeEnumTypeAllowedValueOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateFieldTypeEnumTypeAllowedValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateFieldTypeEnumTypeAllowedValue)(nil)).Elem()
+}
+
+func (o TagTemplateFieldTypeEnumTypeAllowedValueOutput) ToTagTemplateFieldTypeEnumTypeAllowedValueOutput() TagTemplateFieldTypeEnumTypeAllowedValueOutput {
+	return o
+}
+
+func (o TagTemplateFieldTypeEnumTypeAllowedValueOutput) ToTagTemplateFieldTypeEnumTypeAllowedValueOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypeAllowedValueOutput {
+	return o
+}
+
+// The display name for this template.
+func (o TagTemplateFieldTypeEnumTypeAllowedValueOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v TagTemplateFieldTypeEnumTypeAllowedValue) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+type TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagTemplateFieldTypeEnumTypeAllowedValue)(nil)).Elem()
+}
+
+func (o TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) ToTagTemplateFieldTypeEnumTypeAllowedValueArrayOutput() TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput {
+	return o
+}
+
+func (o TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) ToTagTemplateFieldTypeEnumTypeAllowedValueArrayOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput {
+	return o
+}
+
+func (o TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) Index(i pulumi.IntInput) TagTemplateFieldTypeEnumTypeAllowedValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagTemplateFieldTypeEnumTypeAllowedValue {
+		return vs[0].([]TagTemplateFieldTypeEnumTypeAllowedValue)[vs[1].(int)]
+	}).(TagTemplateFieldTypeEnumTypeAllowedValueOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EntryBigqueryDateShardedSpecOutput{})
 	pulumi.RegisterOutputType(EntryBigqueryDateShardedSpecPtrOutput{})
@@ -1225,4 +1696,11 @@ func init() {
 	pulumi.RegisterOutputType(EntryGroupIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(TagTemplateFieldOutput{})
+	pulumi.RegisterOutputType(TagTemplateFieldArrayOutput{})
+	pulumi.RegisterOutputType(TagTemplateFieldTypeOutput{})
+	pulumi.RegisterOutputType(TagTemplateFieldTypeEnumTypeOutput{})
+	pulumi.RegisterOutputType(TagTemplateFieldTypeEnumTypePtrOutput{})
+	pulumi.RegisterOutputType(TagTemplateFieldTypeEnumTypeAllowedValueOutput{})
+	pulumi.RegisterOutputType(TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput{})
 }

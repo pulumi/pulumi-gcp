@@ -68,6 +68,12 @@ namespace Pulumi.Gcp.AppEngine
         public Output<ImmutableArray<Outputs.StandardAppVersionHandler>> Handlers { get; private set; } = null!;
 
         /// <summary>
+        /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+        /// </summary>
+        [Output("inboundServices")]
+        public Output<ImmutableArray<string>> InboundServices { get; private set; } = null!;
+
+        /// <summary>
         /// Instance class that is used to run this version. Valid values are
         /// AutomaticScaling: F1, F2, F4, F4_1G
         /// BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
@@ -239,6 +245,18 @@ namespace Pulumi.Gcp.AppEngine
             set => _handlers = value;
         }
 
+        [Input("inboundServices")]
+        private InputList<string>? _inboundServices;
+
+        /// <summary>
+        /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+        /// </summary>
+        public InputList<string> InboundServices
+        {
+            get => _inboundServices ?? (_inboundServices = new InputList<string>());
+            set => _inboundServices = value;
+        }
+
         /// <summary>
         /// Instance class that is used to run this version. Valid values are
         /// AutomaticScaling: F1, F2, F4, F4_1G
@@ -370,6 +388,18 @@ namespace Pulumi.Gcp.AppEngine
         {
             get => _handlers ?? (_handlers = new InputList<Inputs.StandardAppVersionHandlerGetArgs>());
             set => _handlers = value;
+        }
+
+        [Input("inboundServices")]
+        private InputList<string>? _inboundServices;
+
+        /// <summary>
+        /// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+        /// </summary>
+        public InputList<string> InboundServices
+        {
+            get => _inboundServices ?? (_inboundServices = new InputList<string>());
+            set => _inboundServices = value;
         }
 
         /// <summary>

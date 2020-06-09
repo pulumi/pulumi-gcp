@@ -308,9 +308,448 @@ func (o NoteAttestationAuthorityHintPtrOutput) HumanReadableName() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type NoteRelatedUrl struct {
+	// Label to describe usage of the URL
+	Label *string `pulumi:"label"`
+	// Specific URL associated with the resource.
+	Url string `pulumi:"url"`
+}
+
+// NoteRelatedUrlInput is an input type that accepts NoteRelatedUrlArgs and NoteRelatedUrlOutput values.
+// You can construct a concrete instance of `NoteRelatedUrlInput` via:
+//
+// 		 NoteRelatedUrlArgs{...}
+//
+type NoteRelatedUrlInput interface {
+	pulumi.Input
+
+	ToNoteRelatedUrlOutput() NoteRelatedUrlOutput
+	ToNoteRelatedUrlOutputWithContext(context.Context) NoteRelatedUrlOutput
+}
+
+type NoteRelatedUrlArgs struct {
+	// Label to describe usage of the URL
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// Specific URL associated with the resource.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (NoteRelatedUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoteRelatedUrl)(nil)).Elem()
+}
+
+func (i NoteRelatedUrlArgs) ToNoteRelatedUrlOutput() NoteRelatedUrlOutput {
+	return i.ToNoteRelatedUrlOutputWithContext(context.Background())
+}
+
+func (i NoteRelatedUrlArgs) ToNoteRelatedUrlOutputWithContext(ctx context.Context) NoteRelatedUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteRelatedUrlOutput)
+}
+
+// NoteRelatedUrlArrayInput is an input type that accepts NoteRelatedUrlArray and NoteRelatedUrlArrayOutput values.
+// You can construct a concrete instance of `NoteRelatedUrlArrayInput` via:
+//
+// 		 NoteRelatedUrlArray{ NoteRelatedUrlArgs{...} }
+//
+type NoteRelatedUrlArrayInput interface {
+	pulumi.Input
+
+	ToNoteRelatedUrlArrayOutput() NoteRelatedUrlArrayOutput
+	ToNoteRelatedUrlArrayOutputWithContext(context.Context) NoteRelatedUrlArrayOutput
+}
+
+type NoteRelatedUrlArray []NoteRelatedUrlInput
+
+func (NoteRelatedUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NoteRelatedUrl)(nil)).Elem()
+}
+
+func (i NoteRelatedUrlArray) ToNoteRelatedUrlArrayOutput() NoteRelatedUrlArrayOutput {
+	return i.ToNoteRelatedUrlArrayOutputWithContext(context.Background())
+}
+
+func (i NoteRelatedUrlArray) ToNoteRelatedUrlArrayOutputWithContext(ctx context.Context) NoteRelatedUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteRelatedUrlArrayOutput)
+}
+
+type NoteRelatedUrlOutput struct{ *pulumi.OutputState }
+
+func (NoteRelatedUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoteRelatedUrl)(nil)).Elem()
+}
+
+func (o NoteRelatedUrlOutput) ToNoteRelatedUrlOutput() NoteRelatedUrlOutput {
+	return o
+}
+
+func (o NoteRelatedUrlOutput) ToNoteRelatedUrlOutputWithContext(ctx context.Context) NoteRelatedUrlOutput {
+	return o
+}
+
+// Label to describe usage of the URL
+func (o NoteRelatedUrlOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoteRelatedUrl) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Specific URL associated with the resource.
+func (o NoteRelatedUrlOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v NoteRelatedUrl) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type NoteRelatedUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (NoteRelatedUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NoteRelatedUrl)(nil)).Elem()
+}
+
+func (o NoteRelatedUrlArrayOutput) ToNoteRelatedUrlArrayOutput() NoteRelatedUrlArrayOutput {
+	return o
+}
+
+func (o NoteRelatedUrlArrayOutput) ToNoteRelatedUrlArrayOutputWithContext(ctx context.Context) NoteRelatedUrlArrayOutput {
+	return o
+}
+
+func (o NoteRelatedUrlArrayOutput) Index(i pulumi.IntInput) NoteRelatedUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NoteRelatedUrl {
+		return vs[0].([]NoteRelatedUrl)[vs[1].(int)]
+	}).(NoteRelatedUrlOutput)
+}
+
+type OccurenceAttestation struct {
+	// The serialized payload that is verified by one or
+	// more signatures. A base64-encoded string.
+	SerializedPayload string `pulumi:"serializedPayload"`
+	// One or more signatures over serializedPayload.
+	// Verifier implementations should consider this attestation
+	// message verified if at least one signature verifies
+	// serializedPayload. See Signature in common.proto for more
+	// details on signature structure and verification.  Structure is documented below.
+	Signatures []OccurenceAttestationSignature `pulumi:"signatures"`
+}
+
+// OccurenceAttestationInput is an input type that accepts OccurenceAttestationArgs and OccurenceAttestationOutput values.
+// You can construct a concrete instance of `OccurenceAttestationInput` via:
+//
+// 		 OccurenceAttestationArgs{...}
+//
+type OccurenceAttestationInput interface {
+	pulumi.Input
+
+	ToOccurenceAttestationOutput() OccurenceAttestationOutput
+	ToOccurenceAttestationOutputWithContext(context.Context) OccurenceAttestationOutput
+}
+
+type OccurenceAttestationArgs struct {
+	// The serialized payload that is verified by one or
+	// more signatures. A base64-encoded string.
+	SerializedPayload pulumi.StringInput `pulumi:"serializedPayload"`
+	// One or more signatures over serializedPayload.
+	// Verifier implementations should consider this attestation
+	// message verified if at least one signature verifies
+	// serializedPayload. See Signature in common.proto for more
+	// details on signature structure and verification.  Structure is documented below.
+	Signatures OccurenceAttestationSignatureArrayInput `pulumi:"signatures"`
+}
+
+func (OccurenceAttestationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OccurenceAttestation)(nil)).Elem()
+}
+
+func (i OccurenceAttestationArgs) ToOccurenceAttestationOutput() OccurenceAttestationOutput {
+	return i.ToOccurenceAttestationOutputWithContext(context.Background())
+}
+
+func (i OccurenceAttestationArgs) ToOccurenceAttestationOutputWithContext(ctx context.Context) OccurenceAttestationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationOutput)
+}
+
+func (i OccurenceAttestationArgs) ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput {
+	return i.ToOccurenceAttestationPtrOutputWithContext(context.Background())
+}
+
+func (i OccurenceAttestationArgs) ToOccurenceAttestationPtrOutputWithContext(ctx context.Context) OccurenceAttestationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationOutput).ToOccurenceAttestationPtrOutputWithContext(ctx)
+}
+
+// OccurenceAttestationPtrInput is an input type that accepts OccurenceAttestationArgs, OccurenceAttestationPtr and OccurenceAttestationPtrOutput values.
+// You can construct a concrete instance of `OccurenceAttestationPtrInput` via:
+//
+// 		 OccurenceAttestationArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type OccurenceAttestationPtrInput interface {
+	pulumi.Input
+
+	ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput
+	ToOccurenceAttestationPtrOutputWithContext(context.Context) OccurenceAttestationPtrOutput
+}
+
+type occurenceAttestationPtrType OccurenceAttestationArgs
+
+func OccurenceAttestationPtr(v *OccurenceAttestationArgs) OccurenceAttestationPtrInput {
+	return (*occurenceAttestationPtrType)(v)
+}
+
+func (*occurenceAttestationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OccurenceAttestation)(nil)).Elem()
+}
+
+func (i *occurenceAttestationPtrType) ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput {
+	return i.ToOccurenceAttestationPtrOutputWithContext(context.Background())
+}
+
+func (i *occurenceAttestationPtrType) ToOccurenceAttestationPtrOutputWithContext(ctx context.Context) OccurenceAttestationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationPtrOutput)
+}
+
+type OccurenceAttestationOutput struct{ *pulumi.OutputState }
+
+func (OccurenceAttestationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OccurenceAttestation)(nil)).Elem()
+}
+
+func (o OccurenceAttestationOutput) ToOccurenceAttestationOutput() OccurenceAttestationOutput {
+	return o
+}
+
+func (o OccurenceAttestationOutput) ToOccurenceAttestationOutputWithContext(ctx context.Context) OccurenceAttestationOutput {
+	return o
+}
+
+func (o OccurenceAttestationOutput) ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput {
+	return o.ToOccurenceAttestationPtrOutputWithContext(context.Background())
+}
+
+func (o OccurenceAttestationOutput) ToOccurenceAttestationPtrOutputWithContext(ctx context.Context) OccurenceAttestationPtrOutput {
+	return o.ApplyT(func(v OccurenceAttestation) *OccurenceAttestation {
+		return &v
+	}).(OccurenceAttestationPtrOutput)
+}
+
+// The serialized payload that is verified by one or
+// more signatures. A base64-encoded string.
+func (o OccurenceAttestationOutput) SerializedPayload() pulumi.StringOutput {
+	return o.ApplyT(func(v OccurenceAttestation) string { return v.SerializedPayload }).(pulumi.StringOutput)
+}
+
+// One or more signatures over serializedPayload.
+// Verifier implementations should consider this attestation
+// message verified if at least one signature verifies
+// serializedPayload. See Signature in common.proto for more
+// details on signature structure and verification.  Structure is documented below.
+func (o OccurenceAttestationOutput) Signatures() OccurenceAttestationSignatureArrayOutput {
+	return o.ApplyT(func(v OccurenceAttestation) []OccurenceAttestationSignature { return v.Signatures }).(OccurenceAttestationSignatureArrayOutput)
+}
+
+type OccurenceAttestationPtrOutput struct{ *pulumi.OutputState }
+
+func (OccurenceAttestationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OccurenceAttestation)(nil)).Elem()
+}
+
+func (o OccurenceAttestationPtrOutput) ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput {
+	return o
+}
+
+func (o OccurenceAttestationPtrOutput) ToOccurenceAttestationPtrOutputWithContext(ctx context.Context) OccurenceAttestationPtrOutput {
+	return o
+}
+
+func (o OccurenceAttestationPtrOutput) Elem() OccurenceAttestationOutput {
+	return o.ApplyT(func(v *OccurenceAttestation) OccurenceAttestation { return *v }).(OccurenceAttestationOutput)
+}
+
+// The serialized payload that is verified by one or
+// more signatures. A base64-encoded string.
+func (o OccurenceAttestationPtrOutput) SerializedPayload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OccurenceAttestation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SerializedPayload
+	}).(pulumi.StringPtrOutput)
+}
+
+// One or more signatures over serializedPayload.
+// Verifier implementations should consider this attestation
+// message verified if at least one signature verifies
+// serializedPayload. See Signature in common.proto for more
+// details on signature structure and verification.  Structure is documented below.
+func (o OccurenceAttestationPtrOutput) Signatures() OccurenceAttestationSignatureArrayOutput {
+	return o.ApplyT(func(v *OccurenceAttestation) []OccurenceAttestationSignature {
+		if v == nil {
+			return nil
+		}
+		return v.Signatures
+	}).(OccurenceAttestationSignatureArrayOutput)
+}
+
+type OccurenceAttestationSignature struct {
+	// The identifier for the public key that verifies this
+	// signature. MUST be an RFC3986 conformant
+	// URI. * When possible, the key id should be an
+	// immutable reference, such as a cryptographic digest.
+	// Examples of valid values:
+	// * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
+	// for more details on this scheme.
+	// * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
+	// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
+	// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
+	PublicKeyId string `pulumi:"publicKeyId"`
+	// The content of the signature, an opaque bytestring.
+	// The payload that this signature verifies MUST be
+	// unambiguously provided with the Signature during
+	// verification. A wrapper message might provide the
+	// payload explicitly. Alternatively, a message might
+	// have a canonical serialization that can always be
+	// unambiguously computed to derive the payload.
+	Signature *string `pulumi:"signature"`
+}
+
+// OccurenceAttestationSignatureInput is an input type that accepts OccurenceAttestationSignatureArgs and OccurenceAttestationSignatureOutput values.
+// You can construct a concrete instance of `OccurenceAttestationSignatureInput` via:
+//
+// 		 OccurenceAttestationSignatureArgs{...}
+//
+type OccurenceAttestationSignatureInput interface {
+	pulumi.Input
+
+	ToOccurenceAttestationSignatureOutput() OccurenceAttestationSignatureOutput
+	ToOccurenceAttestationSignatureOutputWithContext(context.Context) OccurenceAttestationSignatureOutput
+}
+
+type OccurenceAttestationSignatureArgs struct {
+	// The identifier for the public key that verifies this
+	// signature. MUST be an RFC3986 conformant
+	// URI. * When possible, the key id should be an
+	// immutable reference, such as a cryptographic digest.
+	// Examples of valid values:
+	// * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
+	// for more details on this scheme.
+	// * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
+	// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
+	// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
+	PublicKeyId pulumi.StringInput `pulumi:"publicKeyId"`
+	// The content of the signature, an opaque bytestring.
+	// The payload that this signature verifies MUST be
+	// unambiguously provided with the Signature during
+	// verification. A wrapper message might provide the
+	// payload explicitly. Alternatively, a message might
+	// have a canonical serialization that can always be
+	// unambiguously computed to derive the payload.
+	Signature pulumi.StringPtrInput `pulumi:"signature"`
+}
+
+func (OccurenceAttestationSignatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OccurenceAttestationSignature)(nil)).Elem()
+}
+
+func (i OccurenceAttestationSignatureArgs) ToOccurenceAttestationSignatureOutput() OccurenceAttestationSignatureOutput {
+	return i.ToOccurenceAttestationSignatureOutputWithContext(context.Background())
+}
+
+func (i OccurenceAttestationSignatureArgs) ToOccurenceAttestationSignatureOutputWithContext(ctx context.Context) OccurenceAttestationSignatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationSignatureOutput)
+}
+
+// OccurenceAttestationSignatureArrayInput is an input type that accepts OccurenceAttestationSignatureArray and OccurenceAttestationSignatureArrayOutput values.
+// You can construct a concrete instance of `OccurenceAttestationSignatureArrayInput` via:
+//
+// 		 OccurenceAttestationSignatureArray{ OccurenceAttestationSignatureArgs{...} }
+//
+type OccurenceAttestationSignatureArrayInput interface {
+	pulumi.Input
+
+	ToOccurenceAttestationSignatureArrayOutput() OccurenceAttestationSignatureArrayOutput
+	ToOccurenceAttestationSignatureArrayOutputWithContext(context.Context) OccurenceAttestationSignatureArrayOutput
+}
+
+type OccurenceAttestationSignatureArray []OccurenceAttestationSignatureInput
+
+func (OccurenceAttestationSignatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OccurenceAttestationSignature)(nil)).Elem()
+}
+
+func (i OccurenceAttestationSignatureArray) ToOccurenceAttestationSignatureArrayOutput() OccurenceAttestationSignatureArrayOutput {
+	return i.ToOccurenceAttestationSignatureArrayOutputWithContext(context.Background())
+}
+
+func (i OccurenceAttestationSignatureArray) ToOccurenceAttestationSignatureArrayOutputWithContext(ctx context.Context) OccurenceAttestationSignatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationSignatureArrayOutput)
+}
+
+type OccurenceAttestationSignatureOutput struct{ *pulumi.OutputState }
+
+func (OccurenceAttestationSignatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OccurenceAttestationSignature)(nil)).Elem()
+}
+
+func (o OccurenceAttestationSignatureOutput) ToOccurenceAttestationSignatureOutput() OccurenceAttestationSignatureOutput {
+	return o
+}
+
+func (o OccurenceAttestationSignatureOutput) ToOccurenceAttestationSignatureOutputWithContext(ctx context.Context) OccurenceAttestationSignatureOutput {
+	return o
+}
+
+// The identifier for the public key that verifies this
+// signature. MUST be an RFC3986 conformant
+// URI. * When possible, the key id should be an
+// immutable reference, such as a cryptographic digest.
+// Examples of valid values:
+// * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
+// for more details on this scheme.
+// * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
+// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
+// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
+func (o OccurenceAttestationSignatureOutput) PublicKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v OccurenceAttestationSignature) string { return v.PublicKeyId }).(pulumi.StringOutput)
+}
+
+// The content of the signature, an opaque bytestring.
+// The payload that this signature verifies MUST be
+// unambiguously provided with the Signature during
+// verification. A wrapper message might provide the
+// payload explicitly. Alternatively, a message might
+// have a canonical serialization that can always be
+// unambiguously computed to derive the payload.
+func (o OccurenceAttestationSignatureOutput) Signature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OccurenceAttestationSignature) *string { return v.Signature }).(pulumi.StringPtrOutput)
+}
+
+type OccurenceAttestationSignatureArrayOutput struct{ *pulumi.OutputState }
+
+func (OccurenceAttestationSignatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OccurenceAttestationSignature)(nil)).Elem()
+}
+
+func (o OccurenceAttestationSignatureArrayOutput) ToOccurenceAttestationSignatureArrayOutput() OccurenceAttestationSignatureArrayOutput {
+	return o
+}
+
+func (o OccurenceAttestationSignatureArrayOutput) ToOccurenceAttestationSignatureArrayOutputWithContext(ctx context.Context) OccurenceAttestationSignatureArrayOutput {
+	return o
+}
+
+func (o OccurenceAttestationSignatureArrayOutput) Index(i pulumi.IntInput) OccurenceAttestationSignatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OccurenceAttestationSignature {
+		return vs[0].([]OccurenceAttestationSignature)[vs[1].(int)]
+	}).(OccurenceAttestationSignatureOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NoteAttestationAuthorityOutput{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityHintOutput{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityHintPtrOutput{})
+	pulumi.RegisterOutputType(NoteRelatedUrlOutput{})
+	pulumi.RegisterOutputType(NoteRelatedUrlArrayOutput{})
+	pulumi.RegisterOutputType(OccurenceAttestationOutput{})
+	pulumi.RegisterOutputType(OccurenceAttestationPtrOutput{})
+	pulumi.RegisterOutputType(OccurenceAttestationSignatureOutput{})
+	pulumi.RegisterOutputType(OccurenceAttestationSignatureArrayOutput{})
 }

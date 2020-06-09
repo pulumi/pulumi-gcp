@@ -8,3 +8,4 @@ from .entry_group import *
 from .entry_group_iam_binding import *
 from .entry_group_iam_member import *
 from .entry_group_iam_policy import *
+from .tag_template import *

@@ -141,6 +141,10 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     public readonly handlers!: pulumi.Output<outputs.appengine.StandardAppVersionHandler[]>;
     /**
+     * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+     */
+    public readonly inboundServices!: pulumi.Output<string[] | undefined>;
+    /**
      * Instance class that is used to run this version. Valid values are
      * AutomaticScaling: F1, F2, F4, F4_1G
      * BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
@@ -209,6 +213,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             inputs["entrypoint"] = state ? state.entrypoint : undefined;
             inputs["envVariables"] = state ? state.envVariables : undefined;
             inputs["handlers"] = state ? state.handlers : undefined;
+            inputs["inboundServices"] = state ? state.inboundServices : undefined;
             inputs["instanceClass"] = state ? state.instanceClass : undefined;
             inputs["libraries"] = state ? state.libraries : undefined;
             inputs["manualScaling"] = state ? state.manualScaling : undefined;
@@ -235,6 +240,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
             inputs["entrypoint"] = args ? args.entrypoint : undefined;
             inputs["envVariables"] = args ? args.envVariables : undefined;
             inputs["handlers"] = args ? args.handlers : undefined;
+            inputs["inboundServices"] = args ? args.inboundServices : undefined;
             inputs["instanceClass"] = args ? args.instanceClass : undefined;
             inputs["libraries"] = args ? args.libraries : undefined;
             inputs["manualScaling"] = args ? args.manualScaling : undefined;
@@ -291,6 +297,10 @@ export interface StandardAppVersionState {
      * The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
      */
     readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionHandler>[]>;
+    /**
+     * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+     */
+    readonly inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Instance class that is used to run this version. Valid values are
      * AutomaticScaling: F1, F2, F4, F4_1G
@@ -375,6 +385,10 @@ export interface StandardAppVersionArgs {
      * The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
      */
     readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionHandler>[]>;
+    /**
+     * Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+     */
+    readonly inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Instance class that is used to run this version. Valid values are
      * AutomaticScaling: F1, F2, F4, F4_1G

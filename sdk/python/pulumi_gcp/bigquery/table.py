@@ -93,6 +93,27 @@ class Table(pulumi.CustomResource):
           that BigQuery will skip when reading the data. At least one of `range` or
           `skip_leading_rows` must be set.
 
+      * `hivePartitioningOptions` (`dict`) - When set, configures hive partitioning
+        support. Not all storage formats support hive partitioning -- requesting hive
+        partitioning on an unsupported format will lead to an error, as will providing
+        an invalid specification.
+        * `mode` (`str`) - When set, what mode of hive partitioning to use when
+          reading data. The following modes are supported.
+          * AUTO: automatically infer partition key name(s) and type(s).
+          * STRINGS: automatically infer partition key name(s). All types are
+          Not all storage formats support hive partitioning. Requesting hive
+          partitioning on an unsupported format will lead to an error.
+          Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+          * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+        * `sourceUriPrefix` (`str`) - When hive partition detection is requested,
+          a common for all source uris must be required. The prefix must end immediately
+          before the partition key encoding begins. For example, consider files following
+          this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
+          `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
+          partitioning is requested with either AUTO or STRINGS detection, the common prefix
+          can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
+          Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+
       * `ignoreUnknownValues` (`bool`) - Indicates if BigQuery should
         allow extra values that are not represented in the table schema.
         If true, the extra values are ignored. If false, records with
@@ -356,6 +377,27 @@ class Table(pulumi.CustomResource):
               that BigQuery will skip when reading the data. At least one of `range` or
               `skip_leading_rows` must be set.
 
+          * `hivePartitioningOptions` (`pulumi.Input[dict]`) - When set, configures hive partitioning
+            support. Not all storage formats support hive partitioning -- requesting hive
+            partitioning on an unsupported format will lead to an error, as will providing
+            an invalid specification.
+            * `mode` (`pulumi.Input[str]`) - When set, what mode of hive partitioning to use when
+              reading data. The following modes are supported.
+              * AUTO: automatically infer partition key name(s) and type(s).
+              * STRINGS: automatically infer partition key name(s). All types are
+              Not all storage formats support hive partitioning. Requesting hive
+              partitioning on an unsupported format will lead to an error.
+              Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+              * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+            * `sourceUriPrefix` (`pulumi.Input[str]`) - When hive partition detection is requested,
+              a common for all source uris must be required. The prefix must end immediately
+              before the partition key encoding begins. For example, consider files following
+              this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
+              `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
+              partitioning is requested with either AUTO or STRINGS detection, the common prefix
+              can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
+              Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+
           * `ignoreUnknownValues` (`pulumi.Input[bool]`) - Indicates if BigQuery should
             allow extra values that are not represented in the table schema.
             If true, the extra values are ignored. If false, records with
@@ -553,6 +595,27 @@ class Table(pulumi.CustomResource):
             * `skipLeadingRows` (`pulumi.Input[float]`) - The number of rows at the top of the sheet
               that BigQuery will skip when reading the data. At least one of `range` or
               `skip_leading_rows` must be set.
+
+          * `hivePartitioningOptions` (`pulumi.Input[dict]`) - When set, configures hive partitioning
+            support. Not all storage formats support hive partitioning -- requesting hive
+            partitioning on an unsupported format will lead to an error, as will providing
+            an invalid specification.
+            * `mode` (`pulumi.Input[str]`) - When set, what mode of hive partitioning to use when
+              reading data. The following modes are supported.
+              * AUTO: automatically infer partition key name(s) and type(s).
+              * STRINGS: automatically infer partition key name(s). All types are
+              Not all storage formats support hive partitioning. Requesting hive
+              partitioning on an unsupported format will lead to an error.
+              Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+              * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+            * `sourceUriPrefix` (`pulumi.Input[str]`) - When hive partition detection is requested,
+              a common for all source uris must be required. The prefix must end immediately
+              before the partition key encoding begins. For example, consider files following
+              this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
+              `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
+              partitioning is requested with either AUTO or STRINGS detection, the common prefix
+              can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
+              Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
 
           * `ignoreUnknownValues` (`pulumi.Input[bool]`) - Indicates if BigQuery should
             allow extra values that are not represented in the table schema.

@@ -669,6 +669,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "containeranalysis_note.html.markdown",
 				},
 			},
+			"google_container_analysis_occurrence": {
+				Tok: gcpResource(gcpContainerAnalysis, "Occurence"),
+			},
 
 			// Container/Kubernetes resources
 			"google_container_cluster":   {Tok: gcpResource(gcpKubernetes, "Cluster")},
@@ -1444,8 +1447,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Data Catalog
-			"google_data_catalog_entry":       {Tok: gcpResource(gcpDataCatalog, "Entry")},
-			"google_data_catalog_entry_group": {Tok: gcpResource(gcpDataCatalog, "EntryGroup")},
+			"google_data_catalog_entry":        {Tok: gcpResource(gcpDataCatalog, "Entry")},
+			"google_data_catalog_entry_group":  {Tok: gcpResource(gcpDataCatalog, "EntryGroup")},
+			"google_data_catalog_tag_template": {Tok: gcpResource(gcpDataCatalog, "TagTemplate")},
 			"google_data_catalog_entry_group_iam_binding": {
 				Tok: gcpResource(gcpDataCatalog, "EntryGroupIamBinding"),
 				Docs: &tfbridge.DocInfo{

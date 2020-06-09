@@ -35,6 +35,13 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly Outputs.TableExternalDataConfigurationGoogleSheetsOptions? GoogleSheetsOptions;
         /// <summary>
+        /// When set, configures hive partitioning
+        /// support. Not all storage formats support hive partitioning -- requesting hive
+        /// partitioning on an unsupported format will lead to an error, as will providing
+        /// an invalid specification.
+        /// </summary>
+        public readonly Outputs.TableExternalDataConfigurationHivePartitioningOptions? HivePartitioningOptions;
+        /// <summary>
         /// Indicates if BigQuery should
         /// allow extra values that are not represented in the table schema.
         /// If true, the extra values are ignored. If false, records with
@@ -72,6 +79,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             Outputs.TableExternalDataConfigurationGoogleSheetsOptions? googleSheetsOptions,
 
+            Outputs.TableExternalDataConfigurationHivePartitioningOptions? hivePartitioningOptions,
+
             bool? ignoreUnknownValues,
 
             int? maxBadRecords,
@@ -84,6 +93,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             Compression = compression;
             CsvOptions = csvOptions;
             GoogleSheetsOptions = googleSheetsOptions;
+            HivePartitioningOptions = hivePartitioningOptions;
             IgnoreUnknownValues = ignoreUnknownValues;
             MaxBadRecords = maxBadRecords;
             SourceFormat = sourceFormat;

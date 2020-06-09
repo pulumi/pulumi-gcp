@@ -4910,6 +4910,11 @@ type TableExternalDataConfiguration struct {
 	// `sourceFormat` is set to "GOOGLE_SHEETS". Structure is
 	// documented below.
 	GoogleSheetsOptions *TableExternalDataConfigurationGoogleSheetsOptions `pulumi:"googleSheetsOptions"`
+	// When set, configures hive partitioning
+	// support. Not all storage formats support hive partitioning -- requesting hive
+	// partitioning on an unsupported format will lead to an error, as will providing
+	// an invalid specification.
+	HivePartitioningOptions *TableExternalDataConfigurationHivePartitioningOptions `pulumi:"hivePartitioningOptions"`
 	// Indicates if BigQuery should
 	// allow extra values that are not represented in the table schema.
 	// If true, the extra values are ignored. If false, records with
@@ -4957,6 +4962,11 @@ type TableExternalDataConfigurationArgs struct {
 	// `sourceFormat` is set to "GOOGLE_SHEETS". Structure is
 	// documented below.
 	GoogleSheetsOptions TableExternalDataConfigurationGoogleSheetsOptionsPtrInput `pulumi:"googleSheetsOptions"`
+	// When set, configures hive partitioning
+	// support. Not all storage formats support hive partitioning -- requesting hive
+	// partitioning on an unsupported format will lead to an error, as will providing
+	// an invalid specification.
+	HivePartitioningOptions TableExternalDataConfigurationHivePartitioningOptionsPtrInput `pulumi:"hivePartitioningOptions"`
 	// Indicates if BigQuery should
 	// allow extra values that are not represented in the table schema.
 	// If true, the extra values are ignored. If false, records with
@@ -5083,6 +5093,16 @@ func (o TableExternalDataConfigurationOutput) GoogleSheetsOptions() TableExterna
 	}).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
 
+// When set, configures hive partitioning
+// support. Not all storage formats support hive partitioning -- requesting hive
+// partitioning on an unsupported format will lead to an error, as will providing
+// an invalid specification.
+func (o TableExternalDataConfigurationOutput) HivePartitioningOptions() TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationHivePartitioningOptions {
+		return v.HivePartitioningOptions
+	}).(TableExternalDataConfigurationHivePartitioningOptionsPtrOutput)
+}
+
 // Indicates if BigQuery should
 // allow extra values that are not represented in the table schema.
 // If true, the extra values are ignored. If false, records with
@@ -5175,6 +5195,19 @@ func (o TableExternalDataConfigurationPtrOutput) GoogleSheetsOptions() TableExte
 		}
 		return v.GoogleSheetsOptions
 	}).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
+}
+
+// When set, configures hive partitioning
+// support. Not all storage formats support hive partitioning -- requesting hive
+// partitioning on an unsupported format will lead to an error, as will providing
+// an invalid specification.
+func (o TableExternalDataConfigurationPtrOutput) HivePartitioningOptions() TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *TableExternalDataConfigurationHivePartitioningOptions {
+		if v == nil {
+			return nil
+		}
+		return v.HivePartitioningOptions
+	}).(TableExternalDataConfigurationHivePartitioningOptionsPtrOutput)
 }
 
 // Indicates if BigQuery should
@@ -5668,6 +5701,216 @@ func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) SkipLeadingR
 		}
 		return v.SkipLeadingRows
 	}).(pulumi.IntPtrOutput)
+}
+
+type TableExternalDataConfigurationHivePartitioningOptions struct {
+	// When set, what mode of hive partitioning to use when
+	// reading data. The following modes are supported.
+	// * AUTO: automatically infer partition key name(s) and type(s).
+	// * STRINGS: automatically infer partition key name(s). All types are
+	// Not all storage formats support hive partitioning. Requesting hive
+	// partitioning on an unsupported format will lead to an error.
+	// Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+	// * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+	Mode *string `pulumi:"mode"`
+	// When hive partition detection is requested,
+	// a common for all source uris must be required. The prefix must end immediately
+	// before the partition key encoding begins. For example, consider files following
+	// this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
+	// `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
+	// partitioning is requested with either AUTO or STRINGS detection, the common prefix
+	// can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
+	// Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+	SourceUriPrefix *string `pulumi:"sourceUriPrefix"`
+}
+
+// TableExternalDataConfigurationHivePartitioningOptionsInput is an input type that accepts TableExternalDataConfigurationHivePartitioningOptionsArgs and TableExternalDataConfigurationHivePartitioningOptionsOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationHivePartitioningOptionsInput` via:
+//
+// 		 TableExternalDataConfigurationHivePartitioningOptionsArgs{...}
+//
+type TableExternalDataConfigurationHivePartitioningOptionsInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationHivePartitioningOptionsOutput() TableExternalDataConfigurationHivePartitioningOptionsOutput
+	ToTableExternalDataConfigurationHivePartitioningOptionsOutputWithContext(context.Context) TableExternalDataConfigurationHivePartitioningOptionsOutput
+}
+
+type TableExternalDataConfigurationHivePartitioningOptionsArgs struct {
+	// When set, what mode of hive partitioning to use when
+	// reading data. The following modes are supported.
+	// * AUTO: automatically infer partition key name(s) and type(s).
+	// * STRINGS: automatically infer partition key name(s). All types are
+	// Not all storage formats support hive partitioning. Requesting hive
+	// partitioning on an unsupported format will lead to an error.
+	// Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+	// * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// When hive partition detection is requested,
+	// a common for all source uris must be required. The prefix must end immediately
+	// before the partition key encoding begins. For example, consider files following
+	// this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
+	// `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
+	// partitioning is requested with either AUTO or STRINGS detection, the common prefix
+	// can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
+	// Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+	SourceUriPrefix pulumi.StringPtrInput `pulumi:"sourceUriPrefix"`
+}
+
+func (TableExternalDataConfigurationHivePartitioningOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationHivePartitioningOptions)(nil)).Elem()
+}
+
+func (i TableExternalDataConfigurationHivePartitioningOptionsArgs) ToTableExternalDataConfigurationHivePartitioningOptionsOutput() TableExternalDataConfigurationHivePartitioningOptionsOutput {
+	return i.ToTableExternalDataConfigurationHivePartitioningOptionsOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationHivePartitioningOptionsArgs) ToTableExternalDataConfigurationHivePartitioningOptionsOutputWithContext(ctx context.Context) TableExternalDataConfigurationHivePartitioningOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationHivePartitioningOptionsOutput)
+}
+
+func (i TableExternalDataConfigurationHivePartitioningOptionsArgs) ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutput() TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
+	return i.ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationHivePartitioningOptionsArgs) ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationHivePartitioningOptionsOutput).ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutputWithContext(ctx)
+}
+
+// TableExternalDataConfigurationHivePartitioningOptionsPtrInput is an input type that accepts TableExternalDataConfigurationHivePartitioningOptionsArgs, TableExternalDataConfigurationHivePartitioningOptionsPtr and TableExternalDataConfigurationHivePartitioningOptionsPtrOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationHivePartitioningOptionsPtrInput` via:
+//
+// 		 TableExternalDataConfigurationHivePartitioningOptionsArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type TableExternalDataConfigurationHivePartitioningOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutput() TableExternalDataConfigurationHivePartitioningOptionsPtrOutput
+	ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutputWithContext(context.Context) TableExternalDataConfigurationHivePartitioningOptionsPtrOutput
+}
+
+type tableExternalDataConfigurationHivePartitioningOptionsPtrType TableExternalDataConfigurationHivePartitioningOptionsArgs
+
+func TableExternalDataConfigurationHivePartitioningOptionsPtr(v *TableExternalDataConfigurationHivePartitioningOptionsArgs) TableExternalDataConfigurationHivePartitioningOptionsPtrInput {
+	return (*tableExternalDataConfigurationHivePartitioningOptionsPtrType)(v)
+}
+
+func (*tableExternalDataConfigurationHivePartitioningOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalDataConfigurationHivePartitioningOptions)(nil)).Elem()
+}
+
+func (i *tableExternalDataConfigurationHivePartitioningOptionsPtrType) ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutput() TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
+	return i.ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableExternalDataConfigurationHivePartitioningOptionsPtrType) ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationHivePartitioningOptionsPtrOutput)
+}
+
+type TableExternalDataConfigurationHivePartitioningOptionsOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationHivePartitioningOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationHivePartitioningOptions)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationHivePartitioningOptionsOutput) ToTableExternalDataConfigurationHivePartitioningOptionsOutput() TableExternalDataConfigurationHivePartitioningOptionsOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationHivePartitioningOptionsOutput) ToTableExternalDataConfigurationHivePartitioningOptionsOutputWithContext(ctx context.Context) TableExternalDataConfigurationHivePartitioningOptionsOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationHivePartitioningOptionsOutput) ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutput() TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
+	return o.ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TableExternalDataConfigurationHivePartitioningOptionsOutput) ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationHivePartitioningOptions) *TableExternalDataConfigurationHivePartitioningOptions {
+		return &v
+	}).(TableExternalDataConfigurationHivePartitioningOptionsPtrOutput)
+}
+
+// When set, what mode of hive partitioning to use when
+// reading data. The following modes are supported.
+// * AUTO: automatically infer partition key name(s) and type(s).
+// * STRINGS: automatically infer partition key name(s). All types are
+// Not all storage formats support hive partitioning. Requesting hive
+// partitioning on an unsupported format will lead to an error.
+// Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+// * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+func (o TableExternalDataConfigurationHivePartitioningOptionsOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationHivePartitioningOptions) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// When hive partition detection is requested,
+// a common for all source uris must be required. The prefix must end immediately
+// before the partition key encoding begins. For example, consider files following
+// this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
+// `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
+// partitioning is requested with either AUTO or STRINGS detection, the common prefix
+// can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
+// Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+func (o TableExternalDataConfigurationHivePartitioningOptionsOutput) SourceUriPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationHivePartitioningOptions) *string { return v.SourceUriPrefix }).(pulumi.StringPtrOutput)
+}
+
+type TableExternalDataConfigurationHivePartitioningOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalDataConfigurationHivePartitioningOptions)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutput() TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) ToTableExternalDataConfigurationHivePartitioningOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationHivePartitioningOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) Elem() TableExternalDataConfigurationHivePartitioningOptionsOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationHivePartitioningOptions) TableExternalDataConfigurationHivePartitioningOptions {
+		return *v
+	}).(TableExternalDataConfigurationHivePartitioningOptionsOutput)
+}
+
+// When set, what mode of hive partitioning to use when
+// reading data. The following modes are supported.
+// * AUTO: automatically infer partition key name(s) and type(s).
+// * STRINGS: automatically infer partition key name(s). All types are
+// Not all storage formats support hive partitioning. Requesting hive
+// partitioning on an unsupported format will lead to an error.
+// Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+// * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationHivePartitioningOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// When hive partition detection is requested,
+// a common for all source uris must be required. The prefix must end immediately
+// before the partition key encoding begins. For example, consider files following
+// this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
+// `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
+// partitioning is requested with either AUTO or STRINGS detection, the common prefix
+// can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
+// Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) SourceUriPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationHivePartitioningOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceUriPrefix
+	}).(pulumi.StringPtrOutput)
 }
 
 type TableRangePartitioning struct {
@@ -6422,6 +6665,8 @@ func init() {
 	pulumi.RegisterOutputType(TableExternalDataConfigurationCsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationGoogleSheetsOptionsOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationHivePartitioningOptionsOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationHivePartitioningOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableRangePartitioningOutput{})
 	pulumi.RegisterOutputType(TableRangePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(TableRangePartitioningRangeOutput{})
