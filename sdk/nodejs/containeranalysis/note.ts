@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a detailed description of a Note.
+ * A Container Analysis note is a high-level piece of metadata that
+ * describes a type of analysis that can be done for a resource.
  *
  *
  * To get more information about Note, see:
@@ -15,6 +16,7 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/container-analysis/)
+ *     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
  *
  * ## Example Usage - Container Analysis Note Basic
  *
@@ -29,6 +31,33 @@ import * as utilities from "../utilities";
  *             humanReadableName: "Attestor Note",
  *         },
  *     },
+ * });
+ * ```
+ * ## Example Usage - Container Analysis Note Attestation Full
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const note = new gcp.containeranalysis.Note("note", {
+ *     attestationAuthority: {
+ *         hint: {
+ *             humanReadableName: "Attestor Note",
+ *         },
+ *     },
+ *     expirationTime: "2120-10-02T15:01:23.045123456Z",
+ *     longDescription: "a longer description of test note",
+ *     relatedUrls: [
+ *         {
+ *             label: "foo",
+ *             url: "some.url",
+ *         },
+ *         {
+ *             url: "google.com",
+ *         },
+ *     ],
+ *     shortDescription: "test note",
  * });
  * ```
  */
@@ -73,6 +102,22 @@ export class Note extends pulumi.CustomResource {
      */
     public readonly attestationAuthority!: pulumi.Output<outputs.containeranalysis.NoteAttestationAuthority>;
     /**
+     * The time this note was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Time of expiration for this note. Leave empty if note does not expire.
+     */
+    public readonly expirationTime!: pulumi.Output<string | undefined>;
+    /**
+     * The type of analysis this note describes
+     */
+    public /*out*/ readonly kind!: pulumi.Output<string>;
+    /**
+     * A detailed description of the note
+     */
+    public readonly longDescription!: pulumi.Output<string | undefined>;
+    /**
      * The name of the note.
      */
     public readonly name!: pulumi.Output<string>;
@@ -81,6 +126,22 @@ export class Note extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Names of other notes related to this note.
+     */
+    public readonly relatedNoteNames!: pulumi.Output<string[] | undefined>;
+    /**
+     * URLs associated with this note and related metadata.  Structure is documented below.
+     */
+    public readonly relatedUrls!: pulumi.Output<outputs.containeranalysis.NoteRelatedUrl[] | undefined>;
+    /**
+     * A one sentence description of the note.
+     */
+    public readonly shortDescription!: pulumi.Output<string | undefined>;
+    /**
+     * The time this note was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Note resource with the given unique name, arguments, and options.
@@ -95,16 +156,32 @@ export class Note extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as NoteState | undefined;
             inputs["attestationAuthority"] = state ? state.attestationAuthority : undefined;
+            inputs["createTime"] = state ? state.createTime : undefined;
+            inputs["expirationTime"] = state ? state.expirationTime : undefined;
+            inputs["kind"] = state ? state.kind : undefined;
+            inputs["longDescription"] = state ? state.longDescription : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["relatedNoteNames"] = state ? state.relatedNoteNames : undefined;
+            inputs["relatedUrls"] = state ? state.relatedUrls : undefined;
+            inputs["shortDescription"] = state ? state.shortDescription : undefined;
+            inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as NoteArgs | undefined;
             if (!args || args.attestationAuthority === undefined) {
                 throw new Error("Missing required property 'attestationAuthority'");
             }
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
+            inputs["expirationTime"] = args ? args.expirationTime : undefined;
+            inputs["longDescription"] = args ? args.longDescription : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["relatedNoteNames"] = args ? args.relatedNoteNames : undefined;
+            inputs["relatedUrls"] = args ? args.relatedUrls : undefined;
+            inputs["shortDescription"] = args ? args.shortDescription : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -134,6 +211,22 @@ export interface NoteState {
      */
     readonly attestationAuthority?: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority>;
     /**
+     * The time this note was created.
+     */
+    readonly createTime?: pulumi.Input<string>;
+    /**
+     * Time of expiration for this note. Leave empty if note does not expire.
+     */
+    readonly expirationTime?: pulumi.Input<string>;
+    /**
+     * The type of analysis this note describes
+     */
+    readonly kind?: pulumi.Input<string>;
+    /**
+     * A detailed description of the note
+     */
+    readonly longDescription?: pulumi.Input<string>;
+    /**
      * The name of the note.
      */
     readonly name?: pulumi.Input<string>;
@@ -142,6 +235,22 @@ export interface NoteState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Names of other notes related to this note.
+     */
+    readonly relatedNoteNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URLs associated with this note and related metadata.  Structure is documented below.
+     */
+    readonly relatedUrls?: pulumi.Input<pulumi.Input<inputs.containeranalysis.NoteRelatedUrl>[]>;
+    /**
+     * A one sentence description of the note.
+     */
+    readonly shortDescription?: pulumi.Input<string>;
+    /**
+     * The time this note was last updated.
+     */
+    readonly updateTime?: pulumi.Input<string>;
 }
 
 /**
@@ -161,6 +270,14 @@ export interface NoteArgs {
      */
     readonly attestationAuthority: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority>;
     /**
+     * Time of expiration for this note. Leave empty if note does not expire.
+     */
+    readonly expirationTime?: pulumi.Input<string>;
+    /**
+     * A detailed description of the note
+     */
+    readonly longDescription?: pulumi.Input<string>;
+    /**
      * The name of the note.
      */
     readonly name?: pulumi.Input<string>;
@@ -169,4 +286,16 @@ export interface NoteArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * Names of other notes related to this note.
+     */
+    readonly relatedNoteNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URLs associated with this note and related metadata.  Structure is documented below.
+     */
+    readonly relatedUrls?: pulumi.Input<pulumi.Input<inputs.containeranalysis.NoteRelatedUrl>[]>;
+    /**
+     * A one sentence description of the note.
+     */
+    readonly shortDescription?: pulumi.Input<string>;
 }

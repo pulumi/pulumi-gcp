@@ -1585,6 +1585,13 @@ export namespace bigquery {
          */
         googleSheetsOptions?: pulumi.Input<inputs.bigquery.TableExternalDataConfigurationGoogleSheetsOptions>;
         /**
+         * When set, configures hive partitioning
+         * support. Not all storage formats support hive partitioning -- requesting hive
+         * partitioning on an unsupported format will lead to an error, as will providing
+         * an invalid specification.
+         */
+        hivePartitioningOptions?: pulumi.Input<inputs.bigquery.TableExternalDataConfigurationHivePartitioningOptions>;
+        /**
          * Indicates if BigQuery should
          * allow extra values that are not represented in the table schema.
          * If true, the extra values are ignored. If false, records with
@@ -1664,6 +1671,31 @@ export namespace bigquery {
          * `skipLeadingRows` must be set.
          */
         skipLeadingRows?: pulumi.Input<number>;
+    }
+
+    export interface TableExternalDataConfigurationHivePartitioningOptions {
+        /**
+         * When set, what mode of hive partitioning to use when
+         * reading data. The following modes are supported.
+         * * AUTO: automatically infer partition key name(s) and type(s).
+         * * STRINGS: automatically infer partition key name(s). All types are
+         * Not all storage formats support hive partitioning. Requesting hive
+         * partitioning on an unsupported format will lead to an error.
+         * Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+         * * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * When hive partition detection is requested,
+         * a common for all source uris must be required. The prefix must end immediately
+         * before the partition key encoding begins. For example, consider files following
+         * this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
+         * `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
+         * partitioning is requested with either AUTO or STRINGS detection, the common prefix
+         * can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
+         * Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+         */
+        sourceUriPrefix?: pulumi.Input<string>;
     }
 
     export interface TableRangePartitioning {
@@ -10060,6 +10092,59 @@ export namespace containeranalysis {
          */
         humanReadableName: pulumi.Input<string>;
     }
+
+    export interface NoteRelatedUrl {
+        /**
+         * Label to describe usage of the URL
+         */
+        label?: pulumi.Input<string>;
+        /**
+         * Specific URL associated with the resource.
+         */
+        url: pulumi.Input<string>;
+    }
+
+    export interface OccurenceAttestation {
+        /**
+         * The serialized payload that is verified by one or
+         * more signatures. A base64-encoded string.
+         */
+        serializedPayload: pulumi.Input<string>;
+        /**
+         * One or more signatures over serializedPayload.
+         * Verifier implementations should consider this attestation
+         * message verified if at least one signature verifies
+         * serializedPayload. See Signature in common.proto for more
+         * details on signature structure and verification.  Structure is documented below.
+         */
+        signatures: pulumi.Input<pulumi.Input<inputs.containeranalysis.OccurenceAttestationSignature>[]>;
+    }
+
+    export interface OccurenceAttestationSignature {
+        /**
+         * The identifier for the public key that verifies this
+         * signature. MUST be an RFC3986 conformant
+         * URI. * When possible, the key id should be an
+         * immutable reference, such as a cryptographic digest.
+         * Examples of valid values:
+         * * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
+         * for more details on this scheme.
+         * * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
+         * * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
+         * * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
+         */
+        publicKeyId: pulumi.Input<string>;
+        /**
+         * The content of the signature, an opaque bytestring.
+         * The payload that this signature verifies MUST be
+         * unambiguously provided with the Signature during
+         * verification. A wrapper message might provide the
+         * payload explicitly. Alternatively, a message might
+         * have a canonical serialization that can always be
+         * unambiguously computed to derive the payload.
+         */
+        signature?: pulumi.Input<string>;
+    }
 }
 
 export namespace datacatalog {
@@ -10128,6 +10213,67 @@ export namespace datacatalog {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+
+    export interface TagTemplateField {
+        /**
+         * The display name for this template.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        fieldId: pulumi.Input<string>;
+        /**
+         * Whether this is a required field. Defaults to false.
+         */
+        isRequired?: pulumi.Input<boolean>;
+        /**
+         * -
+         * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The order of this field with respect to other fields in this tag template.
+         * A higher value indicates a more important field. The value can be negative.
+         * Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+         */
+        order?: pulumi.Input<number>;
+        /**
+         * The type of value this tag field can contain.  Structure is documented below.
+         */
+        type: pulumi.Input<inputs.datacatalog.TagTemplateFieldType>;
+    }
+
+    export interface TagTemplateFieldType {
+        /**
+         * Represents an enum type.
+         * Exactly one of `primitiveType` or `enumType` must be set  Structure is documented below.
+         */
+        enumType?: pulumi.Input<inputs.datacatalog.TagTemplateFieldTypeEnumType>;
+        /**
+         * Represents primitive types - string, bool etc.
+         * Exactly one of `primitiveType` or `enumType` must be set
+         */
+        primitiveType?: pulumi.Input<string>;
+    }
+
+    export interface TagTemplateFieldTypeEnumType {
+        /**
+         * The set of allowed values for this enum. The display names of the
+         * values must be case-insensitively unique within this set. Currently,
+         * enum values can only be added to the list of allowed values. Deletion
+         * and renaming of enum values are not supported.
+         * Can have up to 500 allowed values.  Structure is documented below.
+         */
+        allowedValues: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValue>[]>;
+    }
+
+    export interface TagTemplateFieldTypeEnumTypeAllowedValue {
+        /**
+         * The display name for this template.
+         */
+        displayName: pulumi.Input<string>;
     }
 }
 

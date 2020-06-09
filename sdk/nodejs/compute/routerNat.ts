@@ -75,7 +75,7 @@ import * as utilities from "../utilities";
  *     natIps: address.map(__item => __item.id),
  *     sourceSubnetworkIpRangesToNat: "LIST_OF_SUBNETWORKS",
  *     subnetwork: [{
- *         name: google_compute_subnetwork["default"].id,
+ *         name: subnet.id,
  *         sourceIpRangesToNats: ["ALL_IP_RANGES"],
  *     }],
  * });

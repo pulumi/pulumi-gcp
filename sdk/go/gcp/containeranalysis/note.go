@@ -10,7 +10,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a detailed description of a Note.
+// A Container Analysis note is a high-level piece of metadata that
+// describes a type of analysis that can be done for a resource.
 //
 //
 // To get more information about Note, see:
@@ -18,6 +19,7 @@ import (
 // * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/container-analysis/)
+//     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
 type Note struct {
 	pulumi.CustomResourceState
 
@@ -31,11 +33,27 @@ type Note struct {
 	// Attestation Occurrences, even if they don't all live in the same
 	// project.  Structure is documented below.
 	AttestationAuthority NoteAttestationAuthorityOutput `pulumi:"attestationAuthority"`
+	// The time this note was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Time of expiration for this note. Leave empty if note does not expire.
+	ExpirationTime pulumi.StringPtrOutput `pulumi:"expirationTime"`
+	// The type of analysis this note describes
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// A detailed description of the note
+	LongDescription pulumi.StringPtrOutput `pulumi:"longDescription"`
 	// The name of the note.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Names of other notes related to this note.
+	RelatedNoteNames pulumi.StringArrayOutput `pulumi:"relatedNoteNames"`
+	// URLs associated with this note and related metadata.  Structure is documented below.
+	RelatedUrls NoteRelatedUrlArrayOutput `pulumi:"relatedUrls"`
+	// A one sentence description of the note.
+	ShortDescription pulumi.StringPtrOutput `pulumi:"shortDescription"`
+	// The time this note was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewNote registers a new resource with the given unique name, arguments, and options.
@@ -79,11 +97,27 @@ type noteState struct {
 	// Attestation Occurrences, even if they don't all live in the same
 	// project.  Structure is documented below.
 	AttestationAuthority *NoteAttestationAuthority `pulumi:"attestationAuthority"`
+	// The time this note was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Time of expiration for this note. Leave empty if note does not expire.
+	ExpirationTime *string `pulumi:"expirationTime"`
+	// The type of analysis this note describes
+	Kind *string `pulumi:"kind"`
+	// A detailed description of the note
+	LongDescription *string `pulumi:"longDescription"`
 	// The name of the note.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Names of other notes related to this note.
+	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
+	// URLs associated with this note and related metadata.  Structure is documented below.
+	RelatedUrls []NoteRelatedUrl `pulumi:"relatedUrls"`
+	// A one sentence description of the note.
+	ShortDescription *string `pulumi:"shortDescription"`
+	// The time this note was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type NoteState struct {
@@ -97,11 +131,27 @@ type NoteState struct {
 	// Attestation Occurrences, even if they don't all live in the same
 	// project.  Structure is documented below.
 	AttestationAuthority NoteAttestationAuthorityPtrInput
+	// The time this note was created.
+	CreateTime pulumi.StringPtrInput
+	// Time of expiration for this note. Leave empty if note does not expire.
+	ExpirationTime pulumi.StringPtrInput
+	// The type of analysis this note describes
+	Kind pulumi.StringPtrInput
+	// A detailed description of the note
+	LongDescription pulumi.StringPtrInput
 	// The name of the note.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Names of other notes related to this note.
+	RelatedNoteNames pulumi.StringArrayInput
+	// URLs associated with this note and related metadata.  Structure is documented below.
+	RelatedUrls NoteRelatedUrlArrayInput
+	// A one sentence description of the note.
+	ShortDescription pulumi.StringPtrInput
+	// The time this note was last updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (NoteState) ElementType() reflect.Type {
@@ -119,11 +169,21 @@ type noteArgs struct {
 	// Attestation Occurrences, even if they don't all live in the same
 	// project.  Structure is documented below.
 	AttestationAuthority NoteAttestationAuthority `pulumi:"attestationAuthority"`
+	// Time of expiration for this note. Leave empty if note does not expire.
+	ExpirationTime *string `pulumi:"expirationTime"`
+	// A detailed description of the note
+	LongDescription *string `pulumi:"longDescription"`
 	// The name of the note.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Names of other notes related to this note.
+	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
+	// URLs associated with this note and related metadata.  Structure is documented below.
+	RelatedUrls []NoteRelatedUrl `pulumi:"relatedUrls"`
+	// A one sentence description of the note.
+	ShortDescription *string `pulumi:"shortDescription"`
 }
 
 // The set of arguments for constructing a Note resource.
@@ -138,11 +198,21 @@ type NoteArgs struct {
 	// Attestation Occurrences, even if they don't all live in the same
 	// project.  Structure is documented below.
 	AttestationAuthority NoteAttestationAuthorityInput
+	// Time of expiration for this note. Leave empty if note does not expire.
+	ExpirationTime pulumi.StringPtrInput
+	// A detailed description of the note
+	LongDescription pulumi.StringPtrInput
 	// The name of the note.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Names of other notes related to this note.
+	RelatedNoteNames pulumi.StringArrayInput
+	// URLs associated with this note and related metadata.  Structure is documented below.
+	RelatedUrls NoteRelatedUrlArrayInput
+	// A one sentence description of the note.
+	ShortDescription pulumi.StringPtrInput
 }
 
 func (NoteArgs) ElementType() reflect.Type {

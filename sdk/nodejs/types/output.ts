@@ -1585,6 +1585,13 @@ export namespace bigquery {
          */
         googleSheetsOptions?: outputs.bigquery.TableExternalDataConfigurationGoogleSheetsOptions;
         /**
+         * When set, configures hive partitioning
+         * support. Not all storage formats support hive partitioning -- requesting hive
+         * partitioning on an unsupported format will lead to an error, as will providing
+         * an invalid specification.
+         */
+        hivePartitioningOptions?: outputs.bigquery.TableExternalDataConfigurationHivePartitioningOptions;
+        /**
          * Indicates if BigQuery should
          * allow extra values that are not represented in the table schema.
          * If true, the extra values are ignored. If false, records with
@@ -1664,6 +1671,31 @@ export namespace bigquery {
          * `skipLeadingRows` must be set.
          */
         skipLeadingRows?: number;
+    }
+
+    export interface TableExternalDataConfigurationHivePartitioningOptions {
+        /**
+         * When set, what mode of hive partitioning to use when
+         * reading data. The following modes are supported.
+         * * AUTO: automatically infer partition key name(s) and type(s).
+         * * STRINGS: automatically infer partition key name(s). All types are
+         * Not all storage formats support hive partitioning. Requesting hive
+         * partitioning on an unsupported format will lead to an error.
+         * Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+         * * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+         */
+        mode?: string;
+        /**
+         * When hive partition detection is requested,
+         * a common for all source uris must be required. The prefix must end immediately
+         * before the partition key encoding begins. For example, consider files following
+         * this data layout. `gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro`
+         * `gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro` When hive
+         * partitioning is requested with either AUTO or STRINGS detection, the common prefix
+         * can be either of `gs://bucket/path_to_table` or `gs://bucket/path_to_table/`.
+         * Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
+         */
+        sourceUriPrefix?: string;
     }
 
     export interface TableRangePartitioning {
@@ -10746,6 +10778,59 @@ export namespace containeranalysis {
          */
         humanReadableName: string;
     }
+
+    export interface NoteRelatedUrl {
+        /**
+         * Label to describe usage of the URL
+         */
+        label?: string;
+        /**
+         * Specific URL associated with the resource.
+         */
+        url: string;
+    }
+
+    export interface OccurenceAttestation {
+        /**
+         * The serialized payload that is verified by one or
+         * more signatures. A base64-encoded string.
+         */
+        serializedPayload: string;
+        /**
+         * One or more signatures over serializedPayload.
+         * Verifier implementations should consider this attestation
+         * message verified if at least one signature verifies
+         * serializedPayload. See Signature in common.proto for more
+         * details on signature structure and verification.  Structure is documented below.
+         */
+        signatures: outputs.containeranalysis.OccurenceAttestationSignature[];
+    }
+
+    export interface OccurenceAttestationSignature {
+        /**
+         * The identifier for the public key that verifies this
+         * signature. MUST be an RFC3986 conformant
+         * URI. * When possible, the key id should be an
+         * immutable reference, such as a cryptographic digest.
+         * Examples of valid values:
+         * * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
+         * for more details on this scheme.
+         * * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
+         * * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
+         * * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
+         */
+        publicKeyId: string;
+        /**
+         * The content of the signature, an opaque bytestring.
+         * The payload that this signature verifies MUST be
+         * unambiguously provided with the Signature during
+         * verification. A wrapper message might provide the
+         * payload explicitly. Alternatively, a message might
+         * have a canonical serialization that can always be
+         * unambiguously computed to derive the payload.
+         */
+        signature?: string;
+    }
 }
 
 export namespace datacatalog {
@@ -10814,6 +10899,67 @@ export namespace datacatalog {
         description?: string;
         expression: string;
         title: string;
+    }
+
+    export interface TagTemplateField {
+        /**
+         * The display name for this template.
+         */
+        displayName?: string;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        fieldId: string;
+        /**
+         * Whether this is a required field. Defaults to false.
+         */
+        isRequired?: boolean;
+        /**
+         * -
+         * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+         */
+        name: string;
+        /**
+         * The order of this field with respect to other fields in this tag template.
+         * A higher value indicates a more important field. The value can be negative.
+         * Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+         */
+        order?: number;
+        /**
+         * The type of value this tag field can contain.  Structure is documented below.
+         */
+        type: outputs.datacatalog.TagTemplateFieldType;
+    }
+
+    export interface TagTemplateFieldType {
+        /**
+         * Represents an enum type.
+         * Exactly one of `primitiveType` or `enumType` must be set  Structure is documented below.
+         */
+        enumType?: outputs.datacatalog.TagTemplateFieldTypeEnumType;
+        /**
+         * Represents primitive types - string, bool etc.
+         * Exactly one of `primitiveType` or `enumType` must be set
+         */
+        primitiveType?: string;
+    }
+
+    export interface TagTemplateFieldTypeEnumType {
+        /**
+         * The set of allowed values for this enum. The display names of the
+         * values must be case-insensitively unique within this set. Currently,
+         * enum values can only be added to the list of allowed values. Deletion
+         * and renaming of enum values are not supported.
+         * Can have up to 500 allowed values.  Structure is documented below.
+         */
+        allowedValues: outputs.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValue[];
+    }
+
+    export interface TagTemplateFieldTypeEnumTypeAllowedValue {
+        /**
+         * The display name for this template.
+         */
+        displayName: string;
     }
 }
 

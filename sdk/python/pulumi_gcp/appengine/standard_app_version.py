@@ -94,6 +94,10 @@ class StandardAppVersion(pulumi.CustomResource):
       * `urlRegex` (`str`) - URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
         All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
     """
+    inbound_services: pulumi.Output[list]
+    """
+    Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+    """
     instance_class: pulumi.Output[str]
     """
     Instance class that is used to run this version. Valid values are
@@ -150,7 +154,7 @@ class StandardAppVersion(pulumi.CustomResource):
     """
     Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
     """
-    def __init__(__self__, resource_name, opts=None, automatic_scaling=None, basic_scaling=None, delete_service_on_destroy=None, deployment=None, entrypoint=None, env_variables=None, handlers=None, instance_class=None, libraries=None, manual_scaling=None, noop_on_destroy=None, project=None, runtime=None, runtime_api_version=None, service=None, threadsafe=None, version_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, automatic_scaling=None, basic_scaling=None, delete_service_on_destroy=None, deployment=None, entrypoint=None, env_variables=None, handlers=None, inbound_services=None, instance_class=None, libraries=None, manual_scaling=None, noop_on_destroy=None, project=None, runtime=None, runtime_api_version=None, service=None, threadsafe=None, version_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Standard App Version resource to create a new version of standard GAE Application.
         Learn about the differences between the standard environment and the flexible environment
@@ -235,6 +239,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[dict] env_variables: Environment variables available to the application.
         :param pulumi.Input[list] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+        :param pulumi.Input[list] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
                BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
@@ -353,6 +358,7 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__['entrypoint'] = entrypoint
             __props__['env_variables'] = env_variables
             __props__['handlers'] = handlers
+            __props__['inbound_services'] = inbound_services
             __props__['instance_class'] = instance_class
             __props__['libraries'] = libraries
             __props__['manual_scaling'] = manual_scaling
@@ -373,7 +379,7 @@ class StandardAppVersion(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, automatic_scaling=None, basic_scaling=None, delete_service_on_destroy=None, deployment=None, entrypoint=None, env_variables=None, handlers=None, instance_class=None, libraries=None, manual_scaling=None, name=None, noop_on_destroy=None, project=None, runtime=None, runtime_api_version=None, service=None, threadsafe=None, version_id=None):
+    def get(resource_name, id, opts=None, automatic_scaling=None, basic_scaling=None, delete_service_on_destroy=None, deployment=None, entrypoint=None, env_variables=None, handlers=None, inbound_services=None, instance_class=None, libraries=None, manual_scaling=None, name=None, noop_on_destroy=None, project=None, runtime=None, runtime_api_version=None, service=None, threadsafe=None, version_id=None):
         """
         Get an existing StandardAppVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -389,6 +395,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[dict] env_variables: Environment variables available to the application.
         :param pulumi.Input[list] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests.
                The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+        :param pulumi.Input[list] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
                BasicScaling or ManualScaling: B1, B2, B4, B4_1G, B8
@@ -493,6 +500,7 @@ class StandardAppVersion(pulumi.CustomResource):
         __props__["entrypoint"] = entrypoint
         __props__["env_variables"] = env_variables
         __props__["handlers"] = handlers
+        __props__["inbound_services"] = inbound_services
         __props__["instance_class"] = instance_class
         __props__["libraries"] = libraries
         __props__["manual_scaling"] = manual_scaling

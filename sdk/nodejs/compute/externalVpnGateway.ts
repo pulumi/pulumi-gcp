@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * });
  * const haGateway = new gcp.compute.HaVpnGateway("haGateway", {
  *     region: "us-central1",
- *     network: network.selfLink,
+ *     network: network.id,
  * });
  * const externalGateway = new gcp.compute.ExternalVpnGateway("externalGateway", {
  *     redundancyType: "SINGLE_IP_INTERNALLY_REDUNDANT",
@@ -39,12 +39,12 @@ import * as utilities from "../utilities";
  * const networkSubnet1 = new gcp.compute.Subnetwork("networkSubnet1", {
  *     ipCidrRange: "10.0.1.0/24",
  *     region: "us-central1",
- *     network: network.selfLink,
+ *     network: network.id,
  * });
  * const networkSubnet2 = new gcp.compute.Subnetwork("networkSubnet2", {
  *     ipCidrRange: "10.0.2.0/24",
  *     region: "us-west1",
- *     network: network.selfLink,
+ *     network: network.id,
  * });
  * const router1 = new gcp.compute.Router("router1", {
  *     network: network.name,
@@ -54,20 +54,20 @@ import * as utilities from "../utilities";
  * });
  * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
  *     region: "us-central1",
- *     vpnGateway: haGateway.selfLink,
- *     peerExternalGateway: externalGateway.selfLink,
+ *     vpnGateway: haGateway.id,
+ *     peerExternalGateway: externalGateway.id,
  *     peerExternalGatewayInterface: 0,
  *     sharedSecret: "a secret message",
- *     router: router1.selfLink,
+ *     router: router1.id,
  *     vpnGatewayInterface: 0,
  * });
  * const tunnel2 = new gcp.compute.VPNTunnel("tunnel2", {
  *     region: "us-central1",
- *     vpnGateway: haGateway.selfLink,
- *     peerExternalGateway: externalGateway.selfLink,
+ *     vpnGateway: haGateway.id,
+ *     peerExternalGateway: externalGateway.id,
  *     peerExternalGatewayInterface: 0,
  *     sharedSecret: "a secret message",
- *     router: pulumi.interpolate` ${router1.selfLink}`,
+ *     router: pulumi.interpolate` ${router1.id}`,
  *     vpnGatewayInterface: 1,
  * });
  * const router1Interface1 = new gcp.compute.RouterInterface("router1Interface1", {

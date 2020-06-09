@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ContainerAnalysis
 {
     /// <summary>
-    /// Provides a detailed description of a Note.
+    /// A Container Analysis note is a high-level piece of metadata that
+    /// describes a type of analysis that can be done for a resource.
     /// 
     /// 
     /// To get more information about Note, see:
@@ -18,6 +19,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/container-analysis/)
+    ///     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
     /// 
     /// ## Example Usage - Container Analysis Note Basic
     /// 
@@ -44,6 +46,46 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// 
     /// }
     /// ```
+    /// ## Example Usage - Container Analysis Note Attestation Full
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
+    ///         {
+    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             {
+    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
+    ///                 {
+    ///                     HumanReadableName = "Attestor Note",
+    ///                 },
+    ///             },
+    ///             ExpirationTime = "2120-10-02T15:01:23.045123456Z",
+    ///             LongDescription = "a longer description of test note",
+    ///             RelatedUrls = 
+    ///             {
+    ///                 new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
+    ///                 {
+    ///                     Label = "foo",
+    ///                     Url = "some.url",
+    ///                 },
+    ///                 new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
+    ///                 {
+    ///                     Url = "google.com",
+    ///                 },
+    ///             },
+    ///             ShortDescription = "test note",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Note : Pulumi.CustomResource
     {
@@ -62,6 +104,30 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public Output<Outputs.NoteAttestationAuthority> AttestationAuthority { get; private set; } = null!;
 
         /// <summary>
+        /// The time this note was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Time of expiration for this note. Leave empty if note does not expire.
+        /// </summary>
+        [Output("expirationTime")]
+        public Output<string?> ExpirationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of analysis this note describes
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// A detailed description of the note
+        /// </summary>
+        [Output("longDescription")]
+        public Output<string?> LongDescription { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the note.
         /// </summary>
         [Output("name")]
@@ -73,6 +139,30 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Names of other notes related to this note.
+        /// </summary>
+        [Output("relatedNoteNames")]
+        public Output<ImmutableArray<string>> RelatedNoteNames { get; private set; } = null!;
+
+        /// <summary>
+        /// URLs associated with this note and related metadata.  Structure is documented below.
+        /// </summary>
+        [Output("relatedUrls")]
+        public Output<ImmutableArray<Outputs.NoteRelatedUrl>> RelatedUrls { get; private set; } = null!;
+
+        /// <summary>
+        /// A one sentence description of the note.
+        /// </summary>
+        [Output("shortDescription")]
+        public Output<string?> ShortDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this note was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -135,6 +225,18 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public Input<Inputs.NoteAttestationAuthorityArgs> AttestationAuthority { get; set; } = null!;
 
         /// <summary>
+        /// Time of expiration for this note. Leave empty if note does not expire.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<string>? ExpirationTime { get; set; }
+
+        /// <summary>
+        /// A detailed description of the note
+        /// </summary>
+        [Input("longDescription")]
+        public Input<string>? LongDescription { get; set; }
+
+        /// <summary>
         /// The name of the note.
         /// </summary>
         [Input("name")]
@@ -146,6 +248,36 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("relatedNoteNames")]
+        private InputList<string>? _relatedNoteNames;
+
+        /// <summary>
+        /// Names of other notes related to this note.
+        /// </summary>
+        public InputList<string> RelatedNoteNames
+        {
+            get => _relatedNoteNames ?? (_relatedNoteNames = new InputList<string>());
+            set => _relatedNoteNames = value;
+        }
+
+        [Input("relatedUrls")]
+        private InputList<Inputs.NoteRelatedUrlArgs>? _relatedUrls;
+
+        /// <summary>
+        /// URLs associated with this note and related metadata.  Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.NoteRelatedUrlArgs> RelatedUrls
+        {
+            get => _relatedUrls ?? (_relatedUrls = new InputList<Inputs.NoteRelatedUrlArgs>());
+            set => _relatedUrls = value;
+        }
+
+        /// <summary>
+        /// A one sentence description of the note.
+        /// </summary>
+        [Input("shortDescription")]
+        public Input<string>? ShortDescription { get; set; }
 
         public NoteArgs()
         {
@@ -169,6 +301,30 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public Input<Inputs.NoteAttestationAuthorityGetArgs>? AttestationAuthority { get; set; }
 
         /// <summary>
+        /// The time this note was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Time of expiration for this note. Leave empty if note does not expire.
+        /// </summary>
+        [Input("expirationTime")]
+        public Input<string>? ExpirationTime { get; set; }
+
+        /// <summary>
+        /// The type of analysis this note describes
+        /// </summary>
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
+        /// <summary>
+        /// A detailed description of the note
+        /// </summary>
+        [Input("longDescription")]
+        public Input<string>? LongDescription { get; set; }
+
+        /// <summary>
         /// The name of the note.
         /// </summary>
         [Input("name")]
@@ -180,6 +336,42 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("relatedNoteNames")]
+        private InputList<string>? _relatedNoteNames;
+
+        /// <summary>
+        /// Names of other notes related to this note.
+        /// </summary>
+        public InputList<string> RelatedNoteNames
+        {
+            get => _relatedNoteNames ?? (_relatedNoteNames = new InputList<string>());
+            set => _relatedNoteNames = value;
+        }
+
+        [Input("relatedUrls")]
+        private InputList<Inputs.NoteRelatedUrlGetArgs>? _relatedUrls;
+
+        /// <summary>
+        /// URLs associated with this note and related metadata.  Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.NoteRelatedUrlGetArgs> RelatedUrls
+        {
+            get => _relatedUrls ?? (_relatedUrls = new InputList<Inputs.NoteRelatedUrlGetArgs>());
+            set => _relatedUrls = value;
+        }
+
+        /// <summary>
+        /// A one sentence description of the note.
+        /// </summary>
+        [Input("shortDescription")]
+        public Input<string>? ShortDescription { get; set; }
+
+        /// <summary>
+        /// The time this note was last updated.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public NoteState()
         {

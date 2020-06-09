@@ -232,7 +232,7 @@ class Job(pulumi.CustomResource):
       * `userDefinedFunctionResources` (`list`) - Describes user-defined function resources used in the query.  Structure is documented below.
         * `inlineCode` (`str`) - An inline resource that contains code for a user-defined function (UDF).
           Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
-        * `resourceUri` (`str`) - A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
+        * `resource_uri` (`str`) - A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
 
       * `writeDisposition` (`str`) - Specifies the action that occurs if the destination table already exists. The following values are supported:
         WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -607,7 +607,7 @@ class Job(pulumi.CustomResource):
           * `userDefinedFunctionResources` (`pulumi.Input[list]`) - Describes user-defined function resources used in the query.  Structure is documented below.
             * `inlineCode` (`pulumi.Input[str]`) - An inline resource that contains code for a user-defined function (UDF).
               Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
-            * `resourceUri` (`pulumi.Input[str]`) - A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
+            * `resource_uri` (`pulumi.Input[str]`) - A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
 
           * `writeDisposition` (`pulumi.Input[str]`) - Specifies the action that occurs if the destination table already exists. The following values are supported:
             WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -863,7 +863,7 @@ class Job(pulumi.CustomResource):
           * `userDefinedFunctionResources` (`pulumi.Input[list]`) - Describes user-defined function resources used in the query.  Structure is documented below.
             * `inlineCode` (`pulumi.Input[str]`) - An inline resource that contains code for a user-defined function (UDF).
               Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
-            * `resourceUri` (`pulumi.Input[str]`) - A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
+            * `resource_uri` (`pulumi.Input[str]`) - A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
 
           * `writeDisposition` (`pulumi.Input[str]`) - Specifies the action that occurs if the destination table already exists. The following values are supported:
             WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.

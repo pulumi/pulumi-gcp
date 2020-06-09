@@ -4,3 +4,4 @@
 
 # Export this package's modules as members:
 from .note import *
+from .occurence import *
