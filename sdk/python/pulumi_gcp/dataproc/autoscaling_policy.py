@@ -113,8 +113,9 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Dataproc Autoscaling Policy
+        ## Example Usage
 
+        ### Dataproc Autoscaling Policy
 
         ```python
         import pulumi

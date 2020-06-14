@@ -13,8 +13,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Sql Source Representation Instance Basic
+ * ## Example Usage
  *
+ * ### Sql Source Representation Instance Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

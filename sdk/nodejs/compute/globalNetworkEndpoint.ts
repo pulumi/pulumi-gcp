@@ -16,14 +16,15 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  *
- * ## Example Usage - Global Network Endpoint
+ * ## Example Usage
  *
+ * ### Global Network Endpoint
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultEndpoint = new gcp.compute.GlobalNetworkEndpoint("default-endpoint", {
+ * const default_endpoint = new gcp.compute.GlobalNetworkEndpoint("default-endpoint", {
  *     globalNetworkEndpointGroup: google_compute_network_endpoint_group.neg.name,
  *     fqdn: "www.example.com",
  *     port: google_compute_network_endpoint_group.neg.default_port,

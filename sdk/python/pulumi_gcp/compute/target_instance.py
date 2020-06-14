@@ -71,8 +71,9 @@ class TargetInstance(pulumi.CustomResource):
         * How-to Guides
             * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
 
-        ## Example Usage - Target Instance Basic
+        ## Example Usage
 
+        ### Target Instance Basic
 
         ```python
         import pulumi

@@ -72,8 +72,9 @@ class SSLCertificate(pulumi.CustomResource):
         > **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
-        ## Example Usage - Ssl Certificate Basic
+        ## Example Usage
 
+        ### Ssl Certificate Basic
 
         ```python
         import pulumi
@@ -85,8 +86,8 @@ class SSLCertificate(pulumi.CustomResource):
             private_key=(lambda path: open(path).read())("path/to/private.key"),
             certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
         ```
-        ## Example Usage - Ssl Certificate Target Https Proxies
 
+        ### Ssl Certificate Target Https Proxies
 
         ```python
         import pulumi

@@ -59,9 +59,8 @@ def get_node_types(project=None,zone=None,opts=None):
     central1b = gcp.compute.get_node_types(zone="us-central1-b")
     tmpl = gcp.compute.NodeTemplate("tmpl",
         region="us-central1",
-        node_type=data["compute.getNodeTypes"]["types"]["names"])
+        node_type=data["google_compute_node_types"]["types"]["names"])
     ```
-
 
 
     :param str project: ID of the project to list available node types for.

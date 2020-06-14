@@ -14,8 +14,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
  *
- * ## Example Usage - Redis Instance Basic
+ * ## Example Usage
  *
+ * ### Redis Instance Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,8 +26,8 @@ import * as utilities from "../utilities";
  *     memorySizeGb: 1,
  * });
  * ```
- * ## Example Usage - Redis Instance Full
  *
+ * ### Redis Instance Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,8 +46,8 @@ import * as utilities from "../utilities";
  *     displayName: "Test Instance",
  *     reservedIpRange: "192.168.0.0/29",
  *     labels: {
- *         my_key: "myVal",
- *         other_key: "otherVal",
+ *         my_key: "my_val",
+ *         other_key: "other_val",
  *     },
  * });
  * ```

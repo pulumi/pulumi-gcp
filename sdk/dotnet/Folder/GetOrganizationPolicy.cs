@@ -40,7 +40,6 @@ namespace Pulumi.Gcp.Folder
         ///     public Output&lt;string&gt; Version { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

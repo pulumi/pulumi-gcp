@@ -12,6 +12,34 @@ import (
 // Creates a group of dissimilar Compute Engine virtual machine instances.
 // For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+//
+//
+// ## Example Usage
+//
+// ### Empty Instance Group
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		test, err := compute.NewInstanceGroup(ctx, "test", &compute.InstanceGroupArgs{
+// 			Description: pulumi.String("Test instance group"),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 			Network:     pulumi.String(google_compute_network.Default.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type InstanceGroup struct {
 	pulumi.CustomResourceState
 

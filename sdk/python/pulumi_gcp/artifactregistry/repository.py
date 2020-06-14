@@ -62,8 +62,9 @@ class Repository(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 
-        ## Example Usage - Artifact Registry Repository Basic
+        ## Example Usage
 
+        ### Artifact Registry Repository Basic
 
         ```python
         import pulumi
@@ -75,8 +76,8 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER")
         ```
-        ## Example Usage - Artifact Registry Repository Iam
 
+        ### Artifact Registry Repository Iam
 
         ```python
         import pulumi

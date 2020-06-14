@@ -43,8 +43,9 @@ class Dataset(pulumi.CustomResource):
         * How-to Guides
             * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
 
-        ## Example Usage - Healthcare Dataset Basic
+        ## Example Usage
 
+        ### Healthcare Dataset Basic
 
         ```python
         import pulumi

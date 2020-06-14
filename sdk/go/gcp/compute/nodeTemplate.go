@@ -19,6 +19,38 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
 // * How-to Guides
 //     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
+//
+// ## Example Usage
+//
+// ### Node Template Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		central1a, err := compute.LookupNodeTypes(ctx, &compute.LookupNodeTypesArgs{
+// 			Zone: "us-central1-a",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		template, err := compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
+// 			Region:   pulumi.String("us-central1"),
+// 			NodeType: pulumi.String(central1a.Names[0]),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NodeTemplate struct {
 	pulumi.CustomResourceState
 

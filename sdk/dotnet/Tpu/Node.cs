@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.Tpu
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/tpu/docs/)
     /// 
-    /// ## Example Usage - TPU Node Basic
+    /// ## Example Usage
     /// 
+    /// ### TPU Node Basic
     /// 
     /// ```csharp
     /// using Pulumi;

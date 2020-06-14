@@ -38,6 +38,7 @@ class WebApp(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://firebase.google.com/)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.

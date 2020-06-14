@@ -85,8 +85,9 @@ class Registry(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/iot/docs/)
 
-        ## Example Usage - Cloudiot Device Registry Basic
+        ## Example Usage
 
+        ### Cloudiot Device Registry Basic
 
         ```python
         import pulumi
@@ -94,8 +95,8 @@ class Registry(pulumi.CustomResource):
 
         test_registry = gcp.iot.Registry("test-registry")
         ```
-        ## Example Usage - Cloudiot Device Registry Single Event Notification Configs
 
+        ### Cloudiot Device Registry Single Event Notification Configs
 
         ```python
         import pulumi
@@ -107,8 +108,8 @@ class Registry(pulumi.CustomResource):
             "subfolderMatches": "",
         }])
         ```
-        ## Example Usage - Cloudiot Device Registry Full
 
+        ### Cloudiot Device Registry Full
 
         ```python
         import pulumi

@@ -96,6 +96,7 @@ class Occurence(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/container-analysis/)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] attestation: Occurrence that represents a single "attestation". The authenticity

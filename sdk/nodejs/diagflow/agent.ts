@@ -17,14 +17,15 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
  *
- * ## Example Usage - Dialogflow Agent Full
+ * ## Example Usage
  *
+ * ### Dialogflow Agent Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const fullAgent = new gcp.diagflow.Agent("fullAgent", {
+ * const fullAgent = new gcp.diagflow.Agent("full_agent", {
  *     apiVersion: "API_VERSION_V2_BETA_1",
  *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
  *     classificationThreshold: 0.3,

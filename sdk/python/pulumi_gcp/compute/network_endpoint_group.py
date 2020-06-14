@@ -80,8 +80,9 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
-        ## Example Usage - Network Endpoint Group
+        ## Example Usage
 
+        ### Network Endpoint Group
 
         ```python
         import pulumi

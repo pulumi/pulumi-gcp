@@ -84,8 +84,9 @@ class SSLPolicy(pulumi.CustomResource):
         * How-to Guides
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 
-        ## Example Usage - Ssl Policy Basic
+        ## Example Usage
 
+        ### Ssl Policy Basic
 
         ```python
         import pulumi

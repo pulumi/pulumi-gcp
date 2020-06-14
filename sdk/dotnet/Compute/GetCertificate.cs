@@ -43,7 +43,6 @@ namespace Pulumi.Gcp.Compute
         ///     public Output&lt;string&gt; SelfLink { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

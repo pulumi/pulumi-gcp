@@ -20,8 +20,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
  *
- * ## Example Usage - Autoscaler Single Instance
+ * ## Example Usage
  *
+ * ### Autoscaler Single Instance
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -74,14 +75,14 @@ import * as utilities from "../utilities";
  *         cooldownPeriod: 60,
  *         metric: [{
  *             name: "pubsub.googleapis.com/subscription/num_undelivered_messages",
- *             filter: "resource.type = pubsubSubscription AND resource.label.subscription_id = our-subscription",
+ *             filter: "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
  *             singleInstanceAssignment: 65535,
  *         }],
  *     },
  * });
  * ```
- * ## Example Usage - Autoscaler Basic
  *
+ * ### Autoscaler Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

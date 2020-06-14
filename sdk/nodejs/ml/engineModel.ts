@@ -14,8 +14,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Ml Model Basic
+ * ## Example Usage
  *
+ * ### Ml Model Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,8 +27,8 @@ import * as utilities from "../utilities";
  *     regions: "us-central1",
  * });
  * ```
- * ## Example Usage - Ml Model Full
  *
+ * ### Ml Model Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

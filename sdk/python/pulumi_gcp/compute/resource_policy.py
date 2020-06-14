@@ -83,8 +83,9 @@ class ResourcePolicy(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Resource Policy Basic
+        ## Example Usage
 
+        ### Resource Policy Basic
 
         ```python
         import pulumi
@@ -101,8 +102,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ## Example Usage - Resource Policy Full
 
+        ### Resource Policy Full
 
         ```python
         import pulumi
@@ -130,8 +131,8 @@ class ResourcePolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ## Example Usage - Resource Policy Placement Policy
 
+        ### Resource Policy Placement Policy
 
         ```python
         import pulumi

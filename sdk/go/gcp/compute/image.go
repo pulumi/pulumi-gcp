@@ -32,6 +32,66 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/compute/docs/images)
+//
+// ## Example Usage
+//
+// ### Image Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+// 			RawDisk: &compute.ImageRawDiskArgs{
+// 				Source: pulumi.String("https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Image Guest Os
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+// 			GuestOsFeatures: compute.ImageGuestOsFeatureArray{
+// 				&compute.ImageGuestOsFeatureArgs{
+// 					Type: pulumi.String("SECURE_BOOT"),
+// 				},
+// 				&compute.ImageGuestOsFeatureArgs{
+// 					Type: pulumi.String("MULTI_IP_SUBNET"),
+// 				},
+// 			},
+// 			RawDisk: &compute.ImageRawDiskArgs{
+// 				Source: pulumi.String("https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Image struct {
 	pulumi.CustomResourceState
 

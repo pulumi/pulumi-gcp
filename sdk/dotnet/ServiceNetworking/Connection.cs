@@ -15,7 +15,9 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// and
     /// [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
     /// 
-    /// ## Example usage
+    /// ## Example Usage
+    /// 
+    /// 
     /// 
     /// ```csharp
     /// using Pulumi;

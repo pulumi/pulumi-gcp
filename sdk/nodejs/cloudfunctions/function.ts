@@ -18,7 +18,9 @@ import * as utilities from "../utilities";
  * or view the [Cloud Functions IAM resources](https://www.terraform.io/docs/providers/google/r/cloudfunctions_cloud_function_iam.html)
  * for Cloud Functions.
  *
- * ## Example Usage - Public Function
+ * ## Example Usage
+ *
+ * ### Public Function
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -48,7 +50,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Example Usage - Single User
+ * ### Single User
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

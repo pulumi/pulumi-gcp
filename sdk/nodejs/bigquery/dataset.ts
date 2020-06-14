@@ -16,8 +16,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
  *
- * ## Example Usage - Bigquery Dataset Basic
+ * ## Example Usage
  *
+ * ### Bigquery Dataset Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * const bqowner = new gcp.serviceAccount.Account("bqowner", {accountId: "bqowner"});
  * const dataset = new gcp.bigquery.Dataset("dataset", {
- *     datasetId: "exampleDataset",
+ *     datasetId: "example_dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "EU",
@@ -45,8 +46,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ## Example Usage - Bigquery Dataset Cmek
  *
+ * ### Bigquery Dataset Cmek
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -55,7 +56,7 @@ import * as utilities from "../utilities";
  * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us"});
  * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
  * const dataset = new gcp.bigquery.Dataset("dataset", {
- *     datasetId: "exampleDataset",
+ *     datasetId: "example_dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",

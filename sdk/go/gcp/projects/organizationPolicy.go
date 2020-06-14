@@ -14,6 +14,35 @@ import (
 // [the official
 // documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
 // [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setOrgPolicy).
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		serialPortPolicy, err := projects.NewOrganizationPolicy(ctx, "serialPortPolicy", &projects.OrganizationPolicyArgs{
+// 			BooleanPolicy: &projects.OrganizationPolicyBooleanPolicyArgs{
+// 				Enforced: pulumi.Bool(true),
+// 			},
+// 			Constraint: pulumi.String("compute.disableSerialPortAccess"),
+// 			Project:    pulumi.String("your-project-id"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type OrganizationPolicy struct {
 	pulumi.CustomResourceState
 

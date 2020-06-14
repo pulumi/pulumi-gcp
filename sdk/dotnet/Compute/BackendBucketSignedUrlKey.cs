@@ -22,8 +22,9 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Warning:** All arguments including `key_value` will be stored in the raw
     /// state as plain-text.
     /// 
-    /// ## Example Usage - Backend Bucket Signed Url Key
+    /// ## Example Usage
     /// 
+    /// ### Backend Bucket Signed Url Key
     /// 
     /// ```csharp
     /// using Pulumi;

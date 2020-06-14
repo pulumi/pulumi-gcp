@@ -83,7 +83,6 @@ def get_account(account_id=None,project=None,opts=None):
     ```
 
 
-
     :param str account_id: The Service account id.  (This is the part of the service account's email field that comes before the @ symbol.)
     :param str project: The ID of the project that the service account is present in.
            Defaults to the provider project configuration.

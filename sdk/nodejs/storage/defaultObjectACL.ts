@@ -27,8 +27,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const imageStore = new gcp.storage.Bucket("image-store", {location: "EU"});
- * const imageStoreDefaultAcl = new gcp.storage.DefaultObjectACL("image-store-default-acl", {
+ * const image_store = new gcp.storage.Bucket("image-store", {location: "EU"});
+ * const image_store_default_acl = new gcp.storage.DefaultObjectACL("image-store-default-acl", {
  *     bucket: image_store.name,
  *     roleEntities: [
  *         "OWNER:user-my.email@gmail.com",

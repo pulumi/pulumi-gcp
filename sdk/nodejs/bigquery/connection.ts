@@ -18,8 +18,9 @@ import * as utilities from "../utilities";
  * > **Warning:** All arguments including `cloud_sql.credential.password` will be stored in the raw
  * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  *
- * ## Example Usage - Bigquery Connection Basic
+ * ## Example Usage
  *
+ * ### Bigquery Connection Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,8 +57,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Bigquery Connection Full
  *
+ * ### Bigquery Connection Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

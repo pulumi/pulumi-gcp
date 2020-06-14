@@ -24,8 +24,9 @@ namespace Pulumi.Gcp.Compute
     /// through provider config or through external changes will cause
     /// the provider to delete and recreate the node group.
     /// 
-    /// ## Example Usage - Node Group Basic
+    /// ## Example Usage
     /// 
+    /// ### Node Group Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -47,7 +48,7 @@ namespace Pulumi.Gcp.Compute
     ///         var nodes = new Gcp.Compute.NodeGroup("nodes", new Gcp.Compute.NodeGroupArgs
     ///         {
     ///             Zone = "us-central1-a",
-    ///             Description = "example gcp.compute.NodeGroup for the Google Provider",
+    ///             Description = "example google_compute_node_group for the Google Provider",
     ///             Size = 1,
     ///             NodeTemplate = soletenant_tmpl.Id,
     ///         });

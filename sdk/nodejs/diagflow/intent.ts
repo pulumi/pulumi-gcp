@@ -17,15 +17,16 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
  *
- * ## Example Usage - Dialogflow Intent Basic
+ * ## Example Usage
  *
+ * ### Dialogflow Intent Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
- *     displayName: "exampleAgent",
+ *     displayName: "example_agent",
  *     defaultLanguageCode: "en",
  *     timeZone: "America/New_York",
  * });

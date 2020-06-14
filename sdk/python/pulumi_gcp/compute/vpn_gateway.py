@@ -59,8 +59,9 @@ class VPNGateway(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
 
-        ## Example Usage - Target Vpn Gateway Basic
+        ## Example Usage
 
+        ### Target Vpn Gateway Basic
 
         ```python
         import pulumi

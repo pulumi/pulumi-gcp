@@ -83,8 +83,9 @@ class DataTransferConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
 
-        ## Example Usage - Scheduled Query
+        ## Example Usage
 
+        ### Scheduled Query
 
         ```python
         import pulumi

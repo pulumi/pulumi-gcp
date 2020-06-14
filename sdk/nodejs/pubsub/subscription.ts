@@ -17,8 +17,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
  *
- * ## Example Usage - Pubsub Subscription Push
+ * ## Example Usage
  *
+ * ### Pubsub Subscription Push
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,8 +40,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Pubsub Subscription Pull
  *
+ * ### Pubsub Subscription Pull
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,8 +61,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Pubsub Subscription Different Project
  *
+ * ### Pubsub Subscription Different Project
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -73,8 +74,8 @@ import * as utilities from "../utilities";
  *     topic: exampleTopic.name,
  * });
  * ```
- * ## Example Usage - Pubsub Subscription Dead Letter
  *
+ * ### Pubsub Subscription Dead Letter
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

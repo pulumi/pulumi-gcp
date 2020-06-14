@@ -118,8 +118,9 @@ class Snapshot(pulumi.CustomResource):
         > **Warning:** All arguments including `snapshot_encryption_key.raw_key` and `source_disk_encryption_key.raw_key` will be stored in the raw
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
-        ## Example Usage - Snapshot Basic
+        ## Example Usage
 
+        ### Snapshot Basic
 
         ```python
         import pulumi

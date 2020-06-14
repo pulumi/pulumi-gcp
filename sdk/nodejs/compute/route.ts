@@ -35,8 +35,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
  *
- * ## Example Usage - Route Basic
+ * ## Example Usage
  *
+ * ### Route Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,8 +51,8 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
- * ## Example Usage - Route Ilb
  *
+ * ### Route Ilb
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -82,7 +83,7 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.name,
  *     subnetwork: defaultSubnetwork.name,
  * });
- * const routeIlb = new gcp.compute.Route("route-ilb", {
+ * const route_ilb = new gcp.compute.Route("route-ilb", {
  *     destRange: "0.0.0.0/0",
  *     network: defaultNetwork.name,
  *     nextHopIlb: defaultForwardingRule.id,

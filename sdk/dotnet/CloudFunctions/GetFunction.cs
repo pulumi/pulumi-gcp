@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.CloudFunctions
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -142,7 +141,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         public readonly bool TriggerHttp;
         /// <summary>
-        /// The VPC Network Connector that this cloud function can connect to. 
+        /// The VPC Network Connector that this cloud function can connect to.
         /// </summary>
         public readonly string VpcConnector;
         /// <summary>

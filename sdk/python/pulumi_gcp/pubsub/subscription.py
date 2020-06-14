@@ -161,8 +161,9 @@ class Subscription(pulumi.CustomResource):
         * How-to Guides
             * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
 
-        ## Example Usage - Pubsub Subscription Push
+        ## Example Usage
 
+        ### Pubsub Subscription Push
 
         ```python
         import pulumi
@@ -182,8 +183,8 @@ class Subscription(pulumi.CustomResource):
                 },
             })
         ```
-        ## Example Usage - Pubsub Subscription Pull
 
+        ### Pubsub Subscription Pull
 
         ```python
         import pulumi
@@ -202,8 +203,8 @@ class Subscription(pulumi.CustomResource):
                 "ttl": "300000.5s",
             })
         ```
-        ## Example Usage - Pubsub Subscription Different Project
 
+        ### Pubsub Subscription Different Project
 
         ```python
         import pulumi
@@ -214,8 +215,8 @@ class Subscription(pulumi.CustomResource):
             project="subscription-project",
             topic=example_topic.name)
         ```
-        ## Example Usage - Pubsub Subscription Dead Letter
 
+        ### Pubsub Subscription Dead Letter
 
         ```python
         import pulumi

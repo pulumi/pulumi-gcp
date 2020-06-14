@@ -42,7 +42,6 @@ namespace Pulumi.Gcp.Composer
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

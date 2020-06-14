@@ -75,8 +75,9 @@ class TargetSSLProxy(pulumi.CustomResource):
         * How-to Guides
             * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
 
-        ## Example Usage - Target Ssl Proxy Basic
+        ## Example Usage
 
+        ### Target Ssl Proxy Basic
 
         ```python
         import pulumi

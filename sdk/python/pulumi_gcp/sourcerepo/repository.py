@@ -53,8 +53,9 @@ class Repository(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/source-repositories/)
 
-        ## Example Usage - Sourcerepo Repository Basic
+        ## Example Usage
 
+        ### Sourcerepo Repository Basic
 
         ```python
         import pulumi
@@ -62,8 +63,8 @@ class Repository(pulumi.CustomResource):
 
         my_repo = gcp.sourcerepo.Repository("my-repo")
         ```
-        ## Example Usage - Sourcerepo Repository Full
 
+        ### Sourcerepo Repository Full
 
         ```python
         import pulumi

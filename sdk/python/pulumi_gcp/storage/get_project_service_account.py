@@ -70,7 +70,6 @@ def get_project_service_account(project=None,user_project=None,opts=None):
     ```
 
 
-
     :param str project: The project the unique service account was created for. If it is not provided, the provider project is used.
     :param str user_project: The project the lookup originates from. This field is used if you are making the request
            from a different account than the one you are finding the service account for.

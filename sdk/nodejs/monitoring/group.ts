@@ -17,8 +17,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
  *
- * ## Example Usage - Monitoring Group Basic
+ * ## Example Usage
  *
+ * ### Monitoring Group Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -29,8 +30,8 @@ import * as utilities from "../utilities";
  *     filter: "resource.metadata.region=\"europe-west2\"",
  * });
  * ```
- * ## Example Usage - Monitoring Group Subgroup
  *
+ * ### Monitoring Group Subgroup
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

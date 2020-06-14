@@ -13,8 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/externalVpnGateways)
  *
- * ## Example Usage - External Vpn Gateway
+ * ## Example Usage
  *
+ * ### External Vpn Gateway
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

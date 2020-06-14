@@ -46,8 +46,9 @@ class Database(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/spanner/)
 
-        ## Example Usage - Spanner Database Basic
+        ## Example Usage
 
+        ### Spanner Database Basic
 
         ```python
         import pulumi

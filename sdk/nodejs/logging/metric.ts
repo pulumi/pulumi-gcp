@@ -18,14 +18,15 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  *
- * ## Example Usage - Logging Metric Basic
+ * ## Example Usage
  *
+ * ### Logging Metric Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
+ * const loggingMetric = new gcp.logging.Metric("logging_metric", {
  *     bucketOptions: {
  *         linearBuckets: {
  *             numFiniteBuckets: 3,
@@ -59,14 +60,14 @@ import * as utilities from "../utilities";
  *     valueExtractor: "EXTRACT(jsonPayload.request)",
  * });
  * ```
- * ## Example Usage - Logging Metric Counter Basic
  *
+ * ### Logging Metric Counter Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
+ * const loggingMetric = new gcp.logging.Metric("logging_metric", {
  *     filter: "resource.type=gae_app AND severity>=ERROR",
  *     metricDescriptor: {
  *         metricKind: "DELTA",
@@ -74,14 +75,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Logging Metric Counter Labels
  *
+ * ### Logging Metric Counter Labels
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
+ * const loggingMetric = new gcp.logging.Metric("logging_metric", {
  *     filter: "resource.type=gae_app AND severity>=ERROR",
  *     labelExtractors: {
  *         mass: "EXTRACT(jsonPayload.request)",

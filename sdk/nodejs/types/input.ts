@@ -3191,20 +3191,8 @@ export namespace composer {
          * Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
          * They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
          * `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
-         * ```
-         * AIRFLOW_HOME
-         * C_FORCE_ROOT
-         * CONTAINER_NAME
-         * DAGS_FOLDER
-         * GCP_PROJECT
-         * GCS_BUCKET
-         * GKE_CLUSTER_NAME
-         * SQL_DATABASE
-         * SQL_INSTANCE
-         * SQL_PASSWORD
-         * SQL_PROJECT
-         * SQL_REGION
-         * SQL_USER
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
          * ```
          */
         envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -14504,7 +14492,6 @@ export namespace storage {
          */
         maxTimeElapsedSinceLastModification?: pulumi.Input<string>;
         /**
-         *
          * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
          */
         minTimeElapsedSinceLastModification?: pulumi.Input<string>;

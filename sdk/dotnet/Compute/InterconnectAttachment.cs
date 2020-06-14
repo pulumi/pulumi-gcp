@@ -15,8 +15,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// 
     /// 
-    /// ## Example Usage - Interconnect Attachment Basic
+    /// ## Example Usage
     /// 
+    /// ### Interconnect Attachment Basic
     /// 
     /// ```csharp
     /// using Pulumi;

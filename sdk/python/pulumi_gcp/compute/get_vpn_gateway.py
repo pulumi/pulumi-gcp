@@ -80,7 +80,6 @@ def get_vpn_gateway(name=None,project=None,region=None,opts=None):
     ```
 
 
-
     :param str name: The name of the VPN gateway.
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

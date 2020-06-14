@@ -45,8 +45,9 @@ class DataStoreIndex(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
 
-        ## Example Usage - Datastore Index
+        ## Example Usage
 
+        ### Datastore Index
 
         ```python
         import pulumi

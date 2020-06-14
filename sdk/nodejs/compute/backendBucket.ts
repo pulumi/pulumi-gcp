@@ -22,8 +22,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
  *
- * ## Example Usage - Backend Bucket Basic
+ * ## Example Usage
  *
+ * ### Backend Bucket Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

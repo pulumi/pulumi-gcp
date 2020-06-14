@@ -34,6 +34,35 @@ import (
 // * How-to Guides
 //     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
 //     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+//
+// ## Example Usage
+//
+// ### Notification Channel Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basic, err := monitoring.NewNotificationChannel(ctx, "basic", &monitoring.NotificationChannelArgs{
+// 			DisplayName: pulumi.String("Test Notification Channel"),
+// 			Labels: map[string]interface{}{
+// 				"email_address": "fake_email@blahblah.com",
+// 			},
+// 			Type: pulumi.String("email"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NotificationChannel struct {
 	pulumi.CustomResourceState
 

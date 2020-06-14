@@ -96,8 +96,9 @@ class Budget(pulumi.CustomResource):
         * How-to Guides
             * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
 
-        ## Example Usage - Billing Budget Basic
+        ## Example Usage
 
+        ### Billing Budget Basic
 
         ```python
         import pulumi
@@ -117,8 +118,8 @@ class Budget(pulumi.CustomResource):
                 "thresholdPercent": 0.5,
             }])
         ```
-        ## Example Usage - Billing Budget Filter
 
+        ### Billing Budget Filter
 
         ```python
         import pulumi

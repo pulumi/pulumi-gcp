@@ -92,7 +92,6 @@ class Notification(pulumi.CustomResource):
         # Enable notifications by giving the correct IAM permission to the unique service account.
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket.

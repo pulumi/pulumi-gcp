@@ -21,8 +21,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
     /// 
-    /// ## Example Usage - Node Template Basic
+    /// ## Example Usage
     /// 
+    /// ### Node Template Basic
     /// 
     /// ```csharp
     /// using Pulumi;

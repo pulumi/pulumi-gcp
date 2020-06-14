@@ -61,8 +61,6 @@ def get_kms_secret(additional_authenticated_data=None,ciphertext=None,crypto_key
     data outside of resource definitions.
 
 
-
-
     :param str additional_authenticated_data: The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
     :param str ciphertext: The ciphertext to be decrypted, encoded in base64
     :param str crypto_key: The id of the CryptoKey that will be used to

@@ -24,7 +24,9 @@ namespace Pulumi.Gcp.Storage
     /// determined which will require enabling the compute api.
     /// 
     /// 
-    /// ## Example Usage - creating a private bucket in standard storage, in the EU region. Bucket configured as static website and CORS configurations
+    /// ## Example Usage
+    /// 
+    /// ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -73,7 +75,7 @@ namespace Pulumi.Gcp.Storage
     /// }
     /// ```
     /// 
-    /// ## Example Usage - Life cycle settings for storage bucket objects
+    /// ### Life Cycle Settings For Storage Bucket Objects
     /// 
     /// ```csharp
     /// using Pulumi;

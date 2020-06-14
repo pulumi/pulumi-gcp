@@ -22,8 +22,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
  *
- * ## Example Usage - App Engine Flexible App Version
+ * ## Example Usage
  *
+ * ### App Engine Flexible App Version
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -141,7 +142,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
      */
     public readonly defaultExpiration!: pulumi.Output<string | undefined>;
     /**
-     * If set to `true`, the service will be deleted if it is the last version.    
+     * If set to `true`, the service will be deleted if it is the last version.
      */
     public readonly deleteServiceOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
@@ -363,7 +364,7 @@ export interface FlexibleAppVersionState {
      */
     readonly defaultExpiration?: pulumi.Input<string>;
     /**
-     * If set to `true`, the service will be deleted if it is the last version.    
+     * If set to `true`, the service will be deleted if it is the last version.
      */
     readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
     /**
@@ -493,7 +494,7 @@ export interface FlexibleAppVersionArgs {
      */
     readonly defaultExpiration?: pulumi.Input<string>;
     /**
-     * If set to `true`, the service will be deleted if it is the last version.    
+     * If set to `true`, the service will be deleted if it is the last version.
      */
     readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
     /**

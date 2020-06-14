@@ -64,12 +64,10 @@ export class NetworkPeering extends pulumi.CustomResource {
     }
 
     /**
-     *
      * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
     public readonly exportCustomRoutes!: pulumi.Output<boolean | undefined>;
     /**
-     *
      * Whether to export the custom routes from the peer network. Defaults to `false`.
      */
     public readonly importCustomRoutes!: pulumi.Output<boolean | undefined>;
@@ -147,12 +145,10 @@ export class NetworkPeering extends pulumi.CustomResource {
  */
 export interface NetworkPeeringState {
     /**
-     *
      * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
     readonly exportCustomRoutes?: pulumi.Input<boolean>;
     /**
-     *
      * Whether to export the custom routes from the peer network. Defaults to `false`.
      */
     readonly importCustomRoutes?: pulumi.Input<boolean>;
@@ -185,12 +181,10 @@ export interface NetworkPeeringState {
  */
 export interface NetworkPeeringArgs {
     /**
-     *
      * Whether to export the custom routes to the peer network. Defaults to `false`.
      */
     readonly exportCustomRoutes?: pulumi.Input<boolean>;
     /**
-     *
      * Whether to export the custom routes from the peer network. Defaults to `false`.
      */
     readonly importCustomRoutes?: pulumi.Input<boolean>;

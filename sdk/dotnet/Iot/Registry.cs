@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.Iot
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/iot/docs/)
     /// 
-    /// ## Example Usage - Cloudiot Device Registry Basic
+    /// ## Example Usage
     /// 
+    /// ### Cloudiot Device Registry Basic
     /// 
     /// ```csharp
     /// using Pulumi;

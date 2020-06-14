@@ -89,7 +89,6 @@ class Project(pulumi.CustomResource):
             project_id="your-project-id")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_create_network: Create the 'default' network automatically.  Default `true`.

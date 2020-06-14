@@ -84,7 +84,6 @@ def get_address(name=None,project=None,region=None,opts=None):
     ```
 
 
-
     :param str name: A unique name for the resource, required by GCE.
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

@@ -136,8 +136,9 @@ class InterconnectAttachment(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Interconnect Attachment Basic
+        ## Example Usage
 
+        ### Interconnect Attachment Basic
 
         ```python
         import pulumi

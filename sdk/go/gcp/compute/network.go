@@ -17,6 +17,29 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
+//
+// ## Example Usage
+//
+// ### Network Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		vpcNetwork, err := compute.NewNetwork(ctx, "vpcNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Network struct {
 	pulumi.CustomResourceState
 

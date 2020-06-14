@@ -42,8 +42,9 @@ class SecretVersion(pulumi.CustomResource):
         state as plain-text.
 
 
-        ## Example Usage - Secret Version Basic
+        ## Example Usage
 
+        ### Secret Version Basic
 
         ```python
         import pulumi

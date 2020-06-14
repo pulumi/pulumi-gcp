@@ -82,7 +82,6 @@ class Cluster(pulumi.CustomResource):
     """
     cluster_autoscaling: pulumi.Output[dict]
     """
-
     Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
     automatically adjust the size of the cluster and create/delete node pools based
     on the current needs of the cluster's workload. See the
@@ -155,7 +154,6 @@ class Cluster(pulumi.CustomResource):
     """
     enable_intranode_visibility: pulumi.Output[bool]
     """
-
     Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
     """
     enable_kubernetes_alpha: pulumi.Output[bool]
@@ -661,7 +659,6 @@ class Cluster(pulumi.CustomResource):
     """
     vertical_pod_autoscaling: pulumi.Output[dict]
     """
-
     Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
     Structure is documented below.
 
@@ -670,7 +667,6 @@ class Cluster(pulumi.CustomResource):
     """
     workload_identity_config: pulumi.Output[dict]
     """
-
     Workload Identity allows Kubernetes service accounts to act as a user-managed
     [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
     Structure is documented below.
@@ -687,7 +683,9 @@ class Cluster(pulumi.CustomResource):
         passwords as well as certificate outputs will be stored in the raw state as
         plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
-        ## Example Usage - with a separately managed node pool (recommended)
+        ## Example Usage
+
+        ### With A Separately Managed Node Pool (Recommended)
 
         ```python
         import pulumi
@@ -721,7 +719,7 @@ class Cluster(pulumi.CustomResource):
             })
         ```
 
-        ## Example Usage - with the default node pool
+        ### With The Default Node Pool
 
         ```python
         import pulumi
@@ -762,8 +760,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
-        :param pulumi.Input[dict] cluster_autoscaling: 
-               Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+        :param pulumi.Input[dict] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
                [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
@@ -781,8 +778,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
-        :param pulumi.Input[bool] enable_intranode_visibility: 
-               Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+        :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
                and will be automatically deleted after 30 days.
@@ -896,11 +892,9 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[dict] vertical_pod_autoscaling: 
-               Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+        :param pulumi.Input[dict] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input[dict] workload_identity_config: 
-               Workload Identity allows Kubernetes service accounts to act as a user-managed
+        :param pulumi.Input[dict] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
 
@@ -1392,8 +1386,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[dict] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
-        :param pulumi.Input[dict] cluster_autoscaling: 
-               Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
+        :param pulumi.Input[dict] cluster_autoscaling: Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
                automatically adjust the size of the cluster and create/delete node pools based
                on the current needs of the cluster's workload. See the
                [guide to using Node Auto-Provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
@@ -1411,8 +1404,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
-        :param pulumi.Input[bool] enable_intranode_visibility: 
-               Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+        :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
                and will be automatically deleted after 30 days.
@@ -1540,11 +1532,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
-        :param pulumi.Input[dict] vertical_pod_autoscaling: 
-               Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
+        :param pulumi.Input[dict] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input[dict] workload_identity_config: 
-               Workload Identity allows Kubernetes service accounts to act as a user-managed
+        :param pulumi.Input[dict] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
 

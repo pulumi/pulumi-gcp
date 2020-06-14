@@ -49,8 +49,9 @@ class OauthIdpConfig(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Identity Platform Oauth Idp Config Basic
+        ## Example Usage
 
+        ### Identity Platform Oauth Idp Config Basic
 
         ```python
         import pulumi

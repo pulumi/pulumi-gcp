@@ -38,10 +38,9 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
 
 
 
-        ## Example Usage 
+        ## Example Usage
 
         ### Region Disk Resource Policy Attachment Basic
-
 
         ```python
         import pulumi

@@ -18,8 +18,9 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// * How-to Guides
     ///     * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
     /// 
-    /// ## Example Usage - Service Directory Service Basic
+    /// ## Example Usage
     /// 
+    /// ### Service Directory Service Basic
     /// 
     /// ```csharp
     /// using Pulumi;

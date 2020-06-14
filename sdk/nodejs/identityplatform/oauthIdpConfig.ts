@@ -13,14 +13,15 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Identity Platform Oauth Idp Config Basic
+ * ## Example Usage
  *
+ * ### Identity Platform Oauth Idp Config Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const oauthIdpConfig = new gcp.identityplatform.OauthIdpConfig("oauthIdpConfig", {
+ * const oauthIdpConfig = new gcp.identityplatform.OauthIdpConfig("oauth_idp_config", {
  *     clientId: "client-id",
  *     clientSecret: "secret",
  *     displayName: "Display Name",

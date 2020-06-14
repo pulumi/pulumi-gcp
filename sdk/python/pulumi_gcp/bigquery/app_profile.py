@@ -56,8 +56,9 @@ class AppProfile(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Bigtable App Profile Multicluster
+        ## Example Usage
 
+        ### Bigtable App Profile Multicluster
 
         ```python
         import pulumi
@@ -77,8 +78,8 @@ class AppProfile(pulumi.CustomResource):
             multi_cluster_routing_use_any=True,
             ignore_warnings=True)
         ```
-        ## Example Usage - Bigtable App Profile Singlecluster
 
+        ### Bigtable App Profile Singlecluster
 
         ```python
         import pulumi

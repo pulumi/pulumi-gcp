@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Bigtable App Profile Multicluster
+ * ## Example Usage
  *
+ * ### Bigtable App Profile Multicluster
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,8 +35,8 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
- * ## Example Usage - Bigtable App Profile Singlecluster
  *
+ * ### Bigtable App Profile Singlecluster
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

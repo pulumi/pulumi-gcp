@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const artifact = pulumi.output(gcp.storage.getObjectSignedUrl({
- *     bucket: "installBinaries",
+ *     bucket: "install_binaries",
  *     path: "path/to/install_file.bin",
  * }, { async: true }));
  * const vm = new gcp.compute.Instance("vm", {});
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * import * from "fs";
  *
  * const getUrl = gcp.storage.getObjectSignedUrl({
- *     bucket: "friedChicken",
+ *     bucket: "fried_chicken",
  *     path: "path/to/file",
  *     contentMd5: "pRviqwS4c4OTJRTe03FD1w==",
  *     contentType: "text/plain",

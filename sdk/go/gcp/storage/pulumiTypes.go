@@ -3397,7 +3397,6 @@ type TransferJobTransferSpecObjectConditions struct {
 	IncludePrefixes []string `pulumi:"includePrefixes"`
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MaxTimeElapsedSinceLastModification *string `pulumi:"maxTimeElapsedSinceLastModification"`
-	//
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MinTimeElapsedSinceLastModification *string `pulumi:"minTimeElapsedSinceLastModification"`
 }
@@ -3421,7 +3420,6 @@ type TransferJobTransferSpecObjectConditionsArgs struct {
 	IncludePrefixes pulumi.StringArrayInput `pulumi:"includePrefixes"`
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MaxTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"maxTimeElapsedSinceLastModification"`
-	//
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MinTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"minTimeElapsedSinceLastModification"`
 }
@@ -3519,7 +3517,6 @@ func (o TransferJobTransferSpecObjectConditionsOutput) MaxTimeElapsedSinceLastMo
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
 }
 
-//
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o TransferJobTransferSpecObjectConditionsOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
@@ -3573,7 +3570,6 @@ func (o TransferJobTransferSpecObjectConditionsPtrOutput) MaxTimeElapsedSinceLas
 	}).(pulumi.StringPtrOutput)
 }
 
-//
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) *string {

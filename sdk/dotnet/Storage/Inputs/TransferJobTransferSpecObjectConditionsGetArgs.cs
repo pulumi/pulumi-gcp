@@ -43,7 +43,6 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string>? MaxTimeElapsedSinceLastModification { get; set; }
 
         /// <summary>
-        /// 
         /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
         [Input("minTimeElapsedSinceLastModification")]

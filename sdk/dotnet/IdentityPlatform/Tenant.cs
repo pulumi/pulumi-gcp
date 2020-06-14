@@ -21,8 +21,9 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// 
     /// 
-    /// ## Example Usage - Identity Platform Tenant Basic
+    /// ## Example Usage
     /// 
+    /// ### Identity Platform Tenant Basic
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -243,7 +243,6 @@ def get_instance(name=None,project=None,self_link=None,zone=None,opts=None):
     ```
 
 
-
     :param str name: The name of the instance. One of `name` or `self_link` must be provided.
     :param str project: The ID of the project in which the resource belongs.
            If `self_link` is provided, this value is ignored.  If neither `self_link`

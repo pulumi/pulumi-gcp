@@ -17,14 +17,15 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
  *
- * ## Example Usage - Scc Source Basic
+ * ## Example Usage
  *
+ * ### Scc Source Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customSource = new gcp.securitycenter.Source("customSource", {
+ * const customSource = new gcp.securitycenter.Source("custom_source", {
  *     description: "My custom Cloud Security Command Center Finding Source",
  *     displayName: "My Source",
  *     organization: "123456789",

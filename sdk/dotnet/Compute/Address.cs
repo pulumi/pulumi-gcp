@@ -32,8 +32,9 @@ namespace Pulumi.Gcp.Compute
     ///     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
     ///     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
     /// 
-    /// ## Example Usage - Address Basic
+    /// ## Example Usage
     /// 
+    /// ### Address Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,8 +51,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Address With Subnetwork
     /// 
+    /// ### Address With Subnetwork
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -81,8 +82,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Address With Gce Endpoint
     /// 
+    /// ### Address With Gce Endpoint
     /// 
     /// ```csharp
     /// using Pulumi;

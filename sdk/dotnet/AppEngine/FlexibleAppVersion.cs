@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string?> DefaultExpiration { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the service will be deleted if it is the last version.    
+        /// If set to `true`, the service will be deleted if it is the last version.
         /// </summary>
         [Output("deleteServiceOnDestroy")]
         public Output<bool?> DeleteServiceOnDestroy { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? DefaultExpiration { get; set; }
 
         /// <summary>
-        /// If set to `true`, the service will be deleted if it is the last version.    
+        /// If set to `true`, the service will be deleted if it is the last version.
         /// </summary>
         [Input("deleteServiceOnDestroy")]
         public Input<bool>? DeleteServiceOnDestroy { get; set; }
@@ -494,7 +494,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? DefaultExpiration { get; set; }
 
         /// <summary>
-        /// If set to `true`, the service will be deleted if it is the last version.    
+        /// If set to `true`, the service will be deleted if it is the last version.
         /// </summary>
         [Input("deleteServiceOnDestroy")]
         public Input<bool>? DeleteServiceOnDestroy { get; set; }

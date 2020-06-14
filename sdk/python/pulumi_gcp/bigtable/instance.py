@@ -52,7 +52,9 @@ class Instance(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/bigtable/) and
         [API](https://cloud.google.com/bigtable/docs/go/reference).
 
-        ## Example Usage - Production Instance
+        ## Example Usage
+
+        ### Production Instance
 
         ```python
         import pulumi
@@ -70,7 +72,7 @@ class Instance(pulumi.CustomResource):
             })
         ```
 
-        ## Example Usage - Development Instance
+        ### Development Instance
 
         ```python
         import pulumi

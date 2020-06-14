@@ -22,14 +22,15 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Controlling access to datasets](https://cloud.google.com/bigquery/docs/dataset-access-controls)
  *
- * ## Example Usage - Bigquery Dataset Access Basic User
+ * ## Example Usage
  *
+ * ### Bigquery Dataset Access Basic User
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "exampleDataset"});
+ * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
  * const bqowner = new gcp.serviceAccount.Account("bqowner", {accountId: "bqowner"});
  * const access = new gcp.bigquery.DatasetAccess("access", {
  *     datasetId: dataset.datasetId,
@@ -37,18 +38,18 @@ import * as utilities from "../utilities";
  *     userByEmail: bqowner.email,
  * });
  * ```
- * ## Example Usage - Bigquery Dataset Access View
  *
+ * ### Bigquery Dataset Access View
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _private = new gcp.bigquery.Dataset("private", {datasetId: "exampleDataset"});
- * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {datasetId: "exampleDataset2"});
+ * const _private = new gcp.bigquery.Dataset("private", {datasetId: "example_dataset"});
+ * const publicDataset = new gcp.bigquery.Dataset("publicDataset", {datasetId: "example_dataset2"});
  * const publicTable = new gcp.bigquery.Table("publicTable", {
  *     datasetId: publicDataset.datasetId,
- *     tableId: "exampleTable",
+ *     tableId: "example_table",
  *     view: {
  *         query: "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
  *         useLegacySql: false,

@@ -55,7 +55,6 @@ class IAMPolicy(pulumi.CustomResource):
             policy_data=admin.policy_data)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.

@@ -19,6 +19,211 @@ import (
 // > **Note:** `iap.TunnelInstanceIAMPolicy` **cannot** be used in conjunction with `iap.TunnelInstanceIAMBinding` and `iap.TunnelInstanceIAMMember` or they will fight over what your policy should be.
 //
 // > **Note:** `iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+//
+//
+//
+// ## google\_iap\_tunnel\_instance\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Binding: []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"role": "roles/iap.tunnelResourceAccessor",
+// 					"members": []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		policy, err := iap.NewTunnelInstanceIAMPolicy(ctx, "policy", &iap.TunnelInstanceIAMPolicyArgs{
+// 			Project:    pulumi.String(google_compute_instance.Tunnelvm.Project),
+// 			Zone:       pulumi.String(google_compute_instance.Tunnelvm.Zone),
+// 			Instance:   pulumi.String(google_compute_instance.Tunnelvm.Name),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Binding: []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"role": "roles/iap.tunnelResourceAccessor",
+// 					"members": []string{
+// 						"user:jane@example.com",
+// 					},
+// 					"condition": map[string]interface{}{
+// 						"title":       "expires_after_2019_12_31",
+// 						"description": "Expiring at midnight of 2019-12-31",
+// 						"expression":  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		policy, err := iap.NewTunnelInstanceIAMPolicy(ctx, "policy", &iap.TunnelInstanceIAMPolicyArgs{
+// 			Project:    pulumi.String(google_compute_instance.Tunnelvm.Project),
+// 			Zone:       pulumi.String(google_compute_instance.Tunnelvm.Zone),
+// 			Instance:   pulumi.String(google_compute_instance.Tunnelvm.Name),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## google\_iap\_tunnel\_instance\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		binding, err := iap.NewTunnelInstanceIAMBinding(ctx, "binding", &iap.TunnelInstanceIAMBindingArgs{
+// 			Project:  pulumi.String(google_compute_instance.Tunnelvm.Project),
+// 			Zone:     pulumi.String(google_compute_instance.Tunnelvm.Zone),
+// 			Instance: pulumi.String(google_compute_instance.Tunnelvm.Name),
+// 			Role:     pulumi.String("roles/iap.tunnelResourceAccessor"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		binding, err := iap.NewTunnelInstanceIAMBinding(ctx, "binding", &iap.TunnelInstanceIAMBindingArgs{
+// 			Project:  pulumi.String(google_compute_instance.Tunnelvm.Project),
+// 			Zone:     pulumi.String(google_compute_instance.Tunnelvm.Zone),
+// 			Instance: pulumi.String(google_compute_instance.Tunnelvm.Name),
+// 			Role:     pulumi.String("roles/iap.tunnelResourceAccessor"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Condition: &iap.TunnelInstanceIAMBindingConditionArgs{
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## google\_iap\_tunnel\_instance\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		member, err := iap.NewTunnelInstanceIAMMember(ctx, "member", &iap.TunnelInstanceIAMMemberArgs{
+// 			Project:  pulumi.String(google_compute_instance.Tunnelvm.Project),
+// 			Zone:     pulumi.String(google_compute_instance.Tunnelvm.Zone),
+// 			Instance: pulumi.String(google_compute_instance.Tunnelvm.Name),
+// 			Role:     pulumi.String("roles/iap.tunnelResourceAccessor"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		member, err := iap.NewTunnelInstanceIAMMember(ctx, "member", &iap.TunnelInstanceIAMMemberArgs{
+// 			Project:  pulumi.String(google_compute_instance.Tunnelvm.Project),
+// 			Zone:     pulumi.String(google_compute_instance.Tunnelvm.Zone),
+// 			Instance: pulumi.String(google_compute_instance.Tunnelvm.Name),
+// 			Role:     pulumi.String("roles/iap.tunnelResourceAccessor"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 			Condition: &iap.TunnelInstanceIAMMemberConditionArgs{
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type TunnelInstanceIAMBinding struct {
 	pulumi.CustomResourceState
 

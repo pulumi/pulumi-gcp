@@ -20,8 +20,9 @@ namespace Pulumi.Gcp.Diagflow
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
     /// 
-    /// ## Example Usage - Dialogflow Intent Basic
+    /// ## Example Usage
     /// 
+    /// ### Dialogflow Intent Basic
     /// 
     /// ```csharp
     /// using Pulumi;

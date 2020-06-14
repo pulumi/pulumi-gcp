@@ -139,7 +139,6 @@ namespace Pulumi.Gcp.Sql
         public Output<string?> DatabaseVersion { get; private set; } = null!;
 
         /// <summary>
-        /// 
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting
         /// up disk encryption currently requires manual steps outside of this provider.
         /// The provided key must be in the same region as the SQL instance.  In order
@@ -176,7 +175,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The first private (`PRIVATE`) IPv4 address assigned. 
+        /// The first private (`PRIVATE`) IPv4 address assigned.
         /// </summary>
         [Output("privateIpAddress")]
         public Output<string> PrivateIpAddress { get; private set; } = null!;
@@ -189,7 +188,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The first public (`PRIMARY`) IPv4 address assigned. 
+        /// The first public (`PRIMARY`) IPv4 address assigned.
         /// </summary>
         [Output("publicIpAddress")]
         public Output<string> PublicIpAddress { get; private set; } = null!;
@@ -299,7 +298,6 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? DatabaseVersion { get; set; }
 
         /// <summary>
-        /// 
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting
         /// up disk encryption currently requires manual steps outside of this provider.
         /// The provided key must be in the same region as the SQL instance.  In order
@@ -390,7 +388,6 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? DatabaseVersion { get; set; }
 
         /// <summary>
-        /// 
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting
         /// up disk encryption currently requires manual steps outside of this provider.
         /// The provided key must be in the same region as the SQL instance.  In order
@@ -432,7 +429,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The first private (`PRIVATE`) IPv4 address assigned. 
+        /// The first private (`PRIVATE`) IPv4 address assigned.
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
@@ -445,7 +442,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The first public (`PRIMARY`) IPv4 address assigned. 
+        /// The first public (`PRIMARY`) IPv4 address assigned.
         /// </summary>
         [Input("publicIpAddress")]
         public Input<string>? PublicIpAddress { get; set; }

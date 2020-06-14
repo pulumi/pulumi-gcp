@@ -60,7 +60,6 @@ def get_active_folder(display_name=None,parent=None,opts=None):
     ```
 
 
-
     :param str display_name: The folder's display name.
     :param str parent: The resource name of the parent Folder or Organization.
     """

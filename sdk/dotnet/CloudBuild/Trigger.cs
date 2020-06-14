@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.CloudBuild
     /// * How-to Guides
     ///     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
     /// 
-    /// ## Example Usage - Cloudbuild Trigger Filename
+    /// ## Example Usage
     /// 
+    /// ### Cloudbuild Trigger Filename
     /// 
     /// ```csharp
     /// using Pulumi;

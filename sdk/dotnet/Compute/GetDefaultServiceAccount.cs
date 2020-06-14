@@ -34,7 +34,6 @@ namespace Pulumi.Gcp.Compute
         ///     public Output&lt;string&gt; DefaultAccount { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

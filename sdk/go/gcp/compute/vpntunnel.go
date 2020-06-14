@@ -22,6 +22,159 @@ import (
 //
 // > **Warning:** All arguments including `sharedSecret` will be stored in the raw
 // state as plain-text.
+//
+// ## Example Usage
+//
+// ### Vpn Tunnel Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := compute.NewNetwork(ctx, "network1", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		targetGateway, err := compute.NewVPNGateway(ctx, "targetGateway", &compute.VPNGatewayArgs{
+// 			Network: network1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpnStaticIp, err := compute.NewAddress(ctx, "vpnStaticIp", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frEsp, err := compute.NewForwardingRule(ctx, "frEsp", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("ESP"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frUdp500, err := compute.NewForwardingRule(ctx, "frUdp500", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("UDP"),
+// 			PortRange:  pulumi.String("500"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frUdp4500, err := compute.NewForwardingRule(ctx, "frUdp4500", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("UDP"),
+// 			PortRange:  pulumi.String("4500"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
+// 			PeerIp:           pulumi.String("15.0.0.120"),
+// 			SharedSecret:     pulumi.String("a secret message"),
+// 			TargetVpnGateway: targetGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		route1, err := compute.NewRoute(ctx, "route1", &compute.RouteArgs{
+// 			Network:          network1.Name,
+// 			DestRange:        pulumi.String("15.0.0.0/24"),
+// 			Priority:         pulumi.Int(1000),
+// 			NextHopVpnTunnel: tunnel1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Vpn Tunnel Beta
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := compute.NewNetwork(ctx, "network1", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		targetGateway, err := compute.NewVPNGateway(ctx, "targetGateway", &compute.VPNGatewayArgs{
+// 			Network: network1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpnStaticIp, err := compute.NewAddress(ctx, "vpnStaticIp", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frEsp, err := compute.NewForwardingRule(ctx, "frEsp", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("ESP"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frUdp500, err := compute.NewForwardingRule(ctx, "frUdp500", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("UDP"),
+// 			PortRange:  pulumi.String("500"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frUdp4500, err := compute.NewForwardingRule(ctx, "frUdp4500", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("UDP"),
+// 			PortRange:  pulumi.String("4500"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
+// 			PeerIp:           pulumi.String("15.0.0.120"),
+// 			SharedSecret:     pulumi.String("a secret message"),
+// 			TargetVpnGateway: targetGateway.ID(),
+// 			Labels: map[string]interface{}{
+// 				"foo": "bar",
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		route1, err := compute.NewRoute(ctx, "route1", &compute.RouteArgs{
+// 			Network:          network1.Name,
+// 			DestRange:        pulumi.String("15.0.0.0/24"),
+// 			Priority:         pulumi.Int(1000),
+// 			NextHopVpnTunnel: tunnel1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type VPNTunnel struct {
 	pulumi.CustomResourceState
 

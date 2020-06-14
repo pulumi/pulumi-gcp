@@ -40,7 +40,6 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
         default = gcp.compute.ProjectDefaultNetworkTier("default", network_tier="PREMIUM")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_tier: The default network tier to be configured for the project.

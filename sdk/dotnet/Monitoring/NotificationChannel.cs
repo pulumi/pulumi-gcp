@@ -35,8 +35,9 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
     ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
     /// 
-    /// ## Example Usage - Notification Channel Basic
+    /// ## Example Usage
     /// 
+    /// ### Notification Channel Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -59,8 +60,8 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Notification Channel Sensitive
     /// 
+    /// ### Notification Channel Sensitive
     /// 
     /// ```csharp
     /// using Pulumi;

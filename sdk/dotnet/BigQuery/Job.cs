@@ -15,8 +15,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// 
     /// 
-    /// ## Example Usage - Bigquery Job Query
+    /// ## Example Usage
     /// 
+    /// ### Bigquery Job Query
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -66,8 +67,8 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Bigquery Job Query Table Reference
     /// 
+    /// ### Bigquery Job Query Table Reference
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -119,8 +120,8 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Bigquery Job Load
     /// 
+    /// ### Bigquery Job Load
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -175,8 +176,8 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Bigquery Job Extract
     /// 
+    /// ### Bigquery Job Extract
     /// 
     /// ```csharp
     /// using Pulumi;

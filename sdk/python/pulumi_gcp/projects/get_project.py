@@ -45,7 +45,9 @@ def get_project(filter=None,opts=None):
     [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
     for more details.
 
-    ## Example Usage - searching for projects about to be deleted in an org
+    ## Example Usage
+
+    ### Searching For Projects About To Be Deleted In An Org
 
     ```python
     import pulumi

@@ -20,6 +20,74 @@ import (
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/container-analysis/)
 //     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
+//
+// ## Example Usage
+//
+// ### Container Analysis Note Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/containeranalysis"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
+// 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
+// 					HumanReadableName: pulumi.String("Attestor Note"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Container Analysis Note Attestation Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/containeranalysis"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
+// 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
+// 					HumanReadableName: pulumi.String("Attestor Note"),
+// 				},
+// 			},
+// 			ExpirationTime:  pulumi.String("2120-10-02T15:01:23.045123456Z"),
+// 			LongDescription: pulumi.String("a longer description of test note"),
+// 			RelatedUrls: containeranalysis.NoteRelatedUrlArray{
+// 				&containeranalysis.NoteRelatedUrlArgs{
+// 					Label: pulumi.String("foo"),
+// 					Url:   pulumi.String("some.url"),
+// 				},
+// 				&containeranalysis.NoteRelatedUrlArgs{
+// 					Url: pulumi.String("google.com"),
+// 				},
+// 			},
+// 			ShortDescription: pulumi.String("test note"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Note struct {
 	pulumi.CustomResourceState
 

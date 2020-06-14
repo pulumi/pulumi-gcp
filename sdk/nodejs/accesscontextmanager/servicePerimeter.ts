@@ -24,25 +24,26 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  *
- * ## Example Usage - Access Context Manager Service Perimeter Basic
+ * ## Example Usage
  *
+ * ### Access Context Manager Service Perimeter Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const accessPolicy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",
  *     title: "my policy",
  * });
- * const servicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
+ * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
  *     status: {
  *         restrictedServices: ["storage.googleapis.com"],
  *     },
- *     title: "restrictStorage",
+ *     title: "restrict_storage",
  * });
- * const accessLevel = new gcp.accesscontextmanager.AccessLevel("access-level", {
+ * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
  *     basic: {
  *         conditions: [{
  *             devicePolicy: {
@@ -59,21 +60,21 @@ import * as utilities from "../utilities";
  *         }],
  *     },
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     title: "chromeosNoLock",
+ *     title: "chromeos_no_lock",
  * });
  * ```
- * ## Example Usage - Access Context Manager Service Perimeter Dry Run
  *
+ * ### Access Context Manager Service Perimeter Dry Run
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const accessPolicy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",
  *     title: "my policy",
  * });
- * const servicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
+ * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
  *     // Service 'storage.googleapis.com' will be in dry-run mode.
  *     spec: {
@@ -83,7 +84,7 @@ import * as utilities from "../utilities";
  *     status: {
  *         restrictedServices: ["bigquery.googleapis.com"],
  *     },
- *     title: "restrictBigqueryDryrunStorage",
+ *     title: "restrict_bigquery_dryrun_storage",
  *     useExplicitDryRunSpec: true,
  * });
  * ```

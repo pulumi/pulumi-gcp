@@ -16,8 +16,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
  *
- * ## Example Usage - Forwarding Rule Global Internallb
+ * ## Example Usage
  *
+ * ### Forwarding Rule Global Internallb
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,8 +52,8 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.name,
  * });
  * ```
- * ## Example Usage - Forwarding Rule Basic
  *
+ * ### Forwarding Rule Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -64,8 +65,8 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
- * ## Example Usage - Forwarding Rule Internallb
  *
+ * ### Forwarding Rule Internallb
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -98,8 +99,8 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.name,
  * });
  * ```
- * ## Example Usage - Forwarding Rule Http Lb
  *
+ * ### Forwarding Rule Http Lb
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

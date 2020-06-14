@@ -28,8 +28,9 @@ namespace Pulumi.Gcp.Kms
     /// * How-to Guides
     ///     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
     /// 
-    /// ## Example Usage - Kms Crypto Key Basic
+    /// ## Example Usage
     /// 
+    /// ### Kms Crypto Key Basic
     /// 
     /// ```csharp
     /// using Pulumi;

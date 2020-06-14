@@ -108,7 +108,6 @@ def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
     ```
 
 
-
     :param str name: The name of the subnetwork. One of `name` or `self_link`
            must be specified.
     :param str project: The ID of the project in which the resource belongs. If it

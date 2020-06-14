@@ -128,8 +128,9 @@ class ManagedZone(pulumi.CustomResource):
         * How-to Guides
             * [Managing Zones](https://cloud.google.com/dns/zones/)
 
-        ## Example Usage - Dns Managed Zone Basic
+        ## Example Usage
 
+        ### Dns Managed Zone Basic
 
         ```python
         import pulumi
@@ -142,8 +143,8 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-        ## Example Usage - Dns Managed Zone Private
 
+        ### Dns Managed Zone Private
 
         ```python
         import pulumi
@@ -169,8 +170,8 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             })
         ```
-        ## Example Usage - Dns Managed Zone Private Forwarding
 
+        ### Dns Managed Zone Private Forwarding
 
         ```python
         import pulumi
@@ -206,8 +207,8 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             })
         ```
-        ## Example Usage - Dns Managed Zone Private Peering
 
+        ### Dns Managed Zone Private Peering
 
         ```python
         import pulumi
@@ -230,8 +231,8 @@ class ManagedZone(pulumi.CustomResource):
                 },
             })
         ```
-        ## Example Usage - Dns Managed Zone Service Directory
 
+        ### Dns Managed Zone Service Directory
 
         ```python
         import pulumi

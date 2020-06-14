@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
  *
- * ## Example Usage - Billing Budget Basic
+ * ## Example Usage
  *
+ * ### Billing Budget Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,8 +40,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Billing Budget Filter
  *
+ * ### Billing Budget Filter
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

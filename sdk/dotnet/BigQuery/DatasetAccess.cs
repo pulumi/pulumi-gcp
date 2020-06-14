@@ -25,8 +25,9 @@ namespace Pulumi.Gcp.BigQuery
     /// * How-to Guides
     ///     * [Controlling access to datasets](https://cloud.google.com/bigquery/docs/dataset-access-controls)
     /// 
-    /// ## Example Usage - Bigquery Dataset Access Basic User
+    /// ## Example Usage
     /// 
+    /// ### Bigquery Dataset Access Basic User
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,8 +55,8 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Bigquery Dataset Access View
     /// 
+    /// ### Bigquery Dataset Access View
     /// 
     /// ```csharp
     /// using Pulumi;

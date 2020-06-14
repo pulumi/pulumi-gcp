@@ -13,8 +13,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  *
- * ## Example Usage - Bigquery Reservation Basic
+ * ## Example Usage
  *
+ * ### Bigquery Reservation Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

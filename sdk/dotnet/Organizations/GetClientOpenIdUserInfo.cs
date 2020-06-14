@@ -24,7 +24,10 @@ namespace Pulumi.Gcp.Organizations
         /// use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
         /// receive an error otherwise.
         /// 
-        /// ## Example Usage - exporting an email
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Exporting An Email
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -42,6 +45,9 @@ namespace Pulumi.Gcp.Organizations
         ///     public Output&lt;string&gt; My_email { get; set; }
         /// }
         /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetClientOpenIdUserInfoResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClientOpenIdUserInfoResult>("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", InvokeArgs.Empty, options.WithVersion());

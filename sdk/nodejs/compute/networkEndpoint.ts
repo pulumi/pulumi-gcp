@@ -18,8 +18,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  *
- * ## Example Usage - Network Endpoint
+ * ## Example Usage
  *
+ * ### Network Endpoint
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,7 +36,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     network: defaultNetwork.id,
  * });
- * const endpointInstance = new gcp.compute.Instance("endpoint-instance", {
+ * const endpoint_instance = new gcp.compute.Instance("endpoint-instance", {
  *     machineType: "n1-standard-1",
  *     boot_disk: {
  *         initialize_params: {
@@ -47,7 +48,7 @@ import * as utilities from "../utilities";
  *         access_config: [{}],
  *     }],
  * });
- * const defaultEndpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
+ * const default_endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
  *     networkEndpointGroup: google_compute_network_endpoint_group.neg.name,
  *     instance: endpoint_instance.name,
  *     port: google_compute_network_endpoint_group.neg.default_port,

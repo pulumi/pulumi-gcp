@@ -20,8 +20,9 @@ import * as utilities from "../utilities";
  *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
- * ## Example Usage - Monitoring Service Custom
+ * ## Example Usage
  *
+ * ### Monitoring Service Custom
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

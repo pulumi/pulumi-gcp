@@ -17,6 +17,67 @@ import (
 // * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+//
+// ## Example Usage
+//
+// ### Data Fusion Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/datafusion"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basicInstance, err := datafusion.NewInstance(ctx, "basicInstance", &datafusion.InstanceArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Type:   pulumi.String("BASIC"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Data Fusion Instance Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/datafusion"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		extendedInstance, err := datafusion.NewInstance(ctx, "extendedInstance", &datafusion.InstanceArgs{
+// 			Description:                 pulumi.String("My Data Fusion instance"),
+// 			EnableStackdriverLogging:    pulumi.Bool(true),
+// 			EnableStackdriverMonitoring: pulumi.Bool(true),
+// 			Labels: map[string]interface{}{
+// 				"example_key": "example_value",
+// 			},
+// 			NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
+// 				IpAllocation: pulumi.String("10.89.48.0/22"),
+// 				Network:      pulumi.String("default"),
+// 			},
+// 			PrivateInstance: pulumi.Bool(true),
+// 			Region:          pulumi.String("us-central1"),
+// 			Type:            pulumi.String("BASIC"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

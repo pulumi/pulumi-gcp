@@ -19,8 +19,9 @@ import * as utilities from "../utilities";
  * > **Warning:** All arguments including `http_check.auth_info.password` will be stored in the raw
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
- * ## Example Usage - Uptime Check Config Http
+ * ## Example Usage
  *
+ * ### Uptime Check Config Http
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,13 +41,13 @@ import * as utilities from "../utilities";
  *             host: "192.168.1.1",
  *             project_id: "my-project-name",
  *         },
- *         type: "uptimeUrl",
+ *         type: "uptime_url",
  *     },
  *     timeout: "60s",
  * });
  * ```
- * ## Example Usage - Uptime Check Config Https
  *
+ * ### Uptime Check Config Https
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -68,13 +69,13 @@ import * as utilities from "../utilities";
  *             host: "192.168.1.1",
  *             project_id: "my-project-name",
  *         },
- *         type: "uptimeUrl",
+ *         type: "uptime_url",
  *     },
  *     timeout: "60s",
  * });
  * ```
- * ## Example Usage - Uptime Check Tcp
  *
+ * ### Uptime Check Tcp
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -130,8 +130,9 @@ class Entry(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
-        ## Example Usage - Data Catalog Entry Basic
+        ## Example Usage
 
+        ### Data Catalog Entry Basic
 
         ```python
         import pulumi
@@ -144,8 +145,8 @@ class Entry(pulumi.CustomResource):
             user_specified_type="my_custom_type",
             user_specified_system="SomethingExternal")
         ```
-        ## Example Usage - Data Catalog Entry Fileset
 
+        ### Data Catalog Entry Fileset
 
         ```python
         import pulumi
@@ -160,8 +161,8 @@ class Entry(pulumi.CustomResource):
                 "filePatterns": ["gs://fake_bucket/dir/*"],
             })
         ```
-        ## Example Usage - Data Catalog Entry Full
 
+        ### Data Catalog Entry Full
 
         ```python
         import pulumi

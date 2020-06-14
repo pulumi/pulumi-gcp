@@ -43,8 +43,9 @@ class MachineImage(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
 
-        ## Example Usage - Machine Image Basic
+        ## Example Usage
 
+        ### Machine Image Basic
 
         ```python
         import pulumi

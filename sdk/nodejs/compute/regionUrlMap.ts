@@ -10,8 +10,9 @@ import * as utilities from "../utilities";
  * UrlMaps are used to route requests to a backend service based on rules
  * that you define for the host and path of an incoming URL.
  *
- * ## Example Usage - Region Url Map Basic
+ * ## Example Usage
  *
+ * ### Region Url Map Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -67,8 +68,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Region Url Map L7 Ilb Path
  *
+ * ### Region Url Map L7 Ilb Path
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -167,8 +168,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Region Url Map L7 Ilb Path Partial
  *
+ * ### Region Url Map L7 Ilb Path Partial
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -235,8 +236,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Region Url Map L7 Ilb Route
  *
+ * ### Region Url Map L7 Ilb Route
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -313,8 +314,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Region Url Map L7 Ilb Route Partial
  *
+ * ### Region Url Map L7 Ilb Route Partial
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

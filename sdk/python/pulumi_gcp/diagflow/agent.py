@@ -100,8 +100,9 @@ class Agent(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
-        ## Example Usage - Dialogflow Agent Full
+        ## Example Usage
 
+        ### Dialogflow Agent Full
 
         ```python
         import pulumi

@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/spanner/)
  *
- * ## Example Usage - Spanner Instance Basic
+ * ## Example Usage
  *
+ * ### Spanner Instance Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

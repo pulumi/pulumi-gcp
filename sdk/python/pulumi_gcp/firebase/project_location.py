@@ -39,6 +39,7 @@ class ProjectLocation(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://firebase.google.com/)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location_id: The ID of the default GCP resource location for the Project. The location must be one of the available GCP

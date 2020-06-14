@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.SourceRepo
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/source-repositories/)
     /// 
-    /// ## Example Usage - Sourcerepo Repository Basic
+    /// ## Example Usage
     /// 
+    /// ### Sourcerepo Repository Basic
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -19,8 +19,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
  *
- * ## Example Usage - App Engine Standard App Version
+ * ## Example Usage
  *
+ * ### App Engine Standard App Version
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -120,7 +121,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     public readonly basicScaling!: pulumi.Output<outputs.appengine.StandardAppVersionBasicScaling | undefined>;
     /**
-     * If set to `true`, the service will be deleted if it is the last version.    
+     * If set to `true`, the service will be deleted if it is the last version.
      */
     public readonly deleteServiceOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
@@ -277,7 +278,7 @@ export interface StandardAppVersionState {
      */
     readonly basicScaling?: pulumi.Input<inputs.appengine.StandardAppVersionBasicScaling>;
     /**
-     * If set to `true`, the service will be deleted if it is the last version.    
+     * If set to `true`, the service will be deleted if it is the last version.
      */
     readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
     /**
@@ -365,7 +366,7 @@ export interface StandardAppVersionArgs {
      */
     readonly basicScaling?: pulumi.Input<inputs.appengine.StandardAppVersionBasicScaling>;
     /**
-     * If set to `true`, the service will be deleted if it is the last version.    
+     * If set to `true`, the service will be deleted if it is the last version.
      */
     readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
     /**

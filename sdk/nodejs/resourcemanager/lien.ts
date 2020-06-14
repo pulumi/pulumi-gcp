@@ -9,8 +9,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Resource Manager Lien
+ * ## Example Usage
  *
+ * ### Resource Manager Lien
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

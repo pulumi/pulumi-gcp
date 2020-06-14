@@ -17,14 +17,15 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
- * ## Example Usage - Data Catalog Tag Template Basic
+ * ## Example Usage
  *
+ * ### Data Catalog Tag Template Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicTagTemplate = new gcp.datacatalog.TagTemplate("basicTagTemplate", {
+ * const basicTagTemplate = new gcp.datacatalog.TagTemplate("basic_tag_template", {
  *     displayName: "Demo Tag Template",
  *     fields: [
  *         {
@@ -37,14 +38,14 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             displayName: "Number of rows in the data asset",
- *             fieldId: "numRows",
+ *             fieldId: "num_rows",
  *             type: {
  *                 primitiveType: "DOUBLE",
  *             },
  *         },
  *         {
  *             displayName: "PII type",
- *             fieldId: "piiType",
+ *             fieldId: "pii_type",
  *             type: {
  *                 enumType: {
  *                     allowedValues: [
@@ -64,7 +65,7 @@ import * as utilities from "../utilities";
  *     ],
  *     forceDelete: false,
  *     region: "us-central1",
- *     tagTemplateId: "myTemplate",
+ *     tagTemplateId: "my_template",
  * });
  * ```
  */

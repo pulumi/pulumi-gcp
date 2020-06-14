@@ -50,7 +50,6 @@ type NodePool struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
-	//
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -137,7 +136,6 @@ type nodePoolState struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount *int `pulumi:"nodeCount"`
-	//
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -194,7 +192,6 @@ type NodePoolState struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount pulumi.IntPtrInput
-	//
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -253,7 +250,6 @@ type nodePoolArgs struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount *int `pulumi:"nodeCount"`
-	//
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -309,7 +305,6 @@ type NodePoolArgs struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount pulumi.IntPtrInput
-	//
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level

@@ -83,7 +83,6 @@ def get_project(project_id=None,opts=None):
     ```
 
 
-
     :param str project_id: The project ID. If it is not provided, the provider project is used.
     """
     __args__ = dict()

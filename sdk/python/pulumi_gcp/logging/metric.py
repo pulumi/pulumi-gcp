@@ -107,8 +107,9 @@ class Metric(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
-        ## Example Usage - Logging Metric Basic
+        ## Example Usage
 
+        ### Logging Metric Basic
 
         ```python
         import pulumi
@@ -147,8 +148,8 @@ class Metric(pulumi.CustomResource):
             },
             value_extractor="EXTRACT(jsonPayload.request)")
         ```
-        ## Example Usage - Logging Metric Counter Basic
 
+        ### Logging Metric Counter Basic
 
         ```python
         import pulumi
@@ -161,8 +162,8 @@ class Metric(pulumi.CustomResource):
                 "valueType": "INT64",
             })
         ```
-        ## Example Usage - Logging Metric Counter Labels
 
+        ### Logging Metric Counter Labels
 
         ```python
         import pulumi

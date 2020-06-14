@@ -14,6 +14,35 @@ import (
 // the official documentation for
 // [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
 //
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/dataflow"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bigDataJob, err := dataflow.NewJob(ctx, "bigDataJob", &dataflow.JobArgs{
+// 			Parameters: map[string]interface{}{
+// 				"baz": "qux",
+// 				"foo": "bar",
+// 			},
+// 			TempGcsLocation: pulumi.String("gs://my-bucket/tmp_dir"),
+// 			TemplateGcsPath: pulumi.String("gs://my-bucket/templates/template_file"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Note on "destroy" / "apply"
 //

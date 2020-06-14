@@ -32,8 +32,9 @@ import * as utilities from "../utilities";
  *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
- * ## Example Usage - Notification Channel Basic
+ * ## Example Usage
  *
+ * ### Notification Channel Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,8 +48,8 @@ import * as utilities from "../utilities";
  *     type: "email",
  * });
  * ```
- * ## Example Usage - Notification Channel Sensitive
  *
+ * ### Notification Channel Sensitive
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -16,8 +16,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
  *
- * ## Example Usage - TPU Node Basic
+ * ## Example Usage
  *
+ * ### TPU Node Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,8 +32,8 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.2.0.0/29",
  * });
  * ```
- * ## Example Usage - TPU Node Full
  *
+ * ### TPU Node Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

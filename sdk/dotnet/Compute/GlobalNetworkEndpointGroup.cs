@@ -20,8 +20,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
     /// 
-    /// ## Example Usage - Global Network Endpoint Group
+    /// ## Example Usage
     /// 
+    /// ### Global Network Endpoint Group
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,8 +41,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Global Network Endpoint Group Ip Address
     /// 
+    /// ### Global Network Endpoint Group Ip Address
     /// 
     /// ```csharp
     /// using Pulumi;

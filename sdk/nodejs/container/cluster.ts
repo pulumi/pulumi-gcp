@@ -15,7 +15,9 @@ import * as utilities from "../utilities";
  * passwords as well as certificate outputs will be stored in the raw state as
  * plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
- * ## Example Usage - with a separately managed node pool (recommended)
+ * ## Example Usage
+ *
+ * ### With A Separately Managed Node Pool (Recommended)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -51,7 +53,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Example Usage - with the default node pool
+ * ### With The Default Node Pool
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -129,7 +131,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly authenticatorGroupsConfig!: pulumi.Output<outputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
-     *
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -166,7 +167,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableBinaryAuthorization!: pulumi.Output<boolean | undefined>;
     /**
-     *
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
     public readonly enableIntranodeVisibility!: pulumi.Output<boolean | undefined>;
@@ -401,13 +401,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
     /**
-     *
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     public readonly verticalPodAutoscaling!: pulumi.Output<outputs.container.ClusterVerticalPodAutoscaling | undefined>;
     /**
-     *
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.
@@ -548,7 +546,6 @@ export interface ClusterState {
      */
     readonly authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
-     *
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -585,7 +582,6 @@ export interface ClusterState {
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
     /**
-     *
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
     readonly enableIntranodeVisibility?: pulumi.Input<boolean>;
@@ -820,13 +816,11 @@ export interface ClusterState {
      */
     readonly tpuIpv4CidrBlock?: pulumi.Input<string>;
     /**
-     *
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     readonly verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
-     *
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.
@@ -850,7 +844,6 @@ export interface ClusterArgs {
      */
     readonly authenticatorGroupsConfig?: pulumi.Input<inputs.container.ClusterAuthenticatorGroupsConfig>;
     /**
-     *
      * Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
      * automatically adjust the size of the cluster and create/delete node pools based
      * on the current needs of the cluster's workload. See the
@@ -887,7 +880,6 @@ export interface ClusterArgs {
      */
     readonly enableBinaryAuthorization?: pulumi.Input<boolean>;
     /**
-     *
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
     readonly enableIntranodeVisibility?: pulumi.Input<boolean>;
@@ -1089,13 +1081,11 @@ export interface ClusterArgs {
      */
     readonly subnetwork?: pulumi.Input<string>;
     /**
-     *
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
     readonly verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
-     *
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.

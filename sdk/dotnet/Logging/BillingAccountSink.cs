@@ -71,6 +71,16 @@ namespace Pulumi.Gcp.Logging
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
         /// ```csharp
         /// using Pulumi;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
@@ -159,6 +169,16 @@ namespace Pulumi.Gcp.Logging
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
         /// ```csharp
         /// using Pulumi;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
@@ -201,6 +221,16 @@ namespace Pulumi.Gcp.Logging
         /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
         /// ```csharp
         /// using Pulumi;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }

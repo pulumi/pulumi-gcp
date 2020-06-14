@@ -49,8 +49,9 @@ class Endpoint(pulumi.CustomResource):
         * How-to Guides
             * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 
-        ## Example Usage - Service Directory Endpoint Basic
+        ## Example Usage
 
+        ### Service Directory Endpoint Basic
 
         ```python
         import pulumi

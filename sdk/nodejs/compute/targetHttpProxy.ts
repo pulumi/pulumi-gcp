@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
- * ## Example Usage - Target Http Proxy Basic
+ * ## Example Usage
  *
+ * ### Target Http Proxy Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,8 +51,8 @@ import * as utilities from "../utilities";
  * });
  * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {urlMap: defaultURLMap.id});
  * ```
- * ## Example Usage - Target Http Proxy Https Redirect
  *
+ * ### Target Http Proxy Https Redirect
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

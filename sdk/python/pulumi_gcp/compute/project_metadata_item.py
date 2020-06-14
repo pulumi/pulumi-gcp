@@ -43,7 +43,6 @@ class ProjectMetadataItem(pulumi.CustomResource):
             value="my_value")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The metadata key to set.

@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Identity Platform Tenant Inbound Saml Config Basic
+ * ## Example Usage
  *
+ * ### Identity Platform Tenant Inbound Saml Config Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

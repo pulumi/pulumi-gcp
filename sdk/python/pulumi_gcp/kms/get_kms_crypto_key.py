@@ -92,7 +92,6 @@ def get_kms_crypto_key(key_ring=None,name=None,opts=None):
     ```
 
 
-
     :param str key_ring: The `self_link` of the Google Cloud Platform KeyRing to which the key belongs.
     :param str name: The CryptoKey's name.
            A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`

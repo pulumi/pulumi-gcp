@@ -94,8 +94,9 @@ class Queue(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Queue Basic
+        ## Example Usage
 
+        ### Queue Basic
 
         ```python
         import pulumi

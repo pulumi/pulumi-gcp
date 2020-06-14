@@ -91,8 +91,9 @@ class Hl7Store(pulumi.CustomResource):
         * How-to Guides
             * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 
-        ## Example Usage - Healthcare Hl7 V2 Store Basic
+        ## Example Usage
 
+        ### Healthcare Hl7 V2 Store Basic
 
         ```python
         import pulumi
@@ -109,8 +110,8 @@ class Hl7Store(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-        ## Example Usage - Healthcare Hl7 V2 Store Parser Config
 
+        ### Healthcare Hl7 V2 Store Parser Config
 
         ```python
         import pulumi

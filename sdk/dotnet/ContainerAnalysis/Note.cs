@@ -21,8 +21,9 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///     * [Official Documentation](https://cloud.google.com/container-analysis/)
     ///     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
     /// 
-    /// ## Example Usage - Container Analysis Note Basic
+    /// ## Example Usage
     /// 
+    /// ### Container Analysis Note Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -46,8 +47,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Container Analysis Note Attestation Full
     /// 
+    /// ### Container Analysis Note Attestation Full
     /// 
     /// ```csharp
     /// using Pulumi;

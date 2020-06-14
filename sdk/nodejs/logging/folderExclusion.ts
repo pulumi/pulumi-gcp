@@ -20,14 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myFolder = new gcp.organizations.Folder("my-folder", {
+ * const my_folder = new gcp.organizations.Folder("my-folder", {
  *     displayName: "My folder",
  *     parent: "organizations/123456",
  * });
- * const myExclusion = new gcp.logging.FolderExclusion("my-exclusion", {
+ * const my_exclusion = new gcp.logging.FolderExclusion("my-exclusion", {
  *     folder: my_folder.name,
  *     description: "Exclude GCE instance debug logs",
- *     filter: "resource.type = gceInstance AND severity <= DEBUG",
+ *     filter: "resource.type = gce_instance AND severity <= DEBUG",
  * });
  * ```
  */

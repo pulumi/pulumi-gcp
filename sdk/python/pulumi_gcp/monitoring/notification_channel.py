@@ -99,8 +99,9 @@ class NotificationChannel(pulumi.CustomResource):
             * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
-        ## Example Usage - Notification Channel Basic
+        ## Example Usage
 
+        ### Notification Channel Basic
 
         ```python
         import pulumi
@@ -113,8 +114,8 @@ class NotificationChannel(pulumi.CustomResource):
             },
             type="email")
         ```
-        ## Example Usage - Notification Channel Sensitive
 
+        ### Notification Channel Sensitive
 
         ```python
         import pulumi

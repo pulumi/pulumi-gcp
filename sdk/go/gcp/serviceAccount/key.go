@@ -11,6 +11,40 @@ import (
 )
 
 // Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
+//
+//
+// ## Example Usage
+//
+// ### Creating A New Key Pair
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myaccount, err := serviceAccount.NewAccount(ctx, "myaccount", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("myaccount"),
+// 			DisplayName: pulumi.String("My Service Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		mykey, err := serviceAccount.NewKey(ctx, "mykey", &serviceAccount.KeyArgs{
+// 			ServiceAccountId: myaccount.Name,
+// 			PublicKeyType:    pulumi.String("TYPE_X509_PEM_FILE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Key struct {
 	pulumi.CustomResourceState
 

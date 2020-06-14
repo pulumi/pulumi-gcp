@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const imageStore = new gcp.storage.Bucket("image-store", {location: "EU"});
+ * const image_store = new gcp.storage.Bucket("image-store", {location: "EU"});
  * const image = new gcp.storage.BucketObject("image", {
  *     bucket: image_store.name,
  *     source: new pulumi.asset.FileAsset("image1.jpg"),
  * });
- * const imageStoreAcl = new gcp.storage.ObjectACL("image-store-acl", {
+ * const image_store_acl = new gcp.storage.ObjectACL("image-store-acl", {
  *     bucket: image_store.name,
  *     object: image.outputName,
  *     roleEntities: [

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const mySslPolicy = pulumi.output(gcp.compute.getSSLPolicy({
+ * const my_ssl_policy = pulumi.output(gcp.compute.getSSLPolicy({
  *     name: "production-ssl-policy",
  * }, { async: true }));
  * ```

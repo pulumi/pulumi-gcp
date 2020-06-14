@@ -17,6 +17,96 @@ import (
 // * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
 // * How-to Guides
 //     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
+//
+// ## Example Usage
+//
+// ### Pubsub Topic Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+// 			Labels: map[string]interface{}{
+// 				"foo": "bar",
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Pubsub Topic Cmek
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+// 			KeyRing: keyRing.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+// 			KmsKeyName: cryptoKey.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Pubsub Topic Geo Restricted
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+// 			MessageStoragePolicy: &pubsub.TopicMessageStoragePolicyArgs{
+// 				AllowedPersistenceRegions: pulumi.StringArray{
+// 					pulumi.String("europe-west3"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Topic struct {
 	pulumi.CustomResourceState
 

@@ -62,7 +62,6 @@ class OrganizationBucketConfig(pulumi.CustomResource):
             bucket_id="_Default")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.

@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
  *
- * ## Example Usage - App Engine Firewall Rule Basic
+ * ## Example Usage
  *
+ * ### App Engine Firewall Rule Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

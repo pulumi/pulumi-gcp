@@ -22,8 +22,9 @@ namespace Pulumi.Gcp.Monitoring
     /// &gt; **Warning:** All arguments including `http_check.auth_info.password` will be stored in the raw
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
-    /// ## Example Usage - Uptime Check Config Http
+    /// ## Example Usage
     /// 
+    /// ### Uptime Check Config Http
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -63,8 +64,8 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Uptime Check Config Https
     /// 
+    /// ### Uptime Check Config Https
     /// 
     /// ```csharp
     /// using Pulumi;

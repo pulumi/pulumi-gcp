@@ -31,6 +31,68 @@ import (
 //     against GCP Cloud Composer before filing bugs against this provider.
 //   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
 //     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
+//
+// ## Example Usage
+//
+// ### Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/composer"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		test, err := composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### With Software (Airflow) Config
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/composer"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		test, err := composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+// 			Config: &composer.EnvironmentConfigArgs{
+// 				SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
+// 					AirflowConfigOverrides: map[string]interface{}{
+// 						"core-loadExample": "True",
+// 					},
+// 					EnvVariables: map[string]interface{}{
+// 						"FOO": "bar",
+// 					},
+// 					PypiPackages: map[string]interface{}{
+// 						"numpy": "",
+// 						"scipy": "==1.1.0",
+// 					},
+// 				},
+// 			},
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Environment struct {
 	pulumi.CustomResourceState
 

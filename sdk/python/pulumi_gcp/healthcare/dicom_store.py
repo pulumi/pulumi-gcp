@@ -57,8 +57,9 @@ class DicomStore(pulumi.CustomResource):
         * How-to Guides
             * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
 
-        ## Example Usage - Healthcare Dicom Store Basic
+        ## Example Usage
 
+        ### Healthcare Dicom Store Basic
 
         ```python
         import pulumi

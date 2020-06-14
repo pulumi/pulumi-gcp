@@ -116,8 +116,9 @@ class Instance(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
-        ## Example Usage - Redis Instance Basic
+        ## Example Usage
 
+        ### Redis Instance Basic
 
         ```python
         import pulumi
@@ -125,8 +126,8 @@ class Instance(pulumi.CustomResource):
 
         cache = gcp.redis.Instance("cache", memory_size_gb=1)
         ```
-        ## Example Usage - Redis Instance Full
 
+        ### Redis Instance Full
 
         ```python
         import pulumi

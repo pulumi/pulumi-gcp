@@ -21,20 +21,21 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  *
- * ## Example Usage - Access Context Manager Service Perimeter Resource Basic
+ * ## Example Usage
  *
+ * ### Access Context Manager Service Perimeter Resource Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const accessPolicy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",
  *     title: "my policy",
  * });
  * const service_perimeter_resourceServicePerimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter-resourceServicePerimeter", {
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     title: "restrictAll",
+ *     title: "restrict_all",
  *     status: {
  *         restrictedServices: ["storage.googleapis.com"],
  *     },

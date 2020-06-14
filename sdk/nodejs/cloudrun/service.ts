@@ -118,8 +118,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Example Usage - Cloud Run Service Traffic Split
- *
+ * ### Cloud Run Service Traffic Split
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -20,6 +20,44 @@ import (
 //     * [Official Documentation](https://cloud.google.com/filestore/docs/creating-instances)
 //     * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
 //     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
+//
+// ## Example Usage
+//
+// ### Filestore Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/filestore"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		instance, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+// 			FileShares: &filestore.InstanceFileSharesArgs{
+// 				CapacityGb: pulumi.Int(2660),
+// 				Name:       pulumi.String("share1"),
+// 			},
+// 			Networks: filestore.InstanceNetworkArray{
+// 				&filestore.InstanceNetworkArgs{
+// 					Modes: pulumi.StringArray{
+// 						pulumi.String("MODE_IPV4"),
+// 					},
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Tier: pulumi.String("PREMIUM"),
+// 			Zone: pulumi.String("us-central1-b"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

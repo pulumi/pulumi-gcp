@@ -27,7 +27,10 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
-        /// ## Example Usage - Monitoring App Engine Service
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Monitoring App Engine Service
         /// 
         /// 
         /// ```csharp
@@ -81,6 +84,8 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// }
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAppEngineServiceResult> InvokeAsync(GetAppEngineServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAppEngineServiceResult>("gcp:monitoring/getAppEngineService:getAppEngineService", args ?? new GetAppEngineServiceArgs(), options.WithVersion());

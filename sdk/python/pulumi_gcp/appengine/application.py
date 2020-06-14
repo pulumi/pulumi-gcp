@@ -106,7 +106,6 @@ class Application(pulumi.CustomResource):
             location_id="us-central")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.

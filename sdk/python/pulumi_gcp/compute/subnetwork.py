@@ -155,8 +155,9 @@ class Subnetwork(pulumi.CustomResource):
             * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
             * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
 
-        ## Example Usage - Subnetwork Basic
+        ## Example Usage
 
+        ### Subnetwork Basic
 
         ```python
         import pulumi
@@ -172,8 +173,8 @@ class Subnetwork(pulumi.CustomResource):
                 "ip_cidr_range": "192.168.10.0/24",
             }])
         ```
-        ## Example Usage - Subnetwork Logging Config
 
+        ### Subnetwork Logging Config
 
         ```python
         import pulumi
@@ -190,8 +191,8 @@ class Subnetwork(pulumi.CustomResource):
                 "metadata": "INCLUDE_ALL_METADATA",
             })
         ```
-        ## Example Usage - Subnetwork Internal L7lb
 
+        ### Subnetwork Internal L7lb
 
         ```python
         import pulumi

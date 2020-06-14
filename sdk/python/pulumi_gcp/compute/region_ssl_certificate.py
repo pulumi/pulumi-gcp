@@ -77,8 +77,9 @@ class RegionSslCertificate(pulumi.CustomResource):
         > **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
-        ## Example Usage - Region Ssl Certificate Basic
+        ## Example Usage
 
+        ### Region Ssl Certificate Basic
 
         ```python
         import pulumi
@@ -91,8 +92,8 @@ class RegionSslCertificate(pulumi.CustomResource):
             private_key=(lambda path: open(path).read())("path/to/private.key"),
             certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
         ```
-        ## Example Usage - Region Ssl Certificate Target Https Proxies
 
+        ### Region Ssl Certificate Target Https Proxies
 
         ```python
         import pulumi

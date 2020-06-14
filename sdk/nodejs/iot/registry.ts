@@ -16,40 +16,41 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/iot/docs/)
  *
- * ## Example Usage - Cloudiot Device Registry Basic
+ * ## Example Usage
  *
+ * ### Cloudiot Device Registry Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testRegistry = new gcp.iot.Registry("test-registry", {});
+ * const test_registry = new gcp.iot.Registry("test-registry", {});
  * ```
- * ## Example Usage - Cloudiot Device Registry Single Event Notification Configs
  *
+ * ### Cloudiot Device Registry Single Event Notification Configs
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultTelemetry = new gcp.pubsub.Topic("default-telemetry", {});
- * const testRegistry = new gcp.iot.Registry("test-registry", {event_notification_configs: [{
+ * const default_telemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const test_registry = new gcp.iot.Registry("test-registry", {event_notification_configs: [{
  *     pubsubTopicName: default_telemetry.id,
  *     subfolderMatches: "",
  * }]});
  * ```
- * ## Example Usage - Cloudiot Device Registry Full
  *
+ * ### Cloudiot Device Registry Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  * import * from "fs";
  *
- * const defaultDevicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
- * const defaultTelemetry = new gcp.pubsub.Topic("default-telemetry", {});
- * const additionalTelemetry = new gcp.pubsub.Topic("additional-telemetry", {});
- * const testRegistry = new gcp.iot.Registry("test-registry", {
+ * const default_devicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
+ * const default_telemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const additional_telemetry = new gcp.pubsub.Topic("additional-telemetry", {});
+ * const test_registry = new gcp.iot.Registry("test-registry", {
  *     event_notification_configs: [
  *         {
  *             pubsubTopicName: additional_telemetry.id,

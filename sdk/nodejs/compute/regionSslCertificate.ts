@@ -19,8 +19,9 @@ import * as utilities from "../utilities";
  * > **Warning:** All arguments including `certificate` and `privateKey` will be stored in the raw
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
- * ## Example Usage - Region Ssl Certificate Basic
+ * ## Example Usage
  *
+ * ### Region Ssl Certificate Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,8 +36,8 @@ import * as utilities from "../utilities";
  *     certificate: fs.readFileSync("path/to/certificate.crt"),
  * });
  * ```
- * ## Example Usage - Region Ssl Certificate Target Https Proxies
  *
+ * ### Region Ssl Certificate Target Https Proxies
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,9 +50,9 @@ import * as utilities from "../utilities";
  * // the specified configuration, the provider will destroy the existing
  * // resource and create a replacement. To effectively use an SSL
  * // certificate resource with a Target HTTPS Proxy resource, it's
- * // recommended to specify createBeforeDestroy in a lifecycle block.
+ * // recommended to specify create_before_destroy in a lifecycle block.
  * // Either omit the Instance Template name attribute, specify a partial
- * // name with name_prefix, or use randomId resource. Example:
+ * // name with name_prefix, or use random_id resource. Example:
  * const defaultRegionSslCertificate = new gcp.compute.RegionSslCertificate("defaultRegionSslCertificate", {
  *     region: "us-central1",
  *     namePrefix: "my-certificate-",

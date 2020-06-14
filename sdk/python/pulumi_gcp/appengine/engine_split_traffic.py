@@ -39,8 +39,9 @@ class EngineSplitTraffic(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
 
-        ## Example Usage - App Engine Service Split Traffic
+        ## Example Usage
 
+        ### App Engine Service Split Traffic
 
         ```python
         import pulumi

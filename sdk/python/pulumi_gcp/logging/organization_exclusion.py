@@ -56,7 +56,6 @@ class OrganizationExclusion(pulumi.CustomResource):
             org_id="123456789")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description.

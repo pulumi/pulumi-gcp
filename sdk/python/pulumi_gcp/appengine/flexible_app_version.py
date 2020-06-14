@@ -66,7 +66,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
     """
     delete_service_on_destroy: pulumi.Output[bool]
     """
-    If set to `true`, the service will be deleted if it is the last version.    
+    If set to `true`, the service will be deleted if it is the last version.
     """
     deployment: pulumi.Output[dict]
     """
@@ -289,8 +289,9 @@ class FlexibleAppVersion(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
 
-        ## Example Usage - App Engine Flexible App Version
+        ## Example Usage
 
+        ### App Engine Flexible App Version
 
         ```python
         import pulumi
@@ -363,7 +364,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[dict] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
-        :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.    
+        :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
         :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] endpoints_api_service: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
@@ -629,7 +630,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         :param pulumi.Input[dict] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers.
                Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
-        :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.    
+        :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
         :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] endpoints_api_service: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.

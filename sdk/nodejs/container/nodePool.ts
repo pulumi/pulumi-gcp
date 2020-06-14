@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
  * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
  *
- * ## Example Usage - using a separately managed node pool (recommended)
+ * ## Example Usage
+ *
+ * ### Using A Separately Managed Node Pool (Recommended)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -37,7 +39,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Example Usage - 2 node pools, 1 separately managed + the default node pool
+ * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -164,7 +166,6 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly nodeCount!: pulumi.Output<number>;
     /**
-     *
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
      * cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -312,7 +313,6 @@ export interface NodePoolState {
      */
     readonly nodeCount?: pulumi.Input<number>;
     /**
-     *
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
      * cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -398,7 +398,6 @@ export interface NodePoolArgs {
      */
     readonly nodeCount?: pulumi.Input<number>;
     /**
-     *
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
      * cluster's zone for zonal clusters. If unspecified, the cluster-level

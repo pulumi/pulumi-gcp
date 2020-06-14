@@ -21,6 +21,62 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/updatePeering)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
+//
+// ## Example Usage
+//
+// ### Network Peering Routes Config Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		networkPrimary, err := compute.NewNetwork(ctx, "networkPrimary", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		networkSecondary, err := compute.NewNetwork(ctx, "networkSecondary", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		peeringPrimary, err := compute.NewNetworkPeering(ctx, "peeringPrimary", &compute.NetworkPeeringArgs{
+// 			Network:            networkPrimary.ID(),
+// 			PeerNetwork:        networkSecondary.ID(),
+// 			ImportCustomRoutes: pulumi.Bool(true),
+// 			ExportCustomRoutes: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		peeringPrimaryRoutes, err := compute.NewNetworkPeeringRoutesConfig(ctx, "peeringPrimaryRoutes", &compute.NetworkPeeringRoutesConfigArgs{
+// 			Peering:            peeringPrimary.Name,
+// 			Network:            networkPrimary.Name,
+// 			ImportCustomRoutes: pulumi.Bool(true),
+// 			ExportCustomRoutes: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		peeringSecondary, err := compute.NewNetworkPeering(ctx, "peeringSecondary", &compute.NetworkPeeringArgs{
+// 			Network:     networkSecondary.ID(),
+// 			PeerNetwork: networkPrimary.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type NetworkPeeringRoutesConfig struct {
 	pulumi.CustomResourceState
 

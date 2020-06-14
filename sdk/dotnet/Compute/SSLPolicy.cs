@@ -20,8 +20,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
     /// 
-    /// ## Example Usage - Ssl Policy Basic
+    /// ## Example Usage
     /// 
+    /// ### Ssl Policy Basic
     /// 
     /// ```csharp
     /// using Pulumi;

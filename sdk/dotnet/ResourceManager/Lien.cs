@@ -14,8 +14,9 @@ namespace Pulumi.Gcp.ResourceManager
     /// 
     /// 
     /// 
-    /// ## Example Usage - Resource Manager Lien
+    /// ## Example Usage
     /// 
+    /// ### Resource Manager Lien
     /// 
     /// ```csharp
     /// using Pulumi;

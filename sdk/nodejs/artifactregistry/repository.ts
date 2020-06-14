@@ -13,38 +13,39 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
  *
- * ## Example Usage - Artifact Registry Repository Basic
+ * ## Example Usage
  *
+ * ### Artifact Registry Repository Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myRepo = new gcp.artifactregistry.Repository("my-repo", {
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
  *     repositoryId: "my-repository",
  *     description: "example docker repository",
  *     format: "DOCKER",
  * });
  * ```
- * ## Example Usage - Artifact Registry Repository Iam
  *
+ * ### Artifact Registry Repository Iam
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myRepo = new gcp.artifactregistry.Repository("my-repo", {
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
  *     repositoryId: "my-repository",
  *     description: "example docker repository with iam",
  *     format: "DOCKER",
  * });
- * const testAccount = new gcp.serviceAccount.Account("test-account", {
+ * const test_account = new gcp.serviceAccount.Account("test-account", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",
  * });
- * const testIam = new gcp.artifactregistry.RepositoryIamMember("test-iam", {
+ * const test_iam = new gcp.artifactregistry.RepositoryIamMember("test-iam", {
  *     location: my_repo.location,
  *     repository: my_repo.name,
  *     role: "roles/artifactregistry.reader",

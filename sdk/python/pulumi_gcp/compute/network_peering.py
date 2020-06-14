@@ -12,12 +12,10 @@ from .. import utilities, tables
 class NetworkPeering(pulumi.CustomResource):
     export_custom_routes: pulumi.Output[bool]
     """
-
     Whether to export the custom routes to the peer network. Defaults to `false`.
     """
     import_custom_routes: pulumi.Output[bool]
     """
-
     Whether to export the custom routes from the peer network. Defaults to `false`.
     """
     name: pulumi.Output[str]
@@ -72,13 +70,10 @@ class NetworkPeering(pulumi.CustomResource):
             peer_network=default.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] export_custom_routes: 
-               Whether to export the custom routes to the peer network. Defaults to `false`.
-        :param pulumi.Input[bool] import_custom_routes: 
-               Whether to export the custom routes from the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] import_custom_routes: Whether to export the custom routes from the peer network. Defaults to `false`.
         :param pulumi.Input[str] name: Name of the peering.
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
@@ -127,10 +122,8 @@ class NetworkPeering(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] export_custom_routes: 
-               Whether to export the custom routes to the peer network. Defaults to `false`.
-        :param pulumi.Input[bool] import_custom_routes: 
-               Whether to export the custom routes from the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] import_custom_routes: Whether to export the custom routes from the peer network. Defaults to `false`.
         :param pulumi.Input[str] name: Name of the peering.
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network

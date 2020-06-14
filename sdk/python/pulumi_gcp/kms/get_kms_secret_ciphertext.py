@@ -59,8 +59,6 @@ def get_kms_secret_ciphertext(crypto_key=None,plaintext=None,opts=None):
     data outside of resource definitions.
 
 
-
-
     :param str crypto_key: The id of the CryptoKey that will be used to
            encrypt the provided plaintext. This is represented by the format
            `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.

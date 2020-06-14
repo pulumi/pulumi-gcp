@@ -24,8 +24,9 @@ namespace Pulumi.Gcp.DataCatalog
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
-    /// ## Example Usage - Data Catalog Entry Basic
+    /// ## Example Usage
     /// 
+    /// ### Data Catalog Entry Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -50,8 +51,8 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Data Catalog Entry Full
     /// 
+    /// ### Data Catalog Entry Full
     /// 
     /// ```csharp
     /// using Pulumi;

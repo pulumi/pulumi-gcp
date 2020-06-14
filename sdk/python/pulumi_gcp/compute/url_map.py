@@ -714,8 +714,9 @@ class URLMap(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
 
-        ## Example Usage - Url Map Basic
+        ## Example Usage
 
+        ### Url Map Basic
 
         ```python
         import pulumi
@@ -782,8 +783,8 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ## Example Usage - Url Map Traffic Director Route
 
+        ### Url Map Traffic Director Route
 
         ```python
         import pulumi
@@ -859,8 +860,8 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ## Example Usage - Url Map Traffic Director Route Partial
 
+        ### Url Map Traffic Director Route Partial
 
         ```python
         import pulumi
@@ -907,8 +908,8 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ## Example Usage - Url Map Traffic Director Path
 
+        ### Url Map Traffic Director Path
 
         ```python
         import pulumi
@@ -1007,8 +1008,8 @@ class URLMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ## Example Usage - Url Map Traffic Director Path Partial
 
+        ### Url Map Traffic Director Path Partial
 
         ```python
         import pulumi

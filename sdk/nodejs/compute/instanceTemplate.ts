@@ -150,7 +150,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
  *     // boot disk
  *     disks: [{
  *         sourceImage: "debian-cloud/debian-9",

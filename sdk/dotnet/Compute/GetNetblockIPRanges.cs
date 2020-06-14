@@ -14,7 +14,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
         /// 
-        /// ## Example Usage - Cloud Ranges
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Cloud Ranges
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -38,6 +41,9 @@ namespace Pulumi.Gcp.Compute
         ///     public Output&lt;string&gt; CidrBlocksIpv6 { get; set; }
         /// }
         /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetblockIPRangesResult> InvokeAsync(GetNetblockIPRangesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? new GetNetblockIPRangesArgs(), options.WithVersion());

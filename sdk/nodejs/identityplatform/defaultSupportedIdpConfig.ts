@@ -13,14 +13,15 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Identity Platform Default Supported Idp Config Basic
+ * ## Example Usage
  *
+ * ### Identity Platform Default Supported Idp Config Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const idpConfig = new gcp.identityplatform.DefaultSupportedIdpConfig("idpConfig", {
+ * const idpConfig = new gcp.identityplatform.DefaultSupportedIdpConfig("idp_config", {
  *     clientId: "client-id",
  *     clientSecret: "secret",
  *     enabled: true,

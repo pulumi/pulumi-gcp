@@ -90,8 +90,9 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
         In conclusion: Be extremely cautious.
 
-        ## Example Usage - Managed Ssl Certificate Basic
+        ## Example Usage
 
+        ### Managed Ssl Certificate Basic
 
         ```python
         import pulumi

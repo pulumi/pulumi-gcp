@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Resource Policy Basic
+ * ## Example Usage
  *
+ * ### Resource Policy Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,8 +31,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Resource Policy Full
  *
+ * ### Resource Policy Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,8 +61,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Resource Policy Placement Policy
  *
+ * ### Resource Policy Placement Policy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

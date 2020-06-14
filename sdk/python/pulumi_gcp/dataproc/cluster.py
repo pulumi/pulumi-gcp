@@ -252,7 +252,9 @@ class Cluster(pulumi.CustomResource):
         `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing others will cause recreation of the
         whole cluster!
 
-        ## Example Usage - Basic
+        ## Example Usage
+
+        ### Basic
 
         ```python
         import pulumi
@@ -261,7 +263,7 @@ class Cluster(pulumi.CustomResource):
         simplecluster = gcp.dataproc.Cluster("simplecluster", region="us-central1")
         ```
 
-        ## Example Usage - Advanced
+        ### Advanced
 
         ```python
         import pulumi
@@ -319,7 +321,7 @@ class Cluster(pulumi.CustomResource):
             region="us-central1")
         ```
 
-        ## Example Usage - Using a GPU accelerator
+        ### Using A GPU Accelerator
 
         ```python
         import pulumi

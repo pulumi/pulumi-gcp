@@ -18,8 +18,9 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// 
     /// 
-    /// ## Example Usage - Sql Source Representation Instance Basic
+    /// ## Example Usage
     /// 
+    /// ### Sql Source Representation Instance Basic
     /// 
     /// ```csharp
     /// using Pulumi;

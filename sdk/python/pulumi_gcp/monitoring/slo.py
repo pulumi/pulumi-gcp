@@ -314,8 +314,9 @@ class Slo(pulumi.CustomResource):
             * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
-        ## Example Usage - Monitoring Slo Appengine
+        ## Example Usage
 
+        ### Monitoring Slo Appengine
 
         ```python
         import pulumi

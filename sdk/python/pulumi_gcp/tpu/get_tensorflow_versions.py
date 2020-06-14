@@ -58,7 +58,7 @@ def get_tensorflow_versions(project=None,zone=None,opts=None):
     available = gcp.tpu.get_tensorflow_versions()
     ```
 
-    ## Example Usage: Configure Basic TPU Node with available version
+    ### Configure Basic TPU Node With Available Version
 
     ```python
     import pulumi

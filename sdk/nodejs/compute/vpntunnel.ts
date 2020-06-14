@@ -18,8 +18,9 @@ import * as utilities from "../utilities";
  * > **Warning:** All arguments including `sharedSecret` will be stored in the raw
  * state as plain-text.
  *
- * ## Example Usage - Vpn Tunnel Basic
+ * ## Example Usage
  *
+ * ### Vpn Tunnel Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,8 +58,8 @@ import * as utilities from "../utilities";
  *     nextHopVpnTunnel: tunnel1.id,
  * });
  * ```
- * ## Example Usage - Vpn Tunnel Beta
  *
+ * ### Vpn Tunnel Beta
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

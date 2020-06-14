@@ -40,8 +40,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
     /// 
-    /// ## Example Usage - Route Basic
+    /// ## Example Usage
     /// 
+    /// ### Route Basic
     /// 
     /// ```csharp
     /// using Pulumi;

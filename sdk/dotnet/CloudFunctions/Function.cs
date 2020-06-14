@@ -21,7 +21,9 @@ namespace Pulumi.Gcp.CloudFunctions
     /// or view the [Cloud Functions IAM resources](https://www.terraform.io/docs/providers/google/r/cloudfunctions_cloud_function_iam.html)
     /// for Cloud Functions.
     /// 
-    /// ## Example Usage - Public Function
+    /// ## Example Usage
+    /// 
+    /// ### Public Function
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -63,7 +65,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// }
     /// ```
     /// 
-    /// ## Example Usage - Single User
+    /// ### Single User
     /// 
     /// ```csharp
     /// using Pulumi;

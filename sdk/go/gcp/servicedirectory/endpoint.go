@@ -17,6 +17,52 @@ import (
 // * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services.endpoints)
 // * How-to Guides
 //     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
+//
+// ## Example Usage
+//
+// ### Service Directory Endpoint Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/servicedirectory"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleNamespace, err := servicedirectory.NewNamespace(ctx, "exampleNamespace", &servicedirectory.NamespaceArgs{
+// 			NamespaceId: pulumi.String("example-namespace"),
+// 			Location:    pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleService, err := servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
+// 			ServiceId: pulumi.String("example-service"),
+// 			Namespace: exampleNamespace.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleEndpoint, err := servicedirectory.NewEndpoint(ctx, "exampleEndpoint", &servicedirectory.EndpointArgs{
+// 			EndpointId: pulumi.String("example-endpoint"),
+// 			Service:    exampleService.ID(),
+// 			Metadata: map[string]interface{}{
+// 				"stage":  "prod",
+// 				"region": "us-central1",
+// 			},
+// 			Address: pulumi.String("1.2.3.4"),
+// 			Port:    pulumi.Int(5353),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Endpoint struct {
 	pulumi.CustomResourceState
 

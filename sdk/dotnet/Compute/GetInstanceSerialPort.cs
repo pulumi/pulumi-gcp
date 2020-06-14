@@ -14,9 +14,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get the serial port output from a Compute Instance. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceSerialPortResult> InvokeAsync(GetInstanceSerialPortArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? new GetInstanceSerialPortArgs(), options.WithVersion());

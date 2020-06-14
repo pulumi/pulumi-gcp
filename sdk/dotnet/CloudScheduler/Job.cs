@@ -24,8 +24,9 @@ namespace Pulumi.Gcp.CloudScheduler
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/scheduler/)
     /// 
-    /// ## Example Usage - Scheduler Job Http
+    /// ## Example Usage
     /// 
+    /// ### Scheduler Job Http
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -55,8 +56,8 @@ namespace Pulumi.Gcp.CloudScheduler
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Scheduler Job App Engine
     /// 
+    /// ### Scheduler Job App Engine
     /// 
     /// ```csharp
     /// using Pulumi;

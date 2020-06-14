@@ -23,8 +23,9 @@ import * as utilities from "../utilities";
  * > **Warning:** All arguments including `secret` will be stored in the raw
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
- * ## Example Usage - Storage Hmac Key
+ * ## Example Usage
  *
+ * ### Storage Hmac Key
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

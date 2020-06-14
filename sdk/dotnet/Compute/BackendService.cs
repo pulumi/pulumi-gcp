@@ -24,8 +24,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     /// 
-    /// ## Example Usage - Backend Service Basic
+    /// ## Example Usage
     /// 
+    /// ### Backend Service Basic
     /// 
     /// ```csharp
     /// using Pulumi;

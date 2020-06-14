@@ -67,7 +67,6 @@ class Folder(pulumi.CustomResource):
             parent=department1.name)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The folder’s display name.

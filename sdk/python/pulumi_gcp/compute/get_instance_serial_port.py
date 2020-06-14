@@ -71,7 +71,6 @@ def get_instance_serial_port(instance=None,port=None,project=None,zone=None,opts
     ```
 
 
-
     :param str instance: The name of the Compute Instance to read output from.
     :param float port: The number of the serial port to read output from. Possible values are 1-4.
     :param str project: The project in which the Compute Instance exists. If it

@@ -50,7 +50,6 @@ class AccountIamMember(pulumi.CustomResource):
             role="roles/billing.viewer")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account_id: The billing account id.

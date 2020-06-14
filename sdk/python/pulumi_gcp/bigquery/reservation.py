@@ -45,8 +45,9 @@ class Reservation(pulumi.CustomResource):
         * How-to Guides
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
-        ## Example Usage - Bigquery Reservation Basic
+        ## Example Usage
 
+        ### Bigquery Reservation Basic
 
         ```python
         import pulumi

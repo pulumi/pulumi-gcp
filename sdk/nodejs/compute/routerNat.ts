@@ -16,8 +16,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
  *
- * ## Example Usage - Router Nat Basic
+ * ## Example Usage
  *
+ * ### Router Nat Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,8 +48,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Router Nat Manual Ips
  *
+ * ### Router Nat Manual Ips
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

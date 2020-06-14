@@ -16,8 +16,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
  *
- * ## Example Usage - Healthcare Hl7 V2 Store Basic
+ * ## Example Usage
  *
+ * ### Healthcare Hl7 V2 Store Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,8 +36,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Healthcare Hl7 V2 Store Parser Config
  *
+ * ### Healthcare Hl7 V2 Store Parser Config
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

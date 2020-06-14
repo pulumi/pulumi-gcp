@@ -64,8 +64,9 @@ class InboundSamlConfig(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Identity Platform Inbound Saml Config Basic
+        ## Example Usage
 
+        ### Identity Platform Inbound Saml Config Basic
 
         ```python
         import pulumi

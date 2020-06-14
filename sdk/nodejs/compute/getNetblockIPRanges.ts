@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
  *
- * ## Example Usage - Cloud Ranges
+ * ## Example Usage
+ *
+ * ### Cloud Ranges
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +23,7 @@ import * as utilities from "../utilities";
  * export const cidrBlocksIpv6 = netblock.then(netblock => netblock.cidrBlocksIpv6s);
  * ```
  *
- * ## Example Usage - Allow Health Checks
+ * ### Allow Health Checks
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +33,7 @@ import * as utilities from "../utilities";
  *     rangeType: "legacy-health-checkers",
  * });
  * const _default = new gcp.compute.Network("default", {});
- * const allowHcs = new gcp.compute.Firewall("allow-hcs", {
+ * const allow_hcs = new gcp.compute.Firewall("allow-hcs", {
  *     network: _default.name,
  *     allow: [{
  *         protocol: "tcp",

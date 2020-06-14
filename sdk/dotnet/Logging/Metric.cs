@@ -21,8 +21,9 @@ namespace Pulumi.Gcp.Logging
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
     /// 
-    /// ## Example Usage - Logging Metric Basic
+    /// ## Example Usage
     /// 
+    /// ### Logging Metric Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -77,8 +78,8 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Logging Metric Counter Basic
     /// 
+    /// ### Logging Metric Counter Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -101,8 +102,8 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Logging Metric Counter Labels
     /// 
+    /// ### Logging Metric Counter Labels
     /// 
     /// ```csharp
     /// using Pulumi;

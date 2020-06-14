@@ -11,7 +11,9 @@ import * as utilities from "../utilities";
  * [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
  * for more details.
  *
- * ## Example Usage - searching for projects about to be deleted in an org
+ * ## Example Usage
+ *
+ * ### Searching For Projects About To Be Deleted In An Org
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

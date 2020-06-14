@@ -344,7 +344,6 @@ class Instance(pulumi.CustomResource):
             zone="us-central1-a")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.

@@ -50,8 +50,9 @@ class Tenant(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Identity Platform Tenant Basic
+        ## Example Usage
 
+        ### Identity Platform Tenant Basic
 
         ```python
         import pulumi

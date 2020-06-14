@@ -18,6 +18,34 @@ import (
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
+//
+// ## Example Usage
+//
+// ### App Engine Domain Mapping Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		domainMapping, err := appengine.NewDomainMapping(ctx, "domainMapping", &appengine.DomainMappingArgs{
+// 			DomainName: pulumi.String("verified-domain.com"),
+// 			SslSettings: &appengine.DomainMappingSslSettingsArgs{
+// 				SslManagementType: pulumi.String("AUTOMATIC"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DomainMapping struct {
 	pulumi.CustomResourceState
 

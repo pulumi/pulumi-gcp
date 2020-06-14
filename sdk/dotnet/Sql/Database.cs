@@ -15,8 +15,9 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// 
     /// 
-    /// ## Example Usage - Sql Database Basic
+    /// ## Example Usage
     /// 
+    /// ### Sql Database Basic
     /// 
     /// ```csharp
     /// using Pulumi;

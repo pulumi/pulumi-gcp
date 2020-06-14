@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can interact with",
  * });
- * const adminAccountIam = new gcp.serviceAccount.IAMPolicy("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceAccount.IAMPolicy("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can use",
  * });
- * const adminAccountIam = new gcp.serviceAccount.IAMBinding("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceAccount.IAMBinding("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     role: "roles/iam.serviceAccountUser",
  *     members: ["user:jane@example.com"],
@@ -66,11 +66,11 @@ import * as utilities from "../utilities";
  *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can use",
  * });
- * const adminAccountIam = new gcp.serviceAccount.IAMBinding("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceAccount.IAMBinding("admin-account-iam", {
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         title: "expiresAfter20191231",
+ *         title: "expires_after_2019_12_31",
  *     },
  *     members: ["user:jane@example.com"],
  *     role: "roles/iam.serviceAccountUser",
@@ -89,13 +89,13 @@ import * as utilities from "../utilities";
  *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
  * });
- * const adminAccountIam = new gcp.serviceAccount.IAMMember("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceAccount.IAMMember("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     role: "roles/iam.serviceAccountUser",
  *     member: "user:jane@example.com",
  * });
  * // Allow SA service account use the default GCE account
- * const gceDefaultAccountIam = new gcp.serviceAccount.IAMMember("gce-default-account-iam", {
+ * const gce_default_account_iam = new gcp.serviceAccount.IAMMember("gce-default-account-iam", {
  *     serviceAccountId: _default.then(_default => _default.name),
  *     role: "roles/iam.serviceAccountUser",
  *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
@@ -112,11 +112,11 @@ import * as utilities from "../utilities";
  *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
  * });
- * const adminAccountIam = new gcp.serviceAccount.IAMMember("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceAccount.IAMMember("admin-account-iam", {
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         title: "expiresAfter20191231",
+ *         title: "expires_after_2019_12_31",
  *     },
  *     member: "user:jane@example.com",
  *     role: "roles/iam.serviceAccountUser",
