@@ -12,7 +12,7 @@ blobs:
   provider: s3
   region: us-west-2
 builds:
-- binary: pulumi-resource-consul
+- binary: pulumi-resource-gcp
   dir: provider
   env:
   - CGO_ENABLED=0
@@ -24,8 +24,8 @@ builds:
   - windows
   - linux
   ldflags:
-  - -X github.com/pulumi/pulumi-consul/provider/v2/pkg/version.Version={{.Tag}}
-  main: ./cmd/pulumi-resource-consul/
+  - -X github.com/pulumi/pulumi-gcp/provider/v2/pkg/version.Version={{.Tag}}
+  main: ./cmd/pulumi-resource-gcp/
 changelog:
   skip: true
 release:
