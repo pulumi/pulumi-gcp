@@ -52,8 +52,9 @@ class Database(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Sql Database Basic
+        ## Example Usage
 
+        ### Sql Database Basic
 
         ```python
         import pulumi

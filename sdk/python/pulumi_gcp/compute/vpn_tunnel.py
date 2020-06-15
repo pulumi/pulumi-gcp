@@ -139,8 +139,9 @@ class VPNTunnel(pulumi.CustomResource):
         > **Warning:** All arguments including `shared_secret` will be stored in the raw
         state as plain-text.
 
-        ## Example Usage - Vpn Tunnel Basic
+        ## Example Usage
 
+        ### Vpn Tunnel Basic
 
         ```python
         import pulumi
@@ -173,8 +174,8 @@ class VPNTunnel(pulumi.CustomResource):
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
         ```
-        ## Example Usage - Vpn Tunnel Beta
 
+        ### Vpn Tunnel Beta
 
         ```python
         import pulumi

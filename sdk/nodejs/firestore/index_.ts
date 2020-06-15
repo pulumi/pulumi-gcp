@@ -18,14 +18,15 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
  *
- * ## Example Usage - Firestore Index Basic
+ * ## Example Usage
  *
+ * ### Firestore Index Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myIndex = new gcp.firestore.Index("my-index", {
+ * const my_index = new gcp.firestore.Index("my-index", {
  *     collection: "chatrooms",
  *     fields: [
  *         {

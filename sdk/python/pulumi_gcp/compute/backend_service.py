@@ -367,8 +367,9 @@ class BackendService(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
-        ## Example Usage - Backend Service Basic
+        ## Example Usage
 
+        ### Backend Service Basic
 
         ```python
         import pulumi
@@ -380,8 +381,8 @@ class BackendService(pulumi.CustomResource):
             timeout_sec=1)
         default_backend_service = gcp.compute.BackendService("defaultBackendService", health_checks=[default_http_health_check.id])
         ```
-        ## Example Usage - Backend Service Traffic Director Round Robin
 
+        ### Backend Service Traffic Director Round Robin
 
         ```python
         import pulumi
@@ -395,8 +396,8 @@ class BackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
-        ## Example Usage - Backend Service Traffic Director Ring Hash
 
+        ### Backend Service Traffic Director Ring Hash
 
         ```python
         import pulumi

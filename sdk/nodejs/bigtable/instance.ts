@@ -11,13 +11,15 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/bigtable/) and
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
  *
- * ## Example Usage - Production Instance
+ * ## Example Usage
+ *
+ * ### Production Instance
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const productionInstance = new gcp.bigtable.Instance("production-instance", {
+ * const production_instance = new gcp.bigtable.Instance("production-instance", {
  *     clusters: [{
  *         clusterId: "tf-instance-cluster",
  *         numNodes: 1,
@@ -27,13 +29,13 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Example Usage - Development Instance
+ * ### Development Instance
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const developmentInstance = new gcp.bigtable.Instance("development-instance", {
+ * const development_instance = new gcp.bigtable.Instance("development-instance", {
  *     clusters: [{
  *         clusterId: "tf-instance-cluster",
  *         storageType: "HDD",

@@ -45,8 +45,9 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
-        ## Example Usage - Global Network Endpoint
+        ## Example Usage
 
+        ### Global Network Endpoint
 
         ```python
         import pulumi

@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *         role: "roles/iap.httpsResourceAccessor",
  *         members: ["user:jane@example.com"],
  *         condition: {
- *             title: "expiresAfter20191231",
+ *             title: "expires_after_2019_12_31",
  *             description: "Expiring at midnight of 2019-12-31",
  *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
  *         },
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  *     role: "roles/iap.httpsResourceAccessor",
  *     members: ["user:jane@example.com"],
  *     condition: {
- *         title: "expiresAfter20191231",
+ *         title: "expires_after_2019_12_31",
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
  *     },
@@ -117,7 +117,7 @@ import * as utilities from "../utilities";
  *     role: "roles/iap.httpsResourceAccessor",
  *     member: "user:jane@example.com",
  *     condition: {
- *         title: "expiresAfter20191231",
+ *         title: "expires_after_2019_12_31",
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
  *     },

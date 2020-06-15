@@ -78,8 +78,9 @@ class TargetHttpsProxy(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
-        ## Example Usage - Target Https Proxy Basic
+        ## Example Usage
 
+        ### Target Https Proxy Basic
 
         ```python
         import pulumi

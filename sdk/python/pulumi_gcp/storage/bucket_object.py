@@ -99,7 +99,6 @@ class BucketObject(pulumi.CustomResource):
             source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"))
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the containing bucket.

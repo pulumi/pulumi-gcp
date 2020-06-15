@@ -46,8 +46,9 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
 
-        ## Example Usage - Instance Group Named Port Gke
+        ## Example Usage
 
+        ### Instance Group Named Port Gke
 
         ```python
         import pulumi

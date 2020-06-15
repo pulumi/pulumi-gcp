@@ -111,8 +111,9 @@ class RouterNat(pulumi.CustomResource):
         * How-to Guides
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
-        ## Example Usage - Router Nat Basic
+        ## Example Usage
 
+        ### Router Nat Basic
 
         ```python
         import pulumi
@@ -139,8 +140,8 @@ class RouterNat(pulumi.CustomResource):
                 "filter": "ERRORS_ONLY",
             })
         ```
-        ## Example Usage - Router Nat Manual Ips
 
+        ### Router Nat Manual Ips
 
         ```python
         import pulumi

@@ -16,8 +16,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
  *
- * ## Example Usage - Binary Authorization Attestor Basic
+ * ## Example Usage
  *
+ * ### Binary Authorization Attestor Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

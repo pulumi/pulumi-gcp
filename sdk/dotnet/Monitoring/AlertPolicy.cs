@@ -21,8 +21,9 @@ namespace Pulumi.Gcp.Monitoring
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
     /// 
-    /// ## Example Usage - Monitoring Alert Policy Basic
+    /// ## Example Usage
     /// 
+    /// ### Monitoring Alert Policy Basic
     /// 
     /// ```csharp
     /// using Pulumi;

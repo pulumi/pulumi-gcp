@@ -59,7 +59,6 @@ class User(pulumi.CustomResource):
             password="changeme")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] host: The host the user can connect from. This is only supported

@@ -23,8 +23,9 @@ namespace Pulumi.Gcp.AccessContextManager
     /// * How-to Guides
     ///     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
     /// 
-    /// ## Example Usage - Access Context Manager Access Policy Basic
+    /// ## Example Usage
     /// 
+    /// ### Access Context Manager Access Policy Basic
     /// 
     /// ```csharp
     /// using Pulumi;

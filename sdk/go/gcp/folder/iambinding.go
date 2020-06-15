@@ -20,6 +20,43 @@ import (
 // > **Note:** On create, this resource will overwrite members of any existing roles.
 //     Use `pulumi import` and inspect the output to ensure
 //     your existing members are preserved.
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/folder"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
+// 			DisplayName: pulumi.String("Department 1"),
+// 			Parent:      pulumi.String("organizations/1234567"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		admin, err := folder.NewIAMBinding(ctx, "admin", &folder.IAMBindingArgs{
+// 			Folder: department1.Name,
+// 			Role:   pulumi.String("roles/editor"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:alice@gmail.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type IAMBinding struct {
 	pulumi.CustomResourceState
 

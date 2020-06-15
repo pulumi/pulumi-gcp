@@ -22,8 +22,9 @@ namespace Pulumi.Gcp.Monitoring
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
     /// 
-    /// ## Example Usage - Monitoring Group Basic
+    /// ## Example Usage
     /// 
+    /// ### Monitoring Group Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -42,8 +43,8 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Monitoring Group Subgroup
     /// 
+    /// ### Monitoring Group Subgroup
     /// 
     /// ```csharp
     /// using Pulumi;

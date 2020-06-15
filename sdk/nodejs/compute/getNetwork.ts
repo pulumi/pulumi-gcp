@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myNetwork = pulumi.output(gcp.compute.getNetwork({
+ * const my_network = pulumi.output(gcp.compute.getNetwork({
  *     name: "default-us-east1",
  * }, { async: true }));
  * ```

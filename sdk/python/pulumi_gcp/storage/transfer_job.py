@@ -83,8 +83,7 @@ class TransferJob(pulumi.CustomResource):
         * `excludePrefixes` (`list`) - `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         * `includePrefixes` (`list`) - If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         * `maxTimeElapsedSinceLastModification` (`str`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        * `minTimeElapsedSinceLastModification` (`str`) - 
-          A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        * `minTimeElapsedSinceLastModification` (`str`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 
       * `transferOptions` (`dict`) - Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
         * `deleteObjectsFromSourceAfterTransfer` (`bool`) - Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
@@ -161,7 +160,6 @@ class TransferJob(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
@@ -211,8 +209,7 @@ class TransferJob(pulumi.CustomResource):
             * `excludePrefixes` (`pulumi.Input[list]`) - `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
             * `includePrefixes` (`pulumi.Input[list]`) - If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
             * `maxTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-            * `minTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - 
-              A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+            * `minTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 
           * `transferOptions` (`pulumi.Input[dict]`) - Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
             * `deleteObjectsFromSourceAfterTransfer` (`pulumi.Input[bool]`) - Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
@@ -318,8 +315,7 @@ class TransferJob(pulumi.CustomResource):
             * `excludePrefixes` (`pulumi.Input[list]`) - `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
             * `includePrefixes` (`pulumi.Input[list]`) - If `include_refixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
             * `maxTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-            * `minTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - 
-              A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+            * `minTimeElapsedSinceLastModification` (`pulumi.Input[str]`) - A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 
           * `transferOptions` (`pulumi.Input[dict]`) - Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
             * `deleteObjectsFromSourceAfterTransfer` (`pulumi.Input[bool]`) - Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.

@@ -94,8 +94,9 @@ class HttpHealthCheck(pulumi.CustomResource):
         * How-to Guides
             * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 
-        ## Example Usage - Http Health Check Basic
+        ## Example Usage
 
+        ### Http Health Check Basic
 
         ```python
         import pulumi

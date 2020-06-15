@@ -26,7 +26,10 @@ namespace Pulumi.Gcp.Monitoring
         ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
         /// 
         /// 
-        /// ## Example Usage - Notification Channel Basic
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Notification Channel Basic
         /// 
         /// 
         /// ```csharp
@@ -75,6 +78,8 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// }
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetNotificationChannelResult> InvokeAsync(GetNotificationChannelArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? new GetNotificationChannelArgs(), options.WithVersion());

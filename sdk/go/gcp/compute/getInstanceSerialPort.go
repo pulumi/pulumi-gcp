@@ -9,6 +9,33 @@ import (
 
 // Get the serial port output from a Compute Instance. For more information see
 // the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		serial, err := compute.LookupInstanceSerialPort(ctx, &compute.LookupInstanceSerialPortArgs{
+// 			Instance: "my-instance",
+// 			Zone:     "us-central1-a",
+// 			Port:     1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("serialOut", serial.Contents)
+// 		return nil
+// 	})
+// }
+// ```
 func GetInstanceSerialPort(ctx *pulumi.Context, args *GetInstanceSerialPortArgs, opts ...pulumi.InvokeOption) (*GetInstanceSerialPortResult, error) {
 	var rv GetInstanceSerialPortResult
 	err := ctx.Invoke("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args, &rv, opts...)

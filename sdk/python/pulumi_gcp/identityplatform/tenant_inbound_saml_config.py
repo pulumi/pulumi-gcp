@@ -68,8 +68,9 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Identity Platform Tenant Inbound Saml Config Basic
+        ## Example Usage
 
+        ### Identity Platform Tenant Inbound Saml Config Basic
 
         ```python
         import pulumi

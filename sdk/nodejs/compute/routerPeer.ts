@@ -19,8 +19,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
  *
- * ## Example Usage - Router Peer Basic
+ * ## Example Usage
  *
+ * ### Router Peer Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

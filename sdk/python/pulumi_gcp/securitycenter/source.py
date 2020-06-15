@@ -45,8 +45,9 @@ class Source(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
-        ## Example Usage - Scc Source Basic
+        ## Example Usage
 
+        ### Scc Source Basic
 
         ```python
         import pulumi

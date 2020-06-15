@@ -60,7 +60,6 @@ class IAMMember(pulumi.CustomResource):
             member="user:alice@gmail.com")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.

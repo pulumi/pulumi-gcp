@@ -62,7 +62,6 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
             bucket_id="_Default")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account: The parent resource that contains the logging bucket.

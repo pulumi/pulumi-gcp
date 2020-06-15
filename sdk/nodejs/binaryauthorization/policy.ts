@@ -16,8 +16,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
  *
- * ## Example Usage - Binary Authorization Policy Basic
+ * ## Example Usage
  *
+ * ### Binary Authorization Policy Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,8 +48,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Binary Authorization Policy Global Evaluation
  *
+ * ### Binary Authorization Policy Global Evaluation
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

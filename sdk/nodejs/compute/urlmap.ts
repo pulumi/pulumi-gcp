@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
  *
- * ## Example Usage - Url Map Basic
+ * ## Example Usage
  *
+ * ### Url Map Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -88,8 +89,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Url Map Traffic Director Route
  *
+ * ### Url Map Traffic Director Route
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -167,8 +168,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Url Map Traffic Director Route Partial
  *
+ * ### Url Map Traffic Director Route Partial
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -217,8 +218,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Url Map Traffic Director Path
  *
+ * ### Url Map Traffic Director Path
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -319,8 +320,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Url Map Traffic Director Path Partial
  *
+ * ### Url Map Traffic Director Path Partial
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

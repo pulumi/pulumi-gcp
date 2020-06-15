@@ -18,8 +18,9 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/container-analysis/)
  *     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
  *
- * ## Example Usage - Container Analysis Note Basic
+ * ## Example Usage
  *
+ * ### Container Analysis Note Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,8 +34,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Container Analysis Note Attestation Full
  *
+ * ### Container Analysis Note Attestation Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -86,7 +86,6 @@ class AttachedDisk(pulumi.CustomResource):
             instance=default_instance.id)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] device_name: Specifies a unique device name of your choice that is

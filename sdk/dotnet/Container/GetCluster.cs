@@ -53,7 +53,6 @@ namespace Pulumi.Gcp.Container
         ///     public Output&lt;string&gt; NodePools { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

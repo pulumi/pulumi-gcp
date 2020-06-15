@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *         role: "roles/editor",
  *         members: ["user:jane@example.com"],
  *         condition: {
- *             title: "expiresAfter20191231",
+ *             title: "expires_after_2019_12_31",
  *             description: "Expiring at midnight of 2019-12-31",
  *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
  *         },
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRingIAMBinding("keyRing", {
+ * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
  *     keyRingId: "your-key-ring-id",
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
@@ -77,11 +77,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRingIAMBinding("keyRing", {
+ * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         title: "expiresAfter20191231",
+ *         title: "expires_after_2019_12_31",
  *     },
  *     keyRingId: "your-key-ring-id",
  *     members: ["user:jane@example.com"],
@@ -95,7 +95,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRingIAMMember("keyRing", {
+ * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
  *     keyRingId: "your-key-ring-id",
  *     member: "user:jane@example.com",
  *     role: "roles/editor",
@@ -108,11 +108,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRingIAMMember("keyRing", {
+ * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         title: "expiresAfter20191231",
+ *         title: "expires_after_2019_12_31",
  *     },
  *     keyRingId: "your-key-ring-id",
  *     member: "user:jane@example.com",

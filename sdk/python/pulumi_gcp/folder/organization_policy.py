@@ -82,7 +82,6 @@ class OrganizationPolicy(pulumi.CustomResource):
             folder="folders/123456789")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.

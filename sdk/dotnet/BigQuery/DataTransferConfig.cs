@@ -20,8 +20,9 @@ namespace Pulumi.Gcp.BigQuery
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
     /// 
-    /// ## Example Usage - Scheduled Query
+    /// ## Example Usage
     /// 
+    /// ### Scheduled Query
     /// 
     /// ```csharp
     /// using Pulumi;

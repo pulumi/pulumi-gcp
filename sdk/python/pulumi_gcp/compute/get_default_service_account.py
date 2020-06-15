@@ -77,7 +77,6 @@ def get_default_service_account(project=None,opts=None):
     ```
 
 
-
     :param str project: The project ID. If it is not provided, the provider project is used.
     """
     __args__ = dict()

@@ -331,8 +331,7 @@ class Service(pulumi.CustomResource):
             }])
         ```
 
-        ## Example Usage - Cloud Run Service Traffic Split
-
+        ### Cloud Run Service Traffic Split
 
         ```python
         import pulumi

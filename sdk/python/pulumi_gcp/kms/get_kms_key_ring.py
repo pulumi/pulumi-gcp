@@ -70,7 +70,6 @@ def get_kms_key_ring(location=None,name=None,project=None,opts=None):
     ```
 
 
-
     :param str location: The Google Cloud Platform location for the KeyRing.
            A full list of valid locations can be found by running `gcloud kms locations list`.
     :param str name: The KeyRing's name.

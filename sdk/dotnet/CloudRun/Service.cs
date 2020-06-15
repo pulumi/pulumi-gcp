@@ -178,8 +178,7 @@ namespace Pulumi.Gcp.CloudRun
     /// }
     /// ```
     /// 
-    /// ## Example Usage - Cloud Run Service Traffic Split
-    /// 
+    /// ### Cloud Run Service Traffic Split
     /// 
     /// ```csharp
     /// using Pulumi;

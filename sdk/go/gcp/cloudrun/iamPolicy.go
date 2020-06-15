@@ -19,6 +19,103 @@ import (
 // > **Note:** `cloudrun.IamPolicy` **cannot** be used in conjunction with `cloudrun.IamBinding` and `cloudrun.IamMember` or they will fight over what your policy should be.
 //
 // > **Note:** `cloudrun.IamBinding` resources **can be** used in conjunction with `cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
+//
+//
+//
+// ## google\_cloud\_run\_service\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Binding: []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"role": "roles/viewer",
+// 					"members": []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		policy, err := cloudrun.NewIamPolicy(ctx, "policy", &cloudrun.IamPolicyArgs{
+// 			Location:   pulumi.String(google_cloud_run_service.Default.Location),
+// 			Project:    pulumi.String(google_cloud_run_service.Default.Project),
+// 			Service:    pulumi.String(google_cloud_run_service.Default.Name),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_cloud\_run\_service\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		binding, err := cloudrun.NewIamBinding(ctx, "binding", &cloudrun.IamBindingArgs{
+// 			Location: pulumi.String(google_cloud_run_service.Default.Location),
+// 			Project:  pulumi.String(google_cloud_run_service.Default.Project),
+// 			Service:  pulumi.String(google_cloud_run_service.Default.Name),
+// 			Role:     pulumi.String("roles/viewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_cloud\_run\_service\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		member, err := cloudrun.NewIamMember(ctx, "member", &cloudrun.IamMemberArgs{
+// 			Location: pulumi.String(google_cloud_run_service.Default.Location),
+// 			Project:  pulumi.String(google_cloud_run_service.Default.Project),
+// 			Service:  pulumi.String(google_cloud_run_service.Default.Name),
+// 			Role:     pulumi.String("roles/viewer"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type IamPolicy struct {
 	pulumi.CustomResourceState
 

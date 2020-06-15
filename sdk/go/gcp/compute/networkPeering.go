@@ -22,10 +22,8 @@ import (
 type NetworkPeering struct {
 	pulumi.CustomResourceState
 
-	//
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes pulumi.BoolPtrOutput `pulumi:"exportCustomRoutes"`
-	//
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes pulumi.BoolPtrOutput `pulumi:"importCustomRoutes"`
 	// Name of the peering.
@@ -76,10 +74,8 @@ func GetNetworkPeering(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkPeering resources.
 type networkPeeringState struct {
-	//
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes *bool `pulumi:"exportCustomRoutes"`
-	//
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes *bool `pulumi:"importCustomRoutes"`
 	// Name of the peering.
@@ -97,10 +93,8 @@ type networkPeeringState struct {
 }
 
 type NetworkPeeringState struct {
-	//
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes pulumi.BoolPtrInput
-	//
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes pulumi.BoolPtrInput
 	// Name of the peering.
@@ -122,10 +116,8 @@ func (NetworkPeeringState) ElementType() reflect.Type {
 }
 
 type networkPeeringArgs struct {
-	//
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes *bool `pulumi:"exportCustomRoutes"`
-	//
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes *bool `pulumi:"importCustomRoutes"`
 	// Name of the peering.
@@ -139,10 +131,8 @@ type networkPeeringArgs struct {
 
 // The set of arguments for constructing a NetworkPeering resource.
 type NetworkPeeringArgs struct {
-	//
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes pulumi.BoolPtrInput
-	//
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes pulumi.BoolPtrInput
 	// Name of the peering.

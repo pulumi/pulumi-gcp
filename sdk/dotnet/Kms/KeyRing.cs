@@ -24,8 +24,9 @@ namespace Pulumi.Gcp.Kms
     /// * How-to Guides
     ///     * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
     /// 
-    /// ## Example Usage - Kms Key Ring Basic
+    /// ## Example Usage
     /// 
+    /// ### Kms Key Ring Basic
     /// 
     /// ```csharp
     /// using Pulumi;

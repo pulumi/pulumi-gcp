@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.PubSub
     /// * How-to Guides
     ///     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
     /// 
-    /// ## Example Usage - Pubsub Topic Basic
+    /// ## Example Usage
     /// 
+    /// ### Pubsub Topic Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -41,8 +42,8 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Pubsub Topic Cmek
     /// 
+    /// ### Pubsub Topic Cmek
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -68,8 +69,8 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Pubsub Topic Geo Restricted
     /// 
+    /// ### Pubsub Topic Geo Restricted
     /// 
     /// ```csharp
     /// using Pulumi;

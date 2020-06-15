@@ -93,7 +93,6 @@ def get_secret_version(project=None,secret=None,version=None,opts=None):
     ```
 
 
-
     :param str project: The project to get the secret version for. If it
            is not provided, the provider project is used.
     :param str secret: The secret to get the secret version for.

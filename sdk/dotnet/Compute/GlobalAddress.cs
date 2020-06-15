@@ -20,8 +20,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
     /// 
-    /// ## Example Usage - Global Address Basic
+    /// ## Example Usage
     /// 
+    /// ### Global Address Basic
     /// 
     /// ```csharp
     /// using Pulumi;

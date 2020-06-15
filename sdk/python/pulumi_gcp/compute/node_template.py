@@ -88,8 +88,9 @@ class NodeTemplate(pulumi.CustomResource):
         * How-to Guides
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
-        ## Example Usage - Node Template Basic
+        ## Example Usage
 
+        ### Node Template Basic
 
         ```python
         import pulumi
@@ -100,8 +101,8 @@ class NodeTemplate(pulumi.CustomResource):
             region="us-central1",
             node_type=central1a.names[0])
         ```
-        ## Example Usage - Node Template Server Binding
 
+        ### Node Template Server Binding
 
         ```python
         import pulumi

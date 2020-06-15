@@ -13,10 +13,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage 
+ * ## Example Usage
  *
  * ### Region Disk Resource Policy Attachment Basic
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

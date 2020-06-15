@@ -29,8 +29,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
  *
- * ## Example Usage - Storage Bucket Access Control Public Bucket
+ * ## Example Usage
  *
+ * ### Storage Bucket Access Control Public Bucket
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -92,8 +92,9 @@ class Attestor(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
-        ## Example Usage - Binary Authorization Attestor Basic
+        ## Example Usage
 
+        ### Binary Authorization Attestor Basic
 
         ```python
         import pulumi

@@ -14,8 +14,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// 
     /// 
-    /// ## Example Usage - Resource Policy Basic
+    /// ## Example Usage
     /// 
+    /// ### Resource Policy Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -44,8 +45,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Resource Policy Full
     /// 
+    /// ### Resource Policy Full
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -88,8 +89,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Resource Policy Placement Policy
     /// 
+    /// ### Resource Policy Placement Policy
     /// 
     /// ```csharp
     /// using Pulumi;

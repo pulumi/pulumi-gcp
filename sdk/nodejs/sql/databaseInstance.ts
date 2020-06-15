@@ -131,7 +131,6 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly databaseVersion!: pulumi.Output<string | undefined>;
     /**
-     *
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order
@@ -158,7 +157,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The first private (`PRIVATE`) IPv4 address assigned. 
+     * The first private (`PRIVATE`) IPv4 address assigned.
      */
     public /*out*/ readonly privateIpAddress!: pulumi.Output<string>;
     /**
@@ -167,7 +166,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The first public (`PRIMARY`) IPv4 address assigned. 
+     * The first public (`PRIMARY`) IPv4 address assigned.
      */
     public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
     /**
@@ -286,7 +285,6 @@ export interface DatabaseInstanceState {
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
-     *
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order
@@ -313,7 +311,7 @@ export interface DatabaseInstanceState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The first private (`PRIVATE`) IPv4 address assigned. 
+     * The first private (`PRIVATE`) IPv4 address assigned.
      */
     readonly privateIpAddress?: pulumi.Input<string>;
     /**
@@ -322,7 +320,7 @@ export interface DatabaseInstanceState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The first public (`PRIMARY`) IPv4 address assigned. 
+     * The first public (`PRIMARY`) IPv4 address assigned.
      */
     readonly publicIpAddress?: pulumi.Input<string>;
     /**
@@ -374,7 +372,6 @@ export interface DatabaseInstanceArgs {
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
-     *
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order

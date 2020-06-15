@@ -20,8 +20,9 @@ namespace Pulumi.Gcp.DataCatalog
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
-    /// ## Example Usage - Data Catalog Tag Template Basic
+    /// ## Example Usage
     /// 
+    /// ### Data Catalog Tag Template Basic
     /// 
     /// ```csharp
     /// using Pulumi;

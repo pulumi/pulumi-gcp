@@ -26,7 +26,6 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? MaxTimeElapsedSinceLastModification;
         /// <summary>
-        /// 
         /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
         public readonly string? MinTimeElapsedSinceLastModification;

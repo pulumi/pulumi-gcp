@@ -52,8 +52,9 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
-        ## Example Usage - Game Service Deployment Rollout Basic
+        ## Example Usage
 
+        ### Game Service Deployment Rollout Basic
 
         ```python
         import pulumi

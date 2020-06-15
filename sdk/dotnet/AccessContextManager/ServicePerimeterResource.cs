@@ -26,8 +26,9 @@ namespace Pulumi.Gcp.AccessContextManager
     /// * How-to Guides
     ///     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
     /// 
-    /// ## Example Usage - Access Context Manager Service Perimeter Resource Basic
+    /// ## Example Usage
     /// 
+    /// ### Access Context Manager Service Perimeter Resource Basic
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -59,8 +59,6 @@ def get_ca_certs(instance=None,project=None,opts=None):
 
 
 
-
-
     :param str instance: The name or self link of the instance.
     :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
     """

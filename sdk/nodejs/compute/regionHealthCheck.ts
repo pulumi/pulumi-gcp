@@ -26,14 +26,15 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
  *
- * ## Example Usage - Region Health Check Tcp
+ * ## Example Usage
  *
+ * ### Region Health Check Tcp
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const tcpRegionHealthCheck = new gcp.compute.RegionHealthCheck("tcp-region-health-check", {
+ * const tcp_region_health_check = new gcp.compute.RegionHealthCheck("tcp-region-health-check", {
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
  *         port: 80,
@@ -41,14 +42,14 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  * });
  * ```
- * ## Example Usage - Region Health Check Tcp Full
  *
+ * ### Region Health Check Tcp Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const tcpRegionHealthCheck = new gcp.compute.RegionHealthCheck("tcp-region-health-check", {
+ * const tcp_region_health_check = new gcp.compute.RegionHealthCheck("tcp-region-health-check", {
  *     checkIntervalSec: 1,
  *     description: "Health check via tcp",
  *     healthyThreshold: 4,
@@ -63,14 +64,14 @@ import * as utilities from "../utilities";
  *     unhealthyThreshold: 5,
  * });
  * ```
- * ## Example Usage - Region Health Check Ssl
  *
+ * ### Region Health Check Ssl
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sslRegionHealthCheck = new gcp.compute.RegionHealthCheck("ssl-region-health-check", {
+ * const ssl_region_health_check = new gcp.compute.RegionHealthCheck("ssl-region-health-check", {
  *     checkIntervalSec: 1,
  *     sslHealthCheck: {
  *         port: 443,
@@ -78,14 +79,14 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  * });
  * ```
- * ## Example Usage - Region Health Check Ssl Full
  *
+ * ### Region Health Check Ssl Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sslRegionHealthCheck = new gcp.compute.RegionHealthCheck("ssl-region-health-check", {
+ * const ssl_region_health_check = new gcp.compute.RegionHealthCheck("ssl-region-health-check", {
  *     checkIntervalSec: 1,
  *     description: "Health check via ssl",
  *     healthyThreshold: 4,
@@ -100,14 +101,14 @@ import * as utilities from "../utilities";
  *     unhealthyThreshold: 5,
  * });
  * ```
- * ## Example Usage - Region Health Check Http
  *
+ * ### Region Health Check Http
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const httpRegionHealthCheck = new gcp.compute.RegionHealthCheck("http-region-health-check", {
+ * const http_region_health_check = new gcp.compute.RegionHealthCheck("http-region-health-check", {
  *     checkIntervalSec: 1,
  *     httpHealthCheck: {
  *         port: 80,
@@ -115,14 +116,14 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  * });
  * ```
- * ## Example Usage - Region Health Check Http Logs
  *
+ * ### Region Health Check Http Logs
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const httpRegionHealthCheck = new gcp.compute.RegionHealthCheck("http-region-health-check", {
+ * const http_region_health_check = new gcp.compute.RegionHealthCheck("http-region-health-check", {
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     http_health_check: {
@@ -133,14 +134,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Region Health Check Http Full
  *
+ * ### Region Health Check Http Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const httpRegionHealthCheck = new gcp.compute.RegionHealthCheck("http-region-health-check", {
+ * const http_region_health_check = new gcp.compute.RegionHealthCheck("http-region-health-check", {
  *     checkIntervalSec: 1,
  *     description: "Health check via http",
  *     healthyThreshold: 4,
@@ -156,14 +157,14 @@ import * as utilities from "../utilities";
  *     unhealthyThreshold: 5,
  * });
  * ```
- * ## Example Usage - Region Health Check Https
  *
+ * ### Region Health Check Https
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const httpsRegionHealthCheck = new gcp.compute.RegionHealthCheck("https-region-health-check", {
+ * const https_region_health_check = new gcp.compute.RegionHealthCheck("https-region-health-check", {
  *     checkIntervalSec: 1,
  *     httpsHealthCheck: {
  *         port: 443,
@@ -171,14 +172,14 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  * });
  * ```
- * ## Example Usage - Region Health Check Https Full
  *
+ * ### Region Health Check Https Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const httpsRegionHealthCheck = new gcp.compute.RegionHealthCheck("https-region-health-check", {
+ * const https_region_health_check = new gcp.compute.RegionHealthCheck("https-region-health-check", {
  *     checkIntervalSec: 1,
  *     description: "Health check via https",
  *     healthyThreshold: 4,
@@ -194,14 +195,14 @@ import * as utilities from "../utilities";
  *     unhealthyThreshold: 5,
  * });
  * ```
- * ## Example Usage - Region Health Check Http2
  *
+ * ### Region Health Check Http2
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const http2RegionHealthCheck = new gcp.compute.RegionHealthCheck("http2-region-health-check", {
+ * const http2_region_health_check = new gcp.compute.RegionHealthCheck("http2-region-health-check", {
  *     checkIntervalSec: 1,
  *     http2HealthCheck: {
  *         port: 443,
@@ -209,14 +210,14 @@ import * as utilities from "../utilities";
  *     timeoutSec: 1,
  * });
  * ```
- * ## Example Usage - Region Health Check Http2 Full
  *
+ * ### Region Health Check Http2 Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const http2RegionHealthCheck = new gcp.compute.RegionHealthCheck("http2-region-health-check", {
+ * const http2_region_health_check = new gcp.compute.RegionHealthCheck("http2-region-health-check", {
  *     checkIntervalSec: 1,
  *     description: "Health check via http2",
  *     healthyThreshold: 4,

@@ -18,6 +18,55 @@ import (
 // * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1alpha1/projects.locations.domainmappings)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
+//
+// ## Example Usage
+//
+// ### Cloud Run Domain Mapping Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultService, err := cloudrun.NewService(ctx, "defaultService", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Metadata: &cloudrun.ServiceMetadataArgs{
+// 				Namespace: pulumi.String("my-project-name"),
+// 			},
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultDomainMapping, err := cloudrun.NewDomainMapping(ctx, "defaultDomainMapping", &cloudrun.DomainMappingArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Metadata: &cloudrun.DomainMappingMetadataArgs{
+// 				Namespace: pulumi.String("my-project-name"),
+// 			},
+// 			Spec: &cloudrun.DomainMappingSpecArgs{
+// 				RouteName: defaultService.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DomainMapping struct {
 	pulumi.CustomResourceState
 

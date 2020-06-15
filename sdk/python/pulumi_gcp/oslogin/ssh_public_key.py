@@ -37,8 +37,9 @@ class SshPublicKey(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
 
-        ## Example Usage - Os Login Ssh Key Provided User
+        ## Example Usage
 
+        ### Os Login Ssh Key Provided User
 
         ```python
         import pulumi

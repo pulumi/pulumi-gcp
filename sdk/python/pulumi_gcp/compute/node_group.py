@@ -76,8 +76,9 @@ class NodeGroup(pulumi.CustomResource):
         through provider config or through external changes will cause
         the provider to delete and recreate the node group.
 
-        ## Example Usage - Node Group Basic
+        ## Example Usage
 
+        ### Node Group Basic
 
         ```python
         import pulumi
@@ -89,12 +90,12 @@ class NodeGroup(pulumi.CustomResource):
             node_type=central1a.names[0])
         nodes = gcp.compute.NodeGroup("nodes",
             zone="us-central1-a",
-            description="example compute.NodeGroup for the Google Provider",
+            description="example google_compute_node_group for the Google Provider",
             size=1,
             node_template=soletenant_tmpl.id)
         ```
-        ## Example Usage - Node Group Autoscaling Policy
 
+        ### Node Group Autoscaling Policy
 
         ```python
         import pulumi
@@ -106,7 +107,7 @@ class NodeGroup(pulumi.CustomResource):
             node_type=central1a.names[0])
         nodes = gcp.compute.NodeGroup("nodes",
             zone="us-central1-a",
-            description="example compute.NodeGroup for the Google Provider",
+            description="example google_compute_node_group for the Google Provider",
             size=1,
             node_template=soletenant_tmpl.id,
             autoscaling_policy={

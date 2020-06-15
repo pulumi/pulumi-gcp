@@ -147,8 +147,9 @@ class RegionAutoscaler(pulumi.CustomResource):
         * How-to Guides
             * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 
-        ## Example Usage - Region Autoscaler Basic
+        ## Example Usage
 
+        ### Region Autoscaler Basic
 
         ```python
         import pulumi

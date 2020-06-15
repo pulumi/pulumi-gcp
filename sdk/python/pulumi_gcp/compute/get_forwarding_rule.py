@@ -136,7 +136,6 @@ def get_forwarding_rule(name=None,project=None,region=None,opts=None):
     ```
 
 
-
     :param str name: The name of the forwarding rule.
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

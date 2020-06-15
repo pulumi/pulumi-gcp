@@ -20,6 +20,51 @@ import (
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
+//
+// ## Example Usage
+//
+// ### Monitoring Alert Policy Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		alertPolicy, err := monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
+// 			Combiner: pulumi.String("OR"),
+// 			Conditions: monitoring.AlertPolicyConditionArray{
+// 				&monitoring.AlertPolicyConditionArgs{
+// 					ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
+// 						Aggregations: monitoring.AlertPolicyConditionConditionThresholdAggregationArray{
+// 							&monitoring.AlertPolicyConditionConditionThresholdAggregationArgs{
+// 								AlignmentPeriod:  pulumi.String("60s"),
+// 								PerSeriesAligner: pulumi.String("ALIGN_RATE"),
+// 							},
+// 						},
+// 						Comparison: pulumi.String("COMPARISON_GT"),
+// 						Duration:   pulumi.String("60s"),
+// 						Filter:     pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
+// 					},
+// 					DisplayName: pulumi.String("test condition"),
+// 				},
+// 			},
+// 			DisplayName: pulumi.String("My Alert Policy"),
+// 			UserLabels: map[string]interface{}{
+// 				"foo": "bar",
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AlertPolicy struct {
 	pulumi.CustomResourceState
 

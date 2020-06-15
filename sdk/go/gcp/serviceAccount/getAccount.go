@@ -9,6 +9,30 @@ import (
 
 // Get the service account from a project. For more information see
 // the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		objectViewer, err := serviceAccount.LookupAccount(ctx, &serviceAccount.LookupAccountArgs{
+// 			AccountId: "object-viewer",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	var rv LookupAccountResult
 	err := ctx.Invoke("gcp:serviceAccount/getAccount:getAccount", args, &rv, opts...)

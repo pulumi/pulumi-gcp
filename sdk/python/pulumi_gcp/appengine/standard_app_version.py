@@ -38,7 +38,7 @@ class StandardAppVersion(pulumi.CustomResource):
     """
     delete_service_on_destroy: pulumi.Output[bool]
     """
-    If set to `true`, the service will be deleted if it is the last version.    
+    If set to `true`, the service will be deleted if it is the last version.
     """
     deployment: pulumi.Output[dict]
     """
@@ -168,8 +168,9 @@ class StandardAppVersion(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
 
-        ## Example Usage - App Engine Standard App Version
+        ## Example Usage
 
+        ### App Engine Standard App Version
 
         ```python
         import pulumi
@@ -233,7 +234,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
         :param pulumi.Input[dict] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
-        :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.    
+        :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
         :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
         :param pulumi.Input[dict] env_variables: Environment variables available to the application.
@@ -389,7 +390,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
         :param pulumi.Input[dict] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
-        :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.    
+        :param pulumi.Input[bool] delete_service_on_destroy: If set to `true`, the service will be deleted if it is the last version.
         :param pulumi.Input[dict] deployment: Code and application artifacts that make up this version.  Structure is documented below.
         :param pulumi.Input[dict] entrypoint: The entrypoint for the application.  Structure is documented below.
         :param pulumi.Input[dict] env_variables: Environment variables available to the application.

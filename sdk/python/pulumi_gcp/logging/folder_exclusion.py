@@ -60,7 +60,6 @@ class FolderExclusion(pulumi.CustomResource):
             filter="resource.type = gce_instance AND severity <= DEBUG")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description.

@@ -65,8 +65,9 @@ class CryptoKey(pulumi.CustomResource):
         * How-to Guides
             * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 
-        ## Example Usage - Kms Crypto Key Basic
+        ## Example Usage
 
+        ### Kms Crypto Key Basic
 
         ```python
         import pulumi
@@ -77,8 +78,8 @@ class CryptoKey(pulumi.CustomResource):
             key_ring=keyring.id,
             rotation_period="100000s")
         ```
-        ## Example Usage - Kms Crypto Key Asymmetric Sign
 
+        ### Kms Crypto Key Asymmetric Sign
 
         ```python
         import pulumi

@@ -67,7 +67,6 @@ class Account(pulumi.CustomResource):
             display_name="Service Account")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account id that is used to generate the service

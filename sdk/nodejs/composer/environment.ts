@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *     accountId: "composer-env-account",
  *     displayName: "Test Service Account for Composer Environment",
  * });
- * const composerWorker = new gcp.projects.IAMMember("composer-worker", {
+ * const composer_worker = new gcp.projects.IAMMember("composer-worker", {
  *     role: "roles/composer.worker",
  *     member: pulumi.interpolate`serviceAccount:${testAccount.email}`,
  * });

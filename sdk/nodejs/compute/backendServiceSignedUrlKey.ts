@@ -17,8 +17,9 @@ import * as utilities from "../utilities";
  * > **Warning:** All arguments including `keyValue` will be stored in the raw
  * state as plain-text.
  *
- * ## Example Usage - Backend Service Signed Url Key
+ * ## Example Usage
  *
+ * ### Backend Service Signed Url Key
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

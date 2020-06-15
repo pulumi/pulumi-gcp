@@ -77,7 +77,6 @@ class SslCert(pulumi.CustomResource):
             instance=master.name)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] common_name: The common name to be used in the certificate to identify the

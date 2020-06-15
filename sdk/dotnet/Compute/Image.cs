@@ -34,8 +34,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/images)
     /// 
-    /// ## Example Usage - Image Basic
+    /// ## Example Usage
     /// 
+    /// ### Image Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -56,8 +57,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Image Guest Os
     /// 
+    /// ### Image Guest Os
     /// 
     /// ```csharp
     /// using Pulumi;

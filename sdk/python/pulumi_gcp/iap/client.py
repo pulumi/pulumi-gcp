@@ -37,6 +37,7 @@ class Client(pulumi.CustomResource):
         > **Warning:** All arguments including `secret` will be stored in the raw
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] brand: Identifier of the brand to which this client

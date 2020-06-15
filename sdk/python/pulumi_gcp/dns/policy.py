@@ -66,8 +66,9 @@ class Policy(pulumi.CustomResource):
             * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
 
 
-        ## Example Usage - Dns Policy Basic
+        ## Example Usage
 
+        ### Dns Policy Basic
 
         ```python
         import pulumi

@@ -18,8 +18,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
     /// 
-    /// ## Example Usage - Artifact Registry Repository Basic
+    /// ## Example Usage
     /// 
+    /// ### Artifact Registry Repository Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,8 +41,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Artifact Registry Repository Iam
     /// 
+    /// ### Artifact Registry Repository Iam
     /// 
     /// ```csharp
     /// using Pulumi;

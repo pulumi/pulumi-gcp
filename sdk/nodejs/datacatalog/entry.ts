@@ -21,50 +21,51 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
- * ## Example Usage - Data Catalog Entry Basic
+ * ## Example Usage
  *
+ * ### Data Catalog Entry Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "myGroup"});
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_group"});
  * const basicEntry = new gcp.datacatalog.Entry("basicEntry", {
  *     entryGroup: entryGroup.id,
- *     entryId: "myEntry",
- *     userSpecifiedType: "myCustomType",
+ *     entryId: "my_entry",
+ *     userSpecifiedType: "my_custom_type",
  *     userSpecifiedSystem: "SomethingExternal",
  * });
  * ```
- * ## Example Usage - Data Catalog Entry Fileset
  *
+ * ### Data Catalog Entry Fileset
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "myGroup"});
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_group"});
  * const basicEntry = new gcp.datacatalog.Entry("basicEntry", {
  *     entryGroup: entryGroup.id,
- *     entryId: "myEntry",
+ *     entryId: "my_entry",
  *     type: "FILESET",
  *     gcs_fileset_spec: {
  *         filePatterns: ["gs://fake_bucket/dir/*"],
  *     },
  * });
  * ```
- * ## Example Usage - Data Catalog Entry Full
  *
+ * ### Data Catalog Entry Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "myGroup"});
+ * const entryGroup = new gcp.datacatalog.EntryGroup("entryGroup", {entryGroupId: "my_group"});
  * const basicEntry = new gcp.datacatalog.Entry("basicEntry", {
  *     entryGroup: entryGroup.id,
- *     entryId: "myEntry",
- *     userSpecifiedType: "myUserSpecifiedType",
+ *     entryId: "my_entry",
+ *     userSpecifiedType: "my_user_specified_type",
  *     userSpecifiedSystem: "Something_custom",
  *     linkedResource: "my/linked/resource",
  *     displayName: "my custom type entry",
@@ -72,13 +73,13 @@ import * as utilities from "../utilities";
  *     schema: `{
  *   "columns": [
  *     {
- *       "column": "firstName",
+ *       "column": "first_name",
  *       "description": "First name",
  *       "mode": "REQUIRED",
  *       "type": "STRING"
  *     },
  *     {
- *       "column": "lastName",
+ *       "column": "last_name",
  *       "description": "Last name",
  *       "mode": "REQUIRED",
  *       "type": "STRING"

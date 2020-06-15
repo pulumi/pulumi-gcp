@@ -121,7 +121,9 @@ class Function(pulumi.CustomResource):
         or view the [Cloud Functions IAM resources](https://www.terraform.io/docs/providers/google/r/cloudfunctions_cloud_function_iam.html)
         for Cloud Functions.
 
-        ## Example Usage - Public Function
+        ## Example Usage
+
+        ### Public Function
 
         ```python
         import pulumi
@@ -148,7 +150,7 @@ class Function(pulumi.CustomResource):
             member="allUsers")
         ```
 
-        ## Example Usage - Single User
+        ### Single User
 
         ```python
         import pulumi

@@ -17,8 +17,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
  *
- * ## Example Usage - Compute Packet Mirroring Full
+ * ## Example Usage
  *
+ * ### Compute Packet Mirroring Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

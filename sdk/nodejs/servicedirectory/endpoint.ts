@@ -13,8 +13,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
  *
- * ## Example Usage - Service Directory Endpoint Basic
+ * ## Example Usage
  *
+ * ### Service Directory Endpoint Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

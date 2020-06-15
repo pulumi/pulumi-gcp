@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Queue Basic
+ * ## Example Usage
  *
+ * ### Queue Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

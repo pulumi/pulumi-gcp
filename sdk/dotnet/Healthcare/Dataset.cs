@@ -18,8 +18,9 @@ namespace Pulumi.Gcp.Healthcare
     /// * How-to Guides
     ///     * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
     /// 
-    /// ## Example Usage - Healthcare Dataset Basic
+    /// ## Example Usage
     /// 
+    /// ### Healthcare Dataset Basic
     /// 
     /// ```csharp
     /// using Pulumi;

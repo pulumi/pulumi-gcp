@@ -30,8 +30,9 @@ namespace Pulumi.Gcp.Storage
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
     /// 
-    /// ## Example Usage - Storage Object Access Control Public Object
+    /// ## Example Usage
     /// 
+    /// ### Storage Object Access Control Public Object
     /// 
     /// ```csharp
     /// using Pulumi;

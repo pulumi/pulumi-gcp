@@ -18,8 +18,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
  *
- * ## Example Usage - Node Template Basic
+ * ## Example Usage
  *
+ * ### Node Template Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,8 +34,8 @@ import * as utilities from "../utilities";
  *     nodeType: central1a.then(central1a => central1a.names[0]),
  * });
  * ```
- * ## Example Usage - Node Template Server Binding
  *
+ * ### Node Template Server Binding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

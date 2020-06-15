@@ -10,8 +10,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Sql Database Basic
+ * ## Example Usage
  *
+ * ### Sql Database Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

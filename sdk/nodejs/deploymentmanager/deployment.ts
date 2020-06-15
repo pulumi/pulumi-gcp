@@ -23,8 +23,9 @@ import * as utilities from "../utilities";
  * than actually deploying an in-preview deployment (i.e. `preview=true` to
  * `preview=false`).
  *
- * ## Example Usage - Deployment Manager Deployment Basic
+ * ## Example Usage
  *
+ * ### Deployment Manager Deployment Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

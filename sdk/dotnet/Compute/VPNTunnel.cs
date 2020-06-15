@@ -23,8 +23,9 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Warning:** All arguments including `shared_secret` will be stored in the raw
     /// state as plain-text.
     /// 
-    /// ## Example Usage - Vpn Tunnel Basic
+    /// ## Example Usage
     /// 
+    /// ### Vpn Tunnel Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -81,8 +82,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Vpn Tunnel Beta
     /// 
+    /// ### Vpn Tunnel Beta
     /// 
     /// ```csharp
     /// using Pulumi;

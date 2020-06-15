@@ -81,7 +81,6 @@ class ProjectSink(pulumi.CustomResource):
             unique_writer_identity=True)
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.

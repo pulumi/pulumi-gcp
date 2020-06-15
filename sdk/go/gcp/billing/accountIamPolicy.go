@@ -21,6 +21,45 @@ import (
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `billing.AccountIamMember` or `billing.AccountIamBinding`
 //    or they will fight over what your policy should be.
+//
+// ## Example Usage
+//
+//
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/billing"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Binding: []map[string]interface{}{
+// 				map[string]interface{}{
+// 					"role": "roles/billing.viewer",
+// 					"members": []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		policy, err := billing.NewAccountIamPolicy(ctx, "policy", &billing.AccountIamPolicyArgs{
+// 			BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
+// 			PolicyData:       pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AccountIamPolicy struct {
 	pulumi.CustomResourceState
 

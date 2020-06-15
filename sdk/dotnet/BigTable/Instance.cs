@@ -14,7 +14,9 @@ namespace Pulumi.Gcp.BigTable
     /// [the official documentation](https://cloud.google.com/bigtable/) and
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
     /// 
-    /// ## Example Usage - Development Instance
+    /// ## Example Usage
+    /// 
+    /// ### Development Instance
     /// 
     /// ```csharp
     /// using Pulumi;

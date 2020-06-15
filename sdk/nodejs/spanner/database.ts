@@ -14,8 +14,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/spanner/)
  *
- * ## Example Usage - Spanner Database Basic
+ * ## Example Usage
  *
+ * ### Spanner Database Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

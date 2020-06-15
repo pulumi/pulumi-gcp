@@ -247,7 +247,6 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
     ```
 
 
-
     :param str location: The location (zone or region) this cluster has been
            created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
            be specified.

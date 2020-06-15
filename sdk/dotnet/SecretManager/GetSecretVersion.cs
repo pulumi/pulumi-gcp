@@ -34,7 +34,6 @@ namespace Pulumi.Gcp.SecretManager
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -56,7 +56,6 @@ class BillingAccountExclusion(pulumi.CustomResource):
             filter="resource.type = gce_instance AND severity <= DEBUG")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account: The billing account to create the exclusion for.

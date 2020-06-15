@@ -41,7 +41,6 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

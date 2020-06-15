@@ -192,8 +192,9 @@ class Trigger(pulumi.CustomResource):
         * How-to Guides
             * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
 
-        ## Example Usage - Cloudbuild Trigger Filename
+        ## Example Usage
 
+        ### Cloudbuild Trigger Filename
 
         ```python
         import pulumi

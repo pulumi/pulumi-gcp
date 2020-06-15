@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.Container
         ///     public Output&lt;string&gt; GcrLocation { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

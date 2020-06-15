@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.Organizations
         ///     public Output&lt;string&gt; ProjectNumber { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -13,8 +13,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
  *
- * ## Example Usage - Game Service Realm Basic
+ * ## Example Usage
  *
+ * ### Game Service Realm Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

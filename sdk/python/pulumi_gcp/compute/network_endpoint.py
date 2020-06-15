@@ -54,8 +54,9 @@ class NetworkEndpoint(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
-        ## Example Usage - Network Endpoint
+        ## Example Usage
 
+        ### Network Endpoint
 
         ```python
         import pulumi

@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.AppEngine
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
     /// 
-    /// ## Example Usage - App Engine Domain Mapping Basic
+    /// ## Example Usage
     /// 
+    /// ### App Engine Domain Mapping Basic
     /// 
     /// ```csharp
     /// using Pulumi;

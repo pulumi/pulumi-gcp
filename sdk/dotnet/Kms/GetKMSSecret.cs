@@ -22,9 +22,6 @@ namespace Pulumi.Gcp.Kms
         /// resource definitions, but it does not take care of protecting that data in the
         /// logging output, plan output, or state output.  Please take care to secure your secret
         /// data outside of resource definitions.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKMSSecretResult> InvokeAsync(GetKMSSecretArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKMSSecretResult>("gcp:kms/getKMSSecret:getKMSSecret", args ?? new GetKMSSecretArgs(), options.WithVersion());

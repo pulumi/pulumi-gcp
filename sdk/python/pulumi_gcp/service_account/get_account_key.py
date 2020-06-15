@@ -71,7 +71,6 @@ def get_account_key(name=None,project=None,public_key_type=None,opts=None):
     ```
 
 
-
     :param str name: The name of the service account key. This must have format
            `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
            is the email address or unique id of the service account.

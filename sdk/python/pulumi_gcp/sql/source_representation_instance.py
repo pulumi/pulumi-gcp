@@ -47,8 +47,9 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Sql Source Representation Instance Basic
+        ## Example Usage
 
+        ### Sql Source Representation Instance Basic
 
         ```python
         import pulumi

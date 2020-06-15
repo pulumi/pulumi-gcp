@@ -19,9 +19,6 @@ namespace Pulumi.Gcp.Container
         /// the datasource. A region can have a different set of supported versions than
         /// its component zones, and not all zones in a region are guaranteed to
         /// support the same version.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEngineVersionsResult> InvokeAsync(GetEngineVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? new GetEngineVersionsArgs(), options.WithVersion());

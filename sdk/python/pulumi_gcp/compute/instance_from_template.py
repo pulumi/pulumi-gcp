@@ -99,7 +99,6 @@ class InstanceFromTemplate(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.

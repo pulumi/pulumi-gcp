@@ -16,7 +16,10 @@ namespace Pulumi.Gcp.Projects
         /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
         /// for more details.
         /// 
-        /// ## Example Usage - searching for projects about to be deleted in an org
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### Searching For Projects About To Be Deleted In An Org
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -38,6 +41,8 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// }
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("gcp:projects/getProject:getProject", args ?? new GetProjectArgs(), options.WithVersion());

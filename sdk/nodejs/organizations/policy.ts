@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const serialPortPolicy = new gcp.organizations.Policy("serialPortPolicy", {
+ * const serialPortPolicy = new gcp.organizations.Policy("serial_port_policy", {
  *     booleanPolicy: {
  *         enforced: true,
  *     },

@@ -27,17 +27,18 @@ import * as utilities from "../utilities";
  *     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/instances-and-network)
  *     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
  *
- * ## Example Usage - Address Basic
+ * ## Example Usage
  *
+ * ### Address Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const ipAddress = new gcp.compute.Address("ipAddress", {});
+ * const ipAddress = new gcp.compute.Address("ip_address", {});
  * ```
- * ## Example Usage - Address With Subnetwork
  *
+ * ### Address With Subnetwork
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,20 +57,20 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
- * ## Example Usage - Address With Gce Endpoint
  *
+ * ### Address With Gce Endpoint
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const internalWithGceEndpoint = new gcp.compute.Address("internalWithGceEndpoint", {
+ * const internalWithGceEndpoint = new gcp.compute.Address("internal_with_gce_endpoint", {
  *     addressType: "INTERNAL",
  *     purpose: "GCE_ENDPOINT",
  * });
  * ```
- * ## Example Usage - Instance With Ip
  *
+ * ### Instance With Ip
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

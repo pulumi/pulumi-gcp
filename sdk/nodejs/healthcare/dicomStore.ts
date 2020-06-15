@@ -16,8 +16,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
  *
- * ## Example Usage - Healthcare Dicom Store Basic
+ * ## Example Usage
  *
+ * ### Healthcare Dicom Store Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

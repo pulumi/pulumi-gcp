@@ -60,8 +60,9 @@ class Index(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
 
-        ## Example Usage - Firestore Index Basic
+        ## Example Usage
 
+        ### Firestore Index Basic
 
         ```python
         import pulumi

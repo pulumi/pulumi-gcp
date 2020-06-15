@@ -168,8 +168,6 @@ def get_backend_service(name=None,project=None,opts=None):
     and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
 
 
-
-
     :param str name: The name of the Backend Service.
     :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.
     """

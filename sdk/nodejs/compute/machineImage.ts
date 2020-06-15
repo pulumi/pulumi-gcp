@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
  *
- * ## Example Usage - Machine Image Basic
+ * ## Example Usage
  *
+ * ### Machine Image Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

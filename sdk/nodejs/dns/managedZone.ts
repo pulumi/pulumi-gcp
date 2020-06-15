@@ -18,14 +18,15 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Managing Zones](https://cloud.google.com/dns/zones/)
  *
- * ## Example Usage - Dns Managed Zone Basic
+ * ## Example Usage
  *
+ * ### Dns Managed Zone Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const exampleZone = new gcp.dns.ManagedZone("example-zone", {
+ * const example_zone = new gcp.dns.ManagedZone("example-zone", {
  *     description: "Example DNS zone",
  *     dnsName: "my-domain.com.",
  *     labels: {
@@ -33,16 +34,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Dns Managed Zone Private
  *
+ * ### Dns Managed Zone Private
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
- * const network2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
- * const privateZone = new gcp.dns.ManagedZone("private-zone", {
+ * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const private_zone = new gcp.dns.ManagedZone("private-zone", {
  *     dnsName: "private.example.com.",
  *     description: "Example private DNS zone",
  *     labels: {
@@ -61,16 +62,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Dns Managed Zone Private Forwarding
  *
+ * ### Dns Managed Zone Private Forwarding
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
- * const network2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
- * const privateZone = new gcp.dns.ManagedZone("private-zone", {
+ * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const private_zone = new gcp.dns.ManagedZone("private-zone", {
  *     dnsName: "private.example.com.",
  *     description: "Example private DNS zone",
  *     labels: {
@@ -99,16 +100,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Dns Managed Zone Private Peering
  *
+ * ### Dns Managed Zone Private Peering
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const networkSource = new gcp.compute.Network("network-source", {autoCreateSubnetworks: false});
- * const networkTarget = new gcp.compute.Network("network-target", {autoCreateSubnetworks: false});
- * const peeringZone = new gcp.dns.ManagedZone("peering-zone", {
+ * const network_source = new gcp.compute.Network("network-source", {autoCreateSubnetworks: false});
+ * const network_target = new gcp.compute.Network("network-target", {autoCreateSubnetworks: false});
+ * const peering_zone = new gcp.dns.ManagedZone("peering-zone", {
  *     dnsName: "peering.example.com.",
  *     description: "Example private DNS peering zone",
  *     visibility: "private",
@@ -124,8 +125,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Dns Managed Zone Service Directory
  *
+ * ### Dns Managed Zone Service Directory
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -135,7 +136,7 @@ import * as utilities from "../utilities";
  *     namespaceId: "example",
  *     location: "us-central1",
  * });
- * const sdZone = new gcp.dns.ManagedZone("sd-zone", {
+ * const sd_zone = new gcp.dns.ManagedZone("sd-zone", {
  *     dnsName: "services.example.com.",
  *     description: "Example private DNS Service Directory zone",
  *     visibility: "private",

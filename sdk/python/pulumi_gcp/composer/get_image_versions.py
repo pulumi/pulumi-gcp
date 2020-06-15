@@ -66,7 +66,6 @@ def get_image_versions(project=None,region=None,opts=None):
     ```
 
 
-
     :param str project: The ID of the project to list versions in.
            If it is not provided, the provider project is used.
     :param str region: The location to list versions in.

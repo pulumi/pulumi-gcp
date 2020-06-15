@@ -15,7 +15,9 @@ import * as utilities from "../utilities";
  * `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing others will cause recreation of the
  * whole cluster!
  *
- * ## Example Usage - Basic
+ * ## Example Usage
+ *
+ * ### Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,7 +28,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Example Usage - Advanced
+ * ### Advanced
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -46,7 +48,7 @@ import * as utilities from "../utilities";
  *                 "bar",
  *             ],
  *         },
- *         // You can define multiple initializationAction blocks
+ *         // You can define multiple initialization_action blocks
  *         initializationActions: [{
  *             script: "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
  *             timeoutSec: 500,
@@ -87,13 +89,13 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Example Usage - Using a GPU accelerator
+ * ### Using A GPU Accelerator
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const acceleratedCluster = new gcp.dataproc.Cluster("acceleratedCluster", {
+ * const acceleratedCluster = new gcp.dataproc.Cluster("accelerated_cluster", {
  *     clusterConfig: {
  *         gceClusterConfig: {
  *             zone: "us-central1-a",

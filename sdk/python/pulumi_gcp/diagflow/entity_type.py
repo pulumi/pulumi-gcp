@@ -61,8 +61,9 @@ class EntityType(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
-        ## Example Usage - Dialogflow Entity Type Basic
+        ## Example Usage
 
+        ### Dialogflow Entity Type Basic
 
         ```python
         import pulumi

@@ -88,8 +88,9 @@ class GameServerConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
-        ## Example Usage - Game Service Config Basic
+        ## Example Usage
 
+        ### Game Service Config Basic
 
         ```python
         import pulumi

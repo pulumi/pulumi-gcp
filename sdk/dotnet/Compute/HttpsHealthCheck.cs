@@ -27,8 +27,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
     /// 
-    /// ## Example Usage - Https Health Check Basic
+    /// ## Example Usage
     /// 
+    /// ### Https Health Check Basic
     /// 
     /// ```csharp
     /// using Pulumi;

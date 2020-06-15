@@ -143,7 +143,6 @@ def get_bucket_object(bucket=None,name=None,opts=None):
     ```
 
 
-
     :param str bucket: The name of the containing bucket.
     :param str name: The name of the object.
     """

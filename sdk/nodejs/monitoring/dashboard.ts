@@ -13,8 +13,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
  *
- * ## Example Usage - Monitoring Dashboard Basic
+ * ## Example Usage
  *
+ * ### Monitoring Dashboard Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -36,8 +37,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Example Usage - Monitoring Dashboard GridLayout
- *
+ * ### Monitoring Dashboard GridLayout
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

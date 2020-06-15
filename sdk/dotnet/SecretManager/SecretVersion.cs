@@ -16,8 +16,9 @@ namespace Pulumi.Gcp.SecretManager
     /// state as plain-text.
     /// 
     /// 
-    /// ## Example Usage - Secret Version Basic
+    /// ## Example Usage
     /// 
+    /// ### Secret Version Basic
     /// 
     /// ```csharp
     /// using Pulumi;

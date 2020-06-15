@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dicomStore = new gcp.healthcare.DicomStoreIamBinding("dicomStore", {
+ * const dicomStore = new gcp.healthcare.DicomStoreIamBinding("dicom_store", {
  *     dicomStoreId: "your-dicom-store-id",
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dicomStore = new gcp.healthcare.DicomStoreIamMember("dicomStore", {
+ * const dicomStore = new gcp.healthcare.DicomStoreIamMember("dicom_store", {
  *     dicomStoreId: "your-dicom-store-id",
  *     member: "user:jane@example.com",
  *     role: "roles/editor",

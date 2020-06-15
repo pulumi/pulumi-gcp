@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *     sourceInstanceTemplate: tplInstanceTemplate.id,
  *     canIpForward: false,
  *     labels: {
- *         my_key: "myValue",
+ *         my_key: "my_value",
  *     },
  * });
  * ```

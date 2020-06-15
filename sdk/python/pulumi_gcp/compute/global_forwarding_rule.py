@@ -157,8 +157,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Global Forwarding Rule Http
+        ## Example Usage
 
+        ### Global Forwarding Rule Http
 
         ```python
         import pulumi
@@ -195,8 +196,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             target=default_target_http_proxy.id,
             port_range="80")
         ```
-        ## Example Usage - Global Forwarding Rule Internal
 
+        ### Global Forwarding Rule Internal
 
         ```python
         import pulumi

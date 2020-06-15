@@ -110,8 +110,9 @@ class Instance(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
-        ## Example Usage - Data Fusion Instance Basic
+        ## Example Usage
 
+        ### Data Fusion Instance Basic
 
         ```python
         import pulumi
@@ -121,8 +122,8 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             type="BASIC")
         ```
-        ## Example Usage - Data Fusion Instance Full
 
+        ### Data Fusion Instance Full
 
         ```python
         import pulumi
@@ -130,18 +131,18 @@ class Instance(pulumi.CustomResource):
 
         extended_instance = gcp.datafusion.Instance("extendedInstance",
             description="My Data Fusion instance",
-            region="us-central1",
-            type="BASIC",
             enable_stackdriver_logging=True,
             enable_stackdriver_monitoring=True,
             labels={
                 "example_key": "example_value",
             },
-            private_instance=True,
             network_config={
-                "network": "default",
                 "ipAllocation": "10.89.48.0/22",
-            })
+                "network": "default",
+            },
+            private_instance=True,
+            region="us-central1",
+            type="BASIC")
         ```
 
         :param str resource_name: The name of the resource.

@@ -38,15 +38,16 @@ import * as utilities from "../utilities";
  *     * [Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access)
  *     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
  *
- * ## Example Usage - Subnetwork Basic
+ * ## Example Usage
  *
+ * ### Subnetwork Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customTest = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
- * const networkWithPrivateSecondaryIpRanges = new gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges", {
+ * const custom_test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
+ * const network_with_private_secondary_ip_ranges = new gcp.compute.Subnetwork("network-with-private-secondary-ip-ranges", {
  *     ipCidrRange: "10.2.0.0/16",
  *     region: "us-central1",
  *     network: custom_test.id,
@@ -56,15 +57,15 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * ## Example Usage - Subnetwork Logging Config
  *
+ * ### Subnetwork Logging Config
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customTest = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
- * const subnetWithLogging = new gcp.compute.Subnetwork("subnet-with-logging", {
+ * const custom_test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
+ * const subnet_with_logging = new gcp.compute.Subnetwork("subnet-with-logging", {
  *     ipCidrRange: "10.2.0.0/16",
  *     region: "us-central1",
  *     network: custom_test.id,
@@ -75,15 +76,15 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Subnetwork Internal L7lb
  *
+ * ### Subnetwork Internal L7lb
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const customTest = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
- * const networkForL7lb = new gcp.compute.Subnetwork("network-for-l7lb", {
+ * const custom_test = new gcp.compute.Network("custom-test", {autoCreateSubnetworks: false});
+ * const network_for_l7lb = new gcp.compute.Subnetwork("network-for-l7lb", {
  *     ipCidrRange: "10.0.0.0/22",
  *     region: "us-central1",
  *     purpose: "INTERNAL_HTTPS_LOAD_BALANCER",

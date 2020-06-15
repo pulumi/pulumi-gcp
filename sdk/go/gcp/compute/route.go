@@ -39,6 +39,38 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
 // * How-to Guides
 //     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
+//
+// ## Example Usage
+//
+// ### Route Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRoute, err := compute.NewRoute(ctx, "defaultRoute", &compute.RouteArgs{
+// 			DestRange: pulumi.String("15.0.0.0/24"),
+// 			Network:   defaultNetwork.Name,
+// 			NextHopIp: pulumi.String("10.132.1.5"),
+// 			Priority:  pulumi.Int(100),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Route struct {
 	pulumi.CustomResourceState
 

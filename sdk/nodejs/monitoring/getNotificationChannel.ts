@@ -21,8 +21,9 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  *
- * ## Example Usage - Notification Channel Basic
+ * ## Example Usage
  *
+ * ### Notification Channel Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

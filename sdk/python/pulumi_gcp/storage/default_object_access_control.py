@@ -80,8 +80,9 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
-        ## Example Usage - Storage Default Object Access Control Public
+        ## Example Usage
 
+        ### Storage Default Object Access Control Public
 
         ```python
         import pulumi

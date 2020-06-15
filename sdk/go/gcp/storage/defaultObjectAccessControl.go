@@ -30,6 +30,37 @@ import (
 // * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
+//
+// ## Example Usage
+//
+// ### Storage Default Object Access Control Public
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		publicRule, err := storage.NewDefaultObjectAccessControl(ctx, "publicRule", &storage.DefaultObjectAccessControlArgs{
+// 			Bucket: bucket.Name,
+// 			Role:   pulumi.String("READER"),
+// 			Entity: pulumi.String("allUsers"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DefaultObjectAccessControl struct {
 	pulumi.CustomResourceState
 

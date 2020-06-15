@@ -21,8 +21,9 @@ namespace Pulumi.Gcp.Dns
     /// * How-to Guides
     ///     * [Managing Zones](https://cloud.google.com/dns/zones/)
     /// 
-    /// ## Example Usage - Dns Managed Zone Basic
+    /// ## Example Usage
     /// 
+    /// ### Dns Managed Zone Basic
     /// 
     /// ```csharp
     /// using Pulumi;

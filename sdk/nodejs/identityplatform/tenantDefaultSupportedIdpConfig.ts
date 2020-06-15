@@ -13,8 +13,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Identity Platform Tenant Default Supported Idp Config Basic
+ * ## Example Usage
  *
+ * ### Identity Platform Tenant Default Supported Idp Config Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

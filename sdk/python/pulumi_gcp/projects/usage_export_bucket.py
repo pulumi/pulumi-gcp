@@ -39,7 +39,6 @@ class UsageExportBucket(pulumi.CustomResource):
             project_id="your-project-id")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """

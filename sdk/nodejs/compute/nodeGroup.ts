@@ -21,8 +21,9 @@ import * as utilities from "../utilities";
  * through provider config or through external changes will cause
  * the provider to delete and recreate the node group.
  *
- * ## Example Usage - Node Group Basic
+ * ## Example Usage
  *
+ * ### Node Group Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,19 +32,19 @@ import * as utilities from "../utilities";
  * const central1a = gcp.compute.getNodeTypes({
  *     zone: "us-central1-a",
  * });
- * const soletenantTmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
  *     region: "us-central1",
  *     nodeType: central1a.then(central1a => central1a.names[0]),
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
  *     zone: "us-central1-a",
- *     description: "example gcp.compute.NodeGroup for the Google Provider",
+ *     description: "example google_compute_node_group for the Google Provider",
  *     size: 1,
  *     nodeTemplate: soletenant_tmpl.id,
  * });
  * ```
- * ## Example Usage - Node Group Autoscaling Policy
  *
+ * ### Node Group Autoscaling Policy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -52,13 +53,13 @@ import * as utilities from "../utilities";
  * const central1a = gcp.compute.getNodeTypes({
  *     zone: "us-central1-a",
  * });
- * const soletenantTmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
+ * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
  *     region: "us-central1",
  *     nodeType: central1a.then(central1a => central1a.names[0]),
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
  *     zone: "us-central1-a",
- *     description: "example gcp.compute.NodeGroup for the Google Provider",
+ *     description: "example google_compute_node_group for the Google Provider",
  *     size: 1,
  *     nodeTemplate: soletenant_tmpl.id,
  *     autoscaling_policy: {

@@ -50,8 +50,9 @@ class Lien(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Resource Manager Lien
+        ## Example Usage
 
+        ### Resource Manager Lien
 
         ```python
         import pulumi

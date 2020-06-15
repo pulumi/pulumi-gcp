@@ -137,7 +137,6 @@ class RecordSet(pulumi.CustomResource):
             rrdatas=["frontend.mydomain.com."])
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will

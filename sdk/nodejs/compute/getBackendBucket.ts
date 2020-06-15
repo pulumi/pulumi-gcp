@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myBackendBucket = pulumi.output(gcp.compute.getBackendBucket({
+ * const my_backend_bucket = pulumi.output(gcp.compute.getBackendBucket({
  *     name: "my-backend",
  * }, { async: true }));
  * ```

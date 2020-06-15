@@ -185,8 +185,9 @@ class Firewall(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 
-        ## Example Usage - Firewall Basic
+        ## Example Usage
 
+        ### Firewall Basic
 
         ```python
         import pulumi

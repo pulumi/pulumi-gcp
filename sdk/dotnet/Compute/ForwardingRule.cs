@@ -21,8 +21,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
     /// 
-    /// ## Example Usage - Forwarding Rule Basic
+    /// ## Example Usage
     /// 
+    /// ### Forwarding Rule Basic
     /// 
     /// ```csharp
     /// using Pulumi;

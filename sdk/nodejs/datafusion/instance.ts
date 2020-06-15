@@ -15,39 +15,40 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
  *
- * ## Example Usage - Data Fusion Instance Basic
+ * ## Example Usage
  *
+ * ### Data Fusion Instance Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
+ * import * as google_beta from "@pulumi/google-beta";
  *
- * const basicInstance = new gcp.datafusion.Instance("basicInstance", {
+ * const basicInstance = new google_beta.datafusion.Instance("basic_instance", {
  *     region: "us-central1",
  *     type: "BASIC",
  * });
  * ```
- * ## Example Usage - Data Fusion Instance Full
  *
+ * ### Data Fusion Instance Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
+ * import * as google_beta from "@pulumi/google-beta";
  *
- * const extendedInstance = new gcp.datafusion.Instance("extendedInstance", {
+ * const extendedInstance = new google_beta.datafusion.Instance("extended_instance", {
  *     description: "My Data Fusion instance",
- *     region: "us-central1",
- *     type: "BASIC",
  *     enableStackdriverLogging: true,
  *     enableStackdriverMonitoring: true,
  *     labels: {
- *         example_key: "exampleValue",
+ *         example_key: "example_value",
+ *     },
+ *     networkConfig: {
+ *         ipAllocation: "10.89.48.0/22",
+ *         network: "default",
  *     },
  *     privateInstance: true,
- *     network_config: {
- *         network: "default",
- *         ipAllocation: "10.89.48.0/22",
- *     },
+ *     region: "us-central1",
+ *     type: "BASIC",
  * });
  * ```
  */

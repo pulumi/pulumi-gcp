@@ -55,8 +55,9 @@ class Topic(pulumi.CustomResource):
         * How-to Guides
             * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
 
-        ## Example Usage - Pubsub Topic Basic
+        ## Example Usage
 
+        ### Pubsub Topic Basic
 
         ```python
         import pulumi
@@ -66,8 +67,8 @@ class Topic(pulumi.CustomResource):
             "foo": "bar",
         })
         ```
-        ## Example Usage - Pubsub Topic Cmek
 
+        ### Pubsub Topic Cmek
 
         ```python
         import pulumi
@@ -77,8 +78,8 @@ class Topic(pulumi.CustomResource):
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
         ```
-        ## Example Usage - Pubsub Topic Geo Restricted
 
+        ### Pubsub Topic Geo Restricted
 
         ```python
         import pulumi

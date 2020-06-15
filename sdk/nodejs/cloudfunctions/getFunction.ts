@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myFunction = pulumi.output(gcp.cloudfunctions.getFunction({
+ * const my_function = pulumi.output(gcp.cloudfunctions.getFunction({
  *     name: "function",
  * }, { async: true }));
  * ```
@@ -129,7 +129,7 @@ export interface GetFunctionResult {
      */
     readonly triggerHttp: boolean;
     /**
-     * The VPC Network Connector that this cloud function can connect to. 
+     * The VPC Network Connector that this cloud function can connect to.
      */
     readonly vpcConnector: string;
     /**

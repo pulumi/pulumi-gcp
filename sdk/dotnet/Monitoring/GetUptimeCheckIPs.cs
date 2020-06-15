@@ -35,7 +35,6 @@ namespace Pulumi.Gcp.Monitoring
         ///     public Output&lt;string&gt; IpList { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

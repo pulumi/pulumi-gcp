@@ -59,8 +59,9 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/externalVpnGateways)
 
-        ## Example Usage - External Vpn Gateway
+        ## Example Usage
 
+        ### External Vpn Gateway
 
         ```python
         import pulumi

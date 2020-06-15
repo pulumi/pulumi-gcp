@@ -39,7 +39,38 @@ class EntryGroup(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, description=None, display_name=None, entry_group_id=None, project=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a EntryGroup resource with the given unique name, props, and options.
+        An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.
+
+
+        To get more information about EntryGroup, see:
+
+        * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+
+        ## Example Usage
+
+        ### Data Catalog Entry Group Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_entry_group = gcp.datacatalog.EntryGroup("basicEntryGroup", entry_group_id="my_group")
+        ```
+
+        ### Data Catalog Entry Group Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_entry_group = gcp.datacatalog.EntryGroup("basicEntryGroup",
+            description="entry group created by Terraform",
+            display_name="terraform entry group",
+            entry_group_id="my_group")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.

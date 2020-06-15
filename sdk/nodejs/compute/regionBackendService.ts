@@ -17,8 +17,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
  *
- * ## Example Usage - Region Backend Service Basic
+ * ## Example Usage
  *
+ * ### Region Backend Service Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -38,8 +39,8 @@ import * as utilities from "../utilities";
  *     sessionAffinity: "CLIENT_IP",
  * });
  * ```
- * ## Example Usage - Region Backend Service Ilb Round Robin
  *
+ * ### Region Backend Service Ilb Round Robin
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,8 +57,8 @@ import * as utilities from "../utilities";
  *     localityLbPolicy: "ROUND_ROBIN",
  * });
  * ```
- * ## Example Usage - Region Backend Service Ilb Ring Hash
  *
+ * ### Region Backend Service Ilb Ring Hash
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -90,8 +91,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Region Backend Service Balancing Mode
  *
+ * ### Region Backend Service Balancing Mode
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

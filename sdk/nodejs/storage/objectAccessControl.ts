@@ -27,8 +27,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
  *
- * ## Example Usage - Storage Object Access Control Public Object
+ * ## Example Usage
  *
+ * ### Storage Object Access Control Public Object
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

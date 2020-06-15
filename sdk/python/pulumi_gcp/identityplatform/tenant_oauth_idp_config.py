@@ -53,8 +53,9 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Identity Platform Tenant Oauth Idp Config Basic
+        ## Example Usage
 
+        ### Identity Platform Tenant Oauth Idp Config Basic
 
         ```python
         import pulumi

@@ -24,8 +24,9 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
-    /// ## Example Usage - Region Ssl Certificate Basic
+    /// ## Example Usage
     /// 
+    /// ### Region Ssl Certificate Basic
     /// 
     /// ```csharp
     /// using System.IO;

@@ -16,28 +16,29 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/source-repositories/)
  *
- * ## Example Usage - Sourcerepo Repository Basic
+ * ## Example Usage
  *
+ * ### Sourcerepo Repository Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myRepo = new gcp.sourcerepo.Repository("my-repo", {});
+ * const my_repo = new gcp.sourcerepo.Repository("my-repo", {});
  * ```
- * ## Example Usage - Sourcerepo Repository Full
  *
+ * ### Sourcerepo Repository Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const testAccount = new gcp.serviceAccount.Account("test-account", {
+ * const test_account = new gcp.serviceAccount.Account("test-account", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",
  * });
  * const topic = new gcp.pubsub.Topic("topic", {});
- * const myRepo = new gcp.sourcerepo.Repository("my-repo", {pubsub_configs: [{
+ * const my_repo = new gcp.sourcerepo.Repository("my-repo", {pubsub_configs: [{
  *     topic: topic.id,
  *     messageFormat: "JSON",
  *     serviceAccountEmail: test_account.email,

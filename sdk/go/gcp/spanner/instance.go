@@ -19,6 +19,36 @@ import (
 // * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/spanner/)
+//
+// ## Example Usage
+//
+// ### Spanner Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
+// 			Config:      pulumi.String("regional-us-central1"),
+// 			DisplayName: pulumi.String("Test Spanner Instance"),
+// 			Labels: map[string]interface{}{
+// 				"foo": "bar",
+// 			},
+// 			NumNodes: pulumi.Int(2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

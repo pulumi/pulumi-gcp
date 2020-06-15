@@ -62,8 +62,9 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
-        ## Example Usage - Region Target Http Proxy Basic
+        ## Example Usage
 
+        ### Region Target Http Proxy Basic
 
         ```python
         import pulumi
@@ -98,8 +99,8 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             region="us-central1",
             url_map=default_region_url_map.id)
         ```
-        ## Example Usage - Region Target Http Proxy Https Redirect
 
+        ### Region Target Http Proxy Https Redirect
 
         ```python
         import pulumi

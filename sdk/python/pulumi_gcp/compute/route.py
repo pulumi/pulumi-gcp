@@ -133,8 +133,9 @@ class Route(pulumi.CustomResource):
         * How-to Guides
             * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
-        ## Example Usage - Route Basic
+        ## Example Usage
 
+        ### Route Basic
 
         ```python
         import pulumi
@@ -147,8 +148,8 @@ class Route(pulumi.CustomResource):
             next_hop_ip="10.132.1.5",
             priority=100)
         ```
-        ## Example Usage - Route Ilb
 
+        ### Route Ilb
 
         ```python
         import pulumi

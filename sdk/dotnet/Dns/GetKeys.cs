@@ -15,10 +15,6 @@ namespace Pulumi.Gcp.Dns
         /// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
         /// [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
         /// and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
-        /// 
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithVersion());

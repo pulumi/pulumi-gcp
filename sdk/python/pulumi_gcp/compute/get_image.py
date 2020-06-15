@@ -179,7 +179,6 @@ def get_image(family=None,name=None,project=None,opts=None):
     ```
 
 
-
     :param str family: The family name of the image.
     :param str name: or `family` - (Required) The name of a specific image or a family.
            Exactly one of `name` of `family` must be specified. If `name` is specified, it will fetch

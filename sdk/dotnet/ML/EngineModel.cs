@@ -17,8 +17,9 @@ namespace Pulumi.Gcp.ML
     /// 
     /// 
     /// 
-    /// ## Example Usage - Ml Model Basic
+    /// ## Example Usage
     /// 
+    /// ### Ml Model Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -37,8 +38,8 @@ namespace Pulumi.Gcp.ML
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Ml Model Full
     /// 
+    /// ### Ml Model Full
     /// 
     /// ```csharp
     /// using Pulumi;

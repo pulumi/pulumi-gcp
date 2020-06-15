@@ -12,8 +12,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Interconnect Attachment Basic
+ * ## Example Usage
  *
+ * ### Interconnect Attachment Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

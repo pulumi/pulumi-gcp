@@ -25,11 +25,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const mySink = new gcp.logging.ProjectSink("my-sink", {
+ * const my_sink = new gcp.logging.ProjectSink("my-sink", {
  *     // Can export to pubsub, cloud storage, or bigquery
  *     destination: "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
  *     // Log all WARN or higher severity messages relating to instances
- *     filter: "resource.type = gceInstance AND severity >= WARN",
+ *     filter: "resource.type = gce_instance AND severity >= WARN",
  *     // Use a unique writer (creates a unique service account used for writing)
  *     uniqueWriterIdentity: true,
  * });

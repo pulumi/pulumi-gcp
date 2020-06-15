@@ -17,6 +17,33 @@ import (
 // * [API documentation](https://cloud.google.com/bigquery/docs/reference/reservations/rest/v1beta1/projects.locations.reservations/create)
 // * How-to Guides
 //     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
+//
+// ## Example Usage
+//
+// ### Bigquery Reservation Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		reservation, err := bigquery.NewReservation(ctx, "reservation", &bigquery.ReservationArgs{
+// 			Location:        pulumi.String("asia-northeast1"),
+// 			SlotCapacity:    pulumi.Int(0),
+// 			IgnoreIdleSlots: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Reservation struct {
 	pulumi.CustomResourceState
 

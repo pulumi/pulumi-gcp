@@ -16,8 +16,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
  *
- * ## Example Usage - Healthcare Fhir Store Basic
+ * ## Example Usage
  *
+ * ### Healthcare Fhir Store Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

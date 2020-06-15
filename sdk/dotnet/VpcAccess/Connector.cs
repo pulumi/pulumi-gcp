@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.VpcAccess
     /// * How-to Guides
     ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
     /// 
-    /// ## Example Usage - VPC Access Connector
+    /// ## Example Usage
     /// 
+    /// ### VPC Access Connector
     /// 
     /// ```csharp
     /// using Pulumi;

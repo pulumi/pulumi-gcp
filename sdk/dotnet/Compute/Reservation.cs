@@ -26,8 +26,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
     /// 
-    /// ## Example Usage - Reservation Basic
+    /// ## Example Usage
     /// 
+    /// ### Reservation Basic
     /// 
     /// ```csharp
     /// using Pulumi;

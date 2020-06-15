@@ -31,8 +31,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/images)
  *
- * ## Example Usage - Image Basic
+ * ## Example Usage
  *
+ * ### Image Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,8 +45,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Image Guest Os
  *
+ * ### Image Guest Os
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

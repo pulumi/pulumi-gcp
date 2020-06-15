@@ -70,8 +70,9 @@ class BucketAccessControl(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 
-        ## Example Usage - Storage Bucket Access Control Public Bucket
+        ## Example Usage
 
+        ### Storage Bucket Access Control Public Bucket
 
         ```python
         import pulumi

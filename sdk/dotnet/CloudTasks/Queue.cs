@@ -14,8 +14,9 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     /// 
     /// 
-    /// ## Example Usage - Queue Basic
+    /// ## Example Usage
     /// 
+    /// ### Queue Basic
     /// 
     /// ```csharp
     /// using Pulumi;

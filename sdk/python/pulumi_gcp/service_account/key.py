@@ -58,7 +58,9 @@ class Key(pulumi.CustomResource):
         Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
 
 
-        ## Example Usage, creating a new Key Pair
+        ## Example Usage
+
+        ### Creating A New Key Pair
 
         ```python
         import pulumi

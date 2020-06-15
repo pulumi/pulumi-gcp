@@ -17,18 +17,19 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
  *
- * ## Example Usage - Access Context Manager Access Level Basic
+ * ## Example Usage
  *
+ * ### Access Context Manager Access Level Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const accessPolicy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
  *     parent: "organizations/123456789",
  *     title: "my policy",
  * });
- * const accessLevel = new gcp.accesscontextmanager.AccessLevel("access-level", {
+ * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
  *     basic: {
  *         conditions: [{
  *             devicePolicy: {
@@ -45,7 +46,7 @@ import * as utilities from "../utilities";
  *         }],
  *     },
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     title: "chromeosNoLock",
+ *     title: "chromeos_no_lock",
  * });
  * ```
  */

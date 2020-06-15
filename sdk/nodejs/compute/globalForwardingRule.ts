@@ -17,8 +17,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Global Forwarding Rule Http
+ * ## Example Usage
  *
+ * ### Global Forwarding Rule Http
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -60,8 +61,8 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
- * ## Example Usage - Global Forwarding Rule Internal
  *
+ * ### Global Forwarding Rule Internal
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

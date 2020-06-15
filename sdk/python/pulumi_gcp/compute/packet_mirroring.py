@@ -83,8 +83,9 @@ class PacketMirroring(pulumi.CustomResource):
         * How-to Guides
             * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 
-        ## Example Usage - Compute Packet Mirroring Full
+        ## Example Usage
 
+        ### Compute Packet Mirroring Full
 
         ```python
         import pulumi

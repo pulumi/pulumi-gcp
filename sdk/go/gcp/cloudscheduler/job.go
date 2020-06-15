@@ -22,6 +22,82 @@ import (
 // * [API documentation](https://cloud.google.com/scheduler/docs/reference/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/scheduler/)
+//
+// ## Example Usage
+//
+// ### Scheduler Job Http
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/cloudscheduler"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		job, err := cloudscheduler.NewJob(ctx, "job", &cloudscheduler.JobArgs{
+// 			AttemptDeadline: pulumi.String("320s"),
+// 			Description:     pulumi.String("test http job"),
+// 			HttpTarget: &cloudscheduler.JobHttpTargetArgs{
+// 				HttpMethod: pulumi.String("POST"),
+// 				Uri:        pulumi.String("https://example.com/ping"),
+// 			},
+// 			RetryConfig: &cloudscheduler.JobRetryConfigArgs{
+// 				RetryCount: pulumi.Int(1),
+// 			},
+// 			Schedule: pulumi.String("*/8 * * * *"),
+// 			TimeZone: pulumi.String("America/New_York"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Scheduler Job App Engine
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/cloudscheduler"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		job, err := cloudscheduler.NewJob(ctx, "job", &cloudscheduler.JobArgs{
+// 			AppEngineHttpTarget: &cloudscheduler.JobAppEngineHttpTargetArgs{
+// 				AppEngineRouting: &cloudscheduler.JobAppEngineHttpTargetAppEngineRoutingArgs{
+// 					Instance: pulumi.String("my-instance-001"),
+// 					Service:  pulumi.String("web"),
+// 					Version:  pulumi.String("prod"),
+// 				},
+// 				HttpMethod:  pulumi.String("POST"),
+// 				RelativeUri: pulumi.String("/ping"),
+// 			},
+// 			AttemptDeadline: pulumi.String("320s"),
+// 			Description:     pulumi.String("test app engine job"),
+// 			RetryConfig: &cloudscheduler.JobRetryConfigArgs{
+// 				MaxDoublings:       pulumi.Int(2),
+// 				MaxRetryDuration:   pulumi.String("10s"),
+// 				MinBackoffDuration: pulumi.String("1s"),
+// 				RetryCount:         pulumi.Int(3),
+// 			},
+// 			Schedule: pulumi.String("*/4 * * * *"),
+// 			TimeZone: pulumi.String("Europe/London"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Job struct {
 	pulumi.CustomResourceState
 

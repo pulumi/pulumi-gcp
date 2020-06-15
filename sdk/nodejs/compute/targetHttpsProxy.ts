@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
- * ## Example Usage - Target Https Proxy Basic
+ * ## Example Usage
  *
+ * ### Target Https Proxy Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -13,8 +13,9 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
  *
- * ## Example Usage - Target Vpn Gateway Basic
+ * ## Example Usage
  *
+ * ### Target Vpn Gateway Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

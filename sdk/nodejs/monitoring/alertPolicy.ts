@@ -18,14 +18,15 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
  *
- * ## Example Usage - Monitoring Alert Policy Basic
+ * ## Example Usage
  *
+ * ### Monitoring Alert Policy Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
  *     combiner: "OR",
  *     conditions: [{
  *         conditionThreshold: {

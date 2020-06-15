@@ -35,7 +35,6 @@ namespace Pulumi.Gcp.Monitoring
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

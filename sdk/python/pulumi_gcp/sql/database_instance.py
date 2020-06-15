@@ -26,7 +26,6 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     encryption_key_name: pulumi.Output[str]
     """
-
     The full path to the encryption key used for the CMEK disk encryption.  Setting
     up disk encryption currently requires manual steps outside of this provider.
     The provided key must be in the same region as the SQL instance.  In order
@@ -53,7 +52,7 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     private_ip_address: pulumi.Output[str]
     """
-    The first private (`PRIVATE`) IPv4 address assigned. 
+    The first private (`PRIVATE`) IPv4 address assigned.
     """
     project: pulumi.Output[str]
     """
@@ -62,7 +61,7 @@ class DatabaseInstance(pulumi.CustomResource):
     """
     public_ip_address: pulumi.Output[str]
     """
-    The first public (`PRIMARY`) IPv4 address assigned. 
+    The first public (`PRIMARY`) IPv4 address assigned.
     """
     region: pulumi.Output[str]
     """
@@ -269,7 +268,6 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -278,8 +276,7 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
                includes an up-to-date reference of supported versions.
-        :param pulumi.Input[str] encryption_key_name: 
-               The full path to the encryption key used for the CMEK disk encryption.  Setting
+        :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
                to use this feature, a special kind of service account must be created and
@@ -463,8 +460,7 @@ class DatabaseInstance(pulumi.CustomResource):
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                [Database Version Policies](https://cloud.google.com/sql/docs/sqlserver/db-versions)
                includes an up-to-date reference of supported versions.
-        :param pulumi.Input[str] encryption_key_name: 
-               The full path to the encryption key used for the CMEK disk encryption.  Setting
+        :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
                to use this feature, a special kind of service account must be created and
@@ -477,10 +473,10 @@ class DatabaseInstance(pulumi.CustomResource):
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: A name for this whitelist entry.
-        :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned. 
+        :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned. 
+        :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
         :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
                available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
                A valid region must be provided to use this resource. If a region is not provided in the resource definition,

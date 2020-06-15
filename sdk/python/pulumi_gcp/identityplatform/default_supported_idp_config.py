@@ -55,8 +55,9 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
 
 
 
-        ## Example Usage - Identity Platform Default Supported Idp Config Basic
+        ## Example Usage
 
+        ### Identity Platform Default Supported Idp Config Basic
 
         ```python
         import pulumi

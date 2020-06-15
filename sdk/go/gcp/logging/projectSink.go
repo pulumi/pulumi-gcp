@@ -26,6 +26,19 @@ type ProjectSink struct {
 	BigqueryOptions ProjectSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -82,6 +95,19 @@ type projectSinkState struct {
 	BigqueryOptions *ProjectSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -108,6 +134,19 @@ type ProjectSinkState struct {
 	BigqueryOptions ProjectSinkBigqueryOptionsPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -138,6 +177,19 @@ type projectSinkArgs struct {
 	BigqueryOptions *ProjectSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -162,6 +214,19 @@ type ProjectSinkArgs struct {
 	BigqueryOptions ProjectSinkBigqueryOptionsPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.

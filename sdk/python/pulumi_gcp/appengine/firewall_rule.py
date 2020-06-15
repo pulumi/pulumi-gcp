@@ -47,8 +47,9 @@ class FirewallRule(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
 
-        ## Example Usage - App Engine Firewall Rule Basic
+        ## Example Usage
 
+        ### App Engine Firewall Rule Basic
 
         ```python
         import pulumi

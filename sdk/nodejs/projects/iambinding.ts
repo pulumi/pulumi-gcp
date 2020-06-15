@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  *         condition: {
  *             description: "Expiring at midnight of 2019-12-31",
  *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *             title: "expiresAfter20191231",
+ *             title: "expires_after_2019_12_31",
  *         },
  *         members: ["user:jane@example.com"],
  *         role: "roles/editor",
@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         title: "expiresAfter20191231",
+ *         title: "expires_after_2019_12_31",
  *     },
  *     members: ["user:jane@example.com"],
  *     project: "your-project-id",
@@ -124,7 +124,7 @@ import * as utilities from "../utilities";
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
- *         title: "expiresAfter20191231",
+ *         title: "expires_after_2019_12_31",
  *     },
  *     member: "user:jane@example.com",
  *     project: "your-project-id",

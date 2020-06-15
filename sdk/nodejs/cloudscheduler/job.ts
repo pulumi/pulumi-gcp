@@ -21,8 +21,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/scheduler/)
  *
- * ## Example Usage - Scheduler Job Http
+ * ## Example Usage
  *
+ * ### Scheduler Job Http
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -42,8 +43,8 @@ import * as utilities from "../utilities";
  *     timeZone: "America/New_York",
  * });
  * ```
- * ## Example Usage - Scheduler Job App Engine
  *
+ * ### Scheduler Job App Engine
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,8 +72,8 @@ import * as utilities from "../utilities";
  *     timeZone: "Europe/London",
  * });
  * ```
- * ## Example Usage - Scheduler Job Oauth
  *
+ * ### Scheduler Job Oauth
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -93,8 +94,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Scheduler Job Oidc
  *
+ * ### Scheduler Job Oidc
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

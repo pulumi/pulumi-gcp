@@ -27,8 +27,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
  *
- * ## Example Usage - Firewall Basic
+ * ## Example Usage
  *
+ * ### Firewall Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

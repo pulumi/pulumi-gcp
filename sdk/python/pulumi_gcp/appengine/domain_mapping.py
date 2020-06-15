@@ -67,8 +67,9 @@ class DomainMapping(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
 
-        ## Example Usage - App Engine Domain Mapping Basic
+        ## Example Usage
 
+        ### App Engine Domain Mapping Basic
 
         ```python
         import pulumi

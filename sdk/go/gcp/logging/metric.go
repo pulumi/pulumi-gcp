@@ -20,6 +20,125 @@ import (
 // * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
+//
+// ## Example Usage
+//
+// ### Logging Metric Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/logging"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		loggingMetric, err := logging.NewMetric(ctx, "loggingMetric", &logging.MetricArgs{
+// 			BucketOptions: &logging.MetricBucketOptionsArgs{
+// 				LinearBuckets: &logging.MetricBucketOptionsLinearBucketsArgs{
+// 					NumFiniteBuckets: pulumi.Int(3),
+// 					Offset:           pulumi.Float64(1),
+// 					Width:            pulumi.Int(1),
+// 				},
+// 			},
+// 			Filter: pulumi.String("resource.type=gae_app AND severity>=ERROR"),
+// 			LabelExtractors: map[string]interface{}{
+// 				"mass": "EXTRACT(jsonPayload.request)",
+// 				"sku":  "EXTRACT(jsonPayload.id)",
+// 			},
+// 			MetricDescriptor: &logging.MetricMetricDescriptorArgs{
+// 				DisplayName: pulumi.String("My metric"),
+// 				Labels: logging.MetricMetricDescriptorLabelArray{
+// 					&logging.MetricMetricDescriptorLabelArgs{
+// 						Description: pulumi.String("amount of matter"),
+// 						Key:         pulumi.String("mass"),
+// 						ValueType:   pulumi.String("STRING"),
+// 					},
+// 					&logging.MetricMetricDescriptorLabelArgs{
+// 						Description: pulumi.String("Identifying number for item"),
+// 						Key:         pulumi.String("sku"),
+// 						ValueType:   pulumi.String("INT64"),
+// 					},
+// 				},
+// 				MetricKind: pulumi.String("DELTA"),
+// 				Unit:       pulumi.String("1"),
+// 				ValueType:  pulumi.String("DISTRIBUTION"),
+// 			},
+// 			ValueExtractor: pulumi.String("EXTRACT(jsonPayload.request)"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Logging Metric Counter Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/logging"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		loggingMetric, err := logging.NewMetric(ctx, "loggingMetric", &logging.MetricArgs{
+// 			Filter: pulumi.String("resource.type=gae_app AND severity>=ERROR"),
+// 			MetricDescriptor: &logging.MetricMetricDescriptorArgs{
+// 				MetricKind: pulumi.String("DELTA"),
+// 				ValueType:  pulumi.String("INT64"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Logging Metric Counter Labels
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/logging"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		loggingMetric, err := logging.NewMetric(ctx, "loggingMetric", &logging.MetricArgs{
+// 			Filter: pulumi.String("resource.type=gae_app AND severity>=ERROR"),
+// 			LabelExtractors: map[string]interface{}{
+// 				"mass": "EXTRACT(jsonPayload.request)",
+// 			},
+// 			MetricDescriptor: &logging.MetricMetricDescriptorArgs{
+// 				Labels: logging.MetricMetricDescriptorLabelArray{
+// 					&logging.MetricMetricDescriptorLabelArgs{
+// 						Description: pulumi.String("amount of matter"),
+// 						Key:         pulumi.String("mass"),
+// 						ValueType:   pulumi.String("STRING"),
+// 					},
+// 				},
+// 				MetricKind: pulumi.String("DELTA"),
+// 				ValueType:  pulumi.String("INT64"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Metric struct {
 	pulumi.CustomResourceState
 

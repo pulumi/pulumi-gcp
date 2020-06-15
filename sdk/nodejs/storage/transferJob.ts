@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     role: "roles/storage.admin",
  *     member: _default.then(_default => `serviceAccount:${_default.email}`),
  * });
- * const s3BucketNightlyBackup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
+ * const s3_bucket_nightly_backup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
  *     description: "Nightly backup of S3 bucket",
  *     project: _var.project,
  *     transfer_spec: {

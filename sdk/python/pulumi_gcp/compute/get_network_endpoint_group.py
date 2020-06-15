@@ -106,7 +106,6 @@ def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
     ```
 
 
-
     :param str name: The Network Endpoint Group name.
            Provide either this or a `self_link`.
     :param str self_link: The Network Endpoint Group self\_link.

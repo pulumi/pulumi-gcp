@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.Datastore
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
     /// 
-    /// ## Example Usage - Datastore Index
+    /// ## Example Usage
     /// 
+    /// ### Datastore Index
     /// 
     /// ```csharp
     /// using Pulumi;

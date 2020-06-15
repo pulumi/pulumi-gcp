@@ -25,6 +25,38 @@ import (
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
 // * How-to Guides
 //     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+//
+// ## Example Usage
+//
+// ### Reservation Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		gceReservation, err := compute.NewReservation(ctx, "gceReservation", &compute.ReservationArgs{
+// 			SpecificReservation: &compute.ReservationSpecificReservationArgs{
+// 				Count: pulumi.Int(1),
+// 				InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
+// 					MachineType:    pulumi.String("n2-standard-2"),
+// 					MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
+// 				},
+// 			},
+// 			Zone: pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Reservation struct {
 	pulumi.CustomResourceState
 

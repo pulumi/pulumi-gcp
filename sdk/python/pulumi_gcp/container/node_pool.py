@@ -107,7 +107,6 @@ class NodePool(pulumi.CustomResource):
     """
     node_locations: pulumi.Output[list]
     """
-
     The list of zones in which the node pool's nodes should be located. Nodes must
     be in the region of their regional cluster or in the same region as their
     cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -146,7 +145,9 @@ class NodePool(pulumi.CustomResource):
         the cluster control plane. For more information see [the official documentation](https://cloud.google.com/container-engine/docs/node-pools)
         and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
 
-        ## Example Usage - using a separately managed node pool (recommended)
+        ## Example Usage
+
+        ### Using A Separately Managed Node Pool (Recommended)
 
         ```python
         import pulumi
@@ -170,7 +171,7 @@ class NodePool(pulumi.CustomResource):
             })
         ```
 
-        ## Example Usage - 2 node pools, 1 separately managed + the default node pool
+        ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
 
         ```python
         import pulumi
@@ -234,8 +235,7 @@ class NodePool(pulumi.CustomResource):
                container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
-        :param pulumi.Input[list] node_locations: 
-               The list of zones in which the node pool's nodes should be located. Nodes must
+        :param pulumi.Input[list] node_locations: The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.
@@ -377,8 +377,7 @@ class NodePool(pulumi.CustomResource):
                container.Cluster for schema.
         :param pulumi.Input[float] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
-        :param pulumi.Input[list] node_locations: 
-               The list of zones in which the node pool's nodes should be located. Nodes must
+        :param pulumi.Input[list] node_locations: The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
                `node_locations` will be used.

@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.Spanner
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/spanner/)
     /// 
-    /// ## Example Usage - Spanner Database Basic
+    /// ## Example Usage
     /// 
+    /// ### Spanner Database Basic
     /// 
     /// ```csharp
     /// using Pulumi;

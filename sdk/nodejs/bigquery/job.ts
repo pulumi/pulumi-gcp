@@ -12,25 +12,26 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Bigquery Job Query
+ * ## Example Usage
  *
+ * ### Bigquery Job Query
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bar = new gcp.bigquery.Dataset("bar", {
- *     datasetId: "jobQueryDataset",
+ *     datasetId: "job_query_dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
  * });
  * const foo = new gcp.bigquery.Table("foo", {
  *     datasetId: bar.datasetId,
- *     tableId: "jobQueryTable",
+ *     tableId: "job_query_table",
  * });
  * const job = new gcp.bigquery.Job("job", {
- *     jobId: "jobQuery",
+ *     jobId: "job_query",
  *     labels: {
  *         "example-label": "example-value",
  *     },
@@ -49,25 +50,25 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Bigquery Job Query Table Reference
  *
+ * ### Bigquery Job Query Table Reference
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bar = new gcp.bigquery.Dataset("bar", {
- *     datasetId: "jobQueryDataset",
+ *     datasetId: "job_query_dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
  * });
  * const foo = new gcp.bigquery.Table("foo", {
  *     datasetId: bar.datasetId,
- *     tableId: "jobQueryTable",
+ *     tableId: "job_query_table",
  * });
  * const job = new gcp.bigquery.Job("job", {
- *     jobId: "jobQuery",
+ *     jobId: "job_query",
  *     labels: {
  *         "example-label": "example-value",
  *     },
@@ -87,25 +88,25 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Bigquery Job Load
  *
+ * ### Bigquery Job Load
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bar = new gcp.bigquery.Dataset("bar", {
- *     datasetId: "jobLoadDataset",
+ *     datasetId: "job_load_dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
  * });
  * const foo = new gcp.bigquery.Table("foo", {
  *     datasetId: bar.datasetId,
- *     tableId: "jobLoadTable",
+ *     tableId: "job_load_table",
  * });
  * const job = new gcp.bigquery.Job("job", {
- *     jobId: "jobLoad",
+ *     jobId: "job_load",
  *     labels: {
  *         my_job: "load",
  *     },
@@ -126,22 +127,22 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ## Example Usage - Bigquery Job Extract
  *
+ * ### Bigquery Job Extract
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const source_oneDataset = new gcp.bigquery.Dataset("source-oneDataset", {
- *     datasetId: "jobExtractDataset",
+ *     datasetId: "job_extract_dataset",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
  * });
  * const source_oneTable = new gcp.bigquery.Table("source-oneTable", {
  *     datasetId: source_oneDataset.datasetId,
- *     tableId: "jobExtractTable",
+ *     tableId: "job_extract_table",
  *     schema: `[
  *   {
  *     "name": "name",
@@ -149,7 +150,7 @@ import * as utilities from "../utilities";
  *     "mode": "NULLABLE"
  *   },
  *   {
- *     "name": "postAbbr",
+ *     "name": "post_abbr",
  *     "type": "STRING",
  *     "mode": "NULLABLE"
  *   },
@@ -163,7 +164,7 @@ import * as utilities from "../utilities";
  * });
  * const dest = new gcp.storage.Bucket("dest", {forceDestroy: true});
  * const job = new gcp.bigquery.Job("job", {
- *     jobId: "jobExtract",
+ *     jobId: "job_extract",
  *     extract: {
  *         destinationUris: [pulumi.interpolate`${dest.url}/extract`],
  *         source_table: {

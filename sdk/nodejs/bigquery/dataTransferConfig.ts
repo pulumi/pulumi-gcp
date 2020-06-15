@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
  *
- * ## Example Usage - Scheduled Query
+ * ## Example Usage
  *
+ * ### Scheduled Query
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -28,7 +29,7 @@ import * as utilities from "../utilities";
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com`),
  * });
  * const myDataset = new gcp.bigquery.Dataset("myDataset", {
- *     datasetId: "myDataset",
+ *     datasetId: "my_dataset",
  *     friendlyName: "foo",
  *     description: "bar",
  *     location: "asia-northeast1",
@@ -36,7 +37,7 @@ import * as utilities from "../utilities";
  * const queryConfig = new gcp.bigquery.DataTransferConfig("queryConfig", {
  *     displayName: "my-query",
  *     location: "asia-northeast1",
- *     dataSourceId: "scheduledQuery",
+ *     dataSourceId: "scheduled_query",
  *     schedule: "first sunday of quarter 00:00",
  *     destinationDatasetId: myDataset.datasetId,
  *     params: {

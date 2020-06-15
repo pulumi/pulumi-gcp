@@ -8,6 +8,36 @@ import (
 )
 
 // Use this data source to get information about a Google Billing Account.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		acct, err := organizations.LookupBillingAccount(ctx, &organizations.LookupBillingAccountArgs{
+// 			DisplayName: "My Billing Account",
+// 			Open:        true,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 			ProjectId:      pulumi.String("your-project-id"),
+// 			OrgId:          pulumi.String("1234567"),
+// 			BillingAccount: pulumi.String(acct.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetBillingAccount(ctx *pulumi.Context, args *GetBillingAccountArgs, opts ...pulumi.InvokeOption) (*GetBillingAccountResult, error) {
 	var rv GetBillingAccountResult
 	err := ctx.Invoke("gcp:organizations/getBillingAccount:getBillingAccount", args, &rv, opts...)

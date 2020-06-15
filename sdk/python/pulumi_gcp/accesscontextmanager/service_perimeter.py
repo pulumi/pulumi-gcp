@@ -147,8 +147,9 @@ class ServicePerimeter(pulumi.CustomResource):
         * How-to Guides
             * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
-        ## Example Usage - Access Context Manager Service Perimeter Basic
+        ## Example Usage
 
+        ### Access Context Manager Service Perimeter Basic
 
         ```python
         import pulumi
@@ -182,8 +183,8 @@ class ServicePerimeter(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="chromeos_no_lock")
         ```
-        ## Example Usage - Access Context Manager Service Perimeter Dry Run
 
+        ### Access Context Manager Service Perimeter Dry Run
 
         ```python
         import pulumi

@@ -95,7 +95,6 @@ namespace Pulumi.Gcp.Container
         public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// 
         /// The list of zones in which the node pool's nodes should be located. Nodes must
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -252,7 +251,6 @@ namespace Pulumi.Gcp.Container
         private InputList<string>? _nodeLocations;
 
         /// <summary>
-        /// 
         /// The list of zones in which the node pool's nodes should be located. Nodes must
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -385,7 +383,6 @@ namespace Pulumi.Gcp.Container
         private InputList<string>? _nodeLocations;
 
         /// <summary>
-        /// 
         /// The list of zones in which the node pool's nodes should be located. Nodes must
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level

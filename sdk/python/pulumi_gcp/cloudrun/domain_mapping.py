@@ -93,8 +93,9 @@ class DomainMapping(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
 
-        ## Example Usage - Cloud Run Domain Mapping Basic
+        ## Example Usage
 
+        ### Cloud Run Domain Mapping Basic
 
         ```python
         import pulumi

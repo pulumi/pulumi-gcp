@@ -153,8 +153,9 @@ class Job(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/scheduler/)
 
-        ## Example Usage - Scheduler Job Http
+        ## Example Usage
 
+        ### Scheduler Job Http
 
         ```python
         import pulumi
@@ -173,8 +174,8 @@ class Job(pulumi.CustomResource):
             schedule="*/8 * * * *",
             time_zone="America/New_York")
         ```
-        ## Example Usage - Scheduler Job App Engine
 
+        ### Scheduler Job App Engine
 
         ```python
         import pulumi
@@ -201,8 +202,8 @@ class Job(pulumi.CustomResource):
             schedule="*/4 * * * *",
             time_zone="Europe/London")
         ```
-        ## Example Usage - Scheduler Job Oauth
 
+        ### Scheduler Job Oauth
 
         ```python
         import pulumi
@@ -222,8 +223,8 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
-        ## Example Usage - Scheduler Job Oidc
 
+        ### Scheduler Job Oidc
 
         ```python
         import pulumi

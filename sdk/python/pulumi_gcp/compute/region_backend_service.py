@@ -353,8 +353,9 @@ class RegionBackendService(pulumi.CustomResource):
         * How-to Guides
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
-        ## Example Usage - Region Backend Service Basic
+        ## Example Usage
 
+        ### Region Backend Service Basic
 
         ```python
         import pulumi
@@ -372,8 +373,8 @@ class RegionBackendService(pulumi.CustomResource):
             connection_draining_timeout_sec=10,
             session_affinity="CLIENT_IP")
         ```
-        ## Example Usage - Region Backend Service Ilb Round Robin
 
+        ### Region Backend Service Ilb Round Robin
 
         ```python
         import pulumi
@@ -389,8 +390,8 @@ class RegionBackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
-        ## Example Usage - Region Backend Service Ilb Ring Hash
 
+        ### Region Backend Service Ilb Ring Hash
 
         ```python
         import pulumi
@@ -422,8 +423,8 @@ class RegionBackendService(pulumi.CustomResource):
                 "consecutiveErrors": 2,
             })
         ```
-        ## Example Usage - Region Backend Service Balancing Mode
 
+        ### Region Backend Service Balancing Mode
 
         ```python
         import pulumi

@@ -47,6 +47,8 @@ class Brand(pulumi.CustomResource):
         project and cannot be deleted. Destroying a provider-managed Brand
         will remove it from state but *will not delete the resource on the server.*
 
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.

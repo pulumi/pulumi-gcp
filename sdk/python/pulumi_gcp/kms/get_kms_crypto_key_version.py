@@ -89,7 +89,6 @@ def get_kms_crypto_key_version(crypto_key=None,version=None,opts=None):
     ```
 
 
-
     :param str crypto_key: The `self_link` of the Google Cloud Platform CryptoKey to which the key version belongs.
     :param float version: The version number for this CryptoKeyVersion. Defaults to `1`.
     """

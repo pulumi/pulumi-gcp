@@ -104,8 +104,9 @@ class Deployment(pulumi.CustomResource):
         than actually deploying an in-preview deployment (i.e. `preview=true` to
         `preview=false`).
 
-        ## Example Usage - Deployment Manager Deployment Basic
+        ## Example Usage
 
+        ### Deployment Manager Deployment Basic
 
         ```python
         import pulumi

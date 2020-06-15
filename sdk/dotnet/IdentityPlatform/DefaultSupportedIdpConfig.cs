@@ -18,8 +18,9 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// 
     /// 
-    /// ## Example Usage - Identity Platform Default Supported Idp Config Basic
+    /// ## Example Usage
     /// 
+    /// ### Identity Platform Default Supported Idp Config Basic
     /// 
     /// ```csharp
     /// using Pulumi;

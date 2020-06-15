@@ -11,8 +11,9 @@ import * as utilities from "../utilities";
  *
  *
  *
- * ## Example Usage - Dataproc Autoscaling Policy
+ * ## Example Usage
  *
+ * ### Dataproc Autoscaling Policy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

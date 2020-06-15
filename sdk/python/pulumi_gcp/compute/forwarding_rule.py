@@ -203,8 +203,9 @@ class ForwardingRule(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
-        ## Example Usage - Forwarding Rule Global Internallb
+        ## Example Usage
 
+        ### Forwarding Rule Global Internallb
 
         ```python
         import pulumi
@@ -234,8 +235,8 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.name,
             subnetwork=default_subnetwork.name)
         ```
-        ## Example Usage - Forwarding Rule Basic
 
+        ### Forwarding Rule Basic
 
         ```python
         import pulumi
@@ -246,8 +247,8 @@ class ForwardingRule(pulumi.CustomResource):
             target=default_target_pool.id,
             port_range="80")
         ```
-        ## Example Usage - Forwarding Rule Internallb
 
+        ### Forwarding Rule Internallb
 
         ```python
         import pulumi
@@ -276,8 +277,8 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.name,
             subnetwork=default_subnetwork.name)
         ```
-        ## Example Usage - Forwarding Rule Http Lb
 
+        ### Forwarding Rule Http Lb
 
         ```python
         import pulumi

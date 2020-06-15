@@ -78,7 +78,6 @@ class IAMCustomRole(pulumi.CustomResource):
             title="My Custom Role")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description for the role.

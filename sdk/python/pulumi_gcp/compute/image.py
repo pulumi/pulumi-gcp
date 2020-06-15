@@ -119,8 +119,9 @@ class Image(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/images)
 
-        ## Example Usage - Image Basic
+        ## Example Usage
 
+        ### Image Basic
 
         ```python
         import pulumi
@@ -130,8 +131,8 @@ class Image(pulumi.CustomResource):
             "source": "https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
         })
         ```
-        ## Example Usage - Image Guest Os
 
+        ### Image Guest Os
 
         ```python
         import pulumi

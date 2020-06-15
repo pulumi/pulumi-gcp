@@ -20,8 +20,9 @@ namespace Pulumi.Gcp.PubSub
     /// * How-to Guides
     ///     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
     /// 
-    /// ## Example Usage - Pubsub Subscription Different Project
+    /// ## Example Usage
     /// 
+    /// ### Pubsub Subscription Different Project
     /// 
     /// ```csharp
     /// using Pulumi;

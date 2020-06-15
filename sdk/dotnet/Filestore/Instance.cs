@@ -21,8 +21,9 @@ namespace Pulumi.Gcp.Filestore
     ///     * [Use with Kubernetes](https://cloud.google.com/filestore/docs/accessing-fileshares)
     ///     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
     /// 
-    /// ## Example Usage - Filestore Instance Basic
+    /// ## Example Usage
     /// 
+    /// ### Filestore Instance Basic
     /// 
     /// ```csharp
     /// using Pulumi;

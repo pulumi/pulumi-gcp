@@ -22,8 +22,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
     /// 
-    /// ## Example Usage - Router Peer Basic
+    /// ## Example Usage
     /// 
+    /// ### Router Peer Basic
     /// 
     /// ```csharp
     /// using Pulumi;

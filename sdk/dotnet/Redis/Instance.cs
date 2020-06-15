@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.Redis
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
     /// 
-    /// ## Example Usage - Redis Instance Basic
+    /// ## Example Usage
     /// 
+    /// ### Redis Instance Basic
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -38,8 +39,8 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// }
     /// ```
-    /// ## Example Usage - Redis Instance Full
     /// 
+    /// ### Redis Instance Full
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -663,8 +663,9 @@ class RegionUrlMap(pulumi.CustomResource):
         UrlMaps are used to route requests to a backend service based on rules
         that you define for the host and path of an incoming URL.
 
-        ## Example Usage - Region Url Map Basic
+        ## Example Usage
 
+        ### Region Url Map Basic
 
         ```python
         import pulumi
@@ -716,8 +717,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ## Example Usage - Region Url Map L7 Ilb Path
 
+        ### Region Url Map L7 Ilb Path
 
         ```python
         import pulumi
@@ -814,8 +815,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ## Example Usage - Region Url Map L7 Ilb Path Partial
 
+        ### Region Url Map L7 Ilb Path Partial
 
         ```python
         import pulumi
@@ -880,8 +881,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ## Example Usage - Region Url Map L7 Ilb Route
 
+        ### Region Url Map L7 Ilb Route
 
         ```python
         import pulumi
@@ -956,8 +957,8 @@ class RegionUrlMap(pulumi.CustomResource):
                 "path": "/home",
             }])
         ```
-        ## Example Usage - Region Url Map L7 Ilb Route Partial
 
+        ### Region Url Map L7 Ilb Route Partial
 
         ```python
         import pulumi

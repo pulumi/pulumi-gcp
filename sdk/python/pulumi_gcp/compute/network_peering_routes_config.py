@@ -45,8 +45,9 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 
-        ## Example Usage - Network Peering Routes Config Basic
+        ## Example Usage
 
+        ### Network Peering Routes Config Basic
 
         ```python
         import pulumi

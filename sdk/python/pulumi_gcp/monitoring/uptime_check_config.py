@@ -95,8 +95,9 @@ class UptimeCheckConfig(pulumi.CustomResource):
         > **Warning:** All arguments including `http_check.auth_info.password` will be stored in the raw
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
-        ## Example Usage - Uptime Check Config Http
+        ## Example Usage
 
+        ### Uptime Check Config Http
 
         ```python
         import pulumi
@@ -120,8 +121,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
             },
             timeout="60s")
         ```
-        ## Example Usage - Uptime Check Config Https
 
+        ### Uptime Check Config Https
 
         ```python
         import pulumi
@@ -147,8 +148,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
             },
             timeout="60s")
         ```
-        ## Example Usage - Uptime Check Tcp
 
+        ### Uptime Check Tcp
 
         ```python
         import pulumi
