@@ -366,7 +366,8 @@ jobs:
     - name: Configure GCP credentials
       uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        export_default_credentials: true
+        project_id: ${{ env.GOOGLE_PROJECT }}
         service_account_email: ${{ secrets.GCP_SA_EMAIL }}
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         version: 285.0.0
