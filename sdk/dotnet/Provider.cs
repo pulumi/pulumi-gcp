@@ -185,11 +185,17 @@ namespace Pulumi.Gcp
         [Input("loggingCustomEndpoint")]
         public Input<string>? LoggingCustomEndpoint { get; set; }
 
+        [Input("memcacheCustomEndpoint")]
+        public Input<string>? MemcacheCustomEndpoint { get; set; }
+
         [Input("mlEngineCustomEndpoint")]
         public Input<string>? MlEngineCustomEndpoint { get; set; }
 
         [Input("monitoringCustomEndpoint")]
         public Input<string>? MonitoringCustomEndpoint { get; set; }
+
+        [Input("networkManagementCustomEndpoint")]
+        public Input<string>? NetworkManagementCustomEndpoint { get; set; }
 
         [Input("osLoginCustomEndpoint")]
         public Input<string>? OsLoginCustomEndpoint { get; set; }

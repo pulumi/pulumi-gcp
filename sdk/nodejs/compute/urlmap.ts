@@ -422,6 +422,14 @@ export class URLMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
+     * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+     */
+    public readonly defaultRouteAction!: pulumi.Output<outputs.compute.URLMapDefaultRouteAction | undefined>;
+    /**
      * The backend service or backend bucket to use when none of the given paths match.
      */
     public readonly defaultService!: pulumi.Output<string | undefined>;
@@ -441,8 +449,9 @@ export class URLMap extends pulumi.CustomResource {
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService. headerAction specified here take effect before
-     * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+     * the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing
+     * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
      */
     public readonly headerAction!: pulumi.Output<outputs.compute.URLMapHeaderAction | undefined>;
     /**
@@ -492,6 +501,7 @@ export class URLMap extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as URLMapState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            inputs["defaultRouteAction"] = state ? state.defaultRouteAction : undefined;
             inputs["defaultService"] = state ? state.defaultService : undefined;
             inputs["defaultUrlRedirect"] = state ? state.defaultUrlRedirect : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -506,6 +516,7 @@ export class URLMap extends pulumi.CustomResource {
             inputs["tests"] = state ? state.tests : undefined;
         } else {
             const args = argsOrState as URLMapArgs | undefined;
+            inputs["defaultRouteAction"] = args ? args.defaultRouteAction : undefined;
             inputs["defaultService"] = args ? args.defaultService : undefined;
             inputs["defaultUrlRedirect"] = args ? args.defaultUrlRedirect : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -540,6 +551,14 @@ export interface URLMapState {
      */
     readonly creationTimestamp?: pulumi.Input<string>;
     /**
+     * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+     */
+    readonly defaultRouteAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteAction>;
+    /**
      * The backend service or backend bucket to use when none of the given paths match.
      */
     readonly defaultService?: pulumi.Input<string>;
@@ -559,8 +578,9 @@ export interface URLMapState {
     readonly fingerprint?: pulumi.Input<string>;
     /**
      * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService. headerAction specified here take effect before
-     * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+     * the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing
+     * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
      */
     readonly headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction>;
     /**
@@ -603,6 +623,14 @@ export interface URLMapState {
  */
 export interface URLMapArgs {
     /**
+     * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+     */
+    readonly defaultRouteAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteAction>;
+    /**
      * The backend service or backend bucket to use when none of the given paths match.
      */
     readonly defaultService?: pulumi.Input<string>;
@@ -618,8 +646,9 @@ export interface URLMapArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService. headerAction specified here take effect before
-     * headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+     * the selected backendService.
+     * headerAction specified here take effect before headerAction in the enclosing
+     * HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
      */
     readonly headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction>;
     /**

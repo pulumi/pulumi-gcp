@@ -105,9 +105,13 @@ kms_custom_endpoint = __config__.get('kmsCustomEndpoint')
 
 logging_custom_endpoint = __config__.get('loggingCustomEndpoint')
 
+memcache_custom_endpoint = __config__.get('memcacheCustomEndpoint')
+
 ml_engine_custom_endpoint = __config__.get('mlEngineCustomEndpoint')
 
 monitoring_custom_endpoint = __config__.get('monitoringCustomEndpoint')
+
+network_management_custom_endpoint = __config__.get('networkManagementCustomEndpoint')
 
 os_login_custom_endpoint = __config__.get('osLoginCustomEndpoint')
 

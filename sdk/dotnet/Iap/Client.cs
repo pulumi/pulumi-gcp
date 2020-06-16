@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.Iap
     /// <summary>
     /// Contains the data that describes an Identity Aware Proxy owned client.
     /// 
+    /// &gt; **Note:** Only internal org clients can be created via declarative tools. Other types of clients must be
+    /// manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
+    /// in this tool.
+    /// 
     /// 
     /// 
     /// &gt; **Warning:** All arguments including `secret` will be stored in the raw

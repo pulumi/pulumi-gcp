@@ -87,8 +87,8 @@ class InstanceGroup(pulumi.CustomResource):
         webservers = gcp.compute.InstanceGroup("webservers",
             description="Test instance group",
             instances=[
-                google_compute_instance["test"]["id"],
-                google_compute_instance["test2"]["id"],
+                google_compute_instance["test"]["self_link"],
+                google_compute_instance["test2"]["self_link"],
             ],
             named_port=[
                 {
@@ -124,7 +124,7 @@ class InstanceGroup(pulumi.CustomResource):
             }])
         staging_group = gcp.compute.InstanceGroup("stagingGroup",
             zone="us-central1-c",
-            instances=[staging_vm.id],
+            instances=[staging_vm.self_link],
             named_port=[
                 {
                     "name": "http",

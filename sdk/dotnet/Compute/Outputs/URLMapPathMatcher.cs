@@ -14,6 +14,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapPathMatcher
     {
         /// <summary>
+        /// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+        /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+        /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+        /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+        /// </summary>
+        public readonly Outputs.URLMapPathMatcherDefaultRouteAction? DefaultRouteAction;
+        /// <summary>
         /// The backend service or backend bucket to use when none of the given paths match.
         /// </summary>
         public readonly string? DefaultService;
@@ -29,8 +37,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? Description;
         /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
-        /// the selected backendService. headerAction specified here take effect before
-        /// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+        /// the selected backendService.
+        /// headerAction specified here take effect before headerAction in the enclosing
+        /// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherHeaderAction? HeaderAction;
         /// <summary>
@@ -59,6 +68,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private URLMapPathMatcher(
+            Outputs.URLMapPathMatcherDefaultRouteAction? defaultRouteAction,
+
             string? defaultService,
 
             Outputs.URLMapPathMatcherDefaultUrlRedirect? defaultUrlRedirect,
@@ -73,6 +84,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.URLMapPathMatcherRouteRule> routeRules)
         {
+            DefaultRouteAction = defaultRouteAction;
             DefaultService = defaultService;
             DefaultUrlRedirect = defaultUrlRedirect;
             Description = description;

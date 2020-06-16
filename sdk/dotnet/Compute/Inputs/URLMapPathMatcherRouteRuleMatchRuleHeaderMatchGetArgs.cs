@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? ExactMatch { get; set; }
 
         /// <summary>
-        /// The name of the header.
+        /// The name of the header to add.
         /// </summary>
         [Input("headerName", required: true)]
         public Input<string> HeaderName { get; set; } = null!;

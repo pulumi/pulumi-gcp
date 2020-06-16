@@ -105,6 +105,17 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+        /// this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
+        /// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
+        /// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
+        /// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
+        /// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+        /// </summary>
+        [Output("streamConfigs")]
+        public Output<ImmutableArray<Outputs.FhirStoreStreamConfig>> StreamConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// The FHIR specification version.
         /// </summary>
         [Output("version")]
@@ -239,6 +250,23 @@ namespace Pulumi.Gcp.Healthcare
         [Input("notificationConfig")]
         public Input<Inputs.FhirStoreNotificationConfigArgs>? NotificationConfig { get; set; }
 
+        [Input("streamConfigs")]
+        private InputList<Inputs.FhirStoreStreamConfigArgs>? _streamConfigs;
+
+        /// <summary>
+        /// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+        /// this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
+        /// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
+        /// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
+        /// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
+        /// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FhirStoreStreamConfigArgs> StreamConfigs
+        {
+            get => _streamConfigs ?? (_streamConfigs = new InputList<Inputs.FhirStoreStreamConfigArgs>());
+            set => _streamConfigs = value;
+        }
+
         /// <summary>
         /// The FHIR specification version.
         /// </summary>
@@ -340,6 +368,23 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        [Input("streamConfigs")]
+        private InputList<Inputs.FhirStoreStreamConfigGetArgs>? _streamConfigs;
+
+        /// <summary>
+        /// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+        /// this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
+        /// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
+        /// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
+        /// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
+        /// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.FhirStoreStreamConfigGetArgs> StreamConfigs
+        {
+            get => _streamConfigs ?? (_streamConfigs = new InputList<Inputs.FhirStoreStreamConfigGetArgs>());
+            set => _streamConfigs = value;
+        }
 
         /// <summary>
         /// The FHIR specification version.

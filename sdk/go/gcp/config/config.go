@@ -153,11 +153,17 @@ func GetKmsCustomEndpoint(ctx *pulumi.Context) string {
 func GetLoggingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:loggingCustomEndpoint")
 }
+func GetMemcacheCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:memcacheCustomEndpoint")
+}
 func GetMlEngineCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:mlEngineCustomEndpoint")
 }
 func GetMonitoringCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:monitoringCustomEndpoint")
+}
+func GetNetworkManagementCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:networkManagementCustomEndpoint")
 }
 func GetOsLoginCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:osLoginCustomEndpoint")

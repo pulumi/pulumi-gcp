@@ -146,6 +146,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterIpv4Cidr!: pulumi.Output<string>;
     /**
+     * ) Configuration for
+     * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+     * Structure is documented below.
+     */
+    public readonly clusterTelemetry!: pulumi.Output<outputs.container.ClusterClusterTelemetry>;
+    /**
      * .
      * Structure is documented below.
      */
@@ -235,7 +241,7 @@ export class Cluster extends pulumi.CustomResource {
      * write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
      * `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
      */
-    public readonly loggingService!: pulumi.Output<string | undefined>;
+    public readonly loggingService!: pulumi.Output<string>;
     /**
      * The maintenance policy to use for the cluster. Structure is
      * documented below.
@@ -283,7 +289,7 @@ export class Cluster extends pulumi.CustomResource {
      * `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
      * Defaults to `monitoring.googleapis.com/kubernetes`
      */
-    public readonly monitoringService!: pulumi.Output<string | undefined>;
+    public readonly monitoringService!: pulumi.Output<string>;
     /**
      * The name of the cluster, unique within the project and
      * location.
@@ -428,6 +434,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["authenticatorGroupsConfig"] = state ? state.authenticatorGroupsConfig : undefined;
             inputs["clusterAutoscaling"] = state ? state.clusterAutoscaling : undefined;
             inputs["clusterIpv4Cidr"] = state ? state.clusterIpv4Cidr : undefined;
+            inputs["clusterTelemetry"] = state ? state.clusterTelemetry : undefined;
             inputs["databaseEncryption"] = state ? state.databaseEncryption : undefined;
             inputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -476,6 +483,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
             inputs["clusterAutoscaling"] = args ? args.clusterAutoscaling : undefined;
             inputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
+            inputs["clusterTelemetry"] = args ? args.clusterTelemetry : undefined;
             inputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
             inputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -560,6 +568,12 @@ export interface ClusterState {
      * only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
+    /**
+     * ) Configuration for
+     * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+     * Structure is documented below.
+     */
+    readonly clusterTelemetry?: pulumi.Input<inputs.container.ClusterClusterTelemetry>;
     /**
      * .
      * Structure is documented below.
@@ -858,6 +872,12 @@ export interface ClusterArgs {
      * only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
      */
     readonly clusterIpv4Cidr?: pulumi.Input<string>;
+    /**
+     * ) Configuration for
+     * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+     * Structure is documented below.
+     */
+    readonly clusterTelemetry?: pulumi.Input<inputs.container.ClusterClusterTelemetry>;
     /**
      * .
      * Structure is documented below.

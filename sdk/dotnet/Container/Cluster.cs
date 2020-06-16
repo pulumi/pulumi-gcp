@@ -107,6 +107,14 @@ namespace Pulumi.Gcp.Container
         public Output<string> ClusterIpv4Cidr { get; private set; } = null!;
 
         /// <summary>
+        /// ) Configuration for
+        /// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+        /// Structure is documented below.
+        /// </summary>
+        [Output("clusterTelemetry")]
+        public Output<Outputs.ClusterClusterTelemetry> ClusterTelemetry { get; private set; } = null!;
+
+        /// <summary>
         /// .
         /// Structure is documented below.
         /// </summary>
@@ -227,7 +235,7 @@ namespace Pulumi.Gcp.Container
         /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         /// </summary>
         [Output("loggingService")]
-        public Output<string?> LoggingService { get; private set; } = null!;
+        public Output<string> LoggingService { get; private set; } = null!;
 
         /// <summary>
         /// The maintenance policy to use for the cluster. Structure is
@@ -287,7 +295,7 @@ namespace Pulumi.Gcp.Container
         /// Defaults to `monitoring.googleapis.com/kubernetes`
         /// </summary>
         [Output("monitoringService")]
-        public Output<string?> MonitoringService { get; private set; } = null!;
+        public Output<string> MonitoringService { get; private set; } = null!;
 
         /// <summary>
         /// The name of the cluster, unique within the project and
@@ -535,6 +543,14 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("clusterIpv4Cidr")]
         public Input<string>? ClusterIpv4Cidr { get; set; }
+
+        /// <summary>
+        /// ) Configuration for
+        /// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+        /// Structure is documented below.
+        /// </summary>
+        [Input("clusterTelemetry")]
+        public Input<Inputs.ClusterClusterTelemetryArgs>? ClusterTelemetry { get; set; }
 
         /// <summary>
         /// .
@@ -897,6 +913,14 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("clusterIpv4Cidr")]
         public Input<string>? ClusterIpv4Cidr { get; set; }
+
+        /// <summary>
+        /// ) Configuration for
+        /// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+        /// Structure is documented below.
+        /// </summary>
+        [Input("clusterTelemetry")]
+        public Input<Inputs.ClusterClusterTelemetryGetArgs>? ClusterTelemetry { get; set; }
 
         /// <summary>
         /// .

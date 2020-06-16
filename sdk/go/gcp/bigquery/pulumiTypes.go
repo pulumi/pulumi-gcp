@@ -1005,6 +1005,322 @@ func (o DatasetDefaultEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type DatasetIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DatasetIamBindingConditionInput is an input type that accepts DatasetIamBindingConditionArgs and DatasetIamBindingConditionOutput values.
+// You can construct a concrete instance of `DatasetIamBindingConditionInput` via:
+//
+// 		 DatasetIamBindingConditionArgs{...}
+//
+type DatasetIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToDatasetIamBindingConditionOutput() DatasetIamBindingConditionOutput
+	ToDatasetIamBindingConditionOutputWithContext(context.Context) DatasetIamBindingConditionOutput
+}
+
+type DatasetIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DatasetIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetIamBindingCondition)(nil)).Elem()
+}
+
+func (i DatasetIamBindingConditionArgs) ToDatasetIamBindingConditionOutput() DatasetIamBindingConditionOutput {
+	return i.ToDatasetIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i DatasetIamBindingConditionArgs) ToDatasetIamBindingConditionOutputWithContext(ctx context.Context) DatasetIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingConditionOutput)
+}
+
+func (i DatasetIamBindingConditionArgs) ToDatasetIamBindingConditionPtrOutput() DatasetIamBindingConditionPtrOutput {
+	return i.ToDatasetIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DatasetIamBindingConditionArgs) ToDatasetIamBindingConditionPtrOutputWithContext(ctx context.Context) DatasetIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingConditionOutput).ToDatasetIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// DatasetIamBindingConditionPtrInput is an input type that accepts DatasetIamBindingConditionArgs, DatasetIamBindingConditionPtr and DatasetIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `DatasetIamBindingConditionPtrInput` via:
+//
+// 		 DatasetIamBindingConditionArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type DatasetIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToDatasetIamBindingConditionPtrOutput() DatasetIamBindingConditionPtrOutput
+	ToDatasetIamBindingConditionPtrOutputWithContext(context.Context) DatasetIamBindingConditionPtrOutput
+}
+
+type datasetIamBindingConditionPtrType DatasetIamBindingConditionArgs
+
+func DatasetIamBindingConditionPtr(v *DatasetIamBindingConditionArgs) DatasetIamBindingConditionPtrInput {
+	return (*datasetIamBindingConditionPtrType)(v)
+}
+
+func (*datasetIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetIamBindingCondition)(nil)).Elem()
+}
+
+func (i *datasetIamBindingConditionPtrType) ToDatasetIamBindingConditionPtrOutput() DatasetIamBindingConditionPtrOutput {
+	return i.ToDatasetIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetIamBindingConditionPtrType) ToDatasetIamBindingConditionPtrOutputWithContext(ctx context.Context) DatasetIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingConditionPtrOutput)
+}
+
+type DatasetIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (DatasetIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetIamBindingCondition)(nil)).Elem()
+}
+
+func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionOutput() DatasetIamBindingConditionOutput {
+	return o
+}
+
+func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionOutputWithContext(ctx context.Context) DatasetIamBindingConditionOutput {
+	return o
+}
+
+func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionPtrOutput() DatasetIamBindingConditionPtrOutput {
+	return o.ToDatasetIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetIamBindingConditionOutput) ToDatasetIamBindingConditionPtrOutputWithContext(ctx context.Context) DatasetIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v DatasetIamBindingCondition) *DatasetIamBindingCondition {
+		return &v
+	}).(DatasetIamBindingConditionPtrOutput)
+}
+func (o DatasetIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DatasetIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DatasetIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DatasetIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetIamBindingCondition)(nil)).Elem()
+}
+
+func (o DatasetIamBindingConditionPtrOutput) ToDatasetIamBindingConditionPtrOutput() DatasetIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DatasetIamBindingConditionPtrOutput) ToDatasetIamBindingConditionPtrOutputWithContext(ctx context.Context) DatasetIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DatasetIamBindingConditionPtrOutput) Elem() DatasetIamBindingConditionOutput {
+	return o.ApplyT(func(v *DatasetIamBindingCondition) DatasetIamBindingCondition { return *v }).(DatasetIamBindingConditionOutput)
+}
+
+func (o DatasetIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatasetIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatasetIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatasetIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DatasetIamMemberConditionInput is an input type that accepts DatasetIamMemberConditionArgs and DatasetIamMemberConditionOutput values.
+// You can construct a concrete instance of `DatasetIamMemberConditionInput` via:
+//
+// 		 DatasetIamMemberConditionArgs{...}
+//
+type DatasetIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToDatasetIamMemberConditionOutput() DatasetIamMemberConditionOutput
+	ToDatasetIamMemberConditionOutputWithContext(context.Context) DatasetIamMemberConditionOutput
+}
+
+type DatasetIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DatasetIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetIamMemberCondition)(nil)).Elem()
+}
+
+func (i DatasetIamMemberConditionArgs) ToDatasetIamMemberConditionOutput() DatasetIamMemberConditionOutput {
+	return i.ToDatasetIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i DatasetIamMemberConditionArgs) ToDatasetIamMemberConditionOutputWithContext(ctx context.Context) DatasetIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberConditionOutput)
+}
+
+func (i DatasetIamMemberConditionArgs) ToDatasetIamMemberConditionPtrOutput() DatasetIamMemberConditionPtrOutput {
+	return i.ToDatasetIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DatasetIamMemberConditionArgs) ToDatasetIamMemberConditionPtrOutputWithContext(ctx context.Context) DatasetIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberConditionOutput).ToDatasetIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// DatasetIamMemberConditionPtrInput is an input type that accepts DatasetIamMemberConditionArgs, DatasetIamMemberConditionPtr and DatasetIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `DatasetIamMemberConditionPtrInput` via:
+//
+// 		 DatasetIamMemberConditionArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type DatasetIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToDatasetIamMemberConditionPtrOutput() DatasetIamMemberConditionPtrOutput
+	ToDatasetIamMemberConditionPtrOutputWithContext(context.Context) DatasetIamMemberConditionPtrOutput
+}
+
+type datasetIamMemberConditionPtrType DatasetIamMemberConditionArgs
+
+func DatasetIamMemberConditionPtr(v *DatasetIamMemberConditionArgs) DatasetIamMemberConditionPtrInput {
+	return (*datasetIamMemberConditionPtrType)(v)
+}
+
+func (*datasetIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetIamMemberCondition)(nil)).Elem()
+}
+
+func (i *datasetIamMemberConditionPtrType) ToDatasetIamMemberConditionPtrOutput() DatasetIamMemberConditionPtrOutput {
+	return i.ToDatasetIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetIamMemberConditionPtrType) ToDatasetIamMemberConditionPtrOutputWithContext(ctx context.Context) DatasetIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberConditionPtrOutput)
+}
+
+type DatasetIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (DatasetIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetIamMemberCondition)(nil)).Elem()
+}
+
+func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionOutput() DatasetIamMemberConditionOutput {
+	return o
+}
+
+func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionOutputWithContext(ctx context.Context) DatasetIamMemberConditionOutput {
+	return o
+}
+
+func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionPtrOutput() DatasetIamMemberConditionPtrOutput {
+	return o.ToDatasetIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetIamMemberConditionOutput) ToDatasetIamMemberConditionPtrOutputWithContext(ctx context.Context) DatasetIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v DatasetIamMemberCondition) *DatasetIamMemberCondition {
+		return &v
+	}).(DatasetIamMemberConditionPtrOutput)
+}
+func (o DatasetIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DatasetIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DatasetIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DatasetIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetIamMemberCondition)(nil)).Elem()
+}
+
+func (o DatasetIamMemberConditionPtrOutput) ToDatasetIamMemberConditionPtrOutput() DatasetIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DatasetIamMemberConditionPtrOutput) ToDatasetIamMemberConditionPtrOutputWithContext(ctx context.Context) DatasetIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DatasetIamMemberConditionPtrOutput) Elem() DatasetIamMemberConditionOutput {
+	return o.ApplyT(func(v *DatasetIamMemberCondition) DatasetIamMemberCondition { return *v }).(DatasetIamMemberConditionOutput)
+}
+
+func (o DatasetIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatasetIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatasetIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type JobCopy struct {
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
@@ -6623,6 +6939,10 @@ func init() {
 	pulumi.RegisterOutputType(DatasetAccessViewPtrOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DatasetIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(DatasetIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(DatasetIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(DatasetIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(JobCopyOutput{})
 	pulumi.RegisterOutputType(JobCopyPtrOutput{})
 	pulumi.RegisterOutputType(JobCopyDestinationEncryptionConfigurationOutput{})

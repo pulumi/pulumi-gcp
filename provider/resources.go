@@ -57,7 +57,9 @@ const (
 	gcpKubernetes           = "Container"            // Kubernetes Engine resources
 	gcpLogging              = "Logging"              // Logging resources
 	gcpMachingLearning      = "ML"                   // Machine Learning
+	gcpMemcache             = "Memcache"             // Memcache resources
 	gcpMonitoring           = "Monitoring"           // Monitoring resources
+	gcpNetworkManagement    = "NetworkManagement"    // Network Management resources
 	gcpOrganization         = "Organizations"        // Organization resources
 	gcpOsLogin              = "OsLogin"              // OsLogin resources
 	gcpProject              = "Projects"             // Project resources
@@ -209,6 +211,24 @@ func Provider() tfbridge.ProviderInfo {
 			"google_bigquery_dataset_access":       {Tok: gcpResource(gcpBigQuery, "DatasetAccess")},
 			"google_bigquery_job":                  {Tok: gcpResource(gcpBigQuery, "Job")},
 			"google_bigquery_connection":           {Tok: gcpResource(gcpBigQuery, "Connection")},
+			"google_bigquery_dataset_iam_binding": {
+				Tok: gcpResource(gcpBigQuery, "DatasetIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_dataset_iam.html.markdown",
+				},
+			},
+			"google_bigquery_dataset_iam_member": {
+				Tok: gcpResource(gcpBigQuery, "DatasetIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_dataset_iam.html.markdown",
+				},
+			},
+			"google_bigquery_dataset_iam_policy": {
+				Tok: gcpResource(gcpBigQuery, "DatasetIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "bigquery_dataset_iam.html.markdown",
+				},
+			},
 
 			// BigTable
 			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
@@ -1448,6 +1468,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Data Catalog
 			"google_data_catalog_entry":        {Tok: gcpResource(gcpDataCatalog, "Entry")},
+			"google_data_catalog_tag":          {Tok: gcpResource(gcpDataCatalog, "Tag")},
 			"google_data_catalog_entry_group":  {Tok: gcpResource(gcpDataCatalog, "EntryGroup")},
 			"google_data_catalog_tag_template": {Tok: gcpResource(gcpDataCatalog, "TagTemplate")},
 			"google_data_catalog_entry_group_iam_binding": {
@@ -1467,6 +1488,14 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "data_catalog_entry_group_iam.html.markdown",
 				},
+			},
+
+			// Memcache
+			"google_memcache_instance": {Tok: gcpResource(gcpMemcache, "Instance")},
+
+			// Network Management
+			"google_network_management_connectivity_test": {
+				Tok: gcpResource(gcpNetworkManagement, "ConnectivityTest"),
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{

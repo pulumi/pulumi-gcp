@@ -92,7 +92,7 @@ class Subnetwork(pulumi.CustomResource):
     """
     region: pulumi.Output[str]
     """
-    URL of the GCP region for this subnetwork.
+    The GCP region for this subnetwork.
     """
     role: pulumi.Output[str]
     """
@@ -238,7 +238,7 @@ class Subnetwork(pulumi.CustomResource):
                reserved for Internal HTTP(S) Load Balancing. If unspecified, the
                purpose defaults to PRIVATE.
                If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
-        :param pulumi.Input[str] region: URL of the GCP region for this subnetwork.
+        :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
                purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
                or BACKUP. An ACTIVE subnetwork is one that is currently being used
@@ -360,7 +360,7 @@ class Subnetwork(pulumi.CustomResource):
                reserved for Internal HTTP(S) Load Balancing. If unspecified, the
                purpose defaults to PRIVATE.
                If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
-        :param pulumi.Input[str] region: URL of the GCP region for this subnetwork.
+        :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
                purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
                or BACKUP. An ACTIVE subnetwork is one that is currently being used

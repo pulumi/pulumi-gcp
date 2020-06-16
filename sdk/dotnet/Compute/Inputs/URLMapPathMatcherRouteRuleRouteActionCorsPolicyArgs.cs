@@ -13,9 +13,8 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// In response to a preflight request, setting this to true indicates that the
-        /// actual request can include user credentials. This translates to the Access-
-        /// Control-Allow-Credentials header. Defaults to false.
+        /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+        /// This translates to the Access-Control-Allow-Credentials header.
         /// </summary>
         [Input("allowCredentials")]
         public Input<bool>? AllowCredentials { get; set; }
@@ -48,9 +47,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _allowOriginRegexes;
 
         /// <summary>
-        /// Specifies the regualar expression patterns that match allowed origins. For
-        /// regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-        /// An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        /// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        /// please see en.cppreference.com/w/cpp/regex/ecmascript
+        /// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         /// </summary>
         public InputList<string> AllowOriginRegexes
         {
@@ -62,8 +61,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _allowOrigins;
 
         /// <summary>
-        /// Specifies the list of origins that will be allowed to do CORS requests. An
-        /// origin is allowed if it matches either allow_origins or allow_origin_regex.
+        /// Specifies the list of origins that will be allowed to do CORS requests.
+        /// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         /// </summary>
         public InputList<string> AllowOrigins
         {
@@ -72,8 +71,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
-        /// If true, specifies the CORS policy is disabled.
-        /// which indicates that the CORS policy is in effect. Defaults to false.
+        /// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -91,8 +89,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
-        /// Specifies how long the results of a preflight request can be cached. This
-        /// translates to the content for the Access-Control-Max-Age header.
+        /// Specifies how long results of a preflight request can be cached in seconds.
+        /// This translates to the Access-Control-Max-Age header.
         /// </summary>
         [Input("maxAge")]
         public Input<int>? MaxAge { get; set; }

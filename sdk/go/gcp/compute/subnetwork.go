@@ -88,7 +88,7 @@ type Subnetwork struct {
 	// purpose defaults to PRIVATE.
 	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
-	// URL of the GCP region for this subnetwork.
+	// The GCP region for this subnetwork.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The role of subnetwork. Currently, this field is only used when
 	// purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -184,7 +184,7 @@ type subnetworkState struct {
 	// purpose defaults to PRIVATE.
 	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
 	Purpose *string `pulumi:"purpose"`
-	// URL of the GCP region for this subnetwork.
+	// The GCP region for this subnetwork.
 	Region *string `pulumi:"region"`
 	// The role of subnetwork. Currently, this field is only used when
 	// purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -247,7 +247,7 @@ type SubnetworkState struct {
 	// purpose defaults to PRIVATE.
 	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
 	Purpose pulumi.StringPtrInput
-	// URL of the GCP region for this subnetwork.
+	// The GCP region for this subnetwork.
 	Region pulumi.StringPtrInput
 	// The role of subnetwork. Currently, this field is only used when
 	// purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -306,7 +306,7 @@ type subnetworkArgs struct {
 	// purpose defaults to PRIVATE.
 	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
 	Purpose *string `pulumi:"purpose"`
-	// URL of the GCP region for this subnetwork.
+	// The GCP region for this subnetwork.
 	Region *string `pulumi:"region"`
 	// The role of subnetwork. Currently, this field is only used when
 	// purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -360,7 +360,7 @@ type SubnetworkArgs struct {
 	// purpose defaults to PRIVATE.
 	// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
 	Purpose pulumi.StringPtrInput
-	// URL of the GCP region for this subnetwork.
+	// The GCP region for this subnetwork.
 	Region pulumi.StringPtrInput
 	// The role of subnetwork. Currently, this field is only used when
 	// purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE

@@ -36,8 +36,8 @@ import * as utilities from "../utilities";
  * const webservers = new gcp.compute.InstanceGroup("webservers", {
  *     description: "Test instance group",
  *     instances: [
- *         google_compute_instance.test.id,
- *         google_compute_instance.test2.id,
+ *         google_compute_instance.test.self_link,
+ *         google_compute_instance.test2.self_link,
  *     ],
  *     named_port: [
  *         {
@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  * });
  * const stagingGroup = new gcp.compute.InstanceGroup("stagingGroup", {
  *     zone: "us-central1-c",
- *     instances: [stagingVm.id],
+ *     instances: [stagingVm.selfLink],
  *     named_port: [
  *         {
  *             name: "http",

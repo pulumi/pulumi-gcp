@@ -13,7 +13,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         __self__.additional_zones = additional_zones
@@ -29,6 +29,9 @@ class GetClusterResult:
         if cluster_ipv4_cidr and not isinstance(cluster_ipv4_cidr, str):
             raise TypeError("Expected argument 'cluster_ipv4_cidr' to be a str")
         __self__.cluster_ipv4_cidr = cluster_ipv4_cidr
+        if cluster_telemetries and not isinstance(cluster_telemetries, list):
+            raise TypeError("Expected argument 'cluster_telemetries' to be a list")
+        __self__.cluster_telemetries = cluster_telemetries
         if database_encryptions and not isinstance(database_encryptions, list):
             raise TypeError("Expected argument 'database_encryptions' to be a list")
         __self__.database_encryptions = database_encryptions
@@ -178,6 +181,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             authenticator_groups_configs=self.authenticator_groups_configs,
             cluster_autoscalings=self.cluster_autoscalings,
             cluster_ipv4_cidr=self.cluster_ipv4_cidr,
+            cluster_telemetries=self.cluster_telemetries,
             database_encryptions=self.database_encryptions,
             default_max_pods_per_node=self.default_max_pods_per_node,
             description=self.description,
@@ -278,6 +282,7 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
         authenticator_groups_configs=__ret__.get('authenticatorGroupsConfigs'),
         cluster_autoscalings=__ret__.get('clusterAutoscalings'),
         cluster_ipv4_cidr=__ret__.get('clusterIpv4Cidr'),
+        cluster_telemetries=__ret__.get('clusterTelemetries'),
         database_encryptions=__ret__.get('databaseEncryptions'),
         default_max_pods_per_node=__ret__.get('defaultMaxPodsPerNode'),
         description=__ret__.get('description'),

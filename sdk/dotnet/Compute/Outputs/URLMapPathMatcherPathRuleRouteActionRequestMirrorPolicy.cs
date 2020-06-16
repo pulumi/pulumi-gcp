@@ -14,9 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy
     {
         /// <summary>
-        /// The default BackendService resource. Before
-        /// forwarding the request to backendService, the loadbalancer applies any relevant
-        /// headerActions specified as part of this backendServiceWeight.
+        /// The full or partial URL to the BackendService resource being mirrored to.
         /// </summary>
         public readonly string BackendService;
 
