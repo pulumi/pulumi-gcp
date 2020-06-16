@@ -175,12 +175,12 @@ class FhirStore(pulumi.CustomResource):
             },
             stream_configs=[{
                 "resourceTypes": ["Observation"],
-                "bigquery_destination": {
+                "bigquery_destination": [{
                     "datasetUri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
-                    "schema_config": {
+                    "schema_config": [{
                         "recursiveStructureDepth": 3,
-                    },
-                },
+                    }],
+                }],
             }])
         topic = gcp.pubsub.Topic("topic")
         ```

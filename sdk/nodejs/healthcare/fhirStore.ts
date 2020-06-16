@@ -68,12 +68,12 @@ import * as utilities from "../utilities";
  *     },
  *     stream_configs: [{
  *         resourceTypes: ["Observation"],
- *         bigquery_destination: {
+ *         bigquery_destination: [{
  *             datasetUri: pulumi.interpolate`bq://${bqDataset.project}.${bqDataset.datasetId}`,
- *             schema_config: {
+ *             schema_config: [{
  *                 recursiveStructureDepth: 3,
- *             },
- *         },
+ *             }],
+ *         }],
  *     }],
  * });
  * const topic = new gcp.pubsub.Topic("topic", {});
