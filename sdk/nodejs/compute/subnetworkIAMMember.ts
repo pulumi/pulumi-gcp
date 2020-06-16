@@ -176,7 +176,7 @@ export class SubnetworkIAMMember extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * URL of the GCP region for this subnetwork.
+     * The GCP region for this subnetwork.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.
@@ -262,7 +262,7 @@ export interface SubnetworkIAMMemberState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * URL of the GCP region for this subnetwork.
+     * The GCP region for this subnetwork.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.
@@ -296,7 +296,7 @@ export interface SubnetworkIAMMemberArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * URL of the GCP region for this subnetwork.
+     * The GCP region for this subnetwork.
      * Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
      * region is specified, it is taken from the provider configuration.

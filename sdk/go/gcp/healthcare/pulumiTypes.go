@@ -1264,6 +1264,273 @@ func (o FhirStoreNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type FhirStoreStreamConfig struct {
+	// The destination BigQuery structure that contains both the dataset location and corresponding schema config.
+	// The output is organized in one table per resource type. The server reuses the existing tables (if any) that
+	// are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
+	// resource type, the server attempts to create one.
+	// See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.  Structure is documented below.
+	BigqueryDestination FhirStoreStreamConfigBigqueryDestination `pulumi:"bigqueryDestination"`
+	// Supply a FHIR resource type (such as "Patient" or "Observation"). See
+	// https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+	// an empty list as an intent to stream all the supported resource types in this FHIR store.
+	ResourceTypes []string `pulumi:"resourceTypes"`
+}
+
+// FhirStoreStreamConfigInput is an input type that accepts FhirStoreStreamConfigArgs and FhirStoreStreamConfigOutput values.
+// You can construct a concrete instance of `FhirStoreStreamConfigInput` via:
+//
+// 		 FhirStoreStreamConfigArgs{...}
+//
+type FhirStoreStreamConfigInput interface {
+	pulumi.Input
+
+	ToFhirStoreStreamConfigOutput() FhirStoreStreamConfigOutput
+	ToFhirStoreStreamConfigOutputWithContext(context.Context) FhirStoreStreamConfigOutput
+}
+
+type FhirStoreStreamConfigArgs struct {
+	// The destination BigQuery structure that contains both the dataset location and corresponding schema config.
+	// The output is organized in one table per resource type. The server reuses the existing tables (if any) that
+	// are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
+	// resource type, the server attempts to create one.
+	// See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.  Structure is documented below.
+	BigqueryDestination FhirStoreStreamConfigBigqueryDestinationInput `pulumi:"bigqueryDestination"`
+	// Supply a FHIR resource type (such as "Patient" or "Observation"). See
+	// https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+	// an empty list as an intent to stream all the supported resource types in this FHIR store.
+	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
+}
+
+func (FhirStoreStreamConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreStreamConfig)(nil)).Elem()
+}
+
+func (i FhirStoreStreamConfigArgs) ToFhirStoreStreamConfigOutput() FhirStoreStreamConfigOutput {
+	return i.ToFhirStoreStreamConfigOutputWithContext(context.Background())
+}
+
+func (i FhirStoreStreamConfigArgs) ToFhirStoreStreamConfigOutputWithContext(ctx context.Context) FhirStoreStreamConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigOutput)
+}
+
+// FhirStoreStreamConfigArrayInput is an input type that accepts FhirStoreStreamConfigArray and FhirStoreStreamConfigArrayOutput values.
+// You can construct a concrete instance of `FhirStoreStreamConfigArrayInput` via:
+//
+// 		 FhirStoreStreamConfigArray{ FhirStoreStreamConfigArgs{...} }
+//
+type FhirStoreStreamConfigArrayInput interface {
+	pulumi.Input
+
+	ToFhirStoreStreamConfigArrayOutput() FhirStoreStreamConfigArrayOutput
+	ToFhirStoreStreamConfigArrayOutputWithContext(context.Context) FhirStoreStreamConfigArrayOutput
+}
+
+type FhirStoreStreamConfigArray []FhirStoreStreamConfigInput
+
+func (FhirStoreStreamConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirStoreStreamConfig)(nil)).Elem()
+}
+
+func (i FhirStoreStreamConfigArray) ToFhirStoreStreamConfigArrayOutput() FhirStoreStreamConfigArrayOutput {
+	return i.ToFhirStoreStreamConfigArrayOutputWithContext(context.Background())
+}
+
+func (i FhirStoreStreamConfigArray) ToFhirStoreStreamConfigArrayOutputWithContext(ctx context.Context) FhirStoreStreamConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigArrayOutput)
+}
+
+type FhirStoreStreamConfigOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreStreamConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreStreamConfig)(nil)).Elem()
+}
+
+func (o FhirStoreStreamConfigOutput) ToFhirStoreStreamConfigOutput() FhirStoreStreamConfigOutput {
+	return o
+}
+
+func (o FhirStoreStreamConfigOutput) ToFhirStoreStreamConfigOutputWithContext(ctx context.Context) FhirStoreStreamConfigOutput {
+	return o
+}
+
+// The destination BigQuery structure that contains both the dataset location and corresponding schema config.
+// The output is organized in one table per resource type. The server reuses the existing tables (if any) that
+// are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
+// resource type, the server attempts to create one.
+// See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.  Structure is documented below.
+func (o FhirStoreStreamConfigOutput) BigqueryDestination() FhirStoreStreamConfigBigqueryDestinationOutput {
+	return o.ApplyT(func(v FhirStoreStreamConfig) FhirStoreStreamConfigBigqueryDestination { return v.BigqueryDestination }).(FhirStoreStreamConfigBigqueryDestinationOutput)
+}
+
+// Supply a FHIR resource type (such as "Patient" or "Observation"). See
+// https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+// an empty list as an intent to stream all the supported resource types in this FHIR store.
+func (o FhirStoreStreamConfigOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FhirStoreStreamConfig) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+type FhirStoreStreamConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreStreamConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirStoreStreamConfig)(nil)).Elem()
+}
+
+func (o FhirStoreStreamConfigArrayOutput) ToFhirStoreStreamConfigArrayOutput() FhirStoreStreamConfigArrayOutput {
+	return o
+}
+
+func (o FhirStoreStreamConfigArrayOutput) ToFhirStoreStreamConfigArrayOutputWithContext(ctx context.Context) FhirStoreStreamConfigArrayOutput {
+	return o
+}
+
+func (o FhirStoreStreamConfigArrayOutput) Index(i pulumi.IntInput) FhirStoreStreamConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStoreStreamConfig {
+		return vs[0].([]FhirStoreStreamConfig)[vs[1].(int)]
+	}).(FhirStoreStreamConfigOutput)
+}
+
+type FhirStoreStreamConfigBigqueryDestination struct {
+	// BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
+	DatasetUri string `pulumi:"datasetUri"`
+	// The configuration for the exported BigQuery schema.  Structure is documented below.
+	SchemaConfig FhirStoreStreamConfigBigqueryDestinationSchemaConfig `pulumi:"schemaConfig"`
+}
+
+// FhirStoreStreamConfigBigqueryDestinationInput is an input type that accepts FhirStoreStreamConfigBigqueryDestinationArgs and FhirStoreStreamConfigBigqueryDestinationOutput values.
+// You can construct a concrete instance of `FhirStoreStreamConfigBigqueryDestinationInput` via:
+//
+// 		 FhirStoreStreamConfigBigqueryDestinationArgs{...}
+//
+type FhirStoreStreamConfigBigqueryDestinationInput interface {
+	pulumi.Input
+
+	ToFhirStoreStreamConfigBigqueryDestinationOutput() FhirStoreStreamConfigBigqueryDestinationOutput
+	ToFhirStoreStreamConfigBigqueryDestinationOutputWithContext(context.Context) FhirStoreStreamConfigBigqueryDestinationOutput
+}
+
+type FhirStoreStreamConfigBigqueryDestinationArgs struct {
+	// BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
+	DatasetUri pulumi.StringInput `pulumi:"datasetUri"`
+	// The configuration for the exported BigQuery schema.  Structure is documented below.
+	SchemaConfig FhirStoreStreamConfigBigqueryDestinationSchemaConfigInput `pulumi:"schemaConfig"`
+}
+
+func (FhirStoreStreamConfigBigqueryDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (i FhirStoreStreamConfigBigqueryDestinationArgs) ToFhirStoreStreamConfigBigqueryDestinationOutput() FhirStoreStreamConfigBigqueryDestinationOutput {
+	return i.ToFhirStoreStreamConfigBigqueryDestinationOutputWithContext(context.Background())
+}
+
+func (i FhirStoreStreamConfigBigqueryDestinationArgs) ToFhirStoreStreamConfigBigqueryDestinationOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigBigqueryDestinationOutput)
+}
+
+type FhirStoreStreamConfigBigqueryDestinationOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreStreamConfigBigqueryDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationOutput) ToFhirStoreStreamConfigBigqueryDestinationOutput() FhirStoreStreamConfigBigqueryDestinationOutput {
+	return o
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationOutput) ToFhirStoreStreamConfigBigqueryDestinationOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationOutput {
+	return o
+}
+
+// BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
+func (o FhirStoreStreamConfigBigqueryDestinationOutput) DatasetUri() pulumi.StringOutput {
+	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestination) string { return v.DatasetUri }).(pulumi.StringOutput)
+}
+
+// The configuration for the exported BigQuery schema.  Structure is documented below.
+func (o FhirStoreStreamConfigBigqueryDestinationOutput) SchemaConfig() FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput {
+	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestination) FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
+		return v.SchemaConfig
+	}).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput)
+}
+
+type FhirStoreStreamConfigBigqueryDestinationSchemaConfig struct {
+	// The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
+	// resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
+	// concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
+	// value 2. The maximum depth allowed is 5.
+	RecursiveStructureDepth int `pulumi:"recursiveStructureDepth"`
+	// Specifies the output schema type. Only ANALYTICS is supported at this time.
+	// * ANALYTICS: Analytics schema defined by the FHIR community.
+	// See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+	SchemaType *string `pulumi:"schemaType"`
+}
+
+// FhirStoreStreamConfigBigqueryDestinationSchemaConfigInput is an input type that accepts FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs and FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput values.
+// You can construct a concrete instance of `FhirStoreStreamConfigBigqueryDestinationSchemaConfigInput` via:
+//
+// 		 FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs{...}
+//
+type FhirStoreStreamConfigBigqueryDestinationSchemaConfigInput interface {
+	pulumi.Input
+
+	ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput
+	ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigOutputWithContext(context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput
+}
+
+type FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs struct {
+	// The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
+	// resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
+	// concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
+	// value 2. The maximum depth allowed is 5.
+	RecursiveStructureDepth pulumi.IntInput `pulumi:"recursiveStructureDepth"`
+	// Specifies the output schema type. Only ANALYTICS is supported at this time.
+	// * ANALYTICS: Analytics schema defined by the FHIR community.
+	// See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+	SchemaType pulumi.StringPtrInput `pulumi:"schemaType"`
+}
+
+func (FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationSchemaConfig)(nil)).Elem()
+}
+
+func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput {
+	return i.ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigOutputWithContext(context.Background())
+}
+
+func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput)
+}
+
+type FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationSchemaConfig)(nil)).Elem()
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput {
+	return o
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput {
+	return o
+}
+
+// The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
+// resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
+// concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
+// value 2. The maximum depth allowed is 5.
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) RecursiveStructureDepth() pulumi.IntOutput {
+	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestinationSchemaConfig) int { return v.RecursiveStructureDepth }).(pulumi.IntOutput)
+}
+
+// Specifies the output schema type. Only ANALYTICS is supported at this time.
+// * ANALYTICS: Analytics schema defined by the FHIR community.
+// See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) SchemaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestinationSchemaConfig) *string { return v.SchemaType }).(pulumi.StringPtrOutput)
+}
+
 type Hl7StoreIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -2076,6 +2343,10 @@ func init() {
 	pulumi.RegisterOutputType(FhirStoreIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(FhirStoreNotificationConfigOutput{})
 	pulumi.RegisterOutputType(FhirStoreNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreStreamConfigOutput{})
+	pulumi.RegisterOutputType(FhirStoreStreamConfigArrayOutput{})
+	pulumi.RegisterOutputType(FhirStoreStreamConfigBigqueryDestinationOutput{})
+	pulumi.RegisterOutputType(FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamMemberConditionOutput{})

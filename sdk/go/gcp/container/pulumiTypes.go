@@ -2332,6 +2332,139 @@ func (o ClusterClusterAutoscalingResourceLimitArrayOutput) Index(i pulumi.IntInp
 	}).(ClusterClusterAutoscalingResourceLimitOutput)
 }
 
+type ClusterClusterTelemetry struct {
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// ClusterClusterTelemetryInput is an input type that accepts ClusterClusterTelemetryArgs and ClusterClusterTelemetryOutput values.
+// You can construct a concrete instance of `ClusterClusterTelemetryInput` via:
+//
+// 		 ClusterClusterTelemetryArgs{...}
+//
+type ClusterClusterTelemetryInput interface {
+	pulumi.Input
+
+	ToClusterClusterTelemetryOutput() ClusterClusterTelemetryOutput
+	ToClusterClusterTelemetryOutputWithContext(context.Context) ClusterClusterTelemetryOutput
+}
+
+type ClusterClusterTelemetryArgs struct {
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ClusterClusterTelemetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterTelemetry)(nil)).Elem()
+}
+
+func (i ClusterClusterTelemetryArgs) ToClusterClusterTelemetryOutput() ClusterClusterTelemetryOutput {
+	return i.ToClusterClusterTelemetryOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterTelemetryArgs) ToClusterClusterTelemetryOutputWithContext(ctx context.Context) ClusterClusterTelemetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterTelemetryOutput)
+}
+
+func (i ClusterClusterTelemetryArgs) ToClusterClusterTelemetryPtrOutput() ClusterClusterTelemetryPtrOutput {
+	return i.ToClusterClusterTelemetryPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterTelemetryArgs) ToClusterClusterTelemetryPtrOutputWithContext(ctx context.Context) ClusterClusterTelemetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterTelemetryOutput).ToClusterClusterTelemetryPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterTelemetryPtrInput is an input type that accepts ClusterClusterTelemetryArgs, ClusterClusterTelemetryPtr and ClusterClusterTelemetryPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterTelemetryPtrInput` via:
+//
+// 		 ClusterClusterTelemetryArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterClusterTelemetryPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterTelemetryPtrOutput() ClusterClusterTelemetryPtrOutput
+	ToClusterClusterTelemetryPtrOutputWithContext(context.Context) ClusterClusterTelemetryPtrOutput
+}
+
+type clusterClusterTelemetryPtrType ClusterClusterTelemetryArgs
+
+func ClusterClusterTelemetryPtr(v *ClusterClusterTelemetryArgs) ClusterClusterTelemetryPtrInput {
+	return (*clusterClusterTelemetryPtrType)(v)
+}
+
+func (*clusterClusterTelemetryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterTelemetry)(nil)).Elem()
+}
+
+func (i *clusterClusterTelemetryPtrType) ToClusterClusterTelemetryPtrOutput() ClusterClusterTelemetryPtrOutput {
+	return i.ToClusterClusterTelemetryPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterTelemetryPtrType) ToClusterClusterTelemetryPtrOutputWithContext(ctx context.Context) ClusterClusterTelemetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterTelemetryPtrOutput)
+}
+
+type ClusterClusterTelemetryOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterTelemetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterTelemetry)(nil)).Elem()
+}
+
+func (o ClusterClusterTelemetryOutput) ToClusterClusterTelemetryOutput() ClusterClusterTelemetryOutput {
+	return o
+}
+
+func (o ClusterClusterTelemetryOutput) ToClusterClusterTelemetryOutputWithContext(ctx context.Context) ClusterClusterTelemetryOutput {
+	return o
+}
+
+func (o ClusterClusterTelemetryOutput) ToClusterClusterTelemetryPtrOutput() ClusterClusterTelemetryPtrOutput {
+	return o.ToClusterClusterTelemetryPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterTelemetryOutput) ToClusterClusterTelemetryPtrOutputWithContext(ctx context.Context) ClusterClusterTelemetryPtrOutput {
+	return o.ApplyT(func(v ClusterClusterTelemetry) *ClusterClusterTelemetry {
+		return &v
+	}).(ClusterClusterTelemetryPtrOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o ClusterClusterTelemetryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterClusterTelemetry) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ClusterClusterTelemetryPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterTelemetryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterTelemetry)(nil)).Elem()
+}
+
+func (o ClusterClusterTelemetryPtrOutput) ToClusterClusterTelemetryPtrOutput() ClusterClusterTelemetryPtrOutput {
+	return o
+}
+
+func (o ClusterClusterTelemetryPtrOutput) ToClusterClusterTelemetryPtrOutputWithContext(ctx context.Context) ClusterClusterTelemetryPtrOutput {
+	return o
+}
+
+func (o ClusterClusterTelemetryPtrOutput) Elem() ClusterClusterTelemetryOutput {
+	return o.ApplyT(func(v *ClusterClusterTelemetry) ClusterClusterTelemetry { return *v }).(ClusterClusterTelemetryOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o ClusterClusterTelemetryPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterTelemetry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterDatabaseEncryption struct {
 	// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
 	KeyName *string `pulumi:"keyName"`
@@ -11311,6 +11444,102 @@ func (o GetClusterClusterAutoscalingResourceLimitArrayOutput) Index(i pulumi.Int
 	}).(GetClusterClusterAutoscalingResourceLimitOutput)
 }
 
+type GetClusterClusterTelemetry struct {
+	Type string `pulumi:"type"`
+}
+
+// GetClusterClusterTelemetryInput is an input type that accepts GetClusterClusterTelemetryArgs and GetClusterClusterTelemetryOutput values.
+// You can construct a concrete instance of `GetClusterClusterTelemetryInput` via:
+//
+// 		 GetClusterClusterTelemetryArgs{...}
+//
+type GetClusterClusterTelemetryInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterTelemetryOutput() GetClusterClusterTelemetryOutput
+	ToGetClusterClusterTelemetryOutputWithContext(context.Context) GetClusterClusterTelemetryOutput
+}
+
+type GetClusterClusterTelemetryArgs struct {
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetClusterClusterTelemetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterTelemetry)(nil)).Elem()
+}
+
+func (i GetClusterClusterTelemetryArgs) ToGetClusterClusterTelemetryOutput() GetClusterClusterTelemetryOutput {
+	return i.ToGetClusterClusterTelemetryOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterTelemetryArgs) ToGetClusterClusterTelemetryOutputWithContext(ctx context.Context) GetClusterClusterTelemetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterTelemetryOutput)
+}
+
+// GetClusterClusterTelemetryArrayInput is an input type that accepts GetClusterClusterTelemetryArray and GetClusterClusterTelemetryArrayOutput values.
+// You can construct a concrete instance of `GetClusterClusterTelemetryArrayInput` via:
+//
+// 		 GetClusterClusterTelemetryArray{ GetClusterClusterTelemetryArgs{...} }
+//
+type GetClusterClusterTelemetryArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterTelemetryArrayOutput() GetClusterClusterTelemetryArrayOutput
+	ToGetClusterClusterTelemetryArrayOutputWithContext(context.Context) GetClusterClusterTelemetryArrayOutput
+}
+
+type GetClusterClusterTelemetryArray []GetClusterClusterTelemetryInput
+
+func (GetClusterClusterTelemetryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterTelemetry)(nil)).Elem()
+}
+
+func (i GetClusterClusterTelemetryArray) ToGetClusterClusterTelemetryArrayOutput() GetClusterClusterTelemetryArrayOutput {
+	return i.ToGetClusterClusterTelemetryArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterTelemetryArray) ToGetClusterClusterTelemetryArrayOutputWithContext(ctx context.Context) GetClusterClusterTelemetryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterTelemetryArrayOutput)
+}
+
+type GetClusterClusterTelemetryOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterTelemetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterTelemetry)(nil)).Elem()
+}
+
+func (o GetClusterClusterTelemetryOutput) ToGetClusterClusterTelemetryOutput() GetClusterClusterTelemetryOutput {
+	return o
+}
+
+func (o GetClusterClusterTelemetryOutput) ToGetClusterClusterTelemetryOutputWithContext(ctx context.Context) GetClusterClusterTelemetryOutput {
+	return o
+}
+
+func (o GetClusterClusterTelemetryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterTelemetry) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterTelemetryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterTelemetryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterTelemetry)(nil)).Elem()
+}
+
+func (o GetClusterClusterTelemetryArrayOutput) ToGetClusterClusterTelemetryArrayOutput() GetClusterClusterTelemetryArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterTelemetryArrayOutput) ToGetClusterClusterTelemetryArrayOutputWithContext(ctx context.Context) GetClusterClusterTelemetryArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterTelemetryArrayOutput) Index(i pulumi.IntInput) GetClusterClusterTelemetryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterTelemetry {
+		return vs[0].([]GetClusterClusterTelemetry)[vs[1].(int)]
+	}).(GetClusterClusterTelemetryOutput)
+}
+
 type GetClusterDatabaseEncryption struct {
 	KeyName string `pulumi:"keyName"`
 	State   string `pulumi:"state"`
@@ -15013,6 +15242,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingResourceLimitOutput{})
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingResourceLimitArrayOutput{})
+	pulumi.RegisterOutputType(ClusterClusterTelemetryOutput{})
+	pulumi.RegisterOutputType(ClusterClusterTelemetryPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionOutput{})
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyOutput{})
@@ -15127,6 +15358,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingResourceLimitOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingResourceLimitArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterTelemetryOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterTelemetryArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionOutput{})
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyOutput{})

@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Purpose { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the GCP region for this subnetwork.
+        /// The GCP region for this subnetwork.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -306,7 +306,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Purpose { get; set; }
 
         /// <summary>
-        /// URL of the GCP region for this subnetwork.
+        /// The GCP region for this subnetwork.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -431,7 +431,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Purpose { get; set; }
 
         /// <summary>
-        /// URL of the GCP region for this subnetwork.
+        /// The GCP region for this subnetwork.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -21,6 +21,12 @@ type URLMap struct {
 
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+	// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+	// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+	// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+	// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+	DefaultRouteAction URLMapDefaultRouteActionPtrOutput `pulumi:"defaultRouteAction"`
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService pulumi.StringPtrOutput `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
@@ -32,8 +38,9 @@ type URLMap struct {
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Specifies changes to request and response headers that need to take effect for
-	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
 	HeaderAction URLMapHeaderActionPtrOutput `pulumi:"headerAction"`
 	// The list of HostRules to use against the URL.  Structure is documented below.
 	HostRules URLMapHostRuleArrayOutput `pulumi:"hostRules"`
@@ -86,6 +93,12 @@ func GetURLMap(ctx *pulumi.Context,
 type urlmapState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+	// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+	// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+	// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+	// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+	DefaultRouteAction *URLMapDefaultRouteAction `pulumi:"defaultRouteAction"`
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService *string `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
@@ -97,8 +110,9 @@ type urlmapState struct {
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// Specifies changes to request and response headers that need to take effect for
-	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
 	HeaderAction *URLMapHeaderAction `pulumi:"headerAction"`
 	// The list of HostRules to use against the URL.  Structure is documented below.
 	HostRules []URLMapHostRule `pulumi:"hostRules"`
@@ -124,6 +138,12 @@ type urlmapState struct {
 type URLMapState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+	// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+	// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+	// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+	// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+	DefaultRouteAction URLMapDefaultRouteActionPtrInput
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService pulumi.StringPtrInput
 	// When none of the specified hostRules match, the request is redirected to a URL specified
@@ -135,8 +155,9 @@ type URLMapState struct {
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringPtrInput
 	// Specifies changes to request and response headers that need to take effect for
-	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
 	HeaderAction URLMapHeaderActionPtrInput
 	// The list of HostRules to use against the URL.  Structure is documented below.
 	HostRules URLMapHostRuleArrayInput
@@ -164,6 +185,12 @@ func (URLMapState) ElementType() reflect.Type {
 }
 
 type urlmapArgs struct {
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+	// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+	// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+	// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+	// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+	DefaultRouteAction *URLMapDefaultRouteAction `pulumi:"defaultRouteAction"`
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService *string `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
@@ -173,8 +200,9 @@ type urlmapArgs struct {
 	// Description of this test case.
 	Description *string `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for
-	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
 	HeaderAction *URLMapHeaderAction `pulumi:"headerAction"`
 	// The list of HostRules to use against the URL.  Structure is documented below.
 	HostRules []URLMapHostRule `pulumi:"hostRules"`
@@ -195,6 +223,12 @@ type urlmapArgs struct {
 
 // The set of arguments for constructing a URLMap resource.
 type URLMapArgs struct {
+	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+	// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+	// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+	// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+	// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+	DefaultRouteAction URLMapDefaultRouteActionPtrInput
 	// The backend service or backend bucket to use when none of the given paths match.
 	DefaultService pulumi.StringPtrInput
 	// When none of the specified hostRules match, the request is redirected to a URL specified
@@ -204,8 +238,9 @@ type URLMapArgs struct {
 	// Description of this test case.
 	Description pulumi.StringPtrInput
 	// Specifies changes to request and response headers that need to take effect for
-	// the selected backendService. headerAction specified here take effect before
-	// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
 	HeaderAction URLMapHeaderActionPtrInput
 	// The list of HostRules to use against the URL.  Structure is documented below.
 	HostRules URLMapHostRuleArrayInput

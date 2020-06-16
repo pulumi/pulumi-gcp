@@ -13,6 +13,16 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class URLMapPathMatcherGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
+        /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
+        /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
+        /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+        /// </summary>
+        [Input("defaultRouteAction")]
+        public Input<Inputs.URLMapPathMatcherDefaultRouteActionGetArgs>? DefaultRouteAction { get; set; }
+
+        /// <summary>
         /// The backend service or backend bucket to use when none of the given paths match.
         /// </summary>
         [Input("defaultService")]
@@ -34,8 +44,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
-        /// the selected backendService. headerAction specified here take effect before
-        /// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+        /// the selected backendService.
+        /// headerAction specified here take effect before headerAction in the enclosing
+        /// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
         /// </summary>
         [Input("headerAction")]
         public Input<Inputs.URLMapPathMatcherHeaderActionGetArgs>? HeaderAction { get; set; }

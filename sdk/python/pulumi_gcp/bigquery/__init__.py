@@ -8,6 +8,9 @@ from .connection import *
 from .data_transfer_config import *
 from .dataset import *
 from .dataset_access import *
+from .dataset_iam_binding import *
+from .dataset_iam_member import *
+from .dataset_iam_policy import *
 from .get_default_service_account import *
 from .job import *
 from .reservation import *

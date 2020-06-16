@@ -86,6 +86,10 @@ type Cluster struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr pulumi.StringOutput `pulumi:"clusterIpv4Cidr"`
+	// ) Configuration for
+	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+	// Structure is documented below.
+	ClusterTelemetry ClusterClusterTelemetryOutput `pulumi:"clusterTelemetry"`
 	// .
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionOutput `pulumi:"databaseEncryption"`
@@ -144,7 +148,7 @@ type Cluster struct {
 	// The logging service that the cluster should
 	// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
 	// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
-	LoggingService pulumi.StringPtrOutput `pulumi:"loggingService"`
+	LoggingService pulumi.StringOutput `pulumi:"loggingService"`
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
@@ -180,7 +184,7 @@ type Cluster struct {
 	// Available options include
 	// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
 	// Defaults to `monitoring.googleapis.com/kubernetes`
-	MonitoringService pulumi.StringPtrOutput `pulumi:"monitoringService"`
+	MonitoringService pulumi.StringOutput `pulumi:"monitoringService"`
 	// The name of the cluster, unique within the project and
 	// location.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -318,6 +322,10 @@ type clusterState struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
+	// ) Configuration for
+	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+	// Structure is documented below.
+	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
 	// .
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
@@ -523,6 +531,10 @@ type ClusterState struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr pulumi.StringPtrInput
+	// ) Configuration for
+	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+	// Structure is documented below.
+	ClusterTelemetry ClusterClusterTelemetryPtrInput
 	// .
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
@@ -732,6 +744,10 @@ type clusterArgs struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
+	// ) Configuration for
+	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+	// Structure is documented below.
+	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
 	// .
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
@@ -917,6 +933,10 @@ type ClusterArgs struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// only work for routes-based clusters, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr pulumi.StringPtrInput
+	// ) Configuration for
+	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
+	// Structure is documented below.
+	ClusterTelemetry ClusterClusterTelemetryPtrInput
 	// .
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput

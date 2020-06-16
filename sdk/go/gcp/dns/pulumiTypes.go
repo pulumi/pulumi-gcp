@@ -748,8 +748,8 @@ func (o ManagedZonePeeringConfigPtrOutput) TargetNetwork() ManagedZonePeeringCon
 }
 
 type ManagedZonePeeringConfigTargetNetwork struct {
-	// The fully qualified URL of the VPC network to forward queries to.
-	// This should be formatted like
+	// The id or fully qualified URL of the VPC network to forward queries to.
+	// This should be formatted like `projects/{project}/global/networks/{network}` or
 	// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 	NetworkUrl string `pulumi:"networkUrl"`
 }
@@ -767,8 +767,8 @@ type ManagedZonePeeringConfigTargetNetworkInput interface {
 }
 
 type ManagedZonePeeringConfigTargetNetworkArgs struct {
-	// The fully qualified URL of the VPC network to forward queries to.
-	// This should be formatted like
+	// The id or fully qualified URL of the VPC network to forward queries to.
+	// This should be formatted like `projects/{project}/global/networks/{network}` or
 	// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
 }
@@ -851,8 +851,8 @@ func (o ManagedZonePeeringConfigTargetNetworkOutput) ToManagedZonePeeringConfigT
 	}).(ManagedZonePeeringConfigTargetNetworkPtrOutput)
 }
 
-// The fully qualified URL of the VPC network to forward queries to.
-// This should be formatted like
+// The id or fully qualified URL of the VPC network to forward queries to.
+// This should be formatted like `projects/{project}/global/networks/{network}` or
 // `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 func (o ManagedZonePeeringConfigTargetNetworkOutput) NetworkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedZonePeeringConfigTargetNetwork) string { return v.NetworkUrl }).(pulumi.StringOutput)
@@ -876,8 +876,8 @@ func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) Elem() ManagedZonePeerin
 	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetwork) ManagedZonePeeringConfigTargetNetwork { return *v }).(ManagedZonePeeringConfigTargetNetworkOutput)
 }
 
-// The fully qualified URL of the VPC network to forward queries to.
-// This should be formatted like
+// The id or fully qualified URL of the VPC network to forward queries to.
+// This should be formatted like `projects/{project}/global/networks/{network}` or
 // `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) NetworkUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetwork) *string {
@@ -1024,8 +1024,8 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) Networks() ManagedZonePriva
 }
 
 type ManagedZonePrivateVisibilityConfigNetwork struct {
-	// The fully qualified URL of the VPC network to forward queries to.
-	// This should be formatted like
+	// The id or fully qualified URL of the VPC network to forward queries to.
+	// This should be formatted like `projects/{project}/global/networks/{network}` or
 	// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 	NetworkUrl string `pulumi:"networkUrl"`
 }
@@ -1043,8 +1043,8 @@ type ManagedZonePrivateVisibilityConfigNetworkInput interface {
 }
 
 type ManagedZonePrivateVisibilityConfigNetworkArgs struct {
-	// The fully qualified URL of the VPC network to forward queries to.
-	// This should be formatted like
+	// The id or fully qualified URL of the VPC network to forward queries to.
+	// This should be formatted like `projects/{project}/global/networks/{network}` or
 	// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
 }
@@ -1101,8 +1101,8 @@ func (o ManagedZonePrivateVisibilityConfigNetworkOutput) ToManagedZonePrivateVis
 	return o
 }
 
-// The fully qualified URL of the VPC network to forward queries to.
-// This should be formatted like
+// The id or fully qualified URL of the VPC network to forward queries to.
+// This should be formatted like `projects/{project}/global/networks/{network}` or
 // `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 func (o ManagedZonePrivateVisibilityConfigNetworkOutput) NetworkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigNetwork) string { return v.NetworkUrl }).(pulumi.StringOutput)

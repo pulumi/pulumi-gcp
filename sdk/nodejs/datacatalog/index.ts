@@ -7,4 +7,5 @@ export * from "./entryGroup";
 export * from "./entryGroupIamBinding";
 export * from "./entryGroupIamMember";
 export * from "./entryGroupIamPolicy";
+export * from "./tag";
 export * from "./tagTemplate";

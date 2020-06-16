@@ -53,10 +53,10 @@ import * as utilities from "../utilities";
  *     private_visibility_config: {
  *         networks: [
  *             {
- *                 networkUrl: network_1.selfLink,
+ *                 networkUrl: network_1.id,
  *             },
  *             {
- *                 networkUrl: network_2.selfLink,
+ *                 networkUrl: network_2.id,
  *             },
  *         ],
  *     },
@@ -115,12 +115,12 @@ import * as utilities from "../utilities";
  *     visibility: "private",
  *     private_visibility_config: {
  *         networks: [{
- *             networkUrl: network_source.selfLink,
+ *             networkUrl: network_source.id,
  *         }],
  *     },
  *     peering_config: {
  *         target_network: {
- *             networkUrl: network_target.selfLink,
+ *             networkUrl: network_target.id,
  *         },
  *     },
  * });

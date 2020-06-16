@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? ExactMatch;
         /// <summary>
-        /// The name of the header.
+        /// The name of the header to add.
         /// </summary>
         public readonly string HeaderName;
         /// <summary>

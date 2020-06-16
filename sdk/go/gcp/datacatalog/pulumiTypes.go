@@ -1208,6 +1208,180 @@ func (o EntryGroupIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TagField struct {
+	// Holds the value for a tag field with boolean type.
+	BoolValue *bool `pulumi:"boolValue"`
+	// -
+	// The display name of this field
+	DisplayName *string `pulumi:"displayName"`
+	// Holds the value for a tag field with double type.
+	DoubleValue *float64 `pulumi:"doubleValue"`
+	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+	EnumValue *string `pulumi:"enumValue"`
+	// The identifier for this object. Format specified above.
+	FieldName string `pulumi:"fieldName"`
+	// -
+	// The order of this field with respect to other fields in this tag. For example, a higher value can indicate
+	// a more important field. The value can be negative. Multiple fields can have the same order, and field orders
+	// within a tag do not have to be sequential.
+	Order *int `pulumi:"order"`
+	// Holds the value for a tag field with string type.
+	StringValue *string `pulumi:"stringValue"`
+	// Holds the value for a tag field with timestamp type.
+	TimestampValue *string `pulumi:"timestampValue"`
+}
+
+// TagFieldInput is an input type that accepts TagFieldArgs and TagFieldOutput values.
+// You can construct a concrete instance of `TagFieldInput` via:
+//
+// 		 TagFieldArgs{...}
+//
+type TagFieldInput interface {
+	pulumi.Input
+
+	ToTagFieldOutput() TagFieldOutput
+	ToTagFieldOutputWithContext(context.Context) TagFieldOutput
+}
+
+type TagFieldArgs struct {
+	// Holds the value for a tag field with boolean type.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// -
+	// The display name of this field
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Holds the value for a tag field with double type.
+	DoubleValue pulumi.Float64PtrInput `pulumi:"doubleValue"`
+	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+	EnumValue pulumi.StringPtrInput `pulumi:"enumValue"`
+	// The identifier for this object. Format specified above.
+	FieldName pulumi.StringInput `pulumi:"fieldName"`
+	// -
+	// The order of this field with respect to other fields in this tag. For example, a higher value can indicate
+	// a more important field. The value can be negative. Multiple fields can have the same order, and field orders
+	// within a tag do not have to be sequential.
+	Order pulumi.IntPtrInput `pulumi:"order"`
+	// Holds the value for a tag field with string type.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+	// Holds the value for a tag field with timestamp type.
+	TimestampValue pulumi.StringPtrInput `pulumi:"timestampValue"`
+}
+
+func (TagFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagField)(nil)).Elem()
+}
+
+func (i TagFieldArgs) ToTagFieldOutput() TagFieldOutput {
+	return i.ToTagFieldOutputWithContext(context.Background())
+}
+
+func (i TagFieldArgs) ToTagFieldOutputWithContext(ctx context.Context) TagFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagFieldOutput)
+}
+
+// TagFieldArrayInput is an input type that accepts TagFieldArray and TagFieldArrayOutput values.
+// You can construct a concrete instance of `TagFieldArrayInput` via:
+//
+// 		 TagFieldArray{ TagFieldArgs{...} }
+//
+type TagFieldArrayInput interface {
+	pulumi.Input
+
+	ToTagFieldArrayOutput() TagFieldArrayOutput
+	ToTagFieldArrayOutputWithContext(context.Context) TagFieldArrayOutput
+}
+
+type TagFieldArray []TagFieldInput
+
+func (TagFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagField)(nil)).Elem()
+}
+
+func (i TagFieldArray) ToTagFieldArrayOutput() TagFieldArrayOutput {
+	return i.ToTagFieldArrayOutputWithContext(context.Background())
+}
+
+func (i TagFieldArray) ToTagFieldArrayOutputWithContext(ctx context.Context) TagFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagFieldArrayOutput)
+}
+
+type TagFieldOutput struct{ *pulumi.OutputState }
+
+func (TagFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagField)(nil)).Elem()
+}
+
+func (o TagFieldOutput) ToTagFieldOutput() TagFieldOutput {
+	return o
+}
+
+func (o TagFieldOutput) ToTagFieldOutputWithContext(ctx context.Context) TagFieldOutput {
+	return o
+}
+
+// Holds the value for a tag field with boolean type.
+func (o TagFieldOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TagField) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
+}
+
+// -
+// The display name of this field
+func (o TagFieldOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagField) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Holds the value for a tag field with double type.
+func (o TagFieldOutput) DoubleValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TagField) *float64 { return v.DoubleValue }).(pulumi.Float64PtrOutput)
+}
+
+// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+func (o TagFieldOutput) EnumValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagField) *string { return v.EnumValue }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o TagFieldOutput) FieldName() pulumi.StringOutput {
+	return o.ApplyT(func(v TagField) string { return v.FieldName }).(pulumi.StringOutput)
+}
+
+// -
+// The order of this field with respect to other fields in this tag. For example, a higher value can indicate
+// a more important field. The value can be negative. Multiple fields can have the same order, and field orders
+// within a tag do not have to be sequential.
+func (o TagFieldOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TagField) *int { return v.Order }).(pulumi.IntPtrOutput)
+}
+
+// Holds the value for a tag field with string type.
+func (o TagFieldOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagField) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+// Holds the value for a tag field with timestamp type.
+func (o TagFieldOutput) TimestampValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagField) *string { return v.TimestampValue }).(pulumi.StringPtrOutput)
+}
+
+type TagFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (TagFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagField)(nil)).Elem()
+}
+
+func (o TagFieldArrayOutput) ToTagFieldArrayOutput() TagFieldArrayOutput {
+	return o
+}
+
+func (o TagFieldArrayOutput) ToTagFieldArrayOutputWithContext(ctx context.Context) TagFieldArrayOutput {
+	return o
+}
+
+func (o TagFieldArrayOutput) Index(i pulumi.IntInput) TagFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagField {
+		return vs[0].([]TagField)[vs[1].(int)]
+	}).(TagFieldOutput)
+}
+
 type TagTemplateField struct {
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
@@ -1696,6 +1870,8 @@ func init() {
 	pulumi.RegisterOutputType(EntryGroupIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(EntryGroupIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(TagFieldOutput{})
+	pulumi.RegisterOutputType(TagFieldArrayOutput{})
 	pulumi.RegisterOutputType(TagTemplateFieldOutput{})
 	pulumi.RegisterOutputType(TagTemplateFieldArrayOutput{})
 	pulumi.RegisterOutputType(TagTemplateFieldTypeOutput{})

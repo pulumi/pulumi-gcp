@@ -6675,6 +6675,8 @@ func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Min() pulumi.IntPtrOut
 type UptimeCheckConfigContentMatcher struct {
 	// String or regex content to match (max 1024 bytes)
 	Content string `pulumi:"content"`
+	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+	Matcher *string `pulumi:"matcher"`
 }
 
 // UptimeCheckConfigContentMatcherInput is an input type that accepts UptimeCheckConfigContentMatcherArgs and UptimeCheckConfigContentMatcherOutput values.
@@ -6692,6 +6694,8 @@ type UptimeCheckConfigContentMatcherInput interface {
 type UptimeCheckConfigContentMatcherArgs struct {
 	// String or regex content to match (max 1024 bytes)
 	Content pulumi.StringInput `pulumi:"content"`
+	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+	Matcher pulumi.StringPtrInput `pulumi:"matcher"`
 }
 
 func (UptimeCheckConfigContentMatcherArgs) ElementType() reflect.Type {
@@ -6749,6 +6753,11 @@ func (o UptimeCheckConfigContentMatcherOutput) ToUptimeCheckConfigContentMatcher
 // String or regex content to match (max 1024 bytes)
 func (o UptimeCheckConfigContentMatcherOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v UptimeCheckConfigContentMatcher) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+func (o UptimeCheckConfigContentMatcherOutput) Matcher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigContentMatcher) *string { return v.Matcher }).(pulumi.StringPtrOutput)
 }
 
 type UptimeCheckConfigContentMatcherArrayOutput struct{ *pulumi.OutputState }

@@ -189,7 +189,7 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly purpose!: pulumi.Output<string>;
     /**
-     * URL of the GCP region for this subnetwork.
+     * The GCP region for this subnetwork.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -346,7 +346,7 @@ export interface SubnetworkState {
      */
     readonly purpose?: pulumi.Input<string>;
     /**
-     * URL of the GCP region for this subnetwork.
+     * The GCP region for this subnetwork.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -428,7 +428,7 @@ export interface SubnetworkArgs {
      */
     readonly purpose?: pulumi.Input<string>;
     /**
-     * URL of the GCP region for this subnetwork.
+     * The GCP region for this subnetwork.
      */
     readonly region?: pulumi.Input<string>;
     /**

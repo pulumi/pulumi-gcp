@@ -74,6 +74,7 @@ type LookupClusterResult struct {
 	AuthenticatorGroupsConfigs []GetClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfigs"`
 	ClusterAutoscalings        []GetClusterClusterAutoscaling        `pulumi:"clusterAutoscalings"`
 	ClusterIpv4Cidr            string                                `pulumi:"clusterIpv4Cidr"`
+	ClusterTelemetries         []GetClusterClusterTelemetry          `pulumi:"clusterTelemetries"`
 	DatabaseEncryptions        []GetClusterDatabaseEncryption        `pulumi:"databaseEncryptions"`
 	DefaultMaxPodsPerNode      int                                   `pulumi:"defaultMaxPodsPerNode"`
 	Description                string                                `pulumi:"description"`

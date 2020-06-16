@@ -82,11 +82,39 @@ class FhirStore(pulumi.CustomResource):
     """
     The fully qualified name of this dataset
     """
+    stream_configs: pulumi.Output[list]
+    """
+    A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+    this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
+    resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
+    from the list, the server stops streaming to that location. Before adding a new config, you must add the required
+    bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
+    the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+
+      * `bigqueryDestination` (`dict`) - The destination BigQuery structure that contains both the dataset location and corresponding schema config.
+        The output is organized in one table per resource type. The server reuses the existing tables (if any) that
+        are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
+        resource type, the server attempts to create one.
+        See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.  Structure is documented below.
+        * `datasetUri` (`str`) - BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
+        * `schemaConfig` (`dict`) - The configuration for the exported BigQuery schema.  Structure is documented below.
+          * `recursiveStructureDepth` (`float`) - The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
+            resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
+            concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
+            value 2. The maximum depth allowed is 5.
+          * `schemaType` (`str`) - Specifies the output schema type. Only ANALYTICS is supported at this time.
+            * ANALYTICS: Analytics schema defined by the FHIR community.
+            See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+
+      * `resourceTypes` (`list`) - Supply a FHIR resource type (such as "Patient" or "Observation"). See
+        https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+        an empty list as an intent to stream all the supported resource types in this FHIR store.
+    """
     version: pulumi.Output[str]
     """
     The FHIR specification version.
     """
-    def __init__(__self__, resource_name, opts=None, dataset=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_import=None, enable_update_create=None, labels=None, name=None, notification_config=None, version=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, dataset=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_import=None, enable_update_create=None, labels=None, name=None, notification_config=None, stream_configs=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         A FhirStore is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/fhir/STU3/)
         standard for Healthcare information exchange
@@ -120,6 +148,41 @@ class FhirStore(pulumi.CustomResource):
             labels={
                 "label1": "labelvalue1",
             })
+        ```
+
+        ### Healthcare Fhir Store Streaming Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        bq_dataset = gcp.bigquery.Dataset("bqDataset",
+            dataset_id="bq_example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            delete_contents_on_destroy=True)
+        default = gcp.healthcare.FhirStore("default",
+            dataset=dataset.id,
+            version="R4",
+            enable_update_create=False,
+            disable_referential_integrity=False,
+            disable_resource_versioning=False,
+            enable_history_import=False,
+            labels={
+                "label1": "labelvalue1",
+            },
+            stream_configs=[{
+                "resourceTypes": ["Observation"],
+                "bigquery_destination": {
+                    "datasetUri": pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
+                    "schema_config": {
+                        "recursiveStructureDepth": 3,
+                    },
+                },
+            }])
+        topic = gcp.pubsub.Topic("topic")
         ```
 
         :param str resource_name: The name of the resource.
@@ -161,6 +224,12 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[dict] notification_config: A nested object resource  Structure is documented below.
+        :param pulumi.Input[list] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+               this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
+               resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
+               from the list, the server stops streaming to that location. Before adding a new config, you must add the required
+               bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
+               the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
         :param pulumi.Input[str] version: The FHIR specification version.
 
         The **notification_config** object supports the following:
@@ -171,6 +240,27 @@ class FhirStore(pulumi.CustomResource):
             was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
             project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
             Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+
+        The **stream_configs** object supports the following:
+
+          * `bigqueryDestination` (`pulumi.Input[dict]`) - The destination BigQuery structure that contains both the dataset location and corresponding schema config.
+            The output is organized in one table per resource type. The server reuses the existing tables (if any) that
+            are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
+            resource type, the server attempts to create one.
+            See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.  Structure is documented below.
+            * `datasetUri` (`pulumi.Input[str]`) - BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
+            * `schemaConfig` (`pulumi.Input[dict]`) - The configuration for the exported BigQuery schema.  Structure is documented below.
+              * `recursiveStructureDepth` (`pulumi.Input[float]`) - The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
+                resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
+                concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
+                value 2. The maximum depth allowed is 5.
+              * `schemaType` (`pulumi.Input[str]`) - Specifies the output schema type. Only ANALYTICS is supported at this time.
+                * ANALYTICS: Analytics schema defined by the FHIR community.
+                See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+
+          * `resourceTypes` (`pulumi.Input[list]`) - Supply a FHIR resource type (such as "Patient" or "Observation"). See
+            https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+            an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -199,6 +289,7 @@ class FhirStore(pulumi.CustomResource):
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['notification_config'] = notification_config
+            __props__['stream_configs'] = stream_configs
             __props__['version'] = version
             __props__['self_link'] = None
         super(FhirStore, __self__).__init__(
@@ -208,7 +299,7 @@ class FhirStore(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, dataset=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_import=None, enable_update_create=None, labels=None, name=None, notification_config=None, self_link=None, version=None):
+    def get(resource_name, id, opts=None, dataset=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_import=None, enable_update_create=None, labels=None, name=None, notification_config=None, self_link=None, stream_configs=None, version=None):
         """
         Get an existing FhirStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -254,6 +345,12 @@ class FhirStore(pulumi.CustomResource):
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[dict] notification_config: A nested object resource  Structure is documented below.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
+        :param pulumi.Input[list] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
+               this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
+               resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
+               from the list, the server stops streaming to that location. Before adding a new config, you must add the required
+               bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
+               the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
         :param pulumi.Input[str] version: The FHIR specification version.
 
         The **notification_config** object supports the following:
@@ -264,6 +361,27 @@ class FhirStore(pulumi.CustomResource):
             was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
             project. cloud-healthcare@system.gserviceaccount.com must have publisher permissions on the given
             Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+
+        The **stream_configs** object supports the following:
+
+          * `bigqueryDestination` (`pulumi.Input[dict]`) - The destination BigQuery structure that contains both the dataset location and corresponding schema config.
+            The output is organized in one table per resource type. The server reuses the existing tables (if any) that
+            are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
+            resource type, the server attempts to create one.
+            See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.  Structure is documented below.
+            * `datasetUri` (`pulumi.Input[str]`) - BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
+            * `schemaConfig` (`pulumi.Input[dict]`) - The configuration for the exported BigQuery schema.  Structure is documented below.
+              * `recursiveStructureDepth` (`pulumi.Input[float]`) - The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
+                resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
+                concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
+                value 2. The maximum depth allowed is 5.
+              * `schemaType` (`pulumi.Input[str]`) - Specifies the output schema type. Only ANALYTICS is supported at this time.
+                * ANALYTICS: Analytics schema defined by the FHIR community.
+                See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+
+          * `resourceTypes` (`pulumi.Input[list]`) - Supply a FHIR resource type (such as "Patient" or "Observation"). See
+            https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
+            an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -278,6 +396,7 @@ class FhirStore(pulumi.CustomResource):
         __props__["name"] = name
         __props__["notification_config"] = notification_config
         __props__["self_link"] = self_link
+        __props__["stream_configs"] = stream_configs
         __props__["version"] = version
         return FhirStore(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

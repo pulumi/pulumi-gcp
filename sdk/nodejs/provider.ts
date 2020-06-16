@@ -84,8 +84,10 @@ export class Provider extends pulumi.ProviderResource {
         inputs["identityPlatformCustomEndpoint"] = args ? args.identityPlatformCustomEndpoint : undefined;
         inputs["kmsCustomEndpoint"] = args ? args.kmsCustomEndpoint : undefined;
         inputs["loggingCustomEndpoint"] = args ? args.loggingCustomEndpoint : undefined;
+        inputs["memcacheCustomEndpoint"] = args ? args.memcacheCustomEndpoint : undefined;
         inputs["mlEngineCustomEndpoint"] = args ? args.mlEngineCustomEndpoint : undefined;
         inputs["monitoringCustomEndpoint"] = args ? args.monitoringCustomEndpoint : undefined;
+        inputs["networkManagementCustomEndpoint"] = args ? args.networkManagementCustomEndpoint : undefined;
         inputs["osLoginCustomEndpoint"] = args ? args.osLoginCustomEndpoint : undefined;
         inputs["project"] = (args ? args.project : undefined) || utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
         inputs["pubsubCustomEndpoint"] = args ? args.pubsubCustomEndpoint : undefined;
@@ -175,8 +177,10 @@ export interface ProviderArgs {
     readonly identityPlatformCustomEndpoint?: pulumi.Input<string>;
     readonly kmsCustomEndpoint?: pulumi.Input<string>;
     readonly loggingCustomEndpoint?: pulumi.Input<string>;
+    readonly memcacheCustomEndpoint?: pulumi.Input<string>;
     readonly mlEngineCustomEndpoint?: pulumi.Input<string>;
     readonly monitoringCustomEndpoint?: pulumi.Input<string>;
+    readonly networkManagementCustomEndpoint?: pulumi.Input<string>;
     readonly osLoginCustomEndpoint?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     readonly pubsubCustomEndpoint?: pulumi.Input<string>;

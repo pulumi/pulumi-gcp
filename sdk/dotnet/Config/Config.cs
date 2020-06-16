@@ -102,9 +102,13 @@ namespace Pulumi.Gcp
 
         public static string? LoggingCustomEndpoint { get; set; } = __config.Get("loggingCustomEndpoint");
 
+        public static string? MemcacheCustomEndpoint { get; set; } = __config.Get("memcacheCustomEndpoint");
+
         public static string? MlEngineCustomEndpoint { get; set; } = __config.Get("mlEngineCustomEndpoint");
 
         public static string? MonitoringCustomEndpoint { get; set; } = __config.Get("monitoringCustomEndpoint");
+
+        public static string? NetworkManagementCustomEndpoint { get; set; } = __config.Get("networkManagementCustomEndpoint");
 
         public static string? OsLoginCustomEndpoint { get; set; } = __config.Get("osLoginCustomEndpoint");
 

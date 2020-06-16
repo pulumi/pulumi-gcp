@@ -14,14 +14,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort
     {
         /// <summary>
-        /// The HTTP status code used to abort the request. The value must be between 200
-        /// and 599 inclusive.
+        /// The HTTP status code used to abort the request.
+        /// The value must be between 200 and 599 inclusive.
         /// </summary>
         public readonly int HttpStatus;
         /// <summary>
-        /// The percentage of traffic (connections/operations/requests) on which delay will
-        /// be introduced as part of fault injection. The value must be between 0.0 and
-        /// 100.0 inclusive.
+        /// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        /// The value must be between 0.0 and 100.0 inclusive.
         /// </summary>
         public readonly double Percentage;
 

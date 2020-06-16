@@ -112,6 +112,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> AuthenticatorGroupsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingResult> ClusterAutoscalings;
         public readonly string ClusterIpv4Cidr;
+        public readonly ImmutableArray<Outputs.GetClusterClusterTelemetryResult> ClusterTelemetries;
         public readonly ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> DatabaseEncryptions;
         public readonly int DefaultMaxPodsPerNode;
         public readonly string Description;
@@ -172,6 +173,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterClusterAutoscalingResult> clusterAutoscalings,
 
             string clusterIpv4Cidr,
+
+            ImmutableArray<Outputs.GetClusterClusterTelemetryResult> clusterTelemetries,
 
             ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> databaseEncryptions,
 
@@ -268,6 +271,7 @@ namespace Pulumi.Gcp.Container
             AuthenticatorGroupsConfigs = authenticatorGroupsConfigs;
             ClusterAutoscalings = clusterAutoscalings;
             ClusterIpv4Cidr = clusterIpv4Cidr;
+            ClusterTelemetries = clusterTelemetries;
             DatabaseEncryptions = databaseEncryptions;
             DefaultMaxPodsPerNode = defaultMaxPodsPerNode;
             Description = description;

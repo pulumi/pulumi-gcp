@@ -91,8 +91,10 @@ type providerArgs struct {
 	IdentityPlatformCustomEndpoint       *string           `pulumi:"identityPlatformCustomEndpoint"`
 	KmsCustomEndpoint                    *string           `pulumi:"kmsCustomEndpoint"`
 	LoggingCustomEndpoint                *string           `pulumi:"loggingCustomEndpoint"`
+	MemcacheCustomEndpoint               *string           `pulumi:"memcacheCustomEndpoint"`
 	MlEngineCustomEndpoint               *string           `pulumi:"mlEngineCustomEndpoint"`
 	MonitoringCustomEndpoint             *string           `pulumi:"monitoringCustomEndpoint"`
+	NetworkManagementCustomEndpoint      *string           `pulumi:"networkManagementCustomEndpoint"`
 	OsLoginCustomEndpoint                *string           `pulumi:"osLoginCustomEndpoint"`
 	Project                              *string           `pulumi:"project"`
 	PubsubCustomEndpoint                 *string           `pulumi:"pubsubCustomEndpoint"`
@@ -171,8 +173,10 @@ type ProviderArgs struct {
 	IdentityPlatformCustomEndpoint       pulumi.StringPtrInput
 	KmsCustomEndpoint                    pulumi.StringPtrInput
 	LoggingCustomEndpoint                pulumi.StringPtrInput
+	MemcacheCustomEndpoint               pulumi.StringPtrInput
 	MlEngineCustomEndpoint               pulumi.StringPtrInput
 	MonitoringCustomEndpoint             pulumi.StringPtrInput
+	NetworkManagementCustomEndpoint      pulumi.StringPtrInput
 	OsLoginCustomEndpoint                pulumi.StringPtrInput
 	Project                              pulumi.StringPtrInput
 	PubsubCustomEndpoint                 pulumi.StringPtrInput

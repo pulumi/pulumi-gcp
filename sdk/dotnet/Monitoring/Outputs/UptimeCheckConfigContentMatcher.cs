@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// String or regex content to match (max 1024 bytes)
         /// </summary>
         public readonly string Content;
+        /// <summary>
+        /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+        /// </summary>
+        public readonly string? Matcher;
 
         [OutputConstructor]
-        private UptimeCheckConfigContentMatcher(string content)
+        private UptimeCheckConfigContentMatcher(
+            string content,
+
+            string? matcher)
         {
             Content = content;
+            Matcher = matcher;
         }
     }
 }

@@ -74,8 +74,8 @@ class ManagedZone(pulumi.CustomResource):
     zone. The value of this field contains the network to peer with.  Structure is documented below.
 
       * `targetNetwork` (`dict`) - The network with which to peer.  Structure is documented below.
-        * `networkUrl` (`str`) - The fully qualified URL of the VPC network to forward queries to.
-          This should be formatted like
+        * `networkUrl` (`str`) - The id or fully qualified URL of the VPC network to forward queries to.
+          This should be formatted like `projects/{project}/global/networks/{network}` or
           `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
     """
     private_visibility_config: pulumi.Output[dict]
@@ -84,8 +84,8 @@ class ManagedZone(pulumi.CustomResource):
     resources that the zone is visible from.  Structure is documented below.
 
       * `networks` (`list`) - The list of VPC networks that can see this zone. Structure is documented below.
-        * `networkUrl` (`str`) - The fully qualified URL of the VPC network to forward queries to.
-          This should be formatted like
+        * `networkUrl` (`str`) - The id or fully qualified URL of the VPC network to forward queries to.
+          This should be formatted like `projects/{project}/global/networks/{network}` or
           `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
     """
     project: pulumi.Output[str]
@@ -162,10 +162,10 @@ class ManagedZone(pulumi.CustomResource):
             private_visibility_config={
                 "networks": [
                     {
-                        "networkUrl": network_1.self_link,
+                        "networkUrl": network_1.id,
                     },
                     {
-                        "networkUrl": network_2.self_link,
+                        "networkUrl": network_2.id,
                     },
                 ],
             })
@@ -222,12 +222,12 @@ class ManagedZone(pulumi.CustomResource):
             visibility="private",
             private_visibility_config={
                 "networks": [{
-                    "networkUrl": network_source.self_link,
+                    "networkUrl": network_source.id,
                 }],
             },
             peering_config={
                 "target_network": {
-                    "networkUrl": network_target.self_link,
+                    "networkUrl": network_target.id,
                 },
             })
         ```
@@ -311,15 +311,15 @@ class ManagedZone(pulumi.CustomResource):
         The **peering_config** object supports the following:
 
           * `targetNetwork` (`pulumi.Input[dict]`) - The network with which to peer.  Structure is documented below.
-            * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to forward queries to.
-              This should be formatted like
+            * `networkUrl` (`pulumi.Input[str]`) - The id or fully qualified URL of the VPC network to forward queries to.
+              This should be formatted like `projects/{project}/global/networks/{network}` or
               `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 
         The **private_visibility_config** object supports the following:
 
           * `networks` (`pulumi.Input[list]`) - The list of VPC networks that can see this zone. Structure is documented below.
-            * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to forward queries to.
-              This should be formatted like
+            * `networkUrl` (`pulumi.Input[str]`) - The id or fully qualified URL of the VPC network to forward queries to.
+              This should be formatted like `projects/{project}/global/networks/{network}` or
               `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 
         The **service_directory_config** object supports the following:
@@ -437,15 +437,15 @@ class ManagedZone(pulumi.CustomResource):
         The **peering_config** object supports the following:
 
           * `targetNetwork` (`pulumi.Input[dict]`) - The network with which to peer.  Structure is documented below.
-            * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to forward queries to.
-              This should be formatted like
+            * `networkUrl` (`pulumi.Input[str]`) - The id or fully qualified URL of the VPC network to forward queries to.
+              This should be formatted like `projects/{project}/global/networks/{network}` or
               `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 
         The **private_visibility_config** object supports the following:
 
           * `networks` (`pulumi.Input[list]`) - The list of VPC networks that can see this zone. Structure is documented below.
-            * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to forward queries to.
-              This should be formatted like
+            * `networkUrl` (`pulumi.Input[str]`) - The id or fully qualified URL of the VPC network to forward queries to.
+              This should be formatted like `projects/{project}/global/networks/{network}` or
               `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 
         The **service_directory_config** object supports the following:
