@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 3.10.1 (2020-06-17)
+* Fix up ldflags being pushed to pulumi-gcp binary
+
 ## 3.10.0 (2020-06-16)
 * Upgrade to v3.26.0 of the Google Beta Terraform Provider
 * Switch to GitHub actions for build
