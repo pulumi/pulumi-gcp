@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.27.0 of the Google Beta Terraform Provider
+_(none)_
 
 ---
+
+## 3.11.0 (2020-06-24)
+* Upgrade to v3.27.0 of the Google Beta Terraform Provider
 
 ## 3.10.1 (2020-06-17)
 * Fix up ldflags being pushed to pulumi-gcp binary
