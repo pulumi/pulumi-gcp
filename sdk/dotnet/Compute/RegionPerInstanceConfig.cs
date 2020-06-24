@@ -75,6 +75,14 @@ namespace Pulumi.Gcp.Compute
         [Output("regionInstanceGroupManager")]
         public Output<string> RegionInstanceGroupManager { get; private set; } = null!;
 
+        /// <summary>
+        /// When true, deleting this config will immediately remove any specified state from the underlying instance.
+        /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+        /// State will be removed on the next instance recreation or update.
+        /// </summary>
+        [Output("removeInstanceStateOnDestroy")]
+        public Output<bool?> RemoveInstanceStateOnDestroy { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a RegionPerInstanceConfig resource with the given unique name, arguments, and options.
@@ -174,6 +182,14 @@ namespace Pulumi.Gcp.Compute
         [Input("regionInstanceGroupManager", required: true)]
         public Input<string> RegionInstanceGroupManager { get; set; } = null!;
 
+        /// <summary>
+        /// When true, deleting this config will immediately remove any specified state from the underlying instance.
+        /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+        /// State will be removed on the next instance recreation or update.
+        /// </summary>
+        [Input("removeInstanceStateOnDestroy")]
+        public Input<bool>? RemoveInstanceStateOnDestroy { get; set; }
+
         public RegionPerInstanceConfigArgs()
         {
         }
@@ -233,6 +249,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("regionInstanceGroupManager")]
         public Input<string>? RegionInstanceGroupManager { get; set; }
+
+        /// <summary>
+        /// When true, deleting this config will immediately remove any specified state from the underlying instance.
+        /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+        /// State will be removed on the next instance recreation or update.
+        /// </summary>
+        [Input("removeInstanceStateOnDestroy")]
+        public Input<bool>? RemoveInstanceStateOnDestroy { get; set; }
 
         public RegionPerInstanceConfigState()
         {

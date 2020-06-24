@@ -217,7 +217,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             }])
         igm = gcp.compute.InstanceGroupManager("igm",
             version=[{
-                "instanceTemplate": instance_template.self_link,
+                "instanceTemplate": instance_template.id,
                 "name": "primary",
             }],
             base_instance_name="internal-glb",

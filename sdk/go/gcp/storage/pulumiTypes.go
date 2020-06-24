@@ -1024,7 +1024,7 @@ func (o BucketLoggingPtrOutput) LogObjectPrefix() pulumi.StringPtrOutput {
 type BucketRetentionPolicy struct {
 	// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 	IsLocked *bool `pulumi:"isLocked"`
-	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
 	RetentionPeriod int `pulumi:"retentionPeriod"`
 }
 
@@ -1043,7 +1043,7 @@ type BucketRetentionPolicyInput interface {
 type BucketRetentionPolicyArgs struct {
 	// If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 	IsLocked pulumi.BoolPtrInput `pulumi:"isLocked"`
-	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
 	RetentionPeriod pulumi.IntInput `pulumi:"retentionPeriod"`
 }
 
@@ -1130,7 +1130,7 @@ func (o BucketRetentionPolicyOutput) IsLocked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketRetentionPolicy) *bool { return v.IsLocked }).(pulumi.BoolPtrOutput)
 }
 
-// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
 func (o BucketRetentionPolicyOutput) RetentionPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
 }
@@ -1163,7 +1163,7 @@ func (o BucketRetentionPolicyPtrOutput) IsLocked() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
 func (o BucketRetentionPolicyPtrOutput) RetentionPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BucketRetentionPolicy) *int {
 		if v == nil {

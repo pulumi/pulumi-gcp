@@ -848,6 +848,8 @@ type TriggerGithubPullRequest struct {
 	Branch string `pulumi:"branch"`
 	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
 	CommentControl *string `pulumi:"commentControl"`
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex *bool `pulumi:"invertRegex"`
 }
 
 // TriggerGithubPullRequestInput is an input type that accepts TriggerGithubPullRequestArgs and TriggerGithubPullRequestOutput values.
@@ -867,6 +869,8 @@ type TriggerGithubPullRequestArgs struct {
 	Branch pulumi.StringInput `pulumi:"branch"`
 	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 }
 
 func (TriggerGithubPullRequestArgs) ElementType() reflect.Type {
@@ -957,6 +961,11 @@ func (o TriggerGithubPullRequestOutput) CommentControl() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
 }
 
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerGithubPullRequestOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerGithubPullRequest) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
+}
+
 type TriggerGithubPullRequestPtrOutput struct{ *pulumi.OutputState }
 
 func (TriggerGithubPullRequestPtrOutput) ElementType() reflect.Type {
@@ -995,9 +1004,21 @@ func (o TriggerGithubPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerGithubPullRequestPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerGithubPullRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
 type TriggerGithubPush struct {
 	// Regex of branches to match.  Specify only one of branch or tag.
 	Branch *string `pulumi:"branch"`
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex *bool `pulumi:"invertRegex"`
 	// Regex of tags to match.  Specify only one of branch or tag.
 	Tag *string `pulumi:"tag"`
 }
@@ -1017,6 +1038,8 @@ type TriggerGithubPushInput interface {
 type TriggerGithubPushArgs struct {
 	// Regex of branches to match.  Specify only one of branch or tag.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 	// Regex of tags to match.  Specify only one of branch or tag.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
@@ -1104,6 +1127,11 @@ func (o TriggerGithubPushOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerGithubPushOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerGithubPush) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
+}
+
 // Regex of tags to match.  Specify only one of branch or tag.
 func (o TriggerGithubPushOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPush) *string { return v.Tag }).(pulumi.StringPtrOutput)
@@ -1137,6 +1165,16 @@ func (o TriggerGithubPushPtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerGithubPushPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerGithubPush) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Regex of tags to match.  Specify only one of branch or tag.
 func (o TriggerGithubPushPtrOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPush) *string {
@@ -1163,6 +1201,8 @@ type TriggerTriggerTemplate struct {
 	// which specifies an absolute path, the `RepoSource` `dir` is ignored
 	// for the step's execution.
 	Dir *string `pulumi:"dir"`
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex *bool `pulumi:"invertRegex"`
 	// ID of the project that owns the Cloud Source Repository. If
 	// omitted, the project ID requesting the build is assumed.
 	ProjectId *string `pulumi:"projectId"`
@@ -1201,6 +1241,8 @@ type TriggerTriggerTemplateArgs struct {
 	// which specifies an absolute path, the `RepoSource` `dir` is ignored
 	// for the step's execution.
 	Dir pulumi.StringPtrInput `pulumi:"dir"`
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 	// ID of the project that owns the Cloud Source Repository. If
 	// omitted, the project ID requesting the build is assumed.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
@@ -1313,6 +1355,11 @@ func (o TriggerTriggerTemplateOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.Dir }).(pulumi.StringPtrOutput)
 }
 
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerTriggerTemplateOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerTriggerTemplate) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the project that owns the Cloud Source Repository. If
 // omitted, the project ID requesting the build is assumed.
 func (o TriggerTriggerTemplateOutput) ProjectId() pulumi.StringPtrOutput {
@@ -1385,6 +1432,16 @@ func (o TriggerTriggerTemplatePtrOutput) Dir() pulumi.StringPtrOutput {
 		}
 		return v.Dir
 	}).(pulumi.StringPtrOutput)
+}
+
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+func (o TriggerTriggerTemplatePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TriggerTriggerTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
 }
 
 // ID of the project that owns the Cloud Source Repository. If

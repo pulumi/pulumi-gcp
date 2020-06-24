@@ -102,7 +102,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             "httpsRedirect": True,
             "stripQuery": False,
         })
-        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.self_link)
+        default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", url_map=default_url_map.id)
         ```
 
         :param str resource_name: The name of the resource.

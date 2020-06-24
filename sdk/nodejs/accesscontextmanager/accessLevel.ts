@@ -83,7 +83,12 @@ export class AccessLevel extends pulumi.CustomResource {
      */
     public readonly basic!: pulumi.Output<outputs.accesscontextmanager.AccessLevelBasic | undefined>;
     /**
-     * Description of the AccessLevel and its use. Does not affect behavior.
+     * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+     * See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+     */
+    public readonly custom!: pulumi.Output<outputs.accesscontextmanager.AccessLevelCustom | undefined>;
+    /**
+     * Description of the expression
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -98,7 +103,7 @@ export class AccessLevel extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
-     * Human readable title. Must be unique within the Policy.
+     * Title for the expression, i.e. a short string describing its purpose.
      */
     public readonly title!: pulumi.Output<string>;
 
@@ -115,6 +120,7 @@ export class AccessLevel extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as AccessLevelState | undefined;
             inputs["basic"] = state ? state.basic : undefined;
+            inputs["custom"] = state ? state.custom : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["parent"] = state ? state.parent : undefined;
@@ -128,6 +134,7 @@ export class AccessLevel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'title'");
             }
             inputs["basic"] = args ? args.basic : undefined;
+            inputs["custom"] = args ? args.custom : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -153,7 +160,12 @@ export interface AccessLevelState {
      */
     readonly basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
     /**
-     * Description of the AccessLevel and its use. Does not affect behavior.
+     * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+     * See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+     */
+    readonly custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
+    /**
+     * Description of the expression
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -168,7 +180,7 @@ export interface AccessLevelState {
      */
     readonly parent?: pulumi.Input<string>;
     /**
-     * Human readable title. Must be unique within the Policy.
+     * Title for the expression, i.e. a short string describing its purpose.
      */
     readonly title?: pulumi.Input<string>;
 }
@@ -182,7 +194,12 @@ export interface AccessLevelArgs {
      */
     readonly basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
     /**
-     * Description of the AccessLevel and its use. Does not affect behavior.
+     * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+     * See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+     */
+    readonly custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
+    /**
+     * Description of the expression
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -197,7 +214,7 @@ export interface AccessLevelArgs {
      */
     readonly parent: pulumi.Input<string>;
     /**
-     * Human readable title. Must be unique within the Policy.
+     * Title for the expression, i.e. a short string describing its purpose.
      */
     readonly title: pulumi.Input<string>;
 }

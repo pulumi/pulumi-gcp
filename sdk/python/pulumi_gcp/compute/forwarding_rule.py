@@ -311,7 +311,7 @@ class ForwardingRule(pulumi.CustomResource):
         rigm = gcp.compute.RegionInstanceGroupManager("rigm",
             region="us-central1",
             version=[{
-                "instanceTemplate": instance_template.self_link,
+                "instanceTemplate": instance_template.id,
                 "name": "primary",
             }],
             base_instance_name="internal-glb",

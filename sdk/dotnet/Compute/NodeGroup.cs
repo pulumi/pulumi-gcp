@@ -36,14 +36,10 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     public MyStack()
     ///     {
-    ///         var central1a = Output.Create(Gcp.Compute.GetNodeTypes.InvokeAsync(new Gcp.Compute.GetNodeTypesArgs
-    ///         {
-    ///             Zone = "us-central1-a",
-    ///         }));
     ///         var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new Gcp.Compute.NodeTemplateArgs
     ///         {
     ///             Region = "us-central1",
-    ///             NodeType = central1a.Apply(central1a =&gt; central1a.Names[0]),
+    ///             NodeType = "n1-node-96-624",
     ///         });
     ///         var nodes = new Gcp.Compute.NodeGroup("nodes", new Gcp.Compute.NodeGroupArgs
     ///         {

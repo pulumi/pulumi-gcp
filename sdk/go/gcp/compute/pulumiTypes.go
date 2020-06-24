@@ -9710,6 +9710,7 @@ func (o InstanceFromTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pul
 
 type InstanceFromTemplateScheduling struct {
 	AutomaticRestart  *bool                                        `pulumi:"automaticRestart"`
+	MinNodeCpus       *int                                         `pulumi:"minNodeCpus"`
 	NodeAffinities    []InstanceFromTemplateSchedulingNodeAffinity `pulumi:"nodeAffinities"`
 	OnHostMaintenance *string                                      `pulumi:"onHostMaintenance"`
 	Preemptible       *bool                                        `pulumi:"preemptible"`
@@ -9729,6 +9730,7 @@ type InstanceFromTemplateSchedulingInput interface {
 
 type InstanceFromTemplateSchedulingArgs struct {
 	AutomaticRestart  pulumi.BoolPtrInput                                  `pulumi:"automaticRestart"`
+	MinNodeCpus       pulumi.IntPtrInput                                   `pulumi:"minNodeCpus"`
 	NodeAffinities    InstanceFromTemplateSchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
 	OnHostMaintenance pulumi.StringPtrInput                                `pulumi:"onHostMaintenance"`
 	Preemptible       pulumi.BoolPtrInput                                  `pulumi:"preemptible"`
@@ -9815,6 +9817,10 @@ func (o InstanceFromTemplateSchedulingOutput) AutomaticRestart() pulumi.BoolPtrO
 	return o.ApplyT(func(v InstanceFromTemplateScheduling) *bool { return v.AutomaticRestart }).(pulumi.BoolPtrOutput)
 }
 
+func (o InstanceFromTemplateSchedulingOutput) MinNodeCpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceFromTemplateScheduling) *int { return v.MinNodeCpus }).(pulumi.IntPtrOutput)
+}
+
 func (o InstanceFromTemplateSchedulingOutput) NodeAffinities() InstanceFromTemplateSchedulingNodeAffinityArrayOutput {
 	return o.ApplyT(func(v InstanceFromTemplateScheduling) []InstanceFromTemplateSchedulingNodeAffinity {
 		return v.NodeAffinities
@@ -9854,6 +9860,15 @@ func (o InstanceFromTemplateSchedulingPtrOutput) AutomaticRestart() pulumi.BoolP
 		}
 		return v.AutomaticRestart
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceFromTemplateSchedulingPtrOutput) MinNodeCpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceFromTemplateScheduling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCpus
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o InstanceFromTemplateSchedulingPtrOutput) NodeAffinities() InstanceFromTemplateSchedulingNodeAffinityArrayOutput {
@@ -12312,6 +12327,7 @@ type InstanceScheduling struct {
 	// restarted if it was terminated by Compute Engine (not a user).
 	// Defaults to true.
 	AutomaticRestart *bool `pulumi:"automaticRestart"`
+	MinNodeCpus      *int  `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
 	// to determine which sole-tenant nodes your instances and managed instance
 	// groups will use as host systems. Read more on sole-tenant node creation
@@ -12345,6 +12361,7 @@ type InstanceSchedulingArgs struct {
 	// restarted if it was terminated by Compute Engine (not a user).
 	// Defaults to true.
 	AutomaticRestart pulumi.BoolPtrInput `pulumi:"automaticRestart"`
+	MinNodeCpus      pulumi.IntPtrInput  `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
 	// to determine which sole-tenant nodes your instances and managed instance
 	// groups will use as host systems. Read more on sole-tenant node creation
@@ -12446,6 +12463,10 @@ func (o InstanceSchedulingOutput) AutomaticRestart() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceScheduling) *bool { return v.AutomaticRestart }).(pulumi.BoolPtrOutput)
 }
 
+func (o InstanceSchedulingOutput) MinNodeCpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceScheduling) *int { return v.MinNodeCpus }).(pulumi.IntPtrOutput)
+}
+
 // Specifies node affinities or anti-affinities
 // to determine which sole-tenant nodes your instances and managed instance
 // groups will use as host systems. Read more on sole-tenant node creation
@@ -12497,6 +12518,15 @@ func (o InstanceSchedulingPtrOutput) AutomaticRestart() pulumi.BoolPtrOutput {
 		}
 		return v.AutomaticRestart
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceSchedulingPtrOutput) MinNodeCpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceScheduling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCpus
+	}).(pulumi.IntPtrOutput)
 }
 
 // Specifies node affinities or anti-affinities
@@ -14054,6 +14084,7 @@ type InstanceTemplateScheduling struct {
 	// automatically restarted if it is terminated by Compute Engine (not
 	// terminated by a user). This defaults to true.
 	AutomaticRestart *bool `pulumi:"automaticRestart"`
+	MinNodeCpus      *int  `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
 	// to determine which sole-tenant nodes your instances and managed instance
 	// groups will use as host systems. Read more on sole-tenant node creation
@@ -14086,6 +14117,7 @@ type InstanceTemplateSchedulingArgs struct {
 	// automatically restarted if it is terminated by Compute Engine (not
 	// terminated by a user). This defaults to true.
 	AutomaticRestart pulumi.BoolPtrInput `pulumi:"automaticRestart"`
+	MinNodeCpus      pulumi.IntPtrInput  `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
 	// to determine which sole-tenant nodes your instances and managed instance
 	// groups will use as host systems. Read more on sole-tenant node creation
@@ -14186,6 +14218,10 @@ func (o InstanceTemplateSchedulingOutput) AutomaticRestart() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v InstanceTemplateScheduling) *bool { return v.AutomaticRestart }).(pulumi.BoolPtrOutput)
 }
 
+func (o InstanceTemplateSchedulingOutput) MinNodeCpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateScheduling) *int { return v.MinNodeCpus }).(pulumi.IntPtrOutput)
+}
+
 // Specifies node affinities or anti-affinities
 // to determine which sole-tenant nodes your instances and managed instance
 // groups will use as host systems. Read more on sole-tenant node creation
@@ -14236,6 +14272,15 @@ func (o InstanceTemplateSchedulingPtrOutput) AutomaticRestart() pulumi.BoolPtrOu
 		}
 		return v.AutomaticRestart
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceTemplateSchedulingPtrOutput) MinNodeCpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplateScheduling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCpus
+	}).(pulumi.IntPtrOutput)
 }
 
 // Specifies node affinities or anti-affinities
@@ -55453,6 +55498,7 @@ type GetInstanceScheduling struct {
 	// Specifies if the instance should be
 	// restarted if it was terminated by Compute Engine (not a user).
 	AutomaticRestart bool                                `pulumi:"automaticRestart"`
+	MinNodeCpus      int                                 `pulumi:"minNodeCpus"`
 	NodeAffinities   []GetInstanceSchedulingNodeAffinity `pulumi:"nodeAffinities"`
 	// Describes maintenance behavior for the
 	// instance. One of `MIGRATE` or `TERMINATE`, for more info, read
@@ -55478,6 +55524,7 @@ type GetInstanceSchedulingArgs struct {
 	// Specifies if the instance should be
 	// restarted if it was terminated by Compute Engine (not a user).
 	AutomaticRestart pulumi.BoolInput                            `pulumi:"automaticRestart"`
+	MinNodeCpus      pulumi.IntInput                             `pulumi:"minNodeCpus"`
 	NodeAffinities   GetInstanceSchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
 	// Describes maintenance behavior for the
 	// instance. One of `MIGRATE` or `TERMINATE`, for more info, read
@@ -55543,6 +55590,10 @@ func (o GetInstanceSchedulingOutput) ToGetInstanceSchedulingOutputWithContext(ct
 // restarted if it was terminated by Compute Engine (not a user).
 func (o GetInstanceSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) bool { return v.AutomaticRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceSchedulingOutput) MinNodeCpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) int { return v.MinNodeCpus }).(pulumi.IntOutput)
 }
 
 func (o GetInstanceSchedulingOutput) NodeAffinities() GetInstanceSchedulingNodeAffinityArrayOutput {

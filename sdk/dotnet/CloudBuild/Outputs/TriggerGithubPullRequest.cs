@@ -21,15 +21,22 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
         /// </summary>
         public readonly string? CommentControl;
+        /// <summary>
+        /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        /// </summary>
+        public readonly bool? InvertRegex;
 
         [OutputConstructor]
         private TriggerGithubPullRequest(
             string branch,
 
-            string? commentControl)
+            string? commentControl,
+
+            bool? invertRegex)
         {
             Branch = branch;
             CommentControl = commentControl;
+            InvertRegex = invertRegex;
         }
     }
 }

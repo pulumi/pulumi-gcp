@@ -29,12 +29,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const central1a = gcp.compute.getNodeTypes({
- *     zone: "us-central1-a",
- * });
  * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
  *     region: "us-central1",
- *     nodeType: central1a.then(central1a => central1a.names[0]),
+ *     nodeType: "n1-node-96-624",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
  *     zone: "us-central1-a",
@@ -50,12 +47,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const central1a = gcp.compute.getNodeTypes({
- *     zone: "us-central1-a",
- * });
  * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
  *     region: "us-central1",
- *     nodeType: central1a.then(central1a => central1a.names[0]),
+ *     nodeType: "n1-node-96-624",
  * });
  * const nodes = new gcp.compute.NodeGroup("nodes", {
  *     zone: "us-central1-a",

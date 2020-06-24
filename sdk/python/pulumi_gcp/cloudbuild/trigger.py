@@ -109,9 +109,11 @@ class Trigger(pulumi.CustomResource):
       * `pullRequest` (`dict`) - filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
         * `branch` (`str`) - Regex of branches to match.  Specify only one of branch or tag.
         * `commentControl` (`str`) - Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+        * `invertRegex` (`bool`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
 
       * `push` (`dict`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
         * `branch` (`str`) - Regex of branches to match.  Specify only one of branch or tag.
+        * `invertRegex` (`bool`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
         * `tag` (`str`) - Regex of tags to match.  Specify only one of branch or tag.
     """
     ignored_files: pulumi.Output[list]
@@ -175,6 +177,7 @@ class Trigger(pulumi.CustomResource):
         `dir`,
         which specifies an absolute path, the `RepoSource` `dir` is ignored
         for the step's execution.
+      * `invertRegex` (`bool`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
       * `project_id` (`str`) - ID of the project that owns the Cloud Source Repository. If
         omitted, the project ID requesting the build is assumed.
       * `repoName` (`str`) - Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
@@ -326,9 +329,11 @@ class Trigger(pulumi.CustomResource):
           * `pullRequest` (`pulumi.Input[dict]`) - filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
             * `commentControl` (`pulumi.Input[str]`) - Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+            * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
 
           * `push` (`pulumi.Input[dict]`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
+            * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
             * `tag` (`pulumi.Input[str]`) - Regex of tags to match.  Specify only one of branch or tag.
 
         The **trigger_template** object supports the following:
@@ -345,6 +350,7 @@ class Trigger(pulumi.CustomResource):
             `dir`,
             which specifies an absolute path, the `RepoSource` `dir` is ignored
             for the step's execution.
+          * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
           * `project_id` (`pulumi.Input[str]`) - ID of the project that owns the Cloud Source Repository. If
             omitted, the project ID requesting the build is assumed.
           * `repoName` (`pulumi.Input[str]`) - Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
@@ -510,9 +516,11 @@ class Trigger(pulumi.CustomResource):
           * `pullRequest` (`pulumi.Input[dict]`) - filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
             * `commentControl` (`pulumi.Input[str]`) - Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+            * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
 
           * `push` (`pulumi.Input[dict]`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
+            * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
             * `tag` (`pulumi.Input[str]`) - Regex of tags to match.  Specify only one of branch or tag.
 
         The **trigger_template** object supports the following:
@@ -529,6 +537,7 @@ class Trigger(pulumi.CustomResource):
             `dir`,
             which specifies an absolute path, the `RepoSource` `dir` is ignored
             for the step's execution.
+          * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
           * `project_id` (`pulumi.Input[str]`) - ID of the project that owns the Cloud Source Repository. If
             omitted, the project ID requesting the build is assumed.
           * `repoName` (`pulumi.Input[str]`) - Name of the Cloud Source Repository. If omitted, the name "default" is assumed.

@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// List of instances in the group. They should be given
-        /// as self_link URLs. When adding instances they must all be in the same
+        /// as either self_link or id. When adding instances they must all be in the same
         /// network and zone as the instance group.
         /// </summary>
         [Output("instances")]
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// List of instances in the group. They should be given
-        /// as self_link URLs. When adding instances they must all be in the same
+        /// as either self_link or id. When adding instances they must all be in the same
         /// network and zone as the instance group.
         /// </summary>
         public InputList<string> Instances
@@ -229,7 +229,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// List of instances in the group. They should be given
-        /// as self_link URLs. When adding instances they must all be in the same
+        /// as either self_link or id. When adding instances they must all be in the same
         /// network and zone as the instance group.
         /// </summary>
         public InputList<string> Instances

@@ -209,6 +209,7 @@ class Service(pulumi.CustomResource):
           are in for this Revision.
           It is expected
           that the system will manipulate this based on routability and load.
+        * `timeoutSeconds` (`float`) - TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
     """
     traffics: pulumi.Output[list]
     """
@@ -536,6 +537,7 @@ class Service(pulumi.CustomResource):
               are in for this Revision.
               It is expected
               that the system will manipulate this based on routability and load.
+            * `timeoutSeconds` (`pulumi.Input[float]`) - TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
 
         The **traffics** object supports the following:
 
@@ -775,6 +777,7 @@ class Service(pulumi.CustomResource):
               are in for this Revision.
               It is expected
               that the system will manipulate this based on routability and load.
+            * `timeoutSeconds` (`pulumi.Input[float]`) - TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
 
         The **traffics** object supports the following:
 

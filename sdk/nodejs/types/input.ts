@@ -121,6 +121,34 @@ export namespace accesscontextmanager {
         osType: pulumi.Input<string>;
     }
 
+    export interface AccessLevelCustom {
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+         */
+        expr: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustomExpr>;
+    }
+
+    export interface AccessLevelCustomExpr {
+        /**
+         * Description of the expression
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: pulumi.Input<string>;
+    }
+
     export interface ServicePerimeterSpec {
         /**
          * A list of AccessLevel resource names that allow resources within
@@ -2249,6 +2277,10 @@ export namespace cloudbuild {
          * Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
          */
         commentControl?: pulumi.Input<string>;
+        /**
+         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         */
+        invertRegex?: pulumi.Input<boolean>;
     }
 
     export interface TriggerGithubPush {
@@ -2256,6 +2288,10 @@ export namespace cloudbuild {
          * Regex of branches to match.  Specify only one of branch or tag.
          */
         branch?: pulumi.Input<string>;
+        /**
+         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         */
+        invertRegex?: pulumi.Input<boolean>;
         /**
          * Regex of tags to match.  Specify only one of branch or tag.
          */
@@ -2284,6 +2320,10 @@ export namespace cloudbuild {
          * for the step's execution.
          */
         dir?: pulumi.Input<string>;
+        /**
+         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         */
+        invertRegex?: pulumi.Input<boolean>;
         /**
          * ID of the project that owns the Cloud Source Repository. If
          * omitted, the project ID requesting the build is assumed.
@@ -2617,6 +2657,10 @@ export namespace cloudrun {
          * @deprecated Not supported by Cloud Run fully managed
          */
         servingState?: pulumi.Input<string>;
+        /**
+         * TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+         */
+        timeoutSeconds?: pulumi.Input<number>;
     }
 
     export interface ServiceTemplateSpecContainer {
@@ -4501,6 +4545,7 @@ export namespace compute {
 
     export interface InstanceFromTemplateScheduling {
         automaticRestart?: pulumi.Input<boolean>;
+        minNodeCpus?: pulumi.Input<number>;
         nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingNodeAffinity>[]>;
         onHostMaintenance?: pulumi.Input<string>;
         preemptible?: pulumi.Input<boolean>;
@@ -4764,6 +4809,7 @@ export namespace compute {
          * Defaults to true.
          */
         automaticRestart?: pulumi.Input<boolean>;
+        minNodeCpus?: pulumi.Input<number>;
         /**
          * Specifies node affinities or anti-affinities
          * to determine which sole-tenant nodes your instances and managed instance
@@ -5013,6 +5059,7 @@ export namespace compute {
          * terminated by a user). This defaults to true.
          */
         automaticRestart?: pulumi.Input<boolean>;
+        minNodeCpus?: pulumi.Input<number>;
         /**
          * Specifies node affinities or anti-affinities
          * to determine which sole-tenant nodes your instances and managed instance
@@ -10445,6 +10492,7 @@ export namespace container {
          * endpoint via private networking.
          */
         enablePrivateNodes?: pulumi.Input<boolean>;
+        masterGlobalAccessConfig?: pulumi.Input<inputs.container.ClusterPrivateClusterConfigMasterGlobalAccessConfig>;
         /**
          * The IP range in CIDR notation to use for
          * the hosted master network. This range will be used for assigning private IP
@@ -10467,6 +10515,14 @@ export namespace container {
          * The external IP address of this cluster's master endpoint.
          */
         publicEndpoint?: pulumi.Input<string>;
+    }
+
+    export interface ClusterPrivateClusterConfigMasterGlobalAccessConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterReleaseChannel {
@@ -14709,7 +14765,10 @@ export namespace sql {
          */
         authorizedGaeApplications?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
+         * The availability type of the Cloud SQL
+         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
+         * instances, ensure that `settings.backup_configuration.enabled` and
+         * `settings.backup_configuration.binary_log_enabled` are both set to `true`.
          */
         availabilityType?: pulumi.Input<string>;
         backupConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsBackupConfiguration>;
@@ -14986,7 +15045,7 @@ export namespace storage {
          */
         isLocked?: pulumi.Input<boolean>;
         /**
-         * The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+         * The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
          */
         retentionPeriod: pulumi.Input<number>;
     }

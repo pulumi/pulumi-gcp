@@ -114,7 +114,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             })
         default_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy",
             region="us-central1",
-            url_map=default_region_url_map.self_link)
+            url_map=default_region_url_map.id)
         ```
 
         :param str resource_name: The name of the resource.

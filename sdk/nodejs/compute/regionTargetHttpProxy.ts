@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("defaultRegionTargetHttpProxy", {
  *     region: "us-central1",
- *     urlMap: defaultRegionUrlMap.selfLink,
+ *     urlMap: defaultRegionUrlMap.id,
  * });
  * ```
  */

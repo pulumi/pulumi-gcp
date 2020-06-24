@@ -85,7 +85,7 @@ class Bucket(pulumi.CustomResource):
     Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
 
       * `isLocked` (`bool`) - If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
-      * `retentionPeriod` (`float`) - The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+      * `retentionPeriod` (`float`) - The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
     """
     self_link: pulumi.Output[str]
     """
@@ -233,7 +233,7 @@ class Bucket(pulumi.CustomResource):
         The **retention_policy** object supports the following:
 
           * `isLocked` (`pulumi.Input[bool]`) - If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
-          * `retentionPeriod` (`pulumi.Input[float]`) - The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+          * `retentionPeriod` (`pulumi.Input[float]`) - The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
 
         The **versioning** object supports the following:
 
@@ -350,7 +350,7 @@ class Bucket(pulumi.CustomResource):
         The **retention_policy** object supports the following:
 
           * `isLocked` (`pulumi.Input[bool]`) - If set to `true`, the bucket will be [locked](https://cloud.google.com/storage/docs/using-bucket-lock#lock-bucket) and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
-          * `retentionPeriod` (`pulumi.Input[float]`) - The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+          * `retentionPeriod` (`pulumi.Input[float]`) - The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
 
         The **versioning** object supports the following:
 

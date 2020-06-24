@@ -14,9 +14,17 @@ class NetworkPeering(pulumi.CustomResource):
     """
     Whether to export the custom routes to the peer network. Defaults to `false`.
     """
+    export_subnet_routes_with_public_ip: pulumi.Output[bool]
+    """
+    Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+    """
     import_custom_routes: pulumi.Output[bool]
     """
     Whether to export the custom routes from the peer network. Defaults to `false`.
+    """
+    import_subnet_routes_with_public_ip: pulumi.Output[bool]
+    """
+    Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
     """
     name: pulumi.Output[str]
     """
@@ -40,7 +48,7 @@ class NetworkPeering(pulumi.CustomResource):
     """
     Details about the current state of the peering.
     """
-    def __init__(__self__, resource_name, opts=None, export_custom_routes=None, import_custom_routes=None, name=None, network=None, peer_network=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, export_custom_routes=None, export_subnet_routes_with_public_ip=None, import_custom_routes=None, import_subnet_routes_with_public_ip=None, name=None, network=None, peer_network=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a network peering within GCE. For more information see
         [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
@@ -73,7 +81,9 @@ class NetworkPeering(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[bool] import_custom_routes: Whether to export the custom routes from the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
         :param pulumi.Input[str] name: Name of the peering.
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
@@ -97,7 +107,9 @@ class NetworkPeering(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['export_custom_routes'] = export_custom_routes
+            __props__['export_subnet_routes_with_public_ip'] = export_subnet_routes_with_public_ip
             __props__['import_custom_routes'] = import_custom_routes
+            __props__['import_subnet_routes_with_public_ip'] = import_subnet_routes_with_public_ip
             __props__['name'] = name
             if network is None:
                 raise TypeError("Missing required property 'network'")
@@ -114,7 +126,7 @@ class NetworkPeering(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, export_custom_routes=None, import_custom_routes=None, name=None, network=None, peer_network=None, state=None, state_details=None):
+    def get(resource_name, id, opts=None, export_custom_routes=None, export_subnet_routes_with_public_ip=None, import_custom_routes=None, import_subnet_routes_with_public_ip=None, name=None, network=None, peer_network=None, state=None, state_details=None):
         """
         Get an existing NetworkPeering resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -123,7 +135,9 @@ class NetworkPeering(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[bool] import_custom_routes: Whether to export the custom routes from the peer network. Defaults to `false`.
+        :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
         :param pulumi.Input[str] name: Name of the peering.
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
@@ -137,7 +151,9 @@ class NetworkPeering(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["export_custom_routes"] = export_custom_routes
+        __props__["export_subnet_routes_with_public_ip"] = export_subnet_routes_with_public_ip
         __props__["import_custom_routes"] = import_custom_routes
+        __props__["import_subnet_routes_with_public_ip"] = import_subnet_routes_with_public_ip
         __props__["name"] = name
         __props__["network"] = network
         __props__["peer_network"] = peer_network

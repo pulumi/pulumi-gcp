@@ -7408,7 +7408,8 @@ type ClusterPrivateClusterConfig struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes       *bool                                                `pulumi:"enablePrivateNodes"`
+	MasterGlobalAccessConfig *ClusterPrivateClusterConfigMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
 	// addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -7447,7 +7448,8 @@ type ClusterPrivateClusterConfigArgs struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes       pulumi.BoolPtrInput                                         `pulumi:"enablePrivateNodes"`
+	MasterGlobalAccessConfig ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrInput `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
 	// addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -7558,6 +7560,12 @@ func (o ClusterPrivateClusterConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOu
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
+func (o ClusterPrivateClusterConfigOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
+	return o.ApplyT(func(v ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
+		return v.MasterGlobalAccessConfig
+	}).(ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput)
+}
+
 // The IP range in CIDR notation to use for
 // the hosted master network. This range will be used for assigning private IP
 // addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -7628,6 +7636,15 @@ func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o ClusterPrivateClusterConfigPtrOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MasterGlobalAccessConfig
+	}).(ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput)
+}
+
 // The IP range in CIDR notation to use for
 // the hosted master network. This range will be used for assigning private IP
 // addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -7672,6 +7689,145 @@ func (o ClusterPrivateClusterConfigPtrOutput) PublicEndpoint() pulumi.StringPtrO
 		}
 		return v.PublicEndpoint
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterPrivateClusterConfigMasterGlobalAccessConfig struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterPrivateClusterConfigMasterGlobalAccessConfigInput is an input type that accepts ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs and ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput values.
+// You can construct a concrete instance of `ClusterPrivateClusterConfigMasterGlobalAccessConfigInput` via:
+//
+// 		 ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs{...}
+//
+type ClusterPrivateClusterConfigMasterGlobalAccessConfigInput interface {
+	pulumi.Input
+
+	ToClusterPrivateClusterConfigMasterGlobalAccessConfigOutput() ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput
+	ToClusterPrivateClusterConfigMasterGlobalAccessConfigOutputWithContext(context.Context) ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput
+}
+
+type ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs struct {
+	// Enable the PodSecurityPolicy controller for this cluster.
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPrivateClusterConfigMasterGlobalAccessConfig)(nil)).Elem()
+}
+
+func (i ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs) ToClusterPrivateClusterConfigMasterGlobalAccessConfigOutput() ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput {
+	return i.ToClusterPrivateClusterConfigMasterGlobalAccessConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs) ToClusterPrivateClusterConfigMasterGlobalAccessConfigOutputWithContext(ctx context.Context) ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput)
+}
+
+func (i ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs) ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
+	return i.ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs) ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutputWithContext(ctx context.Context) ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput).ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrInput is an input type that accepts ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs, ClusterPrivateClusterConfigMasterGlobalAccessConfigPtr and ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrInput` via:
+//
+// 		 ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput
+	ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutputWithContext(context.Context) ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput
+}
+
+type clusterPrivateClusterConfigMasterGlobalAccessConfigPtrType ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs
+
+func ClusterPrivateClusterConfigMasterGlobalAccessConfigPtr(v *ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs) ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrInput {
+	return (*clusterPrivateClusterConfigMasterGlobalAccessConfigPtrType)(v)
+}
+
+func (*clusterPrivateClusterConfigMasterGlobalAccessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPrivateClusterConfigMasterGlobalAccessConfig)(nil)).Elem()
+}
+
+func (i *clusterPrivateClusterConfigMasterGlobalAccessConfigPtrType) ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
+	return i.ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPrivateClusterConfigMasterGlobalAccessConfigPtrType) ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutputWithContext(ctx context.Context) ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput)
+}
+
+type ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPrivateClusterConfigMasterGlobalAccessConfig)(nil)).Elem()
+}
+
+func (o ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput) ToClusterPrivateClusterConfigMasterGlobalAccessConfigOutput() ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput {
+	return o
+}
+
+func (o ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput) ToClusterPrivateClusterConfigMasterGlobalAccessConfigOutputWithContext(ctx context.Context) ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput {
+	return o
+}
+
+func (o ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput) ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
+	return o.ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput) ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutputWithContext(ctx context.Context) ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
+	return o.ApplyT(func(v ClusterPrivateClusterConfigMasterGlobalAccessConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
+		return &v
+	}).(ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterPrivateClusterConfigMasterGlobalAccessConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPrivateClusterConfigMasterGlobalAccessConfig)(nil)).Elem()
+}
+
+func (o ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput) ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput) ToClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutputWithContext(ctx context.Context) ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput) Elem() ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput {
+	return o.ApplyT(func(v *ClusterPrivateClusterConfigMasterGlobalAccessConfig) ClusterPrivateClusterConfigMasterGlobalAccessConfig {
+		return *v
+	}).(ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput)
+}
+
+// Enable the PodSecurityPolicy controller for this cluster.
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+func (o ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterPrivateClusterConfigMasterGlobalAccessConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterReleaseChannel struct {
@@ -14594,12 +14750,13 @@ func (o GetClusterPodSecurityPolicyConfigArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetClusterPrivateClusterConfig struct {
-	EnablePrivateEndpoint bool   `pulumi:"enablePrivateEndpoint"`
-	EnablePrivateNodes    bool   `pulumi:"enablePrivateNodes"`
-	MasterIpv4CidrBlock   string `pulumi:"masterIpv4CidrBlock"`
-	PeeringName           string `pulumi:"peeringName"`
-	PrivateEndpoint       string `pulumi:"privateEndpoint"`
-	PublicEndpoint        string `pulumi:"publicEndpoint"`
+	EnablePrivateEndpoint     bool                                                     `pulumi:"enablePrivateEndpoint"`
+	EnablePrivateNodes        bool                                                     `pulumi:"enablePrivateNodes"`
+	MasterGlobalAccessConfigs []GetClusterPrivateClusterConfigMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfigs"`
+	MasterIpv4CidrBlock       string                                                   `pulumi:"masterIpv4CidrBlock"`
+	PeeringName               string                                                   `pulumi:"peeringName"`
+	PrivateEndpoint           string                                                   `pulumi:"privateEndpoint"`
+	PublicEndpoint            string                                                   `pulumi:"publicEndpoint"`
 }
 
 // GetClusterPrivateClusterConfigInput is an input type that accepts GetClusterPrivateClusterConfigArgs and GetClusterPrivateClusterConfigOutput values.
@@ -14615,12 +14772,13 @@ type GetClusterPrivateClusterConfigInput interface {
 }
 
 type GetClusterPrivateClusterConfigArgs struct {
-	EnablePrivateEndpoint pulumi.BoolInput   `pulumi:"enablePrivateEndpoint"`
-	EnablePrivateNodes    pulumi.BoolInput   `pulumi:"enablePrivateNodes"`
-	MasterIpv4CidrBlock   pulumi.StringInput `pulumi:"masterIpv4CidrBlock"`
-	PeeringName           pulumi.StringInput `pulumi:"peeringName"`
-	PrivateEndpoint       pulumi.StringInput `pulumi:"privateEndpoint"`
-	PublicEndpoint        pulumi.StringInput `pulumi:"publicEndpoint"`
+	EnablePrivateEndpoint     pulumi.BoolInput                                                 `pulumi:"enablePrivateEndpoint"`
+	EnablePrivateNodes        pulumi.BoolInput                                                 `pulumi:"enablePrivateNodes"`
+	MasterGlobalAccessConfigs GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayInput `pulumi:"masterGlobalAccessConfigs"`
+	MasterIpv4CidrBlock       pulumi.StringInput                                               `pulumi:"masterIpv4CidrBlock"`
+	PeeringName               pulumi.StringInput                                               `pulumi:"peeringName"`
+	PrivateEndpoint           pulumi.StringInput                                               `pulumi:"privateEndpoint"`
+	PublicEndpoint            pulumi.StringInput                                               `pulumi:"publicEndpoint"`
 }
 
 func (GetClusterPrivateClusterConfigArgs) ElementType() reflect.Type {
@@ -14683,6 +14841,12 @@ func (o GetClusterPrivateClusterConfigOutput) EnablePrivateNodes() pulumi.BoolOu
 	return o.ApplyT(func(v GetClusterPrivateClusterConfig) bool { return v.EnablePrivateNodes }).(pulumi.BoolOutput)
 }
 
+func (o GetClusterPrivateClusterConfigOutput) MasterGlobalAccessConfigs() GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterPrivateClusterConfig) []GetClusterPrivateClusterConfigMasterGlobalAccessConfig {
+		return v.MasterGlobalAccessConfigs
+	}).(GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput)
+}
+
 func (o GetClusterPrivateClusterConfigOutput) MasterIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterPrivateClusterConfig) string { return v.MasterIpv4CidrBlock }).(pulumi.StringOutput)
 }
@@ -14717,6 +14881,102 @@ func (o GetClusterPrivateClusterConfigArrayOutput) Index(i pulumi.IntInput) GetC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterPrivateClusterConfig {
 		return vs[0].([]GetClusterPrivateClusterConfig)[vs[1].(int)]
 	}).(GetClusterPrivateClusterConfigOutput)
+}
+
+type GetClusterPrivateClusterConfigMasterGlobalAccessConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterPrivateClusterConfigMasterGlobalAccessConfigInput is an input type that accepts GetClusterPrivateClusterConfigMasterGlobalAccessConfigArgs and GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput values.
+// You can construct a concrete instance of `GetClusterPrivateClusterConfigMasterGlobalAccessConfigInput` via:
+//
+// 		 GetClusterPrivateClusterConfigMasterGlobalAccessConfigArgs{...}
+//
+type GetClusterPrivateClusterConfigMasterGlobalAccessConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput() GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput
+	ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigOutputWithContext(context.Context) GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput
+}
+
+type GetClusterPrivateClusterConfigMasterGlobalAccessConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterPrivateClusterConfigMasterGlobalAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterPrivateClusterConfigMasterGlobalAccessConfig)(nil)).Elem()
+}
+
+func (i GetClusterPrivateClusterConfigMasterGlobalAccessConfigArgs) ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput() GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput {
+	return i.ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterPrivateClusterConfigMasterGlobalAccessConfigArgs) ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigOutputWithContext(ctx context.Context) GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput)
+}
+
+// GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayInput is an input type that accepts GetClusterPrivateClusterConfigMasterGlobalAccessConfigArray and GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayInput` via:
+//
+// 		 GetClusterPrivateClusterConfigMasterGlobalAccessConfigArray{ GetClusterPrivateClusterConfigMasterGlobalAccessConfigArgs{...} }
+//
+type GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput() GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput
+	ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutputWithContext(context.Context) GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput
+}
+
+type GetClusterPrivateClusterConfigMasterGlobalAccessConfigArray []GetClusterPrivateClusterConfigMasterGlobalAccessConfigInput
+
+func (GetClusterPrivateClusterConfigMasterGlobalAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterPrivateClusterConfigMasterGlobalAccessConfig)(nil)).Elem()
+}
+
+func (i GetClusterPrivateClusterConfigMasterGlobalAccessConfigArray) ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput() GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput {
+	return i.ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterPrivateClusterConfigMasterGlobalAccessConfigArray) ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutputWithContext(ctx context.Context) GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput)
+}
+
+type GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterPrivateClusterConfigMasterGlobalAccessConfig)(nil)).Elem()
+}
+
+func (o GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput) ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput() GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput {
+	return o
+}
+
+func (o GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput) ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigOutputWithContext(ctx context.Context) GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput {
+	return o
+}
+
+func (o GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterPrivateClusterConfigMasterGlobalAccessConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterPrivateClusterConfigMasterGlobalAccessConfig)(nil)).Elem()
+}
+
+func (o GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput) ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput() GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput) ToGetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutputWithContext(ctx context.Context) GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput) Index(i pulumi.IntInput) GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterPrivateClusterConfigMasterGlobalAccessConfig {
+		return vs[0].([]GetClusterPrivateClusterConfigMasterGlobalAccessConfig)[vs[1].(int)]
+	}).(GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput)
 }
 
 type GetClusterReleaseChannel struct {
@@ -15300,6 +15560,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterPodSecurityPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPrivateClusterConfigOutput{})
 	pulumi.RegisterOutputType(ClusterPrivateClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPrivateClusterConfigMasterGlobalAccessConfigOutput{})
+	pulumi.RegisterOutputType(ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterReleaseChannelOutput{})
 	pulumi.RegisterOutputType(ClusterReleaseChannelPtrOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigOutput{})
@@ -15416,6 +15678,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterPodSecurityPolicyConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterPrivateClusterConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterPrivateClusterConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterPrivateClusterConfigMasterGlobalAccessConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterPrivateClusterConfigMasterGlobalAccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterReleaseChannelOutput{})
 	pulumi.RegisterOutputType(GetClusterReleaseChannelArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigOutput{})

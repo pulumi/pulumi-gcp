@@ -233,6 +233,7 @@ class Instance(pulumi.CustomResource):
       * `automaticRestart` (`bool`) - Specifies if the instance should be
         restarted if it was terminated by Compute Engine (not a user).
         Defaults to true.
+      * `minNodeCpus` (`float`)
       * `nodeAffinities` (`list`) - Specifies node affinities or anti-affinities
         to determine which sole-tenant nodes your instances and managed instance
         groups will use as host systems. Read more on sole-tenant node creation
@@ -512,6 +513,7 @@ class Instance(pulumi.CustomResource):
           * `automaticRestart` (`pulumi.Input[bool]`) - Specifies if the instance should be
             restarted if it was terminated by Compute Engine (not a user).
             Defaults to true.
+          * `minNodeCpus` (`pulumi.Input[float]`)
           * `nodeAffinities` (`pulumi.Input[list]`) - Specifies node affinities or anti-affinities
             to determine which sole-tenant nodes your instances and managed instance
             groups will use as host systems. Read more on sole-tenant node creation
@@ -791,6 +793,7 @@ class Instance(pulumi.CustomResource):
           * `automaticRestart` (`pulumi.Input[bool]`) - Specifies if the instance should be
             restarted if it was terminated by Compute Engine (not a user).
             Defaults to true.
+          * `minNodeCpus` (`pulumi.Input[float]`)
           * `nodeAffinities` (`pulumi.Input[list]`) - Specifies node affinities or anti-affinities
             to determine which sole-tenant nodes your instances and managed instance
             groups will use as host systems. Read more on sole-tenant node creation

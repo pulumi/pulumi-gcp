@@ -24,7 +24,10 @@ type AccessLevel struct {
 
 	// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
 	Basic AccessLevelBasicPtrOutput `pulumi:"basic"`
-	// Description of the AccessLevel and its use. Does not affect behavior.
+	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+	// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+	Custom AccessLevelCustomPtrOutput `pulumi:"custom"`
+	// Description of the expression
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource name for the Access Level. The shortName component must begin
 	// with a letter and only include alphanumeric and '_'.
@@ -33,7 +36,7 @@ type AccessLevel struct {
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// Human readable title. Must be unique within the Policy.
+	// Title for the expression, i.e. a short string describing its purpose.
 	Title pulumi.StringOutput `pulumi:"title"`
 }
 
@@ -73,7 +76,10 @@ func GetAccessLevel(ctx *pulumi.Context,
 type accessLevelState struct {
 	// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
 	Basic *AccessLevelBasic `pulumi:"basic"`
-	// Description of the AccessLevel and its use. Does not affect behavior.
+	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+	// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+	Custom *AccessLevelCustom `pulumi:"custom"`
+	// Description of the expression
 	Description *string `pulumi:"description"`
 	// Resource name for the Access Level. The shortName component must begin
 	// with a letter and only include alphanumeric and '_'.
@@ -82,14 +88,17 @@ type accessLevelState struct {
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent *string `pulumi:"parent"`
-	// Human readable title. Must be unique within the Policy.
+	// Title for the expression, i.e. a short string describing its purpose.
 	Title *string `pulumi:"title"`
 }
 
 type AccessLevelState struct {
 	// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
 	Basic AccessLevelBasicPtrInput
-	// Description of the AccessLevel and its use. Does not affect behavior.
+	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+	// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+	Custom AccessLevelCustomPtrInput
+	// Description of the expression
 	Description pulumi.StringPtrInput
 	// Resource name for the Access Level. The shortName component must begin
 	// with a letter and only include alphanumeric and '_'.
@@ -98,7 +107,7 @@ type AccessLevelState struct {
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringPtrInput
-	// Human readable title. Must be unique within the Policy.
+	// Title for the expression, i.e. a short string describing its purpose.
 	Title pulumi.StringPtrInput
 }
 
@@ -109,7 +118,10 @@ func (AccessLevelState) ElementType() reflect.Type {
 type accessLevelArgs struct {
 	// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
 	Basic *AccessLevelBasic `pulumi:"basic"`
-	// Description of the AccessLevel and its use. Does not affect behavior.
+	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+	// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+	Custom *AccessLevelCustom `pulumi:"custom"`
+	// Description of the expression
 	Description *string `pulumi:"description"`
 	// Resource name for the Access Level. The shortName component must begin
 	// with a letter and only include alphanumeric and '_'.
@@ -118,7 +130,7 @@ type accessLevelArgs struct {
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent string `pulumi:"parent"`
-	// Human readable title. Must be unique within the Policy.
+	// Title for the expression, i.e. a short string describing its purpose.
 	Title string `pulumi:"title"`
 }
 
@@ -126,7 +138,10 @@ type accessLevelArgs struct {
 type AccessLevelArgs struct {
 	// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
 	Basic AccessLevelBasicPtrInput
-	// Description of the AccessLevel and its use. Does not affect behavior.
+	// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+	// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+	Custom AccessLevelCustomPtrInput
+	// Description of the expression
 	Description pulumi.StringPtrInput
 	// Resource name for the Access Level. The shortName component must begin
 	// with a letter and only include alphanumeric and '_'.
@@ -135,7 +150,7 @@ type AccessLevelArgs struct {
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringInput
-	// Human readable title. Must be unique within the Policy.
+	// Title for the expression, i.e. a short string describing its purpose.
 	Title pulumi.StringInput
 }
 

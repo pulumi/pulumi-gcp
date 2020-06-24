@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Defaults to true.
         /// </summary>
         public readonly bool? AutomaticRestart;
+        public readonly int? MinNodeCpus;
         /// <summary>
         /// Specifies node affinities or anti-affinities
         /// to determine which sole-tenant nodes your instances and managed instance
@@ -44,6 +45,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private InstanceScheduling(
             bool? automaticRestart,
 
+            int? minNodeCpus,
+
             ImmutableArray<Outputs.InstanceSchedulingNodeAffinity> nodeAffinities,
 
             string? onHostMaintenance,
@@ -51,6 +54,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             bool? preemptible)
         {
             AutomaticRestart = automaticRestart;
+            MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
             Preemptible = preemptible;

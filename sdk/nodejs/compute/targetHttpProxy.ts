@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *     httpsRedirect: true,
  *     stripQuery: false,
  * }});
- * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {urlMap: defaultURLMap.selfLink});
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {urlMap: defaultURLMap.id});
  * ```
  */
 export class TargetHttpProxy extends pulumi.CustomResource {

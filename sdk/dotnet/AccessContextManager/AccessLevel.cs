@@ -82,7 +82,14 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<Outputs.AccessLevelBasic?> Basic { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the AccessLevel and its use. Does not affect behavior.
+        /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        /// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+        /// </summary>
+        [Output("custom")]
+        public Output<Outputs.AccessLevelCustom?> Custom { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of the expression
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -103,7 +110,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Human readable title. Must be unique within the Policy.
+        /// Title for the expression, i.e. a short string describing its purpose.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
@@ -161,7 +168,14 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<Inputs.AccessLevelBasicArgs>? Basic { get; set; }
 
         /// <summary>
-        /// Description of the AccessLevel and its use. Does not affect behavior.
+        /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        /// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+        /// </summary>
+        [Input("custom")]
+        public Input<Inputs.AccessLevelCustomArgs>? Custom { get; set; }
+
+        /// <summary>
+        /// Description of the expression
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -182,7 +196,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Human readable title. Must be unique within the Policy.
+        /// Title for the expression, i.e. a short string describing its purpose.
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
@@ -201,7 +215,14 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<Inputs.AccessLevelBasicGetArgs>? Basic { get; set; }
 
         /// <summary>
-        /// Description of the AccessLevel and its use. Does not affect behavior.
+        /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+        /// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+        /// </summary>
+        [Input("custom")]
+        public Input<Inputs.AccessLevelCustomGetArgs>? Custom { get; set; }
+
+        /// <summary>
+        /// Description of the expression
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -222,7 +243,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Human readable title. Must be unique within the Policy.
+        /// Title for the expression, i.e. a short string describing its purpose.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }

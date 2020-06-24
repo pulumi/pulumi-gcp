@@ -58,6 +58,12 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("servingState")]
         public Input<string>? ServingState { get; set; }
 
+        /// <summary>
+        /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+        /// </summary>
+        [Input("timeoutSeconds")]
+        public Input<int>? TimeoutSeconds { get; set; }
+
         public ServiceTemplateSpecGetArgs()
         {
         }

@@ -584,6 +584,10 @@ class Cluster(pulumi.CustomResource):
         creating a private endpoint on the cluster. In a private cluster, nodes only
         have RFC 1918 private addresses and communicate with the master's private
         endpoint via private networking.
+      * `masterGlobalAccessConfig` (`dict`)
+        * `enabled` (`bool`) - Enable the PodSecurityPolicy controller for this cluster.
+          If enabled, pods must be valid under a PodSecurityPolicy to be created.
+
       * `masterIpv4CidrBlock` (`str`) - The IP range in CIDR notation to use for
         the hosted master network. This range will be used for assigning private IP
         addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -1276,6 +1280,10 @@ class Cluster(pulumi.CustomResource):
             creating a private endpoint on the cluster. In a private cluster, nodes only
             have RFC 1918 private addresses and communicate with the master's private
             endpoint via private networking.
+          * `masterGlobalAccessConfig` (`pulumi.Input[dict]`)
+            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
+              If enabled, pods must be valid under a PodSecurityPolicy to be created.
+
           * `masterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP range in CIDR notation to use for
             the hosted master network. This range will be used for assigning private IP
             addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -1924,6 +1932,10 @@ class Cluster(pulumi.CustomResource):
             creating a private endpoint on the cluster. In a private cluster, nodes only
             have RFC 1918 private addresses and communicate with the master's private
             endpoint via private networking.
+          * `masterGlobalAccessConfig` (`pulumi.Input[dict]`)
+            * `enabled` (`pulumi.Input[bool]`) - Enable the PodSecurityPolicy controller for this cluster.
+              If enabled, pods must be valid under a PodSecurityPolicy to be created.
+
           * `masterIpv4CidrBlock` (`pulumi.Input[str]`) - The IP range in CIDR notation to use for
             the hosted master network. This range will be used for assigning private IP
             addresses to the cluster master(s) and the ILB VIP. This range must not overlap

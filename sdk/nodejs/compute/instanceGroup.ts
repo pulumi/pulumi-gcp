@@ -36,8 +36,8 @@ import * as utilities from "../utilities";
  * const webservers = new gcp.compute.InstanceGroup("webservers", {
  *     description: "Test instance group",
  *     instances: [
- *         google_compute_instance.test.self_link,
- *         google_compute_instance.test2.self_link,
+ *         google_compute_instance.test.id,
+ *         google_compute_instance.test2.id,
  *     ],
  *     named_port: [
  *         {
@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  * });
  * const stagingGroup = new gcp.compute.InstanceGroup("stagingGroup", {
  *     zone: "us-central1-c",
- *     instances: [stagingVm.selfLink],
+ *     instances: [stagingVm.id],
  *     named_port: [
  *         {
  *             name: "http",
@@ -135,7 +135,7 @@ export class InstanceGroup extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * List of instances in the group. They should be given
-     * as selfLink URLs. When adding instances they must all be in the same
+     * as either selfLink or id. When adding instances they must all be in the same
      * network and zone as the instance group.
      */
     public readonly instances!: pulumi.Output<string[]>;
@@ -228,7 +228,7 @@ export interface InstanceGroupState {
     readonly description?: pulumi.Input<string>;
     /**
      * List of instances in the group. They should be given
-     * as selfLink URLs. When adding instances they must all be in the same
+     * as either selfLink or id. When adding instances they must all be in the same
      * network and zone as the instance group.
      */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
@@ -278,7 +278,7 @@ export interface InstanceGroupArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * List of instances in the group. They should be given
-     * as selfLink URLs. When adding instances they must all be in the same
+     * as either selfLink or id. When adding instances they must all be in the same
      * network and zone as the instance group.
      */
     readonly instances?: pulumi.Input<pulumi.Input<string>[]>;
