@@ -159,6 +159,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         The **scheduling** object supports the following:
 
           * `automaticRestart` (`pulumi.Input[bool]`)
+          * `minNodeCpus` (`pulumi.Input[float]`)
           * `nodeAffinities` (`pulumi.Input[list]`)
             * `key` (`pulumi.Input[str]`)
             * `operator` (`pulumi.Input[str]`)
@@ -307,6 +308,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         The **scheduling** object supports the following:
 
           * `automaticRestart` (`pulumi.Input[bool]`)
+          * `minNodeCpus` (`pulumi.Input[float]`)
           * `nodeAffinities` (`pulumi.Input[list]`)
             * `key` (`pulumi.Input[str]`)
             * `operator` (`pulumi.Input[str]`)

@@ -2372,6 +2372,8 @@ type ServiceTemplateSpec struct {
 	//
 	// Deprecated: Not supported by Cloud Run fully managed
 	ServingState *string `pulumi:"servingState"`
+	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
 // ServiceTemplateSpecInput is an input type that accepts ServiceTemplateSpecArgs and ServiceTemplateSpecOutput values.
@@ -2413,6 +2415,8 @@ type ServiceTemplateSpecArgs struct {
 	//
 	// Deprecated: Not supported by Cloud Run fully managed
 	ServingState pulumi.StringPtrInput `pulumi:"servingState"`
+	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
 
 func (ServiceTemplateSpecArgs) ElementType() reflect.Type {
@@ -2531,6 +2535,11 @@ func (o ServiceTemplateSpecOutput) ServingState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) *string { return v.ServingState }).(pulumi.StringPtrOutput)
 }
 
+// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+func (o ServiceTemplateSpecOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpec) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
 type ServiceTemplateSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecPtrOutput) ElementType() reflect.Type {
@@ -2605,6 +2614,16 @@ func (o ServiceTemplateSpecPtrOutput) ServingState() pulumi.StringPtrOutput {
 		}
 		return v.ServingState
 	}).(pulumi.StringPtrOutput)
+}
+
+// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+func (o ServiceTemplateSpecPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceTemplateSpecContainer struct {

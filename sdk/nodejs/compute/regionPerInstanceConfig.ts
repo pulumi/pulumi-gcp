@@ -84,6 +84,12 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
      * The region instance group manager this instance config is part of.
      */
     public readonly regionInstanceGroupManager!: pulumi.Output<string>;
+    /**
+     * When true, deleting this config will immediately remove any specified state from the underlying instance.
+     * When false, deleting this config will *not* immediately remove any state from the underlying instance.
+     * State will be removed on the next instance recreation or update.
+     */
+    public readonly removeInstanceStateOnDestroy!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a RegionPerInstanceConfig resource with the given unique name, arguments, and options.
@@ -104,6 +110,7 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["regionInstanceGroupManager"] = state ? state.regionInstanceGroupManager : undefined;
+            inputs["removeInstanceStateOnDestroy"] = state ? state.removeInstanceStateOnDestroy : undefined;
         } else {
             const args = argsOrState as RegionPerInstanceConfigArgs | undefined;
             if (!args || args.region === undefined) {
@@ -119,6 +126,7 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["regionInstanceGroupManager"] = args ? args.regionInstanceGroupManager : undefined;
+            inputs["removeInstanceStateOnDestroy"] = args ? args.removeInstanceStateOnDestroy : undefined;
         }
         if (!opts) {
             opts = {}
@@ -174,6 +182,12 @@ export interface RegionPerInstanceConfigState {
      * The region instance group manager this instance config is part of.
      */
     readonly regionInstanceGroupManager?: pulumi.Input<string>;
+    /**
+     * When true, deleting this config will immediately remove any specified state from the underlying instance.
+     * When false, deleting this config will *not* immediately remove any state from the underlying instance.
+     * State will be removed on the next instance recreation or update.
+     */
+    readonly removeInstanceStateOnDestroy?: pulumi.Input<boolean>;
 }
 
 /**
@@ -219,4 +233,10 @@ export interface RegionPerInstanceConfigArgs {
      * The region instance group manager this instance config is part of.
      */
     readonly regionInstanceGroupManager: pulumi.Input<string>;
+    /**
+     * When true, deleting this config will immediately remove any specified state from the underlying instance.
+     * When false, deleting this config will *not* immediately remove any state from the underlying instance.
+     * State will be removed on the next instance recreation or update.
+     */
+    readonly removeInstanceStateOnDestroy?: pulumi.Input<boolean>;
 }

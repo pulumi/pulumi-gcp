@@ -121,6 +121,34 @@ export namespace accesscontextmanager {
         osType: string;
     }
 
+    export interface AccessLevelCustom {
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+         */
+        expr: outputs.accesscontextmanager.AccessLevelCustomExpr;
+    }
+
+    export interface AccessLevelCustomExpr {
+        /**
+         * Description of the expression
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: string;
+    }
+
     export interface ServicePerimeterSpec {
         /**
          * A list of AccessLevel resource names that allow resources within
@@ -2249,6 +2277,10 @@ export namespace cloudbuild {
          * Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
          */
         commentControl?: string;
+        /**
+         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         */
+        invertRegex?: boolean;
     }
 
     export interface TriggerGithubPush {
@@ -2256,6 +2288,10 @@ export namespace cloudbuild {
          * Regex of branches to match.  Specify only one of branch or tag.
          */
         branch?: string;
+        /**
+         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         */
+        invertRegex?: boolean;
         /**
          * Regex of tags to match.  Specify only one of branch or tag.
          */
@@ -2284,6 +2320,10 @@ export namespace cloudbuild {
          * for the step's execution.
          */
         dir?: string;
+        /**
+         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         */
+        invertRegex?: boolean;
         /**
          * ID of the project that owns the Cloud Source Repository. If
          * omitted, the project ID requesting the build is assumed.
@@ -2645,6 +2685,10 @@ export namespace cloudrun {
          * @deprecated Not supported by Cloud Run fully managed
          */
         servingState: string;
+        /**
+         * TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+         */
+        timeoutSeconds: number;
     }
 
     export interface ServiceTemplateSpecContainer {
@@ -4326,6 +4370,7 @@ export namespace compute {
          * restarted if it was terminated by Compute Engine (not a user).
          */
         automaticRestart: boolean;
+        minNodeCpus: number;
         nodeAffinities: outputs.compute.GetInstanceSchedulingNodeAffinity[];
         /**
          * Describes maintenance behavior for the
@@ -4891,6 +4936,7 @@ export namespace compute {
 
     export interface InstanceFromTemplateScheduling {
         automaticRestart: boolean;
+        minNodeCpus: number;
         nodeAffinities: outputs.compute.InstanceFromTemplateSchedulingNodeAffinity[];
         onHostMaintenance: string;
         preemptible: boolean;
@@ -5154,6 +5200,7 @@ export namespace compute {
          * Defaults to true.
          */
         automaticRestart?: boolean;
+        minNodeCpus?: number;
         /**
          * Specifies node affinities or anti-affinities
          * to determine which sole-tenant nodes your instances and managed instance
@@ -5403,6 +5450,7 @@ export namespace compute {
          * terminated by a user). This defaults to true.
          */
         automaticRestart?: boolean;
+        minNodeCpus?: number;
         /**
          * Specifies node affinities or anti-affinities
          * to determine which sole-tenant nodes your instances and managed instance
@@ -10839,6 +10887,7 @@ export namespace container {
          * endpoint via private networking.
          */
         enablePrivateNodes?: boolean;
+        masterGlobalAccessConfig: outputs.container.ClusterPrivateClusterConfigMasterGlobalAccessConfig;
         /**
          * The IP range in CIDR notation to use for
          * the hosted master network. This range will be used for assigning private IP
@@ -10861,6 +10910,14 @@ export namespace container {
          * The external IP address of this cluster's master endpoint.
          */
         publicEndpoint: string;
+    }
+
+    export interface ClusterPrivateClusterConfigMasterGlobalAccessConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
+        enabled: boolean;
     }
 
     export interface ClusterReleaseChannel {
@@ -11182,10 +11239,15 @@ export namespace container {
     export interface GetClusterPrivateClusterConfig {
         enablePrivateEndpoint: boolean;
         enablePrivateNodes: boolean;
+        masterGlobalAccessConfigs: outputs.container.GetClusterPrivateClusterConfigMasterGlobalAccessConfig[];
         masterIpv4CidrBlock: string;
         peeringName: string;
         privateEndpoint: string;
         publicEndpoint: string;
+    }
+
+    export interface GetClusterPrivateClusterConfigMasterGlobalAccessConfig {
+        enabled: boolean;
     }
 
     export interface GetClusterReleaseChannel {
@@ -15619,7 +15681,10 @@ export namespace sql {
          */
         authorizedGaeApplications?: string[];
         /**
-         * The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
+         * The availability type of the Cloud SQL
+         * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
+         * instances, ensure that `settings.backup_configuration.enabled` and
+         * `settings.backup_configuration.binary_log_enabled` are both set to `true`.
          */
         availabilityType: string;
         backupConfiguration: outputs.sql.DatabaseInstanceSettingsBackupConfiguration;
@@ -15918,7 +15983,7 @@ export namespace storage {
          */
         isLocked?: boolean;
         /**
-         * The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+         * The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 2,147,483,647 seconds.
          */
         retentionPeriod: number;
     }

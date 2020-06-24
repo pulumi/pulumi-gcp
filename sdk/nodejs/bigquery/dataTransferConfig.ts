@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Scheduled Query
+ * ### Bigquerydatatransfer Config Scheduled Query
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     schedule: "first sunday of quarter 00:00",
  *     destinationDatasetId: myDataset.datasetId,
  *     params: {
- *         destination_table_name_template: "my-table",
+ *         destination_table_name_template: "my_table",
  *         write_disposition: "WRITE_APPEND",
  *         query: "SELECT name FROM tabl WHERE x = 'y'",
  *     },

@@ -62,7 +62,13 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
     """
     The region instance group manager this instance config is part of.
     """
-    def __init__(__self__, resource_name, opts=None, minimal_action=None, most_disruptive_allowed_action=None, name=None, preserved_state=None, project=None, region=None, region_instance_group_manager=None, __props__=None, __name__=None, __opts__=None):
+    remove_instance_state_on_destroy: pulumi.Output[bool]
+    """
+    When true, deleting this config will immediately remove any specified state from the underlying instance.
+    When false, deleting this config will *not* immediately remove any state from the underlying instance.
+    State will be removed on the next instance recreation or update.
+    """
+    def __init__(__self__, resource_name, opts=None, minimal_action=None, most_disruptive_allowed_action=None, name=None, preserved_state=None, project=None, region=None, region_instance_group_manager=None, remove_instance_state_on_destroy=None, __props__=None, __name__=None, __opts__=None):
         """
         A config defined for a single managed instance that belongs to an instance group manager. It preserves the instance name
         across instance group manager operations and can define stateful disks or metadata that are unique to the instance.
@@ -95,6 +101,9 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the containing instance group manager is located
         :param pulumi.Input[str] region_instance_group_manager: The region instance group manager this instance config is part of.
+        :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
+               When false, deleting this config will *not* immediately remove any state from the underlying instance.
+               State will be removed on the next instance recreation or update.
 
         The **preserved_state** object supports the following:
 
@@ -139,6 +148,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             if region_instance_group_manager is None:
                 raise TypeError("Missing required property 'region_instance_group_manager'")
             __props__['region_instance_group_manager'] = region_instance_group_manager
+            __props__['remove_instance_state_on_destroy'] = remove_instance_state_on_destroy
         super(RegionPerInstanceConfig, __self__).__init__(
             'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig',
             resource_name,
@@ -146,7 +156,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, minimal_action=None, most_disruptive_allowed_action=None, name=None, preserved_state=None, project=None, region=None, region_instance_group_manager=None):
+    def get(resource_name, id, opts=None, minimal_action=None, most_disruptive_allowed_action=None, name=None, preserved_state=None, project=None, region=None, region_instance_group_manager=None, remove_instance_state_on_destroy=None):
         """
         Get an existing RegionPerInstanceConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -172,6 +182,9 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the containing instance group manager is located
         :param pulumi.Input[str] region_instance_group_manager: The region instance group manager this instance config is part of.
+        :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
+               When false, deleting this config will *not* immediately remove any state from the underlying instance.
+               State will be removed on the next instance recreation or update.
 
         The **preserved_state** object supports the following:
 
@@ -199,6 +212,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         __props__["project"] = project
         __props__["region"] = region
         __props__["region_instance_group_manager"] = region_instance_group_manager
+        __props__["remove_instance_state_on_destroy"] = remove_instance_state_on_destroy
         return RegionPerInstanceConfig(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

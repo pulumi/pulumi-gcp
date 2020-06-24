@@ -24,6 +24,12 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         [Input("commentControl")]
         public Input<string>? CommentControl { get; set; }
 
+        /// <summary>
+        /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        /// </summary>
+        [Input("invertRegex")]
+        public Input<bool>? InvertRegex { get; set; }
+
         public TriggerGithubPullRequestGetArgs()
         {
         }

@@ -30,6 +30,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("enablePrivateNodes")]
         public Input<bool>? EnablePrivateNodes { get; set; }
 
+        [Input("masterGlobalAccessConfig")]
+        public Input<Inputs.ClusterPrivateClusterConfigMasterGlobalAccessConfigGetArgs>? MasterGlobalAccessConfig { get; set; }
+
         /// <summary>
         /// The IP range in CIDR notation to use for
         /// the hosted master network. This range will be used for assigning private IP

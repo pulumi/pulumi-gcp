@@ -34,15 +34,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		central1a, err := compute.LookupNodeTypes(ctx, &compute.LookupNodeTypesArgs{
-// 			Zone: "us-central1-a",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
 // 		template, err := compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
+// 			NodeType: pulumi.String("n1-node-96-624"),
 // 			Region:   pulumi.String("us-central1"),
-// 			NodeType: pulumi.String(central1a.Names[0]),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -54,6 +48,8 @@ import (
 type NodeTemplate struct {
 	pulumi.CustomResourceState
 
+	// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+	CpuOvercommitType pulumi.StringPtrOutput `pulumi:"cpuOvercommitType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
@@ -112,6 +108,8 @@ func GetNodeTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeTemplate resources.
 type nodeTemplateState struct {
+	// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+	CpuOvercommitType *string `pulumi:"cpuOvercommitType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
@@ -143,6 +141,8 @@ type nodeTemplateState struct {
 }
 
 type NodeTemplateState struct {
+	// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+	CpuOvercommitType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional textual description of the resource.
@@ -178,6 +178,8 @@ func (NodeTemplateState) ElementType() reflect.Type {
 }
 
 type nodeTemplateArgs struct {
+	// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+	CpuOvercommitType *string `pulumi:"cpuOvercommitType"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource.
@@ -206,6 +208,8 @@ type nodeTemplateArgs struct {
 
 // The set of arguments for constructing a NodeTemplate resource.
 type NodeTemplateArgs struct {
+	// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+	CpuOvercommitType pulumi.StringPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource.

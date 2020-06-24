@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly bool EnablePrivateEndpoint;
         public readonly bool EnablePrivateNodes;
+        public readonly ImmutableArray<Outputs.GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult> MasterGlobalAccessConfigs;
         public readonly string MasterIpv4CidrBlock;
         public readonly string PeeringName;
         public readonly string PrivateEndpoint;
@@ -26,6 +27,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             bool enablePrivateNodes,
 
+            ImmutableArray<Outputs.GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult> masterGlobalAccessConfigs,
+
             string masterIpv4CidrBlock,
 
             string peeringName,
@@ -36,6 +39,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             EnablePrivateEndpoint = enablePrivateEndpoint;
             EnablePrivateNodes = enablePrivateNodes;
+            MasterGlobalAccessConfigs = masterGlobalAccessConfigs;
             MasterIpv4CidrBlock = masterIpv4CidrBlock;
             PeeringName = peeringName;
             PrivateEndpoint = privateEndpoint;

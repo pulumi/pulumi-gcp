@@ -47,6 +47,10 @@ type RegionPerInstanceConfig struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The region instance group manager this instance config is part of.
 	RegionInstanceGroupManager pulumi.StringOutput `pulumi:"regionInstanceGroupManager"`
+	// When true, deleting this config will immediately remove any specified state from the underlying instance.
+	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+	// State will be removed on the next instance recreation or update.
+	RemoveInstanceStateOnDestroy pulumi.BoolPtrOutput `pulumi:"removeInstanceStateOnDestroy"`
 }
 
 // NewRegionPerInstanceConfig registers a new resource with the given unique name, arguments, and options.
@@ -108,6 +112,10 @@ type regionPerInstanceConfigState struct {
 	Region *string `pulumi:"region"`
 	// The region instance group manager this instance config is part of.
 	RegionInstanceGroupManager *string `pulumi:"regionInstanceGroupManager"`
+	// When true, deleting this config will immediately remove any specified state from the underlying instance.
+	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+	// State will be removed on the next instance recreation or update.
+	RemoveInstanceStateOnDestroy *bool `pulumi:"removeInstanceStateOnDestroy"`
 }
 
 type RegionPerInstanceConfigState struct {
@@ -136,6 +144,10 @@ type RegionPerInstanceConfigState struct {
 	Region pulumi.StringPtrInput
 	// The region instance group manager this instance config is part of.
 	RegionInstanceGroupManager pulumi.StringPtrInput
+	// When true, deleting this config will immediately remove any specified state from the underlying instance.
+	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+	// State will be removed on the next instance recreation or update.
+	RemoveInstanceStateOnDestroy pulumi.BoolPtrInput
 }
 
 func (RegionPerInstanceConfigState) ElementType() reflect.Type {
@@ -168,6 +180,10 @@ type regionPerInstanceConfigArgs struct {
 	Region string `pulumi:"region"`
 	// The region instance group manager this instance config is part of.
 	RegionInstanceGroupManager string `pulumi:"regionInstanceGroupManager"`
+	// When true, deleting this config will immediately remove any specified state from the underlying instance.
+	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+	// State will be removed on the next instance recreation or update.
+	RemoveInstanceStateOnDestroy *bool `pulumi:"removeInstanceStateOnDestroy"`
 }
 
 // The set of arguments for constructing a RegionPerInstanceConfig resource.
@@ -197,6 +213,10 @@ type RegionPerInstanceConfigArgs struct {
 	Region pulumi.StringInput
 	// The region instance group manager this instance config is part of.
 	RegionInstanceGroupManager pulumi.StringInput
+	// When true, deleting this config will immediately remove any specified state from the underlying instance.
+	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+	// State will be removed on the next instance recreation or update.
+	RemoveInstanceStateOnDestroy pulumi.BoolPtrInput
 }
 
 func (RegionPerInstanceConfigArgs) ElementType() reflect.Type {

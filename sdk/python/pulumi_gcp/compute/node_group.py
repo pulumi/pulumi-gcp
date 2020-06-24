@@ -84,10 +84,9 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        central1a = gcp.compute.get_node_types(zone="us-central1-a")
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
             region="us-central1",
-            node_type=central1a.names[0])
+            node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
             zone="us-central1-a",
             description="example google_compute_node_group for the Google Provider",
@@ -101,10 +100,9 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        central1a = gcp.compute.get_node_types(zone="us-central1-a")
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
             region="us-central1",
-            node_type=central1a.names[0])
+            node_type="n1-node-96-624")
         nodes = gcp.compute.NodeGroup("nodes",
             zone="us-central1-a",
             description="example google_compute_node_group for the Google Provider",

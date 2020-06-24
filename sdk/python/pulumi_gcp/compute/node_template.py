@@ -10,6 +10,10 @@ from typing import Union
 from .. import utilities, tables
 
 class NodeTemplate(pulumi.CustomResource):
+    cpu_overcommit_type: pulumi.Output[str]
+    """
+    CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+    """
     creation_timestamp: pulumi.Output[str]
     """
     Creation timestamp in RFC3339 text format.
@@ -75,7 +79,7 @@ class NodeTemplate(pulumi.CustomResource):
         additional licenses when maintenance occurs. However, VMs on such
         nodes will experience outages while maintenance is applied.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, name=None, node_affinity_labels=None, node_type=None, node_type_flexibility=None, project=None, region=None, server_binding=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, cpu_overcommit_type=None, description=None, name=None, node_affinity_labels=None, node_type=None, node_type_flexibility=None, project=None, region=None, server_binding=None, __props__=None, __name__=None, __opts__=None):
         """
         Represents a NodeTemplate resource. Node templates specify properties
         for creating sole-tenant nodes, such as node type, vCPU and memory
@@ -96,10 +100,9 @@ class NodeTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        central1a = gcp.compute.get_node_types(zone="us-central1-a")
         template = gcp.compute.NodeTemplate("template",
-            region="us-central1",
-            node_type=central1a.names[0])
+            node_type="n1-node-96-624",
+            region="us-central1")
         ```
 
         ### Node Template Server Binding
@@ -111,7 +114,7 @@ class NodeTemplate(pulumi.CustomResource):
         central1a = gcp.compute.get_node_types(zone="us-central1-a")
         template = gcp.compute.NodeTemplate("template",
             region="us-central1",
-            node_type=central1a.names[0],
+            node_type="n1-node-96-624",
             node_affinity_labels={
                 "foo": "baz",
             },
@@ -122,6 +125,7 @@ class NodeTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[dict] node_affinity_labels: Labels to use for node affinity, which will be used in
@@ -177,6 +181,7 @@ class NodeTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['cpu_overcommit_type'] = cpu_overcommit_type
             __props__['description'] = description
             __props__['name'] = name
             __props__['node_affinity_labels'] = node_affinity_labels
@@ -194,7 +199,7 @@ class NodeTemplate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, creation_timestamp=None, description=None, name=None, node_affinity_labels=None, node_type=None, node_type_flexibility=None, project=None, region=None, self_link=None, server_binding=None):
+    def get(resource_name, id, opts=None, cpu_overcommit_type=None, creation_timestamp=None, description=None, name=None, node_affinity_labels=None, node_type=None, node_type_flexibility=None, project=None, region=None, self_link=None, server_binding=None):
         """
         Get an existing NodeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -202,6 +207,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -246,6 +252,7 @@ class NodeTemplate(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["cpu_overcommit_type"] = cpu_overcommit_type
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
         __props__["name"] = name

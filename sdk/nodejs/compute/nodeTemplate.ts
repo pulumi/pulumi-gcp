@@ -26,12 +26,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const central1a = gcp.compute.getNodeTypes({
- *     zone: "us-central1-a",
- * });
  * const template = new gcp.compute.NodeTemplate("template", {
+ *     nodeType: "n1-node-96-624",
  *     region: "us-central1",
- *     nodeType: central1a.then(central1a => central1a.names[0]),
  * });
  * ```
  *
@@ -46,7 +43,7 @@ import * as utilities from "../utilities";
  * });
  * const template = new gcp.compute.NodeTemplate("template", {
  *     region: "us-central1",
- *     nodeType: central1a.then(central1a => central1a.names[0]),
+ *     nodeType: "n1-node-96-624",
  *     nodeAffinityLabels: {
  *         foo: "baz",
  *     },
@@ -84,6 +81,10 @@ export class NodeTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodeTemplate.__pulumiType;
     }
 
+    /**
+     * CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+     */
+    public readonly cpuOvercommitType!: pulumi.Output<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -145,6 +146,7 @@ export class NodeTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as NodeTemplateState | undefined;
+            inputs["cpuOvercommitType"] = state ? state.cpuOvercommitType : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -157,6 +159,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["serverBinding"] = state ? state.serverBinding : undefined;
         } else {
             const args = argsOrState as NodeTemplateArgs | undefined;
+            inputs["cpuOvercommitType"] = args ? args.cpuOvercommitType : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nodeAffinityLabels"] = args ? args.nodeAffinityLabels : undefined;
@@ -183,6 +186,10 @@ export class NodeTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NodeTemplate resources.
  */
 export interface NodeTemplateState {
+    /**
+     * CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+     */
+    readonly cpuOvercommitType?: pulumi.Input<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -237,6 +244,10 @@ export interface NodeTemplateState {
  * The set of arguments for constructing a NodeTemplate resource.
  */
 export interface NodeTemplateArgs {
+    /**
+     * CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+     */
+    readonly cpuOvercommitType?: pulumi.Input<string>;
     /**
      * An optional textual description of the resource.
      */

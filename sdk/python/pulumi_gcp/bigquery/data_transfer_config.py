@@ -85,7 +85,7 @@ class DataTransferConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Scheduled Query
+        ### Bigquerydatatransfer Config Scheduled Query
 
         ```python
         import pulumi
@@ -107,7 +107,7 @@ class DataTransferConfig(pulumi.CustomResource):
             schedule="first sunday of quarter 00:00",
             destination_dataset_id=my_dataset.dataset_id,
             params={
-                "destination_table_name_template": "my-table",
+                "destination_table_name_template": "my_table",
                 "write_disposition": "WRITE_APPEND",
                 "query": "SELECT name FROM tabl WHERE x = 'y'",
             })

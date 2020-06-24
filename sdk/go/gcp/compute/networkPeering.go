@@ -24,8 +24,12 @@ type NetworkPeering struct {
 
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes pulumi.BoolPtrOutput `pulumi:"exportCustomRoutes"`
+	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+	ExportSubnetRoutesWithPublicIp pulumi.BoolPtrOutput `pulumi:"exportSubnetRoutesWithPublicIp"`
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes pulumi.BoolPtrOutput `pulumi:"importCustomRoutes"`
+	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+	ImportSubnetRoutesWithPublicIp pulumi.BoolPtrOutput `pulumi:"importSubnetRoutesWithPublicIp"`
 	// Name of the peering.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The primary network of the peering.
@@ -76,8 +80,12 @@ func GetNetworkPeering(ctx *pulumi.Context,
 type networkPeeringState struct {
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes *bool `pulumi:"exportCustomRoutes"`
+	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+	ExportSubnetRoutesWithPublicIp *bool `pulumi:"exportSubnetRoutesWithPublicIp"`
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes *bool `pulumi:"importCustomRoutes"`
+	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+	ImportSubnetRoutesWithPublicIp *bool `pulumi:"importSubnetRoutesWithPublicIp"`
 	// Name of the peering.
 	Name *string `pulumi:"name"`
 	// The primary network of the peering.
@@ -95,8 +103,12 @@ type networkPeeringState struct {
 type NetworkPeeringState struct {
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes pulumi.BoolPtrInput
+	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+	ExportSubnetRoutesWithPublicIp pulumi.BoolPtrInput
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes pulumi.BoolPtrInput
+	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+	ImportSubnetRoutesWithPublicIp pulumi.BoolPtrInput
 	// Name of the peering.
 	Name pulumi.StringPtrInput
 	// The primary network of the peering.
@@ -118,8 +130,12 @@ func (NetworkPeeringState) ElementType() reflect.Type {
 type networkPeeringArgs struct {
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes *bool `pulumi:"exportCustomRoutes"`
+	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+	ExportSubnetRoutesWithPublicIp *bool `pulumi:"exportSubnetRoutesWithPublicIp"`
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes *bool `pulumi:"importCustomRoutes"`
+	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+	ImportSubnetRoutesWithPublicIp *bool `pulumi:"importSubnetRoutesWithPublicIp"`
 	// Name of the peering.
 	Name *string `pulumi:"name"`
 	// The primary network of the peering.
@@ -133,8 +149,12 @@ type networkPeeringArgs struct {
 type NetworkPeeringArgs struct {
 	// Whether to export the custom routes to the peer network. Defaults to `false`.
 	ExportCustomRoutes pulumi.BoolPtrInput
+	// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
+	ExportSubnetRoutesWithPublicIp pulumi.BoolPtrInput
 	// Whether to export the custom routes from the peer network. Defaults to `false`.
 	ImportCustomRoutes pulumi.BoolPtrInput
+	// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
+	ImportSubnetRoutesWithPublicIp pulumi.BoolPtrInput
 	// Name of the peering.
 	Name pulumi.StringPtrInput
 	// The primary network of the peering.

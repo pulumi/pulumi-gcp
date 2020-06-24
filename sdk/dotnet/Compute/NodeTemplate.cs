@@ -33,14 +33,10 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     public MyStack()
     ///     {
-    ///         var central1a = Output.Create(Gcp.Compute.GetNodeTypes.InvokeAsync(new Gcp.Compute.GetNodeTypesArgs
-    ///         {
-    ///             Zone = "us-central1-a",
-    ///         }));
     ///         var template = new Gcp.Compute.NodeTemplate("template", new Gcp.Compute.NodeTemplateArgs
     ///         {
+    ///             NodeType = "n1-node-96-624",
     ///             Region = "us-central1",
-    ///             NodeType = central1a.Apply(central1a =&gt; central1a.Names[0]),
     ///         });
     ///     }
     /// 
@@ -49,6 +45,12 @@ namespace Pulumi.Gcp.Compute
     /// </summary>
     public partial class NodeTemplate : Pulumi.CustomResource
     {
+        /// <summary>
+        /// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+        /// </summary>
+        [Output("cpuOvercommitType")]
+        public Output<string?> CpuOvercommitType { get; private set; } = null!;
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -164,6 +166,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class NodeTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+        /// </summary>
+        [Input("cpuOvercommitType")]
+        public Input<string>? CpuOvercommitType { get; set; }
+
+        /// <summary>
         /// An optional textual description of the resource.
         /// </summary>
         [Input("description")]
@@ -232,6 +240,12 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class NodeTemplateState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// CPU overcommit. Default value: "NONE" Possible values: ["ENABLED", "NONE"]
+        /// </summary>
+        [Input("cpuOvercommitType")]
+        public Input<string>? CpuOvercommitType { get; set; }
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>

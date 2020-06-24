@@ -684,7 +684,10 @@ type DatabaseInstanceSettings struct {
 	//
 	// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
 	AuthorizedGaeApplications []string `pulumi:"authorizedGaeApplications"`
-	// The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
+	// The availability type of the Cloud SQL
+	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
+	// instances, ensure that `settings.backup_configuration.enabled` and
+	// `settings.backup_configuration.binary_log_enabled` are both set to `true`.
 	AvailabilityType    *string                                      `pulumi:"availabilityType"`
 	BackupConfiguration *DatabaseInstanceSettingsBackupConfiguration `pulumi:"backupConfiguration"`
 	// This property is only applicable to First Generation instances.
@@ -746,7 +749,10 @@ type DatabaseInstanceSettingsArgs struct {
 	//
 	// Deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
 	AuthorizedGaeApplications pulumi.StringArrayInput `pulumi:"authorizedGaeApplications"`
-	// The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
+	// The availability type of the Cloud SQL
+	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
+	// instances, ensure that `settings.backup_configuration.enabled` and
+	// `settings.backup_configuration.binary_log_enabled` are both set to `true`.
 	AvailabilityType    pulumi.StringPtrInput                               `pulumi:"availabilityType"`
 	BackupConfiguration DatabaseInstanceSettingsBackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// This property is only applicable to First Generation instances.
@@ -879,7 +885,10 @@ func (o DatabaseInstanceSettingsOutput) AuthorizedGaeApplications() pulumi.Strin
 	return o.ApplyT(func(v DatabaseInstanceSettings) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
 }
 
-// The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
+// The availability type of the Cloud SQL
+// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
+// instances, ensure that `settings.backup_configuration.enabled` and
+// `settings.backup_configuration.binary_log_enabled` are both set to `true`.
 func (o DatabaseInstanceSettingsOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
 }
@@ -1011,7 +1020,10 @@ func (o DatabaseInstanceSettingsPtrOutput) AuthorizedGaeApplications() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
+// The availability type of the Cloud SQL
+// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
+// instances, ensure that `settings.backup_configuration.enabled` and
+// `settings.backup_configuration.binary_log_enabled` are both set to `true`.
 func (o DatabaseInstanceSettingsPtrOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
 		if v == nil {

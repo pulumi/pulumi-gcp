@@ -80,6 +80,12 @@ export class PerInstanceConfig extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * When true, deleting this config will immediately remove any specified state from the underlying instance.
+     * When false, deleting this config will *not* immediately remove any state from the underlying instance.
+     * State will be removed on the next instance recreation or update.
+     */
+    public readonly removeInstanceStateOnDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * Zone where the containing instance group manager is located
      */
     public readonly zone!: pulumi.Output<string>;
@@ -102,6 +108,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["preservedState"] = state ? state.preservedState : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["removeInstanceStateOnDestroy"] = state ? state.removeInstanceStateOnDestroy : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as PerInstanceConfigArgs | undefined;
@@ -117,6 +124,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["preservedState"] = args ? args.preservedState : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["removeInstanceStateOnDestroy"] = args ? args.removeInstanceStateOnDestroy : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
         if (!opts) {
@@ -170,6 +178,12 @@ export interface PerInstanceConfigState {
      */
     readonly project?: pulumi.Input<string>;
     /**
+     * When true, deleting this config will immediately remove any specified state from the underlying instance.
+     * When false, deleting this config will *not* immediately remove any state from the underlying instance.
+     * State will be removed on the next instance recreation or update.
+     */
+    readonly removeInstanceStateOnDestroy?: pulumi.Input<boolean>;
+    /**
      * Zone where the containing instance group manager is located
      */
     readonly zone?: pulumi.Input<string>;
@@ -214,6 +228,12 @@ export interface PerInstanceConfigArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * When true, deleting this config will immediately remove any specified state from the underlying instance.
+     * When false, deleting this config will *not* immediately remove any state from the underlying instance.
+     * State will be removed on the next instance recreation or update.
+     */
+    readonly removeInstanceStateOnDestroy?: pulumi.Input<boolean>;
     /**
      * Zone where the containing instance group manager is located
      */

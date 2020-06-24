@@ -58,11 +58,17 @@ class PerInstanceConfig(pulumi.CustomResource):
     The ID of the project in which the resource belongs.
     If it is not provided, the provider project is used.
     """
+    remove_instance_state_on_destroy: pulumi.Output[bool]
+    """
+    When true, deleting this config will immediately remove any specified state from the underlying instance.
+    When false, deleting this config will *not* immediately remove any state from the underlying instance.
+    State will be removed on the next instance recreation or update.
+    """
     zone: pulumi.Output[str]
     """
     Zone where the containing instance group manager is located
     """
-    def __init__(__self__, resource_name, opts=None, instance_group_manager=None, minimal_action=None, most_disruptive_allowed_action=None, name=None, preserved_state=None, project=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, instance_group_manager=None, minimal_action=None, most_disruptive_allowed_action=None, name=None, preserved_state=None, project=None, remove_instance_state_on_destroy=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         A config defined for a single managed instance that belongs to an instance group manager. It preserves the instance name
         across instance group manager operations and can define stateful disks or metadata that are unique to the instance.
@@ -93,6 +99,9 @@ class PerInstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[dict] preserved_state: The preserved state for this instance.  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
+               When false, deleting this config will *not* immediately remove any state from the underlying instance.
+               State will be removed on the next instance recreation or update.
         :param pulumi.Input[str] zone: Zone where the containing instance group manager is located
 
         The **preserved_state** object supports the following:
@@ -135,6 +144,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             __props__['name'] = name
             __props__['preserved_state'] = preserved_state
             __props__['project'] = project
+            __props__['remove_instance_state_on_destroy'] = remove_instance_state_on_destroy
             if zone is None:
                 raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
@@ -145,7 +155,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, instance_group_manager=None, minimal_action=None, most_disruptive_allowed_action=None, name=None, preserved_state=None, project=None, zone=None):
+    def get(resource_name, id, opts=None, instance_group_manager=None, minimal_action=None, most_disruptive_allowed_action=None, name=None, preserved_state=None, project=None, remove_instance_state_on_destroy=None, zone=None):
         """
         Get an existing PerInstanceConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -170,6 +180,9 @@ class PerInstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[dict] preserved_state: The preserved state for this instance.  Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
+               When false, deleting this config will *not* immediately remove any state from the underlying instance.
+               State will be removed on the next instance recreation or update.
         :param pulumi.Input[str] zone: Zone where the containing instance group manager is located
 
         The **preserved_state** object supports the following:
@@ -197,6 +210,7 @@ class PerInstanceConfig(pulumi.CustomResource):
         __props__["name"] = name
         __props__["preserved_state"] = preserved_state
         __props__["project"] = project
+        __props__["remove_instance_state_on_destroy"] = remove_instance_state_on_destroy
         __props__["zone"] = zone
         return PerInstanceConfig(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

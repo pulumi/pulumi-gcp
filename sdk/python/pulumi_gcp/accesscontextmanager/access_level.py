@@ -68,9 +68,22 @@ class AccessLevel(pulumi.CustomResource):
           granted for the Condition to be true.
           Format: accessPolicies/{policy_id}/accessLevels/{short_name}
     """
+    custom: pulumi.Output[dict]
+    """
+    Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+    See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+
+      * `expr` (`dict`) - Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        This page details the objects and attributes that are used to the build the CEL expressions for
+        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+        * `description` (`str`) - Description of the expression
+        * `expression` (`str`) - Textual representation of an expression in Common Expression Language syntax.
+        * `location` (`str`) - String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+        * `title` (`str`) - Title for the expression, i.e. a short string describing its purpose.
+    """
     description: pulumi.Output[str]
     """
-    Description of the AccessLevel and its use. Does not affect behavior.
+    Description of the expression
     """
     name: pulumi.Output[str]
     """
@@ -85,9 +98,9 @@ class AccessLevel(pulumi.CustomResource):
     """
     title: pulumi.Output[str]
     """
-    Human readable title. Must be unique within the Policy.
+    Title for the expression, i.e. a short string describing its purpose.
     """
-    def __init__(__self__, resource_name, opts=None, basic=None, description=None, name=None, parent=None, title=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, basic=None, custom=None, description=None, name=None, parent=None, title=None, __props__=None, __name__=None, __opts__=None):
         """
         An AccessLevel is a label that can be applied to requests to GCP services,
         along with a list of requirements necessary for the label to be applied.
@@ -133,13 +146,15 @@ class AccessLevel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.  Structure is documented below.
-        :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
+        :param pulumi.Input[dict] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+               See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+        :param pulumi.Input[str] description: Description of the expression
         :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
-        :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
+        :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
 
         The **basic** object supports the following:
 
@@ -196,6 +211,16 @@ class AccessLevel(pulumi.CustomResource):
               does not exist is an error. All access levels listed must be
               granted for the Condition to be true.
               Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+
+        The **custom** object supports the following:
+
+          * `expr` (`pulumi.Input[dict]`) - Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+            This page details the objects and attributes that are used to the build the CEL expressions for
+            custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+            * `description` (`pulumi.Input[str]`) - Description of the expression
+            * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+            * `location` (`pulumi.Input[str]`) - String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+            * `title` (`pulumi.Input[str]`) - Title for the expression, i.e. a short string describing its purpose.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -215,6 +240,7 @@ class AccessLevel(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['basic'] = basic
+            __props__['custom'] = custom
             __props__['description'] = description
             __props__['name'] = name
             if parent is None:
@@ -230,7 +256,7 @@ class AccessLevel(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, basic=None, description=None, name=None, parent=None, title=None):
+    def get(resource_name, id, opts=None, basic=None, custom=None, description=None, name=None, parent=None, title=None):
         """
         Get an existing AccessLevel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -239,13 +265,15 @@ class AccessLevel(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] basic: A set of predefined conditions for the access level and a combining function.  Structure is documented below.
-        :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
+        :param pulumi.Input[dict] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
+               See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+        :param pulumi.Input[str] description: Description of the expression
         :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
-        :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
+        :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
 
         The **basic** object supports the following:
 
@@ -302,12 +330,23 @@ class AccessLevel(pulumi.CustomResource):
               does not exist is an error. All access levels listed must be
               granted for the Condition to be true.
               Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+
+        The **custom** object supports the following:
+
+          * `expr` (`pulumi.Input[dict]`) - Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+            This page details the objects and attributes that are used to the build the CEL expressions for
+            custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+            * `description` (`pulumi.Input[str]`) - Description of the expression
+            * `expression` (`pulumi.Input[str]`) - Textual representation of an expression in Common Expression Language syntax.
+            * `location` (`pulumi.Input[str]`) - String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+            * `title` (`pulumi.Input[str]`) - Title for the expression, i.e. a short string describing its purpose.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
         __props__["basic"] = basic
+        __props__["custom"] = custom
         __props__["description"] = description
         __props__["name"] = name
         __props__["parent"] = parent

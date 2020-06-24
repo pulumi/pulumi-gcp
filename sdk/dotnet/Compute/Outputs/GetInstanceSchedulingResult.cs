@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// restarted if it was terminated by Compute Engine (not a user).
         /// </summary>
         public readonly bool AutomaticRestart;
+        public readonly int MinNodeCpus;
         public readonly ImmutableArray<Outputs.GetInstanceSchedulingNodeAffinityResult> NodeAffinities;
         /// <summary>
         /// Describes maintenance behavior for the
@@ -34,6 +35,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private GetInstanceSchedulingResult(
             bool automaticRestart,
 
+            int minNodeCpus,
+
             ImmutableArray<Outputs.GetInstanceSchedulingNodeAffinityResult> nodeAffinities,
 
             string onHostMaintenance,
@@ -41,6 +44,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             bool preemptible)
         {
             AutomaticRestart = automaticRestart;
+            MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
             Preemptible = preemptible;

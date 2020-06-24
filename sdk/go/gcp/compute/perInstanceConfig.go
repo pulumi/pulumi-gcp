@@ -44,6 +44,10 @@ type PerInstanceConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// When true, deleting this config will immediately remove any specified state from the underlying instance.
+	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+	// State will be removed on the next instance recreation or update.
+	RemoveInstanceStateOnDestroy pulumi.BoolPtrOutput `pulumi:"removeInstanceStateOnDestroy"`
 	// Zone where the containing instance group manager is located
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -105,6 +109,10 @@ type perInstanceConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// When true, deleting this config will immediately remove any specified state from the underlying instance.
+	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+	// State will be removed on the next instance recreation or update.
+	RemoveInstanceStateOnDestroy *bool `pulumi:"removeInstanceStateOnDestroy"`
 	// Zone where the containing instance group manager is located
 	Zone *string `pulumi:"zone"`
 }
@@ -133,6 +141,10 @@ type PerInstanceConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// When true, deleting this config will immediately remove any specified state from the underlying instance.
+	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+	// State will be removed on the next instance recreation or update.
+	RemoveInstanceStateOnDestroy pulumi.BoolPtrInput
 	// Zone where the containing instance group manager is located
 	Zone pulumi.StringPtrInput
 }
@@ -165,6 +177,10 @@ type perInstanceConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// When true, deleting this config will immediately remove any specified state from the underlying instance.
+	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+	// State will be removed on the next instance recreation or update.
+	RemoveInstanceStateOnDestroy *bool `pulumi:"removeInstanceStateOnDestroy"`
 	// Zone where the containing instance group manager is located
 	Zone string `pulumi:"zone"`
 }
@@ -194,6 +210,10 @@ type PerInstanceConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// When true, deleting this config will immediately remove any specified state from the underlying instance.
+	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
+	// State will be removed on the next instance recreation or update.
+	RemoveInstanceStateOnDestroy pulumi.BoolPtrInput
 	// Zone where the containing instance group manager is located
 	Zone pulumi.StringInput
 }

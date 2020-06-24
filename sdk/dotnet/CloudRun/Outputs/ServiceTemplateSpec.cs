@@ -45,6 +45,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// that the system will manipulate this based on routability and load.
         /// </summary>
         public readonly string? ServingState;
+        /// <summary>
+        /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+        /// </summary>
+        public readonly int? TimeoutSeconds;
 
         [OutputConstructor]
         private ServiceTemplateSpec(
@@ -54,12 +58,15 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             string? serviceAccountName,
 
-            string? servingState)
+            string? servingState,
+
+            int? timeoutSeconds)
         {
             ContainerConcurrency = containerConcurrency;
             Containers = containers;
             ServiceAccountName = serviceAccountName;
             ServingState = servingState;
+            TimeoutSeconds = timeoutSeconds;
         }
     }
 }

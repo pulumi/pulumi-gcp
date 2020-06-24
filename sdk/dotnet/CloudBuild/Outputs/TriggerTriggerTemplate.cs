@@ -35,6 +35,10 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string? Dir;
         /// <summary>
+        /// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        /// </summary>
+        public readonly bool? InvertRegex;
+        /// <summary>
         /// ID of the project that owns the Cloud Source Repository. If
         /// omitted, the project ID requesting the build is assumed.
         /// </summary>
@@ -57,6 +61,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             string? dir,
 
+            bool? invertRegex,
+
             string? projectId,
 
             string? repoName,
@@ -66,6 +72,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
             BranchName = branchName;
             CommitSha = commitSha;
             Dir = dir;
+            InvertRegex = invertRegex;
             ProjectId = projectId;
             RepoName = repoName;
             TagName = tagName;

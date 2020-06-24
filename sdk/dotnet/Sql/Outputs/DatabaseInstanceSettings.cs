@@ -26,7 +26,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedGaeApplications;
         /// <summary>
-        /// The availability type of the Cloud SQL instance, high availability (`REGIONAL`) or single zone (`ZONAL`).'
+        /// The availability type of the Cloud SQL
+        /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For MySQL
+        /// instances, ensure that `settings.backup_configuration.enabled` and
+        /// `settings.backup_configuration.binary_log_enabled` are both set to `true`.
         /// </summary>
         public readonly string? AvailabilityType;
         public readonly Outputs.DatabaseInstanceSettingsBackupConfiguration? BackupConfiguration;

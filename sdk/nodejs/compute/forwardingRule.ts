@@ -138,7 +138,7 @@ import * as utilities from "../utilities";
  * const rigm = new gcp.compute.RegionInstanceGroupManager("rigm", {
  *     region: "us-central1",
  *     version: [{
- *         instanceTemplate: instanceTemplate.selfLink,
+ *         instanceTemplate: instanceTemplate.id,
  *         name: "primary",
  *     }],
  *     baseInstanceName: "internal-glb",

@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ## Example Usage
     /// 
-    /// ### Scheduled Query
+    /// ### Bigquerydatatransfer Config Scheduled Query
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.BigQuery
     ///             DestinationDatasetId = myDataset.DatasetId,
     ///             Params = 
     ///             {
-    ///                 { "destination_table_name_template", "my-table" },
+    ///                 { "destination_table_name_template", "my_table" },
     ///                 { "write_disposition", "WRITE_APPEND" },
     ///                 { "query", "SELECT name FROM tabl WHERE x = 'y'" },
     ///             },

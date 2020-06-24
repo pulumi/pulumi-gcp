@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  * });
  * const igm = new gcp.compute.InstanceGroupManager("igm", {
  *     version: [{
- *         instanceTemplate: instanceTemplate.selfLink,
+ *         instanceTemplate: instanceTemplate.id,
  *         name: "primary",
  *     }],
  *     baseInstanceName: "internal-glb",

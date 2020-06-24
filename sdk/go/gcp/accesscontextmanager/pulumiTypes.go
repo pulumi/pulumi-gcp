@@ -757,6 +757,337 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) Index(i pu
 	}).(AccessLevelBasicConditionDevicePolicyOsConstraintOutput)
 }
 
+type AccessLevelCustom struct {
+	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+	// This page details the objects and attributes that are used to the build the CEL expressions for
+	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+	Expr AccessLevelCustomExpr `pulumi:"expr"`
+}
+
+// AccessLevelCustomInput is an input type that accepts AccessLevelCustomArgs and AccessLevelCustomOutput values.
+// You can construct a concrete instance of `AccessLevelCustomInput` via:
+//
+// 		 AccessLevelCustomArgs{...}
+//
+type AccessLevelCustomInput interface {
+	pulumi.Input
+
+	ToAccessLevelCustomOutput() AccessLevelCustomOutput
+	ToAccessLevelCustomOutputWithContext(context.Context) AccessLevelCustomOutput
+}
+
+type AccessLevelCustomArgs struct {
+	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+	// This page details the objects and attributes that are used to the build the CEL expressions for
+	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+	Expr AccessLevelCustomExprInput `pulumi:"expr"`
+}
+
+func (AccessLevelCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelCustom)(nil)).Elem()
+}
+
+func (i AccessLevelCustomArgs) ToAccessLevelCustomOutput() AccessLevelCustomOutput {
+	return i.ToAccessLevelCustomOutputWithContext(context.Background())
+}
+
+func (i AccessLevelCustomArgs) ToAccessLevelCustomOutputWithContext(ctx context.Context) AccessLevelCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelCustomOutput)
+}
+
+func (i AccessLevelCustomArgs) ToAccessLevelCustomPtrOutput() AccessLevelCustomPtrOutput {
+	return i.ToAccessLevelCustomPtrOutputWithContext(context.Background())
+}
+
+func (i AccessLevelCustomArgs) ToAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelCustomOutput).ToAccessLevelCustomPtrOutputWithContext(ctx)
+}
+
+// AccessLevelCustomPtrInput is an input type that accepts AccessLevelCustomArgs, AccessLevelCustomPtr and AccessLevelCustomPtrOutput values.
+// You can construct a concrete instance of `AccessLevelCustomPtrInput` via:
+//
+// 		 AccessLevelCustomArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type AccessLevelCustomPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelCustomPtrOutput() AccessLevelCustomPtrOutput
+	ToAccessLevelCustomPtrOutputWithContext(context.Context) AccessLevelCustomPtrOutput
+}
+
+type accessLevelCustomPtrType AccessLevelCustomArgs
+
+func AccessLevelCustomPtr(v *AccessLevelCustomArgs) AccessLevelCustomPtrInput {
+	return (*accessLevelCustomPtrType)(v)
+}
+
+func (*accessLevelCustomPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelCustom)(nil)).Elem()
+}
+
+func (i *accessLevelCustomPtrType) ToAccessLevelCustomPtrOutput() AccessLevelCustomPtrOutput {
+	return i.ToAccessLevelCustomPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelCustomPtrType) ToAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelCustomPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelCustomPtrOutput)
+}
+
+type AccessLevelCustomOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelCustom)(nil)).Elem()
+}
+
+func (o AccessLevelCustomOutput) ToAccessLevelCustomOutput() AccessLevelCustomOutput {
+	return o
+}
+
+func (o AccessLevelCustomOutput) ToAccessLevelCustomOutputWithContext(ctx context.Context) AccessLevelCustomOutput {
+	return o
+}
+
+func (o AccessLevelCustomOutput) ToAccessLevelCustomPtrOutput() AccessLevelCustomPtrOutput {
+	return o.ToAccessLevelCustomPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelCustomOutput) ToAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelCustomPtrOutput {
+	return o.ApplyT(func(v AccessLevelCustom) *AccessLevelCustom {
+		return &v
+	}).(AccessLevelCustomPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+// This page details the objects and attributes that are used to the build the CEL expressions for
+// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+func (o AccessLevelCustomOutput) Expr() AccessLevelCustomExprOutput {
+	return o.ApplyT(func(v AccessLevelCustom) AccessLevelCustomExpr { return v.Expr }).(AccessLevelCustomExprOutput)
+}
+
+type AccessLevelCustomPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelCustomPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelCustom)(nil)).Elem()
+}
+
+func (o AccessLevelCustomPtrOutput) ToAccessLevelCustomPtrOutput() AccessLevelCustomPtrOutput {
+	return o
+}
+
+func (o AccessLevelCustomPtrOutput) ToAccessLevelCustomPtrOutputWithContext(ctx context.Context) AccessLevelCustomPtrOutput {
+	return o
+}
+
+func (o AccessLevelCustomPtrOutput) Elem() AccessLevelCustomOutput {
+	return o.ApplyT(func(v *AccessLevelCustom) AccessLevelCustom { return *v }).(AccessLevelCustomOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+// This page details the objects and attributes that are used to the build the CEL expressions for
+// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+func (o AccessLevelCustomPtrOutput) Expr() AccessLevelCustomExprPtrOutput {
+	return o.ApplyT(func(v *AccessLevelCustom) *AccessLevelCustomExpr {
+		if v == nil {
+			return nil
+		}
+		return &v.Expr
+	}).(AccessLevelCustomExprPtrOutput)
+}
+
+type AccessLevelCustomExpr struct {
+	// Description of the expression
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+	Location *string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	Title *string `pulumi:"title"`
+}
+
+// AccessLevelCustomExprInput is an input type that accepts AccessLevelCustomExprArgs and AccessLevelCustomExprOutput values.
+// You can construct a concrete instance of `AccessLevelCustomExprInput` via:
+//
+// 		 AccessLevelCustomExprArgs{...}
+//
+type AccessLevelCustomExprInput interface {
+	pulumi.Input
+
+	ToAccessLevelCustomExprOutput() AccessLevelCustomExprOutput
+	ToAccessLevelCustomExprOutputWithContext(context.Context) AccessLevelCustomExprOutput
+}
+
+type AccessLevelCustomExprArgs struct {
+	// Description of the expression
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (AccessLevelCustomExprArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelCustomExpr)(nil)).Elem()
+}
+
+func (i AccessLevelCustomExprArgs) ToAccessLevelCustomExprOutput() AccessLevelCustomExprOutput {
+	return i.ToAccessLevelCustomExprOutputWithContext(context.Background())
+}
+
+func (i AccessLevelCustomExprArgs) ToAccessLevelCustomExprOutputWithContext(ctx context.Context) AccessLevelCustomExprOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelCustomExprOutput)
+}
+
+func (i AccessLevelCustomExprArgs) ToAccessLevelCustomExprPtrOutput() AccessLevelCustomExprPtrOutput {
+	return i.ToAccessLevelCustomExprPtrOutputWithContext(context.Background())
+}
+
+func (i AccessLevelCustomExprArgs) ToAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelCustomExprPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelCustomExprOutput).ToAccessLevelCustomExprPtrOutputWithContext(ctx)
+}
+
+// AccessLevelCustomExprPtrInput is an input type that accepts AccessLevelCustomExprArgs, AccessLevelCustomExprPtr and AccessLevelCustomExprPtrOutput values.
+// You can construct a concrete instance of `AccessLevelCustomExprPtrInput` via:
+//
+// 		 AccessLevelCustomExprArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type AccessLevelCustomExprPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelCustomExprPtrOutput() AccessLevelCustomExprPtrOutput
+	ToAccessLevelCustomExprPtrOutputWithContext(context.Context) AccessLevelCustomExprPtrOutput
+}
+
+type accessLevelCustomExprPtrType AccessLevelCustomExprArgs
+
+func AccessLevelCustomExprPtr(v *AccessLevelCustomExprArgs) AccessLevelCustomExprPtrInput {
+	return (*accessLevelCustomExprPtrType)(v)
+}
+
+func (*accessLevelCustomExprPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelCustomExpr)(nil)).Elem()
+}
+
+func (i *accessLevelCustomExprPtrType) ToAccessLevelCustomExprPtrOutput() AccessLevelCustomExprPtrOutput {
+	return i.ToAccessLevelCustomExprPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelCustomExprPtrType) ToAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelCustomExprPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelCustomExprPtrOutput)
+}
+
+type AccessLevelCustomExprOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelCustomExprOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelCustomExpr)(nil)).Elem()
+}
+
+func (o AccessLevelCustomExprOutput) ToAccessLevelCustomExprOutput() AccessLevelCustomExprOutput {
+	return o
+}
+
+func (o AccessLevelCustomExprOutput) ToAccessLevelCustomExprOutputWithContext(ctx context.Context) AccessLevelCustomExprOutput {
+	return o
+}
+
+func (o AccessLevelCustomExprOutput) ToAccessLevelCustomExprPtrOutput() AccessLevelCustomExprPtrOutput {
+	return o.ToAccessLevelCustomExprPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelCustomExprOutput) ToAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelCustomExprPtrOutput {
+	return o.ApplyT(func(v AccessLevelCustomExpr) *AccessLevelCustomExpr {
+		return &v
+	}).(AccessLevelCustomExprPtrOutput)
+}
+
+// Description of the expression
+func (o AccessLevelCustomExprOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessLevelCustomExpr) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o AccessLevelCustomExprOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessLevelCustomExpr) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+func (o AccessLevelCustomExprOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessLevelCustomExpr) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+func (o AccessLevelCustomExprOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessLevelCustomExpr) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type AccessLevelCustomExprPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelCustomExprPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelCustomExpr)(nil)).Elem()
+}
+
+func (o AccessLevelCustomExprPtrOutput) ToAccessLevelCustomExprPtrOutput() AccessLevelCustomExprPtrOutput {
+	return o
+}
+
+func (o AccessLevelCustomExprPtrOutput) ToAccessLevelCustomExprPtrOutputWithContext(ctx context.Context) AccessLevelCustomExprPtrOutput {
+	return o
+}
+
+func (o AccessLevelCustomExprPtrOutput) Elem() AccessLevelCustomExprOutput {
+	return o.ApplyT(func(v *AccessLevelCustomExpr) AccessLevelCustomExpr { return *v }).(AccessLevelCustomExprOutput)
+}
+
+// Description of the expression
+func (o AccessLevelCustomExprPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelCustomExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o AccessLevelCustomExprPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelCustomExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+func (o AccessLevelCustomExprPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelCustomExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+func (o AccessLevelCustomExprPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessLevelCustomExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServicePerimeterSpec struct {
 	// A list of AccessLevel resource names that allow resources within
 	// the ServicePerimeter to be accessed from the internet.
@@ -1594,6 +1925,10 @@ func init() {
 	pulumi.RegisterOutputType(AccessLevelBasicConditionDevicePolicyPtrOutput{})
 	pulumi.RegisterOutputType(AccessLevelBasicConditionDevicePolicyOsConstraintOutput{})
 	pulumi.RegisterOutputType(AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelCustomOutput{})
+	pulumi.RegisterOutputType(AccessLevelCustomPtrOutput{})
+	pulumi.RegisterOutputType(AccessLevelCustomExprOutput{})
+	pulumi.RegisterOutputType(AccessLevelCustomExprPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesOutput{})

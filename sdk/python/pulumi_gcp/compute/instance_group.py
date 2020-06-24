@@ -18,7 +18,7 @@ class InstanceGroup(pulumi.CustomResource):
     instances: pulumi.Output[list]
     """
     List of instances in the group. They should be given
-    as self_link URLs. When adding instances they must all be in the same
+    as either self_link or id. When adding instances they must all be in the same
     network and zone as the instance group.
     """
     name: pulumi.Output[str]
@@ -87,8 +87,8 @@ class InstanceGroup(pulumi.CustomResource):
         webservers = gcp.compute.InstanceGroup("webservers",
             description="Test instance group",
             instances=[
-                google_compute_instance["test"]["self_link"],
-                google_compute_instance["test2"]["self_link"],
+                google_compute_instance["test"]["id"],
+                google_compute_instance["test2"]["id"],
             ],
             named_port=[
                 {
@@ -124,7 +124,7 @@ class InstanceGroup(pulumi.CustomResource):
             }])
         staging_group = gcp.compute.InstanceGroup("stagingGroup",
             zone="us-central1-c",
-            instances=[staging_vm.self_link],
+            instances=[staging_vm.id],
             named_port=[
                 {
                     "name": "http",
@@ -150,7 +150,7 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional textual description of the instance
                group.
         :param pulumi.Input[list] instances: List of instances in the group. They should be given
-               as self_link URLs. When adding instances they must all be in the same
+               as either self_link or id. When adding instances they must all be in the same
                network and zone as the instance group.
         :param pulumi.Input[str] name: The name which the port will be mapped to.
         :param pulumi.Input[list] named_ports: The named port configuration. See the section below
@@ -212,7 +212,7 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional textual description of the instance
                group.
         :param pulumi.Input[list] instances: List of instances in the group. They should be given
-               as self_link URLs. When adding instances they must all be in the same
+               as either self_link or id. When adding instances they must all be in the same
                network and zone as the instance group.
         :param pulumi.Input[str] name: The name which the port will be mapped to.
         :param pulumi.Input[list] named_ports: The named port configuration. See the section below

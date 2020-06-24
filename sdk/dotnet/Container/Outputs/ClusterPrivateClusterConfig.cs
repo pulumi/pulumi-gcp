@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// endpoint via private networking.
         /// </summary>
         public readonly bool? EnablePrivateNodes;
+        public readonly Outputs.ClusterPrivateClusterConfigMasterGlobalAccessConfig? MasterGlobalAccessConfig;
         /// <summary>
         /// The IP range in CIDR notation to use for
         /// the hosted master network. This range will be used for assigning private IP
@@ -56,6 +57,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             bool? enablePrivateNodes,
 
+            Outputs.ClusterPrivateClusterConfigMasterGlobalAccessConfig? masterGlobalAccessConfig,
+
             string? masterIpv4CidrBlock,
 
             string? peeringName,
@@ -66,6 +69,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             EnablePrivateEndpoint = enablePrivateEndpoint;
             EnablePrivateNodes = enablePrivateNodes;
+            MasterGlobalAccessConfig = masterGlobalAccessConfig;
             MasterIpv4CidrBlock = masterIpv4CidrBlock;
             PeeringName = peeringName;
             PrivateEndpoint = privateEndpoint;

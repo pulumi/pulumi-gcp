@@ -47,7 +47,7 @@ type InstanceGroup struct {
 	// group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of instances in the group. They should be given
-	// as selfLink URLs. When adding instances they must all be in the same
+	// as either selfLink or id. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
 	// The name which the port will be mapped to.
@@ -103,7 +103,7 @@ type instanceGroupState struct {
 	// group.
 	Description *string `pulumi:"description"`
 	// List of instances in the group. They should be given
-	// as selfLink URLs. When adding instances they must all be in the same
+	// as either selfLink or id. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances []string `pulumi:"instances"`
 	// The name which the port will be mapped to.
@@ -132,7 +132,7 @@ type InstanceGroupState struct {
 	// group.
 	Description pulumi.StringPtrInput
 	// List of instances in the group. They should be given
-	// as selfLink URLs. When adding instances they must all be in the same
+	// as either selfLink or id. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances pulumi.StringArrayInput
 	// The name which the port will be mapped to.
@@ -165,7 +165,7 @@ type instanceGroupArgs struct {
 	// group.
 	Description *string `pulumi:"description"`
 	// List of instances in the group. They should be given
-	// as selfLink URLs. When adding instances they must all be in the same
+	// as either selfLink or id. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances []string `pulumi:"instances"`
 	// The name which the port will be mapped to.
@@ -191,7 +191,7 @@ type InstanceGroupArgs struct {
 	// group.
 	Description pulumi.StringPtrInput
 	// List of instances in the group. They should be given
-	// as selfLink URLs. When adding instances they must all be in the same
+	// as either selfLink or id. When adding instances they must all be in the same
 	// network and zone as the instance group.
 	Instances pulumi.StringArrayInput
 	// The name which the port will be mapped to.
