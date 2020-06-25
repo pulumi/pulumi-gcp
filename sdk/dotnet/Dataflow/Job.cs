@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
@@ -40,7 +38,6 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// }
     /// ```
-    /// 
     /// ## Note on "destroy" / "apply"
     /// 
     /// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.

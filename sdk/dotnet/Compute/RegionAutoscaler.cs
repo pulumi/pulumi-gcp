@@ -16,12 +16,13 @@ namespace Pulumi.Gcp.Compute
     /// managed instance groups according to an autoscaling policy that you
     /// define.
     /// 
-    /// 
     /// To get more information about RegionAutoscaler, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionAutoscalers)
     /// * How-to Guides
     ///     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+    /// 
+    /// ## Example Usage
     /// </summary>
     public partial class RegionAutoscaler : Pulumi.CustomResource
     {

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class FhirStore(pulumi.CustomResource):
     dataset: pulumi.Output[str]
     """
@@ -126,7 +127,6 @@ class FhirStore(pulumi.CustomResource):
             * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
 
         ## Example Usage
-
         ### Healthcare Fhir Store Basic
 
         ```python
@@ -149,7 +149,6 @@ class FhirStore(pulumi.CustomResource):
                 "label1": "labelvalue1",
             })
         ```
-
         ### Healthcare Fhir Store Streaming Config
 
         ```python
@@ -399,9 +398,9 @@ class FhirStore(pulumi.CustomResource):
         __props__["stream_configs"] = stream_configs
         __props__["version"] = version
         return FhirStore(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

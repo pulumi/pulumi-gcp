@@ -11,20 +11,20 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/container"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "us-east1-a"
 // 		myCluster, err := container.LookupCluster(ctx, &container.LookupClusterArgs{
 // 			Name:     "my-cluster",
-// 			Location: "us-east1-a",
+// 			Location: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

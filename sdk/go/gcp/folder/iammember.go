@@ -20,8 +20,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -40,7 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		admin, err := folder.NewIAMMember(ctx, "admin", &folder.IAMMemberArgs{
+// 		_, err = folder.NewIAMMember(ctx, "admin", &folder.IAMMemberArgs{
 // 			Folder: department1.Name,
 // 			Role:   pulumi.String("roles/editor"),
 // 			Member: pulumi.String("user:alice@gmail.com"),

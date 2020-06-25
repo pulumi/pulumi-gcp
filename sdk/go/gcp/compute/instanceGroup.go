@@ -13,9 +13,7 @@ import (
 // For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 //
-//
 // ## Example Usage
-//
 // ### Empty Instance Group
 //
 // ```go
@@ -28,7 +26,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := compute.NewInstanceGroup(ctx, "test", &compute.InstanceGroupArgs{
+// 		_, err = compute.NewInstanceGroup(ctx, "test", &compute.InstanceGroupArgs{
 // 			Description: pulumi.String("Test instance group"),
 // 			Zone:        pulumi.String("us-central1-a"),
 // 			Network:     pulumi.String(google_compute_network.Default.Id),

@@ -13,14 +13,16 @@ import (
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := true
 // 		myFolder1, err := organizations.LookupFolder(ctx, &organizations.LookupFolderArgs{
 // 			Folder:             "folders/12345",
-// 			LookupOrganization: true,
+// 			LookupOrganization: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err

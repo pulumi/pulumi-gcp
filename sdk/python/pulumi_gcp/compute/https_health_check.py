@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class HttpsHealthCheck(pulumi.CustomResource):
     check_interval_sec: pulumi.Output[float]
     """
@@ -80,13 +81,11 @@ class HttpsHealthCheck(pulumi.CustomResource):
         An HttpsHealthCheck resource. This resource defines a template for how
         individual VMs should be checked for health, via HTTPS.
 
-
         > **Note:** compute.HttpsHealthCheck is a legacy health check.
         The newer [compute.HealthCheck](https://www.terraform.io/docs/providers/google/r/compute_health_check.html)
         should be preferred for all uses except
         [Network Load Balancers](https://cloud.google.com/compute/docs/load-balancing/network/)
         which still require the legacy version.
-
 
         To get more information about HttpsHealthCheck, see:
 
@@ -95,7 +94,6 @@ class HttpsHealthCheck(pulumi.CustomResource):
             * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 
         ## Example Usage
-
         ### Https Health Check Basic
 
         ```python
@@ -229,9 +227,9 @@ class HttpsHealthCheck(pulumi.CustomResource):
         __props__["timeout_sec"] = timeout_sec
         __props__["unhealthy_threshold"] = unhealthy_threshold
         return HttpsHealthCheck(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

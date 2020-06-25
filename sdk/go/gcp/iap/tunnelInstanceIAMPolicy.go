@@ -20,8 +20,6 @@ import (
 //
 // > **Note:** `iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 //
-//
-//
 // ## google\_iap\_tunnel\_instance\_iam\_policy
 //
 // ```go
@@ -29,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -47,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := iap.NewTunnelInstanceIAMPolicy(ctx, "policy", &iap.TunnelInstanceIAMPolicyArgs{
+// 		_, err = iap.NewTunnelInstanceIAMPolicy(ctx, "policy", &iap.TunnelInstanceIAMPolicyArgs{
 // 			Project:    pulumi.String(google_compute_instance.Tunnelvm.Project),
 // 			Zone:       pulumi.String(google_compute_instance.Tunnelvm.Zone),
 // 			Instance:   pulumi.String(google_compute_instance.Tunnelvm.Name),
@@ -68,6 +67,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -91,7 +91,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := iap.NewTunnelInstanceIAMPolicy(ctx, "policy", &iap.TunnelInstanceIAMPolicyArgs{
+// 		_, err = iap.NewTunnelInstanceIAMPolicy(ctx, "policy", &iap.TunnelInstanceIAMPolicyArgs{
 // 			Project:    pulumi.String(google_compute_instance.Tunnelvm.Project),
 // 			Zone:       pulumi.String(google_compute_instance.Tunnelvm.Zone),
 // 			Instance:   pulumi.String(google_compute_instance.Tunnelvm.Name),
@@ -116,7 +116,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := iap.NewTunnelInstanceIAMBinding(ctx, "binding", &iap.TunnelInstanceIAMBindingArgs{
+// 		_, err = iap.NewTunnelInstanceIAMBinding(ctx, "binding", &iap.TunnelInstanceIAMBindingArgs{
 // 			Project:  pulumi.String(google_compute_instance.Tunnelvm.Project),
 // 			Zone:     pulumi.String(google_compute_instance.Tunnelvm.Zone),
 // 			Instance: pulumi.String(google_compute_instance.Tunnelvm.Name),
@@ -145,7 +145,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := iap.NewTunnelInstanceIAMBinding(ctx, "binding", &iap.TunnelInstanceIAMBindingArgs{
+// 		_, err = iap.NewTunnelInstanceIAMBinding(ctx, "binding", &iap.TunnelInstanceIAMBindingArgs{
 // 			Project:  pulumi.String(google_compute_instance.Tunnelvm.Project),
 // 			Zone:     pulumi.String(google_compute_instance.Tunnelvm.Zone),
 // 			Instance: pulumi.String(google_compute_instance.Tunnelvm.Name),
@@ -178,7 +178,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := iap.NewTunnelInstanceIAMMember(ctx, "member", &iap.TunnelInstanceIAMMemberArgs{
+// 		_, err = iap.NewTunnelInstanceIAMMember(ctx, "member", &iap.TunnelInstanceIAMMemberArgs{
 // 			Project:  pulumi.String(google_compute_instance.Tunnelvm.Project),
 // 			Zone:     pulumi.String(google_compute_instance.Tunnelvm.Zone),
 // 			Instance: pulumi.String(google_compute_instance.Tunnelvm.Name),
@@ -205,7 +205,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := iap.NewTunnelInstanceIAMMember(ctx, "member", &iap.TunnelInstanceIAMMemberArgs{
+// 		_, err = iap.NewTunnelInstanceIAMMember(ctx, "member", &iap.TunnelInstanceIAMMemberArgs{
 // 			Project:  pulumi.String(google_compute_instance.Tunnelvm.Project),
 // 			Zone:     pulumi.String(google_compute_instance.Tunnelvm.Zone),
 // 			Instance: pulumi.String(google_compute_instance.Tunnelvm.Name),

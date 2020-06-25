@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SharedVPCServiceProject(pulumi.CustomResource):
     host_project: pulumi.Output[str]
     """
@@ -31,8 +32,6 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         ## Example Usage
 
-
-
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -41,6 +40,9 @@ class SharedVPCServiceProject(pulumi.CustomResource):
             host_project="host-project-id",
             service_project="service-project-id-1")
         ```
+
+        For a complete Shared VPC example with both host and service projects, see
+        [`compute.SharedVPCHostProject`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -95,9 +97,9 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         __props__["host_project"] = host_project
         __props__["service_project"] = service_project
         return SharedVPCServiceProject(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

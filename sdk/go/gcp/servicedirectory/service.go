@@ -19,7 +19,6 @@ import (
 //     * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 //
 // ## Example Usage
-//
 // ### Service Directory Service Basic
 //
 // ```go
@@ -39,12 +38,12 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleService, err := servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
+// 		_, err = servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
 // 			ServiceId: pulumi.String("example-service"),
 // 			Namespace: exampleNamespace.ID(),
-// 			Metadata: map[string]interface{}{
-// 				"stage":  "prod",
-// 				"region": "us-central1",
+// 			Metadata: pulumi.Map{
+// 				"stage":  pulumi.String("prod"),
+// 				"region": pulumi.String("us-central1"),
 // 			},
 // 		})
 // 		if err != nil {

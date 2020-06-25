@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
@@ -40,6 +38,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// 
+    /// For a complete Shared VPC example with both host and service projects, see
+    /// [`gcp.compute.SharedVPCHostProject`](https://www.terraform.io/docs/providers/google/r/compute_shared_vpc_host_project.html).
     /// </summary>
     public partial class SharedVPCServiceProject : Pulumi.CustomResource
     {

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Topic(pulumi.CustomResource):
     kms_key_name: pulumi.Output[str]
     """
@@ -48,7 +49,6 @@ class Topic(pulumi.CustomResource):
         """
         A named resource to which messages are sent by publishers.
 
-
         To get more information about Topic, see:
 
         * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
@@ -56,7 +56,6 @@ class Topic(pulumi.CustomResource):
             * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
 
         ## Example Usage
-
         ### Pubsub Topic Basic
 
         ```python
@@ -67,7 +66,6 @@ class Topic(pulumi.CustomResource):
             "foo": "bar",
         })
         ```
-
         ### Pubsub Topic Cmek
 
         ```python
@@ -78,7 +76,6 @@ class Topic(pulumi.CustomResource):
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
         ```
-
         ### Pubsub Topic Geo Restricted
 
         ```python
@@ -183,9 +180,9 @@ class Topic(pulumi.CustomResource):
         __props__["name"] = name
         __props__["project"] = project
         return Topic(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

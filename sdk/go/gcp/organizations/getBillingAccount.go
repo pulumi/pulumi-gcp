@@ -19,14 +19,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		acct, err := organizations.LookupBillingAccount(ctx, &organizations.LookupBillingAccountArgs{
-// 			DisplayName: "My Billing Account",
-// 			Open:        true,
+// 		opt0 := "My Billing Account"
+// 		opt1 := true
+// 		acct, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+// 			DisplayName: &opt0,
+// 			Open:        &opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 		_, err = organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
 // 			ProjectId:      pulumi.String("your-project-id"),
 // 			OrgId:          pulumi.String("1234567"),
 // 			BillingAccount: pulumi.String(acct.Id),

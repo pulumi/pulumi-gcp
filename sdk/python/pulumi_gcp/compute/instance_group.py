@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class InstanceGroup(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -63,9 +64,7 @@ class InstanceGroup(pulumi.CustomResource):
         For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
         and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
-
         ## Example Usage
-
         ### Empty Instance Group
 
         ```python
@@ -77,7 +76,6 @@ class InstanceGroup(pulumi.CustomResource):
             zone="us-central1-a",
             network=google_compute_network["default"]["id"])
         ```
-
         ### Example Usage - With instances and named ports
 
         ```python
@@ -102,8 +100,10 @@ class InstanceGroup(pulumi.CustomResource):
             ],
             zone="us-central1-a")
         ```
-
         ### Example Usage - Recreating an instance group in use
+        Recreating an instance group that's in use by another resource will give a
+        `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+        as shown in this example to avoid this type of error.
 
         ```python
         import pulumi
@@ -246,9 +246,9 @@ class InstanceGroup(pulumi.CustomResource):
         __props__["size"] = size
         __props__["zone"] = zone
         return InstanceGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

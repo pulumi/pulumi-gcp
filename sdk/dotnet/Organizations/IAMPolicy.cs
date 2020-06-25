@@ -27,8 +27,6 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;

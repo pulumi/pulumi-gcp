@@ -24,8 +24,7 @@ type IndexField struct {
 // IndexFieldInput is an input type that accepts IndexFieldArgs and IndexFieldOutput values.
 // You can construct a concrete instance of `IndexFieldInput` via:
 //
-// 		 IndexFieldArgs{...}
-//
+//          IndexFieldArgs{...}
 type IndexFieldInput interface {
 	pulumi.Input
 
@@ -59,8 +58,7 @@ func (i IndexFieldArgs) ToIndexFieldOutputWithContext(ctx context.Context) Index
 // IndexFieldArrayInput is an input type that accepts IndexFieldArray and IndexFieldArrayOutput values.
 // You can construct a concrete instance of `IndexFieldArrayInput` via:
 //
-// 		 IndexFieldArray{ IndexFieldArgs{...} }
-//
+//          IndexFieldArray{ IndexFieldArgs{...} }
 type IndexFieldArrayInput interface {
 	pulumi.Input
 

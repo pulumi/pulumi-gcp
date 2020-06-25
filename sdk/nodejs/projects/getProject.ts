@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * for more details.
  *
  * ## Example Usage
- *
  * ### Searching For Projects About To Be Deleted In An Org
  *
  * ```typescript

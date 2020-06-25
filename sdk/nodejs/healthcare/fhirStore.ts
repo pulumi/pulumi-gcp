@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
  *
  * ## Example Usage
- *
  * ### Healthcare Fhir Store Basic
  *
  * ```typescript
@@ -41,7 +40,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Healthcare Fhir Store Streaming Config
  *
  * ```typescript

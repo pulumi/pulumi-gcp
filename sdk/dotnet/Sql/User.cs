@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Example creating a SQL User.
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BackendBucket(pulumi.CustomResource):
     bucket_name: pulumi.Output[str]
     """
@@ -69,7 +70,6 @@ class BackendBucket(pulumi.CustomResource):
         static content to a Cloud Storage bucket and requests for dynamic content
         to a virtual machine instance.
 
-
         To get more information about BackendBucket, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
@@ -77,7 +77,6 @@ class BackendBucket(pulumi.CustomResource):
             * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 
         ## Example Usage
-
         ### Backend Bucket Basic
 
         ```python
@@ -202,9 +201,9 @@ class BackendBucket(pulumi.CustomResource):
         __props__["project"] = project
         __props__["self_link"] = self_link
         return BackendBucket(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

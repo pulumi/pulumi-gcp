@@ -98,8 +98,6 @@ def get_ssl_policy(name=None,project=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

@@ -27,7 +27,6 @@ import (
 // accessed programmatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
 // This provides the channel type and all of the required labels that must be passed.
 //
-//
 // To get more information about NotificationChannel, see:
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
@@ -36,7 +35,6 @@ import (
 //     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
-//
 // ### Notification Channel Basic
 //
 // ```go
@@ -49,12 +47,41 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basic, err := monitoring.NewNotificationChannel(ctx, "basic", &monitoring.NotificationChannelArgs{
+// 		_, err = monitoring.NewNotificationChannel(ctx, "basic", &monitoring.NotificationChannelArgs{
 // 			DisplayName: pulumi.String("Test Notification Channel"),
-// 			Labels: map[string]interface{}{
-// 				"email_address": "fake_email@blahblah.com",
+// 			Labels: pulumi.Map{
+// 				"email_address": pulumi.String("fake_email@blahblah.com"),
 // 			},
 // 			Type: pulumi.String("email"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Notification Channel Sensitive
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = monitoring.NewNotificationChannel(ctx, "default", &monitoring.NotificationChannelArgs{
+// 			DisplayName: pulumi.String("Test Slack Channel"),
+// 			Labels: pulumi.Map{
+// 				"channel_name": pulumi.String("#foobar"),
+// 			},
+// 			SensitiveLabels: &monitoring.NotificationChannelSensitiveLabelsArgs{
+// 				AuthToken: pulumi.String("one"),
+// 			},
+// 			Type: pulumi.String("slack"),
 // 		})
 // 		if err != nil {
 // 			return err

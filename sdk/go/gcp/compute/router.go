@@ -12,7 +12,6 @@ import (
 
 // Represents a Router resource.
 //
-//
 // To get more information about Router, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -20,7 +19,6 @@ import (
 //     * [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
-//
 // ### Router Basic
 //
 // ```go
@@ -39,7 +37,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		foobarRouter, err := compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
+// 		_, err = compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
 // 			Network: foobarNetwork.Name,
 // 			Bgp: &compute.RouterBgpArgs{
 // 				Asn:           pulumi.Int(64514),
@@ -47,12 +45,12 @@ import (
 // 				AdvertisedGroups: pulumi.StringArray{
 // 					pulumi.String("ALL_SUBNETS"),
 // 				},
-// 				Advertised_ip_ranges: []map[string]interface{}{
-// 					map[string]interface{}{
-// 						"range": "1.2.3.4",
+// 				Advertised_ip_ranges: pulumi.MapArray{
+// 					pulumi.Map{
+// 						"range": pulumi.String("1.2.3.4"),
 // 					},
-// 					map[string]interface{}{
-// 						"range": "6.7.0.0/16",
+// 					pulumi.Map{
+// 						"range": pulumi.String("6.7.0.0/16"),
 // 					},
 // 				},
 // 			},

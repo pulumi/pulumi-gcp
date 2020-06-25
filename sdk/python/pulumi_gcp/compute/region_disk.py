@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RegionDisk(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
     """
@@ -155,7 +156,6 @@ class RegionDisk(pulumi.CustomResource):
         Add a persistent disk to your instance when you need reliable and
         affordable storage with consistent performance characteristics.
 
-
         To get more information about RegionDisk, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
@@ -166,7 +166,6 @@ class RegionDisk(pulumi.CustomResource):
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage
-
         ### Region Disk Basic
 
         ```python
@@ -412,9 +411,9 @@ class RegionDisk(pulumi.CustomResource):
         __props__["type"] = type
         __props__["users"] = users
         return RegionDisk(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -11,12 +11,33 @@ import (
 
 // A repository (or repo) is a Git repository storing versioned source content.
 //
-//
 // To get more information about Repository, see:
 //
 // * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/source-repositories/)
+//
+// ## Example Usage
+// ### Sourcerepo Repository Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/sourcerepo"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = sourcerepo.NewRepository(ctx, "my-repo", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Repository struct {
 	pulumi.CustomResourceState
 

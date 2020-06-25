@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;

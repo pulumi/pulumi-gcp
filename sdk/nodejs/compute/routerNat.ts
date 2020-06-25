@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
 /**
  * A NAT service created in a router.
  *
- *
  * To get more information about RouterNat, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -17,7 +16,6 @@ import * as utilities from "../utilities";
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
  *
  * ## Example Usage
- *
  * ### Router Nat Basic
  *
  * ```typescript
@@ -48,7 +46,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Router Nat Manual Ips
  *
  * ```typescript

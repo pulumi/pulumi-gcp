@@ -12,7 +12,6 @@ namespace Pulumi.Gcp.Spanner
     /// <summary>
     /// A Cloud Spanner Database which is hosted on a Spanner instance.
     /// 
-    /// 
     /// To get more information about Database, see:
     /// 
     /// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
@@ -20,7 +19,6 @@ namespace Pulumi.Gcp.Spanner
     ///     * [Official Documentation](https://cloud.google.com/spanner/)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Spanner Database Basic
     /// 
     /// ```csharp

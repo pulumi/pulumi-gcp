@@ -13,10 +13,7 @@ namespace Pulumi.Gcp.Compute
     /// Represents an InterconnectAttachment (VLAN attachment) resource. For more
     /// information, see Creating VLAN Attachments.
     /// 
-    /// 
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Interconnect Attachment Basic
     /// 
     /// ```csharp

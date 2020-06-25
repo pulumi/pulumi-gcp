@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BucketACL(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
@@ -41,7 +42,7 @@ class BucketACL(pulumi.CustomResource):
 
         ## Example Usage
 
-
+        Example creating an ACL on a bucket with one owner, and one reader.
 
         ```python
         import pulumi
@@ -115,9 +116,9 @@ class BucketACL(pulumi.CustomResource):
         __props__["predefined_acl"] = predefined_acl
         __props__["role_entities"] = role_entities
         return BucketACL(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

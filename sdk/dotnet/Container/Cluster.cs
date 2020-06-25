@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Container
     /// plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
-    /// 
     /// ### With The Default Node Pool
     /// 
     /// ```csharp

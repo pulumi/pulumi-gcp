@@ -18,8 +18,7 @@ type EngineModelDefaultVersion struct {
 // EngineModelDefaultVersionInput is an input type that accepts EngineModelDefaultVersionArgs and EngineModelDefaultVersionOutput values.
 // You can construct a concrete instance of `EngineModelDefaultVersionInput` via:
 //
-// 		 EngineModelDefaultVersionArgs{...}
-//
+//          EngineModelDefaultVersionArgs{...}
 type EngineModelDefaultVersionInput interface {
 	pulumi.Input
 
@@ -55,12 +54,11 @@ func (i EngineModelDefaultVersionArgs) ToEngineModelDefaultVersionPtrOutputWithC
 // EngineModelDefaultVersionPtrInput is an input type that accepts EngineModelDefaultVersionArgs, EngineModelDefaultVersionPtr and EngineModelDefaultVersionPtrOutput values.
 // You can construct a concrete instance of `EngineModelDefaultVersionPtrInput` via:
 //
-// 		 EngineModelDefaultVersionArgs{...}
+//          EngineModelDefaultVersionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EngineModelDefaultVersionPtrInput interface {
 	pulumi.Input
 

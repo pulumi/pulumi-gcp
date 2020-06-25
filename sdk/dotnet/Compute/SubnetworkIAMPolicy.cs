@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// &gt; **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// 
-    /// 
     /// ## google\_compute\_subnetwork\_iam\_policy
     /// 
     /// ```csharp

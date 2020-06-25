@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ProjectSink(pulumi.CustomResource):
     bigquery_options: pulumi.Output[dict]
     """
@@ -69,8 +70,6 @@ class ProjectSink(pulumi.CustomResource):
 
         ## Example Usage
 
-
-
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -79,6 +78,41 @@ class ProjectSink(pulumi.CustomResource):
             destination="pubsub.googleapis.com/projects/my-project/topics/instance-activity",
             filter="resource.type = gce_instance AND severity >= WARN",
             unique_writer_identity=True)
+        ```
+
+        A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
+        cloud storage bucket. Because we are using `unique_writer_identity`, we must grant it access to the bucket. Note that
+        this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
+        used with this provider.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Our logged compute instance
+        my_logged_instance = gcp.compute.Instance("my-logged-instance",
+            machine_type="n1-standard-1",
+            zone="us-central1-a",
+            boot_disk={
+                "initialize_params": {
+                    "image": "debian-cloud/debian-9",
+                },
+            },
+            network_interface=[{
+                "network": "default",
+                "access_config": [{}],
+            }])
+        # A bucket to store logs in
+        log_bucket = gcp.storage.Bucket("log-bucket")
+        # Our sink; this logs all activity related to our "my-logged-instance" instance
+        instance_sink = gcp.logging.ProjectSink("instance-sink",
+            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
+            filter=my_logged_instance.instance_id.apply(lambda instance_id: f"resource.type = gce_instance AND resource.labels.instance_id = \"{instance_id}\""),
+            unique_writer_identity=True)
+        # Because our sink uses a unique_writer, we must grant that writer access to the bucket.
+        log_writer = gcp.projects.IAMBinding("log-writer",
+            role="roles/storage.objectCreator",
+            members=[instance_sink.writer_identity])
         ```
 
         :param str resource_name: The name of the resource.
@@ -188,9 +222,9 @@ class ProjectSink(pulumi.CustomResource):
         __props__["unique_writer_identity"] = unique_writer_identity
         __props__["writer_identity"] = writer_identity
         return ProjectSink(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

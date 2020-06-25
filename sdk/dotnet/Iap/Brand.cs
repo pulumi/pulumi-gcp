@@ -14,10 +14,11 @@ namespace Pulumi.Gcp.Iap
     /// programatically via API. To convert it into an external brands
     /// please use the GCP Console.
     /// 
-    /// 
     /// &gt; **Note:** Brands can be created only once for a Google Cloud Platform
     /// project and cannot be deleted. Destroying a provider-managed Brand
     /// will remove it from state but *will not delete the resource on the server.*
+    /// 
+    /// ## Example Usage
     /// </summary>
     public partial class Brand : Pulumi.CustomResource
     {

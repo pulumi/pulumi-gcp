@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * For more information, see Access Control, with the caveat that this API
  * uses READER and OWNER instead of READ and FULL_CONTROL.
  *
- *
  * To get more information about DefaultObjectAccessControl, see:
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls)
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
  *
  * ## Example Usage
- *
  * ### Storage Default Object Access Control Public
  *
  * ```typescript

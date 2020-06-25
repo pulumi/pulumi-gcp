@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Example creating an ACL on a bucket with one owner, and one reader.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

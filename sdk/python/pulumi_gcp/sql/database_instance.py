@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DatabaseInstance(pulumi.CustomResource):
     connection_name: pulumi.Output[str]
     """
@@ -205,21 +206,21 @@ class DatabaseInstance(pulumi.CustomResource):
         To upgrade your First-generation instance, update your config that the instance has
         * `settings.ip_configuration.ipv4_enabled=true`
         * `settings.backup_configuration.enabled=true`
-        * `settings.backup_configuration.binary_log_enabled=true`.  
-        Apply the config, then upgrade the instance in the console as described in the documentation.
-        Once upgraded, update the following attributes in your config to the correct value according to
-        the above documentation:
+        * `settings.backup_configuration.binary_log_enabled=true`.\
+          Apply the config, then upgrade the instance in the console as described in the documentation.
+          Once upgraded, update the following attributes in your config to the correct value according to
+          the above documentation:
         * `region`
         * `database_version` (if applicable)
-        * `tier`  
-        Remove any fields that are not applicable to Second-generation instances:
+        * `tier`\
+          Remove any fields that are not applicable to Second-generation instances:
         * `settings.crash_safe_replication`
         * `settings.replication_type`
         * `settings.authorized_gae_applications`
-        And change values to appropriate values for Second-generation instances for:
+          And change values to appropriate values for Second-generation instances for:
         * `activation_policy` ("ON_DEMAND" is no longer an option)
         * `pricing_plan` ("PER_USE" is now the only valid option)
-        Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
+          Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
 
         > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
         default 'root'@'%' user with no password. This user will be deleted by the provider on
@@ -227,7 +228,6 @@ class DatabaseInstance(pulumi.CustomResource):
         a restricted host and strong password.
 
         ## Example Usage
-
         ### SQL Second Generation Instance
 
         ```python
@@ -241,8 +241,8 @@ class DatabaseInstance(pulumi.CustomResource):
                 "tier": "db-f1-micro",
             })
         ```
-
         ### Private IP Instance
+        > **NOTE**: For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `depends_on`reference as shown below.
 
         ```python
         import pulumi
@@ -637,9 +637,9 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__["service_account_email_address"] = service_account_email_address
         __props__["settings"] = settings
         return DatabaseInstance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -11,9 +11,7 @@ import * as utilities from "../utilities";
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
  *
- *
  * ## Example Usage
- *
  * ### Empty Instance Group
  *
  * ```typescript
@@ -26,7 +24,6 @@ import * as utilities from "../utilities";
  *     network: google_compute_network["default"].id,
  * });
  * ```
- *
  * ### Example Usage - With instances and named ports
  *
  * ```typescript
@@ -52,8 +49,10 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
- *
  * ### Example Usage - Recreating an instance group in use
+ * Recreating an instance group that's in use by another resource will give a
+ * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+ * as shown in this example to avoid this type of error.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

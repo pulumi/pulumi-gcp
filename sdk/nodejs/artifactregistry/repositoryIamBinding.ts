@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `gcp.artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
  *
- *
  * ## google\_artifact\_registry\_repository\_iam\_policy
  *
  * ```typescript

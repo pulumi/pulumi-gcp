@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AccountIamMember(pulumi.CustomResource):
     billing_account_id: pulumi.Output[str]
     """
@@ -37,8 +38,6 @@ class AccountIamMember(pulumi.CustomResource):
            what your policy should be.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -126,9 +125,9 @@ class AccountIamMember(pulumi.CustomResource):
         __props__["member"] = member
         __props__["role"] = role
         return AccountIamMember(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

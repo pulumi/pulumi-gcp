@@ -45,8 +45,6 @@ def get_transfer_project_servie_account(project=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

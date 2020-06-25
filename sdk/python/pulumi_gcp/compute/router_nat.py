@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RouterNat(pulumi.CustomResource):
     drain_nat_ips: pulumi.Output[list]
     """
@@ -104,7 +105,6 @@ class RouterNat(pulumi.CustomResource):
         """
         A NAT service created in a router.
 
-
         To get more information about RouterNat, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -112,7 +112,6 @@ class RouterNat(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
-
         ### Router Nat Basic
 
         ```python
@@ -140,7 +139,6 @@ class RouterNat(pulumi.CustomResource):
                 "filter": "ERRORS_ONLY",
             })
         ```
-
         ### Router Nat Manual Ips
 
         ```python
@@ -345,9 +343,9 @@ class RouterNat(pulumi.CustomResource):
         __props__["tcp_transitory_idle_timeout_sec"] = tcp_transitory_idle_timeout_sec
         __props__["udp_idle_timeout_sec"] = udp_idle_timeout_sec
         return RouterNat(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

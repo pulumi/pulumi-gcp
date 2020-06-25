@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AppEngineVersionIamPolicy(pulumi.CustomResource):
     app_id: pulumi.Output[str]
     """
@@ -47,8 +48,6 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         > **Note:** `iap.AppEngineVersionIamPolicy` **cannot** be used in conjunction with `iap.AppEngineVersionIamBinding` and `iap.AppEngineVersionIamMember` or they will fight over what your policy should be.
 
         > **Note:** `iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role.
-
-
 
         ## google\_iap\_app\_engine\_version\_iam\_policy
 
@@ -235,9 +234,9 @@ class AppEngineVersionIamPolicy(pulumi.CustomResource):
         __props__["service"] = service
         __props__["version_id"] = version_id
         return AppEngineVersionIamPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

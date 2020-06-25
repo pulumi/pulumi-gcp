@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Deployment(pulumi.CustomResource):
     create_policy: pulumi.Output[str]
     """
@@ -91,8 +92,6 @@ class Deployment(pulumi.CustomResource):
         A collection of resources that are deployed and managed together using
         a configuration file
 
-
-
         > **Warning:** This resource is intended only to manage a Deployment resource,
         and attempts to manage the Deployment's resources in the provider as well
         will likely result in errors or unexpected behavior as the two tools
@@ -105,7 +104,6 @@ class Deployment(pulumi.CustomResource):
         `preview=false`).
 
         ## Example Usage
-
         ### Deployment Manager Deployment Basic
 
         ```python
@@ -280,9 +278,9 @@ class Deployment(pulumi.CustomResource):
         __props__["self_link"] = self_link
         __props__["target"] = target
         return Deployment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

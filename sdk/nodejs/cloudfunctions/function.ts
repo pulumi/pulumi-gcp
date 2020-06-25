@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * for Cloud Functions.
  *
  * ## Example Usage
- *
  * ### Public Function
  *
  * ```typescript
@@ -49,7 +48,6 @@ import * as utilities from "../utilities";
  *     member: "allUsers",
  * });
  * ```
- *
  * ### Single User
  *
  * ```typescript

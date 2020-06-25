@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GlobalNetworkEndpointGroup(pulumi.CustomResource):
     default_port: pulumi.Output[float]
     """
@@ -48,7 +49,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         A global network endpoint group contains endpoints that reside outside of Google Cloud.
         Currently a global network endpoint group can only support a single endpoint.
 
-
         To get more information about GlobalNetworkEndpointGroup, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -56,7 +56,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
-
         ### Global Network Endpoint Group
 
         ```python
@@ -67,7 +66,6 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             default_port="90",
             network_endpoint_type="INTERNET_FQDN_PORT")
         ```
-
         ### Global Network Endpoint Group Ip Address
 
         ```python
@@ -163,9 +161,9 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         __props__["project"] = project
         __props__["self_link"] = self_link
         return GlobalNetworkEndpointGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

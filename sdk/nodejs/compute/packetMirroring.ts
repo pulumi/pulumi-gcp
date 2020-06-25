@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
  *
  * ## Example Usage
- *
  * ### Compute Packet Mirroring Full
  *
  * ```typescript

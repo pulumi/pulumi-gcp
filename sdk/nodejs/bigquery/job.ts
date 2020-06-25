@@ -10,10 +10,7 @@ import * as utilities from "../utilities";
  * Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
  * Once a BigQuery job is created, it cannot be changed or deleted.
  *
- *
- *
  * ## Example Usage
- *
  * ### Bigquery Job Query
  *
  * ```typescript
@@ -50,7 +47,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Bigquery Job Query Table Reference
  *
  * ```typescript
@@ -88,7 +84,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Bigquery Job Load
  *
  * ```typescript
@@ -127,7 +122,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Bigquery Job Extract
  *
  * ```typescript

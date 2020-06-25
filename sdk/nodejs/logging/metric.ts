@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  * of the values. The distribution records the statistics of the extracted values along with
  * an optional histogram of the values as specified by the bucket options.
  *
- *
  * To get more information about Metric, see:
  *
  * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  *
  * ## Example Usage
- *
  * ### Logging Metric Basic
  *
  * ```typescript
@@ -60,7 +58,6 @@ import * as utilities from "../utilities";
  *     valueExtractor: "EXTRACT(jsonPayload.request)",
  * });
  * ```
- *
  * ### Logging Metric Counter Basic
  *
  * ```typescript
@@ -75,7 +72,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Logging Metric Counter Labels
  *
  * ```typescript

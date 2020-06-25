@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// &gt; **Note:** `gcp.iap.WebIamBinding` resources **can be** used in conjunction with `gcp.iap.WebIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// 
-    /// 
     /// ## google\_iap\_web\_iam\_policy
     /// 
     /// ```csharp

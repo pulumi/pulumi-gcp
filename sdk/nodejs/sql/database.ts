@@ -8,10 +8,7 @@ import * as utilities from "../utilities";
  * Represents a SQL database inside the Cloud SQL instance, hosted in
  * Google's cloud.
  *
- *
- *
  * ## Example Usage
- *
  * ### Sql Database Basic
  *
  * ```typescript

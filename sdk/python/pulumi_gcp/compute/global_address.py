@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GlobalAddress(pulumi.CustomResource):
     address: pulumi.Output[str]
     """
@@ -85,7 +86,6 @@ class GlobalAddress(pulumi.CustomResource):
         Represents a Global Address resource. Global addresses are used for
         HTTP(S) load balancing.
 
-
         To get more information about GlobalAddress, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
@@ -93,7 +93,6 @@ class GlobalAddress(pulumi.CustomResource):
             * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 
         ## Example Usage
-
         ### Global Address Basic
 
         ```python
@@ -229,9 +228,9 @@ class GlobalAddress(pulumi.CustomResource):
         __props__["purpose"] = purpose
         __props__["self_link"] = self_link
         return GlobalAddress(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Repository(pulumi.CustomResource):
     name: pulumi.Output[str]
     """
@@ -46,7 +47,6 @@ class Repository(pulumi.CustomResource):
         """
         A repository (or repo) is a Git repository storing versioned source content.
 
-
         To get more information about Repository, see:
 
         * [API documentation](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos)
@@ -54,7 +54,6 @@ class Repository(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/source-repositories/)
 
         ## Example Usage
-
         ### Sourcerepo Repository Basic
 
         ```python
@@ -63,7 +62,6 @@ class Repository(pulumi.CustomResource):
 
         my_repo = gcp.sourcerepo.Repository("my-repo")
         ```
-
         ### Sourcerepo Repository Full
 
         ```python
@@ -168,9 +166,9 @@ class Repository(pulumi.CustomResource):
         __props__["size"] = size
         __props__["url"] = url
         return Repository(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

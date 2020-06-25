@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * state as plain-text.[Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets)
  *
  * ## Example Usage
- *
  * ### Scan Config Basic
  *
  * ```typescript

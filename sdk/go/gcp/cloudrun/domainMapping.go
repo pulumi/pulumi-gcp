@@ -12,7 +12,6 @@ import (
 
 // Resource to hold the state and status of a user's domain mapping.
 //
-//
 // To get more information about DomainMapping, see:
 //
 // * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1alpha1/projects.locations.domainmappings)
@@ -20,7 +19,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
 //
 // ## Example Usage
-//
 // ### Cloud Run Domain Mapping Basic
 //
 // ```go
@@ -51,7 +49,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		defaultDomainMapping, err := cloudrun.NewDomainMapping(ctx, "defaultDomainMapping", &cloudrun.DomainMappingArgs{
+// 		_, err = cloudrun.NewDomainMapping(ctx, "defaultDomainMapping", &cloudrun.DomainMappingArgs{
 // 			Location: pulumi.String("us-central1"),
 // 			Metadata: &cloudrun.DomainMappingMetadataArgs{
 // 				Namespace: pulumi.String("my-project-name"),

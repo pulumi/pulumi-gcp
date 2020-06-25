@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
  *
  * ## Example Usage
- *
  * ### Artifact Registry Repository Basic
  *
  * ```typescript
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     format: "DOCKER",
  * });
  * ```
- *
  * ### Artifact Registry Repository Iam
  *
  * ```typescript

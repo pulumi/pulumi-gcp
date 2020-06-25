@@ -15,8 +15,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -48,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		folderAdminPolicy, err := folder.NewIAMPolicy(ctx, "folderAdminPolicy", &folder.IAMPolicyArgs{
+// 		_, err = folder.NewIAMPolicy(ctx, "folderAdminPolicy", &folder.IAMPolicyArgs{
 // 			Folder:     department1.Name,
 // 			PolicyData: pulumi.String(admin.PolicyData),
 // 		})

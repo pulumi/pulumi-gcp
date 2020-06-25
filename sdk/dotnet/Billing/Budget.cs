@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.Billing
     /// * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
     /// * How-to Guides
     ///     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
+    /// 
+    /// ## Example Usage
     /// </summary>
     public partial class Budget : Pulumi.CustomResource
     {

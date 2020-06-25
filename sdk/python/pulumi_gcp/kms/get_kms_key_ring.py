@@ -59,8 +59,6 @@ def get_kms_key_ring(location=None,name=None,project=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

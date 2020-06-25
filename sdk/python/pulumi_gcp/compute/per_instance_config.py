@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PerInstanceConfig(pulumi.CustomResource):
     instance_group_manager: pulumi.Output[str]
     """
@@ -79,6 +80,7 @@ class PerInstanceConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/stateful-migs#per-instance_configs)
 
+        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -213,9 +215,9 @@ class PerInstanceConfig(pulumi.CustomResource):
         __props__["remove_instance_state_on_destroy"] = remove_instance_state_on_destroy
         __props__["zone"] = zone
         return PerInstanceConfig(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

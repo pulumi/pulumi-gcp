@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RegionSslCertificate(pulumi.CustomResource):
     certificate: pulumi.Output[str]
     """
@@ -67,7 +68,6 @@ class RegionSslCertificate(pulumi.CustomResource):
         provides a mechanism to upload an SSL key and certificate to
         the load balancer to serve secure connections from the user.
 
-
         To get more information about RegionSslCertificate, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSslCertificates)
@@ -78,7 +78,6 @@ class RegionSslCertificate(pulumi.CustomResource):
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage
-
         ### Region Ssl Certificate Basic
 
         ```python
@@ -92,7 +91,6 @@ class RegionSslCertificate(pulumi.CustomResource):
             private_key=(lambda path: open(path).read())("path/to/private.key"),
             certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
         ```
-
         ### Region Ssl Certificate Target Https Proxies
 
         ```python
@@ -249,9 +247,9 @@ class RegionSslCertificate(pulumi.CustomResource):
         __props__["region"] = region
         __props__["self_link"] = self_link
         return RegionSslCertificate(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

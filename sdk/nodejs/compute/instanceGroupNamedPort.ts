@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * with GKE-generated groups that shouldn't otherwise be managed by other
  * tools.
  *
- *
  * To get more information about InstanceGroupNamedPort, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroup)
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
  *
  * ## Example Usage
- *
  * ### Instance Group Named Port Gke
  *
  * ```typescript

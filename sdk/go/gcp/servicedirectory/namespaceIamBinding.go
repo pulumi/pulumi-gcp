@@ -26,6 +26,7 @@ import (
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/servicedirectory"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
@@ -45,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := servicedirectory.NewNamespaceIamPolicy(ctx, "policy", &servicedirectory.NamespaceIamPolicyArgs{
+// 		_, err = servicedirectory.NewNamespaceIamPolicy(ctx, "policy", &servicedirectory.NamespaceIamPolicyArgs{
 // 			PolicyData: pulumi.String(admin.PolicyData),
 // 		})
 // 		if err != nil {
@@ -68,7 +69,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := servicedirectory.NewNamespaceIamBinding(ctx, "binding", &servicedirectory.NamespaceIamBindingArgs{
+// 		_, err = servicedirectory.NewNamespaceIamBinding(ctx, "binding", &servicedirectory.NamespaceIamBindingArgs{
 // 			Role: pulumi.String("roles/viewer"),
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:jane@example.com"),
@@ -94,7 +95,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := servicedirectory.NewNamespaceIamMember(ctx, "member", &servicedirectory.NamespaceIamMemberArgs{
+// 		_, err = servicedirectory.NewNamespaceIamMember(ctx, "member", &servicedirectory.NamespaceIamMemberArgs{
 // 			Role:   pulumi.String("roles/viewer"),
 // 			Member: pulumi.String("user:jane@example.com"),
 // 		})

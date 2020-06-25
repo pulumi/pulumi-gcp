@@ -23,8 +23,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -35,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := billing.NewAccountIamBinding(ctx, "binding", &billing.AccountIamBindingArgs{
+// 		_, err = billing.NewAccountIamBinding(ctx, "binding", &billing.AccountIamBindingArgs{
 // 			BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:alice@gmail.com"),

@@ -20,8 +20,6 @@ import (
 //
 // > **Note:** `cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
 //
-//
-//
 // ## google\_cloudfunctions\_function\_iam\_policy
 //
 // ```go
@@ -29,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/cloudfunctions"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -47,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := cloudfunctions.NewFunctionIamPolicy(ctx, "policy", &cloudfunctions.FunctionIamPolicyArgs{
+// 		_, err = cloudfunctions.NewFunctionIamPolicy(ctx, "policy", &cloudfunctions.FunctionIamPolicyArgs{
 // 			Project:       pulumi.String(google_cloudfunctions_function.Function.Project),
 // 			Region:        pulumi.String(google_cloudfunctions_function.Function.Region),
 // 			CloudFunction: pulumi.String(google_cloudfunctions_function.Function.Name),
@@ -73,7 +72,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := cloudfunctions.NewFunctionIamBinding(ctx, "binding", &cloudfunctions.FunctionIamBindingArgs{
+// 		_, err = cloudfunctions.NewFunctionIamBinding(ctx, "binding", &cloudfunctions.FunctionIamBindingArgs{
 // 			Project:       pulumi.String(google_cloudfunctions_function.Function.Project),
 // 			Region:        pulumi.String(google_cloudfunctions_function.Function.Region),
 // 			CloudFunction: pulumi.String(google_cloudfunctions_function.Function.Name),
@@ -102,7 +101,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := cloudfunctions.NewFunctionIamMember(ctx, "member", &cloudfunctions.FunctionIamMemberArgs{
+// 		_, err = cloudfunctions.NewFunctionIamMember(ctx, "member", &cloudfunctions.FunctionIamMemberArgs{
 // 			Project:       pulumi.String(google_cloudfunctions_function.Function.Project),
 // 			Region:        pulumi.String(google_cloudfunctions_function.Function.Region),
 // 			CloudFunction: pulumi.String(google_cloudfunctions_function.Function.Name),

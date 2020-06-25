@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

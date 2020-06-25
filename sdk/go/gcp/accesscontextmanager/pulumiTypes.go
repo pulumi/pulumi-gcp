@@ -24,8 +24,7 @@ type AccessLevelBasic struct {
 // AccessLevelBasicInput is an input type that accepts AccessLevelBasicArgs and AccessLevelBasicOutput values.
 // You can construct a concrete instance of `AccessLevelBasicInput` via:
 //
-// 		 AccessLevelBasicArgs{...}
-//
+//          AccessLevelBasicArgs{...}
 type AccessLevelBasicInput interface {
 	pulumi.Input
 
@@ -67,12 +66,11 @@ func (i AccessLevelBasicArgs) ToAccessLevelBasicPtrOutputWithContext(ctx context
 // AccessLevelBasicPtrInput is an input type that accepts AccessLevelBasicArgs, AccessLevelBasicPtr and AccessLevelBasicPtrOutput values.
 // You can construct a concrete instance of `AccessLevelBasicPtrInput` via:
 //
-// 		 AccessLevelBasicArgs{...}
+//          AccessLevelBasicArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AccessLevelBasicPtrInput interface {
 	pulumi.Input
 
@@ -221,8 +219,7 @@ type AccessLevelBasicCondition struct {
 // AccessLevelBasicConditionInput is an input type that accepts AccessLevelBasicConditionArgs and AccessLevelBasicConditionOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionInput` via:
 //
-// 		 AccessLevelBasicConditionArgs{...}
-//
+//          AccessLevelBasicConditionArgs{...}
 type AccessLevelBasicConditionInput interface {
 	pulumi.Input
 
@@ -285,8 +282,7 @@ func (i AccessLevelBasicConditionArgs) ToAccessLevelBasicConditionOutputWithCont
 // AccessLevelBasicConditionArrayInput is an input type that accepts AccessLevelBasicConditionArray and AccessLevelBasicConditionArrayOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionArrayInput` via:
 //
-// 		 AccessLevelBasicConditionArray{ AccessLevelBasicConditionArgs{...} }
-//
+//          AccessLevelBasicConditionArray{ AccessLevelBasicConditionArgs{...} }
 type AccessLevelBasicConditionArrayInput interface {
 	pulumi.Input
 
@@ -419,8 +415,7 @@ type AccessLevelBasicConditionDevicePolicy struct {
 // AccessLevelBasicConditionDevicePolicyInput is an input type that accepts AccessLevelBasicConditionDevicePolicyArgs and AccessLevelBasicConditionDevicePolicyOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionDevicePolicyInput` via:
 //
-// 		 AccessLevelBasicConditionDevicePolicyArgs{...}
-//
+//          AccessLevelBasicConditionDevicePolicyArgs{...}
 type AccessLevelBasicConditionDevicePolicyInput interface {
 	pulumi.Input
 
@@ -470,12 +465,11 @@ func (i AccessLevelBasicConditionDevicePolicyArgs) ToAccessLevelBasicConditionDe
 // AccessLevelBasicConditionDevicePolicyPtrInput is an input type that accepts AccessLevelBasicConditionDevicePolicyArgs, AccessLevelBasicConditionDevicePolicyPtr and AccessLevelBasicConditionDevicePolicyPtrOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionDevicePolicyPtrInput` via:
 //
-// 		 AccessLevelBasicConditionDevicePolicyArgs{...}
+//          AccessLevelBasicConditionDevicePolicyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AccessLevelBasicConditionDevicePolicyPtrInput interface {
 	pulumi.Input
 
@@ -655,8 +649,7 @@ type AccessLevelBasicConditionDevicePolicyOsConstraint struct {
 // AccessLevelBasicConditionDevicePolicyOsConstraintInput is an input type that accepts AccessLevelBasicConditionDevicePolicyOsConstraintArgs and AccessLevelBasicConditionDevicePolicyOsConstraintOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionDevicePolicyOsConstraintInput` via:
 //
-// 		 AccessLevelBasicConditionDevicePolicyOsConstraintArgs{...}
-//
+//          AccessLevelBasicConditionDevicePolicyOsConstraintArgs{...}
 type AccessLevelBasicConditionDevicePolicyOsConstraintInput interface {
 	pulumi.Input
 
@@ -688,8 +681,7 @@ func (i AccessLevelBasicConditionDevicePolicyOsConstraintArgs) ToAccessLevelBasi
 // AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput is an input type that accepts AccessLevelBasicConditionDevicePolicyOsConstraintArray and AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput values.
 // You can construct a concrete instance of `AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput` via:
 //
-// 		 AccessLevelBasicConditionDevicePolicyOsConstraintArray{ AccessLevelBasicConditionDevicePolicyOsConstraintArgs{...} }
-//
+//          AccessLevelBasicConditionDevicePolicyOsConstraintArray{ AccessLevelBasicConditionDevicePolicyOsConstraintArgs{...} }
 type AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput interface {
 	pulumi.Input
 
@@ -767,8 +759,7 @@ type AccessLevelCustom struct {
 // AccessLevelCustomInput is an input type that accepts AccessLevelCustomArgs and AccessLevelCustomOutput values.
 // You can construct a concrete instance of `AccessLevelCustomInput` via:
 //
-// 		 AccessLevelCustomArgs{...}
-//
+//          AccessLevelCustomArgs{...}
 type AccessLevelCustomInput interface {
 	pulumi.Input
 
@@ -806,12 +797,11 @@ func (i AccessLevelCustomArgs) ToAccessLevelCustomPtrOutputWithContext(ctx conte
 // AccessLevelCustomPtrInput is an input type that accepts AccessLevelCustomArgs, AccessLevelCustomPtr and AccessLevelCustomPtrOutput values.
 // You can construct a concrete instance of `AccessLevelCustomPtrInput` via:
 //
-// 		 AccessLevelCustomArgs{...}
+//          AccessLevelCustomArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AccessLevelCustomPtrInput interface {
 	pulumi.Input
 
@@ -912,8 +902,7 @@ type AccessLevelCustomExpr struct {
 // AccessLevelCustomExprInput is an input type that accepts AccessLevelCustomExprArgs and AccessLevelCustomExprOutput values.
 // You can construct a concrete instance of `AccessLevelCustomExprInput` via:
 //
-// 		 AccessLevelCustomExprArgs{...}
-//
+//          AccessLevelCustomExprArgs{...}
 type AccessLevelCustomExprInput interface {
 	pulumi.Input
 
@@ -955,12 +944,11 @@ func (i AccessLevelCustomExprArgs) ToAccessLevelCustomExprPtrOutputWithContext(c
 // AccessLevelCustomExprPtrInput is an input type that accepts AccessLevelCustomExprArgs, AccessLevelCustomExprPtr and AccessLevelCustomExprPtrOutput values.
 // You can construct a concrete instance of `AccessLevelCustomExprPtrInput` via:
 //
-// 		 AccessLevelCustomExprArgs{...}
+//          AccessLevelCustomExprArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type AccessLevelCustomExprPtrInput interface {
 	pulumi.Input
 
@@ -1117,8 +1105,7 @@ type ServicePerimeterSpec struct {
 // ServicePerimeterSpecInput is an input type that accepts ServicePerimeterSpecArgs and ServicePerimeterSpecOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecInput` via:
 //
-// 		 ServicePerimeterSpecArgs{...}
-//
+//          ServicePerimeterSpecArgs{...}
 type ServicePerimeterSpecInput interface {
 	pulumi.Input
 
@@ -1175,12 +1162,11 @@ func (i ServicePerimeterSpecArgs) ToServicePerimeterSpecPtrOutputWithContext(ctx
 // ServicePerimeterSpecPtrInput is an input type that accepts ServicePerimeterSpecArgs, ServicePerimeterSpecPtr and ServicePerimeterSpecPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecPtrInput` via:
 //
-// 		 ServicePerimeterSpecArgs{...}
+//          ServicePerimeterSpecArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePerimeterSpecPtrInput interface {
 	pulumi.Input
 
@@ -1352,8 +1338,7 @@ type ServicePerimeterSpecVpcAccessibleServices struct {
 // ServicePerimeterSpecVpcAccessibleServicesInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesArgs and ServicePerimeterSpecVpcAccessibleServicesOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesInput` via:
 //
-// 		 ServicePerimeterSpecVpcAccessibleServicesArgs{...}
-//
+//          ServicePerimeterSpecVpcAccessibleServicesArgs{...}
 type ServicePerimeterSpecVpcAccessibleServicesInput interface {
 	pulumi.Input
 
@@ -1393,12 +1378,11 @@ func (i ServicePerimeterSpecVpcAccessibleServicesArgs) ToServicePerimeterSpecVpc
 // ServicePerimeterSpecVpcAccessibleServicesPtrInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesArgs, ServicePerimeterSpecVpcAccessibleServicesPtr and ServicePerimeterSpecVpcAccessibleServicesPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesPtrInput` via:
 //
-// 		 ServicePerimeterSpecVpcAccessibleServicesArgs{...}
+//          ServicePerimeterSpecVpcAccessibleServicesArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePerimeterSpecVpcAccessibleServicesPtrInput interface {
 	pulumi.Input
 
@@ -1531,8 +1515,7 @@ type ServicePerimeterStatus struct {
 // ServicePerimeterStatusInput is an input type that accepts ServicePerimeterStatusArgs and ServicePerimeterStatusOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusInput` via:
 //
-// 		 ServicePerimeterStatusArgs{...}
-//
+//          ServicePerimeterStatusArgs{...}
 type ServicePerimeterStatusInput interface {
 	pulumi.Input
 
@@ -1589,12 +1572,11 @@ func (i ServicePerimeterStatusArgs) ToServicePerimeterStatusPtrOutputWithContext
 // ServicePerimeterStatusPtrInput is an input type that accepts ServicePerimeterStatusArgs, ServicePerimeterStatusPtr and ServicePerimeterStatusPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusPtrInput` via:
 //
-// 		 ServicePerimeterStatusArgs{...}
+//          ServicePerimeterStatusArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePerimeterStatusPtrInput interface {
 	pulumi.Input
 
@@ -1766,8 +1748,7 @@ type ServicePerimeterStatusVpcAccessibleServices struct {
 // ServicePerimeterStatusVpcAccessibleServicesInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesArgs and ServicePerimeterStatusVpcAccessibleServicesOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusVpcAccessibleServicesInput` via:
 //
-// 		 ServicePerimeterStatusVpcAccessibleServicesArgs{...}
-//
+//          ServicePerimeterStatusVpcAccessibleServicesArgs{...}
 type ServicePerimeterStatusVpcAccessibleServicesInput interface {
 	pulumi.Input
 
@@ -1807,12 +1788,11 @@ func (i ServicePerimeterStatusVpcAccessibleServicesArgs) ToServicePerimeterStatu
 // ServicePerimeterStatusVpcAccessibleServicesPtrInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesArgs, ServicePerimeterStatusVpcAccessibleServicesPtr and ServicePerimeterStatusVpcAccessibleServicesPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterStatusVpcAccessibleServicesPtrInput` via:
 //
-// 		 ServicePerimeterStatusVpcAccessibleServicesArgs{...}
+//          ServicePerimeterStatusVpcAccessibleServicesArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ServicePerimeterStatusVpcAccessibleServicesPtrInput interface {
 	pulumi.Input
 

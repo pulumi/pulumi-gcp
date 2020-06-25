@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SubnetworkIAMPolicy(pulumi.CustomResource):
     etag: pulumi.Output[str]
     """
@@ -46,8 +47,6 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         > **Note:** `compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `compute.SubnetworkIAMBinding` and `compute.SubnetworkIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
-
-
 
         ## google\_compute\_subnetwork\_iam\_policy
 
@@ -226,9 +225,9 @@ class SubnetworkIAMPolicy(pulumi.CustomResource):
         __props__["region"] = region
         __props__["subnetwork"] = subnetwork
         return SubnetworkIAMPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -97,8 +97,6 @@ def get_subnetwork(name=None,project=None,region=None,self_link=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

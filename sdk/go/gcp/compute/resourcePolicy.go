@@ -11,10 +11,7 @@ import (
 
 // A policy that can be attached to a resource to specify or schedule actions on that resource.
 //
-//
-//
 // ## Example Usage
-//
 // ### Resource Policy Basic
 //
 // ```go
@@ -27,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foo, err := compute.NewResourcePolicy(ctx, "foo", &compute.ResourcePolicyArgs{
+// 		_, err = compute.NewResourcePolicy(ctx, "foo", &compute.ResourcePolicyArgs{
 // 			Region: pulumi.String("us-central1"),
 // 			SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
 // 				Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
@@ -45,7 +42,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Resource Policy Full
 //
 // ```go
@@ -58,7 +54,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bar, err := compute.NewResourcePolicy(ctx, "bar", &compute.ResourcePolicyArgs{
+// 		_, err = compute.NewResourcePolicy(ctx, "bar", &compute.ResourcePolicyArgs{
 // 			Region: pulumi.String("us-central1"),
 // 			SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
 // 				RetentionPolicy: &compute.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{
@@ -73,8 +69,8 @@ import (
 // 				},
 // 				SnapshotProperties: &compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs{
 // 					GuestFlush: pulumi.Bool(true),
-// 					Labels: map[string]interface{}{
-// 						"myLabel": "value",
+// 					Labels: pulumi.Map{
+// 						"myLabel": pulumi.String("value"),
 // 					},
 // 					StorageLocations: pulumi.String("us"),
 // 				},
@@ -87,7 +83,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Resource Policy Placement Policy
 //
 // ```go
@@ -100,7 +95,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		baz, err := compute.NewResourcePolicy(ctx, "baz", &compute.ResourcePolicyArgs{
+// 		_, err = compute.NewResourcePolicy(ctx, "baz", &compute.ResourcePolicyArgs{
 // 			GroupPlacementPolicy: &compute.ResourcePolicyGroupPlacementPolicyArgs{
 // 				Collocation: pulumi.String("COLLOCATED"),
 // 				VmCount:     pulumi.Int(2),

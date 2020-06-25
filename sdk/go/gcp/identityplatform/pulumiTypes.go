@@ -24,8 +24,7 @@ type InboundSamlConfigIdpConfig struct {
 // InboundSamlConfigIdpConfigInput is an input type that accepts InboundSamlConfigIdpConfigArgs and InboundSamlConfigIdpConfigOutput values.
 // You can construct a concrete instance of `InboundSamlConfigIdpConfigInput` via:
 //
-// 		 InboundSamlConfigIdpConfigArgs{...}
-//
+//          InboundSamlConfigIdpConfigArgs{...}
 type InboundSamlConfigIdpConfigInput interface {
 	pulumi.Input
 
@@ -67,12 +66,11 @@ func (i InboundSamlConfigIdpConfigArgs) ToInboundSamlConfigIdpConfigPtrOutputWit
 // InboundSamlConfigIdpConfigPtrInput is an input type that accepts InboundSamlConfigIdpConfigArgs, InboundSamlConfigIdpConfigPtr and InboundSamlConfigIdpConfigPtrOutput values.
 // You can construct a concrete instance of `InboundSamlConfigIdpConfigPtrInput` via:
 //
-// 		 InboundSamlConfigIdpConfigArgs{...}
+//          InboundSamlConfigIdpConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type InboundSamlConfigIdpConfigPtrInput interface {
 	pulumi.Input
 
@@ -211,8 +209,7 @@ type InboundSamlConfigIdpConfigIdpCertificate struct {
 // InboundSamlConfigIdpConfigIdpCertificateInput is an input type that accepts InboundSamlConfigIdpConfigIdpCertificateArgs and InboundSamlConfigIdpConfigIdpCertificateOutput values.
 // You can construct a concrete instance of `InboundSamlConfigIdpConfigIdpCertificateInput` via:
 //
-// 		 InboundSamlConfigIdpConfigIdpCertificateArgs{...}
-//
+//          InboundSamlConfigIdpConfigIdpCertificateArgs{...}
 type InboundSamlConfigIdpConfigIdpCertificateInput interface {
 	pulumi.Input
 
@@ -241,8 +238,7 @@ func (i InboundSamlConfigIdpConfigIdpCertificateArgs) ToInboundSamlConfigIdpConf
 // InboundSamlConfigIdpConfigIdpCertificateArrayInput is an input type that accepts InboundSamlConfigIdpConfigIdpCertificateArray and InboundSamlConfigIdpConfigIdpCertificateArrayOutput values.
 // You can construct a concrete instance of `InboundSamlConfigIdpConfigIdpCertificateArrayInput` via:
 //
-// 		 InboundSamlConfigIdpConfigIdpCertificateArray{ InboundSamlConfigIdpConfigIdpCertificateArgs{...} }
-//
+//          InboundSamlConfigIdpConfigIdpCertificateArray{ InboundSamlConfigIdpConfigIdpCertificateArgs{...} }
 type InboundSamlConfigIdpConfigIdpCertificateArrayInput interface {
 	pulumi.Input
 
@@ -317,8 +313,7 @@ type InboundSamlConfigSpConfig struct {
 // InboundSamlConfigSpConfigInput is an input type that accepts InboundSamlConfigSpConfigArgs and InboundSamlConfigSpConfigOutput values.
 // You can construct a concrete instance of `InboundSamlConfigSpConfigInput` via:
 //
-// 		 InboundSamlConfigSpConfigArgs{...}
-//
+//          InboundSamlConfigSpConfigArgs{...}
 type InboundSamlConfigSpConfigInput interface {
 	pulumi.Input
 
@@ -359,12 +354,11 @@ func (i InboundSamlConfigSpConfigArgs) ToInboundSamlConfigSpConfigPtrOutputWithC
 // InboundSamlConfigSpConfigPtrInput is an input type that accepts InboundSamlConfigSpConfigArgs, InboundSamlConfigSpConfigPtr and InboundSamlConfigSpConfigPtrOutput values.
 // You can construct a concrete instance of `InboundSamlConfigSpConfigPtrInput` via:
 //
-// 		 InboundSamlConfigSpConfigArgs{...}
+//          InboundSamlConfigSpConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type InboundSamlConfigSpConfigPtrInput interface {
 	pulumi.Input
 
@@ -488,8 +482,7 @@ type InboundSamlConfigSpConfigSpCertificate struct {
 // InboundSamlConfigSpConfigSpCertificateInput is an input type that accepts InboundSamlConfigSpConfigSpCertificateArgs and InboundSamlConfigSpConfigSpCertificateOutput values.
 // You can construct a concrete instance of `InboundSamlConfigSpConfigSpCertificateInput` via:
 //
-// 		 InboundSamlConfigSpConfigSpCertificateArgs{...}
-//
+//          InboundSamlConfigSpConfigSpCertificateArgs{...}
 type InboundSamlConfigSpConfigSpCertificateInput interface {
 	pulumi.Input
 
@@ -518,8 +511,7 @@ func (i InboundSamlConfigSpConfigSpCertificateArgs) ToInboundSamlConfigSpConfigS
 // InboundSamlConfigSpConfigSpCertificateArrayInput is an input type that accepts InboundSamlConfigSpConfigSpCertificateArray and InboundSamlConfigSpConfigSpCertificateArrayOutput values.
 // You can construct a concrete instance of `InboundSamlConfigSpConfigSpCertificateArrayInput` via:
 //
-// 		 InboundSamlConfigSpConfigSpCertificateArray{ InboundSamlConfigSpConfigSpCertificateArgs{...} }
-//
+//          InboundSamlConfigSpConfigSpCertificateArray{ InboundSamlConfigSpConfigSpCertificateArgs{...} }
 type InboundSamlConfigSpConfigSpCertificateArrayInput interface {
 	pulumi.Input
 
@@ -595,8 +587,7 @@ type TenantInboundSamlConfigIdpConfig struct {
 // TenantInboundSamlConfigIdpConfigInput is an input type that accepts TenantInboundSamlConfigIdpConfigArgs and TenantInboundSamlConfigIdpConfigOutput values.
 // You can construct a concrete instance of `TenantInboundSamlConfigIdpConfigInput` via:
 //
-// 		 TenantInboundSamlConfigIdpConfigArgs{...}
-//
+//          TenantInboundSamlConfigIdpConfigArgs{...}
 type TenantInboundSamlConfigIdpConfigInput interface {
 	pulumi.Input
 
@@ -638,12 +629,11 @@ func (i TenantInboundSamlConfigIdpConfigArgs) ToTenantInboundSamlConfigIdpConfig
 // TenantInboundSamlConfigIdpConfigPtrInput is an input type that accepts TenantInboundSamlConfigIdpConfigArgs, TenantInboundSamlConfigIdpConfigPtr and TenantInboundSamlConfigIdpConfigPtrOutput values.
 // You can construct a concrete instance of `TenantInboundSamlConfigIdpConfigPtrInput` via:
 //
-// 		 TenantInboundSamlConfigIdpConfigArgs{...}
+//          TenantInboundSamlConfigIdpConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TenantInboundSamlConfigIdpConfigPtrInput interface {
 	pulumi.Input
 
@@ -782,8 +772,7 @@ type TenantInboundSamlConfigIdpConfigIdpCertificate struct {
 // TenantInboundSamlConfigIdpConfigIdpCertificateInput is an input type that accepts TenantInboundSamlConfigIdpConfigIdpCertificateArgs and TenantInboundSamlConfigIdpConfigIdpCertificateOutput values.
 // You can construct a concrete instance of `TenantInboundSamlConfigIdpConfigIdpCertificateInput` via:
 //
-// 		 TenantInboundSamlConfigIdpConfigIdpCertificateArgs{...}
-//
+//          TenantInboundSamlConfigIdpConfigIdpCertificateArgs{...}
 type TenantInboundSamlConfigIdpConfigIdpCertificateInput interface {
 	pulumi.Input
 
@@ -812,8 +801,7 @@ func (i TenantInboundSamlConfigIdpConfigIdpCertificateArgs) ToTenantInboundSamlC
 // TenantInboundSamlConfigIdpConfigIdpCertificateArrayInput is an input type that accepts TenantInboundSamlConfigIdpConfigIdpCertificateArray and TenantInboundSamlConfigIdpConfigIdpCertificateArrayOutput values.
 // You can construct a concrete instance of `TenantInboundSamlConfigIdpConfigIdpCertificateArrayInput` via:
 //
-// 		 TenantInboundSamlConfigIdpConfigIdpCertificateArray{ TenantInboundSamlConfigIdpConfigIdpCertificateArgs{...} }
-//
+//          TenantInboundSamlConfigIdpConfigIdpCertificateArray{ TenantInboundSamlConfigIdpConfigIdpCertificateArgs{...} }
 type TenantInboundSamlConfigIdpConfigIdpCertificateArrayInput interface {
 	pulumi.Input
 
@@ -888,8 +876,7 @@ type TenantInboundSamlConfigSpConfig struct {
 // TenantInboundSamlConfigSpConfigInput is an input type that accepts TenantInboundSamlConfigSpConfigArgs and TenantInboundSamlConfigSpConfigOutput values.
 // You can construct a concrete instance of `TenantInboundSamlConfigSpConfigInput` via:
 //
-// 		 TenantInboundSamlConfigSpConfigArgs{...}
-//
+//          TenantInboundSamlConfigSpConfigArgs{...}
 type TenantInboundSamlConfigSpConfigInput interface {
 	pulumi.Input
 
@@ -930,12 +917,11 @@ func (i TenantInboundSamlConfigSpConfigArgs) ToTenantInboundSamlConfigSpConfigPt
 // TenantInboundSamlConfigSpConfigPtrInput is an input type that accepts TenantInboundSamlConfigSpConfigArgs, TenantInboundSamlConfigSpConfigPtr and TenantInboundSamlConfigSpConfigPtrOutput values.
 // You can construct a concrete instance of `TenantInboundSamlConfigSpConfigPtrInput` via:
 //
-// 		 TenantInboundSamlConfigSpConfigArgs{...}
+//          TenantInboundSamlConfigSpConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TenantInboundSamlConfigSpConfigPtrInput interface {
 	pulumi.Input
 
@@ -1061,8 +1047,7 @@ type TenantInboundSamlConfigSpConfigSpCertificate struct {
 // TenantInboundSamlConfigSpConfigSpCertificateInput is an input type that accepts TenantInboundSamlConfigSpConfigSpCertificateArgs and TenantInboundSamlConfigSpConfigSpCertificateOutput values.
 // You can construct a concrete instance of `TenantInboundSamlConfigSpConfigSpCertificateInput` via:
 //
-// 		 TenantInboundSamlConfigSpConfigSpCertificateArgs{...}
-//
+//          TenantInboundSamlConfigSpConfigSpCertificateArgs{...}
 type TenantInboundSamlConfigSpConfigSpCertificateInput interface {
 	pulumi.Input
 
@@ -1091,8 +1076,7 @@ func (i TenantInboundSamlConfigSpConfigSpCertificateArgs) ToTenantInboundSamlCon
 // TenantInboundSamlConfigSpConfigSpCertificateArrayInput is an input type that accepts TenantInboundSamlConfigSpConfigSpCertificateArray and TenantInboundSamlConfigSpConfigSpCertificateArrayOutput values.
 // You can construct a concrete instance of `TenantInboundSamlConfigSpConfigSpCertificateArrayInput` via:
 //
-// 		 TenantInboundSamlConfigSpConfigSpCertificateArray{ TenantInboundSamlConfigSpConfigSpCertificateArgs{...} }
-//
+//          TenantInboundSamlConfigSpConfigSpCertificateArray{ TenantInboundSamlConfigSpConfigSpCertificateArgs{...} }
 type TenantInboundSamlConfigSpConfigSpCertificateArrayInput interface {
 	pulumi.Input
 

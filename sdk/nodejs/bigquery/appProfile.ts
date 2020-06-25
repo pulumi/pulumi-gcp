@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
 /**
  * App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
  *
- *
- *
  * ## Example Usage
- *
  * ### Bigtable App Profile Multicluster
  *
  * ```typescript
@@ -35,7 +32,6 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
- *
  * ### Bigtable App Profile Singlecluster
  *
  * ```typescript

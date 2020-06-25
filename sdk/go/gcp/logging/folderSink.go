@@ -16,6 +16,8 @@ import (
 //
 // Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // granted to the credentials used with this provider.
+//
+// ## Example Usage
 type FolderSink struct {
 	pulumi.CustomResourceState
 

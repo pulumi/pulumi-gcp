@@ -5,17 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a new object inside an existing bucket in Google cloud storage service (GCS). 
+ * Creates a new object inside an existing bucket in Google cloud storage service (GCS).
  * [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `gcp.storage.ObjectACL` resource.
- *  For more information see 
- * [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects) 
- * and 
+ *  For more information see
+ * [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+ * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
- *
  *
  * ## Example Usage
  *
- *
+ * Example creating a public object in an existing `image-store` bucket.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

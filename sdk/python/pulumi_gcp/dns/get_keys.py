@@ -56,10 +56,7 @@ def get_keys(managed_zone=None,project=None,opts=None):
     [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
     and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
 
-
     ## Example Usage
-
-
 
     ```python
     import pulumi

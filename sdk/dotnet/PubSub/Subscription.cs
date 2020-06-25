@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.PubSub
     /// A named resource representing the stream of messages from a single,
     /// specific topic, to be delivered to the subscribing application.
     /// 
-    /// 
     /// To get more information about Subscription, see:
     /// 
     /// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
@@ -21,7 +20,6 @@ namespace Pulumi.Gcp.PubSub
     ///     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Pubsub Subscription Different Project
     /// 
     /// ```csharp

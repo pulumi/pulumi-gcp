@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `gcp.iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- *
- *
  * ## google\_iap\_tunnel\_instance\_iam\_policy
  *
  * ```typescript

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * Engine or by you. External IP addresses can be either ephemeral or
  * static.
  *
- *
  * To get more information about Address, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
  *
  * ## Example Usage
- *
  * ### Address Basic
  *
  * ```typescript
@@ -37,7 +35,6 @@ import * as utilities from "../utilities";
  *
  * const ipAddress = new gcp.compute.Address("ip_address", {});
  * ```
- *
  * ### Address With Subnetwork
  *
  * ```typescript
@@ -57,7 +54,6 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  * });
  * ```
- *
  * ### Address With Gce Endpoint
  *
  * ```typescript
@@ -69,7 +65,6 @@ import * as utilities from "../utilities";
  *     purpose: "GCE_ENDPOINT",
  * });
  * ```
- *
  * ### Instance With Ip
  *
  * ```typescript

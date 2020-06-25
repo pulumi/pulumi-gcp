@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.GameServices
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Game Service Realm Basic
     /// 
     /// ```csharp

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RepositoryIamPolicy(pulumi.CustomResource):
     etag: pulumi.Output[str]
     """
@@ -44,7 +45,6 @@ class RepositoryIamPolicy(pulumi.CustomResource):
         > **Note:** `artifactregistry.RepositoryIamPolicy` **cannot** be used in conjunction with `artifactregistry.RepositoryIamBinding` and `artifactregistry.RepositoryIamMember` or they will fight over what your policy should be.
 
         > **Note:** `artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
-
 
         ## google\_artifact\_registry\_repository\_iam\_policy
 
@@ -161,9 +161,9 @@ class RepositoryIamPolicy(pulumi.CustomResource):
         __props__["project"] = project
         __props__["repository"] = repository
         return RepositoryIamPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

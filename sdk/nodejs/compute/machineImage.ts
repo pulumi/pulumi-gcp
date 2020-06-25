@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
  *
  * ## Example Usage
- *
  * ### Machine Image Basic
  *
  * ```typescript

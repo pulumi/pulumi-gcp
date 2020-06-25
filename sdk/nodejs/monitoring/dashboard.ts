@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
  *
  * ## Example Usage
- *
  * ### Monitoring Dashboard Basic
  *
  * ```typescript
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
- *
  * ### Monitoring Dashboard GridLayout
  *
  * ```typescript

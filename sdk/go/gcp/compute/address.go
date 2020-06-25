@@ -23,7 +23,6 @@ import (
 // Engine or by you. External IP addresses can be either ephemeral or
 // static.
 //
-//
 // To get more information about Address, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
@@ -32,7 +31,6 @@ import (
 //     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 //
 // ## Example Usage
-//
 // ### Address Basic
 //
 // ```go
@@ -45,7 +43,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		ipAddress, err := compute.NewAddress(ctx, "ipAddress", nil)
+// 		_, err = compute.NewAddress(ctx, "ipAddress", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -53,7 +51,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Address With Subnetwork
 //
 // ```go
@@ -78,7 +75,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		internalWithSubnetAndAddress, err := compute.NewAddress(ctx, "internalWithSubnetAndAddress", &compute.AddressArgs{
+// 		_, err = compute.NewAddress(ctx, "internalWithSubnetAndAddress", &compute.AddressArgs{
 // 			Subnetwork:  defaultSubnetwork.ID(),
 // 			AddressType: pulumi.String("INTERNAL"),
 // 			Address:     pulumi.String("10.0.42.42"),
@@ -91,7 +88,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Address With Gce Endpoint
 //
 // ```go
@@ -104,7 +100,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		internalWithGceEndpoint, err := compute.NewAddress(ctx, "internalWithGceEndpoint", &compute.AddressArgs{
+// 		_, err = compute.NewAddress(ctx, "internalWithGceEndpoint", &compute.AddressArgs{
 // 			AddressType: pulumi.String("INTERNAL"),
 // 			Purpose:     pulumi.String("GCE_ENDPOINT"),
 // 		})
@@ -148,7 +144,7 @@ type Address struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -222,7 +218,7 @@ type addressState struct {
 	Project *string `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -269,7 +265,7 @@ type AddressState struct {
 	Project pulumi.StringPtrInput
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -316,7 +312,7 @@ type addressArgs struct {
 	Project *string `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -356,7 +352,7 @@ type AddressArgs struct {
 	Project pulumi.StringPtrInput
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.

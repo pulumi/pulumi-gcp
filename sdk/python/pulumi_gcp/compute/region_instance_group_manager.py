@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class RegionInstanceGroupManager(pulumi.CustomResource):
     auto_healing_policies: pulumi.Output[dict]
     """
@@ -133,7 +134,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
 
         ## Example Usage
-
         ### With Top Level Instance Template (`Google` Provider)
 
         ```python
@@ -170,9 +170,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                 "initialDelaySec": 300,
             })
         ```
-
         ### With Multiple Versions
-
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -416,9 +414,9 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__["versions"] = versions
         __props__["wait_for_instances"] = wait_for_instances
         return RegionInstanceGroupManager(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -14,9 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
     /// 
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Empty Instance Group
     /// 
     /// ```csharp

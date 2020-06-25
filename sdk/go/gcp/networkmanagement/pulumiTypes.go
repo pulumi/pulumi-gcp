@@ -21,8 +21,7 @@ type ConnectivityTestDestination struct {
 // ConnectivityTestDestinationInput is an input type that accepts ConnectivityTestDestinationArgs and ConnectivityTestDestinationOutput values.
 // You can construct a concrete instance of `ConnectivityTestDestinationInput` via:
 //
-// 		 ConnectivityTestDestinationArgs{...}
-//
+//          ConnectivityTestDestinationArgs{...}
 type ConnectivityTestDestinationInput interface {
 	pulumi.Input
 
@@ -61,12 +60,11 @@ func (i ConnectivityTestDestinationArgs) ToConnectivityTestDestinationPtrOutputW
 // ConnectivityTestDestinationPtrInput is an input type that accepts ConnectivityTestDestinationArgs, ConnectivityTestDestinationPtr and ConnectivityTestDestinationPtrOutput values.
 // You can construct a concrete instance of `ConnectivityTestDestinationPtrInput` via:
 //
-// 		 ConnectivityTestDestinationArgs{...}
+//          ConnectivityTestDestinationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ConnectivityTestDestinationPtrInput interface {
 	pulumi.Input
 
@@ -210,8 +208,7 @@ type ConnectivityTestSource struct {
 // ConnectivityTestSourceInput is an input type that accepts ConnectivityTestSourceArgs and ConnectivityTestSourceOutput values.
 // You can construct a concrete instance of `ConnectivityTestSourceInput` via:
 //
-// 		 ConnectivityTestSourceArgs{...}
-//
+//          ConnectivityTestSourceArgs{...}
 type ConnectivityTestSourceInput interface {
 	pulumi.Input
 
@@ -251,12 +248,11 @@ func (i ConnectivityTestSourceArgs) ToConnectivityTestSourcePtrOutputWithContext
 // ConnectivityTestSourcePtrInput is an input type that accepts ConnectivityTestSourceArgs, ConnectivityTestSourcePtr and ConnectivityTestSourcePtrOutput values.
 // You can construct a concrete instance of `ConnectivityTestSourcePtrInput` via:
 //
-// 		 ConnectivityTestSourceArgs{...}
+//          ConnectivityTestSourceArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ConnectivityTestSourcePtrInput interface {
 	pulumi.Input
 

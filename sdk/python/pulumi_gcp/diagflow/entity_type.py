@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EntityType(pulumi.CustomResource):
     display_name: pulumi.Output[str]
     """
@@ -54,7 +55,6 @@ class EntityType(pulumi.CustomResource):
         """
         Represents an entity type. Entity types serve as a tool for extracting parameter values from natural language queries.
 
-
         To get more information about EntityType, see:
 
         * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.entityTypes)
@@ -62,7 +62,6 @@ class EntityType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
-
         ### Dialogflow Entity Type Basic
 
         ```python
@@ -198,9 +197,9 @@ class EntityType(pulumi.CustomResource):
         __props__["name"] = name
         __props__["project"] = project
         return EntityType(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

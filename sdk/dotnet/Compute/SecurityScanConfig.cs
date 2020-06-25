@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text.[Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Scan Config Basic
     /// 
     /// ```csharp

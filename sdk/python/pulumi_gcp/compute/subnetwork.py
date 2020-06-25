@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Subnetwork(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
     """
@@ -147,7 +148,6 @@ class Subnetwork(pulumi.CustomResource):
         region, using their RFC1918 private IP addresses. You can isolate portions
         of the network, even entire subnets, using firewall rules.
 
-
         To get more information about Subnetwork, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/subnetworks)
@@ -156,7 +156,6 @@ class Subnetwork(pulumi.CustomResource):
             * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
 
         ## Example Usage
-
         ### Subnetwork Basic
 
         ```python
@@ -173,7 +172,6 @@ class Subnetwork(pulumi.CustomResource):
                 "ip_cidr_range": "192.168.10.0/24",
             }])
         ```
-
         ### Subnetwork Logging Config
 
         ```python
@@ -191,7 +189,6 @@ class Subnetwork(pulumi.CustomResource):
                 "metadata": "INCLUDE_ALL_METADATA",
             })
         ```
-
         ### Subnetwork Internal L7lb
 
         ```python
@@ -420,9 +417,9 @@ class Subnetwork(pulumi.CustomResource):
         __props__["secondary_ip_ranges"] = secondary_ip_ranges
         __props__["self_link"] = self_link
         return Subnetwork(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

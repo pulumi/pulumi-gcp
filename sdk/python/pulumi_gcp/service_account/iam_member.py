@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class IAMMember(pulumi.CustomResource):
     condition: pulumi.Output[dict]
     """
@@ -224,9 +225,9 @@ class IAMMember(pulumi.CustomResource):
         __props__["role"] = role
         __props__["service_account_id"] = service_account_id
         return IAMMember(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

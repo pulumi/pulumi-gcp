@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
- *
  * ### Region Target Https Proxy Basic
  *
  * ```typescript

@@ -12,7 +12,6 @@ namespace Pulumi.Gcp.Diagflow
     /// <summary>
     /// Represents an entity type. Entity types serve as a tool for extracting parameter values from natural language queries.
     /// 
-    /// 
     /// To get more information about EntityType, see:
     /// 
     /// * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.entityTypes)
@@ -20,7 +19,6 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Dialogflow Entity Type Basic
     /// 
     /// ```csharp

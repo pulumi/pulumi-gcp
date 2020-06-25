@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Represents a Router resource.
  *
- *
  * To get more information about Router, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -17,7 +16,6 @@ import * as utilities from "../utilities";
  *     * [Google Cloud Router](https://cloud.google.com/router/docs/)
  *
  * ## Example Usage
- *
  * ### Router Basic
  *
  * ```typescript

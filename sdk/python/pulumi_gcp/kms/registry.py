@@ -10,6 +10,8 @@ from typing import Union
 from .. import utilities, tables
 
 warnings.warn("gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry", DeprecationWarning)
+
+
 class Registry(pulumi.CustomResource):
     credentials: pulumi.Output[list]
     """
@@ -76,10 +78,10 @@ class Registry(pulumi.CustomResource):
       * `pubsub_topic_name` (`str`) - PubSub topic name to publish device events.
     """
     warnings.warn("gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry", DeprecationWarning)
+
     def __init__(__self__, resource_name, opts=None, credentials=None, event_notification_configs=None, http_config=None, log_level=None, mqtt_config=None, name=None, project=None, region=None, state_notification_config=None, __props__=None, __name__=None, __opts__=None):
         """
         A Google Cloud IoT Core device registry.
-
 
         To get more information about DeviceRegistry, see:
 
@@ -88,7 +90,6 @@ class Registry(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/iot/docs/)
 
         ## Example Usage
-
         ### Cloudiot Device Registry Basic
 
         ```python
@@ -97,7 +98,6 @@ class Registry(pulumi.CustomResource):
 
         test_registry = gcp.iot.Registry("test-registry")
         ```
-
         ### Cloudiot Device Registry Single Event Notification Configs
 
         ```python
@@ -110,7 +110,6 @@ class Registry(pulumi.CustomResource):
             "subfolderMatches": "",
         }])
         ```
-
         ### Cloudiot Device Registry Full
 
         ```python
@@ -303,9 +302,9 @@ class Registry(pulumi.CustomResource):
         __props__["region"] = region
         __props__["state_notification_config"] = state_notification_config
         return Registry(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

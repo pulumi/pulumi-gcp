@@ -14,7 +14,6 @@ import (
 // a Service acts as the root resource under which operational aspects of
 // the service are accessible
 //
-//
 // To get more information about Service, see:
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
@@ -23,7 +22,6 @@ import (
 //     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
-//
 // ### Monitoring Service Custom
 //
 // ```go
@@ -36,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		custom, err := monitoring.NewCustomService(ctx, "custom", &monitoring.CustomServiceArgs{
+// 		_, err = monitoring.NewCustomService(ctx, "custom", &monitoring.CustomServiceArgs{
 // 			DisplayName: pulumi.String("My Custom Service custom-srv"),
 // 			ServiceId:   pulumi.String("custom-srv"),
 // 			Telemetry: &monitoring.CustomServiceTelemetryArgs{

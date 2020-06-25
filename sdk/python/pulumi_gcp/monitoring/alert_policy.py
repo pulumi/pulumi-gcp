@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AlertPolicy(pulumi.CustomResource):
     combiner: pulumi.Output[str]
     """
@@ -485,7 +486,6 @@ class AlertPolicy(pulumi.CustomResource):
         considered to be "unhealthy" and the ways to notify people or services
         about this state.
 
-
         To get more information about AlertPolicy, see:
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.alertPolicies)
@@ -493,7 +493,6 @@ class AlertPolicy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
 
         ## Example Usage
-
         ### Monitoring Alert Policy Basic
 
         ```python
@@ -1463,9 +1462,9 @@ class AlertPolicy(pulumi.CustomResource):
         __props__["project"] = project
         __props__["user_labels"] = user_labels
         return AlertPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

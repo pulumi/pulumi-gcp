@@ -16,12 +16,13 @@ import (
 // managed instance groups according to an autoscaling policy that you
 // define.
 //
-//
 // To get more information about Autoscaler, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/autoscalers)
 // * How-to Guides
 //     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
+//
+// ## Example Usage
 type Autoscaler struct {
 	pulumi.CustomResourceState
 

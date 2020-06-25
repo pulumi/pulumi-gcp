@@ -15,7 +15,6 @@ import (
 // and either the interface name, IP address, or peer IP address.
 // Please refer to RFC4273.
 //
-//
 // To get more information about RouterBgpPeer, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -23,7 +22,6 @@ import (
 //     * [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
-//
 // ### Router Peer Basic
 //
 // ```go
@@ -36,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		peer, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+// 		_, err = compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
 // 			AdvertisedRoutePriority: pulumi.Int(100),
 // 			Interface:               pulumi.String("interface-1"),
 // 			PeerAsn:                 pulumi.Int(65513),

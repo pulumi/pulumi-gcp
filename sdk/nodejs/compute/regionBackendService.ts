@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * A Region Backend Service defines a regionally-scoped group of virtual
  * machines that will serve traffic for load balancing.
  *
- *
  * To get more information about RegionBackendService, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
  *
  * ## Example Usage
- *
  * ### Region Backend Service Basic
  *
  * ```typescript
@@ -39,7 +37,6 @@ import * as utilities from "../utilities";
  *     sessionAffinity: "CLIENT_IP",
  * });
  * ```
- *
  * ### Region Backend Service Ilb Round Robin
  *
  * ```typescript
@@ -57,7 +54,6 @@ import * as utilities from "../utilities";
  *     localityLbPolicy: "ROUND_ROBIN",
  * });
  * ```
- *
  * ### Region Backend Service Ilb Ring Hash
  *
  * ```typescript
@@ -91,7 +87,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Region Backend Service Balancing Mode
  *
  * ```typescript

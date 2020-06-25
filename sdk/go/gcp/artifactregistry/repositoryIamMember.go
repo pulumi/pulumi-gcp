@@ -20,7 +20,6 @@ import (
 //
 // > **Note:** `artifactregistry.RepositoryIamBinding` resources **can be** used in conjunction with `artifactregistry.RepositoryIamMember` resources **only if** they do not grant privilege to the same role.
 //
-//
 // ## google\_artifact\_registry\_repository\_iam\_policy
 //
 // ```go
@@ -28,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/artifactregistry"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -46,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := artifactregistry.NewRepositoryIamPolicy(ctx, "policy", &artifactregistry.RepositoryIamPolicyArgs{
+// 		_, err = artifactregistry.NewRepositoryIamPolicy(ctx, "policy", &artifactregistry.RepositoryIamPolicyArgs{
 // 			Project:    pulumi.String(google_artifact_registry_repository.My - repo.Project),
 // 			Location:   pulumi.String(google_artifact_registry_repository.My - repo.Location),
 // 			Repository: pulumi.String(google_artifact_registry_repository.My - repo.Name),
@@ -72,7 +72,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := artifactregistry.NewRepositoryIamBinding(ctx, "binding", &artifactregistry.RepositoryIamBindingArgs{
+// 		_, err = artifactregistry.NewRepositoryIamBinding(ctx, "binding", &artifactregistry.RepositoryIamBindingArgs{
 // 			Project:    pulumi.String(google_artifact_registry_repository.My - repo.Project),
 // 			Location:   pulumi.String(google_artifact_registry_repository.My - repo.Location),
 // 			Repository: pulumi.String(google_artifact_registry_repository.My - repo.Name),
@@ -101,7 +101,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := artifactregistry.NewRepositoryIamMember(ctx, "member", &artifactregistry.RepositoryIamMemberArgs{
+// 		_, err = artifactregistry.NewRepositoryIamMember(ctx, "member", &artifactregistry.RepositoryIamMemberArgs{
 // 			Project:    pulumi.String(google_artifact_registry_repository.My - repo.Project),
 // 			Location:   pulumi.String(google_artifact_registry_repository.My - repo.Location),
 // 			Repository: pulumi.String(google_artifact_registry_repository.My - repo.Name),

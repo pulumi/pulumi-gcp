@@ -24,8 +24,7 @@ type BucketCor struct {
 // BucketCorInput is an input type that accepts BucketCorArgs and BucketCorOutput values.
 // You can construct a concrete instance of `BucketCorInput` via:
 //
-// 		 BucketCorArgs{...}
-//
+//          BucketCorArgs{...}
 type BucketCorInput interface {
 	pulumi.Input
 
@@ -59,8 +58,7 @@ func (i BucketCorArgs) ToBucketCorOutputWithContext(ctx context.Context) BucketC
 // BucketCorArrayInput is an input type that accepts BucketCorArray and BucketCorArrayOutput values.
 // You can construct a concrete instance of `BucketCorArrayInput` via:
 //
-// 		 BucketCorArray{ BucketCorArgs{...} }
-//
+//          BucketCorArray{ BucketCorArgs{...} }
 type BucketCorArrayInput interface {
 	pulumi.Input
 
@@ -143,8 +141,7 @@ type BucketEncryption struct {
 // BucketEncryptionInput is an input type that accepts BucketEncryptionArgs and BucketEncryptionOutput values.
 // You can construct a concrete instance of `BucketEncryptionInput` via:
 //
-// 		 BucketEncryptionArgs{...}
-//
+//          BucketEncryptionArgs{...}
 type BucketEncryptionInput interface {
 	pulumi.Input
 
@@ -179,12 +176,11 @@ func (i BucketEncryptionArgs) ToBucketEncryptionPtrOutputWithContext(ctx context
 // BucketEncryptionPtrInput is an input type that accepts BucketEncryptionArgs, BucketEncryptionPtr and BucketEncryptionPtrOutput values.
 // You can construct a concrete instance of `BucketEncryptionPtrInput` via:
 //
-// 		 BucketEncryptionArgs{...}
+//          BucketEncryptionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type BucketEncryptionPtrInput interface {
 	pulumi.Input
 
@@ -276,8 +272,7 @@ type BucketIAMBindingCondition struct {
 // BucketIAMBindingConditionInput is an input type that accepts BucketIAMBindingConditionArgs and BucketIAMBindingConditionOutput values.
 // You can construct a concrete instance of `BucketIAMBindingConditionInput` via:
 //
-// 		 BucketIAMBindingConditionArgs{...}
-//
+//          BucketIAMBindingConditionArgs{...}
 type BucketIAMBindingConditionInput interface {
 	pulumi.Input
 
@@ -317,12 +312,11 @@ func (i BucketIAMBindingConditionArgs) ToBucketIAMBindingConditionPtrOutputWithC
 // BucketIAMBindingConditionPtrInput is an input type that accepts BucketIAMBindingConditionArgs, BucketIAMBindingConditionPtr and BucketIAMBindingConditionPtrOutput values.
 // You can construct a concrete instance of `BucketIAMBindingConditionPtrInput` via:
 //
-// 		 BucketIAMBindingConditionArgs{...}
+//          BucketIAMBindingConditionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type BucketIAMBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -447,8 +441,7 @@ type BucketIAMMemberCondition struct {
 // BucketIAMMemberConditionInput is an input type that accepts BucketIAMMemberConditionArgs and BucketIAMMemberConditionOutput values.
 // You can construct a concrete instance of `BucketIAMMemberConditionInput` via:
 //
-// 		 BucketIAMMemberConditionArgs{...}
-//
+//          BucketIAMMemberConditionArgs{...}
 type BucketIAMMemberConditionInput interface {
 	pulumi.Input
 
@@ -488,12 +481,11 @@ func (i BucketIAMMemberConditionArgs) ToBucketIAMMemberConditionPtrOutputWithCon
 // BucketIAMMemberConditionPtrInput is an input type that accepts BucketIAMMemberConditionArgs, BucketIAMMemberConditionPtr and BucketIAMMemberConditionPtrOutput values.
 // You can construct a concrete instance of `BucketIAMMemberConditionPtrInput` via:
 //
-// 		 BucketIAMMemberConditionArgs{...}
+//          BucketIAMMemberConditionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type BucketIAMMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -616,8 +608,7 @@ type BucketLifecycleRule struct {
 // BucketLifecycleRuleInput is an input type that accepts BucketLifecycleRuleArgs and BucketLifecycleRuleOutput values.
 // You can construct a concrete instance of `BucketLifecycleRuleInput` via:
 //
-// 		 BucketLifecycleRuleArgs{...}
-//
+//          BucketLifecycleRuleArgs{...}
 type BucketLifecycleRuleInput interface {
 	pulumi.Input
 
@@ -647,8 +638,7 @@ func (i BucketLifecycleRuleArgs) ToBucketLifecycleRuleOutputWithContext(ctx cont
 // BucketLifecycleRuleArrayInput is an input type that accepts BucketLifecycleRuleArray and BucketLifecycleRuleArrayOutput values.
 // You can construct a concrete instance of `BucketLifecycleRuleArrayInput` via:
 //
-// 		 BucketLifecycleRuleArray{ BucketLifecycleRuleArgs{...} }
-//
+//          BucketLifecycleRuleArray{ BucketLifecycleRuleArgs{...} }
 type BucketLifecycleRuleArrayInput interface {
 	pulumi.Input
 
@@ -724,8 +714,7 @@ type BucketLifecycleRuleAction struct {
 // BucketLifecycleRuleActionInput is an input type that accepts BucketLifecycleRuleActionArgs and BucketLifecycleRuleActionOutput values.
 // You can construct a concrete instance of `BucketLifecycleRuleActionInput` via:
 //
-// 		 BucketLifecycleRuleActionArgs{...}
-//
+//          BucketLifecycleRuleActionArgs{...}
 type BucketLifecycleRuleActionInput interface {
 	pulumi.Input
 
@@ -792,8 +781,7 @@ type BucketLifecycleRuleCondition struct {
 // BucketLifecycleRuleConditionInput is an input type that accepts BucketLifecycleRuleConditionArgs and BucketLifecycleRuleConditionOutput values.
 // You can construct a concrete instance of `BucketLifecycleRuleConditionInput` via:
 //
-// 		 BucketLifecycleRuleConditionArgs{...}
-//
+//          BucketLifecycleRuleConditionArgs{...}
 type BucketLifecycleRuleConditionInput interface {
 	pulumi.Input
 
@@ -876,8 +864,7 @@ type BucketLogging struct {
 // BucketLoggingInput is an input type that accepts BucketLoggingArgs and BucketLoggingOutput values.
 // You can construct a concrete instance of `BucketLoggingInput` via:
 //
-// 		 BucketLoggingArgs{...}
-//
+//          BucketLoggingArgs{...}
 type BucketLoggingInput interface {
 	pulumi.Input
 
@@ -916,12 +903,11 @@ func (i BucketLoggingArgs) ToBucketLoggingPtrOutputWithContext(ctx context.Conte
 // BucketLoggingPtrInput is an input type that accepts BucketLoggingArgs, BucketLoggingPtr and BucketLoggingPtrOutput values.
 // You can construct a concrete instance of `BucketLoggingPtrInput` via:
 //
-// 		 BucketLoggingArgs{...}
+//          BucketLoggingArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type BucketLoggingPtrInput interface {
 	pulumi.Input
 
@@ -1031,8 +1017,7 @@ type BucketRetentionPolicy struct {
 // BucketRetentionPolicyInput is an input type that accepts BucketRetentionPolicyArgs and BucketRetentionPolicyOutput values.
 // You can construct a concrete instance of `BucketRetentionPolicyInput` via:
 //
-// 		 BucketRetentionPolicyArgs{...}
-//
+//          BucketRetentionPolicyArgs{...}
 type BucketRetentionPolicyInput interface {
 	pulumi.Input
 
@@ -1070,12 +1055,11 @@ func (i BucketRetentionPolicyArgs) ToBucketRetentionPolicyPtrOutputWithContext(c
 // BucketRetentionPolicyPtrInput is an input type that accepts BucketRetentionPolicyArgs, BucketRetentionPolicyPtr and BucketRetentionPolicyPtrOutput values.
 // You can construct a concrete instance of `BucketRetentionPolicyPtrInput` via:
 //
-// 		 BucketRetentionPolicyArgs{...}
+//          BucketRetentionPolicyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type BucketRetentionPolicyPtrInput interface {
 	pulumi.Input
 
@@ -1181,8 +1165,7 @@ type BucketVersioning struct {
 // BucketVersioningInput is an input type that accepts BucketVersioningArgs and BucketVersioningOutput values.
 // You can construct a concrete instance of `BucketVersioningInput` via:
 //
-// 		 BucketVersioningArgs{...}
-//
+//          BucketVersioningArgs{...}
 type BucketVersioningInput interface {
 	pulumi.Input
 
@@ -1218,12 +1201,11 @@ func (i BucketVersioningArgs) ToBucketVersioningPtrOutputWithContext(ctx context
 // BucketVersioningPtrInput is an input type that accepts BucketVersioningArgs, BucketVersioningPtr and BucketVersioningPtrOutput values.
 // You can construct a concrete instance of `BucketVersioningPtrInput` via:
 //
-// 		 BucketVersioningArgs{...}
+//          BucketVersioningArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type BucketVersioningPtrInput interface {
 	pulumi.Input
 
@@ -1318,8 +1300,7 @@ type BucketWebsite struct {
 // BucketWebsiteInput is an input type that accepts BucketWebsiteArgs and BucketWebsiteOutput values.
 // You can construct a concrete instance of `BucketWebsiteInput` via:
 //
-// 		 BucketWebsiteArgs{...}
-//
+//          BucketWebsiteArgs{...}
 type BucketWebsiteInput interface {
 	pulumi.Input
 
@@ -1359,12 +1340,11 @@ func (i BucketWebsiteArgs) ToBucketWebsitePtrOutputWithContext(ctx context.Conte
 // BucketWebsitePtrInput is an input type that accepts BucketWebsiteArgs, BucketWebsitePtr and BucketWebsitePtrOutput values.
 // You can construct a concrete instance of `BucketWebsitePtrInput` via:
 //
-// 		 BucketWebsiteArgs{...}
+//          BucketWebsiteArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type BucketWebsitePtrInput interface {
 	pulumi.Input
 
@@ -1474,8 +1454,7 @@ type DefaultObjectAccessControlProjectTeam struct {
 // DefaultObjectAccessControlProjectTeamInput is an input type that accepts DefaultObjectAccessControlProjectTeamArgs and DefaultObjectAccessControlProjectTeamOutput values.
 // You can construct a concrete instance of `DefaultObjectAccessControlProjectTeamInput` via:
 //
-// 		 DefaultObjectAccessControlProjectTeamArgs{...}
-//
+//          DefaultObjectAccessControlProjectTeamArgs{...}
 type DefaultObjectAccessControlProjectTeamInput interface {
 	pulumi.Input
 
@@ -1511,12 +1490,11 @@ func (i DefaultObjectAccessControlProjectTeamArgs) ToDefaultObjectAccessControlP
 // DefaultObjectAccessControlProjectTeamPtrInput is an input type that accepts DefaultObjectAccessControlProjectTeamArgs, DefaultObjectAccessControlProjectTeamPtr and DefaultObjectAccessControlProjectTeamPtrOutput values.
 // You can construct a concrete instance of `DefaultObjectAccessControlProjectTeamPtrInput` via:
 //
-// 		 DefaultObjectAccessControlProjectTeamArgs{...}
+//          DefaultObjectAccessControlProjectTeamArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type DefaultObjectAccessControlProjectTeamPtrInput interface {
 	pulumi.Input
 
@@ -1617,8 +1595,7 @@ type ObjectAccessControlProjectTeam struct {
 // ObjectAccessControlProjectTeamInput is an input type that accepts ObjectAccessControlProjectTeamArgs and ObjectAccessControlProjectTeamOutput values.
 // You can construct a concrete instance of `ObjectAccessControlProjectTeamInput` via:
 //
-// 		 ObjectAccessControlProjectTeamArgs{...}
-//
+//          ObjectAccessControlProjectTeamArgs{...}
 type ObjectAccessControlProjectTeamInput interface {
 	pulumi.Input
 
@@ -1654,12 +1631,11 @@ func (i ObjectAccessControlProjectTeamArgs) ToObjectAccessControlProjectTeamPtrO
 // ObjectAccessControlProjectTeamPtrInput is an input type that accepts ObjectAccessControlProjectTeamArgs, ObjectAccessControlProjectTeamPtr and ObjectAccessControlProjectTeamPtrOutput values.
 // You can construct a concrete instance of `ObjectAccessControlProjectTeamPtrInput` via:
 //
-// 		 ObjectAccessControlProjectTeamArgs{...}
+//          ObjectAccessControlProjectTeamArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ObjectAccessControlProjectTeamPtrInput interface {
 	pulumi.Input
 
@@ -1764,8 +1740,7 @@ type TransferJobSchedule struct {
 // TransferJobScheduleInput is an input type that accepts TransferJobScheduleArgs and TransferJobScheduleOutput values.
 // You can construct a concrete instance of `TransferJobScheduleInput` via:
 //
-// 		 TransferJobScheduleArgs{...}
-//
+//          TransferJobScheduleArgs{...}
 type TransferJobScheduleInput interface {
 	pulumi.Input
 
@@ -1805,12 +1780,11 @@ func (i TransferJobScheduleArgs) ToTransferJobSchedulePtrOutputWithContext(ctx c
 // TransferJobSchedulePtrInput is an input type that accepts TransferJobScheduleArgs, TransferJobSchedulePtr and TransferJobSchedulePtrOutput values.
 // You can construct a concrete instance of `TransferJobSchedulePtrInput` via:
 //
-// 		 TransferJobScheduleArgs{...}
+//          TransferJobScheduleArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobSchedulePtrInput interface {
 	pulumi.Input
 
@@ -1935,8 +1909,7 @@ type TransferJobScheduleScheduleEndDate struct {
 // TransferJobScheduleScheduleEndDateInput is an input type that accepts TransferJobScheduleScheduleEndDateArgs and TransferJobScheduleScheduleEndDateOutput values.
 // You can construct a concrete instance of `TransferJobScheduleScheduleEndDateInput` via:
 //
-// 		 TransferJobScheduleScheduleEndDateArgs{...}
-//
+//          TransferJobScheduleScheduleEndDateArgs{...}
 type TransferJobScheduleScheduleEndDateInput interface {
 	pulumi.Input
 
@@ -1976,12 +1949,11 @@ func (i TransferJobScheduleScheduleEndDateArgs) ToTransferJobScheduleScheduleEnd
 // TransferJobScheduleScheduleEndDatePtrInput is an input type that accepts TransferJobScheduleScheduleEndDateArgs, TransferJobScheduleScheduleEndDatePtr and TransferJobScheduleScheduleEndDatePtrOutput values.
 // You can construct a concrete instance of `TransferJobScheduleScheduleEndDatePtrInput` via:
 //
-// 		 TransferJobScheduleScheduleEndDateArgs{...}
+//          TransferJobScheduleScheduleEndDateArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobScheduleScheduleEndDatePtrInput interface {
 	pulumi.Input
 
@@ -2106,8 +2078,7 @@ type TransferJobScheduleScheduleStartDate struct {
 // TransferJobScheduleScheduleStartDateInput is an input type that accepts TransferJobScheduleScheduleStartDateArgs and TransferJobScheduleScheduleStartDateOutput values.
 // You can construct a concrete instance of `TransferJobScheduleScheduleStartDateInput` via:
 //
-// 		 TransferJobScheduleScheduleStartDateArgs{...}
-//
+//          TransferJobScheduleScheduleStartDateArgs{...}
 type TransferJobScheduleScheduleStartDateInput interface {
 	pulumi.Input
 
@@ -2147,12 +2118,11 @@ func (i TransferJobScheduleScheduleStartDateArgs) ToTransferJobScheduleScheduleS
 // TransferJobScheduleScheduleStartDatePtrInput is an input type that accepts TransferJobScheduleScheduleStartDateArgs, TransferJobScheduleScheduleStartDatePtr and TransferJobScheduleScheduleStartDatePtrOutput values.
 // You can construct a concrete instance of `TransferJobScheduleScheduleStartDatePtrInput` via:
 //
-// 		 TransferJobScheduleScheduleStartDateArgs{...}
+//          TransferJobScheduleScheduleStartDateArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobScheduleScheduleStartDatePtrInput interface {
 	pulumi.Input
 
@@ -2279,8 +2249,7 @@ type TransferJobScheduleStartTimeOfDay struct {
 // TransferJobScheduleStartTimeOfDayInput is an input type that accepts TransferJobScheduleStartTimeOfDayArgs and TransferJobScheduleStartTimeOfDayOutput values.
 // You can construct a concrete instance of `TransferJobScheduleStartTimeOfDayInput` via:
 //
-// 		 TransferJobScheduleStartTimeOfDayArgs{...}
-//
+//          TransferJobScheduleStartTimeOfDayArgs{...}
 type TransferJobScheduleStartTimeOfDayInput interface {
 	pulumi.Input
 
@@ -2322,12 +2291,11 @@ func (i TransferJobScheduleStartTimeOfDayArgs) ToTransferJobScheduleStartTimeOfD
 // TransferJobScheduleStartTimeOfDayPtrInput is an input type that accepts TransferJobScheduleStartTimeOfDayArgs, TransferJobScheduleStartTimeOfDayPtr and TransferJobScheduleStartTimeOfDayPtrOutput values.
 // You can construct a concrete instance of `TransferJobScheduleStartTimeOfDayPtrInput` via:
 //
-// 		 TransferJobScheduleStartTimeOfDayArgs{...}
+//          TransferJobScheduleStartTimeOfDayArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobScheduleStartTimeOfDayPtrInput interface {
 	pulumi.Input
 
@@ -2473,8 +2441,7 @@ type TransferJobTransferSpec struct {
 // TransferJobTransferSpecInput is an input type that accepts TransferJobTransferSpecArgs and TransferJobTransferSpecOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecInput` via:
 //
-// 		 TransferJobTransferSpecArgs{...}
-//
+//          TransferJobTransferSpecArgs{...}
 type TransferJobTransferSpecInput interface {
 	pulumi.Input
 
@@ -2520,12 +2487,11 @@ func (i TransferJobTransferSpecArgs) ToTransferJobTransferSpecPtrOutputWithConte
 // TransferJobTransferSpecPtrInput is an input type that accepts TransferJobTransferSpecArgs, TransferJobTransferSpecPtr and TransferJobTransferSpecPtrOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecPtrInput` via:
 //
-// 		 TransferJobTransferSpecArgs{...}
+//          TransferJobTransferSpecArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobTransferSpecPtrInput interface {
 	pulumi.Input
 
@@ -2693,8 +2659,7 @@ type TransferJobTransferSpecAwsS3DataSource struct {
 // TransferJobTransferSpecAwsS3DataSourceInput is an input type that accepts TransferJobTransferSpecAwsS3DataSourceArgs and TransferJobTransferSpecAwsS3DataSourceOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecAwsS3DataSourceInput` via:
 //
-// 		 TransferJobTransferSpecAwsS3DataSourceArgs{...}
-//
+//          TransferJobTransferSpecAwsS3DataSourceArgs{...}
 type TransferJobTransferSpecAwsS3DataSourceInput interface {
 	pulumi.Input
 
@@ -2732,12 +2697,11 @@ func (i TransferJobTransferSpecAwsS3DataSourceArgs) ToTransferJobTransferSpecAws
 // TransferJobTransferSpecAwsS3DataSourcePtrInput is an input type that accepts TransferJobTransferSpecAwsS3DataSourceArgs, TransferJobTransferSpecAwsS3DataSourcePtr and TransferJobTransferSpecAwsS3DataSourcePtrOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecAwsS3DataSourcePtrInput` via:
 //
-// 		 TransferJobTransferSpecAwsS3DataSourceArgs{...}
+//          TransferJobTransferSpecAwsS3DataSourceArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobTransferSpecAwsS3DataSourcePtrInput interface {
 	pulumi.Input
 
@@ -2847,8 +2811,7 @@ type TransferJobTransferSpecAwsS3DataSourceAwsAccessKey struct {
 // TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyInput is an input type that accepts TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs and TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyInput` via:
 //
-// 		 TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs{...}
-//
+//          TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs{...}
 type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyInput interface {
 	pulumi.Input
 
@@ -2886,12 +2849,11 @@ func (i TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs) ToTransferJobTra
 // TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput is an input type that accepts TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs, TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtr and TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput` via:
 //
-// 		 TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs{...}
+//          TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput interface {
 	pulumi.Input
 
@@ -2999,8 +2961,7 @@ type TransferJobTransferSpecGcsDataSink struct {
 // TransferJobTransferSpecGcsDataSinkInput is an input type that accepts TransferJobTransferSpecGcsDataSinkArgs and TransferJobTransferSpecGcsDataSinkOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecGcsDataSinkInput` via:
 //
-// 		 TransferJobTransferSpecGcsDataSinkArgs{...}
-//
+//          TransferJobTransferSpecGcsDataSinkArgs{...}
 type TransferJobTransferSpecGcsDataSinkInput interface {
 	pulumi.Input
 
@@ -3036,12 +2997,11 @@ func (i TransferJobTransferSpecGcsDataSinkArgs) ToTransferJobTransferSpecGcsData
 // TransferJobTransferSpecGcsDataSinkPtrInput is an input type that accepts TransferJobTransferSpecGcsDataSinkArgs, TransferJobTransferSpecGcsDataSinkPtr and TransferJobTransferSpecGcsDataSinkPtrOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecGcsDataSinkPtrInput` via:
 //
-// 		 TransferJobTransferSpecGcsDataSinkArgs{...}
+//          TransferJobTransferSpecGcsDataSinkArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobTransferSpecGcsDataSinkPtrInput interface {
 	pulumi.Input
 
@@ -3132,8 +3092,7 @@ type TransferJobTransferSpecGcsDataSource struct {
 // TransferJobTransferSpecGcsDataSourceInput is an input type that accepts TransferJobTransferSpecGcsDataSourceArgs and TransferJobTransferSpecGcsDataSourceOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecGcsDataSourceInput` via:
 //
-// 		 TransferJobTransferSpecGcsDataSourceArgs{...}
-//
+//          TransferJobTransferSpecGcsDataSourceArgs{...}
 type TransferJobTransferSpecGcsDataSourceInput interface {
 	pulumi.Input
 
@@ -3169,12 +3128,11 @@ func (i TransferJobTransferSpecGcsDataSourceArgs) ToTransferJobTransferSpecGcsDa
 // TransferJobTransferSpecGcsDataSourcePtrInput is an input type that accepts TransferJobTransferSpecGcsDataSourceArgs, TransferJobTransferSpecGcsDataSourcePtr and TransferJobTransferSpecGcsDataSourcePtrOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecGcsDataSourcePtrInput` via:
 //
-// 		 TransferJobTransferSpecGcsDataSourceArgs{...}
+//          TransferJobTransferSpecGcsDataSourceArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobTransferSpecGcsDataSourcePtrInput interface {
 	pulumi.Input
 
@@ -3265,8 +3223,7 @@ type TransferJobTransferSpecHttpDataSource struct {
 // TransferJobTransferSpecHttpDataSourceInput is an input type that accepts TransferJobTransferSpecHttpDataSourceArgs and TransferJobTransferSpecHttpDataSourceOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecHttpDataSourceInput` via:
 //
-// 		 TransferJobTransferSpecHttpDataSourceArgs{...}
-//
+//          TransferJobTransferSpecHttpDataSourceArgs{...}
 type TransferJobTransferSpecHttpDataSourceInput interface {
 	pulumi.Input
 
@@ -3302,12 +3259,11 @@ func (i TransferJobTransferSpecHttpDataSourceArgs) ToTransferJobTransferSpecHttp
 // TransferJobTransferSpecHttpDataSourcePtrInput is an input type that accepts TransferJobTransferSpecHttpDataSourceArgs, TransferJobTransferSpecHttpDataSourcePtr and TransferJobTransferSpecHttpDataSourcePtrOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecHttpDataSourcePtrInput` via:
 //
-// 		 TransferJobTransferSpecHttpDataSourceArgs{...}
+//          TransferJobTransferSpecHttpDataSourceArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobTransferSpecHttpDataSourcePtrInput interface {
 	pulumi.Input
 
@@ -3404,8 +3360,7 @@ type TransferJobTransferSpecObjectConditions struct {
 // TransferJobTransferSpecObjectConditionsInput is an input type that accepts TransferJobTransferSpecObjectConditionsArgs and TransferJobTransferSpecObjectConditionsOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecObjectConditionsInput` via:
 //
-// 		 TransferJobTransferSpecObjectConditionsArgs{...}
-//
+//          TransferJobTransferSpecObjectConditionsArgs{...}
 type TransferJobTransferSpecObjectConditionsInput interface {
 	pulumi.Input
 
@@ -3447,12 +3402,11 @@ func (i TransferJobTransferSpecObjectConditionsArgs) ToTransferJobTransferSpecOb
 // TransferJobTransferSpecObjectConditionsPtrInput is an input type that accepts TransferJobTransferSpecObjectConditionsArgs, TransferJobTransferSpecObjectConditionsPtr and TransferJobTransferSpecObjectConditionsPtrOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecObjectConditionsPtrInput` via:
 //
-// 		 TransferJobTransferSpecObjectConditionsArgs{...}
+//          TransferJobTransferSpecObjectConditionsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobTransferSpecObjectConditionsPtrInput interface {
 	pulumi.Input
 
@@ -3593,8 +3547,7 @@ type TransferJobTransferSpecTransferOptions struct {
 // TransferJobTransferSpecTransferOptionsInput is an input type that accepts TransferJobTransferSpecTransferOptionsArgs and TransferJobTransferSpecTransferOptionsOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecTransferOptionsInput` via:
 //
-// 		 TransferJobTransferSpecTransferOptionsArgs{...}
-//
+//          TransferJobTransferSpecTransferOptionsArgs{...}
 type TransferJobTransferSpecTransferOptionsInput interface {
 	pulumi.Input
 
@@ -3635,12 +3588,11 @@ func (i TransferJobTransferSpecTransferOptionsArgs) ToTransferJobTransferSpecTra
 // TransferJobTransferSpecTransferOptionsPtrInput is an input type that accepts TransferJobTransferSpecTransferOptionsArgs, TransferJobTransferSpecTransferOptionsPtr and TransferJobTransferSpecTransferOptionsPtrOutput values.
 // You can construct a concrete instance of `TransferJobTransferSpecTransferOptionsPtrInput` via:
 //
-// 		 TransferJobTransferSpecTransferOptionsArgs{...}
+//          TransferJobTransferSpecTransferOptionsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TransferJobTransferSpecTransferOptionsPtrInput interface {
 	pulumi.Input
 

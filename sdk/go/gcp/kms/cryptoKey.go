@@ -12,7 +12,6 @@ import (
 
 // A `CryptoKey` represents a logical key that can be used for cryptographic operations.
 //
-//
 // > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
 // Destroying a provider-managed CryptoKey will remove it from state
 // and delete all CryptoKeyVersions, rendering the key unusable, but *will
@@ -21,12 +20,42 @@ import (
 // For this reason, it is strongly recommended that you add lifecycle hooks
 // to the resource to prevent accidental destruction.
 //
-//
 // To get more information about CryptoKey, see:
 //
 // * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
 // * How-to Guides
 //     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
+//
+// ## Example Usage
+// ### Kms Crypto Key Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = kms.NewCryptoKey(ctx, "example-key", &kms.CryptoKeyArgs{
+// 			KeyRing:        keyring.ID(),
+// 			RotationPeriod: pulumi.String("100000s"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type CryptoKey struct {
 	pulumi.CustomResourceState
 

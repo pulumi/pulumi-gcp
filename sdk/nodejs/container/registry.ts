@@ -9,10 +9,7 @@ import * as utilities from "../utilities";
  *
  * This resource can be used to ensure that the GCS bucket exists prior to assigning permissions. For more information see the [access control page](https://cloud.google.com/container-registry/docs/access-control) for GCR.
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +18,23 @@ import * as utilities from "../utilities";
  * const registry = new gcp.container.Registry("registry", {
  *     location: "EU",
  *     project: "my-project",
+ * });
+ * ```
+ *
+ * The `id` field of the `gcp.container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const registry = new gcp.container.Registry("registry", {
+ *     project: "my-project",
+ *     location: "EU",
+ * });
+ * const viewer = new gcp.storage.BucketIAMMember("viewer", {
+ *     bucket: registry.id,
+ *     role: "roles/storage.objectViewer",
+ *     member: "user:jane@example.com",
  * });
  * ```
  */

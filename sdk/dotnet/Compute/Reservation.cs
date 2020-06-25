@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Compute
     /// services not listed above
     /// like Cloud SQL and Dataflow.
     /// 
-    /// 
     /// To get more information about Reservation, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
@@ -27,7 +26,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Reservation Basic
     /// 
     /// ```csharp

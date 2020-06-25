@@ -13,7 +13,6 @@ import (
 // A Container Analysis note is a high-level piece of metadata that
 // describes a type of analysis that can be done for a resource.
 //
-//
 // To get more information about Note, see:
 //
 // * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
@@ -22,7 +21,6 @@ import (
 //     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
 //
 // ## Example Usage
-//
 // ### Container Analysis Note Basic
 //
 // ```go
@@ -35,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 		_, err = containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
 // 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
 // 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
 // 					HumanReadableName: pulumi.String("Attestor Note"),
@@ -49,7 +47,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Container Analysis Note Attestation Full
 //
 // ```go
@@ -62,7 +59,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 		_, err = containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
 // 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
 // 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
 // 					HumanReadableName: pulumi.String("Attestor Note"),

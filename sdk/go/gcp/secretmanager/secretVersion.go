@@ -14,6 +14,8 @@ import (
 //
 // > **Warning:** All arguments including `payload.secret_data` will be stored in the raw
 // state as plain-text.
+//
+// ## Example Usage
 type SecretVersion struct {
 	pulumi.CustomResourceState
 

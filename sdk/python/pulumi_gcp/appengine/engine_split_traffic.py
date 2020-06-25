@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EngineSplitTraffic(pulumi.CustomResource):
     migrate_traffic: pulumi.Output[bool]
     """
@@ -34,13 +35,11 @@ class EngineSplitTraffic(pulumi.CustomResource):
         """
         Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.
 
-
         To get more information about ServiceSplitTraffic, see:
 
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
 
         ## Example Usage
-
         ### App Engine Service Split Traffic
 
         ```python
@@ -168,9 +167,9 @@ class EngineSplitTraffic(pulumi.CustomResource):
         __props__["service"] = service
         __props__["split"] = split
         return EngineSplitTraffic(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

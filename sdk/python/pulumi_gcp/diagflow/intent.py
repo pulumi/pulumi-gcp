@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Intent(pulumi.CustomResource):
     action: pulumi.Output[str]
     """
@@ -96,7 +97,6 @@ class Intent(pulumi.CustomResource):
         Represents a Dialogflow intent. Intents convert a number of user expressions or patterns into an action. An action
         is an extraction of a user command or sentence semantics.
 
-
         To get more information about Intent, see:
 
         * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
@@ -104,7 +104,6 @@ class Intent(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
-
         ### Dialogflow Intent Basic
 
         ```python
@@ -256,9 +255,9 @@ class Intent(pulumi.CustomResource):
         __props__["root_followup_intent_name"] = root_followup_intent_name
         __props__["webhook_state"] = webhook_state
         return Intent(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

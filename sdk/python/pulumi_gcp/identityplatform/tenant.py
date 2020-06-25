@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Tenant(pulumi.CustomResource):
     allow_password_signup: pulumi.Output[bool]
     """
@@ -48,10 +49,7 @@ class Tenant(pulumi.CustomResource):
         You must [enable multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy-quickstart) via
         the Cloud Console prior to creating tenants.
 
-
-
         ## Example Usage
-
         ### Identity Platform Tenant Basic
 
         ```python
@@ -135,9 +133,9 @@ class Tenant(pulumi.CustomResource):
         __props__["name"] = name
         __props__["project"] = project
         return Tenant(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

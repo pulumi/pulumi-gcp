@@ -19,8 +19,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -32,6 +30,44 @@ import * as utilities from "../utilities";
  *     filter: "resource.type = gce_instance AND severity >= WARN",
  *     // Use a unique writer (creates a unique service account used for writing)
  *     uniqueWriterIdentity: true,
+ * });
+ * ```
+ *
+ * A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
+ * cloud storage bucket. Because we are using `uniqueWriterIdentity`, we must grant it access to the bucket. Note that
+ * this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
+ * used with this provider.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Our logged compute instance
+ * const my_logged_instance = new gcp.compute.Instance("my-logged-instance", {
+ *     machineType: "n1-standard-1",
+ *     zone: "us-central1-a",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: "default",
+ *         access_config: [{}],
+ *     }],
+ * });
+ * // A bucket to store logs in
+ * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
+ * // Our sink; this logs all activity related to our "my-logged-instance" instance
+ * const instance_sink = new gcp.logging.ProjectSink("instance-sink", {
+ *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
+ *     filter: pulumi.interpolate`resource.type = gce_instance AND resource.labels.instance_id = "${my_logged_instance.instanceId}"`,
+ *     uniqueWriterIdentity: true,
+ * });
+ * // Because our sink uses a unique_writer, we must grant that writer access to the bucket.
+ * const log_writer = new gcp.projects.IAMBinding("log-writer", {
+ *     role: "roles/storage.objectCreator",
+ *     members: [instance_sink.writerIdentity],
  * });
  * ```
  */

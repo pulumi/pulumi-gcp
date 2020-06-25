@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class NotificationChannel(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -91,7 +92,6 @@ class NotificationChannel(pulumi.CustomResource):
         accessed programmatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
         This provides the channel type and all of the required labels that must be passed.
 
-
         To get more information about NotificationChannel, see:
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
@@ -100,7 +100,6 @@ class NotificationChannel(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
-
         ### Notification Channel Basic
 
         ```python
@@ -114,7 +113,6 @@ class NotificationChannel(pulumi.CustomResource):
             },
             type="email")
         ```
-
         ### Notification Channel Sensitive
 
         ```python
@@ -254,9 +252,9 @@ class NotificationChannel(pulumi.CustomResource):
         __props__["user_labels"] = user_labels
         __props__["verification_status"] = verification_status
         return NotificationChannel(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

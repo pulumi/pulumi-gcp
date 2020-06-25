@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.cloudrun.IamBinding` resources **can be** used in conjunction with `gcp.cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
  *
- *
- *
  * ## google\_cloud\_run\_service\_iam\_policy
  *
  * ```typescript

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
 /**
  * An attestor that attests to container image artifacts.
  *
- *
  * To get more information about Attestor, see:
  *
  * * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
@@ -17,7 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
  *
  * ## Example Usage
- *
  * ### Binary Authorization Attestor Basic
  *
  * ```typescript

@@ -234,8 +234,6 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

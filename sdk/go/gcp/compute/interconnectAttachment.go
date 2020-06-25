@@ -13,10 +13,7 @@ import (
 // Represents an InterconnectAttachment (VLAN attachment) resource. For more
 // information, see Creating VLAN Attachments.
 //
-//
-//
 // ## Example Usage
-//
 // ### Interconnect Attachment Basic
 //
 // ```go
@@ -35,7 +32,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		onPrem, err := compute.NewInterconnectAttachment(ctx, "onPrem", &compute.InterconnectAttachmentArgs{
+// 		_, err = compute.NewInterconnectAttachment(ctx, "onPrem", &compute.InterconnectAttachmentArgs{
 // 			Interconnect: pulumi.String("my-interconnect-id"),
 // 			Router:       foobar.ID(),
 // 		})

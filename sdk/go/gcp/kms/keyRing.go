@@ -12,17 +12,39 @@ import (
 
 // A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
 //
-//
 // > **Note:** KeyRings cannot be deleted from Google Cloud Platform.
 // Destroying a provider-managed KeyRing will remove it from state but
 // *will not delete the resource on the server.*
-//
 //
 // To get more information about KeyRing, see:
 //
 // * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings)
 // * How-to Guides
 //     * [Creating a key ring](https://cloud.google.com/kms/docs/creating-keys#create_a_key_ring)
+//
+// ## Example Usage
+// ### Kms Key Ring Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = kms.NewKeyRing(ctx, "example-keyring", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type KeyRing struct {
 	pulumi.CustomResourceState
 

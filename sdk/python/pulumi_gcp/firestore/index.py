@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Index(pulumi.CustomResource):
     collection: pulumi.Output[str]
     """
@@ -53,7 +54,6 @@ class Index(pulumi.CustomResource):
          This resource manages composite indexes and not single
         field indexes.
 
-
         To get more information about Index, see:
 
         * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
@@ -61,7 +61,6 @@ class Index(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
 
         ## Example Usage
-
         ### Firestore Index Basic
 
         ```python
@@ -184,9 +183,9 @@ class Index(pulumi.CustomResource):
         __props__["project"] = project
         __props__["query_scope"] = query_scope
         return Index(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

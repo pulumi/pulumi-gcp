@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Ha Vpn Gateway Basic
     /// 
     /// ```csharp
@@ -46,7 +45,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// 
     /// ### Ha Vpn Gateway Gcp To Gcp
     /// 
     /// ```csharp

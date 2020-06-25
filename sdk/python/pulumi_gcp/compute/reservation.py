@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Reservation(pulumi.CustomResource):
     commitment: pulumi.Output[str]
     """
@@ -93,7 +94,6 @@ class Reservation(pulumi.CustomResource):
         services not listed above
         like Cloud SQL and Dataflow.
 
-
         To get more information about Reservation, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
@@ -101,7 +101,6 @@ class Reservation(pulumi.CustomResource):
             * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
 
         ## Example Usage
-
         ### Reservation Basic
 
         ```python
@@ -268,9 +267,9 @@ class Reservation(pulumi.CustomResource):
         __props__["status"] = status
         __props__["zone"] = zone
         return Reservation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

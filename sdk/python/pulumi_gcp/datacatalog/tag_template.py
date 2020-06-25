@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TagTemplate(pulumi.CustomResource):
     display_name: pulumi.Output[str]
     """
@@ -66,7 +67,6 @@ class TagTemplate(pulumi.CustomResource):
         A tag template defines a tag, which can have one or more typed fields.
         The template is used to create and attach the tag to GCP resources.
 
-
         To get more information about TagTemplate, see:
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates)
@@ -74,7 +74,6 @@ class TagTemplate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
-
         ### Data Catalog Tag Template Basic
 
         ```python
@@ -245,9 +244,9 @@ class TagTemplate(pulumi.CustomResource):
         __props__["region"] = region
         __props__["tag_template_id"] = tag_template_id
         return TagTemplate(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

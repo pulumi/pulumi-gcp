@@ -58,7 +58,6 @@ def get_ca_certs(instance=None,project=None,opts=None):
     [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
 
 
-
     :param str instance: The name or self link of the instance.
     :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
     """

@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;

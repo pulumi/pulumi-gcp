@@ -7,7 +7,6 @@ import * as utilities from "../utilities";
 /**
  * The SSH public key information associated with a Google account.
  *
- *
  * To get more information about SSHPublicKey, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest)
@@ -15,7 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
  *
  * ## Example Usage
- *
  * ### Os Login Ssh Key Provided User
  *
  * ```typescript

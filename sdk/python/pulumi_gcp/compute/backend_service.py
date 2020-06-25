@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BackendService(pulumi.CustomResource):
     affinity_cookie_ttl_sec: pulumi.Output[float]
     """
@@ -360,7 +361,6 @@ class BackendService(pulumi.CustomResource):
 
         Currently self-managed internal load balancing is only available in beta.
 
-
         To get more information about BackendService, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
@@ -368,7 +368,6 @@ class BackendService(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
         ## Example Usage
-
         ### Backend Service Basic
 
         ```python
@@ -381,7 +380,6 @@ class BackendService(pulumi.CustomResource):
             timeout_sec=1)
         default_backend_service = gcp.compute.BackendService("defaultBackendService", health_checks=[default_http_health_check.id])
         ```
-
         ### Backend Service Traffic Director Round Robin
 
         ```python
@@ -396,7 +394,6 @@ class BackendService(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             locality_lb_policy="ROUND_ROBIN")
         ```
-
         ### Backend Service Traffic Director Ring Hash
 
         ```python
@@ -1078,9 +1075,9 @@ class BackendService(pulumi.CustomResource):
         __props__["session_affinity"] = session_affinity
         __props__["timeout_sec"] = timeout_sec
         return BackendService(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

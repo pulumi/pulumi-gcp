@@ -13,13 +13,12 @@ namespace Pulumi.Gcp.Dns
     /// Manages a set of DNS records within Google Cloud DNS. For more information see [the official documentation](https://cloud.google.com/dns/records/) and
     /// [API](https://cloud.google.com/dns/api/v1/resourceRecordSets).
     /// 
-    /// &gt; **Note:** The provider treats this resource as an authoritative record set. This means existing records (including 
-    /// the default records) for the given type will be overwritten when you create this resource in the provider. 
-    /// In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider 
+    /// &gt; **Note:** The provider treats this resource as an authoritative record set. This means existing records (including
+    /// the default records) for the given type will be overwritten when you create this resource in the provider.
+    /// In addition, the Google Cloud DNS API requires NS records to be present at all times, so the provider
     /// will not actually remove NS records during destroy but will report that it did.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Adding an A record
     /// 
     /// ```csharp
@@ -48,7 +47,6 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// }
     /// ```
-    /// 
     /// ### Adding an MX record
     /// 
     /// ```csharp
@@ -81,8 +79,9 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// }
     /// ```
-    /// 
     /// ### Adding an SPF record
+    /// 
+    /// Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -110,8 +109,9 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// }
     /// ```
-    /// 
     /// ### Adding a CNAME record
+    /// 
+    ///  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
     /// 
     /// ```csharp
     /// using Pulumi;

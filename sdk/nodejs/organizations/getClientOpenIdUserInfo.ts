@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * receive an error otherwise.
  *
  * ## Example Usage
- *
  * ### Exporting An Email
  *
  * ```typescript

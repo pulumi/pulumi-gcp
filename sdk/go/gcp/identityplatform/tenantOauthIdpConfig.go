@@ -16,10 +16,7 @@ import (
 // [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
 // the marketplace prior to using this resource.
 //
-//
-//
 // ## Example Usage
-//
 // ### Identity Platform Tenant Oauth Idp Config Basic
 //
 // ```go
@@ -38,7 +35,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		tenantOauthIdpConfig, err := identityplatform.NewTenantOauthIdpConfig(ctx, "tenantOauthIdpConfig", &identityplatform.TenantOauthIdpConfigArgs{
+// 		_, err = identityplatform.NewTenantOauthIdpConfig(ctx, "tenantOauthIdpConfig", &identityplatform.TenantOauthIdpConfigArgs{
 // 			Tenant:       tenant.Name,
 // 			DisplayName:  pulumi.String("Display Name"),
 // 			ClientId:     pulumi.String("client-id"),

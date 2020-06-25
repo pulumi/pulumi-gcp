@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * information, see Access Control, with the caveat that this API uses
  * READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
  *
- *
  * To get more information about BucketAccessControl, see:
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
@@ -30,7 +29,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
  *
  * ## Example Usage
- *
  * ### Storage Bucket Access Control Public Bucket
  *
  * ```typescript

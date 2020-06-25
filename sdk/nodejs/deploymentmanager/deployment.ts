@@ -10,8 +10,6 @@ import * as utilities from "../utilities";
  * A collection of resources that are deployed and managed together using
  * a configuration file
  *
- *
- *
  * > **Warning:** This resource is intended only to manage a Deployment resource,
  * and attempts to manage the Deployment's resources in the provider as well
  * will likely result in errors or unexpected behavior as the two tools
@@ -24,7 +22,6 @@ import * as utilities from "../utilities";
  * `preview=false`).
  *
  * ## Example Usage
- *
  * ### Deployment Manager Deployment Basic
  *
  * ```typescript

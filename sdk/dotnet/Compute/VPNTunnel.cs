@@ -12,7 +12,6 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// VPN tunnel resource.
     /// 
-    /// 
     /// To get more information about VpnTunnel, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
@@ -24,7 +23,6 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Vpn Tunnel Basic
     /// 
     /// ```csharp
@@ -82,7 +80,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// 
     /// ### Vpn Tunnel Beta
     /// 
     /// ```csharp

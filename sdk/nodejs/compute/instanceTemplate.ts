@@ -12,10 +12,7 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -74,7 +71,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ## Using with Instance Group Manager
  *
  * Instance Templates cannot be updated after creation with the Google

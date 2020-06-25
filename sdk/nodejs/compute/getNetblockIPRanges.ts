@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
  *
  * ## Example Usage
- *
  * ### Cloud Ranges
  *
  * ```typescript
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  * export const cidrBlocksIpv4 = netblock.then(netblock => netblock.cidrBlocksIpv4s);
  * export const cidrBlocksIpv6 = netblock.then(netblock => netblock.cidrBlocksIpv6s);
  * ```
- *
  * ### Allow Health Checks
  *
  * ```typescript

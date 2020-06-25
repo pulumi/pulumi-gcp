@@ -13,6 +13,59 @@ import (
 //
 // A model can have multiple versions, each of which is a deployed, trained model
 // ready to receive prediction requests. The model itself is just a container.
+//
+// ## Example Usage
+// ### Ml Model Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/ml"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = ml.NewEngineModel(ctx, "default", &ml.EngineModelArgs{
+// 			Description: pulumi.String("My model"),
+// 			Regions:     pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Ml Model Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/ml"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = ml.NewEngineModel(ctx, "default", &ml.EngineModelArgs{
+// 			Description: pulumi.String("My model"),
+// 			Labels: pulumi.Map{
+// 				"my_model": pulumi.String("foo"),
+// 			},
+// 			OnlinePredictionConsoleLogging: pulumi.Bool(true),
+// 			OnlinePredictionLogging:        pulumi.Bool(true),
+// 			Regions:                        pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type EngineModel struct {
 	pulumi.CustomResourceState
 

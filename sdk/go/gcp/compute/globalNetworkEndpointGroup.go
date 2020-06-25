@@ -13,7 +13,6 @@ import (
 // A global network endpoint group contains endpoints that reside outside of Google Cloud.
 // Currently a global network endpoint group can only support a single endpoint.
 //
-//
 // To get more information about GlobalNetworkEndpointGroup, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -21,7 +20,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 //
 // ## Example Usage
-//
 // ### Global Network Endpoint Group
 //
 // ```go
@@ -34,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		neg, err := compute.NewGlobalNetworkEndpointGroup(ctx, "neg", &compute.GlobalNetworkEndpointGroupArgs{
+// 		_, err = compute.NewGlobalNetworkEndpointGroup(ctx, "neg", &compute.GlobalNetworkEndpointGroupArgs{
 // 			DefaultPort:         pulumi.Int(90),
 // 			NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 // 		})
@@ -45,7 +43,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Global Network Endpoint Group Ip Address
 //
 // ```go
@@ -58,7 +55,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		neg, err := compute.NewGlobalNetworkEndpointGroup(ctx, "neg", &compute.GlobalNetworkEndpointGroupArgs{
+// 		_, err = compute.NewGlobalNetworkEndpointGroup(ctx, "neg", &compute.GlobalNetworkEndpointGroupArgs{
 // 			DefaultPort:         pulumi.Int(90),
 // 			NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
 // 		})

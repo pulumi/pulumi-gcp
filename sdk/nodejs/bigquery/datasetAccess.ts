@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * dataset resource must either have no defined `access` blocks or a `lifecycle` block with
  * `ignoreChanges = [access]` so they don't fight over which accesses should be on the dataset.
  *
- *
  * To get more information about DatasetAccess, see:
  *
  * * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  *     * [Controlling access to datasets](https://cloud.google.com/bigquery/docs/dataset-access-controls)
  *
  * ## Example Usage
- *
  * ### Bigquery Dataset Access Basic User
  *
  * ```typescript
@@ -38,7 +36,6 @@ import * as utilities from "../utilities";
  *     userByEmail: bqowner.email,
  * });
  * ```
- *
  * ### Bigquery Dataset Access View
  *
  * ```typescript

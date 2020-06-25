@@ -20,8 +20,6 @@ import (
 //
 // > **Note:** `iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role.
 //
-//
-//
 // ## google\_iap\_app\_engine\_service\_iam\_policy
 //
 // ```go
@@ -29,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -47,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := iap.NewAppEngineServiceIamPolicy(ctx, "policy", &iap.AppEngineServiceIamPolicyArgs{
+// 		_, err = iap.NewAppEngineServiceIamPolicy(ctx, "policy", &iap.AppEngineServiceIamPolicyArgs{
 // 			Project:    pulumi.String(google_app_engine_standard_app_version.Version.Project),
 // 			AppId:      pulumi.String(google_app_engine_standard_app_version.Version.Project),
 // 			Service:    pulumi.String(google_app_engine_standard_app_version.Version.Service),
@@ -68,6 +67,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -91,7 +91,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := iap.NewAppEngineServiceIamPolicy(ctx, "policy", &iap.AppEngineServiceIamPolicyArgs{
+// 		_, err = iap.NewAppEngineServiceIamPolicy(ctx, "policy", &iap.AppEngineServiceIamPolicyArgs{
 // 			Project:    pulumi.String(google_app_engine_standard_app_version.Version.Project),
 // 			AppId:      pulumi.String(google_app_engine_standard_app_version.Version.Project),
 // 			Service:    pulumi.String(google_app_engine_standard_app_version.Version.Service),
@@ -116,7 +116,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := iap.NewAppEngineServiceIamBinding(ctx, "binding", &iap.AppEngineServiceIamBindingArgs{
+// 		_, err = iap.NewAppEngineServiceIamBinding(ctx, "binding", &iap.AppEngineServiceIamBindingArgs{
 // 			AppId: pulumi.String(google_app_engine_standard_app_version.Version.Project),
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("user:jane@example.com"),
@@ -145,7 +145,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := iap.NewAppEngineServiceIamBinding(ctx, "binding", &iap.AppEngineServiceIamBindingArgs{
+// 		_, err = iap.NewAppEngineServiceIamBinding(ctx, "binding", &iap.AppEngineServiceIamBindingArgs{
 // 			AppId: pulumi.String(google_app_engine_standard_app_version.Version.Project),
 // 			Condition: &iap.AppEngineServiceIamBindingConditionArgs{
 // 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
@@ -178,7 +178,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := iap.NewAppEngineServiceIamMember(ctx, "member", &iap.AppEngineServiceIamMemberArgs{
+// 		_, err = iap.NewAppEngineServiceIamMember(ctx, "member", &iap.AppEngineServiceIamMemberArgs{
 // 			AppId:   pulumi.String(google_app_engine_standard_app_version.Version.Project),
 // 			Member:  pulumi.String("user:jane@example.com"),
 // 			Project: pulumi.String(google_app_engine_standard_app_version.Version.Project),
@@ -205,7 +205,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := iap.NewAppEngineServiceIamMember(ctx, "member", &iap.AppEngineServiceIamMemberArgs{
+// 		_, err = iap.NewAppEngineServiceIamMember(ctx, "member", &iap.AppEngineServiceIamMemberArgs{
 // 			AppId: pulumi.String(google_app_engine_standard_app_version.Version.Project),
 // 			Condition: &iap.AppEngineServiceIamMemberConditionArgs{
 // 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),

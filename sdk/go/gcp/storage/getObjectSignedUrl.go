@@ -13,26 +13,25 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		artifact, err := storage.LookupObjectSignedUrl(ctx, &storage.LookupObjectSignedUrlArgs{
+// 		_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
 // 			Bucket: "install_binaries",
 // 			Path:   "path/to/install_file.bin",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		vm, err := compute.NewInstance(ctx, "vm", nil)
+// 		_, err = compute.NewInstance(ctx, "vm", nil)
 // 		if err != nil {
 // 			return err
 // 		}

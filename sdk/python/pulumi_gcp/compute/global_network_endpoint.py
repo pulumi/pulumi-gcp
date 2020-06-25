@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class GlobalNetworkEndpoint(pulumi.CustomResource):
     fqdn: pulumi.Output[str]
     """
@@ -38,7 +39,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
         **NOTE**: Global network endpoints cannot be created outside of a
         global network endpoint group.
 
-
         To get more information about GlobalNetworkEndpoint, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -46,7 +46,6 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
-
         ### Global Network Endpoint
 
         ```python
@@ -133,9 +132,9 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
         __props__["port"] = port
         __props__["project"] = project
         return GlobalNetworkEndpoint(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

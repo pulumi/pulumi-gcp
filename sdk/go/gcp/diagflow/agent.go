@@ -15,7 +15,6 @@ import (
 // during a conversation to structured data that your apps and services can understand. You design and build a Dialogflow
 // agent to handle the types of conversations required for your system.
 //
-//
 // To get more information about Agent, see:
 //
 // * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects/agent)
@@ -23,7 +22,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
 // ## Example Usage
-//
 // ### Dialogflow Agent Full
 //
 // ```go
@@ -36,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		fullAgent, err := diagflow.NewAgent(ctx, "fullAgent", &diagflow.AgentArgs{
+// 		_, err = diagflow.NewAgent(ctx, "fullAgent", &diagflow.AgentArgs{
 // 			ApiVersion:              pulumi.String("API_VERSION_V2_BETA_1"),
 // 			AvatarUri:               pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
 // 			ClassificationThreshold: pulumi.Float64(0.3),
@@ -94,9 +92,9 @@ type Agent struct {
 	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
 	// Determines how intents are detected from user queries.
 	// * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
-	// syntax and composite entities.
+	//   syntax and composite entities.
 	// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-	// using @sys.any or very large developer entities.
+	//   using @sys.any or very large developer entities.
 	MatchMode pulumi.StringOutput `pulumi:"matchMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -107,8 +105,8 @@ type Agent struct {
 	// * TIER_STANDARD: Standard tier.
 	// * TIER_ENTERPRISE: Enterprise tier (Essentials).
 	// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-	// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-	// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+	//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+	//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
 	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -183,9 +181,9 @@ type agentState struct {
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// Determines how intents are detected from user queries.
 	// * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
-	// syntax and composite entities.
+	//   syntax and composite entities.
 	// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-	// using @sys.any or very large developer entities.
+	//   using @sys.any or very large developer entities.
 	MatchMode *string `pulumi:"matchMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -196,8 +194,8 @@ type agentState struct {
 	// * TIER_STANDARD: Standard tier.
 	// * TIER_ENTERPRISE: Enterprise tier (Essentials).
 	// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-	// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-	// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+	//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+	//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
 	Tier *string `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -236,9 +234,9 @@ type AgentState struct {
 	EnableLogging pulumi.BoolPtrInput
 	// Determines how intents are detected from user queries.
 	// * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
-	// syntax and composite entities.
+	//   syntax and composite entities.
 	// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-	// using @sys.any or very large developer entities.
+	//   using @sys.any or very large developer entities.
 	MatchMode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -249,8 +247,8 @@ type AgentState struct {
 	// * TIER_STANDARD: Standard tier.
 	// * TIER_ENTERPRISE: Enterprise tier (Essentials).
 	// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-	// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-	// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+	//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+	//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
 	Tier pulumi.StringPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -290,9 +288,9 @@ type agentArgs struct {
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// Determines how intents are detected from user queries.
 	// * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
-	// syntax and composite entities.
+	//   syntax and composite entities.
 	// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-	// using @sys.any or very large developer entities.
+	//   using @sys.any or very large developer entities.
 	MatchMode *string `pulumi:"matchMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -303,8 +301,8 @@ type agentArgs struct {
 	// * TIER_STANDARD: Standard tier.
 	// * TIER_ENTERPRISE: Enterprise tier (Essentials).
 	// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-	// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-	// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+	//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+	//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
 	Tier *string `pulumi:"tier"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
@@ -341,9 +339,9 @@ type AgentArgs struct {
 	EnableLogging pulumi.BoolPtrInput
 	// Determines how intents are detected from user queries.
 	// * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
-	// syntax and composite entities.
+	//   syntax and composite entities.
 	// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-	// using @sys.any or very large developer entities.
+	//   using @sys.any or very large developer entities.
 	MatchMode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -354,8 +352,8 @@ type AgentArgs struct {
 	// * TIER_STANDARD: Standard tier.
 	// * TIER_ENTERPRISE: Enterprise tier (Essentials).
 	// * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-	// NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-	// the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+	//   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+	//   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
 	Tier pulumi.StringPtrInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.

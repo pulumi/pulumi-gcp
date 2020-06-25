@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Reservation(pulumi.CustomResource):
     ignore_idle_slots: pulumi.Output[bool]
     """
@@ -46,7 +47,6 @@ class Reservation(pulumi.CustomResource):
             * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
 
         ## Example Usage
-
         ### Bigquery Reservation Basic
 
         ```python
@@ -132,9 +132,9 @@ class Reservation(pulumi.CustomResource):
         __props__["project"] = project
         __props__["slot_capacity"] = slot_capacity
         return Reservation(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

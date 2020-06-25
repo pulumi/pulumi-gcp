@@ -24,8 +24,6 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;

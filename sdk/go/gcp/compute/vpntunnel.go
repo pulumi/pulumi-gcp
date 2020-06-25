@@ -12,7 +12,6 @@ import (
 
 // VPN tunnel resource.
 //
-//
 // To get more information about VpnTunnel, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/vpnTunnels)
@@ -24,7 +23,6 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
-//
 // ### Vpn Tunnel Basic
 //
 // ```go
@@ -85,7 +83,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		route1, err := compute.NewRoute(ctx, "route1", &compute.RouteArgs{
+// 		_, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
 // 			Network:          network1.Name,
 // 			DestRange:        pulumi.String("15.0.0.0/24"),
 // 			Priority:         pulumi.Int(1000),
@@ -98,7 +96,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Vpn Tunnel Beta
 //
 // ```go
@@ -155,14 +152,14 @@ import (
 // 			PeerIp:           pulumi.String("15.0.0.120"),
 // 			SharedSecret:     pulumi.String("a secret message"),
 // 			TargetVpnGateway: targetGateway.ID(),
-// 			Labels: map[string]interface{}{
-// 				"foo": "bar",
+// 			Labels: pulumi.Map{
+// 				"foo": pulumi.String("bar"),
 // 			},
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		route1, err := compute.NewRoute(ctx, "route1", &compute.RouteArgs{
+// 		_, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
 // 			Network:          network1.Name,
 // 			DestRange:        pulumi.String("15.0.0.0/24"),
 // 			Priority:         pulumi.Int(1000),

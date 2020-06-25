@@ -12,7 +12,6 @@ import (
 
 // A key for signing Cloud CDN signed URLs for Backend Services.
 //
-//
 // To get more information about BackendServiceSignedUrlKey, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
@@ -21,6 +20,8 @@ import (
 //
 // > **Warning:** All arguments including `keyValue` will be stored in the raw
 // state as plain-text.
+//
+// ## Example Usage
 type BackendServiceSignedUrlKey struct {
 	pulumi.CustomResourceState
 

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TenantOauthIdpConfig(pulumi.CustomResource):
     client_id: pulumi.Output[str]
     """
@@ -51,10 +52,7 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         [Google Identity Platform](https://console.cloud.google.com/marketplace/details/google-cloud-platform/customer-identity) in
         the marketplace prior to using this resource.
 
-
-
         ## Example Usage
-
         ### Identity Platform Tenant Oauth Idp Config Basic
 
         ```python
@@ -154,9 +152,9 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
         __props__["project"] = project
         __props__["tenant"] = tenant
         return TenantOauthIdpConfig(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

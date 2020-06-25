@@ -60,8 +60,6 @@ def get_registry_image(digest=None,name=None,project=None,region=None,tag=None,o
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

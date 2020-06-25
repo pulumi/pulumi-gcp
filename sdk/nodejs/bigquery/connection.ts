@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  *
  * ## Example Usage
- *
  * ### Bigquery Connection Basic
  *
  * ```typescript
@@ -57,7 +56,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Bigquery Connection Full
  *
  * ```typescript

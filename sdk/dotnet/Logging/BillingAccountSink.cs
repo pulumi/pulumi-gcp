@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;

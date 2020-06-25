@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Logging
     /// of the values. The distribution records the statistics of the extracted values along with
     /// an optional histogram of the values as specified by the bucket options.
     /// 
-    /// 
     /// To get more information about Metric, see:
     /// 
     /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics/create)
@@ -22,7 +21,6 @@ namespace Pulumi.Gcp.Logging
     ///     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Logging Metric Basic
     /// 
     /// ```csharp
@@ -78,7 +76,6 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// }
     /// ```
-    /// 
     /// ### Logging Metric Counter Basic
     /// 
     /// ```csharp
@@ -102,7 +99,6 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// }
     /// ```
-    /// 
     /// ### Logging Metric Counter Labels
     /// 
     /// ```csharp

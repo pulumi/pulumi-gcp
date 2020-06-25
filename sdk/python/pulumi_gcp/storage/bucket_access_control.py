@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BucketAccessControl(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
@@ -63,7 +64,6 @@ class BucketAccessControl(pulumi.CustomResource):
         information, see Access Control, with the caveat that this API uses
         READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
 
-
         To get more information about BucketAccessControl, see:
 
         * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)
@@ -71,7 +71,6 @@ class BucketAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 
         ## Example Usage
-
         ### Storage Bucket Access Control Public Bucket
 
         ```python
@@ -176,9 +175,9 @@ class BucketAccessControl(pulumi.CustomResource):
         __props__["entity"] = entity
         __props__["role"] = role
         return BucketAccessControl(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

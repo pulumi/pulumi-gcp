@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Namespace(pulumi.CustomResource):
     labels: pulumi.Output[dict]
     """
@@ -48,7 +49,6 @@ class Namespace(pulumi.CustomResource):
             * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 
         ## Example Usage
-
         ### Service Directory Namespace Basic
 
         ```python
@@ -140,9 +140,9 @@ class Namespace(pulumi.CustomResource):
         __props__["namespace_id"] = namespace_id
         __props__["project"] = project
         return Namespace(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

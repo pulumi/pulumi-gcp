@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Connection(pulumi.CustomResource):
     cloud_sql: pulumi.Output[dict]
     """
@@ -69,7 +70,6 @@ class Connection(pulumi.CustomResource):
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
         ## Example Usage
-
         ### Bigquery Connection Basic
 
         ```python
@@ -103,7 +103,6 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-
         ### Bigquery Connection Full
 
         ```python
@@ -242,9 +241,9 @@ class Connection(pulumi.CustomResource):
         __props__["name"] = name
         __props__["project"] = project
         return Connection(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

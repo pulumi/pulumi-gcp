@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
  *
  * ## Example Usage
- *
  * ### Ha Vpn Gateway Basic
  *
  * ```typescript
@@ -32,7 +31,6 @@ import * as utilities from "../utilities";
  *     network: network1.id,
  * });
  * ```
- *
  * ### Ha Vpn Gateway Gcp To Gcp
  *
  * ```typescript

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ManagedZone(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -121,7 +122,6 @@ class ManagedZone(pulumi.CustomResource):
         responsibility. A ManagedZone is a resource that represents a DNS zone
         hosted by the Cloud DNS service.
 
-
         To get more information about ManagedZone, see:
 
         * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
@@ -129,7 +129,6 @@ class ManagedZone(pulumi.CustomResource):
             * [Managing Zones](https://cloud.google.com/dns/zones/)
 
         ## Example Usage
-
         ### Dns Managed Zone Basic
 
         ```python
@@ -143,7 +142,6 @@ class ManagedZone(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
-
         ### Dns Managed Zone Private
 
         ```python
@@ -170,7 +168,6 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             })
         ```
-
         ### Dns Managed Zone Private Forwarding
 
         ```python
@@ -207,7 +204,6 @@ class ManagedZone(pulumi.CustomResource):
                 ],
             })
         ```
-
         ### Dns Managed Zone Private Peering
 
         ```python
@@ -231,7 +227,6 @@ class ManagedZone(pulumi.CustomResource):
                 },
             })
         ```
-
         ### Dns Managed Zone Service Directory
 
         ```python
@@ -475,9 +470,9 @@ class ManagedZone(pulumi.CustomResource):
         __props__["service_directory_config"] = service_directory_config
         __props__["visibility"] = visibility
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

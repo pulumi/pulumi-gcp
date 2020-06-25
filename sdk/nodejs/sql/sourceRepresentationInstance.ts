@@ -11,10 +11,7 @@ import * as utilities from "../utilities";
  * contains no data, requires no configuration or maintenance, and does not
  * affect billing. You cannot update the source representation instance.
  *
- *
- *
  * ## Example Usage
- *
  * ### Sql Source Representation Instance Basic
  *
  * ```typescript

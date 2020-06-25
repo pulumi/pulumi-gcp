@@ -20,14 +20,13 @@ import (
 //
 // > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
 //
-//
-//
 // ## google\_pubsub\_topic\_iam\_policy
 //
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/pubsub"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
@@ -47,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := pubsub.NewTopicIAMPolicy(ctx, "policy", &pubsub.TopicIAMPolicyArgs{
+// 		_, err = pubsub.NewTopicIAMPolicy(ctx, "policy", &pubsub.TopicIAMPolicyArgs{
 // 			Project:    pulumi.String(google_pubsub_topic.Example.Project),
 // 			Topic:      pulumi.String(google_pubsub_topic.Example.Name),
 // 			PolicyData: pulumi.String(admin.PolicyData),
@@ -72,7 +71,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+// 		_, err = pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
 // 			Project: pulumi.String(google_pubsub_topic.Example.Project),
 // 			Topic:   pulumi.String(google_pubsub_topic.Example.Name),
 // 			Role:    pulumi.String("roles/viewer"),
@@ -100,7 +99,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := pubsub.NewTopicIAMMember(ctx, "member", &pubsub.TopicIAMMemberArgs{
+// 		_, err = pubsub.NewTopicIAMMember(ctx, "member", &pubsub.TopicIAMMemberArgs{
 // 			Project: pulumi.String(google_pubsub_topic.Example.Project),
 // 			Topic:   pulumi.String(google_pubsub_topic.Example.Name),
 // 			Role:    pulumi.String("roles/viewer"),

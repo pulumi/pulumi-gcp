@@ -18,8 +18,7 @@ type ProviderBatching struct {
 // ProviderBatchingInput is an input type that accepts ProviderBatchingArgs and ProviderBatchingOutput values.
 // You can construct a concrete instance of `ProviderBatchingInput` via:
 //
-// 		 ProviderBatchingArgs{...}
-//
+//          ProviderBatchingArgs{...}
 type ProviderBatchingInput interface {
 	pulumi.Input
 
@@ -55,12 +54,11 @@ func (i ProviderBatchingArgs) ToProviderBatchingPtrOutputWithContext(ctx context
 // ProviderBatchingPtrInput is an input type that accepts ProviderBatchingArgs, ProviderBatchingPtr and ProviderBatchingPtrOutput values.
 // You can construct a concrete instance of `ProviderBatchingPtrInput` via:
 //
-// 		 ProviderBatchingArgs{...}
+//          ProviderBatchingArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ProviderBatchingPtrInput interface {
 	pulumi.Input
 

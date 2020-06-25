@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class FhirStoreIamPolicy(pulumi.CustomResource):
     etag: pulumi.Output[str]
     """
@@ -141,9 +142,9 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
         __props__["fhir_store_id"] = fhir_store_id
         __props__["policy_data"] = policy_data
         return FhirStoreIamPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

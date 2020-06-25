@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class WebTypeAppEngingIamMember(pulumi.CustomResource):
     app_id: pulumi.Output[str]
     """
@@ -50,8 +51,6 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
         > **Note:** `iap.WebTypeAppEngingIamPolicy` **cannot** be used in conjunction with `iap.WebTypeAppEngingIamBinding` and `iap.WebTypeAppEngingIamMember` or they will fight over what your policy should be.
 
         > **Note:** `iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
-
-
 
         ## google\_iap\_web\_type\_app\_engine\_iam\_policy
 
@@ -238,9 +237,9 @@ class WebTypeAppEngingIamMember(pulumi.CustomResource):
         __props__["project"] = project
         __props__["role"] = role
         return WebTypeAppEngingIamMember(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

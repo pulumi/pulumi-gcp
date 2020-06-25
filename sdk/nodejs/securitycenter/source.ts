@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * like a container of findings that come from the same scanner, logger,
  * monitor, etc.
  *
- *
  * To get more information about Source, see:
  *
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1beta1/organizations.sources)
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
  *
  * ## Example Usage
- *
  * ### Scc Source Basic
  *
  * ```typescript

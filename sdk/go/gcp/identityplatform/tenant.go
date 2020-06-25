@@ -19,10 +19,7 @@ import (
 // You must [enable multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy-quickstart) via
 // the Cloud Console prior to creating tenants.
 //
-//
-//
 // ## Example Usage
-//
 // ### Identity Platform Tenant Basic
 //
 // ```go
@@ -35,7 +32,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		tenant, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
+// 		_, err = identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
 // 			AllowPasswordSignup: pulumi.Bool(true),
 // 			DisplayName:         pulumi.String("tenant"),
 // 		})

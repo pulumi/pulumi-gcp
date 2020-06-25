@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.BigTable
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
     /// 
     /// ## Example Usage
-    /// 
     /// ### Development Instance
     /// 
     /// ```csharp

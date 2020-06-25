@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DomainMapping(pulumi.CustomResource):
     domain_name: pulumi.Output[str]
     """
@@ -60,7 +61,6 @@ class DomainMapping(pulumi.CustomResource):
         """
         A domain serving an App Engine application.
 
-
         To get more information about DomainMapping, see:
 
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
@@ -68,7 +68,6 @@ class DomainMapping(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
 
         ## Example Usage
-
         ### App Engine Domain Mapping Basic
 
         ```python
@@ -192,9 +191,9 @@ class DomainMapping(pulumi.CustomResource):
         __props__["resource_records"] = resource_records
         __props__["ssl_settings"] = ssl_settings
         return DomainMapping(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

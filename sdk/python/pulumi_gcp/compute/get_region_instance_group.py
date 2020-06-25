@@ -76,7 +76,6 @@ def get_region_instance_group(name=None,project=None,region=None,self_link=None,
     The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
 
 
-
     :param str name: The name of the instance group.  One of `name` or `self_link` must be provided.
     :param str project: The ID of the project in which the resource belongs.
            If `self_link` is provided, this value is ignored.  If neither `self_link`

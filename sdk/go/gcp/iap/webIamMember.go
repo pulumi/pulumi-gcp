@@ -20,8 +20,6 @@ import (
 //
 // > **Note:** `iap.WebIamBinding` resources **can be** used in conjunction with `iap.WebIamMember` resources **only if** they do not grant privilege to the same role.
 //
-//
-//
 // ## google\_iap\_web\_iam\_policy
 //
 // ```go
@@ -29,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -47,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := iap.NewWebIamPolicy(ctx, "policy", &iap.WebIamPolicyArgs{
+// 		_, err = iap.NewWebIamPolicy(ctx, "policy", &iap.WebIamPolicyArgs{
 // 			Project:    pulumi.String(google_project_service.Project_service.Project),
 // 			PolicyData: pulumi.String(admin.PolicyData),
 // 		})
@@ -66,6 +65,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -89,7 +89,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := iap.NewWebIamPolicy(ctx, "policy", &iap.WebIamPolicyArgs{
+// 		_, err = iap.NewWebIamPolicy(ctx, "policy", &iap.WebIamPolicyArgs{
 // 			Project:    pulumi.String(google_project_service.Project_service.Project),
 // 			PolicyData: pulumi.String(admin.PolicyData),
 // 		})
@@ -112,7 +112,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := iap.NewWebIamBinding(ctx, "binding", &iap.WebIamBindingArgs{
+// 		_, err = iap.NewWebIamBinding(ctx, "binding", &iap.WebIamBindingArgs{
 // 			Project: pulumi.String(google_project_service.Project_service.Project),
 // 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
 // 			Members: pulumi.StringArray{
@@ -139,7 +139,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := iap.NewWebIamBinding(ctx, "binding", &iap.WebIamBindingArgs{
+// 		_, err = iap.NewWebIamBinding(ctx, "binding", &iap.WebIamBindingArgs{
 // 			Project: pulumi.String(google_project_service.Project_service.Project),
 // 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
 // 			Members: pulumi.StringArray{
@@ -170,7 +170,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := iap.NewWebIamMember(ctx, "member", &iap.WebIamMemberArgs{
+// 		_, err = iap.NewWebIamMember(ctx, "member", &iap.WebIamMemberArgs{
 // 			Project: pulumi.String(google_project_service.Project_service.Project),
 // 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
 // 			Member:  pulumi.String("user:jane@example.com"),
@@ -195,7 +195,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := iap.NewWebIamMember(ctx, "member", &iap.WebIamMemberArgs{
+// 		_, err = iap.NewWebIamMember(ctx, "member", &iap.WebIamMemberArgs{
 // 			Project: pulumi.String(google_project_service.Project_service.Project),
 // 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
 // 			Member:  pulumi.String("user:jane@example.com"),

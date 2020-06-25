@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.BigQuery
     /// Represents a data transfer configuration. A transfer configuration
     /// contains all metadata needed to perform a data transfer.
     /// 
-    /// 
     /// To get more information about Config, see:
     /// 
     /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
@@ -21,7 +20,6 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Bigquerydatatransfer Config Scheduled Query
     /// 
     /// ```csharp

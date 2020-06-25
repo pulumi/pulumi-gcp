@@ -13,10 +13,9 @@ import * as utilities from "../utilities";
  * has a target outside of the ServicePerimeter, the request will be blocked.
  * Otherwise the request is allowed. There are two types of Service Perimeter
  * - Regular and Bridge. Regular Service Perimeters cannot overlap, a single
- * GCP project can only belong to a single regular Service Perimeter. Service
- * Perimeter Bridges can contain only GCP projects as members, a single GCP
- * project may belong to multiple Service Perimeter Bridges.
- *
+ *   GCP project can only belong to a single regular Service Perimeter. Service
+ *   Perimeter Bridges can contain only GCP projects as members, a single GCP
+ *   project may belong to multiple Service Perimeter Bridges.
  *
  * To get more information about ServicePerimeter, see:
  *
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
  *
  * ## Example Usage
- *
  * ### Access Context Manager Service Perimeter Basic
  *
  * ```typescript
@@ -63,7 +61,6 @@ import * as utilities from "../utilities";
  *     title: "chromeos_no_lock",
  * });
  * ```
- *
  * ### Access Context Manager Service Perimeter Dry Run
  *
  * ```typescript

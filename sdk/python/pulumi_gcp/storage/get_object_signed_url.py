@@ -75,8 +75,6 @@ def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credent
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp
@@ -85,7 +83,6 @@ def get_object_signed_url(bucket=None,content_md5=None,content_type=None,credent
         path="path/to/install_file.bin")
     vm = gcp.compute.Instance("vm")
     ```
-
     ## Full Example
 
     ```python

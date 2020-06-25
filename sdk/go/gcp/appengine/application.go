@@ -22,8 +22,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -42,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		app, err := appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
+// 		_, err = appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
 // 			Project:    myProject.ProjectId,
 // 			LocationId: pulumi.String("us-central"),
 // 		})

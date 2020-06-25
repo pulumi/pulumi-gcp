@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DatasetAccess(pulumi.CustomResource):
     dataset_id: pulumi.Output[str]
     """
@@ -75,7 +76,6 @@ class DatasetAccess(pulumi.CustomResource):
         dataset resource must either have no defined `access` blocks or a `lifecycle` block with
         `ignore_changes = [access]` so they don't fight over which accesses should be on the dataset.
 
-
         To get more information about DatasetAccess, see:
 
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
@@ -83,7 +83,6 @@ class DatasetAccess(pulumi.CustomResource):
             * [Controlling access to datasets](https://cloud.google.com/bigquery/docs/dataset-access-controls)
 
         ## Example Usage
-
         ### Bigquery Dataset Access Basic User
 
         ```python
@@ -97,7 +96,6 @@ class DatasetAccess(pulumi.CustomResource):
             role="OWNER",
             user_by_email=bqowner.email)
         ```
-
         ### Bigquery Dataset Access View
 
         ```python
@@ -243,9 +241,9 @@ class DatasetAccess(pulumi.CustomResource):
         __props__["user_by_email"] = user_by_email
         __props__["view"] = view
         return DatasetAccess(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

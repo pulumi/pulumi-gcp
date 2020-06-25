@@ -50,7 +50,6 @@ def get_client_open_id_user_info(opts=None):
     receive an error otherwise.
 
     ## Example Usage
-
     ### Exporting An Email
 
     ```python

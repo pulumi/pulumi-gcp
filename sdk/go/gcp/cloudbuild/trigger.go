@@ -11,12 +11,43 @@ import (
 
 // Configuration for an automated build in response to source repository changes.
 //
-//
 // To get more information about Trigger, see:
 //
 // * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
 // * How-to Guides
 //     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+//
+// ## Example Usage
+// ### Cloudbuild Trigger Filename
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/cloudbuild"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = cloudbuild.NewTrigger(ctx, "filename-trigger", &cloudbuild.TriggerArgs{
+// 			Filename: pulumi.String("cloudbuild.yaml"),
+// 			Substitutions: pulumi.Map{
+// 				"_BAZ": pulumi.String("qux"),
+// 				"_FOO": pulumi.String("bar"),
+// 			},
+// 			TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
+// 				BranchName: pulumi.String("master"),
+// 				RepoName:   pulumi.String("my-repo"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Trigger struct {
 	pulumi.CustomResourceState
 

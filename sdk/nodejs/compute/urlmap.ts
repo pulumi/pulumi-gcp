@@ -10,13 +10,11 @@ import * as utilities from "../utilities";
  * UrlMaps are used to route requests to a backend service based on rules
  * that you define for the host and path of an incoming URL.
  *
- *
  * To get more information about UrlMap, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
  *
  * ## Example Usage
- *
  * ### Url Map Basic
  *
  * ```typescript
@@ -89,7 +87,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Url Map Traffic Director Route
  *
  * ```typescript
@@ -168,7 +165,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Url Map Traffic Director Route Partial
  *
  * ```typescript
@@ -218,7 +214,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Url Map Traffic Director Path
  *
  * ```typescript
@@ -320,7 +315,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Url Map Traffic Director Path Partial
  *
  * ```typescript

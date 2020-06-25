@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Represents a SSL policy. SSL policies give you the ability to control the
  * features of SSL that your SSL proxy or HTTPS load balancer negotiates.
  *
- *
  * To get more information about SslPolicy, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/sslPolicies)
@@ -16,7 +15,6 @@ import * as utilities from "../utilities";
  *     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
  *
  * ## Example Usage
- *
  * ### Ssl Policy Basic
  *
  * ```typescript

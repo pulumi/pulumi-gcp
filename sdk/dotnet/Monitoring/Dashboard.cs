@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Monitoring Dashboard Basic
     /// 
     /// ```csharp
@@ -50,7 +49,6 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// }
     /// ```
-    /// 
     /// ### Monitoring Dashboard GridLayout
     /// 
     /// ```csharp

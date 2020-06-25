@@ -19,13 +19,14 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		org, err := organizations.LookupOrganization(ctx, &organizations.LookupOrganizationArgs{
-// 			Domain: "example.com",
+// 		opt0 := "example.com"
+// 		org, err := organizations.GetOrganization(ctx, &organizations.GetOrganizationArgs{
+// 			Domain: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		sales, err := organizations.NewFolder(ctx, "sales", &organizations.FolderArgs{
+// 		_, err = organizations.NewFolder(ctx, "sales", &organizations.FolderArgs{
 // 			DisplayName: pulumi.String("Sales"),
 // 			Parent:      pulumi.String(org.Name),
 // 		})

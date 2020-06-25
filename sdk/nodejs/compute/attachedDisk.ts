@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  * instance config isn't preferable or possible, such as attaching dynamic
  * numbers of disks using the `count` variable.
  *
- *
  * To get more information about attaching disks, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
@@ -21,8 +20,6 @@ import * as utilities from "../utilities";
  * **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attachedDisk"]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

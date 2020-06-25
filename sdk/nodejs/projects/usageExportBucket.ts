@@ -15,10 +15,7 @@ import * as utilities from "../utilities";
  * [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
  * doc for more information.
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +24,22 @@ import * as utilities from "../utilities";
  * const myProject = new gcp.organizations.Project("my_project", {
  *     orgId: "1234567",
  *     projectId: "your-project-id",
+ * });
+ * ```
+ *
+ * To create a project under a specific folder
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const myProject_in_a_folder = new gcp.organizations.Project("myProject-in-a-folder", {
+ *     projectId: "your-project-id",
+ *     folderId: department1.name,
  * });
  * ```
  */

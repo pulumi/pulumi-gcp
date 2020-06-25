@@ -18,39 +18,40 @@ import (
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			AuditConfigs: organizations.getIAMPolicyAuditConfigArray{
-// 				&organizations.LookupIAMPolicyAuditConfig{
-// 					AuditLogConfigs: organizations.getIAMPolicyAuditConfigAuditLogConfigArray{
-// 						&organizations.LookupIAMPolicyAuditConfigAuditLogConfig{
+// 		_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			AuditConfigs: []organizations.GetIAMPolicyAuditConfig{
+// 				organizations.GetIAMPolicyAuditConfig{
+// 					AuditLogConfigs: []organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+// 						organizations.GetIAMPolicyAuditConfigAuditLogConfig{
 // 							ExemptedMembers: []string{
 // 								"user:you@domain.com",
 // 							},
 // 							LogType: "DATA_READ",
 // 						},
-// 						&organizations.LookupIAMPolicyAuditConfigAuditLogConfig{
+// 						organizations.GetIAMPolicyAuditConfigAuditLogConfig{
 // 							LogType: "DATA_WRITE",
 // 						},
-// 						&organizations.LookupIAMPolicyAuditConfigAuditLogConfig{
+// 						organizations.GetIAMPolicyAuditConfigAuditLogConfig{
 // 							LogType: "ADMIN_READ",
 // 						},
 // 					},
 // 					Service: "cloudkms.googleapis.com",
 // 				},
 // 			},
-// 			Bindings: organizations.getIAMPolicyBindingArray{
-// 				&organizations.LookupIAMPolicyBinding{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
 // 					Members: []string{
 // 						"serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
 // 					},
 // 					Role: "roles/compute.instanceAdmin",
 // 				},
-// 				&organizations.LookupIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
 // 					Members: []string{
 // 						"user:alice@gmail.com",
 // 					},

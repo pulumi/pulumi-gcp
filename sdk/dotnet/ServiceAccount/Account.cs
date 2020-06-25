@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// This snippet creates a service account in a project.
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.DataCatalog
     /// A tag template defines a tag, which can have one or more typed fields.
     /// The template is used to create and attach the tag to GCP resources.
     /// 
-    /// 
     /// To get more information about TagTemplate, see:
     /// 
     /// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates)
@@ -21,7 +20,6 @@ namespace Pulumi.Gcp.DataCatalog
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Data Catalog Tag Template Basic
     /// 
     /// ```csharp

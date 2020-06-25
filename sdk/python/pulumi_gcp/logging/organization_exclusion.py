@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class OrganizationExclusion(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -43,8 +44,6 @@ class OrganizationExclusion(pulumi.CustomResource):
         granted to the credentials used with this provider.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -127,9 +126,9 @@ class OrganizationExclusion(pulumi.CustomResource):
         __props__["name"] = name
         __props__["org_id"] = org_id
         return OrganizationExclusion(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

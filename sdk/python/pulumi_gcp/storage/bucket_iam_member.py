@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BucketIAMMember(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
@@ -45,8 +46,6 @@ class BucketIAMMember(pulumi.CustomResource):
         > **Note:** `storage.BucketIAMPolicy` **cannot** be used in conjunction with `storage.BucketIAMBinding` and `storage.BucketIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `storage.BucketIAMBinding` resources **can be** used in conjunction with `storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
-
-
 
         ## google\_storage\_bucket\_iam\_policy
 
@@ -221,9 +220,9 @@ class BucketIAMMember(pulumi.CustomResource):
         __props__["member"] = member
         __props__["role"] = role
         return BucketIAMMember(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

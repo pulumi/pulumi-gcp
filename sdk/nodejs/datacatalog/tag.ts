@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * See [Data Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for information on the permissions needed to create or view tags.
  *
- *
  * To get more information about Tag, see:
  *
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.tags)
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
- *
  * ### Data Catalog Entry Tag Basic
  *
  * ```typescript
@@ -84,7 +82,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Data Catalog Entry Group Tag
  *
  * ```typescript
@@ -155,7 +152,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Data Catalog Entry Tag Full
  *
  * ```typescript
