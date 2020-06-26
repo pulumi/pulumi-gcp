@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * This snippet creates a customized IAM role.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

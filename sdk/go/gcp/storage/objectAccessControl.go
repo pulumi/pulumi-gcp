@@ -23,12 +23,49 @@ import (
 // For more information, see Access Control, with the caveat that this API
 // uses READER and OWNER instead of READ and FULL_CONTROL.
 //
-//
 // To get more information about ObjectAccessControl, see:
 //
 // * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
+//
+// ## Example Usage
+// ### Storage Object Access Control Public Object
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("../static/img/header-logo.png"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewObjectAccessControl(ctx, "publicRule", &storage.ObjectAccessControlArgs{
+// 			Object: object.OutputName,
+// 			Bucket: bucket.Name,
+// 			Role:   pulumi.String("READER"),
+// 			Entity: pulumi.String("allUsers"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ObjectAccessControl struct {
 	pulumi.CustomResourceState
 

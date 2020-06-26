@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class NodePool(pulumi.CustomResource):
     autoscaling: pulumi.Output[dict]
     """
@@ -146,7 +147,6 @@ class NodePool(pulumi.CustomResource):
         and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
 
         ## Example Usage
-
         ### Using A Separately Managed Node Pool (Recommended)
 
         ```python
@@ -170,7 +170,6 @@ class NodePool(pulumi.CustomResource):
                 ],
             })
         ```
-
         ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
 
         ```python
@@ -467,9 +466,9 @@ class NodePool(pulumi.CustomResource):
         __props__["upgrade_settings"] = upgrade_settings
         __props__["version"] = version
         return NodePool(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

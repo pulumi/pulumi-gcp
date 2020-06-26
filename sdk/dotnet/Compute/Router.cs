@@ -12,7 +12,6 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// Represents a Router resource.
     /// 
-    /// 
     /// To get more information about Router, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -20,7 +19,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Router Basic
     /// 
     /// ```csharp

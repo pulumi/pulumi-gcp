@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  * that you define for the host and path of an incoming URL.
  *
  * ## Example Usage
- *
  * ### Region Url Map Basic
  *
  * ```typescript
@@ -68,7 +67,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Region Url Map L7 Ilb Path
  *
  * ```typescript
@@ -168,7 +166,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Region Url Map L7 Ilb Path Partial
  *
  * ```typescript
@@ -236,7 +233,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Region Url Map L7 Ilb Route
  *
  * ```typescript
@@ -314,7 +310,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Region Url Map L7 Ilb Route Partial
  *
  * ```typescript

@@ -12,7 +12,6 @@ namespace Pulumi.Gcp.Filestore
     /// <summary>
     /// A Google Cloud Filestore instance.
     /// 
-    /// 
     /// To get more information about Instance, see:
     /// 
     /// * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
@@ -22,7 +21,6 @@ namespace Pulumi.Gcp.Filestore
     ///     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Filestore Instance Basic
     /// 
     /// ```csharp

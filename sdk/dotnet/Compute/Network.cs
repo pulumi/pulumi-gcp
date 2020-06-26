@@ -12,7 +12,6 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// Manages a VPC network or legacy network resource on GCP.
     /// 
-    /// 
     /// To get more information about Network, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks)
@@ -20,7 +19,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Network Basic
     /// 
     /// ```csharp

@@ -20,8 +20,6 @@ import (
 //
 // > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
 //
-//
-//
 // ## google\_binary\_authorization\_attestor\_iam\_policy
 //
 // ```go
@@ -29,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -47,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := binaryauthorization.NewAttestorIamPolicy(ctx, "policy", &binaryauthorization.AttestorIamPolicyArgs{
+// 		_, err = binaryauthorization.NewAttestorIamPolicy(ctx, "policy", &binaryauthorization.AttestorIamPolicyArgs{
 // 			Project:    pulumi.String(google_binary_authorization_attestor.Attestor.Project),
 // 			Attestor:   pulumi.String(google_binary_authorization_attestor.Attestor.Name),
 // 			PolicyData: pulumi.String(admin.PolicyData),
@@ -72,7 +71,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := binaryauthorization.NewAttestorIamBinding(ctx, "binding", &binaryauthorization.AttestorIamBindingArgs{
+// 		_, err = binaryauthorization.NewAttestorIamBinding(ctx, "binding", &binaryauthorization.AttestorIamBindingArgs{
 // 			Project:  pulumi.String(google_binary_authorization_attestor.Attestor.Project),
 // 			Attestor: pulumi.String(google_binary_authorization_attestor.Attestor.Name),
 // 			Role:     pulumi.String("roles/viewer"),
@@ -100,7 +99,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := binaryauthorization.NewAttestorIamMember(ctx, "member", &binaryauthorization.AttestorIamMemberArgs{
+// 		_, err = binaryauthorization.NewAttestorIamMember(ctx, "member", &binaryauthorization.AttestorIamMemberArgs{
 // 			Project:  pulumi.String(google_binary_authorization_attestor.Attestor.Project),
 // 			Attestor: pulumi.String(google_binary_authorization_attestor.Attestor.Name),
 // 			Role:     pulumi.String("roles/viewer"),

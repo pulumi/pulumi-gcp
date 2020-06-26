@@ -7,7 +7,6 @@ import * as utilities from "../utilities";
 /**
  * An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.
  *
- *
  * To get more information about EntryGroup, see:
  *
  * * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups)
@@ -15,7 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
- *
  * ### Data Catalog Entry Group Basic
  *
  * ```typescript
@@ -26,7 +24,6 @@ import * as utilities from "../utilities";
  *     entryGroupId: "my_group",
  * });
  * ```
- *
  * ### Data Catalog Entry Group Full
  *
  * ```typescript

@@ -20,8 +20,6 @@ import (
 //
 // > **Note:** `iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
 //
-//
-//
 // ## google\_iap\_web\_type\_app\_engine\_iam\_policy
 //
 // ```go
@@ -29,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -47,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := iap.NewWebTypeAppEngingIamPolicy(ctx, "policy", &iap.WebTypeAppEngingIamPolicyArgs{
+// 		_, err = iap.NewWebTypeAppEngingIamPolicy(ctx, "policy", &iap.WebTypeAppEngingIamPolicyArgs{
 // 			Project:    pulumi.String(google_app_engine_application.App.Project),
 // 			AppId:      pulumi.String(google_app_engine_application.App.App_id),
 // 			PolicyData: pulumi.String(admin.PolicyData),
@@ -67,6 +66,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -90,7 +90,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := iap.NewWebTypeAppEngingIamPolicy(ctx, "policy", &iap.WebTypeAppEngingIamPolicyArgs{
+// 		_, err = iap.NewWebTypeAppEngingIamPolicy(ctx, "policy", &iap.WebTypeAppEngingIamPolicyArgs{
 // 			Project:    pulumi.String(google_app_engine_application.App.Project),
 // 			AppId:      pulumi.String(google_app_engine_application.App.App_id),
 // 			PolicyData: pulumi.String(admin.PolicyData),
@@ -114,7 +114,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := iap.NewWebTypeAppEngingIamBinding(ctx, "binding", &iap.WebTypeAppEngingIamBindingArgs{
+// 		_, err = iap.NewWebTypeAppEngingIamBinding(ctx, "binding", &iap.WebTypeAppEngingIamBindingArgs{
 // 			Project: pulumi.String(google_app_engine_application.App.Project),
 // 			AppId:   pulumi.String(google_app_engine_application.App.App_id),
 // 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
@@ -142,7 +142,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := iap.NewWebTypeAppEngingIamBinding(ctx, "binding", &iap.WebTypeAppEngingIamBindingArgs{
+// 		_, err = iap.NewWebTypeAppEngingIamBinding(ctx, "binding", &iap.WebTypeAppEngingIamBindingArgs{
 // 			Project: pulumi.String(google_app_engine_application.App.Project),
 // 			AppId:   pulumi.String(google_app_engine_application.App.App_id),
 // 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
@@ -174,7 +174,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := iap.NewWebTypeAppEngingIamMember(ctx, "member", &iap.WebTypeAppEngingIamMemberArgs{
+// 		_, err = iap.NewWebTypeAppEngingIamMember(ctx, "member", &iap.WebTypeAppEngingIamMemberArgs{
 // 			Project: pulumi.String(google_app_engine_application.App.Project),
 // 			AppId:   pulumi.String(google_app_engine_application.App.App_id),
 // 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
@@ -200,7 +200,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := iap.NewWebTypeAppEngingIamMember(ctx, "member", &iap.WebTypeAppEngingIamMemberArgs{
+// 		_, err = iap.NewWebTypeAppEngingIamMember(ctx, "member", &iap.WebTypeAppEngingIamMemberArgs{
 // 			Project: pulumi.String(google_app_engine_application.App.Project),
 // 			AppId:   pulumi.String(google_app_engine_application.App.App_id),
 // 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),

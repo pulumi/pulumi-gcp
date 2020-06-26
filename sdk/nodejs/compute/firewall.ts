@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * networks except the default network, you must create any firewall rules
  * you need.
  *
- *
  * To get more information about Firewall, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/firewalls)
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
  *
  * ## Example Usage
- *
  * ### Firewall Basic
  *
  * ```typescript

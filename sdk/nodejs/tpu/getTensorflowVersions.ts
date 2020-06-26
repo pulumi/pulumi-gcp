@@ -11,15 +11,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const available = pulumi.output(gcp.tpu.getTensorflowVersions({ async: true }));
  * ```
- *
  * ### Configure Basic TPU Node With Available Version
  *
  * ```typescript

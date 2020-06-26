@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
 /**
  * A Cloud TPU instance.
  *
- *
  * To get more information about Node, see:
  *
  * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
@@ -17,7 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
  *
  * ## Example Usage
- *
  * ### TPU Node Basic
  *
  * ```typescript
@@ -32,7 +30,6 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.2.0.0/29",
  * });
  * ```
- *
  * ### TPU Node Full
  *
  * ```typescript

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EntryGroupIamPolicy(pulumi.CustomResource):
     entry_group: pulumi.Output[str]
     """
@@ -40,8 +41,6 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
         > **Note:** `datacatalog.EntryGroupIamPolicy` **cannot** be used in conjunction with `datacatalog.EntryGroupIamBinding` and `datacatalog.EntryGroupIamMember` or they will fight over what your policy should be.
 
         > **Note:** `datacatalog.EntryGroupIamBinding` resources **can be** used in conjunction with `datacatalog.EntryGroupIamMember` resources **only if** they do not grant privilege to the same role.
-
-
 
         ## google\_data\_catalog\_entry\_group\_iam\_policy
 
@@ -148,9 +147,9 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
         __props__["project"] = project
         __props__["region"] = region
         return EntryGroupIamPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

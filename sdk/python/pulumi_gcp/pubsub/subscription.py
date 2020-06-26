@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Subscription(pulumi.CustomResource):
     ack_deadline_seconds: pulumi.Output[float]
     """
@@ -154,7 +155,6 @@ class Subscription(pulumi.CustomResource):
         A named resource representing the stream of messages from a single,
         specific topic, to be delivered to the subscribing application.
 
-
         To get more information about Subscription, see:
 
         * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
@@ -162,7 +162,6 @@ class Subscription(pulumi.CustomResource):
             * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
 
         ## Example Usage
-
         ### Pubsub Subscription Push
 
         ```python
@@ -183,7 +182,6 @@ class Subscription(pulumi.CustomResource):
                 },
             })
         ```
-
         ### Pubsub Subscription Pull
 
         ```python
@@ -203,7 +201,6 @@ class Subscription(pulumi.CustomResource):
                 "ttl": "300000.5s",
             })
         ```
-
         ### Pubsub Subscription Different Project
 
         ```python
@@ -215,7 +212,6 @@ class Subscription(pulumi.CustomResource):
             project="subscription-project",
             topic=example_topic.name)
         ```
-
         ### Pubsub Subscription Dead Letter
 
         ```python
@@ -525,9 +521,9 @@ class Subscription(pulumi.CustomResource):
         __props__["retain_acked_messages"] = retain_acked_messages
         __props__["topic"] = topic
         return Subscription(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

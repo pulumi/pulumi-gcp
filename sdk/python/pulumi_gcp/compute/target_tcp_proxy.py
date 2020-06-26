@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TargetTCPProxy(pulumi.CustomResource):
     backend_service: pulumi.Output[str]
     """
@@ -56,7 +57,6 @@ class TargetTCPProxy(pulumi.CustomResource):
         global forwarding rule to route incoming TCP requests to a Backend
         service.
 
-
         To get more information about TargetTcpProxy, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetTcpProxies)
@@ -64,7 +64,6 @@ class TargetTCPProxy(pulumi.CustomResource):
             * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
 
         ## Example Usage
-
         ### Target Tcp Proxy Basic
 
         ```python
@@ -172,9 +171,9 @@ class TargetTCPProxy(pulumi.CustomResource):
         __props__["proxy_id"] = proxy_id
         __props__["self_link"] = self_link
         return TargetTCPProxy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

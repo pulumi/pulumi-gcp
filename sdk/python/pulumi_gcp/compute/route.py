@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Route(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -126,7 +127,6 @@ class Route(pulumi.CustomResource):
         nextHopGateway, nextHopInstance, nextHopIp, nextHopVpnTunnel, or
         nextHopIlb.
 
-
         To get more information about Route, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
@@ -134,7 +134,6 @@ class Route(pulumi.CustomResource):
             * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
 
         ## Example Usage
-
         ### Route Basic
 
         ```python
@@ -148,7 +147,6 @@ class Route(pulumi.CustomResource):
             next_hop_ip="10.132.1.5",
             priority=100)
         ```
-
         ### Route Ilb
 
         ```python
@@ -348,9 +346,9 @@ class Route(pulumi.CustomResource):
         __props__["self_link"] = self_link
         __props__["tags"] = tags
         return Route(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -19,7 +19,6 @@ import (
 //     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 //
 // ## Example Usage
-//
 // ### Service Directory Endpoint Basic
 //
 // ```go
@@ -46,12 +45,12 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		exampleEndpoint, err := servicedirectory.NewEndpoint(ctx, "exampleEndpoint", &servicedirectory.EndpointArgs{
+// 		_, err = servicedirectory.NewEndpoint(ctx, "exampleEndpoint", &servicedirectory.EndpointArgs{
 // 			EndpointId: pulumi.String("example-endpoint"),
 // 			Service:    exampleService.ID(),
-// 			Metadata: map[string]interface{}{
-// 				"stage":  "prod",
-// 				"region": "us-central1",
+// 			Metadata: pulumi.Map{
+// 				"stage":  pulumi.String("prod"),
+// 				"region": pulumi.String("us-central1"),
 // 			},
 // 			Address: pulumi.String("1.2.3.4"),
 // 			Port:    pulumi.Int(5353),

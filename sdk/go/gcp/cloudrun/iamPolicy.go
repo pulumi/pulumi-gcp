@@ -20,8 +20,6 @@ import (
 //
 // > **Note:** `cloudrun.IamBinding` resources **can be** used in conjunction with `cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
 //
-//
-//
 // ## google\_cloud\_run\_service\_iam\_policy
 //
 // ```go
@@ -29,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -47,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := cloudrun.NewIamPolicy(ctx, "policy", &cloudrun.IamPolicyArgs{
+// 		_, err = cloudrun.NewIamPolicy(ctx, "policy", &cloudrun.IamPolicyArgs{
 // 			Location:   pulumi.String(google_cloud_run_service.Default.Location),
 // 			Project:    pulumi.String(google_cloud_run_service.Default.Project),
 // 			Service:    pulumi.String(google_cloud_run_service.Default.Name),
@@ -73,7 +72,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := cloudrun.NewIamBinding(ctx, "binding", &cloudrun.IamBindingArgs{
+// 		_, err = cloudrun.NewIamBinding(ctx, "binding", &cloudrun.IamBindingArgs{
 // 			Location: pulumi.String(google_cloud_run_service.Default.Location),
 // 			Project:  pulumi.String(google_cloud_run_service.Default.Project),
 // 			Service:  pulumi.String(google_cloud_run_service.Default.Name),
@@ -102,7 +101,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := cloudrun.NewIamMember(ctx, "member", &cloudrun.IamMemberArgs{
+// 		_, err = cloudrun.NewIamMember(ctx, "member", &cloudrun.IamMemberArgs{
 // 			Location: pulumi.String(google_cloud_run_service.Default.Location),
 // 			Project:  pulumi.String(google_cloud_run_service.Default.Project),
 // 			Service:  pulumi.String(google_cloud_run_service.Default.Name),

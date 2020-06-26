@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  *
  * ## Example Usage
- *
  * ### Bigquery Reservation Basic
  *
  * ```typescript

@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.AppEngine
     /// A single firewall rule that is evaluated against incoming traffic
     /// and provides an action to take on matched requests.
     /// 
-    /// 
     /// To get more information about FirewallRule, see:
     /// 
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.firewall.ingressRules)
@@ -21,7 +20,6 @@ namespace Pulumi.Gcp.AppEngine
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
     /// 
     /// ## Example Usage
-    /// 
     /// ### App Engine Firewall Rule Basic
     /// 
     /// ```csharp

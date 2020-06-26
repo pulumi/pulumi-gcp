@@ -12,7 +12,6 @@ import (
 
 // A domain serving an App Engine application.
 //
-//
 // To get more information about DomainMapping, see:
 //
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.domainMappings)
@@ -20,7 +19,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
 //
 // ## Example Usage
-//
 // ### App Engine Domain Mapping Basic
 //
 // ```go
@@ -33,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		domainMapping, err := appengine.NewDomainMapping(ctx, "domainMapping", &appengine.DomainMappingArgs{
+// 		_, err = appengine.NewDomainMapping(ctx, "domainMapping", &appengine.DomainMappingArgs{
 // 			DomainName: pulumi.String("verified-domain.com"),
 // 			SslSettings: &appengine.DomainMappingSslSettingsArgs{
 // 				SslManagementType: pulumi.String("AUTOMATIC"),

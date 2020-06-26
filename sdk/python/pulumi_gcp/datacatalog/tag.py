@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Tag(pulumi.CustomResource):
     column: pulumi.Output[str]
     """
@@ -63,7 +64,6 @@ class Tag(pulumi.CustomResource):
 
         See [Data Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for information on the permissions needed to create or view tags.
 
-
         To get more information about Tag, see:
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.tags)
@@ -71,7 +71,6 @@ class Tag(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
-
         ### Data Catalog Entry Tag Basic
 
         ```python
@@ -133,7 +132,6 @@ class Tag(pulumi.CustomResource):
                 "stringValue": "my-string",
             }])
         ```
-
         ### Data Catalog Entry Group Tag
 
         ```python
@@ -200,7 +198,6 @@ class Tag(pulumi.CustomResource):
                 "stringValue": "my-string",
             }])
         ```
-
         ### Data Catalog Entry Tag Full
 
         ```python
@@ -439,9 +436,9 @@ class Tag(pulumi.CustomResource):
         __props__["template"] = template
         __props__["template_displayname"] = template_displayname
         return Tag(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

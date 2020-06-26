@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class NodeTemplate(pulumi.CustomResource):
     cpu_overcommit_type: pulumi.Output[str]
     """
@@ -85,7 +86,6 @@ class NodeTemplate(pulumi.CustomResource):
         for creating sole-tenant nodes, such as node type, vCPU and memory
         requirements, node affinity labels, and region.
 
-
         To get more information about NodeTemplate, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTemplates)
@@ -93,7 +93,6 @@ class NodeTemplate(pulumi.CustomResource):
             * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 
         ## Example Usage
-
         ### Node Template Basic
 
         ```python
@@ -104,7 +103,6 @@ class NodeTemplate(pulumi.CustomResource):
             node_type="n1-node-96-624",
             region="us-central1")
         ```
-
         ### Node Template Server Binding
 
         ```python
@@ -264,9 +262,9 @@ class NodeTemplate(pulumi.CustomResource):
         __props__["self_link"] = self_link
         __props__["server_binding"] = server_binding
         return NodeTemplate(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

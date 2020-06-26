@@ -11,6 +11,8 @@ import (
 )
 
 // Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
+//
+// ## Example Usage
 type User struct {
 	pulumi.CustomResourceState
 

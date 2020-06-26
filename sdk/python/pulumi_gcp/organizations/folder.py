@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Folder(pulumi.CustomResource):
     create_time: pulumi.Output[str]
     """
@@ -35,9 +36,9 @@ class Folder(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, display_name=None, parent=None, __props__=None, __name__=None, __opts__=None):
         """
-        Allows management of a Google Cloud Platform folder. For more information see 
+        Allows management of a Google Cloud Platform folder. For more information see
         [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-folders)
-        and 
+        and
         [API](https://cloud.google.com/resource-manager/reference/rest/v2/folders).
 
         A folder can contain projects, other folders, or a combination of both. You can use folders to group projects under an organization in a hierarchy. For example, your organization might contain multiple departments, each with its own set of Cloud Platform resources. Folders allows you to group these resources on a per-department basis. Folders are used to group resources that share common IAM policies.
@@ -50,8 +51,6 @@ class Folder(pulumi.CustomResource):
         doc for more information.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -134,9 +133,9 @@ class Folder(pulumi.CustomResource):
         __props__["name"] = name
         __props__["parent"] = parent
         return Folder(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

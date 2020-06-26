@@ -68,8 +68,6 @@ def get_organization_policy(constraint=None,project=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

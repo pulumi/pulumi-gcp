@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Example creating an ACL on a bucket with one owner, and one reader.
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Address(pulumi.CustomResource):
     address: pulumi.Output[str]
     """
@@ -98,7 +99,6 @@ class Address(pulumi.CustomResource):
         Engine or by you. External IP addresses can be either ephemeral or
         static.
 
-
         To get more information about Address, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/beta/addresses)
@@ -107,7 +107,6 @@ class Address(pulumi.CustomResource):
             * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 
         ## Example Usage
-
         ### Address Basic
 
         ```python
@@ -116,7 +115,6 @@ class Address(pulumi.CustomResource):
 
         ip_address = gcp.compute.Address("ipAddress")
         ```
-
         ### Address With Subnetwork
 
         ```python
@@ -134,7 +132,6 @@ class Address(pulumi.CustomResource):
             address="10.0.42.42",
             region="us-central1")
         ```
-
         ### Address With Gce Endpoint
 
         ```python
@@ -145,7 +142,6 @@ class Address(pulumi.CustomResource):
             address_type="INTERNAL",
             purpose="GCE_ENDPOINT")
         ```
-
         ### Instance With Ip
 
         ```python
@@ -296,9 +292,9 @@ class Address(pulumi.CustomResource):
         __props__["subnetwork"] = subnetwork
         __props__["users"] = users
         return Address(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

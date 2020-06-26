@@ -11,12 +11,33 @@ import (
 
 // A Google Cloud IoT Core device registry.
 //
-//
 // To get more information about DeviceRegistry, see:
 //
 // * [API documentation](https://cloud.google.com/iot/docs/reference/cloudiot/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/iot/docs/)
+//
+// ## Example Usage
+// ### Cloudiot Device Registry Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iot"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = iot.NewRegistry(ctx, "test-registry", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Registry struct {
 	pulumi.CustomResourceState
 

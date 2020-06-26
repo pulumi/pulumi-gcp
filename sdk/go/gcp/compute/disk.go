@@ -25,7 +25,6 @@ import (
 // Add a persistent disk to your instance when you need reliable and
 // affordable storage with consistent performance characteristics.
 //
-//
 // To get more information about Disk, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/disks)
@@ -34,6 +33,36 @@ import (
 //
 // > **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+//
+// ## Example Usage
+// ### Disk Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = compute.NewDisk(ctx, "default", &compute.DiskArgs{
+// 			Image: pulumi.String("debian-8-jessie-v20170523"),
+// 			Labels: pulumi.Map{
+// 				"environment": pulumi.String("dev"),
+// 			},
+// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
+// 			Type:                   pulumi.String("pd-ssd"),
+// 			Zone:                   pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Disk struct {
 	pulumi.CustomResourceState
 

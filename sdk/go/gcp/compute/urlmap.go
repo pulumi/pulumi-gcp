@@ -12,10 +12,11 @@ import (
 // UrlMaps are used to route requests to a backend service based on rules
 // that you define for the host and path of an incoming URL.
 //
-//
 // To get more information about UrlMap, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
+//
+// ## Example Usage
 type URLMap struct {
 	pulumi.CustomResourceState
 

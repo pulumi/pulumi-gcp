@@ -75,8 +75,6 @@ def get_kms_crypto_key_version(crypto_key=None,version=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

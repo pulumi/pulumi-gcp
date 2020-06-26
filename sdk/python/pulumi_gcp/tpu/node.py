@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Node(pulumi.CustomResource):
     accelerator_type: pulumi.Output[str]
     """
@@ -80,7 +81,6 @@ class Node(pulumi.CustomResource):
         """
         A Cloud TPU instance.
 
-
         To get more information about Node, see:
 
         * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
@@ -88,7 +88,6 @@ class Node(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/tpu/docs/)
 
         ## Example Usage
-
         ### TPU Node Basic
 
         ```python
@@ -102,7 +101,6 @@ class Node(pulumi.CustomResource):
             tensorflow_version=available.versions[0],
             cidr_block="10.2.0.0/29")
         ```
-
         ### TPU Node Full
 
         ```python
@@ -257,9 +255,9 @@ class Node(pulumi.CustomResource):
         __props__["tensorflow_version"] = tensorflow_version
         __props__["zone"] = zone
         return Node(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

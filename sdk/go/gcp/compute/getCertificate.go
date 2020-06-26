@@ -11,18 +11,17 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myCert, err := compute.LookupCertificate(ctx, &compute.LookupCertificateArgs{
+// 		myCert, err := compute.GetCertificate(ctx, &compute.GetCertificateArgs{
 // 			Name: "my-cert",
 // 		}, nil)
 // 		if err != nil {

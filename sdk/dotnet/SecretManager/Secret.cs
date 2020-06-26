@@ -16,9 +16,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
     /// 
-    /// 
     /// ## Example Usage
-    /// 
     /// ### Secret Config Basic
     /// 
     /// ```csharp

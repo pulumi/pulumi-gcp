@@ -13,13 +13,11 @@ import (
 // Represents a VPN gateway running in GCP. This virtual device is managed
 // by Google, but used only by you.
 //
-//
 // To get more information about VpnGateway, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
 //
 // ## Example Usage
-//
 // ### Target Vpn Gateway Basic
 //
 // ```go
@@ -80,7 +78,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		route1, err := compute.NewRoute(ctx, "route1", &compute.RouteArgs{
+// 		_, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
 // 			Network:          network1.Name,
 // 			DestRange:        pulumi.String("15.0.0.0/24"),
 // 			Priority:         pulumi.Int(1000),

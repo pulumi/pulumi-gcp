@@ -16,10 +16,7 @@ import (
 // contains no data, requires no configuration or maintenance, and does not
 // affect billing. You cannot update the source representation instance.
 //
-//
-//
 // ## Example Usage
-//
 // ### Sql Source Representation Instance Basic
 //
 // ```go
@@ -32,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		instance, err := sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
+// 		_, err = sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
 // 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
 // 			Host:            pulumi.String("10.20.30.40"),
 // 			Port:            pulumi.Int(3306),

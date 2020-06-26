@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Represents a NodeGroup resource to manage a group of sole-tenant nodes.
  *
- *
  * To get more information about NodeGroup, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups)
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  * the provider to delete and recreate the node group.
  *
  * ## Example Usage
- *
  * ### Node Group Basic
  *
  * ```typescript
@@ -40,7 +38,6 @@ import * as utilities from "../utilities";
  *     nodeTemplate: soletenant_tmpl.id,
  * });
  * ```
- *
  * ### Node Group Autoscaling Policy
  *
  * ```typescript

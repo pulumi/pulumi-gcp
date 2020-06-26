@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * > **Note:** The App Engine flexible environment service account uses the member ID `service-[YOUR_PROJECT_NUMBER]@gae-api-prod.google.com.iam.gserviceaccount.com`
  * It should have the App Engine Flexible Environment Service Agent role, which will be applied when the `appengineflex.googleapis.com` service is enabled.
  *
- *
  * To get more information about FlexibleAppVersion, see:
  *
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
  *
  * ## Example Usage
- *
  * ### App Engine Flexible App Version
  *
  * ```typescript

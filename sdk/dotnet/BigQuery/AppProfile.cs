@@ -11,6 +11,8 @@ namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
     /// App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
+    /// 
+    /// ## Example Usage
     /// </summary>
     public partial class AppProfile : Pulumi.CustomResource
     {

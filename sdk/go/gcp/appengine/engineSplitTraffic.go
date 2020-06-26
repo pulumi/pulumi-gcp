@@ -12,10 +12,11 @@ import (
 
 // Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.
 //
-//
 // To get more information about ServiceSplitTraffic, see:
 //
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
+//
+// ## Example Usage
 type EngineSplitTraffic struct {
 	pulumi.CustomResourceState
 

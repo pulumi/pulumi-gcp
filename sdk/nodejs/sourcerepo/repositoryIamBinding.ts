@@ -17,8 +17,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- *
- *
  * ## google\_pubsub\_topic\_iam\_policy
  *
  * ```typescript

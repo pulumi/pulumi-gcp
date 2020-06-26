@@ -12,10 +12,9 @@ import * as utilities from "../utilities";
  * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
  *
- *
  * ## Example Usage
  *
- *
+ * Example picture stored within a folder.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

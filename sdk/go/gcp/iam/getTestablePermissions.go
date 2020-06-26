@@ -11,18 +11,19 @@ import (
 //
 // ## Example Usage
 //
-//
+// Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
 //
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iam"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		perms, err := iam.LookupTestablePermissions(ctx, &iam.LookupTestablePermissionsArgs{
+// 		_, err := iam.GetTestablePermissions(ctx, &iam.GetTestablePermissionsArgs{
 // 			FullResourceName: "//cloudresourcemanager.googleapis.com/projects/my-project",
 // 			Stages: []string{
 // 				"GA",

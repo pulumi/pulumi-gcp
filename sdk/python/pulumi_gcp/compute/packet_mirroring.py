@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class PacketMirroring(pulumi.CustomResource):
     collector_ilb: pulumi.Output[dict]
     """
@@ -84,7 +85,6 @@ class PacketMirroring(pulumi.CustomResource):
             * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 
         ## Example Usage
-
         ### Compute Packet Mirroring Full
 
         ```python
@@ -291,9 +291,9 @@ class PacketMirroring(pulumi.CustomResource):
         __props__["project"] = project
         __props__["region"] = region
         return PacketMirroring(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

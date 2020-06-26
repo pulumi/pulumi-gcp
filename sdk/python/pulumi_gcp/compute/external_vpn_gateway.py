@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ExternalVpnGateway(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -60,7 +61,6 @@ class ExternalVpnGateway(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/externalVpnGateways)
 
         ## Example Usage
-
         ### External Vpn Gateway
 
         ```python
@@ -237,9 +237,9 @@ class ExternalVpnGateway(pulumi.CustomResource):
         __props__["redundancy_type"] = redundancy_type
         __props__["self_link"] = self_link
         return ExternalVpnGateway(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

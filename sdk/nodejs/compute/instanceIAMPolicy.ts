@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.compute.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
  *
- *
- *
  * ## google\_compute\_instance\_iam\_policy
  *
  * ```typescript

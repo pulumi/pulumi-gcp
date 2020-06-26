@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * virtual machine instance that receives and handles traffic from the
  * corresponding forwarding rules.
  *
- *
  * To get more information about TargetInstance, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetInstances)
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
  *
  * ## Example Usage
- *
  * ### Target Instance Basic
  *
  * ```typescript

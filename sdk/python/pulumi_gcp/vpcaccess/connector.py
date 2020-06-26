@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Connector(pulumi.CustomResource):
     ip_cidr_range: pulumi.Output[str]
     """
@@ -51,7 +52,6 @@ class Connector(pulumi.CustomResource):
         """
         Serverless VPC Access connector resource.
 
-
         To get more information about Connector, see:
 
         * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
@@ -59,7 +59,6 @@ class Connector(pulumi.CustomResource):
             * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
         ## Example Usage
-
         ### VPC Access Connector
 
         ```python
@@ -155,9 +154,9 @@ class Connector(pulumi.CustomResource):
         __props__["self_link"] = self_link
         __props__["state"] = state
         return Connector(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SecurityScanConfig(pulumi.CustomResource):
     authentication: pulumi.Output[dict]
     """
@@ -88,7 +89,6 @@ class SecurityScanConfig(pulumi.CustomResource):
         state as plain-text.[Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets)
 
         ## Example Usage
-
         ### Scan Config Basic
 
         ```python
@@ -238,9 +238,9 @@ class SecurityScanConfig(pulumi.CustomResource):
         __props__["target_platforms"] = target_platforms
         __props__["user_agent"] = user_agent
         return SecurityScanConfig(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

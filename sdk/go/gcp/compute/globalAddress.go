@@ -12,12 +12,33 @@ import (
 // Represents a Global Address resource. Global addresses are used for
 // HTTP(S) load balancing.
 //
-//
 // To get more information about GlobalAddress, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/globalAddresses)
 // * How-to Guides
 //     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
+//
+// ## Example Usage
+// ### Global Address Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = compute.NewGlobalAddress(ctx, "default", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type GlobalAddress struct {
 	pulumi.CustomResourceState
 
@@ -61,7 +82,7 @@ type GlobalAddress struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The purpose of the resource. For global internal addresses it can be
 	// * VPC_PEERING - for peer networks
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -135,7 +156,7 @@ type globalAddressState struct {
 	Project *string `pulumi:"project"`
 	// The purpose of the resource. For global internal addresses it can be
 	// * VPC_PEERING - for peer networks
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -182,7 +203,7 @@ type GlobalAddressState struct {
 	Project pulumi.StringPtrInput
 	// The purpose of the resource. For global internal addresses it can be
 	// * VPC_PEERING - for peer networks
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -229,7 +250,7 @@ type globalAddressArgs struct {
 	Project *string `pulumi:"project"`
 	// The purpose of the resource. For global internal addresses it can be
 	// * VPC_PEERING - for peer networks
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 }
 
@@ -271,7 +292,7 @@ type GlobalAddressArgs struct {
 	Project pulumi.StringPtrInput
 	// The purpose of the resource. For global internal addresses it can be
 	// * VPC_PEERING - for peer networks
-	// This should only be set when using an Internal address.
+	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 }
 

@@ -19,8 +19,7 @@ type RepositoryIamBindingCondition struct {
 // RepositoryIamBindingConditionInput is an input type that accepts RepositoryIamBindingConditionArgs and RepositoryIamBindingConditionOutput values.
 // You can construct a concrete instance of `RepositoryIamBindingConditionInput` via:
 //
-// 		 RepositoryIamBindingConditionArgs{...}
-//
+//          RepositoryIamBindingConditionArgs{...}
 type RepositoryIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -57,12 +56,11 @@ func (i RepositoryIamBindingConditionArgs) ToRepositoryIamBindingConditionPtrOut
 // RepositoryIamBindingConditionPtrInput is an input type that accepts RepositoryIamBindingConditionArgs, RepositoryIamBindingConditionPtr and RepositoryIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `RepositoryIamBindingConditionPtrInput` via:
 //
-// 		 RepositoryIamBindingConditionArgs{...}
+//          RepositoryIamBindingConditionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type RepositoryIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -177,8 +175,7 @@ type RepositoryIamMemberCondition struct {
 // RepositoryIamMemberConditionInput is an input type that accepts RepositoryIamMemberConditionArgs and RepositoryIamMemberConditionOutput values.
 // You can construct a concrete instance of `RepositoryIamMemberConditionInput` via:
 //
-// 		 RepositoryIamMemberConditionArgs{...}
-//
+//          RepositoryIamMemberConditionArgs{...}
 type RepositoryIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -215,12 +212,11 @@ func (i RepositoryIamMemberConditionArgs) ToRepositoryIamMemberConditionPtrOutpu
 // RepositoryIamMemberConditionPtrInput is an input type that accepts RepositoryIamMemberConditionArgs, RepositoryIamMemberConditionPtr and RepositoryIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `RepositoryIamMemberConditionPtrInput` via:
 //
-// 		 RepositoryIamMemberConditionArgs{...}
+//          RepositoryIamMemberConditionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type RepositoryIamMemberConditionPtrInput interface {
 	pulumi.Input
 

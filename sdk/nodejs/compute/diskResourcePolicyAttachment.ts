@@ -10,9 +10,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** This resource does not support regional disks (`gcp.compute.RegionDisk`). For regional disks, please refer to the `gcp.compute.RegionDiskResourcePolicyAttachment` resource.
  *
- *
  * ## Example Usage
- *
  * ### Disk Resource Policy Attachment Basic
  *
  * ```typescript

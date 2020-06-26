@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Slo(pulumi.CustomResource):
     basic_sli: pulumi.Output[dict]
     """
@@ -306,7 +307,6 @@ class Slo(pulumi.CustomResource):
         latency below 200 milliseconds" or "99.5% of requests in each calendar
         month return successfully."
 
-
         To get more information about Slo, see:
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services.serviceLevelObjectives)
@@ -315,7 +315,6 @@ class Slo(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
-
         ### Monitoring Slo Appengine
 
         ```python
@@ -919,9 +918,9 @@ class Slo(pulumi.CustomResource):
         __props__["slo_id"] = slo_id
         __props__["windows_based_sli"] = windows_based_sli
         return Slo(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

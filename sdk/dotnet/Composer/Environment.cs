@@ -23,20 +23,18 @@ namespace Pulumi.Gcp.Composer
     /// * [Apache Airflow Documentation](http://airflow.apache.org/)
     /// 
     /// &gt; **Warning:** We **STRONGLY** recommend  you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
-    ///   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure, 
+    ///   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
     ///   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
     ///   This provider will not be able to automatically find or manage many of these underlying resources. In particular:
-    ///   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some 
+    ///   * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some
     ///     errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
-    ///     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid 
-    ///     against GCP Cloud Composer before filing bugs against this provider. 
-    ///   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment 
+    ///     error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid
+    ///     against GCP Cloud Composer before filing bugs against this provider.
+    ///   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
     ///     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
     /// 
     /// ## Example Usage
-    /// 
     /// ### Basic Usage
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
@@ -53,8 +51,11 @@ namespace Pulumi.Gcp.Composer
     /// 
     /// }
     /// ```
-    /// 
     /// ### With GKE and Compute Resource Dependencies
+    /// 
+    /// **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
+    /// (i.e. at a project level). This will probably require an explicit dependency
+    /// on the IAM policy binding (see `gcp.projects.IAMMember` below).
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -104,9 +105,7 @@ namespace Pulumi.Gcp.Composer
     /// 
     /// }
     /// ```
-    /// 
     /// ### With Software (Airflow) Config
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;

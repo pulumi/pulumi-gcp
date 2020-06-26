@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// For more information, see
     /// https://cloud.google.com/compute/docs/load-balancing/http/
+    /// 
+    /// ## Example Usage
     /// </summary>
     public partial class GlobalForwardingRule : Pulumi.CustomResource
     {

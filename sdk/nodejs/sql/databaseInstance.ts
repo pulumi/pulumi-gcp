@@ -16,21 +16,21 @@ import * as utilities from "../utilities";
  * To upgrade your First-generation instance, update your config that the instance has
  * * `settings.ip_configuration.ipv4_enabled=true`
  * * `settings.backup_configuration.enabled=true`
- * * `settings.backup_configuration.binary_log_enabled=true`.  
- * Apply the config, then upgrade the instance in the console as described in the documentation.
- * Once upgraded, update the following attributes in your config to the correct value according to
- * the above documentation:
+ * * `settings.backup_configuration.binary_log_enabled=true`.\
+ *   Apply the config, then upgrade the instance in the console as described in the documentation.
+ *   Once upgraded, update the following attributes in your config to the correct value according to
+ *   the above documentation:
  * * `region`
  * * `databaseVersion` (if applicable)
- * * `tier`  
- * Remove any fields that are not applicable to Second-generation instances:
+ * * `tier`\
+ *   Remove any fields that are not applicable to Second-generation instances:
  * * `settings.crash_safe_replication`
  * * `settings.replication_type`
  * * `settings.authorized_gae_applications`
- * And change values to appropriate values for Second-generation instances for:
+ *   And change values to appropriate values for Second-generation instances for:
  * * `activationPolicy` ("ON_DEMAND" is no longer an option)
  * * `pricingPlan` ("PER_USE" is now the only valid option)
- * Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
+ *   Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
  *
  * > **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
  * default 'root'@'%' user with no password. This user will be deleted by the provider on
@@ -38,7 +38,6 @@ import * as utilities from "../utilities";
  * a restricted host and strong password.
  *
  * ## Example Usage
- *
  * ### SQL Second Generation Instance
  *
  * ```typescript
@@ -55,8 +54,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Private IP Instance
+ * > **NOTE**: For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `dependsOn`reference as shown below.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

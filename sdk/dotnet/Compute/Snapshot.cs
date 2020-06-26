@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.Compute
     /// persistent disk faster and at a much lower cost than if you regularly
     /// created a full image of the disk.
     /// 
-    /// 
     /// To get more information about Snapshot, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
-    /// 
     /// ### Snapshot Basic
     /// 
     /// ```csharp

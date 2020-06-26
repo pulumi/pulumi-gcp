@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BucketObject(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
@@ -78,17 +79,16 @@ class BucketObject(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, detect_md5hash=None, metadata=None, name=None, source=None, storage_class=None, __props__=None, __name__=None, __opts__=None):
         """
-        Creates a new object inside an existing bucket in Google cloud storage service (GCS). 
+        Creates a new object inside an existing bucket in Google cloud storage service (GCS).
         [ACLs](https://cloud.google.com/storage/docs/access-control/lists) can be applied using the `storage.ObjectACL` resource.
-         For more information see 
-        [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects) 
-        and 
+         For more information see
+        [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+        and
         [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-
 
         ## Example Usage
 
-
+        Example creating a public object in an existing `image-store` bucket.
 
         ```python
         import pulumi
@@ -209,9 +209,9 @@ class BucketObject(pulumi.CustomResource):
         __props__["source"] = source
         __props__["storage_class"] = storage_class
         return BucketObject(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

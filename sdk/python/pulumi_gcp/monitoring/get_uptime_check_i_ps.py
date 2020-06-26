@@ -42,8 +42,6 @@ def get_uptime_check_i_ps(opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

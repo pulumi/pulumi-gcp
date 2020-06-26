@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  * consists of a secret and HMAC key metadata. HMAC keys can be used as credentials
  * for service accounts.
  *
- *
  * To get more information about HmacKey, see:
  *
  * * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys)
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
- *
  * ### Storage Hmac Key
  *
  * ```typescript

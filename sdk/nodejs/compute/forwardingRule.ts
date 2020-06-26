@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  * of target virtual machines to forward a packet to if it matches the given
  * [IPAddress, IPProtocol, portRange] tuple.
  *
- *
  * To get more information about ForwardingRule, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRules)
@@ -17,7 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
  *
  * ## Example Usage
- *
  * ### Forwarding Rule Global Internallb
  *
  * ```typescript
@@ -52,7 +50,6 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.name,
  * });
  * ```
- *
  * ### Forwarding Rule Basic
  *
  * ```typescript
@@ -65,7 +62,6 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
- *
  * ### Forwarding Rule Internallb
  *
  * ```typescript
@@ -99,7 +95,6 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.name,
  * });
  * ```
- *
  * ### Forwarding Rule Http Lb
  *
  * ```typescript

@@ -56,8 +56,6 @@ def get_project_service_account(project=None,user_project=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

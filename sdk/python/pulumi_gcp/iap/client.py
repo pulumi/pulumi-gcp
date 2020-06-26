@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Client(pulumi.CustomResource):
     brand: pulumi.Output[str]
     """
@@ -36,11 +37,10 @@ class Client(pulumi.CustomResource):
         manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
         in this tool.
 
-
-
         > **Warning:** All arguments including `secret` will be stored in the raw
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
+        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -105,9 +105,9 @@ class Client(pulumi.CustomResource):
         __props__["display_name"] = display_name
         __props__["secret"] = secret
         return Client(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

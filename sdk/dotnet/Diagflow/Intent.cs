@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.Diagflow
     /// Represents a Dialogflow intent. Intents convert a number of user expressions or patterns into an action. An action
     /// is an extraction of a user command or sentence semantics.
     /// 
-    /// 
     /// To get more information about Intent, see:
     /// 
     /// * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
@@ -21,7 +20,6 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Dialogflow Intent Basic
     /// 
     /// ```csharp

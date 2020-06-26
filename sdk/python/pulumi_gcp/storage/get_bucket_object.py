@@ -129,10 +129,9 @@ def get_bucket_object(bucket=None,name=None,opts=None):
     and
     [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
 
-
     ## Example Usage
 
-
+    Example picture stored within a folder.
 
     ```python
     import pulumi

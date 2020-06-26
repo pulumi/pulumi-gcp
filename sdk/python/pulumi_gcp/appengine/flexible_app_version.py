@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class FlexibleAppVersion(pulumi.CustomResource):
     api_config: pulumi.Output[dict]
     """
@@ -282,7 +283,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
         > **Note:** The App Engine flexible environment service account uses the member ID `service-[YOUR_PROJECT_NUMBER]@gae-api-prod.google.com.iam.gserviceaccount.com`
         It should have the App Engine Flexible Environment Service Agent role, which will be applied when the `appengineflex.googleapis.com` service is enabled.
 
-
         To get more information about FlexibleAppVersion, see:
 
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
@@ -290,7 +290,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
 
         ## Example Usage
-
         ### App Engine Flexible App Version
 
         ```python
@@ -859,9 +858,9 @@ class FlexibleAppVersion(pulumi.CustomResource):
         __props__["version_id"] = version_id
         __props__["vpc_access_connector"] = vpc_access_connector
         return FlexibleAppVersion(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -94,8 +94,6 @@ def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

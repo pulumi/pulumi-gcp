@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Policy(pulumi.CustomResource):
     admission_whitelist_patterns: pulumi.Output[list]
     """
@@ -76,7 +77,6 @@ class Policy(pulumi.CustomResource):
         """
         A policy for container image binary authorization.
 
-
         To get more information about Policy, see:
 
         * [API documentation](https://cloud.google.com/binary-authorization/docs/reference/rest/)
@@ -84,7 +84,6 @@ class Policy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
         ## Example Usage
-
         ### Binary Authorization Policy Basic
 
         ```python
@@ -114,7 +113,6 @@ class Policy(pulumi.CustomResource):
                 "requireAttestationsBies": [attestor.name],
             }])
         ```
-
         ### Binary Authorization Policy Global Evaluation
 
         ```python
@@ -293,9 +291,9 @@ class Policy(pulumi.CustomResource):
         __props__["global_policy_evaluation_mode"] = global_policy_evaluation_mode
         __props__["project"] = project
         return Policy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

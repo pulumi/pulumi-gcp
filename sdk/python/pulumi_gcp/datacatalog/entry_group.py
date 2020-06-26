@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class EntryGroup(pulumi.CustomResource):
     description: pulumi.Output[str]
     """
@@ -41,7 +42,6 @@ class EntryGroup(pulumi.CustomResource):
         """
         An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources.
 
-
         To get more information about EntryGroup, see:
 
         * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups)
@@ -49,7 +49,6 @@ class EntryGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
-
         ### Data Catalog Entry Group Basic
 
         ```python
@@ -58,7 +57,6 @@ class EntryGroup(pulumi.CustomResource):
 
         basic_entry_group = gcp.datacatalog.EntryGroup("basicEntryGroup", entry_group_id="my_group")
         ```
-
         ### Data Catalog Entry Group Full
 
         ```python
@@ -142,9 +140,9 @@ class EntryGroup(pulumi.CustomResource):
         __props__["project"] = project
         __props__["region"] = region
         return EntryGroup(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

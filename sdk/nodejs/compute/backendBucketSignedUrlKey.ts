@@ -7,7 +7,6 @@ import * as utilities from "../utilities";
 /**
  * A key for signing Cloud CDN signed URLs for BackendBuckets.
  *
- *
  * To get more information about BackendBucketSignedUrlKey, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
- *
  * ### Backend Bucket Signed Url Key
  *
  * ```typescript

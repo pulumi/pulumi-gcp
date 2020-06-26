@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Environment(pulumi.CustomResource):
     config: pulumi.Output[dict]
     """
@@ -161,28 +162,29 @@ class Environment(pulumi.CustomResource):
         * [Apache Airflow Documentation](http://airflow.apache.org/)
 
         > **Warning:** We **STRONGLY** recommend  you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
-          as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure, 
+          as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
           including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
           This provider will not be able to automatically find or manage many of these underlying resources. In particular:
-          * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some 
+          * It can take up to one hour to create or update an environment resource. In addition, GCP may only detect some
             errors in configuration when they are used (e.g. ~40-50 minutes into the creation process), and is prone to limited
-            error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid 
-            against GCP Cloud Composer before filing bugs against this provider. 
-          * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment 
+            error reporting. If you encounter confusing or uninformative errors, please verify your configuration is valid
+            against GCP Cloud Composer before filing bugs against this provider.
+          * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
             deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
 
         ## Example Usage
-
         ### Basic Usage
-
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         test = gcp.composer.Environment("test", region="us-central1")
         ```
-
         ### With GKE and Compute Resource Dependencies
+
+        **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
+        (i.e. at a project level). This will probably require an explicit dependency
+        on the IAM policy binding (see `projects.IAMMember` below).
 
         ```python
         import pulumi
@@ -212,9 +214,7 @@ class Environment(pulumi.CustomResource):
                 },
             })
         ```
-
         ### With Software (Airflow) Config
-
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,9 +534,9 @@ class Environment(pulumi.CustomResource):
         __props__["project"] = project
         __props__["region"] = region
         return Environment(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

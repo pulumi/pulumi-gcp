@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AttestorIamPolicy(pulumi.CustomResource):
     attestor: pulumi.Output[str]
     """
@@ -39,8 +40,6 @@ class AttestorIamPolicy(pulumi.CustomResource):
         > **Note:** `binaryauthorization.AttestorIamPolicy` **cannot** be used in conjunction with `binaryauthorization.AttestorIamBinding` and `binaryauthorization.AttestorIamMember` or they will fight over what your policy should be.
 
         > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
-
-
 
         ## google\_binary\_authorization\_attestor\_iam\_policy
 
@@ -148,9 +147,9 @@ class AttestorIamPolicy(pulumi.CustomResource):
         __props__["policy_data"] = policy_data
         __props__["project"] = project
         return AttestorIamPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -13,10 +13,7 @@ import (
 // Jobs are actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
 // Once a BigQuery job is created, it cannot be changed or deleted.
 //
-//
-//
 // ## Example Usage
-//
 // ### Bigquery Job Query
 //
 // ```go
@@ -45,22 +42,22 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		job, err := bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+// 		_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
 // 			JobId: pulumi.String("job_query"),
-// 			Labels: map[string]interface{}{
-// 				"example-label": "example-value",
+// 			Labels: pulumi.Map{
+// 				"example-label": pulumi.String("example-value"),
 // 			},
 // 			Query: &bigquery.JobQueryArgs{
 // 				Query: pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
-// 				Destination_table: map[string]interface{}{
+// 				Destination_table: pulumi.Map{
 // 					"projectId": foo.Project,
 // 					"datasetId": foo.DatasetId,
 // 					"tableId":   foo.TableId,
 // 				},
 // 				AllowLargeResults: pulumi.Bool(true),
 // 				FlattenResults:    pulumi.Bool(true),
-// 				Script_options: map[string]interface{}{
-// 					"keyResultStatement": "LAST",
+// 				Script_options: pulumi.Map{
+// 					"keyResultStatement": pulumi.String("LAST"),
 // 				},
 // 			},
 // 		})
@@ -71,7 +68,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Bigquery Job Query Table Reference
 //
 // ```go
@@ -100,23 +96,23 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		job, err := bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+// 		_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
 // 			JobId: pulumi.String("job_query"),
-// 			Labels: map[string]interface{}{
-// 				"example-label": "example-value",
+// 			Labels: pulumi.Map{
+// 				"example-label": pulumi.String("example-value"),
 // 			},
 // 			Query: &bigquery.JobQueryArgs{
 // 				Query: pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
-// 				Destination_table: map[string]interface{}{
+// 				Destination_table: pulumi.Map{
 // 					"tableId": foo.ID(),
 // 				},
-// 				Default_dataset: map[string]interface{}{
+// 				Default_dataset: pulumi.Map{
 // 					"datasetId": bar.ID(),
 // 				},
 // 				AllowLargeResults: pulumi.Bool(true),
 // 				FlattenResults:    pulumi.Bool(true),
-// 				Script_options: map[string]interface{}{
-// 					"keyResultStatement": "LAST",
+// 				Script_options: pulumi.Map{
+// 					"keyResultStatement": pulumi.String("LAST"),
 // 				},
 // 			},
 // 		})
@@ -127,7 +123,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Bigquery Job Load
 //
 // ```go
@@ -156,16 +151,16 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		job, err := bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+// 		_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
 // 			JobId: pulumi.String("job_load"),
-// 			Labels: map[string]interface{}{
-// 				"my_job": "load",
+// 			Labels: pulumi.Map{
+// 				"my_job": pulumi.String("load"),
 // 			},
 // 			Load: &bigquery.JobLoadArgs{
 // 				SourceUris: pulumi.StringArray{
 // 					pulumi.String("gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"),
 // 				},
-// 				Destination_table: map[string]interface{}{
+// 				Destination_table: pulumi.Map{
 // 					"projectId": foo.Project,
 // 					"datasetId": foo.DatasetId,
 // 					"tableId":   foo.TableId,

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  * managed instance groups according to an autoscaling policy that you
  * define.
  *
- *
  * To get more information about RegionAutoscaler, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionAutoscalers)
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
  *
  * ## Example Usage
- *
  * ### Region Autoscaler Basic
  *
  * ```typescript

@@ -20,7 +20,7 @@ type EntityTypeEntity struct {
 	// could be scallions.
 	// For KIND_MAP entity types:
 	// * A reference value to be used in place of synonyms.
-	// For KIND_LIST entity types:
+	//   For KIND_LIST entity types:
 	// * A string that can contain references to other entity types (with or without aliases).
 	Value string `pulumi:"value"`
 }
@@ -28,8 +28,7 @@ type EntityTypeEntity struct {
 // EntityTypeEntityInput is an input type that accepts EntityTypeEntityArgs and EntityTypeEntityOutput values.
 // You can construct a concrete instance of `EntityTypeEntityInput` via:
 //
-// 		 EntityTypeEntityArgs{...}
-//
+//          EntityTypeEntityArgs{...}
 type EntityTypeEntityInput interface {
 	pulumi.Input
 
@@ -47,7 +46,7 @@ type EntityTypeEntityArgs struct {
 	// could be scallions.
 	// For KIND_MAP entity types:
 	// * A reference value to be used in place of synonyms.
-	// For KIND_LIST entity types:
+	//   For KIND_LIST entity types:
 	// * A string that can contain references to other entity types (with or without aliases).
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -67,8 +66,7 @@ func (i EntityTypeEntityArgs) ToEntityTypeEntityOutputWithContext(ctx context.Co
 // EntityTypeEntityArrayInput is an input type that accepts EntityTypeEntityArray and EntityTypeEntityArrayOutput values.
 // You can construct a concrete instance of `EntityTypeEntityArrayInput` via:
 //
-// 		 EntityTypeEntityArray{ EntityTypeEntityArgs{...} }
-//
+//          EntityTypeEntityArray{ EntityTypeEntityArgs{...} }
 type EntityTypeEntityArrayInput interface {
 	pulumi.Input
 
@@ -116,7 +114,7 @@ func (o EntityTypeEntityOutput) Synonyms() pulumi.StringArrayOutput {
 // could be scallions.
 // For KIND_MAP entity types:
 // * A reference value to be used in place of synonyms.
-// For KIND_LIST entity types:
+//   For KIND_LIST entity types:
 // * A string that can contain references to other entity types (with or without aliases).
 func (o EntityTypeEntityOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v EntityTypeEntity) string { return v.Value }).(pulumi.StringOutput)
@@ -152,8 +150,7 @@ type IntentFollowupIntentInfo struct {
 // IntentFollowupIntentInfoInput is an input type that accepts IntentFollowupIntentInfoArgs and IntentFollowupIntentInfoOutput values.
 // You can construct a concrete instance of `IntentFollowupIntentInfoInput` via:
 //
-// 		 IntentFollowupIntentInfoArgs{...}
-//
+//          IntentFollowupIntentInfoArgs{...}
 type IntentFollowupIntentInfoInput interface {
 	pulumi.Input
 
@@ -183,8 +180,7 @@ func (i IntentFollowupIntentInfoArgs) ToIntentFollowupIntentInfoOutputWithContex
 // IntentFollowupIntentInfoArrayInput is an input type that accepts IntentFollowupIntentInfoArray and IntentFollowupIntentInfoArrayOutput values.
 // You can construct a concrete instance of `IntentFollowupIntentInfoArrayInput` via:
 //
-// 		 IntentFollowupIntentInfoArray{ IntentFollowupIntentInfoArgs{...} }
-//
+//          IntentFollowupIntentInfoArray{ IntentFollowupIntentInfoArgs{...} }
 type IntentFollowupIntentInfoArrayInput interface {
 	pulumi.Input
 

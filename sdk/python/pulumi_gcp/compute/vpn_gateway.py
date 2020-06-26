@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class VPNGateway(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
     """
@@ -54,13 +55,11 @@ class VPNGateway(pulumi.CustomResource):
         Represents a VPN gateway running in GCP. This virtual device is managed
         by Google, but used only by you.
 
-
         To get more information about VpnGateway, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/targetVpnGateways)
 
         ## Example Usage
-
         ### Target Vpn Gateway Basic
 
         ```python
@@ -181,9 +180,9 @@ class VPNGateway(pulumi.CustomResource):
         __props__["region"] = region
         __props__["self_link"] = self_link
         return VPNGateway(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

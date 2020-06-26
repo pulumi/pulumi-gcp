@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Represents a TargetHttpsProxy resource, which is used by one or more
  * global forwarding rule to route incoming HTTPS requests to a URL map.
  *
- *
  * To get more information about TargetHttpsProxy, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetHttpsProxies)
@@ -16,7 +15,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
- *
  * ### Target Https Proxy Basic
  *
  * ```typescript

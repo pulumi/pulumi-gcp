@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class CustomService(pulumi.CustomResource):
     display_name: pulumi.Output[str]
     """
@@ -43,7 +44,6 @@ class CustomService(pulumi.CustomResource):
         a Service acts as the root resource under which operational aspects of
         the service are accessible
 
-
         To get more information about Service, see:
 
         * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
@@ -52,7 +52,6 @@ class CustomService(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
-
         ### Monitoring Service Custom
 
         ```python
@@ -143,9 +142,9 @@ class CustomService(pulumi.CustomResource):
         __props__["service_id"] = service_id
         __props__["telemetry"] = telemetry
         return CustomService(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

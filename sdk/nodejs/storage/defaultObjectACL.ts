@@ -12,8 +12,8 @@ import * as utilities from "../utilities";
  * to the default ACL that has been defined.
  *
  * For more information see
- * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
- * and 
+ * [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
+ * and
  * [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
  *
  * > Want fine-grained control over default object ACLs? Use `gcp.storage.DefaultObjectAccessControl`
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Example creating a default object ACL on a bucket with one owner, and one reader.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

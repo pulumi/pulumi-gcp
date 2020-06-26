@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.CloudFunctions
     /// for Cloud Functions.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Public Function
     /// 
     /// ```csharp
@@ -64,7 +63,6 @@ namespace Pulumi.Gcp.CloudFunctions
     /// 
     /// }
     /// ```
-    /// 
     /// ### Single User
     /// 
     /// ```csharp

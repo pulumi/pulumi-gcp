@@ -94,8 +94,6 @@ def get_engine_versions(location=None,project=None,version_prefix=None,opts=None
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

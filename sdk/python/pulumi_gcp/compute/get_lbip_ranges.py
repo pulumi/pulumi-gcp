@@ -50,8 +50,6 @@ def get_lbip_ranges(opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

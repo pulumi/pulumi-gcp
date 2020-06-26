@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
+ * Example creating a SQL User.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

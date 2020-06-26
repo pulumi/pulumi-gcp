@@ -12,12 +12,42 @@ import (
 
 // A Cloud TPU instance.
 //
-//
 // To get more information about Node, see:
 //
 // * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/tpu/docs/)
+//
+// ## Example Usage
+// ### TPU Node Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/tpu"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		available, err := tpu.GetTensorflowVersions(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
+// 			Zone:              pulumi.String("us-central1-b"),
+// 			AcceleratorType:   pulumi.String("v3-8"),
+// 			TensorflowVersion: pulumi.String(available.Versions[0]),
+// 			CidrBlock:         pulumi.String("10.2.0.0/29"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Node struct {
 	pulumi.CustomResourceState
 

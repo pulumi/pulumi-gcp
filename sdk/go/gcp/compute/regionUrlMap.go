@@ -11,6 +11,8 @@ import (
 
 // UrlMaps are used to route requests to a backend service based on rules
 // that you define for the host and path of an incoming URL.
+//
+// ## Example Usage
 type RegionUrlMap struct {
 	pulumi.CustomResourceState
 

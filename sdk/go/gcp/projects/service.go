@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
@@ -29,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project, err := projects.NewService(ctx, "project", &projects.ServiceArgs{
+// 		_, err = projects.NewService(ctx, "project", &projects.ServiceArgs{
 // 			DisableDependentServices: pulumi.Bool(true),
 // 			Project:                  pulumi.String("your-project-id"),
 // 			Service:                  pulumi.String("iam.googleapis.com"),

@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// See [Data Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for information on the permissions needed to create or view tags.
     /// 
-    /// 
     /// To get more information about Tag, see:
     /// 
     /// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.tags)
@@ -22,7 +21,6 @@ namespace Pulumi.Gcp.DataCatalog
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Data Catalog Entry Tag Basic
     /// 
     /// ```csharp
@@ -116,7 +114,6 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// }
     /// ```
-    /// 
     /// ### Data Catalog Entry Group Tag
     /// 
     /// ```csharp
@@ -217,7 +214,6 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// }
     /// ```
-    /// 
     /// ### Data Catalog Entry Tag Full
     /// 
     /// ```csharp

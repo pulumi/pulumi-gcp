@@ -20,9 +20,7 @@ import * as utilities from "../utilities";
  * **Note**: If the project id is not set on the resource or in the provider block it will be dynamically
  * determined which will require enabling the compute api.
  *
- *
  * ## Example Usage
- *
  * ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
  *
  * ```typescript
@@ -51,7 +49,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Life Cycle Settings For Storage Bucket Objects
  *
  * ```typescript

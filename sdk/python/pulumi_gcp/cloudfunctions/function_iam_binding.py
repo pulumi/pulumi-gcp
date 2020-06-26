@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class FunctionIamBinding(pulumi.CustomResource):
     cloud_function: pulumi.Output[str]
     """
@@ -48,8 +49,6 @@ class FunctionIamBinding(pulumi.CustomResource):
         > **Note:** `cloudfunctions.FunctionIamPolicy` **cannot** be used in conjunction with `cloudfunctions.FunctionIamBinding` and `cloudfunctions.FunctionIamMember` or they will fight over what your policy should be.
 
         > **Note:** `cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
-
-
 
         ## google\_cloudfunctions\_function\_iam\_policy
 
@@ -188,9 +187,9 @@ class FunctionIamBinding(pulumi.CustomResource):
         __props__["region"] = region
         __props__["role"] = role
         return FunctionIamBinding(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

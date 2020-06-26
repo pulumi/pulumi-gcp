@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TunnelInstanceIAMPolicy(pulumi.CustomResource):
     etag: pulumi.Output[str]
     """
@@ -40,8 +41,6 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
         > **Note:** `iap.TunnelInstanceIAMPolicy` **cannot** be used in conjunction with `iap.TunnelInstanceIAMBinding` and `iap.TunnelInstanceIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
-
-
 
         ## google\_iap\_tunnel\_instance\_iam\_policy
 
@@ -212,9 +211,9 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
         __props__["project"] = project
         __props__["zone"] = zone
         return TunnelInstanceIAMPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

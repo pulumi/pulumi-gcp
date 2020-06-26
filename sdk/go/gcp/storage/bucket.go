@@ -21,6 +21,87 @@ import (
 //
 // **Note**: If the project id is not set on the resource or in the provider block it will be dynamically
 // determined which will require enabling the compute api.
+//
+// ## Example Usage
+// ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = storage.NewBucket(ctx, "static-site", &storage.BucketArgs{
+// 			BucketPolicyOnly: pulumi.Bool(true),
+// 			Cors: storage.BucketCorArray{
+// 				&storage.BucketCorArgs{
+// 					MaxAgeSeconds: pulumi.Int(3600),
+// 					Method: pulumi.StringArray{
+// 						pulumi.String("GET"),
+// 						pulumi.String("HEAD"),
+// 						pulumi.String("PUT"),
+// 						pulumi.String("POST"),
+// 						pulumi.String("DELETE"),
+// 					},
+// 					Origin: pulumi.StringArray{
+// 						pulumi.String("http://image-store.com"),
+// 					},
+// 					ResponseHeader: pulumi.StringArray{
+// 						pulumi.String("*"),
+// 					},
+// 				},
+// 			},
+// 			ForceDestroy: pulumi.Bool(true),
+// 			Location:     pulumi.String("EU"),
+// 			Website: &storage.BucketWebsiteArgs{
+// 				MainPageSuffix: pulumi.String("index.html"),
+// 				NotFoundPage:   pulumi.String("404.html"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Life Cycle Settings For Storage Bucket Objects
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = storage.NewBucket(ctx, "auto-expire", &storage.BucketArgs{
+// 			ForceDestroy: pulumi.Bool(true),
+// 			LifecycleRules: storage.BucketLifecycleRuleArray{
+// 				&storage.BucketLifecycleRuleArgs{
+// 					Action: &storage.BucketLifecycleRuleActionArgs{
+// 						Type: pulumi.String("Delete"),
+// 					},
+// 					Condition: &storage.BucketLifecycleRuleConditionArgs{
+// 						Age: pulumi.Int(3),
+// 					},
+// 				},
+// 			},
+// 			Location: pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Bucket struct {
 	pulumi.CustomResourceState
 

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ConfigIamPolicy(pulumi.CustomResource):
     config: pulumi.Output[str]
     """
@@ -39,8 +40,6 @@ class ConfigIamPolicy(pulumi.CustomResource):
         > **Note:** `runtimeconfig.ConfigIamPolicy` **cannot** be used in conjunction with `runtimeconfig.ConfigIamBinding` and `runtimeconfig.ConfigIamMember` or they will fight over what your policy should be.
 
         > **Note:** `runtimeconfig.ConfigIamBinding` resources **can be** used in conjunction with `runtimeconfig.ConfigIamMember` resources **only if** they do not grant privilege to the same role.
-
-
 
         ## google\_runtimeconfig\_config\_iam\_policy
 
@@ -148,9 +147,9 @@ class ConfigIamPolicy(pulumi.CustomResource):
         __props__["policy_data"] = policy_data
         __props__["project"] = project
         return ConfigIamPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

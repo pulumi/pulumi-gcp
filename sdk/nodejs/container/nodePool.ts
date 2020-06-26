@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
  *
  * ## Example Usage
- *
  * ### Using A Separately Managed Node Pool (Recommended)
  *
  * ```typescript
@@ -38,7 +37,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
  *
  * ```typescript

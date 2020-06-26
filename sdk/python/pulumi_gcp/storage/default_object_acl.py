@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class DefaultObjectACL(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
@@ -29,8 +30,8 @@ class DefaultObjectACL(pulumi.CustomResource):
         to the default ACL that has been defined.
 
         For more information see
-        [the official documentation](https://cloud.google.com/storage/docs/access-control/lists) 
-        and 
+        [the official documentation](https://cloud.google.com/storage/docs/access-control/lists)
+        and
         [API](https://cloud.google.com/storage/docs/json_api/v1/defaultObjectAccessControls).
 
         > Want fine-grained control over default object ACLs? Use `storage.DefaultObjectAccessControl`
@@ -38,7 +39,7 @@ class DefaultObjectACL(pulumi.CustomResource):
 
         ## Example Usage
 
-
+        Example creating a default object ACL on a bucket with one owner, and one reader.
 
         ```python
         import pulumi
@@ -108,9 +109,9 @@ class DefaultObjectACL(pulumi.CustomResource):
         __props__["bucket"] = bucket
         __props__["role_entities"] = role_entities
         return DefaultObjectACL(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

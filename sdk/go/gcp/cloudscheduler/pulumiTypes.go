@@ -33,8 +33,7 @@ type JobAppEngineHttpTarget struct {
 // JobAppEngineHttpTargetInput is an input type that accepts JobAppEngineHttpTargetArgs and JobAppEngineHttpTargetOutput values.
 // You can construct a concrete instance of `JobAppEngineHttpTargetInput` via:
 //
-// 		 JobAppEngineHttpTargetArgs{...}
-//
+//          JobAppEngineHttpTargetArgs{...}
 type JobAppEngineHttpTargetInput interface {
 	pulumi.Input
 
@@ -85,12 +84,11 @@ func (i JobAppEngineHttpTargetArgs) ToJobAppEngineHttpTargetPtrOutputWithContext
 // JobAppEngineHttpTargetPtrInput is an input type that accepts JobAppEngineHttpTargetArgs, JobAppEngineHttpTargetPtr and JobAppEngineHttpTargetPtrOutput values.
 // You can construct a concrete instance of `JobAppEngineHttpTargetPtrInput` via:
 //
-// 		 JobAppEngineHttpTargetArgs{...}
+//          JobAppEngineHttpTargetArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type JobAppEngineHttpTargetPtrInput interface {
 	pulumi.Input
 
@@ -262,8 +260,7 @@ type JobAppEngineHttpTargetAppEngineRouting struct {
 // JobAppEngineHttpTargetAppEngineRoutingInput is an input type that accepts JobAppEngineHttpTargetAppEngineRoutingArgs and JobAppEngineHttpTargetAppEngineRoutingOutput values.
 // You can construct a concrete instance of `JobAppEngineHttpTargetAppEngineRoutingInput` via:
 //
-// 		 JobAppEngineHttpTargetAppEngineRoutingArgs{...}
-//
+//          JobAppEngineHttpTargetAppEngineRoutingArgs{...}
 type JobAppEngineHttpTargetAppEngineRoutingInput interface {
 	pulumi.Input
 
@@ -306,12 +303,11 @@ func (i JobAppEngineHttpTargetAppEngineRoutingArgs) ToJobAppEngineHttpTargetAppE
 // JobAppEngineHttpTargetAppEngineRoutingPtrInput is an input type that accepts JobAppEngineHttpTargetAppEngineRoutingArgs, JobAppEngineHttpTargetAppEngineRoutingPtr and JobAppEngineHttpTargetAppEngineRoutingPtrOutput values.
 // You can construct a concrete instance of `JobAppEngineHttpTargetAppEngineRoutingPtrInput` via:
 //
-// 		 JobAppEngineHttpTargetAppEngineRoutingArgs{...}
+//          JobAppEngineHttpTargetAppEngineRoutingArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type JobAppEngineHttpTargetAppEngineRoutingPtrInput interface {
 	pulumi.Input
 
@@ -453,8 +449,7 @@ type JobHttpTarget struct {
 // JobHttpTargetInput is an input type that accepts JobHttpTargetArgs and JobHttpTargetOutput values.
 // You can construct a concrete instance of `JobHttpTargetInput` via:
 //
-// 		 JobHttpTargetArgs{...}
-//
+//          JobHttpTargetArgs{...}
 type JobHttpTargetInput interface {
 	pulumi.Input
 
@@ -505,12 +500,11 @@ func (i JobHttpTargetArgs) ToJobHttpTargetPtrOutputWithContext(ctx context.Conte
 // JobHttpTargetPtrInput is an input type that accepts JobHttpTargetArgs, JobHttpTargetPtr and JobHttpTargetPtrOutput values.
 // You can construct a concrete instance of `JobHttpTargetPtrInput` via:
 //
-// 		 JobHttpTargetArgs{...}
+//          JobHttpTargetArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type JobHttpTargetPtrInput interface {
 	pulumi.Input
 
@@ -690,8 +684,7 @@ type JobHttpTargetOauthToken struct {
 // JobHttpTargetOauthTokenInput is an input type that accepts JobHttpTargetOauthTokenArgs and JobHttpTargetOauthTokenOutput values.
 // You can construct a concrete instance of `JobHttpTargetOauthTokenInput` via:
 //
-// 		 JobHttpTargetOauthTokenArgs{...}
-//
+//          JobHttpTargetOauthTokenArgs{...}
 type JobHttpTargetOauthTokenInput interface {
 	pulumi.Input
 
@@ -731,12 +724,11 @@ func (i JobHttpTargetOauthTokenArgs) ToJobHttpTargetOauthTokenPtrOutputWithConte
 // JobHttpTargetOauthTokenPtrInput is an input type that accepts JobHttpTargetOauthTokenArgs, JobHttpTargetOauthTokenPtr and JobHttpTargetOauthTokenPtrOutput values.
 // You can construct a concrete instance of `JobHttpTargetOauthTokenPtrInput` via:
 //
-// 		 JobHttpTargetOauthTokenArgs{...}
+//          JobHttpTargetOauthTokenArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type JobHttpTargetOauthTokenPtrInput interface {
 	pulumi.Input
 
@@ -850,8 +842,7 @@ type JobHttpTargetOidcToken struct {
 // JobHttpTargetOidcTokenInput is an input type that accepts JobHttpTargetOidcTokenArgs and JobHttpTargetOidcTokenOutput values.
 // You can construct a concrete instance of `JobHttpTargetOidcTokenInput` via:
 //
-// 		 JobHttpTargetOidcTokenArgs{...}
-//
+//          JobHttpTargetOidcTokenArgs{...}
 type JobHttpTargetOidcTokenInput interface {
 	pulumi.Input
 
@@ -891,12 +882,11 @@ func (i JobHttpTargetOidcTokenArgs) ToJobHttpTargetOidcTokenPtrOutputWithContext
 // JobHttpTargetOidcTokenPtrInput is an input type that accepts JobHttpTargetOidcTokenArgs, JobHttpTargetOidcTokenPtr and JobHttpTargetOidcTokenPtrOutput values.
 // You can construct a concrete instance of `JobHttpTargetOidcTokenPtrInput` via:
 //
-// 		 JobHttpTargetOidcTokenArgs{...}
+//          JobHttpTargetOidcTokenArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type JobHttpTargetOidcTokenPtrInput interface {
 	pulumi.Input
 
@@ -1015,8 +1005,7 @@ type JobPubsubTarget struct {
 // JobPubsubTargetInput is an input type that accepts JobPubsubTargetArgs and JobPubsubTargetOutput values.
 // You can construct a concrete instance of `JobPubsubTargetInput` via:
 //
-// 		 JobPubsubTargetArgs{...}
-//
+//          JobPubsubTargetArgs{...}
 type JobPubsubTargetInput interface {
 	pulumi.Input
 
@@ -1061,12 +1050,11 @@ func (i JobPubsubTargetArgs) ToJobPubsubTargetPtrOutputWithContext(ctx context.C
 // JobPubsubTargetPtrInput is an input type that accepts JobPubsubTargetArgs, JobPubsubTargetPtr and JobPubsubTargetPtrOutput values.
 // You can construct a concrete instance of `JobPubsubTargetPtrInput` via:
 //
-// 		 JobPubsubTargetArgs{...}
+//          JobPubsubTargetArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type JobPubsubTargetPtrInput interface {
 	pulumi.Input
 
@@ -1214,8 +1202,7 @@ type JobRetryConfig struct {
 // JobRetryConfigInput is an input type that accepts JobRetryConfigArgs and JobRetryConfigOutput values.
 // You can construct a concrete instance of `JobRetryConfigInput` via:
 //
-// 		 JobRetryConfigArgs{...}
-//
+//          JobRetryConfigArgs{...}
 type JobRetryConfigInput interface {
 	pulumi.Input
 
@@ -1268,12 +1255,11 @@ func (i JobRetryConfigArgs) ToJobRetryConfigPtrOutputWithContext(ctx context.Con
 // JobRetryConfigPtrInput is an input type that accepts JobRetryConfigArgs, JobRetryConfigPtr and JobRetryConfigPtrOutput values.
 // You can construct a concrete instance of `JobRetryConfigPtrInput` via:
 //
-// 		 JobRetryConfigArgs{...}
+//          JobRetryConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type JobRetryConfigPtrInput interface {
 	pulumi.Input
 

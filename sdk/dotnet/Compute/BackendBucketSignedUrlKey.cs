@@ -12,7 +12,6 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// A key for signing Cloud CDN signed URLs for BackendBuckets.
     /// 
-    /// 
     /// To get more information about BackendBucketSignedUrlKey, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/backendBuckets)
@@ -23,7 +22,6 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text.
     /// 
     /// ## Example Usage
-    /// 
     /// ### Backend Bucket Signed Url Key
     /// 
     /// ```csharp

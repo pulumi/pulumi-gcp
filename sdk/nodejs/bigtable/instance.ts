@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
  *
  * ## Example Usage
- *
  * ### Production Instance
  *
  * ```typescript
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Development Instance
  *
  * ```typescript

@@ -12,7 +12,6 @@ namespace Pulumi.Gcp.Kms
     /// <summary>
     /// A Google Cloud IoT Core device registry.
     /// 
-    /// 
     /// To get more information about DeviceRegistry, see:
     /// 
     /// * [API documentation](https://cloud.google.com/iot/docs/reference/cloudiot/rest/)
@@ -20,7 +19,6 @@ namespace Pulumi.Gcp.Kms
     ///     * [Official Documentation](https://cloud.google.com/iot/docs/)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Cloudiot Device Registry Basic
     /// 
     /// ```csharp

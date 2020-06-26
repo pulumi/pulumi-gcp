@@ -17,6 +17,33 @@ import (
 // * [API documentation](https://cloud.google.com/game-servers/docs/reference/rest/v1beta/projects.locations.realms)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/game-servers/docs)
+//
+// ## Example Usage
+// ### Game Service Realm Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/gameservices"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = gameservices.NewRealm(ctx, "default", &gameservices.RealmArgs{
+// 			RealmId:     pulumi.String("tf-test-realm"),
+// 			TimeZone:    pulumi.String("EST"),
+// 			Location:    pulumi.String("global"),
+// 			Description: pulumi.String("one of the nine"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Realm struct {
 	pulumi.CustomResourceState
 

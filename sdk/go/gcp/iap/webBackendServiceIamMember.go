@@ -20,8 +20,6 @@ import (
 //
 // > **Note:** `iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
 //
-//
-//
 // ## google\_iap\_web\_backend\_service\_iam\_policy
 //
 // ```go
@@ -29,6 +27,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -47,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := iap.NewWebBackendServiceIamPolicy(ctx, "policy", &iap.WebBackendServiceIamPolicyArgs{
+// 		_, err = iap.NewWebBackendServiceIamPolicy(ctx, "policy", &iap.WebBackendServiceIamPolicyArgs{
 // 			Project:           pulumi.String(google_compute_backend_service.Default.Project),
 // 			WebBackendService: pulumi.String(google_compute_backend_service.Default.Name),
 // 			PolicyData:        pulumi.String(admin.PolicyData),
@@ -67,6 +66,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -90,7 +90,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		policy, err := iap.NewWebBackendServiceIamPolicy(ctx, "policy", &iap.WebBackendServiceIamPolicyArgs{
+// 		_, err = iap.NewWebBackendServiceIamPolicy(ctx, "policy", &iap.WebBackendServiceIamPolicyArgs{
 // 			Project:           pulumi.String(google_compute_backend_service.Default.Project),
 // 			WebBackendService: pulumi.String(google_compute_backend_service.Default.Name),
 // 			PolicyData:        pulumi.String(admin.PolicyData),
@@ -114,7 +114,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := iap.NewWebBackendServiceIamBinding(ctx, "binding", &iap.WebBackendServiceIamBindingArgs{
+// 		_, err = iap.NewWebBackendServiceIamBinding(ctx, "binding", &iap.WebBackendServiceIamBindingArgs{
 // 			Project:           pulumi.String(google_compute_backend_service.Default.Project),
 // 			WebBackendService: pulumi.String(google_compute_backend_service.Default.Name),
 // 			Role:              pulumi.String("roles/iap.httpsResourceAccessor"),
@@ -142,7 +142,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		binding, err := iap.NewWebBackendServiceIamBinding(ctx, "binding", &iap.WebBackendServiceIamBindingArgs{
+// 		_, err = iap.NewWebBackendServiceIamBinding(ctx, "binding", &iap.WebBackendServiceIamBindingArgs{
 // 			Project:           pulumi.String(google_compute_backend_service.Default.Project),
 // 			WebBackendService: pulumi.String(google_compute_backend_service.Default.Name),
 // 			Role:              pulumi.String("roles/iap.httpsResourceAccessor"),
@@ -174,7 +174,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := iap.NewWebBackendServiceIamMember(ctx, "member", &iap.WebBackendServiceIamMemberArgs{
+// 		_, err = iap.NewWebBackendServiceIamMember(ctx, "member", &iap.WebBackendServiceIamMemberArgs{
 // 			Project:           pulumi.String(google_compute_backend_service.Default.Project),
 // 			WebBackendService: pulumi.String(google_compute_backend_service.Default.Name),
 // 			Role:              pulumi.String("roles/iap.httpsResourceAccessor"),
@@ -200,7 +200,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		member, err := iap.NewWebBackendServiceIamMember(ctx, "member", &iap.WebBackendServiceIamMemberArgs{
+// 		_, err = iap.NewWebBackendServiceIamMember(ctx, "member", &iap.WebBackendServiceIamMemberArgs{
 // 			Project:           pulumi.String(google_compute_backend_service.Default.Project),
 // 			WebBackendService: pulumi.String(google_compute_backend_service.Default.Name),
 // 			Role:              pulumi.String("roles/iap.httpsResourceAccessor"),

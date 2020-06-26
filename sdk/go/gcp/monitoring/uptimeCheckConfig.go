@@ -12,7 +12,6 @@ import (
 
 // This message configures which resources and services to monitor for availability.
 //
-//
 // To get more information about UptimeCheckConfig, see:
 //
 // * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.uptimeCheckConfigs)
@@ -23,7 +22,6 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
-//
 // ### Uptime Check Config Http
 //
 // ```go
@@ -36,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		http, err := monitoring.NewUptimeCheckConfig(ctx, "http", &monitoring.UptimeCheckConfigArgs{
+// 		_, err = monitoring.NewUptimeCheckConfig(ctx, "http", &monitoring.UptimeCheckConfigArgs{
 // 			ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
 // 				&monitoring.UptimeCheckConfigContentMatcherArgs{
 // 					Content: pulumi.String("example"),
@@ -48,9 +46,9 @@ import (
 // 				Port: pulumi.Int(8010),
 // 			},
 // 			MonitoredResource: &monitoring.UptimeCheckConfigMonitoredResourceArgs{
-// 				Labels: map[string]interface{}{
-// 					"host":       "192.168.1.1",
-// 					"project_id": "my-project-name",
+// 				Labels: pulumi.Map{
+// 					"host":       pulumi.String("192.168.1.1"),
+// 					"project_id": pulumi.String("my-project-name"),
 // 				},
 // 				Type: pulumi.String("uptime_url"),
 // 			},
@@ -63,7 +61,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Uptime Check Config Https
 //
 // ```go
@@ -76,7 +73,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		https, err := monitoring.NewUptimeCheckConfig(ctx, "https", &monitoring.UptimeCheckConfigArgs{
+// 		_, err = monitoring.NewUptimeCheckConfig(ctx, "https", &monitoring.UptimeCheckConfigArgs{
 // 			ContentMatchers: monitoring.UptimeCheckConfigContentMatcherArray{
 // 				&monitoring.UptimeCheckConfigContentMatcherArgs{
 // 					Content: pulumi.String("example"),
@@ -90,9 +87,9 @@ import (
 // 				ValidateSsl: pulumi.Bool(true),
 // 			},
 // 			MonitoredResource: &monitoring.UptimeCheckConfigMonitoredResourceArgs{
-// 				Labels: map[string]interface{}{
-// 					"host":       "192.168.1.1",
-// 					"project_id": "my-project-name",
+// 				Labels: pulumi.Map{
+// 					"host":       pulumi.String("192.168.1.1"),
+// 					"project_id": pulumi.String("my-project-name"),
 // 				},
 // 				Type: pulumi.String("uptime_url"),
 // 			},

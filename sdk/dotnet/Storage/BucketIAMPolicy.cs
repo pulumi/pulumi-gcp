@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// &gt; **Note:** `gcp.storage.BucketIAMBinding` resources **can be** used in conjunction with `gcp.storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// 
-    /// 
     /// ## google\_storage\_bucket\_iam\_policy
     /// 
     /// ```csharp

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Brand(pulumi.CustomResource):
     application_title: pulumi.Output[str]
     """
@@ -42,12 +43,11 @@ class Brand(pulumi.CustomResource):
         programatically via API. To convert it into an external brands
         please use the GCP Console.
 
-
         > **Note:** Brands can be created only once for a Google Cloud Platform
         project and cannot be deleted. Destroying a provider-managed Brand
         will remove it from state but *will not delete the resource on the server.*
 
-
+        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -123,9 +123,9 @@ class Brand(pulumi.CustomResource):
         __props__["project"] = project
         __props__["support_email"] = support_email
         return Brand(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

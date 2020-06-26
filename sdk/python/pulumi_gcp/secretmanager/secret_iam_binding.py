@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SecretIamBinding(pulumi.CustomResource):
     condition: pulumi.Output[dict]
     etag: pulumi.Output[str]
@@ -164,9 +165,9 @@ class SecretIamBinding(pulumi.CustomResource):
         __props__["role"] = role
         __props__["secret_id"] = secret_id
         return SecretIamBinding(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  * services not listed above
  * like Cloud SQL and Dataflow.
  *
- *
  * To get more information about Reservation, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/reservations)
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
  *
  * ## Example Usage
- *
  * ### Reservation Basic
  *
  * ```typescript

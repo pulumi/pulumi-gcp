@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// Example creating a RuntimeConfig resource.
     /// 
     /// ```csharp
     /// using Pulumi;

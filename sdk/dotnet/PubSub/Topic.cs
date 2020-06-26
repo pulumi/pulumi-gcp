@@ -12,7 +12,6 @@ namespace Pulumi.Gcp.PubSub
     /// <summary>
     /// A named resource to which messages are sent by publishers.
     /// 
-    /// 
     /// To get more information about Topic, see:
     /// 
     /// * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
@@ -20,7 +19,6 @@ namespace Pulumi.Gcp.PubSub
     ///     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Pubsub Topic Basic
     /// 
     /// ```csharp
@@ -42,7 +40,6 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// }
     /// ```
-    /// 
     /// ### Pubsub Topic Cmek
     /// 
     /// ```csharp
@@ -69,7 +66,6 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// }
     /// ```
-    /// 
     /// ### Pubsub Topic Geo Restricted
     /// 
     /// ```csharp

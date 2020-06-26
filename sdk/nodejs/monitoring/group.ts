@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * associated metadata. If a group's filter matches an available monitored
  * resource, then that resource is a member of that group.
  *
- *
  * To get more information about Group, see:
  *
  * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.groups)
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
  *
  * ## Example Usage
- *
  * ### Monitoring Group Basic
  *
  * ```typescript
@@ -30,7 +28,6 @@ import * as utilities from "../utilities";
  *     filter: "resource.metadata.region=\"europe-west2\"",
  * });
  * ```
- *
  * ### Monitoring Group Subgroup
  *
  * ```typescript

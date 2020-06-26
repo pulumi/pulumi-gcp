@@ -16,32 +16,31 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/kms"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myKeyRing, err := kms.LookupKMSKeyRing(ctx, &kms.LookupKMSKeyRingArgs{
+// 		myKeyRing, err := kms.GetKMSKeyRing(ctx, &kms.GetKMSKeyRingArgs{
 // 			Name:     "my-key-ring",
 // 			Location: "us-central1",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myCryptoKey, err := kms.LookupKMSCryptoKey(ctx, &kms.LookupKMSCryptoKeyArgs{
+// 		_, err := kms.GetKMSCryptoKey(ctx, &kms.GetKMSCryptoKeyArgs{
 // 			Name:    "my-crypto-key",
 // 			KeyRing: myKeyRing.SelfLink,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
 // 		}
-// 		myCryptoKeyVersion, err := kms.LookupKMSCryptoKeyVersion(ctx, &kms.LookupKMSCryptoKeyVersionArgs{
+// 		_, err := kms.GetKMSCryptoKeyVersion(ctx, &kms.GetKMSCryptoKeyVersionArgs{
 // 			CryptoKey: data.Google_kms_key.My_key.Self_link,
 // 		}, nil)
 // 		if err != nil {

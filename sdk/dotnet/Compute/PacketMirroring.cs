@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/packetMirroring)
     /// * How-to Guides
     ///     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
+    /// 
+    /// ## Example Usage
     /// </summary>
     public partial class PacketMirroring : Pulumi.CustomResource
     {

@@ -15,10 +15,7 @@ import * as utilities from "../utilities";
  * For more information, see
  * https://cloud.google.com/compute/docs/load-balancing/http/
  *
- *
- *
  * ## Example Usage
- *
  * ### Global Forwarding Rule Http
  *
  * ```typescript
@@ -61,7 +58,6 @@ import * as utilities from "../utilities";
  *     portRange: "80",
  * });
  * ```
- *
  * ### Global Forwarding Rule Internal
  *
  * ```typescript

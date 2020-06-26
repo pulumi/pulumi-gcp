@@ -46,7 +46,6 @@ def get_project(filter=None,opts=None):
     for more details.
 
     ## Example Usage
-
     ### Searching For Projects About To Be Deleted In An Org
 
     ```python

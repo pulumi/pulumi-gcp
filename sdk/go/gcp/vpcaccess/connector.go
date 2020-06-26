@@ -12,7 +12,6 @@ import (
 
 // Serverless VPC Access connector resource.
 //
-//
 // To get more information about Connector, see:
 //
 // * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
@@ -20,7 +19,6 @@ import (
 //     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 //
 // ## Example Usage
-//
 // ### VPC Access Connector
 //
 // ```go
@@ -33,7 +31,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		connector, err := vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
+// 		_, err = vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
 // 			IpCidrRange: pulumi.String("10.8.0.0/28"),
 // 			Network:     pulumi.String("default"),
 // 			Region:      pulumi.String("us-central1"),

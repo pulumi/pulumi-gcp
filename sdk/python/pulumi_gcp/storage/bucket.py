@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Bucket(pulumi.CustomResource):
     bucket_policy_only: pulumi.Output[bool]
     """
@@ -129,9 +130,7 @@ class Bucket(pulumi.CustomResource):
         **Note**: If the project id is not set on the resource or in the provider block it will be dynamically
         determined which will require enabling the compute api.
 
-
         ## Example Usage
-
         ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
 
         ```python
@@ -159,7 +158,6 @@ class Bucket(pulumi.CustomResource):
                 "notFoundPage": "404.html",
             })
         ```
-
         ### Life Cycle Settings For Storage Bucket Objects
 
         ```python
@@ -386,9 +384,9 @@ class Bucket(pulumi.CustomResource):
         __props__["versioning"] = versioning
         __props__["website"] = website
         return Bucket(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

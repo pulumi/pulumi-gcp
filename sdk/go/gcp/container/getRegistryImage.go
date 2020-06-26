@@ -13,18 +13,17 @@ import (
 //
 // ## Example Usage
 //
-//
-//
 // ```go
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/container"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		debian, err := container.LookupRegistryImage(ctx, &container.LookupRegistryImageArgs{
+// 		debian, err := container.GetRegistryImage(ctx, &container.GetRegistryImageArgs{
 // 			Name: "debian",
 // 		}, nil)
 // 		if err != nil {

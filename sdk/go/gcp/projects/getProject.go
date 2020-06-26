@@ -10,6 +10,8 @@ import (
 // Retrieve information about a set of projects based on a filter. See the
 // [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
 // for more details.
+//
+// ## Example Usage
 func GetProject(ctx *pulumi.Context, args *GetProjectArgs, opts ...pulumi.InvokeOption) (*GetProjectResult, error) {
 	var rv GetProjectResult
 	err := ctx.Invoke("gcp:projects/getProject:getProject", args, &rv, opts...)

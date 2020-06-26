@@ -12,8 +12,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -24,6 +22,50 @@ import * as utilities from "../utilities";
  *     port: 1,
  * });
  * export const serialOut = serial.then(serial => serial.contents);
+ * ```
+ *
+ * Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const windows = new gcp.compute.Instance("windows", {
+ *     machineType: "n1-standard-1",
+ *     zone: "us-central1-a",
+ *     boot_disk: {
+ *         initialize_params: {
+ *             image: "gce-uefi-images/windows-2019",
+ *         },
+ *     },
+ *     network_interface: [{
+ *         network: "default",
+ *         access_config: [{}],
+ *     }],
+ *     metadata: {
+ *         "serial-port-logging-enable": "TRUE",
+ *         "windows-keys": JSON.stringify({
+ *             email: "example.user@example.com",
+ *             expireOn: "2020-04-14T01:37:19Z",
+ *             exponent: "AQAB",
+ *             modulus: "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==",
+ *             userName: "example-user",
+ *         }),
+ *     },
+ *     service_account: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ * });
+ * const serial = pulumi.all([windows.name, windows.zone]).apply(([name, zone]) => gcp.compute.getInstanceSerialPort({
+ *     instance: name,
+ *     zone: zone,
+ *     port: 4,
+ * }));
+ * export const serialOut = serial.contents;
  * ```
  */
 export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSerialPortResult> {

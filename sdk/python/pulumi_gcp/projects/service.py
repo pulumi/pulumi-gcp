@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Service(pulumi.CustomResource):
     disable_dependent_services: pulumi.Output[bool]
     """
@@ -29,14 +30,12 @@ class Service(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, disable_dependent_services=None, disable_on_destroy=None, project=None, service=None, __props__=None, __name__=None, __opts__=None):
         """
-        Allows management of a single API service for an existing Google Cloud Platform project. 
+        Allows management of a single API service for an existing Google Cloud Platform project.
 
         For a list of services available, visit the
         [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -109,9 +108,9 @@ class Service(pulumi.CustomResource):
         __props__["project"] = project
         __props__["service"] = service
         return Service(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

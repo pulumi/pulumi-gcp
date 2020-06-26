@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Snapshot(pulumi.CustomResource):
     creation_timestamp: pulumi.Output[str]
     """
@@ -108,7 +109,6 @@ class Snapshot(pulumi.CustomResource):
         persistent disk faster and at a much lower cost than if you regularly
         created a full image of the disk.
 
-
         To get more information about Snapshot, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
@@ -119,7 +119,6 @@ class Snapshot(pulumi.CustomResource):
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage
-
         ### Snapshot Basic
 
         ```python
@@ -288,9 +287,9 @@ class Snapshot(pulumi.CustomResource):
         __props__["storage_bytes"] = storage_bytes
         __props__["zone"] = zone
         return Snapshot(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

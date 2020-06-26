@@ -56,7 +56,7 @@ def get_testable_permissions(custom_support_level=None,full_resource_name=None,s
 
     ## Example Usage
 
-
+    Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
 
     ```python
     import pulumi

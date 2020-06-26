@@ -21,6 +21,8 @@ import (
 //
 // > Want fine-grained control over object ACLs? Use `storage.ObjectAccessControl` to control individual
 // role entity pairs.
+//
+// ## Example Usage
 type ObjectACL struct {
 	pulumi.CustomResourceState
 

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
 /**
  * A Google Cloud Filestore instance.
  *
- *
  * To get more information about Instance, see:
  *
  * * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
  *
  * ## Example Usage
- *
  * ### Filestore Instance Basic
  *
  * ```typescript

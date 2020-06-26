@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * nextHopGateway, nextHopInstance, nextHopIp, nextHopVpnTunnel, or
  * nextHopIlb.
  *
- *
  * To get more information about Route, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routes)
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  *     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
  *
  * ## Example Usage
- *
  * ### Route Basic
  *
  * ```typescript
@@ -51,7 +49,6 @@ import * as utilities from "../utilities";
  *     priority: 100,
  * });
  * ```
- *
  * ### Route Ilb
  *
  * ```typescript

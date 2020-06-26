@@ -12,13 +12,11 @@ import (
 // Manages a Cloud Dataproc cluster resource within GCP. For more information see
 // [the official dataproc documentation](https://cloud.google.com/dataproc/).
 //
-//
 // !> **Warning:** Due to limitations of the API, all arguments except
 // `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing others will cause recreation of the
 // whole cluster!
 //
 // ## Example Usage
-//
 // ### Basic
 //
 // ```go
@@ -31,7 +29,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		simplecluster, err := dataproc.NewCluster(ctx, "simplecluster", &dataproc.ClusterArgs{
+// 		_, err = dataproc.NewCluster(ctx, "simplecluster", &dataproc.ClusterArgs{
 // 			Region: pulumi.String("us-central1"),
 // 		})
 // 		if err != nil {
@@ -41,7 +39,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Advanced
 //
 // ```go
@@ -54,7 +51,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		mycluster, err := dataproc.NewCluster(ctx, "mycluster", &dataproc.ClusterArgs{
+// 		_, err = dataproc.NewCluster(ctx, "mycluster", &dataproc.ClusterArgs{
 // 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 // 				GceClusterConfig: &dataproc.ClusterClusterConfigGceClusterConfigArgs{
 // 					ServiceAccountScopes: pulumi.StringArray{
@@ -68,10 +65,10 @@ import (
 // 						pulumi.String("bar"),
 // 					},
 // 				},
-// 				InitializationAction: []map[string]interface{}{
-// 					map[string]interface{}{
-// 						"script":     "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-// 						"timeoutSec": 500,
+// 				InitializationAction: pulumi.MapArray{
+// 					pulumi.Map{
+// 						"script":     pulumi.String("gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"),
+// 						"timeoutSec": pulumi.Float64(500),
 // 					},
 // 				},
 // 				MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
@@ -87,8 +84,8 @@ import (
 // 				},
 // 				SoftwareConfig: &dataproc.ClusterClusterConfigSoftwareConfigArgs{
 // 					ImageVersion: pulumi.String("1.3.7-deb9"),
-// 					OverrideProperties: map[string]interface{}{
-// 						"dataproc:dataproc.allow.zero.workers": "true",
+// 					OverrideProperties: pulumi.Map{
+// 						"dataproc:dataproc.allow.zero.workers": pulumi.String("true"),
 // 					},
 // 				},
 // 				StagingBucket: pulumi.String("dataproc-staging-bucket"),
@@ -102,8 +99,8 @@ import (
 // 					NumInstances:   pulumi.Int(2),
 // 				},
 // 			},
-// 			Labels: map[string]interface{}{
-// 				"foo": "bar",
+// 			Labels: pulumi.Map{
+// 				"foo": pulumi.String("bar"),
 // 			},
 // 			Region: pulumi.String("us-central1"),
 // 		})
@@ -114,7 +111,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Using A GPU Accelerator
 //
 // ```go
@@ -127,7 +123,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		acceleratedCluster, err := dataproc.NewCluster(ctx, "acceleratedCluster", &dataproc.ClusterArgs{
+// 		_, err = dataproc.NewCluster(ctx, "acceleratedCluster", &dataproc.ClusterArgs{
 // 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 // 				GceClusterConfig: &dataproc.ClusterClusterConfigGceClusterConfigArgs{
 // 					Zone: pulumi.String("us-central1-a"),

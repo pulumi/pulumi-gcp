@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
  *
  * ## Example Usage
- *
  * ### Game Service Config Basic
  *
  * ```typescript

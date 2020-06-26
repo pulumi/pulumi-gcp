@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// ## Example Usage
     /// 
-    /// 
+    /// This snippet creates a customized IAM role.
     /// 
     /// ```csharp
     /// using Pulumi;

@@ -82,8 +82,6 @@ def get_secret_version(project=None,secret=None,version=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

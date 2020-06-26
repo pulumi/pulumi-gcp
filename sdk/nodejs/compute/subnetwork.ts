@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * region, using their RFC1918 private IP addresses. You can isolate portions
  * of the network, even entire subnets, using firewall rules.
  *
- *
  * To get more information about Subnetwork, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/subnetworks)
@@ -39,7 +38,6 @@ import * as utilities from "../utilities";
  *     * [Cloud Networking](https://cloud.google.com/vpc/docs/using-vpc)
  *
  * ## Example Usage
- *
  * ### Subnetwork Basic
  *
  * ```typescript
@@ -57,7 +55,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Subnetwork Logging Config
  *
  * ```typescript
@@ -76,7 +73,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Subnetwork Internal L7lb
  *
  * ```typescript

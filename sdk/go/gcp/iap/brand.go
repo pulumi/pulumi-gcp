@@ -14,10 +14,11 @@ import (
 // programatically via API. To convert it into an external brands
 // please use the GCP Console.
 //
-//
 // > **Note:** Brands can be created only once for a Google Cloud Platform
 // project and cannot be deleted. Destroying a provider-managed Brand
 // will remove it from state but *will not delete the resource on the server.*
+//
+// ## Example Usage
 type Brand struct {
 	pulumi.CustomResourceState
 

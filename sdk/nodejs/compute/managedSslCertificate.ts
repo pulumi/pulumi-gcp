@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  * In conclusion: Be extremely cautious.
  *
  * ## Example Usage
- *
  * ### Managed Ssl Certificate Basic
  *
  * ```typescript

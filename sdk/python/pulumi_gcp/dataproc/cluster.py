@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Cluster(pulumi.CustomResource):
     cluster_config: pulumi.Output[dict]
     """
@@ -247,13 +248,11 @@ class Cluster(pulumi.CustomResource):
         Manages a Cloud Dataproc cluster resource within GCP. For more information see
         [the official dataproc documentation](https://cloud.google.com/dataproc/).
 
-
         !> **Warning:** Due to limitations of the API, all arguments except
         `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing others will cause recreation of the
         whole cluster!
 
         ## Example Usage
-
         ### Basic
 
         ```python
@@ -262,7 +261,6 @@ class Cluster(pulumi.CustomResource):
 
         simplecluster = gcp.dataproc.Cluster("simplecluster", region="us-central1")
         ```
-
         ### Advanced
 
         ```python
@@ -320,7 +318,6 @@ class Cluster(pulumi.CustomResource):
             },
             region="us-central1")
         ```
-
         ### Using A GPU Accelerator
 
         ```python
@@ -831,9 +828,9 @@ class Cluster(pulumi.CustomResource):
         __props__["project"] = project
         __props__["region"] = region
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

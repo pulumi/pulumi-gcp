@@ -18,7 +18,6 @@ import (
 // static content to a Cloud Storage bucket and requests for dynamic content
 // to a virtual machine instance.
 //
-//
 // To get more information about BackendBucket, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendBuckets)
@@ -26,7 +25,6 @@ import (
 //     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 //
 // ## Example Usage
-//
 // ### Backend Bucket Basic
 //
 // ```go
@@ -46,7 +44,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		imageBackend, err := compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+// 		_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
 // 			Description: pulumi.String("Contains beautiful images"),
 // 			BucketName:  imageBucket.Name,
 // 			EnableCdn:   pulumi.Bool(true),

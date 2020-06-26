@@ -66,8 +66,6 @@ def get_router(name=None,network=None,project=None,region=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

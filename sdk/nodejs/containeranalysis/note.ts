@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * A Container Analysis note is a high-level piece of metadata that
  * describes a type of analysis that can be done for a resource.
  *
- *
  * To get more information about Note, see:
  *
  * * [API documentation](https://cloud.google.com/container-analysis/api/reference/rest/)
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
  *
  * ## Example Usage
- *
  * ### Container Analysis Note Basic
  *
  * ```typescript
@@ -34,7 +32,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Container Analysis Note Attestation Full
  *
  * ```typescript

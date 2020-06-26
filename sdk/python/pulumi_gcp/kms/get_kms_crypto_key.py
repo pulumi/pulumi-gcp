@@ -79,8 +79,6 @@ def get_kms_crypto_key(key_ring=None,name=None,opts=None):
 
     ## Example Usage
 
-
-
     ```python
     import pulumi
     import pulumi_gcp as gcp

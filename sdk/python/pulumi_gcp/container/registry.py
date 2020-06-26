@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Registry(pulumi.CustomResource):
     bucket_self_link: pulumi.Output[str]
     """
@@ -28,10 +29,7 @@ class Registry(pulumi.CustomResource):
 
         This resource can be used to ensure that the GCS bucket exists prior to assigning permissions. For more information see the [access control page](https://cloud.google.com/container-registry/docs/access-control) for GCR.
 
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -40,6 +38,21 @@ class Registry(pulumi.CustomResource):
         registry = gcp.container.Registry("registry",
             location="EU",
             project="my-project")
+        ```
+
+        The `id` field of the `container.Registry` is the identifier of the storage bucket that backs GCR and can be used to assign permissions to the bucket.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        registry = gcp.container.Registry("registry",
+            project="my-project",
+            location="EU")
+        viewer = gcp.storage.BucketIAMMember("viewer",
+            bucket=registry.id,
+            role="roles/storage.objectViewer",
+            member="user:jane@example.com")
         ```
 
         :param str resource_name: The name of the resource.
@@ -94,9 +107,9 @@ class Registry(pulumi.CustomResource):
         __props__["location"] = location
         __props__["project"] = project
         return Registry(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

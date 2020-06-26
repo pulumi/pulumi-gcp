@@ -30,8 +30,7 @@ type TriggerBuild struct {
 // TriggerBuildInput is an input type that accepts TriggerBuildArgs and TriggerBuildOutput values.
 // You can construct a concrete instance of `TriggerBuildInput` via:
 //
-// 		 TriggerBuildArgs{...}
-//
+//          TriggerBuildArgs{...}
 type TriggerBuildInput interface {
 	pulumi.Input
 
@@ -79,12 +78,11 @@ func (i TriggerBuildArgs) ToTriggerBuildPtrOutputWithContext(ctx context.Context
 // TriggerBuildPtrInput is an input type that accepts TriggerBuildArgs, TriggerBuildPtr and TriggerBuildPtrOutput values.
 // You can construct a concrete instance of `TriggerBuildPtrInput` via:
 //
-// 		 TriggerBuildArgs{...}
+//          TriggerBuildArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TriggerBuildPtrInput interface {
 	pulumi.Input
 
@@ -288,8 +286,7 @@ type TriggerBuildStep struct {
 // TriggerBuildStepInput is an input type that accepts TriggerBuildStepArgs and TriggerBuildStepOutput values.
 // You can construct a concrete instance of `TriggerBuildStepInput` via:
 //
-// 		 TriggerBuildStepArgs{...}
-//
+//          TriggerBuildStepArgs{...}
 type TriggerBuildStepInput interface {
 	pulumi.Input
 
@@ -373,8 +370,7 @@ func (i TriggerBuildStepArgs) ToTriggerBuildStepOutputWithContext(ctx context.Co
 // TriggerBuildStepArrayInput is an input type that accepts TriggerBuildStepArray and TriggerBuildStepArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildStepArrayInput` via:
 //
-// 		 TriggerBuildStepArray{ TriggerBuildStepArgs{...} }
-//
+//          TriggerBuildStepArray{ TriggerBuildStepArgs{...} }
 type TriggerBuildStepArrayInput interface {
 	pulumi.Input
 
@@ -535,8 +531,7 @@ type TriggerBuildStepVolume struct {
 // TriggerBuildStepVolumeInput is an input type that accepts TriggerBuildStepVolumeArgs and TriggerBuildStepVolumeOutput values.
 // You can construct a concrete instance of `TriggerBuildStepVolumeInput` via:
 //
-// 		 TriggerBuildStepVolumeArgs{...}
-//
+//          TriggerBuildStepVolumeArgs{...}
 type TriggerBuildStepVolumeInput interface {
 	pulumi.Input
 
@@ -570,8 +565,7 @@ func (i TriggerBuildStepVolumeArgs) ToTriggerBuildStepVolumeOutputWithContext(ct
 // TriggerBuildStepVolumeArrayInput is an input type that accepts TriggerBuildStepVolumeArray and TriggerBuildStepVolumeArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildStepVolumeArrayInput` via:
 //
-// 		 TriggerBuildStepVolumeArray{ TriggerBuildStepVolumeArgs{...} }
-//
+//          TriggerBuildStepVolumeArray{ TriggerBuildStepVolumeArgs{...} }
 type TriggerBuildStepVolumeArrayInput interface {
 	pulumi.Input
 
@@ -658,8 +652,7 @@ type TriggerGithub struct {
 // TriggerGithubInput is an input type that accepts TriggerGithubArgs and TriggerGithubOutput values.
 // You can construct a concrete instance of `TriggerGithubInput` via:
 //
-// 		 TriggerGithubArgs{...}
-//
+//          TriggerGithubArgs{...}
 type TriggerGithubInput interface {
 	pulumi.Input
 
@@ -704,12 +697,11 @@ func (i TriggerGithubArgs) ToTriggerGithubPtrOutputWithContext(ctx context.Conte
 // TriggerGithubPtrInput is an input type that accepts TriggerGithubArgs, TriggerGithubPtr and TriggerGithubPtrOutput values.
 // You can construct a concrete instance of `TriggerGithubPtrInput` via:
 //
-// 		 TriggerGithubArgs{...}
+//          TriggerGithubArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TriggerGithubPtrInput interface {
 	pulumi.Input
 
@@ -855,8 +847,7 @@ type TriggerGithubPullRequest struct {
 // TriggerGithubPullRequestInput is an input type that accepts TriggerGithubPullRequestArgs and TriggerGithubPullRequestOutput values.
 // You can construct a concrete instance of `TriggerGithubPullRequestInput` via:
 //
-// 		 TriggerGithubPullRequestArgs{...}
-//
+//          TriggerGithubPullRequestArgs{...}
 type TriggerGithubPullRequestInput interface {
 	pulumi.Input
 
@@ -896,12 +887,11 @@ func (i TriggerGithubPullRequestArgs) ToTriggerGithubPullRequestPtrOutputWithCon
 // TriggerGithubPullRequestPtrInput is an input type that accepts TriggerGithubPullRequestArgs, TriggerGithubPullRequestPtr and TriggerGithubPullRequestPtrOutput values.
 // You can construct a concrete instance of `TriggerGithubPullRequestPtrInput` via:
 //
-// 		 TriggerGithubPullRequestArgs{...}
+//          TriggerGithubPullRequestArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TriggerGithubPullRequestPtrInput interface {
 	pulumi.Input
 
@@ -1026,8 +1016,7 @@ type TriggerGithubPush struct {
 // TriggerGithubPushInput is an input type that accepts TriggerGithubPushArgs and TriggerGithubPushOutput values.
 // You can construct a concrete instance of `TriggerGithubPushInput` via:
 //
-// 		 TriggerGithubPushArgs{...}
-//
+//          TriggerGithubPushArgs{...}
 type TriggerGithubPushInput interface {
 	pulumi.Input
 
@@ -1067,12 +1056,11 @@ func (i TriggerGithubPushArgs) ToTriggerGithubPushPtrOutputWithContext(ctx conte
 // TriggerGithubPushPtrInput is an input type that accepts TriggerGithubPushArgs, TriggerGithubPushPtr and TriggerGithubPushPtrOutput values.
 // You can construct a concrete instance of `TriggerGithubPushPtrInput` via:
 //
-// 		 TriggerGithubPushArgs{...}
+//          TriggerGithubPushArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TriggerGithubPushPtrInput interface {
 	pulumi.Input
 
@@ -1216,8 +1204,7 @@ type TriggerTriggerTemplate struct {
 // TriggerTriggerTemplateInput is an input type that accepts TriggerTriggerTemplateArgs and TriggerTriggerTemplateOutput values.
 // You can construct a concrete instance of `TriggerTriggerTemplateInput` via:
 //
-// 		 TriggerTriggerTemplateArgs{...}
-//
+//          TriggerTriggerTemplateArgs{...}
 type TriggerTriggerTemplateInput interface {
 	pulumi.Input
 
@@ -1276,12 +1263,11 @@ func (i TriggerTriggerTemplateArgs) ToTriggerTriggerTemplatePtrOutputWithContext
 // TriggerTriggerTemplatePtrInput is an input type that accepts TriggerTriggerTemplateArgs, TriggerTriggerTemplatePtr and TriggerTriggerTemplatePtrOutput values.
 // You can construct a concrete instance of `TriggerTriggerTemplatePtrInput` via:
 //
-// 		 TriggerTriggerTemplateArgs{...}
+//          TriggerTriggerTemplateArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TriggerTriggerTemplatePtrInput interface {
 	pulumi.Input
 

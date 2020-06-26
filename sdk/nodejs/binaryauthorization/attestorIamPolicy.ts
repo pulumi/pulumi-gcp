@@ -15,8 +15,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `gcp.binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
  *
- *
- *
  * ## google\_binary\_authorization\_attestor\_iam\_policy
  *
  * ```typescript

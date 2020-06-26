@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AccessPolicy(pulumi.CustomResource):
     create_time: pulumi.Output[str]
     """
@@ -39,7 +40,6 @@ class AccessPolicy(pulumi.CustomResource):
         access policy is globally visible within an organization, and the
         restrictions it specifies apply to all projects within an organization.
 
-
         To get more information about AccessPolicy, see:
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies)
@@ -47,7 +47,6 @@ class AccessPolicy(pulumi.CustomResource):
             * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 
         ## Example Usage
-
         ### Access Context Manager Access Policy Basic
 
         ```python
@@ -123,9 +122,9 @@ class AccessPolicy(pulumi.CustomResource):
         __props__["title"] = title
         __props__["update_time"] = update_time
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

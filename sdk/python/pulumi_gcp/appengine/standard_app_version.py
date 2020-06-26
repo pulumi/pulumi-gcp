@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class StandardAppVersion(pulumi.CustomResource):
     automatic_scaling: pulumi.Output[dict]
     """
@@ -161,7 +162,6 @@ class StandardAppVersion(pulumi.CustomResource):
         at https://cloud.google.com/appengine/docs/the-appengine-environments.
         Currently supporting Zip and File Containers.
 
-
         To get more information about StandardAppVersion, see:
 
         * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions)
@@ -169,7 +169,6 @@ class StandardAppVersion(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
 
         ## Example Usage
-
         ### App Engine Standard App Version
 
         ```python
@@ -514,9 +513,9 @@ class StandardAppVersion(pulumi.CustomResource):
         __props__["threadsafe"] = threadsafe
         __props__["version_id"] = version_id
         return StandardAppVersion(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

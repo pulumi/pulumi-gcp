@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class SslCert(pulumi.CustomResource):
     cert: pulumi.Output[str]
     """
@@ -61,7 +62,7 @@ class SslCert(pulumi.CustomResource):
 
         ## Example Usage
 
-
+        Example creating a SQL Client Certificate.
 
         ```python
         import pulumi
@@ -163,9 +164,9 @@ class SslCert(pulumi.CustomResource):
         __props__["server_ca_cert"] = server_ca_cert
         __props__["sha1_fingerprint"] = sha1_fingerprint
         return SslCert(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

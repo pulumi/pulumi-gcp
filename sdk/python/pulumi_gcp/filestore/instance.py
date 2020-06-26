@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Instance(pulumi.CustomResource):
     create_time: pulumi.Output[str]
     """
@@ -70,7 +71,6 @@ class Instance(pulumi.CustomResource):
         """
         A Google Cloud Filestore instance.
 
-
         To get more information about Instance, see:
 
         * [API documentation](https://cloud.google.com/filestore/docs/reference/rest/v1beta1/projects.locations.instances/create)
@@ -80,7 +80,6 @@ class Instance(pulumi.CustomResource):
             * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
 
         ## Example Usage
-
         ### Filestore Instance Basic
 
         ```python
@@ -227,9 +226,9 @@ class Instance(pulumi.CustomResource):
         __props__["tier"] = tier
         __props__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

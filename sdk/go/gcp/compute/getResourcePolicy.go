@@ -13,12 +13,13 @@ import (
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		daily, err := compute.LookupResourcePolicy(ctx, &compute.LookupResourcePolicyArgs{
+// 		_, err := compute.LookupResourcePolicy(ctx, &compute.LookupResourcePolicyArgs{
 // 			Name:   "daily",
 // 			Region: "us-central1",
 // 		}, nil)

@@ -15,7 +15,6 @@ import (
 // like a container of findings that come from the same scanner, logger,
 // monitor, etc.
 //
-//
 // To get more information about Source, see:
 //
 // * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1beta1/organizations.sources)
@@ -23,7 +22,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/binary-authorization/)
 //
 // ## Example Usage
-//
 // ### Scc Source Basic
 //
 // ```go
@@ -36,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		customSource, err := securitycenter.NewSource(ctx, "customSource", &securitycenter.SourceArgs{
+// 		_, err = securitycenter.NewSource(ctx, "customSource", &securitycenter.SourceArgs{
 // 			Description:  pulumi.String("My custom Cloud Security Command Center Finding Source"),
 // 			DisplayName:  pulumi.String("My Source"),
 // 			Organization: pulumi.String("123456789"),

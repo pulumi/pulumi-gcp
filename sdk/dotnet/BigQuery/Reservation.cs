@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Bigquery Reservation Basic
     /// 
     /// ```csharp

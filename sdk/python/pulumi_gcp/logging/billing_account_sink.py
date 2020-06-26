@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class BillingAccountSink(pulumi.CustomResource):
     bigquery_options: pulumi.Output[dict]
     """
@@ -59,8 +60,6 @@ class BillingAccountSink(pulumi.CustomResource):
         typical IAM roles granted on a project.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -172,9 +171,9 @@ class BillingAccountSink(pulumi.CustomResource):
         __props__["name"] = name
         __props__["writer_identity"] = writer_identity
         return BillingAccountSink(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

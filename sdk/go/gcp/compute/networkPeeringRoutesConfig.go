@@ -15,7 +15,6 @@ import (
 // peerings that shouldn't otherwise be managed by other tools. Deleting this
 // resource is a no-op and the peering will not be modified.
 //
-//
 // To get more information about NetworkPeeringRoutesConfig, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networks/updatePeering)
@@ -23,7 +22,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 //
 // ## Example Usage
-//
 // ### Network Peering Routes Config Basic
 //
 // ```go
@@ -57,7 +55,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		peeringPrimaryRoutes, err := compute.NewNetworkPeeringRoutesConfig(ctx, "peeringPrimaryRoutes", &compute.NetworkPeeringRoutesConfigArgs{
+// 		_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peeringPrimaryRoutes", &compute.NetworkPeeringRoutesConfigArgs{
 // 			Peering:            peeringPrimary.Name,
 // 			Network:            networkPrimary.Name,
 // 			ImportCustomRoutes: pulumi.Bool(true),
@@ -66,7 +64,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		peeringSecondary, err := compute.NewNetworkPeering(ctx, "peeringSecondary", &compute.NetworkPeeringArgs{
+// 		_, err = compute.NewNetworkPeering(ctx, "peeringSecondary", &compute.NetworkPeeringArgs{
 // 			Network:     networkSecondary.ID(),
 // 			PeerNetwork: networkPrimary.ID(),
 // 		})

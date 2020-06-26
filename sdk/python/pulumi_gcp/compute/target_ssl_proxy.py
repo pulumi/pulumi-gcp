@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class TargetSSLProxy(pulumi.CustomResource):
     backend_service: pulumi.Output[str]
     """
@@ -68,7 +69,6 @@ class TargetSSLProxy(pulumi.CustomResource):
         global forwarding rule to route incoming SSL requests to a backend
         service.
 
-
         To get more information about TargetSslProxy, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/targetSslProxies)
@@ -76,7 +76,6 @@ class TargetSSLProxy(pulumi.CustomResource):
             * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
 
         ## Example Usage
-
         ### Target Ssl Proxy Basic
 
         ```python
@@ -206,9 +205,9 @@ class TargetSSLProxy(pulumi.CustomResource):
         __props__["ssl_certificates"] = ssl_certificates
         __props__["ssl_policy"] = ssl_policy
         return TargetSSLProxy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

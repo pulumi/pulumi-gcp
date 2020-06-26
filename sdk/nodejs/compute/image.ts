@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * from root persistent disks and other images. Then, use the custom image
  * to create an instance.
  *
- *
  * To get more information about Image, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/v1/images)
@@ -32,7 +31,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/images)
  *
  * ## Example Usage
- *
  * ### Image Basic
  *
  * ```typescript
@@ -45,7 +43,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Image Guest Os
  *
  * ```typescript

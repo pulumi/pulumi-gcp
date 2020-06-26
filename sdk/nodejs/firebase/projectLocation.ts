@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.defaultLocation/finalize)
  * * How-to Guides
  *     * [Official Documentation](https://firebase.google.com/)
+ *
+ * ## Example Usage
  */
 export class ProjectLocation extends pulumi.CustomResource {
     /**

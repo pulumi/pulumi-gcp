@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  * responsibility. A ManagedZone is a resource that represents a DNS zone
  * hosted by the Cloud DNS service.
  *
- *
  * To get more information about ManagedZone, see:
  *
  * * [API documentation](https://cloud.google.com/dns/api/v1/managedZones)
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     * [Managing Zones](https://cloud.google.com/dns/zones/)
  *
  * ## Example Usage
- *
  * ### Dns Managed Zone Basic
  *
  * ```typescript
@@ -34,7 +32,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Dns Managed Zone Private
  *
  * ```typescript
@@ -62,7 +59,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Dns Managed Zone Private Forwarding
  *
  * ```typescript
@@ -100,7 +96,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Dns Managed Zone Private Peering
  *
  * ```typescript
@@ -125,7 +120,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
  * ### Dns Managed Zone Service Directory
  *
  * ```typescript

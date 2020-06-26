@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class AttachedDisk(pulumi.CustomResource):
     device_name: pulumi.Output[str]
     """
@@ -53,7 +54,6 @@ class AttachedDisk(pulumi.CustomResource):
         instance config isn't preferable or possible, such as attaching dynamic
         numbers of disks using the `count` variable.
 
-
         To get more information about attaching disks, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instances/attachDisk)
@@ -63,8 +63,6 @@ class AttachedDisk(pulumi.CustomResource):
         **Note:** When using `compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -177,9 +175,9 @@ class AttachedDisk(pulumi.CustomResource):
         __props__["project"] = project
         __props__["zone"] = zone
         return AttachedDisk(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

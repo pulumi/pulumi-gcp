@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.Compute
     /// A global network endpoint group contains endpoints that reside outside of Google Cloud.
     /// Currently a global network endpoint group can only support a single endpoint.
     /// 
-    /// 
     /// To get more information about GlobalNetworkEndpointGroup, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -21,7 +20,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Global Network Endpoint Group
     /// 
     /// ```csharp
@@ -41,7 +39,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
-    /// 
     /// ### Global Network Endpoint Group Ip Address
     /// 
     /// ```csharp

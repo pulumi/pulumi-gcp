@@ -13,7 +13,6 @@ import (
 // Represents a Dialogflow intent. Intents convert a number of user expressions or patterns into an action. An action
 // is an extraction of a user command or sentence semantics.
 //
-//
 // To get more information about Intent, see:
 //
 // * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
@@ -21,7 +20,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
 // ## Example Usage
-//
 // ### Dialogflow Intent Basic
 //
 // ```go
@@ -42,7 +40,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		basicIntent, err := diagflow.NewIntent(ctx, "basicIntent", &diagflow.IntentArgs{
+// 		_, err = diagflow.NewIntent(ctx, "basicIntent", &diagflow.IntentArgs{
 // 			DisplayName: pulumi.String("basic-intent"),
 // 		})
 // 		if err != nil {
@@ -86,7 +84,7 @@ type Intent struct {
 	ParentFollowupIntentName pulumi.StringOutput `pulumi:"parentFollowupIntentName"`
 	// The priority of this intent. Higher numbers represent higher priorities.
 	// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-	// to the Normal priority in the console.
+	//   to the Normal priority in the console.
 	// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
@@ -100,7 +98,7 @@ type Intent struct {
 	// Indicates whether webhooks are enabled for the intent.
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-	// filling prompt is forwarded to the webhook.
+	//   filling prompt is forwarded to the webhook.
 	WebhookState pulumi.StringOutput `pulumi:"webhookState"`
 }
 
@@ -166,7 +164,7 @@ type intentState struct {
 	ParentFollowupIntentName *string `pulumi:"parentFollowupIntentName"`
 	// The priority of this intent. Higher numbers represent higher priorities.
 	// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-	// to the Normal priority in the console.
+	//   to the Normal priority in the console.
 	// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority *int `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
@@ -180,7 +178,7 @@ type intentState struct {
 	// Indicates whether webhooks are enabled for the intent.
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-	// filling prompt is forwarded to the webhook.
+	//   filling prompt is forwarded to the webhook.
 	WebhookState *string `pulumi:"webhookState"`
 }
 
@@ -216,7 +214,7 @@ type IntentState struct {
 	ParentFollowupIntentName pulumi.StringPtrInput
 	// The priority of this intent. Higher numbers represent higher priorities.
 	// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-	// to the Normal priority in the console.
+	//   to the Normal priority in the console.
 	// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
@@ -230,7 +228,7 @@ type IntentState struct {
 	// Indicates whether webhooks are enabled for the intent.
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-	// filling prompt is forwarded to the webhook.
+	//   filling prompt is forwarded to the webhook.
 	WebhookState pulumi.StringPtrInput
 }
 
@@ -265,7 +263,7 @@ type intentArgs struct {
 	ParentFollowupIntentName *string `pulumi:"parentFollowupIntentName"`
 	// The priority of this intent. Higher numbers represent higher priorities.
 	// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-	// to the Normal priority in the console.
+	//   to the Normal priority in the console.
 	// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority *int `pulumi:"priority"`
 	// The ID of the project in which the resource belongs.
@@ -276,7 +274,7 @@ type intentArgs struct {
 	// Indicates whether webhooks are enabled for the intent.
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-	// filling prompt is forwarded to the webhook.
+	//   filling prompt is forwarded to the webhook.
 	WebhookState *string `pulumi:"webhookState"`
 }
 
@@ -308,7 +306,7 @@ type IntentArgs struct {
 	ParentFollowupIntentName pulumi.StringPtrInput
 	// The priority of this intent. Higher numbers represent higher priorities.
 	// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-	// to the Normal priority in the console.
+	//   to the Normal priority in the console.
 	// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
 	Priority pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
@@ -319,7 +317,7 @@ type IntentArgs struct {
 	// Indicates whether webhooks are enabled for the intent.
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-	// filling prompt is forwarded to the webhook.
+	//   filling prompt is forwarded to the webhook.
 	WebhookState pulumi.StringPtrInput
 }
 

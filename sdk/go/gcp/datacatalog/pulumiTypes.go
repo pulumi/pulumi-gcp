@@ -19,8 +19,7 @@ type EntryBigqueryDateShardedSpec struct {
 // EntryBigqueryDateShardedSpecInput is an input type that accepts EntryBigqueryDateShardedSpecArgs and EntryBigqueryDateShardedSpecOutput values.
 // You can construct a concrete instance of `EntryBigqueryDateShardedSpecInput` via:
 //
-// 		 EntryBigqueryDateShardedSpecArgs{...}
-//
+//          EntryBigqueryDateShardedSpecArgs{...}
 type EntryBigqueryDateShardedSpecInput interface {
 	pulumi.Input
 
@@ -57,12 +56,11 @@ func (i EntryBigqueryDateShardedSpecArgs) ToEntryBigqueryDateShardedSpecPtrOutpu
 // EntryBigqueryDateShardedSpecPtrInput is an input type that accepts EntryBigqueryDateShardedSpecArgs, EntryBigqueryDateShardedSpecPtr and EntryBigqueryDateShardedSpecPtrOutput values.
 // You can construct a concrete instance of `EntryBigqueryDateShardedSpecPtrInput` via:
 //
-// 		 EntryBigqueryDateShardedSpecArgs{...}
+//          EntryBigqueryDateShardedSpecArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EntryBigqueryDateShardedSpecPtrInput interface {
 	pulumi.Input
 
@@ -177,8 +175,7 @@ type EntryBigqueryTableSpec struct {
 // EntryBigqueryTableSpecInput is an input type that accepts EntryBigqueryTableSpecArgs and EntryBigqueryTableSpecOutput values.
 // You can construct a concrete instance of `EntryBigqueryTableSpecInput` via:
 //
-// 		 EntryBigqueryTableSpecArgs{...}
-//
+//          EntryBigqueryTableSpecArgs{...}
 type EntryBigqueryTableSpecInput interface {
 	pulumi.Input
 
@@ -215,12 +212,11 @@ func (i EntryBigqueryTableSpecArgs) ToEntryBigqueryTableSpecPtrOutputWithContext
 // EntryBigqueryTableSpecPtrInput is an input type that accepts EntryBigqueryTableSpecArgs, EntryBigqueryTableSpecPtr and EntryBigqueryTableSpecPtrOutput values.
 // You can construct a concrete instance of `EntryBigqueryTableSpecPtrInput` via:
 //
-// 		 EntryBigqueryTableSpecArgs{...}
+//          EntryBigqueryTableSpecArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EntryBigqueryTableSpecPtrInput interface {
 	pulumi.Input
 
@@ -333,8 +329,7 @@ type EntryBigqueryTableSpecTableSpec struct {
 // EntryBigqueryTableSpecTableSpecInput is an input type that accepts EntryBigqueryTableSpecTableSpecArgs and EntryBigqueryTableSpecTableSpecOutput values.
 // You can construct a concrete instance of `EntryBigqueryTableSpecTableSpecInput` via:
 //
-// 		 EntryBigqueryTableSpecTableSpecArgs{...}
-//
+//          EntryBigqueryTableSpecTableSpecArgs{...}
 type EntryBigqueryTableSpecTableSpecInput interface {
 	pulumi.Input
 
@@ -369,12 +364,11 @@ func (i EntryBigqueryTableSpecTableSpecArgs) ToEntryBigqueryTableSpecTableSpecPt
 // EntryBigqueryTableSpecTableSpecPtrInput is an input type that accepts EntryBigqueryTableSpecTableSpecArgs, EntryBigqueryTableSpecTableSpecPtr and EntryBigqueryTableSpecTableSpecPtrOutput values.
 // You can construct a concrete instance of `EntryBigqueryTableSpecTableSpecPtrInput` via:
 //
-// 		 EntryBigqueryTableSpecTableSpecArgs{...}
+//          EntryBigqueryTableSpecTableSpecArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EntryBigqueryTableSpecTableSpecPtrInput interface {
 	pulumi.Input
 
@@ -461,8 +455,7 @@ type EntryBigqueryTableSpecViewSpec struct {
 // EntryBigqueryTableSpecViewSpecInput is an input type that accepts EntryBigqueryTableSpecViewSpecArgs and EntryBigqueryTableSpecViewSpecOutput values.
 // You can construct a concrete instance of `EntryBigqueryTableSpecViewSpecInput` via:
 //
-// 		 EntryBigqueryTableSpecViewSpecArgs{...}
-//
+//          EntryBigqueryTableSpecViewSpecArgs{...}
 type EntryBigqueryTableSpecViewSpecInput interface {
 	pulumi.Input
 
@@ -497,12 +490,11 @@ func (i EntryBigqueryTableSpecViewSpecArgs) ToEntryBigqueryTableSpecViewSpecPtrO
 // EntryBigqueryTableSpecViewSpecPtrInput is an input type that accepts EntryBigqueryTableSpecViewSpecArgs, EntryBigqueryTableSpecViewSpecPtr and EntryBigqueryTableSpecViewSpecPtrOutput values.
 // You can construct a concrete instance of `EntryBigqueryTableSpecViewSpecPtrInput` via:
 //
-// 		 EntryBigqueryTableSpecViewSpecArgs{...}
+//          EntryBigqueryTableSpecViewSpecArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EntryBigqueryTableSpecViewSpecPtrInput interface {
 	pulumi.Input
 
@@ -603,8 +595,7 @@ type EntryGcsFilesetSpec struct {
 // EntryGcsFilesetSpecInput is an input type that accepts EntryGcsFilesetSpecArgs and EntryGcsFilesetSpecOutput values.
 // You can construct a concrete instance of `EntryGcsFilesetSpecInput` via:
 //
-// 		 EntryGcsFilesetSpecArgs{...}
-//
+//          EntryGcsFilesetSpecArgs{...}
 type EntryGcsFilesetSpecInput interface {
 	pulumi.Input
 
@@ -653,12 +644,11 @@ func (i EntryGcsFilesetSpecArgs) ToEntryGcsFilesetSpecPtrOutputWithContext(ctx c
 // EntryGcsFilesetSpecPtrInput is an input type that accepts EntryGcsFilesetSpecArgs, EntryGcsFilesetSpecPtr and EntryGcsFilesetSpecPtrOutput values.
 // You can construct a concrete instance of `EntryGcsFilesetSpecPtrInput` via:
 //
-// 		 EntryGcsFilesetSpecArgs{...}
+//          EntryGcsFilesetSpecArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EntryGcsFilesetSpecPtrInput interface {
 	pulumi.Input
 
@@ -790,8 +780,7 @@ type EntryGcsFilesetSpecSampleGcsFileSpec struct {
 // EntryGcsFilesetSpecSampleGcsFileSpecInput is an input type that accepts EntryGcsFilesetSpecSampleGcsFileSpecArgs and EntryGcsFilesetSpecSampleGcsFileSpecOutput values.
 // You can construct a concrete instance of `EntryGcsFilesetSpecSampleGcsFileSpecInput` via:
 //
-// 		 EntryGcsFilesetSpecSampleGcsFileSpecArgs{...}
-//
+//          EntryGcsFilesetSpecSampleGcsFileSpecArgs{...}
 type EntryGcsFilesetSpecSampleGcsFileSpecInput interface {
 	pulumi.Input
 
@@ -823,8 +812,7 @@ func (i EntryGcsFilesetSpecSampleGcsFileSpecArgs) ToEntryGcsFilesetSpecSampleGcs
 // EntryGcsFilesetSpecSampleGcsFileSpecArrayInput is an input type that accepts EntryGcsFilesetSpecSampleGcsFileSpecArray and EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput values.
 // You can construct a concrete instance of `EntryGcsFilesetSpecSampleGcsFileSpecArrayInput` via:
 //
-// 		 EntryGcsFilesetSpecSampleGcsFileSpecArray{ EntryGcsFilesetSpecSampleGcsFileSpecArgs{...} }
-//
+//          EntryGcsFilesetSpecSampleGcsFileSpecArray{ EntryGcsFilesetSpecSampleGcsFileSpecArgs{...} }
 type EntryGcsFilesetSpecSampleGcsFileSpecArrayInput interface {
 	pulumi.Input
 
@@ -901,8 +889,7 @@ type EntryGroupIamBindingCondition struct {
 // EntryGroupIamBindingConditionInput is an input type that accepts EntryGroupIamBindingConditionArgs and EntryGroupIamBindingConditionOutput values.
 // You can construct a concrete instance of `EntryGroupIamBindingConditionInput` via:
 //
-// 		 EntryGroupIamBindingConditionArgs{...}
-//
+//          EntryGroupIamBindingConditionArgs{...}
 type EntryGroupIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -939,12 +926,11 @@ func (i EntryGroupIamBindingConditionArgs) ToEntryGroupIamBindingConditionPtrOut
 // EntryGroupIamBindingConditionPtrInput is an input type that accepts EntryGroupIamBindingConditionArgs, EntryGroupIamBindingConditionPtr and EntryGroupIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `EntryGroupIamBindingConditionPtrInput` via:
 //
-// 		 EntryGroupIamBindingConditionArgs{...}
+//          EntryGroupIamBindingConditionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EntryGroupIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -1059,8 +1045,7 @@ type EntryGroupIamMemberCondition struct {
 // EntryGroupIamMemberConditionInput is an input type that accepts EntryGroupIamMemberConditionArgs and EntryGroupIamMemberConditionOutput values.
 // You can construct a concrete instance of `EntryGroupIamMemberConditionInput` via:
 //
-// 		 EntryGroupIamMemberConditionArgs{...}
-//
+//          EntryGroupIamMemberConditionArgs{...}
 type EntryGroupIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -1097,12 +1082,11 @@ func (i EntryGroupIamMemberConditionArgs) ToEntryGroupIamMemberConditionPtrOutpu
 // EntryGroupIamMemberConditionPtrInput is an input type that accepts EntryGroupIamMemberConditionArgs, EntryGroupIamMemberConditionPtr and EntryGroupIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `EntryGroupIamMemberConditionPtrInput` via:
 //
-// 		 EntryGroupIamMemberConditionArgs{...}
+//          EntryGroupIamMemberConditionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type EntryGroupIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -1234,8 +1218,7 @@ type TagField struct {
 // TagFieldInput is an input type that accepts TagFieldArgs and TagFieldOutput values.
 // You can construct a concrete instance of `TagFieldInput` via:
 //
-// 		 TagFieldArgs{...}
-//
+//          TagFieldArgs{...}
 type TagFieldInput interface {
 	pulumi.Input
 
@@ -1281,8 +1264,7 @@ func (i TagFieldArgs) ToTagFieldOutputWithContext(ctx context.Context) TagFieldO
 // TagFieldArrayInput is an input type that accepts TagFieldArray and TagFieldArrayOutput values.
 // You can construct a concrete instance of `TagFieldArrayInput` via:
 //
-// 		 TagFieldArray{ TagFieldArgs{...} }
-//
+//          TagFieldArray{ TagFieldArgs{...} }
 type TagFieldArrayInput interface {
 	pulumi.Input
 
@@ -1403,8 +1385,7 @@ type TagTemplateField struct {
 // TagTemplateFieldInput is an input type that accepts TagTemplateFieldArgs and TagTemplateFieldOutput values.
 // You can construct a concrete instance of `TagTemplateFieldInput` via:
 //
-// 		 TagTemplateFieldArgs{...}
-//
+//          TagTemplateFieldArgs{...}
 type TagTemplateFieldInput interface {
 	pulumi.Input
 
@@ -1445,8 +1426,7 @@ func (i TagTemplateFieldArgs) ToTagTemplateFieldOutputWithContext(ctx context.Co
 // TagTemplateFieldArrayInput is an input type that accepts TagTemplateFieldArray and TagTemplateFieldArrayOutput values.
 // You can construct a concrete instance of `TagTemplateFieldArrayInput` via:
 //
-// 		 TagTemplateFieldArray{ TagTemplateFieldArgs{...} }
-//
+//          TagTemplateFieldArray{ TagTemplateFieldArgs{...} }
 type TagTemplateFieldArrayInput interface {
 	pulumi.Input
 
@@ -1547,8 +1527,7 @@ type TagTemplateFieldType struct {
 // TagTemplateFieldTypeInput is an input type that accepts TagTemplateFieldTypeArgs and TagTemplateFieldTypeOutput values.
 // You can construct a concrete instance of `TagTemplateFieldTypeInput` via:
 //
-// 		 TagTemplateFieldTypeArgs{...}
-//
+//          TagTemplateFieldTypeArgs{...}
 type TagTemplateFieldTypeInput interface {
 	pulumi.Input
 
@@ -1615,8 +1594,7 @@ type TagTemplateFieldTypeEnumType struct {
 // TagTemplateFieldTypeEnumTypeInput is an input type that accepts TagTemplateFieldTypeEnumTypeArgs and TagTemplateFieldTypeEnumTypeOutput values.
 // You can construct a concrete instance of `TagTemplateFieldTypeEnumTypeInput` via:
 //
-// 		 TagTemplateFieldTypeEnumTypeArgs{...}
-//
+//          TagTemplateFieldTypeEnumTypeArgs{...}
 type TagTemplateFieldTypeEnumTypeInput interface {
 	pulumi.Input
 
@@ -1656,12 +1634,11 @@ func (i TagTemplateFieldTypeEnumTypeArgs) ToTagTemplateFieldTypeEnumTypePtrOutpu
 // TagTemplateFieldTypeEnumTypePtrInput is an input type that accepts TagTemplateFieldTypeEnumTypeArgs, TagTemplateFieldTypeEnumTypePtr and TagTemplateFieldTypeEnumTypePtrOutput values.
 // You can construct a concrete instance of `TagTemplateFieldTypeEnumTypePtrInput` via:
 //
-// 		 TagTemplateFieldTypeEnumTypeArgs{...}
+//          TagTemplateFieldTypeEnumTypeArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TagTemplateFieldTypeEnumTypePtrInput interface {
 	pulumi.Input
 
@@ -1762,8 +1739,7 @@ type TagTemplateFieldTypeEnumTypeAllowedValue struct {
 // TagTemplateFieldTypeEnumTypeAllowedValueInput is an input type that accepts TagTemplateFieldTypeEnumTypeAllowedValueArgs and TagTemplateFieldTypeEnumTypeAllowedValueOutput values.
 // You can construct a concrete instance of `TagTemplateFieldTypeEnumTypeAllowedValueInput` via:
 //
-// 		 TagTemplateFieldTypeEnumTypeAllowedValueArgs{...}
-//
+//          TagTemplateFieldTypeEnumTypeAllowedValueArgs{...}
 type TagTemplateFieldTypeEnumTypeAllowedValueInput interface {
 	pulumi.Input
 
@@ -1791,8 +1767,7 @@ func (i TagTemplateFieldTypeEnumTypeAllowedValueArgs) ToTagTemplateFieldTypeEnum
 // TagTemplateFieldTypeEnumTypeAllowedValueArrayInput is an input type that accepts TagTemplateFieldTypeEnumTypeAllowedValueArray and TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput values.
 // You can construct a concrete instance of `TagTemplateFieldTypeEnumTypeAllowedValueArrayInput` via:
 //
-// 		 TagTemplateFieldTypeEnumTypeAllowedValueArray{ TagTemplateFieldTypeEnumTypeAllowedValueArgs{...} }
-//
+//          TagTemplateFieldTypeEnumTypeAllowedValueArray{ TagTemplateFieldTypeEnumTypeAllowedValueArgs{...} }
 type TagTemplateFieldTypeEnumTypeAllowedValueArrayInput interface {
 	pulumi.Input
 

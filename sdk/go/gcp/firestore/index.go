@@ -14,12 +14,50 @@ import (
 //  This resource manages composite indexes and not single
 // field indexes.
 //
-//
 // To get more information about Index, see:
 //
 // * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
+//
+// ## Example Usage
+// ### Firestore Index Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/firestore"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
+// 			Collection: pulumi.String("chatrooms"),
+// 			Fields: firestore.IndexFieldArray{
+// 				&firestore.IndexFieldArgs{
+// 					FieldPath: pulumi.String("name"),
+// 					Order:     pulumi.String("ASCENDING"),
+// 				},
+// 				&firestore.IndexFieldArgs{
+// 					FieldPath: pulumi.String("description"),
+// 					Order:     pulumi.String("DESCENDING"),
+// 				},
+// 				&firestore.IndexFieldArgs{
+// 					FieldPath: pulumi.String("__name__"),
+// 					Order:     pulumi.String("DESCENDING"),
+// 				},
+// 			},
+// 			Project: pulumi.String("my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Index struct {
 	pulumi.CustomResourceState
 

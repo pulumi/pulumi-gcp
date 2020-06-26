@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Notification(pulumi.CustomResource):
     bucket: pulumi.Output[str]
     """
@@ -48,9 +49,9 @@ class Notification(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, bucket=None, custom_attributes=None, event_types=None, object_name_prefix=None, payload_format=None, topic=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
-         For more information see 
-        [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications) 
-        and 
+         For more information see
+        [the official documentation](https://cloud.google.com/storage/docs/pubsub-notifications)
+        and
         [API](https://cloud.google.com/storage/docs/json_api/v1/notifications).
 
         In order to enable notifications, a special Google Cloud Storage service account unique to the project
@@ -59,12 +60,10 @@ class Notification(pulumi.CustomResource):
         for an example of enabling notifications by granting the correct IAM permission. See
         [the notifications documentation](https://cloud.google.com/storage/docs/gsutil/commands/notification) for more details.
 
-        >**NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
+        > **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
         making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
 
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -175,9 +174,9 @@ class Notification(pulumi.CustomResource):
         __props__["self_link"] = self_link
         __props__["topic"] = topic
         return Notification(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

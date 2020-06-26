@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class ForwardingRule(pulumi.CustomResource):
     all_ports: pulumi.Output[bool]
     """
@@ -196,7 +197,6 @@ class ForwardingRule(pulumi.CustomResource):
         of target virtual machines to forward a packet to if it matches the given
         [IPAddress, IPProtocol, portRange] tuple.
 
-
         To get more information about ForwardingRule, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/forwardingRules)
@@ -204,7 +204,6 @@ class ForwardingRule(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 
         ## Example Usage
-
         ### Forwarding Rule Global Internallb
 
         ```python
@@ -235,7 +234,6 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.name,
             subnetwork=default_subnetwork.name)
         ```
-
         ### Forwarding Rule Basic
 
         ```python
@@ -247,7 +245,6 @@ class ForwardingRule(pulumi.CustomResource):
             target=default_target_pool.id,
             port_range="80")
         ```
-
         ### Forwarding Rule Internallb
 
         ```python
@@ -277,7 +274,6 @@ class ForwardingRule(pulumi.CustomResource):
             network=default_network.name,
             subnetwork=default_subnetwork.name)
         ```
-
         ### Forwarding Rule Http Lb
 
         ```python
@@ -715,9 +711,9 @@ class ForwardingRule(pulumi.CustomResource):
         __props__["subnetwork"] = subnetwork
         __props__["target"] = target
         return ForwardingRule(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

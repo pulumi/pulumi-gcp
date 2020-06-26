@@ -17,8 +17,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.iap.AppEngineVersionIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineVersionIamMember` resources **only if** they do not grant privilege to the same role.
  *
- *
- *
  * ## google\_iap\_app\_engine\_version\_iam\_policy
  *
  * ```typescript

@@ -17,8 +17,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `gcp.iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
  *
- *
- *
  * ## google\_iap\_web\_type\_app\_engine\_iam\_policy
  *
  * ```typescript

@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * persistent disk faster and at a much lower cost than if you regularly
  * created a full image of the disk.
  *
- *
  * To get more information about Snapshot, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
- *
  * ### Snapshot Basic
  *
  * ```typescript

@@ -28,8 +28,7 @@ type ManagedZoneDnssecConfig struct {
 // ManagedZoneDnssecConfigInput is an input type that accepts ManagedZoneDnssecConfigArgs and ManagedZoneDnssecConfigOutput values.
 // You can construct a concrete instance of `ManagedZoneDnssecConfigInput` via:
 //
-// 		 ManagedZoneDnssecConfigArgs{...}
-//
+//          ManagedZoneDnssecConfigArgs{...}
 type ManagedZoneDnssecConfigInput interface {
 	pulumi.Input
 
@@ -75,12 +74,11 @@ func (i ManagedZoneDnssecConfigArgs) ToManagedZoneDnssecConfigPtrOutputWithConte
 // ManagedZoneDnssecConfigPtrInput is an input type that accepts ManagedZoneDnssecConfigArgs, ManagedZoneDnssecConfigPtr and ManagedZoneDnssecConfigPtrOutput values.
 // You can construct a concrete instance of `ManagedZoneDnssecConfigPtrInput` via:
 //
-// 		 ManagedZoneDnssecConfigArgs{...}
+//          ManagedZoneDnssecConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ManagedZoneDnssecConfigPtrInput interface {
 	pulumi.Input
 
@@ -235,8 +233,7 @@ type ManagedZoneDnssecConfigDefaultKeySpec struct {
 // ManagedZoneDnssecConfigDefaultKeySpecInput is an input type that accepts ManagedZoneDnssecConfigDefaultKeySpecArgs and ManagedZoneDnssecConfigDefaultKeySpecOutput values.
 // You can construct a concrete instance of `ManagedZoneDnssecConfigDefaultKeySpecInput` via:
 //
-// 		 ManagedZoneDnssecConfigDefaultKeySpecArgs{...}
-//
+//          ManagedZoneDnssecConfigDefaultKeySpecArgs{...}
 type ManagedZoneDnssecConfigDefaultKeySpecInput interface {
 	pulumi.Input
 
@@ -275,8 +272,7 @@ func (i ManagedZoneDnssecConfigDefaultKeySpecArgs) ToManagedZoneDnssecConfigDefa
 // ManagedZoneDnssecConfigDefaultKeySpecArrayInput is an input type that accepts ManagedZoneDnssecConfigDefaultKeySpecArray and ManagedZoneDnssecConfigDefaultKeySpecArrayOutput values.
 // You can construct a concrete instance of `ManagedZoneDnssecConfigDefaultKeySpecArrayInput` via:
 //
-// 		 ManagedZoneDnssecConfigDefaultKeySpecArray{ ManagedZoneDnssecConfigDefaultKeySpecArgs{...} }
-//
+//          ManagedZoneDnssecConfigDefaultKeySpecArray{ ManagedZoneDnssecConfigDefaultKeySpecArgs{...} }
 type ManagedZoneDnssecConfigDefaultKeySpecArrayInput interface {
 	pulumi.Input
 
@@ -367,8 +363,7 @@ type ManagedZoneForwardingConfig struct {
 // ManagedZoneForwardingConfigInput is an input type that accepts ManagedZoneForwardingConfigArgs and ManagedZoneForwardingConfigOutput values.
 // You can construct a concrete instance of `ManagedZoneForwardingConfigInput` via:
 //
-// 		 ManagedZoneForwardingConfigArgs{...}
-//
+//          ManagedZoneForwardingConfigArgs{...}
 type ManagedZoneForwardingConfigInput interface {
 	pulumi.Input
 
@@ -406,12 +401,11 @@ func (i ManagedZoneForwardingConfigArgs) ToManagedZoneForwardingConfigPtrOutputW
 // ManagedZoneForwardingConfigPtrInput is an input type that accepts ManagedZoneForwardingConfigArgs, ManagedZoneForwardingConfigPtr and ManagedZoneForwardingConfigPtrOutput values.
 // You can construct a concrete instance of `ManagedZoneForwardingConfigPtrInput` via:
 //
-// 		 ManagedZoneForwardingConfigArgs{...}
+//          ManagedZoneForwardingConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ManagedZoneForwardingConfigPtrInput interface {
 	pulumi.Input
 
@@ -512,8 +506,7 @@ type ManagedZoneForwardingConfigTargetNameServer struct {
 // ManagedZoneForwardingConfigTargetNameServerInput is an input type that accepts ManagedZoneForwardingConfigTargetNameServerArgs and ManagedZoneForwardingConfigTargetNameServerOutput values.
 // You can construct a concrete instance of `ManagedZoneForwardingConfigTargetNameServerInput` via:
 //
-// 		 ManagedZoneForwardingConfigTargetNameServerArgs{...}
-//
+//          ManagedZoneForwardingConfigTargetNameServerArgs{...}
 type ManagedZoneForwardingConfigTargetNameServerInput interface {
 	pulumi.Input
 
@@ -545,8 +538,7 @@ func (i ManagedZoneForwardingConfigTargetNameServerArgs) ToManagedZoneForwarding
 // ManagedZoneForwardingConfigTargetNameServerArrayInput is an input type that accepts ManagedZoneForwardingConfigTargetNameServerArray and ManagedZoneForwardingConfigTargetNameServerArrayOutput values.
 // You can construct a concrete instance of `ManagedZoneForwardingConfigTargetNameServerArrayInput` via:
 //
-// 		 ManagedZoneForwardingConfigTargetNameServerArray{ ManagedZoneForwardingConfigTargetNameServerArgs{...} }
-//
+//          ManagedZoneForwardingConfigTargetNameServerArray{ ManagedZoneForwardingConfigTargetNameServerArgs{...} }
 type ManagedZoneForwardingConfigTargetNameServerArrayInput interface {
 	pulumi.Input
 
@@ -622,8 +614,7 @@ type ManagedZonePeeringConfig struct {
 // ManagedZonePeeringConfigInput is an input type that accepts ManagedZonePeeringConfigArgs and ManagedZonePeeringConfigOutput values.
 // You can construct a concrete instance of `ManagedZonePeeringConfigInput` via:
 //
-// 		 ManagedZonePeeringConfigArgs{...}
-//
+//          ManagedZonePeeringConfigArgs{...}
 type ManagedZonePeeringConfigInput interface {
 	pulumi.Input
 
@@ -659,12 +650,11 @@ func (i ManagedZonePeeringConfigArgs) ToManagedZonePeeringConfigPtrOutputWithCon
 // ManagedZonePeeringConfigPtrInput is an input type that accepts ManagedZonePeeringConfigArgs, ManagedZonePeeringConfigPtr and ManagedZonePeeringConfigPtrOutput values.
 // You can construct a concrete instance of `ManagedZonePeeringConfigPtrInput` via:
 //
-// 		 ManagedZonePeeringConfigArgs{...}
+//          ManagedZonePeeringConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ManagedZonePeeringConfigPtrInput interface {
 	pulumi.Input
 
@@ -757,8 +747,7 @@ type ManagedZonePeeringConfigTargetNetwork struct {
 // ManagedZonePeeringConfigTargetNetworkInput is an input type that accepts ManagedZonePeeringConfigTargetNetworkArgs and ManagedZonePeeringConfigTargetNetworkOutput values.
 // You can construct a concrete instance of `ManagedZonePeeringConfigTargetNetworkInput` via:
 //
-// 		 ManagedZonePeeringConfigTargetNetworkArgs{...}
-//
+//          ManagedZonePeeringConfigTargetNetworkArgs{...}
 type ManagedZonePeeringConfigTargetNetworkInput interface {
 	pulumi.Input
 
@@ -796,12 +785,11 @@ func (i ManagedZonePeeringConfigTargetNetworkArgs) ToManagedZonePeeringConfigTar
 // ManagedZonePeeringConfigTargetNetworkPtrInput is an input type that accepts ManagedZonePeeringConfigTargetNetworkArgs, ManagedZonePeeringConfigTargetNetworkPtr and ManagedZonePeeringConfigTargetNetworkPtrOutput values.
 // You can construct a concrete instance of `ManagedZonePeeringConfigTargetNetworkPtrInput` via:
 //
-// 		 ManagedZonePeeringConfigTargetNetworkArgs{...}
+//          ManagedZonePeeringConfigTargetNetworkArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ManagedZonePeeringConfigTargetNetworkPtrInput interface {
 	pulumi.Input
 
@@ -896,8 +884,7 @@ type ManagedZonePrivateVisibilityConfig struct {
 // ManagedZonePrivateVisibilityConfigInput is an input type that accepts ManagedZonePrivateVisibilityConfigArgs and ManagedZonePrivateVisibilityConfigOutput values.
 // You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigInput` via:
 //
-// 		 ManagedZonePrivateVisibilityConfigArgs{...}
-//
+//          ManagedZonePrivateVisibilityConfigArgs{...}
 type ManagedZonePrivateVisibilityConfigInput interface {
 	pulumi.Input
 
@@ -933,12 +920,11 @@ func (i ManagedZonePrivateVisibilityConfigArgs) ToManagedZonePrivateVisibilityCo
 // ManagedZonePrivateVisibilityConfigPtrInput is an input type that accepts ManagedZonePrivateVisibilityConfigArgs, ManagedZonePrivateVisibilityConfigPtr and ManagedZonePrivateVisibilityConfigPtrOutput values.
 // You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigPtrInput` via:
 //
-// 		 ManagedZonePrivateVisibilityConfigArgs{...}
+//          ManagedZonePrivateVisibilityConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ManagedZonePrivateVisibilityConfigPtrInput interface {
 	pulumi.Input
 
@@ -1033,8 +1019,7 @@ type ManagedZonePrivateVisibilityConfigNetwork struct {
 // ManagedZonePrivateVisibilityConfigNetworkInput is an input type that accepts ManagedZonePrivateVisibilityConfigNetworkArgs and ManagedZonePrivateVisibilityConfigNetworkOutput values.
 // You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigNetworkInput` via:
 //
-// 		 ManagedZonePrivateVisibilityConfigNetworkArgs{...}
-//
+//          ManagedZonePrivateVisibilityConfigNetworkArgs{...}
 type ManagedZonePrivateVisibilityConfigNetworkInput interface {
 	pulumi.Input
 
@@ -1064,8 +1049,7 @@ func (i ManagedZonePrivateVisibilityConfigNetworkArgs) ToManagedZonePrivateVisib
 // ManagedZonePrivateVisibilityConfigNetworkArrayInput is an input type that accepts ManagedZonePrivateVisibilityConfigNetworkArray and ManagedZonePrivateVisibilityConfigNetworkArrayOutput values.
 // You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigNetworkArrayInput` via:
 //
-// 		 ManagedZonePrivateVisibilityConfigNetworkArray{ ManagedZonePrivateVisibilityConfigNetworkArgs{...} }
-//
+//          ManagedZonePrivateVisibilityConfigNetworkArray{ ManagedZonePrivateVisibilityConfigNetworkArgs{...} }
 type ManagedZonePrivateVisibilityConfigNetworkArrayInput interface {
 	pulumi.Input
 
@@ -1136,8 +1120,7 @@ type ManagedZoneServiceDirectoryConfig struct {
 // ManagedZoneServiceDirectoryConfigInput is an input type that accepts ManagedZoneServiceDirectoryConfigArgs and ManagedZoneServiceDirectoryConfigOutput values.
 // You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigInput` via:
 //
-// 		 ManagedZoneServiceDirectoryConfigArgs{...}
-//
+//          ManagedZoneServiceDirectoryConfigArgs{...}
 type ManagedZoneServiceDirectoryConfigInput interface {
 	pulumi.Input
 
@@ -1173,12 +1156,11 @@ func (i ManagedZoneServiceDirectoryConfigArgs) ToManagedZoneServiceDirectoryConf
 // ManagedZoneServiceDirectoryConfigPtrInput is an input type that accepts ManagedZoneServiceDirectoryConfigArgs, ManagedZoneServiceDirectoryConfigPtr and ManagedZoneServiceDirectoryConfigPtrOutput values.
 // You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigPtrInput` via:
 //
-// 		 ManagedZoneServiceDirectoryConfigArgs{...}
+//          ManagedZoneServiceDirectoryConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ManagedZoneServiceDirectoryConfigPtrInput interface {
 	pulumi.Input
 
@@ -1275,8 +1257,7 @@ type ManagedZoneServiceDirectoryConfigNamespace struct {
 // ManagedZoneServiceDirectoryConfigNamespaceInput is an input type that accepts ManagedZoneServiceDirectoryConfigNamespaceArgs and ManagedZoneServiceDirectoryConfigNamespaceOutput values.
 // You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigNamespaceInput` via:
 //
-// 		 ManagedZoneServiceDirectoryConfigNamespaceArgs{...}
-//
+//          ManagedZoneServiceDirectoryConfigNamespaceArgs{...}
 type ManagedZoneServiceDirectoryConfigNamespaceInput interface {
 	pulumi.Input
 
@@ -1316,12 +1297,11 @@ func (i ManagedZoneServiceDirectoryConfigNamespaceArgs) ToManagedZoneServiceDire
 // ManagedZoneServiceDirectoryConfigNamespacePtrInput is an input type that accepts ManagedZoneServiceDirectoryConfigNamespaceArgs, ManagedZoneServiceDirectoryConfigNamespacePtr and ManagedZoneServiceDirectoryConfigNamespacePtrOutput values.
 // You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigNamespacePtrInput` via:
 //
-// 		 ManagedZoneServiceDirectoryConfigNamespaceArgs{...}
+//          ManagedZoneServiceDirectoryConfigNamespaceArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type ManagedZoneServiceDirectoryConfigNamespacePtrInput interface {
 	pulumi.Input
 
@@ -1424,8 +1404,7 @@ type PolicyAlternativeNameServerConfig struct {
 // PolicyAlternativeNameServerConfigInput is an input type that accepts PolicyAlternativeNameServerConfigArgs and PolicyAlternativeNameServerConfigOutput values.
 // You can construct a concrete instance of `PolicyAlternativeNameServerConfigInput` via:
 //
-// 		 PolicyAlternativeNameServerConfigArgs{...}
-//
+//          PolicyAlternativeNameServerConfigArgs{...}
 type PolicyAlternativeNameServerConfigInput interface {
 	pulumi.Input
 
@@ -1463,12 +1442,11 @@ func (i PolicyAlternativeNameServerConfigArgs) ToPolicyAlternativeNameServerConf
 // PolicyAlternativeNameServerConfigPtrInput is an input type that accepts PolicyAlternativeNameServerConfigArgs, PolicyAlternativeNameServerConfigPtr and PolicyAlternativeNameServerConfigPtrOutput values.
 // You can construct a concrete instance of `PolicyAlternativeNameServerConfigPtrInput` via:
 //
-// 		 PolicyAlternativeNameServerConfigArgs{...}
+//          PolicyAlternativeNameServerConfigArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type PolicyAlternativeNameServerConfigPtrInput interface {
 	pulumi.Input
 
@@ -1565,8 +1543,7 @@ type PolicyAlternativeNameServerConfigTargetNameServer struct {
 // PolicyAlternativeNameServerConfigTargetNameServerInput is an input type that accepts PolicyAlternativeNameServerConfigTargetNameServerArgs and PolicyAlternativeNameServerConfigTargetNameServerOutput values.
 // You can construct a concrete instance of `PolicyAlternativeNameServerConfigTargetNameServerInput` via:
 //
-// 		 PolicyAlternativeNameServerConfigTargetNameServerArgs{...}
-//
+//          PolicyAlternativeNameServerConfigTargetNameServerArgs{...}
 type PolicyAlternativeNameServerConfigTargetNameServerInput interface {
 	pulumi.Input
 
@@ -1594,8 +1571,7 @@ func (i PolicyAlternativeNameServerConfigTargetNameServerArgs) ToPolicyAlternati
 // PolicyAlternativeNameServerConfigTargetNameServerArrayInput is an input type that accepts PolicyAlternativeNameServerConfigTargetNameServerArray and PolicyAlternativeNameServerConfigTargetNameServerArrayOutput values.
 // You can construct a concrete instance of `PolicyAlternativeNameServerConfigTargetNameServerArrayInput` via:
 //
-// 		 PolicyAlternativeNameServerConfigTargetNameServerArray{ PolicyAlternativeNameServerConfigTargetNameServerArgs{...} }
-//
+//          PolicyAlternativeNameServerConfigTargetNameServerArray{ PolicyAlternativeNameServerConfigTargetNameServerArgs{...} }
 type PolicyAlternativeNameServerConfigTargetNameServerArrayInput interface {
 	pulumi.Input
 
@@ -1666,8 +1642,7 @@ type PolicyNetwork struct {
 // PolicyNetworkInput is an input type that accepts PolicyNetworkArgs and PolicyNetworkOutput values.
 // You can construct a concrete instance of `PolicyNetworkInput` via:
 //
-// 		 PolicyNetworkArgs{...}
-//
+//          PolicyNetworkArgs{...}
 type PolicyNetworkInput interface {
 	pulumi.Input
 
@@ -1697,8 +1672,7 @@ func (i PolicyNetworkArgs) ToPolicyNetworkOutputWithContext(ctx context.Context)
 // PolicyNetworkArrayInput is an input type that accepts PolicyNetworkArray and PolicyNetworkArrayOutput values.
 // You can construct a concrete instance of `PolicyNetworkArrayInput` via:
 //
-// 		 PolicyNetworkArray{ PolicyNetworkArgs{...} }
-//
+//          PolicyNetworkArray{ PolicyNetworkArgs{...} }
 type PolicyNetworkArrayInput interface {
 	pulumi.Input
 
@@ -1789,8 +1763,7 @@ type GetKeysKeySigningKey struct {
 // GetKeysKeySigningKeyInput is an input type that accepts GetKeysKeySigningKeyArgs and GetKeysKeySigningKeyOutput values.
 // You can construct a concrete instance of `GetKeysKeySigningKeyInput` via:
 //
-// 		 GetKeysKeySigningKeyArgs{...}
-//
+//          GetKeysKeySigningKeyArgs{...}
 type GetKeysKeySigningKeyInput interface {
 	pulumi.Input
 
@@ -1838,8 +1811,7 @@ func (i GetKeysKeySigningKeyArgs) ToGetKeysKeySigningKeyOutputWithContext(ctx co
 // GetKeysKeySigningKeyArrayInput is an input type that accepts GetKeysKeySigningKeyArray and GetKeysKeySigningKeyArrayOutput values.
 // You can construct a concrete instance of `GetKeysKeySigningKeyArrayInput` via:
 //
-// 		 GetKeysKeySigningKeyArray{ GetKeysKeySigningKeyArgs{...} }
-//
+//          GetKeysKeySigningKeyArray{ GetKeysKeySigningKeyArgs{...} }
 type GetKeysKeySigningKeyArrayInput interface {
 	pulumi.Input
 
@@ -1955,8 +1927,7 @@ type GetKeysKeySigningKeyDigest struct {
 // GetKeysKeySigningKeyDigestInput is an input type that accepts GetKeysKeySigningKeyDigestArgs and GetKeysKeySigningKeyDigestOutput values.
 // You can construct a concrete instance of `GetKeysKeySigningKeyDigestInput` via:
 //
-// 		 GetKeysKeySigningKeyDigestArgs{...}
-//
+//          GetKeysKeySigningKeyDigestArgs{...}
 type GetKeysKeySigningKeyDigestInput interface {
 	pulumi.Input
 
@@ -1984,8 +1955,7 @@ func (i GetKeysKeySigningKeyDigestArgs) ToGetKeysKeySigningKeyDigestOutputWithCo
 // GetKeysKeySigningKeyDigestArrayInput is an input type that accepts GetKeysKeySigningKeyDigestArray and GetKeysKeySigningKeyDigestArrayOutput values.
 // You can construct a concrete instance of `GetKeysKeySigningKeyDigestArrayInput` via:
 //
-// 		 GetKeysKeySigningKeyDigestArray{ GetKeysKeySigningKeyDigestArgs{...} }
-//
+//          GetKeysKeySigningKeyDigestArray{ GetKeysKeySigningKeyDigestArgs{...} }
 type GetKeysKeySigningKeyDigestArrayInput interface {
 	pulumi.Input
 
@@ -2075,8 +2045,7 @@ type GetKeysZoneSigningKey struct {
 // GetKeysZoneSigningKeyInput is an input type that accepts GetKeysZoneSigningKeyArgs and GetKeysZoneSigningKeyOutput values.
 // You can construct a concrete instance of `GetKeysZoneSigningKeyInput` via:
 //
-// 		 GetKeysZoneSigningKeyArgs{...}
-//
+//          GetKeysZoneSigningKeyArgs{...}
 type GetKeysZoneSigningKeyInput interface {
 	pulumi.Input
 
@@ -2122,8 +2091,7 @@ func (i GetKeysZoneSigningKeyArgs) ToGetKeysZoneSigningKeyOutputWithContext(ctx 
 // GetKeysZoneSigningKeyArrayInput is an input type that accepts GetKeysZoneSigningKeyArray and GetKeysZoneSigningKeyArrayOutput values.
 // You can construct a concrete instance of `GetKeysZoneSigningKeyArrayInput` via:
 //
-// 		 GetKeysZoneSigningKeyArray{ GetKeysZoneSigningKeyArgs{...} }
-//
+//          GetKeysZoneSigningKeyArray{ GetKeysZoneSigningKeyArgs{...} }
 type GetKeysZoneSigningKeyArrayInput interface {
 	pulumi.Input
 
@@ -2234,8 +2202,7 @@ type GetKeysZoneSigningKeyDigest struct {
 // GetKeysZoneSigningKeyDigestInput is an input type that accepts GetKeysZoneSigningKeyDigestArgs and GetKeysZoneSigningKeyDigestOutput values.
 // You can construct a concrete instance of `GetKeysZoneSigningKeyDigestInput` via:
 //
-// 		 GetKeysZoneSigningKeyDigestArgs{...}
-//
+//          GetKeysZoneSigningKeyDigestArgs{...}
 type GetKeysZoneSigningKeyDigestInput interface {
 	pulumi.Input
 
@@ -2263,8 +2230,7 @@ func (i GetKeysZoneSigningKeyDigestArgs) ToGetKeysZoneSigningKeyDigestOutputWith
 // GetKeysZoneSigningKeyDigestArrayInput is an input type that accepts GetKeysZoneSigningKeyDigestArray and GetKeysZoneSigningKeyDigestArrayOutput values.
 // You can construct a concrete instance of `GetKeysZoneSigningKeyDigestArrayInput` via:
 //
-// 		 GetKeysZoneSigningKeyDigestArray{ GetKeysZoneSigningKeyDigestArgs{...} }
-//
+//          GetKeysZoneSigningKeyDigestArray{ GetKeysZoneSigningKeyDigestArgs{...} }
 type GetKeysZoneSigningKeyDigestArrayInput interface {
 	pulumi.Input
 

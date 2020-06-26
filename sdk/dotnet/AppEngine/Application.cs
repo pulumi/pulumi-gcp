@@ -22,8 +22,6 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;

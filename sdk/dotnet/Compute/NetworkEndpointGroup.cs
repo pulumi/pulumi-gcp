@@ -21,7 +21,6 @@ namespace Pulumi.Gcp.Compute
     /// specify IP addresses and ports, you can distribute traffic in a granular
     /// fashion among applications or containers running within VM instances.
     /// 
-    /// 
     /// To get more information about NetworkEndpointGroup, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/networkEndpointGroups)
@@ -29,7 +28,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     /// 
     /// ## Example Usage
-    /// 
     /// ### Network Endpoint Group
     /// 
     /// ```csharp

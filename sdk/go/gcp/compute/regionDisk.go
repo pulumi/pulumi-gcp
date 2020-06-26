@@ -26,7 +26,6 @@ import (
 // Add a persistent disk to your instance when you need reliable and
 // affordable storage with consistent performance characteristics.
 //
-//
 // To get more information about RegionDisk, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
@@ -37,7 +36,6 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
-//
 // ### Region Disk Basic
 //
 // ```go
@@ -66,7 +64,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		regiondisk, err := compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+// 		_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
 // 			Snapshot:               snapdisk.ID(),
 // 			Type:                   pulumi.String("pd-ssd"),
 // 			Region:                 pulumi.String("us-central1"),

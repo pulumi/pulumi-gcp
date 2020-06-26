@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Project(pulumi.CustomResource):
     auto_create_network: pulumi.Output[bool]
     """
@@ -75,10 +76,7 @@ class Project(pulumi.CustomResource):
         [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
         doc for more information.
 
-
         ## Example Usage
-
-
 
         ```python
         import pulumi
@@ -87,6 +85,20 @@ class Project(pulumi.CustomResource):
         my_project = gcp.organizations.Project("myProject",
             org_id="1234567",
             project_id="your-project-id")
+        ```
+
+        To create a project under a specific folder
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder",
+            project_id="your-project-id",
+            folder_id=department1.name)
         ```
 
         :param str resource_name: The name of the resource.
@@ -201,9 +213,9 @@ class Project(pulumi.CustomResource):
         __props__["project_id"] = project_id
         __props__["skip_delete"] = skip_delete
         return Project(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

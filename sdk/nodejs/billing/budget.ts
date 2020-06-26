@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
  *
  * ## Example Usage
- *
  * ### Billing Budget Basic
  *
  * ```typescript
@@ -40,7 +39,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ### Billing Budget Filter
  *
  * ```typescript

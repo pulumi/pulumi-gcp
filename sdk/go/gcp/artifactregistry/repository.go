@@ -17,6 +17,33 @@ import (
 // * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+//
+// ## Example Usage
+// ### Artifact Registry Repository Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/artifactregistry"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+// 			Location:     pulumi.String("us-central1"),
+// 			RepositoryId: pulumi.String("my-repository"),
+// 			Description:  pulumi.String("example docker repository"),
+// 			Format:       pulumi.String("DOCKER"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Repository struct {
 	pulumi.CustomResourceState
 

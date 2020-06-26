@@ -11,7 +11,6 @@ import (
 
 // A named resource to which messages are sent by publishers.
 //
-//
 // To get more information about Topic, see:
 //
 // * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics)
@@ -19,7 +18,6 @@ import (
 //     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
 //
 // ## Example Usage
-//
 // ### Pubsub Topic Basic
 //
 // ```go
@@ -32,9 +30,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
-// 			Labels: map[string]interface{}{
-// 				"foo": "bar",
+// 		_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+// 			Labels: pulumi.Map{
+// 				"foo": pulumi.String("bar"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -44,7 +42,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Pubsub Topic Cmek
 //
 // ```go
@@ -70,7 +67,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+// 		_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
 // 			KmsKeyName: cryptoKey.ID(),
 // 		})
 // 		if err != nil {
@@ -80,7 +77,6 @@ import (
 // 	})
 // }
 // ```
-//
 // ### Pubsub Topic Geo Restricted
 //
 // ```go
@@ -93,7 +89,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+// 		_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
 // 			MessageStoragePolicy: &pubsub.TopicMessageStoragePolicyArgs{
 // 				AllowedPersistenceRegions: pulumi.StringArray{
 // 					pulumi.String("europe-west3"),

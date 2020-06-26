@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class Dashboard(pulumi.CustomResource):
     dashboard_json: pulumi.Output[str]
     """
@@ -31,7 +32,6 @@ class Dashboard(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
 
         ## Example Usage
-
         ### Monitoring Dashboard Basic
 
         ```python
@@ -52,7 +52,6 @@ class Dashboard(pulumi.CustomResource):
 
         \"\"\")
         ```
-
         ### Monitoring Dashboard GridLayout
 
         ```python
@@ -177,9 +176,9 @@ class Dashboard(pulumi.CustomResource):
         __props__["dashboard_json"] = dashboard_json
         __props__["project"] = project
         return Dashboard(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-

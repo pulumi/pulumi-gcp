@@ -19,8 +19,7 @@ type SecretIamBindingCondition struct {
 // SecretIamBindingConditionInput is an input type that accepts SecretIamBindingConditionArgs and SecretIamBindingConditionOutput values.
 // You can construct a concrete instance of `SecretIamBindingConditionInput` via:
 //
-// 		 SecretIamBindingConditionArgs{...}
-//
+//          SecretIamBindingConditionArgs{...}
 type SecretIamBindingConditionInput interface {
 	pulumi.Input
 
@@ -57,12 +56,11 @@ func (i SecretIamBindingConditionArgs) ToSecretIamBindingConditionPtrOutputWithC
 // SecretIamBindingConditionPtrInput is an input type that accepts SecretIamBindingConditionArgs, SecretIamBindingConditionPtr and SecretIamBindingConditionPtrOutput values.
 // You can construct a concrete instance of `SecretIamBindingConditionPtrInput` via:
 //
-// 		 SecretIamBindingConditionArgs{...}
+//          SecretIamBindingConditionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SecretIamBindingConditionPtrInput interface {
 	pulumi.Input
 
@@ -177,8 +175,7 @@ type SecretIamMemberCondition struct {
 // SecretIamMemberConditionInput is an input type that accepts SecretIamMemberConditionArgs and SecretIamMemberConditionOutput values.
 // You can construct a concrete instance of `SecretIamMemberConditionInput` via:
 //
-// 		 SecretIamMemberConditionArgs{...}
-//
+//          SecretIamMemberConditionArgs{...}
 type SecretIamMemberConditionInput interface {
 	pulumi.Input
 
@@ -215,12 +212,11 @@ func (i SecretIamMemberConditionArgs) ToSecretIamMemberConditionPtrOutputWithCon
 // SecretIamMemberConditionPtrInput is an input type that accepts SecretIamMemberConditionArgs, SecretIamMemberConditionPtr and SecretIamMemberConditionPtrOutput values.
 // You can construct a concrete instance of `SecretIamMemberConditionPtrInput` via:
 //
-// 		 SecretIamMemberConditionArgs{...}
+//          SecretIamMemberConditionArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SecretIamMemberConditionPtrInput interface {
 	pulumi.Input
 
@@ -336,8 +332,7 @@ type SecretReplication struct {
 // SecretReplicationInput is an input type that accepts SecretReplicationArgs and SecretReplicationOutput values.
 // You can construct a concrete instance of `SecretReplicationInput` via:
 //
-// 		 SecretReplicationArgs{...}
-//
+//          SecretReplicationArgs{...}
 type SecretReplicationInput interface {
 	pulumi.Input
 
@@ -375,12 +370,11 @@ func (i SecretReplicationArgs) ToSecretReplicationPtrOutputWithContext(ctx conte
 // SecretReplicationPtrInput is an input type that accepts SecretReplicationArgs, SecretReplicationPtr and SecretReplicationPtrOutput values.
 // You can construct a concrete instance of `SecretReplicationPtrInput` via:
 //
-// 		 SecretReplicationArgs{...}
+//          SecretReplicationArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SecretReplicationPtrInput interface {
 	pulumi.Input
 
@@ -486,8 +480,7 @@ type SecretReplicationUserManaged struct {
 // SecretReplicationUserManagedInput is an input type that accepts SecretReplicationUserManagedArgs and SecretReplicationUserManagedOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedInput` via:
 //
-// 		 SecretReplicationUserManagedArgs{...}
-//
+//          SecretReplicationUserManagedArgs{...}
 type SecretReplicationUserManagedInput interface {
 	pulumi.Input
 
@@ -523,12 +516,11 @@ func (i SecretReplicationUserManagedArgs) ToSecretReplicationUserManagedPtrOutpu
 // SecretReplicationUserManagedPtrInput is an input type that accepts SecretReplicationUserManagedArgs, SecretReplicationUserManagedPtr and SecretReplicationUserManagedPtrOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedPtrInput` via:
 //
-// 		 SecretReplicationUserManagedArgs{...}
+//          SecretReplicationUserManagedArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type SecretReplicationUserManagedPtrInput interface {
 	pulumi.Input
 
@@ -619,8 +611,7 @@ type SecretReplicationUserManagedReplica struct {
 // SecretReplicationUserManagedReplicaInput is an input type that accepts SecretReplicationUserManagedReplicaArgs and SecretReplicationUserManagedReplicaOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedReplicaInput` via:
 //
-// 		 SecretReplicationUserManagedReplicaArgs{...}
-//
+//          SecretReplicationUserManagedReplicaArgs{...}
 type SecretReplicationUserManagedReplicaInput interface {
 	pulumi.Input
 
@@ -648,8 +639,7 @@ func (i SecretReplicationUserManagedReplicaArgs) ToSecretReplicationUserManagedR
 // SecretReplicationUserManagedReplicaArrayInput is an input type that accepts SecretReplicationUserManagedReplicaArray and SecretReplicationUserManagedReplicaArrayOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedReplicaArrayInput` via:
 //
-// 		 SecretReplicationUserManagedReplicaArray{ SecretReplicationUserManagedReplicaArgs{...} }
-//
+//          SecretReplicationUserManagedReplicaArray{ SecretReplicationUserManagedReplicaArgs{...} }
 type SecretReplicationUserManagedReplicaArrayInput interface {
 	pulumi.Input
 

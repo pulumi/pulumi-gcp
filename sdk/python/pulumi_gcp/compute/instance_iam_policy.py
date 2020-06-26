@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from .. import utilities, tables
 
+
 class InstanceIAMPolicy(pulumi.CustomResource):
     etag: pulumi.Output[str]
     """
@@ -45,8 +46,6 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         > **Note:** `compute.InstanceIAMPolicy` **cannot** be used in conjunction with `compute.InstanceIAMBinding` and `compute.InstanceIAMMember` or they will fight over what your policy should be.
 
         > **Note:** `compute.InstanceIAMBinding` resources **can be** used in conjunction with `compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
-
-
 
         ## google\_compute\_instance\_iam\_policy
 
@@ -223,9 +222,9 @@ class InstanceIAMPolicy(pulumi.CustomResource):
         __props__["project"] = project
         __props__["zone"] = zone
         return InstanceIAMPolicy(resource_name, opts=opts, __props__=__props__)
+
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
