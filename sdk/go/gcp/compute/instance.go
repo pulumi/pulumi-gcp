@@ -18,56 +18,49 @@ import (
 // ## Example Usage
 //
 // ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
 // func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
-// 			BootDisk: &compute.InstanceBootDiskArgs{
-// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// 					Image: pulumi.String("debian-cloud/debian-9"),
-// 				},
-// 			},
-// 			MachineType: pulumi.String("n1-standard-1"),
-// 			Metadata: pulumi.Map{
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 			MetadataStartupScript: pulumi.String("echo hi > /test.txt"),
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					AccessConfig: pulumi.MapArray{
-// 						nil,
-// 					},
-// 					Network: pulumi.String("default"),
-// 				},
-// 			},
-// 			ScratchDisks: compute.InstanceScratchDiskArray{
-// 				&compute.InstanceScratchDiskArgs{
-// 					Interface: pulumi.String("SCSI"),
-// 				},
-// 			},
-// 			ServiceAccount: &compute.InstanceServiceAccountArgs{
-// 				Scopes: pulumi.StringArray{
-// 					pulumi.String("userinfo-email"),
-// 					pulumi.String("compute-ro"),
-// 					pulumi.String("storage-ro"),
-// 				},
-// 			},
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 				pulumi.String("bar"),
-// 			},
-// 			Zone: pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
+//  	pulumi.Run(func(ctx *pulumi.Context) error {
+//  		_, err := compute.NewInstance(ctx, "default", &compute.InstanceArgs{
+//  			BootDisk: &compute.InstanceBootDiskArgs{
+//  				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//  					Image: pulumi.String("debian-cloud/debian-9"),
+//  				},
+//  			},
+//  			MachineType: pulumi.String("n1-standard-1"),
+//  			Metadata: pulumi.StringMap{
+//  				"foo": pulumi.String("bar"),
+//  			},
+//  			MetadataStartupScript: pulumi.String("echo hi > /test.txt"),
+//  			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//  				&compute.InstanceNetworkInterfaceArgs{
+//  					AccessConfigs: &compute.InstanceNetworkInterfaceAccessConfigArray{
+//  						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
+//  					},
+//  					Network: pulumi.String("default"),
+//  				},
+//  			},
+//  			ScratchDisks: compute.InstanceScratchDiskArray{
+//  				&compute.InstanceScratchDiskArgs{
+//  					Interface: pulumi.String("SCSI"),
+//  				},
+//  			},
+//  			ServiceAccount: &compute.InstanceServiceAccountArgs{
+//  				Scopes: pulumi.StringArray{
+//  					pulumi.String("userinfo-email"),
+//  					pulumi.String("compute-ro"),
+//  					pulumi.String("storage-ro"),
+//  				},
+//  			},
+//  			Tags: pulumi.StringArray{
+//  				pulumi.String("foo"),
+//  				pulumi.String("bar"),
+//  			},
+//  			Zone: pulumi.String("us-central1-a"),
+//  		})
+//  		if err != nil {
+//  			return err
+//  		}
+//		return nil
 // 	})
 // }
 // ```
