@@ -61,6 +61,7 @@ class Address(pulumi.CustomResource):
     """
     The purpose of this resource, which can be one of the following values:
     - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+    - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
     This should only be set when using an Internal address.
     """
     region: pulumi.Output[str]
@@ -188,6 +189,7 @@ class Address(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
                - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+               - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
                This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
@@ -263,6 +265,7 @@ class Address(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
                - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+               - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
                This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.

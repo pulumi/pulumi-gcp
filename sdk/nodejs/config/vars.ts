@@ -59,6 +59,7 @@ export let memcacheCustomEndpoint: string | undefined = __config.get("memcacheCu
 export let mlEngineCustomEndpoint: string | undefined = __config.get("mlEngineCustomEndpoint");
 export let monitoringCustomEndpoint: string | undefined = __config.get("monitoringCustomEndpoint");
 export let networkManagementCustomEndpoint: string | undefined = __config.get("networkManagementCustomEndpoint");
+export let notebooksCustomEndpoint: string | undefined = __config.get("notebooksCustomEndpoint");
 export let osLoginCustomEndpoint: string | undefined = __config.get("osLoginCustomEndpoint");
 export let project: string | undefined = __config.get("project") || utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
 export let pubsubCustomEndpoint: string | undefined = __config.get("pubsubCustomEndpoint");

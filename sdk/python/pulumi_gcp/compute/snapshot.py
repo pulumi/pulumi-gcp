@@ -87,8 +87,8 @@ class Snapshot(pulumi.CustomResource):
     source_disk_link: pulumi.Output[str]
     storage_bytes: pulumi.Output[float]
     """
-    A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
-    snapshot creation/deletion.
+    A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+    creation/deletion.
     """
     zone: pulumi.Output[str]
     """
@@ -249,8 +249,8 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[dict] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.  Structure is documented below.
-        :param pulumi.Input[float] storage_bytes: A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
-               snapshot creation/deletion.
+        :param pulumi.Input[float] storage_bytes: A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+               creation/deletion.
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
 
         The **snapshot_encryption_key** object supports the following:

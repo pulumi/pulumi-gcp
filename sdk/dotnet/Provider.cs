@@ -197,6 +197,9 @@ namespace Pulumi.Gcp
         [Input("networkManagementCustomEndpoint")]
         public Input<string>? NetworkManagementCustomEndpoint { get; set; }
 
+        [Input("notebooksCustomEndpoint")]
+        public Input<string>? NotebooksCustomEndpoint { get; set; }
+
         [Input("osLoginCustomEndpoint")]
         public Input<string>? OsLoginCustomEndpoint { get; set; }
 

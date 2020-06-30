@@ -12,45 +12,199 @@ from .. import utilities, tables
 
 class InstanceFromTemplate(pulumi.CustomResource):
     allow_stopping_for_update: pulumi.Output[bool]
+    """
+    If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+    stopping the instance without setting this field, the update will fail.
+    """
     attached_disks: pulumi.Output[list]
+    """
+    List of disks attached to the instance
+
+      * `device_name` (`str`)
+      * `diskEncryptionKeyRaw` (`str`)
+      * `diskEncryptionKeySha256` (`str`)
+      * `kmsKeySelfLink` (`str`)
+      * `mode` (`str`)
+      * `source` (`str`)
+    """
     boot_disk: pulumi.Output[dict]
+    """
+    The boot disk for the instance.
+
+      * `autoDelete` (`bool`)
+      * `device_name` (`str`)
+      * `diskEncryptionKeyRaw` (`str`)
+      * `diskEncryptionKeySha256` (`str`)
+      * `initializeParams` (`dict`)
+        * `image` (`str`)
+        * `labels` (`dict`)
+        * `size` (`float`)
+        * `type` (`str`)
+
+      * `kmsKeySelfLink` (`str`)
+      * `mode` (`str`)
+      * `source` (`str`)
+    """
     can_ip_forward: pulumi.Output[bool]
+    """
+    Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
+    """
     cpu_platform: pulumi.Output[str]
+    """
+    The CPU platform used by this instance.
+    """
     current_status: pulumi.Output[str]
+    """
+    Current status of the instance.
+    """
     deletion_protection: pulumi.Output[bool]
+    """
+    Whether deletion protection is enabled on this instance.
+    """
     description: pulumi.Output[str]
+    """
+    A brief description of the resource.
+    """
     desired_status: pulumi.Output[str]
+    """
+    Desired status of the instance. Either "RUNNING" or "TERMINATED".
+    """
     enable_display: pulumi.Output[bool]
+    """
+    Whether the instance has virtual displays enabled.
+    """
     guest_accelerators: pulumi.Output[list]
+    """
+    List of the type and count of accelerator cards attached to the instance.
+
+      * `count` (`float`)
+      * `type` (`str`)
+    """
     hostname: pulumi.Output[str]
+    """
+    A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
+    labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
+    entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+    """
     instance_id: pulumi.Output[str]
+    """
+    The server-assigned unique identifier of this instance.
+    """
     label_fingerprint: pulumi.Output[str]
+    """
+    The unique fingerprint of the labels.
+    """
     labels: pulumi.Output[dict]
+    """
+    A set of key/value label pairs assigned to the instance.
+    """
     machine_type: pulumi.Output[str]
+    """
+    The machine type to create.
+    """
     metadata: pulumi.Output[dict]
+    """
+    Metadata key/value pairs made available within the instance.
+    """
     metadata_fingerprint: pulumi.Output[str]
+    """
+    The unique fingerprint of the metadata.
+    """
     metadata_startup_script: pulumi.Output[str]
+    """
+    Metadata startup scripts made available within the instance.
+    """
     min_cpu_platform: pulumi.Output[str]
+    """
+    The minimum CPU platform specified for the VM instance.
+    """
     name: pulumi.Output[str]
     """
     A unique name for the resource, required by GCE.
     Changing this forces a new resource to be created.
     """
     network_interfaces: pulumi.Output[list]
+    """
+    The networks attached to the instance.
+
+      * `accessConfigs` (`list`)
+        * `natIp` (`str`)
+        * `network_tier` (`str`)
+        * `publicPtrDomainName` (`str`)
+
+      * `aliasIpRanges` (`list`)
+        * `ip_cidr_range` (`str`)
+        * `subnetworkRangeName` (`str`)
+
+      * `name` (`str`) - A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+      * `network` (`str`)
+      * `networkIp` (`str`)
+      * `subnetwork` (`str`)
+      * `subnetworkProject` (`str`)
+    """
     project: pulumi.Output[str]
+    """
+    The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
+    self_link nor project are provided, the provider project is used.
+    """
     resource_policies: pulumi.Output[str]
+    """
+    A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
+    instance to recreate. Currently a max of 1 resource policy is supported.
+    """
     scheduling: pulumi.Output[dict]
+    """
+    The scheduling strategy being used by the instance.
+
+      * `automaticRestart` (`bool`)
+      * `minNodeCpus` (`float`)
+      * `nodeAffinities` (`list`)
+        * `key` (`str`)
+        * `operator` (`str`)
+        * `values` (`list`)
+
+      * `onHostMaintenance` (`str`)
+      * `preemptible` (`bool`)
+    """
     scratch_disks: pulumi.Output[list]
+    """
+    The scratch disks attached to the instance.
+
+      * `interface` (`str`)
+    """
     self_link: pulumi.Output[str]
+    """
+    The URI of the created resource.
+    """
     service_account: pulumi.Output[dict]
+    """
+    The service account to attach to the instance.
+
+      * `email` (`str`)
+      * `scopes` (`list`)
+    """
     shielded_instance_config: pulumi.Output[dict]
+    """
+    The shielded vm config being used by the instance.
+
+      * `enableIntegrityMonitoring` (`bool`)
+      * `enableSecureBoot` (`bool`)
+      * `enableVtpm` (`bool`)
+    """
     source_instance_template: pulumi.Output[str]
     """
     Name or self link of an instance
     template to create the instance based on.
     """
     tags: pulumi.Output[list]
+    """
+    The list of tags attached to the instance.
+    """
     tags_fingerprint: pulumi.Output[str]
+    """
+    The unique fingerprint of the tags.
+    """
     zone: pulumi.Output[str]
     """
     The zone that the machine should be created in. If not
@@ -99,10 +253,38 @@ class InstanceFromTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+               stopping the instance without setting this field, the update will fail.
+        :param pulumi.Input[list] attached_disks: List of disks attached to the instance
+        :param pulumi.Input[dict] boot_disk: The boot disk for the instance.
+        :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
+        :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
+        :param pulumi.Input[str] description: A brief description of the resource.
+        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
+        :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
+        :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
+               labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
+               entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs assigned to the instance.
+        :param pulumi.Input[str] machine_type: The machine type to create.
+        :param pulumi.Input[dict] metadata: Metadata key/value pairs made available within the instance.
+        :param pulumi.Input[str] metadata_startup_script: Metadata startup scripts made available within the instance.
+        :param pulumi.Input[str] min_cpu_platform: The minimum CPU platform specified for the VM instance.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[list] network_interfaces: The networks attached to the instance.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
+               self_link nor project are provided, the provider project is used.
+        :param pulumi.Input[str] resource_policies: A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
+               instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input[dict] scheduling: The scheduling strategy being used by the instance.
+        :param pulumi.Input[list] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[dict] service_account: The service account to attach to the instance.
+        :param pulumi.Input[dict] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
                template to create the instance based on.
+        :param pulumi.Input[list] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
 
@@ -248,10 +430,45 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+               stopping the instance without setting this field, the update will fail.
+        :param pulumi.Input[list] attached_disks: List of disks attached to the instance
+        :param pulumi.Input[dict] boot_disk: The boot disk for the instance.
+        :param pulumi.Input[bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
+        :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
+        :param pulumi.Input[str] current_status: Current status of the instance.
+        :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
+        :param pulumi.Input[str] description: A brief description of the resource.
+        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
+        :param pulumi.Input[list] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
+        :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
+               labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
+               entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
+        :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs assigned to the instance.
+        :param pulumi.Input[str] machine_type: The machine type to create.
+        :param pulumi.Input[dict] metadata: Metadata key/value pairs made available within the instance.
+        :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
+        :param pulumi.Input[str] metadata_startup_script: Metadata startup scripts made available within the instance.
+        :param pulumi.Input[str] min_cpu_platform: The minimum CPU platform specified for the VM instance.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[list] network_interfaces: The networks attached to the instance.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
+               self_link nor project are provided, the provider project is used.
+        :param pulumi.Input[str] resource_policies: A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
+               instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input[dict] scheduling: The scheduling strategy being used by the instance.
+        :param pulumi.Input[list] scratch_disks: The scratch disks attached to the instance.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[dict] service_account: The service account to attach to the instance.
+        :param pulumi.Input[dict] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
                template to create the instance based on.
+        :param pulumi.Input[list] tags: The list of tags attached to the instance.
+        :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
 

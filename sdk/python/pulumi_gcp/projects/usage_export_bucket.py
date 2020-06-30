@@ -12,8 +12,17 @@ from .. import utilities, tables
 
 class UsageExportBucket(pulumi.CustomResource):
     bucket_name: pulumi.Output[str]
+    """
+    The bucket to store reports in.
+    """
     prefix: pulumi.Output[str]
+    """
+    A prefix for the reports, for instance, the project name.
+    """
     project: pulumi.Output[str]
+    """
+    The project to set the export bucket on. If it is not provided, the provider project is used.
+    """
     def __init__(__self__, resource_name, opts=None, bucket_name=None, prefix=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows creation and management of a Google Cloud Platform project.
@@ -53,6 +62,9 @@ class UsageExportBucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bucket_name: The bucket to store reports in.
+        :param pulumi.Input[str] prefix: A prefix for the reports, for instance, the project name.
+        :param pulumi.Input[str] project: The project to set the export bucket on. If it is not provided, the provider project is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -91,6 +103,9 @@ class UsageExportBucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bucket_name: The bucket to store reports in.
+        :param pulumi.Input[str] prefix: A prefix for the reports, for instance, the project name.
+        :param pulumi.Input[str] project: The project to set the export bucket on. If it is not provided, the provider project is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

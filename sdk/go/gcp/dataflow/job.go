@@ -75,8 +75,9 @@ type Job struct {
 	// Key/Value pairs to be passed to the Dataflow job (as used in the template).
 	Parameters pulumi.MapOutput `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
-	Project pulumi.StringOutput    `pulumi:"project"`
-	Region  pulumi.StringPtrOutput `pulumi:"region"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The region in which the created job should run.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrOutput `pulumi:"serviceAccountEmail"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
@@ -152,7 +153,8 @@ type jobState struct {
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// The region in which the created job should run.
+	Region *string `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
@@ -195,7 +197,8 @@ type JobState struct {
 	Parameters pulumi.MapInput
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// The region in which the created job should run.
+	Region pulumi.StringPtrInput
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrInput
 	// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
@@ -240,7 +243,8 @@ type jobArgs struct {
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// The region in which the created job should run.
+	Region *string `pulumi:"region"`
 	// The Service Account email used to create the job.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -278,7 +282,8 @@ type JobArgs struct {
 	Parameters pulumi.MapInput
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	Region  pulumi.StringPtrInput
+	// The region in which the created job should run.
+	Region pulumi.StringPtrInput
 	// The Service Account email used to create the job.
 	ServiceAccountEmail pulumi.StringPtrInput
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".

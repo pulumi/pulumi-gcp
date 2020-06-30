@@ -144,6 +144,7 @@ type Address struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
 	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The Region in which the created address should reside.
@@ -218,6 +219,7 @@ type addressState struct {
 	Project *string `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
 	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
@@ -265,6 +267,7 @@ type AddressState struct {
 	Project pulumi.StringPtrInput
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
 	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
@@ -312,6 +315,7 @@ type addressArgs struct {
 	Project *string `pulumi:"project"`
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
 	//   This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
@@ -352,6 +356,7 @@ type AddressArgs struct {
 	Project pulumi.StringPtrInput
 	// The purpose of this resource, which can be one of the following values:
 	// - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+	// - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
 	//   This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.

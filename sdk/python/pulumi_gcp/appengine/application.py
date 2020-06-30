@@ -23,6 +23,10 @@ class Application(pulumi.CustomResource):
     """
     The GCS bucket code is being stored in for this app.
     """
+    database_type: pulumi.Output[str]
+    """
+    The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+    """
     default_bucket: pulumi.Output[str]
     """
     The GCS bucket content is being stored in for this app.
@@ -79,7 +83,7 @@ class Application(pulumi.CustomResource):
       * `path` (`str`)
       * `service` (`str`)
     """
-    def __init__(__self__, resource_name, opts=None, auth_domain=None, feature_settings=None, iap=None, location_id=None, project=None, serving_status=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auth_domain=None, database_type=None, feature_settings=None, iap=None, location_id=None, project=None, serving_status=None, __props__=None, __name__=None, __opts__=None):
         """
         Allows creation and management of an App Engine application.
 
@@ -108,6 +112,7 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
+        :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
         :param pulumi.Input[dict] feature_settings: A block of optional settings to configure specific App Engine features:
         :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
@@ -148,6 +153,7 @@ class Application(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['auth_domain'] = auth_domain
+            __props__['database_type'] = database_type
             __props__['feature_settings'] = feature_settings
             __props__['iap'] = iap
             if location_id is None:
@@ -169,7 +175,7 @@ class Application(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_id=None, auth_domain=None, code_bucket=None, default_bucket=None, default_hostname=None, feature_settings=None, gcr_domain=None, iap=None, location_id=None, name=None, project=None, serving_status=None, url_dispatch_rules=None):
+    def get(resource_name, id, opts=None, app_id=None, auth_domain=None, code_bucket=None, database_type=None, default_bucket=None, default_hostname=None, feature_settings=None, gcr_domain=None, iap=None, location_id=None, name=None, project=None, serving_status=None, url_dispatch_rules=None):
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -180,6 +186,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] app_id: Identifier of the app, usually `{PROJECT_ID}`
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
         :param pulumi.Input[str] code_bucket: The GCS bucket code is being stored in for this app.
+        :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
         :param pulumi.Input[str] default_bucket: The GCS bucket content is being stored in for this app.
         :param pulumi.Input[str] default_hostname: The default hostname for this app.
         :param pulumi.Input[dict] feature_settings: A block of optional settings to configure specific App Engine features:
@@ -220,6 +227,7 @@ class Application(pulumi.CustomResource):
         __props__["app_id"] = app_id
         __props__["auth_domain"] = auth_domain
         __props__["code_bucket"] = code_bucket
+        __props__["database_type"] = database_type
         __props__["default_bucket"] = default_bucket
         __props__["default_hostname"] = default_hostname
         __props__["feature_settings"] = feature_settings

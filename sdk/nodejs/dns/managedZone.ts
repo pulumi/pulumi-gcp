@@ -77,10 +77,10 @@ import * as utilities from "../utilities";
  *     private_visibility_config: {
  *         networks: [
  *             {
- *                 networkUrl: network_1.selfLink,
+ *                 networkUrl: network_1.id,
  *             },
  *             {
- *                 networkUrl: network_2.selfLink,
+ *                 networkUrl: network_2.id,
  *             },
  *         ],
  *     },

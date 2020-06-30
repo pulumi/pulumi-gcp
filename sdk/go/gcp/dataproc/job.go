@@ -24,26 +24,35 @@ type Job struct {
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
-	ForceDelete  pulumi.BoolPtrOutput     `pulumi:"forceDelete"`
+	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
+	// The config of Hadoop job
 	HadoopConfig JobHadoopConfigPtrOutput `pulumi:"hadoopConfig"`
-	HiveConfig   JobHiveConfigPtrOutput   `pulumi:"hiveConfig"`
+	// The config of hive job
+	HiveConfig JobHiveConfigPtrOutput `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
-	Labels    pulumi.StringMapOutput `pulumi:"labels"`
-	PigConfig JobPigConfigPtrOutput  `pulumi:"pigConfig"`
-	Placement JobPlacementOutput     `pulumi:"placement"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The config of pag job.
+	PigConfig JobPigConfigPtrOutput `pulumi:"pigConfig"`
+	// The config of job placement.
+	Placement JobPlacementOutput `pulumi:"placement"`
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
-	Project       pulumi.StringOutput       `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The config of pySpark job.
 	PysparkConfig JobPysparkConfigPtrOutput `pulumi:"pysparkConfig"`
-	Reference     JobReferenceOutput        `pulumi:"reference"`
+	// The reference of the job
+	Reference JobReferenceOutput `pulumi:"reference"`
 	// The Cloud Dataproc region. This essentially determines which clusters are available
 	// for this job to be submitted to. If not specified, defaults to `global`.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Optional. Job scheduling configuration.
-	Scheduling     JobSchedulingPtrOutput     `pulumi:"scheduling"`
-	SparkConfig    JobSparkConfigPtrOutput    `pulumi:"sparkConfig"`
+	Scheduling JobSchedulingPtrOutput `pulumi:"scheduling"`
+	// The config of the Spark job.
+	SparkConfig JobSparkConfigPtrOutput `pulumi:"sparkConfig"`
+	// The config of SparkSql job
 	SparksqlConfig JobSparksqlConfigPtrOutput `pulumi:"sparksqlConfig"`
-	Status         JobStatusOutput            `pulumi:"status"`
+	// The status of the job.
+	Status JobStatusOutput `pulumi:"status"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -84,26 +93,35 @@ type jobState struct {
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
-	ForceDelete  *bool            `pulumi:"forceDelete"`
+	ForceDelete *bool `pulumi:"forceDelete"`
+	// The config of Hadoop job
 	HadoopConfig *JobHadoopConfig `pulumi:"hadoopConfig"`
-	HiveConfig   *JobHiveConfig   `pulumi:"hiveConfig"`
+	// The config of hive job
+	HiveConfig *JobHiveConfig `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
-	Labels    map[string]string `pulumi:"labels"`
-	PigConfig *JobPigConfig     `pulumi:"pigConfig"`
-	Placement *JobPlacement     `pulumi:"placement"`
+	Labels map[string]string `pulumi:"labels"`
+	// The config of pag job.
+	PigConfig *JobPigConfig `pulumi:"pigConfig"`
+	// The config of job placement.
+	Placement *JobPlacement `pulumi:"placement"`
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
-	Project       *string           `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// The config of pySpark job.
 	PysparkConfig *JobPysparkConfig `pulumi:"pysparkConfig"`
-	Reference     *JobReference     `pulumi:"reference"`
+	// The reference of the job
+	Reference *JobReference `pulumi:"reference"`
 	// The Cloud Dataproc region. This essentially determines which clusters are available
 	// for this job to be submitted to. If not specified, defaults to `global`.
 	Region *string `pulumi:"region"`
 	// Optional. Job scheduling configuration.
-	Scheduling     *JobScheduling     `pulumi:"scheduling"`
-	SparkConfig    *JobSparkConfig    `pulumi:"sparkConfig"`
+	Scheduling *JobScheduling `pulumi:"scheduling"`
+	// The config of the Spark job.
+	SparkConfig *JobSparkConfig `pulumi:"sparkConfig"`
+	// The config of SparkSql job
 	SparksqlConfig *JobSparksqlConfig `pulumi:"sparksqlConfig"`
-	Status         *JobStatus         `pulumi:"status"`
+	// The status of the job.
+	Status *JobStatus `pulumi:"status"`
 }
 
 type JobState struct {
@@ -114,26 +132,35 @@ type JobState struct {
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
-	ForceDelete  pulumi.BoolPtrInput
+	ForceDelete pulumi.BoolPtrInput
+	// The config of Hadoop job
 	HadoopConfig JobHadoopConfigPtrInput
-	HiveConfig   JobHiveConfigPtrInput
+	// The config of hive job
+	HiveConfig JobHiveConfigPtrInput
 	// The list of labels (key/value pairs) to add to the job.
-	Labels    pulumi.StringMapInput
+	Labels pulumi.StringMapInput
+	// The config of pag job.
 	PigConfig JobPigConfigPtrInput
+	// The config of job placement.
 	Placement JobPlacementPtrInput
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
-	Project       pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// The config of pySpark job.
 	PysparkConfig JobPysparkConfigPtrInput
-	Reference     JobReferencePtrInput
+	// The reference of the job
+	Reference JobReferencePtrInput
 	// The Cloud Dataproc region. This essentially determines which clusters are available
 	// for this job to be submitted to. If not specified, defaults to `global`.
 	Region pulumi.StringPtrInput
 	// Optional. Job scheduling configuration.
-	Scheduling     JobSchedulingPtrInput
-	SparkConfig    JobSparkConfigPtrInput
+	Scheduling JobSchedulingPtrInput
+	// The config of the Spark job.
+	SparkConfig JobSparkConfigPtrInput
+	// The config of SparkSql job
 	SparksqlConfig JobSparksqlConfigPtrInput
-	Status         JobStatusPtrInput
+	// The status of the job.
+	Status JobStatusPtrInput
 }
 
 func (JobState) ElementType() reflect.Type {
@@ -144,24 +171,32 @@ type jobArgs struct {
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
-	ForceDelete  *bool            `pulumi:"forceDelete"`
+	ForceDelete *bool `pulumi:"forceDelete"`
+	// The config of Hadoop job
 	HadoopConfig *JobHadoopConfig `pulumi:"hadoopConfig"`
-	HiveConfig   *JobHiveConfig   `pulumi:"hiveConfig"`
+	// The config of hive job
+	HiveConfig *JobHiveConfig `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
-	Labels    map[string]string `pulumi:"labels"`
-	PigConfig *JobPigConfig     `pulumi:"pigConfig"`
-	Placement JobPlacement      `pulumi:"placement"`
+	Labels map[string]string `pulumi:"labels"`
+	// The config of pag job.
+	PigConfig *JobPigConfig `pulumi:"pigConfig"`
+	// The config of job placement.
+	Placement JobPlacement `pulumi:"placement"`
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
-	Project       *string           `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// The config of pySpark job.
 	PysparkConfig *JobPysparkConfig `pulumi:"pysparkConfig"`
-	Reference     *JobReference     `pulumi:"reference"`
+	// The reference of the job
+	Reference *JobReference `pulumi:"reference"`
 	// The Cloud Dataproc region. This essentially determines which clusters are available
 	// for this job to be submitted to. If not specified, defaults to `global`.
 	Region *string `pulumi:"region"`
 	// Optional. Job scheduling configuration.
-	Scheduling     *JobScheduling     `pulumi:"scheduling"`
-	SparkConfig    *JobSparkConfig    `pulumi:"sparkConfig"`
+	Scheduling *JobScheduling `pulumi:"scheduling"`
+	// The config of the Spark job.
+	SparkConfig *JobSparkConfig `pulumi:"sparkConfig"`
+	// The config of SparkSql job
 	SparksqlConfig *JobSparksqlConfig `pulumi:"sparksqlConfig"`
 }
 
@@ -170,24 +205,32 @@ type JobArgs struct {
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
-	ForceDelete  pulumi.BoolPtrInput
+	ForceDelete pulumi.BoolPtrInput
+	// The config of Hadoop job
 	HadoopConfig JobHadoopConfigPtrInput
-	HiveConfig   JobHiveConfigPtrInput
+	// The config of hive job
+	HiveConfig JobHiveConfigPtrInput
 	// The list of labels (key/value pairs) to add to the job.
-	Labels    pulumi.StringMapInput
+	Labels pulumi.StringMapInput
+	// The config of pag job.
 	PigConfig JobPigConfigPtrInput
+	// The config of job placement.
 	Placement JobPlacementInput
 	// The project in which the `cluster` can be found and jobs
 	// subsequently run against. If it is not provided, the provider project is used.
-	Project       pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// The config of pySpark job.
 	PysparkConfig JobPysparkConfigPtrInput
-	Reference     JobReferencePtrInput
+	// The reference of the job
+	Reference JobReferencePtrInput
 	// The Cloud Dataproc region. This essentially determines which clusters are available
 	// for this job to be submitted to. If not specified, defaults to `global`.
 	Region pulumi.StringPtrInput
 	// Optional. Job scheduling configuration.
-	Scheduling     JobSchedulingPtrInput
-	SparkConfig    JobSparkConfigPtrInput
+	Scheduling JobSchedulingPtrInput
+	// The config of the Spark job.
+	SparkConfig JobSparkConfigPtrInput
+	// The config of SparkSql job
 	SparksqlConfig JobSparksqlConfigPtrInput
 }
 

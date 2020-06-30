@@ -149,8 +149,8 @@ export class Snapshot extends pulumi.CustomResource {
     public readonly sourceDiskEncryptionKey!: pulumi.Output<outputs.compute.SnapshotSourceDiskEncryptionKey | undefined>;
     public /*out*/ readonly sourceDiskLink!: pulumi.Output<string>;
     /**
-     * A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
-     * snapshot creation/deletion.
+     * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+     * creation/deletion.
      */
     public /*out*/ readonly storageBytes!: pulumi.Output<number>;
     /**
@@ -289,8 +289,8 @@ export interface SnapshotState {
     readonly sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSourceDiskEncryptionKey>;
     readonly sourceDiskLink?: pulumi.Input<string>;
     /**
-     * A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
-     * snapshot creation/deletion.
+     * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+     * creation/deletion.
      */
     readonly storageBytes?: pulumi.Input<number>;
     /**

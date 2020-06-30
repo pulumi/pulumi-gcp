@@ -119,8 +119,8 @@ type Snapshot struct {
 	// key.  Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrOutput `pulumi:"sourceDiskEncryptionKey"`
 	SourceDiskLink          pulumi.StringOutput                      `pulumi:"sourceDiskLink"`
-	// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
-	// snapshot creation/deletion.
+	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+	// creation/deletion.
 	StorageBytes pulumi.IntOutput `pulumi:"storageBytes"`
 	// A reference to the zone where the disk is hosted.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -196,8 +196,8 @@ type snapshotState struct {
 	// key.  Structure is documented below.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
 	SourceDiskLink          *string                          `pulumi:"sourceDiskLink"`
-	// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
-	// snapshot creation/deletion.
+	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+	// creation/deletion.
 	StorageBytes *int `pulumi:"storageBytes"`
 	// A reference to the zone where the disk is hosted.
 	Zone *string `pulumi:"zone"`
@@ -243,8 +243,8 @@ type SnapshotState struct {
 	// key.  Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
 	SourceDiskLink          pulumi.StringPtrInput
-	// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
-	// snapshot creation/deletion.
+	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+	// creation/deletion.
 	StorageBytes pulumi.IntPtrInput
 	// A reference to the zone where the disk is hosted.
 	Zone pulumi.StringPtrInput

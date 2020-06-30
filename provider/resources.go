@@ -60,6 +60,7 @@ const (
 	gcpMemcache             = "Memcache"             // Memcache resources
 	gcpMonitoring           = "Monitoring"           // Monitoring resources
 	gcpNetworkManagement    = "NetworkManagement"    // Network Management resources
+	gcpNotebooks            = "Notebooks"            // Notebooks resources
 	gcpOrganization         = "Organizations"        // Organization resources
 	gcpOsLogin              = "OsLogin"              // OsLogin resources
 	gcpProject              = "Projects"             // Project resources
@@ -1497,6 +1498,11 @@ func Provider() tfbridge.ProviderInfo {
 			"google_network_management_connectivity_test": {
 				Tok: gcpResource(gcpNetworkManagement, "ConnectivityTest"),
 			},
+
+			// Notebook
+			"google_notebooks_environment": {Tok: gcpResource(gcpNotebooks, "Environment")},
+			"google_notebooks_instance":    {Tok: gcpResource(gcpNotebooks, "Instance")},
+			"google_notebooks_location":    {Tok: gcpResource(gcpNotebooks, "Location")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1884,6 +1890,14 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpFirebase, "getWebApp"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_firebase_web_app.html.markdown",
+				},
+			},
+
+			// Redis resources
+			"google_redis_instance": {
+				Tok: gcpDataSource(gcpRedis, "getInstance"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_redis_instance.html.markdown",
 				},
 			},
 		},

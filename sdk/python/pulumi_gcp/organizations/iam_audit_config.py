@@ -24,6 +24,9 @@ class IamAuditConfig(pulumi.CustomResource):
       * `logType` (`str`) - Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
     """
     etag: pulumi.Output[str]
+    """
+    The etag of iam policy
+    """
     org_id: pulumi.Output[str]
     """
     The numeric ID of the organization in which you want to manage the audit logging config.
@@ -110,6 +113,7 @@ class IamAuditConfig(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[str] etag: The etag of iam policy
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to manage the audit logging config.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
 

@@ -88,11 +88,11 @@ class Cluster(pulumi.CustomResource):
           * `accelerator_type` (`str`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 
         * `diskConfig` (`dict`) - Disk Config
-          * `bootDiskSizeGb` (`float`) - Size of the primary disk attached to each preemptible worker node, specified
+          * `boot_disk_size_gb` (`float`) - Size of the primary disk attached to each preemptible worker node, specified
             in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
             computed value if not set (currently 500GB). Note: If SSDs are not
             attached, it also contains the HDFS data blocks and Hadoop working directories.
-          * `bootDiskType` (`str`) - The disk type of the primary disk attached to each preemptible worker node.
+          * `boot_disk_type` (`str`) - The disk type of the primary disk attached to each preemptible worker node.
             One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
           * `numLocalSsds` (`float`) - The amount of local SSD disks that will be
             attached to each preemptible worker node. Defaults to 0.
@@ -113,11 +113,11 @@ class Cluster(pulumi.CustomResource):
       * `preemptibleWorkerConfig` (`dict`) - The Google Compute Engine config settings for the additional (aka
         preemptible) instances in a cluster. Structure defined below.
         * `diskConfig` (`dict`) - Disk Config
-          * `bootDiskSizeGb` (`float`) - Size of the primary disk attached to each preemptible worker node, specified
+          * `boot_disk_size_gb` (`float`) - Size of the primary disk attached to each preemptible worker node, specified
             in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
             computed value if not set (currently 500GB). Note: If SSDs are not
             attached, it also contains the HDFS data blocks and Hadoop working directories.
-          * `bootDiskType` (`str`) - The disk type of the primary disk attached to each preemptible worker node.
+          * `boot_disk_type` (`str`) - The disk type of the primary disk attached to each preemptible worker node.
             One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
           * `numLocalSsds` (`float`) - The amount of local SSD disks that will be
             attached to each preemptible worker node. Defaults to 0.
@@ -200,11 +200,11 @@ class Cluster(pulumi.CustomResource):
           * `accelerator_type` (`str`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 
         * `diskConfig` (`dict`) - Disk Config
-          * `bootDiskSizeGb` (`float`) - Size of the primary disk attached to each preemptible worker node, specified
+          * `boot_disk_size_gb` (`float`) - Size of the primary disk attached to each preemptible worker node, specified
             in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
             computed value if not set (currently 500GB). Note: If SSDs are not
             attached, it also contains the HDFS data blocks and Hadoop working directories.
-          * `bootDiskType` (`str`) - The disk type of the primary disk attached to each preemptible worker node.
+          * `boot_disk_type` (`str`) - The disk type of the primary disk attached to each preemptible worker node.
             One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
           * `numLocalSsds` (`float`) - The amount of local SSD disks that will be
             attached to each preemptible worker node. Defaults to 0.
@@ -287,8 +287,8 @@ class Cluster(pulumi.CustomResource):
                 }],
                 "masterConfig": {
                     "diskConfig": {
-                        "bootDiskSizeGb": 15,
-                        "bootDiskType": "pd-ssd",
+                        "boot_disk_size_gb": 15,
+                        "boot_disk_type": "pd-ssd",
                     },
                     "machine_type": "n1-standard-1",
                     "numInstances": 1,
@@ -305,7 +305,7 @@ class Cluster(pulumi.CustomResource):
                 "stagingBucket": "dataproc-staging-bucket",
                 "worker_config": {
                     "diskConfig": {
-                        "bootDiskSizeGb": 15,
+                        "boot_disk_size_gb": 15,
                         "numLocalSsds": 1,
                     },
                     "machine_type": "n1-standard-1",
@@ -427,11 +427,11 @@ class Cluster(pulumi.CustomResource):
               * `accelerator_type` (`pulumi.Input[str]`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 
             * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `bootDiskSizeGb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
+              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
                 in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
                 computed value if not set (currently 500GB). Note: If SSDs are not
                 attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `bootDiskType` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
+              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
                 One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
               * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
                 attached to each preemptible worker node. Defaults to 0.
@@ -452,11 +452,11 @@ class Cluster(pulumi.CustomResource):
           * `preemptibleWorkerConfig` (`pulumi.Input[dict]`) - The Google Compute Engine config settings for the additional (aka
             preemptible) instances in a cluster. Structure defined below.
             * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `bootDiskSizeGb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
+              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
                 in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
                 computed value if not set (currently 500GB). Note: If SSDs are not
                 attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `bootDiskType` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
+              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
                 One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
               * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
                 attached to each preemptible worker node. Defaults to 0.
@@ -539,11 +539,11 @@ class Cluster(pulumi.CustomResource):
               * `accelerator_type` (`pulumi.Input[str]`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 
             * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `bootDiskSizeGb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
+              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
                 in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
                 computed value if not set (currently 500GB). Note: If SSDs are not
                 attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `bootDiskType` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
+              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
                 One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
               * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
                 attached to each preemptible worker node. Defaults to 0.
@@ -684,11 +684,11 @@ class Cluster(pulumi.CustomResource):
               * `accelerator_type` (`pulumi.Input[str]`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 
             * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `bootDiskSizeGb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
+              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
                 in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
                 computed value if not set (currently 500GB). Note: If SSDs are not
                 attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `bootDiskType` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
+              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
                 One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
               * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
                 attached to each preemptible worker node. Defaults to 0.
@@ -709,11 +709,11 @@ class Cluster(pulumi.CustomResource):
           * `preemptibleWorkerConfig` (`pulumi.Input[dict]`) - The Google Compute Engine config settings for the additional (aka
             preemptible) instances in a cluster. Structure defined below.
             * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `bootDiskSizeGb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
+              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
                 in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
                 computed value if not set (currently 500GB). Note: If SSDs are not
                 attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `bootDiskType` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
+              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
                 One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
               * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
                 attached to each preemptible worker node. Defaults to 0.
@@ -796,11 +796,11 @@ class Cluster(pulumi.CustomResource):
               * `accelerator_type` (`pulumi.Input[str]`) - The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
 
             * `diskConfig` (`pulumi.Input[dict]`) - Disk Config
-              * `bootDiskSizeGb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
+              * `boot_disk_size_gb` (`pulumi.Input[float]`) - Size of the primary disk attached to each preemptible worker node, specified
                 in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
                 computed value if not set (currently 500GB). Note: If SSDs are not
                 attached, it also contains the HDFS data blocks and Hadoop working directories.
-              * `bootDiskType` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
+              * `boot_disk_type` (`pulumi.Input[str]`) - The disk type of the primary disk attached to each preemptible worker node.
                 One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
               * `numLocalSsds` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
                 attached to each preemptible worker node. Defaults to 0.

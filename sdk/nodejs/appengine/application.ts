@@ -74,6 +74,10 @@ export class Application extends pulumi.CustomResource {
      */
     public /*out*/ readonly codeBucket!: pulumi.Output<string>;
     /**
+     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     */
+    public readonly databaseType!: pulumi.Output<string>;
+    /**
      * The GCS bucket content is being stored in for this app.
      */
     public /*out*/ readonly defaultBucket!: pulumi.Output<string>;
@@ -132,6 +136,7 @@ export class Application extends pulumi.CustomResource {
             inputs["appId"] = state ? state.appId : undefined;
             inputs["authDomain"] = state ? state.authDomain : undefined;
             inputs["codeBucket"] = state ? state.codeBucket : undefined;
+            inputs["databaseType"] = state ? state.databaseType : undefined;
             inputs["defaultBucket"] = state ? state.defaultBucket : undefined;
             inputs["defaultHostname"] = state ? state.defaultHostname : undefined;
             inputs["featureSettings"] = state ? state.featureSettings : undefined;
@@ -148,6 +153,7 @@ export class Application extends pulumi.CustomResource {
                 throw new Error("Missing required property 'locationId'");
             }
             inputs["authDomain"] = args ? args.authDomain : undefined;
+            inputs["databaseType"] = args ? args.databaseType : undefined;
             inputs["featureSettings"] = args ? args.featureSettings : undefined;
             inputs["iap"] = args ? args.iap : undefined;
             inputs["locationId"] = args ? args.locationId : undefined;
@@ -188,6 +194,10 @@ export interface ApplicationState {
      * The GCS bucket code is being stored in for this app.
      */
     readonly codeBucket?: pulumi.Input<string>;
+    /**
+     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     */
+    readonly databaseType?: pulumi.Input<string>;
     /**
      * The GCS bucket content is being stored in for this app.
      */
@@ -241,6 +251,10 @@ export interface ApplicationArgs {
      * The domain to authenticate users with when using App Engine's User API.
      */
     readonly authDomain?: pulumi.Input<string>;
+    /**
+     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     */
+    readonly databaseType?: pulumi.Input<string>;
     /**
      * A block of optional settings to configure specific App Engine features:
      */

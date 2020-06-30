@@ -104,6 +104,9 @@ export class Instance extends pulumi.CustomResource {
      * The CPU platform used by this instance.
      */
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
+    /**
+     * Current status of the instance.
+     */
     public /*out*/ readonly currentStatus!: pulumi.Output<string>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
@@ -226,7 +229,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.InstanceShieldedInstanceConfig>;
     /**
-     * A list of tags to attach to the instance.
+     * A list of network tags to attach to the instance.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -365,6 +368,9 @@ export interface InstanceState {
      * The CPU platform used by this instance.
      */
     readonly cpuPlatform?: pulumi.Input<string>;
+    /**
+     * Current status of the instance.
+     */
     readonly currentStatus?: pulumi.Input<string>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
@@ -487,7 +493,7 @@ export interface InstanceState {
      */
     readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
     /**
-     * A list of tags to attach to the instance.
+     * A list of network tags to attach to the instance.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -629,7 +635,7 @@ export interface InstanceArgs {
      */
     readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
     /**
-     * A list of tags to attach to the instance.
+     * A list of network tags to attach to the instance.
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

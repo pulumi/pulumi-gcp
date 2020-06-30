@@ -71,8 +71,17 @@ export class UsageExportBucket extends pulumi.CustomResource {
         return obj['__pulumiType'] === UsageExportBucket.__pulumiType;
     }
 
+    /**
+     * The bucket to store reports in.
+     */
     public readonly bucketName!: pulumi.Output<string>;
+    /**
+     * A prefix for the reports, for instance, the project name.
+     */
     public readonly prefix!: pulumi.Output<string | undefined>;
+    /**
+     * The project to set the export bucket on. If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -114,8 +123,17 @@ export class UsageExportBucket extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UsageExportBucket resources.
  */
 export interface UsageExportBucketState {
+    /**
+     * The bucket to store reports in.
+     */
     readonly bucketName?: pulumi.Input<string>;
+    /**
+     * A prefix for the reports, for instance, the project name.
+     */
     readonly prefix?: pulumi.Input<string>;
+    /**
+     * The project to set the export bucket on. If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }
 
@@ -123,7 +141,16 @@ export interface UsageExportBucketState {
  * The set of arguments for constructing a UsageExportBucket resource.
  */
 export interface UsageExportBucketArgs {
+    /**
+     * The bucket to store reports in.
+     */
     readonly bucketName: pulumi.Input<string>;
+    /**
+     * A prefix for the reports, for instance, the project name.
+     */
     readonly prefix?: pulumi.Input<string>;
+    /**
+     * The project to set the export bucket on. If it is not provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
 }

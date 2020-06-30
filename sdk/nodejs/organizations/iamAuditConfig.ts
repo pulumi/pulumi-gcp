@@ -57,6 +57,9 @@ export class IamAuditConfig extends pulumi.CustomResource {
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      */
     public readonly auditLogConfigs!: pulumi.Output<outputs.organizations.IamAuditConfigAuditLogConfig[]>;
+    /**
+     * The etag of iam policy
+     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The numeric ID of the organization in which you want to manage the audit logging config.
@@ -118,6 +121,9 @@ export interface IamAuditConfigState {
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      */
     readonly auditLogConfigs?: pulumi.Input<pulumi.Input<inputs.organizations.IamAuditConfigAuditLogConfig>[]>;
+    /**
+     * The etag of iam policy
+     */
     readonly etag?: pulumi.Input<string>;
     /**
      * The numeric ID of the organization in which you want to manage the audit logging config.

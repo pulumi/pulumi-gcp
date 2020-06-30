@@ -46,8 +46,8 @@ class Policy(pulumi.CustomResource):
     """
     List of network names specifying networks to which this policy is applied.  Structure is documented below.
 
-      * `networkUrl` (`str`) - The fully qualified URL of the VPC network to bind to.
-        This should be formatted like
+      * `networkUrl` (`str`) - The id or fully qualified URL of the VPC network to forward queries to.
+        This should be formatted like `projects/{project}/global/networks/{network}` or
         `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
     """
     project: pulumi.Output[str]
@@ -90,10 +90,10 @@ class Policy(pulumi.CustomResource):
             },
             networks=[
                 {
-                    "networkUrl": network_1.self_link,
+                    "networkUrl": network_1.id,
                 },
                 {
-                    "networkUrl": network_2.self_link,
+                    "networkUrl": network_2.id,
                 },
             ])
         ```
@@ -124,8 +124,8 @@ class Policy(pulumi.CustomResource):
 
         The **networks** object supports the following:
 
-          * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to bind to.
-            This should be formatted like
+          * `networkUrl` (`pulumi.Input[str]`) - The id or fully qualified URL of the VPC network to forward queries to.
+            This should be formatted like `projects/{project}/global/networks/{network}` or
             `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
         if __name__ is not None:
@@ -191,8 +191,8 @@ class Policy(pulumi.CustomResource):
 
         The **networks** object supports the following:
 
-          * `networkUrl` (`pulumi.Input[str]`) - The fully qualified URL of the VPC network to bind to.
-            This should be formatted like
+          * `networkUrl` (`pulumi.Input[str]`) - The id or fully qualified URL of the VPC network to forward queries to.
+            This should be formatted like `projects/{project}/global/networks/{network}` or
             `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -77,9 +77,12 @@ import (
 type UsageExportBucket struct {
 	pulumi.CustomResourceState
 
-	BucketName pulumi.StringOutput    `pulumi:"bucketName"`
-	Prefix     pulumi.StringPtrOutput `pulumi:"prefix"`
-	Project    pulumi.StringOutput    `pulumi:"project"`
+	// The bucket to store reports in.
+	BucketName pulumi.StringOutput `pulumi:"bucketName"`
+	// A prefix for the reports, for instance, the project name.
+	Prefix pulumi.StringPtrOutput `pulumi:"prefix"`
+	// The project to set the export bucket on. If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewUsageExportBucket registers a new resource with the given unique name, arguments, and options.
@@ -113,15 +116,21 @@ func GetUsageExportBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UsageExportBucket resources.
 type usageExportBucketState struct {
+	// The bucket to store reports in.
 	BucketName *string `pulumi:"bucketName"`
-	Prefix     *string `pulumi:"prefix"`
-	Project    *string `pulumi:"project"`
+	// A prefix for the reports, for instance, the project name.
+	Prefix *string `pulumi:"prefix"`
+	// The project to set the export bucket on. If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 type UsageExportBucketState struct {
+	// The bucket to store reports in.
 	BucketName pulumi.StringPtrInput
-	Prefix     pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
+	// A prefix for the reports, for instance, the project name.
+	Prefix pulumi.StringPtrInput
+	// The project to set the export bucket on. If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (UsageExportBucketState) ElementType() reflect.Type {
@@ -129,16 +138,22 @@ func (UsageExportBucketState) ElementType() reflect.Type {
 }
 
 type usageExportBucketArgs struct {
-	BucketName string  `pulumi:"bucketName"`
-	Prefix     *string `pulumi:"prefix"`
-	Project    *string `pulumi:"project"`
+	// The bucket to store reports in.
+	BucketName string `pulumi:"bucketName"`
+	// A prefix for the reports, for instance, the project name.
+	Prefix *string `pulumi:"prefix"`
+	// The project to set the export bucket on. If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a UsageExportBucket resource.
 type UsageExportBucketArgs struct {
+	// The bucket to store reports in.
 	BucketName pulumi.StringInput
-	Prefix     pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
+	// A prefix for the reports, for instance, the project name.
+	Prefix pulumi.StringPtrInput
+	// The project to set the export bucket on. If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (UsageExportBucketArgs) ElementType() reflect.Type {
