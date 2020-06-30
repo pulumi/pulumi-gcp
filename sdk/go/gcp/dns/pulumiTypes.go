@@ -1633,8 +1633,8 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerArrayOutput) Index(i pu
 }
 
 type PolicyNetwork struct {
-	// The fully qualified URL of the VPC network to bind to.
-	// This should be formatted like
+	// The id or fully qualified URL of the VPC network to forward queries to.
+	// This should be formatted like `projects/{project}/global/networks/{network}` or
 	// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 	NetworkUrl string `pulumi:"networkUrl"`
 }
@@ -1651,8 +1651,8 @@ type PolicyNetworkInput interface {
 }
 
 type PolicyNetworkArgs struct {
-	// The fully qualified URL of the VPC network to bind to.
-	// This should be formatted like
+	// The id or fully qualified URL of the VPC network to forward queries to.
+	// This should be formatted like `projects/{project}/global/networks/{network}` or
 	// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
 }
@@ -1708,8 +1708,8 @@ func (o PolicyNetworkOutput) ToPolicyNetworkOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The fully qualified URL of the VPC network to bind to.
-// This should be formatted like
+// The id or fully qualified URL of the VPC network to forward queries to.
+// This should be formatted like `projects/{project}/global/networks/{network}` or
 // `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 func (o PolicyNetworkOutput) NetworkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyNetwork) string { return v.NetworkUrl }).(pulumi.StringOutput)

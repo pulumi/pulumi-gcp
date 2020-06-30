@@ -115,6 +115,9 @@ namespace Pulumi.Gcp.Compute
         [Output("cpuPlatform")]
         public Output<string> CpuPlatform { get; private set; } = null!;
 
+        /// <summary>
+        /// Current status of the instance.
+        /// </summary>
         [Output("currentStatus")]
         public Output<string> CurrentStatus { get; private set; } = null!;
 
@@ -285,7 +288,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceShieldedInstanceConfig> ShieldedInstanceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// A list of tags to attach to the instance.
+        /// A list of network tags to attach to the instance.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -558,7 +561,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tags to attach to the instance.
+        /// A list of network tags to attach to the instance.
         /// </summary>
         public InputList<string> Tags
         {
@@ -619,6 +622,9 @@ namespace Pulumi.Gcp.Compute
         [Input("cpuPlatform")]
         public Input<string>? CpuPlatform { get; set; }
 
+        /// <summary>
+        /// Current status of the instance.
+        /// </summary>
         [Input("currentStatus")]
         public Input<string>? CurrentStatus { get; set; }
 
@@ -822,7 +828,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tags to attach to the instance.
+        /// A list of network tags to attach to the instance.
         /// </summary>
         public InputList<string> Tags
         {

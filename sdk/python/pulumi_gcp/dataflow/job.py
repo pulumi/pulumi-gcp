@@ -59,6 +59,9 @@ class Job(pulumi.CustomResource):
     The project in which the resource belongs. If it is not provided, the provider project is used.
     """
     region: pulumi.Output[str]
+    """
+    The region in which the created job should run.
+    """
     service_account_email: pulumi.Output[str]
     """
     The Service Account email used to create the job.
@@ -130,6 +133,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[dict] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_gcs_location: A writeable location on GCS for the Dataflow job to dump its temporary data.
@@ -205,6 +209,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] on_delete: One of "drain" or "cancel".  Specifies behavior of deletion during `pulumi destroy`.  See above note.
         :param pulumi.Input[dict] parameters: Key/Value pairs to be passed to the Dataflow job (as used in the template).
         :param pulumi.Input[str] project: The project in which the resource belongs. If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region in which the created job should run.
         :param pulumi.Input[str] service_account_email: The Service Account email used to create the job.
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".

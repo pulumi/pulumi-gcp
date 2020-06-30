@@ -165,8 +165,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SourceDiskLink { get; private set; } = null!;
 
         /// <summary>
-        /// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
-        /// snapshot creation/deletion.
+        /// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+        /// creation/deletion.
         /// </summary>
         [Output("storageBytes")]
         public Output<int> StorageBytes { get; private set; } = null!;
@@ -400,8 +400,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SourceDiskLink { get; set; }
 
         /// <summary>
-        /// A size of the the storage used by the snapshot. As snapshots share storage, this number is expected to change with
-        /// snapshot creation/deletion.
+        /// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+        /// creation/deletion.
         /// </summary>
         [Input("storageBytes")]
         public Input<int>? StorageBytes { get; set; }

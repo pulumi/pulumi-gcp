@@ -51,6 +51,9 @@ namespace Pulumi.Gcp.Organizations
         [Output("auditLogConfigs")]
         public Output<ImmutableArray<Outputs.IamAuditConfigAuditLogConfig>> AuditLogConfigs { get; private set; } = null!;
 
+        /// <summary>
+        /// The etag of iam policy
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
@@ -155,6 +158,9 @@ namespace Pulumi.Gcp.Organizations
             set => _auditLogConfigs = value;
         }
 
+        /// <summary>
+        /// The etag of iam policy
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 

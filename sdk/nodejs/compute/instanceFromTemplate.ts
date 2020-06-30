@@ -76,45 +76,140 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceFromTemplate.__pulumiType;
     }
 
+    /**
+     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+     * stopping the instance without setting this field, the update will fail.
+     */
     public readonly allowStoppingForUpdate!: pulumi.Output<boolean>;
+    /**
+     * List of disks attached to the instance
+     */
     public readonly attachedDisks!: pulumi.Output<outputs.compute.InstanceFromTemplateAttachedDisk[]>;
+    /**
+     * The boot disk for the instance.
+     */
     public readonly bootDisk!: pulumi.Output<outputs.compute.InstanceFromTemplateBootDisk>;
+    /**
+     * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
+     */
     public readonly canIpForward!: pulumi.Output<boolean>;
+    /**
+     * The CPU platform used by this instance.
+     */
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
+    /**
+     * Current status of the instance.
+     */
     public /*out*/ readonly currentStatus!: pulumi.Output<string>;
+    /**
+     * Whether deletion protection is enabled on this instance.
+     */
     public readonly deletionProtection!: pulumi.Output<boolean>;
+    /**
+     * A brief description of the resource.
+     */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Desired status of the instance. Either "RUNNING" or "TERMINATED".
+     */
     public readonly desiredStatus!: pulumi.Output<string>;
+    /**
+     * Whether the instance has virtual displays enabled.
+     */
     public readonly enableDisplay!: pulumi.Output<boolean>;
+    /**
+     * List of the type and count of accelerator cards attached to the instance.
+     */
     public readonly guestAccelerators!: pulumi.Output<outputs.compute.InstanceFromTemplateGuestAccelerator[]>;
+    /**
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
+     * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
+     * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     */
     public readonly hostname!: pulumi.Output<string>;
+    /**
+     * The server-assigned unique identifier of this instance.
+     */
     public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    /**
+     * The unique fingerprint of the labels.
+     */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    /**
+     * A set of key/value label pairs assigned to the instance.
+     */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The machine type to create.
+     */
     public readonly machineType!: pulumi.Output<string>;
+    /**
+     * Metadata key/value pairs made available within the instance.
+     */
     public readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The unique fingerprint of the metadata.
+     */
     public /*out*/ readonly metadataFingerprint!: pulumi.Output<string>;
+    /**
+     * Metadata startup scripts made available within the instance.
+     */
     public readonly metadataStartupScript!: pulumi.Output<string>;
+    /**
+     * The minimum CPU platform specified for the VM instance.
+     */
     public readonly minCpuPlatform!: pulumi.Output<string>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The networks attached to the instance.
+     */
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceFromTemplateNetworkInterface[]>;
+    /**
+     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
+     * self_link nor project are provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
+     * instance to recreate. Currently a max of 1 resource policy is supported.
+     */
     public readonly resourcePolicies!: pulumi.Output<string>;
+    /**
+     * The scheduling strategy being used by the instance.
+     */
     public readonly scheduling!: pulumi.Output<outputs.compute.InstanceFromTemplateScheduling>;
+    /**
+     * The scratch disks attached to the instance.
+     */
     public readonly scratchDisks!: pulumi.Output<outputs.compute.InstanceFromTemplateScratchDisk[]>;
+    /**
+     * The URI of the created resource.
+     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The service account to attach to the instance.
+     */
     public readonly serviceAccount!: pulumi.Output<outputs.compute.InstanceFromTemplateServiceAccount>;
+    /**
+     * The shielded vm config being used by the instance.
+     */
     public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.InstanceFromTemplateShieldedInstanceConfig>;
     /**
      * Name or self link of an instance
      * template to create the instance based on.
      */
     public readonly sourceInstanceTemplate!: pulumi.Output<string>;
+    /**
+     * The list of tags attached to the instance.
+     */
     public readonly tags!: pulumi.Output<string[]>;
+    /**
+     * The unique fingerprint of the tags.
+     */
     public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
     /**
      * The zone that the machine should be created in. If not
@@ -221,45 +316,140 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceFromTemplate resources.
  */
 export interface InstanceFromTemplateState {
+    /**
+     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+     * stopping the instance without setting this field, the update will fail.
+     */
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
+    /**
+     * List of disks attached to the instance
+     */
     readonly attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateAttachedDisk>[]>;
+    /**
+     * The boot disk for the instance.
+     */
     readonly bootDisk?: pulumi.Input<inputs.compute.InstanceFromTemplateBootDisk>;
+    /**
+     * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
+     */
     readonly canIpForward?: pulumi.Input<boolean>;
+    /**
+     * The CPU platform used by this instance.
+     */
     readonly cpuPlatform?: pulumi.Input<string>;
+    /**
+     * Current status of the instance.
+     */
     readonly currentStatus?: pulumi.Input<string>;
+    /**
+     * Whether deletion protection is enabled on this instance.
+     */
     readonly deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * A brief description of the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Desired status of the instance. Either "RUNNING" or "TERMINATED".
+     */
     readonly desiredStatus?: pulumi.Input<string>;
+    /**
+     * Whether the instance has virtual displays enabled.
+     */
     readonly enableDisplay?: pulumi.Input<boolean>;
+    /**
+     * List of the type and count of accelerator cards attached to the instance.
+     */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateGuestAccelerator>[]>;
+    /**
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
+     * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
+     * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     */
     readonly hostname?: pulumi.Input<string>;
+    /**
+     * The server-assigned unique identifier of this instance.
+     */
     readonly instanceId?: pulumi.Input<string>;
+    /**
+     * The unique fingerprint of the labels.
+     */
     readonly labelFingerprint?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs assigned to the instance.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The machine type to create.
+     */
     readonly machineType?: pulumi.Input<string>;
+    /**
+     * Metadata key/value pairs made available within the instance.
+     */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The unique fingerprint of the metadata.
+     */
     readonly metadataFingerprint?: pulumi.Input<string>;
+    /**
+     * Metadata startup scripts made available within the instance.
+     */
     readonly metadataStartupScript?: pulumi.Input<string>;
+    /**
+     * The minimum CPU platform specified for the VM instance.
+     */
     readonly minCpuPlatform?: pulumi.Input<string>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The networks attached to the instance.
+     */
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterface>[]>;
+    /**
+     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
+     * self_link nor project are provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
+     * instance to recreate. Currently a max of 1 resource policy is supported.
+     */
     readonly resourcePolicies?: pulumi.Input<string>;
+    /**
+     * The scheduling strategy being used by the instance.
+     */
     readonly scheduling?: pulumi.Input<inputs.compute.InstanceFromTemplateScheduling>;
+    /**
+     * The scratch disks attached to the instance.
+     */
     readonly scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateScratchDisk>[]>;
+    /**
+     * The URI of the created resource.
+     */
     readonly selfLink?: pulumi.Input<string>;
+    /**
+     * The service account to attach to the instance.
+     */
     readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceFromTemplateServiceAccount>;
+    /**
+     * The shielded vm config being used by the instance.
+     */
     readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateShieldedInstanceConfig>;
     /**
      * Name or self link of an instance
      * template to create the instance based on.
      */
     readonly sourceInstanceTemplate?: pulumi.Input<string>;
+    /**
+     * The list of tags attached to the instance.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The unique fingerprint of the tags.
+     */
     readonly tagsFingerprint?: pulumi.Input<string>;
     /**
      * The zone that the machine should be created in. If not
@@ -272,38 +462,112 @@ export interface InstanceFromTemplateState {
  * The set of arguments for constructing a InstanceFromTemplate resource.
  */
 export interface InstanceFromTemplateArgs {
+    /**
+     * If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
+     * stopping the instance without setting this field, the update will fail.
+     */
     readonly allowStoppingForUpdate?: pulumi.Input<boolean>;
+    /**
+     * List of disks attached to the instance
+     */
     readonly attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateAttachedDisk>[]>;
+    /**
+     * The boot disk for the instance.
+     */
     readonly bootDisk?: pulumi.Input<inputs.compute.InstanceFromTemplateBootDisk>;
+    /**
+     * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
+     */
     readonly canIpForward?: pulumi.Input<boolean>;
+    /**
+     * Whether deletion protection is enabled on this instance.
+     */
     readonly deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * A brief description of the resource.
+     */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Desired status of the instance. Either "RUNNING" or "TERMINATED".
+     */
     readonly desiredStatus?: pulumi.Input<string>;
+    /**
+     * Whether the instance has virtual displays enabled.
+     */
     readonly enableDisplay?: pulumi.Input<boolean>;
+    /**
+     * List of the type and count of accelerator cards attached to the instance.
+     */
     readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateGuestAccelerator>[]>;
+    /**
+     * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
+     * labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
+     * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+     */
     readonly hostname?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs assigned to the instance.
+     */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The machine type to create.
+     */
     readonly machineType?: pulumi.Input<string>;
+    /**
+     * Metadata key/value pairs made available within the instance.
+     */
     readonly metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Metadata startup scripts made available within the instance.
+     */
     readonly metadataStartupScript?: pulumi.Input<string>;
+    /**
+     * The minimum CPU platform specified for the VM instance.
+     */
     readonly minCpuPlatform?: pulumi.Input<string>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The networks attached to the instance.
+     */
     readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterface>[]>;
+    /**
+     * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
+     * self_link nor project are provided, the provider project is used.
+     */
     readonly project?: pulumi.Input<string>;
+    /**
+     * A list of short names or self_links of resource policies to attach to the instance. Modifying this list will cause the
+     * instance to recreate. Currently a max of 1 resource policy is supported.
+     */
     readonly resourcePolicies?: pulumi.Input<string>;
+    /**
+     * The scheduling strategy being used by the instance.
+     */
     readonly scheduling?: pulumi.Input<inputs.compute.InstanceFromTemplateScheduling>;
+    /**
+     * The scratch disks attached to the instance.
+     */
     readonly scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateScratchDisk>[]>;
+    /**
+     * The service account to attach to the instance.
+     */
     readonly serviceAccount?: pulumi.Input<inputs.compute.InstanceFromTemplateServiceAccount>;
+    /**
+     * The shielded vm config being used by the instance.
+     */
     readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateShieldedInstanceConfig>;
     /**
      * Name or self link of an instance
      * template to create the instance based on.
      */
     readonly sourceInstanceTemplate: pulumi.Input<string>;
+    /**
+     * The list of tags attached to the instance.
+     */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The zone that the machine should be created in. If not

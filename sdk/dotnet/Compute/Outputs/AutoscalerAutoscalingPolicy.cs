@@ -53,6 +53,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// allowed.
         /// </summary>
         public readonly int MinReplicas;
+        /// <summary>
+        /// Defines operating mode for this policy.
+        /// </summary>
+        public readonly string? Mode;
+        public readonly Outputs.AutoscalerAutoscalingPolicyScaleDownControl? ScaleDownControl;
 
         [OutputConstructor]
         private AutoscalerAutoscalingPolicy(
@@ -66,7 +71,11 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.AutoscalerAutoscalingPolicyMetric> metrics,
 
-            int minReplicas)
+            int minReplicas,
+
+            string? mode,
+
+            Outputs.AutoscalerAutoscalingPolicyScaleDownControl? scaleDownControl)
         {
             CooldownPeriod = cooldownPeriod;
             CpuUtilization = cpuUtilization;
@@ -74,6 +83,8 @@ namespace Pulumi.Gcp.Compute.Outputs
             MaxReplicas = maxReplicas;
             Metrics = metrics;
             MinReplicas = minReplicas;
+            Mode = mode;
+            ScaleDownControl = scaleDownControl;
         }
     }
 }

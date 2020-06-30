@@ -87,7 +87,8 @@ type Instance struct {
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
 	// The CPU platform used by this instance.
-	CpuPlatform   pulumi.StringOutput `pulumi:"cpuPlatform"`
+	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
+	// Current status of the instance.
 	CurrentStatus pulumi.StringOutput `pulumi:"currentStatus"`
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -163,7 +164,7 @@ type Instance struct {
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 	ShieldedInstanceConfig InstanceShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
-	// A list of tags to attach to the instance.
+	// A list of network tags to attach to the instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
@@ -221,7 +222,8 @@ type instanceState struct {
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
 	// The CPU platform used by this instance.
-	CpuPlatform   *string `pulumi:"cpuPlatform"`
+	CpuPlatform *string `pulumi:"cpuPlatform"`
+	// Current status of the instance.
 	CurrentStatus *string `pulumi:"currentStatus"`
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -297,7 +299,7 @@ type instanceState struct {
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 	ShieldedInstanceConfig *InstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	// A list of tags to attach to the instance.
+	// A list of network tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
@@ -319,7 +321,8 @@ type InstanceState struct {
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
 	// The CPU platform used by this instance.
-	CpuPlatform   pulumi.StringPtrInput
+	CpuPlatform pulumi.StringPtrInput
+	// Current status of the instance.
 	CurrentStatus pulumi.StringPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -395,7 +398,7 @@ type InstanceState struct {
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 	ShieldedInstanceConfig InstanceShieldedInstanceConfigPtrInput
-	// A list of tags to attach to the instance.
+	// A list of network tags to attach to the instance.
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
@@ -486,7 +489,7 @@ type instanceArgs struct {
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 	ShieldedInstanceConfig *InstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	// A list of tags to attach to the instance.
+	// A list of network tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
 	// The zone that the machine should be created in.
 	Zone *string `pulumi:"zone"`
@@ -572,7 +575,7 @@ type InstanceArgs struct {
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
 	// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
 	ShieldedInstanceConfig InstanceShieldedInstanceConfigPtrInput
-	// A list of tags to attach to the instance.
+	// A list of network tags to attach to the instance.
 	Tags pulumi.StringArrayInput
 	// The zone that the machine should be created in.
 	Zone pulumi.StringPtrInput

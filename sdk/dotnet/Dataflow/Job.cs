@@ -117,6 +117,9 @@ namespace Pulumi.Gcp.Dataflow
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The region in which the created job should run.
+        /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
 
@@ -289,6 +292,9 @@ namespace Pulumi.Gcp.Dataflow
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The region in which the created job should run.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -416,6 +422,9 @@ namespace Pulumi.Gcp.Dataflow
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The region in which the created job should run.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

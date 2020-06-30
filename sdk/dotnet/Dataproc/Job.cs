@@ -37,9 +37,15 @@ namespace Pulumi.Gcp.Dataproc
         [Output("forceDelete")]
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
+        /// <summary>
+        /// The config of Hadoop job
+        /// </summary>
         [Output("hadoopConfig")]
         public Output<Outputs.JobHadoopConfig?> HadoopConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The config of hive job
+        /// </summary>
         [Output("hiveConfig")]
         public Output<Outputs.JobHiveConfig?> HiveConfig { get; private set; } = null!;
 
@@ -49,9 +55,15 @@ namespace Pulumi.Gcp.Dataproc
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// The config of pag job.
+        /// </summary>
         [Output("pigConfig")]
         public Output<Outputs.JobPigConfig?> PigConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The config of job placement.
+        /// </summary>
         [Output("placement")]
         public Output<Outputs.JobPlacement> Placement { get; private set; } = null!;
 
@@ -62,9 +74,15 @@ namespace Pulumi.Gcp.Dataproc
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The config of pySpark job.
+        /// </summary>
         [Output("pysparkConfig")]
         public Output<Outputs.JobPysparkConfig?> PysparkConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The reference of the job
+        /// </summary>
         [Output("reference")]
         public Output<Outputs.JobReference> Reference { get; private set; } = null!;
 
@@ -81,12 +99,21 @@ namespace Pulumi.Gcp.Dataproc
         [Output("scheduling")]
         public Output<Outputs.JobScheduling?> Scheduling { get; private set; } = null!;
 
+        /// <summary>
+        /// The config of the Spark job.
+        /// </summary>
         [Output("sparkConfig")]
         public Output<Outputs.JobSparkConfig?> SparkConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The config of SparkSql job
+        /// </summary>
         [Output("sparksqlConfig")]
         public Output<Outputs.JobSparksqlConfig?> SparksqlConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The status of the job.
+        /// </summary>
         [Output("status")]
         public Output<Outputs.JobStatus> Status { get; private set; } = null!;
 
@@ -144,9 +171,15 @@ namespace Pulumi.Gcp.Dataproc
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
 
+        /// <summary>
+        /// The config of Hadoop job
+        /// </summary>
         [Input("hadoopConfig")]
         public Input<Inputs.JobHadoopConfigArgs>? HadoopConfig { get; set; }
 
+        /// <summary>
+        /// The config of hive job
+        /// </summary>
         [Input("hiveConfig")]
         public Input<Inputs.JobHiveConfigArgs>? HiveConfig { get; set; }
 
@@ -162,9 +195,15 @@ namespace Pulumi.Gcp.Dataproc
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The config of pag job.
+        /// </summary>
         [Input("pigConfig")]
         public Input<Inputs.JobPigConfigArgs>? PigConfig { get; set; }
 
+        /// <summary>
+        /// The config of job placement.
+        /// </summary>
         [Input("placement", required: true)]
         public Input<Inputs.JobPlacementArgs> Placement { get; set; } = null!;
 
@@ -175,9 +214,15 @@ namespace Pulumi.Gcp.Dataproc
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The config of pySpark job.
+        /// </summary>
         [Input("pysparkConfig")]
         public Input<Inputs.JobPysparkConfigArgs>? PysparkConfig { get; set; }
 
+        /// <summary>
+        /// The reference of the job
+        /// </summary>
         [Input("reference")]
         public Input<Inputs.JobReferenceArgs>? Reference { get; set; }
 
@@ -194,9 +239,15 @@ namespace Pulumi.Gcp.Dataproc
         [Input("scheduling")]
         public Input<Inputs.JobSchedulingArgs>? Scheduling { get; set; }
 
+        /// <summary>
+        /// The config of the Spark job.
+        /// </summary>
         [Input("sparkConfig")]
         public Input<Inputs.JobSparkConfigArgs>? SparkConfig { get; set; }
 
+        /// <summary>
+        /// The config of SparkSql job
+        /// </summary>
         [Input("sparksqlConfig")]
         public Input<Inputs.JobSparksqlConfigArgs>? SparksqlConfig { get; set; }
 
@@ -227,9 +278,15 @@ namespace Pulumi.Gcp.Dataproc
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
 
+        /// <summary>
+        /// The config of Hadoop job
+        /// </summary>
         [Input("hadoopConfig")]
         public Input<Inputs.JobHadoopConfigGetArgs>? HadoopConfig { get; set; }
 
+        /// <summary>
+        /// The config of hive job
+        /// </summary>
         [Input("hiveConfig")]
         public Input<Inputs.JobHiveConfigGetArgs>? HiveConfig { get; set; }
 
@@ -245,9 +302,15 @@ namespace Pulumi.Gcp.Dataproc
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The config of pag job.
+        /// </summary>
         [Input("pigConfig")]
         public Input<Inputs.JobPigConfigGetArgs>? PigConfig { get; set; }
 
+        /// <summary>
+        /// The config of job placement.
+        /// </summary>
         [Input("placement")]
         public Input<Inputs.JobPlacementGetArgs>? Placement { get; set; }
 
@@ -258,9 +321,15 @@ namespace Pulumi.Gcp.Dataproc
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The config of pySpark job.
+        /// </summary>
         [Input("pysparkConfig")]
         public Input<Inputs.JobPysparkConfigGetArgs>? PysparkConfig { get; set; }
 
+        /// <summary>
+        /// The reference of the job
+        /// </summary>
         [Input("reference")]
         public Input<Inputs.JobReferenceGetArgs>? Reference { get; set; }
 
@@ -277,12 +346,21 @@ namespace Pulumi.Gcp.Dataproc
         [Input("scheduling")]
         public Input<Inputs.JobSchedulingGetArgs>? Scheduling { get; set; }
 
+        /// <summary>
+        /// The config of the Spark job.
+        /// </summary>
         [Input("sparkConfig")]
         public Input<Inputs.JobSparkConfigGetArgs>? SparkConfig { get; set; }
 
+        /// <summary>
+        /// The config of SparkSql job
+        /// </summary>
         [Input("sparksqlConfig")]
         public Input<Inputs.JobSparksqlConfigGetArgs>? SparksqlConfig { get; set; }
 
+        /// <summary>
+        /// The status of the job.
+        /// </summary>
         [Input("status")]
         public Input<Inputs.JobStatusGetArgs>? Status { get; set; }
 

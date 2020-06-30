@@ -66,6 +66,12 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> CodeBucket { get; private set; } = null!;
 
         /// <summary>
+        /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+        /// </summary>
+        [Output("databaseType")]
+        public Output<string> DatabaseType { get; private set; } = null!;
+
+        /// <summary>
         /// The GCS bucket content is being stored in for this app.
         /// </summary>
         [Output("defaultBucket")]
@@ -181,6 +187,12 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? AuthDomain { get; set; }
 
         /// <summary>
+        /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+        /// </summary>
+        [Input("databaseType")]
+        public Input<string>? DatabaseType { get; set; }
+
+        /// <summary>
         /// A block of optional settings to configure specific App Engine features:
         /// </summary>
         [Input("featureSettings")]
@@ -237,6 +249,12 @@ namespace Pulumi.Gcp.AppEngine
         /// </summary>
         [Input("codeBucket")]
         public Input<string>? CodeBucket { get; set; }
+
+        /// <summary>
+        /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+        /// </summary>
+        [Input("databaseType")]
+        public Input<string>? DatabaseType { get; set; }
 
         /// <summary>
         /// The GCS bucket content is being stored in for this app.

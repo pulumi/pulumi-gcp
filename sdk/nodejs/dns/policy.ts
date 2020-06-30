@@ -40,10 +40,10 @@ import * as utilities from "../utilities";
  *     },
  *     networks: [
  *         {
- *             networkUrl: network_1.selfLink,
+ *             networkUrl: network_1.id,
  *         },
  *         {
- *             networkUrl: network_2.selfLink,
+ *             networkUrl: network_2.id,
  *         },
  *     ],
  * });

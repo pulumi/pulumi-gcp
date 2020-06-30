@@ -3382,6 +3382,11 @@ export namespace compute {
          * allowed.
          */
         minReplicas: number;
+        /**
+         * Defines operating mode for this policy.
+         */
+        mode?: string;
+        scaleDownControl: outputs.compute.AutoscalarAutoscalingPolicyScaleDownControl;
     }
 
     export interface AutoscalarAutoscalingPolicyCpuUtilization {
@@ -3469,6 +3474,31 @@ export namespace compute {
         type?: string;
     }
 
+    export interface AutoscalarAutoscalingPolicyScaleDownControl {
+        /**
+         * A nested object resource  Structure is documented below.
+         */
+        maxScaledDownReplicas?: outputs.compute.AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas;
+        /**
+         * How long back autoscaling should look when computing recommendations
+         * to include directives regarding slower scale down, as described above.
+         */
+        timeWindowSec?: number;
+    }
+
+    export interface AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
+        /**
+         * Specifies a fixed number of VM instances. This must be a positive
+         * integer.
+         */
+        fixed?: number;
+        /**
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
+         */
+        percent?: number;
+    }
+
     export interface AutoscalerAutoscalingPolicy {
         /**
          * The number of seconds that the autoscaler should wait before it
@@ -3510,6 +3540,11 @@ export namespace compute {
          * allowed.
          */
         minReplicas: number;
+        /**
+         * Defines operating mode for this policy.
+         */
+        mode?: string;
+        scaleDownControl: outputs.compute.AutoscalerAutoscalingPolicyScaleDownControl;
     }
 
     export interface AutoscalerAutoscalingPolicyCpuUtilization {
@@ -3595,6 +3630,31 @@ export namespace compute {
          * Stackdriver Monitoring metric.
          */
         type?: string;
+    }
+
+    export interface AutoscalerAutoscalingPolicyScaleDownControl {
+        /**
+         * A nested object resource  Structure is documented below.
+         */
+        maxScaledDownReplicas?: outputs.compute.AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas;
+        /**
+         * How long back autoscaling should look when computing recommendations
+         * to include directives regarding slower scale down, as described above.
+         */
+        timeWindowSec?: number;
+    }
+
+    export interface AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
+        /**
+         * Specifies a fixed number of VM instances. This must be a positive
+         * integer.
+         */
+        fixed?: number;
+        /**
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
+         */
+        percent?: number;
     }
 
     export interface BackendBucketCdnPolicy {
@@ -12763,8 +12823,8 @@ export namespace dns {
 
     export interface PolicyNetwork {
         /**
-         * The fully qualified URL of the VPC network to bind to.
-         * This should be formatted like
+         * The id or fully qualified URL of the VPC network to forward queries to.
+         * This should be formatted like `projects/{project}/global/networks/{network}` or
          * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
          */
         networkUrl: string;
@@ -15029,6 +15089,75 @@ export namespace networkmanagement {
         networkType?: string;
         port?: number;
         projectId?: string;
+    }
+}
+
+export namespace notebooks {
+    export interface EnvironmentContainerImage {
+        /**
+         * The path to the container image repository.
+         * For example: gcr.io/{project_id}/{imageName}
+         */
+        repository: string;
+        /**
+         * The tag of the container image. If not specified, this defaults to the latest tag.
+         */
+        tag?: string;
+    }
+
+    export interface EnvironmentVmImage {
+        /**
+         * Use this VM image family to find the image; the newest image in this family will be used.
+         */
+        imageFamily?: string;
+        /**
+         * Use VM image name to find the image.
+         */
+        imageName?: string;
+        /**
+         * The name of the Google Cloud project that this VM image belongs to.
+         * Format: projects/{project_id}
+         */
+        project: string;
+    }
+
+    export interface InstanceAcceleratorConfig {
+        /**
+         * Count of cores of this accelerator.
+         */
+        coreCount: number;
+        /**
+         * Type of this accelerator.
+         */
+        type: string;
+    }
+
+    export interface InstanceContainerImage {
+        /**
+         * The path to the container image repository.
+         * For example: gcr.io/{project_id}/{imageName}
+         */
+        repository: string;
+        /**
+         * The tag of the container image. If not specified, this defaults to the latest tag.
+         */
+        tag?: string;
+    }
+
+    export interface InstanceVmImage {
+        /**
+         * Use this VM image family to find the image; the newest image in this family will be used.
+         */
+        imageFamily?: string;
+        /**
+         * Use VM image name to find the image.
+         */
+        imageName?: string;
+        /**
+         * The name of the Google Cloud project that this VM image belongs to.
+         * Format: projects/{project_id}
+         */
+        project: string;
     }
 }
 

@@ -60,6 +60,8 @@ type Application struct {
 	AuthDomain pulumi.StringOutput `pulumi:"authDomain"`
 	// The GCS bucket code is being stored in for this app.
 	CodeBucket pulumi.StringOutput `pulumi:"codeBucket"`
+	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+	DatabaseType pulumi.StringOutput `pulumi:"databaseType"`
 	// The GCS bucket content is being stored in for this app.
 	DefaultBucket pulumi.StringOutput `pulumi:"defaultBucket"`
 	// The default hostname for this app.
@@ -122,6 +124,8 @@ type applicationState struct {
 	AuthDomain *string `pulumi:"authDomain"`
 	// The GCS bucket code is being stored in for this app.
 	CodeBucket *string `pulumi:"codeBucket"`
+	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+	DatabaseType *string `pulumi:"databaseType"`
 	// The GCS bucket content is being stored in for this app.
 	DefaultBucket *string `pulumi:"defaultBucket"`
 	// The default hostname for this app.
@@ -154,6 +158,8 @@ type ApplicationState struct {
 	AuthDomain pulumi.StringPtrInput
 	// The GCS bucket code is being stored in for this app.
 	CodeBucket pulumi.StringPtrInput
+	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+	DatabaseType pulumi.StringPtrInput
 	// The GCS bucket content is being stored in for this app.
 	DefaultBucket pulumi.StringPtrInput
 	// The default hostname for this app.
@@ -186,6 +192,8 @@ func (ApplicationState) ElementType() reflect.Type {
 type applicationArgs struct {
 	// The domain to authenticate users with when using App Engine's User API.
 	AuthDomain *string `pulumi:"authDomain"`
+	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+	DatabaseType *string `pulumi:"databaseType"`
 	// A block of optional settings to configure specific App Engine features:
 	FeatureSettings *ApplicationFeatureSettings `pulumi:"featureSettings"`
 	// Settings for enabling Cloud Identity Aware Proxy
@@ -205,6 +213,8 @@ type applicationArgs struct {
 type ApplicationArgs struct {
 	// The domain to authenticate users with when using App Engine's User API.
 	AuthDomain pulumi.StringPtrInput
+	// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+	DatabaseType pulumi.StringPtrInput
 	// A block of optional settings to configure specific App Engine features:
 	FeatureSettings ApplicationFeatureSettingsPtrInput
 	// Settings for enabling Cloud Identity Aware Proxy

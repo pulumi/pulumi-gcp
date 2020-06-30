@@ -70,6 +70,15 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("minReplicas", required: true)]
         public Input<int> MinReplicas { get; set; } = null!;
 
+        /// <summary>
+        /// Defines operating mode for this policy.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        [Input("scaleDownControl")]
+        public Input<Inputs.AutoscalarAutoscalingPolicyScaleDownControlGetArgs>? ScaleDownControl { get; set; }
+
         public AutoscalarAutoscalingPolicyGetArgs()
         {
         }

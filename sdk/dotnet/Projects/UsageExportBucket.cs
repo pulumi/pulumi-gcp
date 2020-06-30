@@ -67,12 +67,21 @@ namespace Pulumi.Gcp.Projects
     /// </summary>
     public partial class UsageExportBucket : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The bucket to store reports in.
+        /// </summary>
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
 
+        /// <summary>
+        /// A prefix for the reports, for instance, the project name.
+        /// </summary>
         [Output("prefix")]
         public Output<string?> Prefix { get; private set; } = null!;
 
+        /// <summary>
+        /// The project to set the export bucket on. If it is not provided, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -122,12 +131,21 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class UsageExportBucketArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The bucket to store reports in.
+        /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
+        /// <summary>
+        /// A prefix for the reports, for instance, the project name.
+        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
+        /// <summary>
+        /// The project to set the export bucket on. If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -138,12 +156,21 @@ namespace Pulumi.Gcp.Projects
 
     public sealed class UsageExportBucketState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The bucket to store reports in.
+        /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
+        /// <summary>
+        /// A prefix for the reports, for instance, the project name.
+        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
+        /// <summary>
+        /// The project to set the export bucket on. If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

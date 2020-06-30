@@ -170,6 +170,7 @@ export class Address extends pulumi.CustomResource {
     /**
      * The purpose of this resource, which can be one of the following values:
      * - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+     * - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
      * This should only be set when using an Internal address.
      */
     public readonly purpose!: pulumi.Output<string>;
@@ -301,6 +302,7 @@ export interface AddressState {
     /**
      * The purpose of this resource, which can be one of the following values:
      * - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+     * - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
      * This should only be set when using an Internal address.
      */
     readonly purpose?: pulumi.Input<string>;
@@ -371,6 +373,7 @@ export interface AddressArgs {
     /**
      * The purpose of this resource, which can be one of the following values:
      * - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
+     * - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
      * This should only be set when using an Internal address.
      */
     readonly purpose?: pulumi.Input<string>;

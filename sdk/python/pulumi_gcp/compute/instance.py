@@ -87,6 +87,9 @@ class Instance(pulumi.CustomResource):
     The CPU platform used by this instance.
     """
     current_status: pulumi.Output[str]
+    """
+    Current status of the instance.
+    """
     deletion_protection: pulumi.Output[bool]
     """
     Enable deletion protection on this instance. Defaults to false.
@@ -288,7 +291,7 @@ class Instance(pulumi.CustomResource):
     """
     tags: pulumi.Output[list]
     """
-    A list of tags to attach to the instance.
+    A list of network tags to attach to the instance.
     """
     tags_fingerprint: pulumi.Output[str]
     """
@@ -400,7 +403,7 @@ class Instance(pulumi.CustomResource):
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[dict] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-        :param pulumi.Input[list] tags: A list of tags to attach to the instance.
+        :param pulumi.Input[list] tags: A list of network tags to attach to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in.
 
         The **attached_disks** object supports the following:
@@ -628,6 +631,7 @@ class Instance(pulumi.CustomResource):
                packets with non-matching source or destination IPs.
                This defaults to false.
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
+        :param pulumi.Input[str] current_status: Current status of the instance.
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
@@ -679,7 +683,7 @@ class Instance(pulumi.CustomResource):
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[dict] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-        :param pulumi.Input[list] tags: A list of tags to attach to the instance.
+        :param pulumi.Input[list] tags: A list of network tags to attach to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in.
 

@@ -26,20 +26,86 @@ class Job(pulumi.CustomResource):
     job is first cancelled before issuing the delete.
     """
     hadoop_config: pulumi.Output[dict]
+    """
+    The config of Hadoop job
+
+      * `archiveUris` (`list`) - HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+      * `args` (`list`) - The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+      * `fileUris` (`list`) - HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+      * `jarFileUris` (`list`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
+      * `loggingConfig` (`dict`)
+        * `driverLogLevels` (`dict`)
+
+      * `mainClass` (`str`) - The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+      * `mainJarFileUri` (`str`) - The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+      * `properties` (`dict`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+    """
     hive_config: pulumi.Output[dict]
+    """
+    The config of hive job
+
+      * `continueOnFailure` (`bool`) - Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+      * `jarFileUris` (`list`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
+      * `properties` (`dict`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+      * `queryFileUri` (`str`) - The HCFS URI of the script that contains SQL queries.
+        Conflicts with `query_list`
+      * `queryLists` (`list`) - The list of SQL queries or statements to execute as part of the job.
+        Conflicts with `query_file_uri`
+      * `scriptVariables` (`dict`) - Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+    """
     labels: pulumi.Output[dict]
     """
     The list of labels (key/value pairs) to add to the job.
     """
     pig_config: pulumi.Output[dict]
+    """
+    The config of pag job.
+
+      * `continueOnFailure` (`bool`) - Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+      * `jarFileUris` (`list`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
+      * `loggingConfig` (`dict`)
+        * `driverLogLevels` (`dict`)
+
+      * `properties` (`dict`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+      * `queryFileUri` (`str`) - The HCFS URI of the script that contains SQL queries.
+        Conflicts with `query_list`
+      * `queryLists` (`list`) - The list of SQL queries or statements to execute as part of the job.
+        Conflicts with `query_file_uri`
+      * `scriptVariables` (`dict`) - Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+    """
     placement: pulumi.Output[dict]
+    """
+    The config of job placement.
+
+      * `clusterName` (`str`)
+      * `clusterUuid` (`str`)
+    """
     project: pulumi.Output[str]
     """
     The project in which the `cluster` can be found and jobs
     subsequently run against. If it is not provided, the provider project is used.
     """
     pyspark_config: pulumi.Output[dict]
+    """
+    The config of pySpark job.
+
+      * `archiveUris` (`list`) - HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+      * `args` (`list`) - The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+      * `fileUris` (`list`) - HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+      * `jarFileUris` (`list`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
+      * `loggingConfig` (`dict`)
+        * `driverLogLevels` (`dict`)
+
+      * `mainPythonFileUri` (`str`) - The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+      * `properties` (`dict`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+      * `pythonFileUris` (`list`) - HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+    """
     reference: pulumi.Output[dict]
+    """
+    The reference of the job
+
+      * `job_id` (`str`)
+    """
     region: pulumi.Output[str]
     """
     The Cloud Dataproc region. This essentially determines which clusters are available
@@ -52,8 +118,44 @@ class Job(pulumi.CustomResource):
       * `maxFailuresPerHour` (`float`)
     """
     spark_config: pulumi.Output[dict]
+    """
+    The config of the Spark job.
+
+      * `archiveUris` (`list`) - HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
+      * `args` (`list`) - The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+      * `fileUris` (`list`) - HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+      * `jarFileUris` (`list`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
+      * `loggingConfig` (`dict`)
+        * `driverLogLevels` (`dict`)
+
+      * `mainClass` (`str`) - The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+      * `mainJarFileUri` (`str`) - The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+      * `properties` (`dict`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+    """
     sparksql_config: pulumi.Output[dict]
+    """
+    The config of SparkSql job
+
+      * `jarFileUris` (`list`) - HCFS URIs of jar files to be added to the Spark CLASSPATH.
+      * `loggingConfig` (`dict`)
+        * `driverLogLevels` (`dict`)
+
+      * `properties` (`dict`) - A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
+      * `queryFileUri` (`str`) - The HCFS URI of the script that contains SQL queries.
+        Conflicts with `query_list`
+      * `queryLists` (`list`) - The list of SQL queries or statements to execute as part of the job.
+        Conflicts with `query_file_uri`
+      * `scriptVariables` (`dict`) - Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
+    """
     status: pulumi.Output[dict]
+    """
+    The status of the job.
+
+      * `details` (`str`)
+      * `state` (`str`)
+      * `stateStartTime` (`str`)
+      * `substate` (`str`)
+    """
     def __init__(__self__, resource_name, opts=None, force_delete=None, hadoop_config=None, hive_config=None, labels=None, pig_config=None, placement=None, project=None, pyspark_config=None, reference=None, region=None, scheduling=None, spark_config=None, sparksql_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a job resource within a Dataproc cluster within GCE. For more information see
@@ -66,12 +168,20 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
+        :param pulumi.Input[dict] hadoop_config: The config of Hadoop job
+        :param pulumi.Input[dict] hive_config: The config of hive job
         :param pulumi.Input[dict] labels: The list of labels (key/value pairs) to add to the job.
+        :param pulumi.Input[dict] pig_config: The config of pag job.
+        :param pulumi.Input[dict] placement: The config of job placement.
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] pyspark_config: The config of pySpark job.
+        :param pulumi.Input[dict] reference: The reference of the job
         :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
         :param pulumi.Input[dict] scheduling: Optional. Job scheduling configuration.
+        :param pulumi.Input[dict] spark_config: The config of the Spark job.
+        :param pulumi.Input[dict] sparksql_config: The config of SparkSql job
 
         The **hadoop_config** object supports the following:
 
@@ -218,12 +328,21 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
+        :param pulumi.Input[dict] hadoop_config: The config of Hadoop job
+        :param pulumi.Input[dict] hive_config: The config of hive job
         :param pulumi.Input[dict] labels: The list of labels (key/value pairs) to add to the job.
+        :param pulumi.Input[dict] pig_config: The config of pag job.
+        :param pulumi.Input[dict] placement: The config of job placement.
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
                subsequently run against. If it is not provided, the provider project is used.
+        :param pulumi.Input[dict] pyspark_config: The config of pySpark job.
+        :param pulumi.Input[dict] reference: The reference of the job
         :param pulumi.Input[str] region: The Cloud Dataproc region. This essentially determines which clusters are available
                for this job to be submitted to. If not specified, defaults to `global`.
         :param pulumi.Input[dict] scheduling: Optional. Job scheduling configuration.
+        :param pulumi.Input[dict] spark_config: The config of the Spark job.
+        :param pulumi.Input[dict] sparksql_config: The config of SparkSql job
+        :param pulumi.Input[dict] status: The status of the job.
 
         The **hadoop_config** object supports the following:
 

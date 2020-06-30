@@ -50,6 +50,7 @@ _submodules = [
     'ml',
     'monitoring',
     'networkmanagement',
+    'notebooks',
     'organizations',
     'oslogin',
     'projects',
