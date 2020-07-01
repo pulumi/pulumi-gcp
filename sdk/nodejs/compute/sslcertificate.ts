@@ -19,69 +19,6 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
- * ### Ssl Certificate Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
- *
- * const _default = new gcp.compute.SSLCertificate("default", {
- *     namePrefix: "my-certificate-",
- *     description: "a description",
- *     privateKey: fs.readFileSync("path/to/private.key"),
- *     certificate: fs.readFileSync("path/to/certificate.crt"),
- * });
- * ```
- * ### Ssl Certificate Target Https Proxies
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * from "fs";
- *
- * // Using with Target HTTPS Proxies
- * //
- * // SSL certificates cannot be updated after creation. In order to apply
- * // the specified configuration, the provider will destroy the existing
- * // resource and create a replacement. Example:
- * const defaultSSLCertificate = new gcp.compute.SSLCertificate("defaultSSLCertificate", {
- *     namePrefix: "my-certificate-",
- *     privateKey: fs.readFileSync("path/to/private.key"),
- *     certificate: fs.readFileSync("path/to/certificate.crt"),
- * });
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
- *     requestPath: "/",
- *     checkIntervalSec: 1,
- *     timeoutSec: 1,
- * });
- * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
- *     portName: "http",
- *     protocol: "HTTP",
- *     timeoutSec: 10,
- *     healthChecks: [defaultHttpHealthCheck.id],
- * });
- * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
- *     description: "a description",
- *     defaultService: defaultBackendService.id,
- *     host_rule: [{
- *         hosts: ["mysite.com"],
- *         pathMatcher: "allpaths",
- *     }],
- *     path_matcher: [{
- *         name: "allpaths",
- *         defaultService: defaultBackendService.id,
- *         path_rule: [{
- *             paths: ["/*"],
- *             service: defaultBackendService.id,
- *         }],
- *     }],
- * });
- * const defaultTargetHttpsProxy = new gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy", {
- *     urlMap: defaultURLMap.id,
- *     sslCertificates: [defaultSSLCertificate.id],
- * });
- * ```
  */
 export class SSLCertificate extends pulumi.CustomResource {
     /**

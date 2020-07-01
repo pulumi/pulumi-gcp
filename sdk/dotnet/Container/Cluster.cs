@@ -19,55 +19,6 @@ namespace Pulumi.Gcp.Container
     /// plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
-    /// ### With The Default Node Pool
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
-    ///         {
-    ///             InitialNodeCount = 3,
-    ///             Location = "us-central1-a",
-    ///             MasterAuth = new Gcp.Container.Inputs.ClusterMasterAuthArgs
-    ///             {
-    ///                 ClientCertificateConfig = new Gcp.Container.Inputs.ClusterMasterAuthClientCertificateConfigArgs
-    ///                 {
-    ///                     IssueClientCertificate = false,
-    ///                 },
-    ///                 Password = "",
-    ///                 Username = "",
-    ///             },
-    ///             NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
-    ///             {
-    ///                 Labels = 
-    ///                 {
-    ///                     { "foo", "bar" },
-    ///                 },
-    ///                 Metadata = 
-    ///                 {
-    ///                     { "disable-legacy-endpoints", "true" },
-    ///                 },
-    ///                 OauthScopes = 
-    ///                 {
-    ///                     "https://www.googleapis.com/auth/logging.write",
-    ///                     "https://www.googleapis.com/auth/monitoring",
-    ///                 },
-    ///                 Tags = 
-    ///                 {
-    ///                     "foo",
-    ///                     "bar",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

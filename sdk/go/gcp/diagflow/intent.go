@@ -20,36 +20,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
 // ## Example Usage
-// ### Dialogflow Intent Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/diagflow"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
-// 			DisplayName:         pulumi.String("example_agent"),
-// 			DefaultLanguageCode: pulumi.String("en"),
-// 			TimeZone:            pulumi.String("America/New_York"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = diagflow.NewIntent(ctx, "basicIntent", &diagflow.IntentArgs{
-// 			DisplayName: pulumi.String("basic-intent"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Intent struct {
 	pulumi.CustomResourceState
 

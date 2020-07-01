@@ -18,17 +18,6 @@ import * as utilities from "../utilities";
  *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
  *
  * ## Example Usage
- * ### Access Context Manager Access Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
- *     parent: "organizations/123456789",
- *     title: "my policy",
- * });
- * ```
  */
 export class AccessPolicy extends pulumi.CustomResource {
     /**

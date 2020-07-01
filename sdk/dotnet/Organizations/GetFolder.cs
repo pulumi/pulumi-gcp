@@ -13,34 +13,6 @@ namespace Pulumi.Gcp.Organizations
     {
         /// <summary>
         /// Use this data source to get information about a Google Cloud Folder.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myFolder1 = Output.Create(Gcp.Organizations.GetFolder.InvokeAsync(new Gcp.Organizations.GetFolderArgs
-        ///         {
-        ///             Folder = "folders/12345",
-        ///             LookupOrganization = true,
-        ///         }));
-        ///         var myFolder2 = Output.Create(Gcp.Organizations.GetFolder.InvokeAsync(new Gcp.Organizations.GetFolderArgs
-        ///         {
-        ///             Folder = "folders/23456",
-        ///         }));
-        ///         this.MyFolder1Organization = myFolder1.Apply(myFolder1 =&gt; myFolder1.Organization);
-        ///         this.MyFolder2Parent = myFolder2.Apply(myFolder2 =&gt; myFolder2.Parent);
-        ///     }
-        /// 
-        ///     [Output("myFolder1Organization")]
-        ///     public Output&lt;string&gt; MyFolder1Organization { get; set; }
-        ///     [Output("myFolder2Parent")]
-        ///     public Output&lt;string&gt; MyFolder2Parent { get; set; }
-        /// }
-        /// ```
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("gcp:organizations/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithVersion());

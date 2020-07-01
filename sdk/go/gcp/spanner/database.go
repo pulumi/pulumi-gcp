@@ -19,39 +19,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/spanner/)
 //
 // ## Example Usage
-// ### Spanner Database Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/spanner"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		main, err := spanner.NewInstance(ctx, "main", &spanner.InstanceArgs{
-// 			Config:      pulumi.String("regional-europe-west1"),
-// 			DisplayName: pulumi.String("main-instance"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = spanner.NewDatabase(ctx, "database", &spanner.DatabaseArgs{
-// 			Instance: main.Name,
-// 			Ddls: pulumi.StringArray{
-// 				pulumi.String("CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)"),
-// 				pulumi.String("CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Database struct {
 	pulumi.CustomResourceState
 

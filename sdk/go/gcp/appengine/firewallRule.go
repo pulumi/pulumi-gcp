@@ -20,46 +20,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
 //
 // ## Example Usage
-// ### App Engine Firewall Rule Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/appengine"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("ae-project"),
-// 			OrgId:     pulumi.String("123456789"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		app, err := appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
-// 			Project:    myProject.ProjectId,
-// 			LocationId: pulumi.String("us-central"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = appengine.NewFirewallRule(ctx, "rule", &appengine.FirewallRuleArgs{
-// 			Project:     app.Project,
-// 			Priority:    pulumi.Int(1000),
-// 			Action:      pulumi.String("ALLOW"),
-// 			SourceRange: pulumi.String("*"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

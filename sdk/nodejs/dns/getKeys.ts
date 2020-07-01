@@ -10,25 +10,6 @@ import * as utilities from "../utilities";
  * Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
  * [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
  * and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = new gcp.dns.ManagedZone("foo", {
- *     dnsName: "foo.bar.",
- *     dnssec_config: {
- *         state: "on",
- *         nonExistence: "nsec3",
- *     },
- * });
- * const fooDnsKeys = foo.id.apply(id => gcp.dns.getKeys({
- *     managedZone: id,
- * }));
- * export const fooDnsDsRecord = fooDnsKeys.keySigningKeys[0].dsRecord;
- * ```
  */
 export function getKeys(args: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     if (!opts) {

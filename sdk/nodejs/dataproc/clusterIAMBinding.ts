@@ -16,52 +16,6 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIAMBinding` and `gcp.dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIAMPolicy` replaces the entire policy.
  *
  * > **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
- *
- * ## google\_pubsub\_subscription\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     binding: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const editor = new gcp.dataproc.ClusterIAMPolicy("editor", {
- *     project: "your-project",
- *     region: "your-region",
- *     cluster: "your-dataproc-cluster",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## google\_pubsub\_subscription\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const editor = new gcp.dataproc.ClusterIAMBinding("editor", {
- *     cluster: "your-dataproc-cluster",
- *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
- * });
- * ```
- *
- * ## google\_pubsub\_subscription\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const editor = new gcp.dataproc.ClusterIAMMember("editor", {
- *     cluster: "your-dataproc-cluster",
- *     member: "user:jane@example.com",
- *     role: "roles/editor",
- * });
- * ```
  */
 export class ClusterIAMBinding extends pulumi.CustomResource {
     /**

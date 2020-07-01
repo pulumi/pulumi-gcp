@@ -30,30 +30,6 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
- * ### Snapshot Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const debian = gcp.compute.getImage({
- *     family: "debian-9",
- *     project: "debian-cloud",
- * });
- * const persistent = new gcp.compute.Disk("persistent", {
- *     image: debian.then(debian => debian.selfLink),
- *     size: 10,
- *     type: "pd-ssd",
- *     zone: "us-central1-a",
- * });
- * const snapshot = new gcp.compute.Snapshot("snapshot", {
- *     sourceDisk: persistent.name,
- *     zone: "us-central1-a",
- *     labels: {
- *         my_label: "value",
- *     },
- * });
- * ```
  */
 export class Snapshot extends pulumi.CustomResource {
     /**

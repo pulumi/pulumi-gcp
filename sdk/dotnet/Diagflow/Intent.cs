@@ -20,30 +20,6 @@ namespace Pulumi.Gcp.Diagflow
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
     /// 
     /// ## Example Usage
-    /// ### Dialogflow Intent Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var basicAgent = new Gcp.Diagflow.Agent("basicAgent", new Gcp.Diagflow.AgentArgs
-    ///         {
-    ///             DisplayName = "example_agent",
-    ///             DefaultLanguageCode = "en",
-    ///             TimeZone = "America/New_York",
-    ///         });
-    ///         var basicIntent = new Gcp.Diagflow.Intent("basicIntent", new Gcp.Diagflow.IntentArgs
-    ///         {
-    ///             DisplayName = "basic-intent",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Intent : Pulumi.CustomResource
     {

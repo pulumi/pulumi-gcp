@@ -17,43 +17,6 @@ import (
 // * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 //
 // ## Example Usage
-// ### Secret Config Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/secretmanager"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
-// 			Labels: pulumi.Map{
-// 				"label": pulumi.String("my-label"),
-// 			},
-// 			Replication: &secretmanager.SecretReplicationArgs{
-// 				UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
-// 					Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
-// 						&secretmanager.SecretReplicationUserManagedReplicaArgs{
-// 							Location: pulumi.String("us-central1"),
-// 						},
-// 						&secretmanager.SecretReplicationUserManagedReplicaArgs{
-// 							Location: pulumi.String("us-east1"),
-// 						},
-// 					},
-// 				},
-// 			},
-// 			SecretId: pulumi.String("secret"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Secret struct {
 	pulumi.CustomResourceState
 

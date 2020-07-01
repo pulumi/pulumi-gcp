@@ -21,36 +21,6 @@ namespace Pulumi.Gcp.Organizations
     ///  after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
     ///  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
     ///  by the provider, and new roles cannot share that name.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// This snippet creates a customized IAM organization role.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var my_custom_role = new Gcp.Organizations.IAMCustomRole("my-custom-role", new Gcp.Organizations.IAMCustomRoleArgs
-    ///         {
-    ///             Description = "A description",
-    ///             OrgId = "123456789",
-    ///             Permissions = 
-    ///             {
-    ///                 "iam.roles.list",
-    ///                 "iam.roles.create",
-    ///                 "iam.roles.delete",
-    ///             },
-    ///             RoleId = "myCustomRole",
-    ///             Title = "My Custom Role",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class IAMCustomRole : Pulumi.CustomResource
     {

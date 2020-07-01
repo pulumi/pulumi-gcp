@@ -24,40 +24,6 @@ namespace Pulumi.Gcp.Organizations
     /// &gt; **Note:** This resource __must not__ be used in conjunction with
     ///    `gcp.organizations.IAMMember` or `gcp.organizations.IAMBinding`
     ///    or they will fight over what your policy should be.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
-    ///         {
-    ///             Binding = 
-    ///             {
-    ///                 
-    ///                 {
-    ///                     { "role", "roles/editor" },
-    ///                     { "members", 
-    ///                     {
-    ///                         "user:jane@example.com",
-    ///                     } },
-    ///                 },
-    ///             },
-    ///         }));
-    ///         var policy = new Gcp.Organizations.IAMPolicy("policy", new Gcp.Organizations.IAMPolicyArgs
-    ///         {
-    ///             OrgId = "123456789",
-    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class IAMPolicy : Pulumi.CustomResource
     {

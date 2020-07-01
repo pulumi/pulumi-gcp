@@ -17,19 +17,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
  *
  * ## Example Usage
- * ### Dialogflow Intent Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basicAgent = new gcp.diagflow.Agent("basicAgent", {
- *     displayName: "example_agent",
- *     defaultLanguageCode: "en",
- *     timeZone: "America/New_York",
- * });
- * const basicIntent = new gcp.diagflow.Intent("basicIntent", {displayName: "basic-intent"});
- * ```
  */
 export class Intent extends pulumi.CustomResource {
     /**

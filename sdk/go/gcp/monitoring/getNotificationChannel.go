@@ -20,55 +20,6 @@ import (
 //     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
-// ### Notification Channel Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "Test Notification Channel"
-// 		basic, err := monitoring.LookupNotificationChannel(ctx, &monitoring.LookupNotificationChannelArgs{
-// 			DisplayName: &opt0,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
-// 			DisplayName: pulumi.String("My Alert Policy"),
-// 			NotificationChannels: pulumi.StringArray{
-// 				pulumi.String(basic.Name),
-// 			},
-// 			Combiner: pulumi.String("OR"),
-// 			Conditions: monitoring.AlertPolicyConditionArray{
-// 				&monitoring.AlertPolicyConditionArgs{
-// 					DisplayName: pulumi.String("test condition"),
-// 					Condition_threshold: pulumi.Map{
-// 						"filter":     pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
-// 						"duration":   pulumi.String("60s"),
-// 						"comparison": pulumi.String("COMPARISON_GT"),
-// 						"aggregations": pulumi.MapArray{
-// 							pulumi.Map{
-// 								"alignmentPeriod":  pulumi.String("60s"),
-// 								"perSeriesAligner": pulumi.String("ALIGN_RATE"),
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChannelArgs, opts ...pulumi.InvokeOption) (*LookupNotificationChannelResult, error) {
 	var rv LookupNotificationChannelResult
 	err := ctx.Invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", args, &rv, opts...)

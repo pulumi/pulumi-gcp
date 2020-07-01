@@ -15,24 +15,6 @@ namespace Pulumi.Gcp.Compute
         /// Get a Compute Instance Group within GCE.
         /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
         /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var all = Output.Create(Gcp.Compute.GetInstanceGroup.InvokeAsync(new Gcp.Compute.GetInstanceGroupArgs
-        ///         {
-        ///             Name = "instance-group-name",
-        ///             Zone = "us-central1-a",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
         /// </summary>
         public static Task<GetInstanceGroupResult> InvokeAsync(GetInstanceGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceGroupResult>("gcp:compute/getInstanceGroup:getInstanceGroup", args ?? new GetInstanceGroupArgs(), options.WithVersion());

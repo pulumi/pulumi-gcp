@@ -19,35 +19,6 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// For more information see
         /// [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var gcsAccount = Output.Create(Gcp.Storage.GetProjectServiceAccount.InvokeAsync());
-        ///         var binding = new Gcp.PubSub.TopicIAMBinding("binding", new Gcp.PubSub.TopicIAMBindingArgs
-        ///         {
-        ///             Topic = google_pubsub_topic.Topic.Name,
-        ///             Role = "roles/pubsub.publisher",
-        ///             Members = 
-        ///             {
-        ///                 gcsAccount.Apply(gcsAccount =&gt; $"serviceAccount:{gcsAccount.EmailAddress}"),
-        ///             },
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectServiceAccountResult> InvokeAsync(GetProjectServiceAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetProjectServiceAccountResult>("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountArgs(), options.WithVersion());

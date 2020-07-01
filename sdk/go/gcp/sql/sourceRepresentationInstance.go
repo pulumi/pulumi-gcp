@@ -17,31 +17,6 @@ import (
 // affect billing. You cannot update the source representation instance.
 //
 // ## Example Usage
-// ### Sql Source Representation Instance Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/sql"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
-// 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
-// 			Host:            pulumi.String("10.20.30.40"),
-// 			Port:            pulumi.Int(3306),
-// 			Region:          pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SourceRepresentationInstance struct {
 	pulumi.CustomResourceState
 

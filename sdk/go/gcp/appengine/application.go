@@ -19,38 +19,6 @@ import (
 //
 // > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
 // state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/appengine"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("your-project-id"),
-// 			OrgId:     pulumi.String("1234567"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
-// 			Project:    myProject.ProjectId,
-// 			LocationId: pulumi.String("us-central"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Application struct {
 	pulumi.CustomResourceState
 

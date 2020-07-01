@@ -20,61 +20,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
 //
 // ## Example Usage
-// ### Bigquerydatatransfer Config Scheduled Query
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project, err := organizations.LookupProject(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
-// 			Role:   pulumi.String("roles/iam.serviceAccountShortTermTokenMinter"),
-// 			Member: pulumi.String(fmt.Sprintf("%v%v%v", "serviceAccount:service-", project.Number, "@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		myDataset, err := bigquery.NewDataset(ctx, "myDataset", &bigquery.DatasetArgs{
-// 			DatasetId:    pulumi.String("my_dataset"),
-// 			FriendlyName: pulumi.String("foo"),
-// 			Description:  pulumi.String("bar"),
-// 			Location:     pulumi.String("asia-northeast1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = bigquery.NewDataTransferConfig(ctx, "queryConfig", &bigquery.DataTransferConfigArgs{
-// 			DisplayName:          pulumi.String("my-query"),
-// 			Location:             pulumi.String("asia-northeast1"),
-// 			DataSourceId:         pulumi.String("scheduled_query"),
-// 			Schedule:             pulumi.String("first sunday of quarter 00:00"),
-// 			DestinationDatasetId: myDataset.DatasetId,
-// 			Params: pulumi.Map{
-// 				"destination_table_name_template": pulumi.String("my_table"),
-// 				"write_disposition":               pulumi.String("WRITE_APPEND"),
-// 				"query":                           pulumi.String("SELECT name FROM tabl WHERE x = 'y'"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DataTransferConfig struct {
 	pulumi.CustomResourceState
 

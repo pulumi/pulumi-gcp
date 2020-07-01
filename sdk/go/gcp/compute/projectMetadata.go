@@ -19,33 +19,6 @@ import (
 // Keys unset in config but set on the server will be removed. If you want to manage only single
 // key/value pairs within the project metadata rather than the entire set, then use
 // google_compute_project_metadata_item.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = compute.NewProjectMetadata(ctx, "default", &compute.ProjectMetadataArgs{
-// 			Metadata: pulumi.Map{
-// 				"13":   pulumi.String("42"),
-// 				"fizz": pulumi.String("buzz"),
-// 				"foo":  pulumi.String("bar"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ProjectMetadata struct {
 	pulumi.CustomResourceState
 

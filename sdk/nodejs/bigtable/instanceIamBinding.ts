@@ -16,51 +16,6 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.bigtable.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.bigtable.InstanceIamBinding` and `gcp.bigtable.InstanceIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the instance as `gcp.bigtable.InstanceIamPolicy` replaces the entire policy.
  *
  * > **Note:** `gcp.bigtable.InstanceIamBinding` resources **can be** used in conjunction with `gcp.bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
- *
- * ## google\_bigtable\_instance\_iam\_policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     binding: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const editor = new gcp.bigtable.InstanceIamPolicy("editor", {
- *     project: "your-project",
- *     instance: "your-bigtable-instance",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
- *
- * ## google\_bigtable\_instance\_iam\_binding
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const editor = new gcp.bigtable.InstanceIamBinding("editor", {
- *     instance: "your-bigtable-instance",
- *     members: ["user:jane@example.com"],
- *     role: "roles/editor",
- * });
- * ```
- *
- * ## google\_bigtable\_instance\_iam\_member
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const editor = new gcp.bigtable.InstanceIamMember("editor", {
- *     instance: "your-bigtable-instance",
- *     member: "user:jane@example.com",
- *     role: "roles/editor",
- * });
- * ```
  */
 export class InstanceIamBinding extends pulumi.CustomResource {
     /**

@@ -28,37 +28,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
     /// 
     /// ## Example Usage
-    /// ### Network Endpoint Group
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new Gcp.Compute.SubnetworkArgs
-    ///         {
-    ///             IpCidrRange = "10.0.0.0/16",
-    ///             Region = "us-central1",
-    ///             Network = defaultNetwork.Id,
-    ///         });
-    ///         var neg = new Gcp.Compute.NetworkEndpointGroup("neg", new Gcp.Compute.NetworkEndpointGroupArgs
-    ///         {
-    ///             Network = defaultNetwork.Id,
-    ///             Subnetwork = defaultSubnetwork.Id,
-    ///             DefaultPort = 90,
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class NetworkEndpointGroup : Pulumi.CustomResource
     {

@@ -16,28 +16,6 @@ namespace Pulumi.Gcp.Storage
     /// [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
     /// and
     /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Example creating a public object in an existing `image-store` bucket.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var picture = new Gcp.Storage.BucketObject("picture", new Gcp.Storage.BucketObjectArgs
-    ///         {
-    ///             Bucket = "image-store",
-    ///             Source = new FileAsset("/images/nature/garden-tiger-moth.jpg"),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class BucketObject : Pulumi.CustomResource
     {

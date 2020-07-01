@@ -35,61 +35,6 @@ import (
 //     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
-// ### Notification Channel Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = monitoring.NewNotificationChannel(ctx, "basic", &monitoring.NotificationChannelArgs{
-// 			DisplayName: pulumi.String("Test Notification Channel"),
-// 			Labels: pulumi.Map{
-// 				"email_address": pulumi.String("fake_email@blahblah.com"),
-// 			},
-// 			Type: pulumi.String("email"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Notification Channel Sensitive
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = monitoring.NewNotificationChannel(ctx, "default", &monitoring.NotificationChannelArgs{
-// 			DisplayName: pulumi.String("Test Slack Channel"),
-// 			Labels: pulumi.Map{
-// 				"channel_name": pulumi.String("#foobar"),
-// 			},
-// 			SensitiveLabels: &monitoring.NotificationChannelSensitiveLabelsArgs{
-// 				AuthToken: pulumi.String("one"),
-// 			},
-// 			Type: pulumi.String("slack"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type NotificationChannel struct {
 	pulumi.CustomResourceState
 

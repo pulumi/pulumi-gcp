@@ -25,39 +25,6 @@ namespace Pulumi.Gcp.DeploymentManager
     /// `preview=false`).
     /// 
     /// ## Example Usage
-    /// ### Deployment Manager Deployment Basic
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var deployment = new Gcp.DeploymentManager.Deployment("deployment", new Gcp.DeploymentManager.DeploymentArgs
-    ///         {
-    ///             Target = new Gcp.DeploymentManager.Inputs.DeploymentTargetArgs
-    ///             {
-    ///                 Config = new Gcp.DeploymentManager.Inputs.DeploymentTargetConfigArgs
-    ///                 {
-    ///                     Content = File.ReadAllText("path/to/config.yml"),
-    ///                 },
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 new Gcp.DeploymentManager.Inputs.DeploymentLabelArgs
-    ///                 {
-    ///                     Key = "foo",
-    ///                     Value = "bar",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Deployment : Pulumi.CustomResource
     {

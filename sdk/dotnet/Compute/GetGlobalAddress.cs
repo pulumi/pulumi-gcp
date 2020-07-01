@@ -14,43 +14,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myAddress = Output.Create(Gcp.Compute.GetGlobalAddress.InvokeAsync(new Gcp.Compute.GetGlobalAddressArgs
-        ///         {
-        ///             Name = "foobar",
-        ///         }));
-        ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
-        ///         {
-        ///             DnsName = "prod.mydomain.com.",
-        ///         });
-        ///         var frontend = new Gcp.Dns.RecordSet("frontend", new Gcp.Dns.RecordSetArgs
-        ///         {
-        ///             Type = "A",
-        ///             Ttl = 300,
-        ///             ManagedZone = prod.Name,
-        ///             Rrdatas = 
-        ///             {
-        ///                 myAddress.Apply(myAddress =&gt; myAddress.Address),
-        ///             },
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGlobalAddressResult> InvokeAsync(GetGlobalAddressArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("gcp:compute/getGlobalAddress:getGlobalAddress", args ?? new GetGlobalAddressArgs(), options.WithVersion());

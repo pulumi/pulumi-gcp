@@ -19,30 +19,6 @@ namespace Pulumi.Gcp.Compute
     /// Keys unset in config but set on the server will be removed. If you want to manage only single
     /// key/value pairs within the project metadata rather than the entire set, then use
     /// google_compute_project_metadata_item.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Gcp.Compute.ProjectMetadata("default", new Gcp.Compute.ProjectMetadataArgs
-    ///         {
-    ///             Metadata = 
-    ///             {
-    ///                 { "13", "42" },
-    ///                 { "fizz", "buzz" },
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ProjectMetadata : Pulumi.CustomResource
     {

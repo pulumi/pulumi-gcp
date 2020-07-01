@@ -14,33 +14,6 @@ import (
 // the official documentation for
 // [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/dataflow"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = dataflow.NewJob(ctx, "bigDataJob", &dataflow.JobArgs{
-// 			Parameters: pulumi.Map{
-// 				"baz": pulumi.String("qux"),
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 			TempGcsLocation: pulumi.String("gs://my-bucket/tmp_dir"),
-// 			TemplateGcsPath: pulumi.String("gs://my-bucket/templates/template_file"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ## Note on "destroy" / "apply"
 //
 // There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.

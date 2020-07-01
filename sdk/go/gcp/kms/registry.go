@@ -18,26 +18,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/iot/docs/)
 //
 // ## Example Usage
-// ### Cloudiot Device Registry Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iot"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = iot.NewRegistry(ctx, "test-registry", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 //
 // Deprecated: gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry
 type Registry struct {

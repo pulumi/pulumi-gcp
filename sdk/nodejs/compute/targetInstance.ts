@@ -19,30 +19,6 @@ import * as utilities from "../utilities";
  *     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
  *
  * ## Example Usage
- * ### Target Instance Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const vmimage = gcp.compute.getImage({
- *     family: "debian-9",
- *     project: "debian-cloud",
- * });
- * const target_vm = new gcp.compute.Instance("target-vm", {
- *     machineType: "n1-standard-1",
- *     zone: "us-central1-a",
- *     boot_disk: {
- *         initialize_params: {
- *             image: vmimage.then(vmimage => vmimage.selfLink),
- *         },
- *     },
- *     network_interface: [{
- *         network: "default",
- *     }],
- * });
- * const _default = new gcp.compute.TargetInstance("default", {instance: target_vm.id});
- * ```
  */
 export class TargetInstance extends pulumi.CustomResource {
     /**

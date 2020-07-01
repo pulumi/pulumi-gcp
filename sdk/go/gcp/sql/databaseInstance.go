@@ -41,32 +41,6 @@ import (
 // a restricted host and strong password.
 //
 // ## Example Usage
-// ### SQL Second Generation Instance
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/sql"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = sql.NewDatabaseInstance(ctx, "master", &sql.DatabaseInstanceArgs{
-// 			DatabaseVersion: pulumi.String("POSTGRES_11"),
-// 			Region:          pulumi.String("us-central1"),
-// 			Settings: &sql.DatabaseInstanceSettingsArgs{
-// 				Tier: pulumi.String("db-f1-micro"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 

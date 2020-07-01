@@ -21,50 +21,6 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
     /// 
     /// ## Example Usage
-    /// ### Monitoring Alert Policy Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var alertPolicy = new Gcp.Monitoring.AlertPolicy("alertPolicy", new Gcp.Monitoring.AlertPolicyArgs
-    ///         {
-    ///             Combiner = "OR",
-    ///             Conditions = 
-    ///             {
-    ///                 new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
-    ///                 {
-    ///                     ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
-    ///                     {
-    ///                         Aggregations = 
-    ///                         {
-    ///                             new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
-    ///                             {
-    ///                                 AlignmentPeriod = "60s",
-    ///                                 PerSeriesAligner = "ALIGN_RATE",
-    ///                             },
-    ///                         },
-    ///                         Comparison = "COMPARISON_GT",
-    ///                         Duration = "60s",
-    ///                         Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
-    ///                     },
-    ///                     DisplayName = "test condition",
-    ///                 },
-    ///             },
-    ///             DisplayName = "My Alert Policy",
-    ///             UserLabels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class AlertPolicy : Pulumi.CustomResource
     {

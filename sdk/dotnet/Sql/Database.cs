@@ -14,32 +14,6 @@ namespace Pulumi.Gcp.Sql
     /// Google's cloud.
     /// 
     /// ## Example Usage
-    /// ### Sql Database Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var instance = new Gcp.Sql.DatabaseInstance("instance", new Gcp.Sql.DatabaseInstanceArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///             {
-    ///                 Tier = "db-f1-micro",
-    ///             },
-    ///         });
-    ///         var database = new Gcp.Sql.Database("database", new Gcp.Sql.DatabaseArgs
-    ///         {
-    ///             Instance = instance.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

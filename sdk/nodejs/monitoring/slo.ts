@@ -23,28 +23,6 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
- * ### Monitoring Slo Appengine
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default = gcp.monitoring.getAppEngineService({
- *     moduleId: "default",
- * });
- * const appengSlo = new gcp.monitoring.Slo("appengSlo", {
- *     service: _default.then(_default => _default.serviceId),
- *     sloId: "ae-slo",
- *     displayName: "Test SLO for App Engine",
- *     goal: 0.9,
- *     calendarPeriod: "DAY",
- *     basic_sli: {
- *         latency: {
- *             threshold: "1s",
- *         },
- *     },
- * });
- * ```
  */
 export class Slo extends pulumi.CustomResource {
     /**

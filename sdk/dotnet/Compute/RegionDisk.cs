@@ -36,44 +36,6 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
-    /// ### Region Disk Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var disk = new Gcp.Compute.Disk("disk", new Gcp.Compute.DiskArgs
-    ///         {
-    ///             Image = "debian-cloud/debian-9",
-    ///             Size = 50,
-    ///             Type = "pd-ssd",
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///         var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new Gcp.Compute.SnapshotArgs
-    ///         {
-    ///             SourceDisk = disk.Name,
-    ///             Zone = "us-central1-a",
-    ///         });
-    ///         var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new Gcp.Compute.RegionDiskArgs
-    ///         {
-    ///             Snapshot = snapdisk.Id,
-    ///             Type = "pd-ssd",
-    ///             Region = "us-central1",
-    ///             PhysicalBlockSizeBytes = 4096,
-    ///             ReplicaZones = 
-    ///             {
-    ///                 "us-central1-a",
-    ///                 "us-central1-f",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class RegionDisk : Pulumi.CustomResource
     {

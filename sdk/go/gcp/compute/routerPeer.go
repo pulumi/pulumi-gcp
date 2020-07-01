@@ -22,33 +22,6 @@ import (
 //     * [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
-// ### Router Peer Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
-// 			AdvertisedRoutePriority: pulumi.Int(100),
-// 			Interface:               pulumi.String("interface-1"),
-// 			PeerAsn:                 pulumi.Int(65513),
-// 			PeerIpAddress:           pulumi.String("169.254.1.2"),
-// 			Region:                  pulumi.String("us-central1"),
-// 			Router:                  pulumi.String("my-router"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type RouterPeer struct {
 	pulumi.CustomResourceState
 

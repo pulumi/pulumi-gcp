@@ -17,53 +17,6 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
- * ### Backend Service Signed Url Key
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const webserver = new gcp.compute.InstanceTemplate("webserver", {
- *     machineType: "n1-standard-1",
- *     network_interface: [{
- *         network: "default",
- *     }],
- *     disk: [{
- *         sourceImage: "debian-cloud/debian-9",
- *         autoDelete: true,
- *         boot: true,
- *     }],
- * });
- * const webservers = new gcp.compute.InstanceGroupManager("webservers", {
- *     version: [{
- *         instanceTemplate: webserver.id,
- *         name: "primary",
- *     }],
- *     baseInstanceName: "webserver",
- *     zone: "us-central1-f",
- *     targetSize: 1,
- * });
- * const _default = new gcp.compute.HttpHealthCheck("default", {
- *     requestPath: "/",
- *     checkIntervalSec: 1,
- *     timeoutSec: 1,
- * });
- * const exampleBackend = new gcp.compute.BackendService("exampleBackend", {
- *     description: "Our company website",
- *     portName: "http",
- *     protocol: "HTTP",
- *     timeoutSec: 10,
- *     enableCdn: true,
- *     backend: [{
- *         group: webservers.instanceGroup,
- *     }],
- *     healthChecks: [_default.id],
- * });
- * const backendKey = new gcp.compute.BackendServiceSignedUrlKey("backendKey", {
- *     keyValue: "pPsVemX8GM46QVeezid6Rw==",
- *     backendService: exampleBackend.name,
- * });
- * ```
  */
 export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
     /**

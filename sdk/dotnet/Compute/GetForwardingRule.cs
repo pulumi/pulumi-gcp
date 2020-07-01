@@ -13,29 +13,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Get a forwarding rule within GCE from its name.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var my_forwarding_rule = Output.Create(Gcp.Compute.GetForwardingRule.InvokeAsync(new Gcp.Compute.GetForwardingRuleArgs
-        ///         {
-        ///             Name = "forwarding-rule-us-east1",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetForwardingRuleResult> InvokeAsync(GetForwardingRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleArgs(), options.WithVersion());

@@ -9,24 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
  * the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myAddress = gcp.compute.getGlobalAddress({
- *     name: "foobar",
- * });
- * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
- * const frontend = new gcp.dns.RecordSet("frontend", {
- *     type: "A",
- *     ttl: 300,
- *     managedZone: prod.name,
- *     rrdatas: [myAddress.then(myAddress => myAddress.address)],
- * });
- * ```
  */
 export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalAddressResult> {
     if (!opts) {

@@ -19,48 +19,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
     /// 
     /// ## Example Usage
-    /// ### Router Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foobarNetwork = new Gcp.Compute.Network("foobarNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///             AutoCreateSubnetworks = false,
-    ///         });
-    ///         var foobarRouter = new Gcp.Compute.Router("foobarRouter", new Gcp.Compute.RouterArgs
-    ///         {
-    ///             Network = foobarNetwork.Name,
-    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
-    ///             {
-    ///                 Asn = 64514,
-    ///                 AdvertiseMode = "CUSTOM",
-    ///                 AdvertisedGroups = 
-    ///                 {
-    ///                     "ALL_SUBNETS",
-    ///                 },
-    ///                 Advertised_ip_ranges = 
-    ///                 {
-    ///                     
-    ///                     {
-    ///                         { "range", "1.2.3.4" },
-    ///                     },
-    ///                     
-    ///                     {
-    ///                         { "range", "6.7.0.0/16" },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Router : Pulumi.CustomResource
     {

@@ -14,35 +14,6 @@ import (
 // information, see Creating VLAN Attachments.
 //
 // ## Example Usage
-// ### Interconnect Attachment Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobar, err := compute.NewRouter(ctx, "foobar", &compute.RouterArgs{
-// 			Network: pulumi.String(google_compute_network.Foobar.Name),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInterconnectAttachment(ctx, "onPrem", &compute.InterconnectAttachmentArgs{
-// 			Interconnect: pulumi.String("my-interconnect-id"),
-// 			Router:       foobar.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type InterconnectAttachment struct {
 	pulumi.CustomResourceState
 

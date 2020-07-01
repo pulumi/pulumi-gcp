@@ -16,24 +16,6 @@ import * as utilities from "../utilities";
  * > **Note:** This resource __must not__ be used in conjunction with
  *    `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`
  *    or they will fight over what your policy should be.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const admin = gcp.organizations.getIAMPolicy({
- *     binding: [{
- *         role: "roles/billing.viewer",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const policy = new gcp.billing.AccountIamPolicy("policy", {
- *     billingAccountId: "00AA00-000AAA-00AA0A",
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
  */
 export class AccountIamPolicy extends pulumi.CustomResource {
     /**

@@ -12,51 +12,6 @@ import (
 
 // Allows creation and management of the IAM policy for an existing Google Cloud
 // Platform folder.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/folder"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-// 			DisplayName: pulumi.String("Department 1"),
-// 			Parent:      pulumi.String("organizations/1234567"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-// 			Binding: []map[string]interface{}{
-// 				map[string]interface{}{
-// 					"role": "roles/editor",
-// 					"members": []string{
-// 						"user:jane@example.com",
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = folder.NewIAMPolicy(ctx, "folderAdminPolicy", &folder.IAMPolicyArgs{
-// 			Folder:     department1.Name,
-// 			PolicyData: pulumi.String(admin.PolicyData),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type IAMPolicy struct {
 	pulumi.CustomResourceState
 

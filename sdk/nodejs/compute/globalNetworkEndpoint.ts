@@ -16,24 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  *
  * ## Example Usage
- * ### Global Network Endpoint
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const default_endpoint = new gcp.compute.GlobalNetworkEndpoint("default-endpoint", {
- *     globalNetworkEndpointGroup: google_compute_network_endpoint_group.neg.name,
- *     fqdn: "www.example.com",
- *     port: google_compute_network_endpoint_group.neg.default_port,
- *     ipAddress: google_compute_instance["endpoint-instance"].network_interface[0].network_ip,
- * });
- * const _default = new gcp.compute.Network("default", {autoCreateSubnetworks: false});
- * const group = new gcp.compute.GlobalNetworkEndpointGroup("group", {
- *     network: _default.id,
- *     defaultPort: "90",
- * });
- * ```
  */
 export class GlobalNetworkEndpoint extends pulumi.CustomResource {
     /**

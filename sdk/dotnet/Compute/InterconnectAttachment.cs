@@ -14,29 +14,6 @@ namespace Pulumi.Gcp.Compute
     /// information, see Creating VLAN Attachments.
     /// 
     /// ## Example Usage
-    /// ### Interconnect Attachment Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var foobar = new Gcp.Compute.Router("foobar", new Gcp.Compute.RouterArgs
-    ///         {
-    ///             Network = google_compute_network.Foobar.Name,
-    ///         });
-    ///         var onPrem = new Gcp.Compute.InterconnectAttachment("onPrem", new Gcp.Compute.InterconnectAttachmentArgs
-    ///         {
-    ///             Interconnect = "my-interconnect-id",
-    ///             Router = foobar.Id,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class InterconnectAttachment : Pulumi.CustomResource
     {

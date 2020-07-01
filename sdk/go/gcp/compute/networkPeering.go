@@ -19,8 +19,6 @@ import (
 // to be functional.
 //
 // > Subnets IP ranges across peered VPC networks cannot overlap.
-//
-// ## Example Usage
 type NetworkPeering struct {
 	pulumi.CustomResourceState
 

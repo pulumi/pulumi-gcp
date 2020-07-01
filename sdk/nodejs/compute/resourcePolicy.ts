@@ -10,67 +10,6 @@ import * as utilities from "../utilities";
  * A policy that can be attached to a resource to specify or schedule actions on that resource.
  *
  * ## Example Usage
- * ### Resource Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const foo = new gcp.compute.ResourcePolicy("foo", {
- *     region: "us-central1",
- *     snapshotSchedulePolicy: {
- *         schedule: {
- *             dailySchedule: {
- *                 daysInCycle: 1,
- *                 startTime: "04:00",
- *             },
- *         },
- *     },
- * });
- * ```
- * ### Resource Policy Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bar = new gcp.compute.ResourcePolicy("bar", {
- *     region: "us-central1",
- *     snapshotSchedulePolicy: {
- *         retentionPolicy: {
- *             maxRetentionDays: 10,
- *             onSourceDiskDelete: "KEEP_AUTO_SNAPSHOTS",
- *         },
- *         schedule: {
- *             hourlySchedule: {
- *                 hoursInCycle: 20,
- *                 startTime: "23:00",
- *             },
- *         },
- *         snapshotProperties: {
- *             guestFlush: true,
- *             labels: {
- *                 my_label: "value",
- *             },
- *             storageLocations: "us",
- *         },
- *     },
- * });
- * ```
- * ### Resource Policy Placement Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const baz = new gcp.compute.ResourcePolicy("baz", {
- *     groupPlacementPolicy: {
- *         collocation: "COLLOCATED",
- *         vmCount: 2,
- *     },
- *     region: "us-central1",
- * });
- * ```
  */
 export class ResourcePolicy extends pulumi.CustomResource {
     /**

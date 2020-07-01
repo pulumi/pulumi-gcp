@@ -27,29 +27,6 @@ namespace Pulumi.Gcp.Kms
     ///     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
     /// 
     /// ## Example Usage
-    /// ### Kms Crypto Key Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var keyring = new Gcp.Kms.KeyRing("keyring", new Gcp.Kms.KeyRingArgs
-    ///         {
-    ///             Location = "global",
-    ///         });
-    ///         var example_key = new Gcp.Kms.CryptoKey("example-key", new Gcp.Kms.CryptoKeyArgs
-    ///         {
-    ///             KeyRing = keyring.Id,
-    ///             RotationPeriod = "100000s",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class CryptoKey : Pulumi.CustomResource
     {

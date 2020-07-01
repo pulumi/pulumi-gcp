@@ -16,31 +16,6 @@ import (
 // > **Note:** This resource __must not__ be used in conjunction with
 //    `organizations.IAMBinding` for the __same role__ or they will fight over
 //    what your policy should be.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = organizations.NewIAMMember(ctx, "binding", &organizations.IAMMemberArgs{
-// 			Member: pulumi.String("user:alice@gmail.com"),
-// 			OrgId:  pulumi.String("0123456789"),
-// 			Role:   pulumi.String("roles/editor"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type IAMMember struct {
 	pulumi.CustomResourceState
 

@@ -19,44 +19,6 @@ namespace Pulumi.Gcp.DataCatalog
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
     /// ## Example Usage
-    /// ### Data Catalog Entry Group Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new Gcp.DataCatalog.EntryGroupArgs
-    ///         {
-    ///             EntryGroupId = "my_group",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Data Catalog Entry Group Full
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new Gcp.DataCatalog.EntryGroupArgs
-    ///         {
-    ///             Description = "entry group created by Terraform",
-    ///             DisplayName = "terraform entry group",
-    ///             EntryGroupId = "my_group",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class EntryGroup : Pulumi.CustomResource
     {

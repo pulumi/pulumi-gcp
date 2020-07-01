@@ -11,41 +11,6 @@ namespace Pulumi.Gcp.Sql
 {
     /// <summary>
     /// Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Example creating a SQL User.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var dbNameSuffix = new Random.RandomId("dbNameSuffix", new Random.RandomIdArgs
-    ///         {
-    ///             ByteLength = 4,
-    ///         });
-    ///         var master = new Gcp.Sql.DatabaseInstance("master", new Gcp.Sql.DatabaseInstanceArgs
-    ///         {
-    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///             {
-    ///                 Tier = "db-f1-micro",
-    ///             },
-    ///         });
-    ///         var users = new Gcp.Sql.User("users", new Gcp.Sql.UserArgs
-    ///         {
-    ///             Instance = master.Name,
-    ///             Host = "me.com",
-    ///             Password = "changeme",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {

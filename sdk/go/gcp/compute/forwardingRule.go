@@ -20,33 +20,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/network/forwarding-rules)
 //
 // ## Example Usage
-// ### Forwarding Rule Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultTargetPool, err := compute.NewTargetPool(ctx, "defaultTargetPool", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewForwardingRule(ctx, "defaultForwardingRule", &compute.ForwardingRuleArgs{
-// 			Target:    defaultTargetPool.ID(),
-// 			PortRange: pulumi.String("80"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ForwardingRule struct {
 	pulumi.CustomResourceState
 

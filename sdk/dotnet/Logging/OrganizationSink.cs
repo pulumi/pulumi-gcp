@@ -16,35 +16,6 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
     /// granted to the credentials used with this provider.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var log_bucket = new Gcp.Storage.Bucket("log-bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///         });
-    ///         var my_sink = new Gcp.Logging.OrganizationSink("my-sink", new Gcp.Logging.OrganizationSinkArgs
-    ///         {
-    ///             OrgId = "123456789",
-    ///             Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
-    ///             Filter = "resource.type = gce_instance AND severity &gt;= WARN",
-    ///         });
-    ///         var log_writer = new Gcp.Projects.IAMMember("log-writer", new Gcp.Projects.IAMMemberArgs
-    ///         {
-    ///             Role = "roles/storage.objectCreator",
-    ///             Member = my_sink.WriterIdentity,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class OrganizationSink : Pulumi.CustomResource
     {

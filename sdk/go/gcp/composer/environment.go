@@ -33,62 +33,6 @@ import (
 //     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
 //
 // ## Example Usage
-// ### Basic Usage
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/composer"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
-// 			Region: pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### With Software (Airflow) Config
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/composer"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
-// 			Config: &composer.EnvironmentConfigArgs{
-// 				SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
-// 					AirflowConfigOverrides: pulumi.Map{
-// 						"core-loadExample": pulumi.String("True"),
-// 					},
-// 					EnvVariables: pulumi.Map{
-// 						"FOO": pulumi.String("bar"),
-// 					},
-// 					PypiPackages: pulumi.Map{
-// 						"numpy": pulumi.String(""),
-// 						"scipy": pulumi.String("==1.1.0"),
-// 					},
-// 				},
-// 			},
-// 			Region: pulumi.String("us-central1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Environment struct {
 	pulumi.CustomResourceState
 

@@ -16,30 +16,6 @@ import (
 //
 // Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // granted to the credentials used with this provider.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/logging"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = logging.NewProjectExclusion(ctx, "my-exclusion", &logging.ProjectExclusionArgs{
-// 			Description: pulumi.String("Exclude GCE instance debug logs"),
-// 			Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type ProjectExclusion struct {
 	pulumi.CustomResourceState
 

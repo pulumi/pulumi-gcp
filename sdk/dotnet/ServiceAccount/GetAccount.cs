@@ -14,30 +14,6 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <summary>
         /// Get the service account from a project. For more information see
         /// the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var objectViewer = Output.Create(Gcp.ServiceAccount.GetAccount.InvokeAsync(new Gcp.ServiceAccount.GetAccountArgs
-        ///         {
-        ///             AccountId = "object-viewer",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// 
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("gcp:serviceAccount/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithVersion());

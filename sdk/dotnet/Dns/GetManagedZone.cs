@@ -17,33 +17,6 @@ namespace Pulumi.Gcp.Dns
         /// [the official documentation](https://cloud.google.com/dns/zones/)
         /// and
         /// [API](https://cloud.google.com/dns/api/v1/managedZones).
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var envDnsZone = Output.Create(Gcp.Dns.GetManagedZone.InvokeAsync(new Gcp.Dns.GetManagedZoneArgs
-        ///         {
-        ///             Name = "qa-zone",
-        ///         }));
-        ///         var dns = new Gcp.Dns.RecordSet("dns", new Gcp.Dns.RecordSetArgs
-        ///         {
-        ///             Type = "TXT",
-        ///             Ttl = 300,
-        ///             ManagedZone = envDnsZone.Apply(envDnsZone =&gt; envDnsZone.Name),
-        ///             Rrdatas = 
-        ///             {
-        ///                 "test",
-        ///             },
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
         /// </summary>
         public static Task<GetManagedZoneResult> InvokeAsync(GetManagedZoneArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneArgs(), options.WithVersion());

@@ -10,29 +10,6 @@ import (
 // Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
 //
 // ## Example Usage
-// ### Cloud Ranges
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		netblock, err := compute.GetNetblockIPRanges(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("cidrBlocks", netblock.CidrBlocks)
-// 		ctx.Export("cidrBlocksIpv4", netblock.CidrBlocksIpv4s)
-// 		ctx.Export("cidrBlocksIpv6", netblock.CidrBlocksIpv6s)
-// 		return nil
-// 	})
-// }
-// ```
 func GetNetblockIPRanges(ctx *pulumi.Context, args *GetNetblockIPRangesArgs, opts ...pulumi.InvokeOption) (*GetNetblockIPRangesResult, error) {
 	var rv GetNetblockIPRangesResult
 	err := ctx.Invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args, &rv, opts...)

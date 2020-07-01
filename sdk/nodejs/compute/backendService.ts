@@ -21,65 +21,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  *
  * ## Example Usage
- * ### Backend Service Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
- *     requestPath: "/",
- *     checkIntervalSec: 1,
- *     timeoutSec: 1,
- * });
- * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {healthChecks: [defaultHttpHealthCheck.id]});
- * ```
- * ### Backend Service Traffic Director Round Robin
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
- *     port: 80,
- * }});
- * const _default = new gcp.compute.BackendService("default", {
- *     healthChecks: [healthCheck.id],
- *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
- *     localityLbPolicy: "ROUND_ROBIN",
- * });
- * ```
- * ### Backend Service Traffic Director Ring Hash
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {http_health_check: {
- *     port: 80,
- * }});
- * const _default = new gcp.compute.BackendService("default", {
- *     healthChecks: [healthCheck.id],
- *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
- *     localityLbPolicy: "RING_HASH",
- *     sessionAffinity: "HTTP_COOKIE",
- *     circuit_breakers: {
- *         maxConnections: 10,
- *     },
- *     consistent_hash: {
- *         http_cookie: {
- *             ttl: {
- *                 seconds: 11,
- *                 nanos: 1111,
- *             },
- *             name: "mycookie",
- *         },
- *     },
- *     outlier_detection: {
- *         consecutiveErrors: 2,
- *     },
- * });
- * ```
  */
 export class BackendService extends pulumi.CustomResource {
     /**

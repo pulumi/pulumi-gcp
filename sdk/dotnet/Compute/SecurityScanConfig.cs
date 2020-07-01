@@ -22,35 +22,6 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text.[Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets)
     /// 
     /// ## Example Usage
-    /// ### Scan Config Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var scannerStaticIp = new Gcp.Compute.Address("scannerStaticIp", new Gcp.Compute.AddressArgs
-    ///         {
-    ///         });
-    ///         var scan_config = new Gcp.Compute.SecurityScanConfig("scan-config", new Gcp.Compute.SecurityScanConfigArgs
-    ///         {
-    ///             DisplayName = "scan-config",
-    ///             StartingUrls = 
-    ///             {
-    ///                 scannerStaticIp.IPAddress.Apply(address =&gt; $"http://{address}"),
-    ///             },
-    ///             TargetPlatforms = 
-    ///             {
-    ///                 "COMPUTE",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class SecurityScanConfig : Pulumi.CustomResource
     {

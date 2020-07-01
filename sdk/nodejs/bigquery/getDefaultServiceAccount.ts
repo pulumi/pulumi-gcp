@@ -16,20 +16,6 @@ import * as utilities from "../utilities";
  *
  * For more information see
  * [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bqSa = gcp.bigquery.getDefaultServiceAccount({});
- * const keySaUser = new gcp.kms.CryptoKeyIAMMember("keySaUser", {
- *     cryptoKeyId: google_kms_crypto_key.key.id,
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),
- * });
- * ```
  */
 export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> {
     args = args || {};

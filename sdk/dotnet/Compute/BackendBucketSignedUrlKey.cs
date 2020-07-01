@@ -22,35 +22,6 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text.
     /// 
     /// ## Example Usage
-    /// ### Backend Bucket Signed Url Key
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///             Location = "EU",
-    ///         });
-    ///         var testBackend = new Gcp.Compute.BackendBucket("testBackend", new Gcp.Compute.BackendBucketArgs
-    ///         {
-    ///             Description = "Contains beautiful images",
-    ///             BucketName = bucket.Name,
-    ///             EnableCdn = true,
-    ///         });
-    ///         var backendKey = new Gcp.Compute.BackendBucketSignedUrlKey("backendKey", new Gcp.Compute.BackendBucketSignedUrlKeyArgs
-    ///         {
-    ///             KeyValue = "pPsVemX8GM46QVeezid6Rw==",
-    ///             BackendBucket = testBackend.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class BackendBucketSignedUrlKey : Pulumi.CustomResource
     {

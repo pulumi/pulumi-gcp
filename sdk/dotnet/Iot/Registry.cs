@@ -19,23 +19,6 @@ namespace Pulumi.Gcp.Iot
     ///     * [Official Documentation](https://cloud.google.com/iot/docs/)
     /// 
     /// ## Example Usage
-    /// ### Cloudiot Device Registry Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test_registry = new Gcp.Iot.Registry("test-registry", new Gcp.Iot.RegistryArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Registry : Pulumi.CustomResource
     {

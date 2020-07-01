@@ -15,17 +15,6 @@ import * as utilities from "../utilities";
  * the Cloud Console prior to creating tenants.
  *
  * ## Example Usage
- * ### Identity Platform Tenant Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const tenant = new gcp.identityplatform.Tenant("tenant", {
- *     allowPasswordSignup: true,
- *     displayName: "tenant",
- * });
- * ```
  */
 export class Tenant extends pulumi.CustomResource {
     /**

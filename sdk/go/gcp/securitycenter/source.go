@@ -22,30 +22,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/binary-authorization/)
 //
 // ## Example Usage
-// ### Scc Source Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/securitycenter"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = securitycenter.NewSource(ctx, "customSource", &securitycenter.SourceArgs{
-// 			Description:  pulumi.String("My custom Cloud Security Command Center Finding Source"),
-// 			DisplayName:  pulumi.String("My Source"),
-// 			Organization: pulumi.String("123456789"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Source struct {
 	pulumi.CustomResourceState
 

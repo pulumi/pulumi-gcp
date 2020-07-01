@@ -19,25 +19,6 @@ namespace Pulumi.Gcp.GameServices
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
     /// 
     /// ## Example Usage
-    /// ### Game Service Deployment Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Gcp.GameServices.GameServerDeployment("default", new Gcp.GameServices.GameServerDeploymentArgs
-    ///         {
-    ///             DeploymentId = "tf-test-deployment",
-    ///             Description = "a deployment description",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class GameServerDeployment : Pulumi.CustomResource
     {

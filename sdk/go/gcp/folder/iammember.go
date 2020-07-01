@@ -17,39 +17,6 @@ import (
 //    `folder.IAMPolicy` or they will fight over what your policy
 //    should be. Similarly, roles controlled by `folder.IAMBinding`
 //    should not be assigned to using `folder.IAMMember`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/folder"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-// 			DisplayName: pulumi.String("Department 1"),
-// 			Parent:      pulumi.String("organizations/1234567"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = folder.NewIAMMember(ctx, "admin", &folder.IAMMemberArgs{
-// 			Folder: department1.Name,
-// 			Role:   pulumi.String("roles/editor"),
-// 			Member: pulumi.String("user:alice@gmail.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type IAMMember struct {
 	pulumi.CustomResourceState
 
