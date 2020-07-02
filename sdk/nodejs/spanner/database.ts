@@ -14,24 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/spanner/)
  *
  * ## Example Usage
- * ### Spanner Database Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const main = new gcp.spanner.Instance("main", {
- *     config: "regional-europe-west1",
- *     displayName: "main-instance",
- * });
- * const database = new gcp.spanner.Database("database", {
- *     instance: main.name,
- *     ddls: [
- *         "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
- *         "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
- *     ],
- * });
- * ```
  */
 export class Database extends pulumi.CustomResource {
     /**

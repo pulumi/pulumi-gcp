@@ -19,37 +19,6 @@ namespace Pulumi.Gcp.Datastore
     ///     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
     /// 
     /// ## Example Usage
-    /// ### Datastore Index
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Gcp.Datastore.DataStoreIndex("default", new Gcp.Datastore.DataStoreIndexArgs
-    ///         {
-    ///             Kind = "foo",
-    ///             Properties = 
-    ///             {
-    ///                 new Gcp.Datastore.Inputs.DataStoreIndexPropertyArgs
-    ///                 {
-    ///                     Direction = "ASCENDING",
-    ///                     Name = "property_a",
-    ///                 },
-    ///                 new Gcp.Datastore.Inputs.DataStoreIndexPropertyArgs
-    ///                 {
-    ///                     Direction = "ASCENDING",
-    ///                     Name = "property_b",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class DataStoreIndex : Pulumi.CustomResource
     {

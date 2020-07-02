@@ -16,37 +16,6 @@ namespace Pulumi.Gcp.SecretManager
     /// state as plain-text.
     /// 
     /// ## Example Usage
-    /// ### Secret Version Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new Gcp.SecretManager.SecretArgs
-    ///         {
-    ///             SecretId = "secret-version",
-    ///             Labels = 
-    ///             {
-    ///                 { "label", "my-label" },
-    ///             },
-    ///             Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
-    ///             {
-    ///                 Automatic = true,
-    ///             },
-    ///         });
-    ///         var secret_version_basic = new Gcp.SecretManager.SecretVersion("secret-version-basic", new Gcp.SecretManager.SecretVersionArgs
-    ///         {
-    ///             Secret = secret_basic.Id,
-    ///             SecretData = "secret-data",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class SecretVersion : Pulumi.CustomResource
     {

@@ -13,31 +13,6 @@ import (
 // [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
 // or the
 // [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
-//
-// ## Example Usage
-//
-// Example creating a RuntimeConfig resource.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/runtimeconfig"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
-// 			Description: pulumi.String("Runtime configuration values for my service"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Config struct {
 	pulumi.CustomResourceState
 

@@ -13,33 +13,6 @@ import * as utilities from "../utilities";
  * ready to receive prediction requests. The model itself is just a container.
  *
  * ## Example Usage
- * ### Ml Model Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultEngineModel = new gcp.ml.EngineModel("default", {
- *     description: "My model",
- *     regions: "us-central1",
- * });
- * ```
- * ### Ml Model Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultEngineModel = new gcp.ml.EngineModel("default", {
- *     description: "My model",
- *     labels: {
- *         my_model: "foo",
- *     },
- *     onlinePredictionConsoleLogging: true,
- *     onlinePredictionLogging: true,
- *     regions: "us-central1",
- * });
- * ```
  */
 export class EngineModel extends pulumi.CustomResource {
     /**

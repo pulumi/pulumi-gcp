@@ -15,29 +15,6 @@ namespace Pulumi.Gcp.CloudFunctions
         /// Get information about a Google Cloud Function. For more information see
         /// the [official documentation](https://cloud.google.com/functions/docs/)
         /// and [API](https://cloud.google.com/functions/docs/apis).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var my_function = Output.Create(Gcp.CloudFunctions.GetFunction.InvokeAsync(new Gcp.CloudFunctions.GetFunctionArgs
-        ///         {
-        ///             Name = "function",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFunctionResult> InvokeAsync(GetFunctionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionResult>("gcp:cloudfunctions/getFunction:getFunction", args ?? new GetFunctionArgs(), options.WithVersion());

@@ -22,42 +22,6 @@ import (
 // state as plain-text.[Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets)
 //
 // ## Example Usage
-// ### Scan Config Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		scannerStaticIp, err := compute.NewAddress(ctx, "scannerStaticIp", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewSecurityScanConfig(ctx, "scan-config", &compute.SecurityScanConfigArgs{
-// 			DisplayName: pulumi.String("scan-config"),
-// 			StartingUrls: pulumi.StringArray{
-// 				scannerStaticIp.Address.ApplyT(func(address string) (string, error) {
-// 					return fmt.Sprintf("%v%v", "http://", address), nil
-// 				}).(pulumi.StringOutput),
-// 			},
-// 			TargetPlatforms: pulumi.StringArray{
-// 				pulumi.String("COMPUTE"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type SecurityScanConfig struct {
 	pulumi.CustomResourceState
 

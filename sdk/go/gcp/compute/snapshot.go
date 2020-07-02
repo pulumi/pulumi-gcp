@@ -33,50 +33,6 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
-// ### Snapshot Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "debian-9"
-// 		opt1 := "debian-cloud"
-// 		debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-// 			Family:  &opt0,
-// 			Project: &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
-// 			Image: pulumi.String(debian.SelfLink),
-// 			Size:  pulumi.Int(10),
-// 			Type:  pulumi.String("pd-ssd"),
-// 			Zone:  pulumi.String("us-central1-a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
-// 			SourceDisk: persistent.Name,
-// 			Zone:       pulumi.String("us-central1-a"),
-// 			Labels: pulumi.Map{
-// 				"my_label": pulumi.String("value"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Snapshot struct {
 	pulumi.CustomResourceState
 

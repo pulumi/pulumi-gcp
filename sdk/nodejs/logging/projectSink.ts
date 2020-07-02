@@ -16,60 +16,6 @@ import * as utilities from "../utilities";
  * > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
  *
  * > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my_sink = new gcp.logging.ProjectSink("my-sink", {
- *     // Can export to pubsub, cloud storage, or bigquery
- *     destination: "pubsub.googleapis.com/projects/my-project/topics/instance-activity",
- *     // Log all WARN or higher severity messages relating to instances
- *     filter: "resource.type = gce_instance AND severity >= WARN",
- *     // Use a unique writer (creates a unique service account used for writing)
- *     uniqueWriterIdentity: true,
- * });
- * ```
- *
- * A more complete example follows: this creates a compute instance, as well as a log sink that logs all activity to a
- * cloud storage bucket. Because we are using `uniqueWriterIdentity`, we must grant it access to the bucket. Note that
- * this grant requires the "Project IAM Admin" IAM role (`roles/resourcemanager.projectIamAdmin`) granted to the credentials
- * used with this provider.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * // Our logged compute instance
- * const my_logged_instance = new gcp.compute.Instance("my-logged-instance", {
- *     machineType: "n1-standard-1",
- *     zone: "us-central1-a",
- *     boot_disk: {
- *         initialize_params: {
- *             image: "debian-cloud/debian-9",
- *         },
- *     },
- *     network_interface: [{
- *         network: "default",
- *         access_config: [{}],
- *     }],
- * });
- * // A bucket to store logs in
- * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
- * // Our sink; this logs all activity related to our "my-logged-instance" instance
- * const instance_sink = new gcp.logging.ProjectSink("instance-sink", {
- *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
- *     filter: pulumi.interpolate`resource.type = gce_instance AND resource.labels.instance_id = "${my_logged_instance.instanceId}"`,
- *     uniqueWriterIdentity: true,
- * });
- * // Because our sink uses a unique_writer, we must grant that writer access to the bucket.
- * const log_writer = new gcp.projects.IAMBinding("log-writer", {
- *     role: "roles/storage.objectCreator",
- *     members: [instance_sink.writerIdentity],
- * });
- * ```
  */
 export class ProjectSink extends pulumi.CustomResource {
     /**

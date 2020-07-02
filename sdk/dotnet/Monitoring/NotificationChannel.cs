@@ -35,56 +35,6 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
     /// 
     /// ## Example Usage
-    /// ### Notification Channel Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var basic = new Gcp.Monitoring.NotificationChannel("basic", new Gcp.Monitoring.NotificationChannelArgs
-    ///         {
-    ///             DisplayName = "Test Notification Channel",
-    ///             Labels = 
-    ///             {
-    ///                 { "email_address", "fake_email@blahblah.com" },
-    ///             },
-    ///             Type = "email",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Notification Channel Sensitive
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Gcp.Monitoring.NotificationChannel("default", new Gcp.Monitoring.NotificationChannelArgs
-    ///         {
-    ///             DisplayName = "Test Slack Channel",
-    ///             Labels = 
-    ///             {
-    ///                 { "channel_name", "#foobar" },
-    ///             },
-    ///             SensitiveLabels = new Gcp.Monitoring.Inputs.NotificationChannelSensitiveLabelsArgs
-    ///             {
-    ///                 AuthToken = "one",
-    ///             },
-    ///             Type = "slack",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class NotificationChannel : Pulumi.CustomResource
     {

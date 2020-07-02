@@ -10,39 +10,6 @@ import (
 // Use this data source to access a Network Endpoint Group's attributes.
 //
 // The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "k8s1-abcdef01-myns-mysvc-8080-4b6bac43"
-// 		opt1 := "us-central1-a"
-// 		_, err := compute.LookupNetworkEndpointGroup(ctx, &compute.LookupNetworkEndpointGroupArgs{
-// 			Name: &opt0,
-// 			Zone: &opt1,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		opt2 := "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43"
-// 		_, err := compute.LookupNetworkEndpointGroup(ctx, &compute.LookupNetworkEndpointGroupArgs{
-// 			SelfLink: &opt2,
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupNetworkEndpointGroup(ctx *pulumi.Context, args *LookupNetworkEndpointGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkEndpointGroupResult, error) {
 	var rv LookupNetworkEndpointGroupResult
 	err := ctx.Invoke("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args, &rv, opts...)

@@ -23,25 +23,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
  *
  * ## Example Usage
- * ### Network Endpoint Group
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
- * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
- *     ipCidrRange: "10.0.0.0/16",
- *     region: "us-central1",
- *     network: defaultNetwork.id,
- * });
- * const neg = new gcp.compute.NetworkEndpointGroup("neg", {
- *     network: defaultNetwork.id,
- *     subnetwork: defaultSubnetwork.id,
- *     defaultPort: "90",
- *     zone: "us-central1-a",
- * });
- * ```
  */
 export class NetworkEndpointGroup extends pulumi.CustomResource {
     /**

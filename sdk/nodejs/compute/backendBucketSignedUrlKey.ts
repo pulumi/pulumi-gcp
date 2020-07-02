@@ -17,23 +17,6 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
- * ### Backend Bucket Signed Url Key
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const bucket = new gcp.storage.Bucket("bucket", {location: "EU"});
- * const testBackend = new gcp.compute.BackendBucket("testBackend", {
- *     description: "Contains beautiful images",
- *     bucketName: bucket.name,
- *     enableCdn: true,
- * });
- * const backendKey = new gcp.compute.BackendBucketSignedUrlKey("backendKey", {
- *     keyValue: "pPsVemX8GM46QVeezid6Rw==",
- *     backendBucket: testBackend.name,
- * });
- * ```
  */
 export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
     /**

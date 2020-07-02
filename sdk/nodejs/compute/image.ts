@@ -31,38 +31,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/images)
  *
  * ## Example Usage
- * ### Image Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const example = new gcp.compute.Image("example", {
- *     rawDisk: {
- *         source: "https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
- *     },
- * });
- * ```
- * ### Image Guest Os
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const example = new gcp.compute.Image("example", {
- *     guestOsFeatures: [
- *         {
- *             type: "SECURE_BOOT",
- *         },
- *         {
- *             type: "MULTI_IP_SUBNET",
- *         },
- *     ],
- *     rawDisk: {
- *         source: "https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
- *     },
- * });
- * ```
  */
 export class Image extends pulumi.CustomResource {
     /**

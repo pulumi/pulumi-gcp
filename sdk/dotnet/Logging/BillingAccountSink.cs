@@ -18,37 +18,6 @@ namespace Pulumi.Gcp.Logging
     /// [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
     /// the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
     /// typical IAM roles granted on a project.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var log_bucket = new Gcp.Storage.Bucket("log-bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///         });
-    ///         var my_sink = new Gcp.Logging.BillingAccountSink("my-sink", new Gcp.Logging.BillingAccountSinkArgs
-    ///         {
-    ///             BillingAccount = "ABCDEF-012345-GHIJKL",
-    ///             Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
-    ///         });
-    ///         var log_writer = new Gcp.Projects.IAMBinding("log-writer", new Gcp.Projects.IAMBindingArgs
-    ///         {
-    ///             Role = "roles/storage.objectCreator",
-    ///             Members = 
-    ///             {
-    ///                 my_sink.WriterIdentity,
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class BillingAccountSink : Pulumi.CustomResource
     {

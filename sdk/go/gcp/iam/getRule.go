@@ -8,28 +8,6 @@ import (
 )
 
 // Use this data source to get information about a Google IAM Role.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iam"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		roleinfo, err := iam.GetRule(ctx, &iam.GetRuleArgs{
-// 			Name: "roles/compute.viewer",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("theRolePermissions", roleinfo.IncludedPermissions)
-// 		return nil
-// 	})
-// }
-// ```
 func GetRule(ctx *pulumi.Context, args *GetRuleArgs, opts ...pulumi.InvokeOption) (*GetRuleResult, error) {
 	var rv GetRuleResult
 	err := ctx.Invoke("gcp:iam/getRule:getRule", args, &rv, opts...)

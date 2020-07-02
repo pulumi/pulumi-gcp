@@ -24,54 +24,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// &gt; **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
     /// making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var gcsAccount = Output.Create(Gcp.Storage.GetProjectServiceAccount.InvokeAsync());
-    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
-    ///         {
-    ///         });
-    ///         var binding = new Gcp.PubSub.TopicIAMBinding("binding", new Gcp.PubSub.TopicIAMBindingArgs
-    ///         {
-    ///             Topic = topic.Id,
-    ///             Role = "roles/pubsub.publisher",
-    ///             Members = 
-    ///             {
-    ///                 gcsAccount.Apply(gcsAccount =&gt; $"serviceAccount:{gcsAccount.EmailAddress}"),
-    ///             },
-    ///         });
-    ///         // End enabling notifications
-    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
-    ///         {
-    ///         });
-    ///         var notification = new Gcp.Storage.Notification("notification", new Gcp.Storage.NotificationArgs
-    ///         {
-    ///             Bucket = bucket.Name,
-    ///             PayloadFormat = "JSON_API_V1",
-    ///             Topic = topic.Id,
-    ///             EventTypes = 
-    ///             {
-    ///                 "OBJECT_FINALIZE",
-    ///                 "OBJECT_METADATA_UPDATE",
-    ///             },
-    ///             CustomAttributes = 
-    ///             {
-    ///                 { "new-attribute", "new-attribute-value" },
-    ///             },
-    ///         });
-    ///         // Enable notifications by giving the correct IAM permission to the unique service account.
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Notification : Pulumi.CustomResource
     {

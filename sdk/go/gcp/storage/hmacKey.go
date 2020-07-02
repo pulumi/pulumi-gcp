@@ -28,35 +28,6 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
-// ### Storage Hmac Key
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		serviceAccount, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
-// 			AccountId: pulumi.String("my-svc-acc"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = storage.NewHmacKey(ctx, "key", &storage.HmacKeyArgs{
-// 			ServiceAccountEmail: serviceAccount.Email,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type HmacKey struct {
 	pulumi.CustomResourceState
 

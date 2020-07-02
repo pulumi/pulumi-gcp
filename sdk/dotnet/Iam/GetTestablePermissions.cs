@@ -13,36 +13,6 @@ namespace Pulumi.Gcp.Iam
     {
         /// <summary>
         /// Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var perms = Output.Create(Gcp.Iam.GetTestablePermissions.InvokeAsync(new Gcp.Iam.GetTestablePermissionsArgs
-        ///         {
-        ///             FullResourceName = "//cloudresourcemanager.googleapis.com/projects/my-project",
-        ///             Stages = 
-        ///             {
-        ///                 "GA",
-        ///                 "BETA",
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTestablePermissionsResult> InvokeAsync(GetTestablePermissionsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTestablePermissionsResult>("gcp:iam/getTestablePermissions:getTestablePermissions", args ?? new GetTestablePermissionsArgs(), options.WithVersion());

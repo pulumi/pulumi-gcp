@@ -11,37 +11,6 @@ namespace Pulumi.Gcp.Organizations
 {
     /// <summary>
     /// Allows management of audit logging config for a given service for a Google Cloud Platform Organization.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var config = new Gcp.Organizations.IamAuditConfig("config", new Gcp.Organizations.IamAuditConfigArgs
-    ///         {
-    ///             AuditLogConfigs = 
-    ///             {
-    ///                 new Gcp.Organizations.Inputs.IamAuditConfigAuditLogConfigArgs
-    ///                 {
-    ///                     ExemptedMembers = 
-    ///                     {
-    ///                         "user:joebloggs@hashicorp.com",
-    ///                     },
-    ///                     LogType = "DATA_READ",
-    ///                 },
-    ///             },
-    ///             OrgId = "your-organization-id",
-    ///             Service = "allServices",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class IamAuditConfig : Pulumi.CustomResource
     {

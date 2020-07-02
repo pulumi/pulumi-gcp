@@ -19,28 +19,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 //
 // ## Example Usage
-// ### Redis Instance Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/redis"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
-// 			MemorySizeGb: pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

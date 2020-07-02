@@ -12,19 +12,6 @@ import * as utilities from "../utilities";
  * for more details.
  *
  * ## Example Usage
- * ### Searching For Projects About To Be Deleted In An Org
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my-org-projects = gcp.projects.getProject({
- *     filter: "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
- * });
- * const deletion-candidate = my_org_projects.then(my_org_projects => gcp.organizations.getProject({
- *     projectId: my_org_projects.projects[0].projectId,
- * }));
- * ```
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     if (!opts) {

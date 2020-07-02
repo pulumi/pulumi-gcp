@@ -14,30 +14,6 @@ import (
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 //
 // ## Example Usage
-// ### Empty Instance Group
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = compute.NewInstanceGroup(ctx, "test", &compute.InstanceGroupArgs{
-// 			Description: pulumi.String("Test instance group"),
-// 			Zone:        pulumi.String("us-central1-a"),
-// 			Network:     pulumi.String(google_compute_network.Default.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type InstanceGroup struct {
 	pulumi.CustomResourceState
 

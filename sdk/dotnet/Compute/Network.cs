@@ -19,23 +19,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
     /// 
     /// ## Example Usage
-    /// ### Network Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var vpcNetwork = new Gcp.Compute.Network("vpcNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Network : Pulumi.CustomResource
     {

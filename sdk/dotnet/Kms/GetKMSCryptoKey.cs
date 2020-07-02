@@ -19,35 +19,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
         /// Google Cloud KMS KeyRing.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myKeyRing = Output.Create(Gcp.Kms.GetKMSKeyRing.InvokeAsync(new Gcp.Kms.GetKMSKeyRingArgs
-        ///         {
-        ///             Name = "my-key-ring",
-        ///             Location = "us-central1",
-        ///         }));
-        ///         var myCryptoKey = myKeyRing.Apply(myKeyRing =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKey.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyArgs
-        ///         {
-        ///             Name = "my-crypto-key",
-        ///             KeyRing = myKeyRing.SelfLink,
-        ///         })));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKMSCryptoKeyResult> InvokeAsync(GetKMSCryptoKeyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? new GetKMSCryptoKeyArgs(), options.WithVersion());

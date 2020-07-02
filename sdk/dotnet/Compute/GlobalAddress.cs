@@ -20,23 +20,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
     /// 
     /// ## Example Usage
-    /// ### Global Address Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Gcp.Compute.GlobalAddress("default", new Gcp.Compute.GlobalAddressArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class GlobalAddress : Pulumi.CustomResource
     {

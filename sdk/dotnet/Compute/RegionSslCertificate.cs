@@ -24,29 +24,6 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
-    /// ### Region Ssl Certificate Basic
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var @default = new Gcp.Compute.RegionSslCertificate("default", new Gcp.Compute.RegionSslCertificateArgs
-    ///         {
-    ///             Region = "us-central1",
-    ///             NamePrefix = "my-certificate-",
-    ///             Description = "a description",
-    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
-    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class RegionSslCertificate : Pulumi.CustomResource
     {

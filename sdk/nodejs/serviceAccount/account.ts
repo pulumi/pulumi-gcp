@@ -10,20 +10,6 @@ import * as utilities from "../utilities";
  * > Creation of service accounts is eventually consistent, and that can lead to
  * errors when you try to apply ACLs to service accounts immediately after
  * creation.
- *
- * ## Example Usage
- *
- * This snippet creates a service account in a project.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const serviceAccount = new gcp.serviceAccount.Account("service_account", {
- *     accountId: "service_account_id",
- *     displayName: "Service Account",
- * });
- * ```
  */
 export class Account extends pulumi.CustomResource {
     /**

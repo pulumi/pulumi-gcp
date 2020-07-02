@@ -10,17 +10,6 @@ import * as utilities from "../utilities";
  * Get information about a Google Cloud Redis instance. For more information see
  * the [official documentation](https://cloud.google.com/memorystore/docs/redis)
  * and [API](https://cloud.google.com/memorystore/docs/redis/apis).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultRedisInstance = pulumi.output(gcp.RedisInstance({
- *     name: "my-redis-instance",
- * }, { async: true }));
- * ```
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     if (!opts) {

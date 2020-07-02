@@ -20,33 +20,6 @@ import (
 //     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 //
 // ## Example Usage
-// ### Service Directory Namespace Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/servicedirectory"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = servicedirectory.NewNamespace(ctx, "example", &servicedirectory.NamespaceArgs{
-// 			NamespaceId: pulumi.String("example-namespace"),
-// 			Location:    pulumi.String("us-central1"),
-// 			Labels: pulumi.Map{
-// 				"key": pulumi.String("value"),
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Namespace struct {
 	pulumi.CustomResourceState
 

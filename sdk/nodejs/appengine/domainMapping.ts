@@ -16,19 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
  *
  * ## Example Usage
- * ### App Engine Domain Mapping Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const domainMapping = new gcp.appengine.DomainMapping("domain_mapping", {
- *     domainName: "verified-domain.com",
- *     sslSettings: {
- *         sslManagementType: "AUTOMATIC",
- *     },
- * });
- * ```
  */
 export class DomainMapping extends pulumi.CustomResource {
     /**

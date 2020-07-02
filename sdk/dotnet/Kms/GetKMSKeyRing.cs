@@ -19,30 +19,6 @@ namespace Pulumi.Gcp.Kms
         /// 
         /// A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
         /// and resides in a specific location.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var myKeyRing = Output.Create(Gcp.Kms.GetKMSKeyRing.InvokeAsync(new Gcp.Kms.GetKMSKeyRingArgs
-        ///         {
-        ///             Location = "us-central1",
-        ///             Name = "my-key-ring",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKMSKeyRingResult> InvokeAsync(GetKMSKeyRingArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKMSKeyRingResult>("gcp:kms/getKMSKeyRing:getKMSKeyRing", args ?? new GetKMSKeyRingArgs(), options.WithVersion());

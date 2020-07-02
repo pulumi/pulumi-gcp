@@ -14,31 +14,6 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
  *
  * ## Example Usage
- * ### Secret Config Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
- *     labels: {
- *         label: "my-label",
- *     },
- *     replication: {
- *         userManaged: {
- *             replicas: [
- *                 {
- *                     location: "us-central1",
- *                 },
- *                 {
- *                     location: "us-east1",
- *                 },
- *             ],
- *         },
- *     },
- *     secretId: "secret",
- * });
- * ```
  */
 export class Secret extends pulumi.CustomResource {
     /**

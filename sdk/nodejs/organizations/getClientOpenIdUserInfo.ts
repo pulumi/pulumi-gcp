@@ -20,15 +20,6 @@ import * as utilities from "../utilities";
  * receive an error otherwise.
  *
  * ## Example Usage
- * ### Exporting An Email
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const me = gcp.organizations.getClientOpenIdUserInfo({});
- * export const my_email = me.then(me => me.email);
- * ```
  */
 export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> {
     if (!opts) {

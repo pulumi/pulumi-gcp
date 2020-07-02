@@ -10,16 +10,6 @@ import * as utilities from "../utilities";
  * Get a Compute Instance Group within GCE.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const all = pulumi.output(gcp.compute.getInstanceGroup({
- *     name: "instance-group-name",
- *     zone: "us-central1-a",
- * }, { async: true }));
- * ```
  */
 export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> {
     args = args || {};

@@ -8,22 +8,6 @@ import * as utilities from "../utilities";
  * A Lien represents an encumbrance on the actions that can be performed on a resource.
  *
  * ## Example Usage
- * ### Resource Manager Lien
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = new gcp.organizations.Project("project", {
- *     projectId: "staging-project",
- * });
- * const lien = new gcp.resourcemanager.Lien("lien", {
- *     origin: "machine-readable-explanation",
- *     parent: pulumi.interpolate`projects/${project.number}`,
- *     reason: "This project is an important environment",
- *     restrictions: ["resourcemanager.projects.delete"],
- * });
- * ```
  */
 export class Lien extends pulumi.CustomResource {
     /**

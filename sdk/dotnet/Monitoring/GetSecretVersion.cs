@@ -14,29 +14,6 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var basic = Output.Create(Gcp.SecretManager.GetSecretVersion.InvokeAsync(new Gcp.SecretManager.GetSecretVersionArgs
-        ///         {
-        ///             Secret = "my-secret",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecretVersionResult> InvokeAsync(GetSecretVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionResult>("gcp:monitoring/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionArgs(), options.WithVersion());

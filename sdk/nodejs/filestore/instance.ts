@@ -18,25 +18,6 @@ import * as utilities from "../utilities";
  *     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
  *
  * ## Example Usage
- * ### Filestore Instance Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const instance = new gcp.filestore.Instance("instance", {
- *     fileShares: {
- *         capacityGb: 2660,
- *         name: "share1",
- *     },
- *     networks: [{
- *         modes: ["MODE_IPV4"],
- *         network: "default",
- *     }],
- *     tier: "PREMIUM",
- *     zone: "us-central1-b",
- * });
- * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

@@ -18,52 +18,6 @@ import (
 // plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
-// ### With The Default Node Pool
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/container"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = container.NewCluster(ctx, "primary", &container.ClusterArgs{
-// 			InitialNodeCount: pulumi.Int(3),
-// 			Location:         pulumi.String("us-central1-a"),
-// 			MasterAuth: &container.ClusterMasterAuthArgs{
-// 				ClientCertificateConfig: &container.ClusterMasterAuthClientCertificateConfigArgs{
-// 					IssueClientCertificate: pulumi.Bool(false),
-// 				},
-// 				Password: pulumi.String(""),
-// 				Username: pulumi.String(""),
-// 			},
-// 			NodeConfig: &container.ClusterNodeConfigArgs{
-// 				Labels: pulumi.Map{
-// 					"foo": pulumi.String("bar"),
-// 				},
-// 				Metadata: pulumi.Map{
-// 					"disable-legacy-endpoints": pulumi.String("true"),
-// 				},
-// 				OauthScopes: pulumi.StringArray{
-// 					pulumi.String("https://www.googleapis.com/auth/logging.write"),
-// 					pulumi.String("https://www.googleapis.com/auth/monitoring"),
-// 				},
-// 				Tags: pulumi.StringArray{
-// 					pulumi.String("foo"),
-// 					pulumi.String("bar"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 

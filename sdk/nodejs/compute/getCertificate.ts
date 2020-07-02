@@ -8,20 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Get info about a Google Compute SSL Certificate from its name.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const myCert = gcp.compute.getCertificate({
- *     name: "my-cert",
- * });
- * export const certificate = myCert.then(myCert => myCert.certificate);
- * export const certificateId = myCert.then(myCert => myCert.certificateId);
- * export const selfLink = myCert.then(myCert => myCert.selfLink);
- * ```
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
     if (!opts) {

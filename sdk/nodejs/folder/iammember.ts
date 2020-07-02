@@ -14,23 +14,6 @@ import * as utilities from "../utilities";
  *    `gcp.folder.IAMPolicy` or they will fight over what your policy
  *    should be. Similarly, roles controlled by `gcp.folder.IAMBinding`
  *    should not be assigned to using `gcp.folder.IAMMember`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const department1 = new gcp.organizations.Folder("department1", {
- *     displayName: "Department 1",
- *     parent: "organizations/1234567",
- * });
- * const admin = new gcp.folder.IAMMember("admin", {
- *     folder: department1.name,
- *     role: "roles/editor",
- *     member: "user:alice@gmail.com",
- * });
- * ```
  */
 export class IAMMember extends pulumi.CustomResource {
     /**

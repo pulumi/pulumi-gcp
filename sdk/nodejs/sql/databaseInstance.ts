@@ -38,54 +38,6 @@ import * as utilities from "../utilities";
  * a restricted host and strong password.
  *
  * ## Example Usage
- * ### SQL Second Generation Instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const master = new gcp.sql.DatabaseInstance("master", {
- *     databaseVersion: "POSTGRES_11",
- *     region: "us-central1",
- *     settings: {
- *         // Second-generation instance tiers are based on the machine
- *         // type. See argument reference below.
- *         tier: "db-f1-micro",
- *     },
- * });
- * ```
- * ### Private IP Instance
- * > **NOTE**: For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `dependsOn`reference as shown below.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- *
- * const privateNetwork = new gcp.compute.Network("privateNetwork", {});
- * const privateIpAddress = new gcp.compute.GlobalAddress("privateIpAddress", {
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 16,
- *     network: privateNetwork.id,
- * });
- * const privateVpcConnection = new gcp.servicenetworking.Connection("privateVpcConnection", {
- *     network: privateNetwork.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [privateIpAddress.name],
- * });
- * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
- * const instance = new gcp.sql.DatabaseInstance("instance", {
- *     region: "us-central1",
- *     settings: {
- *         tier: "db-f1-micro",
- *         ip_configuration: {
- *             ipv4Enabled: false,
- *             privateNetwork: privateNetwork.id,
- *         },
- *     },
- * });
- * ```
  */
 export class DatabaseInstance extends pulumi.CustomResource {
     /**

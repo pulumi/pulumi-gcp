@@ -14,31 +14,6 @@ import (
 //
 // For a list of services available, visit the
 // [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/projects"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = projects.NewService(ctx, "project", &projects.ServiceArgs{
-// 			DisableDependentServices: pulumi.Bool(true),
-// 			Project:                  pulumi.String("your-project-id"),
-// 			Service:                  pulumi.String("iam.googleapis.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Service struct {
 	pulumi.CustomResourceState
 

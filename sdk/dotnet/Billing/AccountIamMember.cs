@@ -16,27 +16,6 @@ namespace Pulumi.Gcp.Billing
     /// &gt; **Note:** This resource __must not__ be used in conjunction with
     ///    `gcp.billing.AccountIamBinding` for the __same role__ or they will fight over
     ///    what your policy should be.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var binding = new Gcp.Billing.AccountIamMember("binding", new Gcp.Billing.AccountIamMemberArgs
-    ///         {
-    ///             BillingAccountId = "00AA00-000AAA-00AA0A",
-    ///             Member = "user:alice@gmail.com",
-    ///             Role = "roles/billing.viewer",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class AccountIamMember : Pulumi.CustomResource
     {

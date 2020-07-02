@@ -21,34 +21,6 @@ namespace Pulumi.Gcp.ServiceUsage
     ///     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
     /// 
     /// ## Example Usage
-    /// ### Consumer Quota Override
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "quota",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var @override = new Gcp.ServiceUsage.ConsumerQuotaOverride("override", new Gcp.ServiceUsage.ConsumerQuotaOverrideArgs
-    ///         {
-    ///             Project = myProject.ProjectId,
-    ///             Service = "servicemanagement.googleapis.com",
-    ///             Metric = "servicemanagement.googleapis.com%2Fdefault_requests",
-    ///             Limit = "%2Fmin%2Fproject",
-    ///             OverrideValue = "95",
-    ///             Force = true,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class ConsumerQuotaOverride : Pulumi.CustomResource
     {

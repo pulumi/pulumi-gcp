@@ -16,42 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
  *
  * ## Example Usage
- * ### TPU Node Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const available = gcp.tpu.getTensorflowVersions({});
- * const tpu = new gcp.tpu.Node("tpu", {
- *     zone: "us-central1-b",
- *     acceleratorType: "v3-8",
- *     tensorflowVersion: available.then(available => available.versions[0]),
- *     cidrBlock: "10.2.0.0/29",
- * });
- * ```
- * ### TPU Node Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const available = gcp.tpu.getTensorflowVersions({});
- * const tpu = new gcp.tpu.Node("tpu", {
- *     zone: "us-central1-b",
- *     acceleratorType: "v3-8",
- *     cidrBlock: "10.3.0.0/29",
- *     tensorflowVersion: available.then(available => available.versions[0]),
- *     description: "Google Provider test TPU",
- *     network: "default",
- *     labels: {
- *         foo: "bar",
- *     },
- *     scheduling_config: {
- *         preemptible: true,
- *     },
- * });
- * ```
  */
 export class Node extends pulumi.CustomResource {
     /**

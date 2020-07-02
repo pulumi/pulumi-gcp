@@ -19,49 +19,6 @@ import (
 //     * [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
-// ### Router Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
-// 			AutoCreateSubnetworks: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
-// 			Network: foobarNetwork.Name,
-// 			Bgp: &compute.RouterBgpArgs{
-// 				Asn:           pulumi.Int(64514),
-// 				AdvertiseMode: pulumi.String("CUSTOM"),
-// 				AdvertisedGroups: pulumi.StringArray{
-// 					pulumi.String("ALL_SUBNETS"),
-// 				},
-// 				Advertised_ip_ranges: pulumi.MapArray{
-// 					pulumi.Map{
-// 						"range": pulumi.String("1.2.3.4"),
-// 					},
-// 					pulumi.Map{
-// 						"range": pulumi.String("6.7.0.0/16"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Router struct {
 	pulumi.CustomResourceState
 

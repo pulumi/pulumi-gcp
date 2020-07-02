@@ -34,34 +34,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
 //
 // ## Example Usage
-// ### Storage Bucket Access Control Public Bucket
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = storage.NewBucketAccessControl(ctx, "publicRule", &storage.BucketAccessControlArgs{
-// 			Bucket: bucket.Name,
-// 			Role:   pulumi.String("READER"),
-// 			Entity: pulumi.String("allUsers"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type BucketAccessControl struct {
 	pulumi.CustomResourceState
 

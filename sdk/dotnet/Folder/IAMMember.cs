@@ -17,32 +17,6 @@ namespace Pulumi.Gcp.Folder
     ///    `gcp.folder.IAMPolicy` or they will fight over what your policy
     ///    should be. Similarly, roles controlled by `gcp.folder.IAMBinding`
     ///    should not be assigned to using `gcp.folder.IAMMember`.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var department1 = new Gcp.Organizations.Folder("department1", new Gcp.Organizations.FolderArgs
-    ///         {
-    ///             DisplayName = "Department 1",
-    ///             Parent = "organizations/1234567",
-    ///         });
-    ///         var admin = new Gcp.Folder.IAMMember("admin", new Gcp.Folder.IAMMemberArgs
-    ///         {
-    ///             Folder = department1.Name,
-    ///             Role = "roles/editor",
-    ///             Member = "user:alice@gmail.com",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class IAMMember : Pulumi.CustomResource
     {

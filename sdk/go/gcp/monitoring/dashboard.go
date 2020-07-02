@@ -19,54 +19,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
 //
 // ## Example Usage
-// ### Monitoring Dashboard Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = monitoring.NewDashboard(ctx, "dashboard", &monitoring.DashboardArgs{
-// 			DashboardJson: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"displayName\": \"Demo Dashboard\",\n", "  \"gridLayout\": {\n", "    \"widgets\": [\n", "      {\n", "        \"blank\": {}\n", "      }\n", "    ]\n", "  }\n", "}\n", "\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Monitoring Dashboard GridLayout
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/monitoring"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = monitoring.NewDashboard(ctx, "dashboard", &monitoring.DashboardArgs{
-// 			DashboardJson: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"displayName\": \"Grid Layout Example\",\n", "  \"gridLayout\": {\n", "    \"columns\": \"2\",\n", "    \"widgets\": [\n", "      {\n", "        \"title\": \"Widget 1\",\n", "        \"xyChart\": {\n", "          \"dataSets\": [{\n", "            \"timeSeriesQuery\": {\n", "              \"timeSeriesFilter\": {\n", "                \"filter\": \"metric.type=\\\"agent.googleapis.com/nginx/connections/accepted_count\\\"\",\n", "                \"aggregation\": {\n", "                  \"perSeriesAligner\": \"ALIGN_RATE\"\n", "                }\n", "              },\n", "              \"unitOverride\": \"1\"\n", "            },\n", "            \"plotType\": \"LINE\"\n", "          }],\n", "          \"timeshiftDuration\": \"0s\",\n", "          \"yAxis\": {\n", "            \"label\": \"y1Axis\",\n", "            \"scale\": \"LINEAR\"\n", "          }\n", "        }\n", "      },\n", "      {\n", "        \"text\": {\n", "          \"content\": \"Widget 2\",\n", "          \"format\": \"MARKDOWN\"\n", "        }\n", "      },\n", "      {\n", "        \"title\": \"Widget 3\",\n", "        \"xyChart\": {\n", "          \"dataSets\": [{\n", "            \"timeSeriesQuery\": {\n", "              \"timeSeriesFilter\": {\n", "                \"filter\": \"metric.type=\\\"agent.googleapis.com/nginx/connections/accepted_count\\\"\",\n", "                \"aggregation\": {\n", "                  \"perSeriesAligner\": \"ALIGN_RATE\"\n", "                }\n", "              },\n", "              \"unitOverride\": \"1\"\n", "            },\n", "            \"plotType\": \"STACKED_BAR\"\n", "          }],\n", "          \"timeshiftDuration\": \"0s\",\n", "          \"yAxis\": {\n", "            \"label\": \"y1Axis\",\n", "            \"scale\": \"LINEAR\"\n", "          }\n", "        }\n", "      }\n", "    ]\n", "  }\n", "}\n", "\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Dashboard struct {
 	pulumi.CustomResourceState
 

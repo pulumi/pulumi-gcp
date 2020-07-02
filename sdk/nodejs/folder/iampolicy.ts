@@ -7,28 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Allows creation and management of the IAM policy for an existing Google Cloud
  * Platform folder.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const department1 = new gcp.organizations.Folder("department1", {
- *     displayName: "Department 1",
- *     parent: "organizations/1234567",
- * });
- * const admin = gcp.organizations.getIAMPolicy({
- *     binding: [{
- *         role: "roles/editor",
- *         members: ["user:jane@example.com"],
- *     }],
- * });
- * const folderAdminPolicy = new gcp.folder.IAMPolicy("folderAdminPolicy", {
- *     folder: department1.name,
- *     policyData: admin.then(admin => admin.policyData),
- * });
- * ```
  */
 export class IAMPolicy extends pulumi.CustomResource {
     /**

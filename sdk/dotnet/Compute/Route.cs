@@ -40,30 +40,6 @@ namespace Pulumi.Gcp.Compute
     ///     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
     /// 
     /// ## Example Usage
-    /// ### Route Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
-    ///         {
-    ///         });
-    ///         var defaultRoute = new Gcp.Compute.Route("defaultRoute", new Gcp.Compute.RouteArgs
-    ///         {
-    ///             DestRange = "15.0.0.0/24",
-    ///             Network = defaultNetwork.Name,
-    ///             NextHopIp = "10.132.1.5",
-    ///             Priority = 100,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class Route : Pulumi.CustomResource
     {

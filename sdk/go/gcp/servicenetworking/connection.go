@@ -14,47 +14,6 @@ import (
 // [the official documentation](https://cloud.google.com/vpc/docs/configure-private-services-access#creating-connection)
 // and
 // [API](https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/servicenetworking"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		peeringNetwork, err := compute.NewNetwork(ctx, "peeringNetwork", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
-// 			Purpose:      pulumi.String("VPC_PEERING"),
-// 			AddressType:  pulumi.String("INTERNAL"),
-// 			PrefixLength: pulumi.Int(16),
-// 			Network:      peeringNetwork.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = servicenetworking.NewConnection(ctx, "foobar", &servicenetworking.ConnectionArgs{
-// 			Network: peeringNetwork.ID(),
-// 			Service: pulumi.String("servicenetworking.googleapis.com"),
-// 			ReservedPeeringRanges: pulumi.StringArray{
-// 				privateIpAlloc.Name,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Connection struct {
 	pulumi.CustomResourceState
 

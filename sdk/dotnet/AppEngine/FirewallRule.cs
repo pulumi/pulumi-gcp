@@ -20,37 +20,6 @@ namespace Pulumi.Gcp.AppEngine
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
     /// 
     /// ## Example Usage
-    /// ### App Engine Firewall Rule Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "ae-project",
-    ///             OrgId = "123456789",
-    ///         });
-    ///         var app = new Gcp.AppEngine.Application("app", new Gcp.AppEngine.ApplicationArgs
-    ///         {
-    ///             Project = myProject.ProjectId,
-    ///             LocationId = "us-central",
-    ///         });
-    ///         var rule = new Gcp.AppEngine.FirewallRule("rule", new Gcp.AppEngine.FirewallRuleArgs
-    ///         {
-    ///             Project = app.Project,
-    ///             Priority = 1000,
-    ///             Action = "ALLOW",
-    ///             SourceRange = "*",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {

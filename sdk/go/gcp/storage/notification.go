@@ -24,63 +24,6 @@ import (
 //
 // > **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
 // making this resource dependent on those IAM resources via `dependsOn`. This will safeguard against errors due to IAM race conditions.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		topic, err := pubsub.NewTopic(ctx, "topic", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		binding, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
-// 			Topic: topic.ID(),
-// 			Role:  pulumi.String("roles/pubsub.publisher"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String(fmt.Sprintf("%v%v", "serviceAccount:", gcsAccount.EmailAddress)),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = storage.NewNotification(ctx, "notification", &storage.NotificationArgs{
-// 			Bucket:        bucket.Name,
-// 			PayloadFormat: pulumi.String("JSON_API_V1"),
-// 			Topic:         topic.ID(),
-// 			EventTypes: pulumi.StringArray{
-// 				pulumi.String("OBJECT_FINALIZE"),
-// 				pulumi.String("OBJECT_METADATA_UPDATE"),
-// 			},
-// 			CustomAttributes: pulumi.Map{
-// 				"new-attribute": pulumi.String("new-attribute-value"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Notification struct {
 	pulumi.CustomResourceState
 

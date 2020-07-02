@@ -17,36 +17,6 @@ import * as utilities from "../utilities";
  *     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
  *
  * ## Example Usage
- * ### Access Context Manager Access Level Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
- *     parent: "organizations/123456789",
- *     title: "my policy",
- * });
- * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
- *     basic: {
- *         conditions: [{
- *             devicePolicy: {
- *                 osConstraints: [{
- *                     osType: "DESKTOP_CHROME_OS",
- *                 }],
- *                 requireScreenLock: true,
- *             },
- *             regions: [
- *                 "CH",
- *                 "IT",
- *                 "US",
- *             ],
- *         }],
- *     },
- *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     title: "chromeos_no_lock",
- * });
- * ```
  */
 export class AccessLevel extends pulumi.CustomResource {
     /**

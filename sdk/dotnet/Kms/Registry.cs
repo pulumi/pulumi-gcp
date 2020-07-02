@@ -19,23 +19,6 @@ namespace Pulumi.Gcp.Kms
     ///     * [Official Documentation](https://cloud.google.com/iot/docs/)
     /// 
     /// ## Example Usage
-    /// ### Cloudiot Device Registry Basic
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test_registry = new Gcp.Iot.Registry("test-registry", new Gcp.Iot.RegistryArgs
-    ///         {
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     [Obsolete(@"gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry")]
     public partial class Registry : Pulumi.CustomResource

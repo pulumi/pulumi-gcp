@@ -13,26 +13,6 @@ namespace Pulumi.Gcp.Iam
     {
         /// <summary>
         /// Use this data source to get information about a Google IAM Role.
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var roleinfo = Output.Create(Gcp.Iam.GetRule.InvokeAsync(new Gcp.Iam.GetRuleArgs
-        ///         {
-        ///             Name = "roles/compute.viewer",
-        ///         }));
-        ///         this.TheRolePermissions = roleinfo.Apply(roleinfo =&gt; roleinfo.IncludedPermissions);
-        ///     }
-        /// 
-        ///     [Output("theRolePermissions")]
-        ///     public Output&lt;string&gt; TheRolePermissions { get; set; }
-        /// }
-        /// ```
         /// </summary>
         public static Task<GetRuleResult> InvokeAsync(GetRuleArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRuleResult>("gcp:iam/getRule:getRule", args ?? new GetRuleArgs(), options.WithVersion());

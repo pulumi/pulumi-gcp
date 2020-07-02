@@ -25,30 +25,6 @@ import (
 //     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 //
 // ## Example Usage
-// ### Https Health Check Basic
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err = compute.NewHttpsHealthCheck(ctx, "default", &compute.HttpsHealthCheckArgs{
-// 			CheckIntervalSec: pulumi.Int(1),
-// 			RequestPath:      pulumi.String("/health_check"),
-// 			TimeoutSec:       pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type HttpsHealthCheck struct {
 	pulumi.CustomResourceState
 

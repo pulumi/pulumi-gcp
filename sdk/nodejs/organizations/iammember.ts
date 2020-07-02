@@ -13,19 +13,6 @@ import * as utilities from "../utilities";
  * > **Note:** This resource __must not__ be used in conjunction with
  *    `gcp.organizations.IAMBinding` for the __same role__ or they will fight over
  *    what your policy should be.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const binding = new gcp.organizations.IAMMember("binding", {
- *     member: "user:alice@gmail.com",
- *     orgId: "0123456789",
- *     role: "roles/editor",
- * });
- * ```
  */
 export class IAMMember extends pulumi.CustomResource {
     /**

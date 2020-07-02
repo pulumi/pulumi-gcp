@@ -19,51 +19,6 @@ namespace Pulumi.Gcp.Projects
     /// resource must have `roles/resourcemanager.projectCreator`. See the
     /// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
     /// doc for more information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             OrgId = "1234567",
-    ///             ProjectId = "your-project-id",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// To create a project under a specific folder
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var department1 = new Gcp.Organizations.Folder("department1", new Gcp.Organizations.FolderArgs
-    ///         {
-    ///             DisplayName = "Department 1",
-    ///             Parent = "organizations/1234567",
-    ///         });
-    ///         var myProject_in_a_folder = new Gcp.Organizations.Project("myProject-in-a-folder", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "your-project-id",
-    ///             FolderId = department1.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
     /// </summary>
     public partial class UsageExportBucket : Pulumi.CustomResource
     {
