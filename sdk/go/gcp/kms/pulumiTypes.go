@@ -840,6 +840,273 @@ func (o KeyRingIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type KeyRingImportJobAttestation struct {
+	Content *string `pulumi:"content"`
+	Format  *string `pulumi:"format"`
+}
+
+// KeyRingImportJobAttestationInput is an input type that accepts KeyRingImportJobAttestationArgs and KeyRingImportJobAttestationOutput values.
+// You can construct a concrete instance of `KeyRingImportJobAttestationInput` via:
+//
+//          KeyRingImportJobAttestationArgs{...}
+type KeyRingImportJobAttestationInput interface {
+	pulumi.Input
+
+	ToKeyRingImportJobAttestationOutput() KeyRingImportJobAttestationOutput
+	ToKeyRingImportJobAttestationOutputWithContext(context.Context) KeyRingImportJobAttestationOutput
+}
+
+type KeyRingImportJobAttestationArgs struct {
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	Format  pulumi.StringPtrInput `pulumi:"format"`
+}
+
+func (KeyRingImportJobAttestationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingImportJobAttestation)(nil)).Elem()
+}
+
+func (i KeyRingImportJobAttestationArgs) ToKeyRingImportJobAttestationOutput() KeyRingImportJobAttestationOutput {
+	return i.ToKeyRingImportJobAttestationOutputWithContext(context.Background())
+}
+
+func (i KeyRingImportJobAttestationArgs) ToKeyRingImportJobAttestationOutputWithContext(ctx context.Context) KeyRingImportJobAttestationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobAttestationOutput)
+}
+
+func (i KeyRingImportJobAttestationArgs) ToKeyRingImportJobAttestationPtrOutput() KeyRingImportJobAttestationPtrOutput {
+	return i.ToKeyRingImportJobAttestationPtrOutputWithContext(context.Background())
+}
+
+func (i KeyRingImportJobAttestationArgs) ToKeyRingImportJobAttestationPtrOutputWithContext(ctx context.Context) KeyRingImportJobAttestationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobAttestationOutput).ToKeyRingImportJobAttestationPtrOutputWithContext(ctx)
+}
+
+// KeyRingImportJobAttestationPtrInput is an input type that accepts KeyRingImportJobAttestationArgs, KeyRingImportJobAttestationPtr and KeyRingImportJobAttestationPtrOutput values.
+// You can construct a concrete instance of `KeyRingImportJobAttestationPtrInput` via:
+//
+//          KeyRingImportJobAttestationArgs{...}
+//
+//  or:
+//
+//          nil
+type KeyRingImportJobAttestationPtrInput interface {
+	pulumi.Input
+
+	ToKeyRingImportJobAttestationPtrOutput() KeyRingImportJobAttestationPtrOutput
+	ToKeyRingImportJobAttestationPtrOutputWithContext(context.Context) KeyRingImportJobAttestationPtrOutput
+}
+
+type keyRingImportJobAttestationPtrType KeyRingImportJobAttestationArgs
+
+func KeyRingImportJobAttestationPtr(v *KeyRingImportJobAttestationArgs) KeyRingImportJobAttestationPtrInput {
+	return (*keyRingImportJobAttestationPtrType)(v)
+}
+
+func (*keyRingImportJobAttestationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingImportJobAttestation)(nil)).Elem()
+}
+
+func (i *keyRingImportJobAttestationPtrType) ToKeyRingImportJobAttestationPtrOutput() KeyRingImportJobAttestationPtrOutput {
+	return i.ToKeyRingImportJobAttestationPtrOutputWithContext(context.Background())
+}
+
+func (i *keyRingImportJobAttestationPtrType) ToKeyRingImportJobAttestationPtrOutputWithContext(ctx context.Context) KeyRingImportJobAttestationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobAttestationPtrOutput)
+}
+
+type KeyRingImportJobAttestationOutput struct{ *pulumi.OutputState }
+
+func (KeyRingImportJobAttestationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingImportJobAttestation)(nil)).Elem()
+}
+
+func (o KeyRingImportJobAttestationOutput) ToKeyRingImportJobAttestationOutput() KeyRingImportJobAttestationOutput {
+	return o
+}
+
+func (o KeyRingImportJobAttestationOutput) ToKeyRingImportJobAttestationOutputWithContext(ctx context.Context) KeyRingImportJobAttestationOutput {
+	return o
+}
+
+func (o KeyRingImportJobAttestationOutput) ToKeyRingImportJobAttestationPtrOutput() KeyRingImportJobAttestationPtrOutput {
+	return o.ToKeyRingImportJobAttestationPtrOutputWithContext(context.Background())
+}
+
+func (o KeyRingImportJobAttestationOutput) ToKeyRingImportJobAttestationPtrOutputWithContext(ctx context.Context) KeyRingImportJobAttestationPtrOutput {
+	return o.ApplyT(func(v KeyRingImportJobAttestation) *KeyRingImportJobAttestation {
+		return &v
+	}).(KeyRingImportJobAttestationPtrOutput)
+}
+func (o KeyRingImportJobAttestationOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyRingImportJobAttestation) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+func (o KeyRingImportJobAttestationOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyRingImportJobAttestation) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+type KeyRingImportJobAttestationPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyRingImportJobAttestationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingImportJobAttestation)(nil)).Elem()
+}
+
+func (o KeyRingImportJobAttestationPtrOutput) ToKeyRingImportJobAttestationPtrOutput() KeyRingImportJobAttestationPtrOutput {
+	return o
+}
+
+func (o KeyRingImportJobAttestationPtrOutput) ToKeyRingImportJobAttestationPtrOutputWithContext(ctx context.Context) KeyRingImportJobAttestationPtrOutput {
+	return o
+}
+
+func (o KeyRingImportJobAttestationPtrOutput) Elem() KeyRingImportJobAttestationOutput {
+	return o.ApplyT(func(v *KeyRingImportJobAttestation) KeyRingImportJobAttestation { return *v }).(KeyRingImportJobAttestationOutput)
+}
+
+func (o KeyRingImportJobAttestationPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRingImportJobAttestation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KeyRingImportJobAttestationPtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRingImportJobAttestation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyRingImportJobPublicKey struct {
+	Pem *string `pulumi:"pem"`
+}
+
+// KeyRingImportJobPublicKeyInput is an input type that accepts KeyRingImportJobPublicKeyArgs and KeyRingImportJobPublicKeyOutput values.
+// You can construct a concrete instance of `KeyRingImportJobPublicKeyInput` via:
+//
+//          KeyRingImportJobPublicKeyArgs{...}
+type KeyRingImportJobPublicKeyInput interface {
+	pulumi.Input
+
+	ToKeyRingImportJobPublicKeyOutput() KeyRingImportJobPublicKeyOutput
+	ToKeyRingImportJobPublicKeyOutputWithContext(context.Context) KeyRingImportJobPublicKeyOutput
+}
+
+type KeyRingImportJobPublicKeyArgs struct {
+	Pem pulumi.StringPtrInput `pulumi:"pem"`
+}
+
+func (KeyRingImportJobPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingImportJobPublicKey)(nil)).Elem()
+}
+
+func (i KeyRingImportJobPublicKeyArgs) ToKeyRingImportJobPublicKeyOutput() KeyRingImportJobPublicKeyOutput {
+	return i.ToKeyRingImportJobPublicKeyOutputWithContext(context.Background())
+}
+
+func (i KeyRingImportJobPublicKeyArgs) ToKeyRingImportJobPublicKeyOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPublicKeyOutput)
+}
+
+func (i KeyRingImportJobPublicKeyArgs) ToKeyRingImportJobPublicKeyPtrOutput() KeyRingImportJobPublicKeyPtrOutput {
+	return i.ToKeyRingImportJobPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (i KeyRingImportJobPublicKeyArgs) ToKeyRingImportJobPublicKeyPtrOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPublicKeyOutput).ToKeyRingImportJobPublicKeyPtrOutputWithContext(ctx)
+}
+
+// KeyRingImportJobPublicKeyPtrInput is an input type that accepts KeyRingImportJobPublicKeyArgs, KeyRingImportJobPublicKeyPtr and KeyRingImportJobPublicKeyPtrOutput values.
+// You can construct a concrete instance of `KeyRingImportJobPublicKeyPtrInput` via:
+//
+//          KeyRingImportJobPublicKeyArgs{...}
+//
+//  or:
+//
+//          nil
+type KeyRingImportJobPublicKeyPtrInput interface {
+	pulumi.Input
+
+	ToKeyRingImportJobPublicKeyPtrOutput() KeyRingImportJobPublicKeyPtrOutput
+	ToKeyRingImportJobPublicKeyPtrOutputWithContext(context.Context) KeyRingImportJobPublicKeyPtrOutput
+}
+
+type keyRingImportJobPublicKeyPtrType KeyRingImportJobPublicKeyArgs
+
+func KeyRingImportJobPublicKeyPtr(v *KeyRingImportJobPublicKeyArgs) KeyRingImportJobPublicKeyPtrInput {
+	return (*keyRingImportJobPublicKeyPtrType)(v)
+}
+
+func (*keyRingImportJobPublicKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingImportJobPublicKey)(nil)).Elem()
+}
+
+func (i *keyRingImportJobPublicKeyPtrType) ToKeyRingImportJobPublicKeyPtrOutput() KeyRingImportJobPublicKeyPtrOutput {
+	return i.ToKeyRingImportJobPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *keyRingImportJobPublicKeyPtrType) ToKeyRingImportJobPublicKeyPtrOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPublicKeyPtrOutput)
+}
+
+type KeyRingImportJobPublicKeyOutput struct{ *pulumi.OutputState }
+
+func (KeyRingImportJobPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingImportJobPublicKey)(nil)).Elem()
+}
+
+func (o KeyRingImportJobPublicKeyOutput) ToKeyRingImportJobPublicKeyOutput() KeyRingImportJobPublicKeyOutput {
+	return o
+}
+
+func (o KeyRingImportJobPublicKeyOutput) ToKeyRingImportJobPublicKeyOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyOutput {
+	return o
+}
+
+func (o KeyRingImportJobPublicKeyOutput) ToKeyRingImportJobPublicKeyPtrOutput() KeyRingImportJobPublicKeyPtrOutput {
+	return o.ToKeyRingImportJobPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (o KeyRingImportJobPublicKeyOutput) ToKeyRingImportJobPublicKeyPtrOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyPtrOutput {
+	return o.ApplyT(func(v KeyRingImportJobPublicKey) *KeyRingImportJobPublicKey {
+		return &v
+	}).(KeyRingImportJobPublicKeyPtrOutput)
+}
+func (o KeyRingImportJobPublicKeyOutput) Pem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyRingImportJobPublicKey) *string { return v.Pem }).(pulumi.StringPtrOutput)
+}
+
+type KeyRingImportJobPublicKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyRingImportJobPublicKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingImportJobPublicKey)(nil)).Elem()
+}
+
+func (o KeyRingImportJobPublicKeyPtrOutput) ToKeyRingImportJobPublicKeyPtrOutput() KeyRingImportJobPublicKeyPtrOutput {
+	return o
+}
+
+func (o KeyRingImportJobPublicKeyPtrOutput) ToKeyRingImportJobPublicKeyPtrOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyPtrOutput {
+	return o
+}
+
+func (o KeyRingImportJobPublicKeyPtrOutput) Elem() KeyRingImportJobPublicKeyOutput {
+	return o.ApplyT(func(v *KeyRingImportJobPublicKey) KeyRingImportJobPublicKey { return *v }).(KeyRingImportJobPublicKeyOutput)
+}
+
+func (o KeyRingImportJobPublicKeyPtrOutput) Pem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRingImportJobPublicKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pem
+	}).(pulumi.StringPtrOutput)
+}
+
 type RegistryCredential struct {
 	// A public key certificate format and data.
 	PublicKeyCertificate RegistryCredentialPublicKeyCertificate `pulumi:"publicKeyCertificate"`
@@ -1681,6 +1948,10 @@ func init() {
 	pulumi.RegisterOutputType(KeyRingIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(KeyRingIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(KeyRingImportJobAttestationOutput{})
+	pulumi.RegisterOutputType(KeyRingImportJobAttestationPtrOutput{})
+	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyOutput{})
+	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyPtrOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialArrayOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialPublicKeyCertificateOutput{})

@@ -78,7 +78,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterTelemetry!: pulumi.Output<outputs.container.ClusterClusterTelemetry>;
     /**
-     * .
      * Structure is documented below.
      */
     public readonly databaseEncryption!: pulumi.Output<outputs.container.ClusterDatabaseEncryption>;
@@ -234,6 +233,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly networkPolicy!: pulumi.Output<outputs.container.ClusterNetworkPolicy>;
     /**
+     * Determines whether alias IPs or routes will be used for pod IPs in the cluster.
+     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+     * and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+     */
+    public readonly networkingMode!: pulumi.Output<string>;
+    /**
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
@@ -386,6 +391,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["networkPolicy"] = state ? state.networkPolicy : undefined;
+            inputs["networkingMode"] = state ? state.networkingMode : undefined;
             inputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             inputs["nodeLocations"] = state ? state.nodeLocations : undefined;
             inputs["nodePools"] = state ? state.nodePools : undefined;
@@ -431,6 +437,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["networkPolicy"] = args ? args.networkPolicy : undefined;
+            inputs["networkingMode"] = args ? args.networkingMode : undefined;
             inputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             inputs["nodeLocations"] = args ? args.nodeLocations : undefined;
             inputs["nodePools"] = args ? args.nodePools : undefined;
@@ -501,7 +508,6 @@ export interface ClusterState {
      */
     readonly clusterTelemetry?: pulumi.Input<inputs.container.ClusterClusterTelemetry>;
     /**
-     * .
      * Structure is documented below.
      */
     readonly databaseEncryption?: pulumi.Input<inputs.container.ClusterDatabaseEncryption>;
@@ -657,6 +663,12 @@ export interface ClusterState {
      */
     readonly networkPolicy?: pulumi.Input<inputs.container.ClusterNetworkPolicy>;
     /**
+     * Determines whether alias IPs or routes will be used for pod IPs in the cluster.
+     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+     * and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+     */
+    readonly networkingMode?: pulumi.Input<string>;
+    /**
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a
      * `gcp.container.NodePool` or a `nodePool` block; this configuration
@@ -805,7 +817,6 @@ export interface ClusterArgs {
      */
     readonly clusterTelemetry?: pulumi.Input<inputs.container.ClusterClusterTelemetry>;
     /**
-     * .
      * Structure is documented below.
      */
     readonly databaseEncryption?: pulumi.Input<inputs.container.ClusterDatabaseEncryption>;
@@ -941,6 +952,12 @@ export interface ClusterArgs {
      * feature. Structure is documented below.
      */
     readonly networkPolicy?: pulumi.Input<inputs.container.ClusterNetworkPolicy>;
+    /**
+     * Determines whether alias IPs or routes will be used for pod IPs in the cluster.
+     * Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+     * and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+     */
+    readonly networkingMode?: pulumi.Input<string>;
     /**
      * Parameters used in creating the default node pool.
      * Generally, this field should not be used at the same time as a

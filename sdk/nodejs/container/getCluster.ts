@@ -96,6 +96,7 @@ export interface GetClusterResult {
     readonly name: string;
     readonly network: string;
     readonly networkPolicies: outputs.container.GetClusterNetworkPolicy[];
+    readonly networkingMode: string;
     readonly nodeConfigs: outputs.container.GetClusterNodeConfig[];
     readonly nodeLocations: string[];
     readonly nodePools: outputs.container.GetClusterNodePool[];

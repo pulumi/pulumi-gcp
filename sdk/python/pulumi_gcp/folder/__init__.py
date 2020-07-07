@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .get_organization_policy import *
+from .iam_audit_config import *
 from .iam_binding import *
 from .iam_member import *
 from .iam_policy import *

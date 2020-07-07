@@ -71,6 +71,7 @@ type LookupClusterResult struct {
 	Name                            string                                     `pulumi:"name"`
 	Network                         string                                     `pulumi:"network"`
 	NetworkPolicies                 []GetClusterNetworkPolicy                  `pulumi:"networkPolicies"`
+	NetworkingMode                  string                                     `pulumi:"networkingMode"`
 	NodeConfigs                     []GetClusterNodeConfig                     `pulumi:"nodeConfigs"`
 	NodeLocations                   []string                                   `pulumi:"nodeLocations"`
 	NodePools                       []GetClusterNodePool                       `pulumi:"nodePools"`

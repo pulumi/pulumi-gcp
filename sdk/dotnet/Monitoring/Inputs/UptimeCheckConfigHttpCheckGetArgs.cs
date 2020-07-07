@@ -18,6 +18,18 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         [Input("authInfo")]
         public Input<Inputs.UptimeCheckConfigHttpCheckAuthInfoGetArgs>? AuthInfo { get; set; }
 
+        /// <summary>
+        /// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+        /// </summary>
+        [Input("body")]
+        public Input<string>? Body { get; set; }
+
+        /// <summary>
+        /// The content type to use for the check.
+        /// </summary>
+        [Input("contentType")]
+        public Input<string>? ContentType { get; set; }
+
         [Input("headers")]
         private InputMap<string>? _headers;
 
@@ -47,6 +59,12 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
+
+        /// <summary>
+        /// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+        /// </summary>
+        [Input("requestMethod")]
+        public Input<string>? RequestMethod { get; set; }
 
         /// <summary>
         /// If true, use HTTPS instead of HTTP to run the check.

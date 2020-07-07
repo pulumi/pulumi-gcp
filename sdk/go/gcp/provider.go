@@ -59,6 +59,7 @@ type providerArgs struct {
 	CloudBillingCustomEndpoint           *string           `pulumi:"cloudBillingCustomEndpoint"`
 	CloudBuildCustomEndpoint             *string           `pulumi:"cloudBuildCustomEndpoint"`
 	CloudFunctionsCustomEndpoint         *string           `pulumi:"cloudFunctionsCustomEndpoint"`
+	CloudIdentityCustomEndpoint          *string           `pulumi:"cloudIdentityCustomEndpoint"`
 	CloudIotCustomEndpoint               *string           `pulumi:"cloudIotCustomEndpoint"`
 	CloudRunCustomEndpoint               *string           `pulumi:"cloudRunCustomEndpoint"`
 	CloudSchedulerCustomEndpoint         *string           `pulumi:"cloudSchedulerCustomEndpoint"`
@@ -142,6 +143,7 @@ type ProviderArgs struct {
 	CloudBillingCustomEndpoint           pulumi.StringPtrInput
 	CloudBuildCustomEndpoint             pulumi.StringPtrInput
 	CloudFunctionsCustomEndpoint         pulumi.StringPtrInput
+	CloudIdentityCustomEndpoint          pulumi.StringPtrInput
 	CloudIotCustomEndpoint               pulumi.StringPtrInput
 	CloudRunCustomEndpoint               pulumi.StringPtrInput
 	CloudSchedulerCustomEndpoint         pulumi.StringPtrInput

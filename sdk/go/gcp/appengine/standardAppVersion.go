@@ -64,7 +64,7 @@ type StandardAppVersion struct {
 	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion pulumi.StringPtrOutput `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
-	Service pulumi.StringPtrOutput `pulumi:"service"`
+	Service pulumi.StringOutput `pulumi:"service"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrOutput `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -79,6 +79,9 @@ func NewStandardAppVersion(ctx *pulumi.Context,
 	}
 	if args == nil || args.Runtime == nil {
 		return nil, errors.New("missing required argument 'Runtime'")
+	}
+	if args == nil || args.Service == nil {
+		return nil, errors.New("missing required argument 'Service'")
 	}
 	if args == nil {
 		args = &StandardAppVersionArgs{}
@@ -240,7 +243,7 @@ type standardAppVersionArgs struct {
 	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion *string `pulumi:"runtimeApiVersion"`
 	// AppEngine service resource
-	Service *string `pulumi:"service"`
+	Service string `pulumi:"service"`
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe *bool `pulumi:"threadsafe"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -286,7 +289,7 @@ type StandardAppVersionArgs struct {
 	// Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
 	RuntimeApiVersion pulumi.StringPtrInput
 	// AppEngine service resource
-	Service pulumi.StringPtrInput
+	Service pulumi.StringInput
 	// Whether multiple requests can be dispatched to this version at once.
 	Threadsafe pulumi.BoolPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".

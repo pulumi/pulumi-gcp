@@ -308,6 +308,8 @@ class StandardAppVersion(pulumi.CustomResource):
                 raise TypeError("Missing required property 'runtime'")
             __props__['runtime'] = runtime
             __props__['runtime_api_version'] = runtime_api_version
+            if service is None:
+                raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['threadsafe'] = threadsafe
             __props__['version_id'] = version_id

@@ -15,5 +15,6 @@ export * from "./keyRing";
 export * from "./keyRingIAMBinding";
 export * from "./keyRingIAMMember";
 export * from "./keyRingIAMPolicy";
+export * from "./keyRingImportJob";
 export * from "./registry";
 export * from "./secretCiphertext";

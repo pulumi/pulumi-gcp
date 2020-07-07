@@ -322,6 +322,127 @@ func (o IAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type IamAuditConfigAuditLogConfig struct {
+	// Identities that do not cause logging for this type of permission.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+	LogType string `pulumi:"logType"`
+}
+
+// IamAuditConfigAuditLogConfigInput is an input type that accepts IamAuditConfigAuditLogConfigArgs and IamAuditConfigAuditLogConfigOutput values.
+// You can construct a concrete instance of `IamAuditConfigAuditLogConfigInput` via:
+//
+//          IamAuditConfigAuditLogConfigArgs{...}
+type IamAuditConfigAuditLogConfigInput interface {
+	pulumi.Input
+
+	ToIamAuditConfigAuditLogConfigOutput() IamAuditConfigAuditLogConfigOutput
+	ToIamAuditConfigAuditLogConfigOutputWithContext(context.Context) IamAuditConfigAuditLogConfigOutput
+}
+
+type IamAuditConfigAuditLogConfigArgs struct {
+	// Identities that do not cause logging for this type of permission.
+	// Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (IamAuditConfigAuditLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamAuditConfigAuditLogConfig)(nil)).Elem()
+}
+
+func (i IamAuditConfigAuditLogConfigArgs) ToIamAuditConfigAuditLogConfigOutput() IamAuditConfigAuditLogConfigOutput {
+	return i.ToIamAuditConfigAuditLogConfigOutputWithContext(context.Background())
+}
+
+func (i IamAuditConfigAuditLogConfigArgs) ToIamAuditConfigAuditLogConfigOutputWithContext(ctx context.Context) IamAuditConfigAuditLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigAuditLogConfigOutput)
+}
+
+// IamAuditConfigAuditLogConfigArrayInput is an input type that accepts IamAuditConfigAuditLogConfigArray and IamAuditConfigAuditLogConfigArrayOutput values.
+// You can construct a concrete instance of `IamAuditConfigAuditLogConfigArrayInput` via:
+//
+//          IamAuditConfigAuditLogConfigArray{ IamAuditConfigAuditLogConfigArgs{...} }
+type IamAuditConfigAuditLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToIamAuditConfigAuditLogConfigArrayOutput() IamAuditConfigAuditLogConfigArrayOutput
+	ToIamAuditConfigAuditLogConfigArrayOutputWithContext(context.Context) IamAuditConfigAuditLogConfigArrayOutput
+}
+
+type IamAuditConfigAuditLogConfigArray []IamAuditConfigAuditLogConfigInput
+
+func (IamAuditConfigAuditLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IamAuditConfigAuditLogConfig)(nil)).Elem()
+}
+
+func (i IamAuditConfigAuditLogConfigArray) ToIamAuditConfigAuditLogConfigArrayOutput() IamAuditConfigAuditLogConfigArrayOutput {
+	return i.ToIamAuditConfigAuditLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i IamAuditConfigAuditLogConfigArray) ToIamAuditConfigAuditLogConfigArrayOutputWithContext(ctx context.Context) IamAuditConfigAuditLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigAuditLogConfigArrayOutput)
+}
+
+type IamAuditConfigAuditLogConfigOutput struct{ *pulumi.OutputState }
+
+func (IamAuditConfigAuditLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamAuditConfigAuditLogConfig)(nil)).Elem()
+}
+
+func (o IamAuditConfigAuditLogConfigOutput) ToIamAuditConfigAuditLogConfigOutput() IamAuditConfigAuditLogConfigOutput {
+	return o
+}
+
+func (o IamAuditConfigAuditLogConfigOutput) ToIamAuditConfigAuditLogConfigOutputWithContext(ctx context.Context) IamAuditConfigAuditLogConfigOutput {
+	return o
+}
+
+// Identities that do not cause logging for this type of permission.
+// Each entry can have one of the following values:
+// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+func (o IamAuditConfigAuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IamAuditConfigAuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+func (o IamAuditConfigAuditLogConfigOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v IamAuditConfigAuditLogConfig) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type IamAuditConfigAuditLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (IamAuditConfigAuditLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IamAuditConfigAuditLogConfig)(nil)).Elem()
+}
+
+func (o IamAuditConfigAuditLogConfigArrayOutput) ToIamAuditConfigAuditLogConfigArrayOutput() IamAuditConfigAuditLogConfigArrayOutput {
+	return o
+}
+
+func (o IamAuditConfigAuditLogConfigArrayOutput) ToIamAuditConfigAuditLogConfigArrayOutputWithContext(ctx context.Context) IamAuditConfigAuditLogConfigArrayOutput {
+	return o
+}
+
+func (o IamAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) IamAuditConfigAuditLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IamAuditConfigAuditLogConfig {
+		return vs[0].([]IamAuditConfigAuditLogConfig)[vs[1].(int)]
+	}).(IamAuditConfigAuditLogConfigOutput)
+}
+
 type OrganizationPolicyBooleanPolicy struct {
 	// If true, then the Policy is enforced. If false, then any configuration is acceptable.
 	Enforced bool `pulumi:"enforced"`
@@ -1577,6 +1698,8 @@ func init() {
 	pulumi.RegisterOutputType(IAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(IAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(IAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(IamAuditConfigAuditLogConfigOutput{})
+	pulumi.RegisterOutputType(IamAuditConfigAuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationPolicyBooleanPolicyOutput{})
 	pulumi.RegisterOutputType(OrganizationPolicyBooleanPolicyPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPolicyListPolicyOutput{})

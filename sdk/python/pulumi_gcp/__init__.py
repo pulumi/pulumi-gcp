@@ -17,6 +17,7 @@ _submodules = [
     'binaryauthorization',
     'cloudbuild',
     'cloudfunctions',
+    'cloudidentity',
     'cloudrun',
     'cloudscheduler',
     'cloudtasks',

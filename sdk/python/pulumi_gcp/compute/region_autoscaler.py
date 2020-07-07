@@ -98,6 +98,16 @@ class RegionAutoscaler(pulumi.CustomResource):
         to. This cannot be less than 0. If not provided, autoscaler will
         choose a default value depending on maximum number of instances
         allowed.
+      * `mode` (`str`) - Defines operating mode for this policy.
+      * `scaleDownControl` (`dict`)
+        * `maxScaledDownReplicas` (`dict`) - A nested object resource  Structure is documented below.
+          * `fixed` (`float`) - Specifies a fixed number of VM instances. This must be a positive
+            integer.
+          * `percent` (`float`) - Specifies a percentage of instances between 0 to 100%, inclusive.
+            For example, specify 80 for 80%.
+
+        * `timeWindowSec` (`float`) - How long back autoscaling should look when computing recommendations
+          to include directives regarding slower scale down, as described above.
     """
     creation_timestamp: pulumi.Output[str]
     """
@@ -248,6 +258,16 @@ class RegionAutoscaler(pulumi.CustomResource):
             to. This cannot be less than 0. If not provided, autoscaler will
             choose a default value depending on maximum number of instances
             allowed.
+          * `mode` (`pulumi.Input[str]`) - Defines operating mode for this policy.
+          * `scaleDownControl` (`pulumi.Input[dict]`)
+            * `maxScaledDownReplicas` (`pulumi.Input[dict]`) - A nested object resource  Structure is documented below.
+              * `fixed` (`pulumi.Input[float]`) - Specifies a fixed number of VM instances. This must be a positive
+                integer.
+              * `percent` (`pulumi.Input[float]`) - Specifies a percentage of instances between 0 to 100%, inclusive.
+                For example, specify 80 for 80%.
+
+            * `timeWindowSec` (`pulumi.Input[float]`) - How long back autoscaling should look when computing recommendations
+              to include directives regarding slower scale down, as described above.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -393,6 +413,16 @@ class RegionAutoscaler(pulumi.CustomResource):
             to. This cannot be less than 0. If not provided, autoscaler will
             choose a default value depending on maximum number of instances
             allowed.
+          * `mode` (`pulumi.Input[str]`) - Defines operating mode for this policy.
+          * `scaleDownControl` (`pulumi.Input[dict]`)
+            * `maxScaledDownReplicas` (`pulumi.Input[dict]`) - A nested object resource  Structure is documented below.
+              * `fixed` (`pulumi.Input[float]`) - Specifies a fixed number of VM instances. This must be a positive
+                integer.
+              * `percent` (`pulumi.Input[float]`) - Specifies a percentage of instances between 0 to 100%, inclusive.
+                For example, specify 80 for 80%.
+
+            * `timeWindowSec` (`pulumi.Input[float]`) - How long back autoscaling should look when computing recommendations
+              to include directives regarding slower scale down, as described above.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

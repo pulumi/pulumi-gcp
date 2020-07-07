@@ -9125,7 +9125,7 @@ type InstanceBootDiskInitializeParams struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
 	// images names must include the family name. If they don't, use the
-	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/datasource_compute_image.html).
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
@@ -9156,7 +9156,7 @@ type InstanceBootDiskInitializeParamsArgs struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
 	// images names must include the family name. If they don't, use the
-	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/datasource_compute_image.html).
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput `pulumi:"image"`
@@ -9252,7 +9252,7 @@ func (o InstanceBootDiskInitializeParamsOutput) ToInstanceBootDiskInitializePara
 // `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 // `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
 // images names must include the family name. If they don't, use the
-// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/datasource_compute_image.html).
+// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
 // For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 // These images can be referred by family name here.
 func (o InstanceBootDiskInitializeParamsOutput) Image() pulumi.StringPtrOutput {
@@ -9299,7 +9299,7 @@ func (o InstanceBootDiskInitializeParamsPtrOutput) Elem() InstanceBootDiskInitia
 // `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 // `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
 // images names must include the family name. If they don't, use the
-// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/datasource_compute_image.html).
+// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
 // For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 // These images can be referred by family name here.
 func (o InstanceBootDiskInitializeParamsPtrOutput) Image() pulumi.StringPtrOutput {
@@ -17347,6 +17347,9 @@ type RegionAutoscalerAutoscalingPolicy struct {
 	// choose a default value depending on maximum number of instances
 	// allowed.
 	MinReplicas int `pulumi:"minReplicas"`
+	// Defines operating mode for this policy.
+	Mode             *string                                            `pulumi:"mode"`
+	ScaleDownControl *RegionAutoscalerAutoscalingPolicyScaleDownControl `pulumi:"scaleDownControl"`
 }
 
 // RegionAutoscalerAutoscalingPolicyInput is an input type that accepts RegionAutoscalerAutoscalingPolicyArgs and RegionAutoscalerAutoscalingPolicyOutput values.
@@ -17389,6 +17392,9 @@ type RegionAutoscalerAutoscalingPolicyArgs struct {
 	// choose a default value depending on maximum number of instances
 	// allowed.
 	MinReplicas pulumi.IntInput `pulumi:"minReplicas"`
+	// Defines operating mode for this policy.
+	Mode             pulumi.StringPtrInput                                     `pulumi:"mode"`
+	ScaleDownControl RegionAutoscalerAutoscalingPolicyScaleDownControlPtrInput `pulumi:"scaleDownControl"`
 }
 
 func (RegionAutoscalerAutoscalingPolicyArgs) ElementType() reflect.Type {
@@ -17518,6 +17524,17 @@ func (o RegionAutoscalerAutoscalingPolicyOutput) MinReplicas() pulumi.IntOutput 
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) int { return v.MinReplicas }).(pulumi.IntOutput)
 }
 
+// Defines operating mode for this policy.
+func (o RegionAutoscalerAutoscalingPolicyOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+func (o RegionAutoscalerAutoscalingPolicyOutput) ScaleDownControl() RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) *RegionAutoscalerAutoscalingPolicyScaleDownControl {
+		return v.ScaleDownControl
+	}).(RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput)
+}
+
 type RegionAutoscalerAutoscalingPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionAutoscalerAutoscalingPolicyPtrOutput) ElementType() reflect.Type {
@@ -17610,6 +17627,25 @@ func (o RegionAutoscalerAutoscalingPolicyPtrOutput) MinReplicas() pulumi.IntPtrO
 		}
 		return &v.MinReplicas
 	}).(pulumi.IntPtrOutput)
+}
+
+// Defines operating mode for this policy.
+func (o RegionAutoscalerAutoscalingPolicyPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegionAutoscalerAutoscalingPolicyPtrOutput) ScaleDownControl() RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
+	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicy) *RegionAutoscalerAutoscalingPolicyScaleDownControl {
+		if v == nil {
+			return nil
+		}
+		return v.ScaleDownControl
+	}).(RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput)
 }
 
 type RegionAutoscalerAutoscalingPolicyCpuUtilization struct {
@@ -18157,6 +18193,324 @@ func (o RegionAutoscalerAutoscalingPolicyMetricArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionAutoscalerAutoscalingPolicyMetric {
 		return vs[0].([]RegionAutoscalerAutoscalingPolicyMetric)[vs[1].(int)]
 	}).(RegionAutoscalerAutoscalingPolicyMetricOutput)
+}
+
+type RegionAutoscalerAutoscalingPolicyScaleDownControl struct {
+	// A nested object resource  Structure is documented below.
+	MaxScaledDownReplicas *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas `pulumi:"maxScaledDownReplicas"`
+	// How long back autoscaling should look when computing recommendations
+	// to include directives regarding slower scale down, as described above.
+	TimeWindowSec *int `pulumi:"timeWindowSec"`
+}
+
+// RegionAutoscalerAutoscalingPolicyScaleDownControlInput is an input type that accepts RegionAutoscalerAutoscalingPolicyScaleDownControlArgs and RegionAutoscalerAutoscalingPolicyScaleDownControlOutput values.
+// You can construct a concrete instance of `RegionAutoscalerAutoscalingPolicyScaleDownControlInput` via:
+//
+//          RegionAutoscalerAutoscalingPolicyScaleDownControlArgs{...}
+type RegionAutoscalerAutoscalingPolicyScaleDownControlInput interface {
+	pulumi.Input
+
+	ToRegionAutoscalerAutoscalingPolicyScaleDownControlOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlOutput
+	ToRegionAutoscalerAutoscalingPolicyScaleDownControlOutputWithContext(context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlOutput
+}
+
+type RegionAutoscalerAutoscalingPolicyScaleDownControlArgs struct {
+	// A nested object resource  Structure is documented below.
+	MaxScaledDownReplicas RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrInput `pulumi:"maxScaledDownReplicas"`
+	// How long back autoscaling should look when computing recommendations
+	// to include directives regarding slower scale down, as described above.
+	TimeWindowSec pulumi.IntPtrInput `pulumi:"timeWindowSec"`
+}
+
+func (RegionAutoscalerAutoscalingPolicyScaleDownControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionAutoscalerAutoscalingPolicyScaleDownControl)(nil)).Elem()
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScaleDownControlArgs) ToRegionAutoscalerAutoscalingPolicyScaleDownControlOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlOutput {
+	return i.ToRegionAutoscalerAutoscalingPolicyScaleDownControlOutputWithContext(context.Background())
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScaleDownControlArgs) ToRegionAutoscalerAutoscalingPolicyScaleDownControlOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerAutoscalingPolicyScaleDownControlOutput)
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScaleDownControlArgs) ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
+	return i.ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutputWithContext(context.Background())
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScaleDownControlArgs) ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerAutoscalingPolicyScaleDownControlOutput).ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutputWithContext(ctx)
+}
+
+// RegionAutoscalerAutoscalingPolicyScaleDownControlPtrInput is an input type that accepts RegionAutoscalerAutoscalingPolicyScaleDownControlArgs, RegionAutoscalerAutoscalingPolicyScaleDownControlPtr and RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput values.
+// You can construct a concrete instance of `RegionAutoscalerAutoscalingPolicyScaleDownControlPtrInput` via:
+//
+//          RegionAutoscalerAutoscalingPolicyScaleDownControlArgs{...}
+//
+//  or:
+//
+//          nil
+type RegionAutoscalerAutoscalingPolicyScaleDownControlPtrInput interface {
+	pulumi.Input
+
+	ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput
+	ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutputWithContext(context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput
+}
+
+type regionAutoscalerAutoscalingPolicyScaleDownControlPtrType RegionAutoscalerAutoscalingPolicyScaleDownControlArgs
+
+func RegionAutoscalerAutoscalingPolicyScaleDownControlPtr(v *RegionAutoscalerAutoscalingPolicyScaleDownControlArgs) RegionAutoscalerAutoscalingPolicyScaleDownControlPtrInput {
+	return (*regionAutoscalerAutoscalingPolicyScaleDownControlPtrType)(v)
+}
+
+func (*regionAutoscalerAutoscalingPolicyScaleDownControlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionAutoscalerAutoscalingPolicyScaleDownControl)(nil)).Elem()
+}
+
+func (i *regionAutoscalerAutoscalingPolicyScaleDownControlPtrType) ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
+	return i.ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutputWithContext(context.Background())
+}
+
+func (i *regionAutoscalerAutoscalingPolicyScaleDownControlPtrType) ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput)
+}
+
+type RegionAutoscalerAutoscalingPolicyScaleDownControlOutput struct{ *pulumi.OutputState }
+
+func (RegionAutoscalerAutoscalingPolicyScaleDownControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionAutoscalerAutoscalingPolicyScaleDownControl)(nil)).Elem()
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
+	return o.ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutputWithContext(context.Background())
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScaleDownControl) *RegionAutoscalerAutoscalingPolicyScaleDownControl {
+		return &v
+	}).(RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput)
+}
+
+// A nested object resource  Structure is documented below.
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlOutput) MaxScaledDownReplicas() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScaleDownControl) *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
+		return v.MaxScaledDownReplicas
+	}).(RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput)
+}
+
+// How long back autoscaling should look when computing recommendations
+// to include directives regarding slower scale down, as described above.
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlOutput) TimeWindowSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScaleDownControl) *int { return v.TimeWindowSec }).(pulumi.IntPtrOutput)
+}
+
+type RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionAutoscalerAutoscalingPolicyScaleDownControl)(nil)).Elem()
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput) Elem() RegionAutoscalerAutoscalingPolicyScaleDownControlOutput {
+	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicyScaleDownControl) RegionAutoscalerAutoscalingPolicyScaleDownControl {
+		return *v
+	}).(RegionAutoscalerAutoscalingPolicyScaleDownControlOutput)
+}
+
+// A nested object resource  Structure is documented below.
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput) MaxScaledDownReplicas() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
+	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicyScaleDownControl) *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
+		if v == nil {
+			return nil
+		}
+		return v.MaxScaledDownReplicas
+	}).(RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput)
+}
+
+// How long back autoscaling should look when computing recommendations
+// to include directives regarding slower scale down, as described above.
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput) TimeWindowSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicyScaleDownControl) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindowSec
+	}).(pulumi.IntPtrOutput)
+}
+
+type RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas struct {
+	// Specifies a fixed number of VM instances. This must be a positive
+	// integer.
+	Fixed *int `pulumi:"fixed"`
+	// Specifies a percentage of instances between 0 to 100%, inclusive.
+	// For example, specify 80 for 80%.
+	Percent *int `pulumi:"percent"`
+}
+
+// RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasInput is an input type that accepts RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs and RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput values.
+// You can construct a concrete instance of `RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasInput` via:
+//
+//          RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs{...}
+type RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasInput interface {
+	pulumi.Input
+
+	ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput
+	ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutputWithContext(context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput
+}
+
+type RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs struct {
+	// Specifies a fixed number of VM instances. This must be a positive
+	// integer.
+	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
+	// Specifies a percentage of instances between 0 to 100%, inclusive.
+	// For example, specify 80 for 80%.
+	Percent pulumi.IntPtrInput `pulumi:"percent"`
+}
+
+func (RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas)(nil)).Elem()
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput {
+	return i.ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutputWithContext(context.Background())
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput)
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
+	return i.ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutputWithContext(context.Background())
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput).ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutputWithContext(ctx)
+}
+
+// RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrInput is an input type that accepts RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs, RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtr and RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput values.
+// You can construct a concrete instance of `RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrInput` via:
+//
+//          RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs{...}
+//
+//  or:
+//
+//          nil
+type RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrInput interface {
+	pulumi.Input
+
+	ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput
+	ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutputWithContext(context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput
+}
+
+type regionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrType RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs
+
+func RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtr(v *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs) RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrInput {
+	return (*regionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrType)(v)
+}
+
+func (*regionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas)(nil)).Elem()
+}
+
+func (i *regionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrType) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
+	return i.ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutputWithContext(context.Background())
+}
+
+func (i *regionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrType) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput)
+}
+
+type RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput struct{ *pulumi.OutputState }
+
+func (RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas)(nil)).Elem()
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
+	return o.ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutputWithContext(context.Background())
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas) *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
+		return &v
+	}).(RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput)
+}
+
+// Specifies a fixed number of VM instances. This must be a positive
+// integer.
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput) Fixed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas) *int { return v.Fixed }).(pulumi.IntPtrOutput)
+}
+
+// Specifies a percentage of instances between 0 to 100%, inclusive.
+// For example, specify 80 for 80%.
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas) *int { return v.Percent }).(pulumi.IntPtrOutput)
+}
+
+type RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas)(nil)).Elem()
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput) ToRegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput) Elem() RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput {
+	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas) RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
+		return *v
+	}).(RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput)
+}
+
+// Specifies a fixed number of VM instances. This must be a positive
+// integer.
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput) Fixed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Fixed
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies a percentage of instances between 0 to 100%, inclusive.
+// For example, specify 80 for 80%.
+func (o RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Percent
+	}).(pulumi.IntPtrOutput)
 }
 
 type RegionBackendServiceBackend struct {
@@ -56882,6 +57236,10 @@ func init() {
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationPtrOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyMetricOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyMetricArrayOutput{})
+	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyScaleDownControlOutput{})
+	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyScaleDownControlPtrOutput{})
+	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasOutput{})
+	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasPtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceBackendOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceBackendArrayOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceCircuitBreakersOutput{})

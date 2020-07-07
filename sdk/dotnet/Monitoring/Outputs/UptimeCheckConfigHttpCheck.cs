@@ -18,6 +18,14 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly Outputs.UptimeCheckConfigHttpCheckAuthInfo? AuthInfo;
         /// <summary>
+        /// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+        /// </summary>
+        public readonly string? Body;
+        /// <summary>
+        /// The content type to use for the check.
+        /// </summary>
+        public readonly string? ContentType;
+        /// <summary>
         /// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Headers;
@@ -34,6 +42,10 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
+        /// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+        /// </summary>
+        public readonly string? RequestMethod;
+        /// <summary>
         /// If true, use HTTPS instead of HTTP to run the check.
         /// </summary>
         public readonly bool? UseSsl;
@@ -46,6 +58,10 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         private UptimeCheckConfigHttpCheck(
             Outputs.UptimeCheckConfigHttpCheckAuthInfo? authInfo,
 
+            string? body,
+
+            string? contentType,
+
             ImmutableDictionary<string, string>? headers,
 
             bool? maskHeaders,
@@ -54,15 +70,20 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
             int? port,
 
+            string? requestMethod,
+
             bool? useSsl,
 
             bool? validateSsl)
         {
             AuthInfo = authInfo;
+            Body = body;
+            ContentType = contentType;
             Headers = headers;
             MaskHeaders = maskHeaders;
             Path = path;
             Port = port;
+            RequestMethod = requestMethod;
             UseSsl = useSsl;
             ValidateSsl = validateSsl;
         }

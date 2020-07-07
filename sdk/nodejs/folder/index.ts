@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./getOrganizationPolicy";
+export * from "./iamAuditConfig";
 export * from "./iambinding";
 export * from "./iammember";
 export * from "./iampolicy";

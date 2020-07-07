@@ -89,6 +89,9 @@ namespace Pulumi.Gcp
         [Input("cloudFunctionsCustomEndpoint")]
         public Input<string>? CloudFunctionsCustomEndpoint { get; set; }
 
+        [Input("cloudIdentityCustomEndpoint")]
+        public Input<string>? CloudIdentityCustomEndpoint { get; set; }
+
         [Input("cloudIotCustomEndpoint")]
         public Input<string>? CloudIotCustomEndpoint { get; set; }
 

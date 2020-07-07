@@ -28,6 +28,7 @@ const (
 	gcpBinaryAuthorization  = "BinaryAuthorization"  // Binary Authorization resources
 	gcpCloudBuild           = "CloudBuild"           // CloudBuild resources
 	gcpCloudFunctions       = "CloudFunctions"       // CloudFunction resources
+	gcpCloudIdentity        = "CloudIdentity"        // CloudIdentity resources
 	gcpCloudRun             = "CloudRun"             // CloudRun resources
 	gcpCloudScheduler       = "CloudScheduler"       // Cloud Scheduler resources
 	gcpCloudTasks           = "CloudTasks"           // Cloud Tasks resources
@@ -387,6 +388,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_folder_organization_policy.html.markdown",
 				},
 			},
+			"google_folder_iam_audit_config": {Tok: gcpResource(gcpFolder, "IamAuditConfig")},
+
 			"google_organization_policy": {
 				Tok: gcpResource(gcpOrganization, "Policy"),
 				Docs: &tfbridge.DocInfo{
@@ -1076,7 +1079,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_kms_crypto_key_iam.html.markdown",
 				},
 			},
-			"google_kms_secret_ciphertext": {Tok: gcpResource(gcpKMS, "SecretCiphertext")},
+			"google_kms_secret_ciphertext":   {Tok: gcpResource(gcpKMS, "SecretCiphertext")},
+			"google_kms_key_ring_import_job": {Tok: gcpResource(gcpKMS, "KeyRingImportJob")},
 
 			// Cloud IAP Resources
 			"google_iap_tunnel_instance_iam_binding": {
@@ -1497,12 +1501,19 @@ func Provider() tfbridge.ProviderInfo {
 			// Network Management
 			"google_network_management_connectivity_test": {
 				Tok: gcpResource(gcpNetworkManagement, "ConnectivityTest"),
+				Docs: &tfbridge.DocInfo{
+					Source: "network_management_connectivity_test_resource.html.markdown",
+				},
 			},
 
 			// Notebook
 			"google_notebooks_environment": {Tok: gcpResource(gcpNotebooks, "Environment")},
 			"google_notebooks_instance":    {Tok: gcpResource(gcpNotebooks, "Instance")},
 			"google_notebooks_location":    {Tok: gcpResource(gcpNotebooks, "Location")},
+
+			// CloudIdentity
+			"google_cloud_identity_group_membership": {Tok: gcpResource(gcpCloudIdentity, "GroupMembership")},
+			"google_cloud_identity_group":            {Tok: gcpResource(gcpCloudIdentity, "Group")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1900,6 +1911,15 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_redis_instance.html.markdown",
 				},
 			},
+
+			// CloudIdentity
+			"google_cloud_identity_group_memberships": {
+				Tok: gcpDataSource(gcpCloudIdentity, "getGroupMemberships"),
+				Docs: &tfbridge.DocInfo{
+					Source: "cloud_identity_group_membership.html.markdown",
+				},
+			},
+			"google_cloud_identity_groups": {Tok: gcpDataSource(gcpCloudIdentity, "getGroups")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
