@@ -40,6 +40,8 @@ cloud_build_custom_endpoint = __config__.get('cloudBuildCustomEndpoint')
 
 cloud_functions_custom_endpoint = __config__.get('cloudFunctionsCustomEndpoint')
 
+cloud_identity_custom_endpoint = __config__.get('cloudIdentityCustomEndpoint')
+
 cloud_iot_custom_endpoint = __config__.get('cloudIotCustomEndpoint')
 
 cloud_run_custom_endpoint = __config__.get('cloudRunCustomEndpoint')

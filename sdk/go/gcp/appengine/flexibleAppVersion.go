@@ -86,7 +86,7 @@ type FlexibleAppVersion struct {
 	// The path or name of the app's main executable.
 	RuntimeMainExecutablePath pulumi.StringPtrOutput `pulumi:"runtimeMainExecutablePath"`
 	// AppEngine service resource
-	Service pulumi.StringPtrOutput `pulumi:"service"`
+	Service pulumi.StringOutput `pulumi:"service"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	ServingStatus pulumi.StringPtrOutput `pulumi:"servingStatus"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
@@ -107,6 +107,9 @@ func NewFlexibleAppVersion(ctx *pulumi.Context,
 	}
 	if args == nil || args.Runtime == nil {
 		return nil, errors.New("missing required argument 'Runtime'")
+	}
+	if args == nil || args.Service == nil {
+		return nil, errors.New("missing required argument 'Service'")
 	}
 	if args == nil {
 		args = &FlexibleAppVersionArgs{}
@@ -331,7 +334,7 @@ type flexibleAppVersionArgs struct {
 	// The path or name of the app's main executable.
 	RuntimeMainExecutablePath *string `pulumi:"runtimeMainExecutablePath"`
 	// AppEngine service resource
-	Service *string `pulumi:"service"`
+	Service string `pulumi:"service"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	ServingStatus *string `pulumi:"servingStatus"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
@@ -399,7 +402,7 @@ type FlexibleAppVersionArgs struct {
 	// The path or name of the app's main executable.
 	RuntimeMainExecutablePath pulumi.StringPtrInput
 	// AppEngine service resource
-	Service pulumi.StringPtrInput
+	Service pulumi.StringInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	ServingStatus pulumi.StringPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.

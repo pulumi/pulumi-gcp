@@ -7,8 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
-//
 // Deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
 func GetSecretVersion(ctx *pulumi.Context, args *GetSecretVersionArgs, opts ...pulumi.InvokeOption) (*GetSecretVersionResult, error) {
 	var rv GetSecretVersionResult
@@ -21,32 +19,21 @@ func GetSecretVersion(ctx *pulumi.Context, args *GetSecretVersionArgs, opts ...p
 
 // A collection of arguments for invoking getSecretVersion.
 type GetSecretVersionArgs struct {
-	// The project to get the secret version for. If it
-	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The secret to get the secret version for.
-	Secret string `pulumi:"secret"`
-	// The version of the secret to get. If it
-	// is not provided, the latest version is retrieved.
+	Secret  string  `pulumi:"secret"`
 	Version *string `pulumi:"version"`
 }
 
 // A collection of values returned by getSecretVersion.
 type GetSecretVersionResult struct {
-	// The time at which the Secret was created.
-	CreateTime string `pulumi:"createTime"`
-	// The time at which the Secret was destroyed. Only present if state is DESTROYED.
+	CreateTime  string `pulumi:"createTime"`
 	DestroyTime string `pulumi:"destroyTime"`
-	// True if the current state of the SecretVersion is enabled.
-	Enabled bool `pulumi:"enabled"`
+	Enabled     bool   `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The resource name of the SecretVersion. Format:
-	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
-	Name    string `pulumi:"name"`
-	Project string `pulumi:"project"`
-	Secret  string `pulumi:"secret"`
-	// The secret data. No larger than 64KiB.
+	Id         string `pulumi:"id"`
+	Name       string `pulumi:"name"`
+	Project    string `pulumi:"project"`
+	Secret     string `pulumi:"secret"`
 	SecretData string `pulumi:"secretData"`
 	Version    string `pulumi:"version"`
 }

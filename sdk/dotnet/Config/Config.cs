@@ -38,6 +38,8 @@ namespace Pulumi.Gcp
 
         public static string? CloudFunctionsCustomEndpoint { get; set; } = __config.Get("cloudFunctionsCustomEndpoint");
 
+        public static string? CloudIdentityCustomEndpoint { get; set; } = __config.Get("cloudIdentityCustomEndpoint");
+
         public static string? CloudIotCustomEndpoint { get; set; } = __config.Get("cloudIotCustomEndpoint");
 
         public static string? CloudRunCustomEndpoint { get; set; } = __config.Get("cloudRunCustomEndpoint");

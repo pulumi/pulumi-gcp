@@ -2389,6 +2389,78 @@ export namespace cloudfunctions {
 
 }
 
+export namespace cloudidentity {
+    export interface GroupGroupKey {
+        /**
+         * The ID of the entity.
+         * For Google-managed entities, the id must be the email address of an existing
+         * group or user.
+         * For external-identity-mapped entities, the id must be a string conforming
+         * to the Identity Source's requirements.
+         * Must be unique within a namespace.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * The namespace in which the entity exists.
+         * If not specified, the EntityKey represents a Google-managed entity
+         * such as a Google user or a Google Group.
+         * If specified, the EntityKey represents an external-identity-mapped group.
+         * The namespace must correspond to an identity source created in Admin Console
+         * and must be in the form of `identitysources/{identity_source_id}`.
+         */
+        namespace?: pulumi.Input<string>;
+    }
+
+    export interface GroupMembershipMemberKey {
+        /**
+         * The ID of the entity.
+         * For Google-managed entities, the id must be the email address of an existing
+         * group or user.
+         * For external-identity-mapped entities, the id must be a string conforming
+         * to the Identity Source's requirements.
+         * Must be unique within a namespace.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * The namespace in which the entity exists.
+         * If not specified, the EntityKey represents a Google-managed entity
+         * such as a Google user or a Google Group.
+         * If specified, the EntityKey represents an external-identity-mapped group.
+         * The namespace must correspond to an identity source created in Admin Console
+         * and must be in the form of `identitysources/{identity_source_id}`.
+         */
+        namespace?: pulumi.Input<string>;
+    }
+
+    export interface GroupMembershipPreferredMemberKey {
+        /**
+         * The ID of the entity.
+         * For Google-managed entities, the id must be the email address of an existing
+         * group or user.
+         * For external-identity-mapped entities, the id must be a string conforming
+         * to the Identity Source's requirements.
+         * Must be unique within a namespace.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * The namespace in which the entity exists.
+         * If not specified, the EntityKey represents a Google-managed entity
+         * such as a Google user or a Google Group.
+         * If specified, the EntityKey represents an external-identity-mapped group.
+         * The namespace must correspond to an identity source created in Admin Console
+         * and must be in the form of `identitysources/{identity_source_id}`.
+         */
+        namespace?: pulumi.Input<string>;
+    }
+
+    export interface GroupMembershipRole {
+        /**
+         * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+         */
+        name: pulumi.Input<string>;
+    }
+}
+
 export namespace cloudrun {
     export interface DomainMappingMetadata {
         /**
@@ -4526,7 +4598,7 @@ export namespace compute {
          * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
          * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
          * images names must include the family name. If they don't, use the
-         * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/datasource_compute_image.html).
+         * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
          * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
          * These images can be referred by family name here.
          */
@@ -5385,6 +5457,11 @@ export namespace compute {
          * allowed.
          */
         minReplicas: pulumi.Input<number>;
+        /**
+         * Defines operating mode for this policy.
+         */
+        mode?: pulumi.Input<string>;
+        scaleDownControl?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyScaleDownControl>;
     }
 
     export interface RegionAutoscalerAutoscalingPolicyCpuUtilization {
@@ -5470,6 +5547,31 @@ export namespace compute {
          * Stackdriver Monitoring metric.
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface RegionAutoscalerAutoscalingPolicyScaleDownControl {
+        /**
+         * A nested object resource  Structure is documented below.
+         */
+        maxScaledDownReplicas?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas>;
+        /**
+         * How long back autoscaling should look when computing recommendations
+         * to include directives regarding slower scale down, as described above.
+         */
+        timeWindowSec?: pulumi.Input<number>;
+    }
+
+    export interface RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
+        /**
+         * Specifies a fixed number of VM instances. This must be a positive
+         * integer.
+         */
+        fixed?: pulumi.Input<number>;
+        /**
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
+         */
+        percent?: pulumi.Input<number>;
     }
 
     export interface RegionBackendServiceBackend {
@@ -12141,6 +12243,22 @@ export namespace folder {
         title: pulumi.Input<string>;
     }
 
+    export interface IamAuditConfigAuditLogConfig {
+        /**
+         * Identities that do not cause logging for this type of permission.
+         * Each entry can have one of the following values:
+         * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+         */
+        exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+         */
+        logType: pulumi.Input<string>;
+    }
+
     export interface OrganizationPolicyBooleanPolicy {
         /**
          * If true, then the Policy is enforced. If false, then any configuration is acceptable.
@@ -12931,6 +13049,15 @@ export namespace kms {
          * A title for the expression, i.e. a short string describing its purpose.
          */
         title: pulumi.Input<string>;
+    }
+
+    export interface KeyRingImportJobAttestation {
+        content?: pulumi.Input<string>;
+        format?: pulumi.Input<string>;
+    }
+
+    export interface KeyRingImportJobPublicKey {
+        pem?: pulumi.Input<string>;
     }
 
     export interface RegistryCredential {
@@ -14123,6 +14250,14 @@ export namespace monitoring {
          */
         authInfo?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheckAuthInfo>;
         /**
+         * The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+         */
+        body?: pulumi.Input<string>;
+        /**
+         * The content type to use for the check.
+         */
+        contentType?: pulumi.Input<string>;
+        /**
          * The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
          */
         headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -14138,6 +14273,10 @@ export namespace monitoring {
          * The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
          */
         port?: pulumi.Input<number>;
+        /**
+         * The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+         */
+        requestMethod?: pulumi.Input<string>;
         /**
          * If true, use HTTPS instead of HTTP to run the check.
          */
@@ -14191,19 +14330,72 @@ export namespace monitoring {
 
 export namespace networkmanagement {
     export interface ConnectivityTestDestination {
+        /**
+         * A Compute Engine instance URI.
+         */
         instance?: pulumi.Input<string>;
+        /**
+         * The IP address of the endpoint, which can be an external or
+         * internal IP. An IPv6 address is only allowed when the test's
+         * destination is a global load balancer VIP.
+         */
         ipAddress?: pulumi.Input<string>;
+        /**
+         * A Compute Engine network URI.
+         */
         network?: pulumi.Input<string>;
+        /**
+         * The IP protocol port of the endpoint. Only applicable when
+         * protocol is TCP or UDP.
+         */
         port?: pulumi.Input<number>;
+        /**
+         * Project ID where the endpoint is located. The Project ID can be
+         * derived from the URI if you provide a VM instance or network URI.
+         * The following are two cases where you must provide the project ID:
+         * 1. Only the IP address is specified, and the IP address is within
+         * a GCP project. 2. When you are using Shared VPC and the IP address
+         * that you provide is from the service project. In this case, the
+         * network that the IP address resides in is defined in the host
+         * project.
+         */
         projectId?: pulumi.Input<string>;
     }
 
     export interface ConnectivityTestSource {
+        /**
+         * A Compute Engine instance URI.
+         */
         instance?: pulumi.Input<string>;
+        /**
+         * The IP address of the endpoint, which can be an external or
+         * internal IP. An IPv6 address is only allowed when the test's
+         * destination is a global load balancer VIP.
+         */
         ipAddress?: pulumi.Input<string>;
+        /**
+         * A Compute Engine network URI.
+         */
         network?: pulumi.Input<string>;
+        /**
+         * Type of the network where the endpoint is located.
+         */
         networkType?: pulumi.Input<string>;
+        /**
+         * The IP protocol port of the endpoint. Only applicable when
+         * protocol is TCP or UDP.
+         */
         port?: pulumi.Input<number>;
+        /**
+         * Project ID where the endpoint is located. The Project ID can be
+         * derived from the URI if you provide a VM instance or network URI.
+         * The following are two cases where you must provide the project ID:
+         * 1. Only the IP address is specified, and the IP address is within
+         * a GCP project. 2. When you are using Shared VPC and the IP address
+         * that you provide is from the service project. In this case, the
+         * network that the IP address resides in is defined in the host
+         * project.
+         */
         projectId?: pulumi.Input<string>;
     }
 }

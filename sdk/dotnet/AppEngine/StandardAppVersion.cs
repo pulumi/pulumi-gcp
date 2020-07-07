@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.AppEngine
         /// AppEngine service resource
         /// </summary>
         [Output("service")]
-        public Output<string?> Service { get; private set; } = null!;
+        public Output<string> Service { get; private set; } = null!;
 
         /// <summary>
         /// Whether multiple requests can be dispatched to this version at once.
@@ -314,8 +314,8 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// AppEngine service resource
         /// </summary>
-        [Input("service")]
-        public Input<string>? Service { get; set; }
+        [Input("service", required: true)]
+        public Input<string> Service { get; set; } = null!;
 
         /// <summary>
         /// Whether multiple requests can be dispatched to this version at once.

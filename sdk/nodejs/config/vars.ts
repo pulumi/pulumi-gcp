@@ -23,6 +23,7 @@ export let binaryAuthorizationCustomEndpoint: string | undefined = __config.get(
 export let cloudBillingCustomEndpoint: string | undefined = __config.get("cloudBillingCustomEndpoint");
 export let cloudBuildCustomEndpoint: string | undefined = __config.get("cloudBuildCustomEndpoint");
 export let cloudFunctionsCustomEndpoint: string | undefined = __config.get("cloudFunctionsCustomEndpoint");
+export let cloudIdentityCustomEndpoint: string | undefined = __config.get("cloudIdentityCustomEndpoint");
 export let cloudIotCustomEndpoint: string | undefined = __config.get("cloudIotCustomEndpoint");
 export let cloudRunCustomEndpoint: string | undefined = __config.get("cloudRunCustomEndpoint");
 export let cloudSchedulerCustomEndpoint: string | undefined = __config.get("cloudSchedulerCustomEndpoint");

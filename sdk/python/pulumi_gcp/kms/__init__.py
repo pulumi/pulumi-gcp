@@ -16,5 +16,6 @@ from .key_ring import *
 from .key_ring_iam_binding import *
 from .key_ring_iam_member import *
 from .key_ring_iam_policy import *
+from .key_ring_import_job import *
 from .registry import *
 from .secret_ciphertext import *

@@ -43,7 +43,6 @@ type Cluster struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryOutput `pulumi:"clusterTelemetry"`
-	// .
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionOutput `pulumi:"databaseEncryption"`
 	// The default maximum number of pods
@@ -149,6 +148,10 @@ type Cluster struct {
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
 	// feature. Structure is documented below.
 	NetworkPolicy ClusterNetworkPolicyOutput `pulumi:"networkPolicy"`
+	// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
+	// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+	// and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+	NetworkingMode pulumi.StringOutput `pulumi:"networkingMode"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
@@ -279,7 +282,6 @@ type clusterState struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
-	// .
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
 	// The default maximum number of pods
@@ -385,6 +387,10 @@ type clusterState struct {
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
 	// feature. Structure is documented below.
 	NetworkPolicy *ClusterNetworkPolicy `pulumi:"networkPolicy"`
+	// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
+	// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+	// and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+	NetworkingMode *string `pulumi:"networkingMode"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
@@ -488,7 +494,6 @@ type ClusterState struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
-	// .
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
 	// The default maximum number of pods
@@ -594,6 +599,10 @@ type ClusterState struct {
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
 	// feature. Structure is documented below.
 	NetworkPolicy ClusterNetworkPolicyPtrInput
+	// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
+	// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+	// and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+	NetworkingMode pulumi.StringPtrInput
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
@@ -701,7 +710,6 @@ type clusterArgs struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
-	// .
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
 	// The default maximum number of pods
@@ -796,6 +804,10 @@ type clusterArgs struct {
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
 	// feature. Structure is documented below.
 	NetworkPolicy *ClusterNetworkPolicy `pulumi:"networkPolicy"`
+	// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
+	// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+	// and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+	NetworkingMode *string `pulumi:"networkingMode"`
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration
@@ -890,7 +902,6 @@ type ClusterArgs struct {
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
-	// .
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
 	// The default maximum number of pods
@@ -985,6 +996,10 @@ type ClusterArgs struct {
 	// [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
 	// feature. Structure is documented below.
 	NetworkPolicy ClusterNetworkPolicyPtrInput
+	// Determines whether alias IPs or routes will be used for pod IPs in the cluster.
+	// Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
+	// and requires the `ipAllocationPolicy` block to be defined. By default when this field is unspecified, GKE will create a `ROUTES`-based cluster.
+	NetworkingMode pulumi.StringPtrInput
 	// Parameters used in creating the default node pool.
 	// Generally, this field should not be used at the same time as a
 	// `container.NodePool` or a `nodePool` block; this configuration

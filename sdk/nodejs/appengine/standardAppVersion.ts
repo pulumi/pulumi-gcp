@@ -121,7 +121,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
     /**
      * AppEngine service resource
      */
-    public readonly service!: pulumi.Output<string | undefined>;
+    public readonly service!: pulumi.Output<string>;
     /**
      * Whether multiple requests can be dispatched to this version at once.
      */
@@ -169,6 +169,9 @@ export class StandardAppVersion extends pulumi.CustomResource {
             }
             if (!args || args.runtime === undefined) {
                 throw new Error("Missing required property 'runtime'");
+            }
+            if (!args || args.service === undefined) {
+                throw new Error("Missing required property 'service'");
             }
             inputs["automaticScaling"] = args ? args.automaticScaling : undefined;
             inputs["basicScaling"] = args ? args.basicScaling : undefined;
@@ -362,7 +365,7 @@ export interface StandardAppVersionArgs {
     /**
      * AppEngine service resource
      */
-    readonly service?: pulumi.Input<string>;
+    readonly service: pulumi.Input<string>;
     /**
      * Whether multiple requests can be dispatched to this version at once.
      */

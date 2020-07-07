@@ -6721,6 +6721,10 @@ func (o UptimeCheckConfigContentMatcherArrayOutput) Index(i pulumi.IntInput) Upt
 type UptimeCheckConfigHttpCheck struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
 	AuthInfo *UptimeCheckConfigHttpCheckAuthInfo `pulumi:"authInfo"`
+	// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+	Body *string `pulumi:"body"`
+	// The content type to use for the check.
+	ContentType *string `pulumi:"contentType"`
 	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers map[string]string `pulumi:"headers"`
 	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if maskHeaders is set to True then the headers will be obscured with ******.
@@ -6729,6 +6733,8 @@ type UptimeCheckConfigHttpCheck struct {
 	Path *string `pulumi:"path"`
 	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
 	Port *int `pulumi:"port"`
+	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+	RequestMethod *string `pulumi:"requestMethod"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl *bool `pulumi:"useSsl"`
 	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
@@ -6749,6 +6755,10 @@ type UptimeCheckConfigHttpCheckInput interface {
 type UptimeCheckConfigHttpCheckArgs struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
 	AuthInfo UptimeCheckConfigHttpCheckAuthInfoPtrInput `pulumi:"authInfo"`
+	// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+	Body pulumi.StringPtrInput `pulumi:"body"`
+	// The content type to use for the check.
+	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
 	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if maskHeaders is set to True then the headers will be obscured with ******.
@@ -6757,6 +6767,8 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+	RequestMethod pulumi.StringPtrInput `pulumi:"requestMethod"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
 	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
@@ -6845,6 +6857,16 @@ func (o UptimeCheckConfigHttpCheckOutput) AuthInfo() UptimeCheckConfigHttpCheckA
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo { return v.AuthInfo }).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
+// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+func (o UptimeCheckConfigHttpCheckOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.Body }).(pulumi.StringPtrOutput)
+}
+
+// The content type to use for the check.
+func (o UptimeCheckConfigHttpCheckOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
 // The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 func (o UptimeCheckConfigHttpCheckOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
@@ -6863,6 +6885,11 @@ func (o UptimeCheckConfigHttpCheckOutput) Path() pulumi.StringPtrOutput {
 // The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
 func (o UptimeCheckConfigHttpCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+func (o UptimeCheckConfigHttpCheckOutput) RequestMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.RequestMethod }).(pulumi.StringPtrOutput)
 }
 
 // If true, use HTTPS instead of HTTP to run the check.
@@ -6903,6 +6930,26 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) AuthInfo() UptimeCheckConfigHttpChe
 	}).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
+// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+func (o UptimeCheckConfigHttpCheckPtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content type to use for the check.
+func (o UptimeCheckConfigHttpCheckPtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 func (o UptimeCheckConfigHttpCheckPtrOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) map[string]string {
@@ -6941,6 +6988,16 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 		}
 		return v.Port
 	}).(pulumi.IntPtrOutput)
+}
+
+// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+func (o UptimeCheckConfigHttpCheckPtrOutput) RequestMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestMethod
+	}).(pulumi.StringPtrOutput)
 }
 
 // If true, use HTTPS instead of HTTP to run the check.

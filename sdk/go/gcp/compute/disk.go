@@ -59,7 +59,7 @@ type Disk struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
 	// images names must include the family name. If they don't, use the
-	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/datasource_compute_image.html).
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrOutput `pulumi:"image"`
@@ -185,7 +185,7 @@ type diskState struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
 	// images names must include the family name. If they don't, use the
-	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/datasource_compute_image.html).
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
@@ -284,7 +284,7 @@ type DiskState struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
 	// images names must include the family name. If they don't, use the
-	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/datasource_compute_image.html).
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
@@ -385,7 +385,7 @@ type diskArgs struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
 	// images names must include the family name. If they don't, use the
-	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/datasource_compute_image.html).
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
@@ -465,7 +465,7 @@ type DiskArgs struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
 	// images names must include the family name. If they don't, use the
-	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/datasource_compute_image.html).
+	// [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput

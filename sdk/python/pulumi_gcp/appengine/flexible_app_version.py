@@ -538,6 +538,8 @@ class FlexibleAppVersion(pulumi.CustomResource):
             __props__['runtime_api_version'] = runtime_api_version
             __props__['runtime_channel'] = runtime_channel
             __props__['runtime_main_executable_path'] = runtime_main_executable_path
+            if service is None:
+                raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['serving_status'] = serving_status
             __props__['version_id'] = version_id

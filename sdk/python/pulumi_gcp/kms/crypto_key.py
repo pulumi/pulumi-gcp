@@ -43,7 +43,7 @@ class CryptoKey(pulumi.CustomResource):
 
       * `algorithm` (`str`) - The algorithm to use when creating a version based on this template.
         See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
-      * `protectionLevel` (`str`) - The protection level to use when creating a version based on this template.
+      * `protection_level` (`str`) - The protection level to use when creating a version based on this template.
     """
     def __init__(__self__, resource_name, opts=None, key_ring=None, labels=None, name=None, purpose=None, rotation_period=None, version_template=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -84,7 +84,7 @@ class CryptoKey(pulumi.CustomResource):
 
           * `algorithm` (`pulumi.Input[str]`) - The algorithm to use when creating a version based on this template.
             See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
-          * `protectionLevel` (`pulumi.Input[str]`) - The protection level to use when creating a version based on this template.
+          * `protection_level` (`pulumi.Input[str]`) - The protection level to use when creating a version based on this template.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -144,7 +144,7 @@ class CryptoKey(pulumi.CustomResource):
 
           * `algorithm` (`pulumi.Input[str]`) - The algorithm to use when creating a version based on this template.
             See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
-          * `protectionLevel` (`pulumi.Input[str]`) - The protection level to use when creating a version based on this template.
+          * `protection_level` (`pulumi.Input[str]`) - The protection level to use when creating a version based on this template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

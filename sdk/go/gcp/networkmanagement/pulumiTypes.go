@@ -11,10 +11,25 @@ import (
 )
 
 type ConnectivityTestDestination struct {
-	Instance  *string `pulumi:"instance"`
+	// A Compute Engine instance URI.
+	Instance *string `pulumi:"instance"`
+	// The IP address of the endpoint, which can be an external or
+	// internal IP. An IPv6 address is only allowed when the test's
+	// destination is a global load balancer VIP.
 	IpAddress *string `pulumi:"ipAddress"`
-	Network   *string `pulumi:"network"`
-	Port      *int    `pulumi:"port"`
+	// A Compute Engine network URI.
+	Network *string `pulumi:"network"`
+	// The IP protocol port of the endpoint. Only applicable when
+	// protocol is TCP or UDP.
+	Port *int `pulumi:"port"`
+	// Project ID where the endpoint is located. The Project ID can be
+	// derived from the URI if you provide a VM instance or network URI.
+	// The following are two cases where you must provide the project ID:
+	// 1. Only the IP address is specified, and the IP address is within
+	//    a GCP project. 2. When you are using Shared VPC and the IP address
+	//    that you provide is from the service project. In this case, the
+	//    network that the IP address resides in is defined in the host
+	//    project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -30,10 +45,25 @@ type ConnectivityTestDestinationInput interface {
 }
 
 type ConnectivityTestDestinationArgs struct {
-	Instance  pulumi.StringPtrInput `pulumi:"instance"`
+	// A Compute Engine instance URI.
+	Instance pulumi.StringPtrInput `pulumi:"instance"`
+	// The IP address of the endpoint, which can be an external or
+	// internal IP. An IPv6 address is only allowed when the test's
+	// destination is a global load balancer VIP.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	Network   pulumi.StringPtrInput `pulumi:"network"`
-	Port      pulumi.IntPtrInput    `pulumi:"port"`
+	// A Compute Engine network URI.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The IP protocol port of the endpoint. Only applicable when
+	// protocol is TCP or UDP.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Project ID where the endpoint is located. The Project ID can be
+	// derived from the URI if you provide a VM instance or network URI.
+	// The following are two cases where you must provide the project ID:
+	// 1. Only the IP address is specified, and the IP address is within
+	//    a GCP project. 2. When you are using Shared VPC and the IP address
+	//    that you provide is from the service project. In this case, the
+	//    network that the IP address resides in is defined in the host
+	//    project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -113,22 +143,38 @@ func (o ConnectivityTestDestinationOutput) ToConnectivityTestDestinationPtrOutpu
 		return &v
 	}).(ConnectivityTestDestinationPtrOutput)
 }
+
+// A Compute Engine instance URI.
 func (o ConnectivityTestDestinationOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
+// The IP address of the endpoint, which can be an external or
+// internal IP. An IPv6 address is only allowed when the test's
+// destination is a global load balancer VIP.
 func (o ConnectivityTestDestinationOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// A Compute Engine network URI.
 func (o ConnectivityTestDestinationOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// The IP protocol port of the endpoint. Only applicable when
+// protocol is TCP or UDP.
 func (o ConnectivityTestDestinationOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// Project ID where the endpoint is located. The Project ID can be
+// derived from the URI if you provide a VM instance or network URI.
+// The following are two cases where you must provide the project ID:
+// 1. Only the IP address is specified, and the IP address is within
+//    a GCP project. 2. When you are using Shared VPC and the IP address
+//    that you provide is from the service project. In this case, the
+//    network that the IP address resides in is defined in the host
+//    project.
 func (o ConnectivityTestDestinationOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestDestination) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -151,6 +197,7 @@ func (o ConnectivityTestDestinationPtrOutput) Elem() ConnectivityTestDestination
 	return o.ApplyT(func(v *ConnectivityTestDestination) ConnectivityTestDestination { return *v }).(ConnectivityTestDestinationOutput)
 }
 
+// A Compute Engine instance URI.
 func (o ConnectivityTestDestinationPtrOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
 		if v == nil {
@@ -160,6 +207,9 @@ func (o ConnectivityTestDestinationPtrOutput) Instance() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IP address of the endpoint, which can be an external or
+// internal IP. An IPv6 address is only allowed when the test's
+// destination is a global load balancer VIP.
 func (o ConnectivityTestDestinationPtrOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
 		if v == nil {
@@ -169,6 +219,7 @@ func (o ConnectivityTestDestinationPtrOutput) IpAddress() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// A Compute Engine network URI.
 func (o ConnectivityTestDestinationPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
 		if v == nil {
@@ -178,6 +229,8 @@ func (o ConnectivityTestDestinationPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IP protocol port of the endpoint. Only applicable when
+// protocol is TCP or UDP.
 func (o ConnectivityTestDestinationPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *int {
 		if v == nil {
@@ -187,6 +240,14 @@ func (o ConnectivityTestDestinationPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Project ID where the endpoint is located. The Project ID can be
+// derived from the URI if you provide a VM instance or network URI.
+// The following are two cases where you must provide the project ID:
+// 1. Only the IP address is specified, and the IP address is within
+//    a GCP project. 2. When you are using Shared VPC and the IP address
+//    that you provide is from the service project. In this case, the
+//    network that the IP address resides in is defined in the host
+//    project.
 func (o ConnectivityTestDestinationPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestDestination) *string {
 		if v == nil {
@@ -197,12 +258,28 @@ func (o ConnectivityTestDestinationPtrOutput) ProjectId() pulumi.StringPtrOutput
 }
 
 type ConnectivityTestSource struct {
-	Instance    *string `pulumi:"instance"`
-	IpAddress   *string `pulumi:"ipAddress"`
-	Network     *string `pulumi:"network"`
+	// A Compute Engine instance URI.
+	Instance *string `pulumi:"instance"`
+	// The IP address of the endpoint, which can be an external or
+	// internal IP. An IPv6 address is only allowed when the test's
+	// destination is a global load balancer VIP.
+	IpAddress *string `pulumi:"ipAddress"`
+	// A Compute Engine network URI.
+	Network *string `pulumi:"network"`
+	// Type of the network where the endpoint is located.
 	NetworkType *string `pulumi:"networkType"`
-	Port        *int    `pulumi:"port"`
-	ProjectId   *string `pulumi:"projectId"`
+	// The IP protocol port of the endpoint. Only applicable when
+	// protocol is TCP or UDP.
+	Port *int `pulumi:"port"`
+	// Project ID where the endpoint is located. The Project ID can be
+	// derived from the URI if you provide a VM instance or network URI.
+	// The following are two cases where you must provide the project ID:
+	// 1. Only the IP address is specified, and the IP address is within
+	//    a GCP project. 2. When you are using Shared VPC and the IP address
+	//    that you provide is from the service project. In this case, the
+	//    network that the IP address resides in is defined in the host
+	//    project.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // ConnectivityTestSourceInput is an input type that accepts ConnectivityTestSourceArgs and ConnectivityTestSourceOutput values.
@@ -217,12 +294,28 @@ type ConnectivityTestSourceInput interface {
 }
 
 type ConnectivityTestSourceArgs struct {
-	Instance    pulumi.StringPtrInput `pulumi:"instance"`
-	IpAddress   pulumi.StringPtrInput `pulumi:"ipAddress"`
-	Network     pulumi.StringPtrInput `pulumi:"network"`
+	// A Compute Engine instance URI.
+	Instance pulumi.StringPtrInput `pulumi:"instance"`
+	// The IP address of the endpoint, which can be an external or
+	// internal IP. An IPv6 address is only allowed when the test's
+	// destination is a global load balancer VIP.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// A Compute Engine network URI.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Type of the network where the endpoint is located.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	Port        pulumi.IntPtrInput    `pulumi:"port"`
-	ProjectId   pulumi.StringPtrInput `pulumi:"projectId"`
+	// The IP protocol port of the endpoint. Only applicable when
+	// protocol is TCP or UDP.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Project ID where the endpoint is located. The Project ID can be
+	// derived from the URI if you provide a VM instance or network URI.
+	// The following are two cases where you must provide the project ID:
+	// 1. Only the IP address is specified, and the IP address is within
+	//    a GCP project. 2. When you are using Shared VPC and the IP address
+	//    that you provide is from the service project. In this case, the
+	//    network that the IP address resides in is defined in the host
+	//    project.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (ConnectivityTestSourceArgs) ElementType() reflect.Type {
@@ -301,26 +394,43 @@ func (o ConnectivityTestSourceOutput) ToConnectivityTestSourcePtrOutputWithConte
 		return &v
 	}).(ConnectivityTestSourcePtrOutput)
 }
+
+// A Compute Engine instance URI.
 func (o ConnectivityTestSourceOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
+// The IP address of the endpoint, which can be an external or
+// internal IP. An IPv6 address is only allowed when the test's
+// destination is a global load balancer VIP.
 func (o ConnectivityTestSourceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// A Compute Engine network URI.
 func (o ConnectivityTestSourceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// Type of the network where the endpoint is located.
 func (o ConnectivityTestSourceOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
 
+// The IP protocol port of the endpoint. Only applicable when
+// protocol is TCP or UDP.
 func (o ConnectivityTestSourceOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// Project ID where the endpoint is located. The Project ID can be
+// derived from the URI if you provide a VM instance or network URI.
+// The following are two cases where you must provide the project ID:
+// 1. Only the IP address is specified, and the IP address is within
+//    a GCP project. 2. When you are using Shared VPC and the IP address
+//    that you provide is from the service project. In this case, the
+//    network that the IP address resides in is defined in the host
+//    project.
 func (o ConnectivityTestSourceOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -343,6 +453,7 @@ func (o ConnectivityTestSourcePtrOutput) Elem() ConnectivityTestSourceOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) ConnectivityTestSource { return *v }).(ConnectivityTestSourceOutput)
 }
 
+// A Compute Engine instance URI.
 func (o ConnectivityTestSourcePtrOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
 		if v == nil {
@@ -352,6 +463,9 @@ func (o ConnectivityTestSourcePtrOutput) Instance() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IP address of the endpoint, which can be an external or
+// internal IP. An IPv6 address is only allowed when the test's
+// destination is a global load balancer VIP.
 func (o ConnectivityTestSourcePtrOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
 		if v == nil {
@@ -361,6 +475,7 @@ func (o ConnectivityTestSourcePtrOutput) IpAddress() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A Compute Engine network URI.
 func (o ConnectivityTestSourcePtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
 		if v == nil {
@@ -370,6 +485,7 @@ func (o ConnectivityTestSourcePtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Type of the network where the endpoint is located.
 func (o ConnectivityTestSourcePtrOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
 		if v == nil {
@@ -379,6 +495,8 @@ func (o ConnectivityTestSourcePtrOutput) NetworkType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IP protocol port of the endpoint. Only applicable when
+// protocol is TCP or UDP.
 func (o ConnectivityTestSourcePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *int {
 		if v == nil {
@@ -388,6 +506,14 @@ func (o ConnectivityTestSourcePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Project ID where the endpoint is located. The Project ID can be
+// derived from the URI if you provide a VM instance or network URI.
+// The following are two cases where you must provide the project ID:
+// 1. Only the IP address is specified, and the IP address is within
+//    a GCP project. 2. When you are using Shared VPC and the IP address
+//    that you provide is from the service project. In this case, the
+//    network that the IP address resides in is defined in the host
+//    project.
 func (o ConnectivityTestSourcePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
 		if v == nil {

@@ -161,7 +161,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
     /**
      * AppEngine service resource
      */
-    public readonly service!: pulumi.Output<string | undefined>;
+    public readonly service!: pulumi.Output<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      */
@@ -227,6 +227,9 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             }
             if (!args || args.runtime === undefined) {
                 throw new Error("Missing required property 'runtime'");
+            }
+            if (!args || args.service === undefined) {
+                throw new Error("Missing required property 'service'");
             }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;
             inputs["automaticScaling"] = args ? args.automaticScaling : undefined;
@@ -509,7 +512,7 @@ export interface FlexibleAppVersionArgs {
     /**
      * AppEngine service resource
      */
-    readonly service?: pulumi.Input<string>;
+    readonly service: pulumi.Input<string>;
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      */
