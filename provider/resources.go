@@ -63,6 +63,7 @@ const (
 	gcpNetworkManagement    = "NetworkManagement"    // Network Management resources
 	gcpNotebooks            = "Notebooks"            // Notebooks resources
 	gcpOrganization         = "Organizations"        // Organization resources
+	gcpOsConfig             = "OsConfig"             // OsConfig resources
 	gcpOsLogin              = "OsLogin"              // OsLogin resources
 	gcpProject              = "Projects"             // Project resources
 	gcpPubSub               = "PubSub"               // PubSub resources
@@ -1409,6 +1410,9 @@ func Provider() tfbridge.ProviderInfo {
 			// OS Login
 			"google_os_login_ssh_public_key": {Tok: gcpResource(gcpOsLogin, "SshPublicKey")},
 
+			// OS Config
+			"google_os_config_patch_deployment": {Tok: gcpResource(gcpOsConfig, "PatchDeployment")},
+
 			// Service Directory
 			"google_service_directory_endpoint":  {Tok: gcpResource(gcpServiceDirectory, "Endpoint")},
 			"google_service_directory_namespace": {Tok: gcpResource(gcpServiceDirectory, "Namespace")},
@@ -1920,6 +1924,11 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_cloud_identity_groups": {Tok: gcpDataSource(gcpCloudIdentity, "getGroups")},
+
+			// GameServices
+			"google_game_services_game_server_deployment_rollout": {
+				Tok: gcpDataSource(gcpGameServices, "getGameServerDeploymentRollout"),
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

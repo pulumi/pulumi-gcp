@@ -48,7 +48,7 @@ export class IAMBinding extends pulumi.CustomResource {
     }
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     public readonly condition!: pulumi.Output<outputs.serviceAccount.IAMBindingCondition | undefined>;
@@ -118,7 +118,7 @@ export class IAMBinding extends pulumi.CustomResource {
  */
 export interface IAMBindingState {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     readonly condition?: pulumi.Input<inputs.serviceAccount.IAMBindingCondition>;
@@ -144,7 +144,7 @@ export interface IAMBindingState {
  */
 export interface IAMBindingArgs {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
     readonly condition?: pulumi.Input<inputs.serviceAccount.IAMBindingCondition>;

@@ -12,12 +12,21 @@ namespace Pulumi.Gcp.Organizations.Inputs
 
     public sealed class GetIAMPolicyBindingConditionArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
+        /// <summary>
+        /// Textual representation of an expression in Common Expression Language syntax.
+        /// </summary>
         [Input("expression", required: true)]
         public string Expression { get; set; } = null!;
 
+        /// <summary>
+        /// A title for the expression, i.e. a short string describing its purpose.
+        /// </summary>
         [Input("title", required: true)]
         public string Title { get; set; } = null!;
 

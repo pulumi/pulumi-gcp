@@ -1406,6 +1406,7 @@ func (o GetIAMPolicyAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetIAMPolicyBinding struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
 	Condition *GetIAMPolicyBindingCondition `pulumi:"condition"`
 	// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	// Each entry can have one of the following values:
@@ -1434,6 +1435,7 @@ type GetIAMPolicyBindingInput interface {
 }
 
 type GetIAMPolicyBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
 	Condition GetIAMPolicyBindingConditionPtrInput `pulumi:"condition"`
 	// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	// Each entry can have one of the following values:
@@ -1501,6 +1503,7 @@ func (o GetIAMPolicyBindingOutput) ToGetIAMPolicyBindingOutputWithContext(ctx co
 	return o
 }
 
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
 func (o GetIAMPolicyBindingOutput) Condition() GetIAMPolicyBindingConditionPtrOutput {
 	return o.ApplyT(func(v GetIAMPolicyBinding) *GetIAMPolicyBindingCondition { return v.Condition }).(GetIAMPolicyBindingConditionPtrOutput)
 }
@@ -1545,9 +1548,12 @@ func (o GetIAMPolicyBindingArrayOutput) Index(i pulumi.IntInput) GetIAMPolicyBin
 }
 
 type GetIAMPolicyBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // GetIAMPolicyBindingConditionInput is an input type that accepts GetIAMPolicyBindingConditionArgs and GetIAMPolicyBindingConditionOutput values.
@@ -1562,9 +1568,12 @@ type GetIAMPolicyBindingConditionInput interface {
 }
 
 type GetIAMPolicyBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (GetIAMPolicyBindingConditionArgs) ElementType() reflect.Type {
@@ -1643,14 +1652,18 @@ func (o GetIAMPolicyBindingConditionOutput) ToGetIAMPolicyBindingConditionPtrOut
 		return &v
 	}).(GetIAMPolicyBindingConditionPtrOutput)
 }
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o GetIAMPolicyBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIAMPolicyBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o GetIAMPolicyBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIAMPolicyBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o GetIAMPolicyBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIAMPolicyBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -1673,6 +1686,7 @@ func (o GetIAMPolicyBindingConditionPtrOutput) Elem() GetIAMPolicyBindingConditi
 	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) GetIAMPolicyBindingCondition { return *v }).(GetIAMPolicyBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o GetIAMPolicyBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) *string {
 		if v == nil {
@@ -1682,6 +1696,7 @@ func (o GetIAMPolicyBindingConditionPtrOutput) Description() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o GetIAMPolicyBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) *string {
 		if v == nil {
@@ -1691,6 +1706,7 @@ func (o GetIAMPolicyBindingConditionPtrOutput) Expression() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o GetIAMPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) *string {
 		if v == nil {

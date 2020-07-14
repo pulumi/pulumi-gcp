@@ -53,6 +53,7 @@ _submodules = [
     'networkmanagement',
     'notebooks',
     'organizations',
+    'osconfig',
     'oslogin',
     'projects',
     'pubsub',
