@@ -7,4 +7,5 @@ from .game_server_cluster import *
 from .game_server_config import *
 from .game_server_deployment import *
 from .game_server_deployment_rollout import *
+from .get_game_server_deployment_rollout import *
 from .realm import *

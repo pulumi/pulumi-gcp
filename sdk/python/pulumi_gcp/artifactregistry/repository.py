@@ -22,6 +22,13 @@ class Repository(pulumi.CustomResource):
     """
     The format of packages that are stored in the repoitory.
     """
+    kms_key_name: pulumi.Output[str]
+    """
+    The Cloud KMS resource name of the customer managed encryption key that’s
+    used to encrypt the contents of the Repository. Has the form:
+    `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+    This value may not be changed after the Repository has been created.
+    """
     labels: pulumi.Output[dict]
     """
     Labels with user-defined metadata.
@@ -52,7 +59,7 @@ class Repository(pulumi.CustomResource):
     """
     The time when the repository was last updated.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, format=None, labels=None, location=None, project=None, repository_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, format=None, kms_key_name=None, labels=None, location=None, project=None, repository_id=None, __props__=None, __name__=None, __opts__=None):
         """
         A repository for storing artifacts
 
@@ -68,6 +75,10 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[str] format: The format of packages that are stored in the repoitory.
+        :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
+               used to encrypt the contents of the Repository. Has the form:
+               `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+               This value may not be changed after the Repository has been created.
         :param pulumi.Input[dict] labels: Labels with user-defined metadata.
                This field may contain up to 64 entries. Label keys and values may be no
                longer than 63 characters. Label keys must begin with a lowercase letter
@@ -100,6 +111,7 @@ class Repository(pulumi.CustomResource):
             if format is None:
                 raise TypeError("Missing required property 'format'")
             __props__['format'] = format
+            __props__['kms_key_name'] = kms_key_name
             __props__['labels'] = labels
             __props__['location'] = location
             __props__['project'] = project
@@ -116,7 +128,7 @@ class Repository(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, create_time=None, description=None, format=None, labels=None, location=None, name=None, project=None, repository_id=None, update_time=None):
+    def get(resource_name, id, opts=None, create_time=None, description=None, format=None, kms_key_name=None, labels=None, location=None, name=None, project=None, repository_id=None, update_time=None):
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -127,6 +139,10 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[str] format: The format of packages that are stored in the repoitory.
+        :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
+               used to encrypt the contents of the Repository. Has the form:
+               `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+               This value may not be changed after the Repository has been created.
         :param pulumi.Input[dict] labels: Labels with user-defined metadata.
                This field may contain up to 64 entries. Label keys and values may be no
                longer than 63 characters. Label keys must begin with a lowercase letter
@@ -147,6 +163,7 @@ class Repository(pulumi.CustomResource):
         __props__["create_time"] = create_time
         __props__["description"] = description
         __props__["format"] = format
+        __props__["kms_key_name"] = kms_key_name
         __props__["labels"] = labels
         __props__["location"] = location
         __props__["name"] = name

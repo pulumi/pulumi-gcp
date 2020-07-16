@@ -6,4 +6,5 @@ export * from "./gameServerCluster";
 export * from "./gameServerConfig";
 export * from "./gameServerDeployment";
 export * from "./gameServerDeploymentRollout";
+export * from "./getGameServerDeploymentRollout";
 export * from "./realm";

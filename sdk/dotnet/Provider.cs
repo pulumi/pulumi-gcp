@@ -203,6 +203,9 @@ namespace Pulumi.Gcp
         [Input("notebooksCustomEndpoint")]
         public Input<string>? NotebooksCustomEndpoint { get; set; }
 
+        [Input("osConfigCustomEndpoint")]
+        public Input<string>? OsConfigCustomEndpoint { get; set; }
+
         [Input("osLoginCustomEndpoint")]
         public Input<string>? OsLoginCustomEndpoint { get; set; }
 

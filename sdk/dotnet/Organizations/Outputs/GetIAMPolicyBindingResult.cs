@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Organizations.Outputs
     [OutputType]
     public sealed class GetIAMPolicyBindingResult
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        /// </summary>
         public readonly Outputs.GetIAMPolicyBindingConditionResult? Condition;
         /// <summary>
         /// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding

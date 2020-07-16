@@ -1071,6 +1071,202 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+type GetGameServerDeploymentRolloutGameServerConfigOverride struct {
+	ConfigVersion   string                                                                 `pulumi:"configVersion"`
+	RealmsSelectors []GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector `pulumi:"realmsSelectors"`
+}
+
+// GetGameServerDeploymentRolloutGameServerConfigOverrideInput is an input type that accepts GetGameServerDeploymentRolloutGameServerConfigOverrideArgs and GetGameServerDeploymentRolloutGameServerConfigOverrideOutput values.
+// You can construct a concrete instance of `GetGameServerDeploymentRolloutGameServerConfigOverrideInput` via:
+//
+//          GetGameServerDeploymentRolloutGameServerConfigOverrideArgs{...}
+type GetGameServerDeploymentRolloutGameServerConfigOverrideInput interface {
+	pulumi.Input
+
+	ToGetGameServerDeploymentRolloutGameServerConfigOverrideOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideOutput
+	ToGetGameServerDeploymentRolloutGameServerConfigOverrideOutputWithContext(context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideOutput
+}
+
+type GetGameServerDeploymentRolloutGameServerConfigOverrideArgs struct {
+	ConfigVersion   pulumi.StringInput                                                             `pulumi:"configVersion"`
+	RealmsSelectors GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput `pulumi:"realmsSelectors"`
+}
+
+func (GetGameServerDeploymentRolloutGameServerConfigOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGameServerDeploymentRolloutGameServerConfigOverride)(nil)).Elem()
+}
+
+func (i GetGameServerDeploymentRolloutGameServerConfigOverrideArgs) ToGetGameServerDeploymentRolloutGameServerConfigOverrideOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideOutput {
+	return i.ToGetGameServerDeploymentRolloutGameServerConfigOverrideOutputWithContext(context.Background())
+}
+
+func (i GetGameServerDeploymentRolloutGameServerConfigOverrideArgs) ToGetGameServerDeploymentRolloutGameServerConfigOverrideOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGameServerDeploymentRolloutGameServerConfigOverrideOutput)
+}
+
+// GetGameServerDeploymentRolloutGameServerConfigOverrideArrayInput is an input type that accepts GetGameServerDeploymentRolloutGameServerConfigOverrideArray and GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput values.
+// You can construct a concrete instance of `GetGameServerDeploymentRolloutGameServerConfigOverrideArrayInput` via:
+//
+//          GetGameServerDeploymentRolloutGameServerConfigOverrideArray{ GetGameServerDeploymentRolloutGameServerConfigOverrideArgs{...} }
+type GetGameServerDeploymentRolloutGameServerConfigOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput
+	ToGetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutputWithContext(context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput
+}
+
+type GetGameServerDeploymentRolloutGameServerConfigOverrideArray []GetGameServerDeploymentRolloutGameServerConfigOverrideInput
+
+func (GetGameServerDeploymentRolloutGameServerConfigOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGameServerDeploymentRolloutGameServerConfigOverride)(nil)).Elem()
+}
+
+func (i GetGameServerDeploymentRolloutGameServerConfigOverrideArray) ToGetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput {
+	return i.ToGetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetGameServerDeploymentRolloutGameServerConfigOverrideArray) ToGetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput)
+}
+
+type GetGameServerDeploymentRolloutGameServerConfigOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGameServerDeploymentRolloutGameServerConfigOverride)(nil)).Elem()
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideOutput {
+	return o
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideOutput {
+	return o
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) ConfigVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGameServerDeploymentRolloutGameServerConfigOverride) string { return v.ConfigVersion }).(pulumi.StringOutput)
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) RealmsSelectors() GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput {
+	return o.ApplyT(func(v GetGameServerDeploymentRolloutGameServerConfigOverride) []GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+		return v.RealmsSelectors
+	}).(GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput)
+}
+
+type GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGameServerDeploymentRolloutGameServerConfigOverride)(nil)).Elem()
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput {
+	return o
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput {
+	return o
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) Index(i pulumi.IntInput) GetGameServerDeploymentRolloutGameServerConfigOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGameServerDeploymentRolloutGameServerConfigOverride {
+		return vs[0].([]GetGameServerDeploymentRolloutGameServerConfigOverride)[vs[1].(int)]
+	}).(GetGameServerDeploymentRolloutGameServerConfigOverrideOutput)
+}
+
+type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector struct {
+	Realms []string `pulumi:"realms"`
+}
+
+// GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput is an input type that accepts GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs and GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput values.
+// You can construct a concrete instance of `GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput` via:
+//
+//          GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{...}
+type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput interface {
+	pulumi.Input
+
+	ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput
+	ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutputWithContext(context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput
+}
+
+type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs struct {
+	Realms pulumi.StringArrayInput `pulumi:"realms"`
+}
+
+func (GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector)(nil)).Elem()
+}
+
+func (i GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {
+	return i.ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutputWithContext(context.Background())
+}
+
+func (i GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs) ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput)
+}
+
+// GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput is an input type that accepts GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray and GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput values.
+// You can construct a concrete instance of `GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput` via:
+//
+//          GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray{ GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs{...} }
+type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput interface {
+	pulumi.Input
+
+	ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput
+	ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutputWithContext(context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput
+}
+
+type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray []GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput
+
+func (GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector)(nil)).Elem()
+}
+
+func (i GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray) ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput {
+	return i.ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArray) ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput)
+}
+
+type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector)(nil)).Elem()
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {
+	return o
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {
+	return o
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) Realms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) []string { return v.Realms }).(pulumi.StringArrayOutput)
+}
+
+type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector)(nil)).Elem()
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput() GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput {
+	return o
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput) ToGetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutputWithContext(ctx context.Context) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput {
+	return o
+}
+
+func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput) Index(i pulumi.IntInput) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+		return vs[0].([]GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector)[vs[1].(int)]
+	}).(GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GameServerClusterConnectionInfoOutput{})
 	pulumi.RegisterOutputType(GameServerClusterConnectionInfoPtrOutput{})
@@ -1088,4 +1284,8 @@ func init() {
 	pulumi.RegisterOutputType(GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput{})
 	pulumi.RegisterOutputType(GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput{})
+	pulumi.RegisterOutputType(GetGameServerDeploymentRolloutGameServerConfigOverrideOutput{})
+	pulumi.RegisterOutputType(GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput{})
+	pulumi.RegisterOutputType(GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput{})
 }

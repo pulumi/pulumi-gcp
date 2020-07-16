@@ -114,6 +114,8 @@ namespace Pulumi.Gcp
 
         public static string? NotebooksCustomEndpoint { get; set; } = __config.Get("notebooksCustomEndpoint");
 
+        public static string? OsConfigCustomEndpoint { get; set; } = __config.Get("osConfigCustomEndpoint");
+
         public static string? OsLoginCustomEndpoint { get; set; } = __config.Get("osLoginCustomEndpoint");
 
         public static string? Project { get; set; } = __config.Get("project") ?? Utilities.GetEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");

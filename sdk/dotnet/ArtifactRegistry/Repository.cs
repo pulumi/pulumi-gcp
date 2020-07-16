@@ -41,6 +41,15 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<string> Format { get; private set; } = null!;
 
         /// <summary>
+        /// The Cloud KMS resource name of the customer managed encryption key that’s
+        /// used to encrypt the contents of the Repository. Has the form:
+        /// `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+        /// This value may not be changed after the Repository has been created.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string?> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
         /// Labels with user-defined metadata.
         /// This field may contain up to 64 entries. Label keys and values may be no
         /// longer than 63 characters. Label keys must begin with a lowercase letter
@@ -140,6 +149,15 @@ namespace Pulumi.Gcp.ArtifactRegistry
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
 
+        /// <summary>
+        /// The Cloud KMS resource name of the customer managed encryption key that’s
+        /// used to encrypt the contents of the Repository. Has the form:
+        /// `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+        /// This value may not be changed after the Repository has been created.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -200,6 +218,15 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
+
+        /// <summary>
+        /// The Cloud KMS resource name of the customer managed encryption key that’s
+        /// used to encrypt the contents of the Repository. Has the form:
+        /// `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+        /// This value may not be changed after the Repository has been created.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

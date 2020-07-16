@@ -56,6 +56,13 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly format!: pulumi.Output<string>;
     /**
+     * The Cloud KMS resource name of the customer managed encryption key that’s
+     * used to encrypt the contents of the Repository. Has the form:
+     * `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+     * This value may not be changed after the Repository has been created.
+     */
+    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    /**
      * Labels with user-defined metadata.
      * This field may contain up to 64 entries. Label keys and values may be no
      * longer than 63 characters. Label keys must begin with a lowercase letter
@@ -101,6 +108,7 @@ export class Repository extends pulumi.CustomResource {
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["format"] = state ? state.format : undefined;
+            inputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["location"] = state ? state.location : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -117,6 +125,7 @@ export class Repository extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["format"] = args ? args.format : undefined;
+            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -152,6 +161,13 @@ export interface RepositoryState {
      * The format of packages that are stored in the repoitory.
      */
     readonly format?: pulumi.Input<string>;
+    /**
+     * The Cloud KMS resource name of the customer managed encryption key that’s
+     * used to encrypt the contents of the Repository. Has the form:
+     * `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+     * This value may not be changed after the Repository has been created.
+     */
+    readonly kmsKeyName?: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata.
      * This field may contain up to 64 entries. Label keys and values may be no
@@ -196,6 +212,13 @@ export interface RepositoryArgs {
      * The format of packages that are stored in the repoitory.
      */
     readonly format: pulumi.Input<string>;
+    /**
+     * The Cloud KMS resource name of the customer managed encryption key that’s
+     * used to encrypt the contents of the Repository. Has the form:
+     * `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+     * This value may not be changed after the Repository has been created.
+     */
+    readonly kmsKeyName?: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata.
      * This field may contain up to 64 entries. Label keys and values may be no

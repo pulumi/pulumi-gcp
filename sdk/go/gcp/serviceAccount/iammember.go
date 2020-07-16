@@ -24,7 +24,7 @@ import (
 type IAMMember struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition IAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the service account IAM policy.
@@ -75,7 +75,7 @@ func GetIAMMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IAMMember resources.
 type iammemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *IAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the service account IAM policy.
@@ -90,7 +90,7 @@ type iammemberState struct {
 }
 
 type IAMMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition IAMMemberConditionPtrInput
 	// (Computed) The etag of the service account IAM policy.
@@ -109,7 +109,7 @@ func (IAMMemberState) ElementType() reflect.Type {
 }
 
 type iammemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *IAMMemberCondition `pulumi:"condition"`
 	Member    string              `pulumi:"member"`
@@ -123,7 +123,7 @@ type iammemberArgs struct {
 
 // The set of arguments for constructing a IAMMember resource.
 type IAMMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition IAMMemberConditionPtrInput
 	Member    pulumi.StringInput

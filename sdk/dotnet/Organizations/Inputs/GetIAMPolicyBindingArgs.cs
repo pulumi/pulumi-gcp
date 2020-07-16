@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Organizations.Inputs
 
     public sealed class GetIAMPolicyBindingArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Inputs.GetIAMPolicyBindingConditionArgs? Condition { get; set; }
 

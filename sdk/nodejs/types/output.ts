@@ -13325,6 +13325,15 @@ export namespace gameservices {
          */
         realms?: string[];
     }
+
+    export interface GetGameServerDeploymentRolloutGameServerConfigOverride {
+        configVersion: string;
+        realmsSelectors: outputs.gameservices.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector[];
+    }
+
+    export interface GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+        realms: string[];
+    }
 }
 
 export namespace healthcare {
@@ -15455,6 +15464,9 @@ export namespace organizations {
     }
 
     export interface GetIAMPolicyBinding {
+        /**
+         * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+         */
         condition?: outputs.organizations.GetIAMPolicyBindingCondition;
         /**
          * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
@@ -15476,8 +15488,17 @@ export namespace organizations {
     }
 
     export interface GetIAMPolicyBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
@@ -15560,6 +15581,439 @@ export namespace organizations {
          * May only be set to true. If set, then the default Policy is restored.
          */
         default: boolean;
+    }
+}
+
+export namespace osconfig {
+    export interface PatchDeploymentInstanceFilter {
+        /**
+         * Target all VM instances in the project. If true, no other criteria is permitted.
+         */
+        all?: boolean;
+        /**
+         * Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.  Structure is documented below.
+         */
+        groupLabels?: outputs.osconfig.PatchDeploymentInstanceFilterGroupLabel[];
+        /**
+         * Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
+         * VMs when targeting configs, for example prefix="prod-".
+         */
+        instanceNamePrefixes?: string[];
+        /**
+         * Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
+         * `projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`, or
+         * `https://www.googleapis.com/compute/v1/projects/{{project_id}}/zones/{{zone}}/instances/{{instance_name}}`
+         */
+        instances?: string[];
+        /**
+         * Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
+         */
+        zones?: string[];
+    }
+
+    export interface PatchDeploymentInstanceFilterGroupLabel {
+        /**
+         * Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
+         */
+        labels: {[key: string]: string};
+    }
+
+    export interface PatchDeploymentOneTimeSchedule {
+        /**
+         * The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
+         * accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+         */
+        executeTime: string;
+    }
+
+    export interface PatchDeploymentPatchConfig {
+        /**
+         * Apt update settings. Use this setting to override the default apt patch rules.  Structure is documented below.
+         */
+        apt?: outputs.osconfig.PatchDeploymentPatchConfigApt;
+        /**
+         * goo update settings. Use this setting to override the default goo patch rules.  Structure is documented below.
+         */
+        goo?: outputs.osconfig.PatchDeploymentPatchConfigGoo;
+        /**
+         * The ExecStep to run after the patch update.  Structure is documented below.
+         */
+        postStep?: outputs.osconfig.PatchDeploymentPatchConfigPostStep;
+        /**
+         * The ExecStep to run before the patch update.  Structure is documented below.
+         */
+        preStep?: outputs.osconfig.PatchDeploymentPatchConfigPreStep;
+        /**
+         * Post-patch reboot settings.
+         */
+        rebootConfig?: string;
+        /**
+         * Windows update settings. Use this setting to override the default Windows patch rules.  Structure is documented below.
+         */
+        windowsUpdate?: outputs.osconfig.PatchDeploymentPatchConfigWindowsUpdate;
+        /**
+         * Yum update settings. Use this setting to override the default yum patch rules.  Structure is documented below.
+         */
+        yum?: outputs.osconfig.PatchDeploymentPatchConfigYum;
+        /**
+         * zypper update settings. Use this setting to override the default zypper patch rules.  Structure is documented below.
+         */
+        zypper?: outputs.osconfig.PatchDeploymentPatchConfigZypper;
+    }
+
+    export interface PatchDeploymentPatchConfigApt {
+        /**
+         * List of KBs to exclude from update.
+         */
+        excludes?: string[];
+        /**
+         * An exclusive list of packages to be updated. These are the only packages that will be updated.
+         * If these packages are not installed, they will be ignored. This field cannot be specified with
+         * any other patch configuration fields.
+         */
+        exclusivePackages?: string[];
+        /**
+         * By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
+         */
+        type?: string;
+    }
+
+    export interface PatchDeploymentPatchConfigGoo {
+        /**
+         * goo update settings. Use this setting to override the default goo patch rules.
+         */
+        enabled: boolean;
+    }
+
+    export interface PatchDeploymentPatchConfigPostStep {
+        /**
+         * The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+         */
+        linuxExecStepConfig?: outputs.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfig;
+        /**
+         * The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+         */
+        windowsExecStepConfig?: outputs.osconfig.PatchDeploymentPatchConfigPostStepWindowsExecStepConfig;
+    }
+
+    export interface PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
+        /**
+         * Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+         */
+        allowedSuccessCodes?: number[];
+        /**
+         * A Cloud Storage object containing the executable.  Structure is documented below.
+         */
+        gcsObject?: outputs.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject;
+        /**
+         * The script interpreter to use to run the script. If no interpreter is specified the script will
+         * be executed directly, which will likely only succeed for scripts with shebang lines.
+         */
+        interpreter?: string;
+        /**
+         * An absolute path to the executable on the VM.
+         */
+        localPath?: string;
+    }
+
+    export interface PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject {
+        /**
+         * Bucket of the Cloud Storage object.
+         */
+        bucket: string;
+        /**
+         * Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+         */
+        generationNumber: string;
+        /**
+         * Name of the Cloud Storage object.
+         */
+        object: string;
+    }
+
+    export interface PatchDeploymentPatchConfigPostStepWindowsExecStepConfig {
+        /**
+         * Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+         */
+        allowedSuccessCodes?: number[];
+        /**
+         * A Cloud Storage object containing the executable.  Structure is documented below.
+         */
+        gcsObject?: outputs.osconfig.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject;
+        /**
+         * The script interpreter to use to run the script. If no interpreter is specified the script will
+         * be executed directly, which will likely only succeed for scripts with shebang lines.
+         */
+        interpreter?: string;
+        /**
+         * An absolute path to the executable on the VM.
+         */
+        localPath?: string;
+    }
+
+    export interface PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject {
+        /**
+         * Bucket of the Cloud Storage object.
+         */
+        bucket: string;
+        /**
+         * Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+         */
+        generationNumber: string;
+        /**
+         * Name of the Cloud Storage object.
+         */
+        object: string;
+    }
+
+    export interface PatchDeploymentPatchConfigPreStep {
+        /**
+         * The ExecStepConfig for all Linux VMs targeted by the PatchJob.  Structure is documented below.
+         */
+        linuxExecStepConfig?: outputs.osconfig.PatchDeploymentPatchConfigPreStepLinuxExecStepConfig;
+        /**
+         * The ExecStepConfig for all Windows VMs targeted by the PatchJob.  Structure is documented below.
+         */
+        windowsExecStepConfig?: outputs.osconfig.PatchDeploymentPatchConfigPreStepWindowsExecStepConfig;
+    }
+
+    export interface PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
+        /**
+         * Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+         */
+        allowedSuccessCodes?: number[];
+        /**
+         * A Cloud Storage object containing the executable.  Structure is documented below.
+         */
+        gcsObject?: outputs.osconfig.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject;
+        /**
+         * The script interpreter to use to run the script. If no interpreter is specified the script will
+         * be executed directly, which will likely only succeed for scripts with shebang lines.
+         */
+        interpreter?: string;
+        /**
+         * An absolute path to the executable on the VM.
+         */
+        localPath?: string;
+    }
+
+    export interface PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject {
+        /**
+         * Bucket of the Cloud Storage object.
+         */
+        bucket: string;
+        /**
+         * Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+         */
+        generationNumber: string;
+        /**
+         * Name of the Cloud Storage object.
+         */
+        object: string;
+    }
+
+    export interface PatchDeploymentPatchConfigPreStepWindowsExecStepConfig {
+        /**
+         * Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+         */
+        allowedSuccessCodes?: number[];
+        /**
+         * A Cloud Storage object containing the executable.  Structure is documented below.
+         */
+        gcsObject?: outputs.osconfig.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject;
+        /**
+         * The script interpreter to use to run the script. If no interpreter is specified the script will
+         * be executed directly, which will likely only succeed for scripts with shebang lines.
+         */
+        interpreter?: string;
+        /**
+         * An absolute path to the executable on the VM.
+         */
+        localPath?: string;
+    }
+
+    export interface PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
+        /**
+         * Bucket of the Cloud Storage object.
+         */
+        bucket: string;
+        /**
+         * Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+         */
+        generationNumber: string;
+        /**
+         * Name of the Cloud Storage object.
+         */
+        object: string;
+    }
+
+    export interface PatchDeploymentPatchConfigWindowsUpdate {
+        /**
+         * Only apply updates of these windows update classifications. If empty, all updates are applied.
+         */
+        classifications?: string;
+        /**
+         * List of KBs to exclude from update.
+         */
+        excludes?: string[];
+        /**
+         * An exclusive list of kbs to be updated. These are the only patches that will be updated.
+         * This field must not be used with other patch configurations.
+         */
+        exclusivePatches?: string[];
+    }
+
+    export interface PatchDeploymentPatchConfigYum {
+        /**
+         * List of KBs to exclude from update.
+         */
+        excludes?: string[];
+        /**
+         * An exclusive list of packages to be updated. These are the only packages that will be updated.
+         * If these packages are not installed, they will be ignored. This field cannot be specified with
+         * any other patch configuration fields.
+         */
+        exclusivePackages?: string[];
+        /**
+         * Will cause patch to run yum update-minimal instead.
+         */
+        minimal?: boolean;
+        /**
+         * Adds the --security flag to yum update. Not supported on all platforms.
+         */
+        security?: boolean;
+    }
+
+    export interface PatchDeploymentPatchConfigZypper {
+        /**
+         * Install only patches with these categories. Common categories include security, recommended, and feature.
+         */
+        categories?: string[];
+        /**
+         * List of KBs to exclude from update.
+         */
+        excludes?: string[];
+        /**
+         * An exclusive list of kbs to be updated. These are the only patches that will be updated.
+         * This field must not be used with other patch configurations.
+         */
+        exclusivePatches?: string[];
+        /**
+         * Install only patches with these severities. Common severities include critical, important, moderate, and low.
+         */
+        severities?: string[];
+        /**
+         * Adds the --with-optional flag to zypper patch.
+         */
+        withOptional?: boolean;
+        /**
+         * Adds the --with-update flag, to zypper patch.
+         */
+        withUpdate?: boolean;
+    }
+
+    export interface PatchDeploymentRecurringSchedule {
+        /**
+         * The end time at which a recurring patch deployment schedule is no longer active.
+         * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+         */
+        endTime?: string;
+        /**
+         * -
+         * The time the last patch job ran successfully.
+         * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+         */
+        lastExecuteTime: string;
+        /**
+         * Schedule with monthly executions.  Structure is documented below.
+         */
+        monthly?: outputs.osconfig.PatchDeploymentRecurringScheduleMonthly;
+        /**
+         * -
+         * The time the next patch job is scheduled to run.
+         * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+         */
+        nextExecuteTime: string;
+        /**
+         * The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
+         * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+         */
+        startTime?: string;
+        /**
+         * Time of the day to run a recurring deployment.  Structure is documented below.
+         */
+        timeOfDay: outputs.osconfig.PatchDeploymentRecurringScheduleTimeOfDay;
+        /**
+         * Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
+         * determined by the chosen time zone.  Structure is documented below.
+         */
+        timeZone: outputs.osconfig.PatchDeploymentRecurringScheduleTimeZone;
+        /**
+         * Schedule with weekly executions.  Structure is documented below.
+         */
+        weekly?: outputs.osconfig.PatchDeploymentRecurringScheduleWeekly;
+    }
+
+    export interface PatchDeploymentRecurringScheduleMonthly {
+        /**
+         * One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
+         * Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
+         * will not run in February, April, June, etc.
+         */
+        monthDay?: number;
+        /**
+         * Week day in a month.  Structure is documented below.
+         */
+        weekDayOfMonth?: outputs.osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth;
+    }
+
+    export interface PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
+        /**
+         * A day of the week.
+         */
+        dayOfWeek: string;
+        /**
+         * Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+         */
+        weekOrdinal: number;
+    }
+
+    export interface PatchDeploymentRecurringScheduleTimeOfDay {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         * An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
+    }
+
+    export interface PatchDeploymentRecurringScheduleTimeZone {
+        /**
+         * IANA Time Zone Database time zone, e.g. "America/New_York".
+         */
+        id: string;
+        /**
+         * IANA Time Zone Database version number, e.g. "2019a".
+         */
+        version?: string;
+    }
+
+    export interface PatchDeploymentRecurringScheduleWeekly {
+        /**
+         * A day of the week.
+         */
+        dayOfWeek: string;
     }
 }
 

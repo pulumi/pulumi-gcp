@@ -72,10 +72,10 @@ def get_iam_policy(audit_configs=None,bindings=None,opts=None):
 
     The **bindings** object supports the following:
 
-      * `condition` (`dict`)
-        * `description` (`str`)
-        * `expression` (`str`)
-        * `title` (`str`)
+      * `condition` (`dict`) - An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        * `description` (`str`) - An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        * `expression` (`str`) - Textual representation of an expression in Common Expression Language syntax.
+        * `title` (`str`) - A title for the expression, i.e. a short string describing its purpose.
 
       * `members` (`list`) - An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         Each entry can have one of the following values:
