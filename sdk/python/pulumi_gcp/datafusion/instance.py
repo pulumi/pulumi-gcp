@@ -100,7 +100,7 @@ class Instance(pulumi.CustomResource):
     """
     Current version of the Data Fusion.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, labels=None, name=None, network_config=None, options=None, private_instance=None, project=None, region=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, labels=None, name=None, network_config=None, options=None, private_instance=None, project=None, region=None, type=None, version=None, __props__=None, __name__=None, __opts__=None):
         """
         Represents a Data Fusion instance.
 
@@ -135,6 +135,7 @@ class Instance(pulumi.CustomResource):
                of concurrent pipelines, no support for streaming pipelines, etc.
                - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
                available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+        :param pulumi.Input[str] version: Current version of the Data Fusion.
 
         The **network_config** object supports the following:
 
@@ -174,13 +175,13 @@ class Instance(pulumi.CustomResource):
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
+            __props__['version'] = version
             __props__['create_time'] = None
             __props__['service_account'] = None
             __props__['service_endpoint'] = None
             __props__['state'] = None
             __props__['state_message'] = None
             __props__['update_time'] = None
-            __props__['version'] = None
         super(Instance, __self__).__init__(
             'gcp:datafusion/instance:Instance',
             resource_name,

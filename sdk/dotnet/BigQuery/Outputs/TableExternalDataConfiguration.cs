@@ -56,6 +56,20 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly int? MaxBadRecords;
         /// <summary>
+        /// A JSON schema for the external table. Schema is required
+        /// for CSV and JSON formats if autodetect is not on. Schema is disallowed
+        /// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+        /// ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the
+        /// string will create a diff, even if the JSON itself hasn't changed.
+        /// Furthermore drift for this field cannot not be detected because BigQuery
+        /// only uses this schema to compute the effective schema for the table, therefore
+        /// any changes on the configured value will force the table to be recreated.
+        /// This schema is effectively only applied when creating a table from an external
+        /// datasource, after creation the computed schema will be stored in
+        /// `google_bigquery_table.schema`
+        /// </summary>
+        public readonly string? Schema;
+        /// <summary>
         /// The data format. Supported values are:
         /// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
         /// and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
@@ -85,6 +99,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             int? maxBadRecords,
 
+            string? schema,
+
             string sourceFormat,
 
             ImmutableArray<string> sourceUris)
@@ -96,6 +112,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             HivePartitioningOptions = hivePartitioningOptions;
             IgnoreUnknownValues = ignoreUnknownValues;
             MaxBadRecords = maxBadRecords;
+            Schema = schema;
             SourceFormat = sourceFormat;
             SourceUris = sourceUris;
         }

@@ -1646,6 +1646,20 @@ export namespace bigquery {
          */
         maxBadRecords?: pulumi.Input<number>;
         /**
+         * A JSON schema for the external table. Schema is required
+         * for CSV and JSON formats if autodetect is not on. Schema is disallowed
+         * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+         * ~>**NOTE**: Because this field expects a JSON string, any changes to the
+         * string will create a diff, even if the JSON itself hasn't changed.
+         * Furthermore drift for this field cannot not be detected because BigQuery
+         * only uses this schema to compute the effective schema for the table, therefore
+         * any changes on the configured value will force the table to be recreated.
+         * This schema is effectively only applied when creating a table from an external
+         * datasource, after creation the computed schema will be stored in
+         * `google_bigquery_table.schema`
+         */
+        schema?: pulumi.Input<string>;
+        /**
          * The data format. Supported values are:
          * "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
          * and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
@@ -10276,7 +10290,7 @@ export namespace container {
         localSsdCount?: pulumi.Input<number>;
         /**
          * The name of a Google Compute Engine machine type.
-         * Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+         * Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
          * [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
          */
         machineType?: pulumi.Input<string>;
@@ -10496,7 +10510,7 @@ export namespace container {
         localSsdCount?: pulumi.Input<number>;
         /**
          * The name of a Google Compute Engine machine type.
-         * Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+         * Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
          * [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
          */
         machineType?: pulumi.Input<string>;
@@ -12924,6 +12938,67 @@ export namespace identityplatform {
 }
 
 export namespace iot {
+    export interface DeviceConfig {
+        binaryData?: pulumi.Input<string>;
+        cloudUpdateTime?: pulumi.Input<string>;
+        deviceAckTime?: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
+    }
+
+    export interface DeviceCredential {
+        /**
+         * The time at which this credential becomes invalid.
+         */
+        expirationTime?: pulumi.Input<string>;
+        /**
+         * A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+         */
+        publicKey: pulumi.Input<inputs.iot.DeviceCredentialPublicKey>;
+    }
+
+    export interface DeviceCredentialPublicKey {
+        /**
+         * The format of the key.
+         */
+        format: pulumi.Input<string>;
+        /**
+         * The key data.
+         */
+        key: pulumi.Input<string>;
+    }
+
+    export interface DeviceGatewayConfig {
+        /**
+         * Indicates whether the device is a gateway.
+         */
+        gatewayAuthMethod?: pulumi.Input<string>;
+        /**
+         * Indicates whether the device is a gateway.
+         */
+        gatewayType?: pulumi.Input<string>;
+        /**
+         * -
+         * The ID of the gateway the device accessed most recently.
+         */
+        lastAccessedGatewayId?: pulumi.Input<string>;
+        /**
+         * -
+         * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+         */
+        lastAccessedGatewayTime?: pulumi.Input<string>;
+    }
+
+    export interface DeviceLastErrorStatus {
+        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        message?: pulumi.Input<string>;
+        number?: pulumi.Input<number>;
+    }
+
+    export interface DeviceState {
+        binaryData?: pulumi.Input<string>;
+        updateTime?: pulumi.Input<string>;
+    }
+
     export interface RegistryCredential {
         /**
          * A public key certificate format and data.

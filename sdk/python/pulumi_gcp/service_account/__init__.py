@@ -6,6 +6,7 @@
 from .account import *
 from .get_account import *
 from .get_account_access_token import *
+from .get_account_id_token import *
 from .get_account_key import *
 from .iam_binding import *
 from .iam_member import *

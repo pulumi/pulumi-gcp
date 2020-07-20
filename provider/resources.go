@@ -1518,6 +1518,9 @@ func Provider() tfbridge.ProviderInfo {
 			// CloudIdentity
 			"google_cloud_identity_group_membership": {Tok: gcpResource(gcpCloudIdentity, "GroupMembership")},
 			"google_cloud_identity_group":            {Tok: gcpResource(gcpCloudIdentity, "Group")},
+
+			// CloudIOT
+			"google_cloudiot_device": {Tok: gcpResource(gcpIot, "Device")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1833,6 +1836,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpServiceAccount, "getAccount"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_google_service_account.html.markdown",
+				},
+			},
+			"google_service_account_id_token": {
+				Tok: gcpDataSource(gcpServiceAccount, "getAccountIdToken"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_google_service_account_id_token.html.markdown",
 				},
 			},
 			"google_service_account_access_token": {

@@ -276,6 +276,12 @@ namespace Pulumi.Gcp.DataFusion
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        /// <summary>
+        /// Current version of the Data Fusion.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public InstanceArgs()
         {
         }
