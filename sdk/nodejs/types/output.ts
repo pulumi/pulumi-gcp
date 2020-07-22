@@ -1646,6 +1646,20 @@ export namespace bigquery {
          */
         maxBadRecords?: number;
         /**
+         * A JSON schema for the external table. Schema is required
+         * for CSV and JSON formats if autodetect is not on. Schema is disallowed
+         * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+         * ~>**NOTE**: Because this field expects a JSON string, any changes to the
+         * string will create a diff, even if the JSON itself hasn't changed.
+         * Furthermore drift for this field cannot not be detected because BigQuery
+         * only uses this schema to compute the effective schema for the table, therefore
+         * any changes on the configured value will force the table to be recreated.
+         * This schema is effectively only applied when creating a table from an external
+         * datasource, after creation the computed schema will be stored in
+         * `google_bigquery_table.schema`
+         */
+        schema: string;
+        /**
          * The data format. Supported values are:
          * "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
          * and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
@@ -10749,7 +10763,7 @@ export namespace container {
         localSsdCount: number;
         /**
          * The name of a Google Compute Engine machine type.
-         * Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+         * Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
          * [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
          */
         machineType: string;
@@ -10969,7 +10983,7 @@ export namespace container {
         localSsdCount: number;
         /**
          * The name of a Google Compute Engine machine type.
-         * Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+         * Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
          * [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
          */
         machineType: string;
@@ -13849,6 +13863,67 @@ export namespace identityplatform {
 }
 
 export namespace iot {
+    export interface DeviceConfig {
+        binaryData?: string;
+        cloudUpdateTime: string;
+        deviceAckTime: string;
+        version: string;
+    }
+
+    export interface DeviceCredential {
+        /**
+         * The time at which this credential becomes invalid.
+         */
+        expirationTime: string;
+        /**
+         * A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+         */
+        publicKey: outputs.iot.DeviceCredentialPublicKey;
+    }
+
+    export interface DeviceCredentialPublicKey {
+        /**
+         * The format of the key.
+         */
+        format: string;
+        /**
+         * The key data.
+         */
+        key: string;
+    }
+
+    export interface DeviceGatewayConfig {
+        /**
+         * Indicates whether the device is a gateway.
+         */
+        gatewayAuthMethod?: string;
+        /**
+         * Indicates whether the device is a gateway.
+         */
+        gatewayType?: string;
+        /**
+         * -
+         * The ID of the gateway the device accessed most recently.
+         */
+        lastAccessedGatewayId: string;
+        /**
+         * -
+         * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+         */
+        lastAccessedGatewayTime: string;
+    }
+
+    export interface DeviceLastErrorStatus {
+        details?: {[key: string]: any}[];
+        message?: string;
+        number?: number;
+    }
+
+    export interface DeviceState {
+        binaryData?: string;
+        updateTime?: string;
+    }
+
     export interface RegistryCredential {
         /**
          * A public key certificate format and data.

@@ -375,7 +375,7 @@ class Cluster(pulumi.CustomResource):
       * `localSsdCount` (`float`) - The amount of local SSD disks that will be
         attached to each cluster node. Defaults to 0.
       * `machine_type` (`str`) - The name of a Google Compute Engine machine type.
-        Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+        Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
         [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
       * `metadata` (`dict`) - The metadata key/value pairs assigned to instances in
         the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
@@ -488,7 +488,7 @@ class Cluster(pulumi.CustomResource):
         * `localSsdCount` (`float`) - The amount of local SSD disks that will be
           attached to each cluster node. Defaults to 0.
         * `machine_type` (`str`) - The name of a Google Compute Engine machine type.
-          Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+          Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
           [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
         * `metadata` (`dict`) - The metadata key/value pairs assigned to instances in
           the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
@@ -1038,7 +1038,7 @@ class Cluster(pulumi.CustomResource):
           * `localSsdCount` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
             attached to each cluster node. Defaults to 0.
           * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type.
-            Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+            Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
             [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
           * `metadata` (`pulumi.Input[dict]`) - The metadata key/value pairs assigned to instances in
             the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
@@ -1137,7 +1137,7 @@ class Cluster(pulumi.CustomResource):
             * `localSsdCount` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
               attached to each cluster node. Defaults to 0.
             * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type.
-              Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+              Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
               [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
             * `metadata` (`pulumi.Input[dict]`) - The metadata key/value pairs assigned to instances in
               the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
@@ -1693,7 +1693,7 @@ class Cluster(pulumi.CustomResource):
           * `localSsdCount` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
             attached to each cluster node. Defaults to 0.
           * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type.
-            Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+            Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
             [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
           * `metadata` (`pulumi.Input[dict]`) - The metadata key/value pairs assigned to instances in
             the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
@@ -1792,7 +1792,7 @@ class Cluster(pulumi.CustomResource):
             * `localSsdCount` (`pulumi.Input[float]`) - The amount of local SSD disks that will be
               attached to each cluster node. Defaults to 0.
             * `machine_type` (`pulumi.Input[str]`) - The name of a Google Compute Engine machine type.
-              Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+              Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
               [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
             * `metadata` (`pulumi.Input[dict]`) - The metadata key/value pairs assigned to instances in
               the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to

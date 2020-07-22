@@ -241,6 +241,8 @@ type instanceArgs struct {
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
 	Type string `pulumi:"type"`
+	// Current version of the Data Fusion.
+	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -277,6 +279,8 @@ type InstanceArgs struct {
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
 	Type pulumi.StringInput
+	// Current version of the Data Fusion.
+	Version pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

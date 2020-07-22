@@ -47,6 +47,7 @@ import * as utilities from "../utilities";
  *     privateInstance: true,
  *     region: "us-central1",
  *     type: "BASIC",
+ *     version: "6.1.1",
  * });
  * ```
  */
@@ -161,7 +162,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Current version of the Data Fusion.
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    public readonly version!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -209,13 +210,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["version"] = args ? args.version : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["serviceAccount"] = undefined /*out*/;
             inputs["serviceEndpoint"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["stateMessage"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
-            inputs["version"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -376,4 +377,8 @@ export interface InstanceArgs {
      * available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
      */
     readonly type: pulumi.Input<string>;
+    /**
+     * Current version of the Data Fusion.
+     */
+    readonly version?: pulumi.Input<string>;
 }

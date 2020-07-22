@@ -4056,7 +4056,7 @@ type ClusterNodeConfig struct {
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine machine type.
-	// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 	MachineType *string `pulumi:"machineType"`
 	// The metadata key/value pairs assigned to instances in
@@ -4140,7 +4140,7 @@ type ClusterNodeConfigArgs struct {
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine machine type.
-	// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// The metadata key/value pairs assigned to instances in
@@ -4310,7 +4310,7 @@ func (o ClusterNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 }
 
 // The name of a Google Compute Engine machine type.
-// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 // [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 func (o ClusterNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
@@ -4487,7 +4487,7 @@ func (o ClusterNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 }
 
 // The name of a Google Compute Engine machine type.
-// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 // [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 func (o ClusterNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
@@ -5802,7 +5802,7 @@ type ClusterNodePoolNodeConfig struct {
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine machine type.
-	// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 	MachineType *string `pulumi:"machineType"`
 	// The metadata key/value pairs assigned to instances in
@@ -5886,7 +5886,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine machine type.
-	// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 	// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// The metadata key/value pairs assigned to instances in
@@ -6058,7 +6058,7 @@ func (o ClusterNodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 }
 
 // The name of a Google Compute Engine machine type.
-// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 // [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 func (o ClusterNodePoolNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
@@ -6239,7 +6239,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput 
 }
 
 // The name of a Google Compute Engine machine type.
-// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
 // [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
 func (o ClusterNodePoolNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {

@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int? LocalSsdCount;
         /// <summary>
         /// The name of a Google Compute Engine machine type.
-        /// Defaults to `n1-standard-1`. To create a custom machine type, value should be set as specified
+        /// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
         /// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
         /// </summary>
         public readonly string? MachineType;

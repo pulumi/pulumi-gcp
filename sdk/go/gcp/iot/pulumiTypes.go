@@ -10,6 +10,837 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type DeviceConfig struct {
+	BinaryData      *string `pulumi:"binaryData"`
+	CloudUpdateTime *string `pulumi:"cloudUpdateTime"`
+	DeviceAckTime   *string `pulumi:"deviceAckTime"`
+	Version         *string `pulumi:"version"`
+}
+
+// DeviceConfigInput is an input type that accepts DeviceConfigArgs and DeviceConfigOutput values.
+// You can construct a concrete instance of `DeviceConfigInput` via:
+//
+//          DeviceConfigArgs{...}
+type DeviceConfigInput interface {
+	pulumi.Input
+
+	ToDeviceConfigOutput() DeviceConfigOutput
+	ToDeviceConfigOutputWithContext(context.Context) DeviceConfigOutput
+}
+
+type DeviceConfigArgs struct {
+	BinaryData      pulumi.StringPtrInput `pulumi:"binaryData"`
+	CloudUpdateTime pulumi.StringPtrInput `pulumi:"cloudUpdateTime"`
+	DeviceAckTime   pulumi.StringPtrInput `pulumi:"deviceAckTime"`
+	Version         pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (DeviceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceConfig)(nil)).Elem()
+}
+
+func (i DeviceConfigArgs) ToDeviceConfigOutput() DeviceConfigOutput {
+	return i.ToDeviceConfigOutputWithContext(context.Background())
+}
+
+func (i DeviceConfigArgs) ToDeviceConfigOutputWithContext(ctx context.Context) DeviceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigOutput)
+}
+
+func (i DeviceConfigArgs) ToDeviceConfigPtrOutput() DeviceConfigPtrOutput {
+	return i.ToDeviceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceConfigArgs) ToDeviceConfigPtrOutputWithContext(ctx context.Context) DeviceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigOutput).ToDeviceConfigPtrOutputWithContext(ctx)
+}
+
+// DeviceConfigPtrInput is an input type that accepts DeviceConfigArgs, DeviceConfigPtr and DeviceConfigPtrOutput values.
+// You can construct a concrete instance of `DeviceConfigPtrInput` via:
+//
+//          DeviceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DeviceConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeviceConfigPtrOutput() DeviceConfigPtrOutput
+	ToDeviceConfigPtrOutputWithContext(context.Context) DeviceConfigPtrOutput
+}
+
+type deviceConfigPtrType DeviceConfigArgs
+
+func DeviceConfigPtr(v *DeviceConfigArgs) DeviceConfigPtrInput {
+	return (*deviceConfigPtrType)(v)
+}
+
+func (*deviceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceConfig)(nil)).Elem()
+}
+
+func (i *deviceConfigPtrType) ToDeviceConfigPtrOutput() DeviceConfigPtrOutput {
+	return i.ToDeviceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceConfigPtrType) ToDeviceConfigPtrOutputWithContext(ctx context.Context) DeviceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigPtrOutput)
+}
+
+type DeviceConfigOutput struct{ *pulumi.OutputState }
+
+func (DeviceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceConfig)(nil)).Elem()
+}
+
+func (o DeviceConfigOutput) ToDeviceConfigOutput() DeviceConfigOutput {
+	return o
+}
+
+func (o DeviceConfigOutput) ToDeviceConfigOutputWithContext(ctx context.Context) DeviceConfigOutput {
+	return o
+}
+
+func (o DeviceConfigOutput) ToDeviceConfigPtrOutput() DeviceConfigPtrOutput {
+	return o.ToDeviceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceConfigOutput) ToDeviceConfigPtrOutputWithContext(ctx context.Context) DeviceConfigPtrOutput {
+	return o.ApplyT(func(v DeviceConfig) *DeviceConfig {
+		return &v
+	}).(DeviceConfigPtrOutput)
+}
+func (o DeviceConfigOutput) BinaryData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceConfig) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceConfigOutput) CloudUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceConfig) *string { return v.CloudUpdateTime }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceConfigOutput) DeviceAckTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceConfig) *string { return v.DeviceAckTime }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceConfigOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type DeviceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceConfig)(nil)).Elem()
+}
+
+func (o DeviceConfigPtrOutput) ToDeviceConfigPtrOutput() DeviceConfigPtrOutput {
+	return o
+}
+
+func (o DeviceConfigPtrOutput) ToDeviceConfigPtrOutputWithContext(ctx context.Context) DeviceConfigPtrOutput {
+	return o
+}
+
+func (o DeviceConfigPtrOutput) Elem() DeviceConfigOutput {
+	return o.ApplyT(func(v *DeviceConfig) DeviceConfig { return *v }).(DeviceConfigOutput)
+}
+
+func (o DeviceConfigPtrOutput) BinaryData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BinaryData
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceConfigPtrOutput) CloudUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudUpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceConfigPtrOutput) DeviceAckTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceAckTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceConfigPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeviceCredential struct {
+	// The time at which this credential becomes invalid.
+	ExpirationTime *string `pulumi:"expirationTime"`
+	// A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+	PublicKey DeviceCredentialPublicKey `pulumi:"publicKey"`
+}
+
+// DeviceCredentialInput is an input type that accepts DeviceCredentialArgs and DeviceCredentialOutput values.
+// You can construct a concrete instance of `DeviceCredentialInput` via:
+//
+//          DeviceCredentialArgs{...}
+type DeviceCredentialInput interface {
+	pulumi.Input
+
+	ToDeviceCredentialOutput() DeviceCredentialOutput
+	ToDeviceCredentialOutputWithContext(context.Context) DeviceCredentialOutput
+}
+
+type DeviceCredentialArgs struct {
+	// The time at which this credential becomes invalid.
+	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
+	// A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+	PublicKey DeviceCredentialPublicKeyInput `pulumi:"publicKey"`
+}
+
+func (DeviceCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceCredential)(nil)).Elem()
+}
+
+func (i DeviceCredentialArgs) ToDeviceCredentialOutput() DeviceCredentialOutput {
+	return i.ToDeviceCredentialOutputWithContext(context.Background())
+}
+
+func (i DeviceCredentialArgs) ToDeviceCredentialOutputWithContext(ctx context.Context) DeviceCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceCredentialOutput)
+}
+
+// DeviceCredentialArrayInput is an input type that accepts DeviceCredentialArray and DeviceCredentialArrayOutput values.
+// You can construct a concrete instance of `DeviceCredentialArrayInput` via:
+//
+//          DeviceCredentialArray{ DeviceCredentialArgs{...} }
+type DeviceCredentialArrayInput interface {
+	pulumi.Input
+
+	ToDeviceCredentialArrayOutput() DeviceCredentialArrayOutput
+	ToDeviceCredentialArrayOutputWithContext(context.Context) DeviceCredentialArrayOutput
+}
+
+type DeviceCredentialArray []DeviceCredentialInput
+
+func (DeviceCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceCredential)(nil)).Elem()
+}
+
+func (i DeviceCredentialArray) ToDeviceCredentialArrayOutput() DeviceCredentialArrayOutput {
+	return i.ToDeviceCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i DeviceCredentialArray) ToDeviceCredentialArrayOutputWithContext(ctx context.Context) DeviceCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceCredentialArrayOutput)
+}
+
+type DeviceCredentialOutput struct{ *pulumi.OutputState }
+
+func (DeviceCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceCredential)(nil)).Elem()
+}
+
+func (o DeviceCredentialOutput) ToDeviceCredentialOutput() DeviceCredentialOutput {
+	return o
+}
+
+func (o DeviceCredentialOutput) ToDeviceCredentialOutputWithContext(ctx context.Context) DeviceCredentialOutput {
+	return o
+}
+
+// The time at which this credential becomes invalid.
+func (o DeviceCredentialOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceCredential) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+}
+
+// A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+func (o DeviceCredentialOutput) PublicKey() DeviceCredentialPublicKeyOutput {
+	return o.ApplyT(func(v DeviceCredential) DeviceCredentialPublicKey { return v.PublicKey }).(DeviceCredentialPublicKeyOutput)
+}
+
+type DeviceCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (DeviceCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceCredential)(nil)).Elem()
+}
+
+func (o DeviceCredentialArrayOutput) ToDeviceCredentialArrayOutput() DeviceCredentialArrayOutput {
+	return o
+}
+
+func (o DeviceCredentialArrayOutput) ToDeviceCredentialArrayOutputWithContext(ctx context.Context) DeviceCredentialArrayOutput {
+	return o
+}
+
+func (o DeviceCredentialArrayOutput) Index(i pulumi.IntInput) DeviceCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceCredential {
+		return vs[0].([]DeviceCredential)[vs[1].(int)]
+	}).(DeviceCredentialOutput)
+}
+
+type DeviceCredentialPublicKey struct {
+	// The format of the key.
+	Format string `pulumi:"format"`
+	// The key data.
+	Key string `pulumi:"key"`
+}
+
+// DeviceCredentialPublicKeyInput is an input type that accepts DeviceCredentialPublicKeyArgs and DeviceCredentialPublicKeyOutput values.
+// You can construct a concrete instance of `DeviceCredentialPublicKeyInput` via:
+//
+//          DeviceCredentialPublicKeyArgs{...}
+type DeviceCredentialPublicKeyInput interface {
+	pulumi.Input
+
+	ToDeviceCredentialPublicKeyOutput() DeviceCredentialPublicKeyOutput
+	ToDeviceCredentialPublicKeyOutputWithContext(context.Context) DeviceCredentialPublicKeyOutput
+}
+
+type DeviceCredentialPublicKeyArgs struct {
+	// The format of the key.
+	Format pulumi.StringInput `pulumi:"format"`
+	// The key data.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (DeviceCredentialPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceCredentialPublicKey)(nil)).Elem()
+}
+
+func (i DeviceCredentialPublicKeyArgs) ToDeviceCredentialPublicKeyOutput() DeviceCredentialPublicKeyOutput {
+	return i.ToDeviceCredentialPublicKeyOutputWithContext(context.Background())
+}
+
+func (i DeviceCredentialPublicKeyArgs) ToDeviceCredentialPublicKeyOutputWithContext(ctx context.Context) DeviceCredentialPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceCredentialPublicKeyOutput)
+}
+
+type DeviceCredentialPublicKeyOutput struct{ *pulumi.OutputState }
+
+func (DeviceCredentialPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceCredentialPublicKey)(nil)).Elem()
+}
+
+func (o DeviceCredentialPublicKeyOutput) ToDeviceCredentialPublicKeyOutput() DeviceCredentialPublicKeyOutput {
+	return o
+}
+
+func (o DeviceCredentialPublicKeyOutput) ToDeviceCredentialPublicKeyOutputWithContext(ctx context.Context) DeviceCredentialPublicKeyOutput {
+	return o
+}
+
+// The format of the key.
+func (o DeviceCredentialPublicKeyOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceCredentialPublicKey) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// The key data.
+func (o DeviceCredentialPublicKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceCredentialPublicKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type DeviceGatewayConfig struct {
+	// Indicates whether the device is a gateway.
+	GatewayAuthMethod *string `pulumi:"gatewayAuthMethod"`
+	// Indicates whether the device is a gateway.
+	GatewayType *string `pulumi:"gatewayType"`
+	// -
+	// The ID of the gateway the device accessed most recently.
+	LastAccessedGatewayId *string `pulumi:"lastAccessedGatewayId"`
+	// -
+	// The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+	LastAccessedGatewayTime *string `pulumi:"lastAccessedGatewayTime"`
+}
+
+// DeviceGatewayConfigInput is an input type that accepts DeviceGatewayConfigArgs and DeviceGatewayConfigOutput values.
+// You can construct a concrete instance of `DeviceGatewayConfigInput` via:
+//
+//          DeviceGatewayConfigArgs{...}
+type DeviceGatewayConfigInput interface {
+	pulumi.Input
+
+	ToDeviceGatewayConfigOutput() DeviceGatewayConfigOutput
+	ToDeviceGatewayConfigOutputWithContext(context.Context) DeviceGatewayConfigOutput
+}
+
+type DeviceGatewayConfigArgs struct {
+	// Indicates whether the device is a gateway.
+	GatewayAuthMethod pulumi.StringPtrInput `pulumi:"gatewayAuthMethod"`
+	// Indicates whether the device is a gateway.
+	GatewayType pulumi.StringPtrInput `pulumi:"gatewayType"`
+	// -
+	// The ID of the gateway the device accessed most recently.
+	LastAccessedGatewayId pulumi.StringPtrInput `pulumi:"lastAccessedGatewayId"`
+	// -
+	// The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+	LastAccessedGatewayTime pulumi.StringPtrInput `pulumi:"lastAccessedGatewayTime"`
+}
+
+func (DeviceGatewayConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceGatewayConfig)(nil)).Elem()
+}
+
+func (i DeviceGatewayConfigArgs) ToDeviceGatewayConfigOutput() DeviceGatewayConfigOutput {
+	return i.ToDeviceGatewayConfigOutputWithContext(context.Background())
+}
+
+func (i DeviceGatewayConfigArgs) ToDeviceGatewayConfigOutputWithContext(ctx context.Context) DeviceGatewayConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceGatewayConfigOutput)
+}
+
+func (i DeviceGatewayConfigArgs) ToDeviceGatewayConfigPtrOutput() DeviceGatewayConfigPtrOutput {
+	return i.ToDeviceGatewayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceGatewayConfigArgs) ToDeviceGatewayConfigPtrOutputWithContext(ctx context.Context) DeviceGatewayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceGatewayConfigOutput).ToDeviceGatewayConfigPtrOutputWithContext(ctx)
+}
+
+// DeviceGatewayConfigPtrInput is an input type that accepts DeviceGatewayConfigArgs, DeviceGatewayConfigPtr and DeviceGatewayConfigPtrOutput values.
+// You can construct a concrete instance of `DeviceGatewayConfigPtrInput` via:
+//
+//          DeviceGatewayConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DeviceGatewayConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeviceGatewayConfigPtrOutput() DeviceGatewayConfigPtrOutput
+	ToDeviceGatewayConfigPtrOutputWithContext(context.Context) DeviceGatewayConfigPtrOutput
+}
+
+type deviceGatewayConfigPtrType DeviceGatewayConfigArgs
+
+func DeviceGatewayConfigPtr(v *DeviceGatewayConfigArgs) DeviceGatewayConfigPtrInput {
+	return (*deviceGatewayConfigPtrType)(v)
+}
+
+func (*deviceGatewayConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceGatewayConfig)(nil)).Elem()
+}
+
+func (i *deviceGatewayConfigPtrType) ToDeviceGatewayConfigPtrOutput() DeviceGatewayConfigPtrOutput {
+	return i.ToDeviceGatewayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceGatewayConfigPtrType) ToDeviceGatewayConfigPtrOutputWithContext(ctx context.Context) DeviceGatewayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceGatewayConfigPtrOutput)
+}
+
+type DeviceGatewayConfigOutput struct{ *pulumi.OutputState }
+
+func (DeviceGatewayConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceGatewayConfig)(nil)).Elem()
+}
+
+func (o DeviceGatewayConfigOutput) ToDeviceGatewayConfigOutput() DeviceGatewayConfigOutput {
+	return o
+}
+
+func (o DeviceGatewayConfigOutput) ToDeviceGatewayConfigOutputWithContext(ctx context.Context) DeviceGatewayConfigOutput {
+	return o
+}
+
+func (o DeviceGatewayConfigOutput) ToDeviceGatewayConfigPtrOutput() DeviceGatewayConfigPtrOutput {
+	return o.ToDeviceGatewayConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceGatewayConfigOutput) ToDeviceGatewayConfigPtrOutputWithContext(ctx context.Context) DeviceGatewayConfigPtrOutput {
+	return o.ApplyT(func(v DeviceGatewayConfig) *DeviceGatewayConfig {
+		return &v
+	}).(DeviceGatewayConfigPtrOutput)
+}
+
+// Indicates whether the device is a gateway.
+func (o DeviceGatewayConfigOutput) GatewayAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.GatewayAuthMethod }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the device is a gateway.
+func (o DeviceGatewayConfigOutput) GatewayType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.GatewayType }).(pulumi.StringPtrOutput)
+}
+
+// -
+// The ID of the gateway the device accessed most recently.
+func (o DeviceGatewayConfigOutput) LastAccessedGatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.LastAccessedGatewayId }).(pulumi.StringPtrOutput)
+}
+
+// -
+// The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+func (o DeviceGatewayConfigOutput) LastAccessedGatewayTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.LastAccessedGatewayTime }).(pulumi.StringPtrOutput)
+}
+
+type DeviceGatewayConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceGatewayConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceGatewayConfig)(nil)).Elem()
+}
+
+func (o DeviceGatewayConfigPtrOutput) ToDeviceGatewayConfigPtrOutput() DeviceGatewayConfigPtrOutput {
+	return o
+}
+
+func (o DeviceGatewayConfigPtrOutput) ToDeviceGatewayConfigPtrOutputWithContext(ctx context.Context) DeviceGatewayConfigPtrOutput {
+	return o
+}
+
+func (o DeviceGatewayConfigPtrOutput) Elem() DeviceGatewayConfigOutput {
+	return o.ApplyT(func(v *DeviceGatewayConfig) DeviceGatewayConfig { return *v }).(DeviceGatewayConfigOutput)
+}
+
+// Indicates whether the device is a gateway.
+func (o DeviceGatewayConfigPtrOutput) GatewayAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceGatewayConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayAuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the device is a gateway.
+func (o DeviceGatewayConfigPtrOutput) GatewayType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceGatewayConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayType
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// The ID of the gateway the device accessed most recently.
+func (o DeviceGatewayConfigPtrOutput) LastAccessedGatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceGatewayConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastAccessedGatewayId
+	}).(pulumi.StringPtrOutput)
+}
+
+// -
+// The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+func (o DeviceGatewayConfigPtrOutput) LastAccessedGatewayTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceGatewayConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastAccessedGatewayTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeviceLastErrorStatus struct {
+	Details []map[string]interface{} `pulumi:"details"`
+	Message *string                  `pulumi:"message"`
+	Number  *int                     `pulumi:"number"`
+}
+
+// DeviceLastErrorStatusInput is an input type that accepts DeviceLastErrorStatusArgs and DeviceLastErrorStatusOutput values.
+// You can construct a concrete instance of `DeviceLastErrorStatusInput` via:
+//
+//          DeviceLastErrorStatusArgs{...}
+type DeviceLastErrorStatusInput interface {
+	pulumi.Input
+
+	ToDeviceLastErrorStatusOutput() DeviceLastErrorStatusOutput
+	ToDeviceLastErrorStatusOutputWithContext(context.Context) DeviceLastErrorStatusOutput
+}
+
+type DeviceLastErrorStatusArgs struct {
+	Details pulumi.MapArrayInput  `pulumi:"details"`
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	Number  pulumi.IntPtrInput    `pulumi:"number"`
+}
+
+func (DeviceLastErrorStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceLastErrorStatus)(nil)).Elem()
+}
+
+func (i DeviceLastErrorStatusArgs) ToDeviceLastErrorStatusOutput() DeviceLastErrorStatusOutput {
+	return i.ToDeviceLastErrorStatusOutputWithContext(context.Background())
+}
+
+func (i DeviceLastErrorStatusArgs) ToDeviceLastErrorStatusOutputWithContext(ctx context.Context) DeviceLastErrorStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceLastErrorStatusOutput)
+}
+
+func (i DeviceLastErrorStatusArgs) ToDeviceLastErrorStatusPtrOutput() DeviceLastErrorStatusPtrOutput {
+	return i.ToDeviceLastErrorStatusPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceLastErrorStatusArgs) ToDeviceLastErrorStatusPtrOutputWithContext(ctx context.Context) DeviceLastErrorStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceLastErrorStatusOutput).ToDeviceLastErrorStatusPtrOutputWithContext(ctx)
+}
+
+// DeviceLastErrorStatusPtrInput is an input type that accepts DeviceLastErrorStatusArgs, DeviceLastErrorStatusPtr and DeviceLastErrorStatusPtrOutput values.
+// You can construct a concrete instance of `DeviceLastErrorStatusPtrInput` via:
+//
+//          DeviceLastErrorStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type DeviceLastErrorStatusPtrInput interface {
+	pulumi.Input
+
+	ToDeviceLastErrorStatusPtrOutput() DeviceLastErrorStatusPtrOutput
+	ToDeviceLastErrorStatusPtrOutputWithContext(context.Context) DeviceLastErrorStatusPtrOutput
+}
+
+type deviceLastErrorStatusPtrType DeviceLastErrorStatusArgs
+
+func DeviceLastErrorStatusPtr(v *DeviceLastErrorStatusArgs) DeviceLastErrorStatusPtrInput {
+	return (*deviceLastErrorStatusPtrType)(v)
+}
+
+func (*deviceLastErrorStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceLastErrorStatus)(nil)).Elem()
+}
+
+func (i *deviceLastErrorStatusPtrType) ToDeviceLastErrorStatusPtrOutput() DeviceLastErrorStatusPtrOutput {
+	return i.ToDeviceLastErrorStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceLastErrorStatusPtrType) ToDeviceLastErrorStatusPtrOutputWithContext(ctx context.Context) DeviceLastErrorStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceLastErrorStatusPtrOutput)
+}
+
+type DeviceLastErrorStatusOutput struct{ *pulumi.OutputState }
+
+func (DeviceLastErrorStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceLastErrorStatus)(nil)).Elem()
+}
+
+func (o DeviceLastErrorStatusOutput) ToDeviceLastErrorStatusOutput() DeviceLastErrorStatusOutput {
+	return o
+}
+
+func (o DeviceLastErrorStatusOutput) ToDeviceLastErrorStatusOutputWithContext(ctx context.Context) DeviceLastErrorStatusOutput {
+	return o
+}
+
+func (o DeviceLastErrorStatusOutput) ToDeviceLastErrorStatusPtrOutput() DeviceLastErrorStatusPtrOutput {
+	return o.ToDeviceLastErrorStatusPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceLastErrorStatusOutput) ToDeviceLastErrorStatusPtrOutputWithContext(ctx context.Context) DeviceLastErrorStatusPtrOutput {
+	return o.ApplyT(func(v DeviceLastErrorStatus) *DeviceLastErrorStatus {
+		return &v
+	}).(DeviceLastErrorStatusPtrOutput)
+}
+func (o DeviceLastErrorStatusOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v DeviceLastErrorStatus) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+}
+
+func (o DeviceLastErrorStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceLastErrorStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceLastErrorStatusOutput) Number() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeviceLastErrorStatus) *int { return v.Number }).(pulumi.IntPtrOutput)
+}
+
+type DeviceLastErrorStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceLastErrorStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceLastErrorStatus)(nil)).Elem()
+}
+
+func (o DeviceLastErrorStatusPtrOutput) ToDeviceLastErrorStatusPtrOutput() DeviceLastErrorStatusPtrOutput {
+	return o
+}
+
+func (o DeviceLastErrorStatusPtrOutput) ToDeviceLastErrorStatusPtrOutputWithContext(ctx context.Context) DeviceLastErrorStatusPtrOutput {
+	return o
+}
+
+func (o DeviceLastErrorStatusPtrOutput) Elem() DeviceLastErrorStatusOutput {
+	return o.ApplyT(func(v *DeviceLastErrorStatus) DeviceLastErrorStatus { return *v }).(DeviceLastErrorStatusOutput)
+}
+
+func (o DeviceLastErrorStatusPtrOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *DeviceLastErrorStatus) []map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.MapArrayOutput)
+}
+
+func (o DeviceLastErrorStatusPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceLastErrorStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceLastErrorStatusPtrOutput) Number() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeviceLastErrorStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Number
+	}).(pulumi.IntPtrOutput)
+}
+
+type DeviceStateType struct {
+	BinaryData *string `pulumi:"binaryData"`
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// DeviceStateTypeInput is an input type that accepts DeviceStateTypeArgs and DeviceStateTypeOutput values.
+// You can construct a concrete instance of `DeviceStateTypeInput` via:
+//
+//          DeviceStateTypeArgs{...}
+type DeviceStateTypeInput interface {
+	pulumi.Input
+
+	ToDeviceStateTypeOutput() DeviceStateTypeOutput
+	ToDeviceStateTypeOutputWithContext(context.Context) DeviceStateTypeOutput
+}
+
+type DeviceStateTypeArgs struct {
+	BinaryData pulumi.StringPtrInput `pulumi:"binaryData"`
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (DeviceStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceStateType)(nil)).Elem()
+}
+
+func (i DeviceStateTypeArgs) ToDeviceStateTypeOutput() DeviceStateTypeOutput {
+	return i.ToDeviceStateTypeOutputWithContext(context.Background())
+}
+
+func (i DeviceStateTypeArgs) ToDeviceStateTypeOutputWithContext(ctx context.Context) DeviceStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput)
+}
+
+func (i DeviceStateTypeArgs) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
+	return i.ToDeviceStateTypePtrOutputWithContext(context.Background())
+}
+
+func (i DeviceStateTypeArgs) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypeOutput).ToDeviceStateTypePtrOutputWithContext(ctx)
+}
+
+// DeviceStateTypePtrInput is an input type that accepts DeviceStateTypeArgs, DeviceStateTypePtr and DeviceStateTypePtrOutput values.
+// You can construct a concrete instance of `DeviceStateTypePtrInput` via:
+//
+//          DeviceStateTypeArgs{...}
+//
+//  or:
+//
+//          nil
+type DeviceStateTypePtrInput interface {
+	pulumi.Input
+
+	ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput
+	ToDeviceStateTypePtrOutputWithContext(context.Context) DeviceStateTypePtrOutput
+}
+
+type deviceStateTypePtrType DeviceStateTypeArgs
+
+func DeviceStateTypePtr(v *DeviceStateTypeArgs) DeviceStateTypePtrInput {
+	return (*deviceStateTypePtrType)(v)
+}
+
+func (*deviceStateTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceStateType)(nil)).Elem()
+}
+
+func (i *deviceStateTypePtrType) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
+	return i.ToDeviceStateTypePtrOutputWithContext(context.Background())
+}
+
+func (i *deviceStateTypePtrType) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateTypePtrOutput)
+}
+
+type DeviceStateTypeOutput struct{ *pulumi.OutputState }
+
+func (DeviceStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceStateType)(nil)).Elem()
+}
+
+func (o DeviceStateTypeOutput) ToDeviceStateTypeOutput() DeviceStateTypeOutput {
+	return o
+}
+
+func (o DeviceStateTypeOutput) ToDeviceStateTypeOutputWithContext(ctx context.Context) DeviceStateTypeOutput {
+	return o
+}
+
+func (o DeviceStateTypeOutput) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
+	return o.ToDeviceStateTypePtrOutputWithContext(context.Background())
+}
+
+func (o DeviceStateTypeOutput) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
+	return o.ApplyT(func(v DeviceStateType) *DeviceStateType {
+		return &v
+	}).(DeviceStateTypePtrOutput)
+}
+func (o DeviceStateTypeOutput) BinaryData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceStateType) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceStateTypeOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceStateType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type DeviceStateTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceStateTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceStateType)(nil)).Elem()
+}
+
+func (o DeviceStateTypePtrOutput) ToDeviceStateTypePtrOutput() DeviceStateTypePtrOutput {
+	return o
+}
+
+func (o DeviceStateTypePtrOutput) ToDeviceStateTypePtrOutputWithContext(ctx context.Context) DeviceStateTypePtrOutput {
+	return o
+}
+
+func (o DeviceStateTypePtrOutput) Elem() DeviceStateTypeOutput {
+	return o.ApplyT(func(v *DeviceStateType) DeviceStateType { return *v }).(DeviceStateTypeOutput)
+}
+
+func (o DeviceStateTypePtrOutput) BinaryData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceStateType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BinaryData
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceStateTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceStateType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type RegistryCredential struct {
 	// A public key certificate format and data.
 	PublicKeyCertificate RegistryCredentialPublicKeyCertificate `pulumi:"publicKeyCertificate"`
@@ -680,6 +1511,17 @@ func (o RegistryStateNotificationConfigPtrOutput) PubsubTopicName() pulumi.Strin
 }
 
 func init() {
+	pulumi.RegisterOutputType(DeviceConfigOutput{})
+	pulumi.RegisterOutputType(DeviceConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeviceCredentialOutput{})
+	pulumi.RegisterOutputType(DeviceCredentialArrayOutput{})
+	pulumi.RegisterOutputType(DeviceCredentialPublicKeyOutput{})
+	pulumi.RegisterOutputType(DeviceGatewayConfigOutput{})
+	pulumi.RegisterOutputType(DeviceGatewayConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeviceLastErrorStatusOutput{})
+	pulumi.RegisterOutputType(DeviceLastErrorStatusPtrOutput{})
+	pulumi.RegisterOutputType(DeviceStateTypeOutput{})
+	pulumi.RegisterOutputType(DeviceStateTypePtrOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialArrayOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialPublicKeyCertificateOutput{})

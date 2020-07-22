@@ -122,6 +122,17 @@ class Table(pulumi.CustomResource):
         The default value is false.
       * `maxBadRecords` (`float`) - The maximum number of bad records that
         BigQuery can ignore when reading data.
+      * `schema` (`str`) - A JSON schema for the external table. Schema is required
+        for CSV and JSON formats if autodetect is not on. Schema is disallowed
+        for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+        ~>**NOTE**: Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        Furthermore drift for this field cannot not be detected because BigQuery
+        only uses this schema to compute the effective schema for the table, therefore
+        any changes on the configured value will force the table to be recreated.
+        This schema is effectively only applied when creating a table from an external
+        datasource, after creation the computed schema will be stored in
+        `google_bigquery_table.schema`
       * `sourceFormat` (`str`) - The data format. Supported values are:
         "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
         and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
@@ -178,17 +189,17 @@ class Table(pulumi.CustomResource):
     """
     schema: pulumi.Output[str]
     """
-    A JSON schema for the table. Schema is required
-    for CSV and JSON formats and is disallowed for Google Cloud
-    Bigtable, Cloud Datastore backups, and Avro formats when using
-    external tables. For more information see the
-    [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
+    A JSON schema for the external table. Schema is required
+    for CSV and JSON formats if autodetect is not on. Schema is disallowed
+    for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
     ~>**NOTE**: Because this field expects a JSON string, any changes to the
     string will create a diff, even if the JSON itself hasn't changed.
-    If the API returns a different value for the same schema, e.g. it
-    switched the order of values or replaced `STRUCT` field type with `RECORD`
-    field type, we currently cannot suppress the recurring diff this causes.
-    As a workaround, we recommend using the schema as returned by the API.
+    Furthermore drift for this field cannot not be detected because BigQuery
+    only uses this schema to compute the effective schema for the table, therefore
+    any changes on the configured value will force the table to be recreated.
+    This schema is effectively only applied when creating a table from an external
+    datasource, after creation the computed schema will be stored in
+    `google_bigquery_table.schema`
     """
     self_link: pulumi.Output[str]
     """
@@ -259,17 +270,17 @@ class Table(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[dict] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] schema: A JSON schema for the table. Schema is required
-               for CSV and JSON formats and is disallowed for Google Cloud
-               Bigtable, Cloud Datastore backups, and Avro formats when using
-               external tables. For more information see the
-               [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
+        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
+               for CSV and JSON formats if autodetect is not on. Schema is disallowed
+               for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
                ~>**NOTE**: Because this field expects a JSON string, any changes to the
                string will create a diff, even if the JSON itself hasn't changed.
-               If the API returns a different value for the same schema, e.g. it
-               switched the order of values or replaced `STRUCT` field type with `RECORD`
-               field type, we currently cannot suppress the recurring diff this causes.
-               As a workaround, we recommend using the schema as returned by the API.
+               Furthermore drift for this field cannot not be detected because BigQuery
+               only uses this schema to compute the effective schema for the table, therefore
+               any changes on the configured value will force the table to be recreated.
+               This schema is effectively only applied when creating a table from an external
+               datasource, after creation the computed schema will be stored in
+               `google_bigquery_table.schema`
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
         :param pulumi.Input[dict] time_partitioning: If specified, configures time-based
@@ -350,6 +361,17 @@ class Table(pulumi.CustomResource):
             The default value is false.
           * `maxBadRecords` (`pulumi.Input[float]`) - The maximum number of bad records that
             BigQuery can ignore when reading data.
+          * `schema` (`pulumi.Input[str]`) - A JSON schema for the external table. Schema is required
+            for CSV and JSON formats if autodetect is not on. Schema is disallowed
+            for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+            ~>**NOTE**: Because this field expects a JSON string, any changes to the
+            string will create a diff, even if the JSON itself hasn't changed.
+            Furthermore drift for this field cannot not be detected because BigQuery
+            only uses this schema to compute the effective schema for the table, therefore
+            any changes on the configured value will force the table to be recreated.
+            This schema is effectively only applied when creating a table from an external
+            datasource, after creation the computed schema will be stored in
+            `google_bigquery_table.schema`
           * `sourceFormat` (`pulumi.Input[str]`) - The data format. Supported values are:
             "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
             and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
@@ -475,17 +497,17 @@ class Table(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[dict] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] schema: A JSON schema for the table. Schema is required
-               for CSV and JSON formats and is disallowed for Google Cloud
-               Bigtable, Cloud Datastore backups, and Avro formats when using
-               external tables. For more information see the
-               [BigQuery API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#resource).
+        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
+               for CSV and JSON formats if autodetect is not on. Schema is disallowed
+               for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
                ~>**NOTE**: Because this field expects a JSON string, any changes to the
                string will create a diff, even if the JSON itself hasn't changed.
-               If the API returns a different value for the same schema, e.g. it
-               switched the order of values or replaced `STRUCT` field type with `RECORD`
-               field type, we currently cannot suppress the recurring diff this causes.
-               As a workaround, we recommend using the schema as returned by the API.
+               Furthermore drift for this field cannot not be detected because BigQuery
+               only uses this schema to compute the effective schema for the table, therefore
+               any changes on the configured value will force the table to be recreated.
+               This schema is effectively only applied when creating a table from an external
+               datasource, after creation the computed schema will be stored in
+               `google_bigquery_table.schema`
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -569,6 +591,17 @@ class Table(pulumi.CustomResource):
             The default value is false.
           * `maxBadRecords` (`pulumi.Input[float]`) - The maximum number of bad records that
             BigQuery can ignore when reading data.
+          * `schema` (`pulumi.Input[str]`) - A JSON schema for the external table. Schema is required
+            for CSV and JSON formats if autodetect is not on. Schema is disallowed
+            for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+            ~>**NOTE**: Because this field expects a JSON string, any changes to the
+            string will create a diff, even if the JSON itself hasn't changed.
+            Furthermore drift for this field cannot not be detected because BigQuery
+            only uses this schema to compute the effective schema for the table, therefore
+            any changes on the configured value will force the table to be recreated.
+            This schema is effectively only applied when creating a table from an external
+            datasource, after creation the computed schema will be stored in
+            `google_bigquery_table.schema`
           * `sourceFormat` (`pulumi.Input[str]`) - The data format. Supported values are:
             "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
             and "DATSTORE_BACKUP". To use "GOOGLE_SHEETS"
