@@ -69,6 +69,7 @@ export interface GetClusterResult {
     readonly clusterTelemetries: outputs.container.GetClusterClusterTelemetry[];
     readonly databaseEncryptions: outputs.container.GetClusterDatabaseEncryption[];
     readonly defaultMaxPodsPerNode: number;
+    readonly defaultSnatStatuses: outputs.container.GetClusterDefaultSnatStatus[];
     readonly description: string;
     readonly enableBinaryAuthorization: boolean;
     readonly enableIntranodeVisibility: boolean;

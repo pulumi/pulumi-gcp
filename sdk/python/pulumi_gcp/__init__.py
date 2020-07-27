@@ -15,6 +15,7 @@ _submodules = [
     'bigtable',
     'billing',
     'binaryauthorization',
+    'cloudasset',
     'cloudbuild',
     'cloudfunctions',
     'cloudidentity',

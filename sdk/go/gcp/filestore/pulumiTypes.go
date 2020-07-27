@@ -15,7 +15,8 @@ type InstanceFileShares struct {
 	// for the standard tier, or 2560 GiB for the premium tier.
 	CapacityGb int `pulumi:"capacityGb"`
 	// The name of the fileshare (16 characters or less)
-	Name string `pulumi:"name"`
+	Name             string                              `pulumi:"name"`
+	NfsExportOptions []InstanceFileSharesNfsExportOption `pulumi:"nfsExportOptions"`
 }
 
 // InstanceFileSharesInput is an input type that accepts InstanceFileSharesArgs and InstanceFileSharesOutput values.
@@ -34,7 +35,8 @@ type InstanceFileSharesArgs struct {
 	// for the standard tier, or 2560 GiB for the premium tier.
 	CapacityGb pulumi.IntInput `pulumi:"capacityGb"`
 	// The name of the fileshare (16 characters or less)
-	Name pulumi.StringInput `pulumi:"name"`
+	Name             pulumi.StringInput                          `pulumi:"name"`
+	NfsExportOptions InstanceFileSharesNfsExportOptionArrayInput `pulumi:"nfsExportOptions"`
 }
 
 func (InstanceFileSharesArgs) ElementType() reflect.Type {
@@ -125,6 +127,10 @@ func (o InstanceFileSharesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceFileShares) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o InstanceFileSharesOutput) NfsExportOptions() InstanceFileSharesNfsExportOptionArrayOutput {
+	return o.ApplyT(func(v InstanceFileShares) []InstanceFileSharesNfsExportOption { return v.NfsExportOptions }).(InstanceFileSharesNfsExportOptionArrayOutput)
+}
+
 type InstanceFileSharesPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceFileSharesPtrOutput) ElementType() reflect.Type {
@@ -162,6 +168,172 @@ func (o InstanceFileSharesPtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return &v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFileSharesPtrOutput) NfsExportOptions() InstanceFileSharesNfsExportOptionArrayOutput {
+	return o.ApplyT(func(v *InstanceFileShares) []InstanceFileSharesNfsExportOption {
+		if v == nil {
+			return nil
+		}
+		return v.NfsExportOptions
+	}).(InstanceFileSharesNfsExportOptionArrayOutput)
+}
+
+type InstanceFileSharesNfsExportOption struct {
+	// Either READ_ONLY, for allowing only read requests on the exported directory,
+	// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+	AccessMode *string `pulumi:"accessMode"`
+	// An integer representing the anonymous group id with a default value of 65534.
+	// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+	// if this field is specified for other squashMode settings.
+	AnonGid *int `pulumi:"anonGid"`
+	// An integer representing the anonymous user id with a default value of 65534.
+	// Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+	// if this field is specified for other squashMode settings.
+	AnonUid *int `pulumi:"anonUid"`
+	// List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+	// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+	// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+	IpRanges []string `pulumi:"ipRanges"`
+	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+	// for not allowing root access. The default is NO_ROOT_SQUASH.
+	SquashMode *string `pulumi:"squashMode"`
+}
+
+// InstanceFileSharesNfsExportOptionInput is an input type that accepts InstanceFileSharesNfsExportOptionArgs and InstanceFileSharesNfsExportOptionOutput values.
+// You can construct a concrete instance of `InstanceFileSharesNfsExportOptionInput` via:
+//
+//          InstanceFileSharesNfsExportOptionArgs{...}
+type InstanceFileSharesNfsExportOptionInput interface {
+	pulumi.Input
+
+	ToInstanceFileSharesNfsExportOptionOutput() InstanceFileSharesNfsExportOptionOutput
+	ToInstanceFileSharesNfsExportOptionOutputWithContext(context.Context) InstanceFileSharesNfsExportOptionOutput
+}
+
+type InstanceFileSharesNfsExportOptionArgs struct {
+	// Either READ_ONLY, for allowing only read requests on the exported directory,
+	// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+	AccessMode pulumi.StringPtrInput `pulumi:"accessMode"`
+	// An integer representing the anonymous group id with a default value of 65534.
+	// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+	// if this field is specified for other squashMode settings.
+	AnonGid pulumi.IntPtrInput `pulumi:"anonGid"`
+	// An integer representing the anonymous user id with a default value of 65534.
+	// Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+	// if this field is specified for other squashMode settings.
+	AnonUid pulumi.IntPtrInput `pulumi:"anonUid"`
+	// List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+	// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+	// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+	// for not allowing root access. The default is NO_ROOT_SQUASH.
+	SquashMode pulumi.StringPtrInput `pulumi:"squashMode"`
+}
+
+func (InstanceFileSharesNfsExportOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFileSharesNfsExportOption)(nil)).Elem()
+}
+
+func (i InstanceFileSharesNfsExportOptionArgs) ToInstanceFileSharesNfsExportOptionOutput() InstanceFileSharesNfsExportOptionOutput {
+	return i.ToInstanceFileSharesNfsExportOptionOutputWithContext(context.Background())
+}
+
+func (i InstanceFileSharesNfsExportOptionArgs) ToInstanceFileSharesNfsExportOptionOutputWithContext(ctx context.Context) InstanceFileSharesNfsExportOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFileSharesNfsExportOptionOutput)
+}
+
+// InstanceFileSharesNfsExportOptionArrayInput is an input type that accepts InstanceFileSharesNfsExportOptionArray and InstanceFileSharesNfsExportOptionArrayOutput values.
+// You can construct a concrete instance of `InstanceFileSharesNfsExportOptionArrayInput` via:
+//
+//          InstanceFileSharesNfsExportOptionArray{ InstanceFileSharesNfsExportOptionArgs{...} }
+type InstanceFileSharesNfsExportOptionArrayInput interface {
+	pulumi.Input
+
+	ToInstanceFileSharesNfsExportOptionArrayOutput() InstanceFileSharesNfsExportOptionArrayOutput
+	ToInstanceFileSharesNfsExportOptionArrayOutputWithContext(context.Context) InstanceFileSharesNfsExportOptionArrayOutput
+}
+
+type InstanceFileSharesNfsExportOptionArray []InstanceFileSharesNfsExportOptionInput
+
+func (InstanceFileSharesNfsExportOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFileSharesNfsExportOption)(nil)).Elem()
+}
+
+func (i InstanceFileSharesNfsExportOptionArray) ToInstanceFileSharesNfsExportOptionArrayOutput() InstanceFileSharesNfsExportOptionArrayOutput {
+	return i.ToInstanceFileSharesNfsExportOptionArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceFileSharesNfsExportOptionArray) ToInstanceFileSharesNfsExportOptionArrayOutputWithContext(ctx context.Context) InstanceFileSharesNfsExportOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFileSharesNfsExportOptionArrayOutput)
+}
+
+type InstanceFileSharesNfsExportOptionOutput struct{ *pulumi.OutputState }
+
+func (InstanceFileSharesNfsExportOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFileSharesNfsExportOption)(nil)).Elem()
+}
+
+func (o InstanceFileSharesNfsExportOptionOutput) ToInstanceFileSharesNfsExportOptionOutput() InstanceFileSharesNfsExportOptionOutput {
+	return o
+}
+
+func (o InstanceFileSharesNfsExportOptionOutput) ToInstanceFileSharesNfsExportOptionOutputWithContext(ctx context.Context) InstanceFileSharesNfsExportOptionOutput {
+	return o
+}
+
+// Either READ_ONLY, for allowing only read requests on the exported directory,
+// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+func (o InstanceFileSharesNfsExportOptionOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// An integer representing the anonymous group id with a default value of 65534.
+// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+// if this field is specified for other squashMode settings.
+func (o InstanceFileSharesNfsExportOptionOutput) AnonGid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) *int { return v.AnonGid }).(pulumi.IntPtrOutput)
+}
+
+// An integer representing the anonymous user id with a default value of 65534.
+// Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+// if this field is specified for other squashMode settings.
+func (o InstanceFileSharesNfsExportOptionOutput) AnonUid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) *int { return v.AnonUid }).(pulumi.IntPtrOutput)
+}
+
+// List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+func (o InstanceFileSharesNfsExportOptionOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+// for not allowing root access. The default is NO_ROOT_SQUASH.
+func (o InstanceFileSharesNfsExportOptionOutput) SquashMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) *string { return v.SquashMode }).(pulumi.StringPtrOutput)
+}
+
+type InstanceFileSharesNfsExportOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceFileSharesNfsExportOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFileSharesNfsExportOption)(nil)).Elem()
+}
+
+func (o InstanceFileSharesNfsExportOptionArrayOutput) ToInstanceFileSharesNfsExportOptionArrayOutput() InstanceFileSharesNfsExportOptionArrayOutput {
+	return o
+}
+
+func (o InstanceFileSharesNfsExportOptionArrayOutput) ToInstanceFileSharesNfsExportOptionArrayOutputWithContext(ctx context.Context) InstanceFileSharesNfsExportOptionArrayOutput {
+	return o
+}
+
+func (o InstanceFileSharesNfsExportOptionArrayOutput) Index(i pulumi.IntInput) InstanceFileSharesNfsExportOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFileSharesNfsExportOption {
+		return vs[0].([]InstanceFileSharesNfsExportOption)[vs[1].(int)]
+	}).(InstanceFileSharesNfsExportOptionOutput)
 }
 
 type InstanceNetwork struct {
@@ -303,6 +475,8 @@ func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutp
 func init() {
 	pulumi.RegisterOutputType(InstanceFileSharesOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionOutput{})
+	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkArrayOutput{})
 }

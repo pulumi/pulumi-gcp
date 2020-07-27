@@ -34,6 +34,8 @@ billing_custom_endpoint = __config__.get('billingCustomEndpoint')
 
 binary_authorization_custom_endpoint = __config__.get('binaryAuthorizationCustomEndpoint')
 
+cloud_asset_custom_endpoint = __config__.get('cloudAssetCustomEndpoint')
+
 cloud_billing_custom_endpoint = __config__.get('cloudBillingCustomEndpoint')
 
 cloud_build_custom_endpoint = __config__.get('cloudBuildCustomEndpoint')

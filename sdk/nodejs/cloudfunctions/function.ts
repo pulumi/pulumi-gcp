@@ -98,7 +98,7 @@ export class Function extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
@@ -260,7 +260,7 @@ export interface FunctionState {
     readonly region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
      */
     readonly runtime?: pulumi.Input<string>;
     /**
@@ -352,7 +352,7 @@ export interface FunctionArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
      */
     readonly runtime: pulumi.Input<string>;
     /**

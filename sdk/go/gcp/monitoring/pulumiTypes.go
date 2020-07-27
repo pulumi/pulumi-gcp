@@ -2911,6 +2911,271 @@ func (o CustomServiceTelemetryPtrOutput) ResourceName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MetricDescriptorLabel struct {
+	// A human-readable description for the label.
+	Description *string `pulumi:"description"`
+	// The key for this label. The key must not exceed 100 characters. The first character of the key must be an upper- or lower-case letter, the remaining characters must be letters, digits or underscores, and the key must match the regular expression [a-zA-Z][a-zA-Z0-9_]*
+	Key string `pulumi:"key"`
+	// The type of data that can be assigned to the label.
+	ValueType *string `pulumi:"valueType"`
+}
+
+// MetricDescriptorLabelInput is an input type that accepts MetricDescriptorLabelArgs and MetricDescriptorLabelOutput values.
+// You can construct a concrete instance of `MetricDescriptorLabelInput` via:
+//
+//          MetricDescriptorLabelArgs{...}
+type MetricDescriptorLabelInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorLabelOutput() MetricDescriptorLabelOutput
+	ToMetricDescriptorLabelOutputWithContext(context.Context) MetricDescriptorLabelOutput
+}
+
+type MetricDescriptorLabelArgs struct {
+	// A human-readable description for the label.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The key for this label. The key must not exceed 100 characters. The first character of the key must be an upper- or lower-case letter, the remaining characters must be letters, digits or underscores, and the key must match the regular expression [a-zA-Z][a-zA-Z0-9_]*
+	Key pulumi.StringInput `pulumi:"key"`
+	// The type of data that can be assigned to the label.
+	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
+}
+
+func (MetricDescriptorLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorLabel)(nil)).Elem()
+}
+
+func (i MetricDescriptorLabelArgs) ToMetricDescriptorLabelOutput() MetricDescriptorLabelOutput {
+	return i.ToMetricDescriptorLabelOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorLabelArgs) ToMetricDescriptorLabelOutputWithContext(ctx context.Context) MetricDescriptorLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorLabelOutput)
+}
+
+// MetricDescriptorLabelArrayInput is an input type that accepts MetricDescriptorLabelArray and MetricDescriptorLabelArrayOutput values.
+// You can construct a concrete instance of `MetricDescriptorLabelArrayInput` via:
+//
+//          MetricDescriptorLabelArray{ MetricDescriptorLabelArgs{...} }
+type MetricDescriptorLabelArrayInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorLabelArrayOutput() MetricDescriptorLabelArrayOutput
+	ToMetricDescriptorLabelArrayOutputWithContext(context.Context) MetricDescriptorLabelArrayOutput
+}
+
+type MetricDescriptorLabelArray []MetricDescriptorLabelInput
+
+func (MetricDescriptorLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricDescriptorLabel)(nil)).Elem()
+}
+
+func (i MetricDescriptorLabelArray) ToMetricDescriptorLabelArrayOutput() MetricDescriptorLabelArrayOutput {
+	return i.ToMetricDescriptorLabelArrayOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorLabelArray) ToMetricDescriptorLabelArrayOutputWithContext(ctx context.Context) MetricDescriptorLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorLabelArrayOutput)
+}
+
+type MetricDescriptorLabelOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorLabel)(nil)).Elem()
+}
+
+func (o MetricDescriptorLabelOutput) ToMetricDescriptorLabelOutput() MetricDescriptorLabelOutput {
+	return o
+}
+
+func (o MetricDescriptorLabelOutput) ToMetricDescriptorLabelOutputWithContext(ctx context.Context) MetricDescriptorLabelOutput {
+	return o
+}
+
+// A human-readable description for the label.
+func (o MetricDescriptorLabelOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricDescriptorLabel) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The key for this label. The key must not exceed 100 characters. The first character of the key must be an upper- or lower-case letter, the remaining characters must be letters, digits or underscores, and the key must match the regular expression [a-zA-Z][a-zA-Z0-9_]*
+func (o MetricDescriptorLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The type of data that can be assigned to the label.
+func (o MetricDescriptorLabelOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricDescriptorLabel) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+}
+
+type MetricDescriptorLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricDescriptorLabel)(nil)).Elem()
+}
+
+func (o MetricDescriptorLabelArrayOutput) ToMetricDescriptorLabelArrayOutput() MetricDescriptorLabelArrayOutput {
+	return o
+}
+
+func (o MetricDescriptorLabelArrayOutput) ToMetricDescriptorLabelArrayOutputWithContext(ctx context.Context) MetricDescriptorLabelArrayOutput {
+	return o
+}
+
+func (o MetricDescriptorLabelArrayOutput) Index(i pulumi.IntInput) MetricDescriptorLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricDescriptorLabel {
+		return vs[0].([]MetricDescriptorLabel)[vs[1].(int)]
+	}).(MetricDescriptorLabelOutput)
+}
+
+type MetricDescriptorMetadata struct {
+	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+	IngestDelay *string `pulumi:"ingestDelay"`
+	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+	SamplePeriod *string `pulumi:"samplePeriod"`
+}
+
+// MetricDescriptorMetadataInput is an input type that accepts MetricDescriptorMetadataArgs and MetricDescriptorMetadataOutput values.
+// You can construct a concrete instance of `MetricDescriptorMetadataInput` via:
+//
+//          MetricDescriptorMetadataArgs{...}
+type MetricDescriptorMetadataInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetadataOutput() MetricDescriptorMetadataOutput
+	ToMetricDescriptorMetadataOutputWithContext(context.Context) MetricDescriptorMetadataOutput
+}
+
+type MetricDescriptorMetadataArgs struct {
+	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+	IngestDelay pulumi.StringPtrInput `pulumi:"ingestDelay"`
+	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+	SamplePeriod pulumi.StringPtrInput `pulumi:"samplePeriod"`
+}
+
+func (MetricDescriptorMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetadata)(nil)).Elem()
+}
+
+func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataOutput() MetricDescriptorMetadataOutput {
+	return i.ToMetricDescriptorMetadataOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataOutputWithContext(ctx context.Context) MetricDescriptorMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataOutput)
+}
+
+func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataPtrOutput() MetricDescriptorMetadataPtrOutput {
+	return i.ToMetricDescriptorMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataPtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataOutput).ToMetricDescriptorMetadataPtrOutputWithContext(ctx)
+}
+
+// MetricDescriptorMetadataPtrInput is an input type that accepts MetricDescriptorMetadataArgs, MetricDescriptorMetadataPtr and MetricDescriptorMetadataPtrOutput values.
+// You can construct a concrete instance of `MetricDescriptorMetadataPtrInput` via:
+//
+//          MetricDescriptorMetadataArgs{...}
+//
+//  or:
+//
+//          nil
+type MetricDescriptorMetadataPtrInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetadataPtrOutput() MetricDescriptorMetadataPtrOutput
+	ToMetricDescriptorMetadataPtrOutputWithContext(context.Context) MetricDescriptorMetadataPtrOutput
+}
+
+type metricDescriptorMetadataPtrType MetricDescriptorMetadataArgs
+
+func MetricDescriptorMetadataPtr(v *MetricDescriptorMetadataArgs) MetricDescriptorMetadataPtrInput {
+	return (*metricDescriptorMetadataPtrType)(v)
+}
+
+func (*metricDescriptorMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptorMetadata)(nil)).Elem()
+}
+
+func (i *metricDescriptorMetadataPtrType) ToMetricDescriptorMetadataPtrOutput() MetricDescriptorMetadataPtrOutput {
+	return i.ToMetricDescriptorMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *metricDescriptorMetadataPtrType) ToMetricDescriptorMetadataPtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataPtrOutput)
+}
+
+type MetricDescriptorMetadataOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetadata)(nil)).Elem()
+}
+
+func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataOutput() MetricDescriptorMetadataOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataOutputWithContext(ctx context.Context) MetricDescriptorMetadataOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutput() MetricDescriptorMetadataPtrOutput {
+	return o.ToMetricDescriptorMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataPtrOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadata) *MetricDescriptorMetadata {
+		return &v
+	}).(MetricDescriptorMetadataPtrOutput)
+}
+
+// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+func (o MetricDescriptorMetadataOutput) IngestDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.IngestDelay }).(pulumi.StringPtrOutput)
+}
+
+// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+func (o MetricDescriptorMetadataOutput) SamplePeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.SamplePeriod }).(pulumi.StringPtrOutput)
+}
+
+type MetricDescriptorMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptorMetadata)(nil)).Elem()
+}
+
+func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutput() MetricDescriptorMetadataPtrOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataPtrOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataPtrOutput) Elem() MetricDescriptorMetadataOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadata) MetricDescriptorMetadata { return *v }).(MetricDescriptorMetadataOutput)
+}
+
+// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+func (o MetricDescriptorMetadataPtrOutput) IngestDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IngestDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+func (o MetricDescriptorMetadataPtrOutput) SamplePeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SamplePeriod
+	}).(pulumi.StringPtrOutput)
+}
+
 type NotificationChannelSensitiveLabels struct {
 	// An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
 	AuthToken *string `pulumi:"authToken"`
@@ -7951,6 +8216,10 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyDocumentationPtrOutput{})
 	pulumi.RegisterOutputType(CustomServiceTelemetryOutput{})
 	pulumi.RegisterOutputType(CustomServiceTelemetryPtrOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorLabelOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorLabelArrayOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetadataOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetadataPtrOutput{})
 	pulumi.RegisterOutputType(NotificationChannelSensitiveLabelsOutput{})
 	pulumi.RegisterOutputType(NotificationChannelSensitiveLabelsPtrOutput{})
 	pulumi.RegisterOutputType(SloBasicSliOutput{})

@@ -89,6 +89,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly defaultMaxPodsPerNode!: pulumi.Output<number>;
     /**
+     * )
+     * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+     */
+    public readonly defaultSnatStatus!: pulumi.Output<outputs.container.ClusterDefaultSnatStatus>;
+    /**
      * Description of the cluster.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -368,6 +373,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["clusterTelemetry"] = state ? state.clusterTelemetry : undefined;
             inputs["databaseEncryption"] = state ? state.databaseEncryption : undefined;
             inputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
+            inputs["defaultSnatStatus"] = state ? state.defaultSnatStatus : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableBinaryAuthorization"] = state ? state.enableBinaryAuthorization : undefined;
             inputs["enableIntranodeVisibility"] = state ? state.enableIntranodeVisibility : undefined;
@@ -418,6 +424,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["clusterTelemetry"] = args ? args.clusterTelemetry : undefined;
             inputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
             inputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
+            inputs["defaultSnatStatus"] = args ? args.defaultSnatStatus : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableBinaryAuthorization"] = args ? args.enableBinaryAuthorization : undefined;
             inputs["enableIntranodeVisibility"] = args ? args.enableIntranodeVisibility : undefined;
@@ -518,6 +525,11 @@ export interface ClusterState {
      * for more information.
      */
     readonly defaultMaxPodsPerNode?: pulumi.Input<number>;
+    /**
+     * )
+     * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+     */
+    readonly defaultSnatStatus?: pulumi.Input<inputs.container.ClusterDefaultSnatStatus>;
     /**
      * Description of the cluster.
      */
@@ -827,6 +839,11 @@ export interface ClusterArgs {
      * for more information.
      */
     readonly defaultMaxPodsPerNode?: pulumi.Input<number>;
+    /**
+     * )
+     * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+     */
+    readonly defaultSnatStatus?: pulumi.Input<inputs.container.ClusterDefaultSnatStatus>;
     /**
      * Description of the cluster.
      */

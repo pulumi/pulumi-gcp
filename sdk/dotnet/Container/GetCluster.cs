@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterClusterTelemetryResult> ClusterTelemetries;
         public readonly ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> DatabaseEncryptions;
         public readonly int DefaultMaxPodsPerNode;
+        public readonly ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> DefaultSnatStatuses;
         public readonly string Description;
         public readonly bool EnableBinaryAuthorization;
         public readonly bool EnableIntranodeVisibility;
@@ -138,6 +139,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> databaseEncryptions,
 
             int defaultMaxPodsPerNode,
+
+            ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> defaultSnatStatuses,
 
             string description,
 
@@ -235,6 +238,7 @@ namespace Pulumi.Gcp.Container
             ClusterTelemetries = clusterTelemetries;
             DatabaseEncryptions = databaseEncryptions;
             DefaultMaxPodsPerNode = defaultMaxPodsPerNode;
+            DefaultSnatStatuses = defaultSnatStatuses;
             Description = description;
             EnableBinaryAuthorization = enableBinaryAuthorization;
             EnableIntranodeVisibility = enableIntranodeVisibility;

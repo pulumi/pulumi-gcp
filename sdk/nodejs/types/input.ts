@@ -2136,6 +2136,50 @@ export namespace binaryauthorization {
     }
 }
 
+export namespace cloudasset {
+    export interface FolderFeedFeedOutputConfig {
+        /**
+         * Destination on Cloud Pubsub.  Structure is documented below.
+         */
+        pubsubDestination: pulumi.Input<inputs.cloudasset.FolderFeedFeedOutputConfigPubsubDestination>;
+    }
+
+    export interface FolderFeedFeedOutputConfigPubsubDestination {
+        /**
+         * Destination on Cloud Pubsub topic.
+         */
+        topic: pulumi.Input<string>;
+    }
+
+    export interface OrganizationFeedFeedOutputConfig {
+        /**
+         * Destination on Cloud Pubsub.  Structure is documented below.
+         */
+        pubsubDestination: pulumi.Input<inputs.cloudasset.OrganizationFeedFeedOutputConfigPubsubDestination>;
+    }
+
+    export interface OrganizationFeedFeedOutputConfigPubsubDestination {
+        /**
+         * Destination on Cloud Pubsub topic.
+         */
+        topic: pulumi.Input<string>;
+    }
+
+    export interface ProjectFeedFeedOutputConfig {
+        /**
+         * Destination on Cloud Pubsub.  Structure is documented below.
+         */
+        pubsubDestination: pulumi.Input<inputs.cloudasset.ProjectFeedFeedOutputConfigPubsubDestination>;
+    }
+
+    export interface ProjectFeedFeedOutputConfigPubsubDestination {
+        /**
+         * Destination on Cloud Pubsub topic.
+         */
+        topic: pulumi.Input<string>;
+    }
+}
+
 export namespace cloudbuild {
     export interface TriggerBuild {
         /**
@@ -10141,6 +10185,14 @@ export namespace container {
         state: pulumi.Input<string>;
     }
 
+    export interface ClusterDefaultSnatStatus {
+        /**
+         * The status of the Istio addon, which makes it easy to set up Istio for services in a
+         * cluster. It is disabled by default. Set `disabled = false` to enable.
+         */
+        disabled: pulumi.Input<boolean>;
+    }
+
     export interface ClusterIpAllocationPolicy {
         /**
          * The IP address range for the cluster pod IPs.
@@ -12199,6 +12251,38 @@ export namespace filestore {
          * The name of the fileshare (16 characters or less)
          */
         name: pulumi.Input<string>;
+        nfsExportOptions?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceFileSharesNfsExportOption>[]>;
+    }
+
+    export interface InstanceFileSharesNfsExportOption {
+        /**
+         * Either READ_ONLY, for allowing only read requests on the exported directory,
+         * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+         */
+        accessMode?: pulumi.Input<string>;
+        /**
+         * An integer representing the anonymous group id with a default value of 65534.
+         * Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+         * if this field is specified for other squashMode settings.
+         */
+        anonGid?: pulumi.Input<number>;
+        /**
+         * An integer representing the anonymous user id with a default value of 65534.
+         * Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+         * if this field is specified for other squashMode settings.
+         */
+        anonUid?: pulumi.Input<number>;
+        /**
+         * List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+         * Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+         * The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+         */
+        ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+         * for not allowing root access. The default is NO_ROOT_SQUASH.
+         */
+        squashMode?: pulumi.Input<string>;
     }
 
     export interface InstanceNetwork {
@@ -13903,6 +13987,32 @@ export namespace monitoring {
         resourceName?: pulumi.Input<string>;
     }
 
+    export interface MetricDescriptorLabel {
+        /**
+         * A human-readable description for the label.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The key for this label. The key must not exceed 100 characters. The first character of the key must be an upper- or lower-case letter, the remaining characters must be letters, digits or underscores, and the key must match the regular expression [a-zA-Z][a-zA-Z0-9_]*
+         */
+        key: pulumi.Input<string>;
+        /**
+         * The type of data that can be assigned to the label.
+         */
+        valueType?: pulumi.Input<string>;
+    }
+
+    export interface MetricDescriptorMetadata {
+        /**
+         * The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+         */
+        ingestDelay?: pulumi.Input<string>;
+        /**
+         * The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
+         */
+        samplePeriod?: pulumi.Input<string>;
+    }
+
     export interface NotificationChannelSensitiveLabels {
         /**
          * An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
@@ -14690,6 +14800,543 @@ export namespace organizations {
 }
 
 export namespace osconfig {
+    export interface GuestPoliciesAssignment {
+        /**
+         * Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
+         * for example "env=prod or env=staging".  Structure is documented below.
+         */
+        groupLabels?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesAssignmentGroupLabel>[]>;
+        /**
+         * Targets VM instances whose name starts with one of these prefixes.
+         * Like labels, this is another way to group VM instances when targeting configs,
+         * for example prefix="prod-".
+         * Only supported for project-level policies.
+         */
+        instanceNamePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Targets any of the instances specified. Instances are specified by their URI in the form
+         * zones/[ZONE]/instances/[INSTANCE_NAME].
+         * Instance targeting is uncommon and is supported to facilitate the management of changes
+         * by the instance or to target specific VM instances for development and testing.
+         * Only supported for project-level policies and must reference instances within this project.
+         */
+        instances?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Targets VM instances matching at least one of the following OS types.
+         * VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+         */
+        osTypes?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesAssignmentOsType>[]>;
+        /**
+         * Targets instances in any of these zones. Leave empty to target instances in any zone.
+         * Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
+         */
+        zones?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GuestPoliciesAssignmentGroupLabel {
+        /**
+         * Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
+         */
+        labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface GuestPoliciesAssignmentOsType {
+        /**
+         * Targets VM instances with OS Inventory enabled and having the following OS architecture.
+         */
+        osArchitecture?: pulumi.Input<string>;
+        /**
+         * Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
+         */
+        osShortName?: pulumi.Input<string>;
+        /**
+         * Targets VM instances with OS Inventory enabled and having the following following OS version.
+         */
+        osVersion?: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesPackage {
+        /**
+         * Default is INSTALLED. The desired state the agent should maintain for this recipe.
+         * INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
+         * INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
+         * if a higher version of the recipe is assigned to this instance.
+         * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+         */
+        desiredState?: pulumi.Input<string>;
+        /**
+         * Type of package manager that can be used to install this package. If a system does not have the package manager,
+         * the package is not installed or removed no error message is returned. By default, or if you specify ANY,
+         * the agent attempts to install and remove this package using the default package manager.
+         * This is useful when creating a policy that applies to different types of systems.
+         * The default behavior is ANY.
+         */
+        manager?: pulumi.Input<string>;
+        /**
+         * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+         * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+         * This means that requests to create multiple recipes with the same name and version are rejected since they
+         * could potentially have conflicting assignments.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesPackageRepository {
+        /**
+         * An Apt Repository.  Structure is documented below.
+         */
+        apt?: pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepositoryApt>;
+        /**
+         * A Goo Repository.  Structure is documented below.
+         */
+        goo?: pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepositoryGoo>;
+        /**
+         * A Yum Repository.  Structure is documented below.
+         */
+        yum?: pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepositoryYum>;
+        /**
+         * A Zypper Repository.  Structure is documented below.
+         */
+        zypper?: pulumi.Input<inputs.osconfig.GuestPoliciesPackageRepositoryZypper>;
+    }
+
+    export interface GuestPoliciesPackageRepositoryApt {
+        /**
+         * Type of archive files in this repository. The default behavior is DEB.
+         */
+        archiveType?: pulumi.Input<string>;
+        /**
+         * List of components for this repository. Must contain at least one item.
+         */
+        components: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Distribution of this repository.
+         */
+        distribution: pulumi.Input<string>;
+        /**
+         * URI of the key file for this repository. The agent maintains a keyring at
+         * /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
+         */
+        gpgKey?: pulumi.Input<string>;
+        /**
+         * URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesPackageRepositoryGoo {
+        /**
+         * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+         * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+         * This means that requests to create multiple recipes with the same name and version are rejected since they
+         * could potentially have conflicting assignments.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The url of the repository.
+         */
+        url: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesPackageRepositoryYum {
+        /**
+         * The location of the repository directory.
+         */
+        baseUrl: pulumi.Input<string>;
+        /**
+         * The display name of the repository.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * URIs of GPG keys.
+         */
+        gpgKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Id of the artifact, which the installation and update steps of this recipe can reference.
+         * Artifacts in a recipe cannot have the same id.
+         */
+        id: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesPackageRepositoryZypper {
+        /**
+         * The location of the repository directory.
+         */
+        baseUrl: pulumi.Input<string>;
+        /**
+         * The display name of the repository.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * URIs of GPG keys.
+         */
+        gpgKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Id of the artifact, which the installation and update steps of this recipe can reference.
+         * Artifacts in a recipe cannot have the same id.
+         */
+        id: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipe {
+        /**
+         * Resources available to be used in the steps in the recipe.  Structure is documented below.
+         */
+        artifacts?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipeArtifact>[]>;
+        /**
+         * Default is INSTALLED. The desired state the agent should maintain for this recipe.
+         * INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
+         * INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
+         * if a higher version of the recipe is assigned to this instance.
+         * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+         */
+        desiredState?: pulumi.Input<string>;
+        /**
+         * Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
+         * Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+         */
+        installSteps?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStep>[]>;
+        /**
+         * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+         * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+         * This means that requests to create multiple recipes with the same name and version are rejected since they
+         * could potentially have conflicting assignments.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
+         * Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+         */
+        updateSteps?: pulumi.Input<pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStep>[]>;
+        /**
+         * The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeArtifact {
+        /**
+         * Defaults to false. When false, recipes are subject to validations based on the artifact type:
+         * Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
+         * GCS: An object generation number must be specified.
+         */
+        allowInsecure?: pulumi.Input<boolean>;
+        /**
+         * A Google Cloud Storage artifact.  Structure is documented below.
+         */
+        gcs?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeArtifactGcs>;
+        /**
+         * Id of the artifact, which the installation and update steps of this recipe can reference.
+         * Artifacts in a recipe cannot have the same id.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * A generic remote artifact.  Structure is documented below.
+         */
+        remote?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeArtifactRemote>;
+    }
+
+    export interface GuestPoliciesRecipeArtifactGcs {
+        /**
+         * Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+         * this value would be my-bucket.
+         */
+        bucket?: pulumi.Input<string>;
+        /**
+         * Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
+         * https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+         */
+        generation?: pulumi.Input<number>;
+        /**
+         * Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+         * this value would be foo/bar.
+         */
+        object?: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeArtifactRemote {
+        /**
+         * Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
+         * If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
+         * of the steps.
+         */
+        checkSum?: pulumi.Input<string>;
+        /**
+         * URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeInstallStep {
+        /**
+         * Extracts an archive into the specified directory.  Structure is documented below.
+         */
+        archiveExtraction?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepArchiveExtraction>;
+        /**
+         * Installs a deb file via dpkg.  Structure is documented below.
+         */
+        dpkgInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepDpkgInstallation>;
+        /**
+         * Copies a file onto the instance.  Structure is documented below.
+         */
+        fileCopy?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepFileCopy>;
+        /**
+         * Executes an artifact or local file.  Structure is documented below.
+         */
+        fileExec?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepFileExec>;
+        /**
+         * Installs an MSI file.  Structure is documented below.
+         */
+        msiInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepMsiInstallation>;
+        /**
+         * Installs an rpm file via the rpm utility.  Structure is documented below.
+         */
+        rpmInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepRpmInstallation>;
+        /**
+         * Runs commands in a shell.  Structure is documented below.
+         */
+        scriptRun?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeInstallStepScriptRun>;
+    }
+
+    export interface GuestPoliciesRecipeInstallStepArchiveExtraction {
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId: pulumi.Input<string>;
+        /**
+         * Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+         */
+        destination?: pulumi.Input<string>;
+        /**
+         * The type of the archive to extract.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeInstallStepDpkgInstallation {
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeInstallStepFileCopy {
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId: pulumi.Input<string>;
+        /**
+         * Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+         */
+        destination: pulumi.Input<string>;
+        /**
+         * Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+         * is not overwritten and the step is considered a success. Defaults to false.
+         */
+        overwrite?: pulumi.Input<boolean>;
+        /**
+         * Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+         * for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+         * number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+         * bit corresponds to the execute permission. Default behavior is 755.
+         * Below are some examples of permissions and their associated values:
+         * read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+         */
+        permissions?: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeInstallStepFileExec {
+        /**
+         * Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+         */
+        allowedExitCodes?: pulumi.Input<string>;
+        /**
+         * Arguments to be passed to the provided executable.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId?: pulumi.Input<string>;
+        /**
+         * The absolute path of the file on the local filesystem.
+         */
+        localPath?: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeInstallStepMsiInstallation {
+        /**
+         * Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+         */
+        allowedExitCodes?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId: pulumi.Input<string>;
+        /**
+         * The flags to use when installing the MSI. Defaults to the install flag.
+         */
+        flags?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GuestPoliciesRecipeInstallStepRpmInstallation {
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeInstallStepScriptRun {
+        /**
+         * Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+         */
+        allowedExitCodes?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+         * which likely only succeed for scripts with shebang lines.
+         */
+        interpreter?: pulumi.Input<string>;
+        /**
+         * The shell script to be executed.
+         */
+        script: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeUpdateStep {
+        /**
+         * Extracts an archive into the specified directory.  Structure is documented below.
+         */
+        archiveExtraction?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepArchiveExtraction>;
+        /**
+         * Installs a deb file via dpkg.  Structure is documented below.
+         */
+        dpkgInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepDpkgInstallation>;
+        /**
+         * Copies a file onto the instance.  Structure is documented below.
+         */
+        fileCopy?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepFileCopy>;
+        /**
+         * Executes an artifact or local file.  Structure is documented below.
+         */
+        fileExec?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepFileExec>;
+        /**
+         * Installs an MSI file.  Structure is documented below.
+         */
+        msiInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepMsiInstallation>;
+        /**
+         * Installs an rpm file via the rpm utility.  Structure is documented below.
+         */
+        rpmInstallation?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepRpmInstallation>;
+        /**
+         * Runs commands in a shell.  Structure is documented below.
+         */
+        scriptRun?: pulumi.Input<inputs.osconfig.GuestPoliciesRecipeUpdateStepScriptRun>;
+    }
+
+    export interface GuestPoliciesRecipeUpdateStepArchiveExtraction {
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId: pulumi.Input<string>;
+        /**
+         * Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+         */
+        destination?: pulumi.Input<string>;
+        /**
+         * The type of the archive to extract.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeUpdateStepDpkgInstallation {
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeUpdateStepFileCopy {
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId: pulumi.Input<string>;
+        /**
+         * Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+         */
+        destination: pulumi.Input<string>;
+        /**
+         * Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+         * is not overwritten and the step is considered a success. Defaults to false.
+         */
+        overwrite?: pulumi.Input<boolean>;
+        /**
+         * Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+         * for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+         * number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+         * bit corresponds to the execute permission. Default behavior is 755.
+         * Below are some examples of permissions and their associated values:
+         * read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+         */
+        permissions?: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeUpdateStepFileExec {
+        /**
+         * Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+         */
+        allowedExitCodes?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Arguments to be passed to the provided executable.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId?: pulumi.Input<string>;
+        /**
+         * The absolute path of the file on the local filesystem.
+         */
+        localPath?: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeUpdateStepMsiInstallation {
+        /**
+         * Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+         */
+        allowedExitCodes?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId: pulumi.Input<string>;
+        /**
+         * The flags to use when installing the MSI. Defaults to the install flag.
+         */
+        flags?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GuestPoliciesRecipeUpdateStepRpmInstallation {
+        /**
+         * The id of the relevant artifact in the recipe.
+         */
+        artifactId: pulumi.Input<string>;
+    }
+
+    export interface GuestPoliciesRecipeUpdateStepScriptRun {
+        /**
+         * Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+         */
+        allowedExitCodes?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+         * which likely only succeed for scripts with shebang lines.
+         */
+        interpreter?: pulumi.Input<string>;
+        /**
+         * The shell script to be executed.
+         */
+        script: pulumi.Input<string>;
+    }
+
     export interface PatchDeploymentInstanceFilter {
         /**
          * Target all VM instances in the project. If true, no other criteria is permitted.

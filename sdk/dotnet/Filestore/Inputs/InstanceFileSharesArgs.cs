@@ -25,6 +25,14 @@ namespace Pulumi.Gcp.Filestore.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("nfsExportOptions")]
+        private InputList<Inputs.InstanceFileSharesNfsExportOptionArgs>? _nfsExportOptions;
+        public InputList<Inputs.InstanceFileSharesNfsExportOptionArgs> NfsExportOptions
+        {
+            get => _nfsExportOptions ?? (_nfsExportOptions = new InputList<Inputs.InstanceFileSharesNfsExportOptionArgs>());
+            set => _nfsExportOptions = value;
+        }
+
         public InstanceFileSharesArgs()
         {
         }

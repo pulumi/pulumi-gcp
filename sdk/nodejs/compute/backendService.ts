@@ -112,10 +112,11 @@ export class BackendService extends pulumi.CustomResource {
     /**
      * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
      * for health checking this BackendService. Currently at most one health
-     * check can be specified, and a health check is required.
+     * check can be specified.
+     * A health check must be specified unless the backend service uses an internet NEG as a backend.
      * For internal load balancing, a URL to a HealthCheck resource must be specified instead.
      */
-    public readonly healthChecks!: pulumi.Output<string>;
+    public readonly healthChecks!: pulumi.Output<string | undefined>;
     /**
      * Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
      */
@@ -209,7 +210,7 @@ export class BackendService extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: BackendServiceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: BackendServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackendServiceArgs | BackendServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
@@ -241,9 +242,6 @@ export class BackendService extends pulumi.CustomResource {
             inputs["timeoutSec"] = state ? state.timeoutSec : undefined;
         } else {
             const args = argsOrState as BackendServiceArgs | undefined;
-            if (!args || args.healthChecks === undefined) {
-                throw new Error("Missing required property 'healthChecks'");
-            }
             inputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
             inputs["backends"] = args ? args.backends : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
@@ -347,7 +345,8 @@ export interface BackendServiceState {
     /**
      * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
      * for health checking this BackendService. Currently at most one health
-     * check can be specified, and a health check is required.
+     * check can be specified.
+     * A health check must be specified unless the backend service uses an internet NEG as a backend.
      * For internal load balancing, a URL to a HealthCheck resource must be specified instead.
      */
     readonly healthChecks?: pulumi.Input<string>;
@@ -496,10 +495,11 @@ export interface BackendServiceArgs {
     /**
      * The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
      * for health checking this BackendService. Currently at most one health
-     * check can be specified, and a health check is required.
+     * check can be specified.
+     * A health check must be specified unless the backend service uses an internet NEG as a backend.
      * For internal load balancing, a URL to a HealthCheck resource must be specified instead.
      */
-    readonly healthChecks: pulumi.Input<string>;
+    readonly healthChecks?: pulumi.Input<string>;
     /**
      * Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
      */

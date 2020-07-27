@@ -20,6 +20,10 @@ class Folder(pulumi.CustomResource):
     The folder’s display name.
     A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
     """
+    folder_id: pulumi.Output[str]
+    """
+    The folder id from the name "folders/{folder_id}"
+    """
     lifecycle_state: pulumi.Output[str]
     """
     The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
@@ -80,6 +84,7 @@ class Folder(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['create_time'] = None
+            __props__['folder_id'] = None
             __props__['lifecycle_state'] = None
             __props__['name'] = None
         super(Folder, __self__).__init__(
@@ -89,7 +94,7 @@ class Folder(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, create_time=None, display_name=None, lifecycle_state=None, name=None, parent=None):
+    def get(resource_name, id, opts=None, create_time=None, display_name=None, folder_id=None, lifecycle_state=None, name=None, parent=None):
         """
         Get an existing Folder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -101,6 +106,7 @@ class Folder(pulumi.CustomResource):
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] display_name: The folder’s display name.
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
+        :param pulumi.Input[str] folder_id: The folder id from the name "folders/{folder_id}"
         :param pulumi.Input[str] lifecycle_state: The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
         :param pulumi.Input[str] name: The resource name of the Folder. Its format is folders/{folder_id}.
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
@@ -112,6 +118,7 @@ class Folder(pulumi.CustomResource):
 
         __props__["create_time"] = create_time
         __props__["display_name"] = display_name
+        __props__["folder_id"] = folder_id
         __props__["lifecycle_state"] = lifecycle_state
         __props__["name"] = name
         __props__["parent"] = parent

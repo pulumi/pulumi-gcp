@@ -50,6 +50,7 @@ export interface GetFolderResult {
      */
     readonly displayName: string;
     readonly folder: string;
+    readonly folderId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

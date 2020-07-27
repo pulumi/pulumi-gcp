@@ -70,7 +70,7 @@ class Function(pulumi.CustomResource):
     runtime: pulumi.Output[str]
     """
     The runtime in which the function is going to run.
-    Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+    Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
     """
     service_account_email: pulumi.Output[str]
     """
@@ -138,7 +138,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+               Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -233,7 +233,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+               Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.

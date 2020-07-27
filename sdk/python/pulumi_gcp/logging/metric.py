@@ -61,15 +61,15 @@ class Metric(pulumi.CustomResource):
         * `description` (`str`) - A description of this metric, which is used in documentation. The maximum length of the
           description is 8000 characters.
         * `key` (`str`) - The label key.
-        * `valueType` (`str`) - The type of data that can be assigned to the label.
+        * `value_type` (`str`) - The type of data that can be assigned to the label.
 
-      * `metricKind` (`str`) - Whether the metric records instantaneous values, changes to a value, etc.
+      * `metric_kind` (`str`) - Whether the metric records instantaneous values, changes to a value, etc.
         Some combinations of metricKind and valueType might not be supported.
         For counter metrics, set this to DELTA.
       * `unit` (`str`) - The unit in which the metric value is reported. It is only applicable if the valueType is
         `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
         [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
-      * `valueType` (`str`) - The type of data that can be assigned to the label.
+      * `value_type` (`str`) - The type of data that can be assigned to the label.
     """
     name: pulumi.Output[str]
     """
@@ -165,15 +165,15 @@ class Metric(pulumi.CustomResource):
             * `description` (`pulumi.Input[str]`) - A description of this metric, which is used in documentation. The maximum length of the
               description is 8000 characters.
             * `key` (`pulumi.Input[str]`) - The label key.
-            * `valueType` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
+            * `value_type` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
 
-          * `metricKind` (`pulumi.Input[str]`) - Whether the metric records instantaneous values, changes to a value, etc.
+          * `metric_kind` (`pulumi.Input[str]`) - Whether the metric records instantaneous values, changes to a value, etc.
             Some combinations of metricKind and valueType might not be supported.
             For counter metrics, set this to DELTA.
           * `unit` (`pulumi.Input[str]`) - The unit in which the metric value is reported. It is only applicable if the valueType is
             `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
             [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
-          * `valueType` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
+          * `value_type` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -274,15 +274,15 @@ class Metric(pulumi.CustomResource):
             * `description` (`pulumi.Input[str]`) - A description of this metric, which is used in documentation. The maximum length of the
               description is 8000 characters.
             * `key` (`pulumi.Input[str]`) - The label key.
-            * `valueType` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
+            * `value_type` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
 
-          * `metricKind` (`pulumi.Input[str]`) - Whether the metric records instantaneous values, changes to a value, etc.
+          * `metric_kind` (`pulumi.Input[str]`) - Whether the metric records instantaneous values, changes to a value, etc.
             Some combinations of metricKind and valueType might not be supported.
             For counter metrics, set this to DELTA.
           * `unit` (`pulumi.Input[str]`) - The unit in which the metric value is reported. It is only applicable if the valueType is
             `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
             [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
-          * `valueType` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
+          * `value_type` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

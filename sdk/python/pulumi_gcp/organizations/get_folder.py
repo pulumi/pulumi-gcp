@@ -12,7 +12,7 @@ class GetFolderResult:
     """
     A collection of values returned by getFolder.
     """
-    def __init__(__self__, create_time=None, display_name=None, folder=None, id=None, lifecycle_state=None, lookup_organization=None, name=None, organization=None, parent=None):
+    def __init__(__self__, create_time=None, display_name=None, folder=None, folder_id=None, id=None, lifecycle_state=None, lookup_organization=None, name=None, organization=None, parent=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         __self__.create_time = create_time
@@ -28,6 +28,9 @@ class GetFolderResult:
         if folder and not isinstance(folder, str):
             raise TypeError("Expected argument 'folder' to be a str")
         __self__.folder = folder
+        if folder_id and not isinstance(folder_id, str):
+            raise TypeError("Expected argument 'folder_id' to be a str")
+        __self__.folder_id = folder_id
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -70,6 +73,7 @@ class AwaitableGetFolderResult(GetFolderResult):
             create_time=self.create_time,
             display_name=self.display_name,
             folder=self.folder,
+            folder_id=self.folder_id,
             id=self.id,
             lifecycle_state=self.lifecycle_state,
             lookup_organization=self.lookup_organization,
@@ -100,6 +104,7 @@ def get_folder(folder=None,lookup_organization=None,opts=None):
         create_time=__ret__.get('createTime'),
         display_name=__ret__.get('displayName'),
         folder=__ret__.get('folder'),
+        folder_id=__ret__.get('folderId'),
         id=__ret__.get('id'),
         lifecycle_state=__ret__.get('lifecycleState'),
         lookup_organization=__ret__.get('lookupOrganization'),

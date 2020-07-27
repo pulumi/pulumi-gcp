@@ -32,6 +32,8 @@ namespace Pulumi.Gcp
 
         public static string? BinaryAuthorizationCustomEndpoint { get; set; } = __config.Get("binaryAuthorizationCustomEndpoint");
 
+        public static string? CloudAssetCustomEndpoint { get; set; } = __config.Get("cloudAssetCustomEndpoint");
+
         public static string? CloudBillingCustomEndpoint { get; set; } = __config.Get("cloudBillingCustomEndpoint");
 
         public static string? CloudBuildCustomEndpoint { get; set; } = __config.Get("cloudBuildCustomEndpoint");

@@ -111,11 +111,12 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
         /// for health checking this BackendService. Currently at most one health
-        /// check can be specified, and a health check is required.
+        /// check can be specified.
+        /// A health check must be specified unless the backend service uses an internet NEG as a backend.
         /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         /// </summary>
         [Output("healthChecks")]
-        public Output<string> HealthChecks { get; private set; } = null!;
+        public Output<string?> HealthChecks { get; private set; } = null!;
 
         /// <summary>
         /// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
@@ -236,7 +237,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public BackendService(string name, BackendServiceArgs args, CustomResourceOptions? options = null)
+        public BackendService(string name, BackendServiceArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:compute/backendService:BackendService", name, args ?? new BackendServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -358,11 +359,12 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
         /// for health checking this BackendService. Currently at most one health
-        /// check can be specified, and a health check is required.
+        /// check can be specified.
+        /// A health check must be specified unless the backend service uses an internet NEG as a backend.
         /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         /// </summary>
-        [Input("healthChecks", required: true)]
-        public Input<string> HealthChecks { get; set; } = null!;
+        [Input("healthChecks")]
+        public Input<string>? HealthChecks { get; set; }
 
         /// <summary>
         /// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
@@ -572,7 +574,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
         /// for health checking this BackendService. Currently at most one health
-        /// check can be specified, and a health check is required.
+        /// check can be specified.
+        /// A health check must be specified unless the backend service uses an internet NEG as a backend.
         /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         /// </summary>
         [Input("healthChecks")]

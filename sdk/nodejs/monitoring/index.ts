@@ -10,6 +10,7 @@ export * from "./getNotificationChannel";
 export * from "./getSecretVersion";
 export * from "./getUptimeCheckIPs";
 export * from "./group";
+export * from "./metricDescriptor";
 export * from "./notificationChannel";
 export * from "./slo";
 export * from "./uptimeCheckConfig";
