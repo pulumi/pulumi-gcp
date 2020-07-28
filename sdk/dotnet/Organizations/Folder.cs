@@ -41,6 +41,12 @@ namespace Pulumi.Gcp.Organizations
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// The folder id from the name "folders/{folder_id}"
+        /// </summary>
+        [Output("folderId")]
+        public Output<string> FolderId { get; private set; } = null!;
+
+        /// <summary>
         /// The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
         /// </summary>
         [Output("lifecycleState")]
@@ -139,6 +145,12 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The folder id from the name "folders/{folder_id}"
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
 
         /// <summary>
         /// The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.

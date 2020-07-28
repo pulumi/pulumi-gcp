@@ -20,6 +20,7 @@ export let bigqueryReservationCustomEndpoint: string | undefined = __config.get(
 export let bigtableCustomEndpoint: string | undefined = __config.get("bigtableCustomEndpoint");
 export let billingCustomEndpoint: string | undefined = __config.get("billingCustomEndpoint");
 export let binaryAuthorizationCustomEndpoint: string | undefined = __config.get("binaryAuthorizationCustomEndpoint");
+export let cloudAssetCustomEndpoint: string | undefined = __config.get("cloudAssetCustomEndpoint");
 export let cloudBillingCustomEndpoint: string | undefined = __config.get("cloudBillingCustomEndpoint");
 export let cloudBuildCustomEndpoint: string | undefined = __config.get("cloudBuildCustomEndpoint");
 export let cloudFunctionsCustomEndpoint: string | undefined = __config.get("cloudFunctionsCustomEndpoint");

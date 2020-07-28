@@ -56,6 +56,7 @@ type providerArgs struct {
 	BigtableCustomEndpoint               *string           `pulumi:"bigtableCustomEndpoint"`
 	BillingCustomEndpoint                *string           `pulumi:"billingCustomEndpoint"`
 	BinaryAuthorizationCustomEndpoint    *string           `pulumi:"binaryAuthorizationCustomEndpoint"`
+	CloudAssetCustomEndpoint             *string           `pulumi:"cloudAssetCustomEndpoint"`
 	CloudBillingCustomEndpoint           *string           `pulumi:"cloudBillingCustomEndpoint"`
 	CloudBuildCustomEndpoint             *string           `pulumi:"cloudBuildCustomEndpoint"`
 	CloudFunctionsCustomEndpoint         *string           `pulumi:"cloudFunctionsCustomEndpoint"`
@@ -141,6 +142,7 @@ type ProviderArgs struct {
 	BigtableCustomEndpoint               pulumi.StringPtrInput
 	BillingCustomEndpoint                pulumi.StringPtrInput
 	BinaryAuthorizationCustomEndpoint    pulumi.StringPtrInput
+	CloudAssetCustomEndpoint             pulumi.StringPtrInput
 	CloudBillingCustomEndpoint           pulumi.StringPtrInput
 	CloudBuildCustomEndpoint             pulumi.StringPtrInput
 	CloudFunctionsCustomEndpoint         pulumi.StringPtrInput

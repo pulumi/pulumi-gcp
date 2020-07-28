@@ -50,7 +50,7 @@ type Function struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+	// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
@@ -127,7 +127,7 @@ type functionState struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+	// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
 	Runtime *string `pulumi:"runtime"`
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
@@ -174,7 +174,7 @@ type FunctionState struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+	// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
 	Runtime pulumi.StringPtrInput
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail pulumi.StringPtrInput
@@ -225,7 +225,7 @@ type functionArgs struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+	// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
 	Runtime string `pulumi:"runtime"`
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
@@ -273,7 +273,7 @@ type FunctionArgs struct {
 	// Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
-	// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+	// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
 	Runtime pulumi.StringInput
 	// If provided, the self-provided service account to run the function with.
 	ServiceAccountEmail pulumi.StringPtrInput

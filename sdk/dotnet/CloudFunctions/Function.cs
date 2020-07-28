@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+        /// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -285,7 +285,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+        /// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
         /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
@@ -432,7 +432,7 @@ namespace Pulumi.Gcp.CloudFunctions
 
         /// <summary>
         /// The runtime in which the function is going to run.
-        /// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`.
+        /// Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }

@@ -50,6 +50,9 @@ type Cluster struct {
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode pulumi.IntOutput `pulumi:"defaultMaxPodsPerNode"`
+	// )
+	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+	DefaultSnatStatus ClusterDefaultSnatStatusOutput `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Enable Binary Authorization for this cluster.
@@ -289,6 +292,9 @@ type clusterState struct {
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
+	// )
+	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+	DefaultSnatStatus *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
 	// Enable Binary Authorization for this cluster.
@@ -501,6 +507,9 @@ type ClusterState struct {
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
+	// )
+	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+	DefaultSnatStatus ClusterDefaultSnatStatusPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
 	// Enable Binary Authorization for this cluster.
@@ -717,6 +726,9 @@ type clusterArgs struct {
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
+	// )
+	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+	DefaultSnatStatus *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
 	// Enable Binary Authorization for this cluster.
@@ -909,6 +921,9 @@ type ClusterArgs struct {
 	// that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 	// for more information.
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
+	// )
+	// [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+	DefaultSnatStatus ClusterDefaultSnatStatusPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
 	// Enable Binary Authorization for this cluster.

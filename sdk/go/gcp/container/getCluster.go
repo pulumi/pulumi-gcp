@@ -46,6 +46,7 @@ type LookupClusterResult struct {
 	ClusterTelemetries         []GetClusterClusterTelemetry          `pulumi:"clusterTelemetries"`
 	DatabaseEncryptions        []GetClusterDatabaseEncryption        `pulumi:"databaseEncryptions"`
 	DefaultMaxPodsPerNode      int                                   `pulumi:"defaultMaxPodsPerNode"`
+	DefaultSnatStatuses        []GetClusterDefaultSnatStatus         `pulumi:"defaultSnatStatuses"`
 	Description                string                                `pulumi:"description"`
 	EnableBinaryAuthorization  bool                                  `pulumi:"enableBinaryAuthorization"`
 	EnableIntranodeVisibility  bool                                  `pulumi:"enableIntranodeVisibility"`

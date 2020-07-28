@@ -30,6 +30,20 @@ class Instance(pulumi.CustomResource):
       * `capacityGb` (`float`) - File share capacity in GiB. This must be at least 1024 GiB
         for the standard tier, or 2560 GiB for the premium tier.
       * `name` (`str`) - The name of the fileshare (16 characters or less)
+      * `nfsExportOptions` (`list`)
+        * `accessMode` (`str`) - Either READ_ONLY, for allowing only read requests on the exported directory,
+          or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+        * `anonGid` (`float`) - An integer representing the anonymous group id with a default value of 65534.
+          Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+          if this field is specified for other squashMode settings.
+        * `anonUid` (`float`) - An integer representing the anonymous user id with a default value of 65534.
+          Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+          if this field is specified for other squashMode settings.
+        * `ipRanges` (`list`) - List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+          Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+          The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+        * `squashMode` (`str`) - Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+          for not allowing root access. The default is NO_ROOT_SQUASH.
     """
     labels: pulumi.Output[dict]
     """
@@ -99,6 +113,20 @@ class Instance(pulumi.CustomResource):
           * `capacityGb` (`pulumi.Input[float]`) - File share capacity in GiB. This must be at least 1024 GiB
             for the standard tier, or 2560 GiB for the premium tier.
           * `name` (`pulumi.Input[str]`) - The name of the fileshare (16 characters or less)
+          * `nfsExportOptions` (`pulumi.Input[list]`)
+            * `accessMode` (`pulumi.Input[str]`) - Either READ_ONLY, for allowing only read requests on the exported directory,
+              or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+            * `anonGid` (`pulumi.Input[float]`) - An integer representing the anonymous group id with a default value of 65534.
+              Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+              if this field is specified for other squashMode settings.
+            * `anonUid` (`pulumi.Input[float]`) - An integer representing the anonymous user id with a default value of 65534.
+              Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+              if this field is specified for other squashMode settings.
+            * `ipRanges` (`pulumi.Input[list]`) - List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+              Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+              The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+            * `squashMode` (`pulumi.Input[str]`) - Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+              for not allowing root access. The default is NO_ROOT_SQUASH.
 
         The **networks** object supports the following:
 
@@ -180,6 +208,20 @@ class Instance(pulumi.CustomResource):
           * `capacityGb` (`pulumi.Input[float]`) - File share capacity in GiB. This must be at least 1024 GiB
             for the standard tier, or 2560 GiB for the premium tier.
           * `name` (`pulumi.Input[str]`) - The name of the fileshare (16 characters or less)
+          * `nfsExportOptions` (`pulumi.Input[list]`)
+            * `accessMode` (`pulumi.Input[str]`) - Either READ_ONLY, for allowing only read requests on the exported directory,
+              or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+            * `anonGid` (`pulumi.Input[float]`) - An integer representing the anonymous group id with a default value of 65534.
+              Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+              if this field is specified for other squashMode settings.
+            * `anonUid` (`pulumi.Input[float]`) - An integer representing the anonymous user id with a default value of 65534.
+              Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+              if this field is specified for other squashMode settings.
+            * `ipRanges` (`pulumi.Input[list]`) - List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+              Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+              The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+            * `squashMode` (`pulumi.Input[str]`) - Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+              for not allowing root access. The default is NO_ROOT_SQUASH.
 
         The **networks** object supports the following:
 

@@ -26,6 +26,7 @@ const (
 	gcpBigTable             = "BigTable"             // BitTable resources
 	gcpBilling              = "Billing"              // Billing resources
 	gcpBinaryAuthorization  = "BinaryAuthorization"  // Binary Authorization resources
+	gcpCloudAsset           = "CloudAsset"           // CloudAsset resources
 	gcpCloudBuild           = "CloudBuild"           // CloudBuild resources
 	gcpCloudFunctions       = "CloudFunctions"       // CloudFunction resources
 	gcpCloudIdentity        = "CloudIdentity"        // CloudIdentity resources
@@ -812,8 +813,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "monitoring_service.html.markdown",
 				},
 			},
-			"google_monitoring_slo":       {Tok: gcpResource(gcpMonitoring, "Slo")},
-			"google_monitoring_dashboard": {Tok: gcpResource(gcpMonitoring, "Dashboard")},
+			"google_monitoring_slo":               {Tok: gcpResource(gcpMonitoring, "Slo")},
+			"google_monitoring_dashboard":         {Tok: gcpResource(gcpMonitoring, "Dashboard")},
+			"google_monitoring_metric_descriptor": {Tok: gcpResource(gcpMonitoring, "MetricDescriptor")},
 
 			// PubSub resources
 			"google_pubsub_topic": {Tok: gcpResource(gcpPubSub, "Topic")},
@@ -1412,6 +1414,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// OS Config
 			"google_os_config_patch_deployment": {Tok: gcpResource(gcpOsConfig, "PatchDeployment")},
+			"google_os_config_guest_policies":   {Tok: gcpResource(gcpOsConfig, "GuestPolicies")},
 
 			// Service Directory
 			"google_service_directory_endpoint":  {Tok: gcpResource(gcpServiceDirectory, "Endpoint")},
@@ -1521,6 +1524,11 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CloudIOT
 			"google_cloudiot_device": {Tok: gcpResource(gcpIot, "Device")},
+
+			// CloudAsset
+			"google_cloud_asset_folder_feed":       {Tok: gcpResource(gcpCloudAsset, "FolderFeed")},
+			"google_cloud_asset_organization_feed": {Tok: gcpResource(gcpCloudAsset, "OrganizationFeed")},
+			"google_cloud_asset_project_feed":      {Tok: gcpResource(gcpCloudAsset, "ProjectFeed")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -1883,6 +1891,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_google_sql_ca_certs.html.markdown",
 				},
+			},
+			"google_sql_database_instance": {
+				Tok: gcpDataSource(gcpSQL, "getDatabaseInstance"),
 			},
 			"google_monitoring_notification_channel": {
 				Tok: gcpDataSource(gcpMonitoring, "getNotificationChannel"),

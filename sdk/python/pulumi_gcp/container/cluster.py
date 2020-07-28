@@ -150,6 +150,14 @@ class Cluster(pulumi.CustomResource):
     that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
     for more information.
     """
+    default_snat_status: pulumi.Output[dict]
+    """
+    )
+    [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
+
+      * `disabled` (`bool`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
+        cluster. It is disabled by default. Set `disabled = false` to enable.
+    """
     description: pulumi.Output[str]
     """
     Description of the cluster.
@@ -690,7 +698,7 @@ class Cluster(pulumi.CustomResource):
 
       * `identityNamespace` (`str`) - Currently, the only supported identity namespace is the project's default.
     """
-    def __init__(__self__, resource_name, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, cluster_telemetry=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, networking_mode=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, cluster_telemetry=None, database_encryption=None, default_max_pods_per_node=None, default_snat_status=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, initial_node_count=None, ip_allocation_policy=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, networking_mode=None, node_config=None, node_locations=None, node_pools=None, node_version=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, subnetwork=None, vertical_pod_autoscaling=None, workload_identity_config=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster. For more information see
         [the official documentation](https://cloud.google.com/container-engine/docs/clusters)
@@ -726,6 +734,8 @@ class Cluster(pulumi.CustomResource):
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
+        :param pulumi.Input[dict] default_snat_status: )
+               [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
@@ -958,6 +968,11 @@ class Cluster(pulumi.CustomResource):
 
           * `keyName` (`pulumi.Input[str]`) - the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
           * `state` (`pulumi.Input[str]`) - `ENCRYPTED` or `DECRYPTED`
+
+        The **default_snat_status** object supports the following:
+
+          * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
+            cluster. It is disabled by default. Set `disabled = false` to enable.
 
         The **ip_allocation_policy** object supports the following:
 
@@ -1289,6 +1304,7 @@ class Cluster(pulumi.CustomResource):
             __props__['cluster_telemetry'] = cluster_telemetry
             __props__['database_encryption'] = database_encryption
             __props__['default_max_pods_per_node'] = default_max_pods_per_node
+            __props__['default_snat_status'] = default_snat_status
             __props__['description'] = description
             __props__['enable_binary_authorization'] = enable_binary_authorization
             __props__['enable_intranode_visibility'] = enable_intranode_visibility
@@ -1337,7 +1353,7 @@ class Cluster(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, cluster_telemetry=None, database_encryption=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, networking_mode=None, node_config=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
+    def get(resource_name, id, opts=None, addons_config=None, authenticator_groups_config=None, cluster_autoscaling=None, cluster_ipv4_cidr=None, cluster_telemetry=None, database_encryption=None, default_max_pods_per_node=None, default_snat_status=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policy=None, networking_mode=None, node_config=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_config=None, private_cluster_config=None, project=None, release_channel=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_config=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1367,6 +1383,8 @@ class Cluster(pulumi.CustomResource):
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
+        :param pulumi.Input[dict] default_snat_status: )
+               [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
@@ -1613,6 +1631,11 @@ class Cluster(pulumi.CustomResource):
 
           * `keyName` (`pulumi.Input[str]`) - the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
           * `state` (`pulumi.Input[str]`) - `ENCRYPTED` or `DECRYPTED`
+
+        The **default_snat_status** object supports the following:
+
+          * `disabled` (`pulumi.Input[bool]`) - The status of the Istio addon, which makes it easy to set up Istio for services in a
+            cluster. It is disabled by default. Set `disabled = false` to enable.
 
         The **ip_allocation_policy** object supports the following:
 
@@ -1931,6 +1954,7 @@ class Cluster(pulumi.CustomResource):
         __props__["cluster_telemetry"] = cluster_telemetry
         __props__["database_encryption"] = database_encryption
         __props__["default_max_pods_per_node"] = default_max_pods_per_node
+        __props__["default_snat_status"] = default_snat_status
         __props__["description"] = description
         __props__["enable_binary_authorization"] = enable_binary_authorization
         __props__["enable_intranode_visibility"] = enable_intranode_visibility

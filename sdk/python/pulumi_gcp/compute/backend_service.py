@@ -202,7 +202,8 @@ class BackendService(pulumi.CustomResource):
     """
     The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
     for health checking this BackendService. Currently at most one health
-    check can be specified, and a health check is required.
+    check can be specified.
+    A health check must be specified unless the backend service uses an internet NEG as a backend.
     For internal load balancing, a URL to a HealthCheck resource must be specified instead.
     """
     iap: pulumi.Output[dict]
@@ -396,7 +397,8 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
         :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
                for health checking this BackendService. Currently at most one health
-               check can be specified, and a health check is required.
+               check can be specified.
+               A health check must be specified unless the backend service uses an internet NEG as a backend.
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
@@ -674,8 +676,6 @@ class BackendService(pulumi.CustomResource):
             __props__['custom_request_headers'] = custom_request_headers
             __props__['description'] = description
             __props__['enable_cdn'] = enable_cdn
-            if health_checks is None:
-                raise TypeError("Missing required property 'health_checks'")
             __props__['health_checks'] = health_checks
             __props__['iap'] = iap
             __props__['load_balancing_scheme'] = load_balancing_scheme
@@ -735,7 +735,8 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
         :param pulumi.Input[str] health_checks: The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
                for health checking this BackendService. Currently at most one health
-               check can be specified, and a health check is required.
+               check can be specified.
+               A health check must be specified unless the backend service uses an internet NEG as a backend.
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         :param pulumi.Input[dict] iap: Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or

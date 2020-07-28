@@ -11,6 +11,7 @@ from .get_notification_channel import *
 from .get_secret_version import *
 from .get_uptime_check_i_ps import *
 from .group import *
+from .metric_descriptor import *
 from .notification_channel import *
 from .slo import *
 from .uptime_check_config import *

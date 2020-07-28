@@ -12,7 +12,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, database_encryptions=None, default_max_pods_per_node=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None):
+    def __init__(__self__, additional_zones=None, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, database_encryptions=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, region=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None, zone=None):
         if additional_zones and not isinstance(additional_zones, list):
             raise TypeError("Expected argument 'additional_zones' to be a list")
         __self__.additional_zones = additional_zones
@@ -37,6 +37,9 @@ class GetClusterResult:
         if default_max_pods_per_node and not isinstance(default_max_pods_per_node, float):
             raise TypeError("Expected argument 'default_max_pods_per_node' to be a float")
         __self__.default_max_pods_per_node = default_max_pods_per_node
+        if default_snat_statuses and not isinstance(default_snat_statuses, list):
+            raise TypeError("Expected argument 'default_snat_statuses' to be a list")
+        __self__.default_snat_statuses = default_snat_statuses
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         __self__.description = description
@@ -186,6 +189,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             cluster_telemetries=self.cluster_telemetries,
             database_encryptions=self.database_encryptions,
             default_max_pods_per_node=self.default_max_pods_per_node,
+            default_snat_statuses=self.default_snat_statuses,
             description=self.description,
             enable_binary_authorization=self.enable_binary_authorization,
             enable_intranode_visibility=self.enable_intranode_visibility,
@@ -270,6 +274,7 @@ def get_cluster(location=None,name=None,project=None,region=None,zone=None,opts=
         cluster_telemetries=__ret__.get('clusterTelemetries'),
         database_encryptions=__ret__.get('databaseEncryptions'),
         default_max_pods_per_node=__ret__.get('defaultMaxPodsPerNode'),
+        default_snat_statuses=__ret__.get('defaultSnatStatuses'),
         description=__ret__.get('description'),
         enable_binary_authorization=__ret__.get('enableBinaryAuthorization'),
         enable_intranode_visibility=__ret__.get('enableIntranodeVisibility'),

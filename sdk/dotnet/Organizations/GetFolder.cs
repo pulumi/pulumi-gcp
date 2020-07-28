@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public readonly string DisplayName;
         public readonly string Folder;
+        public readonly string FolderId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -81,6 +82,8 @@ namespace Pulumi.Gcp.Organizations
 
             string folder,
 
+            string folderId,
+
             string id,
 
             string lifecycleState,
@@ -96,6 +99,7 @@ namespace Pulumi.Gcp.Organizations
             CreateTime = createTime;
             DisplayName = displayName;
             Folder = folder;
+            FolderId = folderId;
             Id = id;
             LifecycleState = lifecycleState;
             LookupOrganization = lookupOrganization;

@@ -58,6 +58,10 @@ export class Folder extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * The folder id from the name "folders/{folder_id}"
+     */
+    public /*out*/ readonly folderId!: pulumi.Output<string>;
+    /**
      * The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
      */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
@@ -85,6 +89,7 @@ export class Folder extends pulumi.CustomResource {
             const state = argsOrState as FolderState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["folderId"] = state ? state.folderId : undefined;
             inputs["lifecycleState"] = state ? state.lifecycleState : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["parent"] = state ? state.parent : undefined;
@@ -99,6 +104,7 @@ export class Folder extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["createTime"] = undefined /*out*/;
+            inputs["folderId"] = undefined /*out*/;
             inputs["lifecycleState"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
@@ -127,6 +133,10 @@ export interface FolderState {
      * A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
      */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * The folder id from the name "folders/{folder_id}"
+     */
+    readonly folderId?: pulumi.Input<string>;
     /**
      * The lifecycle state of the folder such as `ACTIVE` or `DELETE_REQUESTED`.
      */

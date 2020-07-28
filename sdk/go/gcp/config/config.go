@@ -44,6 +44,9 @@ func GetBillingCustomEndpoint(ctx *pulumi.Context) string {
 func GetBinaryAuthorizationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:binaryAuthorizationCustomEndpoint")
 }
+func GetCloudAssetCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudAssetCustomEndpoint")
+}
 func GetCloudBillingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudBillingCustomEndpoint")
 }

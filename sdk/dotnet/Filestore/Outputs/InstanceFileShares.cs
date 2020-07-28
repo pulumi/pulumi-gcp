@@ -22,15 +22,19 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// The name of the fileshare (16 characters or less)
         /// </summary>
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.InstanceFileSharesNfsExportOption> NfsExportOptions;
 
         [OutputConstructor]
         private InstanceFileShares(
             int capacityGb,
 
-            string name)
+            string name,
+
+            ImmutableArray<Outputs.InstanceFileSharesNfsExportOption> nfsExportOptions)
         {
             CapacityGb = capacityGb;
             Name = name;
+            NfsExportOptions = nfsExportOptions;
         }
     }
 }

@@ -10,6 +10,4815 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type GuestPoliciesAssignment struct {
+	// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
+	// for example "env=prod or env=staging".  Structure is documented below.
+	GroupLabels []GuestPoliciesAssignmentGroupLabel `pulumi:"groupLabels"`
+	// Targets VM instances whose name starts with one of these prefixes.
+	// Like labels, this is another way to group VM instances when targeting configs,
+	// for example prefix="prod-".
+	// Only supported for project-level policies.
+	InstanceNamePrefixes []string `pulumi:"instanceNamePrefixes"`
+	// Targets any of the instances specified. Instances are specified by their URI in the form
+	// zones/[ZONE]/instances/[INSTANCE_NAME].
+	// Instance targeting is uncommon and is supported to facilitate the management of changes
+	// by the instance or to target specific VM instances for development and testing.
+	// Only supported for project-level policies and must reference instances within this project.
+	Instances []string `pulumi:"instances"`
+	// Targets VM instances matching at least one of the following OS types.
+	// VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+	OsTypes []GuestPoliciesAssignmentOsType `pulumi:"osTypes"`
+	// Targets instances in any of these zones. Leave empty to target instances in any zone.
+	// Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
+	Zones []string `pulumi:"zones"`
+}
+
+// GuestPoliciesAssignmentInput is an input type that accepts GuestPoliciesAssignmentArgs and GuestPoliciesAssignmentOutput values.
+// You can construct a concrete instance of `GuestPoliciesAssignmentInput` via:
+//
+//          GuestPoliciesAssignmentArgs{...}
+type GuestPoliciesAssignmentInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesAssignmentOutput() GuestPoliciesAssignmentOutput
+	ToGuestPoliciesAssignmentOutputWithContext(context.Context) GuestPoliciesAssignmentOutput
+}
+
+type GuestPoliciesAssignmentArgs struct {
+	// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
+	// for example "env=prod or env=staging".  Structure is documented below.
+	GroupLabels GuestPoliciesAssignmentGroupLabelArrayInput `pulumi:"groupLabels"`
+	// Targets VM instances whose name starts with one of these prefixes.
+	// Like labels, this is another way to group VM instances when targeting configs,
+	// for example prefix="prod-".
+	// Only supported for project-level policies.
+	InstanceNamePrefixes pulumi.StringArrayInput `pulumi:"instanceNamePrefixes"`
+	// Targets any of the instances specified. Instances are specified by their URI in the form
+	// zones/[ZONE]/instances/[INSTANCE_NAME].
+	// Instance targeting is uncommon and is supported to facilitate the management of changes
+	// by the instance or to target specific VM instances for development and testing.
+	// Only supported for project-level policies and must reference instances within this project.
+	Instances pulumi.StringArrayInput `pulumi:"instances"`
+	// Targets VM instances matching at least one of the following OS types.
+	// VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+	OsTypes GuestPoliciesAssignmentOsTypeArrayInput `pulumi:"osTypes"`
+	// Targets instances in any of these zones. Leave empty to target instances in any zone.
+	// Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
+}
+
+func (GuestPoliciesAssignmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesAssignment)(nil)).Elem()
+}
+
+func (i GuestPoliciesAssignmentArgs) ToGuestPoliciesAssignmentOutput() GuestPoliciesAssignmentOutput {
+	return i.ToGuestPoliciesAssignmentOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesAssignmentArgs) ToGuestPoliciesAssignmentOutputWithContext(ctx context.Context) GuestPoliciesAssignmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentOutput)
+}
+
+func (i GuestPoliciesAssignmentArgs) ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput {
+	return i.ToGuestPoliciesAssignmentPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesAssignmentArgs) ToGuestPoliciesAssignmentPtrOutputWithContext(ctx context.Context) GuestPoliciesAssignmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentOutput).ToGuestPoliciesAssignmentPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesAssignmentPtrInput is an input type that accepts GuestPoliciesAssignmentArgs, GuestPoliciesAssignmentPtr and GuestPoliciesAssignmentPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesAssignmentPtrInput` via:
+//
+//          GuestPoliciesAssignmentArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesAssignmentPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput
+	ToGuestPoliciesAssignmentPtrOutputWithContext(context.Context) GuestPoliciesAssignmentPtrOutput
+}
+
+type guestPoliciesAssignmentPtrType GuestPoliciesAssignmentArgs
+
+func GuestPoliciesAssignmentPtr(v *GuestPoliciesAssignmentArgs) GuestPoliciesAssignmentPtrInput {
+	return (*guestPoliciesAssignmentPtrType)(v)
+}
+
+func (*guestPoliciesAssignmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesAssignment)(nil)).Elem()
+}
+
+func (i *guestPoliciesAssignmentPtrType) ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput {
+	return i.ToGuestPoliciesAssignmentPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesAssignmentPtrType) ToGuestPoliciesAssignmentPtrOutputWithContext(ctx context.Context) GuestPoliciesAssignmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentPtrOutput)
+}
+
+type GuestPoliciesAssignmentOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesAssignmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesAssignment)(nil)).Elem()
+}
+
+func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentOutput() GuestPoliciesAssignmentOutput {
+	return o
+}
+
+func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentOutputWithContext(ctx context.Context) GuestPoliciesAssignmentOutput {
+	return o
+}
+
+func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput {
+	return o.ToGuestPoliciesAssignmentPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesAssignmentOutput) ToGuestPoliciesAssignmentPtrOutputWithContext(ctx context.Context) GuestPoliciesAssignmentPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesAssignment) *GuestPoliciesAssignment {
+		return &v
+	}).(GuestPoliciesAssignmentPtrOutput)
+}
+
+// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
+// for example "env=prod or env=staging".  Structure is documented below.
+func (o GuestPoliciesAssignmentOutput) GroupLabels() GuestPoliciesAssignmentGroupLabelArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesAssignment) []GuestPoliciesAssignmentGroupLabel { return v.GroupLabels }).(GuestPoliciesAssignmentGroupLabelArrayOutput)
+}
+
+// Targets VM instances whose name starts with one of these prefixes.
+// Like labels, this is another way to group VM instances when targeting configs,
+// for example prefix="prod-".
+// Only supported for project-level policies.
+func (o GuestPoliciesAssignmentOutput) InstanceNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesAssignment) []string { return v.InstanceNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Targets any of the instances specified. Instances are specified by their URI in the form
+// zones/[ZONE]/instances/[INSTANCE_NAME].
+// Instance targeting is uncommon and is supported to facilitate the management of changes
+// by the instance or to target specific VM instances for development and testing.
+// Only supported for project-level policies and must reference instances within this project.
+func (o GuestPoliciesAssignmentOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesAssignment) []string { return v.Instances }).(pulumi.StringArrayOutput)
+}
+
+// Targets VM instances matching at least one of the following OS types.
+// VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+func (o GuestPoliciesAssignmentOutput) OsTypes() GuestPoliciesAssignmentOsTypeArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesAssignment) []GuestPoliciesAssignmentOsType { return v.OsTypes }).(GuestPoliciesAssignmentOsTypeArrayOutput)
+}
+
+// Targets instances in any of these zones. Leave empty to target instances in any zone.
+// Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
+func (o GuestPoliciesAssignmentOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesAssignment) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type GuestPoliciesAssignmentPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesAssignmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesAssignment)(nil)).Elem()
+}
+
+func (o GuestPoliciesAssignmentPtrOutput) ToGuestPoliciesAssignmentPtrOutput() GuestPoliciesAssignmentPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesAssignmentPtrOutput) ToGuestPoliciesAssignmentPtrOutputWithContext(ctx context.Context) GuestPoliciesAssignmentPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesAssignmentPtrOutput) Elem() GuestPoliciesAssignmentOutput {
+	return o.ApplyT(func(v *GuestPoliciesAssignment) GuestPoliciesAssignment { return *v }).(GuestPoliciesAssignmentOutput)
+}
+
+// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
+// for example "env=prod or env=staging".  Structure is documented below.
+func (o GuestPoliciesAssignmentPtrOutput) GroupLabels() GuestPoliciesAssignmentGroupLabelArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesAssignment) []GuestPoliciesAssignmentGroupLabel {
+		if v == nil {
+			return nil
+		}
+		return v.GroupLabels
+	}).(GuestPoliciesAssignmentGroupLabelArrayOutput)
+}
+
+// Targets VM instances whose name starts with one of these prefixes.
+// Like labels, this is another way to group VM instances when targeting configs,
+// for example prefix="prod-".
+// Only supported for project-level policies.
+func (o GuestPoliciesAssignmentPtrOutput) InstanceNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesAssignment) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNamePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Targets any of the instances specified. Instances are specified by their URI in the form
+// zones/[ZONE]/instances/[INSTANCE_NAME].
+// Instance targeting is uncommon and is supported to facilitate the management of changes
+// by the instance or to target specific VM instances for development and testing.
+// Only supported for project-level policies and must reference instances within this project.
+func (o GuestPoliciesAssignmentPtrOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesAssignment) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Instances
+	}).(pulumi.StringArrayOutput)
+}
+
+// Targets VM instances matching at least one of the following OS types.
+// VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+func (o GuestPoliciesAssignmentPtrOutput) OsTypes() GuestPoliciesAssignmentOsTypeArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesAssignment) []GuestPoliciesAssignmentOsType {
+		if v == nil {
+			return nil
+		}
+		return v.OsTypes
+	}).(GuestPoliciesAssignmentOsTypeArrayOutput)
+}
+
+// Targets instances in any of these zones. Leave empty to target instances in any zone.
+// Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
+func (o GuestPoliciesAssignmentPtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesAssignment) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
+type GuestPoliciesAssignmentGroupLabel struct {
+	// Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// GuestPoliciesAssignmentGroupLabelInput is an input type that accepts GuestPoliciesAssignmentGroupLabelArgs and GuestPoliciesAssignmentGroupLabelOutput values.
+// You can construct a concrete instance of `GuestPoliciesAssignmentGroupLabelInput` via:
+//
+//          GuestPoliciesAssignmentGroupLabelArgs{...}
+type GuestPoliciesAssignmentGroupLabelInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesAssignmentGroupLabelOutput() GuestPoliciesAssignmentGroupLabelOutput
+	ToGuestPoliciesAssignmentGroupLabelOutputWithContext(context.Context) GuestPoliciesAssignmentGroupLabelOutput
+}
+
+type GuestPoliciesAssignmentGroupLabelArgs struct {
+	// Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (GuestPoliciesAssignmentGroupLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesAssignmentGroupLabel)(nil)).Elem()
+}
+
+func (i GuestPoliciesAssignmentGroupLabelArgs) ToGuestPoliciesAssignmentGroupLabelOutput() GuestPoliciesAssignmentGroupLabelOutput {
+	return i.ToGuestPoliciesAssignmentGroupLabelOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesAssignmentGroupLabelArgs) ToGuestPoliciesAssignmentGroupLabelOutputWithContext(ctx context.Context) GuestPoliciesAssignmentGroupLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentGroupLabelOutput)
+}
+
+// GuestPoliciesAssignmentGroupLabelArrayInput is an input type that accepts GuestPoliciesAssignmentGroupLabelArray and GuestPoliciesAssignmentGroupLabelArrayOutput values.
+// You can construct a concrete instance of `GuestPoliciesAssignmentGroupLabelArrayInput` via:
+//
+//          GuestPoliciesAssignmentGroupLabelArray{ GuestPoliciesAssignmentGroupLabelArgs{...} }
+type GuestPoliciesAssignmentGroupLabelArrayInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesAssignmentGroupLabelArrayOutput() GuestPoliciesAssignmentGroupLabelArrayOutput
+	ToGuestPoliciesAssignmentGroupLabelArrayOutputWithContext(context.Context) GuestPoliciesAssignmentGroupLabelArrayOutput
+}
+
+type GuestPoliciesAssignmentGroupLabelArray []GuestPoliciesAssignmentGroupLabelInput
+
+func (GuestPoliciesAssignmentGroupLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesAssignmentGroupLabel)(nil)).Elem()
+}
+
+func (i GuestPoliciesAssignmentGroupLabelArray) ToGuestPoliciesAssignmentGroupLabelArrayOutput() GuestPoliciesAssignmentGroupLabelArrayOutput {
+	return i.ToGuestPoliciesAssignmentGroupLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesAssignmentGroupLabelArray) ToGuestPoliciesAssignmentGroupLabelArrayOutputWithContext(ctx context.Context) GuestPoliciesAssignmentGroupLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentGroupLabelArrayOutput)
+}
+
+type GuestPoliciesAssignmentGroupLabelOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesAssignmentGroupLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesAssignmentGroupLabel)(nil)).Elem()
+}
+
+func (o GuestPoliciesAssignmentGroupLabelOutput) ToGuestPoliciesAssignmentGroupLabelOutput() GuestPoliciesAssignmentGroupLabelOutput {
+	return o
+}
+
+func (o GuestPoliciesAssignmentGroupLabelOutput) ToGuestPoliciesAssignmentGroupLabelOutputWithContext(ctx context.Context) GuestPoliciesAssignmentGroupLabelOutput {
+	return o
+}
+
+// Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
+func (o GuestPoliciesAssignmentGroupLabelOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GuestPoliciesAssignmentGroupLabel) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type GuestPoliciesAssignmentGroupLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesAssignmentGroupLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesAssignmentGroupLabel)(nil)).Elem()
+}
+
+func (o GuestPoliciesAssignmentGroupLabelArrayOutput) ToGuestPoliciesAssignmentGroupLabelArrayOutput() GuestPoliciesAssignmentGroupLabelArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesAssignmentGroupLabelArrayOutput) ToGuestPoliciesAssignmentGroupLabelArrayOutputWithContext(ctx context.Context) GuestPoliciesAssignmentGroupLabelArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesAssignmentGroupLabelArrayOutput) Index(i pulumi.IntInput) GuestPoliciesAssignmentGroupLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPoliciesAssignmentGroupLabel {
+		return vs[0].([]GuestPoliciesAssignmentGroupLabel)[vs[1].(int)]
+	}).(GuestPoliciesAssignmentGroupLabelOutput)
+}
+
+type GuestPoliciesAssignmentOsType struct {
+	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
+	OsArchitecture *string `pulumi:"osArchitecture"`
+	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
+	OsShortName *string `pulumi:"osShortName"`
+	// Targets VM instances with OS Inventory enabled and having the following following OS version.
+	OsVersion *string `pulumi:"osVersion"`
+}
+
+// GuestPoliciesAssignmentOsTypeInput is an input type that accepts GuestPoliciesAssignmentOsTypeArgs and GuestPoliciesAssignmentOsTypeOutput values.
+// You can construct a concrete instance of `GuestPoliciesAssignmentOsTypeInput` via:
+//
+//          GuestPoliciesAssignmentOsTypeArgs{...}
+type GuestPoliciesAssignmentOsTypeInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesAssignmentOsTypeOutput() GuestPoliciesAssignmentOsTypeOutput
+	ToGuestPoliciesAssignmentOsTypeOutputWithContext(context.Context) GuestPoliciesAssignmentOsTypeOutput
+}
+
+type GuestPoliciesAssignmentOsTypeArgs struct {
+	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
+	OsArchitecture pulumi.StringPtrInput `pulumi:"osArchitecture"`
+	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
+	OsShortName pulumi.StringPtrInput `pulumi:"osShortName"`
+	// Targets VM instances with OS Inventory enabled and having the following following OS version.
+	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+}
+
+func (GuestPoliciesAssignmentOsTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesAssignmentOsType)(nil)).Elem()
+}
+
+func (i GuestPoliciesAssignmentOsTypeArgs) ToGuestPoliciesAssignmentOsTypeOutput() GuestPoliciesAssignmentOsTypeOutput {
+	return i.ToGuestPoliciesAssignmentOsTypeOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesAssignmentOsTypeArgs) ToGuestPoliciesAssignmentOsTypeOutputWithContext(ctx context.Context) GuestPoliciesAssignmentOsTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentOsTypeOutput)
+}
+
+// GuestPoliciesAssignmentOsTypeArrayInput is an input type that accepts GuestPoliciesAssignmentOsTypeArray and GuestPoliciesAssignmentOsTypeArrayOutput values.
+// You can construct a concrete instance of `GuestPoliciesAssignmentOsTypeArrayInput` via:
+//
+//          GuestPoliciesAssignmentOsTypeArray{ GuestPoliciesAssignmentOsTypeArgs{...} }
+type GuestPoliciesAssignmentOsTypeArrayInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesAssignmentOsTypeArrayOutput() GuestPoliciesAssignmentOsTypeArrayOutput
+	ToGuestPoliciesAssignmentOsTypeArrayOutputWithContext(context.Context) GuestPoliciesAssignmentOsTypeArrayOutput
+}
+
+type GuestPoliciesAssignmentOsTypeArray []GuestPoliciesAssignmentOsTypeInput
+
+func (GuestPoliciesAssignmentOsTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesAssignmentOsType)(nil)).Elem()
+}
+
+func (i GuestPoliciesAssignmentOsTypeArray) ToGuestPoliciesAssignmentOsTypeArrayOutput() GuestPoliciesAssignmentOsTypeArrayOutput {
+	return i.ToGuestPoliciesAssignmentOsTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesAssignmentOsTypeArray) ToGuestPoliciesAssignmentOsTypeArrayOutputWithContext(ctx context.Context) GuestPoliciesAssignmentOsTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesAssignmentOsTypeArrayOutput)
+}
+
+type GuestPoliciesAssignmentOsTypeOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesAssignmentOsTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesAssignmentOsType)(nil)).Elem()
+}
+
+func (o GuestPoliciesAssignmentOsTypeOutput) ToGuestPoliciesAssignmentOsTypeOutput() GuestPoliciesAssignmentOsTypeOutput {
+	return o
+}
+
+func (o GuestPoliciesAssignmentOsTypeOutput) ToGuestPoliciesAssignmentOsTypeOutputWithContext(ctx context.Context) GuestPoliciesAssignmentOsTypeOutput {
+	return o
+}
+
+// Targets VM instances with OS Inventory enabled and having the following OS architecture.
+func (o GuestPoliciesAssignmentOsTypeOutput) OsArchitecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesAssignmentOsType) *string { return v.OsArchitecture }).(pulumi.StringPtrOutput)
+}
+
+// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
+func (o GuestPoliciesAssignmentOsTypeOutput) OsShortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesAssignmentOsType) *string { return v.OsShortName }).(pulumi.StringPtrOutput)
+}
+
+// Targets VM instances with OS Inventory enabled and having the following following OS version.
+func (o GuestPoliciesAssignmentOsTypeOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesAssignmentOsType) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesAssignmentOsTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesAssignmentOsTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesAssignmentOsType)(nil)).Elem()
+}
+
+func (o GuestPoliciesAssignmentOsTypeArrayOutput) ToGuestPoliciesAssignmentOsTypeArrayOutput() GuestPoliciesAssignmentOsTypeArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesAssignmentOsTypeArrayOutput) ToGuestPoliciesAssignmentOsTypeArrayOutputWithContext(ctx context.Context) GuestPoliciesAssignmentOsTypeArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesAssignmentOsTypeArrayOutput) Index(i pulumi.IntInput) GuestPoliciesAssignmentOsTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPoliciesAssignmentOsType {
+		return vs[0].([]GuestPoliciesAssignmentOsType)[vs[1].(int)]
+	}).(GuestPoliciesAssignmentOsTypeOutput)
+}
+
+type GuestPoliciesPackage struct {
+	// Default is INSTALLED. The desired state the agent should maintain for this recipe.
+	// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
+	// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
+	// if a higher version of the recipe is assigned to this instance.
+	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+	DesiredState *string `pulumi:"desiredState"`
+	// Type of package manager that can be used to install this package. If a system does not have the package manager,
+	// the package is not installed or removed no error message is returned. By default, or if you specify ANY,
+	// the agent attempts to install and remove this package using the default package manager.
+	// This is useful when creating a policy that applies to different types of systems.
+	// The default behavior is ANY.
+	Manager *string `pulumi:"manager"`
+	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+	// This means that requests to create multiple recipes with the same name and version are rejected since they
+	// could potentially have conflicting assignments.
+	Name string `pulumi:"name"`
+}
+
+// GuestPoliciesPackageInput is an input type that accepts GuestPoliciesPackageArgs and GuestPoliciesPackageOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageInput` via:
+//
+//          GuestPoliciesPackageArgs{...}
+type GuestPoliciesPackageInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageOutput() GuestPoliciesPackageOutput
+	ToGuestPoliciesPackageOutputWithContext(context.Context) GuestPoliciesPackageOutput
+}
+
+type GuestPoliciesPackageArgs struct {
+	// Default is INSTALLED. The desired state the agent should maintain for this recipe.
+	// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
+	// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
+	// if a higher version of the recipe is assigned to this instance.
+	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+	DesiredState pulumi.StringPtrInput `pulumi:"desiredState"`
+	// Type of package manager that can be used to install this package. If a system does not have the package manager,
+	// the package is not installed or removed no error message is returned. By default, or if you specify ANY,
+	// the agent attempts to install and remove this package using the default package manager.
+	// This is useful when creating a policy that applies to different types of systems.
+	// The default behavior is ANY.
+	Manager pulumi.StringPtrInput `pulumi:"manager"`
+	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+	// This means that requests to create multiple recipes with the same name and version are rejected since they
+	// could potentially have conflicting assignments.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GuestPoliciesPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackage)(nil)).Elem()
+}
+
+func (i GuestPoliciesPackageArgs) ToGuestPoliciesPackageOutput() GuestPoliciesPackageOutput {
+	return i.ToGuestPoliciesPackageOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageArgs) ToGuestPoliciesPackageOutputWithContext(ctx context.Context) GuestPoliciesPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageOutput)
+}
+
+// GuestPoliciesPackageArrayInput is an input type that accepts GuestPoliciesPackageArray and GuestPoliciesPackageArrayOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageArrayInput` via:
+//
+//          GuestPoliciesPackageArray{ GuestPoliciesPackageArgs{...} }
+type GuestPoliciesPackageArrayInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageArrayOutput() GuestPoliciesPackageArrayOutput
+	ToGuestPoliciesPackageArrayOutputWithContext(context.Context) GuestPoliciesPackageArrayOutput
+}
+
+type GuestPoliciesPackageArray []GuestPoliciesPackageInput
+
+func (GuestPoliciesPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesPackage)(nil)).Elem()
+}
+
+func (i GuestPoliciesPackageArray) ToGuestPoliciesPackageArrayOutput() GuestPoliciesPackageArrayOutput {
+	return i.ToGuestPoliciesPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageArray) ToGuestPoliciesPackageArrayOutputWithContext(ctx context.Context) GuestPoliciesPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageArrayOutput)
+}
+
+type GuestPoliciesPackageOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackage)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageOutput) ToGuestPoliciesPackageOutput() GuestPoliciesPackageOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageOutput) ToGuestPoliciesPackageOutputWithContext(ctx context.Context) GuestPoliciesPackageOutput {
+	return o
+}
+
+// Default is INSTALLED. The desired state the agent should maintain for this recipe.
+// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
+// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
+// if a higher version of the recipe is assigned to this instance.
+// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+func (o GuestPoliciesPackageOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackage) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
+}
+
+// Type of package manager that can be used to install this package. If a system does not have the package manager,
+// the package is not installed or removed no error message is returned. By default, or if you specify ANY,
+// the agent attempts to install and remove this package using the default package manager.
+// This is useful when creating a policy that applies to different types of systems.
+// The default behavior is ANY.
+func (o GuestPoliciesPackageOutput) Manager() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackage) *string { return v.Manager }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+// This means that requests to create multiple recipes with the same name and version are rejected since they
+// could potentially have conflicting assignments.
+func (o GuestPoliciesPackageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesPackage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesPackage)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageArrayOutput) ToGuestPoliciesPackageArrayOutput() GuestPoliciesPackageArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageArrayOutput) ToGuestPoliciesPackageArrayOutputWithContext(ctx context.Context) GuestPoliciesPackageArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageArrayOutput) Index(i pulumi.IntInput) GuestPoliciesPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPoliciesPackage {
+		return vs[0].([]GuestPoliciesPackage)[vs[1].(int)]
+	}).(GuestPoliciesPackageOutput)
+}
+
+type GuestPoliciesPackageRepository struct {
+	// An Apt Repository.  Structure is documented below.
+	Apt *GuestPoliciesPackageRepositoryApt `pulumi:"apt"`
+	// A Goo Repository.  Structure is documented below.
+	Goo *GuestPoliciesPackageRepositoryGoo `pulumi:"goo"`
+	// A Yum Repository.  Structure is documented below.
+	Yum *GuestPoliciesPackageRepositoryYum `pulumi:"yum"`
+	// A Zypper Repository.  Structure is documented below.
+	Zypper *GuestPoliciesPackageRepositoryZypper `pulumi:"zypper"`
+}
+
+// GuestPoliciesPackageRepositoryInput is an input type that accepts GuestPoliciesPackageRepositoryArgs and GuestPoliciesPackageRepositoryOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageRepositoryInput` via:
+//
+//          GuestPoliciesPackageRepositoryArgs{...}
+type GuestPoliciesPackageRepositoryInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageRepositoryOutput() GuestPoliciesPackageRepositoryOutput
+	ToGuestPoliciesPackageRepositoryOutputWithContext(context.Context) GuestPoliciesPackageRepositoryOutput
+}
+
+type GuestPoliciesPackageRepositoryArgs struct {
+	// An Apt Repository.  Structure is documented below.
+	Apt GuestPoliciesPackageRepositoryAptPtrInput `pulumi:"apt"`
+	// A Goo Repository.  Structure is documented below.
+	Goo GuestPoliciesPackageRepositoryGooPtrInput `pulumi:"goo"`
+	// A Yum Repository.  Structure is documented below.
+	Yum GuestPoliciesPackageRepositoryYumPtrInput `pulumi:"yum"`
+	// A Zypper Repository.  Structure is documented below.
+	Zypper GuestPoliciesPackageRepositoryZypperPtrInput `pulumi:"zypper"`
+}
+
+func (GuestPoliciesPackageRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackageRepository)(nil)).Elem()
+}
+
+func (i GuestPoliciesPackageRepositoryArgs) ToGuestPoliciesPackageRepositoryOutput() GuestPoliciesPackageRepositoryOutput {
+	return i.ToGuestPoliciesPackageRepositoryOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageRepositoryArgs) ToGuestPoliciesPackageRepositoryOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryOutput)
+}
+
+// GuestPoliciesPackageRepositoryArrayInput is an input type that accepts GuestPoliciesPackageRepositoryArray and GuestPoliciesPackageRepositoryArrayOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageRepositoryArrayInput` via:
+//
+//          GuestPoliciesPackageRepositoryArray{ GuestPoliciesPackageRepositoryArgs{...} }
+type GuestPoliciesPackageRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageRepositoryArrayOutput() GuestPoliciesPackageRepositoryArrayOutput
+	ToGuestPoliciesPackageRepositoryArrayOutputWithContext(context.Context) GuestPoliciesPackageRepositoryArrayOutput
+}
+
+type GuestPoliciesPackageRepositoryArray []GuestPoliciesPackageRepositoryInput
+
+func (GuestPoliciesPackageRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesPackageRepository)(nil)).Elem()
+}
+
+func (i GuestPoliciesPackageRepositoryArray) ToGuestPoliciesPackageRepositoryArrayOutput() GuestPoliciesPackageRepositoryArrayOutput {
+	return i.ToGuestPoliciesPackageRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageRepositoryArray) ToGuestPoliciesPackageRepositoryArrayOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryArrayOutput)
+}
+
+type GuestPoliciesPackageRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackageRepository)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageRepositoryOutput) ToGuestPoliciesPackageRepositoryOutput() GuestPoliciesPackageRepositoryOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryOutput) ToGuestPoliciesPackageRepositoryOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryOutput {
+	return o
+}
+
+// An Apt Repository.  Structure is documented below.
+func (o GuestPoliciesPackageRepositoryOutput) Apt() GuestPoliciesPackageRepositoryAptPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepository) *GuestPoliciesPackageRepositoryApt { return v.Apt }).(GuestPoliciesPackageRepositoryAptPtrOutput)
+}
+
+// A Goo Repository.  Structure is documented below.
+func (o GuestPoliciesPackageRepositoryOutput) Goo() GuestPoliciesPackageRepositoryGooPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepository) *GuestPoliciesPackageRepositoryGoo { return v.Goo }).(GuestPoliciesPackageRepositoryGooPtrOutput)
+}
+
+// A Yum Repository.  Structure is documented below.
+func (o GuestPoliciesPackageRepositoryOutput) Yum() GuestPoliciesPackageRepositoryYumPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepository) *GuestPoliciesPackageRepositoryYum { return v.Yum }).(GuestPoliciesPackageRepositoryYumPtrOutput)
+}
+
+// A Zypper Repository.  Structure is documented below.
+func (o GuestPoliciesPackageRepositoryOutput) Zypper() GuestPoliciesPackageRepositoryZypperPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepository) *GuestPoliciesPackageRepositoryZypper { return v.Zypper }).(GuestPoliciesPackageRepositoryZypperPtrOutput)
+}
+
+type GuestPoliciesPackageRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesPackageRepository)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageRepositoryArrayOutput) ToGuestPoliciesPackageRepositoryArrayOutput() GuestPoliciesPackageRepositoryArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryArrayOutput) ToGuestPoliciesPackageRepositoryArrayOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryArrayOutput) Index(i pulumi.IntInput) GuestPoliciesPackageRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPoliciesPackageRepository {
+		return vs[0].([]GuestPoliciesPackageRepository)[vs[1].(int)]
+	}).(GuestPoliciesPackageRepositoryOutput)
+}
+
+type GuestPoliciesPackageRepositoryApt struct {
+	// Type of archive files in this repository. The default behavior is DEB.
+	ArchiveType *string `pulumi:"archiveType"`
+	// List of components for this repository. Must contain at least one item.
+	Components []string `pulumi:"components"`
+	// Distribution of this repository.
+	Distribution string `pulumi:"distribution"`
+	// URI of the key file for this repository. The agent maintains a keyring at
+	// /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
+	GpgKey *string `pulumi:"gpgKey"`
+	// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+	Uri string `pulumi:"uri"`
+}
+
+// GuestPoliciesPackageRepositoryAptInput is an input type that accepts GuestPoliciesPackageRepositoryAptArgs and GuestPoliciesPackageRepositoryAptOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageRepositoryAptInput` via:
+//
+//          GuestPoliciesPackageRepositoryAptArgs{...}
+type GuestPoliciesPackageRepositoryAptInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageRepositoryAptOutput() GuestPoliciesPackageRepositoryAptOutput
+	ToGuestPoliciesPackageRepositoryAptOutputWithContext(context.Context) GuestPoliciesPackageRepositoryAptOutput
+}
+
+type GuestPoliciesPackageRepositoryAptArgs struct {
+	// Type of archive files in this repository. The default behavior is DEB.
+	ArchiveType pulumi.StringPtrInput `pulumi:"archiveType"`
+	// List of components for this repository. Must contain at least one item.
+	Components pulumi.StringArrayInput `pulumi:"components"`
+	// Distribution of this repository.
+	Distribution pulumi.StringInput `pulumi:"distribution"`
+	// URI of the key file for this repository. The agent maintains a keyring at
+	// /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
+	GpgKey pulumi.StringPtrInput `pulumi:"gpgKey"`
+	// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GuestPoliciesPackageRepositoryAptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackageRepositoryApt)(nil)).Elem()
+}
+
+func (i GuestPoliciesPackageRepositoryAptArgs) ToGuestPoliciesPackageRepositoryAptOutput() GuestPoliciesPackageRepositoryAptOutput {
+	return i.ToGuestPoliciesPackageRepositoryAptOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageRepositoryAptArgs) ToGuestPoliciesPackageRepositoryAptOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryAptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryAptOutput)
+}
+
+func (i GuestPoliciesPackageRepositoryAptArgs) ToGuestPoliciesPackageRepositoryAptPtrOutput() GuestPoliciesPackageRepositoryAptPtrOutput {
+	return i.ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageRepositoryAptArgs) ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryAptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryAptOutput).ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesPackageRepositoryAptPtrInput is an input type that accepts GuestPoliciesPackageRepositoryAptArgs, GuestPoliciesPackageRepositoryAptPtr and GuestPoliciesPackageRepositoryAptPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageRepositoryAptPtrInput` via:
+//
+//          GuestPoliciesPackageRepositoryAptArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesPackageRepositoryAptPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageRepositoryAptPtrOutput() GuestPoliciesPackageRepositoryAptPtrOutput
+	ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(context.Context) GuestPoliciesPackageRepositoryAptPtrOutput
+}
+
+type guestPoliciesPackageRepositoryAptPtrType GuestPoliciesPackageRepositoryAptArgs
+
+func GuestPoliciesPackageRepositoryAptPtr(v *GuestPoliciesPackageRepositoryAptArgs) GuestPoliciesPackageRepositoryAptPtrInput {
+	return (*guestPoliciesPackageRepositoryAptPtrType)(v)
+}
+
+func (*guestPoliciesPackageRepositoryAptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesPackageRepositoryApt)(nil)).Elem()
+}
+
+func (i *guestPoliciesPackageRepositoryAptPtrType) ToGuestPoliciesPackageRepositoryAptPtrOutput() GuestPoliciesPackageRepositoryAptPtrOutput {
+	return i.ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesPackageRepositoryAptPtrType) ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryAptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryAptPtrOutput)
+}
+
+type GuestPoliciesPackageRepositoryAptOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageRepositoryAptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackageRepositoryApt)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageRepositoryAptOutput) ToGuestPoliciesPackageRepositoryAptOutput() GuestPoliciesPackageRepositoryAptOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryAptOutput) ToGuestPoliciesPackageRepositoryAptOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryAptOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryAptOutput) ToGuestPoliciesPackageRepositoryAptPtrOutput() GuestPoliciesPackageRepositoryAptPtrOutput {
+	return o.ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesPackageRepositoryAptOutput) ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryAptPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) *GuestPoliciesPackageRepositoryApt {
+		return &v
+	}).(GuestPoliciesPackageRepositoryAptPtrOutput)
+}
+
+// Type of archive files in this repository. The default behavior is DEB.
+func (o GuestPoliciesPackageRepositoryAptOutput) ArchiveType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) *string { return v.ArchiveType }).(pulumi.StringPtrOutput)
+}
+
+// List of components for this repository. Must contain at least one item.
+func (o GuestPoliciesPackageRepositoryAptOutput) Components() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) []string { return v.Components }).(pulumi.StringArrayOutput)
+}
+
+// Distribution of this repository.
+func (o GuestPoliciesPackageRepositoryAptOutput) Distribution() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) string { return v.Distribution }).(pulumi.StringOutput)
+}
+
+// URI of the key file for this repository. The agent maintains a keyring at
+// /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
+func (o GuestPoliciesPackageRepositoryAptOutput) GpgKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) *string { return v.GpgKey }).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+func (o GuestPoliciesPackageRepositoryAptOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesPackageRepositoryAptPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageRepositoryAptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesPackageRepositoryApt)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageRepositoryAptPtrOutput) ToGuestPoliciesPackageRepositoryAptPtrOutput() GuestPoliciesPackageRepositoryAptPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryAptPtrOutput) ToGuestPoliciesPackageRepositoryAptPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryAptPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryAptPtrOutput) Elem() GuestPoliciesPackageRepositoryAptOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) GuestPoliciesPackageRepositoryApt { return *v }).(GuestPoliciesPackageRepositoryAptOutput)
+}
+
+// Type of archive files in this repository. The default behavior is DEB.
+func (o GuestPoliciesPackageRepositoryAptPtrOutput) ArchiveType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveType
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of components for this repository. Must contain at least one item.
+func (o GuestPoliciesPackageRepositoryAptPtrOutput) Components() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Components
+	}).(pulumi.StringArrayOutput)
+}
+
+// Distribution of this repository.
+func (o GuestPoliciesPackageRepositoryAptPtrOutput) Distribution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Distribution
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI of the key file for this repository. The agent maintains a keyring at
+// /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
+func (o GuestPoliciesPackageRepositoryAptPtrOutput) GpgKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GpgKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+func (o GuestPoliciesPackageRepositoryAptPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesPackageRepositoryGoo struct {
+	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+	// This means that requests to create multiple recipes with the same name and version are rejected since they
+	// could potentially have conflicting assignments.
+	Name string `pulumi:"name"`
+	// The url of the repository.
+	Url string `pulumi:"url"`
+}
+
+// GuestPoliciesPackageRepositoryGooInput is an input type that accepts GuestPoliciesPackageRepositoryGooArgs and GuestPoliciesPackageRepositoryGooOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageRepositoryGooInput` via:
+//
+//          GuestPoliciesPackageRepositoryGooArgs{...}
+type GuestPoliciesPackageRepositoryGooInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageRepositoryGooOutput() GuestPoliciesPackageRepositoryGooOutput
+	ToGuestPoliciesPackageRepositoryGooOutputWithContext(context.Context) GuestPoliciesPackageRepositoryGooOutput
+}
+
+type GuestPoliciesPackageRepositoryGooArgs struct {
+	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+	// This means that requests to create multiple recipes with the same name and version are rejected since they
+	// could potentially have conflicting assignments.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The url of the repository.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GuestPoliciesPackageRepositoryGooArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackageRepositoryGoo)(nil)).Elem()
+}
+
+func (i GuestPoliciesPackageRepositoryGooArgs) ToGuestPoliciesPackageRepositoryGooOutput() GuestPoliciesPackageRepositoryGooOutput {
+	return i.ToGuestPoliciesPackageRepositoryGooOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageRepositoryGooArgs) ToGuestPoliciesPackageRepositoryGooOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryGooOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryGooOutput)
+}
+
+func (i GuestPoliciesPackageRepositoryGooArgs) ToGuestPoliciesPackageRepositoryGooPtrOutput() GuestPoliciesPackageRepositoryGooPtrOutput {
+	return i.ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageRepositoryGooArgs) ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryGooPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryGooOutput).ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesPackageRepositoryGooPtrInput is an input type that accepts GuestPoliciesPackageRepositoryGooArgs, GuestPoliciesPackageRepositoryGooPtr and GuestPoliciesPackageRepositoryGooPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageRepositoryGooPtrInput` via:
+//
+//          GuestPoliciesPackageRepositoryGooArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesPackageRepositoryGooPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageRepositoryGooPtrOutput() GuestPoliciesPackageRepositoryGooPtrOutput
+	ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(context.Context) GuestPoliciesPackageRepositoryGooPtrOutput
+}
+
+type guestPoliciesPackageRepositoryGooPtrType GuestPoliciesPackageRepositoryGooArgs
+
+func GuestPoliciesPackageRepositoryGooPtr(v *GuestPoliciesPackageRepositoryGooArgs) GuestPoliciesPackageRepositoryGooPtrInput {
+	return (*guestPoliciesPackageRepositoryGooPtrType)(v)
+}
+
+func (*guestPoliciesPackageRepositoryGooPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesPackageRepositoryGoo)(nil)).Elem()
+}
+
+func (i *guestPoliciesPackageRepositoryGooPtrType) ToGuestPoliciesPackageRepositoryGooPtrOutput() GuestPoliciesPackageRepositoryGooPtrOutput {
+	return i.ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesPackageRepositoryGooPtrType) ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryGooPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryGooPtrOutput)
+}
+
+type GuestPoliciesPackageRepositoryGooOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageRepositoryGooOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackageRepositoryGoo)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageRepositoryGooOutput) ToGuestPoliciesPackageRepositoryGooOutput() GuestPoliciesPackageRepositoryGooOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryGooOutput) ToGuestPoliciesPackageRepositoryGooOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryGooOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryGooOutput) ToGuestPoliciesPackageRepositoryGooPtrOutput() GuestPoliciesPackageRepositoryGooPtrOutput {
+	return o.ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesPackageRepositoryGooOutput) ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryGooPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryGoo) *GuestPoliciesPackageRepositoryGoo {
+		return &v
+	}).(GuestPoliciesPackageRepositoryGooPtrOutput)
+}
+
+// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+// This means that requests to create multiple recipes with the same name and version are rejected since they
+// could potentially have conflicting assignments.
+func (o GuestPoliciesPackageRepositoryGooOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryGoo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The url of the repository.
+func (o GuestPoliciesPackageRepositoryGooOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryGoo) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesPackageRepositoryGooPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageRepositoryGooPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesPackageRepositoryGoo)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageRepositoryGooPtrOutput) ToGuestPoliciesPackageRepositoryGooPtrOutput() GuestPoliciesPackageRepositoryGooPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryGooPtrOutput) ToGuestPoliciesPackageRepositoryGooPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryGooPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryGooPtrOutput) Elem() GuestPoliciesPackageRepositoryGooOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryGoo) GuestPoliciesPackageRepositoryGoo { return *v }).(GuestPoliciesPackageRepositoryGooOutput)
+}
+
+// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+// This means that requests to create multiple recipes with the same name and version are rejected since they
+// could potentially have conflicting assignments.
+func (o GuestPoliciesPackageRepositoryGooPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryGoo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The url of the repository.
+func (o GuestPoliciesPackageRepositoryGooPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryGoo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesPackageRepositoryYum struct {
+	// The location of the repository directory.
+	BaseUrl string `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName *string `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys []string `pulumi:"gpgKeys"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference.
+	// Artifacts in a recipe cannot have the same id.
+	Id string `pulumi:"id"`
+}
+
+// GuestPoliciesPackageRepositoryYumInput is an input type that accepts GuestPoliciesPackageRepositoryYumArgs and GuestPoliciesPackageRepositoryYumOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageRepositoryYumInput` via:
+//
+//          GuestPoliciesPackageRepositoryYumArgs{...}
+type GuestPoliciesPackageRepositoryYumInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageRepositoryYumOutput() GuestPoliciesPackageRepositoryYumOutput
+	ToGuestPoliciesPackageRepositoryYumOutputWithContext(context.Context) GuestPoliciesPackageRepositoryYumOutput
+}
+
+type GuestPoliciesPackageRepositoryYumArgs struct {
+	// The location of the repository directory.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference.
+	// Artifacts in a recipe cannot have the same id.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GuestPoliciesPackageRepositoryYumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackageRepositoryYum)(nil)).Elem()
+}
+
+func (i GuestPoliciesPackageRepositoryYumArgs) ToGuestPoliciesPackageRepositoryYumOutput() GuestPoliciesPackageRepositoryYumOutput {
+	return i.ToGuestPoliciesPackageRepositoryYumOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageRepositoryYumArgs) ToGuestPoliciesPackageRepositoryYumOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryYumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryYumOutput)
+}
+
+func (i GuestPoliciesPackageRepositoryYumArgs) ToGuestPoliciesPackageRepositoryYumPtrOutput() GuestPoliciesPackageRepositoryYumPtrOutput {
+	return i.ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageRepositoryYumArgs) ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryYumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryYumOutput).ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesPackageRepositoryYumPtrInput is an input type that accepts GuestPoliciesPackageRepositoryYumArgs, GuestPoliciesPackageRepositoryYumPtr and GuestPoliciesPackageRepositoryYumPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageRepositoryYumPtrInput` via:
+//
+//          GuestPoliciesPackageRepositoryYumArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesPackageRepositoryYumPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageRepositoryYumPtrOutput() GuestPoliciesPackageRepositoryYumPtrOutput
+	ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(context.Context) GuestPoliciesPackageRepositoryYumPtrOutput
+}
+
+type guestPoliciesPackageRepositoryYumPtrType GuestPoliciesPackageRepositoryYumArgs
+
+func GuestPoliciesPackageRepositoryYumPtr(v *GuestPoliciesPackageRepositoryYumArgs) GuestPoliciesPackageRepositoryYumPtrInput {
+	return (*guestPoliciesPackageRepositoryYumPtrType)(v)
+}
+
+func (*guestPoliciesPackageRepositoryYumPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesPackageRepositoryYum)(nil)).Elem()
+}
+
+func (i *guestPoliciesPackageRepositoryYumPtrType) ToGuestPoliciesPackageRepositoryYumPtrOutput() GuestPoliciesPackageRepositoryYumPtrOutput {
+	return i.ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesPackageRepositoryYumPtrType) ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryYumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryYumPtrOutput)
+}
+
+type GuestPoliciesPackageRepositoryYumOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageRepositoryYumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackageRepositoryYum)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageRepositoryYumOutput) ToGuestPoliciesPackageRepositoryYumOutput() GuestPoliciesPackageRepositoryYumOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryYumOutput) ToGuestPoliciesPackageRepositoryYumOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryYumOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryYumOutput) ToGuestPoliciesPackageRepositoryYumPtrOutput() GuestPoliciesPackageRepositoryYumPtrOutput {
+	return o.ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesPackageRepositoryYumOutput) ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryYumPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryYum) *GuestPoliciesPackageRepositoryYum {
+		return &v
+	}).(GuestPoliciesPackageRepositoryYumPtrOutput)
+}
+
+// The location of the repository directory.
+func (o GuestPoliciesPackageRepositoryYumOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryYum) string { return v.BaseUrl }).(pulumi.StringOutput)
+}
+
+// The display name of the repository.
+func (o GuestPoliciesPackageRepositoryYumOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryYum) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o GuestPoliciesPackageRepositoryYumOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryYum) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
+}
+
+// Id of the artifact, which the installation and update steps of this recipe can reference.
+// Artifacts in a recipe cannot have the same id.
+func (o GuestPoliciesPackageRepositoryYumOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryYum) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesPackageRepositoryYumPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageRepositoryYumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesPackageRepositoryYum)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageRepositoryYumPtrOutput) ToGuestPoliciesPackageRepositoryYumPtrOutput() GuestPoliciesPackageRepositoryYumPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryYumPtrOutput) ToGuestPoliciesPackageRepositoryYumPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryYumPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryYumPtrOutput) Elem() GuestPoliciesPackageRepositoryYumOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryYum) GuestPoliciesPackageRepositoryYum { return *v }).(GuestPoliciesPackageRepositoryYumOutput)
+}
+
+// The location of the repository directory.
+func (o GuestPoliciesPackageRepositoryYumPtrOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryYum) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the repository.
+func (o GuestPoliciesPackageRepositoryYumPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryYum) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o GuestPoliciesPackageRepositoryYumPtrOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryYum) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GpgKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// Id of the artifact, which the installation and update steps of this recipe can reference.
+// Artifacts in a recipe cannot have the same id.
+func (o GuestPoliciesPackageRepositoryYumPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryYum) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesPackageRepositoryZypper struct {
+	// The location of the repository directory.
+	BaseUrl string `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName *string `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys []string `pulumi:"gpgKeys"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference.
+	// Artifacts in a recipe cannot have the same id.
+	Id string `pulumi:"id"`
+}
+
+// GuestPoliciesPackageRepositoryZypperInput is an input type that accepts GuestPoliciesPackageRepositoryZypperArgs and GuestPoliciesPackageRepositoryZypperOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageRepositoryZypperInput` via:
+//
+//          GuestPoliciesPackageRepositoryZypperArgs{...}
+type GuestPoliciesPackageRepositoryZypperInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageRepositoryZypperOutput() GuestPoliciesPackageRepositoryZypperOutput
+	ToGuestPoliciesPackageRepositoryZypperOutputWithContext(context.Context) GuestPoliciesPackageRepositoryZypperOutput
+}
+
+type GuestPoliciesPackageRepositoryZypperArgs struct {
+	// The location of the repository directory.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference.
+	// Artifacts in a recipe cannot have the same id.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GuestPoliciesPackageRepositoryZypperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackageRepositoryZypper)(nil)).Elem()
+}
+
+func (i GuestPoliciesPackageRepositoryZypperArgs) ToGuestPoliciesPackageRepositoryZypperOutput() GuestPoliciesPackageRepositoryZypperOutput {
+	return i.ToGuestPoliciesPackageRepositoryZypperOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageRepositoryZypperArgs) ToGuestPoliciesPackageRepositoryZypperOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryZypperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryZypperOutput)
+}
+
+func (i GuestPoliciesPackageRepositoryZypperArgs) ToGuestPoliciesPackageRepositoryZypperPtrOutput() GuestPoliciesPackageRepositoryZypperPtrOutput {
+	return i.ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesPackageRepositoryZypperArgs) ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryZypperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryZypperOutput).ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesPackageRepositoryZypperPtrInput is an input type that accepts GuestPoliciesPackageRepositoryZypperArgs, GuestPoliciesPackageRepositoryZypperPtr and GuestPoliciesPackageRepositoryZypperPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesPackageRepositoryZypperPtrInput` via:
+//
+//          GuestPoliciesPackageRepositoryZypperArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesPackageRepositoryZypperPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPackageRepositoryZypperPtrOutput() GuestPoliciesPackageRepositoryZypperPtrOutput
+	ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(context.Context) GuestPoliciesPackageRepositoryZypperPtrOutput
+}
+
+type guestPoliciesPackageRepositoryZypperPtrType GuestPoliciesPackageRepositoryZypperArgs
+
+func GuestPoliciesPackageRepositoryZypperPtr(v *GuestPoliciesPackageRepositoryZypperArgs) GuestPoliciesPackageRepositoryZypperPtrInput {
+	return (*guestPoliciesPackageRepositoryZypperPtrType)(v)
+}
+
+func (*guestPoliciesPackageRepositoryZypperPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesPackageRepositoryZypper)(nil)).Elem()
+}
+
+func (i *guestPoliciesPackageRepositoryZypperPtrType) ToGuestPoliciesPackageRepositoryZypperPtrOutput() GuestPoliciesPackageRepositoryZypperPtrOutput {
+	return i.ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesPackageRepositoryZypperPtrType) ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryZypperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPackageRepositoryZypperPtrOutput)
+}
+
+type GuestPoliciesPackageRepositoryZypperOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageRepositoryZypperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesPackageRepositoryZypper)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageRepositoryZypperOutput) ToGuestPoliciesPackageRepositoryZypperOutput() GuestPoliciesPackageRepositoryZypperOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryZypperOutput) ToGuestPoliciesPackageRepositoryZypperOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryZypperOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryZypperOutput) ToGuestPoliciesPackageRepositoryZypperPtrOutput() GuestPoliciesPackageRepositoryZypperPtrOutput {
+	return o.ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesPackageRepositoryZypperOutput) ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryZypperPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryZypper) *GuestPoliciesPackageRepositoryZypper {
+		return &v
+	}).(GuestPoliciesPackageRepositoryZypperPtrOutput)
+}
+
+// The location of the repository directory.
+func (o GuestPoliciesPackageRepositoryZypperOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryZypper) string { return v.BaseUrl }).(pulumi.StringOutput)
+}
+
+// The display name of the repository.
+func (o GuestPoliciesPackageRepositoryZypperOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryZypper) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o GuestPoliciesPackageRepositoryZypperOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryZypper) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
+}
+
+// Id of the artifact, which the installation and update steps of this recipe can reference.
+// Artifacts in a recipe cannot have the same id.
+func (o GuestPoliciesPackageRepositoryZypperOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesPackageRepositoryZypper) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesPackageRepositoryZypperPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesPackageRepositoryZypperPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesPackageRepositoryZypper)(nil)).Elem()
+}
+
+func (o GuestPoliciesPackageRepositoryZypperPtrOutput) ToGuestPoliciesPackageRepositoryZypperPtrOutput() GuestPoliciesPackageRepositoryZypperPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryZypperPtrOutput) ToGuestPoliciesPackageRepositoryZypperPtrOutputWithContext(ctx context.Context) GuestPoliciesPackageRepositoryZypperPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesPackageRepositoryZypperPtrOutput) Elem() GuestPoliciesPackageRepositoryZypperOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryZypper) GuestPoliciesPackageRepositoryZypper { return *v }).(GuestPoliciesPackageRepositoryZypperOutput)
+}
+
+// The location of the repository directory.
+func (o GuestPoliciesPackageRepositoryZypperPtrOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the repository.
+func (o GuestPoliciesPackageRepositoryZypperPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// URIs of GPG keys.
+func (o GuestPoliciesPackageRepositoryZypperPtrOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryZypper) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GpgKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// Id of the artifact, which the installation and update steps of this recipe can reference.
+// Artifacts in a recipe cannot have the same id.
+func (o GuestPoliciesPackageRepositoryZypperPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryZypper) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipe struct {
+	// Resources available to be used in the steps in the recipe.  Structure is documented below.
+	Artifacts []GuestPoliciesRecipeArtifact `pulumi:"artifacts"`
+	// Default is INSTALLED. The desired state the agent should maintain for this recipe.
+	// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
+	// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
+	// if a higher version of the recipe is assigned to this instance.
+	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+	DesiredState *string `pulumi:"desiredState"`
+	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
+	// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+	InstallSteps []GuestPoliciesRecipeInstallStep `pulumi:"installSteps"`
+	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+	// This means that requests to create multiple recipes with the same name and version are rejected since they
+	// could potentially have conflicting assignments.
+	Name string `pulumi:"name"`
+	// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
+	// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+	UpdateSteps []GuestPoliciesRecipeUpdateStep `pulumi:"updateSteps"`
+	// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
+	Version *string `pulumi:"version"`
+}
+
+// GuestPoliciesRecipeInput is an input type that accepts GuestPoliciesRecipeArgs and GuestPoliciesRecipeOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInput` via:
+//
+//          GuestPoliciesRecipeArgs{...}
+type GuestPoliciesRecipeInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeOutput() GuestPoliciesRecipeOutput
+	ToGuestPoliciesRecipeOutputWithContext(context.Context) GuestPoliciesRecipeOutput
+}
+
+type GuestPoliciesRecipeArgs struct {
+	// Resources available to be used in the steps in the recipe.  Structure is documented below.
+	Artifacts GuestPoliciesRecipeArtifactArrayInput `pulumi:"artifacts"`
+	// Default is INSTALLED. The desired state the agent should maintain for this recipe.
+	// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
+	// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
+	// if a higher version of the recipe is assigned to this instance.
+	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+	DesiredState pulumi.StringPtrInput `pulumi:"desiredState"`
+	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
+	// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+	InstallSteps GuestPoliciesRecipeInstallStepArrayInput `pulumi:"installSteps"`
+	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+	// This means that requests to create multiple recipes with the same name and version are rejected since they
+	// could potentially have conflicting assignments.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
+	// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+	UpdateSteps GuestPoliciesRecipeUpdateStepArrayInput `pulumi:"updateSteps"`
+	// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GuestPoliciesRecipeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipe)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeArgs) ToGuestPoliciesRecipeOutput() GuestPoliciesRecipeOutput {
+	return i.ToGuestPoliciesRecipeOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeArgs) ToGuestPoliciesRecipeOutputWithContext(ctx context.Context) GuestPoliciesRecipeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeOutput)
+}
+
+// GuestPoliciesRecipeArrayInput is an input type that accepts GuestPoliciesRecipeArray and GuestPoliciesRecipeArrayOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeArrayInput` via:
+//
+//          GuestPoliciesRecipeArray{ GuestPoliciesRecipeArgs{...} }
+type GuestPoliciesRecipeArrayInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeArrayOutput() GuestPoliciesRecipeArrayOutput
+	ToGuestPoliciesRecipeArrayOutputWithContext(context.Context) GuestPoliciesRecipeArrayOutput
+}
+
+type GuestPoliciesRecipeArray []GuestPoliciesRecipeInput
+
+func (GuestPoliciesRecipeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesRecipe)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeArray) ToGuestPoliciesRecipeArrayOutput() GuestPoliciesRecipeArrayOutput {
+	return i.ToGuestPoliciesRecipeArrayOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeArray) ToGuestPoliciesRecipeArrayOutputWithContext(ctx context.Context) GuestPoliciesRecipeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArrayOutput)
+}
+
+type GuestPoliciesRecipeOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipe)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeOutput) ToGuestPoliciesRecipeOutput() GuestPoliciesRecipeOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeOutput) ToGuestPoliciesRecipeOutputWithContext(ctx context.Context) GuestPoliciesRecipeOutput {
+	return o
+}
+
+// Resources available to be used in the steps in the recipe.  Structure is documented below.
+func (o GuestPoliciesRecipeOutput) Artifacts() GuestPoliciesRecipeArtifactArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipe) []GuestPoliciesRecipeArtifact { return v.Artifacts }).(GuestPoliciesRecipeArtifactArrayOutput)
+}
+
+// Default is INSTALLED. The desired state the agent should maintain for this recipe.
+// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
+// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
+// if a higher version of the recipe is assigned to this instance.
+// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+func (o GuestPoliciesRecipeOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipe) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
+}
+
+// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
+// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+func (o GuestPoliciesRecipeOutput) InstallSteps() GuestPoliciesRecipeInstallStepArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipe) []GuestPoliciesRecipeInstallStep { return v.InstallSteps }).(GuestPoliciesRecipeInstallStepArrayOutput)
+}
+
+// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
+// This means that requests to create multiple recipes with the same name and version are rejected since they
+// could potentially have conflicting assignments.
+func (o GuestPoliciesRecipeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipe) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
+// Any steps taken (including partially completed steps) are not rolled back.  Structure is documented below.
+func (o GuestPoliciesRecipeOutput) UpdateSteps() GuestPoliciesRecipeUpdateStepArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipe) []GuestPoliciesRecipeUpdateStep { return v.UpdateSteps }).(GuestPoliciesRecipeUpdateStepArrayOutput)
+}
+
+// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
+func (o GuestPoliciesRecipeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipe) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeArrayOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesRecipe)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeArrayOutput) ToGuestPoliciesRecipeArrayOutput() GuestPoliciesRecipeArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArrayOutput) ToGuestPoliciesRecipeArrayOutputWithContext(ctx context.Context) GuestPoliciesRecipeArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArrayOutput) Index(i pulumi.IntInput) GuestPoliciesRecipeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPoliciesRecipe {
+		return vs[0].([]GuestPoliciesRecipe)[vs[1].(int)]
+	}).(GuestPoliciesRecipeOutput)
+}
+
+type GuestPoliciesRecipeArtifact struct {
+	// Defaults to false. When false, recipes are subject to validations based on the artifact type:
+	// Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
+	// GCS: An object generation number must be specified.
+	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// A Google Cloud Storage artifact.  Structure is documented below.
+	Gcs *GuestPoliciesRecipeArtifactGcs `pulumi:"gcs"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference.
+	// Artifacts in a recipe cannot have the same id.
+	Id string `pulumi:"id"`
+	// A generic remote artifact.  Structure is documented below.
+	Remote *GuestPoliciesRecipeArtifactRemote `pulumi:"remote"`
+}
+
+// GuestPoliciesRecipeArtifactInput is an input type that accepts GuestPoliciesRecipeArtifactArgs and GuestPoliciesRecipeArtifactOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeArtifactInput` via:
+//
+//          GuestPoliciesRecipeArtifactArgs{...}
+type GuestPoliciesRecipeArtifactInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeArtifactOutput() GuestPoliciesRecipeArtifactOutput
+	ToGuestPoliciesRecipeArtifactOutputWithContext(context.Context) GuestPoliciesRecipeArtifactOutput
+}
+
+type GuestPoliciesRecipeArtifactArgs struct {
+	// Defaults to false. When false, recipes are subject to validations based on the artifact type:
+	// Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
+	// GCS: An object generation number must be specified.
+	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
+	// A Google Cloud Storage artifact.  Structure is documented below.
+	Gcs GuestPoliciesRecipeArtifactGcsPtrInput `pulumi:"gcs"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference.
+	// Artifacts in a recipe cannot have the same id.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A generic remote artifact.  Structure is documented below.
+	Remote GuestPoliciesRecipeArtifactRemotePtrInput `pulumi:"remote"`
+}
+
+func (GuestPoliciesRecipeArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeArtifact)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeArtifactArgs) ToGuestPoliciesRecipeArtifactOutput() GuestPoliciesRecipeArtifactOutput {
+	return i.ToGuestPoliciesRecipeArtifactOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeArtifactArgs) ToGuestPoliciesRecipeArtifactOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactOutput)
+}
+
+// GuestPoliciesRecipeArtifactArrayInput is an input type that accepts GuestPoliciesRecipeArtifactArray and GuestPoliciesRecipeArtifactArrayOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeArtifactArrayInput` via:
+//
+//          GuestPoliciesRecipeArtifactArray{ GuestPoliciesRecipeArtifactArgs{...} }
+type GuestPoliciesRecipeArtifactArrayInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeArtifactArrayOutput() GuestPoliciesRecipeArtifactArrayOutput
+	ToGuestPoliciesRecipeArtifactArrayOutputWithContext(context.Context) GuestPoliciesRecipeArtifactArrayOutput
+}
+
+type GuestPoliciesRecipeArtifactArray []GuestPoliciesRecipeArtifactInput
+
+func (GuestPoliciesRecipeArtifactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesRecipeArtifact)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeArtifactArray) ToGuestPoliciesRecipeArtifactArrayOutput() GuestPoliciesRecipeArtifactArrayOutput {
+	return i.ToGuestPoliciesRecipeArtifactArrayOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeArtifactArray) ToGuestPoliciesRecipeArtifactArrayOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactArrayOutput)
+}
+
+type GuestPoliciesRecipeArtifactOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeArtifact)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeArtifactOutput) ToGuestPoliciesRecipeArtifactOutput() GuestPoliciesRecipeArtifactOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactOutput) ToGuestPoliciesRecipeArtifactOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactOutput {
+	return o
+}
+
+// Defaults to false. When false, recipes are subject to validations based on the artifact type:
+// Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
+// GCS: An object generation number must be specified.
+func (o GuestPoliciesRecipeArtifactOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifact) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
+}
+
+// A Google Cloud Storage artifact.  Structure is documented below.
+func (o GuestPoliciesRecipeArtifactOutput) Gcs() GuestPoliciesRecipeArtifactGcsPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifact) *GuestPoliciesRecipeArtifactGcs { return v.Gcs }).(GuestPoliciesRecipeArtifactGcsPtrOutput)
+}
+
+// Id of the artifact, which the installation and update steps of this recipe can reference.
+// Artifacts in a recipe cannot have the same id.
+func (o GuestPoliciesRecipeArtifactOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifact) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A generic remote artifact.  Structure is documented below.
+func (o GuestPoliciesRecipeArtifactOutput) Remote() GuestPoliciesRecipeArtifactRemotePtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifact) *GuestPoliciesRecipeArtifactRemote { return v.Remote }).(GuestPoliciesRecipeArtifactRemotePtrOutput)
+}
+
+type GuestPoliciesRecipeArtifactArrayOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeArtifactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesRecipeArtifact)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeArtifactArrayOutput) ToGuestPoliciesRecipeArtifactArrayOutput() GuestPoliciesRecipeArtifactArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactArrayOutput) ToGuestPoliciesRecipeArtifactArrayOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactArrayOutput) Index(i pulumi.IntInput) GuestPoliciesRecipeArtifactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPoliciesRecipeArtifact {
+		return vs[0].([]GuestPoliciesRecipeArtifact)[vs[1].(int)]
+	}).(GuestPoliciesRecipeArtifactOutput)
+}
+
+type GuestPoliciesRecipeArtifactGcs struct {
+	// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+	// this value would be my-bucket.
+	Bucket *string `pulumi:"bucket"`
+	// Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
+	// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+	Generation *int `pulumi:"generation"`
+	// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+	// this value would be foo/bar.
+	Object *string `pulumi:"object"`
+}
+
+// GuestPoliciesRecipeArtifactGcsInput is an input type that accepts GuestPoliciesRecipeArtifactGcsArgs and GuestPoliciesRecipeArtifactGcsOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeArtifactGcsInput` via:
+//
+//          GuestPoliciesRecipeArtifactGcsArgs{...}
+type GuestPoliciesRecipeArtifactGcsInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeArtifactGcsOutput() GuestPoliciesRecipeArtifactGcsOutput
+	ToGuestPoliciesRecipeArtifactGcsOutputWithContext(context.Context) GuestPoliciesRecipeArtifactGcsOutput
+}
+
+type GuestPoliciesRecipeArtifactGcsArgs struct {
+	// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+	// this value would be my-bucket.
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
+	// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+	Generation pulumi.IntPtrInput `pulumi:"generation"`
+	// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+	// this value would be foo/bar.
+	Object pulumi.StringPtrInput `pulumi:"object"`
+}
+
+func (GuestPoliciesRecipeArtifactGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeArtifactGcs)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeArtifactGcsArgs) ToGuestPoliciesRecipeArtifactGcsOutput() GuestPoliciesRecipeArtifactGcsOutput {
+	return i.ToGuestPoliciesRecipeArtifactGcsOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeArtifactGcsArgs) ToGuestPoliciesRecipeArtifactGcsOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactGcsOutput)
+}
+
+func (i GuestPoliciesRecipeArtifactGcsArgs) ToGuestPoliciesRecipeArtifactGcsPtrOutput() GuestPoliciesRecipeArtifactGcsPtrOutput {
+	return i.ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeArtifactGcsArgs) ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactGcsOutput).ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeArtifactGcsPtrInput is an input type that accepts GuestPoliciesRecipeArtifactGcsArgs, GuestPoliciesRecipeArtifactGcsPtr and GuestPoliciesRecipeArtifactGcsPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeArtifactGcsPtrInput` via:
+//
+//          GuestPoliciesRecipeArtifactGcsArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeArtifactGcsPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeArtifactGcsPtrOutput() GuestPoliciesRecipeArtifactGcsPtrOutput
+	ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(context.Context) GuestPoliciesRecipeArtifactGcsPtrOutput
+}
+
+type guestPoliciesRecipeArtifactGcsPtrType GuestPoliciesRecipeArtifactGcsArgs
+
+func GuestPoliciesRecipeArtifactGcsPtr(v *GuestPoliciesRecipeArtifactGcsArgs) GuestPoliciesRecipeArtifactGcsPtrInput {
+	return (*guestPoliciesRecipeArtifactGcsPtrType)(v)
+}
+
+func (*guestPoliciesRecipeArtifactGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeArtifactGcs)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeArtifactGcsPtrType) ToGuestPoliciesRecipeArtifactGcsPtrOutput() GuestPoliciesRecipeArtifactGcsPtrOutput {
+	return i.ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeArtifactGcsPtrType) ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactGcsPtrOutput)
+}
+
+type GuestPoliciesRecipeArtifactGcsOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeArtifactGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeArtifactGcs)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeArtifactGcsOutput) ToGuestPoliciesRecipeArtifactGcsOutput() GuestPoliciesRecipeArtifactGcsOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactGcsOutput) ToGuestPoliciesRecipeArtifactGcsOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactGcsOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactGcsOutput) ToGuestPoliciesRecipeArtifactGcsPtrOutput() GuestPoliciesRecipeArtifactGcsPtrOutput {
+	return o.ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeArtifactGcsOutput) ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactGcsPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifactGcs) *GuestPoliciesRecipeArtifactGcs {
+		return &v
+	}).(GuestPoliciesRecipeArtifactGcsPtrOutput)
+}
+
+// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+// this value would be my-bucket.
+func (o GuestPoliciesRecipeArtifactGcsOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifactGcs) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
+// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+func (o GuestPoliciesRecipeArtifactGcsOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifactGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
+}
+
+// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+// this value would be foo/bar.
+func (o GuestPoliciesRecipeArtifactGcsOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifactGcs) *string { return v.Object }).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeArtifactGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeArtifactGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeArtifactGcs)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeArtifactGcsPtrOutput) ToGuestPoliciesRecipeArtifactGcsPtrOutput() GuestPoliciesRecipeArtifactGcsPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactGcsPtrOutput) ToGuestPoliciesRecipeArtifactGcsPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactGcsPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Elem() GuestPoliciesRecipeArtifactGcsOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactGcs) GuestPoliciesRecipeArtifactGcs { return *v }).(GuestPoliciesRecipeArtifactGcsOutput)
+}
+
+// Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+// this value would be my-bucket.
+func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
+// https://storage.googleapis.com/my-bucket/foo/bar#1234567 this value would be 1234567.
+func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactGcs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
+// this value would be foo/bar.
+func (o GuestPoliciesRecipeArtifactGcsPtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeArtifactRemote struct {
+	// Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
+	// If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
+	// of the steps.
+	CheckSum *string `pulumi:"checkSum"`
+	// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+	Uri *string `pulumi:"uri"`
+}
+
+// GuestPoliciesRecipeArtifactRemoteInput is an input type that accepts GuestPoliciesRecipeArtifactRemoteArgs and GuestPoliciesRecipeArtifactRemoteOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeArtifactRemoteInput` via:
+//
+//          GuestPoliciesRecipeArtifactRemoteArgs{...}
+type GuestPoliciesRecipeArtifactRemoteInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeArtifactRemoteOutput() GuestPoliciesRecipeArtifactRemoteOutput
+	ToGuestPoliciesRecipeArtifactRemoteOutputWithContext(context.Context) GuestPoliciesRecipeArtifactRemoteOutput
+}
+
+type GuestPoliciesRecipeArtifactRemoteArgs struct {
+	// Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
+	// If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
+	// of the steps.
+	CheckSum pulumi.StringPtrInput `pulumi:"checkSum"`
+	// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GuestPoliciesRecipeArtifactRemoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeArtifactRemote)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeArtifactRemoteArgs) ToGuestPoliciesRecipeArtifactRemoteOutput() GuestPoliciesRecipeArtifactRemoteOutput {
+	return i.ToGuestPoliciesRecipeArtifactRemoteOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeArtifactRemoteArgs) ToGuestPoliciesRecipeArtifactRemoteOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactRemoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactRemoteOutput)
+}
+
+func (i GuestPoliciesRecipeArtifactRemoteArgs) ToGuestPoliciesRecipeArtifactRemotePtrOutput() GuestPoliciesRecipeArtifactRemotePtrOutput {
+	return i.ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeArtifactRemoteArgs) ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactRemoteOutput).ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeArtifactRemotePtrInput is an input type that accepts GuestPoliciesRecipeArtifactRemoteArgs, GuestPoliciesRecipeArtifactRemotePtr and GuestPoliciesRecipeArtifactRemotePtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeArtifactRemotePtrInput` via:
+//
+//          GuestPoliciesRecipeArtifactRemoteArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeArtifactRemotePtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeArtifactRemotePtrOutput() GuestPoliciesRecipeArtifactRemotePtrOutput
+	ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(context.Context) GuestPoliciesRecipeArtifactRemotePtrOutput
+}
+
+type guestPoliciesRecipeArtifactRemotePtrType GuestPoliciesRecipeArtifactRemoteArgs
+
+func GuestPoliciesRecipeArtifactRemotePtr(v *GuestPoliciesRecipeArtifactRemoteArgs) GuestPoliciesRecipeArtifactRemotePtrInput {
+	return (*guestPoliciesRecipeArtifactRemotePtrType)(v)
+}
+
+func (*guestPoliciesRecipeArtifactRemotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeArtifactRemote)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeArtifactRemotePtrType) ToGuestPoliciesRecipeArtifactRemotePtrOutput() GuestPoliciesRecipeArtifactRemotePtrOutput {
+	return i.ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeArtifactRemotePtrType) ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactRemotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeArtifactRemotePtrOutput)
+}
+
+type GuestPoliciesRecipeArtifactRemoteOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeArtifactRemoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeArtifactRemote)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeArtifactRemoteOutput) ToGuestPoliciesRecipeArtifactRemoteOutput() GuestPoliciesRecipeArtifactRemoteOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactRemoteOutput) ToGuestPoliciesRecipeArtifactRemoteOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactRemoteOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactRemoteOutput) ToGuestPoliciesRecipeArtifactRemotePtrOutput() GuestPoliciesRecipeArtifactRemotePtrOutput {
+	return o.ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeArtifactRemoteOutput) ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactRemotePtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifactRemote) *GuestPoliciesRecipeArtifactRemote {
+		return &v
+	}).(GuestPoliciesRecipeArtifactRemotePtrOutput)
+}
+
+// Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
+// If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
+// of the steps.
+func (o GuestPoliciesRecipeArtifactRemoteOutput) CheckSum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifactRemote) *string { return v.CheckSum }).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+func (o GuestPoliciesRecipeArtifactRemoteOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeArtifactRemote) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeArtifactRemotePtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeArtifactRemotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeArtifactRemote)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeArtifactRemotePtrOutput) ToGuestPoliciesRecipeArtifactRemotePtrOutput() GuestPoliciesRecipeArtifactRemotePtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactRemotePtrOutput) ToGuestPoliciesRecipeArtifactRemotePtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeArtifactRemotePtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeArtifactRemotePtrOutput) Elem() GuestPoliciesRecipeArtifactRemoteOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactRemote) GuestPoliciesRecipeArtifactRemote { return *v }).(GuestPoliciesRecipeArtifactRemoteOutput)
+}
+
+// Must be provided if allowInsecure is false. SHA256 checksum in hex format, to compare to the checksum of the artifact.
+// If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any
+// of the steps.
+func (o GuestPoliciesRecipeArtifactRemotePtrOutput) CheckSum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckSum
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+func (o GuestPoliciesRecipeArtifactRemotePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeArtifactRemote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStep struct {
+	// Extracts an archive into the specified directory.  Structure is documented below.
+	ArchiveExtraction *GuestPoliciesRecipeInstallStepArchiveExtraction `pulumi:"archiveExtraction"`
+	// Installs a deb file via dpkg.  Structure is documented below.
+	DpkgInstallation *GuestPoliciesRecipeInstallStepDpkgInstallation `pulumi:"dpkgInstallation"`
+	// Copies a file onto the instance.  Structure is documented below.
+	FileCopy *GuestPoliciesRecipeInstallStepFileCopy `pulumi:"fileCopy"`
+	// Executes an artifact or local file.  Structure is documented below.
+	FileExec *GuestPoliciesRecipeInstallStepFileExec `pulumi:"fileExec"`
+	// Installs an MSI file.  Structure is documented below.
+	MsiInstallation *GuestPoliciesRecipeInstallStepMsiInstallation `pulumi:"msiInstallation"`
+	// Installs an rpm file via the rpm utility.  Structure is documented below.
+	RpmInstallation *GuestPoliciesRecipeInstallStepRpmInstallation `pulumi:"rpmInstallation"`
+	// Runs commands in a shell.  Structure is documented below.
+	ScriptRun *GuestPoliciesRecipeInstallStepScriptRun `pulumi:"scriptRun"`
+}
+
+// GuestPoliciesRecipeInstallStepInput is an input type that accepts GuestPoliciesRecipeInstallStepArgs and GuestPoliciesRecipeInstallStepOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepInput` via:
+//
+//          GuestPoliciesRecipeInstallStepArgs{...}
+type GuestPoliciesRecipeInstallStepInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepOutput() GuestPoliciesRecipeInstallStepOutput
+	ToGuestPoliciesRecipeInstallStepOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepOutput
+}
+
+type GuestPoliciesRecipeInstallStepArgs struct {
+	// Extracts an archive into the specified directory.  Structure is documented below.
+	ArchiveExtraction GuestPoliciesRecipeInstallStepArchiveExtractionPtrInput `pulumi:"archiveExtraction"`
+	// Installs a deb file via dpkg.  Structure is documented below.
+	DpkgInstallation GuestPoliciesRecipeInstallStepDpkgInstallationPtrInput `pulumi:"dpkgInstallation"`
+	// Copies a file onto the instance.  Structure is documented below.
+	FileCopy GuestPoliciesRecipeInstallStepFileCopyPtrInput `pulumi:"fileCopy"`
+	// Executes an artifact or local file.  Structure is documented below.
+	FileExec GuestPoliciesRecipeInstallStepFileExecPtrInput `pulumi:"fileExec"`
+	// Installs an MSI file.  Structure is documented below.
+	MsiInstallation GuestPoliciesRecipeInstallStepMsiInstallationPtrInput `pulumi:"msiInstallation"`
+	// Installs an rpm file via the rpm utility.  Structure is documented below.
+	RpmInstallation GuestPoliciesRecipeInstallStepRpmInstallationPtrInput `pulumi:"rpmInstallation"`
+	// Runs commands in a shell.  Structure is documented below.
+	ScriptRun GuestPoliciesRecipeInstallStepScriptRunPtrInput `pulumi:"scriptRun"`
+}
+
+func (GuestPoliciesRecipeInstallStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStep)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeInstallStepArgs) ToGuestPoliciesRecipeInstallStepOutput() GuestPoliciesRecipeInstallStepOutput {
+	return i.ToGuestPoliciesRecipeInstallStepOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepArgs) ToGuestPoliciesRecipeInstallStepOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepOutput)
+}
+
+// GuestPoliciesRecipeInstallStepArrayInput is an input type that accepts GuestPoliciesRecipeInstallStepArray and GuestPoliciesRecipeInstallStepArrayOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepArrayInput` via:
+//
+//          GuestPoliciesRecipeInstallStepArray{ GuestPoliciesRecipeInstallStepArgs{...} }
+type GuestPoliciesRecipeInstallStepArrayInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepArrayOutput() GuestPoliciesRecipeInstallStepArrayOutput
+	ToGuestPoliciesRecipeInstallStepArrayOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepArrayOutput
+}
+
+type GuestPoliciesRecipeInstallStepArray []GuestPoliciesRecipeInstallStepInput
+
+func (GuestPoliciesRecipeInstallStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesRecipeInstallStep)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeInstallStepArray) ToGuestPoliciesRecipeInstallStepArrayOutput() GuestPoliciesRecipeInstallStepArrayOutput {
+	return i.ToGuestPoliciesRecipeInstallStepArrayOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepArray) ToGuestPoliciesRecipeInstallStepArrayOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepArrayOutput)
+}
+
+type GuestPoliciesRecipeInstallStepOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStep)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepOutput) ToGuestPoliciesRecipeInstallStepOutput() GuestPoliciesRecipeInstallStepOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepOutput) ToGuestPoliciesRecipeInstallStepOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepOutput {
+	return o
+}
+
+// Extracts an archive into the specified directory.  Structure is documented below.
+func (o GuestPoliciesRecipeInstallStepOutput) ArchiveExtraction() GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepArchiveExtraction {
+		return v.ArchiveExtraction
+	}).(GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput)
+}
+
+// Installs a deb file via dpkg.  Structure is documented below.
+func (o GuestPoliciesRecipeInstallStepOutput) DpkgInstallation() GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepDpkgInstallation {
+		return v.DpkgInstallation
+	}).(GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput)
+}
+
+// Copies a file onto the instance.  Structure is documented below.
+func (o GuestPoliciesRecipeInstallStepOutput) FileCopy() GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepFileCopy { return v.FileCopy }).(GuestPoliciesRecipeInstallStepFileCopyPtrOutput)
+}
+
+// Executes an artifact or local file.  Structure is documented below.
+func (o GuestPoliciesRecipeInstallStepOutput) FileExec() GuestPoliciesRecipeInstallStepFileExecPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepFileExec { return v.FileExec }).(GuestPoliciesRecipeInstallStepFileExecPtrOutput)
+}
+
+// Installs an MSI file.  Structure is documented below.
+func (o GuestPoliciesRecipeInstallStepOutput) MsiInstallation() GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepMsiInstallation {
+		return v.MsiInstallation
+	}).(GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput)
+}
+
+// Installs an rpm file via the rpm utility.  Structure is documented below.
+func (o GuestPoliciesRecipeInstallStepOutput) RpmInstallation() GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepRpmInstallation {
+		return v.RpmInstallation
+	}).(GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput)
+}
+
+// Runs commands in a shell.  Structure is documented below.
+func (o GuestPoliciesRecipeInstallStepOutput) ScriptRun() GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStep) *GuestPoliciesRecipeInstallStepScriptRun { return v.ScriptRun }).(GuestPoliciesRecipeInstallStepScriptRunPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepArrayOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesRecipeInstallStep)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepArrayOutput) ToGuestPoliciesRecipeInstallStepArrayOutput() GuestPoliciesRecipeInstallStepArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepArrayOutput) ToGuestPoliciesRecipeInstallStepArrayOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepArrayOutput) Index(i pulumi.IntInput) GuestPoliciesRecipeInstallStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPoliciesRecipeInstallStep {
+		return vs[0].([]GuestPoliciesRecipeInstallStep)[vs[1].(int)]
+	}).(GuestPoliciesRecipeInstallStepOutput)
+}
+
+type GuestPoliciesRecipeInstallStepArchiveExtraction struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	Destination *string `pulumi:"destination"`
+	// The type of the archive to extract.
+	Type string `pulumi:"type"`
+}
+
+// GuestPoliciesRecipeInstallStepArchiveExtractionInput is an input type that accepts GuestPoliciesRecipeInstallStepArchiveExtractionArgs and GuestPoliciesRecipeInstallStepArchiveExtractionOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepArchiveExtractionInput` via:
+//
+//          GuestPoliciesRecipeInstallStepArchiveExtractionArgs{...}
+type GuestPoliciesRecipeInstallStepArchiveExtractionInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepArchiveExtractionOutput() GuestPoliciesRecipeInstallStepArchiveExtractionOutput
+	ToGuestPoliciesRecipeInstallStepArchiveExtractionOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepArchiveExtractionOutput
+}
+
+type GuestPoliciesRecipeInstallStepArchiveExtractionArgs struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	// The type of the archive to extract.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GuestPoliciesRecipeInstallStepArchiveExtractionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepArchiveExtraction)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeInstallStepArchiveExtractionArgs) ToGuestPoliciesRecipeInstallStepArchiveExtractionOutput() GuestPoliciesRecipeInstallStepArchiveExtractionOutput {
+	return i.ToGuestPoliciesRecipeInstallStepArchiveExtractionOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepArchiveExtractionArgs) ToGuestPoliciesRecipeInstallStepArchiveExtractionOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepArchiveExtractionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepArchiveExtractionOutput)
+}
+
+func (i GuestPoliciesRecipeInstallStepArchiveExtractionArgs) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput() GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepArchiveExtractionArgs) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepArchiveExtractionOutput).ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeInstallStepArchiveExtractionPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepArchiveExtractionArgs, GuestPoliciesRecipeInstallStepArchiveExtractionPtr and GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepArchiveExtractionPtrInput` via:
+//
+//          GuestPoliciesRecipeInstallStepArchiveExtractionArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeInstallStepArchiveExtractionPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput() GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput
+	ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput
+}
+
+type guestPoliciesRecipeInstallStepArchiveExtractionPtrType GuestPoliciesRecipeInstallStepArchiveExtractionArgs
+
+func GuestPoliciesRecipeInstallStepArchiveExtractionPtr(v *GuestPoliciesRecipeInstallStepArchiveExtractionArgs) GuestPoliciesRecipeInstallStepArchiveExtractionPtrInput {
+	return (*guestPoliciesRecipeInstallStepArchiveExtractionPtrType)(v)
+}
+
+func (*guestPoliciesRecipeInstallStepArchiveExtractionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepArchiveExtraction)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeInstallStepArchiveExtractionPtrType) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput() GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeInstallStepArchiveExtractionPtrType) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepArchiveExtractionOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepArchiveExtraction)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ToGuestPoliciesRecipeInstallStepArchiveExtractionOutput() GuestPoliciesRecipeInstallStepArchiveExtractionOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ToGuestPoliciesRecipeInstallStepArchiveExtractionOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepArchiveExtractionOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput() GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
+	return o.ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepArchiveExtraction) *GuestPoliciesRecipeInstallStepArchiveExtraction {
+		return &v
+	}).(GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepArchiveExtraction) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepArchiveExtraction) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+// The type of the archive to extract.
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepArchiveExtraction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepArchiveExtraction)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput() GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) ToGuestPoliciesRecipeInstallStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) Elem() GuestPoliciesRecipeInstallStepArchiveExtractionOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepArchiveExtraction) GuestPoliciesRecipeInstallStepArchiveExtraction {
+		return *v
+	}).(GuestPoliciesRecipeInstallStepArchiveExtractionOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepArchiveExtraction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepArchiveExtraction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the archive to extract.
+func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepArchiveExtraction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepDpkgInstallation struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+}
+
+// GuestPoliciesRecipeInstallStepDpkgInstallationInput is an input type that accepts GuestPoliciesRecipeInstallStepDpkgInstallationArgs and GuestPoliciesRecipeInstallStepDpkgInstallationOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepDpkgInstallationInput` via:
+//
+//          GuestPoliciesRecipeInstallStepDpkgInstallationArgs{...}
+type GuestPoliciesRecipeInstallStepDpkgInstallationInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepDpkgInstallationOutput() GuestPoliciesRecipeInstallStepDpkgInstallationOutput
+	ToGuestPoliciesRecipeInstallStepDpkgInstallationOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepDpkgInstallationOutput
+}
+
+type GuestPoliciesRecipeInstallStepDpkgInstallationArgs struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+}
+
+func (GuestPoliciesRecipeInstallStepDpkgInstallationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepDpkgInstallation)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeInstallStepDpkgInstallationArgs) ToGuestPoliciesRecipeInstallStepDpkgInstallationOutput() GuestPoliciesRecipeInstallStepDpkgInstallationOutput {
+	return i.ToGuestPoliciesRecipeInstallStepDpkgInstallationOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepDpkgInstallationArgs) ToGuestPoliciesRecipeInstallStepDpkgInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepDpkgInstallationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepDpkgInstallationOutput)
+}
+
+func (i GuestPoliciesRecipeInstallStepDpkgInstallationArgs) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput() GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepDpkgInstallationArgs) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepDpkgInstallationOutput).ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeInstallStepDpkgInstallationPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepDpkgInstallationArgs, GuestPoliciesRecipeInstallStepDpkgInstallationPtr and GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepDpkgInstallationPtrInput` via:
+//
+//          GuestPoliciesRecipeInstallStepDpkgInstallationArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeInstallStepDpkgInstallationPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput() GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput
+	ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput
+}
+
+type guestPoliciesRecipeInstallStepDpkgInstallationPtrType GuestPoliciesRecipeInstallStepDpkgInstallationArgs
+
+func GuestPoliciesRecipeInstallStepDpkgInstallationPtr(v *GuestPoliciesRecipeInstallStepDpkgInstallationArgs) GuestPoliciesRecipeInstallStepDpkgInstallationPtrInput {
+	return (*guestPoliciesRecipeInstallStepDpkgInstallationPtrType)(v)
+}
+
+func (*guestPoliciesRecipeInstallStepDpkgInstallationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepDpkgInstallation)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeInstallStepDpkgInstallationPtrType) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput() GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeInstallStepDpkgInstallationPtrType) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepDpkgInstallationOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepDpkgInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ToGuestPoliciesRecipeInstallStepDpkgInstallationOutput() GuestPoliciesRecipeInstallStepDpkgInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ToGuestPoliciesRecipeInstallStepDpkgInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepDpkgInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput() GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
+	return o.ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepDpkgInstallation) *GuestPoliciesRecipeInstallStepDpkgInstallation {
+		return &v
+	}).(GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepDpkgInstallationOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepDpkgInstallation) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepDpkgInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput() GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) ToGuestPoliciesRecipeInstallStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) Elem() GuestPoliciesRecipeInstallStepDpkgInstallationOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepDpkgInstallation) GuestPoliciesRecipeInstallStepDpkgInstallation {
+		return *v
+	}).(GuestPoliciesRecipeInstallStepDpkgInstallationOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepDpkgInstallation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepFileCopy struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	Destination string `pulumi:"destination"`
+	// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+	// is not overwritten and the step is considered a success. Defaults to false.
+	Overwrite *bool `pulumi:"overwrite"`
+	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+	// for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+	// number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+	// bit corresponds to the execute permission. Default behavior is 755.
+	// Below are some examples of permissions and their associated values:
+	// read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+	Permissions *string `pulumi:"permissions"`
+}
+
+// GuestPoliciesRecipeInstallStepFileCopyInput is an input type that accepts GuestPoliciesRecipeInstallStepFileCopyArgs and GuestPoliciesRecipeInstallStepFileCopyOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepFileCopyInput` via:
+//
+//          GuestPoliciesRecipeInstallStepFileCopyArgs{...}
+type GuestPoliciesRecipeInstallStepFileCopyInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepFileCopyOutput() GuestPoliciesRecipeInstallStepFileCopyOutput
+	ToGuestPoliciesRecipeInstallStepFileCopyOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepFileCopyOutput
+}
+
+type GuestPoliciesRecipeInstallStepFileCopyArgs struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	Destination pulumi.StringInput `pulumi:"destination"`
+	// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+	// is not overwritten and the step is considered a success. Defaults to false.
+	Overwrite pulumi.BoolPtrInput `pulumi:"overwrite"`
+	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+	// for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+	// number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+	// bit corresponds to the execute permission. Default behavior is 755.
+	// Below are some examples of permissions and their associated values:
+	// read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
+}
+
+func (GuestPoliciesRecipeInstallStepFileCopyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepFileCopy)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeInstallStepFileCopyArgs) ToGuestPoliciesRecipeInstallStepFileCopyOutput() GuestPoliciesRecipeInstallStepFileCopyOutput {
+	return i.ToGuestPoliciesRecipeInstallStepFileCopyOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepFileCopyArgs) ToGuestPoliciesRecipeInstallStepFileCopyOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileCopyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepFileCopyOutput)
+}
+
+func (i GuestPoliciesRecipeInstallStepFileCopyArgs) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutput() GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepFileCopyArgs) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepFileCopyOutput).ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeInstallStepFileCopyPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepFileCopyArgs, GuestPoliciesRecipeInstallStepFileCopyPtr and GuestPoliciesRecipeInstallStepFileCopyPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepFileCopyPtrInput` via:
+//
+//          GuestPoliciesRecipeInstallStepFileCopyArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeInstallStepFileCopyPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepFileCopyPtrOutput() GuestPoliciesRecipeInstallStepFileCopyPtrOutput
+	ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepFileCopyPtrOutput
+}
+
+type guestPoliciesRecipeInstallStepFileCopyPtrType GuestPoliciesRecipeInstallStepFileCopyArgs
+
+func GuestPoliciesRecipeInstallStepFileCopyPtr(v *GuestPoliciesRecipeInstallStepFileCopyArgs) GuestPoliciesRecipeInstallStepFileCopyPtrInput {
+	return (*guestPoliciesRecipeInstallStepFileCopyPtrType)(v)
+}
+
+func (*guestPoliciesRecipeInstallStepFileCopyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepFileCopy)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeInstallStepFileCopyPtrType) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutput() GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeInstallStepFileCopyPtrType) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepFileCopyPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepFileCopyOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepFileCopyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepFileCopy)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepFileCopyOutput) ToGuestPoliciesRecipeInstallStepFileCopyOutput() GuestPoliciesRecipeInstallStepFileCopyOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepFileCopyOutput) ToGuestPoliciesRecipeInstallStepFileCopyOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileCopyOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepFileCopyOutput) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutput() GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
+	return o.ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeInstallStepFileCopyOutput) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileCopy) *GuestPoliciesRecipeInstallStepFileCopy {
+		return &v
+	}).(GuestPoliciesRecipeInstallStepFileCopyPtrOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepFileCopyOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileCopy) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+func (o GuestPoliciesRecipeInstallStepFileCopyOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileCopy) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+// is not overwritten and the step is considered a success. Defaults to false.
+func (o GuestPoliciesRecipeInstallStepFileCopyOutput) Overwrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileCopy) *bool { return v.Overwrite }).(pulumi.BoolPtrOutput)
+}
+
+// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+// for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+// number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+// bit corresponds to the execute permission. Default behavior is 755.
+// Below are some examples of permissions and their associated values:
+// read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+func (o GuestPoliciesRecipeInstallStepFileCopyOutput) Permissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileCopy) *string { return v.Permissions }).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepFileCopyPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepFileCopyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepFileCopy)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutput() GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) ToGuestPoliciesRecipeInstallStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileCopyPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) Elem() GuestPoliciesRecipeInstallStepFileCopyOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileCopy) GuestPoliciesRecipeInstallStepFileCopy { return *v }).(GuestPoliciesRecipeInstallStepFileCopyOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileCopy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileCopy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+// is not overwritten and the step is considered a success. Defaults to false.
+func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) Overwrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileCopy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Overwrite
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+// for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+// number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+// bit corresponds to the execute permission. Default behavior is 755.
+// Below are some examples of permissions and their associated values:
+// read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) Permissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileCopy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Permissions
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepFileExec struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes *string `pulumi:"allowedExitCodes"`
+	// Arguments to be passed to the provided executable.
+	Args []string `pulumi:"args"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId *string `pulumi:"artifactId"`
+	// The absolute path of the file on the local filesystem.
+	LocalPath *string `pulumi:"localPath"`
+}
+
+// GuestPoliciesRecipeInstallStepFileExecInput is an input type that accepts GuestPoliciesRecipeInstallStepFileExecArgs and GuestPoliciesRecipeInstallStepFileExecOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepFileExecInput` via:
+//
+//          GuestPoliciesRecipeInstallStepFileExecArgs{...}
+type GuestPoliciesRecipeInstallStepFileExecInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepFileExecOutput() GuestPoliciesRecipeInstallStepFileExecOutput
+	ToGuestPoliciesRecipeInstallStepFileExecOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepFileExecOutput
+}
+
+type GuestPoliciesRecipeInstallStepFileExecArgs struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes pulumi.StringPtrInput `pulumi:"allowedExitCodes"`
+	// Arguments to be passed to the provided executable.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
+	// The absolute path of the file on the local filesystem.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+}
+
+func (GuestPoliciesRecipeInstallStepFileExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepFileExec)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeInstallStepFileExecArgs) ToGuestPoliciesRecipeInstallStepFileExecOutput() GuestPoliciesRecipeInstallStepFileExecOutput {
+	return i.ToGuestPoliciesRecipeInstallStepFileExecOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepFileExecArgs) ToGuestPoliciesRecipeInstallStepFileExecOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepFileExecOutput)
+}
+
+func (i GuestPoliciesRecipeInstallStepFileExecArgs) ToGuestPoliciesRecipeInstallStepFileExecPtrOutput() GuestPoliciesRecipeInstallStepFileExecPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepFileExecArgs) ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepFileExecOutput).ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeInstallStepFileExecPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepFileExecArgs, GuestPoliciesRecipeInstallStepFileExecPtr and GuestPoliciesRecipeInstallStepFileExecPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepFileExecPtrInput` via:
+//
+//          GuestPoliciesRecipeInstallStepFileExecArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeInstallStepFileExecPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepFileExecPtrOutput() GuestPoliciesRecipeInstallStepFileExecPtrOutput
+	ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepFileExecPtrOutput
+}
+
+type guestPoliciesRecipeInstallStepFileExecPtrType GuestPoliciesRecipeInstallStepFileExecArgs
+
+func GuestPoliciesRecipeInstallStepFileExecPtr(v *GuestPoliciesRecipeInstallStepFileExecArgs) GuestPoliciesRecipeInstallStepFileExecPtrInput {
+	return (*guestPoliciesRecipeInstallStepFileExecPtrType)(v)
+}
+
+func (*guestPoliciesRecipeInstallStepFileExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepFileExec)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeInstallStepFileExecPtrType) ToGuestPoliciesRecipeInstallStepFileExecPtrOutput() GuestPoliciesRecipeInstallStepFileExecPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeInstallStepFileExecPtrType) ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepFileExecPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepFileExecOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepFileExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepFileExec)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepFileExecOutput) ToGuestPoliciesRecipeInstallStepFileExecOutput() GuestPoliciesRecipeInstallStepFileExecOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepFileExecOutput) ToGuestPoliciesRecipeInstallStepFileExecOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileExecOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepFileExecOutput) ToGuestPoliciesRecipeInstallStepFileExecPtrOutput() GuestPoliciesRecipeInstallStepFileExecPtrOutput {
+	return o.ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeInstallStepFileExecOutput) ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileExecPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileExec) *GuestPoliciesRecipeInstallStepFileExec {
+		return &v
+	}).(GuestPoliciesRecipeInstallStepFileExecPtrOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeInstallStepFileExecOutput) AllowedExitCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileExec) *string { return v.AllowedExitCodes }).(pulumi.StringPtrOutput)
+}
+
+// Arguments to be passed to the provided executable.
+func (o GuestPoliciesRecipeInstallStepFileExecOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileExec) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepFileExecOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileExec) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+}
+
+// The absolute path of the file on the local filesystem.
+func (o GuestPoliciesRecipeInstallStepFileExecOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileExec) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepFileExecPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepFileExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepFileExec)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) ToGuestPoliciesRecipeInstallStepFileExecPtrOutput() GuestPoliciesRecipeInstallStepFileExecPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) ToGuestPoliciesRecipeInstallStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepFileExecPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) Elem() GuestPoliciesRecipeInstallStepFileExecOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileExec) GuestPoliciesRecipeInstallStepFileExec { return *v }).(GuestPoliciesRecipeInstallStepFileExecOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) AllowedExitCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileExec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedExitCodes
+	}).(pulumi.StringPtrOutput)
+}
+
+// Arguments to be passed to the provided executable.
+func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileExec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The absolute path of the file on the local filesystem.
+func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileExec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepMsiInstallation struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// The flags to use when installing the MSI. Defaults to the install flag.
+	Flags []string `pulumi:"flags"`
+}
+
+// GuestPoliciesRecipeInstallStepMsiInstallationInput is an input type that accepts GuestPoliciesRecipeInstallStepMsiInstallationArgs and GuestPoliciesRecipeInstallStepMsiInstallationOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepMsiInstallationInput` via:
+//
+//          GuestPoliciesRecipeInstallStepMsiInstallationArgs{...}
+type GuestPoliciesRecipeInstallStepMsiInstallationInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepMsiInstallationOutput() GuestPoliciesRecipeInstallStepMsiInstallationOutput
+	ToGuestPoliciesRecipeInstallStepMsiInstallationOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepMsiInstallationOutput
+}
+
+type GuestPoliciesRecipeInstallStepMsiInstallationArgs struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// The flags to use when installing the MSI. Defaults to the install flag.
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+}
+
+func (GuestPoliciesRecipeInstallStepMsiInstallationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepMsiInstallation)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeInstallStepMsiInstallationArgs) ToGuestPoliciesRecipeInstallStepMsiInstallationOutput() GuestPoliciesRecipeInstallStepMsiInstallationOutput {
+	return i.ToGuestPoliciesRecipeInstallStepMsiInstallationOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepMsiInstallationArgs) ToGuestPoliciesRecipeInstallStepMsiInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepMsiInstallationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepMsiInstallationOutput)
+}
+
+func (i GuestPoliciesRecipeInstallStepMsiInstallationArgs) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutput() GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepMsiInstallationArgs) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepMsiInstallationOutput).ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeInstallStepMsiInstallationPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepMsiInstallationArgs, GuestPoliciesRecipeInstallStepMsiInstallationPtr and GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepMsiInstallationPtrInput` via:
+//
+//          GuestPoliciesRecipeInstallStepMsiInstallationArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeInstallStepMsiInstallationPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutput() GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput
+	ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput
+}
+
+type guestPoliciesRecipeInstallStepMsiInstallationPtrType GuestPoliciesRecipeInstallStepMsiInstallationArgs
+
+func GuestPoliciesRecipeInstallStepMsiInstallationPtr(v *GuestPoliciesRecipeInstallStepMsiInstallationArgs) GuestPoliciesRecipeInstallStepMsiInstallationPtrInput {
+	return (*guestPoliciesRecipeInstallStepMsiInstallationPtrType)(v)
+}
+
+func (*guestPoliciesRecipeInstallStepMsiInstallationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepMsiInstallation)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeInstallStepMsiInstallationPtrType) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutput() GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeInstallStepMsiInstallationPtrType) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepMsiInstallationOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepMsiInstallationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepMsiInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) ToGuestPoliciesRecipeInstallStepMsiInstallationOutput() GuestPoliciesRecipeInstallStepMsiInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) ToGuestPoliciesRecipeInstallStepMsiInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepMsiInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutput() GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
+	return o.ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepMsiInstallation) *GuestPoliciesRecipeInstallStepMsiInstallation {
+		return &v
+	}).(GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepMsiInstallation) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepMsiInstallation) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// The flags to use when installing the MSI. Defaults to the install flag.
+func (o GuestPoliciesRecipeInstallStepMsiInstallationOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepMsiInstallation) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
+type GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepMsiInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutput() GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) ToGuestPoliciesRecipeInstallStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) Elem() GuestPoliciesRecipeInstallStepMsiInstallationOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepMsiInstallation) GuestPoliciesRecipeInstallStepMsiInstallation {
+		return *v
+	}).(GuestPoliciesRecipeInstallStepMsiInstallationOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepMsiInstallation) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedExitCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepMsiInstallation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The flags to use when installing the MSI. Defaults to the install flag.
+func (o GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepMsiInstallation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringArrayOutput)
+}
+
+type GuestPoliciesRecipeInstallStepRpmInstallation struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+}
+
+// GuestPoliciesRecipeInstallStepRpmInstallationInput is an input type that accepts GuestPoliciesRecipeInstallStepRpmInstallationArgs and GuestPoliciesRecipeInstallStepRpmInstallationOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepRpmInstallationInput` via:
+//
+//          GuestPoliciesRecipeInstallStepRpmInstallationArgs{...}
+type GuestPoliciesRecipeInstallStepRpmInstallationInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepRpmInstallationOutput() GuestPoliciesRecipeInstallStepRpmInstallationOutput
+	ToGuestPoliciesRecipeInstallStepRpmInstallationOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepRpmInstallationOutput
+}
+
+type GuestPoliciesRecipeInstallStepRpmInstallationArgs struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+}
+
+func (GuestPoliciesRecipeInstallStepRpmInstallationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepRpmInstallation)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeInstallStepRpmInstallationArgs) ToGuestPoliciesRecipeInstallStepRpmInstallationOutput() GuestPoliciesRecipeInstallStepRpmInstallationOutput {
+	return i.ToGuestPoliciesRecipeInstallStepRpmInstallationOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepRpmInstallationArgs) ToGuestPoliciesRecipeInstallStepRpmInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepRpmInstallationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepRpmInstallationOutput)
+}
+
+func (i GuestPoliciesRecipeInstallStepRpmInstallationArgs) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutput() GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepRpmInstallationArgs) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepRpmInstallationOutput).ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeInstallStepRpmInstallationPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepRpmInstallationArgs, GuestPoliciesRecipeInstallStepRpmInstallationPtr and GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepRpmInstallationPtrInput` via:
+//
+//          GuestPoliciesRecipeInstallStepRpmInstallationArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeInstallStepRpmInstallationPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutput() GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput
+	ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput
+}
+
+type guestPoliciesRecipeInstallStepRpmInstallationPtrType GuestPoliciesRecipeInstallStepRpmInstallationArgs
+
+func GuestPoliciesRecipeInstallStepRpmInstallationPtr(v *GuestPoliciesRecipeInstallStepRpmInstallationArgs) GuestPoliciesRecipeInstallStepRpmInstallationPtrInput {
+	return (*guestPoliciesRecipeInstallStepRpmInstallationPtrType)(v)
+}
+
+func (*guestPoliciesRecipeInstallStepRpmInstallationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepRpmInstallation)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeInstallStepRpmInstallationPtrType) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutput() GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeInstallStepRpmInstallationPtrType) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepRpmInstallationOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepRpmInstallationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepRpmInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepRpmInstallationOutput) ToGuestPoliciesRecipeInstallStepRpmInstallationOutput() GuestPoliciesRecipeInstallStepRpmInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepRpmInstallationOutput) ToGuestPoliciesRecipeInstallStepRpmInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepRpmInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepRpmInstallationOutput) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutput() GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
+	return o.ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeInstallStepRpmInstallationOutput) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepRpmInstallation) *GuestPoliciesRecipeInstallStepRpmInstallation {
+		return &v
+	}).(GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepRpmInstallationOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepRpmInstallation) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepRpmInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutput() GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) ToGuestPoliciesRecipeInstallStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) Elem() GuestPoliciesRecipeInstallStepRpmInstallationOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepRpmInstallation) GuestPoliciesRecipeInstallStepRpmInstallation {
+		return *v
+	}).(GuestPoliciesRecipeInstallStepRpmInstallationOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepRpmInstallation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepScriptRun struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
+	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+	// which likely only succeed for scripts with shebang lines.
+	Interpreter *string `pulumi:"interpreter"`
+	// The shell script to be executed.
+	Script string `pulumi:"script"`
+}
+
+// GuestPoliciesRecipeInstallStepScriptRunInput is an input type that accepts GuestPoliciesRecipeInstallStepScriptRunArgs and GuestPoliciesRecipeInstallStepScriptRunOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepScriptRunInput` via:
+//
+//          GuestPoliciesRecipeInstallStepScriptRunArgs{...}
+type GuestPoliciesRecipeInstallStepScriptRunInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepScriptRunOutput() GuestPoliciesRecipeInstallStepScriptRunOutput
+	ToGuestPoliciesRecipeInstallStepScriptRunOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepScriptRunOutput
+}
+
+type GuestPoliciesRecipeInstallStepScriptRunArgs struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
+	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+	// which likely only succeed for scripts with shebang lines.
+	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
+	// The shell script to be executed.
+	Script pulumi.StringInput `pulumi:"script"`
+}
+
+func (GuestPoliciesRecipeInstallStepScriptRunArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepScriptRun)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeInstallStepScriptRunArgs) ToGuestPoliciesRecipeInstallStepScriptRunOutput() GuestPoliciesRecipeInstallStepScriptRunOutput {
+	return i.ToGuestPoliciesRecipeInstallStepScriptRunOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepScriptRunArgs) ToGuestPoliciesRecipeInstallStepScriptRunOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepScriptRunOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepScriptRunOutput)
+}
+
+func (i GuestPoliciesRecipeInstallStepScriptRunArgs) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutput() GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeInstallStepScriptRunArgs) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepScriptRunOutput).ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeInstallStepScriptRunPtrInput is an input type that accepts GuestPoliciesRecipeInstallStepScriptRunArgs, GuestPoliciesRecipeInstallStepScriptRunPtr and GuestPoliciesRecipeInstallStepScriptRunPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeInstallStepScriptRunPtrInput` via:
+//
+//          GuestPoliciesRecipeInstallStepScriptRunArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeInstallStepScriptRunPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeInstallStepScriptRunPtrOutput() GuestPoliciesRecipeInstallStepScriptRunPtrOutput
+	ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(context.Context) GuestPoliciesRecipeInstallStepScriptRunPtrOutput
+}
+
+type guestPoliciesRecipeInstallStepScriptRunPtrType GuestPoliciesRecipeInstallStepScriptRunArgs
+
+func GuestPoliciesRecipeInstallStepScriptRunPtr(v *GuestPoliciesRecipeInstallStepScriptRunArgs) GuestPoliciesRecipeInstallStepScriptRunPtrInput {
+	return (*guestPoliciesRecipeInstallStepScriptRunPtrType)(v)
+}
+
+func (*guestPoliciesRecipeInstallStepScriptRunPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepScriptRun)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeInstallStepScriptRunPtrType) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutput() GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
+	return i.ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeInstallStepScriptRunPtrType) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeInstallStepScriptRunPtrOutput)
+}
+
+type GuestPoliciesRecipeInstallStepScriptRunOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepScriptRunOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeInstallStepScriptRun)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepScriptRunOutput) ToGuestPoliciesRecipeInstallStepScriptRunOutput() GuestPoliciesRecipeInstallStepScriptRunOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepScriptRunOutput) ToGuestPoliciesRecipeInstallStepScriptRunOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepScriptRunOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepScriptRunOutput) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutput() GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
+	return o.ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeInstallStepScriptRunOutput) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepScriptRun) *GuestPoliciesRecipeInstallStepScriptRun {
+		return &v
+	}).(GuestPoliciesRecipeInstallStepScriptRunPtrOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeInstallStepScriptRunOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepScriptRun) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+// which likely only succeed for scripts with shebang lines.
+func (o GuestPoliciesRecipeInstallStepScriptRunOutput) Interpreter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepScriptRun) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
+}
+
+// The shell script to be executed.
+func (o GuestPoliciesRecipeInstallStepScriptRunOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepScriptRun) string { return v.Script }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesRecipeInstallStepScriptRunPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeInstallStepScriptRunPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeInstallStepScriptRun)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutput() GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) ToGuestPoliciesRecipeInstallStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeInstallStepScriptRunPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) Elem() GuestPoliciesRecipeInstallStepScriptRunOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepScriptRun) GuestPoliciesRecipeInstallStepScriptRun { return *v }).(GuestPoliciesRecipeInstallStepScriptRunOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepScriptRun) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedExitCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+// which likely only succeed for scripts with shebang lines.
+func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) Interpreter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepScriptRun) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interpreter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The shell script to be executed.
+func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepScriptRun) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStep struct {
+	// Extracts an archive into the specified directory.  Structure is documented below.
+	ArchiveExtraction *GuestPoliciesRecipeUpdateStepArchiveExtraction `pulumi:"archiveExtraction"`
+	// Installs a deb file via dpkg.  Structure is documented below.
+	DpkgInstallation *GuestPoliciesRecipeUpdateStepDpkgInstallation `pulumi:"dpkgInstallation"`
+	// Copies a file onto the instance.  Structure is documented below.
+	FileCopy *GuestPoliciesRecipeUpdateStepFileCopy `pulumi:"fileCopy"`
+	// Executes an artifact or local file.  Structure is documented below.
+	FileExec *GuestPoliciesRecipeUpdateStepFileExec `pulumi:"fileExec"`
+	// Installs an MSI file.  Structure is documented below.
+	MsiInstallation *GuestPoliciesRecipeUpdateStepMsiInstallation `pulumi:"msiInstallation"`
+	// Installs an rpm file via the rpm utility.  Structure is documented below.
+	RpmInstallation *GuestPoliciesRecipeUpdateStepRpmInstallation `pulumi:"rpmInstallation"`
+	// Runs commands in a shell.  Structure is documented below.
+	ScriptRun *GuestPoliciesRecipeUpdateStepScriptRun `pulumi:"scriptRun"`
+}
+
+// GuestPoliciesRecipeUpdateStepInput is an input type that accepts GuestPoliciesRecipeUpdateStepArgs and GuestPoliciesRecipeUpdateStepOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepArgs{...}
+type GuestPoliciesRecipeUpdateStepInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepOutput() GuestPoliciesRecipeUpdateStepOutput
+	ToGuestPoliciesRecipeUpdateStepOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepOutput
+}
+
+type GuestPoliciesRecipeUpdateStepArgs struct {
+	// Extracts an archive into the specified directory.  Structure is documented below.
+	ArchiveExtraction GuestPoliciesRecipeUpdateStepArchiveExtractionPtrInput `pulumi:"archiveExtraction"`
+	// Installs a deb file via dpkg.  Structure is documented below.
+	DpkgInstallation GuestPoliciesRecipeUpdateStepDpkgInstallationPtrInput `pulumi:"dpkgInstallation"`
+	// Copies a file onto the instance.  Structure is documented below.
+	FileCopy GuestPoliciesRecipeUpdateStepFileCopyPtrInput `pulumi:"fileCopy"`
+	// Executes an artifact or local file.  Structure is documented below.
+	FileExec GuestPoliciesRecipeUpdateStepFileExecPtrInput `pulumi:"fileExec"`
+	// Installs an MSI file.  Structure is documented below.
+	MsiInstallation GuestPoliciesRecipeUpdateStepMsiInstallationPtrInput `pulumi:"msiInstallation"`
+	// Installs an rpm file via the rpm utility.  Structure is documented below.
+	RpmInstallation GuestPoliciesRecipeUpdateStepRpmInstallationPtrInput `pulumi:"rpmInstallation"`
+	// Runs commands in a shell.  Structure is documented below.
+	ScriptRun GuestPoliciesRecipeUpdateStepScriptRunPtrInput `pulumi:"scriptRun"`
+}
+
+func (GuestPoliciesRecipeUpdateStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStep)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeUpdateStepArgs) ToGuestPoliciesRecipeUpdateStepOutput() GuestPoliciesRecipeUpdateStepOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepArgs) ToGuestPoliciesRecipeUpdateStepOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepOutput)
+}
+
+// GuestPoliciesRecipeUpdateStepArrayInput is an input type that accepts GuestPoliciesRecipeUpdateStepArray and GuestPoliciesRecipeUpdateStepArrayOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepArrayInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepArray{ GuestPoliciesRecipeUpdateStepArgs{...} }
+type GuestPoliciesRecipeUpdateStepArrayInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepArrayOutput() GuestPoliciesRecipeUpdateStepArrayOutput
+	ToGuestPoliciesRecipeUpdateStepArrayOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepArrayOutput
+}
+
+type GuestPoliciesRecipeUpdateStepArray []GuestPoliciesRecipeUpdateStepInput
+
+func (GuestPoliciesRecipeUpdateStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesRecipeUpdateStep)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeUpdateStepArray) ToGuestPoliciesRecipeUpdateStepArrayOutput() GuestPoliciesRecipeUpdateStepArrayOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepArrayOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepArray) ToGuestPoliciesRecipeUpdateStepArrayOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepArrayOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStep)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepOutput) ToGuestPoliciesRecipeUpdateStepOutput() GuestPoliciesRecipeUpdateStepOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepOutput) ToGuestPoliciesRecipeUpdateStepOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepOutput {
+	return o
+}
+
+// Extracts an archive into the specified directory.  Structure is documented below.
+func (o GuestPoliciesRecipeUpdateStepOutput) ArchiveExtraction() GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepArchiveExtraction {
+		return v.ArchiveExtraction
+	}).(GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput)
+}
+
+// Installs a deb file via dpkg.  Structure is documented below.
+func (o GuestPoliciesRecipeUpdateStepOutput) DpkgInstallation() GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepDpkgInstallation {
+		return v.DpkgInstallation
+	}).(GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput)
+}
+
+// Copies a file onto the instance.  Structure is documented below.
+func (o GuestPoliciesRecipeUpdateStepOutput) FileCopy() GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepFileCopy { return v.FileCopy }).(GuestPoliciesRecipeUpdateStepFileCopyPtrOutput)
+}
+
+// Executes an artifact or local file.  Structure is documented below.
+func (o GuestPoliciesRecipeUpdateStepOutput) FileExec() GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepFileExec { return v.FileExec }).(GuestPoliciesRecipeUpdateStepFileExecPtrOutput)
+}
+
+// Installs an MSI file.  Structure is documented below.
+func (o GuestPoliciesRecipeUpdateStepOutput) MsiInstallation() GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepMsiInstallation {
+		return v.MsiInstallation
+	}).(GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput)
+}
+
+// Installs an rpm file via the rpm utility.  Structure is documented below.
+func (o GuestPoliciesRecipeUpdateStepOutput) RpmInstallation() GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepRpmInstallation {
+		return v.RpmInstallation
+	}).(GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput)
+}
+
+// Runs commands in a shell.  Structure is documented below.
+func (o GuestPoliciesRecipeUpdateStepOutput) ScriptRun() GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStep) *GuestPoliciesRecipeUpdateStepScriptRun { return v.ScriptRun }).(GuestPoliciesRecipeUpdateStepScriptRunPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepArrayOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPoliciesRecipeUpdateStep)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepArrayOutput) ToGuestPoliciesRecipeUpdateStepArrayOutput() GuestPoliciesRecipeUpdateStepArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepArrayOutput) ToGuestPoliciesRecipeUpdateStepArrayOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepArrayOutput) Index(i pulumi.IntInput) GuestPoliciesRecipeUpdateStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPoliciesRecipeUpdateStep {
+		return vs[0].([]GuestPoliciesRecipeUpdateStep)[vs[1].(int)]
+	}).(GuestPoliciesRecipeUpdateStepOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepArchiveExtraction struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	Destination *string `pulumi:"destination"`
+	// The type of the archive to extract.
+	Type string `pulumi:"type"`
+}
+
+// GuestPoliciesRecipeUpdateStepArchiveExtractionInput is an input type that accepts GuestPoliciesRecipeUpdateStepArchiveExtractionArgs and GuestPoliciesRecipeUpdateStepArchiveExtractionOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepArchiveExtractionInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepArchiveExtractionArgs{...}
+type GuestPoliciesRecipeUpdateStepArchiveExtractionInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepArchiveExtractionOutput() GuestPoliciesRecipeUpdateStepArchiveExtractionOutput
+	ToGuestPoliciesRecipeUpdateStepArchiveExtractionOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepArchiveExtractionOutput
+}
+
+type GuestPoliciesRecipeUpdateStepArchiveExtractionArgs struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	// The type of the archive to extract.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GuestPoliciesRecipeUpdateStepArchiveExtractionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepArchiveExtraction)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeUpdateStepArchiveExtractionArgs) ToGuestPoliciesRecipeUpdateStepArchiveExtractionOutput() GuestPoliciesRecipeUpdateStepArchiveExtractionOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepArchiveExtractionOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepArchiveExtractionArgs) ToGuestPoliciesRecipeUpdateStepArchiveExtractionOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepArchiveExtractionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepArchiveExtractionOutput)
+}
+
+func (i GuestPoliciesRecipeUpdateStepArchiveExtractionArgs) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput() GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepArchiveExtractionArgs) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepArchiveExtractionOutput).ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeUpdateStepArchiveExtractionPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepArchiveExtractionArgs, GuestPoliciesRecipeUpdateStepArchiveExtractionPtr and GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepArchiveExtractionPtrInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepArchiveExtractionArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeUpdateStepArchiveExtractionPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput() GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput
+	ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput
+}
+
+type guestPoliciesRecipeUpdateStepArchiveExtractionPtrType GuestPoliciesRecipeUpdateStepArchiveExtractionArgs
+
+func GuestPoliciesRecipeUpdateStepArchiveExtractionPtr(v *GuestPoliciesRecipeUpdateStepArchiveExtractionArgs) GuestPoliciesRecipeUpdateStepArchiveExtractionPtrInput {
+	return (*guestPoliciesRecipeUpdateStepArchiveExtractionPtrType)(v)
+}
+
+func (*guestPoliciesRecipeUpdateStepArchiveExtractionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepArchiveExtraction)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeUpdateStepArchiveExtractionPtrType) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput() GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeUpdateStepArchiveExtractionPtrType) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepArchiveExtractionOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepArchiveExtraction)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ToGuestPoliciesRecipeUpdateStepArchiveExtractionOutput() GuestPoliciesRecipeUpdateStepArchiveExtractionOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ToGuestPoliciesRecipeUpdateStepArchiveExtractionOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepArchiveExtractionOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput() GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
+	return o.ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepArchiveExtraction) *GuestPoliciesRecipeUpdateStepArchiveExtraction {
+		return &v
+	}).(GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepArchiveExtraction) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepArchiveExtraction) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+// The type of the archive to extract.
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepArchiveExtraction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepArchiveExtraction)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput() GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) ToGuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) Elem() GuestPoliciesRecipeUpdateStepArchiveExtractionOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepArchiveExtraction) GuestPoliciesRecipeUpdateStepArchiveExtraction {
+		return *v
+	}).(GuestPoliciesRecipeUpdateStepArchiveExtractionOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepArchiveExtraction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepArchiveExtraction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the archive to extract.
+func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepArchiveExtraction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepDpkgInstallation struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+}
+
+// GuestPoliciesRecipeUpdateStepDpkgInstallationInput is an input type that accepts GuestPoliciesRecipeUpdateStepDpkgInstallationArgs and GuestPoliciesRecipeUpdateStepDpkgInstallationOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepDpkgInstallationInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepDpkgInstallationArgs{...}
+type GuestPoliciesRecipeUpdateStepDpkgInstallationInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepDpkgInstallationOutput() GuestPoliciesRecipeUpdateStepDpkgInstallationOutput
+	ToGuestPoliciesRecipeUpdateStepDpkgInstallationOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepDpkgInstallationOutput
+}
+
+type GuestPoliciesRecipeUpdateStepDpkgInstallationArgs struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+}
+
+func (GuestPoliciesRecipeUpdateStepDpkgInstallationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepDpkgInstallation)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeUpdateStepDpkgInstallationArgs) ToGuestPoliciesRecipeUpdateStepDpkgInstallationOutput() GuestPoliciesRecipeUpdateStepDpkgInstallationOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepDpkgInstallationOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepDpkgInstallationArgs) ToGuestPoliciesRecipeUpdateStepDpkgInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepDpkgInstallationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepDpkgInstallationOutput)
+}
+
+func (i GuestPoliciesRecipeUpdateStepDpkgInstallationArgs) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput() GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepDpkgInstallationArgs) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepDpkgInstallationOutput).ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeUpdateStepDpkgInstallationPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepDpkgInstallationArgs, GuestPoliciesRecipeUpdateStepDpkgInstallationPtr and GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepDpkgInstallationPtrInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepDpkgInstallationArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeUpdateStepDpkgInstallationPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput() GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput
+	ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput
+}
+
+type guestPoliciesRecipeUpdateStepDpkgInstallationPtrType GuestPoliciesRecipeUpdateStepDpkgInstallationArgs
+
+func GuestPoliciesRecipeUpdateStepDpkgInstallationPtr(v *GuestPoliciesRecipeUpdateStepDpkgInstallationArgs) GuestPoliciesRecipeUpdateStepDpkgInstallationPtrInput {
+	return (*guestPoliciesRecipeUpdateStepDpkgInstallationPtrType)(v)
+}
+
+func (*guestPoliciesRecipeUpdateStepDpkgInstallationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepDpkgInstallation)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeUpdateStepDpkgInstallationPtrType) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput() GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeUpdateStepDpkgInstallationPtrType) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepDpkgInstallationOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepDpkgInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ToGuestPoliciesRecipeUpdateStepDpkgInstallationOutput() GuestPoliciesRecipeUpdateStepDpkgInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ToGuestPoliciesRecipeUpdateStepDpkgInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepDpkgInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput() GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
+	return o.ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepDpkgInstallation) *GuestPoliciesRecipeUpdateStepDpkgInstallation {
+		return &v
+	}).(GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepDpkgInstallationOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepDpkgInstallation) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepDpkgInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput() GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) ToGuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) Elem() GuestPoliciesRecipeUpdateStepDpkgInstallationOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepDpkgInstallation) GuestPoliciesRecipeUpdateStepDpkgInstallation {
+		return *v
+	}).(GuestPoliciesRecipeUpdateStepDpkgInstallationOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepDpkgInstallation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepFileCopy struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	Destination string `pulumi:"destination"`
+	// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+	// is not overwritten and the step is considered a success. Defaults to false.
+	Overwrite *bool `pulumi:"overwrite"`
+	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+	// for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+	// number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+	// bit corresponds to the execute permission. Default behavior is 755.
+	// Below are some examples of permissions and their associated values:
+	// read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+	Permissions *string `pulumi:"permissions"`
+}
+
+// GuestPoliciesRecipeUpdateStepFileCopyInput is an input type that accepts GuestPoliciesRecipeUpdateStepFileCopyArgs and GuestPoliciesRecipeUpdateStepFileCopyOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepFileCopyInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepFileCopyArgs{...}
+type GuestPoliciesRecipeUpdateStepFileCopyInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepFileCopyOutput() GuestPoliciesRecipeUpdateStepFileCopyOutput
+	ToGuestPoliciesRecipeUpdateStepFileCopyOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepFileCopyOutput
+}
+
+type GuestPoliciesRecipeUpdateStepFileCopyArgs struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	Destination pulumi.StringInput `pulumi:"destination"`
+	// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+	// is not overwritten and the step is considered a success. Defaults to false.
+	Overwrite pulumi.BoolPtrInput `pulumi:"overwrite"`
+	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+	// for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+	// number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+	// bit corresponds to the execute permission. Default behavior is 755.
+	// Below are some examples of permissions and their associated values:
+	// read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
+}
+
+func (GuestPoliciesRecipeUpdateStepFileCopyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepFileCopy)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeUpdateStepFileCopyArgs) ToGuestPoliciesRecipeUpdateStepFileCopyOutput() GuestPoliciesRecipeUpdateStepFileCopyOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepFileCopyOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepFileCopyArgs) ToGuestPoliciesRecipeUpdateStepFileCopyOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileCopyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepFileCopyOutput)
+}
+
+func (i GuestPoliciesRecipeUpdateStepFileCopyArgs) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutput() GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepFileCopyArgs) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepFileCopyOutput).ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeUpdateStepFileCopyPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepFileCopyArgs, GuestPoliciesRecipeUpdateStepFileCopyPtr and GuestPoliciesRecipeUpdateStepFileCopyPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepFileCopyPtrInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepFileCopyArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeUpdateStepFileCopyPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutput() GuestPoliciesRecipeUpdateStepFileCopyPtrOutput
+	ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepFileCopyPtrOutput
+}
+
+type guestPoliciesRecipeUpdateStepFileCopyPtrType GuestPoliciesRecipeUpdateStepFileCopyArgs
+
+func GuestPoliciesRecipeUpdateStepFileCopyPtr(v *GuestPoliciesRecipeUpdateStepFileCopyArgs) GuestPoliciesRecipeUpdateStepFileCopyPtrInput {
+	return (*guestPoliciesRecipeUpdateStepFileCopyPtrType)(v)
+}
+
+func (*guestPoliciesRecipeUpdateStepFileCopyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepFileCopy)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeUpdateStepFileCopyPtrType) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutput() GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeUpdateStepFileCopyPtrType) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepFileCopyPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepFileCopyOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepFileCopyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepFileCopy)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) ToGuestPoliciesRecipeUpdateStepFileCopyOutput() GuestPoliciesRecipeUpdateStepFileCopyOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) ToGuestPoliciesRecipeUpdateStepFileCopyOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileCopyOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutput() GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
+	return o.ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileCopy) *GuestPoliciesRecipeUpdateStepFileCopy {
+		return &v
+	}).(GuestPoliciesRecipeUpdateStepFileCopyPtrOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileCopy) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileCopy) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+// is not overwritten and the step is considered a success. Defaults to false.
+func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) Overwrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileCopy) *bool { return v.Overwrite }).(pulumi.BoolPtrOutput)
+}
+
+// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+// for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+// number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+// bit corresponds to the execute permission. Default behavior is 755.
+// Below are some examples of permissions and their associated values:
+// read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) Permissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileCopy) *string { return v.Permissions }).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepFileCopyPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepFileCopy)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutput() GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) ToGuestPoliciesRecipeUpdateStepFileCopyPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileCopyPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) Elem() GuestPoliciesRecipeUpdateStepFileCopyOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileCopy) GuestPoliciesRecipeUpdateStepFileCopy { return *v }).(GuestPoliciesRecipeUpdateStepFileCopyOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileCopy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileCopy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
+// is not overwritten and the step is considered a success. Defaults to false.
+func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) Overwrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileCopy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Overwrite
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
+// for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit
+// number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one
+// bit corresponds to the execute permission. Default behavior is 755.
+// Below are some examples of permissions and their associated values:
+// read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) Permissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileCopy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Permissions
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepFileExec struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
+	// Arguments to be passed to the provided executable.
+	Args []string `pulumi:"args"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId *string `pulumi:"artifactId"`
+	// The absolute path of the file on the local filesystem.
+	LocalPath *string `pulumi:"localPath"`
+}
+
+// GuestPoliciesRecipeUpdateStepFileExecInput is an input type that accepts GuestPoliciesRecipeUpdateStepFileExecArgs and GuestPoliciesRecipeUpdateStepFileExecOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepFileExecInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepFileExecArgs{...}
+type GuestPoliciesRecipeUpdateStepFileExecInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepFileExecOutput() GuestPoliciesRecipeUpdateStepFileExecOutput
+	ToGuestPoliciesRecipeUpdateStepFileExecOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepFileExecOutput
+}
+
+type GuestPoliciesRecipeUpdateStepFileExecArgs struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
+	// Arguments to be passed to the provided executable.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
+	// The absolute path of the file on the local filesystem.
+	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
+}
+
+func (GuestPoliciesRecipeUpdateStepFileExecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepFileExec)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeUpdateStepFileExecArgs) ToGuestPoliciesRecipeUpdateStepFileExecOutput() GuestPoliciesRecipeUpdateStepFileExecOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepFileExecOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepFileExecArgs) ToGuestPoliciesRecipeUpdateStepFileExecOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileExecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepFileExecOutput)
+}
+
+func (i GuestPoliciesRecipeUpdateStepFileExecArgs) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutput() GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepFileExecArgs) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepFileExecOutput).ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeUpdateStepFileExecPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepFileExecArgs, GuestPoliciesRecipeUpdateStepFileExecPtr and GuestPoliciesRecipeUpdateStepFileExecPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepFileExecPtrInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepFileExecArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeUpdateStepFileExecPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepFileExecPtrOutput() GuestPoliciesRecipeUpdateStepFileExecPtrOutput
+	ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepFileExecPtrOutput
+}
+
+type guestPoliciesRecipeUpdateStepFileExecPtrType GuestPoliciesRecipeUpdateStepFileExecArgs
+
+func GuestPoliciesRecipeUpdateStepFileExecPtr(v *GuestPoliciesRecipeUpdateStepFileExecArgs) GuestPoliciesRecipeUpdateStepFileExecPtrInput {
+	return (*guestPoliciesRecipeUpdateStepFileExecPtrType)(v)
+}
+
+func (*guestPoliciesRecipeUpdateStepFileExecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepFileExec)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeUpdateStepFileExecPtrType) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutput() GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeUpdateStepFileExecPtrType) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepFileExecPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepFileExecOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepFileExecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepFileExec)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileExecOutput) ToGuestPoliciesRecipeUpdateStepFileExecOutput() GuestPoliciesRecipeUpdateStepFileExecOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileExecOutput) ToGuestPoliciesRecipeUpdateStepFileExecOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileExecOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileExecOutput) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutput() GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
+	return o.ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileExecOutput) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileExec) *GuestPoliciesRecipeUpdateStepFileExec {
+		return &v
+	}).(GuestPoliciesRecipeUpdateStepFileExecPtrOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeUpdateStepFileExecOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileExec) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// Arguments to be passed to the provided executable.
+func (o GuestPoliciesRecipeUpdateStepFileExecOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileExec) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepFileExecOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileExec) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+}
+
+// The absolute path of the file on the local filesystem.
+func (o GuestPoliciesRecipeUpdateStepFileExecOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileExec) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepFileExecPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepFileExecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepFileExec)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutput() GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) ToGuestPoliciesRecipeUpdateStepFileExecPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepFileExecPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) Elem() GuestPoliciesRecipeUpdateStepFileExecOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileExec) GuestPoliciesRecipeUpdateStepFileExec { return *v }).(GuestPoliciesRecipeUpdateStepFileExecOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileExec) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedExitCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// Arguments to be passed to the provided executable.
+func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileExec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileExec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The absolute path of the file on the local filesystem.
+func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileExec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepMsiInstallation struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// The flags to use when installing the MSI. Defaults to the install flag.
+	Flags []string `pulumi:"flags"`
+}
+
+// GuestPoliciesRecipeUpdateStepMsiInstallationInput is an input type that accepts GuestPoliciesRecipeUpdateStepMsiInstallationArgs and GuestPoliciesRecipeUpdateStepMsiInstallationOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepMsiInstallationInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepMsiInstallationArgs{...}
+type GuestPoliciesRecipeUpdateStepMsiInstallationInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepMsiInstallationOutput() GuestPoliciesRecipeUpdateStepMsiInstallationOutput
+	ToGuestPoliciesRecipeUpdateStepMsiInstallationOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepMsiInstallationOutput
+}
+
+type GuestPoliciesRecipeUpdateStepMsiInstallationArgs struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// The flags to use when installing the MSI. Defaults to the install flag.
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+}
+
+func (GuestPoliciesRecipeUpdateStepMsiInstallationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepMsiInstallation)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeUpdateStepMsiInstallationArgs) ToGuestPoliciesRecipeUpdateStepMsiInstallationOutput() GuestPoliciesRecipeUpdateStepMsiInstallationOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepMsiInstallationOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepMsiInstallationArgs) ToGuestPoliciesRecipeUpdateStepMsiInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepMsiInstallationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepMsiInstallationOutput)
+}
+
+func (i GuestPoliciesRecipeUpdateStepMsiInstallationArgs) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput() GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepMsiInstallationArgs) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepMsiInstallationOutput).ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeUpdateStepMsiInstallationPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepMsiInstallationArgs, GuestPoliciesRecipeUpdateStepMsiInstallationPtr and GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepMsiInstallationPtrInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepMsiInstallationArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeUpdateStepMsiInstallationPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput() GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput
+	ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput
+}
+
+type guestPoliciesRecipeUpdateStepMsiInstallationPtrType GuestPoliciesRecipeUpdateStepMsiInstallationArgs
+
+func GuestPoliciesRecipeUpdateStepMsiInstallationPtr(v *GuestPoliciesRecipeUpdateStepMsiInstallationArgs) GuestPoliciesRecipeUpdateStepMsiInstallationPtrInput {
+	return (*guestPoliciesRecipeUpdateStepMsiInstallationPtrType)(v)
+}
+
+func (*guestPoliciesRecipeUpdateStepMsiInstallationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepMsiInstallation)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeUpdateStepMsiInstallationPtrType) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput() GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeUpdateStepMsiInstallationPtrType) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepMsiInstallationOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepMsiInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ToGuestPoliciesRecipeUpdateStepMsiInstallationOutput() GuestPoliciesRecipeUpdateStepMsiInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ToGuestPoliciesRecipeUpdateStepMsiInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepMsiInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput() GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
+	return o.ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepMsiInstallation) *GuestPoliciesRecipeUpdateStepMsiInstallation {
+		return &v
+	}).(GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepMsiInstallation) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepMsiInstallation) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// The flags to use when installing the MSI. Defaults to the install flag.
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepMsiInstallation) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepMsiInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput() GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) ToGuestPoliciesRecipeUpdateStepMsiInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) Elem() GuestPoliciesRecipeUpdateStepMsiInstallationOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepMsiInstallation) GuestPoliciesRecipeUpdateStepMsiInstallation {
+		return *v
+	}).(GuestPoliciesRecipeUpdateStepMsiInstallationOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepMsiInstallation) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedExitCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepMsiInstallation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The flags to use when installing the MSI. Defaults to the install flag.
+func (o GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepMsiInstallation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringArrayOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepRpmInstallation struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+}
+
+// GuestPoliciesRecipeUpdateStepRpmInstallationInput is an input type that accepts GuestPoliciesRecipeUpdateStepRpmInstallationArgs and GuestPoliciesRecipeUpdateStepRpmInstallationOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepRpmInstallationInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepRpmInstallationArgs{...}
+type GuestPoliciesRecipeUpdateStepRpmInstallationInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepRpmInstallationOutput() GuestPoliciesRecipeUpdateStepRpmInstallationOutput
+	ToGuestPoliciesRecipeUpdateStepRpmInstallationOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepRpmInstallationOutput
+}
+
+type GuestPoliciesRecipeUpdateStepRpmInstallationArgs struct {
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+}
+
+func (GuestPoliciesRecipeUpdateStepRpmInstallationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepRpmInstallation)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeUpdateStepRpmInstallationArgs) ToGuestPoliciesRecipeUpdateStepRpmInstallationOutput() GuestPoliciesRecipeUpdateStepRpmInstallationOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepRpmInstallationOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepRpmInstallationArgs) ToGuestPoliciesRecipeUpdateStepRpmInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepRpmInstallationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepRpmInstallationOutput)
+}
+
+func (i GuestPoliciesRecipeUpdateStepRpmInstallationArgs) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput() GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepRpmInstallationArgs) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepRpmInstallationOutput).ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeUpdateStepRpmInstallationPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepRpmInstallationArgs, GuestPoliciesRecipeUpdateStepRpmInstallationPtr and GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepRpmInstallationPtrInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepRpmInstallationArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeUpdateStepRpmInstallationPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput() GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput
+	ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput
+}
+
+type guestPoliciesRecipeUpdateStepRpmInstallationPtrType GuestPoliciesRecipeUpdateStepRpmInstallationArgs
+
+func GuestPoliciesRecipeUpdateStepRpmInstallationPtr(v *GuestPoliciesRecipeUpdateStepRpmInstallationArgs) GuestPoliciesRecipeUpdateStepRpmInstallationPtrInput {
+	return (*guestPoliciesRecipeUpdateStepRpmInstallationPtrType)(v)
+}
+
+func (*guestPoliciesRecipeUpdateStepRpmInstallationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepRpmInstallation)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeUpdateStepRpmInstallationPtrType) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput() GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeUpdateStepRpmInstallationPtrType) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepRpmInstallationOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepRpmInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ToGuestPoliciesRecipeUpdateStepRpmInstallationOutput() GuestPoliciesRecipeUpdateStepRpmInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ToGuestPoliciesRecipeUpdateStepRpmInstallationOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepRpmInstallationOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput() GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
+	return o.ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepRpmInstallation) *GuestPoliciesRecipeUpdateStepRpmInstallation {
+		return &v
+	}).(GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepRpmInstallationOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepRpmInstallation) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepRpmInstallation)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput() GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) ToGuestPoliciesRecipeUpdateStepRpmInstallationPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) Elem() GuestPoliciesRecipeUpdateStepRpmInstallationOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepRpmInstallation) GuestPoliciesRecipeUpdateStepRpmInstallation {
+		return *v
+	}).(GuestPoliciesRecipeUpdateStepRpmInstallationOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepRpmInstallation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepScriptRun struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
+	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+	// which likely only succeed for scripts with shebang lines.
+	Interpreter *string `pulumi:"interpreter"`
+	// The shell script to be executed.
+	Script string `pulumi:"script"`
+}
+
+// GuestPoliciesRecipeUpdateStepScriptRunInput is an input type that accepts GuestPoliciesRecipeUpdateStepScriptRunArgs and GuestPoliciesRecipeUpdateStepScriptRunOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepScriptRunInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepScriptRunArgs{...}
+type GuestPoliciesRecipeUpdateStepScriptRunInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepScriptRunOutput() GuestPoliciesRecipeUpdateStepScriptRunOutput
+	ToGuestPoliciesRecipeUpdateStepScriptRunOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepScriptRunOutput
+}
+
+type GuestPoliciesRecipeUpdateStepScriptRunArgs struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
+	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+	// which likely only succeed for scripts with shebang lines.
+	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
+	// The shell script to be executed.
+	Script pulumi.StringInput `pulumi:"script"`
+}
+
+func (GuestPoliciesRecipeUpdateStepScriptRunArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepScriptRun)(nil)).Elem()
+}
+
+func (i GuestPoliciesRecipeUpdateStepScriptRunArgs) ToGuestPoliciesRecipeUpdateStepScriptRunOutput() GuestPoliciesRecipeUpdateStepScriptRunOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepScriptRunOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepScriptRunArgs) ToGuestPoliciesRecipeUpdateStepScriptRunOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepScriptRunOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepScriptRunOutput)
+}
+
+func (i GuestPoliciesRecipeUpdateStepScriptRunArgs) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutput() GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesRecipeUpdateStepScriptRunArgs) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepScriptRunOutput).ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(ctx)
+}
+
+// GuestPoliciesRecipeUpdateStepScriptRunPtrInput is an input type that accepts GuestPoliciesRecipeUpdateStepScriptRunArgs, GuestPoliciesRecipeUpdateStepScriptRunPtr and GuestPoliciesRecipeUpdateStepScriptRunPtrOutput values.
+// You can construct a concrete instance of `GuestPoliciesRecipeUpdateStepScriptRunPtrInput` via:
+//
+//          GuestPoliciesRecipeUpdateStepScriptRunArgs{...}
+//
+//  or:
+//
+//          nil
+type GuestPoliciesRecipeUpdateStepScriptRunPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutput() GuestPoliciesRecipeUpdateStepScriptRunPtrOutput
+	ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(context.Context) GuestPoliciesRecipeUpdateStepScriptRunPtrOutput
+}
+
+type guestPoliciesRecipeUpdateStepScriptRunPtrType GuestPoliciesRecipeUpdateStepScriptRunArgs
+
+func GuestPoliciesRecipeUpdateStepScriptRunPtr(v *GuestPoliciesRecipeUpdateStepScriptRunArgs) GuestPoliciesRecipeUpdateStepScriptRunPtrInput {
+	return (*guestPoliciesRecipeUpdateStepScriptRunPtrType)(v)
+}
+
+func (*guestPoliciesRecipeUpdateStepScriptRunPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepScriptRun)(nil)).Elem()
+}
+
+func (i *guestPoliciesRecipeUpdateStepScriptRunPtrType) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutput() GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
+	return i.ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesRecipeUpdateStepScriptRunPtrType) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesRecipeUpdateStepScriptRunPtrOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepScriptRunOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepScriptRunOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPoliciesRecipeUpdateStepScriptRun)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) ToGuestPoliciesRecipeUpdateStepScriptRunOutput() GuestPoliciesRecipeUpdateStepScriptRunOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) ToGuestPoliciesRecipeUpdateStepScriptRunOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepScriptRunOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutput() GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
+	return o.ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepScriptRun) *GuestPoliciesRecipeUpdateStepScriptRun {
+		return &v
+	}).(GuestPoliciesRecipeUpdateStepScriptRunPtrOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepScriptRun) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+// which likely only succeed for scripts with shebang lines.
+func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) Interpreter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepScriptRun) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
+}
+
+// The shell script to be executed.
+func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepScriptRun) string { return v.Script }).(pulumi.StringOutput)
+}
+
+type GuestPoliciesRecipeUpdateStepScriptRunPtrOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPoliciesRecipeUpdateStepScriptRun)(nil)).Elem()
+}
+
+func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutput() GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) ToGuestPoliciesRecipeUpdateStepScriptRunPtrOutputWithContext(ctx context.Context) GuestPoliciesRecipeUpdateStepScriptRunPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) Elem() GuestPoliciesRecipeUpdateStepScriptRunOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepScriptRun) GuestPoliciesRecipeUpdateStepScriptRun { return *v }).(GuestPoliciesRecipeUpdateStepScriptRunOutput)
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepScriptRun) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedExitCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
+// which likely only succeed for scripts with shebang lines.
+func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) Interpreter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepScriptRun) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interpreter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The shell script to be executed.
+func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepScriptRun) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
 type PatchDeploymentInstanceFilter struct {
 	// Target all VM instances in the project. If true, no other criteria is permitted.
 	All *bool `pulumi:"all"`
@@ -4496,6 +9305,64 @@ func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) DayOfWeek() pulumi.Stri
 }
 
 func init() {
+	pulumi.RegisterOutputType(GuestPoliciesAssignmentOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesAssignmentPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesAssignmentGroupLabelOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesAssignmentGroupLabelArrayOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesAssignmentOsTypeOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesAssignmentOsTypeArrayOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageArrayOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageRepositoryOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageRepositoryAptOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageRepositoryAptPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageRepositoryGooOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageRepositoryGooPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageRepositoryYumOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageRepositoryYumPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageRepositoryZypperOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPackageRepositoryZypperPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeArrayOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeArtifactOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeArtifactArrayOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeArtifactGcsOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeArtifactGcsPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeArtifactRemoteOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeArtifactRemotePtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepArrayOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepArchiveExtractionOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepDpkgInstallationOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepFileCopyOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepFileCopyPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepFileExecOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepFileExecPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepMsiInstallationOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepMsiInstallationPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepRpmInstallationOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepRpmInstallationPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepScriptRunOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeInstallStepScriptRunPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepArrayOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepArchiveExtractionOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepDpkgInstallationOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepFileCopyOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepFileCopyPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepFileExecOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepFileExecPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepMsiInstallationOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepMsiInstallationPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepRpmInstallationOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepRpmInstallationPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepScriptRunOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesRecipeUpdateStepScriptRunPtrOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentInstanceFilterOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentInstanceFilterPtrOutput{})
 	pulumi.RegisterOutputType(PatchDeploymentInstanceFilterGroupLabelOutput{})

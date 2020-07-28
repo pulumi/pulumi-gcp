@@ -6,7 +6,6 @@ package compute
 import (
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -66,9 +65,10 @@ type BackendService struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
-	// check can be specified, and a health check is required.
+	// check can be specified.
+	// A health check must be specified unless the backend service uses an internet NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
-	HealthChecks pulumi.StringOutput `pulumi:"healthChecks"`
+	HealthChecks pulumi.StringPtrOutput `pulumi:"healthChecks"`
 	// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
 	Iap BackendServiceIapPtrOutput `pulumi:"iap"`
 	// Indicates whether the backend service will be used with internal or
@@ -133,9 +133,6 @@ type BackendService struct {
 // NewBackendService registers a new resource with the given unique name, arguments, and options.
 func NewBackendService(ctx *pulumi.Context,
 	name string, args *BackendServiceArgs, opts ...pulumi.ResourceOption) (*BackendService, error) {
-	if args == nil || args.HealthChecks == nil {
-		return nil, errors.New("missing required argument 'HealthChecks'")
-	}
 	if args == nil {
 		args = &BackendServiceArgs{}
 	}
@@ -200,7 +197,8 @@ type backendServiceState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
-	// check can be specified, and a health check is required.
+	// check can be specified.
+	// A health check must be specified unless the backend service uses an internet NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks *string `pulumi:"healthChecks"`
 	// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
@@ -304,7 +302,8 @@ type BackendServiceState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
-	// check can be specified, and a health check is required.
+	// check can be specified.
+	// A health check must be specified unless the backend service uses an internet NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
 	HealthChecks pulumi.StringPtrInput
 	// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
@@ -408,9 +407,10 @@ type backendServiceArgs struct {
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
-	// check can be specified, and a health check is required.
+	// check can be specified.
+	// A health check must be specified unless the backend service uses an internet NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
-	HealthChecks string `pulumi:"healthChecks"`
+	HealthChecks *string `pulumi:"healthChecks"`
 	// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
 	Iap *BackendServiceIap `pulumi:"iap"`
 	// Indicates whether the backend service will be used with internal or
@@ -507,9 +507,10 @@ type BackendServiceArgs struct {
 	EnableCdn pulumi.BoolPtrInput
 	// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
 	// for health checking this BackendService. Currently at most one health
-	// check can be specified, and a health check is required.
+	// check can be specified.
+	// A health check must be specified unless the backend service uses an internet NEG as a backend.
 	// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
-	HealthChecks pulumi.StringInput
+	HealthChecks pulumi.StringPtrInput
 	// Settings for enabling Cloud Identity Aware Proxy  Structure is documented below.
 	Iap BackendServiceIapPtrInput
 	// Indicates whether the backend service will be used with internal or

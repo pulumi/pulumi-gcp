@@ -80,6 +80,9 @@ namespace Pulumi.Gcp
         [Input("binaryAuthorizationCustomEndpoint")]
         public Input<string>? BinaryAuthorizationCustomEndpoint { get; set; }
 
+        [Input("cloudAssetCustomEndpoint")]
+        public Input<string>? CloudAssetCustomEndpoint { get; set; }
+
         [Input("cloudBillingCustomEndpoint")]
         public Input<string>? CloudBillingCustomEndpoint { get; set; }
 

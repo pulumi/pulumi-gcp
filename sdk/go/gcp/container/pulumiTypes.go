@@ -2585,6 +2585,141 @@ func (o ClusterDatabaseEncryptionPtrOutput) State() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterDefaultSnatStatus struct {
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
+	Disabled bool `pulumi:"disabled"`
+}
+
+// ClusterDefaultSnatStatusInput is an input type that accepts ClusterDefaultSnatStatusArgs and ClusterDefaultSnatStatusOutput values.
+// You can construct a concrete instance of `ClusterDefaultSnatStatusInput` via:
+//
+//          ClusterDefaultSnatStatusArgs{...}
+type ClusterDefaultSnatStatusInput interface {
+	pulumi.Input
+
+	ToClusterDefaultSnatStatusOutput() ClusterDefaultSnatStatusOutput
+	ToClusterDefaultSnatStatusOutputWithContext(context.Context) ClusterDefaultSnatStatusOutput
+}
+
+type ClusterDefaultSnatStatusArgs struct {
+	// The status of the Istio addon, which makes it easy to set up Istio for services in a
+	// cluster. It is disabled by default. Set `disabled = false` to enable.
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (ClusterDefaultSnatStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDefaultSnatStatus)(nil)).Elem()
+}
+
+func (i ClusterDefaultSnatStatusArgs) ToClusterDefaultSnatStatusOutput() ClusterDefaultSnatStatusOutput {
+	return i.ToClusterDefaultSnatStatusOutputWithContext(context.Background())
+}
+
+func (i ClusterDefaultSnatStatusArgs) ToClusterDefaultSnatStatusOutputWithContext(ctx context.Context) ClusterDefaultSnatStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDefaultSnatStatusOutput)
+}
+
+func (i ClusterDefaultSnatStatusArgs) ToClusterDefaultSnatStatusPtrOutput() ClusterDefaultSnatStatusPtrOutput {
+	return i.ToClusterDefaultSnatStatusPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterDefaultSnatStatusArgs) ToClusterDefaultSnatStatusPtrOutputWithContext(ctx context.Context) ClusterDefaultSnatStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDefaultSnatStatusOutput).ToClusterDefaultSnatStatusPtrOutputWithContext(ctx)
+}
+
+// ClusterDefaultSnatStatusPtrInput is an input type that accepts ClusterDefaultSnatStatusArgs, ClusterDefaultSnatStatusPtr and ClusterDefaultSnatStatusPtrOutput values.
+// You can construct a concrete instance of `ClusterDefaultSnatStatusPtrInput` via:
+//
+//          ClusterDefaultSnatStatusArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterDefaultSnatStatusPtrInput interface {
+	pulumi.Input
+
+	ToClusterDefaultSnatStatusPtrOutput() ClusterDefaultSnatStatusPtrOutput
+	ToClusterDefaultSnatStatusPtrOutputWithContext(context.Context) ClusterDefaultSnatStatusPtrOutput
+}
+
+type clusterDefaultSnatStatusPtrType ClusterDefaultSnatStatusArgs
+
+func ClusterDefaultSnatStatusPtr(v *ClusterDefaultSnatStatusArgs) ClusterDefaultSnatStatusPtrInput {
+	return (*clusterDefaultSnatStatusPtrType)(v)
+}
+
+func (*clusterDefaultSnatStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterDefaultSnatStatus)(nil)).Elem()
+}
+
+func (i *clusterDefaultSnatStatusPtrType) ToClusterDefaultSnatStatusPtrOutput() ClusterDefaultSnatStatusPtrOutput {
+	return i.ToClusterDefaultSnatStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterDefaultSnatStatusPtrType) ToClusterDefaultSnatStatusPtrOutputWithContext(ctx context.Context) ClusterDefaultSnatStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDefaultSnatStatusPtrOutput)
+}
+
+type ClusterDefaultSnatStatusOutput struct{ *pulumi.OutputState }
+
+func (ClusterDefaultSnatStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDefaultSnatStatus)(nil)).Elem()
+}
+
+func (o ClusterDefaultSnatStatusOutput) ToClusterDefaultSnatStatusOutput() ClusterDefaultSnatStatusOutput {
+	return o
+}
+
+func (o ClusterDefaultSnatStatusOutput) ToClusterDefaultSnatStatusOutputWithContext(ctx context.Context) ClusterDefaultSnatStatusOutput {
+	return o
+}
+
+func (o ClusterDefaultSnatStatusOutput) ToClusterDefaultSnatStatusPtrOutput() ClusterDefaultSnatStatusPtrOutput {
+	return o.ToClusterDefaultSnatStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterDefaultSnatStatusOutput) ToClusterDefaultSnatStatusPtrOutputWithContext(ctx context.Context) ClusterDefaultSnatStatusPtrOutput {
+	return o.ApplyT(func(v ClusterDefaultSnatStatus) *ClusterDefaultSnatStatus {
+		return &v
+	}).(ClusterDefaultSnatStatusPtrOutput)
+}
+
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
+func (o ClusterDefaultSnatStatusOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterDefaultSnatStatus) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type ClusterDefaultSnatStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterDefaultSnatStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterDefaultSnatStatus)(nil)).Elem()
+}
+
+func (o ClusterDefaultSnatStatusPtrOutput) ToClusterDefaultSnatStatusPtrOutput() ClusterDefaultSnatStatusPtrOutput {
+	return o
+}
+
+func (o ClusterDefaultSnatStatusPtrOutput) ToClusterDefaultSnatStatusPtrOutputWithContext(ctx context.Context) ClusterDefaultSnatStatusPtrOutput {
+	return o
+}
+
+func (o ClusterDefaultSnatStatusPtrOutput) Elem() ClusterDefaultSnatStatusOutput {
+	return o.ApplyT(func(v *ClusterDefaultSnatStatus) ClusterDefaultSnatStatus { return *v }).(ClusterDefaultSnatStatusOutput)
+}
+
+// The status of the Istio addon, which makes it easy to set up Istio for services in a
+// cluster. It is disabled by default. Set `disabled = false` to enable.
+func (o ClusterDefaultSnatStatusPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterDefaultSnatStatus) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterIpAllocationPolicy struct {
 	// The IP address range for the cluster pod IPs.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -11648,6 +11783,100 @@ func (o GetClusterDatabaseEncryptionArrayOutput) Index(i pulumi.IntInput) GetClu
 	}).(GetClusterDatabaseEncryptionOutput)
 }
 
+type GetClusterDefaultSnatStatus struct {
+	Disabled bool `pulumi:"disabled"`
+}
+
+// GetClusterDefaultSnatStatusInput is an input type that accepts GetClusterDefaultSnatStatusArgs and GetClusterDefaultSnatStatusOutput values.
+// You can construct a concrete instance of `GetClusterDefaultSnatStatusInput` via:
+//
+//          GetClusterDefaultSnatStatusArgs{...}
+type GetClusterDefaultSnatStatusInput interface {
+	pulumi.Input
+
+	ToGetClusterDefaultSnatStatusOutput() GetClusterDefaultSnatStatusOutput
+	ToGetClusterDefaultSnatStatusOutputWithContext(context.Context) GetClusterDefaultSnatStatusOutput
+}
+
+type GetClusterDefaultSnatStatusArgs struct {
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (GetClusterDefaultSnatStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterDefaultSnatStatus)(nil)).Elem()
+}
+
+func (i GetClusterDefaultSnatStatusArgs) ToGetClusterDefaultSnatStatusOutput() GetClusterDefaultSnatStatusOutput {
+	return i.ToGetClusterDefaultSnatStatusOutputWithContext(context.Background())
+}
+
+func (i GetClusterDefaultSnatStatusArgs) ToGetClusterDefaultSnatStatusOutputWithContext(ctx context.Context) GetClusterDefaultSnatStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDefaultSnatStatusOutput)
+}
+
+// GetClusterDefaultSnatStatusArrayInput is an input type that accepts GetClusterDefaultSnatStatusArray and GetClusterDefaultSnatStatusArrayOutput values.
+// You can construct a concrete instance of `GetClusterDefaultSnatStatusArrayInput` via:
+//
+//          GetClusterDefaultSnatStatusArray{ GetClusterDefaultSnatStatusArgs{...} }
+type GetClusterDefaultSnatStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterDefaultSnatStatusArrayOutput() GetClusterDefaultSnatStatusArrayOutput
+	ToGetClusterDefaultSnatStatusArrayOutputWithContext(context.Context) GetClusterDefaultSnatStatusArrayOutput
+}
+
+type GetClusterDefaultSnatStatusArray []GetClusterDefaultSnatStatusInput
+
+func (GetClusterDefaultSnatStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterDefaultSnatStatus)(nil)).Elem()
+}
+
+func (i GetClusterDefaultSnatStatusArray) ToGetClusterDefaultSnatStatusArrayOutput() GetClusterDefaultSnatStatusArrayOutput {
+	return i.ToGetClusterDefaultSnatStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterDefaultSnatStatusArray) ToGetClusterDefaultSnatStatusArrayOutputWithContext(ctx context.Context) GetClusterDefaultSnatStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterDefaultSnatStatusArrayOutput)
+}
+
+type GetClusterDefaultSnatStatusOutput struct{ *pulumi.OutputState }
+
+func (GetClusterDefaultSnatStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterDefaultSnatStatus)(nil)).Elem()
+}
+
+func (o GetClusterDefaultSnatStatusOutput) ToGetClusterDefaultSnatStatusOutput() GetClusterDefaultSnatStatusOutput {
+	return o
+}
+
+func (o GetClusterDefaultSnatStatusOutput) ToGetClusterDefaultSnatStatusOutputWithContext(ctx context.Context) GetClusterDefaultSnatStatusOutput {
+	return o
+}
+
+func (o GetClusterDefaultSnatStatusOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterDefaultSnatStatus) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterDefaultSnatStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterDefaultSnatStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterDefaultSnatStatus)(nil)).Elem()
+}
+
+func (o GetClusterDefaultSnatStatusArrayOutput) ToGetClusterDefaultSnatStatusArrayOutput() GetClusterDefaultSnatStatusArrayOutput {
+	return o
+}
+
+func (o GetClusterDefaultSnatStatusArrayOutput) ToGetClusterDefaultSnatStatusArrayOutputWithContext(ctx context.Context) GetClusterDefaultSnatStatusArrayOutput {
+	return o
+}
+
+func (o GetClusterDefaultSnatStatusArrayOutput) Index(i pulumi.IntInput) GetClusterDefaultSnatStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterDefaultSnatStatus {
+		return vs[0].([]GetClusterDefaultSnatStatus)[vs[1].(int)]
+	}).(GetClusterDefaultSnatStatusOutput)
+}
+
 type GetClusterIpAllocationPolicy struct {
 	ClusterIpv4CidrBlock       string `pulumi:"clusterIpv4CidrBlock"`
 	ClusterSecondaryRangeName  string `pulumi:"clusterSecondaryRangeName"`
@@ -15290,6 +15519,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterTelemetryPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionOutput{})
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(ClusterDefaultSnatStatusOutput{})
+	pulumi.RegisterOutputType(ClusterDefaultSnatStatusPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyOutput{})
@@ -15408,6 +15639,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterTelemetryArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionOutput{})
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterDefaultSnatStatusOutput{})
+	pulumi.RegisterOutputType(GetClusterDefaultSnatStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyOutput{})
