@@ -45,7 +45,7 @@ type Service struct {
 	// Metadata associated with this Service, including name, namespace, labels,
 	// and annotations.  Structure is documented below.
 	Metadata ServiceMetadataOutput `pulumi:"metadata"`
-	// Name of the environment variable.
+	// Name of the port.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -109,7 +109,7 @@ type serviceState struct {
 	// Metadata associated with this Service, including name, namespace, labels,
 	// and annotations.  Structure is documented below.
 	Metadata *ServiceMetadata `pulumi:"metadata"`
-	// Name of the environment variable.
+	// Name of the port.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -143,7 +143,7 @@ type ServiceState struct {
 	// Metadata associated with this Service, including name, namespace, labels,
 	// and annotations.  Structure is documented below.
 	Metadata ServiceMetadataPtrInput
-	// Name of the environment variable.
+	// Name of the port.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -181,7 +181,7 @@ type serviceArgs struct {
 	// Metadata associated with this Service, including name, namespace, labels,
 	// and annotations.  Structure is documented below.
 	Metadata *ServiceMetadata `pulumi:"metadata"`
-	// Name of the environment variable.
+	// Name of the port.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -214,7 +214,7 @@ type ServiceArgs struct {
 	// Metadata associated with this Service, including name, namespace, labels,
 	// and annotations.  Structure is documented below.
 	Metadata ServiceMetadataPtrInput
-	// Name of the environment variable.
+	// Name of the port.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

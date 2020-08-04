@@ -9,6 +9,7 @@ from .provider import *
 # Make subpackages available:
 _submodules = [
     'accesscontextmanager',
+    'activedirectory',
     'appengine',
     'artifactregistry',
     'bigquery',

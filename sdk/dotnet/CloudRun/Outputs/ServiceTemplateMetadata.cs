@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
-        /// Name of the environment variable.
+        /// Name of the port.
         /// </summary>
         public readonly string? Name;
         /// <summary>

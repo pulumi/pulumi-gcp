@@ -39,6 +39,7 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         inputs["accessContextManagerCustomEndpoint"] = args ? args.accessContextManagerCustomEndpoint : undefined;
         inputs["accessToken"] = args ? args.accessToken : undefined;
+        inputs["activeDirectoryCustomEndpoint"] = args ? args.activeDirectoryCustomEndpoint : undefined;
         inputs["appEngineCustomEndpoint"] = args ? args.appEngineCustomEndpoint : undefined;
         inputs["artifactRegistryCustomEndpoint"] = args ? args.artifactRegistryCustomEndpoint : undefined;
         inputs["batching"] = pulumi.output(args ? args.batching : undefined).apply(JSON.stringify);
@@ -136,6 +137,7 @@ export class Provider extends pulumi.ProviderResource {
 export interface ProviderArgs {
     readonly accessContextManagerCustomEndpoint?: pulumi.Input<string>;
     readonly accessToken?: pulumi.Input<string>;
+    readonly activeDirectoryCustomEndpoint?: pulumi.Input<string>;
     readonly appEngineCustomEndpoint?: pulumi.Input<string>;
     readonly artifactRegistryCustomEndpoint?: pulumi.Input<string>;
     readonly batching?: pulumi.Input<inputs.ProviderBatching>;

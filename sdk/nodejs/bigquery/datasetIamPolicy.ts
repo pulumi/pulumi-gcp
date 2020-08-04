@@ -52,7 +52,7 @@ export class DatasetIamPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+     * The dataset ID.
      */
     public readonly datasetId!: pulumi.Output<string>;
     /**
@@ -111,7 +111,7 @@ export class DatasetIamPolicy extends pulumi.CustomResource {
  */
 export interface DatasetIamPolicyState {
     /**
-     * The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+     * The dataset ID.
      */
     readonly datasetId?: pulumi.Input<string>;
     /**
@@ -131,7 +131,7 @@ export interface DatasetIamPolicyState {
  */
 export interface DatasetIamPolicyArgs {
     /**
-     * The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+     * The dataset ID.
      */
     readonly datasetId: pulumi.Input<string>;
     /**

@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.DatasetIamBindingCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
-        /// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+        /// The dataset ID.
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.DatasetIamBindingConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+        /// The dataset ID.
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.DatasetIamBindingConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
-        /// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+        /// The dataset ID.
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }

@@ -7,6 +7,7 @@ export * from "./utils";
 
 // Export sub-modules:
 import * as accesscontextmanager from "./accesscontextmanager";
+import * as activedirectory from "./activedirectory";
 import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
 import * as bigquery from "./bigquery";
@@ -72,4 +73,4 @@ import * as storage from "./storage";
 import * as tpu from "./tpu";
 import * as types from "./types";
 import * as vpcaccess from "./vpcaccess";
-export {accesscontextmanager, appengine, artifactregistry, bigquery, bigtable, billing, binaryauthorization, cloudasset, cloudbuild, cloudfunctions, cloudidentity, cloudrun, cloudscheduler, cloudtasks, composer, compute, config, container, containeranalysis, datacatalog, dataflow, datafusion, dataproc, datastore, deploymentmanager, diagflow, dns, endpoints, filestore, firebase, firestore, folder, gameservices, healthcare, iam, iap, identityplatform, iot, kms, logging, memcache, ml, monitoring, networkmanagement, notebooks, organizations, osconfig, oslogin, projects, pubsub, redis, resourcemanager, runtimeconfig, secretmanager, securitycenter, serviceAccount, servicedirectory, servicenetworking, serviceusage, sourcerepo, spanner, sql, storage, tpu, types, vpcaccess};
+export {accesscontextmanager, activedirectory, appengine, artifactregistry, bigquery, bigtable, billing, binaryauthorization, cloudasset, cloudbuild, cloudfunctions, cloudidentity, cloudrun, cloudscheduler, cloudtasks, composer, compute, config, container, containeranalysis, datacatalog, dataflow, datafusion, dataproc, datastore, deploymentmanager, diagflow, dns, endpoints, filestore, firebase, firestore, folder, gameservices, healthcare, iam, iap, identityplatform, iot, kms, logging, memcache, ml, monitoring, networkmanagement, notebooks, organizations, osconfig, oslogin, projects, pubsub, redis, resourcemanager, runtimeconfig, secretmanager, securitycenter, serviceAccount, servicedirectory, servicenetworking, serviceusage, sourcerepo, spanner, sql, storage, tpu, types, vpcaccess};

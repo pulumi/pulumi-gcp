@@ -2825,7 +2825,7 @@ export namespace cloudrun {
          */
         labels?: {[key: string]: string};
         /**
-         * Name of the environment variable.
+         * Name of the port.
          */
         name: string;
         /**
@@ -2947,6 +2947,12 @@ export namespace cloudrun {
          */
         image: string;
         /**
+         * List of open ports in the container.
+         * More Info:
+         * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+         */
+        ports: outputs.cloudrun.ServiceTemplateSpecContainerPort[];
+        /**
          * Compute Resources required by this container. Used to set values such as max memory
          * More info:
          * https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
@@ -2966,7 +2972,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnv {
         /**
-         * Name of the environment variable.
+         * Name of the port.
          */
         name?: string;
         /**
@@ -3010,7 +3016,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
         /**
-         * Name of the environment variable.
+         * Name of the port.
          */
         name: string;
     }
@@ -3028,9 +3034,24 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
         /**
-         * Name of the environment variable.
+         * Name of the port.
          */
         name: string;
+    }
+
+    export interface ServiceTemplateSpecContainerPort {
+        /**
+         * Port number.
+         */
+        containerPort: number;
+        /**
+         * Name of the port.
+         */
+        name?: string;
+        /**
+         * Protocol used on port. Defaults to TCP.
+         */
+        protocol?: string;
     }
 
     export interface ServiceTemplateSpecContainerResources {
@@ -4378,6 +4399,13 @@ export namespace compute {
          * icmp, esp, ah, sctp, ipip), or the IP protocol number.
          */
         protocol: string;
+    }
+
+    export interface FirewallLogConfig {
+        /**
+         * This field denotes whether to include or exclude metadata for firewall logs.
+         */
+        metadata: string;
     }
 
     export interface GetBackendBucketCdnPolicy {
@@ -6893,12 +6921,12 @@ export namespace compute {
         prefixRedirect?: string;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: string;
@@ -7003,12 +7031,12 @@ export namespace compute {
         prefixRedirect?: string;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: string;
@@ -7395,12 +7423,12 @@ export namespace compute {
         prefixRedirect?: string;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: string;
@@ -8037,12 +8065,12 @@ export namespace compute {
         prefixRedirect?: string;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: string;
@@ -8880,12 +8908,12 @@ export namespace compute {
         prefixRedirect?: string;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: string;
@@ -9345,12 +9373,12 @@ export namespace compute {
         prefixRedirect?: string;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: string;
@@ -9766,12 +9794,12 @@ export namespace compute {
         prefixRedirect?: string;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: string;
@@ -10382,12 +10410,12 @@ export namespace compute {
         prefixRedirect?: string;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: string;

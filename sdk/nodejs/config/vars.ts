@@ -10,6 +10,7 @@ let __config = new pulumi.Config("gcp");
 
 export let accessContextManagerCustomEndpoint: string | undefined = __config.get("accessContextManagerCustomEndpoint");
 export let accessToken: string | undefined = __config.get("accessToken");
+export let activeDirectoryCustomEndpoint: string | undefined = __config.get("activeDirectoryCustomEndpoint");
 export let appEngineCustomEndpoint: string | undefined = __config.get("appEngineCustomEndpoint");
 export let artifactRegistryCustomEndpoint: string | undefined = __config.get("artifactRegistryCustomEndpoint");
 export let batching: outputs.config.Batching | undefined = __config.getObject<outputs.config.Batching>("batching");

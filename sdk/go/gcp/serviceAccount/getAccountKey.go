@@ -26,7 +26,7 @@ type GetAccountKeyArgs struct {
 	// The ID of the project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
-	// The output format of the public key requested. X509_PEM is the default output format.
+	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
 	PublicKeyType *string `pulumi:"publicKeyType"`
 }
 

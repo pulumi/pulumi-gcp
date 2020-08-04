@@ -20,6 +20,7 @@ const (
 	// modules; in general, we took naming inspiration from the Google Cloud SDK for Go:
 	// https://github.com/GoogleCloudPlatform/google-cloud-go
 	gcpAccessContextManager = "AccessContextManager" // Access Context Manager resources
+	gcpActiveDirectory      = "ActiveDirectory"      // Active Directory resources
 	gcpAppEngine            = "AppEngine"            // AppEngine resources
 	gcpArtifactRegistry     = "ArtifactRegistry"     // ArtifactRegistry resources
 	gcpBigQuery             = "BigQuery"             // BigQuery resources
@@ -705,7 +706,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_container_registry":  {Tok: gcpResource(gcpKubernetes, "Registry")},
 
 			// Data Flow resources
-			"google_dataflow_job": {Tok: gcpResource(gcpDataFlow, "Job")},
+			"google_dataflow_job":               {Tok: gcpResource(gcpDataFlow, "Job")},
+			"google_dataflow_flex_template_job": {Tok: gcpResource(gcpDataFlow, "FlexTemplateJob")},
 
 			// Data Proc resources
 			"google_dataproc_cluster": {Tok: gcpResource(gcpDataProc, "Cluster")},
@@ -1529,6 +1531,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_cloud_asset_folder_feed":       {Tok: gcpResource(gcpCloudAsset, "FolderFeed")},
 			"google_cloud_asset_organization_feed": {Tok: gcpResource(gcpCloudAsset, "OrganizationFeed")},
 			"google_cloud_asset_project_feed":      {Tok: gcpResource(gcpCloudAsset, "ProjectFeed")},
+
+			// ActiveDirectory
+			"google_active_directory_domain": {Tok: gcpResource(gcpActiveDirectory, "Domain")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

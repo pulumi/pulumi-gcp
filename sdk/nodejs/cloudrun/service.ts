@@ -75,7 +75,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<outputs.cloudrun.ServiceMetadata>;
     /**
-     * Name of the environment variable.
+     * Name of the port.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -172,7 +172,7 @@ export interface ServiceState {
      */
     readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     /**
-     * Name of the environment variable.
+     * Name of the port.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -225,7 +225,7 @@ export interface ServiceArgs {
      */
     readonly metadata?: pulumi.Input<inputs.cloudrun.ServiceMetadata>;
     /**
-     * Name of the environment variable.
+     * Name of the port.
      */
     readonly name?: pulumi.Input<string>;
     /**

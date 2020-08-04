@@ -88,12 +88,18 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// This field denotes whether to enable logging for a particular
-        /// firewall rule. If logging is enabled, logs will be exported to
-        /// Stackdriver.
+        /// This field denotes whether to enable logging for a particular firewall rule.
+        /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
         /// </summary>
         [Output("enableLogging")]
-        public Output<bool?> EnableLogging { get; private set; } = null!;
+        public Output<bool> EnableLogging { get; private set; } = null!;
+
+        /// <summary>
+        /// This field denotes the logging options for a particular firewall rule.
+        /// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+        /// </summary>
+        [Output("logConfig")]
+        public Output<Outputs.FirewallLogConfig?> LogConfig { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
@@ -313,12 +319,18 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// This field denotes whether to enable logging for a particular
-        /// firewall rule. If logging is enabled, logs will be exported to
-        /// Stackdriver.
+        /// This field denotes whether to enable logging for a particular firewall rule.
+        /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
+
+        /// <summary>
+        /// This field denotes the logging options for a particular firewall rule.
+        /// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+        /// </summary>
+        [Input("logConfig")]
+        public Input<Inputs.FirewallLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
@@ -529,12 +541,18 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// This field denotes whether to enable logging for a particular
-        /// firewall rule. If logging is enabled, logs will be exported to
-        /// Stackdriver.
+        /// This field denotes whether to enable logging for a particular firewall rule.
+        /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
         /// </summary>
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
+
+        /// <summary>
+        /// This field denotes the logging options for a particular firewall rule.
+        /// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+        /// </summary>
+        [Input("logConfig")]
+        public Input<Inputs.FirewallLogConfigGetArgs>? LogConfig { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
