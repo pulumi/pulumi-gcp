@@ -31,7 +31,7 @@ type DatasetIamMember struct {
 	pulumi.CustomResourceState
 
 	Condition DatasetIamMemberConditionPtrOutput `pulumi:"condition"`
-	// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+	// The dataset ID.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// (Computed) The etag of the dataset's IAM policy.
 	Etag    pulumi.StringOutput `pulumi:"etag"`
@@ -81,7 +81,7 @@ func GetDatasetIamMember(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DatasetIamMember resources.
 type datasetIamMemberState struct {
 	Condition *DatasetIamMemberCondition `pulumi:"condition"`
-	// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+	// The dataset ID.
 	DatasetId *string `pulumi:"datasetId"`
 	// (Computed) The etag of the dataset's IAM policy.
 	Etag    *string `pulumi:"etag"`
@@ -95,7 +95,7 @@ type datasetIamMemberState struct {
 
 type DatasetIamMemberState struct {
 	Condition DatasetIamMemberConditionPtrInput
-	// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+	// The dataset ID.
 	DatasetId pulumi.StringPtrInput
 	// (Computed) The etag of the dataset's IAM policy.
 	Etag    pulumi.StringPtrInput
@@ -113,7 +113,7 @@ func (DatasetIamMemberState) ElementType() reflect.Type {
 
 type datasetIamMemberArgs struct {
 	Condition *DatasetIamMemberCondition `pulumi:"condition"`
-	// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+	// The dataset ID.
 	DatasetId string  `pulumi:"datasetId"`
 	Member    string  `pulumi:"member"`
 	Project   *string `pulumi:"project"`
@@ -126,7 +126,7 @@ type datasetIamMemberArgs struct {
 // The set of arguments for constructing a DatasetIamMember resource.
 type DatasetIamMemberArgs struct {
 	Condition DatasetIamMemberConditionPtrInput
-	// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+	// The dataset ID.
 	DatasetId pulumi.StringInput
 	Member    pulumi.StringInput
 	Project   pulumi.StringPtrInput

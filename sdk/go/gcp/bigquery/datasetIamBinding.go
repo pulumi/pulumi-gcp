@@ -31,7 +31,7 @@ type DatasetIamBinding struct {
 	pulumi.CustomResourceState
 
 	Condition DatasetIamBindingConditionPtrOutput `pulumi:"condition"`
-	// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+	// The dataset ID.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// (Computed) The etag of the dataset's IAM policy.
 	Etag    pulumi.StringOutput      `pulumi:"etag"`
@@ -81,7 +81,7 @@ func GetDatasetIamBinding(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DatasetIamBinding resources.
 type datasetIamBindingState struct {
 	Condition *DatasetIamBindingCondition `pulumi:"condition"`
-	// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+	// The dataset ID.
 	DatasetId *string `pulumi:"datasetId"`
 	// (Computed) The etag of the dataset's IAM policy.
 	Etag    *string  `pulumi:"etag"`
@@ -95,7 +95,7 @@ type datasetIamBindingState struct {
 
 type DatasetIamBindingState struct {
 	Condition DatasetIamBindingConditionPtrInput
-	// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+	// The dataset ID.
 	DatasetId pulumi.StringPtrInput
 	// (Computed) The etag of the dataset's IAM policy.
 	Etag    pulumi.StringPtrInput
@@ -113,7 +113,7 @@ func (DatasetIamBindingState) ElementType() reflect.Type {
 
 type datasetIamBindingArgs struct {
 	Condition *DatasetIamBindingCondition `pulumi:"condition"`
-	// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+	// The dataset ID.
 	DatasetId string   `pulumi:"datasetId"`
 	Members   []string `pulumi:"members"`
 	Project   *string  `pulumi:"project"`
@@ -126,7 +126,7 @@ type datasetIamBindingArgs struct {
 // The set of arguments for constructing a DatasetIamBinding resource.
 type DatasetIamBindingArgs struct {
 	Condition DatasetIamBindingConditionPtrInput
-	// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+	// The dataset ID.
 	DatasetId pulumi.StringInput
 	Members   pulumi.StringArrayInput
 	Project   pulumi.StringPtrInput

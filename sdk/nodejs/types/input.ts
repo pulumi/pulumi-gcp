@@ -2719,7 +2719,7 @@ export namespace cloudrun {
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Name of the environment variable.
+         * Name of the port.
          */
         name?: pulumi.Input<string>;
         /**
@@ -2841,6 +2841,12 @@ export namespace cloudrun {
          */
         image: pulumi.Input<string>;
         /**
+         * List of open ports in the container.
+         * More Info:
+         * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+         */
+        ports?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerPort>[]>;
+        /**
          * Compute Resources required by this container. Used to set values such as max memory
          * More info:
          * https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
@@ -2860,7 +2866,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnv {
         /**
-         * Name of the environment variable.
+         * Name of the port.
          */
         name?: pulumi.Input<string>;
         /**
@@ -2904,7 +2910,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
         /**
-         * Name of the environment variable.
+         * Name of the port.
          */
         name: pulumi.Input<string>;
     }
@@ -2922,9 +2928,24 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
         /**
-         * Name of the environment variable.
+         * Name of the port.
          */
         name: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSpecContainerPort {
+        /**
+         * Port number.
+         */
+        containerPort: pulumi.Input<number>;
+        /**
+         * Name of the port.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Protocol used on port. Defaults to TCP.
+         */
+        protocol?: pulumi.Input<string>;
     }
 
     export interface ServiceTemplateSpecContainerResources {
@@ -4262,6 +4283,13 @@ export namespace compute {
          * icmp, esp, ah, sctp, ipip), or the IP protocol number.
          */
         protocol: pulumi.Input<string>;
+    }
+
+    export interface FirewallLogConfig {
+        /**
+         * This field denotes whether to include or exclude metadata for firewall logs.
+         */
+        metadata: pulumi.Input<string>;
     }
 
     export interface GlobalForwardingRuleMetadataFilter {
@@ -6424,12 +6452,12 @@ export namespace compute {
         prefixRedirect?: pulumi.Input<string>;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: pulumi.Input<string>;
@@ -6534,12 +6562,12 @@ export namespace compute {
         prefixRedirect?: pulumi.Input<string>;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: pulumi.Input<string>;
@@ -6926,12 +6954,12 @@ export namespace compute {
         prefixRedirect?: pulumi.Input<string>;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: pulumi.Input<string>;
@@ -7568,12 +7596,12 @@ export namespace compute {
         prefixRedirect?: pulumi.Input<string>;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: pulumi.Input<string>;
@@ -8411,12 +8439,12 @@ export namespace compute {
         prefixRedirect?: pulumi.Input<string>;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: pulumi.Input<string>;
@@ -8876,12 +8904,12 @@ export namespace compute {
         prefixRedirect?: pulumi.Input<string>;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: pulumi.Input<string>;
@@ -9297,12 +9325,12 @@ export namespace compute {
         prefixRedirect?: pulumi.Input<string>;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: pulumi.Input<string>;
@@ -9913,12 +9941,12 @@ export namespace compute {
         prefixRedirect?: pulumi.Input<string>;
         /**
          * The HTTP Status code to use for this RedirectAction. Supported values are:
-         * - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-         * - FOUND, which corresponds to 302.
-         * - SEE_OTHER which corresponds to 303.
-         * - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+         * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+         * * FOUND, which corresponds to 302.
+         * * SEE_OTHER which corresponds to 303.
+         * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
          * will be retained.
-         * - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+         * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
          * the request method will be retained.
          */
         redirectResponseCode?: pulumi.Input<string>;

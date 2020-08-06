@@ -58,6 +58,12 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly string Image;
         /// <summary>
+        /// List of open ports in the container.
+        /// More Info:
+        /// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerPort> Ports;
+        /// <summary>
         /// Compute Resources required by this container. Used to set values such as max memory
         /// More info:
         /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
@@ -84,6 +90,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             string image,
 
+            ImmutableArray<Outputs.ServiceTemplateSpecContainerPort> ports,
+
             Outputs.ServiceTemplateSpecContainerResources? resources,
 
             string? workingDir)
@@ -93,6 +101,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             EnvFroms = envFroms;
             Envs = envs;
             Image = image;
+            Ports = ports;
             Resources = resources;
             WorkingDir = workingDir;
         }

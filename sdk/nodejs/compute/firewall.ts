@@ -97,11 +97,17 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
-     * This field denotes whether to enable logging for a particular
-     * firewall rule. If logging is enabled, logs will be exported to
-     * Stackdriver.
+     * This field denotes whether to enable logging for a particular firewall rule.
+     * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
+     *
+     * @deprecated Deprecated in favor of log_config
      */
-    public readonly enableLogging!: pulumi.Output<boolean | undefined>;
+    public readonly enableLogging!: pulumi.Output<boolean>;
+    /**
+     * This field denotes the logging options for a particular firewall rule.
+     * If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+     */
+    public readonly logConfig!: pulumi.Output<outputs.compute.FirewallLogConfig | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -208,6 +214,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["direction"] = state ? state.direction : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
             inputs["enableLogging"] = state ? state.enableLogging : undefined;
+            inputs["logConfig"] = state ? state.logConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
             inputs["priority"] = state ? state.priority : undefined;
@@ -230,6 +237,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["direction"] = args ? args.direction : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["enableLogging"] = args ? args.enableLogging : undefined;
+            inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["priority"] = args ? args.priority : undefined;
@@ -298,11 +306,17 @@ export interface FirewallState {
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * This field denotes whether to enable logging for a particular
-     * firewall rule. If logging is enabled, logs will be exported to
-     * Stackdriver.
+     * This field denotes whether to enable logging for a particular firewall rule.
+     * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
+     *
+     * @deprecated Deprecated in favor of log_config
      */
     readonly enableLogging?: pulumi.Input<boolean>;
+    /**
+     * This field denotes the logging options for a particular firewall rule.
+     * If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+     */
+    readonly logConfig?: pulumi.Input<inputs.compute.FirewallLogConfig>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -431,11 +445,17 @@ export interface FirewallArgs {
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * This field denotes whether to enable logging for a particular
-     * firewall rule. If logging is enabled, logs will be exported to
-     * Stackdriver.
+     * This field denotes whether to enable logging for a particular firewall rule.
+     * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
+     *
+     * @deprecated Deprecated in favor of log_config
      */
     readonly enableLogging?: pulumi.Input<boolean>;
+    /**
+     * This field denotes the logging options for a particular firewall rule.
+     * If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+     */
+    readonly logConfig?: pulumi.Input<inputs.compute.FirewallLogConfig>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with

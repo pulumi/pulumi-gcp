@@ -74,9 +74,15 @@ class Firewall(pulumi.CustomResource):
     """
     enable_logging: pulumi.Output[bool]
     """
-    This field denotes whether to enable logging for a particular
-    firewall rule. If logging is enabled, logs will be exported to
-    Stackdriver.
+    This field denotes whether to enable logging for a particular firewall rule.
+    If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+    """
+    log_config: pulumi.Output[dict]
+    """
+    This field denotes the logging options for a particular firewall rule.
+    If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+
+      * `metadata` (`str`) - This field denotes whether to include or exclude metadata for firewall logs.
     """
     name: pulumi.Output[str]
     """
@@ -163,7 +169,7 @@ class Firewall(pulumi.CustomResource):
     If no targetTags are specified, the firewall rule applies to all
     instances on the specified network.
     """
-    def __init__(__self__, resource_name, opts=None, allows=None, denies=None, description=None, destination_ranges=None, direction=None, disabled=None, enable_logging=None, name=None, network=None, priority=None, project=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allows=None, denies=None, description=None, destination_ranges=None, direction=None, disabled=None, enable_logging=None, log_config=None, name=None, network=None, priority=None, project=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Each network has its own firewall controlling access to and from the
         instances.
@@ -206,9 +212,10 @@ class Firewall(pulumi.CustomResource):
                network it is associated with. When set to true, the firewall rule is
                not enforced and the network behaves as if it did not exist. If this
                is unspecified, the firewall rule will be enabled.
-        :param pulumi.Input[bool] enable_logging: This field denotes whether to enable logging for a particular
-               firewall rule. If logging is enabled, logs will be exported to
-               Stackdriver.
+        :param pulumi.Input[bool] enable_logging: This field denotes whether to enable logging for a particular firewall rule.
+               If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+        :param pulumi.Input[dict] log_config: This field denotes the logging options for a particular firewall rule.
+               If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -289,6 +296,10 @@ class Firewall(pulumi.CustomResource):
             required when creating a firewall rule. This value can either be
             one of the following well known protocol strings (tcp, udp,
             icmp, esp, ah, sctp, ipip), or the IP protocol number.
+
+        The **log_config** object supports the following:
+
+          * `metadata` (`pulumi.Input[str]`) - This field denotes whether to include or exclude metadata for firewall logs.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -313,7 +324,11 @@ class Firewall(pulumi.CustomResource):
             __props__['destination_ranges'] = destination_ranges
             __props__['direction'] = direction
             __props__['disabled'] = disabled
+            if enable_logging is not None:
+                warnings.warn("Deprecated in favor of log_config", DeprecationWarning)
+                pulumi.log.warn("enable_logging is deprecated: Deprecated in favor of log_config")
             __props__['enable_logging'] = enable_logging
+            __props__['log_config'] = log_config
             __props__['name'] = name
             if network is None:
                 raise TypeError("Missing required property 'network'")
@@ -334,7 +349,7 @@ class Firewall(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, allows=None, creation_timestamp=None, denies=None, description=None, destination_ranges=None, direction=None, disabled=None, enable_logging=None, name=None, network=None, priority=None, project=None, self_link=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
+    def get(resource_name, id, opts=None, allows=None, creation_timestamp=None, denies=None, description=None, destination_ranges=None, direction=None, disabled=None, enable_logging=None, log_config=None, name=None, network=None, priority=None, project=None, self_link=None, source_ranges=None, source_service_accounts=None, source_tags=None, target_service_accounts=None, target_tags=None):
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -361,9 +376,10 @@ class Firewall(pulumi.CustomResource):
                network it is associated with. When set to true, the firewall rule is
                not enforced and the network behaves as if it did not exist. If this
                is unspecified, the firewall rule will be enabled.
-        :param pulumi.Input[bool] enable_logging: This field denotes whether to enable logging for a particular
-               firewall rule. If logging is enabled, logs will be exported to
-               Stackdriver.
+        :param pulumi.Input[bool] enable_logging: This field denotes whether to enable logging for a particular firewall rule.
+               If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+        :param pulumi.Input[dict] log_config: This field denotes the logging options for a particular firewall rule.
+               If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -445,6 +461,10 @@ class Firewall(pulumi.CustomResource):
             required when creating a firewall rule. This value can either be
             one of the following well known protocol strings (tcp, udp,
             icmp, esp, ah, sctp, ipip), or the IP protocol number.
+
+        The **log_config** object supports the following:
+
+          * `metadata` (`pulumi.Input[str]`) - This field denotes whether to include or exclude metadata for firewall logs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -458,6 +478,7 @@ class Firewall(pulumi.CustomResource):
         __props__["direction"] = direction
         __props__["disabled"] = disabled
         __props__["enable_logging"] = enable_logging
+        __props__["log_config"] = log_config
         __props__["name"] = name
         __props__["network"] = network
         __props__["priority"] = priority

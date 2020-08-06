@@ -14,6 +14,8 @@ access_context_manager_custom_endpoint = __config__.get('accessContextManagerCus
 
 access_token = __config__.get('accessToken')
 
+active_directory_custom_endpoint = __config__.get('activeDirectoryCustomEndpoint')
+
 app_engine_custom_endpoint = __config__.get('appEngineCustomEndpoint')
 
 artifact_registry_custom_endpoint = __config__.get('artifactRegistryCustomEndpoint')

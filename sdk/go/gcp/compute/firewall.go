@@ -59,10 +59,14 @@ type Firewall struct {
 	// not enforced and the network behaves as if it did not exist. If this
 	// is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
-	// This field denotes whether to enable logging for a particular
-	// firewall rule. If logging is enabled, logs will be exported to
-	// Stackdriver.
-	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
+	// This field denotes whether to enable logging for a particular firewall rule.
+	// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
+	//
+	// Deprecated: Deprecated in favor of log_config
+	EnableLogging pulumi.BoolOutput `pulumi:"enableLogging"`
+	// This field denotes the logging options for a particular firewall rule.
+	// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+	LogConfig FirewallLogConfigPtrOutput `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -187,10 +191,14 @@ type firewallState struct {
 	// not enforced and the network behaves as if it did not exist. If this
 	// is unspecified, the firewall rule will be enabled.
 	Disabled *bool `pulumi:"disabled"`
-	// This field denotes whether to enable logging for a particular
-	// firewall rule. If logging is enabled, logs will be exported to
-	// Stackdriver.
+	// This field denotes whether to enable logging for a particular firewall rule.
+	// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
+	//
+	// Deprecated: Deprecated in favor of log_config
 	EnableLogging *bool `pulumi:"enableLogging"`
+	// This field denotes the logging options for a particular firewall rule.
+	// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+	LogConfig *FirewallLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -285,10 +293,14 @@ type FirewallState struct {
 	// not enforced and the network behaves as if it did not exist. If this
 	// is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolPtrInput
-	// This field denotes whether to enable logging for a particular
-	// firewall rule. If logging is enabled, logs will be exported to
-	// Stackdriver.
+	// This field denotes whether to enable logging for a particular firewall rule.
+	// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
+	//
+	// Deprecated: Deprecated in favor of log_config
 	EnableLogging pulumi.BoolPtrInput
+	// This field denotes the logging options for a particular firewall rule.
+	// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+	LogConfig FirewallLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -385,10 +397,14 @@ type firewallArgs struct {
 	// not enforced and the network behaves as if it did not exist. If this
 	// is unspecified, the firewall rule will be enabled.
 	Disabled *bool `pulumi:"disabled"`
-	// This field denotes whether to enable logging for a particular
-	// firewall rule. If logging is enabled, logs will be exported to
-	// Stackdriver.
+	// This field denotes whether to enable logging for a particular firewall rule.
+	// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
+	//
+	// Deprecated: Deprecated in favor of log_config
 	EnableLogging *bool `pulumi:"enableLogging"`
+	// This field denotes the logging options for a particular firewall rule.
+	// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+	LogConfig *FirewallLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -480,10 +496,14 @@ type FirewallArgs struct {
 	// not enforced and the network behaves as if it did not exist. If this
 	// is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolPtrInput
-	// This field denotes whether to enable logging for a particular
-	// firewall rule. If logging is enabled, logs will be exported to
-	// Stackdriver.
+	// This field denotes whether to enable logging for a particular firewall rule.
+	// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
+	//
+	// Deprecated: Deprecated in favor of log_config
 	EnableLogging pulumi.BoolPtrInput
+	// This field denotes the logging options for a particular firewall rule.
+	// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+	LogConfig FirewallLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match

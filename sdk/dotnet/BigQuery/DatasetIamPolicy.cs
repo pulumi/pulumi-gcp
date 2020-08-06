@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.BigQuery
     public partial class DatasetIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+        /// The dataset ID.
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class DatasetIamPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+        /// The dataset ID.
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class DatasetIamPolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+        /// The dataset ID.
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }

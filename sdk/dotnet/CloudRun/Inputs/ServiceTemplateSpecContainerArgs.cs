@@ -91,6 +91,20 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
 
+        [Input("ports")]
+        private InputList<Inputs.ServiceTemplateSpecContainerPortArgs>? _ports;
+
+        /// <summary>
+        /// List of open ports in the container.
+        /// More Info:
+        /// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServiceTemplateSpecContainerPortArgs> Ports
+        {
+            get => _ports ?? (_ports = new InputList<Inputs.ServiceTemplateSpecContainerPortArgs>());
+            set => _ports = value;
+        }
+
         /// <summary>
         /// Compute Resources required by this container. Used to set values such as max memory
         /// More info:

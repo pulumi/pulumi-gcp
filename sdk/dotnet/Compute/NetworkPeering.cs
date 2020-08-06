@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> ExportSubnetRoutesWithPublicIp { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to export the custom routes from the peer network. Defaults to `false`.
+        /// Whether to import the custom routes from the peer network. Defaults to `false`.
         /// </summary>
         [Output("importCustomRoutes")]
         public Output<bool?> ImportCustomRoutes { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? ExportSubnetRoutesWithPublicIp { get; set; }
 
         /// <summary>
-        /// Whether to export the custom routes from the peer network. Defaults to `false`.
+        /// Whether to import the custom routes from the peer network. Defaults to `false`.
         /// </summary>
         [Input("importCustomRoutes")]
         public Input<bool>? ImportCustomRoutes { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? ExportSubnetRoutesWithPublicIp { get; set; }
 
         /// <summary>
-        /// Whether to export the custom routes from the peer network. Defaults to `false`.
+        /// Whether to import the custom routes from the peer network. Defaults to `false`.
         /// </summary>
         [Input("importCustomRoutes")]
         public Input<bool>? ImportCustomRoutes { get; set; }

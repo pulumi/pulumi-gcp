@@ -55,7 +55,7 @@ export class DatasetIamMember extends pulumi.CustomResource {
 
     public readonly condition!: pulumi.Output<outputs.bigquery.DatasetIamMemberCondition | undefined>;
     /**
-     * The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+     * The dataset ID.
      */
     public readonly datasetId!: pulumi.Output<string>;
     /**
@@ -124,7 +124,7 @@ export class DatasetIamMember extends pulumi.CustomResource {
 export interface DatasetIamMemberState {
     readonly condition?: pulumi.Input<inputs.bigquery.DatasetIamMemberCondition>;
     /**
-     * The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+     * The dataset ID.
      */
     readonly datasetId?: pulumi.Input<string>;
     /**
@@ -147,7 +147,7 @@ export interface DatasetIamMemberState {
 export interface DatasetIamMemberArgs {
     readonly condition?: pulumi.Input<inputs.bigquery.DatasetIamMemberCondition>;
     /**
-     * The dataset ID, in the form `projects/{project}/datasets/{dataset_id}`
+     * The dataset ID.
      */
     readonly datasetId: pulumi.Input<string>;
     readonly member: pulumi.Input<string>;

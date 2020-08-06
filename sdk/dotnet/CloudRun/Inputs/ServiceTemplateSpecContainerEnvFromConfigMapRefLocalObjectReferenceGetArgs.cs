@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     public sealed class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the environment variable.
+        /// Name of the port.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

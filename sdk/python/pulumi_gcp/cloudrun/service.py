@@ -55,7 +55,7 @@ class Service(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    Name of the environment variable.
+    Name of the port.
     """
     project: pulumi.Output[str]
     """
@@ -100,7 +100,7 @@ class Service(pulumi.CustomResource):
           (scope and select) objects. May match selectors of replication controllers
           and routes.
           More info: http://kubernetes.io/docs/user-guide/labels
-        * `name` (`str`) - Name of the environment variable.
+        * `name` (`str`) - Name of the port.
         * `namespace` (`str`) - In Cloud Run the namespace must be equal to either the
           project ID or project number.
         * `resourceVersion` (`str`) - -
@@ -157,19 +157,19 @@ class Service(pulumi.CustomResource):
             precedence.  Structure is documented below.
             * `configMapRef` (`dict`) - The ConfigMap to select from.  Structure is documented below.
               * `localObjectReference` (`dict`) - The Secret to select from.  Structure is documented below.
-                * `name` (`str`) - Name of the environment variable.
+                * `name` (`str`) - Name of the port.
 
               * `optional` (`bool`) - Specify whether the Secret must be defined
 
             * `prefix` (`str`) - An optional identifier to prepend to each key in the ConfigMap.
             * `secretRef` (`dict`) - The Secret to select from.  Structure is documented below.
               * `localObjectReference` (`dict`) - The Secret to select from.  Structure is documented below.
-                * `name` (`str`) - Name of the environment variable.
+                * `name` (`str`) - Name of the port.
 
               * `optional` (`bool`) - Specify whether the Secret must be defined
 
           * `envs` (`list`) - List of environment variables to set in the container.  Structure is documented below.
-            * `name` (`str`) - Name of the environment variable.
+            * `name` (`str`) - Name of the port.
             * `value` (`str`) - Variable references $(VAR_NAME) are expanded
               using the previous defined environment variables in the container and
               any route environment variables. If a variable cannot be resolved,
@@ -182,6 +182,13 @@ class Service(pulumi.CustomResource):
           * `image` (`str`) - Docker image name. This is most often a reference to a container located
             in the container registry, such as gcr.io/cloudrun/hello
             More info: https://kubernetes.io/docs/concepts/containers/images
+          * `ports` (`list`) - List of open ports in the container.
+            More Info:
+            https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+            * `containerPort` (`float`) - Port number.
+            * `name` (`str`) - Name of the port.
+            * `protocol` (`str`) - Protocol used on port. Defaults to TCP.
+
           * `resources` (`dict`) - Compute Resources required by this container. Used to set values such as max memory
             More info:
             https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
@@ -257,7 +264,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[dict] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.  Structure is documented below.
-        :param pulumi.Input[str] name: Name of the environment variable.
+        :param pulumi.Input[str] name: Name of the port.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] template: template holds the latest specification for the Revision to
@@ -313,7 +320,7 @@ class Service(pulumi.CustomResource):
               (scope and select) objects. May match selectors of replication controllers
               and routes.
               More info: http://kubernetes.io/docs/user-guide/labels
-            * `name` (`pulumi.Input[str]`) - Name of the environment variable.
+            * `name` (`pulumi.Input[str]`) - Name of the port.
             * `namespace` (`pulumi.Input[str]`) - In Cloud Run the namespace must be equal to either the
               project ID or project number.
             * `resourceVersion` (`pulumi.Input[str]`) - -
@@ -370,19 +377,19 @@ class Service(pulumi.CustomResource):
                 precedence.  Structure is documented below.
                 * `configMapRef` (`pulumi.Input[dict]`) - The ConfigMap to select from.  Structure is documented below.
                   * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
-                    * `name` (`pulumi.Input[str]`) - Name of the environment variable.
+                    * `name` (`pulumi.Input[str]`) - Name of the port.
 
                   * `optional` (`pulumi.Input[bool]`) - Specify whether the Secret must be defined
 
                 * `prefix` (`pulumi.Input[str]`) - An optional identifier to prepend to each key in the ConfigMap.
                 * `secretRef` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
                   * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
-                    * `name` (`pulumi.Input[str]`) - Name of the environment variable.
+                    * `name` (`pulumi.Input[str]`) - Name of the port.
 
                   * `optional` (`pulumi.Input[bool]`) - Specify whether the Secret must be defined
 
               * `envs` (`pulumi.Input[list]`) - List of environment variables to set in the container.  Structure is documented below.
-                * `name` (`pulumi.Input[str]`) - Name of the environment variable.
+                * `name` (`pulumi.Input[str]`) - Name of the port.
                 * `value` (`pulumi.Input[str]`) - Variable references $(VAR_NAME) are expanded
                   using the previous defined environment variables in the container and
                   any route environment variables. If a variable cannot be resolved,
@@ -395,6 +402,13 @@ class Service(pulumi.CustomResource):
               * `image` (`pulumi.Input[str]`) - Docker image name. This is most often a reference to a container located
                 in the container registry, such as gcr.io/cloudrun/hello
                 More info: https://kubernetes.io/docs/concepts/containers/images
+              * `ports` (`pulumi.Input[list]`) - List of open ports in the container.
+                More Info:
+                https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+                * `containerPort` (`pulumi.Input[float]`) - Port number.
+                * `name` (`pulumi.Input[str]`) - Name of the port.
+                * `protocol` (`pulumi.Input[str]`) - Protocol used on port. Defaults to TCP.
+
               * `resources` (`pulumi.Input[dict]`) - Compute Resources required by this container. Used to set values such as max memory
                 More info:
                 https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
@@ -483,7 +497,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[dict] metadata: Metadata associated with this Service, including name, namespace, labels,
                and annotations.  Structure is documented below.
-        :param pulumi.Input[str] name: Name of the environment variable.
+        :param pulumi.Input[str] name: Name of the port.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] status: The current status of the Service.
@@ -553,7 +567,7 @@ class Service(pulumi.CustomResource):
               (scope and select) objects. May match selectors of replication controllers
               and routes.
               More info: http://kubernetes.io/docs/user-guide/labels
-            * `name` (`pulumi.Input[str]`) - Name of the environment variable.
+            * `name` (`pulumi.Input[str]`) - Name of the port.
             * `namespace` (`pulumi.Input[str]`) - In Cloud Run the namespace must be equal to either the
               project ID or project number.
             * `resourceVersion` (`pulumi.Input[str]`) - -
@@ -610,19 +624,19 @@ class Service(pulumi.CustomResource):
                 precedence.  Structure is documented below.
                 * `configMapRef` (`pulumi.Input[dict]`) - The ConfigMap to select from.  Structure is documented below.
                   * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
-                    * `name` (`pulumi.Input[str]`) - Name of the environment variable.
+                    * `name` (`pulumi.Input[str]`) - Name of the port.
 
                   * `optional` (`pulumi.Input[bool]`) - Specify whether the Secret must be defined
 
                 * `prefix` (`pulumi.Input[str]`) - An optional identifier to prepend to each key in the ConfigMap.
                 * `secretRef` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
                   * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
-                    * `name` (`pulumi.Input[str]`) - Name of the environment variable.
+                    * `name` (`pulumi.Input[str]`) - Name of the port.
 
                   * `optional` (`pulumi.Input[bool]`) - Specify whether the Secret must be defined
 
               * `envs` (`pulumi.Input[list]`) - List of environment variables to set in the container.  Structure is documented below.
-                * `name` (`pulumi.Input[str]`) - Name of the environment variable.
+                * `name` (`pulumi.Input[str]`) - Name of the port.
                 * `value` (`pulumi.Input[str]`) - Variable references $(VAR_NAME) are expanded
                   using the previous defined environment variables in the container and
                   any route environment variables. If a variable cannot be resolved,
@@ -635,6 +649,13 @@ class Service(pulumi.CustomResource):
               * `image` (`pulumi.Input[str]`) - Docker image name. This is most often a reference to a container located
                 in the container registry, such as gcr.io/cloudrun/hello
                 More info: https://kubernetes.io/docs/concepts/containers/images
+              * `ports` (`pulumi.Input[list]`) - List of open ports in the container.
+                More Info:
+                https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+                * `containerPort` (`pulumi.Input[float]`) - Port number.
+                * `name` (`pulumi.Input[str]`) - Name of the port.
+                * `protocol` (`pulumi.Input[str]`) - Protocol used on port. Defaults to TCP.
+
               * `resources` (`pulumi.Input[dict]`) - Compute Resources required by this container. Used to set values such as max memory
                 More info:
                 https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.

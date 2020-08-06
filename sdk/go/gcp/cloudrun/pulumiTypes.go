@@ -1998,7 +1998,7 @@ type ServiceTemplateMetadata struct {
 	// and routes.
 	// More info: http://kubernetes.io/docs/user-guide/labels
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the environment variable.
+	// Name of the port.
 	Name *string `pulumi:"name"`
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number.
@@ -2046,7 +2046,7 @@ type ServiceTemplateMetadataArgs struct {
 	// and routes.
 	// More info: http://kubernetes.io/docs/user-guide/labels
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Name of the environment variable.
+	// Name of the port.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number.
@@ -2168,7 +2168,7 @@ func (o ServiceTemplateMetadataOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the environment variable.
+// Name of the port.
 func (o ServiceTemplateMetadataOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2259,7 +2259,7 @@ func (o ServiceTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Name of the environment variable.
+// Name of the port.
 func (o ServiceTemplateMetadataPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateMetadata) *string {
 		if v == nil {
@@ -2637,6 +2637,10 @@ type ServiceTemplateSpecContainer struct {
 	// in the container registry, such as gcr.io/cloudrun/hello
 	// More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
+	// List of open ports in the container.
+	// More Info:
+	// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+	Ports []ServiceTemplateSpecContainerPort `pulumi:"ports"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	// More info:
 	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
@@ -2699,6 +2703,10 @@ type ServiceTemplateSpecContainerArgs struct {
 	// in the container registry, such as gcr.io/cloudrun/hello
 	// More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringInput `pulumi:"image"`
+	// List of open ports in the container.
+	// More Info:
+	// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+	Ports ServiceTemplateSpecContainerPortArrayInput `pulumi:"ports"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	// More info:
 	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
@@ -2815,6 +2823,13 @@ func (o ServiceTemplateSpecContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// List of open ports in the container.
+// More Info:
+// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+func (o ServiceTemplateSpecContainerOutput) Ports() ServiceTemplateSpecContainerPortArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerPort { return v.Ports }).(ServiceTemplateSpecContainerPortArrayOutput)
+}
+
 // Compute Resources required by this container. Used to set values such as max memory
 // More info:
 // https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
@@ -2854,7 +2869,7 @@ func (o ServiceTemplateSpecContainerArrayOutput) Index(i pulumi.IntInput) Servic
 }
 
 type ServiceTemplateSpecContainerEnv struct {
-	// Name of the environment variable.
+	// Name of the port.
 	Name *string `pulumi:"name"`
 	// Variable references $(VAR_NAME) are expanded
 	// using the previous defined environment variables in the container and
@@ -2879,7 +2894,7 @@ type ServiceTemplateSpecContainerEnvInput interface {
 }
 
 type ServiceTemplateSpecContainerEnvArgs struct {
-	// Name of the environment variable.
+	// Name of the port.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Variable references $(VAR_NAME) are expanded
 	// using the previous defined environment variables in the container and
@@ -2943,7 +2958,7 @@ func (o ServiceTemplateSpecContainerEnvOutput) ToServiceTemplateSpecContainerEnv
 	return o
 }
 
-// Name of the environment variable.
+// Name of the port.
 func (o ServiceTemplateSpecContainerEnvOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnv) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3254,7 +3269,7 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput) Optional() pul
 }
 
 type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference struct {
-	// Name of the environment variable.
+	// Name of the port.
 	Name string `pulumi:"name"`
 }
 
@@ -3270,7 +3285,7 @@ type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceInput in
 }
 
 type ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs struct {
-	// Name of the environment variable.
+	// Name of the port.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -3351,7 +3366,7 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutpu
 	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput)
 }
 
-// Name of the environment variable.
+// Name of the port.
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3376,7 +3391,7 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOu
 	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput)
 }
 
-// Name of the environment variable.
+// Name of the port.
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) *string {
 		if v == nil {
@@ -3541,7 +3556,7 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput) Optional() pulumi
 }
 
 type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference struct {
-	// Name of the environment variable.
+	// Name of the port.
 	Name string `pulumi:"name"`
 }
 
@@ -3557,7 +3572,7 @@ type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceInput inter
 }
 
 type ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs struct {
-	// Name of the environment variable.
+	// Name of the port.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -3638,7 +3653,7 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput) 
 	}).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput)
 }
 
-// Name of the environment variable.
+// Name of the port.
 func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3663,7 +3678,7 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutpu
 	}).(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput)
 }
 
-// Name of the environment variable.
+// Name of the port.
 func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) *string {
 		if v == nil {
@@ -3671,6 +3686,121 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutpu
 		}
 		return &v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSpecContainerPort struct {
+	// Port number.
+	ContainerPort int `pulumi:"containerPort"`
+	// Name of the port.
+	Name *string `pulumi:"name"`
+	// Protocol used on port. Defaults to TCP.
+	Protocol *string `pulumi:"protocol"`
+}
+
+// ServiceTemplateSpecContainerPortInput is an input type that accepts ServiceTemplateSpecContainerPortArgs and ServiceTemplateSpecContainerPortOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerPortInput` via:
+//
+//          ServiceTemplateSpecContainerPortArgs{...}
+type ServiceTemplateSpecContainerPortInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerPortOutput() ServiceTemplateSpecContainerPortOutput
+	ToServiceTemplateSpecContainerPortOutputWithContext(context.Context) ServiceTemplateSpecContainerPortOutput
+}
+
+type ServiceTemplateSpecContainerPortArgs struct {
+	// Port number.
+	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
+	// Name of the port.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Protocol used on port. Defaults to TCP.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+}
+
+func (ServiceTemplateSpecContainerPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerPort)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecContainerPortArgs) ToServiceTemplateSpecContainerPortOutput() ServiceTemplateSpecContainerPortOutput {
+	return i.ToServiceTemplateSpecContainerPortOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerPortArgs) ToServiceTemplateSpecContainerPortOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerPortOutput)
+}
+
+// ServiceTemplateSpecContainerPortArrayInput is an input type that accepts ServiceTemplateSpecContainerPortArray and ServiceTemplateSpecContainerPortArrayOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecContainerPortArrayInput` via:
+//
+//          ServiceTemplateSpecContainerPortArray{ ServiceTemplateSpecContainerPortArgs{...} }
+type ServiceTemplateSpecContainerPortArrayInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecContainerPortArrayOutput() ServiceTemplateSpecContainerPortArrayOutput
+	ToServiceTemplateSpecContainerPortArrayOutputWithContext(context.Context) ServiceTemplateSpecContainerPortArrayOutput
+}
+
+type ServiceTemplateSpecContainerPortArray []ServiceTemplateSpecContainerPortInput
+
+func (ServiceTemplateSpecContainerPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateSpecContainerPort)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecContainerPortArray) ToServiceTemplateSpecContainerPortArrayOutput() ServiceTemplateSpecContainerPortArrayOutput {
+	return i.ToServiceTemplateSpecContainerPortArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecContainerPortArray) ToServiceTemplateSpecContainerPortArrayOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecContainerPortArrayOutput)
+}
+
+type ServiceTemplateSpecContainerPortOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecContainerPort)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerPortOutput) ToServiceTemplateSpecContainerPortOutput() ServiceTemplateSpecContainerPortOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerPortOutput) ToServiceTemplateSpecContainerPortOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerPortOutput {
+	return o
+}
+
+// Port number.
+func (o ServiceTemplateSpecContainerPortOutput) ContainerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerPort) int { return v.ContainerPort }).(pulumi.IntOutput)
+}
+
+// Name of the port.
+func (o ServiceTemplateSpecContainerPortOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerPort) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Protocol used on port. Defaults to TCP.
+func (o ServiceTemplateSpecContainerPortOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSpecContainerPortArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecContainerPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateSpecContainerPort)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecContainerPortArrayOutput) ToServiceTemplateSpecContainerPortArrayOutput() ServiceTemplateSpecContainerPortArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerPortArrayOutput) ToServiceTemplateSpecContainerPortArrayOutputWithContext(ctx context.Context) ServiceTemplateSpecContainerPortArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecContainerPortArrayOutput) Index(i pulumi.IntInput) ServiceTemplateSpecContainerPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateSpecContainerPort {
+		return vs[0].([]ServiceTemplateSpecContainerPort)[vs[1].(int)]
+	}).(ServiceTemplateSpecContainerPortOutput)
 }
 
 type ServiceTemplateSpecContainerResources struct {
@@ -4012,6 +4142,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerPortOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecContainerPortArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerResourcesOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerResourcesPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTrafficOutput{})

@@ -6348,6 +6348,137 @@ func (o FirewallDenyArrayOutput) Index(i pulumi.IntInput) FirewallDenyOutput {
 	}).(FirewallDenyOutput)
 }
 
+type FirewallLogConfig struct {
+	// This field denotes whether to include or exclude metadata for firewall logs.
+	Metadata string `pulumi:"metadata"`
+}
+
+// FirewallLogConfigInput is an input type that accepts FirewallLogConfigArgs and FirewallLogConfigOutput values.
+// You can construct a concrete instance of `FirewallLogConfigInput` via:
+//
+//          FirewallLogConfigArgs{...}
+type FirewallLogConfigInput interface {
+	pulumi.Input
+
+	ToFirewallLogConfigOutput() FirewallLogConfigOutput
+	ToFirewallLogConfigOutputWithContext(context.Context) FirewallLogConfigOutput
+}
+
+type FirewallLogConfigArgs struct {
+	// This field denotes whether to include or exclude metadata for firewall logs.
+	Metadata pulumi.StringInput `pulumi:"metadata"`
+}
+
+func (FirewallLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallLogConfig)(nil)).Elem()
+}
+
+func (i FirewallLogConfigArgs) ToFirewallLogConfigOutput() FirewallLogConfigOutput {
+	return i.ToFirewallLogConfigOutputWithContext(context.Background())
+}
+
+func (i FirewallLogConfigArgs) ToFirewallLogConfigOutputWithContext(ctx context.Context) FirewallLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallLogConfigOutput)
+}
+
+func (i FirewallLogConfigArgs) ToFirewallLogConfigPtrOutput() FirewallLogConfigPtrOutput {
+	return i.ToFirewallLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallLogConfigArgs) ToFirewallLogConfigPtrOutputWithContext(ctx context.Context) FirewallLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallLogConfigOutput).ToFirewallLogConfigPtrOutputWithContext(ctx)
+}
+
+// FirewallLogConfigPtrInput is an input type that accepts FirewallLogConfigArgs, FirewallLogConfigPtr and FirewallLogConfigPtrOutput values.
+// You can construct a concrete instance of `FirewallLogConfigPtrInput` via:
+//
+//          FirewallLogConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type FirewallLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToFirewallLogConfigPtrOutput() FirewallLogConfigPtrOutput
+	ToFirewallLogConfigPtrOutputWithContext(context.Context) FirewallLogConfigPtrOutput
+}
+
+type firewallLogConfigPtrType FirewallLogConfigArgs
+
+func FirewallLogConfigPtr(v *FirewallLogConfigArgs) FirewallLogConfigPtrInput {
+	return (*firewallLogConfigPtrType)(v)
+}
+
+func (*firewallLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallLogConfig)(nil)).Elem()
+}
+
+func (i *firewallLogConfigPtrType) ToFirewallLogConfigPtrOutput() FirewallLogConfigPtrOutput {
+	return i.ToFirewallLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallLogConfigPtrType) ToFirewallLogConfigPtrOutputWithContext(ctx context.Context) FirewallLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallLogConfigPtrOutput)
+}
+
+type FirewallLogConfigOutput struct{ *pulumi.OutputState }
+
+func (FirewallLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallLogConfig)(nil)).Elem()
+}
+
+func (o FirewallLogConfigOutput) ToFirewallLogConfigOutput() FirewallLogConfigOutput {
+	return o
+}
+
+func (o FirewallLogConfigOutput) ToFirewallLogConfigOutputWithContext(ctx context.Context) FirewallLogConfigOutput {
+	return o
+}
+
+func (o FirewallLogConfigOutput) ToFirewallLogConfigPtrOutput() FirewallLogConfigPtrOutput {
+	return o.ToFirewallLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallLogConfigOutput) ToFirewallLogConfigPtrOutputWithContext(ctx context.Context) FirewallLogConfigPtrOutput {
+	return o.ApplyT(func(v FirewallLogConfig) *FirewallLogConfig {
+		return &v
+	}).(FirewallLogConfigPtrOutput)
+}
+
+// This field denotes whether to include or exclude metadata for firewall logs.
+func (o FirewallLogConfigOutput) Metadata() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallLogConfig) string { return v.Metadata }).(pulumi.StringOutput)
+}
+
+type FirewallLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallLogConfig)(nil)).Elem()
+}
+
+func (o FirewallLogConfigPtrOutput) ToFirewallLogConfigPtrOutput() FirewallLogConfigPtrOutput {
+	return o
+}
+
+func (o FirewallLogConfigPtrOutput) ToFirewallLogConfigPtrOutputWithContext(ctx context.Context) FirewallLogConfigPtrOutput {
+	return o
+}
+
+func (o FirewallLogConfigPtrOutput) Elem() FirewallLogConfigOutput {
+	return o.ApplyT(func(v *FirewallLogConfig) FirewallLogConfig { return *v }).(FirewallLogConfigOutput)
+}
+
+// This field denotes whether to include or exclude metadata for firewall logs.
+func (o FirewallLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
 type GlobalForwardingRuleMetadataFilter struct {
 	// The list of label value pairs that must match labels in the
 	// provided metadata based on filterMatchCriteria
@@ -24238,12 +24369,12 @@ type RegionUrlMapDefaultUrlRedirect struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -24286,12 +24417,12 @@ type RegionUrlMapDefaultUrlRedirectArgs struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -24411,12 +24542,12 @@ func (o RegionUrlMapDefaultUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrO
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o RegionUrlMapDefaultUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapDefaultUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
@@ -24501,12 +24632,12 @@ func (o RegionUrlMapDefaultUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringP
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o RegionUrlMapDefaultUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapDefaultUrlRedirect) *string {
@@ -24868,12 +24999,12 @@ type RegionUrlMapPathMatcherDefaultUrlRedirect struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -24916,12 +25047,12 @@ type RegionUrlMapPathMatcherDefaultUrlRedirectArgs struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -25041,12 +25172,12 @@ func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) PrefixRedirect() pulumi
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o RegionUrlMapPathMatcherDefaultUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherDefaultUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
@@ -25133,12 +25264,12 @@ func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) PrefixRedirect() pul
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o RegionUrlMapPathMatcherDefaultUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherDefaultUrlRedirect) *string {
@@ -28139,12 +28270,12 @@ type RegionUrlMapPathMatcherPathRuleUrlRedirect struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -28187,12 +28318,12 @@ type RegionUrlMapPathMatcherPathRuleUrlRedirectArgs struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -28312,12 +28443,12 @@ func (o RegionUrlMapPathMatcherPathRuleUrlRedirectOutput) PrefixRedirect() pulum
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o RegionUrlMapPathMatcherPathRuleUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
@@ -28404,12 +28535,12 @@ func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) PrefixRedirect() pu
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o RegionUrlMapPathMatcherPathRuleUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherPathRuleUrlRedirect) *string {
@@ -32893,12 +33024,12 @@ type RegionUrlMapPathMatcherRouteRuleUrlRedirect struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -32941,12 +33072,12 @@ type RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -33066,12 +33197,12 @@ func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectOutput) PrefixRedirect() pulu
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
@@ -33158,12 +33289,12 @@ func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput) PrefixRedirect() p
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o RegionUrlMapPathMatcherRouteRuleUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleUrlRedirect) *string {
@@ -40908,12 +41039,12 @@ type URLMapDefaultUrlRedirect struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -40956,12 +41087,12 @@ type URLMapDefaultUrlRedirectArgs struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -41081,12 +41212,12 @@ func (o URLMapDefaultUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput 
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o URLMapDefaultUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
@@ -41171,12 +41302,12 @@ func (o URLMapDefaultUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutp
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o URLMapDefaultUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *string {
@@ -44692,12 +44823,12 @@ type URLMapPathMatcherDefaultUrlRedirect struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -44740,12 +44871,12 @@ type URLMapPathMatcherDefaultUrlRedirectArgs struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -44865,12 +44996,12 @@ func (o URLMapPathMatcherDefaultUrlRedirectOutput) PrefixRedirect() pulumi.Strin
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o URLMapPathMatcherDefaultUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherDefaultUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
@@ -44955,12 +45086,12 @@ func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) PrefixRedirect() pulumi.St
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o URLMapPathMatcherDefaultUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherDefaultUrlRedirect) *string {
@@ -48290,12 +48421,12 @@ type URLMapPathMatcherPathRuleUrlRedirect struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -48338,12 +48469,12 @@ type URLMapPathMatcherPathRuleUrlRedirectArgs struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -48463,12 +48594,12 @@ func (o URLMapPathMatcherPathRuleUrlRedirectOutput) PrefixRedirect() pulumi.Stri
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o URLMapPathMatcherPathRuleUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
@@ -48553,12 +48684,12 @@ func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) PrefixRedirect() pulumi.S
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o URLMapPathMatcherPathRuleUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherPathRuleUrlRedirect) *string {
@@ -52922,12 +53053,12 @@ type URLMapPathMatcherRouteRuleUrlRedirect struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -52970,12 +53101,12 @@ type URLMapPathMatcherRouteRuleUrlRedirectArgs struct {
 	// the redirect. The value must be between 1 and 1024 characters.
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction. Supported values are:
-	// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-	// - FOUND, which corresponds to 302.
-	// - SEE_OTHER which corresponds to 303.
-	// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 	//   will be retained.
-	// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 	//   the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior
@@ -53095,12 +53226,12 @@ func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) PrefixRedirect() pulumi.Str
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
@@ -53185,12 +53316,12 @@ func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) PrefixRedirect() pulumi.
 }
 
 // The HTTP Status code to use for this RedirectAction. Supported values are:
-// - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
-// - FOUND, which corresponds to 302.
-// - SEE_OTHER which corresponds to 303.
-// - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
 //   will be retained.
-// - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
 //   the request method will be retained.
 func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *string {
@@ -57092,6 +57223,8 @@ func init() {
 	pulumi.RegisterOutputType(FirewallAllowArrayOutput{})
 	pulumi.RegisterOutputType(FirewallDenyOutput{})
 	pulumi.RegisterOutputType(FirewallDenyArrayOutput{})
+	pulumi.RegisterOutputType(FirewallLogConfigOutput{})
+	pulumi.RegisterOutputType(FirewallLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRuleMetadataFilterOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRuleMetadataFilterArrayOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRuleMetadataFilterFilterLabelOutput{})

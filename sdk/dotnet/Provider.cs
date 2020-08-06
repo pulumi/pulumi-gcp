@@ -50,6 +50,9 @@ namespace Pulumi.Gcp
         [Input("accessToken")]
         public Input<string>? AccessToken { get; set; }
 
+        [Input("activeDirectoryCustomEndpoint")]
+        public Input<string>? ActiveDirectoryCustomEndpoint { get; set; }
+
         [Input("appEngineCustomEndpoint")]
         public Input<string>? AppEngineCustomEndpoint { get; set; }
 

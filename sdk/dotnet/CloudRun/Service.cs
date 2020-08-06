@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.CloudRun
         public Output<Outputs.ServiceMetadata> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the environment variable.
+        /// Name of the port.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.Gcp.CloudRun
         public Input<Inputs.ServiceMetadataArgs>? Metadata { get; set; }
 
         /// <summary>
-        /// Name of the environment variable.
+        /// Name of the port.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -237,7 +237,7 @@ namespace Pulumi.Gcp.CloudRun
         public Input<Inputs.ServiceMetadataGetArgs>? Metadata { get; set; }
 
         /// <summary>
-        /// Name of the environment variable.
+        /// Name of the port.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

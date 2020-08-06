@@ -152,7 +152,7 @@ class DatabaseInstance(pulumi.CustomResource):
       * `diskSize` (`float`) - The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
       * `diskType` (`str`) - The type of data disk: PD_SSD or PD_HDD.
       * `ip_configuration` (`dict`)
-        * `authorizedNetworks` (`list`)
+        * `authorized_networks` (`list`)
           * `expiration_time` (`str`) - The [RFC 3339](https://tools.ietf.org/html/rfc3339)
             formatted date time string indicating when this whitelist expires.
           * `name` (`str`) - A name for this whitelist entry.
@@ -322,7 +322,7 @@ class DatabaseInstance(pulumi.CustomResource):
           * `diskSize` (`pulumi.Input[float]`) - The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
           * `diskType` (`pulumi.Input[str]`) - The type of data disk: PD_SSD or PD_HDD.
           * `ip_configuration` (`pulumi.Input[dict]`)
-            * `authorizedNetworks` (`pulumi.Input[list]`)
+            * `authorized_networks` (`pulumi.Input[list]`)
               * `expiration_time` (`pulumi.Input[str]`) - The [RFC 3339](https://tools.ietf.org/html/rfc3339)
                 formatted date time string indicating when this whitelist expires.
               * `name` (`pulumi.Input[str]`) - A name for this whitelist entry.
@@ -530,7 +530,7 @@ class DatabaseInstance(pulumi.CustomResource):
           * `diskSize` (`pulumi.Input[float]`) - The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased.
           * `diskType` (`pulumi.Input[str]`) - The type of data disk: PD_SSD or PD_HDD.
           * `ip_configuration` (`pulumi.Input[dict]`)
-            * `authorizedNetworks` (`pulumi.Input[list]`)
+            * `authorized_networks` (`pulumi.Input[list]`)
               * `expiration_time` (`pulumi.Input[str]`) - The [RFC 3339](https://tools.ietf.org/html/rfc3339)
                 formatted date time string indicating when this whitelist expires.
               * `name` (`pulumi.Input[str]`) - A name for this whitelist entry.

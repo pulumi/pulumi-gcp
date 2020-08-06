@@ -46,6 +46,7 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	AccessContextManagerCustomEndpoint   *string           `pulumi:"accessContextManagerCustomEndpoint"`
 	AccessToken                          *string           `pulumi:"accessToken"`
+	ActiveDirectoryCustomEndpoint        *string           `pulumi:"activeDirectoryCustomEndpoint"`
 	AppEngineCustomEndpoint              *string           `pulumi:"appEngineCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint       *string           `pulumi:"artifactRegistryCustomEndpoint"`
 	Batching                             *ProviderBatching `pulumi:"batching"`
@@ -132,6 +133,7 @@ type providerArgs struct {
 type ProviderArgs struct {
 	AccessContextManagerCustomEndpoint   pulumi.StringPtrInput
 	AccessToken                          pulumi.StringPtrInput
+	ActiveDirectoryCustomEndpoint        pulumi.StringPtrInput
 	AppEngineCustomEndpoint              pulumi.StringPtrInput
 	ArtifactRegistryCustomEndpoint       pulumi.StringPtrInput
 	Batching                             ProviderBatchingPtrInput

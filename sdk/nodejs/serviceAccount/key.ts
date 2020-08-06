@@ -62,7 +62,7 @@ export class Key extends pulumi.CustomResource {
      */
     public /*out*/ readonly publicKey!: pulumi.Output<string>;
     /**
-     * The output format of the public key requested. X509_PEM is the default output format.
+     * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */
     public readonly publicKeyType!: pulumi.Output<string | undefined>;
     /**
@@ -157,7 +157,7 @@ export interface KeyState {
      */
     readonly publicKey?: pulumi.Input<string>;
     /**
-     * The output format of the public key requested. X509_PEM is the default output format.
+     * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */
     readonly publicKeyType?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface KeyArgs {
      */
     readonly privateKeyType?: pulumi.Input<string>;
     /**
-     * The output format of the public key requested. X509_PEM is the default output format.
+     * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */
     readonly publicKeyType?: pulumi.Input<string>;
     /**

@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         }
 
         /// <summary>
-        /// Name of the environment variable.
+        /// Name of the port.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
