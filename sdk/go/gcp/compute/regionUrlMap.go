@@ -24,13 +24,15 @@ type RegionUrlMap struct {
 	DefaultService pulumi.StringPtrOutput `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-	// defaultRouteAction must not be set.  Structure is documented below.
+	// defaultRouteAction must not be set.
+	// Structure is documented below.
 	DefaultUrlRedirect RegionUrlMapDefaultUrlRedirectPtrOutput `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// The list of HostRules to use against the URL.  Structure is documented below.
+	// The list of HostRules to use against the URL.
+	// Structure is documented below.
 	HostRules RegionUrlMapHostRuleArrayOutput `pulumi:"hostRules"`
 	// The unique identifier for the resource.
 	MapId pulumi.IntOutput `pulumi:"mapId"`
@@ -49,7 +51,8 @@ type RegionUrlMap struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The list of expected URL mappings. Requests to update this UrlMap will
-	// succeed only if all of the test cases pass.  Structure is documented below.
+	// succeed only if all of the test cases pass.
+	// Structure is documented below.
 	Tests RegionUrlMapTestArrayOutput `pulumi:"tests"`
 }
 
@@ -89,13 +92,15 @@ type regionUrlMapState struct {
 	DefaultService *string `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-	// defaultRouteAction must not be set.  Structure is documented below.
+	// defaultRouteAction must not be set.
+	// Structure is documented below.
 	DefaultUrlRedirect *RegionUrlMapDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description *string `pulumi:"description"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	Fingerprint *string `pulumi:"fingerprint"`
-	// The list of HostRules to use against the URL.  Structure is documented below.
+	// The list of HostRules to use against the URL.
+	// Structure is documented below.
 	HostRules []RegionUrlMapHostRule `pulumi:"hostRules"`
 	// The unique identifier for the resource.
 	MapId *int `pulumi:"mapId"`
@@ -114,7 +119,8 @@ type regionUrlMapState struct {
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The list of expected URL mappings. Requests to update this UrlMap will
-	// succeed only if all of the test cases pass.  Structure is documented below.
+	// succeed only if all of the test cases pass.
+	// Structure is documented below.
 	Tests []RegionUrlMapTest `pulumi:"tests"`
 }
 
@@ -127,13 +133,15 @@ type RegionUrlMapState struct {
 	DefaultService pulumi.StringPtrInput
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-	// defaultRouteAction must not be set.  Structure is documented below.
+	// defaultRouteAction must not be set.
+	// Structure is documented below.
 	DefaultUrlRedirect RegionUrlMapDefaultUrlRedirectPtrInput
 	// Description of this test case.
 	Description pulumi.StringPtrInput
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	Fingerprint pulumi.StringPtrInput
-	// The list of HostRules to use against the URL.  Structure is documented below.
+	// The list of HostRules to use against the URL.
+	// Structure is documented below.
 	HostRules RegionUrlMapHostRuleArrayInput
 	// The unique identifier for the resource.
 	MapId pulumi.IntPtrInput
@@ -152,7 +160,8 @@ type RegionUrlMapState struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// The list of expected URL mappings. Requests to update this UrlMap will
-	// succeed only if all of the test cases pass.  Structure is documented below.
+	// succeed only if all of the test cases pass.
+	// Structure is documented below.
 	Tests RegionUrlMapTestArrayInput
 }
 
@@ -167,11 +176,13 @@ type regionUrlMapArgs struct {
 	DefaultService *string `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-	// defaultRouteAction must not be set.  Structure is documented below.
+	// defaultRouteAction must not be set.
+	// Structure is documented below.
 	DefaultUrlRedirect *RegionUrlMapDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
 	// Description of this test case.
 	Description *string `pulumi:"description"`
-	// The list of HostRules to use against the URL.  Structure is documented below.
+	// The list of HostRules to use against the URL.
+	// Structure is documented below.
 	HostRules []RegionUrlMapHostRule `pulumi:"hostRules"`
 	// The name of the query parameter to match. The query parameter must exist in the
 	// request, in the absence of which the request match fails.
@@ -186,7 +197,8 @@ type regionUrlMapArgs struct {
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The list of expected URL mappings. Requests to update this UrlMap will
-	// succeed only if all of the test cases pass.  Structure is documented below.
+	// succeed only if all of the test cases pass.
+	// Structure is documented below.
 	Tests []RegionUrlMapTest `pulumi:"tests"`
 }
 
@@ -198,11 +210,13 @@ type RegionUrlMapArgs struct {
 	DefaultService pulumi.StringPtrInput
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-	// defaultRouteAction must not be set.  Structure is documented below.
+	// defaultRouteAction must not be set.
+	// Structure is documented below.
 	DefaultUrlRedirect RegionUrlMapDefaultUrlRedirectPtrInput
 	// Description of this test case.
 	Description pulumi.StringPtrInput
-	// The list of HostRules to use against the URL.  Structure is documented below.
+	// The list of HostRules to use against the URL.
+	// Structure is documented below.
 	HostRules RegionUrlMapHostRuleArrayInput
 	// The name of the query parameter to match. The query parameter must exist in the
 	// request, in the absence of which the request match fails.
@@ -217,7 +231,8 @@ type RegionUrlMapArgs struct {
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The list of expected URL mappings. Requests to update this UrlMap will
-	// succeed only if all of the test cases pass.  Structure is documented below.
+	// succeed only if all of the test cases pass.
+	// Structure is documented below.
 	Tests RegionUrlMapTestArrayInput
 }
 

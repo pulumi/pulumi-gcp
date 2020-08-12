@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.Billing.Outputs
         /// <summary>
         /// A specified amount to use as the budget. currencyCode is
         /// optional. If specified, it must match the currency of the
-        /// billing account. The currencyCode is provided on output.  Structure is documented below.
+        /// billing account. The currencyCode is provided on output.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.BudgetAmountSpecifiedAmount SpecifiedAmount;
 

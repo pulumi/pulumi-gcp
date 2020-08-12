@@ -66,7 +66,8 @@ export class ConnectivityTest extends pulumi.CustomResource {
      * interface.
      * A reachability analysis proceeds even if the destination location
      * is ambiguous. However, the result can include endpoints that you
-     * don't intend to test.  Structure is documented below.
+     * don't intend to test.
+     * Structure is documented below.
      */
     public readonly destination!: pulumi.Output<outputs.networkmanagement.ConnectivityTestDestination>;
     /**
@@ -110,7 +111,8 @@ export class ConnectivityTest extends pulumi.CustomResource {
      * address or VPC network.
      * A reachability analysis proceeds even if the source location is
      * ambiguous. However, the test result may include endpoints that
-     * you don't intend to test.  Structure is documented below.
+     * you don't intend to test.
+     * Structure is documented below.
      */
     public readonly source!: pulumi.Output<outputs.networkmanagement.ConnectivityTestSource>;
 
@@ -185,7 +187,8 @@ export interface ConnectivityTestState {
      * interface.
      * A reachability analysis proceeds even if the destination location
      * is ambiguous. However, the result can include endpoints that you
-     * don't intend to test.  Structure is documented below.
+     * don't intend to test.
+     * Structure is documented below.
      */
     readonly destination?: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
     /**
@@ -229,7 +232,8 @@ export interface ConnectivityTestState {
      * address or VPC network.
      * A reachability analysis proceeds even if the source location is
      * ambiguous. However, the test result may include endpoints that
-     * you don't intend to test.  Structure is documented below.
+     * you don't intend to test.
+     * Structure is documented below.
      */
     readonly source?: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource>;
 }
@@ -257,7 +261,8 @@ export interface ConnectivityTestArgs {
      * interface.
      * A reachability analysis proceeds even if the destination location
      * is ambiguous. However, the result can include endpoints that you
-     * don't intend to test.  Structure is documented below.
+     * don't intend to test.
+     * Structure is documented below.
      */
     readonly destination: pulumi.Input<inputs.networkmanagement.ConnectivityTestDestination>;
     /**
@@ -301,7 +306,8 @@ export interface ConnectivityTestArgs {
      * address or VPC network.
      * A reachability analysis proceeds even if the source location is
      * ambiguous. However, the test result may include endpoints that
-     * you don't intend to test.  Structure is documented below.
+     * you don't intend to test.
+     * Structure is documented below.
      */
     readonly source: pulumi.Input<inputs.networkmanagement.ConnectivityTestSource>;
 }

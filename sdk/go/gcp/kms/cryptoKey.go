@@ -40,6 +40,8 @@ type CryptoKey struct {
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
+	// Default value is `ENCRYPT_DECRYPT`.
+	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
 	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
 	// The first rotation will take place after the specified period. The rotation period has
@@ -47,7 +49,8 @@ type CryptoKey struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrOutput `pulumi:"rotationPeriod"`
 	SelfLink       pulumi.StringOutput    `pulumi:"selfLink"`
-	// A template describing settings for new crypto key versions.  Structure is documented below.
+	// A template describing settings for new crypto key versions.
+	// Structure is documented below.
 	VersionTemplate CryptoKeyVersionTemplateOutput `pulumi:"versionTemplate"`
 }
 
@@ -92,6 +95,8 @@ type cryptoKeyState struct {
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
+	// Default value is `ENCRYPT_DECRYPT`.
+	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
 	Purpose *string `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
 	// The first rotation will take place after the specified period. The rotation period has
@@ -99,7 +104,8 @@ type cryptoKeyState struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod *string `pulumi:"rotationPeriod"`
 	SelfLink       *string `pulumi:"selfLink"`
-	// A template describing settings for new crypto key versions.  Structure is documented below.
+	// A template describing settings for new crypto key versions.
+	// Structure is documented below.
 	VersionTemplate *CryptoKeyVersionTemplate `pulumi:"versionTemplate"`
 }
 
@@ -114,6 +120,8 @@ type CryptoKeyState struct {
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
+	// Default value is `ENCRYPT_DECRYPT`.
+	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
 	Purpose pulumi.StringPtrInput
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
 	// The first rotation will take place after the specified period. The rotation period has
@@ -121,7 +129,8 @@ type CryptoKeyState struct {
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrInput
 	SelfLink       pulumi.StringPtrInput
-	// A template describing settings for new crypto key versions.  Structure is documented below.
+	// A template describing settings for new crypto key versions.
+	// Structure is documented below.
 	VersionTemplate CryptoKeyVersionTemplatePtrInput
 }
 
@@ -140,13 +149,16 @@ type cryptoKeyArgs struct {
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
+	// Default value is `ENCRYPT_DECRYPT`.
+	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
 	Purpose *string `pulumi:"purpose"`
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
 	// The first rotation will take place after the specified period. The rotation period has
 	// the format of a decimal number with up to 9 fractional digits, followed by the
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod *string `pulumi:"rotationPeriod"`
-	// A template describing settings for new crypto key versions.  Structure is documented below.
+	// A template describing settings for new crypto key versions.
+	// Structure is documented below.
 	VersionTemplate *CryptoKeyVersionTemplate `pulumi:"versionTemplate"`
 }
 
@@ -162,13 +174,16 @@ type CryptoKeyArgs struct {
 	// The immutable purpose of this CryptoKey. See the
 	// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
 	// for possible inputs.
+	// Default value is `ENCRYPT_DECRYPT`.
+	// Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, and `ASYMMETRIC_DECRYPT`.
 	Purpose pulumi.StringPtrInput
 	// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
 	// The first rotation will take place after the specified period. The rotation period has
 	// the format of a decimal number with up to 9 fractional digits, followed by the
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrInput
-	// A template describing settings for new crypto key versions.  Structure is documented below.
+	// A template describing settings for new crypto key versions.
+	// Structure is documented below.
 	VersionTemplate CryptoKeyVersionTemplatePtrInput
 }
 

@@ -35,12 +35,14 @@ type Firewall struct {
 
 	// The list of ALLOW rules specified by this firewall. Each rule
 	// specifies a protocol and port-range tuple that describes a permitted
-	// connection.  Structure is documented below.
+	// connection.
+	// Structure is documented below.
 	Allows FirewallAllowArrayOutput `pulumi:"allows"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// The list of DENY rules specified by this firewall. Each rule specifies
-	// a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+	// a protocol and port-range tuple that describes a denied connection.
+	// Structure is documented below.
 	Denies FirewallDenyArrayOutput `pulumi:"denies"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -53,6 +55,7 @@ type Firewall struct {
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
 	// sourceRanges OR sourceTags.
+	// Possible values are `INGRESS` and `EGRESS`.
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
 	// network it is associated with. When set to true, the firewall rule is
@@ -65,7 +68,8 @@ type Firewall struct {
 	// Deprecated: Deprecated in favor of log_config
 	EnableLogging pulumi.BoolOutput `pulumi:"enableLogging"`
 	// This field denotes the logging options for a particular firewall rule.
-	// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+	// If defined, logging is enabled, and logs will be exported to Cloud Logging.
+	// Structure is documented below.
 	LogConfig FirewallLogConfigPtrOutput `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -167,12 +171,14 @@ func GetFirewall(ctx *pulumi.Context,
 type firewallState struct {
 	// The list of ALLOW rules specified by this firewall. Each rule
 	// specifies a protocol and port-range tuple that describes a permitted
-	// connection.  Structure is documented below.
+	// connection.
+	// Structure is documented below.
 	Allows []FirewallAllow `pulumi:"allows"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// The list of DENY rules specified by this firewall. Each rule specifies
-	// a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+	// a protocol and port-range tuple that describes a denied connection.
+	// Structure is documented below.
 	Denies []FirewallDeny `pulumi:"denies"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -185,6 +191,7 @@ type firewallState struct {
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
 	// sourceRanges OR sourceTags.
+	// Possible values are `INGRESS` and `EGRESS`.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
 	// network it is associated with. When set to true, the firewall rule is
@@ -197,7 +204,8 @@ type firewallState struct {
 	// Deprecated: Deprecated in favor of log_config
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// This field denotes the logging options for a particular firewall rule.
-	// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+	// If defined, logging is enabled, and logs will be exported to Cloud Logging.
+	// Structure is documented below.
 	LogConfig *FirewallLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -269,12 +277,14 @@ type firewallState struct {
 type FirewallState struct {
 	// The list of ALLOW rules specified by this firewall. Each rule
 	// specifies a protocol and port-range tuple that describes a permitted
-	// connection.  Structure is documented below.
+	// connection.
+	// Structure is documented below.
 	Allows FirewallAllowArrayInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// The list of DENY rules specified by this firewall. Each rule specifies
-	// a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+	// a protocol and port-range tuple that describes a denied connection.
+	// Structure is documented below.
 	Denies FirewallDenyArrayInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -287,6 +297,7 @@ type FirewallState struct {
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
 	// sourceRanges OR sourceTags.
+	// Possible values are `INGRESS` and `EGRESS`.
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
 	// network it is associated with. When set to true, the firewall rule is
@@ -299,7 +310,8 @@ type FirewallState struct {
 	// Deprecated: Deprecated in favor of log_config
 	EnableLogging pulumi.BoolPtrInput
 	// This field denotes the logging options for a particular firewall rule.
-	// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+	// If defined, logging is enabled, and logs will be exported to Cloud Logging.
+	// Structure is documented below.
 	LogConfig FirewallLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -375,10 +387,12 @@ func (FirewallState) ElementType() reflect.Type {
 type firewallArgs struct {
 	// The list of ALLOW rules specified by this firewall. Each rule
 	// specifies a protocol and port-range tuple that describes a permitted
-	// connection.  Structure is documented below.
+	// connection.
+	// Structure is documented below.
 	Allows []FirewallAllow `pulumi:"allows"`
 	// The list of DENY rules specified by this firewall. Each rule specifies
-	// a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+	// a protocol and port-range tuple that describes a denied connection.
+	// Structure is documented below.
 	Denies []FirewallDeny `pulumi:"denies"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -391,6 +405,7 @@ type firewallArgs struct {
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
 	// sourceRanges OR sourceTags.
+	// Possible values are `INGRESS` and `EGRESS`.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
 	// network it is associated with. When set to true, the firewall rule is
@@ -403,7 +418,8 @@ type firewallArgs struct {
 	// Deprecated: Deprecated in favor of log_config
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// This field denotes the logging options for a particular firewall rule.
-	// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+	// If defined, logging is enabled, and logs will be exported to Cloud Logging.
+	// Structure is documented below.
 	LogConfig *FirewallLogConfig `pulumi:"logConfig"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -474,10 +490,12 @@ type firewallArgs struct {
 type FirewallArgs struct {
 	// The list of ALLOW rules specified by this firewall. Each rule
 	// specifies a protocol and port-range tuple that describes a permitted
-	// connection.  Structure is documented below.
+	// connection.
+	// Structure is documented below.
 	Allows FirewallAllowArrayInput
 	// The list of DENY rules specified by this firewall. Each rule specifies
-	// a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+	// a protocol and port-range tuple that describes a denied connection.
+	// Structure is documented below.
 	Denies FirewallDenyArrayInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -490,6 +508,7 @@ type FirewallArgs struct {
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
 	// sourceRanges OR sourceTags.
+	// Possible values are `INGRESS` and `EGRESS`.
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
 	// network it is associated with. When set to true, the firewall rule is
@@ -502,7 +521,8 @@ type FirewallArgs struct {
 	// Deprecated: Deprecated in favor of log_config
 	EnableLogging pulumi.BoolPtrInput
 	// This field denotes the logging options for a particular firewall rule.
-	// If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+	// If defined, logging is enabled, and logs will be exported to Cloud Logging.
+	// Structure is documented below.
 	LogConfig FirewallLogConfigPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with

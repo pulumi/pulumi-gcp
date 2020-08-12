@@ -60,19 +60,22 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> HealthyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("http2HealthCheck")]
         public Output<Outputs.HealthCheckHttp2HealthCheck?> Http2HealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("httpHealthCheck")]
         public Output<Outputs.HealthCheckHttpHealthCheck?> HttpHealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("httpsHealthCheck")]
         public Output<Outputs.HealthCheckHttpsHealthCheck?> HttpsHealthCheck { get; private set; } = null!;
@@ -109,13 +112,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("sslHealthCheck")]
         public Output<Outputs.HealthCheckSslHealthCheck?> SslHealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("tcpHealthCheck")]
         public Output<Outputs.HealthCheckTcpHealthCheck?> TcpHealthCheck { get; private set; } = null!;
@@ -209,19 +214,22 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? HealthyThreshold { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("http2HealthCheck")]
         public Input<Inputs.HealthCheckHttp2HealthCheckArgs>? Http2HealthCheck { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("httpHealthCheck")]
         public Input<Inputs.HealthCheckHttpHealthCheckArgs>? HttpHealthCheck { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("httpsHealthCheck")]
         public Input<Inputs.HealthCheckHttpsHealthCheckArgs>? HttpsHealthCheck { get; set; }
@@ -252,13 +260,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("sslHealthCheck")]
         public Input<Inputs.HealthCheckSslHealthCheckArgs>? SslHealthCheck { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("tcpHealthCheck")]
         public Input<Inputs.HealthCheckTcpHealthCheckArgs>? TcpHealthCheck { get; set; }
@@ -313,19 +323,22 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? HealthyThreshold { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("http2HealthCheck")]
         public Input<Inputs.HealthCheckHttp2HealthCheckGetArgs>? Http2HealthCheck { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("httpHealthCheck")]
         public Input<Inputs.HealthCheckHttpHealthCheckGetArgs>? HttpHealthCheck { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("httpsHealthCheck")]
         public Input<Inputs.HealthCheckHttpsHealthCheckGetArgs>? HttpsHealthCheck { get; set; }
@@ -362,13 +375,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("sslHealthCheck")]
         public Input<Inputs.HealthCheckSslHealthCheckGetArgs>? SslHealthCheck { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("tcpHealthCheck")]
         public Input<Inputs.HealthCheckTcpHealthCheckGetArgs>? TcpHealthCheck { get; set; }

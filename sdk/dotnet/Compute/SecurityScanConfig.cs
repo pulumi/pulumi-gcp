@@ -27,7 +27,8 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The authentication configuration.
-        /// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+        /// If specified, service will use the authentication configuration during scanning.
+        /// Structure is documented below.
         /// </summary>
         [Output("authentication")]
         public Output<Outputs.SecurityScanConfigAuthentication?> Authentication { get; private set; } = null!;
@@ -47,6 +48,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Controls export of scan configurations and results to Cloud Security Command Center.
+        /// Default value is `ENABLED`.
+        /// Possible values are `ENABLED` and `DISABLED`.
         /// </summary>
         [Output("exportToSecurityCommandCenter")]
         public Output<string?> ExportToSecurityCommandCenter { get; private set; } = null!;
@@ -72,7 +75,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The schedule of the ScanConfig  Structure is documented below.
+        /// The schedule of the ScanConfig
+        /// Structure is documented below.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.SecurityScanConfigSchedule?> Schedule { get; private set; } = null!;
@@ -91,6 +95,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Type of the user agents used for scanning
+        /// Default value is `CHROME_LINUX`.
+        /// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
         /// </summary>
         [Output("userAgent")]
         public Output<string?> UserAgent { get; private set; } = null!;
@@ -143,7 +149,8 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The authentication configuration.
-        /// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+        /// If specified, service will use the authentication configuration during scanning.
+        /// Structure is documented below.
         /// </summary>
         [Input("authentication")]
         public Input<Inputs.SecurityScanConfigAuthenticationArgs>? Authentication { get; set; }
@@ -169,6 +176,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Controls export of scan configurations and results to Cloud Security Command Center.
+        /// Default value is `ENABLED`.
+        /// Possible values are `ENABLED` and `DISABLED`.
         /// </summary>
         [Input("exportToSecurityCommandCenter")]
         public Input<string>? ExportToSecurityCommandCenter { get; set; }
@@ -188,7 +197,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The schedule of the ScanConfig  Structure is documented below.
+        /// The schedule of the ScanConfig
+        /// Structure is documented below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.SecurityScanConfigScheduleArgs>? Schedule { get; set; }
@@ -219,6 +229,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Type of the user agents used for scanning
+        /// Default value is `CHROME_LINUX`.
+        /// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
         /// </summary>
         [Input("userAgent")]
         public Input<string>? UserAgent { get; set; }
@@ -232,7 +244,8 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The authentication configuration.
-        /// If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+        /// If specified, service will use the authentication configuration during scanning.
+        /// Structure is documented below.
         /// </summary>
         [Input("authentication")]
         public Input<Inputs.SecurityScanConfigAuthenticationGetArgs>? Authentication { get; set; }
@@ -258,6 +271,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Controls export of scan configurations and results to Cloud Security Command Center.
+        /// Default value is `ENABLED`.
+        /// Possible values are `ENABLED` and `DISABLED`.
         /// </summary>
         [Input("exportToSecurityCommandCenter")]
         public Input<string>? ExportToSecurityCommandCenter { get; set; }
@@ -283,7 +298,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The schedule of the ScanConfig  Structure is documented below.
+        /// The schedule of the ScanConfig
+        /// Structure is documented below.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.SecurityScanConfigScheduleGetArgs>? Schedule { get; set; }
@@ -314,6 +330,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Type of the user agents used for scanning
+        /// Default value is `CHROME_LINUX`.
+        /// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
         /// </summary>
         [Input("userAgent")]
         public Input<string>? UserAgent { get; set; }

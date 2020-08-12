@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance
     {
         /// <summary>
-        /// Parameters for a latency threshold SLI.  Structure is documented below.
+        /// Parameters for a latency threshold SLI.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency Latency;
         /// <summary>

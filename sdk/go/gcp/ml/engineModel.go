@@ -19,7 +19,8 @@ type EngineModel struct {
 	pulumi.CustomResourceState
 
 	// The default version of the model. This version will be used to handle
-	// prediction requests that do not specify a version.  Structure is documented below.
+	// prediction requests that do not specify a version.
+	// Structure is documented below.
 	DefaultVersion EngineModelDefaultVersionPtrOutput `pulumi:"defaultVersion"`
 	// The description specified for the model when it was created.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -68,7 +69,8 @@ func GetEngineModel(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EngineModel resources.
 type engineModelState struct {
 	// The default version of the model. This version will be used to handle
-	// prediction requests that do not specify a version.  Structure is documented below.
+	// prediction requests that do not specify a version.
+	// Structure is documented below.
 	DefaultVersion *EngineModelDefaultVersion `pulumi:"defaultVersion"`
 	// The description specified for the model when it was created.
 	Description *string `pulumi:"description"`
@@ -90,7 +92,8 @@ type engineModelState struct {
 
 type EngineModelState struct {
 	// The default version of the model. This version will be used to handle
-	// prediction requests that do not specify a version.  Structure is documented below.
+	// prediction requests that do not specify a version.
+	// Structure is documented below.
 	DefaultVersion EngineModelDefaultVersionPtrInput
 	// The description specified for the model when it was created.
 	Description pulumi.StringPtrInput
@@ -116,7 +119,8 @@ func (EngineModelState) ElementType() reflect.Type {
 
 type engineModelArgs struct {
 	// The default version of the model. This version will be used to handle
-	// prediction requests that do not specify a version.  Structure is documented below.
+	// prediction requests that do not specify a version.
+	// Structure is documented below.
 	DefaultVersion *EngineModelDefaultVersion `pulumi:"defaultVersion"`
 	// The description specified for the model when it was created.
 	Description *string `pulumi:"description"`
@@ -139,7 +143,8 @@ type engineModelArgs struct {
 // The set of arguments for constructing a EngineModel resource.
 type EngineModelArgs struct {
 	// The default version of the model. This version will be used to handle
-	// prediction requests that do not specify a version.  Structure is documented below.
+	// prediction requests that do not specify a version.
+	// Structure is documented below.
 	DefaultVersion EngineModelDefaultVersionPtrInput
 	// The description specified for the model when it was created.
 	Description pulumi.StringPtrInput

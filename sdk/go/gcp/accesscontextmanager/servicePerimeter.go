@@ -56,15 +56,19 @@ type ServicePerimeter struct {
 	// topologies with many independent perimeters that need to share some data
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
+	// Default value is `PERIMETER_TYPE_REGULAR`.
+	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType pulumi.StringPtrOutput `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
 	// without enforcing actual access restrictions. Only allowed to be set when
-	// the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+	// the `useExplicitDryRunSpec` flag is set.
+	// Structure is documented below.
 	Spec ServicePerimeterSpecPtrOutput `pulumi:"spec"`
 	// ServicePerimeter configuration. Specifies sets of resources,
 	// restricted services and access levels that determine
-	// perimeter content and boundaries.  Structure is documented below.
+	// perimeter content and boundaries.
+	// Structure is documented below.
 	Status ServicePerimeterStatusPtrOutput `pulumi:"status"`
 	// Human readable title. Must be unique within the Policy.
 	Title pulumi.StringOutput `pulumi:"title"`
@@ -142,15 +146,19 @@ type servicePerimeterState struct {
 	// topologies with many independent perimeters that need to share some data
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
+	// Default value is `PERIMETER_TYPE_REGULAR`.
+	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType *string `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
 	// without enforcing actual access restrictions. Only allowed to be set when
-	// the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+	// the `useExplicitDryRunSpec` flag is set.
+	// Structure is documented below.
 	Spec *ServicePerimeterSpec `pulumi:"spec"`
 	// ServicePerimeter configuration. Specifies sets of resources,
 	// restricted services and access levels that determine
-	// perimeter content and boundaries.  Structure is documented below.
+	// perimeter content and boundaries.
+	// Structure is documented below.
 	Status *ServicePerimeterStatus `pulumi:"status"`
 	// Human readable title. Must be unique within the Policy.
 	Title *string `pulumi:"title"`
@@ -195,15 +203,19 @@ type ServicePerimeterState struct {
 	// topologies with many independent perimeters that need to share some data
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
+	// Default value is `PERIMETER_TYPE_REGULAR`.
+	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType pulumi.StringPtrInput
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
 	// without enforcing actual access restrictions. Only allowed to be set when
-	// the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+	// the `useExplicitDryRunSpec` flag is set.
+	// Structure is documented below.
 	Spec ServicePerimeterSpecPtrInput
 	// ServicePerimeter configuration. Specifies sets of resources,
 	// restricted services and access levels that determine
-	// perimeter content and boundaries.  Structure is documented below.
+	// perimeter content and boundaries.
+	// Structure is documented below.
 	Status ServicePerimeterStatusPtrInput
 	// Human readable title. Must be unique within the Policy.
 	Title pulumi.StringPtrInput
@@ -250,15 +262,19 @@ type servicePerimeterArgs struct {
 	// topologies with many independent perimeters that need to share some data
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
+	// Default value is `PERIMETER_TYPE_REGULAR`.
+	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType *string `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
 	// without enforcing actual access restrictions. Only allowed to be set when
-	// the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+	// the `useExplicitDryRunSpec` flag is set.
+	// Structure is documented below.
 	Spec *ServicePerimeterSpec `pulumi:"spec"`
 	// ServicePerimeter configuration. Specifies sets of resources,
 	// restricted services and access levels that determine
-	// perimeter content and boundaries.  Structure is documented below.
+	// perimeter content and boundaries.
+	// Structure is documented below.
 	Status *ServicePerimeterStatus `pulumi:"status"`
 	// Human readable title. Must be unique within the Policy.
 	Title string `pulumi:"title"`
@@ -300,15 +316,19 @@ type ServicePerimeterArgs struct {
 	// topologies with many independent perimeters that need to share some data
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
+	// Default value is `PERIMETER_TYPE_REGULAR`.
+	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType pulumi.StringPtrInput
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
 	// without enforcing actual access restrictions. Only allowed to be set when
-	// the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+	// the `useExplicitDryRunSpec` flag is set.
+	// Structure is documented below.
 	Spec ServicePerimeterSpecPtrInput
 	// ServicePerimeter configuration. Specifies sets of resources,
 	// restricted services and access levels that determine
-	// perimeter content and boundaries.  Structure is documented below.
+	// perimeter content and boundaries.
+	// Structure is documented below.
 	Status ServicePerimeterStatusPtrInput
 	// Human readable title. Must be unique within the Policy.
 	Title pulumi.StringInput

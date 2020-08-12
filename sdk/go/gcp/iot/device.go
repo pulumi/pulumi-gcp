@@ -26,9 +26,11 @@ type Device struct {
 	Blocked pulumi.BoolPtrOutput `pulumi:"blocked"`
 	// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
 	Config DeviceConfigOutput `pulumi:"config"`
-	// The credentials used to authenticate this device.  Structure is documented below.
+	// The credentials used to authenticate this device.
+	// Structure is documented below.
 	Credentials DeviceCredentialArrayOutput `pulumi:"credentials"`
-	// Gateway-related configuration and state.  Structure is documented below.
+	// Gateway-related configuration and state.
+	// Structure is documented below.
 	GatewayConfig DeviceGatewayConfigPtrOutput `pulumi:"gatewayConfig"`
 	// The last time a cloud-to-device config version acknowledgment was received from the device.
 	LastConfigAckTime pulumi.StringOutput `pulumi:"lastConfigAckTime"`
@@ -45,6 +47,7 @@ type Device struct {
 	// The last time a state event was received.
 	LastStateTime pulumi.StringOutput `pulumi:"lastStateTime"`
 	// The logging verbosity for device activity.
+	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
 	LogLevel pulumi.StringPtrOutput `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
@@ -94,9 +97,11 @@ type deviceState struct {
 	Blocked *bool `pulumi:"blocked"`
 	// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
 	Config *DeviceConfig `pulumi:"config"`
-	// The credentials used to authenticate this device.  Structure is documented below.
+	// The credentials used to authenticate this device.
+	// Structure is documented below.
 	Credentials []DeviceCredential `pulumi:"credentials"`
-	// Gateway-related configuration and state.  Structure is documented below.
+	// Gateway-related configuration and state.
+	// Structure is documented below.
 	GatewayConfig *DeviceGatewayConfig `pulumi:"gatewayConfig"`
 	// The last time a cloud-to-device config version acknowledgment was received from the device.
 	LastConfigAckTime *string `pulumi:"lastConfigAckTime"`
@@ -113,6 +118,7 @@ type deviceState struct {
 	// The last time a state event was received.
 	LastStateTime *string `pulumi:"lastStateTime"`
 	// The logging verbosity for device activity.
+	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
 	LogLevel *string `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -132,9 +138,11 @@ type DeviceState struct {
 	Blocked pulumi.BoolPtrInput
 	// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
 	Config DeviceConfigPtrInput
-	// The credentials used to authenticate this device.  Structure is documented below.
+	// The credentials used to authenticate this device.
+	// Structure is documented below.
 	Credentials DeviceCredentialArrayInput
-	// Gateway-related configuration and state.  Structure is documented below.
+	// Gateway-related configuration and state.
+	// Structure is documented below.
 	GatewayConfig DeviceGatewayConfigPtrInput
 	// The last time a cloud-to-device config version acknowledgment was received from the device.
 	LastConfigAckTime pulumi.StringPtrInput
@@ -151,6 +159,7 @@ type DeviceState struct {
 	// The last time a state event was received.
 	LastStateTime pulumi.StringPtrInput
 	// The logging verbosity for device activity.
+	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
 	LogLevel pulumi.StringPtrInput
 	// The metadata key-value pairs assigned to the device.
 	Metadata pulumi.StringMapInput
@@ -172,11 +181,14 @@ func (DeviceState) ElementType() reflect.Type {
 type deviceArgs struct {
 	// If a device is blocked, connections or requests from this device will fail.
 	Blocked *bool `pulumi:"blocked"`
-	// The credentials used to authenticate this device.  Structure is documented below.
+	// The credentials used to authenticate this device.
+	// Structure is documented below.
 	Credentials []DeviceCredential `pulumi:"credentials"`
-	// Gateway-related configuration and state.  Structure is documented below.
+	// Gateway-related configuration and state.
+	// Structure is documented below.
 	GatewayConfig *DeviceGatewayConfig `pulumi:"gatewayConfig"`
 	// The logging verbosity for device activity.
+	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
 	LogLevel *string `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -190,11 +202,14 @@ type deviceArgs struct {
 type DeviceArgs struct {
 	// If a device is blocked, connections or requests from this device will fail.
 	Blocked pulumi.BoolPtrInput
-	// The credentials used to authenticate this device.  Structure is documented below.
+	// The credentials used to authenticate this device.
+	// Structure is documented below.
 	Credentials DeviceCredentialArrayInput
-	// Gateway-related configuration and state.  Structure is documented below.
+	// Gateway-related configuration and state.
+	// Structure is documented below.
 	GatewayConfig DeviceGatewayConfigPtrInput
 	// The logging verbosity for device activity.
+	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
 	LogLevel pulumi.StringPtrInput
 	// The metadata key-value pairs assigned to the device.
 	Metadata pulumi.StringMapInput

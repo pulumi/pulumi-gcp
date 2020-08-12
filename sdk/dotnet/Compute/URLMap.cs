@@ -32,7 +32,8 @@ namespace Pulumi.Gcp.Compute
         /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
         /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
         /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        /// Structure is documented below.
         /// </summary>
         [Output("defaultRouteAction")]
         public Output<Outputs.URLMapDefaultRouteAction?> DefaultRouteAction { get; private set; } = null!;
@@ -46,7 +47,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// When none of the specified hostRules match, the request is redirected to a URL specified
         /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// defaultRouteAction must not be set.
+        /// Structure is documented below.
         /// </summary>
         [Output("defaultUrlRedirect")]
         public Output<Outputs.URLMapDefaultUrlRedirect?> DefaultUrlRedirect { get; private set; } = null!;
@@ -67,13 +69,15 @@ namespace Pulumi.Gcp.Compute
         /// Specifies changes to request and response headers that need to take effect for
         /// the selected backendService.
         /// headerAction specified here take effect before headerAction in the enclosing
-        /// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+        /// HttpRouteRule, PathMatcher and UrlMap.
+        /// Structure is documented below.
         /// </summary>
         [Output("headerAction")]
         public Output<Outputs.URLMapHeaderAction?> HeaderAction { get; private set; } = null!;
 
         /// <summary>
-        /// The list of HostRules to use against the URL.  Structure is documented below.
+        /// The list of HostRules to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         [Output("hostRules")]
         public Output<ImmutableArray<Outputs.URLMapHostRule>> HostRules { get; private set; } = null!;
@@ -114,7 +118,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The list of expected URL mapping tests. Request to update this UrlMap will
         /// succeed only if all of the test cases pass. You can specify a maximum of 100
-        /// tests per UrlMap.  Structure is documented below.
+        /// tests per UrlMap.
+        /// Structure is documented below.
         /// </summary>
         [Output("tests")]
         public Output<ImmutableArray<Outputs.URLMapTest>> Tests { get; private set; } = null!;
@@ -170,7 +175,8 @@ namespace Pulumi.Gcp.Compute
         /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
         /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
         /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultRouteAction")]
         public Input<Inputs.URLMapDefaultRouteActionArgs>? DefaultRouteAction { get; set; }
@@ -184,7 +190,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// When none of the specified hostRules match, the request is redirected to a URL specified
         /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// defaultRouteAction must not be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultUrlRedirect")]
         public Input<Inputs.URLMapDefaultUrlRedirectArgs>? DefaultUrlRedirect { get; set; }
@@ -199,7 +206,8 @@ namespace Pulumi.Gcp.Compute
         /// Specifies changes to request and response headers that need to take effect for
         /// the selected backendService.
         /// headerAction specified here take effect before headerAction in the enclosing
-        /// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+        /// HttpRouteRule, PathMatcher and UrlMap.
+        /// Structure is documented below.
         /// </summary>
         [Input("headerAction")]
         public Input<Inputs.URLMapHeaderActionArgs>? HeaderAction { get; set; }
@@ -208,7 +216,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.URLMapHostRuleArgs>? _hostRules;
 
         /// <summary>
-        /// The list of HostRules to use against the URL.  Structure is documented below.
+        /// The list of HostRules to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.URLMapHostRuleArgs> HostRules
         {
@@ -249,7 +258,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The list of expected URL mapping tests. Request to update this UrlMap will
         /// succeed only if all of the test cases pass. You can specify a maximum of 100
-        /// tests per UrlMap.  Structure is documented below.
+        /// tests per UrlMap.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.URLMapTestArgs> Tests
         {
@@ -275,7 +285,8 @@ namespace Pulumi.Gcp.Compute
         /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
         /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
         /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.  Structure is documented below.
+        /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultRouteAction")]
         public Input<Inputs.URLMapDefaultRouteActionGetArgs>? DefaultRouteAction { get; set; }
@@ -289,7 +300,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// When none of the specified hostRules match, the request is redirected to a URL specified
         /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// defaultRouteAction must not be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultUrlRedirect")]
         public Input<Inputs.URLMapDefaultUrlRedirectGetArgs>? DefaultUrlRedirect { get; set; }
@@ -310,7 +322,8 @@ namespace Pulumi.Gcp.Compute
         /// Specifies changes to request and response headers that need to take effect for
         /// the selected backendService.
         /// headerAction specified here take effect before headerAction in the enclosing
-        /// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+        /// HttpRouteRule, PathMatcher and UrlMap.
+        /// Structure is documented below.
         /// </summary>
         [Input("headerAction")]
         public Input<Inputs.URLMapHeaderActionGetArgs>? HeaderAction { get; set; }
@@ -319,7 +332,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.URLMapHostRuleGetArgs>? _hostRules;
 
         /// <summary>
-        /// The list of HostRules to use against the URL.  Structure is documented below.
+        /// The list of HostRules to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.URLMapHostRuleGetArgs> HostRules
         {
@@ -372,7 +386,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The list of expected URL mapping tests. Request to update this UrlMap will
         /// succeed only if all of the test cases pass. You can specify a maximum of 100
-        /// tests per UrlMap.  Structure is documented below.
+        /// tests per UrlMap.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.URLMapTestGetArgs> Tests
         {

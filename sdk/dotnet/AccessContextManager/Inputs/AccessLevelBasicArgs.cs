@@ -18,6 +18,8 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         /// conditions must be satisfied for the AccessLevel to be applied. If
         /// OR is used, at least one Condition in conditions must be satisfied
         /// for the AccessLevel to be applied.
+        /// Default value is `AND`.
+        /// Possible values are `AND` and `OR`.
         /// </summary>
         [Input("combiningFunction")]
         public Input<string>? CombiningFunction { get; set; }
@@ -26,7 +28,8 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         private InputList<Inputs.AccessLevelBasicConditionArgs>? _conditions;
 
         /// <summary>
-        /// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+        /// A set of requirements for the AccessLevel to be granted.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AccessLevelBasicConditionArgs> Conditions
         {

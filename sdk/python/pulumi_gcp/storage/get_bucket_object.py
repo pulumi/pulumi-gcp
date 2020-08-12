@@ -12,7 +12,7 @@ class GetBucketObjectResult:
     """
     A collection of values returned by getBucketObject.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, id=None, md5hash=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, id=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         __self__.bucket = bucket
@@ -71,6 +71,12 @@ class GetBucketObjectResult:
         """
         (Computed) Base 64 MD5 hash of the uploaded data.
         """
+        if media_link and not isinstance(media_link, str):
+            raise TypeError("Expected argument 'media_link' to be a str")
+        __self__.media_link = media_link
+        """
+        (Computed) A url reference to download this object.
+        """
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
         __self__.metadata = metadata
@@ -114,6 +120,7 @@ class AwaitableGetBucketObjectResult(GetBucketObjectResult):
             detect_md5hash=self.detect_md5hash,
             id=self.id,
             md5hash=self.md5hash,
+            media_link=self.media_link,
             metadata=self.metadata,
             name=self.name,
             output_name=self.output_name,
@@ -155,6 +162,7 @@ def get_bucket_object(bucket=None,name=None,opts=None):
         detect_md5hash=__ret__.get('detectMd5hash'),
         id=__ret__.get('id'),
         md5hash=__ret__.get('md5hash'),
+        media_link=__ret__.get('mediaLink'),
         metadata=__ret__.get('metadata'),
         name=__ret__.get('name'),
         output_name=__ret__.get('outputName'),

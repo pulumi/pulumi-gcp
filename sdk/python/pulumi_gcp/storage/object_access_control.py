@@ -56,6 +56,7 @@ class ObjectAccessControl(pulumi.CustomResource):
     role: pulumi.Output[str]
     """
     The access permission for the entity.
+    Possible values are `OWNER` and `READER`.
     """
     def __init__(__self__, resource_name, opts=None, bucket=None, entity=None, object=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -94,6 +95,7 @@ class ObjectAccessControl(pulumi.CustomResource):
                * allAuthenticatedUsers
         :param pulumi.Input[str] object: The name of the object to apply the access control to.
         :param pulumi.Input[str] role: The access permission for the entity.
+               Possible values are `OWNER` and `READER`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -161,6 +163,7 @@ class ObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] object: The name of the object to apply the access control to.
         :param pulumi.Input[dict] project_team: The project team associated with the entity
         :param pulumi.Input[str] role: The access permission for the entity.
+               Possible values are `OWNER` and `READER`.
 
         The **project_team** object supports the following:
 

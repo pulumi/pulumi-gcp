@@ -25,13 +25,15 @@ namespace Pulumi.Gcp.Billing
         /// <summary>
         /// Defines notifications that are sent on every update to the
         /// billing account's spend, regardless of the thresholds defined
-        /// using threshold rules.  Structure is documented below.
+        /// using threshold rules.
+        /// Structure is documented below.
         /// </summary>
         [Output("allUpdatesRule")]
         public Output<Outputs.BudgetAllUpdatesRule?> AllUpdatesRule { get; private set; } = null!;
 
         /// <summary>
-        /// The budgeted amount for each usage period.  Structure is documented below.
+        /// The budgeted amount for each usage period.
+        /// Structure is documented below.
         /// </summary>
         [Output("amount")]
         public Output<Outputs.BudgetAmount> Amount { get; private set; } = null!;
@@ -44,7 +46,8 @@ namespace Pulumi.Gcp.Billing
 
         /// <summary>
         /// Filters that define which resources are used to compute the actual
-        /// spend against the budget.  Structure is documented below.
+        /// spend against the budget.
+        /// Structure is documented below.
         /// </summary>
         [Output("budgetFilter")]
         public Output<Outputs.BudgetBudgetFilter?> BudgetFilter { get; private set; } = null!;
@@ -65,7 +68,8 @@ namespace Pulumi.Gcp.Billing
         /// <summary>
         /// Rules that trigger alerts (notifications of thresholds being
         /// crossed) when spend exceeds the specified percentages of the
-        /// budget.  Structure is documented below.
+        /// budget.
+        /// Structure is documented below.
         /// </summary>
         [Output("thresholdRules")]
         public Output<ImmutableArray<Outputs.BudgetThresholdRule>> ThresholdRules { get; private set; } = null!;
@@ -119,13 +123,15 @@ namespace Pulumi.Gcp.Billing
         /// <summary>
         /// Defines notifications that are sent on every update to the
         /// billing account's spend, regardless of the thresholds defined
-        /// using threshold rules.  Structure is documented below.
+        /// using threshold rules.
+        /// Structure is documented below.
         /// </summary>
         [Input("allUpdatesRule")]
         public Input<Inputs.BudgetAllUpdatesRuleArgs>? AllUpdatesRule { get; set; }
 
         /// <summary>
-        /// The budgeted amount for each usage period.  Structure is documented below.
+        /// The budgeted amount for each usage period.
+        /// Structure is documented below.
         /// </summary>
         [Input("amount", required: true)]
         public Input<Inputs.BudgetAmountArgs> Amount { get; set; } = null!;
@@ -138,7 +144,8 @@ namespace Pulumi.Gcp.Billing
 
         /// <summary>
         /// Filters that define which resources are used to compute the actual
-        /// spend against the budget.  Structure is documented below.
+        /// spend against the budget.
+        /// Structure is documented below.
         /// </summary>
         [Input("budgetFilter")]
         public Input<Inputs.BudgetBudgetFilterArgs>? BudgetFilter { get; set; }
@@ -155,7 +162,8 @@ namespace Pulumi.Gcp.Billing
         /// <summary>
         /// Rules that trigger alerts (notifications of thresholds being
         /// crossed) when spend exceeds the specified percentages of the
-        /// budget.  Structure is documented below.
+        /// budget.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.BudgetThresholdRuleArgs> ThresholdRules
         {
@@ -173,13 +181,15 @@ namespace Pulumi.Gcp.Billing
         /// <summary>
         /// Defines notifications that are sent on every update to the
         /// billing account's spend, regardless of the thresholds defined
-        /// using threshold rules.  Structure is documented below.
+        /// using threshold rules.
+        /// Structure is documented below.
         /// </summary>
         [Input("allUpdatesRule")]
         public Input<Inputs.BudgetAllUpdatesRuleGetArgs>? AllUpdatesRule { get; set; }
 
         /// <summary>
-        /// The budgeted amount for each usage period.  Structure is documented below.
+        /// The budgeted amount for each usage period.
+        /// Structure is documented below.
         /// </summary>
         [Input("amount")]
         public Input<Inputs.BudgetAmountGetArgs>? Amount { get; set; }
@@ -192,7 +202,8 @@ namespace Pulumi.Gcp.Billing
 
         /// <summary>
         /// Filters that define which resources are used to compute the actual
-        /// spend against the budget.  Structure is documented below.
+        /// spend against the budget.
+        /// Structure is documented below.
         /// </summary>
         [Input("budgetFilter")]
         public Input<Inputs.BudgetBudgetFilterGetArgs>? BudgetFilter { get; set; }
@@ -216,7 +227,8 @@ namespace Pulumi.Gcp.Billing
         /// <summary>
         /// Rules that trigger alerts (notifications of thresholds being
         /// crossed) when spend exceeds the specified percentages of the
-        /// budget.  Structure is documented below.
+        /// budget.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.BudgetThresholdRuleGetArgs> ThresholdRules
         {

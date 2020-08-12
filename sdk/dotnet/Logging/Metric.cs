@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.Logging
     {
         /// <summary>
         /// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-        /// describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+        /// describes the bucket boundaries used to create a histogram of the extracted values.
+        /// Structure is documented below.
         /// </summary>
         [Output("bucketOptions")]
         public Output<Outputs.MetricBucketOptions?> BucketOptions { get; private set; } = null!;
@@ -55,7 +56,8 @@ namespace Pulumi.Gcp.Logging
         public Output<ImmutableDictionary<string, string>?> LabelExtractors { get; private set; } = null!;
 
         /// <summary>
-        /// The metric descriptor associated with the logs-based metric.  Structure is documented below.
+        /// The metric descriptor associated with the logs-based metric.
+        /// Structure is documented below.
         /// </summary>
         [Output("metricDescriptor")]
         public Output<Outputs.MetricMetricDescriptor> MetricDescriptor { get; private set; } = null!;
@@ -137,7 +139,8 @@ namespace Pulumi.Gcp.Logging
     {
         /// <summary>
         /// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-        /// describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+        /// describes the bucket boundaries used to create a histogram of the extracted values.
+        /// Structure is documented below.
         /// </summary>
         [Input("bucketOptions")]
         public Input<Inputs.MetricBucketOptionsArgs>? BucketOptions { get; set; }
@@ -172,7 +175,8 @@ namespace Pulumi.Gcp.Logging
         }
 
         /// <summary>
-        /// The metric descriptor associated with the logs-based metric.  Structure is documented below.
+        /// The metric descriptor associated with the logs-based metric.
+        /// Structure is documented below.
         /// </summary>
         [Input("metricDescriptor", required: true)]
         public Input<Inputs.MetricMetricDescriptorArgs> MetricDescriptor { get; set; } = null!;
@@ -215,7 +219,8 @@ namespace Pulumi.Gcp.Logging
     {
         /// <summary>
         /// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-        /// describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+        /// describes the bucket boundaries used to create a histogram of the extracted values.
+        /// Structure is documented below.
         /// </summary>
         [Input("bucketOptions")]
         public Input<Inputs.MetricBucketOptionsGetArgs>? BucketOptions { get; set; }
@@ -250,7 +255,8 @@ namespace Pulumi.Gcp.Logging
         }
 
         /// <summary>
-        /// The metric descriptor associated with the logs-based metric.  Structure is documented below.
+        /// The metric descriptor associated with the logs-based metric.
+        /// Structure is documented below.
         /// </summary>
         [Input("metricDescriptor")]
         public Input<Inputs.MetricMetricDescriptorGetArgs>? MetricDescriptor { get; set; }

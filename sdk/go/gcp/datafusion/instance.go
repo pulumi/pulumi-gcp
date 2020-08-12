@@ -35,7 +35,8 @@ type Instance struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+	// Network configuration options. These are required when a private Data Fusion instance is to be created.
+	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrOutput `pulumi:"networkConfig"`
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options pulumi.StringMapOutput `pulumi:"options"`
@@ -65,6 +66,7 @@ type Instance struct {
 	//   of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+	//   Possible values are `BASIC` and `ENTERPRISE`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -116,7 +118,8 @@ type instanceState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
-	// Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+	// Network configuration options. These are required when a private Data Fusion instance is to be created.
+	// Structure is documented below.
 	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options map[string]string `pulumi:"options"`
@@ -146,6 +149,7 @@ type instanceState struct {
 	//   of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+	//   Possible values are `BASIC` and `ENTERPRISE`.
 	Type *string `pulumi:"type"`
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -167,7 +171,8 @@ type InstanceState struct {
 	Labels pulumi.StringMapInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
-	// Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+	// Network configuration options. These are required when a private Data Fusion instance is to be created.
+	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrInput
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options pulumi.StringMapInput
@@ -197,6 +202,7 @@ type InstanceState struct {
 	//   of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+	//   Possible values are `BASIC` and `ENTERPRISE`.
 	Type pulumi.StringPtrInput
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime pulumi.StringPtrInput
@@ -220,7 +226,8 @@ type instanceArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
-	// Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+	// Network configuration options. These are required when a private Data Fusion instance is to be created.
+	// Structure is documented below.
 	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options map[string]string `pulumi:"options"`
@@ -240,6 +247,7 @@ type instanceArgs struct {
 	//   of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+	//   Possible values are `BASIC` and `ENTERPRISE`.
 	Type string `pulumi:"type"`
 	// Current version of the Data Fusion.
 	Version *string `pulumi:"version"`
@@ -258,7 +266,8 @@ type InstanceArgs struct {
 	Labels pulumi.StringMapInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
-	// Network configuration options. These are required when a private Data Fusion instance is to be created.  Structure is documented below.
+	// Network configuration options. These are required when a private Data Fusion instance is to be created.
+	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrInput
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options pulumi.StringMapInput
@@ -278,6 +287,7 @@ type InstanceArgs struct {
 	//   of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+	//   Possible values are `BASIC` and `ENTERPRISE`.
 	Type pulumi.StringInput
 	// Current version of the Data Fusion.
 	Version pulumi.StringPtrInput

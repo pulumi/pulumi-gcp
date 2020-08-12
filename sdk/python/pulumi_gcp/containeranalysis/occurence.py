@@ -19,7 +19,8 @@ class Occurence(pulumi.CustomResource):
     the authority to which this attestation is attached is primarily
     useful for lookup (how to find this attestation if you already
     know the authority and artifact to be verified) and intent (for
-    which authority this attestation was intended to sign.  Structure is documented below.
+    which authority this attestation was intended to sign.
+    Structure is documented below.
 
       * `serializedPayload` (`str`) - The serialized payload that is verified by one or
         more signatures. A base64-encoded string.
@@ -27,7 +28,8 @@ class Occurence(pulumi.CustomResource):
         Verifier implementations should consider this attestation
         message verified if at least one signature verifies
         serializedPayload. See Signature in common.proto for more
-        details on signature structure and verification.  Structure is documented below.
+        details on signature structure and verification.
+        Structure is documented below.
         * `publicKeyId` (`str`) - The identifier for the public key that verifies this
           signature. MUST be an RFC3986 conformant
           URI. * When possible, the key id should be an
@@ -106,7 +108,8 @@ class Occurence(pulumi.CustomResource):
                the authority to which this attestation is attached is primarily
                useful for lookup (how to find this attestation if you already
                know the authority and artifact to be verified) and intent (for
-               which authority this attestation was intended to sign.  Structure is documented below.
+               which authority this attestation was intended to sign.
+               Structure is documented below.
         :param pulumi.Input[str] note_name: The analysis note associated with this occurrence, in the form of
                projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
                filter in list requests.
@@ -125,7 +128,8 @@ class Occurence(pulumi.CustomResource):
             Verifier implementations should consider this attestation
             message verified if at least one signature verifies
             serializedPayload. See Signature in common.proto for more
-            details on signature structure and verification.  Structure is documented below.
+            details on signature structure and verification.
+            Structure is documented below.
             * `publicKeyId` (`pulumi.Input[str]`) - The identifier for the public key that verifies this
               signature. MUST be an RFC3986 conformant
               URI. * When possible, the key id should be an
@@ -198,7 +202,8 @@ class Occurence(pulumi.CustomResource):
                the authority to which this attestation is attached is primarily
                useful for lookup (how to find this attestation if you already
                know the authority and artifact to be verified) and intent (for
-               which authority this attestation was intended to sign.  Structure is documented below.
+               which authority this attestation was intended to sign.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] kind: The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
                in list requests.
@@ -222,7 +227,8 @@ class Occurence(pulumi.CustomResource):
             Verifier implementations should consider this attestation
             message verified if at least one signature verifies
             serializedPayload. See Signature in common.proto for more
-            details on signature structure and verification.  Structure is documented below.
+            details on signature structure and verification.
+            Structure is documented below.
             * `publicKeyId` (`pulumi.Input[str]`) - The identifier for the public key that verifies this
               signature. MUST be an RFC3986 conformant
               URI. * When possible, the key id should be an

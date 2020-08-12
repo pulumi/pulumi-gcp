@@ -41,6 +41,8 @@ class TargetSSLProxy(pulumi.CustomResource):
     """
     Specifies the type of proxy header to append before sending data to
     the backend.
+    Default value is `NONE`.
+    Possible values are `NONE` and `PROXY_V1`.
     """
     proxy_id: pulumi.Output[float]
     """
@@ -91,6 +93,8 @@ class TargetSSLProxy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
+               Default value is `NONE`.
+               Possible values are `NONE` and `PROXY_V1`.
         :param pulumi.Input[str] ssl_certificates: A list of SslCertificate resources that are used to authenticate
                connections between users and the load balancer. Currently, exactly
                one SSL certificate must be specified.
@@ -158,6 +162,8 @@ class TargetSSLProxy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
+               Default value is `NONE`.
+               Possible values are `NONE` and `PROXY_V1`.
         :param pulumi.Input[float] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] ssl_certificates: A list of SslCertificate resources that are used to authenticate

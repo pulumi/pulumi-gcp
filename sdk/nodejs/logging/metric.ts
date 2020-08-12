@@ -49,7 +49,8 @@ export class Metric extends pulumi.CustomResource {
 
     /**
      * The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-     * describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+     * describes the bucket boundaries used to create a histogram of the extracted values.
+     * Structure is documented below.
      */
     public readonly bucketOptions!: pulumi.Output<outputs.logging.MetricBucketOptions | undefined>;
     /**
@@ -70,7 +71,8 @@ export class Metric extends pulumi.CustomResource {
      */
     public readonly labelExtractors!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The metric descriptor associated with the logs-based metric.  Structure is documented below.
+     * The metric descriptor associated with the logs-based metric.
+     * Structure is documented below.
      */
     public readonly metricDescriptor!: pulumi.Output<outputs.logging.MetricMetricDescriptor>;
     /**
@@ -151,7 +153,8 @@ export class Metric extends pulumi.CustomResource {
 export interface MetricState {
     /**
      * The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-     * describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+     * describes the bucket boundaries used to create a histogram of the extracted values.
+     * Structure is documented below.
      */
     readonly bucketOptions?: pulumi.Input<inputs.logging.MetricBucketOptions>;
     /**
@@ -172,7 +175,8 @@ export interface MetricState {
      */
     readonly labelExtractors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The metric descriptor associated with the logs-based metric.  Structure is documented below.
+     * The metric descriptor associated with the logs-based metric.
+     * Structure is documented below.
      */
     readonly metricDescriptor?: pulumi.Input<inputs.logging.MetricMetricDescriptor>;
     /**
@@ -206,7 +210,8 @@ export interface MetricState {
 export interface MetricArgs {
     /**
      * The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-     * describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+     * describes the bucket boundaries used to create a histogram of the extracted values.
+     * Structure is documented below.
      */
     readonly bucketOptions?: pulumi.Input<inputs.logging.MetricBucketOptions>;
     /**
@@ -227,7 +232,8 @@ export interface MetricArgs {
      */
     readonly labelExtractors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The metric descriptor associated with the logs-based metric.  Structure is documented below.
+     * The metric descriptor associated with the logs-based metric.
+     * Structure is documented below.
      */
     readonly metricDescriptor: pulumi.Input<inputs.logging.MetricMetricDescriptor>;
     /**

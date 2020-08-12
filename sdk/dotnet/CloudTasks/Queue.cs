@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.CloudTasks
     {
         /// <summary>
         /// Overrides for task-level appEngineRouting. These settings apply only
-        /// to App Engine tasks in this queue  Structure is documented below.
+        /// to App Engine tasks in this queue
+        /// Structure is documented below.
         /// </summary>
         [Output("appEngineRoutingOverride")]
         public Output<Outputs.QueueAppEngineRoutingOverride?> AppEngineRoutingOverride { get; private set; } = null!;
@@ -49,13 +50,15 @@ namespace Pulumi.Gcp.CloudTasks
         /// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
         /// * System throttling due to 429 (Too Many Requests) or 503 (Service
         /// Unavailable) responses from the worker, high error rates, or to
-        /// smooth sudden large traffic spikes.  Structure is documented below.
+        /// smooth sudden large traffic spikes.
+        /// Structure is documented below.
         /// </summary>
         [Output("rateLimits")]
         public Output<Outputs.QueueRateLimits> RateLimits { get; private set; } = null!;
 
         /// <summary>
-        /// Settings that determine the retry behavior.  Structure is documented below.
+        /// Settings that determine the retry behavior.
+        /// Structure is documented below.
         /// </summary>
         [Output("retryConfig")]
         public Output<Outputs.QueueRetryConfig> RetryConfig { get; private set; } = null!;
@@ -108,7 +111,8 @@ namespace Pulumi.Gcp.CloudTasks
     {
         /// <summary>
         /// Overrides for task-level appEngineRouting. These settings apply only
-        /// to App Engine tasks in this queue  Structure is documented below.
+        /// to App Engine tasks in this queue
+        /// Structure is documented below.
         /// </summary>
         [Input("appEngineRoutingOverride")]
         public Input<Inputs.QueueAppEngineRoutingOverrideArgs>? AppEngineRoutingOverride { get; set; }
@@ -139,13 +143,15 @@ namespace Pulumi.Gcp.CloudTasks
         /// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
         /// * System throttling due to 429 (Too Many Requests) or 503 (Service
         /// Unavailable) responses from the worker, high error rates, or to
-        /// smooth sudden large traffic spikes.  Structure is documented below.
+        /// smooth sudden large traffic spikes.
+        /// Structure is documented below.
         /// </summary>
         [Input("rateLimits")]
         public Input<Inputs.QueueRateLimitsArgs>? RateLimits { get; set; }
 
         /// <summary>
-        /// Settings that determine the retry behavior.  Structure is documented below.
+        /// Settings that determine the retry behavior.
+        /// Structure is documented below.
         /// </summary>
         [Input("retryConfig")]
         public Input<Inputs.QueueRetryConfigArgs>? RetryConfig { get; set; }
@@ -159,7 +165,8 @@ namespace Pulumi.Gcp.CloudTasks
     {
         /// <summary>
         /// Overrides for task-level appEngineRouting. These settings apply only
-        /// to App Engine tasks in this queue  Structure is documented below.
+        /// to App Engine tasks in this queue
+        /// Structure is documented below.
         /// </summary>
         [Input("appEngineRoutingOverride")]
         public Input<Inputs.QueueAppEngineRoutingOverrideGetArgs>? AppEngineRoutingOverride { get; set; }
@@ -190,13 +197,15 @@ namespace Pulumi.Gcp.CloudTasks
         /// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
         /// * System throttling due to 429 (Too Many Requests) or 503 (Service
         /// Unavailable) responses from the worker, high error rates, or to
-        /// smooth sudden large traffic spikes.  Structure is documented below.
+        /// smooth sudden large traffic spikes.
+        /// Structure is documented below.
         /// </summary>
         [Input("rateLimits")]
         public Input<Inputs.QueueRateLimitsGetArgs>? RateLimits { get; set; }
 
         /// <summary>
-        /// Settings that determine the retry behavior.  Structure is documented below.
+        /// Settings that determine the retry behavior.
+        /// Structure is documented below.
         /// </summary>
         [Input("retryConfig")]
         public Input<Inputs.QueueRetryConfigGetArgs>? RetryConfig { get; set; }

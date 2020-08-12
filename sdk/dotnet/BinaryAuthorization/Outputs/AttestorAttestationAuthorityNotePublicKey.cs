@@ -43,7 +43,8 @@ namespace Pulumi.Gcp.BinaryAuthorization.Outputs
         /// NOTE: id may be explicitly provided by the caller when using this
         /// type of public key, but it MUST be a valid RFC3986 URI. If id is left
         /// blank, a default one will be computed based on the digest of the DER
-        /// encoding of the public key.  Structure is documented below.
+        /// encoding of the public key.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AttestorAttestationAuthorityNotePublicKeyPkixPublicKey? PkixPublicKey;
 

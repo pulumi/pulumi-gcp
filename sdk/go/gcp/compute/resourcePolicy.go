@@ -15,7 +15,8 @@ import (
 type ResourcePolicy struct {
 	pulumi.CustomResourceState
 
-	// Policy for creating snapshots of persistent disks.  Structure is documented below.
+	// Policy for creating snapshots of persistent disks.
+	// Structure is documented below.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrOutput `pulumi:"groupPlacementPolicy"`
 	// The name of the resource, provided by the client when initially creating
 	// the resource. The resource name must be 1-63 characters long, and comply
@@ -32,7 +33,8 @@ type ResourcePolicy struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Policy for creating snapshots of persistent disks.  Structure is documented below.
+	// Policy for creating snapshots of persistent disks.
+	// Structure is documented below.
 	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyPtrOutput `pulumi:"snapshotSchedulePolicy"`
 }
 
@@ -64,7 +66,8 @@ func GetResourcePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourcePolicy resources.
 type resourcePolicyState struct {
-	// Policy for creating snapshots of persistent disks.  Structure is documented below.
+	// Policy for creating snapshots of persistent disks.
+	// Structure is documented below.
 	GroupPlacementPolicy *ResourcePolicyGroupPlacementPolicy `pulumi:"groupPlacementPolicy"`
 	// The name of the resource, provided by the client when initially creating
 	// the resource. The resource name must be 1-63 characters long, and comply
@@ -81,12 +84,14 @@ type resourcePolicyState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Policy for creating snapshots of persistent disks.  Structure is documented below.
+	// Policy for creating snapshots of persistent disks.
+	// Structure is documented below.
 	SnapshotSchedulePolicy *ResourcePolicySnapshotSchedulePolicy `pulumi:"snapshotSchedulePolicy"`
 }
 
 type ResourcePolicyState struct {
-	// Policy for creating snapshots of persistent disks.  Structure is documented below.
+	// Policy for creating snapshots of persistent disks.
+	// Structure is documented below.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrInput
 	// The name of the resource, provided by the client when initially creating
 	// the resource. The resource name must be 1-63 characters long, and comply
@@ -103,7 +108,8 @@ type ResourcePolicyState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// Policy for creating snapshots of persistent disks.  Structure is documented below.
+	// Policy for creating snapshots of persistent disks.
+	// Structure is documented below.
 	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyPtrInput
 }
 
@@ -112,7 +118,8 @@ func (ResourcePolicyState) ElementType() reflect.Type {
 }
 
 type resourcePolicyArgs struct {
-	// Policy for creating snapshots of persistent disks.  Structure is documented below.
+	// Policy for creating snapshots of persistent disks.
+	// Structure is documented below.
 	GroupPlacementPolicy *ResourcePolicyGroupPlacementPolicy `pulumi:"groupPlacementPolicy"`
 	// The name of the resource, provided by the client when initially creating
 	// the resource. The resource name must be 1-63 characters long, and comply
@@ -127,13 +134,15 @@ type resourcePolicyArgs struct {
 	Project *string `pulumi:"project"`
 	// Region where resource policy resides.
 	Region *string `pulumi:"region"`
-	// Policy for creating snapshots of persistent disks.  Structure is documented below.
+	// Policy for creating snapshots of persistent disks.
+	// Structure is documented below.
 	SnapshotSchedulePolicy *ResourcePolicySnapshotSchedulePolicy `pulumi:"snapshotSchedulePolicy"`
 }
 
 // The set of arguments for constructing a ResourcePolicy resource.
 type ResourcePolicyArgs struct {
-	// Policy for creating snapshots of persistent disks.  Structure is documented below.
+	// Policy for creating snapshots of persistent disks.
+	// Structure is documented below.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrInput
 	// The name of the resource, provided by the client when initially creating
 	// the resource. The resource name must be 1-63 characters long, and comply
@@ -148,7 +157,8 @@ type ResourcePolicyArgs struct {
 	Project pulumi.StringPtrInput
 	// Region where resource policy resides.
 	Region pulumi.StringPtrInput
-	// Policy for creating snapshots of persistent disks.  Structure is documented below.
+	// Policy for creating snapshots of persistent disks.
+	// Structure is documented below.
 	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyPtrInput
 }
 

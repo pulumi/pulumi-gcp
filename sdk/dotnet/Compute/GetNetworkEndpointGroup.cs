@@ -31,6 +31,13 @@ namespace Pulumi.Gcp.Compute
         public string? Name { get; set; }
 
         /// <summary>
+        /// The ID of the project to list versions in.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
+        [Input("project")]
+        public string? Project { get; set; }
+
+        /// <summary>
         /// The Network Endpoint Group self\_link.
         /// </summary>
         [Input("selfLink")]
@@ -72,7 +79,7 @@ namespace Pulumi.Gcp.Compute
         /// Type of network endpoints in this network endpoint group.
         /// </summary>
         public readonly string NetworkEndpointType;
-        public readonly string Project;
+        public readonly string? Project;
         public readonly string? SelfLink;
         /// <summary>
         /// Number of network endpoints in the network endpoint group.
@@ -98,7 +105,7 @@ namespace Pulumi.Gcp.Compute
 
             string networkEndpointType,
 
-            string project,
+            string? project,
 
             string? selfLink,
 

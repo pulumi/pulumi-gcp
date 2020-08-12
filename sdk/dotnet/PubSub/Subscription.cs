@@ -50,7 +50,8 @@ namespace Pulumi.Gcp.PubSub
         /// The Cloud Pub/Sub service account associated with this subscriptions's
         /// parent project (i.e.,
         /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-        /// permission to Acknowledge() messages on this subscription.  Structure is documented below.
+        /// permission to Acknowledge() messages on this subscription.
+        /// Structure is documented below.
         /// </summary>
         [Output("deadLetterPolicy")]
         public Output<Outputs.SubscriptionDeadLetterPolicy?> DeadLetterPolicy { get; private set; } = null!;
@@ -62,7 +63,8 @@ namespace Pulumi.Gcp.PubSub
         /// operations on the subscription. If expirationPolicy is not set, a default
         /// policy with ttl of 31 days will be used.  If it is set but ttl is "", the
         /// resource never expires.  The minimum allowed value for expirationPolicy.ttl
-        /// is 1 day.  Structure is documented below.
+        /// is 1 day.
+        /// Structure is documented below.
         /// </summary>
         [Output("expirationPolicy")]
         public Output<Outputs.SubscriptionExpirationPolicy> ExpirationPolicy { get; private set; } = null!;
@@ -105,7 +107,8 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// If push delivery is used with this subscription, this field is used to
         /// configure it. An empty pushConfig signifies that the subscriber will
-        /// pull and ack messages using API methods.  Structure is documented below.
+        /// pull and ack messages using API methods.
+        /// Structure is documented below.
         /// </summary>
         [Output("pushConfig")]
         public Output<Outputs.SubscriptionPushConfig?> PushConfig { get; private set; } = null!;
@@ -198,7 +201,8 @@ namespace Pulumi.Gcp.PubSub
         /// The Cloud Pub/Sub service account associated with this subscriptions's
         /// parent project (i.e.,
         /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-        /// permission to Acknowledge() messages on this subscription.  Structure is documented below.
+        /// permission to Acknowledge() messages on this subscription.
+        /// Structure is documented below.
         /// </summary>
         [Input("deadLetterPolicy")]
         public Input<Inputs.SubscriptionDeadLetterPolicyArgs>? DeadLetterPolicy { get; set; }
@@ -210,7 +214,8 @@ namespace Pulumi.Gcp.PubSub
         /// operations on the subscription. If expirationPolicy is not set, a default
         /// policy with ttl of 31 days will be used.  If it is set but ttl is "", the
         /// resource never expires.  The minimum allowed value for expirationPolicy.ttl
-        /// is 1 day.  Structure is documented below.
+        /// is 1 day.
+        /// Structure is documented below.
         /// </summary>
         [Input("expirationPolicy")]
         public Input<Inputs.SubscriptionExpirationPolicyArgs>? ExpirationPolicy { get; set; }
@@ -256,7 +261,8 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// If push delivery is used with this subscription, this field is used to
         /// configure it. An empty pushConfig signifies that the subscriber will
-        /// pull and ack messages using API methods.  Structure is documented below.
+        /// pull and ack messages using API methods.
+        /// Structure is documented below.
         /// </summary>
         [Input("pushConfig")]
         public Input<Inputs.SubscriptionPushConfigArgs>? PushConfig { get; set; }
@@ -310,7 +316,8 @@ namespace Pulumi.Gcp.PubSub
         /// The Cloud Pub/Sub service account associated with this subscriptions's
         /// parent project (i.e.,
         /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-        /// permission to Acknowledge() messages on this subscription.  Structure is documented below.
+        /// permission to Acknowledge() messages on this subscription.
+        /// Structure is documented below.
         /// </summary>
         [Input("deadLetterPolicy")]
         public Input<Inputs.SubscriptionDeadLetterPolicyGetArgs>? DeadLetterPolicy { get; set; }
@@ -322,7 +329,8 @@ namespace Pulumi.Gcp.PubSub
         /// operations on the subscription. If expirationPolicy is not set, a default
         /// policy with ttl of 31 days will be used.  If it is set but ttl is "", the
         /// resource never expires.  The minimum allowed value for expirationPolicy.ttl
-        /// is 1 day.  Structure is documented below.
+        /// is 1 day.
+        /// Structure is documented below.
         /// </summary>
         [Input("expirationPolicy")]
         public Input<Inputs.SubscriptionExpirationPolicyGetArgs>? ExpirationPolicy { get; set; }
@@ -371,7 +379,8 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// If push delivery is used with this subscription, this field is used to
         /// configure it. An empty pushConfig signifies that the subscriber will
-        /// pull and ack messages using API methods.  Structure is documented below.
+        /// pull and ack messages using API methods.
+        /// Structure is documented below.
         /// </summary>
         [Input("pushConfig")]
         public Input<Inputs.SubscriptionPushConfigGetArgs>? PushConfig { get; set; }

@@ -22,7 +22,8 @@ import (
 type Router struct {
 	pulumi.CustomResourceState
 
-	// BGP information specific to this router.  Structure is documented below.
+	// BGP information specific to this router.
+	// Structure is documented below.
 	Bgp RouterBgpPtrOutput `pulumi:"bgp"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -77,7 +78,8 @@ func GetRouter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Router resources.
 type routerState struct {
-	// BGP information specific to this router.  Structure is documented below.
+	// BGP information specific to this router.
+	// Structure is documented below.
 	Bgp *RouterBgp `pulumi:"bgp"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -102,7 +104,8 @@ type routerState struct {
 }
 
 type RouterState struct {
-	// BGP information specific to this router.  Structure is documented below.
+	// BGP information specific to this router.
+	// Structure is documented below.
 	Bgp RouterBgpPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -131,7 +134,8 @@ func (RouterState) ElementType() reflect.Type {
 }
 
 type routerArgs struct {
-	// BGP information specific to this router.  Structure is documented below.
+	// BGP information specific to this router.
+	// Structure is documented below.
 	Bgp *RouterBgp `pulumi:"bgp"`
 	// User-specified description for the IP range.
 	Description *string `pulumi:"description"`
@@ -153,7 +157,8 @@ type routerArgs struct {
 
 // The set of arguments for constructing a Router resource.
 type RouterArgs struct {
-	// BGP information specific to this router.  Structure is documented below.
+	// BGP information specific to this router.
+	// Structure is documented below.
 	Bgp RouterBgpPtrInput
 	// User-specified description for the IP range.
 	Description pulumi.StringPtrInput

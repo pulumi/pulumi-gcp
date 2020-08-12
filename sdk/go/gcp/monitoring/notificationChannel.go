@@ -62,7 +62,8 @@ type NotificationChannel struct {
 	// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
 	// in the `labels` map in the api request.
 	// Credentials may not be specified in both locations and will cause an error. Changing from one location
-	// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+	// to a different credential configuration in the config will require an apply to update state.
+	// Structure is documented below.
 	SensitiveLabels NotificationChannelSensitiveLabelsPtrOutput `pulumi:"sensitiveLabels"`
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -133,7 +134,8 @@ type notificationChannelState struct {
 	// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
 	// in the `labels` map in the api request.
 	// Credentials may not be specified in both locations and will cause an error. Changing from one location
-	// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+	// to a different credential configuration in the config will require an apply to update state.
+	// Structure is documented below.
 	SensitiveLabels *NotificationChannelSensitiveLabels `pulumi:"sensitiveLabels"`
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
 	Type *string `pulumi:"type"`
@@ -174,7 +176,8 @@ type NotificationChannelState struct {
 	// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
 	// in the `labels` map in the api request.
 	// Credentials may not be specified in both locations and will cause an error. Changing from one location
-	// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+	// to a different credential configuration in the config will require an apply to update state.
+	// Structure is documented below.
 	SensitiveLabels NotificationChannelSensitiveLabelsPtrInput
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
 	Type pulumi.StringPtrInput
@@ -216,7 +219,8 @@ type notificationChannelArgs struct {
 	// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
 	// in the `labels` map in the api request.
 	// Credentials may not be specified in both locations and will cause an error. Changing from one location
-	// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+	// to a different credential configuration in the config will require an apply to update state.
+	// Structure is documented below.
 	SensitiveLabels *NotificationChannelSensitiveLabels `pulumi:"sensitiveLabels"`
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
 	Type string `pulumi:"type"`
@@ -247,7 +251,8 @@ type NotificationChannelArgs struct {
 	// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
 	// in the `labels` map in the api request.
 	// Credentials may not be specified in both locations and will cause an error. Changing from one location
-	// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+	// to a different credential configuration in the config will require an apply to update state.
+	// Structure is documented below.
 	SensitiveLabels NotificationChannelSensitiveLabelsPtrInput
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
 	Type pulumi.StringInput

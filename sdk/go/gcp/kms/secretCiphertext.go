@@ -12,7 +12,7 @@ import (
 
 // Encrypts secret data with Google Cloud KMS and provides access to the ciphertext.
 //
-// > **NOTE**: Using this resource will allow you to conceal secret data within your
+// > **NOTE:** Using this resource will allow you to conceal secret data within your
 // resource definitions, but it does not take care of protecting that data in the
 // logging output, plan output, or state output.  Please take care to secure your secret
 // data outside of resource definitions.
@@ -30,14 +30,16 @@ import (
 type SecretCiphertext struct {
 	pulumi.CustomResourceState
 
-	// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The additional authenticated data used for integrity checks during encryption and decryption.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	AdditionalAuthenticatedData pulumi.StringPtrOutput `pulumi:"additionalAuthenticatedData"`
 	// Contains the result of encrypting the provided plaintext, encoded in base64.
 	Ciphertext pulumi.StringOutput `pulumi:"ciphertext"`
 	// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey pulumi.StringOutput `pulumi:"cryptoKey"`
-	// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The plaintext to be encrypted.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Plaintext pulumi.StringOutput `pulumi:"plaintext"`
 }
 
@@ -75,26 +77,30 @@ func GetSecretCiphertext(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretCiphertext resources.
 type secretCiphertextState struct {
-	// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The additional authenticated data used for integrity checks during encryption and decryption.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	AdditionalAuthenticatedData *string `pulumi:"additionalAuthenticatedData"`
 	// Contains the result of encrypting the provided plaintext, encoded in base64.
 	Ciphertext *string `pulumi:"ciphertext"`
 	// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey *string `pulumi:"cryptoKey"`
-	// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The plaintext to be encrypted.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Plaintext *string `pulumi:"plaintext"`
 }
 
 type SecretCiphertextState struct {
-	// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The additional authenticated data used for integrity checks during encryption and decryption.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	AdditionalAuthenticatedData pulumi.StringPtrInput
 	// Contains the result of encrypting the provided plaintext, encoded in base64.
 	Ciphertext pulumi.StringPtrInput
 	// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey pulumi.StringPtrInput
-	// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The plaintext to be encrypted.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Plaintext pulumi.StringPtrInput
 }
 
@@ -103,23 +109,27 @@ func (SecretCiphertextState) ElementType() reflect.Type {
 }
 
 type secretCiphertextArgs struct {
-	// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The additional authenticated data used for integrity checks during encryption and decryption.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	AdditionalAuthenticatedData *string `pulumi:"additionalAuthenticatedData"`
 	// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey string `pulumi:"cryptoKey"`
-	// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The plaintext to be encrypted.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Plaintext string `pulumi:"plaintext"`
 }
 
 // The set of arguments for constructing a SecretCiphertext resource.
 type SecretCiphertextArgs struct {
-	// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The additional authenticated data used for integrity checks during encryption and decryption.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	AdditionalAuthenticatedData pulumi.StringPtrInput
 	// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey pulumi.StringInput
-	// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The plaintext to be encrypted.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Plaintext pulumi.StringInput
 }
 

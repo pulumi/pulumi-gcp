@@ -53,7 +53,8 @@ export class RegionUrlMap extends pulumi.CustomResource {
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-     * defaultRouteAction must not be set.  Structure is documented below.
+     * defaultRouteAction must not be set.
+     * Structure is documented below.
      */
     public readonly defaultUrlRedirect!: pulumi.Output<outputs.compute.RegionUrlMapDefaultUrlRedirect | undefined>;
     /**
@@ -65,7 +66,8 @@ export class RegionUrlMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * The list of HostRules to use against the URL.  Structure is documented below.
+     * The list of HostRules to use against the URL.
+     * Structure is documented below.
      */
     public readonly hostRules!: pulumi.Output<outputs.compute.RegionUrlMapHostRule[] | undefined>;
     /**
@@ -98,7 +100,8 @@ export class RegionUrlMap extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The list of expected URL mappings. Requests to update this UrlMap will
-     * succeed only if all of the test cases pass.  Structure is documented below.
+     * succeed only if all of the test cases pass.
+     * Structure is documented below.
      */
     public readonly tests!: pulumi.Output<outputs.compute.RegionUrlMapTest[] | undefined>;
 
@@ -171,7 +174,8 @@ export interface RegionUrlMapState {
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-     * defaultRouteAction must not be set.  Structure is documented below.
+     * defaultRouteAction must not be set.
+     * Structure is documented below.
      */
     readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect>;
     /**
@@ -183,7 +187,8 @@ export interface RegionUrlMapState {
      */
     readonly fingerprint?: pulumi.Input<string>;
     /**
-     * The list of HostRules to use against the URL.  Structure is documented below.
+     * The list of HostRules to use against the URL.
+     * Structure is documented below.
      */
     readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[]>;
     /**
@@ -216,7 +221,8 @@ export interface RegionUrlMapState {
     readonly selfLink?: pulumi.Input<string>;
     /**
      * The list of expected URL mappings. Requests to update this UrlMap will
-     * succeed only if all of the test cases pass.  Structure is documented below.
+     * succeed only if all of the test cases pass.
+     * Structure is documented below.
      */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[]>;
 }
@@ -234,7 +240,8 @@ export interface RegionUrlMapArgs {
     /**
      * When none of the specified hostRules match, the request is redirected to a URL specified
      * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-     * defaultRouteAction must not be set.  Structure is documented below.
+     * defaultRouteAction must not be set.
+     * Structure is documented below.
      */
     readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect>;
     /**
@@ -242,7 +249,8 @@ export interface RegionUrlMapArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The list of HostRules to use against the URL.  Structure is documented below.
+     * The list of HostRules to use against the URL.
+     * Structure is documented below.
      */
     readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapHostRule>[]>;
     /**
@@ -267,7 +275,8 @@ export interface RegionUrlMapArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * The list of expected URL mappings. Requests to update this UrlMap will
-     * succeed only if all of the test cases pass.  Structure is documented below.
+     * succeed only if all of the test cases pass.
+     * Structure is documented below.
      */
     readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.RegionUrlMapTest>[]>;
 }

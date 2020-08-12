@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.Iot.Outputs
         /// </summary>
         public readonly string? ExpirationTime;
         /// <summary>
-        /// A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+        /// A public key used to verify the signature of JSON Web Tokens (JWTs).
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DeviceCredentialPublicKey PublicKey;
 

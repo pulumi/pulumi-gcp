@@ -16,7 +16,8 @@ type TriggerBuild struct {
 	// The digests of the pushed images will be stored in the Build resource's results field.
 	// If any of the images fail to be pushed, the build status is marked FAILURE.
 	Images []string `pulumi:"images"`
-	// The operations to be performed on the workspace.  Structure is documented below.
+	// The operations to be performed on the workspace.
+	// Structure is documented below.
 	Steps []TriggerBuildStep `pulumi:"steps"`
 	// Tags for annotation of a Build. These are not docker tags.
 	Tags []string `pulumi:"tags"`
@@ -44,7 +45,8 @@ type TriggerBuildArgs struct {
 	// The digests of the pushed images will be stored in the Build resource's results field.
 	// If any of the images fail to be pushed, the build status is marked FAILURE.
 	Images pulumi.StringArrayInput `pulumi:"images"`
-	// The operations to be performed on the workspace.  Structure is documented below.
+	// The operations to be performed on the workspace.
+	// Structure is documented below.
 	Steps TriggerBuildStepArrayInput `pulumi:"steps"`
 	// Tags for annotation of a Build. These are not docker tags.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -140,7 +142,8 @@ func (o TriggerBuildOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuild) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
-// The operations to be performed on the workspace.  Structure is documented below.
+// The operations to be performed on the workspace.
+// Structure is documented below.
 func (o TriggerBuildOutput) Steps() TriggerBuildStepArrayOutput {
 	return o.ApplyT(func(v TriggerBuild) []TriggerBuildStep { return v.Steps }).(TriggerBuildStepArrayOutput)
 }
@@ -189,7 +192,8 @@ func (o TriggerBuildPtrOutput) Images() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The operations to be performed on the workspace.  Structure is documented below.
+// The operations to be performed on the workspace.
+// Structure is documented below.
 func (o TriggerBuildPtrOutput) Steps() TriggerBuildStepArrayOutput {
 	return o.ApplyT(func(v *TriggerBuild) []TriggerBuildStep {
 		if v == nil {
@@ -273,7 +277,8 @@ type TriggerBuildStep struct {
 	// build step. Upon completion of the build, volumes and their contents
 	// are discarded.
 	// Using a named volume in only one step is not valid as it is
-	// indicative of a build request with an incorrect configuration.  Structure is documented below.
+	// indicative of a build request with an incorrect configuration.
+	// Structure is documented below.
 	Volumes []TriggerBuildStepVolume `pulumi:"volumes"`
 	// The ID(s) of the step(s) that this build step depends on.
 	// This build step will not start until all the build steps in `waitFor`
@@ -345,7 +350,8 @@ type TriggerBuildStepArgs struct {
 	// build step. Upon completion of the build, volumes and their contents
 	// are discarded.
 	// Using a named volume in only one step is not valid as it is
-	// indicative of a build request with an incorrect configuration.  Structure is documented below.
+	// indicative of a build request with an incorrect configuration.
+	// Structure is documented below.
 	Volumes TriggerBuildStepVolumeArrayInput `pulumi:"volumes"`
 	// The ID(s) of the step(s) that this build step depends on.
 	// This build step will not start until all the build steps in `waitFor`
@@ -483,7 +489,8 @@ func (o TriggerBuildStepOutput) Timing() pulumi.StringPtrOutput {
 // build step. Upon completion of the build, volumes and their contents
 // are discarded.
 // Using a named volume in only one step is not valid as it is
-// indicative of a build request with an incorrect configuration.  Structure is documented below.
+// indicative of a build request with an incorrect configuration.
+// Structure is documented below.
 func (o TriggerBuildStepOutput) Volumes() TriggerBuildStepVolumeArrayOutput {
 	return o.ApplyT(func(v TriggerBuildStep) []TriggerBuildStepVolume { return v.Volumes }).(TriggerBuildStepVolumeArrayOutput)
 }
@@ -643,9 +650,11 @@ type TriggerGithub struct {
 	// Owner of the repository. For example: The owner for
 	// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
 	Owner *string `pulumi:"owner"`
-	// filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
+	// filter to match changes in pull requests.  Specify only one of pullRequest or push.
+	// Structure is documented below.
 	PullRequest *TriggerGithubPullRequest `pulumi:"pullRequest"`
-	// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
+	// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+	// Structure is documented below.
 	Push *TriggerGithubPush `pulumi:"push"`
 }
 
@@ -668,9 +677,11 @@ type TriggerGithubArgs struct {
 	// Owner of the repository. For example: The owner for
 	// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
 	Owner pulumi.StringPtrInput `pulumi:"owner"`
-	// filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
+	// filter to match changes in pull requests.  Specify only one of pullRequest or push.
+	// Structure is documented below.
 	PullRequest TriggerGithubPullRequestPtrInput `pulumi:"pullRequest"`
-	// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
+	// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+	// Structure is documented below.
 	Push TriggerGithubPushPtrInput `pulumi:"push"`
 }
 
@@ -764,12 +775,14 @@ func (o TriggerGithubOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithub) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
-// filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
+// filter to match changes in pull requests.  Specify only one of pullRequest or push.
+// Structure is documented below.
 func (o TriggerGithubOutput) PullRequest() TriggerGithubPullRequestPtrOutput {
 	return o.ApplyT(func(v TriggerGithub) *TriggerGithubPullRequest { return v.PullRequest }).(TriggerGithubPullRequestPtrOutput)
 }
 
-// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
+// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+// Structure is documented below.
 func (o TriggerGithubOutput) Push() TriggerGithubPushPtrOutput {
 	return o.ApplyT(func(v TriggerGithub) *TriggerGithubPush { return v.Push }).(TriggerGithubPushPtrOutput)
 }
@@ -815,7 +828,8 @@ func (o TriggerGithubPtrOutput) Owner() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
+// filter to match changes in pull requests.  Specify only one of pullRequest or push.
+// Structure is documented below.
 func (o TriggerGithubPtrOutput) PullRequest() TriggerGithubPullRequestPtrOutput {
 	return o.ApplyT(func(v *TriggerGithub) *TriggerGithubPullRequest {
 		if v == nil {
@@ -825,7 +839,8 @@ func (o TriggerGithubPtrOutput) PullRequest() TriggerGithubPullRequestPtrOutput 
 	}).(TriggerGithubPullRequestPtrOutput)
 }
 
-// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
+// filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+// Structure is documented below.
 func (o TriggerGithubPtrOutput) Push() TriggerGithubPushPtrOutput {
 	return o.ApplyT(func(v *TriggerGithub) *TriggerGithubPush {
 		if v == nil {
@@ -839,6 +854,7 @@ type TriggerGithubPullRequest struct {
 	// Regex of branches to match.  Specify only one of branch or tag.
 	Branch string `pulumi:"branch"`
 	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+	// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
 	CommentControl *string `pulumi:"commentControl"`
 	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
@@ -859,6 +875,7 @@ type TriggerGithubPullRequestArgs struct {
 	// Regex of branches to match.  Specify only one of branch or tag.
 	Branch pulumi.StringInput `pulumi:"branch"`
 	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+	// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
@@ -947,6 +964,7 @@ func (o TriggerGithubPullRequestOutput) Branch() pulumi.StringOutput {
 }
 
 // Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
 func (o TriggerGithubPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
 }
@@ -985,6 +1003,7 @@ func (o TriggerGithubPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 }
 
 // Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+// Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
 func (o TriggerGithubPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPullRequest) *string {
 		if v == nil {

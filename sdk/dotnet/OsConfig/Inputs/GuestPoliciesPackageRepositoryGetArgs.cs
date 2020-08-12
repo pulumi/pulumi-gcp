@@ -13,25 +13,29 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class GuestPoliciesPackageRepositoryGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An Apt Repository.  Structure is documented below.
+        /// An Apt Repository.
+        /// Structure is documented below.
         /// </summary>
         [Input("apt")]
         public Input<Inputs.GuestPoliciesPackageRepositoryAptGetArgs>? Apt { get; set; }
 
         /// <summary>
-        /// A Goo Repository.  Structure is documented below.
+        /// A Goo Repository.
+        /// Structure is documented below.
         /// </summary>
         [Input("goo")]
         public Input<Inputs.GuestPoliciesPackageRepositoryGooGetArgs>? Goo { get; set; }
 
         /// <summary>
-        /// A Yum Repository.  Structure is documented below.
+        /// A Yum Repository.
+        /// Structure is documented below.
         /// </summary>
         [Input("yum")]
         public Input<Inputs.GuestPoliciesPackageRepositoryYumGetArgs>? Yum { get; set; }
 
         /// <summary>
-        /// A Zypper Repository.  Structure is documented below.
+        /// A Zypper Repository.
+        /// Structure is documented below.
         /// </summary>
         [Input("zypper")]
         public Input<Inputs.GuestPoliciesPackageRepositoryZypperGetArgs>? Zypper { get; set; }

@@ -44,6 +44,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
     or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
     specified, uses the QUIC policy with no user overrides, which is
     equivalent to DISABLE.
+    Default value is `NONE`.
+    Possible values are `NONE`, `ENABLE`, and `DISABLE`.
     """
     self_link: pulumi.Output[str]
     """
@@ -96,6 +98,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
                or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
                specified, uses the QUIC policy with no user overrides, which is
                equivalent to DISABLE.
+               Default value is `NONE`.
+               Possible values are `NONE`, `ENABLE`, and `DISABLE`.
         :param pulumi.Input[list] ssl_certificates: A list of SslCertificate resources that are used to authenticate
                connections between users and the load balancer. At least one SSL
                certificate must be specified.
@@ -168,6 +172,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
                or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
                specified, uses the QUIC policy with no user overrides, which is
                equivalent to DISABLE.
+               Default value is `NONE`.
+               Possible values are `NONE`, `ENABLE`, and `DISABLE`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[list] ssl_certificates: A list of SslCertificate resources that are used to authenticate
                connections between users and the load balancer. At least one SSL

@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// For global HTTP(S) or TCP/SSL load balancing, the default is
         /// UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
         /// and CONNECTION (for TCP/SSL).
+        /// Default value is `UTILIZATION`.
+        /// Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
         /// </summary>
         [Input("balancingMode")]
         public Input<string>? BalancingMode { get; set; }

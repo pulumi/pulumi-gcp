@@ -17,9 +17,11 @@ class Slo(pulumi.CustomResource):
     SLIs are used to measure and calculate the quality of the Service's
     performance with respect to a single aspect of service quality.
     Exactly one of the following must be set:
-    `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+    `basic_sli`, `request_based_sli`, `windows_based_sli`
+    Structure is documented below.
 
-      * `latency` (`dict`) - Parameters for a latency threshold SLI.  Structure is documented below.
+      * `latency` (`dict`) - Parameters for a latency threshold SLI.
+        Structure is documented below.
         * `threshold` (`str`) - A duration string, e.g. 10s.
           Good service is defined to be the count of requests made to
           this service that return in no more than threshold.
@@ -47,6 +49,7 @@ class Slo(pulumi.CustomResource):
     """
     A calendar period, semantically "since the start of the current
     <calendarPeriod>".
+    Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
     """
     display_name: pulumi.Output[str]
     """
@@ -75,13 +78,15 @@ class Slo(pulumi.CustomResource):
     It is used to measure and calculate the quality of the Service's
     performance with respect to a single aspect of service quality.
     Exactly one of the following must be set:
-    `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+    `basic_sli`, `request_based_sli`, `windows_based_sli`
+    Structure is documented below.
 
       * `distributionCut` (`dict`) - Used when good_service is defined by a count of values aggregated in a
         Distribution that fall into a good range. The total_service is the
         total count of all values aggregated in the Distribution.
         Defines a distribution TimeSeries filter and thresholds used for
-        measuring good service and total service.  Structure is documented below.
+        measuring good service and total service.
+        Structure is documented below.
         * `distributionFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
           aggregating values to quantify the good service provided.
           Must have ValueType = DISTRIBUTION and
@@ -91,7 +96,8 @@ class Slo(pulumi.CustomResource):
           that range.min <= x < range.max. inclusive of min and
           exclusive of max. Open ranges can be defined by setting
           just one of min or max. Summed value `X` should satisfy
-          `range.min <= X < range.max` for a good window.  Structure is documented below.
+          `range.min <= X < range.max` for a good window.
+          Structure is documented below.
           * `max` (`float`) - max value for the range (inclusive). If not given,
             will be set to "infinity", defining an open range
             ">= range.min"
@@ -103,7 +109,8 @@ class Slo(pulumi.CustomResource):
         Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
         Must specify exactly two of good, bad, and total service filters.
         The relationship good_service + bad_service = total_service
-        will be assumed.  Structure is documented below.
+        will be assumed.
+        Structure is documented below.
         * `badServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
           quantifying bad service provided, either demanded service that
           was not provided or demanded service that was of inadequate
@@ -147,7 +154,8 @@ class Slo(pulumi.CustomResource):
     the quality of the Service's performance with respect to a single
     aspect of service quality.
     Exactly one of the following must be set:
-    `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+    `basic_sli`, `request_based_sli`, `windows_based_sli`
+    Structure is documented below.
 
       * `goodBadMetricFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         with ValueType = BOOL. The window is good if any true values
@@ -157,9 +165,12 @@ class Slo(pulumi.CustomResource):
       * `goodTotalRatioThreshold` (`dict`) - Criterion that describes a window as good if its performance is
         high enough. One of `good_bad_metric_filter`,
         `good_total_ratio_threshold`, `metric_mean_in_range`,
-        `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
-        * `basicSliPerformance` (`dict`) - Basic SLI to evaluate to judge window quality.  Structure is documented below.
-          * `latency` (`dict`) - Parameters for a latency threshold SLI.  Structure is documented below.
+        `metric_sum_in_range` must be set for `windows_based_sli`.
+        Structure is documented below.
+        * `basicSliPerformance` (`dict`) - Basic SLI to evaluate to judge window quality.
+          Structure is documented below.
+          * `latency` (`dict`) - Parameters for a latency threshold SLI.
+            Structure is documented below.
             * `threshold` (`str`) - A duration string, e.g. 10s.
               Good service is defined to be the count of requests made to
               this service that return in no more than threshold.
@@ -183,12 +194,14 @@ class Slo(pulumi.CustomResource):
             that don't support breaking down by version, setting this
             field will result in an error.
 
-        * `performance` (`dict`) - Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+        * `performance` (`dict`) - Request-based SLI to evaluate to judge window quality.
+          Structure is documented below.
           * `distributionCut` (`dict`) - Used when good_service is defined by a count of values aggregated in a
             Distribution that fall into a good range. The total_service is the
             total count of all values aggregated in the Distribution.
             Defines a distribution TimeSeries filter and thresholds used for
-            measuring good service and total service.  Structure is documented below.
+            measuring good service and total service.
+            Structure is documented below.
             * `distributionFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
               aggregating values to quantify the good service provided.
               Must have ValueType = DISTRIBUTION and
@@ -198,7 +211,8 @@ class Slo(pulumi.CustomResource):
               that range.min <= x < range.max. inclusive of min and
               exclusive of max. Open ranges can be defined by setting
               just one of min or max. Summed value `X` should satisfy
-              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              `range.min <= X < range.max` for a good window.
+              Structure is documented below.
               * `max` (`float`) - max value for the range (inclusive). If not given,
                 will be set to "infinity", defining an open range
                 ">= range.min"
@@ -210,7 +224,8 @@ class Slo(pulumi.CustomResource):
             Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
             Must specify exactly two of good, bad, and total service filters.
             The relationship good_service + bad_service = total_service
-            will be assumed.  Structure is documented below.
+            will be assumed.
+            Structure is documented below.
             * `badServiceFilter` (`str`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
               quantifying bad service provided, either demanded service that
               was not provided or demanded service that was of inadequate
@@ -242,13 +257,15 @@ class Slo(pulumi.CustomResource):
         `good_total_ratio_threshold`, `metric_mean_in_range`,
         `metric_sum_in_range` must be set for `windows_based_sli`.
         Average value X of `time_series` should satisfy
-        `range.min <= X < range.max` for a good window.  Structure is documented below.
+        `range.min <= X < range.max` for a good window.
+        Structure is documented below.
         * `range` (`dict`) - Range of numerical values. The computed good_service
           will be the count of values x in the Distribution such
           that range.min <= x < range.max. inclusive of min and
           exclusive of max. Open ranges can be defined by setting
           just one of min or max. Summed value `X` should satisfy
-          `range.min <= X < range.max` for a good window.  Structure is documented below.
+          `range.min <= X < range.max` for a good window.
+          Structure is documented below.
           * `max` (`float`) - max value for the range (inclusive). If not given,
             will be set to "infinity", defining an open range
             ">= range.min"
@@ -270,13 +287,15 @@ class Slo(pulumi.CustomResource):
         `range.min <= X < range.max` for a good window.
         One of `good_bad_metric_filter`,
         `good_total_ratio_threshold`, `metric_mean_in_range`,
-        `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+        `metric_sum_in_range` must be set for `windows_based_sli`.
+        Structure is documented below.
         * `range` (`dict`) - Range of numerical values. The computed good_service
           will be the count of values x in the Distribution such
           that range.min <= x < range.max. inclusive of min and
           exclusive of max. Open ranges can be defined by setting
           just one of min or max. Summed value `X` should satisfy
-          `range.min <= X < range.max` for a good window.  Structure is documented below.
+          `range.min <= X < range.max` for a good window.
+          Structure is documented below.
           * `max` (`float`) - max value for the range (inclusive). If not given,
             will be set to "infinity", defining an open range
             ">= range.min"
@@ -322,9 +341,11 @@ class Slo(pulumi.CustomResource):
                SLIs are used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
                Exactly one of the following must be set:
-               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+               `basic_sli`, `request_based_sli`, `windows_based_sli`
+               Structure is documented below.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
+               Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[float] goal: The fraction of service that must be good in order for this objective
                to be met. 0 < goal <= 0.999
@@ -336,7 +357,8 @@ class Slo(pulumi.CustomResource):
                It is used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
                Exactly one of the following must be set:
-               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+               `basic_sli`, `request_based_sli`, `windows_based_sli`
+               Structure is documented below.
         :param pulumi.Input[float] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
@@ -348,11 +370,13 @@ class Slo(pulumi.CustomResource):
                the quality of the Service's performance with respect to a single
                aspect of service quality.
                Exactly one of the following must be set:
-               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+               `basic_sli`, `request_based_sli`, `windows_based_sli`
+               Structure is documented below.
 
         The **basic_sli** object supports the following:
 
-          * `latency` (`pulumi.Input[dict]`) - Parameters for a latency threshold SLI.  Structure is documented below.
+          * `latency` (`pulumi.Input[dict]`) - Parameters for a latency threshold SLI.
+            Structure is documented below.
             * `threshold` (`pulumi.Input[str]`) - A duration string, e.g. 10s.
               Good service is defined to be the count of requests made to
               this service that return in no more than threshold.
@@ -382,7 +406,8 @@ class Slo(pulumi.CustomResource):
             Distribution that fall into a good range. The total_service is the
             total count of all values aggregated in the Distribution.
             Defines a distribution TimeSeries filter and thresholds used for
-            measuring good service and total service.  Structure is documented below.
+            measuring good service and total service.
+            Structure is documented below.
             * `distributionFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
               aggregating values to quantify the good service provided.
               Must have ValueType = DISTRIBUTION and
@@ -392,7 +417,8 @@ class Slo(pulumi.CustomResource):
               that range.min <= x < range.max. inclusive of min and
               exclusive of max. Open ranges can be defined by setting
               just one of min or max. Summed value `X` should satisfy
-              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              `range.min <= X < range.max` for a good window.
+              Structure is documented below.
               * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
                 will be set to "infinity", defining an open range
                 ">= range.min"
@@ -404,7 +430,8 @@ class Slo(pulumi.CustomResource):
             Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
             Must specify exactly two of good, bad, and total service filters.
             The relationship good_service + bad_service = total_service
-            will be assumed.  Structure is documented below.
+            will be assumed.
+            Structure is documented below.
             * `badServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
               quantifying bad service provided, either demanded service that
               was not provided or demanded service that was of inadequate
@@ -436,9 +463,12 @@ class Slo(pulumi.CustomResource):
           * `goodTotalRatioThreshold` (`pulumi.Input[dict]`) - Criterion that describes a window as good if its performance is
             high enough. One of `good_bad_metric_filter`,
             `good_total_ratio_threshold`, `metric_mean_in_range`,
-            `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
-            * `basicSliPerformance` (`pulumi.Input[dict]`) - Basic SLI to evaluate to judge window quality.  Structure is documented below.
-              * `latency` (`pulumi.Input[dict]`) - Parameters for a latency threshold SLI.  Structure is documented below.
+            `metric_sum_in_range` must be set for `windows_based_sli`.
+            Structure is documented below.
+            * `basicSliPerformance` (`pulumi.Input[dict]`) - Basic SLI to evaluate to judge window quality.
+              Structure is documented below.
+              * `latency` (`pulumi.Input[dict]`) - Parameters for a latency threshold SLI.
+                Structure is documented below.
                 * `threshold` (`pulumi.Input[str]`) - A duration string, e.g. 10s.
                   Good service is defined to be the count of requests made to
                   this service that return in no more than threshold.
@@ -462,12 +492,14 @@ class Slo(pulumi.CustomResource):
                 that don't support breaking down by version, setting this
                 field will result in an error.
 
-            * `performance` (`pulumi.Input[dict]`) - Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+            * `performance` (`pulumi.Input[dict]`) - Request-based SLI to evaluate to judge window quality.
+              Structure is documented below.
               * `distributionCut` (`pulumi.Input[dict]`) - Used when good_service is defined by a count of values aggregated in a
                 Distribution that fall into a good range. The total_service is the
                 total count of all values aggregated in the Distribution.
                 Defines a distribution TimeSeries filter and thresholds used for
-                measuring good service and total service.  Structure is documented below.
+                measuring good service and total service.
+                Structure is documented below.
                 * `distributionFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                   aggregating values to quantify the good service provided.
                   Must have ValueType = DISTRIBUTION and
@@ -477,7 +509,8 @@ class Slo(pulumi.CustomResource):
                   that range.min <= x < range.max. inclusive of min and
                   exclusive of max. Open ranges can be defined by setting
                   just one of min or max. Summed value `X` should satisfy
-                  `range.min <= X < range.max` for a good window.  Structure is documented below.
+                  `range.min <= X < range.max` for a good window.
+                  Structure is documented below.
                   * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
                     will be set to "infinity", defining an open range
                     ">= range.min"
@@ -489,7 +522,8 @@ class Slo(pulumi.CustomResource):
                 Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
                 Must specify exactly two of good, bad, and total service filters.
                 The relationship good_service + bad_service = total_service
-                will be assumed.  Structure is documented below.
+                will be assumed.
+                Structure is documented below.
                 * `badServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                   quantifying bad service provided, either demanded service that
                   was not provided or demanded service that was of inadequate
@@ -521,13 +555,15 @@ class Slo(pulumi.CustomResource):
             `good_total_ratio_threshold`, `metric_mean_in_range`,
             `metric_sum_in_range` must be set for `windows_based_sli`.
             Average value X of `time_series` should satisfy
-            `range.min <= X < range.max` for a good window.  Structure is documented below.
+            `range.min <= X < range.max` for a good window.
+            Structure is documented below.
             * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
               will be the count of values x in the Distribution such
               that range.min <= x < range.max. inclusive of min and
               exclusive of max. Open ranges can be defined by setting
               just one of min or max. Summed value `X` should satisfy
-              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              `range.min <= X < range.max` for a good window.
+              Structure is documented below.
               * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
                 will be set to "infinity", defining an open range
                 ">= range.min"
@@ -549,13 +585,15 @@ class Slo(pulumi.CustomResource):
             `range.min <= X < range.max` for a good window.
             One of `good_bad_metric_filter`,
             `good_total_ratio_threshold`, `metric_mean_in_range`,
-            `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+            `metric_sum_in_range` must be set for `windows_based_sli`.
+            Structure is documented below.
             * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
               will be the count of values x in the Distribution such
               that range.min <= x < range.max. inclusive of min and
               exclusive of max. Open ranges can be defined by setting
               just one of min or max. Summed value `X` should satisfy
-              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              `range.min <= X < range.max` for a good window.
+              Structure is documented below.
               * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
                 will be set to "infinity", defining an open range
                 ">= range.min"
@@ -627,9 +665,11 @@ class Slo(pulumi.CustomResource):
                SLIs are used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
                Exactly one of the following must be set:
-               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+               `basic_sli`, `request_based_sli`, `windows_based_sli`
+               Structure is documented below.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
+               Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[float] goal: The fraction of service that must be good in order for this objective
                to be met. 0 < goal <= 0.999
@@ -643,7 +683,8 @@ class Slo(pulumi.CustomResource):
                It is used to measure and calculate the quality of the Service's
                performance with respect to a single aspect of service quality.
                Exactly one of the following must be set:
-               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+               `basic_sli`, `request_based_sli`, `windows_based_sli`
+               Structure is documented below.
         :param pulumi.Input[float] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
@@ -655,11 +696,13 @@ class Slo(pulumi.CustomResource):
                the quality of the Service's performance with respect to a single
                aspect of service quality.
                Exactly one of the following must be set:
-               `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+               `basic_sli`, `request_based_sli`, `windows_based_sli`
+               Structure is documented below.
 
         The **basic_sli** object supports the following:
 
-          * `latency` (`pulumi.Input[dict]`) - Parameters for a latency threshold SLI.  Structure is documented below.
+          * `latency` (`pulumi.Input[dict]`) - Parameters for a latency threshold SLI.
+            Structure is documented below.
             * `threshold` (`pulumi.Input[str]`) - A duration string, e.g. 10s.
               Good service is defined to be the count of requests made to
               this service that return in no more than threshold.
@@ -689,7 +732,8 @@ class Slo(pulumi.CustomResource):
             Distribution that fall into a good range. The total_service is the
             total count of all values aggregated in the Distribution.
             Defines a distribution TimeSeries filter and thresholds used for
-            measuring good service and total service.  Structure is documented below.
+            measuring good service and total service.
+            Structure is documented below.
             * `distributionFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
               aggregating values to quantify the good service provided.
               Must have ValueType = DISTRIBUTION and
@@ -699,7 +743,8 @@ class Slo(pulumi.CustomResource):
               that range.min <= x < range.max. inclusive of min and
               exclusive of max. Open ranges can be defined by setting
               just one of min or max. Summed value `X` should satisfy
-              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              `range.min <= X < range.max` for a good window.
+              Structure is documented below.
               * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
                 will be set to "infinity", defining an open range
                 ">= range.min"
@@ -711,7 +756,8 @@ class Slo(pulumi.CustomResource):
             Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
             Must specify exactly two of good, bad, and total service filters.
             The relationship good_service + bad_service = total_service
-            will be assumed.  Structure is documented below.
+            will be assumed.
+            Structure is documented below.
             * `badServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
               quantifying bad service provided, either demanded service that
               was not provided or demanded service that was of inadequate
@@ -743,9 +789,12 @@ class Slo(pulumi.CustomResource):
           * `goodTotalRatioThreshold` (`pulumi.Input[dict]`) - Criterion that describes a window as good if its performance is
             high enough. One of `good_bad_metric_filter`,
             `good_total_ratio_threshold`, `metric_mean_in_range`,
-            `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
-            * `basicSliPerformance` (`pulumi.Input[dict]`) - Basic SLI to evaluate to judge window quality.  Structure is documented below.
-              * `latency` (`pulumi.Input[dict]`) - Parameters for a latency threshold SLI.  Structure is documented below.
+            `metric_sum_in_range` must be set for `windows_based_sli`.
+            Structure is documented below.
+            * `basicSliPerformance` (`pulumi.Input[dict]`) - Basic SLI to evaluate to judge window quality.
+              Structure is documented below.
+              * `latency` (`pulumi.Input[dict]`) - Parameters for a latency threshold SLI.
+                Structure is documented below.
                 * `threshold` (`pulumi.Input[str]`) - A duration string, e.g. 10s.
                   Good service is defined to be the count of requests made to
                   this service that return in no more than threshold.
@@ -769,12 +818,14 @@ class Slo(pulumi.CustomResource):
                 that don't support breaking down by version, setting this
                 field will result in an error.
 
-            * `performance` (`pulumi.Input[dict]`) - Request-based SLI to evaluate to judge window quality.  Structure is documented below.
+            * `performance` (`pulumi.Input[dict]`) - Request-based SLI to evaluate to judge window quality.
+              Structure is documented below.
               * `distributionCut` (`pulumi.Input[dict]`) - Used when good_service is defined by a count of values aggregated in a
                 Distribution that fall into a good range. The total_service is the
                 total count of all values aggregated in the Distribution.
                 Defines a distribution TimeSeries filter and thresholds used for
-                measuring good service and total service.  Structure is documented below.
+                measuring good service and total service.
+                Structure is documented below.
                 * `distributionFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                   aggregating values to quantify the good service provided.
                   Must have ValueType = DISTRIBUTION and
@@ -784,7 +835,8 @@ class Slo(pulumi.CustomResource):
                   that range.min <= x < range.max. inclusive of min and
                   exclusive of max. Open ranges can be defined by setting
                   just one of min or max. Summed value `X` should satisfy
-                  `range.min <= X < range.max` for a good window.  Structure is documented below.
+                  `range.min <= X < range.max` for a good window.
+                  Structure is documented below.
                   * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
                     will be set to "infinity", defining an open range
                     ">= range.min"
@@ -796,7 +848,8 @@ class Slo(pulumi.CustomResource):
                 Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
                 Must specify exactly two of good, bad, and total service filters.
                 The relationship good_service + bad_service = total_service
-                will be assumed.  Structure is documented below.
+                will be assumed.
+                Structure is documented below.
                 * `badServiceFilter` (`pulumi.Input[str]`) - A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                   quantifying bad service provided, either demanded service that
                   was not provided or demanded service that was of inadequate
@@ -828,13 +881,15 @@ class Slo(pulumi.CustomResource):
             `good_total_ratio_threshold`, `metric_mean_in_range`,
             `metric_sum_in_range` must be set for `windows_based_sli`.
             Average value X of `time_series` should satisfy
-            `range.min <= X < range.max` for a good window.  Structure is documented below.
+            `range.min <= X < range.max` for a good window.
+            Structure is documented below.
             * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
               will be the count of values x in the Distribution such
               that range.min <= x < range.max. inclusive of min and
               exclusive of max. Open ranges can be defined by setting
               just one of min or max. Summed value `X` should satisfy
-              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              `range.min <= X < range.max` for a good window.
+              Structure is documented below.
               * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
                 will be set to "infinity", defining an open range
                 ">= range.min"
@@ -856,13 +911,15 @@ class Slo(pulumi.CustomResource):
             `range.min <= X < range.max` for a good window.
             One of `good_bad_metric_filter`,
             `good_total_ratio_threshold`, `metric_mean_in_range`,
-            `metric_sum_in_range` must be set for `windows_based_sli`.  Structure is documented below.
+            `metric_sum_in_range` must be set for `windows_based_sli`.
+            Structure is documented below.
             * `range` (`pulumi.Input[dict]`) - Range of numerical values. The computed good_service
               will be the count of values x in the Distribution such
               that range.min <= x < range.max. inclusive of min and
               exclusive of max. Open ranges can be defined by setting
               just one of min or max. Summed value `X` should satisfy
-              `range.min <= X < range.max` for a good window.  Structure is documented below.
+              `range.min <= X < range.max` for a good window.
+              Structure is documented below.
               * `max` (`pulumi.Input[float]`) - max value for the range (inclusive). If not given,
                 will be set to "infinity", defining an open range
                 ">= range.min"

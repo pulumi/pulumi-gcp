@@ -16,7 +16,8 @@ class BackendBucket(pulumi.CustomResource):
     """
     cdn_policy: pulumi.Output[dict]
     """
-    Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+    Cloud CDN configuration for this Backend Bucket.
+    Structure is documented below.
 
       * `signedUrlCacheMaxAgeSec` (`float`) - Maximum number of seconds the response to a signed URL request will
         be considered fresh. After this time period,
@@ -80,7 +81,8 @@ class BackendBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
-        :param pulumi.Input[dict] cdn_policy: Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+        :param pulumi.Input[dict] cdn_policy: Cloud CDN configuration for this Backend Bucket.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
@@ -148,7 +150,8 @@ class BackendBucket(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
-        :param pulumi.Input[dict] cdn_policy: Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+        :param pulumi.Input[dict] cdn_policy: Cloud CDN configuration for this Backend Bucket.
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
                client when the resource is created.

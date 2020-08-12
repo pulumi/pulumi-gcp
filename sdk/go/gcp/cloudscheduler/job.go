@@ -28,7 +28,8 @@ type Job struct {
 
 	// App Engine HTTP target.
 	// If the job providers a App Engine HTTP target the cron will
-	// send a request to the service instance  Structure is documented below.
+	// send a request to the service instance
+	// Structure is documented below.
 	AppEngineHttpTarget JobAppEngineHttpTargetPtrOutput `pulumi:"appEngineHttpTarget"`
 	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
 	// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
@@ -43,7 +44,8 @@ type Job struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// HTTP target.
 	// If the job providers a httpTarget the cron will
-	// send a request to the targeted url  Structure is documented below.
+	// send a request to the targeted url
+	// Structure is documented below.
 	HttpTarget JobHttpTargetPtrOutput `pulumi:"httpTarget"`
 	// The name of the job.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -52,13 +54,15 @@ type Job struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Pub/Sub target
 	// If the job providers a Pub/Sub target the cron will publish
-	// a message to the provided topic  Structure is documented below.
+	// a message to the provided topic
+	// Structure is documented below.
 	PubsubTarget JobPubsubTargetPtrOutput `pulumi:"pubsubTarget"`
 	// Region where the scheduler job resides
 	Region pulumi.StringOutput `pulumi:"region"`
 	// By default, if a job does not complete successfully,
 	// meaning that an acknowledgement is not received from the handler,
-	// then it will be retried with exponential backoff according to the settings  Structure is documented below.
+	// then it will be retried with exponential backoff according to the settings
+	// Structure is documented below.
 	RetryConfig JobRetryConfigPtrOutput `pulumi:"retryConfig"`
 	// Describes the schedule on which the job will be executed.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
@@ -97,7 +101,8 @@ func GetJob(ctx *pulumi.Context,
 type jobState struct {
 	// App Engine HTTP target.
 	// If the job providers a App Engine HTTP target the cron will
-	// send a request to the service instance  Structure is documented below.
+	// send a request to the service instance
+	// Structure is documented below.
 	AppEngineHttpTarget *JobAppEngineHttpTarget `pulumi:"appEngineHttpTarget"`
 	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
 	// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
@@ -112,7 +117,8 @@ type jobState struct {
 	Description *string `pulumi:"description"`
 	// HTTP target.
 	// If the job providers a httpTarget the cron will
-	// send a request to the targeted url  Structure is documented below.
+	// send a request to the targeted url
+	// Structure is documented below.
 	HttpTarget *JobHttpTarget `pulumi:"httpTarget"`
 	// The name of the job.
 	Name *string `pulumi:"name"`
@@ -121,13 +127,15 @@ type jobState struct {
 	Project *string `pulumi:"project"`
 	// Pub/Sub target
 	// If the job providers a Pub/Sub target the cron will publish
-	// a message to the provided topic  Structure is documented below.
+	// a message to the provided topic
+	// Structure is documented below.
 	PubsubTarget *JobPubsubTarget `pulumi:"pubsubTarget"`
 	// Region where the scheduler job resides
 	Region *string `pulumi:"region"`
 	// By default, if a job does not complete successfully,
 	// meaning that an acknowledgement is not received from the handler,
-	// then it will be retried with exponential backoff according to the settings  Structure is documented below.
+	// then it will be retried with exponential backoff according to the settings
+	// Structure is documented below.
 	RetryConfig *JobRetryConfig `pulumi:"retryConfig"`
 	// Describes the schedule on which the job will be executed.
 	Schedule *string `pulumi:"schedule"`
@@ -139,7 +147,8 @@ type jobState struct {
 type JobState struct {
 	// App Engine HTTP target.
 	// If the job providers a App Engine HTTP target the cron will
-	// send a request to the service instance  Structure is documented below.
+	// send a request to the service instance
+	// Structure is documented below.
 	AppEngineHttpTarget JobAppEngineHttpTargetPtrInput
 	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
 	// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
@@ -154,7 +163,8 @@ type JobState struct {
 	Description pulumi.StringPtrInput
 	// HTTP target.
 	// If the job providers a httpTarget the cron will
-	// send a request to the targeted url  Structure is documented below.
+	// send a request to the targeted url
+	// Structure is documented below.
 	HttpTarget JobHttpTargetPtrInput
 	// The name of the job.
 	Name pulumi.StringPtrInput
@@ -163,13 +173,15 @@ type JobState struct {
 	Project pulumi.StringPtrInput
 	// Pub/Sub target
 	// If the job providers a Pub/Sub target the cron will publish
-	// a message to the provided topic  Structure is documented below.
+	// a message to the provided topic
+	// Structure is documented below.
 	PubsubTarget JobPubsubTargetPtrInput
 	// Region where the scheduler job resides
 	Region pulumi.StringPtrInput
 	// By default, if a job does not complete successfully,
 	// meaning that an acknowledgement is not received from the handler,
-	// then it will be retried with exponential backoff according to the settings  Structure is documented below.
+	// then it will be retried with exponential backoff according to the settings
+	// Structure is documented below.
 	RetryConfig JobRetryConfigPtrInput
 	// Describes the schedule on which the job will be executed.
 	Schedule pulumi.StringPtrInput
@@ -185,7 +197,8 @@ func (JobState) ElementType() reflect.Type {
 type jobArgs struct {
 	// App Engine HTTP target.
 	// If the job providers a App Engine HTTP target the cron will
-	// send a request to the service instance  Structure is documented below.
+	// send a request to the service instance
+	// Structure is documented below.
 	AppEngineHttpTarget *JobAppEngineHttpTarget `pulumi:"appEngineHttpTarget"`
 	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
 	// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
@@ -200,7 +213,8 @@ type jobArgs struct {
 	Description *string `pulumi:"description"`
 	// HTTP target.
 	// If the job providers a httpTarget the cron will
-	// send a request to the targeted url  Structure is documented below.
+	// send a request to the targeted url
+	// Structure is documented below.
 	HttpTarget *JobHttpTarget `pulumi:"httpTarget"`
 	// The name of the job.
 	Name *string `pulumi:"name"`
@@ -209,13 +223,15 @@ type jobArgs struct {
 	Project *string `pulumi:"project"`
 	// Pub/Sub target
 	// If the job providers a Pub/Sub target the cron will publish
-	// a message to the provided topic  Structure is documented below.
+	// a message to the provided topic
+	// Structure is documented below.
 	PubsubTarget *JobPubsubTarget `pulumi:"pubsubTarget"`
 	// Region where the scheduler job resides
 	Region *string `pulumi:"region"`
 	// By default, if a job does not complete successfully,
 	// meaning that an acknowledgement is not received from the handler,
-	// then it will be retried with exponential backoff according to the settings  Structure is documented below.
+	// then it will be retried with exponential backoff according to the settings
+	// Structure is documented below.
 	RetryConfig *JobRetryConfig `pulumi:"retryConfig"`
 	// Describes the schedule on which the job will be executed.
 	Schedule *string `pulumi:"schedule"`
@@ -228,7 +244,8 @@ type jobArgs struct {
 type JobArgs struct {
 	// App Engine HTTP target.
 	// If the job providers a App Engine HTTP target the cron will
-	// send a request to the service instance  Structure is documented below.
+	// send a request to the service instance
+	// Structure is documented below.
 	AppEngineHttpTarget JobAppEngineHttpTargetPtrInput
 	// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
 	// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
@@ -243,7 +260,8 @@ type JobArgs struct {
 	Description pulumi.StringPtrInput
 	// HTTP target.
 	// If the job providers a httpTarget the cron will
-	// send a request to the targeted url  Structure is documented below.
+	// send a request to the targeted url
+	// Structure is documented below.
 	HttpTarget JobHttpTargetPtrInput
 	// The name of the job.
 	Name pulumi.StringPtrInput
@@ -252,13 +270,15 @@ type JobArgs struct {
 	Project pulumi.StringPtrInput
 	// Pub/Sub target
 	// If the job providers a Pub/Sub target the cron will publish
-	// a message to the provided topic  Structure is documented below.
+	// a message to the provided topic
+	// Structure is documented below.
 	PubsubTarget JobPubsubTargetPtrInput
 	// Region where the scheduler job resides
 	Region pulumi.StringPtrInput
 	// By default, if a job does not complete successfully,
 	// meaning that an acknowledgement is not received from the handler,
-	// then it will be retried with exponential backoff according to the settings  Structure is documented below.
+	// then it will be retried with exponential backoff according to the settings
+	// Structure is documented below.
 	RetryConfig JobRetryConfigPtrInput
 	// Describes the schedule on which the job will be executed.
 	Schedule pulumi.StringPtrInput

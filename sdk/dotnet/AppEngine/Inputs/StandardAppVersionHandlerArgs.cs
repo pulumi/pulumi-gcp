@@ -14,37 +14,43 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     {
         /// <summary>
         /// Actions to take when the user is not logged in.
+        /// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         /// </summary>
         [Input("authFailAction")]
         public Input<string>? AuthFailAction { get; set; }
 
         /// <summary>
         /// Methods to restrict access to a URL based on login status.
+        /// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
         /// </summary>
         [Input("login")]
         public Input<string>? Login { get; set; }
 
         /// <summary>
         /// 30x code to use when performing redirects for the secure field.
+        /// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
         /// </summary>
         [Input("redirectHttpResponseCode")]
         public Input<string>? RedirectHttpResponseCode { get; set; }
 
         /// <summary>
         /// Executes a script to handle the requests that match this URL pattern.
-        /// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".  Structure is documented below.
+        /// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+        /// Structure is documented below.
         /// </summary>
         [Input("script")]
         public Input<Inputs.StandardAppVersionHandlerScriptArgs>? Script { get; set; }
 
         /// <summary>
         /// Security (HTTPS) enforcement for this URL.
+        /// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
         /// <summary>
-        /// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+        /// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+        /// Structure is documented below.
         /// </summary>
         [Input("staticFiles")]
         public Input<Inputs.StandardAppVersionHandlerStaticFilesArgs>? StaticFiles { get; set; }

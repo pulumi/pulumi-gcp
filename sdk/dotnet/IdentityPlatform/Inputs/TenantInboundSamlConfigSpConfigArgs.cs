@@ -23,7 +23,8 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
 
         /// <summary>
         /// -
-        /// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+        /// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.TenantInboundSamlConfigSpConfigSpCertificateArgs> SpCertificates
         {

@@ -51,7 +51,8 @@ type Disk struct {
 	// the disk.
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
-	// you do not need to provide a key to use the disk later.  Structure is documented below.
+	// you do not need to provide a key to use the disk later.
+	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
 	// The image from which to initialize this disk. This can be
 	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
@@ -113,7 +114,8 @@ type Disk struct {
 	// * `snapshot`
 	Snapshot pulumi.StringPtrOutput `pulumi:"snapshot"`
 	// The customer-supplied encryption key of the source image. Required if
-	// the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
 	SourceImageEncryptionKey DiskSourceImageEncryptionKeyPtrOutput `pulumi:"sourceImageEncryptionKey"`
 	// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
 	// persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
@@ -121,7 +123,8 @@ type Disk struct {
 	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceSnapshotEncryptionKey DiskSourceSnapshotEncryptionKeyPtrOutput `pulumi:"sourceSnapshotEncryptionKey"`
 	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
 	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
@@ -177,7 +180,8 @@ type diskState struct {
 	// the disk.
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
-	// you do not need to provide a key to use the disk later.  Structure is documented below.
+	// you do not need to provide a key to use the disk later.
+	// Structure is documented below.
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
 	// The image from which to initialize this disk. This can be
 	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
@@ -239,7 +243,8 @@ type diskState struct {
 	// * `snapshot`
 	Snapshot *string `pulumi:"snapshot"`
 	// The customer-supplied encryption key of the source image. Required if
-	// the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
 	SourceImageEncryptionKey *DiskSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKey"`
 	// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
 	// persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
@@ -247,7 +252,8 @@ type diskState struct {
 	SourceImageId *string `pulumi:"sourceImageId"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceSnapshotEncryptionKey *DiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
 	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
 	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
@@ -276,7 +282,8 @@ type DiskState struct {
 	// the disk.
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
-	// you do not need to provide a key to use the disk later.  Structure is documented below.
+	// you do not need to provide a key to use the disk later.
+	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
 	// The image from which to initialize this disk. This can be
 	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
@@ -338,7 +345,8 @@ type DiskState struct {
 	// * `snapshot`
 	Snapshot pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source image. Required if
-	// the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
 	SourceImageEncryptionKey DiskSourceImageEncryptionKeyPtrInput
 	// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
 	// persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
@@ -346,7 +354,8 @@ type DiskState struct {
 	SourceImageId pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceSnapshotEncryptionKey DiskSourceSnapshotEncryptionKeyPtrInput
 	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
 	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
@@ -377,7 +386,8 @@ type diskArgs struct {
 	// the disk.
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
-	// you do not need to provide a key to use the disk later.  Structure is documented below.
+	// you do not need to provide a key to use the disk later.
+	// Structure is documented below.
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
 	// The image from which to initialize this disk. This can be
 	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
@@ -431,11 +441,13 @@ type diskArgs struct {
 	// * `snapshot`
 	Snapshot *string `pulumi:"snapshot"`
 	// The customer-supplied encryption key of the source image. Required if
-	// the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
 	SourceImageEncryptionKey *DiskSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKey"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceSnapshotEncryptionKey *DiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
@@ -457,7 +469,8 @@ type DiskArgs struct {
 	// the disk.
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
-	// you do not need to provide a key to use the disk later.  Structure is documented below.
+	// you do not need to provide a key to use the disk later.
+	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
 	// The image from which to initialize this disk. This can be
 	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
@@ -511,11 +524,13 @@ type DiskArgs struct {
 	// * `snapshot`
 	Snapshot pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source image. Required if
-	// the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+	// the source image is protected by a customer-supplied encryption key.
+	// Structure is documented below.
 	SourceImageEncryptionKey DiskSourceImageEncryptionKeyPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceSnapshotEncryptionKey DiskSourceSnapshotEncryptionKeyPtrInput
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.

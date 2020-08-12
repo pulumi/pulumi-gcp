@@ -23,7 +23,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
     public partial class Attestor : Pulumi.CustomResource
     {
         /// <summary>
-        /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
+        /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        /// Structure is documented below.
         /// </summary>
         [Output("attestationAuthorityNote")]
         public Output<Outputs.AttestorAttestationAuthorityNote> AttestationAuthorityNote { get; private set; } = null!;
@@ -95,7 +96,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
     public sealed class AttestorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
+        /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        /// Structure is documented below.
         /// </summary>
         [Input("attestationAuthorityNote", required: true)]
         public Input<Inputs.AttestorAttestationAuthorityNoteArgs> AttestationAuthorityNote { get; set; } = null!;
@@ -128,7 +130,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
     public sealed class AttestorState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.  Structure is documented below.
+        /// A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
+        /// Structure is documented below.
         /// </summary>
         [Input("attestationAuthorityNote")]
         public Input<Inputs.AttestorAttestationAuthorityNoteGetArgs>? AttestationAuthorityNote { get; set; }

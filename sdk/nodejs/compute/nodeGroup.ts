@@ -53,7 +53,8 @@ export class NodeGroup extends pulumi.CustomResource {
     /**
      * -
      * If you use sole-tenant nodes for your workloads, you can use the node
-     * group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+     * group autoscaler to automatically manage the sizes of your node groups.
+     * Structure is documented below.
      */
     public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.NodeGroupAutoscalingPolicy>;
     /**
@@ -147,7 +148,8 @@ export interface NodeGroupState {
     /**
      * -
      * If you use sole-tenant nodes for your workloads, you can use the node
-     * group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+     * group autoscaler to automatically manage the sizes of your node groups.
+     * Structure is documented below.
      */
     readonly autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
     /**
@@ -192,7 +194,8 @@ export interface NodeGroupArgs {
     /**
      * -
      * If you use sole-tenant nodes for your workloads, you can use the node
-     * group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+     * group autoscaler to automatically manage the sizes of your node groups.
+     * Structure is documented below.
      */
     readonly autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
     /**

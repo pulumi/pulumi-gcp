@@ -329,6 +329,8 @@ func (o DomainMappingMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
 
 type DomainMappingSpec struct {
 	// The mode of the certificate.
+	// Default value is `AUTOMATIC`.
+	// Possible values are `NONE` and `AUTOMATIC`.
 	CertificateMode *string `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set.
 	// It is recommended that the user leaves this empty to receive an error
@@ -353,6 +355,8 @@ type DomainMappingSpecInput interface {
 
 type DomainMappingSpecArgs struct {
 	// The mode of the certificate.
+	// Default value is `AUTOMATIC`.
+	// Possible values are `NONE` and `AUTOMATIC`.
 	CertificateMode pulumi.StringPtrInput `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set.
 	// It is recommended that the user leaves this empty to receive an error
@@ -442,6 +446,8 @@ func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutputWithContext(ctx con
 }
 
 // The mode of the certificate.
+// Default value is `AUTOMATIC`.
+// Possible values are `NONE` and `AUTOMATIC`.
 func (o DomainMappingSpecOutput) CertificateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingSpec) *string { return v.CertificateMode }).(pulumi.StringPtrOutput)
 }
@@ -479,6 +485,8 @@ func (o DomainMappingSpecPtrOutput) Elem() DomainMappingSpecOutput {
 }
 
 // The mode of the certificate.
+// Default value is `AUTOMATIC`.
+// Possible values are `NONE` and `AUTOMATIC`.
 func (o DomainMappingSpecPtrOutput) CertificateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainMappingSpec) *string {
 		if v == nil {
@@ -1833,9 +1841,11 @@ func (o ServiceStatusConditionArrayOutput) Index(i pulumi.IntInput) ServiceStatu
 
 type ServiceTemplate struct {
 	// Metadata associated with this Service, including name, namespace, labels,
-	// and annotations.  Structure is documented below.
+	// and annotations.
+	// Structure is documented below.
 	Metadata *ServiceTemplateMetadata `pulumi:"metadata"`
-	// RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+	// RevisionSpec holds the desired state of the Revision (from the client).
+	// Structure is documented below.
 	Spec *ServiceTemplateSpec `pulumi:"spec"`
 }
 
@@ -1852,9 +1862,11 @@ type ServiceTemplateInput interface {
 
 type ServiceTemplateArgs struct {
 	// Metadata associated with this Service, including name, namespace, labels,
-	// and annotations.  Structure is documented below.
+	// and annotations.
+	// Structure is documented below.
 	Metadata ServiceTemplateMetadataPtrInput `pulumi:"metadata"`
-	// RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+	// RevisionSpec holds the desired state of the Revision (from the client).
+	// Structure is documented below.
 	Spec ServiceTemplateSpecPtrInput `pulumi:"spec"`
 }
 
@@ -1936,12 +1948,14 @@ func (o ServiceTemplateOutput) ToServiceTemplatePtrOutputWithContext(ctx context
 }
 
 // Metadata associated with this Service, including name, namespace, labels,
-// and annotations.  Structure is documented below.
+// and annotations.
+// Structure is documented below.
 func (o ServiceTemplateOutput) Metadata() ServiceTemplateMetadataPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateMetadata { return v.Metadata }).(ServiceTemplateMetadataPtrOutput)
 }
 
-// RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+// RevisionSpec holds the desired state of the Revision (from the client).
+// Structure is documented below.
 func (o ServiceTemplateOutput) Spec() ServiceTemplateSpecPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateSpec { return v.Spec }).(ServiceTemplateSpecPtrOutput)
 }
@@ -1965,7 +1979,8 @@ func (o ServiceTemplatePtrOutput) Elem() ServiceTemplateOutput {
 }
 
 // Metadata associated with this Service, including name, namespace, labels,
-// and annotations.  Structure is documented below.
+// and annotations.
+// Structure is documented below.
 func (o ServiceTemplatePtrOutput) Metadata() ServiceTemplateMetadataPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplate) *ServiceTemplateMetadata {
 		if v == nil {
@@ -1975,7 +1990,8 @@ func (o ServiceTemplatePtrOutput) Metadata() ServiceTemplateMetadataPtrOutput {
 	}).(ServiceTemplateMetadataPtrOutput)
 }
 
-// RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+// RevisionSpec holds the desired state of the Revision (from the client).
+// Structure is documented below.
 func (o ServiceTemplatePtrOutput) Spec() ServiceTemplateSpecPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplate) *ServiceTemplateSpec {
 		if v == nil {
@@ -2333,7 +2349,8 @@ type ServiceTemplateSpec struct {
 	// In the context of a Revision, we disallow a number of the fields of
 	// this Container, including: name, ports, and volumeMounts.
 	// The runtime contract is documented here:
-	// https://github.com/knative/serving/blob/master/docs/runtime-contract.md  Structure is documented below.
+	// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+	// Structure is documented below.
 	Containers []ServiceTemplateSpecContainer `pulumi:"containers"`
 	// Email address of the IAM service account associated with the revision of the
 	// service. The service account represents the identity of the running revision,
@@ -2375,7 +2392,8 @@ type ServiceTemplateSpecArgs struct {
 	// In the context of a Revision, we disallow a number of the fields of
 	// this Container, including: name, ports, and volumeMounts.
 	// The runtime contract is documented here:
-	// https://github.com/knative/serving/blob/master/docs/runtime-contract.md  Structure is documented below.
+	// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+	// Structure is documented below.
 	Containers ServiceTemplateSpecContainerArrayInput `pulumi:"containers"`
 	// Email address of the IAM service account associated with the revision of the
 	// service. The service account represents the identity of the running revision,
@@ -2485,7 +2503,8 @@ func (o ServiceTemplateSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 // In the context of a Revision, we disallow a number of the fields of
 // this Container, including: name, ports, and volumeMounts.
 // The runtime contract is documented here:
-// https://github.com/knative/serving/blob/master/docs/runtime-contract.md  Structure is documented below.
+// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+// Structure is documented below.
 func (o ServiceTemplateSpecOutput) Containers() ServiceTemplateSpecContainerArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) []ServiceTemplateSpecContainer { return v.Containers }).(ServiceTemplateSpecContainerArrayOutput)
 }
@@ -2551,7 +2570,8 @@ func (o ServiceTemplateSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput
 // In the context of a Revision, we disallow a number of the fields of
 // this Container, including: name, ports, and volumeMounts.
 // The runtime contract is documented here:
-// https://github.com/knative/serving/blob/master/docs/runtime-contract.md  Structure is documented below.
+// https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+// Structure is documented below.
 func (o ServiceTemplateSpecPtrOutput) Containers() ServiceTemplateSpecContainerArrayOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpec) []ServiceTemplateSpecContainer {
 		if v == nil {
@@ -2627,11 +2647,13 @@ type ServiceTemplateSpecContainer struct {
 	// All invalid keys will be reported as an event when the container is starting.
 	// When a key exists in multiple sources, the value associated with the last source will
 	// take precedence. Values defined by an Env with a duplicate key will take
-	// precedence.  Structure is documented below.
+	// precedence.
+	// Structure is documented below.
 	//
 	// Deprecated: Not supported by Cloud Run fully managed
 	EnvFroms []ServiceTemplateSpecContainerEnvFrom `pulumi:"envFroms"`
-	// List of environment variables to set in the container.  Structure is documented below.
+	// List of environment variables to set in the container.
+	// Structure is documented below.
 	Envs []ServiceTemplateSpecContainerEnv `pulumi:"envs"`
 	// Docker image name. This is most often a reference to a container located
 	// in the container registry, such as gcr.io/cloudrun/hello
@@ -2639,11 +2661,13 @@ type ServiceTemplateSpecContainer struct {
 	Image string `pulumi:"image"`
 	// List of open ports in the container.
 	// More Info:
-	// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+	// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
+	// Structure is documented below.
 	Ports []ServiceTemplateSpecContainerPort `pulumi:"ports"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	// More info:
-	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Structure is documented below.
 	Resources *ServiceTemplateSpecContainerResources `pulumi:"resources"`
 	// -
 	// (Optional, Deprecated)
@@ -2693,11 +2717,13 @@ type ServiceTemplateSpecContainerArgs struct {
 	// All invalid keys will be reported as an event when the container is starting.
 	// When a key exists in multiple sources, the value associated with the last source will
 	// take precedence. Values defined by an Env with a duplicate key will take
-	// precedence.  Structure is documented below.
+	// precedence.
+	// Structure is documented below.
 	//
 	// Deprecated: Not supported by Cloud Run fully managed
 	EnvFroms ServiceTemplateSpecContainerEnvFromArrayInput `pulumi:"envFroms"`
-	// List of environment variables to set in the container.  Structure is documented below.
+	// List of environment variables to set in the container.
+	// Structure is documented below.
 	Envs ServiceTemplateSpecContainerEnvArrayInput `pulumi:"envs"`
 	// Docker image name. This is most often a reference to a container located
 	// in the container registry, such as gcr.io/cloudrun/hello
@@ -2705,11 +2731,13 @@ type ServiceTemplateSpecContainerArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// List of open ports in the container.
 	// More Info:
-	// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+	// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
+	// Structure is documented below.
 	Ports ServiceTemplateSpecContainerPortArrayInput `pulumi:"ports"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	// More info:
-	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+	// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Structure is documented below.
 	Resources ServiceTemplateSpecContainerResourcesPtrInput `pulumi:"resources"`
 	// -
 	// (Optional, Deprecated)
@@ -2804,14 +2832,16 @@ func (o ServiceTemplateSpecContainerOutput) Commands() pulumi.StringArrayOutput 
 // All invalid keys will be reported as an event when the container is starting.
 // When a key exists in multiple sources, the value associated with the last source will
 // take precedence. Values defined by an Env with a duplicate key will take
-// precedence.  Structure is documented below.
+// precedence.
+// Structure is documented below.
 //
 // Deprecated: Not supported by Cloud Run fully managed
 func (o ServiceTemplateSpecContainerOutput) EnvFroms() ServiceTemplateSpecContainerEnvFromArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerEnvFrom { return v.EnvFroms }).(ServiceTemplateSpecContainerEnvFromArrayOutput)
 }
 
-// List of environment variables to set in the container.  Structure is documented below.
+// List of environment variables to set in the container.
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerOutput) Envs() ServiceTemplateSpecContainerEnvArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerEnv { return v.Envs }).(ServiceTemplateSpecContainerEnvArrayOutput)
 }
@@ -2825,14 +2855,16 @@ func (o ServiceTemplateSpecContainerOutput) Image() pulumi.StringOutput {
 
 // List of open ports in the container.
 // More Info:
-// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerOutput) Ports() ServiceTemplateSpecContainerPortArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerPort { return v.Ports }).(ServiceTemplateSpecContainerPortArrayOutput)
 }
 
 // Compute Resources required by this container. Used to set values such as max memory
 // More info:
-// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerOutput) Resources() ServiceTemplateSpecContainerResourcesPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerResources { return v.Resources }).(ServiceTemplateSpecContainerResourcesPtrOutput)
 }
@@ -2996,11 +3028,13 @@ func (o ServiceTemplateSpecContainerEnvArrayOutput) Index(i pulumi.IntInput) Ser
 }
 
 type ServiceTemplateSpecContainerEnvFrom struct {
-	// The ConfigMap to select from.  Structure is documented below.
+	// The ConfigMap to select from.
+	// Structure is documented below.
 	ConfigMapRef *ServiceTemplateSpecContainerEnvFromConfigMapRef `pulumi:"configMapRef"`
 	// An optional identifier to prepend to each key in the ConfigMap.
 	Prefix *string `pulumi:"prefix"`
-	// The Secret to select from.  Structure is documented below.
+	// The Secret to select from.
+	// Structure is documented below.
 	SecretRef *ServiceTemplateSpecContainerEnvFromSecretRef `pulumi:"secretRef"`
 }
 
@@ -3016,11 +3050,13 @@ type ServiceTemplateSpecContainerEnvFromInput interface {
 }
 
 type ServiceTemplateSpecContainerEnvFromArgs struct {
-	// The ConfigMap to select from.  Structure is documented below.
+	// The ConfigMap to select from.
+	// Structure is documented below.
 	ConfigMapRef ServiceTemplateSpecContainerEnvFromConfigMapRefPtrInput `pulumi:"configMapRef"`
 	// An optional identifier to prepend to each key in the ConfigMap.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The Secret to select from.  Structure is documented below.
+	// The Secret to select from.
+	// Structure is documented below.
 	SecretRef ServiceTemplateSpecContainerEnvFromSecretRefPtrInput `pulumi:"secretRef"`
 }
 
@@ -3075,7 +3111,8 @@ func (o ServiceTemplateSpecContainerEnvFromOutput) ToServiceTemplateSpecContaine
 	return o
 }
 
-// The ConfigMap to select from.  Structure is documented below.
+// The ConfigMap to select from.
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerEnvFromOutput) ConfigMapRef() ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFrom) *ServiceTemplateSpecContainerEnvFromConfigMapRef {
 		return v.ConfigMapRef
@@ -3087,7 +3124,8 @@ func (o ServiceTemplateSpecContainerEnvFromOutput) Prefix() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFrom) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The Secret to select from.  Structure is documented below.
+// The Secret to select from.
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerEnvFromOutput) SecretRef() ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFrom) *ServiceTemplateSpecContainerEnvFromSecretRef {
 		return v.SecretRef
@@ -3115,7 +3153,8 @@ func (o ServiceTemplateSpecContainerEnvFromArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ServiceTemplateSpecContainerEnvFromConfigMapRef struct {
-	// The Secret to select from.  Structure is documented below.
+	// The Secret to select from.
+	// Structure is documented below.
 	LocalObjectReference *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference `pulumi:"localObjectReference"`
 	// Specify whether the Secret must be defined
 	Optional *bool `pulumi:"optional"`
@@ -3133,7 +3172,8 @@ type ServiceTemplateSpecContainerEnvFromConfigMapRefInput interface {
 }
 
 type ServiceTemplateSpecContainerEnvFromConfigMapRefArgs struct {
-	// The Secret to select from.  Structure is documented below.
+	// The Secret to select from.
+	// Structure is documented below.
 	LocalObjectReference ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrInput `pulumi:"localObjectReference"`
 	// Specify whether the Secret must be defined
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
@@ -3216,7 +3256,8 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefOutput) ToServiceTemplate
 	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput)
 }
 
-// The Secret to select from.  Structure is documented below.
+// The Secret to select from.
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefOutput) LocalObjectReference() ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromConfigMapRef) *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
 		return v.LocalObjectReference
@@ -3248,7 +3289,8 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput) Elem() Service
 	}).(ServiceTemplateSpecContainerEnvFromConfigMapRefOutput)
 }
 
-// The Secret to select from.  Structure is documented below.
+// The Secret to select from.
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerEnvFromConfigMapRefPtrOutput) LocalObjectReference() ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromConfigMapRef) *ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
 		if v == nil {
@@ -3402,7 +3444,8 @@ func (o ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferencePtrOu
 }
 
 type ServiceTemplateSpecContainerEnvFromSecretRef struct {
-	// The Secret to select from.  Structure is documented below.
+	// The Secret to select from.
+	// Structure is documented below.
 	LocalObjectReference *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference `pulumi:"localObjectReference"`
 	// Specify whether the Secret must be defined
 	Optional *bool `pulumi:"optional"`
@@ -3420,7 +3463,8 @@ type ServiceTemplateSpecContainerEnvFromSecretRefInput interface {
 }
 
 type ServiceTemplateSpecContainerEnvFromSecretRefArgs struct {
-	// The Secret to select from.  Structure is documented below.
+	// The Secret to select from.
+	// Structure is documented below.
 	LocalObjectReference ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrInput `pulumi:"localObjectReference"`
 	// Specify whether the Secret must be defined
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
@@ -3503,7 +3547,8 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefOutput) ToServiceTemplateSpe
 	}).(ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput)
 }
 
-// The Secret to select from.  Structure is documented below.
+// The Secret to select from.
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerEnvFromSecretRefOutput) LocalObjectReference() ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerEnvFromSecretRef) *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
 		return v.LocalObjectReference
@@ -3535,7 +3580,8 @@ func (o ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput) Elem() ServiceTem
 	}).(ServiceTemplateSpecContainerEnvFromSecretRefOutput)
 }
 
-// The Secret to select from.  Structure is documented below.
+// The Secret to select from.
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerEnvFromSecretRefPtrOutput) LocalObjectReference() ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferencePtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerEnvFromSecretRef) *ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
 		if v == nil {

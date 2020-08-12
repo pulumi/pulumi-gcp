@@ -23,6 +23,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         public readonly string Key;
         /// <summary>
         /// The type of data that can be assigned to the label.
+        /// Default value is `STRING`.
+        /// Possible values are `STRING`, `BOOL`, and `INT64`.
         /// </summary>
         public readonly string? ValueType;
 

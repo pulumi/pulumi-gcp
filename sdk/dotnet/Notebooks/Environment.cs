@@ -12,7 +12,8 @@ namespace Pulumi.Gcp.Notebooks
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>
-        /// Use a container image to start the notebook instance.  Structure is documented below.
+        /// Use a container image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("containerImage")]
         public Output<Outputs.EnvironmentContainerImage?> ContainerImage { get; private set; } = null!;
@@ -63,7 +64,8 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+        /// Use a Compute Engine VM image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("vmImage")]
         public Output<Outputs.EnvironmentVmImage?> VmImage { get; private set; } = null!;
@@ -115,7 +117,8 @@ namespace Pulumi.Gcp.Notebooks
     public sealed class EnvironmentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use a container image to start the notebook instance.  Structure is documented below.
+        /// Use a container image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("containerImage")]
         public Input<Inputs.EnvironmentContainerImageArgs>? ContainerImage { get; set; }
@@ -160,7 +163,8 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+        /// Use a Compute Engine VM image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("vmImage")]
         public Input<Inputs.EnvironmentVmImageArgs>? VmImage { get; set; }
@@ -173,7 +177,8 @@ namespace Pulumi.Gcp.Notebooks
     public sealed class EnvironmentState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use a container image to start the notebook instance.  Structure is documented below.
+        /// Use a container image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("containerImage")]
         public Input<Inputs.EnvironmentContainerImageGetArgs>? ContainerImage { get; set; }
@@ -224,7 +229,8 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+        /// Use a Compute Engine VM image to start the notebook instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("vmImage")]
         public Input<Inputs.EnvironmentVmImageGetArgs>? VmImage { get; set; }

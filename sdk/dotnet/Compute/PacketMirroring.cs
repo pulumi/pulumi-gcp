@@ -28,7 +28,8 @@ namespace Pulumi.Gcp.Compute
         /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
         /// that will be used as collector for mirrored traffic. The
         /// specified forwarding rule must have is_mirroring_collector
-        /// set to true.  Structure is documented below.
+        /// set to true.
+        /// Structure is documented below.
         /// </summary>
         [Output("collectorIlb")]
         public Output<Outputs.PacketMirroringCollectorIlb> CollectorIlb { get; private set; } = null!;
@@ -40,13 +41,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
+        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
+        /// Structure is documented below.
         /// </summary>
         [Output("filter")]
         public Output<Outputs.PacketMirroringFilter?> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// A means of specifying which resources to mirror.  Structure is documented below.
+        /// A means of specifying which resources to mirror.
+        /// Structure is documented below.
         /// </summary>
         [Output("mirroredResources")]
         public Output<Outputs.PacketMirroringMirroredResources> MirroredResources { get; private set; } = null!;
@@ -60,7 +63,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies the mirrored VPC network. Only packets in this network
         /// will be mirrored. All mirrored VMs should have a NIC in the given
-        /// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+        /// network. All mirrored subnetworks should belong to the given network.
+        /// Structure is documented below.
         /// </summary>
         [Output("network")]
         public Output<Outputs.PacketMirroringNetwork> Network { get; private set; } = null!;
@@ -137,7 +141,8 @@ namespace Pulumi.Gcp.Compute
         /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
         /// that will be used as collector for mirrored traffic. The
         /// specified forwarding rule must have is_mirroring_collector
-        /// set to true.  Structure is documented below.
+        /// set to true.
+        /// Structure is documented below.
         /// </summary>
         [Input("collectorIlb", required: true)]
         public Input<Inputs.PacketMirroringCollectorIlbArgs> CollectorIlb { get; set; } = null!;
@@ -149,13 +154,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
+        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
+        /// Structure is documented below.
         /// </summary>
         [Input("filter")]
         public Input<Inputs.PacketMirroringFilterArgs>? Filter { get; set; }
 
         /// <summary>
-        /// A means of specifying which resources to mirror.  Structure is documented below.
+        /// A means of specifying which resources to mirror.
+        /// Structure is documented below.
         /// </summary>
         [Input("mirroredResources", required: true)]
         public Input<Inputs.PacketMirroringMirroredResourcesArgs> MirroredResources { get; set; } = null!;
@@ -169,7 +176,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies the mirrored VPC network. Only packets in this network
         /// will be mirrored. All mirrored VMs should have a NIC in the given
-        /// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+        /// network. All mirrored subnetworks should belong to the given network.
+        /// Structure is documented below.
         /// </summary>
         [Input("network", required: true)]
         public Input<Inputs.PacketMirroringNetworkArgs> Network { get; set; } = null!;
@@ -207,7 +215,8 @@ namespace Pulumi.Gcp.Compute
         /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
         /// that will be used as collector for mirrored traffic. The
         /// specified forwarding rule must have is_mirroring_collector
-        /// set to true.  Structure is documented below.
+        /// set to true.
+        /// Structure is documented below.
         /// </summary>
         [Input("collectorIlb")]
         public Input<Inputs.PacketMirroringCollectorIlbGetArgs>? CollectorIlb { get; set; }
@@ -219,13 +228,15 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
+        /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
+        /// Structure is documented below.
         /// </summary>
         [Input("filter")]
         public Input<Inputs.PacketMirroringFilterGetArgs>? Filter { get; set; }
 
         /// <summary>
-        /// A means of specifying which resources to mirror.  Structure is documented below.
+        /// A means of specifying which resources to mirror.
+        /// Structure is documented below.
         /// </summary>
         [Input("mirroredResources")]
         public Input<Inputs.PacketMirroringMirroredResourcesGetArgs>? MirroredResources { get; set; }
@@ -239,7 +250,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies the mirrored VPC network. Only packets in this network
         /// will be mirrored. All mirrored VMs should have a NIC in the given
-        /// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+        /// network. All mirrored subnetworks should belong to the given network.
+        /// Structure is documented below.
         /// </summary>
         [Input("network")]
         public Input<Inputs.PacketMirroringNetworkGetArgs>? Network { get; set; }

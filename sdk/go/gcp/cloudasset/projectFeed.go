@@ -39,10 +39,12 @@ type ProjectFeed struct {
 	// project will be used.
 	BillingProject pulumi.StringPtrOutput `pulumi:"billingProject"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringOutput `pulumi:"feedId"`
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig ProjectFeedFeedOutputConfigOutput `pulumi:"feedOutputConfig"`
 	// The format will be projects/{projectNumber}/feeds/{client-assigned_feed_identifier}.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -102,10 +104,12 @@ type projectFeedState struct {
 	// project will be used.
 	BillingProject *string `pulumi:"billingProject"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId *string `pulumi:"feedId"`
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig *ProjectFeedFeedOutputConfig `pulumi:"feedOutputConfig"`
 	// The format will be projects/{projectNumber}/feeds/{client-assigned_feed_identifier}.
 	Name *string `pulumi:"name"`
@@ -132,10 +136,12 @@ type ProjectFeedState struct {
 	// project will be used.
 	BillingProject pulumi.StringPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringPtrInput
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig ProjectFeedFeedOutputConfigPtrInput
 	// The format will be projects/{projectNumber}/feeds/{client-assigned_feed_identifier}.
 	Name pulumi.StringPtrInput
@@ -166,10 +172,12 @@ type projectFeedArgs struct {
 	// project will be used.
 	BillingProject *string `pulumi:"billingProject"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId string `pulumi:"feedId"`
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig ProjectFeedFeedOutputConfig `pulumi:"feedOutputConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -195,10 +203,12 @@ type ProjectFeedArgs struct {
 	// project will be used.
 	BillingProject pulumi.StringPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringInput
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig ProjectFeedFeedOutputConfigInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

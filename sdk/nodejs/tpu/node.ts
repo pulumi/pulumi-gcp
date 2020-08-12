@@ -90,7 +90,8 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Sets the scheduling options for this TPU instance.  Structure is documented below.
+     * Sets the scheduling options for this TPU instance.
+     * Structure is documented below.
      */
     public readonly schedulingConfig!: pulumi.Output<outputs.tpu.NodeSchedulingConfig | undefined>;
     /**
@@ -218,7 +219,8 @@ export interface NodeState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Sets the scheduling options for this TPU instance.  Structure is documented below.
+     * Sets the scheduling options for this TPU instance.
+     * Structure is documented below.
      */
     readonly schedulingConfig?: pulumi.Input<inputs.tpu.NodeSchedulingConfig>;
     /**
@@ -280,7 +282,8 @@ export interface NodeArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Sets the scheduling options for this TPU instance.  Structure is documented below.
+     * Sets the scheduling options for this TPU instance.
+     * Structure is documented below.
      */
     readonly schedulingConfig?: pulumi.Input<inputs.tpu.NodeSchedulingConfig>;
     /**

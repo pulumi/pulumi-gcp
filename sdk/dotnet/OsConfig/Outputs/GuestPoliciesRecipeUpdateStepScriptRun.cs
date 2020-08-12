@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// <summary>
         /// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
         /// which likely only succeed for scripts with shebang lines.
+        /// Possible values are `SHELL` and `POWERSHELL`.
         /// </summary>
         public readonly string? Interpreter;
         /// <summary>

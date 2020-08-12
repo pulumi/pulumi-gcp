@@ -41,6 +41,8 @@ class TargetInstance(pulumi.CustomResource):
     """
     NAT option controlling how IPs are NAT'ed to the instance.
     Currently only NO_NAT (default value) is supported.
+    Default value is `NO_NAT`.
+    Possible values are `NO_NAT`.
     """
     project: pulumi.Output[str]
     """
@@ -90,6 +92,8 @@ class TargetInstance(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] nat_policy: NAT option controlling how IPs are NAT'ed to the instance.
                Currently only NO_NAT (default value) is supported.
+               Default value is `NO_NAT`.
+               Possible values are `NO_NAT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
@@ -153,6 +157,8 @@ class TargetInstance(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] nat_policy: NAT option controlling how IPs are NAT'ed to the instance.
                Currently only NO_NAT (default value) is supported.
+               Default value is `NO_NAT`.
+               Possible values are `NO_NAT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.

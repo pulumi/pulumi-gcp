@@ -44,7 +44,8 @@ class AppProfile(pulumi.CustomResource):
     """
     single_cluster_routing: pulumi.Output[dict]
     """
-    Use a single-cluster routing policy.  Structure is documented below.
+    Use a single-cluster routing policy.
+    Structure is documented below.
 
       * `allowTransactionalWrites` (`bool`) - If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
         It is unsafe to send these requests to the same table/row/column in multiple clusters.
@@ -67,7 +68,8 @@ class AppProfile(pulumi.CustomResource):
                consistency to improve availability.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] single_cluster_routing: Use a single-cluster routing policy.  Structure is documented below.
+        :param pulumi.Input[dict] single_cluster_routing: Use a single-cluster routing policy.
+               Structure is documented below.
 
         The **single_cluster_routing** object supports the following:
 
@@ -128,7 +130,8 @@ class AppProfile(pulumi.CustomResource):
                'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] single_cluster_routing: Use a single-cluster routing policy.  Structure is documented below.
+        :param pulumi.Input[dict] single_cluster_routing: Use a single-cluster routing policy.
+               Structure is documented below.
 
         The **single_cluster_routing** object supports the following:
 

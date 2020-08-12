@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the value of the fixed delay interval.  Structure is documented below.
+        /// Specifies the value of the fixed delay interval.
+        /// Structure is documented below.
         /// </summary>
         [Input("fixedDelay")]
         public Input<Inputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs>? FixedDelay { get; set; }

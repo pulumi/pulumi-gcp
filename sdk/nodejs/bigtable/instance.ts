@@ -42,7 +42,8 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+     * A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+     * See structure below.
      */
     public readonly clusters!: pulumi.Output<outputs.bigtable.InstanceCluster[]>;
     /**
@@ -58,6 +59,10 @@ export class Instance extends pulumi.CustomResource {
      * The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
      */
     public readonly instanceType!: pulumi.Output<string | undefined>;
+    /**
+     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
      */
@@ -84,6 +89,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["instanceType"] = state ? state.instanceType : undefined;
+            inputs["labels"] = state ? state.labels : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
         } else {
@@ -92,6 +98,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["instanceType"] = args ? args.instanceType : undefined;
+            inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
@@ -111,7 +118,8 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+     * A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+     * See structure below.
      */
     readonly clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
@@ -127,6 +135,10 @@ export interface InstanceState {
      * The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
      */
     readonly instanceType?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
      */
@@ -143,7 +155,8 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+     * A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+     * See structure below.
      */
     readonly clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
@@ -159,6 +172,10 @@ export interface InstanceArgs {
      * The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
      */
     readonly instanceType?: pulumi.Input<string>;
+    /**
+     * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     */
+    readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
      */

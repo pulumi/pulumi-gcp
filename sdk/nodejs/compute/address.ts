@@ -65,6 +65,8 @@ export class Address extends pulumi.CustomResource {
     public readonly address!: pulumi.Output<string>;
     /**
      * The type of address to reserve.
+     * Default value is `EXTERNAL`.
+     * Possible values are `INTERNAL` and `EXTERNAL`.
      */
     public readonly addressType!: pulumi.Output<string | undefined>;
     /**
@@ -95,6 +97,7 @@ export class Address extends pulumi.CustomResource {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
+     * Possible values are `PREMIUM` and `STANDARD`.
      */
     public readonly networkTier!: pulumi.Output<string>;
     /**
@@ -107,6 +110,7 @@ export class Address extends pulumi.CustomResource {
      * - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
      * - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
      * This should only be set when using an Internal address.
+     * Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
      */
     public readonly purpose!: pulumi.Output<string>;
     /**
@@ -197,6 +201,8 @@ export interface AddressState {
     readonly address?: pulumi.Input<string>;
     /**
      * The type of address to reserve.
+     * Default value is `EXTERNAL`.
+     * Possible values are `INTERNAL` and `EXTERNAL`.
      */
     readonly addressType?: pulumi.Input<string>;
     /**
@@ -227,6 +233,7 @@ export interface AddressState {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
+     * Possible values are `PREMIUM` and `STANDARD`.
      */
     readonly networkTier?: pulumi.Input<string>;
     /**
@@ -239,6 +246,7 @@ export interface AddressState {
      * - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
      * - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
      * This should only be set when using an Internal address.
+     * Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
@@ -276,6 +284,8 @@ export interface AddressArgs {
     readonly address?: pulumi.Input<string>;
     /**
      * The type of address to reserve.
+     * Default value is `EXTERNAL`.
+     * Possible values are `INTERNAL` and `EXTERNAL`.
      */
     readonly addressType?: pulumi.Input<string>;
     /**
@@ -298,6 +308,7 @@ export interface AddressArgs {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
+     * Possible values are `PREMIUM` and `STANDARD`.
      */
     readonly networkTier?: pulumi.Input<string>;
     /**
@@ -310,6 +321,7 @@ export interface AddressArgs {
      * - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
      * - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
      * This should only be set when using an Internal address.
+     * Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
      */
     readonly purpose?: pulumi.Input<string>;
     /**

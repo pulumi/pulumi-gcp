@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// - ONLY_SCALE_OUT: Enables only scaling out.
         /// You must use this mode if your node groups are configured to
         /// restart their hosted VMs on minimal servers.
+        /// Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
         /// </summary>
         public readonly string? Mode;
 

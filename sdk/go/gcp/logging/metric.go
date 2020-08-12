@@ -25,7 +25,8 @@ type Metric struct {
 	pulumi.CustomResourceState
 
 	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-	// describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+	// describes the bucket boundaries used to create a histogram of the extracted values.
+	// Structure is documented below.
 	BucketOptions MetricBucketOptionsPtrOutput `pulumi:"bucketOptions"`
 	// A description of this metric, which is used in documentation. The maximum length of the
 	// description is 8000 characters.
@@ -38,7 +39,8 @@ type Metric struct {
 	// have an associated extractor expression in this map. The syntax of the extractor expression is
 	// the same as for the valueExtractor field.
 	LabelExtractors pulumi.StringMapOutput `pulumi:"labelExtractors"`
-	// The metric descriptor associated with the logs-based metric.  Structure is documented below.
+	// The metric descriptor associated with the logs-based metric.
+	// Structure is documented below.
 	MetricDescriptor MetricMetricDescriptorOutput `pulumi:"metricDescriptor"`
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
@@ -94,7 +96,8 @@ func GetMetric(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Metric resources.
 type metricState struct {
 	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-	// describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+	// describes the bucket boundaries used to create a histogram of the extracted values.
+	// Structure is documented below.
 	BucketOptions *MetricBucketOptions `pulumi:"bucketOptions"`
 	// A description of this metric, which is used in documentation. The maximum length of the
 	// description is 8000 characters.
@@ -107,7 +110,8 @@ type metricState struct {
 	// have an associated extractor expression in this map. The syntax of the extractor expression is
 	// the same as for the valueExtractor field.
 	LabelExtractors map[string]string `pulumi:"labelExtractors"`
-	// The metric descriptor associated with the logs-based metric.  Structure is documented below.
+	// The metric descriptor associated with the logs-based metric.
+	// Structure is documented below.
 	MetricDescriptor *MetricMetricDescriptor `pulumi:"metricDescriptor"`
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
@@ -130,7 +134,8 @@ type metricState struct {
 
 type MetricState struct {
 	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-	// describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+	// describes the bucket boundaries used to create a histogram of the extracted values.
+	// Structure is documented below.
 	BucketOptions MetricBucketOptionsPtrInput
 	// A description of this metric, which is used in documentation. The maximum length of the
 	// description is 8000 characters.
@@ -143,7 +148,8 @@ type MetricState struct {
 	// have an associated extractor expression in this map. The syntax of the extractor expression is
 	// the same as for the valueExtractor field.
 	LabelExtractors pulumi.StringMapInput
-	// The metric descriptor associated with the logs-based metric.  Structure is documented below.
+	// The metric descriptor associated with the logs-based metric.
+	// Structure is documented below.
 	MetricDescriptor MetricMetricDescriptorPtrInput
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
@@ -170,7 +176,8 @@ func (MetricState) ElementType() reflect.Type {
 
 type metricArgs struct {
 	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-	// describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+	// describes the bucket boundaries used to create a histogram of the extracted values.
+	// Structure is documented below.
 	BucketOptions *MetricBucketOptions `pulumi:"bucketOptions"`
 	// A description of this metric, which is used in documentation. The maximum length of the
 	// description is 8000 characters.
@@ -183,7 +190,8 @@ type metricArgs struct {
 	// have an associated extractor expression in this map. The syntax of the extractor expression is
 	// the same as for the valueExtractor field.
 	LabelExtractors map[string]string `pulumi:"labelExtractors"`
-	// The metric descriptor associated with the logs-based metric.  Structure is documented below.
+	// The metric descriptor associated with the logs-based metric.
+	// Structure is documented below.
 	MetricDescriptor MetricMetricDescriptor `pulumi:"metricDescriptor"`
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
@@ -207,7 +215,8 @@ type metricArgs struct {
 // The set of arguments for constructing a Metric resource.
 type MetricArgs struct {
 	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-	// describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+	// describes the bucket boundaries used to create a histogram of the extracted values.
+	// Structure is documented below.
 	BucketOptions MetricBucketOptionsPtrInput
 	// A description of this metric, which is used in documentation. The maximum length of the
 	// description is 8000 characters.
@@ -220,7 +229,8 @@ type MetricArgs struct {
 	// have an associated extractor expression in this map. The syntax of the extractor expression is
 	// the same as for the valueExtractor field.
 	LabelExtractors pulumi.StringMapInput
-	// The metric descriptor associated with the logs-based metric.  Structure is documented below.
+	// The metric descriptor associated with the logs-based metric.
+	// Structure is documented below.
 	MetricDescriptor MetricMetricDescriptorInput
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following

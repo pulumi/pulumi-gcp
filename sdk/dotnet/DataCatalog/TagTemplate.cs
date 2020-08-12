@@ -30,7 +30,8 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+        /// Structure is documented below.
         /// </summary>
         [Output("fields")]
         public Output<ImmutableArray<Outputs.TagTemplateField>> Fields { get; private set; } = null!;
@@ -123,7 +124,8 @@ namespace Pulumi.Gcp.DataCatalog
         private InputList<Inputs.TagTemplateFieldArgs>? _fields;
 
         /// <summary>
-        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.TagTemplateFieldArgs> Fields
         {
@@ -173,7 +175,8 @@ namespace Pulumi.Gcp.DataCatalog
         private InputList<Inputs.TagTemplateFieldGetArgs>? _fields;
 
         /// <summary>
-        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+        /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.TagTemplateFieldGetArgs> Fields
         {

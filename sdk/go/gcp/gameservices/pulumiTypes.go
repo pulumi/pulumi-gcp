@@ -11,7 +11,8 @@ import (
 )
 
 type GameServerClusterConnectionInfo struct {
-	// Reference of the GKE cluster where the game servers are installed.  Structure is documented below.
+	// Reference of the GKE cluster where the game servers are installed.
+	// Structure is documented below.
 	GkeClusterReference GameServerClusterConnectionInfoGkeClusterReference `pulumi:"gkeClusterReference"`
 	// Namespace designated on the game server cluster where the game server
 	// instances will be created. The namespace existence will be validated
@@ -31,7 +32,8 @@ type GameServerClusterConnectionInfoInput interface {
 }
 
 type GameServerClusterConnectionInfoArgs struct {
-	// Reference of the GKE cluster where the game servers are installed.  Structure is documented below.
+	// Reference of the GKE cluster where the game servers are installed.
+	// Structure is documented below.
 	GkeClusterReference GameServerClusterConnectionInfoGkeClusterReferenceInput `pulumi:"gkeClusterReference"`
 	// Namespace designated on the game server cluster where the game server
 	// instances will be created. The namespace existence will be validated
@@ -116,7 +118,8 @@ func (o GameServerClusterConnectionInfoOutput) ToGameServerClusterConnectionInfo
 	}).(GameServerClusterConnectionInfoPtrOutput)
 }
 
-// Reference of the GKE cluster where the game servers are installed.  Structure is documented below.
+// Reference of the GKE cluster where the game servers are installed.
+// Structure is documented below.
 func (o GameServerClusterConnectionInfoOutput) GkeClusterReference() GameServerClusterConnectionInfoGkeClusterReferenceOutput {
 	return o.ApplyT(func(v GameServerClusterConnectionInfo) GameServerClusterConnectionInfoGkeClusterReference {
 		return v.GkeClusterReference
@@ -148,7 +151,8 @@ func (o GameServerClusterConnectionInfoPtrOutput) Elem() GameServerClusterConnec
 	return o.ApplyT(func(v *GameServerClusterConnectionInfo) GameServerClusterConnectionInfo { return *v }).(GameServerClusterConnectionInfoOutput)
 }
 
-// Reference of the GKE cluster where the game servers are installed.  Structure is documented below.
+// Reference of the GKE cluster where the game servers are installed.
+// Structure is documented below.
 func (o GameServerClusterConnectionInfoPtrOutput) GkeClusterReference() GameServerClusterConnectionInfoGkeClusterReferencePtrOutput {
 	return o.ApplyT(func(v *GameServerClusterConnectionInfo) *GameServerClusterConnectionInfoGkeClusterReference {
 		if v == nil {
@@ -462,11 +466,13 @@ type GameServerConfigScalingConfig struct {
 	FleetAutoscalerSpec string `pulumi:"fleetAutoscalerSpec"`
 	// The name of the ScalingConfig
 	Name string `pulumi:"name"`
-	// The schedules to which this scaling config applies.  Structure is documented below.
+	// The schedules to which this scaling config applies.
+	// Structure is documented below.
 	Schedules []GameServerConfigScalingConfigSchedule `pulumi:"schedules"`
 	// Labels used to identify the clusters to which this scaling config
 	// applies. A cluster is subject to this scaling config if its labels match
-	// any of the selector entries.  Structure is documented below.
+	// any of the selector entries.
+	// Structure is documented below.
 	Selectors []GameServerConfigScalingConfigSelector `pulumi:"selectors"`
 }
 
@@ -488,11 +494,13 @@ type GameServerConfigScalingConfigArgs struct {
 	FleetAutoscalerSpec pulumi.StringInput `pulumi:"fleetAutoscalerSpec"`
 	// The name of the ScalingConfig
 	Name pulumi.StringInput `pulumi:"name"`
-	// The schedules to which this scaling config applies.  Structure is documented below.
+	// The schedules to which this scaling config applies.
+	// Structure is documented below.
 	Schedules GameServerConfigScalingConfigScheduleArrayInput `pulumi:"schedules"`
 	// Labels used to identify the clusters to which this scaling config
 	// applies. A cluster is subject to this scaling config if its labels match
-	// any of the selector entries.  Structure is documented below.
+	// any of the selector entries.
+	// Structure is documented below.
 	Selectors GameServerConfigScalingConfigSelectorArrayInput `pulumi:"selectors"`
 }
 
@@ -559,14 +567,16 @@ func (o GameServerConfigScalingConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GameServerConfigScalingConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The schedules to which this scaling config applies.  Structure is documented below.
+// The schedules to which this scaling config applies.
+// Structure is documented below.
 func (o GameServerConfigScalingConfigOutput) Schedules() GameServerConfigScalingConfigScheduleArrayOutput {
 	return o.ApplyT(func(v GameServerConfigScalingConfig) []GameServerConfigScalingConfigSchedule { return v.Schedules }).(GameServerConfigScalingConfigScheduleArrayOutput)
 }
 
 // Labels used to identify the clusters to which this scaling config
 // applies. A cluster is subject to this scaling config if its labels match
-// any of the selector entries.  Structure is documented below.
+// any of the selector entries.
+// Structure is documented below.
 func (o GameServerConfigScalingConfigOutput) Selectors() GameServerConfigScalingConfigSelectorArrayOutput {
 	return o.ApplyT(func(v GameServerConfigScalingConfig) []GameServerConfigScalingConfigSelector { return v.Selectors }).(GameServerConfigScalingConfigSelectorArrayOutput)
 }
@@ -833,7 +843,8 @@ func (o GameServerConfigScalingConfigSelectorArrayOutput) Index(i pulumi.IntInpu
 type GameServerDeploymentRolloutGameServerConfigOverride struct {
 	// Version of the configuration.
 	ConfigVersion *string `pulumi:"configVersion"`
-	// Selection by realms.  Structure is documented below.
+	// Selection by realms.
+	// Structure is documented below.
 	RealmsSelector *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector `pulumi:"realmsSelector"`
 }
 
@@ -851,7 +862,8 @@ type GameServerDeploymentRolloutGameServerConfigOverrideInput interface {
 type GameServerDeploymentRolloutGameServerConfigOverrideArgs struct {
 	// Version of the configuration.
 	ConfigVersion pulumi.StringPtrInput `pulumi:"configVersion"`
-	// Selection by realms.  Structure is documented below.
+	// Selection by realms.
+	// Structure is documented below.
 	RealmsSelector GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrInput `pulumi:"realmsSelector"`
 }
 
@@ -911,7 +923,8 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideOutput) ConfigVersion
 	return o.ApplyT(func(v GameServerDeploymentRolloutGameServerConfigOverride) *string { return v.ConfigVersion }).(pulumi.StringPtrOutput)
 }
 
-// Selection by realms.  Structure is documented below.
+// Selection by realms.
+// Structure is documented below.
 func (o GameServerDeploymentRolloutGameServerConfigOverrideOutput) RealmsSelector() GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutput {
 	return o.ApplyT(func(v GameServerDeploymentRolloutGameServerConfigOverride) *GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
 		return v.RealmsSelector

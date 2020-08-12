@@ -24,6 +24,9 @@ type LookupNetworkEndpointGroupArgs struct {
 	// The Network Endpoint Group name.
 	// Provide either this or a `selfLink`.
 	Name *string `pulumi:"name"`
+	// The ID of the project to list versions in.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// The Network Endpoint Group self\_link.
 	SelfLink *string `pulumi:"selfLink"`
 	// The Network Endpoint Group availability zone.
@@ -43,7 +46,7 @@ type LookupNetworkEndpointGroupResult struct {
 	Network string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
 	NetworkEndpointType string  `pulumi:"networkEndpointType"`
-	Project             string  `pulumi:"project"`
+	Project             *string `pulumi:"project"`
 	SelfLink            *string `pulumi:"selfLink"`
 	// Number of network endpoints in the network endpoint group.
 	Size int `pulumi:"size"`

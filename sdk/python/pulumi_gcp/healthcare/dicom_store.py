@@ -33,7 +33,8 @@ class DicomStore(pulumi.CustomResource):
     """
     notification_config: pulumi.Output[dict]
     """
-    A nested object resource  Structure is documented below.
+    A nested object resource
+    Structure is documented below.
 
       * `pubsubTopic` (`str`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -73,7 +74,8 @@ class DicomStore(pulumi.CustomResource):
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
-        :param pulumi.Input[dict] notification_config: A nested object resource  Structure is documented below.
+        :param pulumi.Input[dict] notification_config: A nested object resource
+               Structure is documented below.
 
         The **notification_config** object supports the following:
 
@@ -135,7 +137,8 @@ class DicomStore(pulumi.CustomResource):
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
-        :param pulumi.Input[dict] notification_config: A nested object resource  Structure is documented below.
+        :param pulumi.Input[dict] notification_config: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
 
         The **notification_config** object supports the following:

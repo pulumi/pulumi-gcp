@@ -55,7 +55,8 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly icmpIdleTimeoutSec!: pulumi.Output<number | undefined>;
     /**
-     * Configuration for logging on NAT  Structure is documented below.
+     * Configuration for logging on NAT
+     * Structure is documented below.
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.RouterNatLogConfig | undefined>;
     /**
@@ -70,6 +71,7 @@ export class RouterNat extends pulumi.CustomResource {
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
+     * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
      */
     public readonly natIpAllocateOption!: pulumi.Output<string>;
     /**
@@ -101,11 +103,13 @@ export class RouterNat extends pulumi.CustomResource {
      * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
      * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
      * other RouterNat section in any Router for this network in this region.
+     * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
      */
     public readonly sourceSubnetworkIpRangesToNat!: pulumi.Output<string>;
     /**
      * One or more subnetwork NAT configurations. Only used if
-     * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`  Structure is documented below.
+     * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
+     * Structure is documented below.
      */
     public readonly subnetworks!: pulumi.Output<outputs.compute.RouterNatSubnetwork[] | undefined>;
     /**
@@ -202,7 +206,8 @@ export interface RouterNatState {
      */
     readonly icmpIdleTimeoutSec?: pulumi.Input<number>;
     /**
-     * Configuration for logging on NAT  Structure is documented below.
+     * Configuration for logging on NAT
+     * Structure is documented below.
      */
     readonly logConfig?: pulumi.Input<inputs.compute.RouterNatLogConfig>;
     /**
@@ -217,6 +222,7 @@ export interface RouterNatState {
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
+     * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
      */
     readonly natIpAllocateOption?: pulumi.Input<string>;
     /**
@@ -248,11 +254,13 @@ export interface RouterNatState {
      * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
      * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
      * other RouterNat section in any Router for this network in this region.
+     * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
      */
     readonly sourceSubnetworkIpRangesToNat?: pulumi.Input<string>;
     /**
      * One or more subnetwork NAT configurations. Only used if
-     * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`  Structure is documented below.
+     * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
+     * Structure is documented below.
      */
     readonly subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatSubnetwork>[]>;
     /**
@@ -285,7 +293,8 @@ export interface RouterNatArgs {
      */
     readonly icmpIdleTimeoutSec?: pulumi.Input<number>;
     /**
-     * Configuration for logging on NAT  Structure is documented below.
+     * Configuration for logging on NAT
+     * Structure is documented below.
      */
     readonly logConfig?: pulumi.Input<inputs.compute.RouterNatLogConfig>;
     /**
@@ -300,6 +309,7 @@ export interface RouterNatArgs {
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
+     * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
      */
     readonly natIpAllocateOption: pulumi.Input<string>;
     /**
@@ -331,11 +341,13 @@ export interface RouterNatArgs {
      * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
      * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
      * other RouterNat section in any Router for this network in this region.
+     * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
      */
     readonly sourceSubnetworkIpRangesToNat: pulumi.Input<string>;
     /**
      * One or more subnetwork NAT configurations. Only used if
-     * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`  Structure is documented below.
+     * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
+     * Structure is documented below.
      */
     readonly subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatSubnetwork>[]>;
     /**

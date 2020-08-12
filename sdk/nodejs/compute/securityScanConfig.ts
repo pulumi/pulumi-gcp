@@ -50,7 +50,8 @@ export class SecurityScanConfig extends pulumi.CustomResource {
 
     /**
      * The authentication configuration.
-     * If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+     * If specified, service will use the authentication configuration during scanning.
+     * Structure is documented below.
      */
     public readonly authentication!: pulumi.Output<outputs.compute.SecurityScanConfigAuthentication | undefined>;
     /**
@@ -64,6 +65,8 @@ export class SecurityScanConfig extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     /**
      * Controls export of scan configurations and results to Cloud Security Command Center.
+     * Default value is `ENABLED`.
+     * Possible values are `ENABLED` and `DISABLED`.
      */
     public readonly exportToSecurityCommandCenter!: pulumi.Output<string | undefined>;
     /**
@@ -81,7 +84,8 @@ export class SecurityScanConfig extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The schedule of the ScanConfig  Structure is documented below.
+     * The schedule of the ScanConfig
+     * Structure is documented below.
      */
     public readonly schedule!: pulumi.Output<outputs.compute.SecurityScanConfigSchedule | undefined>;
     /**
@@ -94,6 +98,8 @@ export class SecurityScanConfig extends pulumi.CustomResource {
     public readonly targetPlatforms!: pulumi.Output<string[] | undefined>;
     /**
      * Type of the user agents used for scanning
+     * Default value is `CHROME_LINUX`.
+     * Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
      */
     public readonly userAgent!: pulumi.Output<string | undefined>;
 
@@ -157,7 +163,8 @@ export class SecurityScanConfig extends pulumi.CustomResource {
 export interface SecurityScanConfigState {
     /**
      * The authentication configuration.
-     * If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+     * If specified, service will use the authentication configuration during scanning.
+     * Structure is documented below.
      */
     readonly authentication?: pulumi.Input<inputs.compute.SecurityScanConfigAuthentication>;
     /**
@@ -171,6 +178,8 @@ export interface SecurityScanConfigState {
     readonly displayName?: pulumi.Input<string>;
     /**
      * Controls export of scan configurations and results to Cloud Security Command Center.
+     * Default value is `ENABLED`.
+     * Possible values are `ENABLED` and `DISABLED`.
      */
     readonly exportToSecurityCommandCenter?: pulumi.Input<string>;
     /**
@@ -188,7 +197,8 @@ export interface SecurityScanConfigState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The schedule of the ScanConfig  Structure is documented below.
+     * The schedule of the ScanConfig
+     * Structure is documented below.
      */
     readonly schedule?: pulumi.Input<inputs.compute.SecurityScanConfigSchedule>;
     /**
@@ -201,6 +211,8 @@ export interface SecurityScanConfigState {
     readonly targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of the user agents used for scanning
+     * Default value is `CHROME_LINUX`.
+     * Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
      */
     readonly userAgent?: pulumi.Input<string>;
 }
@@ -211,7 +223,8 @@ export interface SecurityScanConfigState {
 export interface SecurityScanConfigArgs {
     /**
      * The authentication configuration.
-     * If specified, service will use the authentication configuration during scanning.  Structure is documented below.
+     * If specified, service will use the authentication configuration during scanning.
+     * Structure is documented below.
      */
     readonly authentication?: pulumi.Input<inputs.compute.SecurityScanConfigAuthentication>;
     /**
@@ -225,6 +238,8 @@ export interface SecurityScanConfigArgs {
     readonly displayName: pulumi.Input<string>;
     /**
      * Controls export of scan configurations and results to Cloud Security Command Center.
+     * Default value is `ENABLED`.
+     * Possible values are `ENABLED` and `DISABLED`.
      */
     readonly exportToSecurityCommandCenter?: pulumi.Input<string>;
     /**
@@ -238,7 +253,8 @@ export interface SecurityScanConfigArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The schedule of the ScanConfig  Structure is documented below.
+     * The schedule of the ScanConfig
+     * Structure is documented below.
      */
     readonly schedule?: pulumi.Input<inputs.compute.SecurityScanConfigSchedule>;
     /**
@@ -251,6 +267,8 @@ export interface SecurityScanConfigArgs {
     readonly targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of the user agents used for scanning
+     * Default value is `CHROME_LINUX`.
+     * Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
      */
     readonly userAgent?: pulumi.Input<string>;
 }

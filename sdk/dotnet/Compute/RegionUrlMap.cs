@@ -34,7 +34,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// When none of the specified hostRules match, the request is redirected to a URL specified
         /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// defaultRouteAction must not be set.
+        /// Structure is documented below.
         /// </summary>
         [Output("defaultUrlRedirect")]
         public Output<Outputs.RegionUrlMapDefaultUrlRedirect?> DefaultUrlRedirect { get; private set; } = null!;
@@ -52,7 +53,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The list of HostRules to use against the URL.  Structure is documented below.
+        /// The list of HostRules to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         [Output("hostRules")]
         public Output<ImmutableArray<Outputs.RegionUrlMapHostRule>> HostRules { get; private set; } = null!;
@@ -99,7 +101,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The list of expected URL mappings. Requests to update this UrlMap will
-        /// succeed only if all of the test cases pass.  Structure is documented below.
+        /// succeed only if all of the test cases pass.
+        /// Structure is documented below.
         /// </summary>
         [Output("tests")]
         public Output<ImmutableArray<Outputs.RegionUrlMapTest>> Tests { get; private set; } = null!;
@@ -161,7 +164,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// When none of the specified hostRules match, the request is redirected to a URL specified
         /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// defaultRouteAction must not be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultUrlRedirect")]
         public Input<Inputs.RegionUrlMapDefaultUrlRedirectArgs>? DefaultUrlRedirect { get; set; }
@@ -176,7 +180,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionUrlMapHostRuleArgs>? _hostRules;
 
         /// <summary>
-        /// The list of HostRules to use against the URL.  Structure is documented below.
+        /// The list of HostRules to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapHostRuleArgs> HostRules
         {
@@ -223,7 +228,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The list of expected URL mappings. Requests to update this UrlMap will
-        /// succeed only if all of the test cases pass.  Structure is documented below.
+        /// succeed only if all of the test cases pass.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapTestArgs> Tests
         {
@@ -255,7 +261,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// When none of the specified hostRules match, the request is redirected to a URL specified
         /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-        /// defaultRouteAction must not be set.  Structure is documented below.
+        /// defaultRouteAction must not be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultUrlRedirect")]
         public Input<Inputs.RegionUrlMapDefaultUrlRedirectGetArgs>? DefaultUrlRedirect { get; set; }
@@ -276,7 +283,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionUrlMapHostRuleGetArgs>? _hostRules;
 
         /// <summary>
-        /// The list of HostRules to use against the URL.  Structure is documented below.
+        /// The list of HostRules to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapHostRuleGetArgs> HostRules
         {
@@ -335,7 +343,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The list of expected URL mappings. Requests to update this UrlMap will
-        /// succeed only if all of the test cases pass.  Structure is documented below.
+        /// succeed only if all of the test cases pass.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapTestGetArgs> Tests
         {

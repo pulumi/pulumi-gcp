@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.SecretManager.Inputs
         public Input<bool>? Automatic { get; set; }
 
         /// <summary>
-        /// The Secret will automatically be replicated without any restrictions.  Structure is documented below.
+        /// The Secret will automatically be replicated without any restrictions.
+        /// Structure is documented below.
         /// </summary>
         [Input("userManaged")]
         public Input<Inputs.SecretReplicationUserManagedGetArgs>? UserManaged { get; set; }

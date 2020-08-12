@@ -16,7 +16,8 @@ class DomainMapping(pulumi.CustomResource):
     """
     metadata: pulumi.Output[dict]
     """
-    Metadata associated with this DomainMapping.  Structure is documented below.
+    Metadata associated with this DomainMapping.
+    Structure is documented below.
 
       * `annotations` (`dict`) - Annotations is a key value map stored with a resource that
         may be set by external tools to store and retrieve arbitrary metadata. More
@@ -55,9 +56,12 @@ class DomainMapping(pulumi.CustomResource):
     """
     spec: pulumi.Output[dict]
     """
-    The spec for this DomainMapping.  Structure is documented below.
+    The spec for this DomainMapping.
+    Structure is documented below.
 
       * `certificateMode` (`str`) - The mode of the certificate.
+        Default value is `AUTOMATIC`.
+        Possible values are `NONE` and `AUTOMATIC`.
       * `forceOverride` (`bool`) - If set, the mapping will override any mapping set before this spec was set.
         It is recommended that the user leaves this empty to receive an error
         warning about a potential conflict and only set it once the respective UI
@@ -97,11 +101,13 @@ class DomainMapping(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input[dict] metadata: Metadata associated with this DomainMapping.  Structure is documented below.
+        :param pulumi.Input[dict] metadata: Metadata associated with this DomainMapping.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name should be a verified domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] spec: The spec for this DomainMapping.  Structure is documented below.
+        :param pulumi.Input[dict] spec: The spec for this DomainMapping.
+               Structure is documented below.
 
         The **metadata** object supports the following:
 
@@ -134,6 +140,8 @@ class DomainMapping(pulumi.CustomResource):
         The **spec** object supports the following:
 
           * `certificateMode` (`pulumi.Input[str]`) - The mode of the certificate.
+            Default value is `AUTOMATIC`.
+            Possible values are `NONE` and `AUTOMATIC`.
           * `forceOverride` (`pulumi.Input[bool]`) - If set, the mapping will override any mapping set before this spec was set.
             It is recommended that the user leaves this empty to receive an error
             warning about a potential conflict and only set it once the respective UI
@@ -186,11 +194,13 @@ class DomainMapping(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
-        :param pulumi.Input[dict] metadata: Metadata associated with this DomainMapping.  Structure is documented below.
+        :param pulumi.Input[dict] metadata: Metadata associated with this DomainMapping.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name should be a verified domain
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] spec: The spec for this DomainMapping.  Structure is documented below.
+        :param pulumi.Input[dict] spec: The spec for this DomainMapping.
+               Structure is documented below.
         :param pulumi.Input[dict] status: The current status of the DomainMapping.
 
         The **metadata** object supports the following:
@@ -224,6 +234,8 @@ class DomainMapping(pulumi.CustomResource):
         The **spec** object supports the following:
 
           * `certificateMode` (`pulumi.Input[str]`) - The mode of the certificate.
+            Default value is `AUTOMATIC`.
+            Possible values are `NONE` and `AUTOMATIC`.
           * `forceOverride` (`pulumi.Input[bool]`) - If set, the mapping will override any mapping set before this spec was set.
             It is recommended that the user leaves this empty to receive an error
             warning about a potential conflict and only set it once the respective UI

@@ -29,7 +29,8 @@ type NodeGroup struct {
 
 	// -
 	// If you use sole-tenant nodes for your workloads, you can use the node
-	// group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+	// group autoscaler to automatically manage the sizes of your node groups.
+	// Structure is documented below.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyOutput `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -86,7 +87,8 @@ func GetNodeGroup(ctx *pulumi.Context,
 type nodeGroupState struct {
 	// -
 	// If you use sole-tenant nodes for your workloads, you can use the node
-	// group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+	// group autoscaler to automatically manage the sizes of your node groups.
+	// Structure is documented below.
 	AutoscalingPolicy *NodeGroupAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -110,7 +112,8 @@ type nodeGroupState struct {
 type NodeGroupState struct {
 	// -
 	// If you use sole-tenant nodes for your workloads, you can use the node
-	// group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+	// group autoscaler to automatically manage the sizes of your node groups.
+	// Structure is documented below.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -138,7 +141,8 @@ func (NodeGroupState) ElementType() reflect.Type {
 type nodeGroupArgs struct {
 	// -
 	// If you use sole-tenant nodes for your workloads, you can use the node
-	// group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+	// group autoscaler to automatically manage the sizes of your node groups.
+	// Structure is documented below.
 	AutoscalingPolicy *NodeGroupAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
@@ -159,7 +163,8 @@ type nodeGroupArgs struct {
 type NodeGroupArgs struct {
 	// -
 	// If you use sole-tenant nodes for your workloads, you can use the node
-	// group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+	// group autoscaler to automatically manage the sizes of your node groups.
+	// Structure is documented below.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput

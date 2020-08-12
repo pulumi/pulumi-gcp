@@ -51,6 +51,8 @@ export class RouterPeer extends pulumi.CustomResource {
     /**
      * User-specified flag to indicate which mode to use for advertisement.
      * Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+     * Default value is `DEFAULT`.
+     * Possible values are `DEFAULT` and `CUSTOM`.
      */
     public readonly advertiseMode!: pulumi.Output<string | undefined>;
     /**
@@ -66,7 +68,8 @@ export class RouterPeer extends pulumi.CustomResource {
      * custom mode. This field can only be populated if advertiseMode
      * is `CUSTOM` and is advertised to all peers of the router. These IP
      * ranges will be advertised in addition to any specified groups.
-     * Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+     * Leave this field blank to advertise no custom IP ranges.
+     * Structure is documented below.
      */
     public readonly advertisedIpRanges!: pulumi.Output<outputs.compute.RouterPeerAdvertisedIpRange[] | undefined>;
     /**
@@ -195,6 +198,8 @@ export interface RouterPeerState {
     /**
      * User-specified flag to indicate which mode to use for advertisement.
      * Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+     * Default value is `DEFAULT`.
+     * Possible values are `DEFAULT` and `CUSTOM`.
      */
     readonly advertiseMode?: pulumi.Input<string>;
     /**
@@ -210,7 +215,8 @@ export interface RouterPeerState {
      * custom mode. This field can only be populated if advertiseMode
      * is `CUSTOM` and is advertised to all peers of the router. These IP
      * ranges will be advertised in addition to any specified groups.
-     * Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+     * Leave this field blank to advertise no custom IP ranges.
+     * Structure is documented below.
      */
     readonly advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerAdvertisedIpRange>[]>;
     /**
@@ -276,6 +282,8 @@ export interface RouterPeerArgs {
     /**
      * User-specified flag to indicate which mode to use for advertisement.
      * Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+     * Default value is `DEFAULT`.
+     * Possible values are `DEFAULT` and `CUSTOM`.
      */
     readonly advertiseMode?: pulumi.Input<string>;
     /**
@@ -291,7 +299,8 @@ export interface RouterPeerArgs {
      * custom mode. This field can only be populated if advertiseMode
      * is `CUSTOM` and is advertised to all peers of the router. These IP
      * ranges will be advertised in addition to any specified groups.
-     * Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+     * Leave this field blank to advertise no custom IP ranges.
+     * Structure is documented below.
      */
     readonly advertisedIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RouterPeerAdvertisedIpRange>[]>;
     /**

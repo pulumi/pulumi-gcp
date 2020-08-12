@@ -26,6 +26,8 @@ class Instance(pulumi.CustomResource):
     connect_mode: pulumi.Output[str]
     """
     The connection mode of the Redis instance.
+    Default value is `DIRECT_PEERING`.
+    Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
     """
     create_time: pulumi.Output[str]
     """
@@ -65,6 +67,12 @@ class Instance(pulumi.CustomResource):
     """
     The ID of the instance or a fully qualified identifier for the instance.
     """
+    persistence_iam_identity: pulumi.Output[str]
+    """
+    Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+    "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+    operation.
+    """
     port: pulumi.Output[float]
     """
     The port number of the exposed Redis endpoint.
@@ -84,6 +92,7 @@ class Instance(pulumi.CustomResource):
     """
     The version of Redis software. If not provided, latest supported
     version will be used. Currently, the supported values are:
+    - REDIS_5_0 for Redis 5.0 compatibility
     - REDIS_4_0 for Redis 4.0 compatibility
     - REDIS_3_2 for Redis 3.2 compatibility
     """
@@ -104,6 +113,8 @@ class Instance(pulumi.CustomResource):
     The service tier of the instance. Must be one of these values:
     - BASIC: standalone instance
     - STANDARD_HA: highly available primary/replica instances
+    Default value is `BASIC`.
+    Possible values are `BASIC` and `STANDARD_HA`.
     """
     def __init__(__self__, resource_name, opts=None, alternative_location_id=None, authorized_network=None, connect_mode=None, display_name=None, labels=None, location_id=None, memory_size_gb=None, name=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -127,6 +138,8 @@ class Instance(pulumi.CustomResource):
                instance is connected. If left unspecified, the default network
                will be used.
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
+               Default value is `DIRECT_PEERING`.
+               Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[dict] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
@@ -143,6 +156,7 @@ class Instance(pulumi.CustomResource):
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
         :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
                version will be used. Currently, the supported values are:
+               - REDIS_5_0 for Redis 5.0 compatibility
                - REDIS_4_0 for Redis 4.0 compatibility
                - REDIS_3_2 for Redis 3.2 compatibility
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
@@ -154,6 +168,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
+               Default value is `BASIC`.
+               Possible values are `BASIC` and `STANDARD_HA`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -191,6 +207,7 @@ class Instance(pulumi.CustomResource):
             __props__['create_time'] = None
             __props__['current_location_id'] = None
             __props__['host'] = None
+            __props__['persistence_iam_identity'] = None
             __props__['port'] = None
         super(Instance, __self__).__init__(
             'gcp:redis/instance:Instance',
@@ -199,7 +216,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, alternative_location_id=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, labels=None, location_id=None, memory_size_gb=None, name=None, port=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
+    def get(resource_name, id, opts=None, alternative_location_id=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, labels=None, location_id=None, memory_size_gb=None, name=None, persistence_iam_identity=None, port=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -215,6 +232,8 @@ class Instance(pulumi.CustomResource):
                instance is connected. If left unspecified, the default network
                will be used.
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
+               Default value is `DIRECT_PEERING`.
+               Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
                [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
@@ -229,6 +248,9 @@ class Instance(pulumi.CustomResource):
                be different from [locationId].
         :param pulumi.Input[float] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
+        :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+               "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+               operation.
         :param pulumi.Input[float] port: The port number of the exposed Redis endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -237,6 +259,7 @@ class Instance(pulumi.CustomResource):
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
         :param pulumi.Input[str] redis_version: The version of Redis software. If not provided, latest supported
                version will be used. Currently, the supported values are:
+               - REDIS_5_0 for Redis 5.0 compatibility
                - REDIS_4_0 for Redis 4.0 compatibility
                - REDIS_3_2 for Redis 3.2 compatibility
         :param pulumi.Input[str] region: The name of the Redis region of the instance.
@@ -248,6 +271,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
+               Default value is `BASIC`.
+               Possible values are `BASIC` and `STANDARD_HA`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -264,6 +289,7 @@ class Instance(pulumi.CustomResource):
         __props__["location_id"] = location_id
         __props__["memory_size_gb"] = memory_size_gb
         __props__["name"] = name
+        __props__["persistence_iam_identity"] = persistence_iam_identity
         __props__["port"] = port
         __props__["project"] = project
         __props__["redis_configs"] = redis_configs

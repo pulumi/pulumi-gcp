@@ -13,43 +13,50 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class GuestPoliciesRecipeUpdateStepGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Extracts an archive into the specified directory.  Structure is documented below.
+        /// Extracts an archive into the specified directory.
+        /// Structure is documented below.
         /// </summary>
         [Input("archiveExtraction")]
         public Input<Inputs.GuestPoliciesRecipeUpdateStepArchiveExtractionGetArgs>? ArchiveExtraction { get; set; }
 
         /// <summary>
-        /// Installs a deb file via dpkg.  Structure is documented below.
+        /// Installs a deb file via dpkg.
+        /// Structure is documented below.
         /// </summary>
         [Input("dpkgInstallation")]
         public Input<Inputs.GuestPoliciesRecipeUpdateStepDpkgInstallationGetArgs>? DpkgInstallation { get; set; }
 
         /// <summary>
-        /// Copies a file onto the instance.  Structure is documented below.
+        /// Copies a file onto the instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("fileCopy")]
         public Input<Inputs.GuestPoliciesRecipeUpdateStepFileCopyGetArgs>? FileCopy { get; set; }
 
         /// <summary>
-        /// Executes an artifact or local file.  Structure is documented below.
+        /// Executes an artifact or local file.
+        /// Structure is documented below.
         /// </summary>
         [Input("fileExec")]
         public Input<Inputs.GuestPoliciesRecipeUpdateStepFileExecGetArgs>? FileExec { get; set; }
 
         /// <summary>
-        /// Installs an MSI file.  Structure is documented below.
+        /// Installs an MSI file.
+        /// Structure is documented below.
         /// </summary>
         [Input("msiInstallation")]
         public Input<Inputs.GuestPoliciesRecipeUpdateStepMsiInstallationGetArgs>? MsiInstallation { get; set; }
 
         /// <summary>
-        /// Installs an rpm file via the rpm utility.  Structure is documented below.
+        /// Installs an rpm file via the rpm utility.
+        /// Structure is documented below.
         /// </summary>
         [Input("rpmInstallation")]
         public Input<Inputs.GuestPoliciesRecipeUpdateStepRpmInstallationGetArgs>? RpmInstallation { get; set; }
 
         /// <summary>
-        /// Runs commands in a shell.  Structure is documented below.
+        /// Runs commands in a shell.
+        /// Structure is documented below.
         /// </summary>
         [Input("scriptRun")]
         public Input<Inputs.GuestPoliciesRecipeUpdateStepScriptRunGetArgs>? ScriptRun { get; set; }

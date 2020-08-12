@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     {
         /// <summary>
         /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+        /// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
         /// </summary>
         public readonly string Name;
 

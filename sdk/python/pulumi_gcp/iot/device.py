@@ -25,19 +25,26 @@ class Device(pulumi.CustomResource):
     """
     credentials: pulumi.Output[list]
     """
-    The credentials used to authenticate this device.  Structure is documented below.
+    The credentials used to authenticate this device.
+    Structure is documented below.
 
       * `expiration_time` (`str`) - The time at which this credential becomes invalid.
-      * `public_key` (`dict`) - A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+      * `public_key` (`dict`) - A public key used to verify the signature of JSON Web Tokens (JWTs).
+        Structure is documented below.
         * `format` (`str`) - The format of the key.
+          Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
         * `key` (`str`) - The key data.
     """
     gateway_config: pulumi.Output[dict]
     """
-    Gateway-related configuration and state.  Structure is documented below.
+    Gateway-related configuration and state.
+    Structure is documented below.
 
       * `gatewayAuthMethod` (`str`) - Indicates whether the device is a gateway.
+        Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
       * `gatewayType` (`str`) - Indicates whether the device is a gateway.
+        Default value is `NON_GATEWAY`.
+        Possible values are `GATEWAY` and `NON_GATEWAY`.
       * `lastAccessedGatewayId` (`str`) - -
         The ID of the gateway the device accessed most recently.
       * `lastAccessedGatewayTime` (`str`) - -
@@ -78,6 +85,7 @@ class Device(pulumi.CustomResource):
     log_level: pulumi.Output[str]
     """
     The logging verbosity for device activity.
+    Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
     """
     metadata: pulumi.Output[dict]
     """
@@ -118,9 +126,12 @@ class Device(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
-        :param pulumi.Input[list] credentials: The credentials used to authenticate this device.  Structure is documented below.
-        :param pulumi.Input[dict] gateway_config: Gateway-related configuration and state.  Structure is documented below.
+        :param pulumi.Input[list] credentials: The credentials used to authenticate this device.
+               Structure is documented below.
+        :param pulumi.Input[dict] gateway_config: Gateway-related configuration and state.
+               Structure is documented below.
         :param pulumi.Input[str] log_level: The logging verbosity for device activity.
+               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         :param pulumi.Input[dict] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
@@ -128,14 +139,19 @@ class Device(pulumi.CustomResource):
         The **credentials** object supports the following:
 
           * `expiration_time` (`pulumi.Input[str]`) - The time at which this credential becomes invalid.
-          * `public_key` (`pulumi.Input[dict]`) - A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+          * `public_key` (`pulumi.Input[dict]`) - A public key used to verify the signature of JSON Web Tokens (JWTs).
+            Structure is documented below.
             * `format` (`pulumi.Input[str]`) - The format of the key.
+              Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
             * `key` (`pulumi.Input[str]`) - The key data.
 
         The **gateway_config** object supports the following:
 
           * `gatewayAuthMethod` (`pulumi.Input[str]`) - Indicates whether the device is a gateway.
+            Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
           * `gatewayType` (`pulumi.Input[str]`) - Indicates whether the device is a gateway.
+            Default value is `NON_GATEWAY`.
+            Possible values are `GATEWAY` and `NON_GATEWAY`.
           * `lastAccessedGatewayId` (`pulumi.Input[str]`) - -
             The ID of the gateway the device accessed most recently.
           * `lastAccessedGatewayTime` (`pulumi.Input[str]`) - -
@@ -194,8 +210,10 @@ class Device(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
         :param pulumi.Input[dict] config: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
-        :param pulumi.Input[list] credentials: The credentials used to authenticate this device.  Structure is documented below.
-        :param pulumi.Input[dict] gateway_config: Gateway-related configuration and state.  Structure is documented below.
+        :param pulumi.Input[list] credentials: The credentials used to authenticate this device.
+               Structure is documented below.
+        :param pulumi.Input[dict] gateway_config: Gateway-related configuration and state.
+               Structure is documented below.
         :param pulumi.Input[str] last_config_ack_time: The last time a cloud-to-device config version acknowledgment was received from the device.
         :param pulumi.Input[str] last_config_send_time: The last time a cloud-to-device config version was sent to the device.
         :param pulumi.Input[dict] last_error_status: The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
@@ -204,6 +222,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] last_heartbeat_time: The last time an MQTT PINGREQ was received.
         :param pulumi.Input[str] last_state_time: The last time a state event was received.
         :param pulumi.Input[str] log_level: The logging verbosity for device activity.
+               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         :param pulumi.Input[dict] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
@@ -221,14 +240,19 @@ class Device(pulumi.CustomResource):
         The **credentials** object supports the following:
 
           * `expiration_time` (`pulumi.Input[str]`) - The time at which this credential becomes invalid.
-          * `public_key` (`pulumi.Input[dict]`) - A public key used to verify the signature of JSON Web Tokens (JWTs).  Structure is documented below.
+          * `public_key` (`pulumi.Input[dict]`) - A public key used to verify the signature of JSON Web Tokens (JWTs).
+            Structure is documented below.
             * `format` (`pulumi.Input[str]`) - The format of the key.
+              Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
             * `key` (`pulumi.Input[str]`) - The key data.
 
         The **gateway_config** object supports the following:
 
           * `gatewayAuthMethod` (`pulumi.Input[str]`) - Indicates whether the device is a gateway.
+            Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
           * `gatewayType` (`pulumi.Input[str]`) - Indicates whether the device is a gateway.
+            Default value is `NON_GATEWAY`.
+            Possible values are `GATEWAY` and `NON_GATEWAY`.
           * `lastAccessedGatewayId` (`pulumi.Input[str]`) - -
             The ID of the gateway the device accessed most recently.
           * `lastAccessedGatewayTime` (`pulumi.Input[str]`) - -

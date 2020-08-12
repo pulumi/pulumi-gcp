@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         public readonly string? Destination;
         /// <summary>
         /// The type of the archive to extract.
+        /// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
         /// </summary>
         public readonly string Type;
 

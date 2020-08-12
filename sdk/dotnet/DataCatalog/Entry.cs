@@ -66,7 +66,8 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<string> EntryId { get; private set; } = null!;
 
         /// <summary>
-        /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.  Structure is documented below.
+        /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+        /// Structure is documented below.
         /// </summary>
         [Output("gcsFilesetSpec")]
         public Output<Outputs.EntryGcsFilesetSpec?> GcsFilesetSpec { get; private set; } = null!;
@@ -108,6 +109,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// The type of the entry. Only used for Entries with types in the EntryType enum.
         /// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+        /// Possible values are `FILESET`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -202,7 +204,8 @@ namespace Pulumi.Gcp.DataCatalog
         public Input<string> EntryId { get; set; } = null!;
 
         /// <summary>
-        /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.  Structure is documented below.
+        /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+        /// Structure is documented below.
         /// </summary>
         [Input("gcsFilesetSpec")]
         public Input<Inputs.EntryGcsFilesetSpecArgs>? GcsFilesetSpec { get; set; }
@@ -230,6 +233,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// The type of the entry. Only used for Entries with types in the EntryType enum.
         /// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+        /// Possible values are `FILESET`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -298,7 +302,8 @@ namespace Pulumi.Gcp.DataCatalog
         public Input<string>? EntryId { get; set; }
 
         /// <summary>
-        /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.  Structure is documented below.
+        /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+        /// Structure is documented below.
         /// </summary>
         [Input("gcsFilesetSpec")]
         public Input<Inputs.EntryGcsFilesetSpecGetArgs>? GcsFilesetSpec { get; set; }
@@ -340,6 +345,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// The type of the entry. Only used for Entries with types in the EntryType enum.
         /// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+        /// Possible values are `FILESET`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

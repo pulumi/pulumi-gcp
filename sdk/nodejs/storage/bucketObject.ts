@@ -79,6 +79,10 @@ export class BucketObject extends pulumi.CustomResource {
      */
     public /*out*/ readonly md5hash!: pulumi.Output<string>;
     /**
+     * (Computed) A url reference to download this object.
+     */
+    public /*out*/ readonly mediaLink!: pulumi.Output<string>;
+    /**
      * User-provided metadata, in key/value pairs.
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -129,6 +133,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["crc32c"] = state ? state.crc32c : undefined;
             inputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
             inputs["md5hash"] = state ? state.md5hash : undefined;
+            inputs["mediaLink"] = state ? state.mediaLink : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["outputName"] = state ? state.outputName : undefined;
@@ -154,6 +159,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["storageClass"] = args ? args.storageClass : undefined;
             inputs["crc32c"] = undefined /*out*/;
             inputs["md5hash"] = undefined /*out*/;
+            inputs["mediaLink"] = undefined /*out*/;
             inputs["outputName"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
@@ -210,6 +216,10 @@ export interface BucketObjectState {
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */
     readonly md5hash?: pulumi.Input<string>;
+    /**
+     * (Computed) A url reference to download this object.
+     */
+    readonly mediaLink?: pulumi.Input<string>;
     /**
      * User-provided metadata, in key/value pairs.
      */

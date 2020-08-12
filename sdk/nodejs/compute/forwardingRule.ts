@@ -88,7 +88,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * forwarding rule. By default, if this field is empty, an ephemeral
      * internal IP address will be automatically allocated from the IP range
      * of the subnet or network configured for this forwarding rule.
-     * An address must be specified by a literal IP address. > **NOTE**: While
+     * An address must be specified by a literal IP address. > **NOTE:** While
      * the API allows you to specify various resource paths for an address resource
      * instead, this provider requires this to specifically be an IP address to
      * avoid needing to fetching the IP address from resource paths on refresh
@@ -99,6 +99,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
+     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
@@ -126,6 +127,8 @@ export class ForwardingRule extends pulumi.CustomResource {
      * INTERNAL is used for protocol forwarding to VMs from an internal IP address,
      * and internal TCP/UDP load balancers.
      * INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -148,6 +151,7 @@ export class ForwardingRule extends pulumi.CustomResource {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
+     * Possible values are `PREMIUM` and `STANDARD`.
      */
     public readonly networkTier!: pulumi.Output<string>;
     /**
@@ -345,7 +349,7 @@ export interface ForwardingRuleState {
      * forwarding rule. By default, if this field is empty, an ephemeral
      * internal IP address will be automatically allocated from the IP range
      * of the subnet or network configured for this forwarding rule.
-     * An address must be specified by a literal IP address. > **NOTE**: While
+     * An address must be specified by a literal IP address. > **NOTE:** While
      * the API allows you to specify various resource paths for an address resource
      * instead, this provider requires this to specifically be an IP address to
      * avoid needing to fetching the IP address from resource paths on refresh
@@ -356,6 +360,7 @@ export interface ForwardingRuleState {
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
+     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
      */
     readonly ipProtocol?: pulumi.Input<string>;
     /**
@@ -383,6 +388,8 @@ export interface ForwardingRuleState {
      * INTERNAL is used for protocol forwarding to VMs from an internal IP address,
      * and internal TCP/UDP load balancers.
      * INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -405,6 +412,7 @@ export interface ForwardingRuleState {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
+     * Possible values are `PREMIUM` and `STANDARD`.
      */
     readonly networkTier?: pulumi.Input<string>;
     /**
@@ -527,7 +535,7 @@ export interface ForwardingRuleArgs {
      * forwarding rule. By default, if this field is empty, an ephemeral
      * internal IP address will be automatically allocated from the IP range
      * of the subnet or network configured for this forwarding rule.
-     * An address must be specified by a literal IP address. > **NOTE**: While
+     * An address must be specified by a literal IP address. > **NOTE:** While
      * the API allows you to specify various resource paths for an address resource
      * instead, this provider requires this to specifically be an IP address to
      * avoid needing to fetching the IP address from resource paths on refresh
@@ -538,6 +546,7 @@ export interface ForwardingRuleArgs {
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
+     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
      */
     readonly ipProtocol?: pulumi.Input<string>;
     /**
@@ -561,6 +570,8 @@ export interface ForwardingRuleArgs {
      * INTERNAL is used for protocol forwarding to VMs from an internal IP address,
      * and internal TCP/UDP load balancers.
      * INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -583,6 +594,7 @@ export interface ForwardingRuleArgs {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
+     * Possible values are `PREMIUM` and `STANDARD`.
      */
     readonly networkTier?: pulumi.Input<string>;
     /**

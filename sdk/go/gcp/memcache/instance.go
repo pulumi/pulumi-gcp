@@ -22,11 +22,13 @@ type Instance struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// User-specified parameters for this memcache instance.  Structure is documented below.
+	// User-specified parameters for this memcache instance.
+	// Structure is documented below.
 	MemcacheParameters InstanceMemcacheParametersPtrOutput `pulumi:"memcacheParameters"`
 	// The resource name of the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Configuration for memcache nodes.  Structure is documented below.
+	// Configuration for memcache nodes.
+	// Structure is documented below.
 	NodeConfig InstanceNodeConfigOutput `pulumi:"nodeConfig"`
 	// Number of nodes in the memcache instance.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
@@ -86,11 +88,13 @@ type instanceState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// User-specified parameters for this memcache instance.  Structure is documented below.
+	// User-specified parameters for this memcache instance.
+	// Structure is documented below.
 	MemcacheParameters *InstanceMemcacheParameters `pulumi:"memcacheParameters"`
 	// The resource name of the instance.
 	Name *string `pulumi:"name"`
-	// Configuration for memcache nodes.  Structure is documented below.
+	// Configuration for memcache nodes.
+	// Structure is documented below.
 	NodeConfig *InstanceNodeConfig `pulumi:"nodeConfig"`
 	// Number of nodes in the memcache instance.
 	NodeCount *int `pulumi:"nodeCount"`
@@ -114,11 +118,13 @@ type InstanceState struct {
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
-	// User-specified parameters for this memcache instance.  Structure is documented below.
+	// User-specified parameters for this memcache instance.
+	// Structure is documented below.
 	MemcacheParameters InstanceMemcacheParametersPtrInput
 	// The resource name of the instance.
 	Name pulumi.StringPtrInput
-	// Configuration for memcache nodes.  Structure is documented below.
+	// Configuration for memcache nodes.
+	// Structure is documented below.
 	NodeConfig InstanceNodeConfigPtrInput
 	// Number of nodes in the memcache instance.
 	NodeCount pulumi.IntPtrInput
@@ -144,11 +150,13 @@ type instanceArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// User-specified parameters for this memcache instance.  Structure is documented below.
+	// User-specified parameters for this memcache instance.
+	// Structure is documented below.
 	MemcacheParameters *InstanceMemcacheParameters `pulumi:"memcacheParameters"`
 	// The resource name of the instance.
 	Name *string `pulumi:"name"`
-	// Configuration for memcache nodes.  Structure is documented below.
+	// Configuration for memcache nodes.
+	// Structure is documented below.
 	NodeConfig InstanceNodeConfig `pulumi:"nodeConfig"`
 	// Number of nodes in the memcache instance.
 	NodeCount int `pulumi:"nodeCount"`
@@ -171,11 +179,13 @@ type InstanceArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
-	// User-specified parameters for this memcache instance.  Structure is documented below.
+	// User-specified parameters for this memcache instance.
+	// Structure is documented below.
 	MemcacheParameters InstanceMemcacheParametersPtrInput
 	// The resource name of the instance.
 	Name pulumi.StringPtrInput
-	// Configuration for memcache nodes.  Structure is documented below.
+	// Configuration for memcache nodes.
+	// Structure is documented below.
 	NodeConfig InstanceNodeConfigInput
 	// Number of nodes in the memcache instance.
 	NodeCount pulumi.IntInput

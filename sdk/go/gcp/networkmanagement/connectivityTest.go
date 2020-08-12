@@ -40,7 +40,8 @@ type ConnectivityTest struct {
 	// interface.
 	// A reachability analysis proceeds even if the destination location
 	// is ambiguous. However, the result can include endpoints that you
-	// don't intend to test.  Structure is documented below.
+	// don't intend to test.
+	// Structure is documented below.
 	Destination ConnectivityTestDestinationOutput `pulumi:"destination"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -72,7 +73,8 @@ type ConnectivityTest struct {
 	// address or VPC network.
 	// A reachability analysis proceeds even if the source location is
 	// ambiguous. However, the test result may include endpoints that
-	// you don't intend to test.  Structure is documented below.
+	// you don't intend to test.
+	// Structure is documented below.
 	Source ConnectivityTestSourceOutput `pulumi:"source"`
 }
 
@@ -126,7 +128,8 @@ type connectivityTestState struct {
 	// interface.
 	// A reachability analysis proceeds even if the destination location
 	// is ambiguous. However, the result can include endpoints that you
-	// don't intend to test.  Structure is documented below.
+	// don't intend to test.
+	// Structure is documented below.
 	Destination *ConnectivityTestDestination `pulumi:"destination"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
@@ -158,7 +161,8 @@ type connectivityTestState struct {
 	// address or VPC network.
 	// A reachability analysis proceeds even if the source location is
 	// ambiguous. However, the test result may include endpoints that
-	// you don't intend to test.  Structure is documented below.
+	// you don't intend to test.
+	// Structure is documented below.
 	Source *ConnectivityTestSource `pulumi:"source"`
 }
 
@@ -179,7 +183,8 @@ type ConnectivityTestState struct {
 	// interface.
 	// A reachability analysis proceeds even if the destination location
 	// is ambiguous. However, the result can include endpoints that you
-	// don't intend to test.  Structure is documented below.
+	// don't intend to test.
+	// Structure is documented below.
 	Destination ConnectivityTestDestinationPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
@@ -211,7 +216,8 @@ type ConnectivityTestState struct {
 	// address or VPC network.
 	// A reachability analysis proceeds even if the source location is
 	// ambiguous. However, the test result may include endpoints that
-	// you don't intend to test.  Structure is documented below.
+	// you don't intend to test.
+	// Structure is documented below.
 	Source ConnectivityTestSourcePtrInput
 }
 
@@ -236,7 +242,8 @@ type connectivityTestArgs struct {
 	// interface.
 	// A reachability analysis proceeds even if the destination location
 	// is ambiguous. However, the result can include endpoints that you
-	// don't intend to test.  Structure is documented below.
+	// don't intend to test.
+	// Structure is documented below.
 	Destination ConnectivityTestDestination `pulumi:"destination"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
@@ -268,7 +275,8 @@ type connectivityTestArgs struct {
 	// address or VPC network.
 	// A reachability analysis proceeds even if the source location is
 	// ambiguous. However, the test result may include endpoints that
-	// you don't intend to test.  Structure is documented below.
+	// you don't intend to test.
+	// Structure is documented below.
 	Source ConnectivityTestSource `pulumi:"source"`
 }
 
@@ -290,7 +298,8 @@ type ConnectivityTestArgs struct {
 	// interface.
 	// A reachability analysis proceeds even if the destination location
 	// is ambiguous. However, the result can include endpoints that you
-	// don't intend to test.  Structure is documented below.
+	// don't intend to test.
+	// Structure is documented below.
 	Destination ConnectivityTestDestinationInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
@@ -322,7 +331,8 @@ type ConnectivityTestArgs struct {
 	// address or VPC network.
 	// A reachability analysis proceeds even if the source location is
 	// ambiguous. However, the test result may include endpoints that
-	// you don't intend to test.  Structure is documented below.
+	// you don't intend to test.
+	// Structure is documented below.
 	Source ConnectivityTestSourceInput
 }
 

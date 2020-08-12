@@ -25,7 +25,8 @@ class Service(pulumi.CustomResource):
     metadata: pulumi.Output[dict]
     """
     Metadata associated with this Service, including name, namespace, labels,
-    and annotations.  Structure is documented below.
+    and annotations.
+    Structure is documented below.
 
       * `annotations` (`dict`) - Annotations is a key value map stored with a resource that
         may be set by external tools to store and retrieve arbitrary metadata. More
@@ -87,10 +88,12 @@ class Service(pulumi.CustomResource):
     template metadata. For more details, see:
     https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
     Cloud Run does not currently support referencing a build that is
-    responsible for materializing the container image from source.  Structure is documented below.
+    responsible for materializing the container image from source.
+    Structure is documented below.
 
       * `metadata` (`dict`) - Metadata associated with this Service, including name, namespace, labels,
-        and annotations.  Structure is documented below.
+        and annotations.
+        Structure is documented below.
         * `annotations` (`dict`) - Annotations is a key value map stored with a resource that
           may be set by external tools to store and retrieve arbitrary metadata. More
           info: http://kubernetes.io/docs/user-guide/annotations
@@ -118,7 +121,8 @@ class Service(pulumi.CustomResource):
           allowed to change on PUT operations.
           More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 
-      * `spec` (`dict`) - RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+      * `spec` (`dict`) - RevisionSpec holds the desired state of the Revision (from the client).
+        Structure is documented below.
         * `containerConcurrency` (`float`) - ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
           requests per container of the Revision. Values are:
           - `0` thread-safe, the system should manage the max concurrency. This is
@@ -129,7 +133,8 @@ class Service(pulumi.CustomResource):
           In the context of a Revision, we disallow a number of the fields of
           this Container, including: name, ports, and volumeMounts.
           The runtime contract is documented here:
-          https://github.com/knative/serving/blob/master/docs/runtime-contract.md  Structure is documented below.
+          https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+          Structure is documented below.
           * `args` (`list`) - Arguments to the entrypoint.
             The docker image's CMD is used if this is not provided.
             Variable references $(VAR_NAME) are expanded using the container's
@@ -154,21 +159,27 @@ class Service(pulumi.CustomResource):
             All invalid keys will be reported as an event when the container is starting.
             When a key exists in multiple sources, the value associated with the last source will
             take precedence. Values defined by an Env with a duplicate key will take
-            precedence.  Structure is documented below.
-            * `configMapRef` (`dict`) - The ConfigMap to select from.  Structure is documented below.
-              * `localObjectReference` (`dict`) - The Secret to select from.  Structure is documented below.
+            precedence.
+            Structure is documented below.
+            * `configMapRef` (`dict`) - The ConfigMap to select from.
+              Structure is documented below.
+              * `localObjectReference` (`dict`) - The Secret to select from.
+                Structure is documented below.
                 * `name` (`str`) - Name of the port.
 
               * `optional` (`bool`) - Specify whether the Secret must be defined
 
             * `prefix` (`str`) - An optional identifier to prepend to each key in the ConfigMap.
-            * `secretRef` (`dict`) - The Secret to select from.  Structure is documented below.
-              * `localObjectReference` (`dict`) - The Secret to select from.  Structure is documented below.
+            * `secretRef` (`dict`) - The Secret to select from.
+              Structure is documented below.
+              * `localObjectReference` (`dict`) - The Secret to select from.
+                Structure is documented below.
                 * `name` (`str`) - Name of the port.
 
               * `optional` (`bool`) - Specify whether the Secret must be defined
 
-          * `envs` (`list`) - List of environment variables to set in the container.  Structure is documented below.
+          * `envs` (`list`) - List of environment variables to set in the container.
+            Structure is documented below.
             * `name` (`str`) - Name of the port.
             * `value` (`str`) - Variable references $(VAR_NAME) are expanded
               using the previous defined environment variables in the container and
@@ -184,14 +195,16 @@ class Service(pulumi.CustomResource):
             More info: https://kubernetes.io/docs/concepts/containers/images
           * `ports` (`list`) - List of open ports in the container.
             More Info:
-            https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+            https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
+            Structure is documented below.
             * `containerPort` (`float`) - Port number.
             * `name` (`str`) - Name of the port.
             * `protocol` (`str`) - Protocol used on port. Defaults to TCP.
 
           * `resources` (`dict`) - Compute Resources required by this container. Used to set values such as max memory
             More info:
-            https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+            https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+            Structure is documented below.
             * `limits` (`dict`) - Limits describes the maximum amount of compute resources allowed.
               The values of the map is string form of the 'quantity' k8s type:
               https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
@@ -221,7 +234,8 @@ class Service(pulumi.CustomResource):
     traffics: pulumi.Output[list]
     """
     Traffic specifies how to distribute traffic over a collection of Knative Revisions
-    and Configurations  Structure is documented below.
+    and Configurations
+    Structure is documented below.
 
       * `latestRevision` (`bool`) - LatestRevision may be optionally provided to indicate that the latest ready
         Revision of the Configuration should be used for this traffic target. When
@@ -263,7 +277,8 @@ class Service(pulumi.CustomResource):
                this field is set to false, the revision name will still autogenerate.)
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[dict] metadata: Metadata associated with this Service, including name, namespace, labels,
-               and annotations.  Structure is documented below.
+               and annotations.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the port.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -275,9 +290,11 @@ class Service(pulumi.CustomResource):
                template metadata. For more details, see:
                https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
                Cloud Run does not currently support referencing a build that is
-               responsible for materializing the container image from source.  Structure is documented below.
+               responsible for materializing the container image from source.
+               Structure is documented below.
         :param pulumi.Input[list] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
-               and Configurations  Structure is documented below.
+               and Configurations
+               Structure is documented below.
 
         The **metadata** object supports the following:
 
@@ -310,7 +327,8 @@ class Service(pulumi.CustomResource):
         The **template** object supports the following:
 
           * `metadata` (`pulumi.Input[dict]`) - Metadata associated with this Service, including name, namespace, labels,
-            and annotations.  Structure is documented below.
+            and annotations.
+            Structure is documented below.
             * `annotations` (`pulumi.Input[dict]`) - Annotations is a key value map stored with a resource that
               may be set by external tools to store and retrieve arbitrary metadata. More
               info: http://kubernetes.io/docs/user-guide/annotations
@@ -338,7 +356,8 @@ class Service(pulumi.CustomResource):
               allowed to change on PUT operations.
               More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 
-          * `spec` (`pulumi.Input[dict]`) - RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+          * `spec` (`pulumi.Input[dict]`) - RevisionSpec holds the desired state of the Revision (from the client).
+            Structure is documented below.
             * `containerConcurrency` (`pulumi.Input[float]`) - ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
               requests per container of the Revision. Values are:
               - `0` thread-safe, the system should manage the max concurrency. This is
@@ -349,7 +368,8 @@ class Service(pulumi.CustomResource):
               In the context of a Revision, we disallow a number of the fields of
               this Container, including: name, ports, and volumeMounts.
               The runtime contract is documented here:
-              https://github.com/knative/serving/blob/master/docs/runtime-contract.md  Structure is documented below.
+              https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+              Structure is documented below.
               * `args` (`pulumi.Input[list]`) - Arguments to the entrypoint.
                 The docker image's CMD is used if this is not provided.
                 Variable references $(VAR_NAME) are expanded using the container's
@@ -374,21 +394,27 @@ class Service(pulumi.CustomResource):
                 All invalid keys will be reported as an event when the container is starting.
                 When a key exists in multiple sources, the value associated with the last source will
                 take precedence. Values defined by an Env with a duplicate key will take
-                precedence.  Structure is documented below.
-                * `configMapRef` (`pulumi.Input[dict]`) - The ConfigMap to select from.  Structure is documented below.
-                  * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
+                precedence.
+                Structure is documented below.
+                * `configMapRef` (`pulumi.Input[dict]`) - The ConfigMap to select from.
+                  Structure is documented below.
+                  * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.
+                    Structure is documented below.
                     * `name` (`pulumi.Input[str]`) - Name of the port.
 
                   * `optional` (`pulumi.Input[bool]`) - Specify whether the Secret must be defined
 
                 * `prefix` (`pulumi.Input[str]`) - An optional identifier to prepend to each key in the ConfigMap.
-                * `secretRef` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
-                  * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
+                * `secretRef` (`pulumi.Input[dict]`) - The Secret to select from.
+                  Structure is documented below.
+                  * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.
+                    Structure is documented below.
                     * `name` (`pulumi.Input[str]`) - Name of the port.
 
                   * `optional` (`pulumi.Input[bool]`) - Specify whether the Secret must be defined
 
-              * `envs` (`pulumi.Input[list]`) - List of environment variables to set in the container.  Structure is documented below.
+              * `envs` (`pulumi.Input[list]`) - List of environment variables to set in the container.
+                Structure is documented below.
                 * `name` (`pulumi.Input[str]`) - Name of the port.
                 * `value` (`pulumi.Input[str]`) - Variable references $(VAR_NAME) are expanded
                   using the previous defined environment variables in the container and
@@ -404,14 +430,16 @@ class Service(pulumi.CustomResource):
                 More info: https://kubernetes.io/docs/concepts/containers/images
               * `ports` (`pulumi.Input[list]`) - List of open ports in the container.
                 More Info:
-                https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+                https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
+                Structure is documented below.
                 * `containerPort` (`pulumi.Input[float]`) - Port number.
                 * `name` (`pulumi.Input[str]`) - Name of the port.
                 * `protocol` (`pulumi.Input[str]`) - Protocol used on port. Defaults to TCP.
 
               * `resources` (`pulumi.Input[dict]`) - Compute Resources required by this container. Used to set values such as max memory
                 More info:
-                https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+                https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+                Structure is documented below.
                 * `limits` (`pulumi.Input[dict]`) - Limits describes the maximum amount of compute resources allowed.
                   The values of the map is string form of the 'quantity' k8s type:
                   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
@@ -496,7 +524,8 @@ class Service(pulumi.CustomResource):
                this field is set to false, the revision name will still autogenerate.)
         :param pulumi.Input[str] location: The location of the cloud run instance. eg us-central1
         :param pulumi.Input[dict] metadata: Metadata associated with this Service, including name, namespace, labels,
-               and annotations.  Structure is documented below.
+               and annotations.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the port.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -509,9 +538,11 @@ class Service(pulumi.CustomResource):
                template metadata. For more details, see:
                https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions
                Cloud Run does not currently support referencing a build that is
-               responsible for materializing the container image from source.  Structure is documented below.
+               responsible for materializing the container image from source.
+               Structure is documented below.
         :param pulumi.Input[list] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
-               and Configurations  Structure is documented below.
+               and Configurations
+               Structure is documented below.
 
         The **metadata** object supports the following:
 
@@ -557,7 +588,8 @@ class Service(pulumi.CustomResource):
         The **template** object supports the following:
 
           * `metadata` (`pulumi.Input[dict]`) - Metadata associated with this Service, including name, namespace, labels,
-            and annotations.  Structure is documented below.
+            and annotations.
+            Structure is documented below.
             * `annotations` (`pulumi.Input[dict]`) - Annotations is a key value map stored with a resource that
               may be set by external tools to store and retrieve arbitrary metadata. More
               info: http://kubernetes.io/docs/user-guide/annotations
@@ -585,7 +617,8 @@ class Service(pulumi.CustomResource):
               allowed to change on PUT operations.
               More info: http://kubernetes.io/docs/user-guide/identifiers#uids
 
-          * `spec` (`pulumi.Input[dict]`) - RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+          * `spec` (`pulumi.Input[dict]`) - RevisionSpec holds the desired state of the Revision (from the client).
+            Structure is documented below.
             * `containerConcurrency` (`pulumi.Input[float]`) - ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
               requests per container of the Revision. Values are:
               - `0` thread-safe, the system should manage the max concurrency. This is
@@ -596,7 +629,8 @@ class Service(pulumi.CustomResource):
               In the context of a Revision, we disallow a number of the fields of
               this Container, including: name, ports, and volumeMounts.
               The runtime contract is documented here:
-              https://github.com/knative/serving/blob/master/docs/runtime-contract.md  Structure is documented below.
+              https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+              Structure is documented below.
               * `args` (`pulumi.Input[list]`) - Arguments to the entrypoint.
                 The docker image's CMD is used if this is not provided.
                 Variable references $(VAR_NAME) are expanded using the container's
@@ -621,21 +655,27 @@ class Service(pulumi.CustomResource):
                 All invalid keys will be reported as an event when the container is starting.
                 When a key exists in multiple sources, the value associated with the last source will
                 take precedence. Values defined by an Env with a duplicate key will take
-                precedence.  Structure is documented below.
-                * `configMapRef` (`pulumi.Input[dict]`) - The ConfigMap to select from.  Structure is documented below.
-                  * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
+                precedence.
+                Structure is documented below.
+                * `configMapRef` (`pulumi.Input[dict]`) - The ConfigMap to select from.
+                  Structure is documented below.
+                  * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.
+                    Structure is documented below.
                     * `name` (`pulumi.Input[str]`) - Name of the port.
 
                   * `optional` (`pulumi.Input[bool]`) - Specify whether the Secret must be defined
 
                 * `prefix` (`pulumi.Input[str]`) - An optional identifier to prepend to each key in the ConfigMap.
-                * `secretRef` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
-                  * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.  Structure is documented below.
+                * `secretRef` (`pulumi.Input[dict]`) - The Secret to select from.
+                  Structure is documented below.
+                  * `localObjectReference` (`pulumi.Input[dict]`) - The Secret to select from.
+                    Structure is documented below.
                     * `name` (`pulumi.Input[str]`) - Name of the port.
 
                   * `optional` (`pulumi.Input[bool]`) - Specify whether the Secret must be defined
 
-              * `envs` (`pulumi.Input[list]`) - List of environment variables to set in the container.  Structure is documented below.
+              * `envs` (`pulumi.Input[list]`) - List of environment variables to set in the container.
+                Structure is documented below.
                 * `name` (`pulumi.Input[str]`) - Name of the port.
                 * `value` (`pulumi.Input[str]`) - Variable references $(VAR_NAME) are expanded
                   using the previous defined environment variables in the container and
@@ -651,14 +691,16 @@ class Service(pulumi.CustomResource):
                 More info: https://kubernetes.io/docs/concepts/containers/images
               * `ports` (`pulumi.Input[list]`) - List of open ports in the container.
                 More Info:
-                https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort  Structure is documented below.
+                https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
+                Structure is documented below.
                 * `containerPort` (`pulumi.Input[float]`) - Port number.
                 * `name` (`pulumi.Input[str]`) - Name of the port.
                 * `protocol` (`pulumi.Input[str]`) - Protocol used on port. Defaults to TCP.
 
               * `resources` (`pulumi.Input[dict]`) - Compute Resources required by this container. Used to set values such as max memory
                 More info:
-                https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources  Structure is documented below.
+                https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+                Structure is documented below.
                 * `limits` (`pulumi.Input[dict]`) - Limits describes the maximum amount of compute resources allowed.
                   The values of the map is string form of the 'quantity' k8s type:
                   https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go

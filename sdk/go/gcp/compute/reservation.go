@@ -48,7 +48,8 @@ type Reservation struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Reservation for instances with specific machine shapes.  Structure is documented below.
+	// Reservation for instances with specific machine shapes.
+	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservationOutput `pulumi:"specificReservation"`
 	// When set to true, only VMs that target this reservation by name can
 	// consume this reservation. Otherwise, it can be consumed by VMs with
@@ -113,7 +114,8 @@ type reservationState struct {
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Reservation for instances with specific machine shapes.  Structure is documented below.
+	// Reservation for instances with specific machine shapes.
+	// Structure is documented below.
 	SpecificReservation *ReservationSpecificReservation `pulumi:"specificReservation"`
 	// When set to true, only VMs that target this reservation by name can
 	// consume this reservation. Otherwise, it can be consumed by VMs with
@@ -145,7 +147,8 @@ type ReservationState struct {
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// Reservation for instances with specific machine shapes.  Structure is documented below.
+	// Reservation for instances with specific machine shapes.
+	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservationPtrInput
 	// When set to true, only VMs that target this reservation by name can
 	// consume this reservation. Otherwise, it can be consumed by VMs with
@@ -175,7 +178,8 @@ type reservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Reservation for instances with specific machine shapes.  Structure is documented below.
+	// Reservation for instances with specific machine shapes.
+	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservation `pulumi:"specificReservation"`
 	// When set to true, only VMs that target this reservation by name can
 	// consume this reservation. Otherwise, it can be consumed by VMs with
@@ -200,7 +204,8 @@ type ReservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Reservation for instances with specific machine shapes.  Structure is documented below.
+	// Reservation for instances with specific machine shapes.
+	// Structure is documented below.
 	SpecificReservation ReservationSpecificReservationInput
 	// When set to true, only VMs that target this reservation by name can
 	// consume this reservation. Otherwise, it can be consumed by VMs with

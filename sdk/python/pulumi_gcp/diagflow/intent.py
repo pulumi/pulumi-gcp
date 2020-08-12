@@ -90,6 +90,7 @@ class Intent(pulumi.CustomResource):
     * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
     * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
     filling prompt is forwarded to the webhook.
+    Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
     """
     def __init__(__self__, resource_name, opts=None, action=None, default_response_platforms=None, display_name=None, events=None, input_context_names=None, is_fallback=None, ml_disabled=None, parent_followup_intent_name=None, priority=None, project=None, reset_contexts=None, webhook_state=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -133,6 +134,7 @@ class Intent(pulumi.CustomResource):
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
                filling prompt is forwarded to the webhook.
+               Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -215,6 +217,7 @@ class Intent(pulumi.CustomResource):
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
                filling prompt is forwarded to the webhook.
+               Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 
         The **followup_intent_infos** object supports the following:
 

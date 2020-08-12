@@ -325,7 +325,8 @@ func (o SecretIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type SecretReplication struct {
 	// The Secret will automatically be replicated without any restrictions.
 	Automatic *bool `pulumi:"automatic"`
-	// The Secret will automatically be replicated without any restrictions.  Structure is documented below.
+	// The Secret will automatically be replicated without any restrictions.
+	// Structure is documented below.
 	UserManaged *SecretReplicationUserManaged `pulumi:"userManaged"`
 }
 
@@ -343,7 +344,8 @@ type SecretReplicationInput interface {
 type SecretReplicationArgs struct {
 	// The Secret will automatically be replicated without any restrictions.
 	Automatic pulumi.BoolPtrInput `pulumi:"automatic"`
-	// The Secret will automatically be replicated without any restrictions.  Structure is documented below.
+	// The Secret will automatically be replicated without any restrictions.
+	// Structure is documented below.
 	UserManaged SecretReplicationUserManagedPtrInput `pulumi:"userManaged"`
 }
 
@@ -429,7 +431,8 @@ func (o SecretReplicationOutput) Automatic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
 }
 
-// The Secret will automatically be replicated without any restrictions.  Structure is documented below.
+// The Secret will automatically be replicated without any restrictions.
+// Structure is documented below.
 func (o SecretReplicationOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
 	return o.ApplyT(func(v SecretReplication) *SecretReplicationUserManaged { return v.UserManaged }).(SecretReplicationUserManagedPtrOutput)
 }
@@ -462,7 +465,8 @@ func (o SecretReplicationPtrOutput) Automatic() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Secret will automatically be replicated without any restrictions.  Structure is documented below.
+// The Secret will automatically be replicated without any restrictions.
+// Structure is documented below.
 func (o SecretReplicationPtrOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
 	return o.ApplyT(func(v *SecretReplication) *SecretReplicationUserManaged {
 		if v == nil {
@@ -473,7 +477,8 @@ func (o SecretReplicationPtrOutput) UserManaged() SecretReplicationUserManagedPt
 }
 
 type SecretReplicationUserManaged struct {
-	// The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+	// The list of Replicas for this Secret. Cannot be empty.
+	// Structure is documented below.
 	Replicas []SecretReplicationUserManagedReplica `pulumi:"replicas"`
 }
 
@@ -489,7 +494,8 @@ type SecretReplicationUserManagedInput interface {
 }
 
 type SecretReplicationUserManagedArgs struct {
-	// The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+	// The list of Replicas for this Secret. Cannot be empty.
+	// Structure is documented below.
 	Replicas SecretReplicationUserManagedReplicaArrayInput `pulumi:"replicas"`
 }
 
@@ -570,7 +576,8 @@ func (o SecretReplicationUserManagedOutput) ToSecretReplicationUserManagedPtrOut
 	}).(SecretReplicationUserManagedPtrOutput)
 }
 
-// The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+// The list of Replicas for this Secret. Cannot be empty.
+// Structure is documented below.
 func (o SecretReplicationUserManagedOutput) Replicas() SecretReplicationUserManagedReplicaArrayOutput {
 	return o.ApplyT(func(v SecretReplicationUserManaged) []SecretReplicationUserManagedReplica { return v.Replicas }).(SecretReplicationUserManagedReplicaArrayOutput)
 }
@@ -593,7 +600,8 @@ func (o SecretReplicationUserManagedPtrOutput) Elem() SecretReplicationUserManag
 	return o.ApplyT(func(v *SecretReplicationUserManaged) SecretReplicationUserManaged { return *v }).(SecretReplicationUserManagedOutput)
 }
 
-// The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+// The list of Replicas for this Secret. Cannot be empty.
+// Structure is documented below.
 func (o SecretReplicationUserManagedPtrOutput) Replicas() SecretReplicationUserManagedReplicaArrayOutput {
 	return o.ApplyT(func(v *SecretReplicationUserManaged) []SecretReplicationUserManagedReplica {
 		if v == nil {

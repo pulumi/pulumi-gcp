@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>
-        /// Cloud SQL properties.  Structure is documented below.
+        /// Cloud SQL properties.
+        /// Structure is documented below.
         /// </summary>
         [Output("cloudSql")]
         public Output<Outputs.ConnectionCloudSql> CloudSql { get; private set; } = null!;
@@ -125,7 +126,8 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ConnectionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud SQL properties.  Structure is documented below.
+        /// Cloud SQL properties.
+        /// Structure is documented below.
         /// </summary>
         [Input("cloudSql", required: true)]
         public Input<Inputs.ConnectionCloudSqlArgs> CloudSql { get; set; } = null!;
@@ -172,7 +174,8 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ConnectionState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud SQL properties.  Structure is documented below.
+        /// Cloud SQL properties.
+        /// Structure is documented below.
         /// </summary>
         [Input("cloudSql")]
         public Input<Inputs.ConnectionCloudSqlGetArgs>? CloudSql { get; set; }

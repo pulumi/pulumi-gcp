@@ -40,7 +40,8 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> Service { get; private set; } = null!;
 
         /// <summary>
-        /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
+        /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        /// Structure is documented below.
         /// </summary>
         [Output("split")]
         public Output<Outputs.EngineSplitTrafficSplit> Split { get; private set; } = null!;
@@ -111,7 +112,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string> Service { get; set; } = null!;
 
         /// <summary>
-        /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
+        /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        /// Structure is documented below.
         /// </summary>
         [Input("split", required: true)]
         public Input<Inputs.EngineSplitTrafficSplitArgs> Split { get; set; } = null!;
@@ -143,7 +145,8 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.  Structure is documented below.
+        /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
+        /// Structure is documented below.
         /// </summary>
         [Input("split")]
         public Input<Inputs.EngineSplitTrafficSplitGetArgs>? Split { get; set; }

@@ -21,7 +21,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<int>? MonthDay { get; set; }
 
         /// <summary>
-        /// Week day in a month.  Structure is documented below.
+        /// Week day in a month.
+        /// Structure is documented below.
         /// </summary>
         [Input("weekDayOfMonth")]
         public Input<Inputs.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthGetArgs>? WeekDayOfMonth { get; set; }

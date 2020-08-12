@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// This field denotes whether to include or exclude metadata for firewall logs.
+        /// Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
         /// </summary>
         [Input("metadata", required: true)]
         public Input<string> Metadata { get; set; } = null!;

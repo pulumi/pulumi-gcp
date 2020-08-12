@@ -22,7 +22,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
         /// the selected backendService. headerAction specified here take effect before
-        /// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+        /// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction? HeaderAction;
         /// <summary>

@@ -28,7 +28,8 @@ type Repository struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// How this repository publishes a change in the repository through Cloud Pub/Sub.
-	// Keyed by the topic names.  Structure is documented below.
+	// Keyed by the topic names.
+	// Structure is documented below.
 	PubsubConfigs RepositoryPubsubConfigArrayOutput `pulumi:"pubsubConfigs"`
 	// The disk usage of the repo, in bytes.
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -71,7 +72,8 @@ type repositoryState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// How this repository publishes a change in the repository through Cloud Pub/Sub.
-	// Keyed by the topic names.  Structure is documented below.
+	// Keyed by the topic names.
+	// Structure is documented below.
 	PubsubConfigs []RepositoryPubsubConfig `pulumi:"pubsubConfigs"`
 	// The disk usage of the repo, in bytes.
 	Size *int `pulumi:"size"`
@@ -87,7 +89,8 @@ type RepositoryState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// How this repository publishes a change in the repository through Cloud Pub/Sub.
-	// Keyed by the topic names.  Structure is documented below.
+	// Keyed by the topic names.
+	// Structure is documented below.
 	PubsubConfigs RepositoryPubsubConfigArrayInput
 	// The disk usage of the repo, in bytes.
 	Size pulumi.IntPtrInput
@@ -107,7 +110,8 @@ type repositoryArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// How this repository publishes a change in the repository through Cloud Pub/Sub.
-	// Keyed by the topic names.  Structure is documented below.
+	// Keyed by the topic names.
+	// Structure is documented below.
 	PubsubConfigs []RepositoryPubsubConfig `pulumi:"pubsubConfigs"`
 }
 
@@ -120,7 +124,8 @@ type RepositoryArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// How this repository publishes a change in the repository through Cloud Pub/Sub.
-	// Keyed by the topic names.  Structure is documented below.
+	// Keyed by the topic names.
+	// Structure is documented below.
 	PubsubConfigs RepositoryPubsubConfigArrayInput
 }
 

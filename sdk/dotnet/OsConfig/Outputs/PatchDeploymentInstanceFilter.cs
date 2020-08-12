@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly bool? All;
         /// <summary>
-        /// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.  Structure is documented below.
+        /// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.PatchDeploymentInstanceFilterGroupLabel> GroupLabels;
         /// <summary>

@@ -24,14 +24,16 @@ namespace Pulumi.Gcp.AccessContextManager
     public partial class AccessLevel : Pulumi.CustomResource
     {
         /// <summary>
-        /// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+        /// A set of predefined conditions for the access level and a combining function.
+        /// Structure is documented below.
         /// </summary>
         [Output("basic")]
         public Output<Outputs.AccessLevelBasic?> Basic { get; private set; } = null!;
 
         /// <summary>
         /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-        /// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+        /// See CEL spec at: https://github.com/google/cel-spec.
+        /// Structure is documented below.
         /// </summary>
         [Output("custom")]
         public Output<Outputs.AccessLevelCustom?> Custom { get; private set; } = null!;
@@ -110,14 +112,16 @@ namespace Pulumi.Gcp.AccessContextManager
     public sealed class AccessLevelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+        /// A set of predefined conditions for the access level and a combining function.
+        /// Structure is documented below.
         /// </summary>
         [Input("basic")]
         public Input<Inputs.AccessLevelBasicArgs>? Basic { get; set; }
 
         /// <summary>
         /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-        /// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+        /// See CEL spec at: https://github.com/google/cel-spec.
+        /// Structure is documented below.
         /// </summary>
         [Input("custom")]
         public Input<Inputs.AccessLevelCustomArgs>? Custom { get; set; }
@@ -157,14 +161,16 @@ namespace Pulumi.Gcp.AccessContextManager
     public sealed class AccessLevelState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A set of predefined conditions for the access level and a combining function.  Structure is documented below.
+        /// A set of predefined conditions for the access level and a combining function.
+        /// Structure is documented below.
         /// </summary>
         [Input("basic")]
         public Input<Inputs.AccessLevelBasicGetArgs>? Basic { get; set; }
 
         /// <summary>
         /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-        /// See CEL spec at: https://github.com/google/cel-spec.  Structure is documented below.
+        /// See CEL spec at: https://github.com/google/cel-spec.
+        /// Structure is documented below.
         /// </summary>
         [Input("custom")]
         public Input<Inputs.AccessLevelCustomGetArgs>? Custom { get; set; }

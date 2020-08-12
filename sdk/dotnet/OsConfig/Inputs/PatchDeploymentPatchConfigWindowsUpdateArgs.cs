@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     {
         /// <summary>
         /// Only apply updates of these windows update classifications. If empty, all updates are applied.
+        /// Possible values are `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
         /// </summary>
         [Input("classifications")]
         public Input<string>? Classifications { get; set; }

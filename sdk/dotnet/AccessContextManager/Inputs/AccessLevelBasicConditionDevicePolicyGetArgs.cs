@@ -43,7 +43,8 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
 
         /// <summary>
         /// A list of allowed OS versions.
-        /// An empty list allows all types and all versions.  Structure is documented below.
+        /// An empty list allows all types and all versions.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintGetArgs> OsConstraints
         {

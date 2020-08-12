@@ -30,7 +30,8 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// Game server cluster connection information. This information is used to
-        /// manage game server clusters.  Structure is documented below.
+        /// manage game server clusters.
+        /// Structure is documented below.
         /// </summary>
         [Output("connectionInfo")]
         public Output<Outputs.GameServerClusterConnectionInfo> ConnectionInfo { get; private set; } = null!;
@@ -129,7 +130,8 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// Game server cluster connection information. This information is used to
-        /// manage game server clusters.  Structure is documented below.
+        /// manage game server clusters.
+        /// Structure is documented below.
         /// </summary>
         [Input("connectionInfo", required: true)]
         public Input<Inputs.GameServerClusterConnectionInfoArgs> ConnectionInfo { get; set; } = null!;
@@ -187,7 +189,8 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// Game server cluster connection information. This information is used to
-        /// manage game server clusters.  Structure is documented below.
+        /// manage game server clusters.
+        /// Structure is documented below.
         /// </summary>
         [Input("connectionInfo")]
         public Input<Inputs.GameServerClusterConnectionInfoGetArgs>? ConnectionInfo { get; set; }

@@ -31,7 +31,8 @@ class RegionHealthCheck(pulumi.CustomResource):
     """
     http2_health_check: pulumi.Output[dict]
     """
-    A nested object resource  Structure is documented below.
+    A nested object resource
+    Structure is documented below.
 
       * `host` (`str`) - The value of the host header in the HTTP2 health check request.
         If left empty (default value), the public IP on behalf of which this health
@@ -50,8 +51,11 @@ class RegionHealthCheck(pulumi.CustomResource):
         checking.
         If not specified, HTTP2 health check follows behavior specified in `port` and
         `portName` fields.
+        Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
       * `proxy_header` (`str`) - Specifies the type of proxy header to append before sending data to the
         backend.
+        Default value is `NONE`.
+        Possible values are `NONE` and `PROXY_V1`.
       * `request_path` (`str`) - The request path of the HTTP2 health check request.
         The default value is /.
       * `response` (`str`) - The bytes to match against the beginning of the response data. If left empty
@@ -60,7 +64,8 @@ class RegionHealthCheck(pulumi.CustomResource):
     """
     http_health_check: pulumi.Output[dict]
     """
-    A nested object resource  Structure is documented below.
+    A nested object resource
+    Structure is documented below.
 
       * `host` (`str`) - The value of the host header in the HTTP2 health check request.
         If left empty (default value), the public IP on behalf of which this health
@@ -79,8 +84,11 @@ class RegionHealthCheck(pulumi.CustomResource):
         checking.
         If not specified, HTTP2 health check follows behavior specified in `port` and
         `portName` fields.
+        Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
       * `proxy_header` (`str`) - Specifies the type of proxy header to append before sending data to the
         backend.
+        Default value is `NONE`.
+        Possible values are `NONE` and `PROXY_V1`.
       * `request_path` (`str`) - The request path of the HTTP2 health check request.
         The default value is /.
       * `response` (`str`) - The bytes to match against the beginning of the response data. If left empty
@@ -89,7 +97,8 @@ class RegionHealthCheck(pulumi.CustomResource):
     """
     https_health_check: pulumi.Output[dict]
     """
-    A nested object resource  Structure is documented below.
+    A nested object resource
+    Structure is documented below.
 
       * `host` (`str`) - The value of the host header in the HTTP2 health check request.
         If left empty (default value), the public IP on behalf of which this health
@@ -108,8 +117,11 @@ class RegionHealthCheck(pulumi.CustomResource):
         checking.
         If not specified, HTTP2 health check follows behavior specified in `port` and
         `portName` fields.
+        Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
       * `proxy_header` (`str`) - Specifies the type of proxy header to append before sending data to the
         backend.
+        Default value is `NONE`.
+        Possible values are `NONE` and `PROXY_V1`.
       * `request_path` (`str`) - The request path of the HTTP2 health check request.
         The default value is /.
       * `response` (`str`) - The bytes to match against the beginning of the response data. If left empty
@@ -149,7 +161,8 @@ class RegionHealthCheck(pulumi.CustomResource):
     """
     ssl_health_check: pulumi.Output[dict]
     """
-    A nested object resource  Structure is documented below.
+    A nested object resource
+    Structure is documented below.
 
       * `port` (`float`) - The TCP port number for the HTTP2 health check request.
         The default value is 443.
@@ -165,8 +178,11 @@ class RegionHealthCheck(pulumi.CustomResource):
         checking.
         If not specified, HTTP2 health check follows behavior specified in `port` and
         `portName` fields.
+        Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
       * `proxy_header` (`str`) - Specifies the type of proxy header to append before sending data to the
         backend.
+        Default value is `NONE`.
+        Possible values are `NONE` and `PROXY_V1`.
       * `request` (`str`) - The application data to send once the SSL connection has been
         established (default value is empty). If both request and response are
         empty, the connection establishment alone will indicate health. The request
@@ -177,7 +193,8 @@ class RegionHealthCheck(pulumi.CustomResource):
     """
     tcp_health_check: pulumi.Output[dict]
     """
-    A nested object resource  Structure is documented below.
+    A nested object resource
+    Structure is documented below.
 
       * `port` (`float`) - The TCP port number for the HTTP2 health check request.
         The default value is 443.
@@ -193,8 +210,11 @@ class RegionHealthCheck(pulumi.CustomResource):
         checking.
         If not specified, HTTP2 health check follows behavior specified in `port` and
         `portName` fields.
+        Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
       * `proxy_header` (`str`) - Specifies the type of proxy header to append before sending data to the
         backend.
+        Default value is `NONE`.
+        Possible values are `NONE` and `PROXY_V1`.
       * `request` (`str`) - The application data to send once the SSL connection has been
         established (default value is empty). If both request and response are
         empty, the connection establishment alone will indicate health. The request
@@ -248,9 +268,12 @@ class RegionHealthCheck(pulumi.CustomResource):
                you create the resource.
         :param pulumi.Input[float] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input[dict] http2_health_check: A nested object resource  Structure is documented below.
-        :param pulumi.Input[dict] http_health_check: A nested object resource  Structure is documented below.
-        :param pulumi.Input[dict] https_health_check: A nested object resource  Structure is documented below.
+        :param pulumi.Input[dict] http2_health_check: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[dict] http_health_check: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[dict] https_health_check: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[dict] log_config: Configure logging on this health check.  Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -263,8 +286,10 @@ class RegionHealthCheck(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created health check should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[dict] ssl_health_check: A nested object resource  Structure is documented below.
-        :param pulumi.Input[dict] tcp_health_check: A nested object resource  Structure is documented below.
+        :param pulumi.Input[dict] ssl_health_check: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[dict] tcp_health_check: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[float] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
                greater value than checkIntervalSec.
@@ -290,8 +315,11 @@ class RegionHealthCheck(pulumi.CustomResource):
             checking.
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
+            Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
             backend.
+            Default value is `NONE`.
+            Possible values are `NONE` and `PROXY_V1`.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -317,8 +345,11 @@ class RegionHealthCheck(pulumi.CustomResource):
             checking.
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
+            Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
             backend.
+            Default value is `NONE`.
+            Possible values are `NONE` and `PROXY_V1`.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -344,8 +375,11 @@ class RegionHealthCheck(pulumi.CustomResource):
             checking.
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
+            Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
             backend.
+            Default value is `NONE`.
+            Possible values are `NONE` and `PROXY_V1`.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -373,8 +407,11 @@ class RegionHealthCheck(pulumi.CustomResource):
             checking.
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
+            Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
             backend.
+            Default value is `NONE`.
+            Possible values are `NONE` and `PROXY_V1`.
           * `request` (`pulumi.Input[str]`) - The application data to send once the SSL connection has been
             established (default value is empty). If both request and response are
             empty, the connection establishment alone will indicate health. The request
@@ -399,8 +436,11 @@ class RegionHealthCheck(pulumi.CustomResource):
             checking.
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
+            Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
             backend.
+            Default value is `NONE`.
+            Possible values are `NONE` and `PROXY_V1`.
           * `request` (`pulumi.Input[str]`) - The application data to send once the SSL connection has been
             established (default value is empty). If both request and response are
             empty, the connection establishment alone will indicate health. The request
@@ -465,9 +505,12 @@ class RegionHealthCheck(pulumi.CustomResource):
                you create the resource.
         :param pulumi.Input[float] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input[dict] http2_health_check: A nested object resource  Structure is documented below.
-        :param pulumi.Input[dict] http_health_check: A nested object resource  Structure is documented below.
-        :param pulumi.Input[dict] https_health_check: A nested object resource  Structure is documented below.
+        :param pulumi.Input[dict] http2_health_check: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[dict] http_health_check: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[dict] https_health_check: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[dict] log_config: Configure logging on this health check.  Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -481,8 +524,10 @@ class RegionHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] region: The Region in which the created health check should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[dict] ssl_health_check: A nested object resource  Structure is documented below.
-        :param pulumi.Input[dict] tcp_health_check: A nested object resource  Structure is documented below.
+        :param pulumi.Input[dict] ssl_health_check: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[dict] tcp_health_check: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[float] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
                greater value than checkIntervalSec.
@@ -509,8 +554,11 @@ class RegionHealthCheck(pulumi.CustomResource):
             checking.
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
+            Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
             backend.
+            Default value is `NONE`.
+            Possible values are `NONE` and `PROXY_V1`.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -536,8 +584,11 @@ class RegionHealthCheck(pulumi.CustomResource):
             checking.
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
+            Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
             backend.
+            Default value is `NONE`.
+            Possible values are `NONE` and `PROXY_V1`.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -563,8 +614,11 @@ class RegionHealthCheck(pulumi.CustomResource):
             checking.
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
+            Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
             backend.
+            Default value is `NONE`.
+            Possible values are `NONE` and `PROXY_V1`.
           * `request_path` (`pulumi.Input[str]`) - The request path of the HTTP2 health check request.
             The default value is /.
           * `response` (`pulumi.Input[str]`) - The bytes to match against the beginning of the response data. If left empty
@@ -592,8 +646,11 @@ class RegionHealthCheck(pulumi.CustomResource):
             checking.
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
+            Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
             backend.
+            Default value is `NONE`.
+            Possible values are `NONE` and `PROXY_V1`.
           * `request` (`pulumi.Input[str]`) - The application data to send once the SSL connection has been
             established (default value is empty). If both request and response are
             empty, the connection establishment alone will indicate health. The request
@@ -618,8 +675,11 @@ class RegionHealthCheck(pulumi.CustomResource):
             checking.
             If not specified, HTTP2 health check follows behavior specified in `port` and
             `portName` fields.
+            Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
           * `proxy_header` (`pulumi.Input[str]`) - Specifies the type of proxy header to append before sending data to the
             backend.
+            Default value is `NONE`.
+            Possible values are `NONE` and `PROXY_V1`.
           * `request` (`pulumi.Input[str]`) - The application data to send once the SSL connection has been
             established (default value is empty). If both request and response are
             empty, the connection establishment alone will indicate health. The request

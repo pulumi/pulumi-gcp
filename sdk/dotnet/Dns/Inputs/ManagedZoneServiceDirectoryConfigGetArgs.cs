@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Dns.Inputs
     public sealed class ManagedZoneServiceDirectoryConfigGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The namespace associated with the zone.  Structure is documented below.
+        /// The namespace associated with the zone.
+        /// Structure is documented below.
         /// </summary>
         [Input("namespace", required: true)]
         public Input<Inputs.ManagedZoneServiceDirectoryConfigNamespaceGetArgs> Namespace { get; set; } = null!;

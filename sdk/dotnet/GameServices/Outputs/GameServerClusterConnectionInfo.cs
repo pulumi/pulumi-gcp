@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.GameServices.Outputs
     public sealed class GameServerClusterConnectionInfo
     {
         /// <summary>
-        /// Reference of the GKE cluster where the game servers are installed.  Structure is documented below.
+        /// Reference of the GKE cluster where the game servers are installed.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GameServerClusterConnectionInfoGkeClusterReference GkeClusterReference;
         /// <summary>

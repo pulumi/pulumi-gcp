@@ -73,7 +73,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Reservation for instances with specific machine shapes.  Structure is documented below.
+        /// Reservation for instances with specific machine shapes.
+        /// Structure is documented below.
         /// </summary>
         [Output("specificReservation")]
         public Output<Outputs.ReservationSpecificReservation> SpecificReservation { get; private set; } = null!;
@@ -170,7 +171,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Reservation for instances with specific machine shapes.  Structure is documented below.
+        /// Reservation for instances with specific machine shapes.
+        /// Structure is documented below.
         /// </summary>
         [Input("specificReservation", required: true)]
         public Input<Inputs.ReservationSpecificReservationArgs> SpecificReservation { get; set; } = null!;
@@ -240,7 +242,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// Reservation for instances with specific machine shapes.  Structure is documented below.
+        /// Reservation for instances with specific machine shapes.
+        /// Structure is documented below.
         /// </summary>
         [Input("specificReservation")]
         public Input<Inputs.ReservationSpecificReservationGetArgs>? SpecificReservation { get; set; }

@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
     public sealed class InboundSamlConfigIdpConfig
     {
         /// <summary>
-        /// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.  Structure is documented below.
+        /// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.InboundSamlConfigIdpConfigIdpCertificate> IdpCertificates;
         /// <summary>

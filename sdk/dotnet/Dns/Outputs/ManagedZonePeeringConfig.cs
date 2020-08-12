@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class ManagedZonePeeringConfig
     {
         /// <summary>
-        /// The network with which to peer.  Structure is documented below.
+        /// The network with which to peer.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ManagedZonePeeringConfigTargetNetwork TargetNetwork;
 

@@ -15,7 +15,8 @@ class PacketMirroring(pulumi.CustomResource):
     The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
     that will be used as collector for mirrored traffic. The
     specified forwarding rule must have is_mirroring_collector
-    set to true.  Structure is documented below.
+    set to true.
+    Structure is documented below.
 
       * `url` (`str`) - The URL of the instances where this rule should be active.
     """
@@ -25,7 +26,8 @@ class PacketMirroring(pulumi.CustomResource):
     """
     filter: pulumi.Output[dict]
     """
-    A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
+    A filter for mirrored traffic.  If unset, all traffic is mirrored.
+    Structure is documented below.
 
       * `cidrRanges` (`list`) - IP CIDR ranges that apply as a filter on the source (ingress) or
         destination (egress) IP in the IP header. Only IPv4 is supported.
@@ -33,12 +35,15 @@ class PacketMirroring(pulumi.CustomResource):
     """
     mirrored_resources: pulumi.Output[dict]
     """
-    A means of specifying which resources to mirror.  Structure is documented below.
+    A means of specifying which resources to mirror.
+    Structure is documented below.
 
-      * `instances` (`list`) - All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+      * `instances` (`list`) - All the listed instances will be mirrored.  Specify at most 50.
+        Structure is documented below.
         * `url` (`str`) - The URL of the instances where this rule should be active.
 
-      * `subnetworks` (`list`) - All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+      * `subnetworks` (`list`) - All instances in one of these subnetworks will be mirrored.
+        Structure is documented below.
         * `url` (`str`) - The URL of the instances where this rule should be active.
 
       * `tags` (`list`) - All instances with these tags will be mirrored.
@@ -51,7 +56,8 @@ class PacketMirroring(pulumi.CustomResource):
     """
     Specifies the mirrored VPC network. Only packets in this network
     will be mirrored. All mirrored VMs should have a NIC in the given
-    network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+    network. All mirrored subnetworks should belong to the given network.
+    Structure is documented below.
 
       * `url` (`str`) - The URL of the instances where this rule should be active.
     """
@@ -90,14 +96,18 @@ class PacketMirroring(pulumi.CustomResource):
         :param pulumi.Input[dict] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
                that will be used as collector for mirrored traffic. The
                specified forwarding rule must have is_mirroring_collector
-               set to true.  Structure is documented below.
+               set to true.
+               Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the rule.
-        :param pulumi.Input[dict] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
-        :param pulumi.Input[dict] mirrored_resources: A means of specifying which resources to mirror.  Structure is documented below.
+        :param pulumi.Input[dict] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
+               Structure is documented below.
+        :param pulumi.Input[dict] mirrored_resources: A means of specifying which resources to mirror.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the packet mirroring rule
         :param pulumi.Input[dict] network: Specifies the mirrored VPC network. Only packets in this network
                will be mirrored. All mirrored VMs should have a NIC in the given
-               network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+               network. All mirrored subnetworks should belong to the given network.
+               Structure is documented below.
         :param pulumi.Input[float] priority: Since only one rule can be active at a time, priority is
                used to break ties in the case of two rules that apply to
                the same instances.
@@ -118,10 +128,12 @@ class PacketMirroring(pulumi.CustomResource):
 
         The **mirrored_resources** object supports the following:
 
-          * `instances` (`pulumi.Input[list]`) - All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+          * `instances` (`pulumi.Input[list]`) - All the listed instances will be mirrored.  Specify at most 50.
+            Structure is documented below.
             * `url` (`pulumi.Input[str]`) - The URL of the instances where this rule should be active.
 
-          * `subnetworks` (`pulumi.Input[list]`) - All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+          * `subnetworks` (`pulumi.Input[list]`) - All instances in one of these subnetworks will be mirrored.
+            Structure is documented below.
             * `url` (`pulumi.Input[str]`) - The URL of the instances where this rule should be active.
 
           * `tags` (`pulumi.Input[list]`) - All instances with these tags will be mirrored.
@@ -180,14 +192,18 @@ class PacketMirroring(pulumi.CustomResource):
         :param pulumi.Input[dict] collector_ilb: The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
                that will be used as collector for mirrored traffic. The
                specified forwarding rule must have is_mirroring_collector
-               set to true.  Structure is documented below.
+               set to true.
+               Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the rule.
-        :param pulumi.Input[dict] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
-        :param pulumi.Input[dict] mirrored_resources: A means of specifying which resources to mirror.  Structure is documented below.
+        :param pulumi.Input[dict] filter: A filter for mirrored traffic.  If unset, all traffic is mirrored.
+               Structure is documented below.
+        :param pulumi.Input[dict] mirrored_resources: A means of specifying which resources to mirror.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the packet mirroring rule
         :param pulumi.Input[dict] network: Specifies the mirrored VPC network. Only packets in this network
                will be mirrored. All mirrored VMs should have a NIC in the given
-               network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+               network. All mirrored subnetworks should belong to the given network.
+               Structure is documented below.
         :param pulumi.Input[float] priority: Since only one rule can be active at a time, priority is
                used to break ties in the case of two rules that apply to
                the same instances.
@@ -208,10 +224,12 @@ class PacketMirroring(pulumi.CustomResource):
 
         The **mirrored_resources** object supports the following:
 
-          * `instances` (`pulumi.Input[list]`) - All the listed instances will be mirrored.  Specify at most 50.  Structure is documented below.
+          * `instances` (`pulumi.Input[list]`) - All the listed instances will be mirrored.  Specify at most 50.
+            Structure is documented below.
             * `url` (`pulumi.Input[str]`) - The URL of the instances where this rule should be active.
 
-          * `subnetworks` (`pulumi.Input[list]`) - All instances in one of these subnetworks will be mirrored.  Structure is documented below.
+          * `subnetworks` (`pulumi.Input[list]`) - All instances in one of these subnetworks will be mirrored.
+            Structure is documented below.
             * `url` (`pulumi.Input[str]`) - The URL of the instances where this rule should be active.
 
           * `tags` (`pulumi.Input[list]`) - All instances with these tags will be mirrored.

@@ -81,7 +81,8 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
      * Properties relevant to a managed certificate.  These will be used if the
-     * certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+     * certificate is managed (as indicated by a value of `MANAGED` in `type`).
+     * Structure is documented below.
      */
     public readonly managed!: pulumi.Output<outputs.compute.ManagedSslCertificateManaged | undefined>;
     /**
@@ -110,6 +111,8 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
     /**
      * Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
+     * Default value is `MANAGED`.
+     * Possible values are `MANAGED`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -183,7 +186,8 @@ export interface ManagedSslCertificateState {
     readonly expireTime?: pulumi.Input<string>;
     /**
      * Properties relevant to a managed certificate.  These will be used if the
-     * certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+     * certificate is managed (as indicated by a value of `MANAGED` in `type`).
+     * Structure is documented below.
      */
     readonly managed?: pulumi.Input<inputs.compute.ManagedSslCertificateManaged>;
     /**
@@ -212,6 +216,8 @@ export interface ManagedSslCertificateState {
     /**
      * Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
+     * Default value is `MANAGED`.
+     * Possible values are `MANAGED`.
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -230,7 +236,8 @@ export interface ManagedSslCertificateArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * Properties relevant to a managed certificate.  These will be used if the
-     * certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+     * certificate is managed (as indicated by a value of `MANAGED` in `type`).
+     * Structure is documented below.
      */
     readonly managed?: pulumi.Input<inputs.compute.ManagedSslCertificateManaged>;
     /**
@@ -251,6 +258,8 @@ export interface ManagedSslCertificateArgs {
     /**
      * Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
+     * Default value is `MANAGED`.
+     * Possible values are `MANAGED`.
      */
     readonly type?: pulumi.Input<string>;
 }

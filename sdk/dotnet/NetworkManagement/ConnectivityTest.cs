@@ -45,7 +45,8 @@ namespace Pulumi.Gcp.NetworkManagement
         /// interface.
         /// A reachability analysis proceeds even if the destination location
         /// is ambiguous. However, the result can include endpoints that you
-        /// don't intend to test.  Structure is documented below.
+        /// don't intend to test.
+        /// Structure is documented below.
         /// </summary>
         [Output("destination")]
         public Output<Outputs.ConnectivityTestDestination> Destination { get; private set; } = null!;
@@ -101,7 +102,8 @@ namespace Pulumi.Gcp.NetworkManagement
         /// address or VPC network.
         /// A reachability analysis proceeds even if the source location is
         /// ambiguous. However, the test result may include endpoints that
-        /// you don't intend to test.  Structure is documented below.
+        /// you don't intend to test.
+        /// Structure is documented below.
         /// </summary>
         [Output("source")]
         public Output<Outputs.ConnectivityTestSource> Source { get; private set; } = null!;
@@ -173,7 +175,8 @@ namespace Pulumi.Gcp.NetworkManagement
         /// interface.
         /// A reachability analysis proceeds even if the destination location
         /// is ambiguous. However, the result can include endpoints that you
-        /// don't intend to test.  Structure is documented below.
+        /// don't intend to test.
+        /// Structure is documented below.
         /// </summary>
         [Input("destination", required: true)]
         public Input<Inputs.ConnectivityTestDestinationArgs> Destination { get; set; } = null!;
@@ -241,7 +244,8 @@ namespace Pulumi.Gcp.NetworkManagement
         /// address or VPC network.
         /// A reachability analysis proceeds even if the source location is
         /// ambiguous. However, the test result may include endpoints that
-        /// you don't intend to test.  Structure is documented below.
+        /// you don't intend to test.
+        /// Structure is documented below.
         /// </summary>
         [Input("source", required: true)]
         public Input<Inputs.ConnectivityTestSourceArgs> Source { get; set; } = null!;
@@ -274,7 +278,8 @@ namespace Pulumi.Gcp.NetworkManagement
         /// interface.
         /// A reachability analysis proceeds even if the destination location
         /// is ambiguous. However, the result can include endpoints that you
-        /// don't intend to test.  Structure is documented below.
+        /// don't intend to test.
+        /// Structure is documented below.
         /// </summary>
         [Input("destination")]
         public Input<Inputs.ConnectivityTestDestinationGetArgs>? Destination { get; set; }
@@ -342,7 +347,8 @@ namespace Pulumi.Gcp.NetworkManagement
         /// address or VPC network.
         /// A reachability analysis proceeds even if the source location is
         /// ambiguous. However, the test result may include endpoints that
-        /// you don't intend to test.  Structure is documented below.
+        /// you don't intend to test.
+        /// Structure is documented below.
         /// </summary>
         [Input("source")]
         public Input<Inputs.ConnectivityTestSourceGetArgs>? Source { get; set; }

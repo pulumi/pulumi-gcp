@@ -13,6 +13,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     database_version: pulumi.Output[str]
     """
     The MySQL version running on your source database server.
+    Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
     """
     host: pulumi.Output[str]
     """
@@ -50,6 +51,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
+               Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[float] port: The externally accessible port for the source database server.
@@ -102,6 +104,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
+               Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[float] port: The externally accessible port for the source database server.

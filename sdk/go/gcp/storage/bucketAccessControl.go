@@ -60,6 +60,7 @@ type BucketAccessControl struct {
 	// example.com, the entity would be domain-example.com.
 	Entity pulumi.StringOutput `pulumi:"entity"`
 	// The access permission for the entity.
+	// Possible values are `OWNER`, `READER`, and `WRITER`.
 	Role pulumi.StringPtrOutput `pulumi:"role"`
 }
 
@@ -120,6 +121,7 @@ type bucketAccessControlState struct {
 	// example.com, the entity would be domain-example.com.
 	Entity *string `pulumi:"entity"`
 	// The access permission for the entity.
+	// Possible values are `OWNER`, `READER`, and `WRITER`.
 	Role *string `pulumi:"role"`
 }
 
@@ -147,6 +149,7 @@ type BucketAccessControlState struct {
 	// example.com, the entity would be domain-example.com.
 	Entity pulumi.StringPtrInput
 	// The access permission for the entity.
+	// Possible values are `OWNER`, `READER`, and `WRITER`.
 	Role pulumi.StringPtrInput
 }
 
@@ -174,6 +177,7 @@ type bucketAccessControlArgs struct {
 	// example.com, the entity would be domain-example.com.
 	Entity string `pulumi:"entity"`
 	// The access permission for the entity.
+	// Possible values are `OWNER`, `READER`, and `WRITER`.
 	Role *string `pulumi:"role"`
 }
 
@@ -198,6 +202,7 @@ type BucketAccessControlArgs struct {
 	// example.com, the entity would be domain-example.com.
 	Entity pulumi.StringInput
 	// The access permission for the entity.
+	// Possible values are `OWNER`, `READER`, and `WRITER`.
 	Role pulumi.StringPtrInput
 }
 

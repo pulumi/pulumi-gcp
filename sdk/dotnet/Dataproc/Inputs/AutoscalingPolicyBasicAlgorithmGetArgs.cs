@@ -21,7 +21,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string>? CooldownPeriod { get; set; }
 
         /// <summary>
-        /// YARN autoscaling configuration.  Structure is documented below.
+        /// YARN autoscaling configuration.
+        /// Structure is documented below.
         /// </summary>
         [Input("yarnConfig", required: true)]
         public Input<Inputs.AutoscalingPolicyBasicAlgorithmYarnConfigGetArgs> YarnConfig { get; set; } = null!;

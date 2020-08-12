@@ -54,6 +54,8 @@ export class GlobalAddress extends pulumi.CustomResource {
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL`.
      */
     public readonly addressType!: pulumi.Output<string | undefined>;
     /**
@@ -66,6 +68,7 @@ export class GlobalAddress extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
+     * Possible values are `IPV4` and `IPV6`.
      */
     public readonly ipVersion!: pulumi.Output<string | undefined>;
     /**
@@ -108,6 +111,7 @@ export class GlobalAddress extends pulumi.CustomResource {
      * The purpose of the resource. For global internal addresses it can be
      * * VPC_PEERING - for peer networks
      * This should only be set when using an Internal address.
+     * Possible values are `VPC_PEERING`.
      */
     public readonly purpose!: pulumi.Output<string | undefined>;
     /**
@@ -181,6 +185,8 @@ export interface GlobalAddressState {
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL`.
      */
     readonly addressType?: pulumi.Input<string>;
     /**
@@ -193,6 +199,7 @@ export interface GlobalAddressState {
     readonly description?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
+     * Possible values are `IPV4` and `IPV6`.
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**
@@ -235,6 +242,7 @@ export interface GlobalAddressState {
      * The purpose of the resource. For global internal addresses it can be
      * * VPC_PEERING - for peer networks
      * This should only be set when using an Internal address.
+     * Possible values are `VPC_PEERING`.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
@@ -257,6 +265,8 @@ export interface GlobalAddressArgs {
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL`.
      */
     readonly addressType?: pulumi.Input<string>;
     /**
@@ -265,6 +275,7 @@ export interface GlobalAddressArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
+     * Possible values are `IPV4` and `IPV6`.
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**
@@ -303,6 +314,7 @@ export interface GlobalAddressArgs {
      * The purpose of the resource. For global internal addresses it can be
      * * VPC_PEERING - for peer networks
      * This should only be set when using an Internal address.
+     * Possible values are `VPC_PEERING`.
      */
     readonly purpose?: pulumi.Input<string>;
 }

@@ -31,19 +31,22 @@ type Instance struct {
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a
-	// single file share is supported.  Structure is documented below.
+	// single file share is supported.
+	// Structure is documented below.
 	FileShares InstanceFileSharesOutput `pulumi:"fileShares"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the fileshare (16 characters or less)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version,
-	// only a single network is supported.  Structure is documented below.
+	// only a single network is supported.
+	// Structure is documented below.
 	Networks InstanceNetworkArrayOutput `pulumi:"networks"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The service tier of the instance.
+	// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// The name of the Filestore zone of the instance.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -96,19 +99,22 @@ type instanceState struct {
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag *string `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a
-	// single file share is supported.  Structure is documented below.
+	// single file share is supported.
+	// Structure is documented below.
 	FileShares *InstanceFileShares `pulumi:"fileShares"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the fileshare (16 characters or less)
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version,
-	// only a single network is supported.  Structure is documented below.
+	// only a single network is supported.
+	// Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service tier of the instance.
+	// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
 	Tier *string `pulumi:"tier"`
 	// The name of the Filestore zone of the instance.
 	Zone *string `pulumi:"zone"`
@@ -122,19 +128,22 @@ type InstanceState struct {
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag pulumi.StringPtrInput
 	// File system shares on the instance. For this version, only a
-	// single file share is supported.  Structure is documented below.
+	// single file share is supported.
+	// Structure is documented below.
 	FileShares InstanceFileSharesPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
 	// The name of the fileshare (16 characters or less)
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version,
-	// only a single network is supported.  Structure is documented below.
+	// only a single network is supported.
+	// Structure is documented below.
 	Networks InstanceNetworkArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service tier of the instance.
+	// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
 	Tier pulumi.StringPtrInput
 	// The name of the Filestore zone of the instance.
 	Zone pulumi.StringPtrInput
@@ -148,19 +157,22 @@ type instanceArgs struct {
 	// A description of the instance.
 	Description *string `pulumi:"description"`
 	// File system shares on the instance. For this version, only a
-	// single file share is supported.  Structure is documented below.
+	// single file share is supported.
+	// Structure is documented below.
 	FileShares InstanceFileShares `pulumi:"fileShares"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the fileshare (16 characters or less)
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version,
-	// only a single network is supported.  Structure is documented below.
+	// only a single network is supported.
+	// Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service tier of the instance.
+	// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
 	Tier string `pulumi:"tier"`
 	// The name of the Filestore zone of the instance.
 	Zone string `pulumi:"zone"`
@@ -171,19 +183,22 @@ type InstanceArgs struct {
 	// A description of the instance.
 	Description pulumi.StringPtrInput
 	// File system shares on the instance. For this version, only a
-	// single file share is supported.  Structure is documented below.
+	// single file share is supported.
+	// Structure is documented below.
 	FileShares InstanceFileSharesInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
 	// The name of the fileshare (16 characters or less)
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version,
-	// only a single network is supported.  Structure is documented below.
+	// only a single network is supported.
+	// Structure is documented below.
 	Networks InstanceNetworkArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service tier of the instance.
+	// Possible values are `TIER_UNSPECIFIED`, `STANDARD`, `PREMIUM`, `BASIC_HDD`, `BASIC_SSD`, and `HIGH_SCALE_SSD`.
 	Tier pulumi.StringInput
 	// The name of the Filestore zone of the instance.
 	Zone pulumi.StringInput

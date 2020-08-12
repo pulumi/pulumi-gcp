@@ -15,11 +15,13 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     {
         /// <summary>
         /// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
-        /// All files must be readable using the credentials supplied with this call.  Structure is documented below.
+        /// All files must be readable using the credentials supplied with this call.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.StandardAppVersionDeploymentFile> Files;
         /// <summary>
-        /// Zip File  Structure is documented below.
+        /// Zip File
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.StandardAppVersionDeploymentZip? Zip;
 

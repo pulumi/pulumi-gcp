@@ -48,7 +48,8 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * EntityKey of the Group.  Structure is documented below.
+     * EntityKey of the Group.
+     * Structure is documented below.
      */
     public readonly groupKey!: pulumi.Output<outputs.cloudidentity.GroupGroupKey>;
     /**
@@ -143,7 +144,8 @@ export interface GroupState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * EntityKey of the Group.  Structure is documented below.
+     * EntityKey of the Group.
+     * Structure is documented below.
      */
     readonly groupKey?: pulumi.Input<inputs.cloudidentity.GroupGroupKey>;
     /**
@@ -184,7 +186,8 @@ export interface GroupArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * EntityKey of the Group.  Structure is documented below.
+     * EntityKey of the Group.
+     * Structure is documented below.
      */
     readonly groupKey: pulumi.Input<inputs.cloudidentity.GroupGroupKey>;
     /**

@@ -588,7 +588,8 @@ type EntryGcsFilesetSpec struct {
 	// * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
 	FilePatterns []string `pulumi:"filePatterns"`
 	// -
-	// Sample files contained in this fileset, not all files contained in this fileset are represented here.  Structure is documented below.
+	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
+	// Structure is documented below.
 	SampleGcsFileSpecs []EntryGcsFilesetSpecSampleGcsFileSpec `pulumi:"sampleGcsFileSpecs"`
 }
 
@@ -617,7 +618,8 @@ type EntryGcsFilesetSpecArgs struct {
 	// * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
 	FilePatterns pulumi.StringArrayInput `pulumi:"filePatterns"`
 	// -
-	// Sample files contained in this fileset, not all files contained in this fileset are represented here.  Structure is documented below.
+	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
+	// Structure is documented below.
 	SampleGcsFileSpecs EntryGcsFilesetSpecSampleGcsFileSpecArrayInput `pulumi:"sampleGcsFileSpecs"`
 }
 
@@ -714,7 +716,8 @@ func (o EntryGcsFilesetSpecOutput) FilePatterns() pulumi.StringArrayOutput {
 }
 
 // -
-// Sample files contained in this fileset, not all files contained in this fileset are represented here.  Structure is documented below.
+// Sample files contained in this fileset, not all files contained in this fileset are represented here.
+// Structure is documented below.
 func (o EntryGcsFilesetSpecOutput) SampleGcsFileSpecs() EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput {
 	return o.ApplyT(func(v EntryGcsFilesetSpec) []EntryGcsFilesetSpecSampleGcsFileSpec { return v.SampleGcsFileSpecs }).(EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput)
 }
@@ -758,7 +761,8 @@ func (o EntryGcsFilesetSpecPtrOutput) FilePatterns() pulumi.StringArrayOutput {
 }
 
 // -
-// Sample files contained in this fileset, not all files contained in this fileset are represented here.  Structure is documented below.
+// Sample files contained in this fileset, not all files contained in this fileset are represented here.
+// Structure is documented below.
 func (o EntryGcsFilesetSpecPtrOutput) SampleGcsFileSpecs() EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput {
 	return o.ApplyT(func(v *EntryGcsFilesetSpec) []EntryGcsFilesetSpecSampleGcsFileSpec {
 		if v == nil {
@@ -1200,7 +1204,8 @@ type TagField struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Holds the value for a tag field with double type.
 	DoubleValue *float64 `pulumi:"doubleValue"`
-	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+	// Structure is documented below.
 	EnumValue *string `pulumi:"enumValue"`
 	// The identifier for this object. Format specified above.
 	FieldName string `pulumi:"fieldName"`
@@ -1234,7 +1239,8 @@ type TagFieldArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Holds the value for a tag field with double type.
 	DoubleValue pulumi.Float64PtrInput `pulumi:"doubleValue"`
-	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+	// Structure is documented below.
 	EnumValue pulumi.StringPtrInput `pulumi:"enumValue"`
 	// The identifier for this object. Format specified above.
 	FieldName pulumi.StringInput `pulumi:"fieldName"`
@@ -1316,7 +1322,8 @@ func (o TagFieldOutput) DoubleValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TagField) *float64 { return v.DoubleValue }).(pulumi.Float64PtrOutput)
 }
 
-// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.  Structure is documented below.
+// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+// Structure is documented below.
 func (o TagFieldOutput) EnumValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagField) *string { return v.EnumValue }).(pulumi.StringPtrOutput)
 }
@@ -1378,7 +1385,8 @@ type TagTemplateField struct {
 	// A higher value indicates a more important field. The value can be negative.
 	// Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
 	Order *int `pulumi:"order"`
-	// The type of value this tag field can contain.  Structure is documented below.
+	// The type of value this tag field can contain.
+	// Structure is documented below.
 	Type TagTemplateFieldType `pulumi:"type"`
 }
 
@@ -1407,7 +1415,8 @@ type TagTemplateFieldArgs struct {
 	// A higher value indicates a more important field. The value can be negative.
 	// Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
 	Order pulumi.IntPtrInput `pulumi:"order"`
-	// The type of value this tag field can contain.  Structure is documented below.
+	// The type of value this tag field can contain.
+	// Structure is documented below.
 	Type TagTemplateFieldTypeInput `pulumi:"type"`
 }
 
@@ -1490,7 +1499,8 @@ func (o TagTemplateFieldOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TagTemplateField) *int { return v.Order }).(pulumi.IntPtrOutput)
 }
 
-// The type of value this tag field can contain.  Structure is documented below.
+// The type of value this tag field can contain.
+// Structure is documented below.
 func (o TagTemplateFieldOutput) Type() TagTemplateFieldTypeOutput {
 	return o.ApplyT(func(v TagTemplateField) TagTemplateFieldType { return v.Type }).(TagTemplateFieldTypeOutput)
 }
@@ -1517,10 +1527,12 @@ func (o TagTemplateFieldArrayOutput) Index(i pulumi.IntInput) TagTemplateFieldOu
 
 type TagTemplateFieldType struct {
 	// Represents an enum type.
-	// Exactly one of `primitiveType` or `enumType` must be set  Structure is documented below.
+	// Exactly one of `primitiveType` or `enumType` must be set
+	// Structure is documented below.
 	EnumType *TagTemplateFieldTypeEnumType `pulumi:"enumType"`
 	// Represents primitive types - string, bool etc.
 	// Exactly one of `primitiveType` or `enumType` must be set
+	// Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
 	PrimitiveType *string `pulumi:"primitiveType"`
 }
 
@@ -1537,10 +1549,12 @@ type TagTemplateFieldTypeInput interface {
 
 type TagTemplateFieldTypeArgs struct {
 	// Represents an enum type.
-	// Exactly one of `primitiveType` or `enumType` must be set  Structure is documented below.
+	// Exactly one of `primitiveType` or `enumType` must be set
+	// Structure is documented below.
 	EnumType TagTemplateFieldTypeEnumTypePtrInput `pulumi:"enumType"`
 	// Represents primitive types - string, bool etc.
 	// Exactly one of `primitiveType` or `enumType` must be set
+	// Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
 	PrimitiveType pulumi.StringPtrInput `pulumi:"primitiveType"`
 }
 
@@ -1571,13 +1585,15 @@ func (o TagTemplateFieldTypeOutput) ToTagTemplateFieldTypeOutputWithContext(ctx 
 }
 
 // Represents an enum type.
-// Exactly one of `primitiveType` or `enumType` must be set  Structure is documented below.
+// Exactly one of `primitiveType` or `enumType` must be set
+// Structure is documented below.
 func (o TagTemplateFieldTypeOutput) EnumType() TagTemplateFieldTypeEnumTypePtrOutput {
 	return o.ApplyT(func(v TagTemplateFieldType) *TagTemplateFieldTypeEnumType { return v.EnumType }).(TagTemplateFieldTypeEnumTypePtrOutput)
 }
 
 // Represents primitive types - string, bool etc.
 // Exactly one of `primitiveType` or `enumType` must be set
+// Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
 func (o TagTemplateFieldTypeOutput) PrimitiveType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagTemplateFieldType) *string { return v.PrimitiveType }).(pulumi.StringPtrOutput)
 }
@@ -1587,7 +1603,8 @@ type TagTemplateFieldTypeEnumType struct {
 	// values must be case-insensitively unique within this set. Currently,
 	// enum values can only be added to the list of allowed values. Deletion
 	// and renaming of enum values are not supported.
-	// Can have up to 500 allowed values.  Structure is documented below.
+	// Can have up to 500 allowed values.
+	// Structure is documented below.
 	AllowedValues []TagTemplateFieldTypeEnumTypeAllowedValue `pulumi:"allowedValues"`
 }
 
@@ -1607,7 +1624,8 @@ type TagTemplateFieldTypeEnumTypeArgs struct {
 	// values must be case-insensitively unique within this set. Currently,
 	// enum values can only be added to the list of allowed values. Deletion
 	// and renaming of enum values are not supported.
-	// Can have up to 500 allowed values.  Structure is documented below.
+	// Can have up to 500 allowed values.
+	// Structure is documented below.
 	AllowedValues TagTemplateFieldTypeEnumTypeAllowedValueArrayInput `pulumi:"allowedValues"`
 }
 
@@ -1692,7 +1710,8 @@ func (o TagTemplateFieldTypeEnumTypeOutput) ToTagTemplateFieldTypeEnumTypePtrOut
 // values must be case-insensitively unique within this set. Currently,
 // enum values can only be added to the list of allowed values. Deletion
 // and renaming of enum values are not supported.
-// Can have up to 500 allowed values.  Structure is documented below.
+// Can have up to 500 allowed values.
+// Structure is documented below.
 func (o TagTemplateFieldTypeEnumTypeOutput) AllowedValues() TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput {
 	return o.ApplyT(func(v TagTemplateFieldTypeEnumType) []TagTemplateFieldTypeEnumTypeAllowedValue {
 		return v.AllowedValues
@@ -1721,7 +1740,8 @@ func (o TagTemplateFieldTypeEnumTypePtrOutput) Elem() TagTemplateFieldTypeEnumTy
 // values must be case-insensitively unique within this set. Currently,
 // enum values can only be added to the list of allowed values. Deletion
 // and renaming of enum values are not supported.
-// Can have up to 500 allowed values.  Structure is documented below.
+// Can have up to 500 allowed values.
+// Structure is documented below.
 func (o TagTemplateFieldTypeEnumTypePtrOutput) AllowedValues() TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput {
 	return o.ApplyT(func(v *TagTemplateFieldTypeEnumType) []TagTemplateFieldTypeEnumTypeAllowedValue {
 		if v == nil {

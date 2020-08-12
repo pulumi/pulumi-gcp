@@ -68,7 +68,8 @@ export class CustomService extends pulumi.CustomResource {
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
-     * Configuration for how to query telemetry on a Service.  Structure is documented below.
+     * Configuration for how to query telemetry on a Service.
+     * Structure is documented below.
      */
     public readonly telemetry!: pulumi.Output<outputs.monitoring.CustomServiceTelemetry | undefined>;
 
@@ -131,7 +132,8 @@ export interface CustomServiceState {
      */
     readonly serviceId?: pulumi.Input<string>;
     /**
-     * Configuration for how to query telemetry on a Service.  Structure is documented below.
+     * Configuration for how to query telemetry on a Service.
+     * Structure is documented below.
      */
     readonly telemetry?: pulumi.Input<inputs.monitoring.CustomServiceTelemetry>;
 }
@@ -155,7 +157,8 @@ export interface CustomServiceArgs {
      */
     readonly serviceId?: pulumi.Input<string>;
     /**
-     * Configuration for how to query telemetry on a Service.  Structure is documented below.
+     * Configuration for how to query telemetry on a Service.
+     * Structure is documented below.
      */
     readonly telemetry?: pulumi.Input<inputs.monitoring.CustomServiceTelemetry>;
 }

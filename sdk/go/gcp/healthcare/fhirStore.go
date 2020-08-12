@@ -66,7 +66,8 @@ type FhirStore struct {
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -75,9 +76,12 @@ type FhirStore struct {
 	// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
 	// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
 	// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-	// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
+	// Structure is documented below.
 	StreamConfigs FhirStoreStreamConfigArrayOutput `pulumi:"streamConfigs"`
 	// The FHIR specification version.
+	// Default value is `STU3`.
+	// Possible values are `DSTU2`, `STU3`, and `R4`.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -155,7 +159,8 @@ type fhirStoreState struct {
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name *string `pulumi:"name"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
@@ -164,9 +169,12 @@ type fhirStoreState struct {
 	// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
 	// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
 	// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-	// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
+	// Structure is documented below.
 	StreamConfigs []FhirStoreStreamConfig `pulumi:"streamConfigs"`
 	// The FHIR specification version.
+	// Default value is `STU3`.
+	// Possible values are `DSTU2`, `STU3`, and `R4`.
 	Version *string `pulumi:"version"`
 }
 
@@ -214,7 +222,8 @@ type FhirStoreState struct {
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name pulumi.StringPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
@@ -223,9 +232,12 @@ type FhirStoreState struct {
 	// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
 	// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
 	// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-	// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
+	// Structure is documented below.
 	StreamConfigs FhirStoreStreamConfigArrayInput
 	// The FHIR specification version.
+	// Default value is `STU3`.
+	// Possible values are `DSTU2`, `STU3`, and `R4`.
 	Version pulumi.StringPtrInput
 }
 
@@ -277,16 +289,20 @@ type fhirStoreArgs struct {
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name *string `pulumi:"name"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
 	// this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
 	// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
 	// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
 	// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-	// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
+	// Structure is documented below.
 	StreamConfigs []FhirStoreStreamConfig `pulumi:"streamConfigs"`
 	// The FHIR specification version.
+	// Default value is `STU3`.
+	// Possible values are `DSTU2`, `STU3`, and `R4`.
 	Version *string `pulumi:"version"`
 }
 
@@ -335,16 +351,20 @@ type FhirStoreArgs struct {
 	// The resource name for the FhirStore.
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name pulumi.StringPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
 	// this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
 	// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
 	// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
 	// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-	// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+	// the order of dozens of seconds) is expected before the results show up in the streaming destination.
+	// Structure is documented below.
 	StreamConfigs FhirStoreStreamConfigArrayInput
 	// The FHIR specification version.
+	// Default value is `STU3`.
+	// Possible values are `DSTU2`, `STU3`, and `R4`.
 	Version pulumi.StringPtrInput
 }
 

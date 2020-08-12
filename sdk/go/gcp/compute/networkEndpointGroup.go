@@ -49,6 +49,8 @@ type NetworkEndpointGroup struct {
 	// Uses "default" project network if unspecified.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
+	// Default value is `GCE_VM_IP_PORT`.
+	// Possible values are `GCE_VM_IP_PORT`.
 	NetworkEndpointType pulumi.StringPtrOutput `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -112,6 +114,8 @@ type networkEndpointGroupState struct {
 	// Uses "default" project network if unspecified.
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
+	// Default value is `GCE_VM_IP_PORT`.
+	// Possible values are `GCE_VM_IP_PORT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -145,6 +149,8 @@ type NetworkEndpointGroupState struct {
 	// Uses "default" project network if unspecified.
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group.
+	// Default value is `GCE_VM_IP_PORT`.
+	// Possible values are `GCE_VM_IP_PORT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -182,6 +188,8 @@ type networkEndpointGroupArgs struct {
 	// Uses "default" project network if unspecified.
 	Network string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
+	// Default value is `GCE_VM_IP_PORT`.
+	// Possible values are `GCE_VM_IP_PORT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -212,6 +220,8 @@ type NetworkEndpointGroupArgs struct {
 	// Uses "default" project network if unspecified.
 	Network pulumi.StringInput
 	// Type of network endpoints in this network endpoint group.
+	// Default value is `GCE_VM_IP_PORT`.
+	// Possible values are `GCE_VM_IP_PORT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

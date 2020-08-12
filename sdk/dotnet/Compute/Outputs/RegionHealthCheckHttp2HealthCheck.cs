@@ -40,11 +40,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// checking.
         /// If not specified, HTTP2 health check follows behavior specified in `port` and
         /// `portName` fields.
+        /// Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
         /// </summary>
         public readonly string? PortSpecification;
         /// <summary>
         /// Specifies the type of proxy header to append before sending data to the
         /// backend.
+        /// Default value is `NONE`.
+        /// Possible values are `NONE` and `PROXY_V1`.
         /// </summary>
         public readonly string? ProxyHeader;
         /// <summary>

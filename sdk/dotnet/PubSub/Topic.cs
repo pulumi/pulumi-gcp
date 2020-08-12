@@ -41,7 +41,8 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// Policy constraining the set of Google Cloud Platform regions where
         /// messages published to the topic may be stored. If not present, then no
-        /// constraints are in effect.  Structure is documented below.
+        /// constraints are in effect.
+        /// Structure is documented below.
         /// </summary>
         [Output("messageStoragePolicy")]
         public Output<Outputs.TopicMessageStoragePolicy> MessageStoragePolicy { get; private set; } = null!;
@@ -130,7 +131,8 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// Policy constraining the set of Google Cloud Platform regions where
         /// messages published to the topic may be stored. If not present, then no
-        /// constraints are in effect.  Structure is documented below.
+        /// constraints are in effect.
+        /// Structure is documented below.
         /// </summary>
         [Input("messageStoragePolicy")]
         public Input<Inputs.TopicMessageStoragePolicyArgs>? MessageStoragePolicy { get; set; }
@@ -180,7 +182,8 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// Policy constraining the set of Google Cloud Platform regions where
         /// messages published to the topic may be stored. If not present, then no
-        /// constraints are in effect.  Structure is documented below.
+        /// constraints are in effect.
+        /// Structure is documented below.
         /// </summary>
         [Input("messageStoragePolicy")]
         public Input<Inputs.TopicMessageStoragePolicyGetArgs>? MessageStoragePolicy { get; set; }

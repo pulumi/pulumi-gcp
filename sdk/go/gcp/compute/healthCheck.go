@@ -42,11 +42,14 @@ type HealthCheck struct {
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrOutput `pulumi:"healthyThreshold"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	Http2HealthCheck HealthCheckHttp2HealthCheckPtrOutput `pulumi:"http2HealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpHealthCheck HealthCheckHttpHealthCheckPtrOutput `pulumi:"httpHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpsHealthCheck HealthCheckHttpsHealthCheckPtrOutput `pulumi:"httpsHealthCheck"`
 	// Configure logging on this health check.  Structure is documented below.
 	LogConfig HealthCheckLogConfigPtrOutput `pulumi:"logConfig"`
@@ -63,9 +66,11 @@ type HealthCheck struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	SslHealthCheck HealthCheckSslHealthCheckPtrOutput `pulumi:"sslHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	TcpHealthCheck HealthCheckTcpHealthCheckPtrOutput `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure.
 	// The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -117,11 +122,14 @@ type healthCheckState struct {
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	Http2HealthCheck *HealthCheckHttp2HealthCheck `pulumi:"http2HealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpHealthCheck *HealthCheckHttpHealthCheck `pulumi:"httpHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpsHealthCheck *HealthCheckHttpsHealthCheck `pulumi:"httpsHealthCheck"`
 	// Configure logging on this health check.  Structure is documented below.
 	LogConfig *HealthCheckLogConfig `pulumi:"logConfig"`
@@ -138,9 +146,11 @@ type healthCheckState struct {
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	SslHealthCheck *HealthCheckSslHealthCheck `pulumi:"sslHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	TcpHealthCheck *HealthCheckTcpHealthCheck `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure.
 	// The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -165,11 +175,14 @@ type HealthCheckState struct {
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	Http2HealthCheck HealthCheckHttp2HealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpHealthCheck HealthCheckHttpHealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpsHealthCheck HealthCheckHttpsHealthCheckPtrInput
 	// Configure logging on this health check.  Structure is documented below.
 	LogConfig HealthCheckLogConfigPtrInput
@@ -186,9 +199,11 @@ type HealthCheckState struct {
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	SslHealthCheck HealthCheckSslHealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	TcpHealthCheck HealthCheckTcpHealthCheckPtrInput
 	// How long (in seconds) to wait before claiming failure.
 	// The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -215,11 +230,14 @@ type healthCheckArgs struct {
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	Http2HealthCheck *HealthCheckHttp2HealthCheck `pulumi:"http2HealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpHealthCheck *HealthCheckHttpHealthCheck `pulumi:"httpHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpsHealthCheck *HealthCheckHttpsHealthCheck `pulumi:"httpsHealthCheck"`
 	// Configure logging on this health check.  Structure is documented below.
 	LogConfig *HealthCheckLogConfig `pulumi:"logConfig"`
@@ -234,9 +252,11 @@ type healthCheckArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	SslHealthCheck *HealthCheckSslHealthCheck `pulumi:"sslHealthCheck"`
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	TcpHealthCheck *HealthCheckTcpHealthCheck `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure.
 	// The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -258,11 +278,14 @@ type HealthCheckArgs struct {
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	Http2HealthCheck HealthCheckHttp2HealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpHealthCheck HealthCheckHttpHealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	HttpsHealthCheck HealthCheckHttpsHealthCheckPtrInput
 	// Configure logging on this health check.  Structure is documented below.
 	LogConfig HealthCheckLogConfigPtrInput
@@ -277,9 +300,11 @@ type HealthCheckArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	SslHealthCheck HealthCheckSslHealthCheckPtrInput
-	// A nested object resource  Structure is documented below.
+	// A nested object resource
+	// Structure is documented below.
 	TcpHealthCheck HealthCheckTcpHealthCheckPtrInput
 	// How long (in seconds) to wait before claiming failure.
 	// The default value is 5 seconds.  It is invalid for timeoutSec to have

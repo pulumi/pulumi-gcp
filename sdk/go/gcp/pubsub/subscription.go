@@ -45,7 +45,8 @@ type Subscription struct {
 	// The Cloud Pub/Sub service account associated with this subscriptions's
 	// parent project (i.e.,
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-	// permission to Acknowledge() messages on this subscription.  Structure is documented below.
+	// permission to Acknowledge() messages on this subscription.
+	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrOutput `pulumi:"deadLetterPolicy"`
 	// A policy that specifies the conditions for this subscription's expiration.
 	// A subscription is considered active as long as any connected subscriber
@@ -53,7 +54,8 @@ type Subscription struct {
 	// operations on the subscription. If expirationPolicy is not set, a default
 	// policy with ttl of 31 days will be used.  If it is set but ttl is "", the
 	// resource never expires.  The minimum allowed value for expirationPolicy.ttl
-	// is 1 day.  Structure is documented below.
+	// is 1 day.
+	// Structure is documented below.
 	ExpirationPolicy SubscriptionExpirationPolicyOutput `pulumi:"expirationPolicy"`
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -74,7 +76,8 @@ type Subscription struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
-	// pull and ack messages using API methods.  Structure is documented below.
+	// pull and ack messages using API methods.
+	// Structure is documented below.
 	PushConfig SubscriptionPushConfigPtrOutput `pulumi:"pushConfig"`
 	// Indicates whether to retain acknowledged messages. If `true`, then
 	// messages are not expunged from the subscription's backlog, even if
@@ -138,7 +141,8 @@ type subscriptionState struct {
 	// The Cloud Pub/Sub service account associated with this subscriptions's
 	// parent project (i.e.,
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-	// permission to Acknowledge() messages on this subscription.  Structure is documented below.
+	// permission to Acknowledge() messages on this subscription.
+	// Structure is documented below.
 	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
 	// A policy that specifies the conditions for this subscription's expiration.
 	// A subscription is considered active as long as any connected subscriber
@@ -146,7 +150,8 @@ type subscriptionState struct {
 	// operations on the subscription. If expirationPolicy is not set, a default
 	// policy with ttl of 31 days will be used.  If it is set but ttl is "", the
 	// resource never expires.  The minimum allowed value for expirationPolicy.ttl
-	// is 1 day.  Structure is documented below.
+	// is 1 day.
+	// Structure is documented below.
 	ExpirationPolicy *SubscriptionExpirationPolicy `pulumi:"expirationPolicy"`
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels map[string]string `pulumi:"labels"`
@@ -167,7 +172,8 @@ type subscriptionState struct {
 	Project *string `pulumi:"project"`
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
-	// pull and ack messages using API methods.  Structure is documented below.
+	// pull and ack messages using API methods.
+	// Structure is documented below.
 	PushConfig *SubscriptionPushConfig `pulumi:"pushConfig"`
 	// Indicates whether to retain acknowledged messages. If `true`, then
 	// messages are not expunged from the subscription's backlog, even if
@@ -201,7 +207,8 @@ type SubscriptionState struct {
 	// The Cloud Pub/Sub service account associated with this subscriptions's
 	// parent project (i.e.,
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-	// permission to Acknowledge() messages on this subscription.  Structure is documented below.
+	// permission to Acknowledge() messages on this subscription.
+	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
 	// A policy that specifies the conditions for this subscription's expiration.
 	// A subscription is considered active as long as any connected subscriber
@@ -209,7 +216,8 @@ type SubscriptionState struct {
 	// operations on the subscription. If expirationPolicy is not set, a default
 	// policy with ttl of 31 days will be used.  If it is set but ttl is "", the
 	// resource never expires.  The minimum allowed value for expirationPolicy.ttl
-	// is 1 day.  Structure is documented below.
+	// is 1 day.
+	// Structure is documented below.
 	ExpirationPolicy SubscriptionExpirationPolicyPtrInput
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels pulumi.StringMapInput
@@ -230,7 +238,8 @@ type SubscriptionState struct {
 	Project pulumi.StringPtrInput
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
-	// pull and ack messages using API methods.  Structure is documented below.
+	// pull and ack messages using API methods.
+	// Structure is documented below.
 	PushConfig SubscriptionPushConfigPtrInput
 	// Indicates whether to retain acknowledged messages. If `true`, then
 	// messages are not expunged from the subscription's backlog, even if
@@ -268,7 +277,8 @@ type subscriptionArgs struct {
 	// The Cloud Pub/Sub service account associated with this subscriptions's
 	// parent project (i.e.,
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-	// permission to Acknowledge() messages on this subscription.  Structure is documented below.
+	// permission to Acknowledge() messages on this subscription.
+	// Structure is documented below.
 	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
 	// A policy that specifies the conditions for this subscription's expiration.
 	// A subscription is considered active as long as any connected subscriber
@@ -276,7 +286,8 @@ type subscriptionArgs struct {
 	// operations on the subscription. If expirationPolicy is not set, a default
 	// policy with ttl of 31 days will be used.  If it is set but ttl is "", the
 	// resource never expires.  The minimum allowed value for expirationPolicy.ttl
-	// is 1 day.  Structure is documented below.
+	// is 1 day.
+	// Structure is documented below.
 	ExpirationPolicy *SubscriptionExpirationPolicy `pulumi:"expirationPolicy"`
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels map[string]string `pulumi:"labels"`
@@ -296,7 +307,8 @@ type subscriptionArgs struct {
 	Project *string `pulumi:"project"`
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
-	// pull and ack messages using API methods.  Structure is documented below.
+	// pull and ack messages using API methods.
+	// Structure is documented below.
 	PushConfig *SubscriptionPushConfig `pulumi:"pushConfig"`
 	// Indicates whether to retain acknowledged messages. If `true`, then
 	// messages are not expunged from the subscription's backlog, even if
@@ -331,7 +343,8 @@ type SubscriptionArgs struct {
 	// The Cloud Pub/Sub service account associated with this subscriptions's
 	// parent project (i.e.,
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
-	// permission to Acknowledge() messages on this subscription.  Structure is documented below.
+	// permission to Acknowledge() messages on this subscription.
+	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
 	// A policy that specifies the conditions for this subscription's expiration.
 	// A subscription is considered active as long as any connected subscriber
@@ -339,7 +352,8 @@ type SubscriptionArgs struct {
 	// operations on the subscription. If expirationPolicy is not set, a default
 	// policy with ttl of 31 days will be used.  If it is set but ttl is "", the
 	// resource never expires.  The minimum allowed value for expirationPolicy.ttl
-	// is 1 day.  Structure is documented below.
+	// is 1 day.
+	// Structure is documented below.
 	ExpirationPolicy SubscriptionExpirationPolicyPtrInput
 	// A set of key/value label pairs to assign to this Subscription.
 	Labels pulumi.StringMapInput
@@ -359,7 +373,8 @@ type SubscriptionArgs struct {
 	Project pulumi.StringPtrInput
 	// If push delivery is used with this subscription, this field is used to
 	// configure it. An empty pushConfig signifies that the subscriber will
-	// pull and ack messages using API methods.  Structure is documented below.
+	// pull and ack messages using API methods.
+	// Structure is documented below.
 	PushConfig SubscriptionPushConfigPtrInput
 	// Indicates whether to retain acknowledged messages. If `true`, then
 	// messages are not expunged from the subscription's backlog, even if

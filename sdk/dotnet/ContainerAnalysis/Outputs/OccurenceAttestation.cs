@@ -23,7 +23,8 @@ namespace Pulumi.Gcp.ContainerAnalysis.Outputs
         /// Verifier implementations should consider this attestation
         /// message verified if at least one signature verifies
         /// serializedPayload. See Signature in common.proto for more
-        /// details on signature structure and verification.  Structure is documented below.
+        /// details on signature structure and verification.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.OccurenceAttestationSignature> Signatures;
 

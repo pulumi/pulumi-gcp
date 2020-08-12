@@ -50,7 +50,8 @@ type Node struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Sets the scheduling options for this TPU instance.  Structure is documented below.
+	// Sets the scheduling options for this TPU instance.
+	// Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrOutput `pulumi:"schedulingConfig"`
 	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
 	// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
@@ -129,7 +130,8 @@ type nodeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Sets the scheduling options for this TPU instance.  Structure is documented below.
+	// Sets the scheduling options for this TPU instance.
+	// Structure is documented below.
 	SchedulingConfig *NodeSchedulingConfig `pulumi:"schedulingConfig"`
 	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
 	// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
@@ -169,7 +171,8 @@ type NodeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Sets the scheduling options for this TPU instance.  Structure is documented below.
+	// Sets the scheduling options for this TPU instance.
+	// Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrInput
 	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
 	// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
@@ -210,7 +213,8 @@ type nodeArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Sets the scheduling options for this TPU instance.  Structure is documented below.
+	// Sets the scheduling options for this TPU instance.
+	// Structure is documented below.
 	SchedulingConfig *NodeSchedulingConfig `pulumi:"schedulingConfig"`
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion string `pulumi:"tensorflowVersion"`
@@ -245,7 +249,8 @@ type NodeArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Sets the scheduling options for this TPU instance.  Structure is documented below.
+	// Sets the scheduling options for this TPU instance.
+	// Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrInput
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion pulumi.StringInput

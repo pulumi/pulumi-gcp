@@ -35,7 +35,8 @@ namespace Pulumi.Gcp.Monitoring
         /// SLIs are used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// Structure is documented below.
         /// </summary>
         [Output("basicSli")]
         public Output<Outputs.SloBasicSli?> BasicSli { get; private set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// A calendar period, semantically "since the start of the current
         /// &lt;calendarPeriod&gt;".
+        /// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
         /// </summary>
         [Output("calendarPeriod")]
         public Output<string?> CalendarPeriod { get; private set; } = null!;
@@ -81,7 +83,8 @@ namespace Pulumi.Gcp.Monitoring
         /// It is used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// Structure is documented below.
         /// </summary>
         [Output("requestBasedSli")]
         public Output<Outputs.SloRequestBasedSli?> RequestBasedSli { get; private set; } = null!;
@@ -113,7 +116,8 @@ namespace Pulumi.Gcp.Monitoring
         /// the quality of the Service's performance with respect to a single
         /// aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// Structure is documented below.
         /// </summary>
         [Output("windowsBasedSli")]
         public Output<Outputs.SloWindowsBasedSli?> WindowsBasedSli { get; private set; } = null!;
@@ -170,7 +174,8 @@ namespace Pulumi.Gcp.Monitoring
         /// SLIs are used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// Structure is documented below.
         /// </summary>
         [Input("basicSli")]
         public Input<Inputs.SloBasicSliArgs>? BasicSli { get; set; }
@@ -178,6 +183,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// A calendar period, semantically "since the start of the current
         /// &lt;calendarPeriod&gt;".
+        /// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
         /// </summary>
         [Input("calendarPeriod")]
         public Input<string>? CalendarPeriod { get; set; }
@@ -209,7 +215,8 @@ namespace Pulumi.Gcp.Monitoring
         /// It is used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// Structure is documented below.
         /// </summary>
         [Input("requestBasedSli")]
         public Input<Inputs.SloRequestBasedSliArgs>? RequestBasedSli { get; set; }
@@ -241,7 +248,8 @@ namespace Pulumi.Gcp.Monitoring
         /// the quality of the Service's performance with respect to a single
         /// aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// Structure is documented below.
         /// </summary>
         [Input("windowsBasedSli")]
         public Input<Inputs.SloWindowsBasedSliArgs>? WindowsBasedSli { get; set; }
@@ -259,7 +267,8 @@ namespace Pulumi.Gcp.Monitoring
         /// SLIs are used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// Structure is documented below.
         /// </summary>
         [Input("basicSli")]
         public Input<Inputs.SloBasicSliGetArgs>? BasicSli { get; set; }
@@ -267,6 +276,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// A calendar period, semantically "since the start of the current
         /// &lt;calendarPeriod&gt;".
+        /// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
         /// </summary>
         [Input("calendarPeriod")]
         public Input<string>? CalendarPeriod { get; set; }
@@ -305,7 +315,8 @@ namespace Pulumi.Gcp.Monitoring
         /// It is used to measure and calculate the quality of the Service's
         /// performance with respect to a single aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// Structure is documented below.
         /// </summary>
         [Input("requestBasedSli")]
         public Input<Inputs.SloRequestBasedSliGetArgs>? RequestBasedSli { get; set; }
@@ -337,7 +348,8 @@ namespace Pulumi.Gcp.Monitoring
         /// the quality of the Service's performance with respect to a single
         /// aspect of service quality.
         /// Exactly one of the following must be set:
-        /// `basic_sli`, `request_based_sli`, `windows_based_sli`  Structure is documented below.
+        /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+        /// Structure is documented below.
         /// </summary>
         [Input("windowsBasedSli")]
         public Input<Inputs.SloWindowsBasedSliGetArgs>? WindowsBasedSli { get; set; }

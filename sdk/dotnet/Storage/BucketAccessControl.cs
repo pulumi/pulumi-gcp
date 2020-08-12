@@ -77,6 +77,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The access permission for the entity.
+        /// Possible values are `OWNER`, `READER`, and `WRITER`.
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
@@ -155,6 +156,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The access permission for the entity.
+        /// Possible values are `OWNER`, `READER`, and `WRITER`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -206,6 +208,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The access permission for the entity.
+        /// Possible values are `OWNER`, `READER`, and `WRITER`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

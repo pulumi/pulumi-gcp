@@ -53,7 +53,8 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for how to query telemetry on a Service.  Structure is documented below.
+        /// Configuration for how to query telemetry on a Service.
+        /// Structure is documented below.
         /// </summary>
         [Output("telemetry")]
         public Output<Outputs.CustomServiceTelemetry?> Telemetry { get; private set; } = null!;
@@ -125,7 +126,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// Configuration for how to query telemetry on a Service.  Structure is documented below.
+        /// Configuration for how to query telemetry on a Service.
+        /// Structure is documented below.
         /// </summary>
         [Input("telemetry")]
         public Input<Inputs.CustomServiceTelemetryArgs>? Telemetry { get; set; }
@@ -164,7 +166,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// Configuration for how to query telemetry on a Service.  Structure is documented below.
+        /// Configuration for how to query telemetry on a Service.
+        /// Structure is documented below.
         /// </summary>
         [Input("telemetry")]
         public Input<Inputs.CustomServiceTelemetryGetArgs>? Telemetry { get; set; }

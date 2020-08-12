@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.CloudScheduler.Outputs
     public sealed class JobAppEngineHttpTarget
     {
         /// <summary>
-        /// App Engine Routing setting for the job.  Structure is documented below.
+        /// App Engine Routing setting for the job.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobAppEngineHttpTargetAppEngineRouting? AppEngineRouting;
         /// <summary>

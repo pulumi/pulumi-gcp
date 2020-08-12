@@ -70,7 +70,8 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The preserved state for this instance.  Structure is documented below.
+     * The preserved state for this instance.
+     * Structure is documented below.
      */
     public readonly preservedState!: pulumi.Output<outputs.compute.RegionPerInstanceConfigPreservedState | undefined>;
     /**
@@ -168,7 +169,8 @@ export interface RegionPerInstanceConfigState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The preserved state for this instance.  Structure is documented below.
+     * The preserved state for this instance.
+     * Structure is documented below.
      */
     readonly preservedState?: pulumi.Input<inputs.compute.RegionPerInstanceConfigPreservedState>;
     /**
@@ -219,7 +221,8 @@ export interface RegionPerInstanceConfigArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The preserved state for this instance.  Structure is documented below.
+     * The preserved state for this instance.
+     * Structure is documented below.
      */
     readonly preservedState?: pulumi.Input<inputs.compute.RegionPerInstanceConfigPreservedState>;
     /**

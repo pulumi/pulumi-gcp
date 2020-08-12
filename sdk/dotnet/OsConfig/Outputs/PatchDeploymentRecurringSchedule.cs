@@ -25,7 +25,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly string? LastExecuteTime;
         /// <summary>
-        /// Schedule with monthly executions.  Structure is documented below.
+        /// Schedule with monthly executions.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentRecurringScheduleMonthly? Monthly;
         /// <summary>
@@ -40,16 +41,19 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly string? StartTime;
         /// <summary>
-        /// Time of the day to run a recurring deployment.  Structure is documented below.
+        /// Time of the day to run a recurring deployment.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentRecurringScheduleTimeOfDay TimeOfDay;
         /// <summary>
         /// Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
-        /// determined by the chosen time zone.  Structure is documented below.
+        /// determined by the chosen time zone.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentRecurringScheduleTimeZone TimeZone;
         /// <summary>
-        /// Schedule with weekly executions.  Structure is documented below.
+        /// Schedule with weekly executions.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentRecurringScheduleWeekly? Weekly;
 

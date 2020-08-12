@@ -13,19 +13,22 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class ResourcePolicySnapshotSchedulePolicyScheduleGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The policy will execute every nth day at the specified time.  Structure is documented below.
+        /// The policy will execute every nth day at the specified time.
+        /// Structure is documented below.
         /// </summary>
         [Input("dailySchedule")]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleGetArgs>? DailySchedule { get; set; }
 
         /// <summary>
-        /// The policy will execute every nth hour starting at the specified time.  Structure is documented below.
+        /// The policy will execute every nth hour starting at the specified time.
+        /// Structure is documented below.
         /// </summary>
         [Input("hourlySchedule")]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleGetArgs>? HourlySchedule { get; set; }
 
         /// <summary>
-        /// Allows specifying a snapshot time for each day of the week.  Structure is documented below.
+        /// Allows specifying a snapshot time for each day of the week.
+        /// Structure is documented below.
         /// </summary>
         [Input("weeklySchedule")]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleGetArgs>? WeeklySchedule { get; set; }

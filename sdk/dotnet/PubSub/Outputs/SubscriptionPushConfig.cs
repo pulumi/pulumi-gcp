@@ -36,7 +36,8 @@ namespace Pulumi.Gcp.PubSub.Outputs
         public readonly ImmutableDictionary<string, string>? Attributes;
         /// <summary>
         /// If specified, Pub/Sub will generate and attach an OIDC JWT token as
-        /// an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+        /// an Authorization header in the HTTP request for every pushed message.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SubscriptionPushConfigOidcToken? OidcToken;
         /// <summary>

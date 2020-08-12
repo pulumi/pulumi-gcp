@@ -121,6 +121,7 @@ export class Intent extends pulumi.CustomResource {
      * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
      * * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
      * filling prompt is forwarded to the webhook.
+     * Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
      */
     public readonly webhookState!: pulumi.Output<string>;
 
@@ -262,6 +263,7 @@ export interface IntentState {
      * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
      * * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
      * filling prompt is forwarded to the webhook.
+     * Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
      */
     readonly webhookState?: pulumi.Input<string>;
 }
@@ -331,6 +333,7 @@ export interface IntentArgs {
      * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
      * * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
      * filling prompt is forwarded to the webhook.
+     * Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
      */
     readonly webhookState?: pulumi.Input<string>;
 }

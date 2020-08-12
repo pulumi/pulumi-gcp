@@ -56,7 +56,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// the match fails. For example for a range [-5, 0]   - -3 will match.  - 0 will
         /// not match.  - 0.25 will not match.  - -3someString will not match.   Only one of
         /// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-        /// must be set.  Structure is documented below.
+        /// must be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("rangeMatch")]
         public Input<Inputs.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs>? RangeMatch { get; set; }

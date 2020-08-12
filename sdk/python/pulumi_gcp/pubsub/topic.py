@@ -26,7 +26,8 @@ class Topic(pulumi.CustomResource):
     """
     Policy constraining the set of Google Cloud Platform regions where
     messages published to the topic may be stored. If not present, then no
-    constraints are in effect.  Structure is documented below.
+    constraints are in effect.
+    Structure is documented below.
 
       * `allowedPersistenceRegions` (`list`) - A list of IDs of GCP regions where messages that are published to
         the topic may be persisted in storage. Messages published by
@@ -66,7 +67,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this Topic.
         :param pulumi.Input[dict] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
-               constraints are in effect.  Structure is documented below.
+               constraints are in effect.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -125,7 +127,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to this Topic.
         :param pulumi.Input[dict] message_storage_policy: Policy constraining the set of Google Cloud Platform regions where
                messages published to the topic may be stored. If not present, then no
-               constraints are in effect.  Structure is documented below.
+               constraints are in effect.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

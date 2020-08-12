@@ -83,7 +83,8 @@ namespace Pulumi.Gcp.Tpu
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the scheduling options for this TPU instance.  Structure is documented below.
+        /// Sets the scheduling options for this TPU instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("schedulingConfig")]
         public Output<Outputs.NodeSchedulingConfig?> SchedulingConfig { get; private set; } = null!;
@@ -213,7 +214,8 @@ namespace Pulumi.Gcp.Tpu
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Sets the scheduling options for this TPU instance.  Structure is documented below.
+        /// Sets the scheduling options for this TPU instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("schedulingConfig")]
         public Input<Inputs.NodeSchedulingConfigArgs>? SchedulingConfig { get; set; }
@@ -310,7 +312,8 @@ namespace Pulumi.Gcp.Tpu
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Sets the scheduling options for this TPU instance.  Structure is documented below.
+        /// Sets the scheduling options for this TPU instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("schedulingConfig")]
         public Input<Inputs.NodeSchedulingConfigGetArgs>? SchedulingConfig { get; set; }

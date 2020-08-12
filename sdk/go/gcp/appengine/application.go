@@ -46,7 +46,7 @@ type Application struct {
 	// Unique name of the app, usually `apps/{PROJECT_ID}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project ID to create the application under.
-	// ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+	// ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
 	// you may get a "Permission denied" error.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The serving status of the app.
@@ -110,7 +110,7 @@ type applicationState struct {
 	// Unique name of the app, usually `apps/{PROJECT_ID}`
 	Name *string `pulumi:"name"`
 	// The project ID to create the application under.
-	// ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+	// ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
 	// you may get a "Permission denied" error.
 	Project *string `pulumi:"project"`
 	// The serving status of the app.
@@ -144,7 +144,7 @@ type ApplicationState struct {
 	// Unique name of the app, usually `apps/{PROJECT_ID}`
 	Name pulumi.StringPtrInput
 	// The project ID to create the application under.
-	// ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+	// ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
 	// you may get a "Permission denied" error.
 	Project pulumi.StringPtrInput
 	// The serving status of the app.
@@ -170,7 +170,7 @@ type applicationArgs struct {
 	// to serve the app from.
 	LocationId string `pulumi:"locationId"`
 	// The project ID to create the application under.
-	// ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+	// ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
 	// you may get a "Permission denied" error.
 	Project *string `pulumi:"project"`
 	// The serving status of the app.
@@ -191,7 +191,7 @@ type ApplicationArgs struct {
 	// to serve the app from.
 	LocationId pulumi.StringInput
 	// The project ID to create the application under.
-	// ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+	// ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
 	// you may get a "Permission denied" error.
 	Project pulumi.StringPtrInput
 	// The serving status of the app.

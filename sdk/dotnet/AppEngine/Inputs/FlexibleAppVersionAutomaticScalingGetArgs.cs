@@ -21,13 +21,15 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public Input<string>? CoolDownPeriod { get; set; }
 
         /// <summary>
-        /// Target scaling by CPU usage.  Structure is documented below.
+        /// Target scaling by CPU usage.
+        /// Structure is documented below.
         /// </summary>
         [Input("cpuUtilization", required: true)]
         public Input<Inputs.FlexibleAppVersionAutomaticScalingCpuUtilizationGetArgs> CpuUtilization { get; set; } = null!;
 
         /// <summary>
-        /// Target scaling by disk usage.  Structure is documented below.
+        /// Target scaling by disk usage.
+        /// Structure is documented below.
         /// </summary>
         [Input("diskUtilization")]
         public Input<Inputs.FlexibleAppVersionAutomaticScalingDiskUtilizationGetArgs>? DiskUtilization { get; set; }
@@ -76,13 +78,15 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public Input<int>? MinTotalInstances { get; set; }
 
         /// <summary>
-        /// Target scaling by network usage.  Structure is documented below.
+        /// Target scaling by network usage.
+        /// Structure is documented below.
         /// </summary>
         [Input("networkUtilization")]
         public Input<Inputs.FlexibleAppVersionAutomaticScalingNetworkUtilizationGetArgs>? NetworkUtilization { get; set; }
 
         /// <summary>
-        /// Target scaling by request utilization.  Structure is documented below.
+        /// Target scaling by request utilization.
+        /// Structure is documented below.
         /// </summary>
         [Input("requestUtilization")]
         public Input<Inputs.FlexibleAppVersionAutomaticScalingRequestUtilizationGetArgs>? RequestUtilization { get; set; }

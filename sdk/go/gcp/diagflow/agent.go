@@ -31,6 +31,7 @@ type Agent struct {
 	// * API_VERSION_V1: Legacy V1 API.
 	// * API_VERSION_V2: V2 API.
 	// * API_VERSION_V2_BETA_1: V2beta1 API.
+	//   Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
 	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
 	// The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
 	// into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
@@ -59,6 +60,7 @@ type Agent struct {
 	//   syntax and composite entities.
 	// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
 	//   using @sys.any or very large developer entities.
+	//   Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
 	MatchMode pulumi.StringOutput `pulumi:"matchMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -120,6 +122,7 @@ type agentState struct {
 	// * API_VERSION_V1: Legacy V1 API.
 	// * API_VERSION_V2: V2 API.
 	// * API_VERSION_V2_BETA_1: V2beta1 API.
+	//   Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
 	ApiVersion *string `pulumi:"apiVersion"`
 	// The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
 	// into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
@@ -148,6 +151,7 @@ type agentState struct {
 	//   syntax and composite entities.
 	// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
 	//   using @sys.any or very large developer entities.
+	//   Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
 	MatchMode *string `pulumi:"matchMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -173,6 +177,7 @@ type AgentState struct {
 	// * API_VERSION_V1: Legacy V1 API.
 	// * API_VERSION_V2: V2 API.
 	// * API_VERSION_V2_BETA_1: V2beta1 API.
+	//   Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
 	ApiVersion pulumi.StringPtrInput
 	// The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
 	// into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
@@ -201,6 +206,7 @@ type AgentState struct {
 	//   syntax and composite entities.
 	// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
 	//   using @sys.any or very large developer entities.
+	//   Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
 	MatchMode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -230,6 +236,7 @@ type agentArgs struct {
 	// * API_VERSION_V1: Legacy V1 API.
 	// * API_VERSION_V2: V2 API.
 	// * API_VERSION_V2_BETA_1: V2beta1 API.
+	//   Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
 	ApiVersion *string `pulumi:"apiVersion"`
 	// The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
 	// into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
@@ -255,6 +262,7 @@ type agentArgs struct {
 	//   syntax and composite entities.
 	// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
 	//   using @sys.any or very large developer entities.
+	//   Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
 	MatchMode *string `pulumi:"matchMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -281,6 +289,7 @@ type AgentArgs struct {
 	// * API_VERSION_V1: Legacy V1 API.
 	// * API_VERSION_V2: V2 API.
 	// * API_VERSION_V2_BETA_1: V2beta1 API.
+	//   Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
 	ApiVersion pulumi.StringPtrInput
 	// The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
 	// into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
@@ -306,6 +315,7 @@ type AgentArgs struct {
 	//   syntax and composite entities.
 	// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
 	//   using @sys.any or very large developer entities.
+	//   Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
 	MatchMode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

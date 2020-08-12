@@ -22,7 +22,8 @@ class Registry(pulumi.CustomResource):
     event_notification_configs: pulumi.Output[list]
     """
     List of configurations for event notifications, such as PubSub topics
-    to publish device events to.  Structure is documented below.
+    to publish device events to.
+    Structure is documented below.
 
       * `pubsub_topic_name` (`str`) - PubSub topic name to publish device events.
       * `subfolderMatches` (`str`) - If the subfolder name matches this string exactly, this
@@ -45,6 +46,8 @@ class Registry(pulumi.CustomResource):
     example, if the LogLevel is ERROR, only events that terminate in
     errors will be logged. LogLevel is inclusive; enabling INFO logging
     will also enable ERROR logging.
+    Default value is `NONE`.
+    Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
     """
     mqtt_config: pulumi.Output[dict]
     """
@@ -91,7 +94,8 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[list] credentials: List of public key certificates to authenticate devices.
                The structure is documented below.
         :param pulumi.Input[list] event_notification_configs: List of configurations for event notifications, such as PubSub topics
-               to publish device events to.  Structure is documented below.
+               to publish device events to.
+               Structure is documented below.
         :param pulumi.Input[dict] http_config: Activate or deactivate HTTP.
                The structure is documented below.
         :param pulumi.Input[str] log_level: The default logging verbosity for activity from devices in this
@@ -99,6 +103,8 @@ class Registry(pulumi.CustomResource):
                example, if the LogLevel is ERROR, only events that terminate in
                errors will be logged. LogLevel is inclusive; enabling INFO logging
                will also enable ERROR logging.
+               Default value is `NONE`.
+               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         :param pulumi.Input[dict] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
@@ -182,7 +188,8 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[list] credentials: List of public key certificates to authenticate devices.
                The structure is documented below.
         :param pulumi.Input[list] event_notification_configs: List of configurations for event notifications, such as PubSub topics
-               to publish device events to.  Structure is documented below.
+               to publish device events to.
+               Structure is documented below.
         :param pulumi.Input[dict] http_config: Activate or deactivate HTTP.
                The structure is documented below.
         :param pulumi.Input[str] log_level: The default logging verbosity for activity from devices in this
@@ -190,6 +197,8 @@ class Registry(pulumi.CustomResource):
                example, if the LogLevel is ERROR, only events that terminate in
                errors will be logged. LogLevel is inclusive; enabling INFO logging
                will also enable ERROR logging.
+               Default value is `NONE`.
+               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         :param pulumi.Input[dict] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.

@@ -52,7 +52,8 @@ type RegionDisk struct {
 	// the disk.
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
-	// you do not need to provide a key to use the disk later.  Structure is documented below.
+	// you do not need to provide a key to use the disk later.
+	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -103,7 +104,8 @@ type RegionDisk struct {
 	Snapshot pulumi.StringPtrOutput `pulumi:"snapshot"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceSnapshotEncryptionKey RegionDiskSourceSnapshotEncryptionKeyPtrOutput `pulumi:"sourceSnapshotEncryptionKey"`
 	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
 	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
@@ -160,7 +162,8 @@ type regionDiskState struct {
 	// the disk.
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
-	// you do not need to provide a key to use the disk later.  Structure is documented below.
+	// you do not need to provide a key to use the disk later.
+	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -211,7 +214,8 @@ type regionDiskState struct {
 	Snapshot *string `pulumi:"snapshot"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceSnapshotEncryptionKey *RegionDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
 	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
 	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
@@ -238,7 +242,8 @@ type RegionDiskState struct {
 	// the disk.
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
-	// you do not need to provide a key to use the disk later.  Structure is documented below.
+	// you do not need to provide a key to use the disk later.
+	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -289,7 +294,8 @@ type RegionDiskState struct {
 	Snapshot pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceSnapshotEncryptionKey RegionDiskSourceSnapshotEncryptionKeyPtrInput
 	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
 	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
@@ -318,7 +324,8 @@ type regionDiskArgs struct {
 	// the disk.
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
-	// you do not need to provide a key to use the disk later.  Structure is documented below.
+	// you do not need to provide a key to use the disk later.
+	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -361,7 +368,8 @@ type regionDiskArgs struct {
 	Snapshot *string `pulumi:"snapshot"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceSnapshotEncryptionKey *RegionDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
@@ -381,7 +389,8 @@ type RegionDiskArgs struct {
 	// the disk.
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
-	// you do not need to provide a key to use the disk later.  Structure is documented below.
+	// you do not need to provide a key to use the disk later.
+	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
@@ -424,7 +433,8 @@ type RegionDiskArgs struct {
 	Snapshot pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
-	// key.  Structure is documented below.
+	// key.
+	// Structure is documented below.
 	SourceSnapshotEncryptionKey RegionDiskSourceSnapshotEncryptionKeyPtrInput
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.

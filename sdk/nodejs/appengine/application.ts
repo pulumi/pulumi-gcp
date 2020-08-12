@@ -92,7 +92,7 @@ export class Application extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The project ID to create the application under.
-     * ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+     * ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
      * you may get a "Permission denied" error.
      */
     public readonly project!: pulumi.Output<string>;
@@ -213,7 +213,7 @@ export interface ApplicationState {
     readonly name?: pulumi.Input<string>;
     /**
      * The project ID to create the application under.
-     * ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+     * ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
      * you may get a "Permission denied" error.
      */
     readonly project?: pulumi.Input<string>;
@@ -254,7 +254,7 @@ export interface ApplicationArgs {
     readonly locationId: pulumi.Input<string>;
     /**
      * The project ID to create the application under.
-     * ~>**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+     * ~>**NOTE:** GCP only accepts project ID, not project number. If you are using number,
      * you may get a "Permission denied" error.
      */
     readonly project?: pulumi.Input<string>;

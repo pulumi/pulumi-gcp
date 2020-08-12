@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class ConnectionCloudSqlCredential
     {
         /// <summary>
-        /// Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// Password for database.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string Password;
         /// <summary>

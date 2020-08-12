@@ -90,6 +90,7 @@ export class BucketAccessControl extends pulumi.CustomResource {
     public readonly entity!: pulumi.Output<string>;
     /**
      * The access permission for the entity.
+     * Possible values are `OWNER`, `READER`, and `WRITER`.
      */
     public readonly role!: pulumi.Output<string | undefined>;
 
@@ -171,6 +172,7 @@ export interface BucketAccessControlState {
     readonly entity?: pulumi.Input<string>;
     /**
      * The access permission for the entity.
+     * Possible values are `OWNER`, `READER`, and `WRITER`.
      */
     readonly role?: pulumi.Input<string>;
 }
@@ -203,6 +205,7 @@ export interface BucketAccessControlArgs {
     readonly entity: pulumi.Input<string>;
     /**
      * The access permission for the entity.
+     * Possible values are `OWNER`, `READER`, and `WRITER`.
      */
     readonly role?: pulumi.Input<string>;
 }

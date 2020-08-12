@@ -34,6 +34,7 @@ class FolderFeed(pulumi.CustomResource):
     content_type: pulumi.Output[str]
     """
     Asset content type. If not specified, no content but the asset name and type will be returned.
+    Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
     """
     feed_id: pulumi.Output[str]
     """
@@ -41,9 +42,11 @@ class FolderFeed(pulumi.CustomResource):
     """
     feed_output_config: pulumi.Output[dict]
     """
-    Output configuration for asset feed destination.  Structure is documented below.
+    Output configuration for asset feed destination.
+    Structure is documented below.
 
-      * `pubsubDestination` (`dict`) - Destination on Cloud Pubsub.  Structure is documented below.
+      * `pubsubDestination` (`dict`) - Destination on Cloud Pubsub.
+        Structure is documented below.
         * `topic` (`str`) - Destination on Cloud Pubsub topic.
     """
     folder: pulumi.Output[str]
@@ -85,13 +88,16 @@ class FolderFeed(pulumi.CustomResource):
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing.
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
+               Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-        :param pulumi.Input[dict] feed_output_config: Output configuration for asset feed destination.  Structure is documented below.
+        :param pulumi.Input[dict] feed_output_config: Output configuration for asset feed destination.
+               Structure is documented below.
         :param pulumi.Input[str] folder: The folder this feed should be created in.
 
         The **feed_output_config** object supports the following:
 
-          * `pubsubDestination` (`pulumi.Input[dict]`) - Destination on Cloud Pubsub.  Structure is documented below.
+          * `pubsubDestination` (`pulumi.Input[dict]`) - Destination on Cloud Pubsub.
+            Structure is documented below.
             * `topic` (`pulumi.Input[str]`) - Destination on Cloud Pubsub topic.
         """
         if __name__ is not None:
@@ -156,15 +162,18 @@ class FolderFeed(pulumi.CustomResource):
                destination pubsub topic. It also specifies the project for API
                enablement check, quota, and billing.
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
+               Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
-        :param pulumi.Input[dict] feed_output_config: Output configuration for asset feed destination.  Structure is documented below.
+        :param pulumi.Input[dict] feed_output_config: Output configuration for asset feed destination.
+               Structure is documented below.
         :param pulumi.Input[str] folder: The folder this feed should be created in.
         :param pulumi.Input[str] folder_id: The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
         :param pulumi.Input[str] name: The format will be folders/{folder_number}/feeds/{client-assigned_feed_identifier}.
 
         The **feed_output_config** object supports the following:
 
-          * `pubsubDestination` (`pulumi.Input[dict]`) - Destination on Cloud Pubsub.  Structure is documented below.
+          * `pubsubDestination` (`pulumi.Input[dict]`) - Destination on Cloud Pubsub.
+            Structure is documented below.
             * `topic` (`pulumi.Input[str]`) - Destination on Cloud Pubsub topic.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

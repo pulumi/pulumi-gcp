@@ -28,6 +28,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// User-specified flag to indicate which mode to use for advertisement.
         /// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+        /// Default value is `DEFAULT`.
+        /// Possible values are `DEFAULT` and `CUSTOM`.
         /// </summary>
         [Output("advertiseMode")]
         public Output<string?> AdvertiseMode { get; private set; } = null!;
@@ -47,7 +49,8 @@ namespace Pulumi.Gcp.Compute
         /// custom mode. This field can only be populated if advertiseMode
         /// is `CUSTOM` and is advertised to all peers of the router. These IP
         /// ranges will be advertised in addition to any specified groups.
-        /// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+        /// Leave this field blank to advertise no custom IP ranges.
+        /// Structure is documented below.
         /// </summary>
         [Output("advertisedIpRanges")]
         public Output<ImmutableArray<Outputs.RouterPeerAdvertisedIpRange>> AdvertisedIpRanges { get; private set; } = null!;
@@ -175,6 +178,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// User-specified flag to indicate which mode to use for advertisement.
         /// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+        /// Default value is `DEFAULT`.
+        /// Possible values are `DEFAULT` and `CUSTOM`.
         /// </summary>
         [Input("advertiseMode")]
         public Input<string>? AdvertiseMode { get; set; }
@@ -203,7 +208,8 @@ namespace Pulumi.Gcp.Compute
         /// custom mode. This field can only be populated if advertiseMode
         /// is `CUSTOM` and is advertised to all peers of the router. These IP
         /// ranges will be advertised in addition to any specified groups.
-        /// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+        /// Leave this field blank to advertise no custom IP ranges.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RouterPeerAdvertisedIpRangeArgs> AdvertisedIpRanges
         {
@@ -280,6 +286,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// User-specified flag to indicate which mode to use for advertisement.
         /// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+        /// Default value is `DEFAULT`.
+        /// Possible values are `DEFAULT` and `CUSTOM`.
         /// </summary>
         [Input("advertiseMode")]
         public Input<string>? AdvertiseMode { get; set; }
@@ -308,7 +316,8 @@ namespace Pulumi.Gcp.Compute
         /// custom mode. This field can only be populated if advertiseMode
         /// is `CUSTOM` and is advertised to all peers of the router. These IP
         /// ranges will be advertised in addition to any specified groups.
-        /// Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+        /// Leave this field blank to advertise no custom IP ranges.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RouterPeerAdvertisedIpRangeGetArgs> AdvertisedIpRanges
         {

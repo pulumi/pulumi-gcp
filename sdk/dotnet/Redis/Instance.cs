@@ -41,6 +41,8 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// The connection mode of the Redis instance.
+        /// Default value is `DIRECT_PEERING`.
+        /// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
         /// </summary>
         [Output("connectMode")]
         public Output<string?> ConnectMode { get; private set; } = null!;
@@ -100,6 +102,14 @@ namespace Pulumi.Gcp.Redis
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+        /// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+        /// operation.
+        /// </summary>
+        [Output("persistenceIamIdentity")]
+        public Output<string> PersistenceIamIdentity { get; private set; } = null!;
+
+        /// <summary>
         /// The port number of the exposed Redis endpoint.
         /// </summary>
         [Output("port")]
@@ -123,6 +133,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The version of Redis software. If not provided, latest supported
         /// version will be used. Currently, the supported values are:
+        /// - REDIS_5_0 for Redis 5.0 compatibility
         /// - REDIS_4_0 for Redis 4.0 compatibility
         /// - REDIS_3_2 for Redis 3.2 compatibility
         /// </summary>
@@ -149,6 +160,8 @@ namespace Pulumi.Gcp.Redis
         /// The service tier of the instance. Must be one of these values:
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
+        /// Default value is `BASIC`.
+        /// Possible values are `BASIC` and `STANDARD_HA`.
         /// </summary>
         [Output("tier")]
         public Output<string?> Tier { get; private set; } = null!;
@@ -218,6 +231,8 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// The connection mode of the Redis instance.
+        /// Default value is `DIRECT_PEERING`.
+        /// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
         /// </summary>
         [Input("connectMode")]
         public Input<string>? ConnectMode { get; set; }
@@ -286,6 +301,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The version of Redis software. If not provided, latest supported
         /// version will be used. Currently, the supported values are:
+        /// - REDIS_5_0 for Redis 5.0 compatibility
         /// - REDIS_4_0 for Redis 4.0 compatibility
         /// - REDIS_3_2 for Redis 3.2 compatibility
         /// </summary>
@@ -312,6 +328,8 @@ namespace Pulumi.Gcp.Redis
         /// The service tier of the instance. Must be one of these values:
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
+        /// Default value is `BASIC`.
+        /// Possible values are `BASIC` and `STANDARD_HA`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -342,6 +360,8 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// The connection mode of the Redis instance.
+        /// Default value is `DIRECT_PEERING`.
+        /// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
         /// </summary>
         [Input("connectMode")]
         public Input<string>? ConnectMode { get; set; }
@@ -407,6 +427,14 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
+        /// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
+        /// operation.
+        /// </summary>
+        [Input("persistenceIamIdentity")]
+        public Input<string>? PersistenceIamIdentity { get; set; }
+
+        /// <summary>
         /// The port number of the exposed Redis endpoint.
         /// </summary>
         [Input("port")]
@@ -436,6 +464,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The version of Redis software. If not provided, latest supported
         /// version will be used. Currently, the supported values are:
+        /// - REDIS_5_0 for Redis 5.0 compatibility
         /// - REDIS_4_0 for Redis 4.0 compatibility
         /// - REDIS_3_2 for Redis 3.2 compatibility
         /// </summary>
@@ -462,6 +491,8 @@ namespace Pulumi.Gcp.Redis
         /// The service tier of the instance. Must be one of these values:
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
+        /// Default value is `BASIC`.
+        /// Possible values are `BASIC` and `STANDARD_HA`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

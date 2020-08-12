@@ -19,7 +19,8 @@ type GuestPolicies struct {
 	// At the same level in the resource hierarchy (that is within a project), the service prevents
 	// the creation of multiple policies that conflict with each other.
 	// For more information, see how the service
-	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	// Structure is documented below.
 	Assignment GuestPoliciesAssignmentOutput `pulumi:"assignment"`
 	// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
 	// "2014-10-02T15:01:23.045123456Z".
@@ -42,14 +43,17 @@ type GuestPolicies struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance.
 	// This is done before any other configs are applied so they can use these repos.
-	// Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+	// Package repositories are only configured if the corresponding package manager(s) are available.
+	// Structure is documented below.
 	PackageRepositories GuestPoliciesPackageRepositoryArrayOutput `pulumi:"packageRepositories"`
-	// The software packages to be managed by this policy.  Structure is documented below.
+	// The software packages to be managed by this policy.
+	// Structure is documented below.
 	Packages GuestPoliciesPackageArrayOutput `pulumi:"packages"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// A list of Recipes to install on the VM instance.  Structure is documented below.
+	// A list of Recipes to install on the VM instance.
+	// Structure is documented below.
 	Recipes GuestPoliciesRecipeArrayOutput `pulumi:"recipes"`
 	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
 	// "2014-10-02T15:01:23.045123456Z".
@@ -96,7 +100,8 @@ type guestPoliciesState struct {
 	// At the same level in the resource hierarchy (that is within a project), the service prevents
 	// the creation of multiple policies that conflict with each other.
 	// For more information, see how the service
-	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	// Structure is documented below.
 	Assignment *GuestPoliciesAssignment `pulumi:"assignment"`
 	// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
 	// "2014-10-02T15:01:23.045123456Z".
@@ -119,14 +124,17 @@ type guestPoliciesState struct {
 	Name *string `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance.
 	// This is done before any other configs are applied so they can use these repos.
-	// Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+	// Package repositories are only configured if the corresponding package manager(s) are available.
+	// Structure is documented below.
 	PackageRepositories []GuestPoliciesPackageRepository `pulumi:"packageRepositories"`
-	// The software packages to be managed by this policy.  Structure is documented below.
+	// The software packages to be managed by this policy.
+	// Structure is documented below.
 	Packages []GuestPoliciesPackage `pulumi:"packages"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// A list of Recipes to install on the VM instance.  Structure is documented below.
+	// A list of Recipes to install on the VM instance.
+	// Structure is documented below.
 	Recipes []GuestPoliciesRecipe `pulumi:"recipes"`
 	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
 	// "2014-10-02T15:01:23.045123456Z".
@@ -140,7 +148,8 @@ type GuestPoliciesState struct {
 	// At the same level in the resource hierarchy (that is within a project), the service prevents
 	// the creation of multiple policies that conflict with each other.
 	// For more information, see how the service
-	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	// Structure is documented below.
 	Assignment GuestPoliciesAssignmentPtrInput
 	// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
 	// "2014-10-02T15:01:23.045123456Z".
@@ -163,14 +172,17 @@ type GuestPoliciesState struct {
 	Name pulumi.StringPtrInput
 	// A list of package repositories to configure on the VM instance.
 	// This is done before any other configs are applied so they can use these repos.
-	// Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+	// Package repositories are only configured if the corresponding package manager(s) are available.
+	// Structure is documented below.
 	PackageRepositories GuestPoliciesPackageRepositoryArrayInput
-	// The software packages to be managed by this policy.  Structure is documented below.
+	// The software packages to be managed by this policy.
+	// Structure is documented below.
 	Packages GuestPoliciesPackageArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// A list of Recipes to install on the VM instance.  Structure is documented below.
+	// A list of Recipes to install on the VM instance.
+	// Structure is documented below.
 	Recipes GuestPoliciesRecipeArrayInput
 	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
 	// "2014-10-02T15:01:23.045123456Z".
@@ -188,7 +200,8 @@ type guestPoliciesArgs struct {
 	// At the same level in the resource hierarchy (that is within a project), the service prevents
 	// the creation of multiple policies that conflict with each other.
 	// For more information, see how the service
-	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	// Structure is documented below.
 	Assignment GuestPoliciesAssignment `pulumi:"assignment"`
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
@@ -203,14 +216,17 @@ type guestPoliciesArgs struct {
 	GuestPolicyId string `pulumi:"guestPolicyId"`
 	// A list of package repositories to configure on the VM instance.
 	// This is done before any other configs are applied so they can use these repos.
-	// Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+	// Package repositories are only configured if the corresponding package manager(s) are available.
+	// Structure is documented below.
 	PackageRepositories []GuestPoliciesPackageRepository `pulumi:"packageRepositories"`
-	// The software packages to be managed by this policy.  Structure is documented below.
+	// The software packages to be managed by this policy.
+	// Structure is documented below.
 	Packages []GuestPoliciesPackage `pulumi:"packages"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// A list of Recipes to install on the VM instance.  Structure is documented below.
+	// A list of Recipes to install on the VM instance.
+	// Structure is documented below.
 	Recipes []GuestPoliciesRecipe `pulumi:"recipes"`
 }
 
@@ -222,7 +238,8 @@ type GuestPoliciesArgs struct {
 	// At the same level in the resource hierarchy (that is within a project), the service prevents
 	// the creation of multiple policies that conflict with each other.
 	// For more information, see how the service
-	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	// Structure is documented below.
 	Assignment GuestPoliciesAssignmentInput
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
@@ -237,14 +254,17 @@ type GuestPoliciesArgs struct {
 	GuestPolicyId pulumi.StringInput
 	// A list of package repositories to configure on the VM instance.
 	// This is done before any other configs are applied so they can use these repos.
-	// Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+	// Package repositories are only configured if the corresponding package manager(s) are available.
+	// Structure is documented below.
 	PackageRepositories GuestPoliciesPackageRepositoryArrayInput
-	// The software packages to be managed by this policy.  Structure is documented below.
+	// The software packages to be managed by this policy.
+	// Structure is documented below.
 	Packages GuestPoliciesPackageArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// A list of Recipes to install on the VM instance.  Structure is documented below.
+	// A list of Recipes to install on the VM instance.
+	// Structure is documented below.
 	Recipes GuestPoliciesRecipeArrayInput
 }
 

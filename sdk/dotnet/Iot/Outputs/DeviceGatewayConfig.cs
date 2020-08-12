@@ -15,10 +15,13 @@ namespace Pulumi.Gcp.Iot.Outputs
     {
         /// <summary>
         /// Indicates whether the device is a gateway.
+        /// Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
         /// </summary>
         public readonly string? GatewayAuthMethod;
         /// <summary>
         /// Indicates whether the device is a gateway.
+        /// Default value is `NON_GATEWAY`.
+        /// Possible values are `GATEWAY` and `NON_GATEWAY`.
         /// </summary>
         public readonly string? GatewayType;
         /// <summary>

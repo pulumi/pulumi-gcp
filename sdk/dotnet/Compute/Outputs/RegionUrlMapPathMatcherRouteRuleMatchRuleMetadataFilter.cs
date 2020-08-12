@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The list of label value pairs that must match labels in the provided metadata
         /// based on filterMatchCriteria  This list must not be empty and can have at the
-        /// most 64 entries.  Structure is documented below.
+        /// most 64 entries.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel> FilterLabels;
         /// <summary>
@@ -26,6 +27,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// provided metadata.
         /// - MATCH_ALL: All filterLabels must have matching labels in
         /// the provided metadata.
+        /// Possible values are `MATCH_ALL` and `MATCH_ANY`.
         /// </summary>
         public readonly string FilterMatchCriteria;
 

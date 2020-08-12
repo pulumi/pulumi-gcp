@@ -56,7 +56,8 @@ export class Note extends pulumi.CustomResource {
      * gate the ability for a principle to attach an Occurrence to a given
      * Note. It also provides a single point of lookup to find all attached
      * Attestation Occurrences, even if they don't all live in the same
-     * project.  Structure is documented below.
+     * project.
+     * Structure is documented below.
      */
     public readonly attestationAuthority!: pulumi.Output<outputs.containeranalysis.NoteAttestationAuthority>;
     /**
@@ -89,7 +90,8 @@ export class Note extends pulumi.CustomResource {
      */
     public readonly relatedNoteNames!: pulumi.Output<string[] | undefined>;
     /**
-     * URLs associated with this note and related metadata.  Structure is documented below.
+     * URLs associated with this note and related metadata.
+     * Structure is documented below.
      */
     public readonly relatedUrls!: pulumi.Output<outputs.containeranalysis.NoteRelatedUrl[] | undefined>;
     /**
@@ -165,7 +167,8 @@ export interface NoteState {
      * gate the ability for a principle to attach an Occurrence to a given
      * Note. It also provides a single point of lookup to find all attached
      * Attestation Occurrences, even if they don't all live in the same
-     * project.  Structure is documented below.
+     * project.
+     * Structure is documented below.
      */
     readonly attestationAuthority?: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority>;
     /**
@@ -198,7 +201,8 @@ export interface NoteState {
      */
     readonly relatedNoteNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * URLs associated with this note and related metadata.  Structure is documented below.
+     * URLs associated with this note and related metadata.
+     * Structure is documented below.
      */
     readonly relatedUrls?: pulumi.Input<pulumi.Input<inputs.containeranalysis.NoteRelatedUrl>[]>;
     /**
@@ -224,7 +228,8 @@ export interface NoteArgs {
      * gate the ability for a principle to attach an Occurrence to a given
      * Note. It also provides a single point of lookup to find all attached
      * Attestation Occurrences, even if they don't all live in the same
-     * project.  Structure is documented below.
+     * project.
+     * Structure is documented below.
      */
     readonly attestationAuthority: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority>;
     /**
@@ -249,7 +254,8 @@ export interface NoteArgs {
      */
     readonly relatedNoteNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * URLs associated with this note and related metadata.  Structure is documented below.
+     * URLs associated with this note and related metadata.
+     * Structure is documented below.
      */
     readonly relatedUrls?: pulumi.Input<pulumi.Input<inputs.containeranalysis.NoteRelatedUrl>[]>;
     /**

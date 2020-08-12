@@ -14,6 +14,8 @@ class RouterPeer(pulumi.CustomResource):
     """
     User-specified flag to indicate which mode to use for advertisement.
     Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+    Default value is `DEFAULT`.
+    Possible values are `DEFAULT` and `CUSTOM`.
     """
     advertised_groups: pulumi.Output[list]
     """
@@ -29,7 +31,8 @@ class RouterPeer(pulumi.CustomResource):
     custom mode. This field can only be populated if advertiseMode
     is `CUSTOM` and is advertised to all peers of the router. These IP
     ranges will be advertised in addition to any specified groups.
-    Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+    Leave this field blank to advertise no custom IP ranges.
+    Structure is documented below.
 
       * `description` (`str`) - User-specified description for the IP range.
       * `range` (`str`) - The IP range to advertise. The value must be a
@@ -108,6 +111,8 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
                Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+               Default value is `DEFAULT`.
+               Possible values are `DEFAULT` and `CUSTOM`.
         :param pulumi.Input[list] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which can take one of the following options:
                * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
@@ -117,7 +122,8 @@ class RouterPeer(pulumi.CustomResource):
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
-               Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+               Leave this field blank to advertise no custom IP ranges.
+               Structure is documented below.
         :param pulumi.Input[float] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
@@ -199,6 +205,8 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
                Valid values of this enum field are: `DEFAULT`, `CUSTOM`
+               Default value is `DEFAULT`.
+               Possible values are `DEFAULT` and `CUSTOM`.
         :param pulumi.Input[list] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which can take one of the following options:
                * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
@@ -208,7 +216,8 @@ class RouterPeer(pulumi.CustomResource):
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
-               Leave this field blank to advertise no custom IP ranges.  Structure is documented below.
+               Leave this field blank to advertise no custom IP ranges.
+               Structure is documented below.
         :param pulumi.Input[float] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.

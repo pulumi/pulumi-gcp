@@ -21,6 +21,8 @@ class GlobalAddress(pulumi.CustomResource):
     The type of the address to reserve.
     * EXTERNAL indicates public/external single IP address.
     * INTERNAL indicates internal IP ranges belonging to some network.
+    Default value is `EXTERNAL`.
+    Possible values are `EXTERNAL` and `INTERNAL`.
     """
     creation_timestamp: pulumi.Output[str]
     """
@@ -33,6 +35,7 @@ class GlobalAddress(pulumi.CustomResource):
     ip_version: pulumi.Output[str]
     """
     The IP Version that will be used by this address. The default value is `IPV4`.
+    Possible values are `IPV4` and `IPV6`.
     """
     label_fingerprint: pulumi.Output[str]
     """
@@ -75,6 +78,7 @@ class GlobalAddress(pulumi.CustomResource):
     The purpose of the resource. For global internal addresses it can be
     * VPC_PEERING - for peer networks
     This should only be set when using an Internal address.
+    Possible values are `VPC_PEERING`.
     """
     self_link: pulumi.Output[str]
     """
@@ -101,8 +105,11 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
+               Default value is `EXTERNAL`.
+               Possible values are `EXTERNAL` and `INTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
+               Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[dict] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -123,6 +130,7 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] purpose: The purpose of the resource. For global internal addresses it can be
                * VPC_PEERING - for peer networks
                This should only be set when using an Internal address.
+               Possible values are `VPC_PEERING`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -175,9 +183,12 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
+               Default value is `EXTERNAL`.
+               Possible values are `EXTERNAL` and `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
+               Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[dict] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -199,6 +210,7 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] purpose: The purpose of the resource. For global internal addresses it can be
                * VPC_PEERING - for peer networks
                This should only be set when using an Internal address.
+               Possible values are `VPC_PEERING`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

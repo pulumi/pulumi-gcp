@@ -17,7 +17,8 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
     key_value: pulumi.Output[str]
     """
     128-bit key value used for signing the URL. The key value must be a
-    valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
+    valid RFC 4648 Section 5 base64url encoded string.
+    **Note**: This property is sensitive and will not be displayed in the plan.
     """
     name: pulumi.Output[str]
     """
@@ -47,7 +48,8 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_bucket: The backend bucket this signed URL key belongs.
         :param pulumi.Input[str] key_value: 128-bit key value used for signing the URL. The key value must be a
-               valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
+               valid RFC 4648 Section 5 base64url encoded string.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] name: Name of the signed URL key.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -94,7 +96,8 @@ class BackendBucketSignedUrlKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backend_bucket: The backend bucket this signed URL key belongs.
         :param pulumi.Input[str] key_value: 128-bit key value used for signing the URL. The key value must be a
-               valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
+               valid RFC 4648 Section 5 base64url encoded string.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] name: Name of the signed URL key.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.

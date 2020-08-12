@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     {
         /// <summary>
         /// A day of the week.
+        /// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
         /// </summary>
         [Input("dayOfWeek", required: true)]
         public Input<string> DayOfWeek { get; set; } = null!;

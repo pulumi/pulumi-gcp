@@ -13,7 +13,8 @@ import (
 type Environment struct {
 	pulumi.CustomResourceState
 
-	// Use a container image to start the notebook instance.  Structure is documented below.
+	// Use a container image to start the notebook instance.
+	// Structure is documented below.
 	ContainerImage EnvironmentContainerImagePtrOutput `pulumi:"containerImage"`
 	// Instance creation time
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -32,7 +33,8 @@ type Environment struct {
 	// The name of the Google Cloud project that this VM image belongs to.
 	// Format: projects/{project_id}
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+	// Use a Compute Engine VM image to start the notebook instance.
+	// Structure is documented below.
 	VmImage EnvironmentVmImagePtrOutput `pulumi:"vmImage"`
 }
 
@@ -67,7 +69,8 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
-	// Use a container image to start the notebook instance.  Structure is documented below.
+	// Use a container image to start the notebook instance.
+	// Structure is documented below.
 	ContainerImage *EnvironmentContainerImage `pulumi:"containerImage"`
 	// Instance creation time
 	CreateTime *string `pulumi:"createTime"`
@@ -86,12 +89,14 @@ type environmentState struct {
 	// The name of the Google Cloud project that this VM image belongs to.
 	// Format: projects/{project_id}
 	Project *string `pulumi:"project"`
-	// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+	// Use a Compute Engine VM image to start the notebook instance.
+	// Structure is documented below.
 	VmImage *EnvironmentVmImage `pulumi:"vmImage"`
 }
 
 type EnvironmentState struct {
-	// Use a container image to start the notebook instance.  Structure is documented below.
+	// Use a container image to start the notebook instance.
+	// Structure is documented below.
 	ContainerImage EnvironmentContainerImagePtrInput
 	// Instance creation time
 	CreateTime pulumi.StringPtrInput
@@ -110,7 +115,8 @@ type EnvironmentState struct {
 	// The name of the Google Cloud project that this VM image belongs to.
 	// Format: projects/{project_id}
 	Project pulumi.StringPtrInput
-	// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+	// Use a Compute Engine VM image to start the notebook instance.
+	// Structure is documented below.
 	VmImage EnvironmentVmImagePtrInput
 }
 
@@ -119,7 +125,8 @@ func (EnvironmentState) ElementType() reflect.Type {
 }
 
 type environmentArgs struct {
-	// Use a container image to start the notebook instance.  Structure is documented below.
+	// Use a container image to start the notebook instance.
+	// Structure is documented below.
 	ContainerImage *EnvironmentContainerImage `pulumi:"containerImage"`
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
@@ -136,13 +143,15 @@ type environmentArgs struct {
 	// The name of the Google Cloud project that this VM image belongs to.
 	// Format: projects/{project_id}
 	Project *string `pulumi:"project"`
-	// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+	// Use a Compute Engine VM image to start the notebook instance.
+	// Structure is documented below.
 	VmImage *EnvironmentVmImage `pulumi:"vmImage"`
 }
 
 // The set of arguments for constructing a Environment resource.
 type EnvironmentArgs struct {
-	// Use a container image to start the notebook instance.  Structure is documented below.
+	// Use a container image to start the notebook instance.
+	// Structure is documented below.
 	ContainerImage EnvironmentContainerImagePtrInput
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput
@@ -159,7 +168,8 @@ type EnvironmentArgs struct {
 	// The name of the Google Cloud project that this VM image belongs to.
 	// Format: projects/{project_id}
 	Project pulumi.StringPtrInput
-	// Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+	// Use a Compute Engine VM image to start the notebook instance.
+	// Structure is documented below.
 	VmImage EnvironmentVmImagePtrInput
 }
 

@@ -14,19 +14,23 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class GuestPoliciesPackageRepository
     {
         /// <summary>
-        /// An Apt Repository.  Structure is documented below.
+        /// An Apt Repository.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesPackageRepositoryApt? Apt;
         /// <summary>
-        /// A Goo Repository.  Structure is documented below.
+        /// A Goo Repository.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesPackageRepositoryGoo? Goo;
         /// <summary>
-        /// A Yum Repository.  Structure is documented below.
+        /// A Yum Repository.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesPackageRepositoryYum? Yum;
         /// <summary>
-        /// A Zypper Repository.  Structure is documented below.
+        /// A Zypper Repository.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesPackageRepositoryZypper? Zypper;
 

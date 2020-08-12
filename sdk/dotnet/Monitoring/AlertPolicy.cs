@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// How to combine the results of multiple conditions to
         /// determine if an incident should be opened.
+        /// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
         /// </summary>
         [Output("combiner")]
         public Output<string> Combiner { get; private set; } = null!;
@@ -35,7 +36,8 @@ namespace Pulumi.Gcp.Monitoring
         /// A list of conditions for the policy. The conditions are combined by
         /// AND or OR according to the combiner field. If the combined conditions
         /// evaluate to true, then an incident is created. A policy can have from
-        /// one to six conditions.  Structure is documented below.
+        /// one to six conditions.
+        /// Structure is documented below.
         /// </summary>
         [Output("conditions")]
         public Output<ImmutableArray<Outputs.AlertPolicyCondition>> Conditions { get; private set; } = null!;
@@ -61,7 +63,8 @@ namespace Pulumi.Gcp.Monitoring
         /// A short name or phrase used to identify the policy in dashboards,
         /// notifications, and incidents. To avoid confusion, don't use the same
         /// display name for multiple policies in the same project. The name is
-        /// limited to 512 Unicode characters.  Structure is documented below.
+        /// limited to 512 Unicode characters.
+        /// Structure is documented below.
         /// </summary>
         [Output("documentation")]
         public Output<Outputs.AlertPolicyDocumentation?> Documentation { get; private set; } = null!;
@@ -162,6 +165,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// How to combine the results of multiple conditions to
         /// determine if an incident should be opened.
+        /// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
         /// </summary>
         [Input("combiner", required: true)]
         public Input<string> Combiner { get; set; } = null!;
@@ -173,7 +177,8 @@ namespace Pulumi.Gcp.Monitoring
         /// A list of conditions for the policy. The conditions are combined by
         /// AND or OR according to the combiner field. If the combined conditions
         /// evaluate to true, then an incident is created. A policy can have from
-        /// one to six conditions.  Structure is documented below.
+        /// one to six conditions.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AlertPolicyConditionArgs> Conditions
         {
@@ -195,7 +200,8 @@ namespace Pulumi.Gcp.Monitoring
         /// A short name or phrase used to identify the policy in dashboards,
         /// notifications, and incidents. To avoid confusion, don't use the same
         /// display name for multiple policies in the same project. The name is
-        /// limited to 512 Unicode characters.  Structure is documented below.
+        /// limited to 512 Unicode characters.
+        /// Structure is documented below.
         /// </summary>
         [Input("documentation")]
         public Input<Inputs.AlertPolicyDocumentationArgs>? Documentation { get; set; }
@@ -257,6 +263,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// How to combine the results of multiple conditions to
         /// determine if an incident should be opened.
+        /// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
         /// </summary>
         [Input("combiner")]
         public Input<string>? Combiner { get; set; }
@@ -268,7 +275,8 @@ namespace Pulumi.Gcp.Monitoring
         /// A list of conditions for the policy. The conditions are combined by
         /// AND or OR according to the combiner field. If the combined conditions
         /// evaluate to true, then an incident is created. A policy can have from
-        /// one to six conditions.  Structure is documented below.
+        /// one to six conditions.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AlertPolicyConditionGetArgs> Conditions
         {
@@ -297,7 +305,8 @@ namespace Pulumi.Gcp.Monitoring
         /// A short name or phrase used to identify the policy in dashboards,
         /// notifications, and incidents. To avoid confusion, don't use the same
         /// display name for multiple policies in the same project. The name is
-        /// limited to 512 Unicode characters.  Structure is documented below.
+        /// limited to 512 Unicode characters.
+        /// Structure is documented below.
         /// </summary>
         [Input("documentation")]
         public Input<Inputs.AlertPolicyDocumentationGetArgs>? Documentation { get; set; }

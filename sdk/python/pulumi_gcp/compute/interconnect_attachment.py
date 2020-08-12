@@ -22,6 +22,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
     Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
     Defaults to BPS_10G
+    Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
     """
     candidate_subnets: pulumi.Output[list]
     """
@@ -123,6 +124,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     """
     The type of InterconnectAttachment you wish to create. Defaults to
     DEDICATED.
+    Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
     """
     vlan_tag8021q: pulumi.Output[float]
     """
@@ -145,6 +147,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
                Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
                Defaults to BPS_10G
+               Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
         :param pulumi.Input[list] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
                of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
                All prefixes must be within link-local address space (169.254.0.0/16)
@@ -177,6 +180,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                Cloud Router is configured.
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
+               Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
         :param pulumi.Input[float] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
         """
@@ -242,6 +246,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
                Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
                Defaults to BPS_10G
+               Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
         :param pulumi.Input[list] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation
                of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
                All prefixes must be within link-local address space (169.254.0.0/16)
@@ -287,6 +292,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] state: [Output Only] The current state of this attachment's functionality.
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
+               Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
         :param pulumi.Input[float] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
 

@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        /// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

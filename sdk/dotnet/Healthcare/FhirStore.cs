@@ -95,7 +95,8 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.FhirStoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
@@ -112,13 +113,16 @@ namespace Pulumi.Gcp.Healthcare
         /// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
         /// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
         /// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-        /// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+        /// the order of dozens of seconds) is expected before the results show up in the streaming destination.
+        /// Structure is documented below.
         /// </summary>
         [Output("streamConfigs")]
         public Output<ImmutableArray<Outputs.FhirStoreStreamConfig>> StreamConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The FHIR specification version.
+        /// Default value is `STU3`.
+        /// Possible values are `DSTU2`, `STU3`, and `R4`.
         /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
@@ -247,7 +251,8 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.FhirStoreNotificationConfigArgs>? NotificationConfig { get; set; }
@@ -261,7 +266,8 @@ namespace Pulumi.Gcp.Healthcare
         /// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
         /// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
         /// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-        /// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+        /// the order of dozens of seconds) is expected before the results show up in the streaming destination.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FhirStoreStreamConfigArgs> StreamConfigs
         {
@@ -271,6 +277,8 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// The FHIR specification version.
+        /// Default value is `STU3`.
+        /// Possible values are `DSTU2`, `STU3`, and `R4`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -360,7 +368,8 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.FhirStoreNotificationConfigGetArgs>? NotificationConfig { get; set; }
@@ -380,7 +389,8 @@ namespace Pulumi.Gcp.Healthcare
         /// resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
         /// from the list, the server stops streaming to that location. Before adding a new config, you must add the required
         /// bigquery.dataEditor role to your project's Cloud Healthcare Service Agent service account. Some lag (typically on
-        /// the order of dozens of seconds) is expected before the results show up in the streaming destination.  Structure is documented below.
+        /// the order of dozens of seconds) is expected before the results show up in the streaming destination.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FhirStoreStreamConfigGetArgs> StreamConfigs
         {
@@ -390,6 +400,8 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// The FHIR specification version.
+        /// Default value is `STU3`.
+        /// Possible values are `DSTU2`, `STU3`, and `R4`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

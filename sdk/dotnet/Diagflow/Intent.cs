@@ -126,6 +126,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         /// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
         /// filling prompt is forwarded to the webhook.
+        /// Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         /// </summary>
         [Output("webhookState")]
         public Output<string> WebhookState { get; private set; } = null!;
@@ -277,6 +278,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         /// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
         /// filling prompt is forwarded to the webhook.
+        /// Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         /// </summary>
         [Input("webhookState")]
         public Input<string>? WebhookState { get; set; }
@@ -415,6 +417,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         /// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
         /// filling prompt is forwarded to the webhook.
+        /// Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         /// </summary>
         [Input("webhookState")]
         public Input<string>? WebhookState { get; set; }

@@ -43,7 +43,8 @@ namespace Pulumi.Gcp.PubSub.Inputs
 
         /// <summary>
         /// If specified, Pub/Sub will generate and attach an OIDC JWT token as
-        /// an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+        /// an Authorization header in the HTTP request for every pushed message.
+        /// Structure is documented below.
         /// </summary>
         [Input("oidcToken")]
         public Input<Inputs.SubscriptionPushConfigOidcTokenGetArgs>? OidcToken { get; set; }

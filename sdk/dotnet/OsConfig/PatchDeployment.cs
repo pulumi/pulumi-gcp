@@ -44,7 +44,8 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string?> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// VM instances to patch.  Structure is documented below.
+        /// VM instances to patch.
+        /// Structure is documented below.
         /// </summary>
         [Output("instanceFilter")]
         public Output<Outputs.PatchDeploymentInstanceFilter> InstanceFilter { get; private set; } = null!;
@@ -65,13 +66,15 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Schedule a one-time execution.  Structure is documented below.
+        /// Schedule a one-time execution.
+        /// Structure is documented below.
         /// </summary>
         [Output("oneTimeSchedule")]
         public Output<Outputs.PatchDeploymentOneTimeSchedule?> OneTimeSchedule { get; private set; } = null!;
 
         /// <summary>
-        /// Patch configuration that is applied.  Structure is documented below.
+        /// Patch configuration that is applied.
+        /// Structure is documented below.
         /// </summary>
         [Output("patchConfig")]
         public Output<Outputs.PatchDeploymentPatchConfig?> PatchConfig { get; private set; } = null!;
@@ -95,7 +98,8 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Schedule recurring executions.  Structure is documented below.
+        /// Schedule recurring executions.
+        /// Structure is documented below.
         /// </summary>
         [Output("recurringSchedule")]
         public Output<Outputs.PatchDeploymentRecurringSchedule?> RecurringSchedule { get; private set; } = null!;
@@ -167,19 +171,22 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// VM instances to patch.  Structure is documented below.
+        /// VM instances to patch.
+        /// Structure is documented below.
         /// </summary>
         [Input("instanceFilter", required: true)]
         public Input<Inputs.PatchDeploymentInstanceFilterArgs> InstanceFilter { get; set; } = null!;
 
         /// <summary>
-        /// Schedule a one-time execution.  Structure is documented below.
+        /// Schedule a one-time execution.
+        /// Structure is documented below.
         /// </summary>
         [Input("oneTimeSchedule")]
         public Input<Inputs.PatchDeploymentOneTimeScheduleArgs>? OneTimeSchedule { get; set; }
 
         /// <summary>
-        /// Patch configuration that is applied.  Structure is documented below.
+        /// Patch configuration that is applied.
+        /// Structure is documented below.
         /// </summary>
         [Input("patchConfig")]
         public Input<Inputs.PatchDeploymentPatchConfigArgs>? PatchConfig { get; set; }
@@ -203,7 +210,8 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Schedule recurring executions.  Structure is documented below.
+        /// Schedule recurring executions.
+        /// Structure is documented below.
         /// </summary>
         [Input("recurringSchedule")]
         public Input<Inputs.PatchDeploymentRecurringScheduleArgs>? RecurringSchedule { get; set; }
@@ -236,7 +244,8 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// VM instances to patch.  Structure is documented below.
+        /// VM instances to patch.
+        /// Structure is documented below.
         /// </summary>
         [Input("instanceFilter")]
         public Input<Inputs.PatchDeploymentInstanceFilterGetArgs>? InstanceFilter { get; set; }
@@ -257,13 +266,15 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Schedule a one-time execution.  Structure is documented below.
+        /// Schedule a one-time execution.
+        /// Structure is documented below.
         /// </summary>
         [Input("oneTimeSchedule")]
         public Input<Inputs.PatchDeploymentOneTimeScheduleGetArgs>? OneTimeSchedule { get; set; }
 
         /// <summary>
-        /// Patch configuration that is applied.  Structure is documented below.
+        /// Patch configuration that is applied.
+        /// Structure is documented below.
         /// </summary>
         [Input("patchConfig")]
         public Input<Inputs.PatchDeploymentPatchConfigGetArgs>? PatchConfig { get; set; }
@@ -287,7 +298,8 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Schedule recurring executions.  Structure is documented below.
+        /// Schedule recurring executions.
+        /// Structure is documented below.
         /// </summary>
         [Input("recurringSchedule")]
         public Input<Inputs.PatchDeploymentRecurringScheduleGetArgs>? RecurringSchedule { get; set; }

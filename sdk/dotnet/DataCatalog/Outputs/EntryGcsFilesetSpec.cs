@@ -29,7 +29,8 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
         public readonly ImmutableArray<string> FilePatterns;
         /// <summary>
         /// -
-        /// Sample files contained in this fileset, not all files contained in this fileset are represented here.  Structure is documented below.
+        /// Sample files contained in this fileset, not all files contained in this fileset are represented here.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.EntryGcsFilesetSpecSampleGcsFileSpec> SampleGcsFileSpecs;
 

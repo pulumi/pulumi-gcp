@@ -35,7 +35,8 @@ type CustomService struct {
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
-	// Configuration for how to query telemetry on a Service.  Structure is documented below.
+	// Configuration for how to query telemetry on a Service.
+	// Structure is documented below.
 	Telemetry CustomServiceTelemetryPtrOutput `pulumi:"telemetry"`
 }
 
@@ -77,7 +78,8 @@ type customServiceState struct {
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
 	ServiceId *string `pulumi:"serviceId"`
-	// Configuration for how to query telemetry on a Service.  Structure is documented below.
+	// Configuration for how to query telemetry on a Service.
+	// Structure is documented below.
 	Telemetry *CustomServiceTelemetry `pulumi:"telemetry"`
 }
 
@@ -92,7 +94,8 @@ type CustomServiceState struct {
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
 	ServiceId pulumi.StringPtrInput
-	// Configuration for how to query telemetry on a Service.  Structure is documented below.
+	// Configuration for how to query telemetry on a Service.
+	// Structure is documented below.
 	Telemetry CustomServiceTelemetryPtrInput
 }
 
@@ -109,7 +112,8 @@ type customServiceArgs struct {
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
 	ServiceId *string `pulumi:"serviceId"`
-	// Configuration for how to query telemetry on a Service.  Structure is documented below.
+	// Configuration for how to query telemetry on a Service.
+	// Structure is documented below.
 	Telemetry *CustomServiceTelemetry `pulumi:"telemetry"`
 }
 
@@ -123,7 +127,8 @@ type CustomServiceArgs struct {
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
 	ServiceId pulumi.StringPtrInput
-	// Configuration for how to query telemetry on a Service.  Structure is documented below.
+	// Configuration for how to query telemetry on a Service.
+	// Structure is documented below.
 	Telemetry CustomServiceTelemetryPtrInput
 }
 

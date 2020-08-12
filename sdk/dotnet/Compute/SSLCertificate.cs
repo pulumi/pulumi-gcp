@@ -30,7 +30,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The certificate in PEM format.
         /// The certificate chain must be no greater than 5 certs long.
-        /// The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The chain must include at least one intermediate cert.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
@@ -73,7 +74,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> NamePrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The write-only private key in PEM format.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("privateKey")]
         public Output<string> PrivateKey { get; private set; } = null!;
@@ -140,7 +142,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The certificate in PEM format.
         /// The certificate chain must be no greater than 5 certs long.
-        /// The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The chain must include at least one intermediate cert.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("certificate", required: true)]
         public Input<string> Certificate { get; set; } = null!;
@@ -171,7 +174,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The write-only private key in PEM format.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("privateKey", required: true)]
         public Input<string> PrivateKey { get; set; } = null!;
@@ -193,7 +197,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The certificate in PEM format.
         /// The certificate chain must be no greater than 5 certs long.
-        /// The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The chain must include at least one intermediate cert.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
@@ -236,7 +241,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NamePrefix { get; set; }
 
         /// <summary>
-        /// The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The write-only private key in PEM format.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }

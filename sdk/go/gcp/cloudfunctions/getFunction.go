@@ -49,8 +49,9 @@ type LookupFunctionResult struct {
 	// Controls what traffic can reach the function.
 	IngressSettings string `pulumi:"ingressSettings"`
 	// A map of labels applied to this function.
-	Labels       map[string]interface{} `pulumi:"labels"`
-	MaxInstances int                    `pulumi:"maxInstances"`
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The limit on the maximum number of function instances that may coexist at a given time.
+	MaxInstances int `pulumi:"maxInstances"`
 	// The name of the Cloud Function.
 	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -62,8 +63,9 @@ type LookupFunctionResult struct {
 	// The GCS bucket containing the zip archive which contains the function.
 	SourceArchiveBucket string `pulumi:"sourceArchiveBucket"`
 	// The source archive object (file) in archive bucket.
-	SourceArchiveObject string                        `pulumi:"sourceArchiveObject"`
-	SourceRepositories  []GetFunctionSourceRepository `pulumi:"sourceRepositories"`
+	SourceArchiveObject string `pulumi:"sourceArchiveObject"`
+	// The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
+	SourceRepositories []GetFunctionSourceRepository `pulumi:"sourceRepositories"`
 	// Function execution timeout (in seconds).
 	Timeout int `pulumi:"timeout"`
 	// If function is triggered by HTTP, this boolean is set.

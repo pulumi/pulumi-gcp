@@ -18,12 +18,14 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly ImmutableArray<int> AllowedSuccessCodes;
         /// <summary>
-        /// A Cloud Storage object containing the executable.  Structure is documented below.
+        /// A Cloud Storage object containing the executable.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject? GcsObject;
         /// <summary>
         /// The script interpreter to use to run the script. If no interpreter is specified the script will
         /// be executed directly, which will likely only succeed for scripts with shebang lines.
+        /// Possible values are `SHELL` and `POWERSHELL`.
         /// </summary>
         public readonly string? Interpreter;
         /// <summary>

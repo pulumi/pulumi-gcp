@@ -17,14 +17,18 @@ type GroupMembership struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The name of the Group to create this membership in.
 	Group pulumi.StringOutput `pulumi:"group"`
-	// EntityKey of the member.  Structure is documented below.
+	// EntityKey of the member.
+	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyOutput `pulumi:"memberKey"`
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// EntityKey of the member.  Structure is documented below.
+	// EntityKey of the member.
+	// Structure is documented below.
 	PreferredMemberKey GroupMembershipPreferredMemberKeyOutput `pulumi:"preferredMemberKey"`
 	// The MembershipRoles that apply to the Membership.
-	// Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+	// Must not contain duplicate MembershipRoles with the same name.
+	// Structure is documented below.
 	Roles GroupMembershipRoleArrayOutput `pulumi:"roles"`
 	// The type of the membership.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -70,14 +74,18 @@ type groupMembershipState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The name of the Group to create this membership in.
 	Group *string `pulumi:"group"`
-	// EntityKey of the member.  Structure is documented below.
+	// EntityKey of the member.
+	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
 	Name *string `pulumi:"name"`
-	// EntityKey of the member.  Structure is documented below.
+	// EntityKey of the member.
+	// Structure is documented below.
 	PreferredMemberKey *GroupMembershipPreferredMemberKey `pulumi:"preferredMemberKey"`
 	// The MembershipRoles that apply to the Membership.
-	// Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+	// Must not contain duplicate MembershipRoles with the same name.
+	// Structure is documented below.
 	Roles []GroupMembershipRole `pulumi:"roles"`
 	// The type of the membership.
 	Type *string `pulumi:"type"`
@@ -90,14 +98,18 @@ type GroupMembershipState struct {
 	CreateTime pulumi.StringPtrInput
 	// The name of the Group to create this membership in.
 	Group pulumi.StringPtrInput
-	// EntityKey of the member.  Structure is documented below.
+	// EntityKey of the member.
+	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
 	Name pulumi.StringPtrInput
-	// EntityKey of the member.  Structure is documented below.
+	// EntityKey of the member.
+	// Structure is documented below.
 	PreferredMemberKey GroupMembershipPreferredMemberKeyPtrInput
 	// The MembershipRoles that apply to the Membership.
-	// Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+	// Must not contain duplicate MembershipRoles with the same name.
+	// Structure is documented below.
 	Roles GroupMembershipRoleArrayInput
 	// The type of the membership.
 	Type pulumi.StringPtrInput
@@ -112,12 +124,15 @@ func (GroupMembershipState) ElementType() reflect.Type {
 type groupMembershipArgs struct {
 	// The name of the Group to create this membership in.
 	Group string `pulumi:"group"`
-	// EntityKey of the member.  Structure is documented below.
+	// EntityKey of the member.
+	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
-	// EntityKey of the member.  Structure is documented below.
+	// EntityKey of the member.
+	// Structure is documented below.
 	PreferredMemberKey *GroupMembershipPreferredMemberKey `pulumi:"preferredMemberKey"`
 	// The MembershipRoles that apply to the Membership.
-	// Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+	// Must not contain duplicate MembershipRoles with the same name.
+	// Structure is documented below.
 	Roles []GroupMembershipRole `pulumi:"roles"`
 }
 
@@ -125,12 +140,15 @@ type groupMembershipArgs struct {
 type GroupMembershipArgs struct {
 	// The name of the Group to create this membership in.
 	Group pulumi.StringInput
-	// EntityKey of the member.  Structure is documented below.
+	// EntityKey of the member.
+	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
-	// EntityKey of the member.  Structure is documented below.
+	// EntityKey of the member.
+	// Structure is documented below.
 	PreferredMemberKey GroupMembershipPreferredMemberKeyPtrInput
 	// The MembershipRoles that apply to the Membership.
-	// Must not contain duplicate MembershipRoles with the same name.  Structure is documented below.
+	// Must not contain duplicate MembershipRoles with the same name.
+	// Structure is documented below.
 	Roles GroupMembershipRoleArrayInput
 }
 

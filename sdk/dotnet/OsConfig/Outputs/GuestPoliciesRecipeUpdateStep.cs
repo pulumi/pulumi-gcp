@@ -14,31 +14,38 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class GuestPoliciesRecipeUpdateStep
     {
         /// <summary>
-        /// Extracts an archive into the specified directory.  Structure is documented below.
+        /// Extracts an archive into the specified directory.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesRecipeUpdateStepArchiveExtraction? ArchiveExtraction;
         /// <summary>
-        /// Installs a deb file via dpkg.  Structure is documented below.
+        /// Installs a deb file via dpkg.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesRecipeUpdateStepDpkgInstallation? DpkgInstallation;
         /// <summary>
-        /// Copies a file onto the instance.  Structure is documented below.
+        /// Copies a file onto the instance.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesRecipeUpdateStepFileCopy? FileCopy;
         /// <summary>
-        /// Executes an artifact or local file.  Structure is documented below.
+        /// Executes an artifact or local file.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesRecipeUpdateStepFileExec? FileExec;
         /// <summary>
-        /// Installs an MSI file.  Structure is documented below.
+        /// Installs an MSI file.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesRecipeUpdateStepMsiInstallation? MsiInstallation;
         /// <summary>
-        /// Installs an rpm file via the rpm utility.  Structure is documented below.
+        /// Installs an rpm file via the rpm utility.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesRecipeUpdateStepRpmInstallation? RpmInstallation;
         /// <summary>
-        /// Runs commands in a shell.  Structure is documented below.
+        /// Runs commands in a shell.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GuestPoliciesRecipeUpdateStepScriptRun? ScriptRun;
 

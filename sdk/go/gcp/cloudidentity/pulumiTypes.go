@@ -582,6 +582,7 @@ func (o GroupMembershipPreferredMemberKeyPtrOutput) Namespace() pulumi.StringPtr
 
 type GroupMembershipRole struct {
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
 	Name string `pulumi:"name"`
 }
 
@@ -598,6 +599,7 @@ type GroupMembershipRoleInput interface {
 
 type GroupMembershipRoleArgs struct {
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -653,6 +655,7 @@ func (o GroupMembershipRoleOutput) ToGroupMembershipRoleOutputWithContext(ctx co
 }
 
 // The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
+// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
 func (o GroupMembershipRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupMembershipRole) string { return v.Name }).(pulumi.StringOutput)
 }

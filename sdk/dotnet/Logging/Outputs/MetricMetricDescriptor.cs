@@ -23,13 +23,15 @@ namespace Pulumi.Gcp.Logging.Outputs
         /// The set of labels that can be used to describe a specific instance of this metric type. For
         /// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
         /// for the HTTP response code, response_code, so you can look at latencies for successful responses
-        /// or just for responses that failed.  Structure is documented below.
+        /// or just for responses that failed.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.MetricMetricDescriptorLabel> Labels;
         /// <summary>
         /// Whether the metric records instantaneous values, changes to a value, etc.
         /// Some combinations of metricKind and valueType might not be supported.
         /// For counter metrics, set this to DELTA.
+        /// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
         /// </summary>
         public readonly string MetricKind;
         /// <summary>
@@ -40,6 +42,8 @@ namespace Pulumi.Gcp.Logging.Outputs
         public readonly string? Unit;
         /// <summary>
         /// The type of data that can be assigned to the label.
+        /// Default value is `STRING`.
+        /// Possible values are `BOOL`, `INT64`, and `STRING`.
         /// </summary>
         public readonly string ValueType;
 

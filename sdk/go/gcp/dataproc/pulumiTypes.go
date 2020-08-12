@@ -15,7 +15,8 @@ type AutoscalingPolicyBasicAlgorithm struct {
 	// update operation from the previous event has completed.
 	// Bounds: [2m, 1d]. Default: 2m.
 	CooldownPeriod *string `pulumi:"cooldownPeriod"`
-	// YARN autoscaling configuration.  Structure is documented below.
+	// YARN autoscaling configuration.
+	// Structure is documented below.
 	YarnConfig AutoscalingPolicyBasicAlgorithmYarnConfig `pulumi:"yarnConfig"`
 }
 
@@ -35,7 +36,8 @@ type AutoscalingPolicyBasicAlgorithmArgs struct {
 	// update operation from the previous event has completed.
 	// Bounds: [2m, 1d]. Default: 2m.
 	CooldownPeriod pulumi.StringPtrInput `pulumi:"cooldownPeriod"`
-	// YARN autoscaling configuration.  Structure is documented below.
+	// YARN autoscaling configuration.
+	// Structure is documented below.
 	YarnConfig AutoscalingPolicyBasicAlgorithmYarnConfigInput `pulumi:"yarnConfig"`
 }
 
@@ -123,7 +125,8 @@ func (o AutoscalingPolicyBasicAlgorithmOutput) CooldownPeriod() pulumi.StringPtr
 	return o.ApplyT(func(v AutoscalingPolicyBasicAlgorithm) *string { return v.CooldownPeriod }).(pulumi.StringPtrOutput)
 }
 
-// YARN autoscaling configuration.  Structure is documented below.
+// YARN autoscaling configuration.
+// Structure is documented below.
 func (o AutoscalingPolicyBasicAlgorithmOutput) YarnConfig() AutoscalingPolicyBasicAlgorithmYarnConfigOutput {
 	return o.ApplyT(func(v AutoscalingPolicyBasicAlgorithm) AutoscalingPolicyBasicAlgorithmYarnConfig { return v.YarnConfig }).(AutoscalingPolicyBasicAlgorithmYarnConfigOutput)
 }
@@ -158,7 +161,8 @@ func (o AutoscalingPolicyBasicAlgorithmPtrOutput) CooldownPeriod() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// YARN autoscaling configuration.  Structure is documented below.
+// YARN autoscaling configuration.
+// Structure is documented below.
 func (o AutoscalingPolicyBasicAlgorithmPtrOutput) YarnConfig() AutoscalingPolicyBasicAlgorithmYarnConfigPtrOutput {
 	return o.ApplyT(func(v *AutoscalingPolicyBasicAlgorithm) *AutoscalingPolicyBasicAlgorithmYarnConfig {
 		if v == nil {

@@ -31,7 +31,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// the authority to which this attestation is attached is primarily
         /// useful for lookup (how to find this attestation if you already
         /// know the authority and artifact to be verified) and intent (for
-        /// which authority this attestation was intended to sign.  Structure is documented below.
+        /// which authority this attestation was intended to sign.
+        /// Structure is documented below.
         /// </summary>
         [Output("attestation")]
         public Output<Outputs.OccurenceAttestation> Attestation { get; private set; } = null!;
@@ -144,7 +145,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// the authority to which this attestation is attached is primarily
         /// useful for lookup (how to find this attestation if you already
         /// know the authority and artifact to be verified) and intent (for
-        /// which authority this attestation was intended to sign.  Structure is documented below.
+        /// which authority this attestation was intended to sign.
+        /// Structure is documented below.
         /// </summary>
         [Input("attestation", required: true)]
         public Input<Inputs.OccurenceAttestationArgs> Attestation { get; set; } = null!;
@@ -193,7 +195,8 @@ namespace Pulumi.Gcp.ContainerAnalysis
         /// the authority to which this attestation is attached is primarily
         /// useful for lookup (how to find this attestation if you already
         /// know the authority and artifact to be verified) and intent (for
-        /// which authority this attestation was intended to sign.  Structure is documented below.
+        /// which authority this attestation was intended to sign.
+        /// Structure is documented below.
         /// </summary>
         [Input("attestation")]
         public Input<Inputs.OccurenceAttestationGetArgs>? Attestation { get; set; }

@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
         public readonly string? Network;
         /// <summary>
         /// Type of the network where the endpoint is located.
+        /// Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
         /// </summary>
         public readonly string? NetworkType;
         /// <summary>

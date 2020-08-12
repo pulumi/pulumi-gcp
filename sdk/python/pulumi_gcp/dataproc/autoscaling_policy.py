@@ -12,12 +12,14 @@ from .. import utilities, tables
 class AutoscalingPolicy(pulumi.CustomResource):
     basic_algorithm: pulumi.Output[dict]
     """
-    Basic algorithm for autoscaling.  Structure is documented below.
+    Basic algorithm for autoscaling.
+    Structure is documented below.
 
       * `cooldownPeriod` (`str`) - Duration between scaling events. A scaling period starts after the
         update operation from the previous event has completed.
         Bounds: [2m, 1d]. Default: 2m.
-      * `yarnConfig` (`dict`) - YARN autoscaling configuration.  Structure is documented below.
+      * `yarnConfig` (`dict`) - YARN autoscaling configuration.
+        Structure is documented below.
         * `gracefulDecommissionTimeout` (`str`) - Timeout for YARN graceful decommissioning of Node Managers. Specifies the
           duration to wait for jobs to complete before forcefully removing workers
           (and potentially interrupting jobs). Only applicable to downscaling operations.
@@ -67,7 +69,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
     """
     secondary_worker_config: pulumi.Output[dict]
     """
-    Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+    Describes how the autoscaler will operate for secondary workers.
+    Structure is documented below.
 
       * `max_instances` (`float`) - Maximum number of instances for this group. Note that by default, clusters will not use
         secondary workers. Required for secondary workers if the minimum secondary instances is set.
@@ -88,7 +91,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
     """
     worker_config: pulumi.Output[dict]
     """
-    Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+    Describes how the autoscaler will operate for primary workers.
+    Structure is documented below.
 
       * `max_instances` (`float`) - Maximum number of instances for this group. Note that by default, clusters will not use
         secondary workers. Required for secondary workers if the minimum secondary instances is set.
@@ -115,7 +119,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] basic_algorithm: Basic algorithm for autoscaling.  Structure is documented below.
+        :param pulumi.Input[dict] basic_algorithm: Basic algorithm for autoscaling.
+               Structure is documented below.
         :param pulumi.Input[str] location: The  location where the autoscaling poicy should reside.
                The default value is `global`.
         :param pulumi.Input[str] policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -123,15 +128,18 @@ class AutoscalingPolicy(pulumi.CustomResource):
                3 and 50 characters.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
-        :param pulumi.Input[dict] worker_config: Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+        :param pulumi.Input[dict] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
+               Structure is documented below.
+        :param pulumi.Input[dict] worker_config: Describes how the autoscaler will operate for primary workers.
+               Structure is documented below.
 
         The **basic_algorithm** object supports the following:
 
           * `cooldownPeriod` (`pulumi.Input[str]`) - Duration between scaling events. A scaling period starts after the
             update operation from the previous event has completed.
             Bounds: [2m, 1d]. Default: 2m.
-          * `yarnConfig` (`pulumi.Input[dict]`) - YARN autoscaling configuration.  Structure is documented below.
+          * `yarnConfig` (`pulumi.Input[dict]`) - YARN autoscaling configuration.
+            Structure is documented below.
             * `gracefulDecommissionTimeout` (`pulumi.Input[str]`) - Timeout for YARN graceful decommissioning of Node Managers. Specifies the
               duration to wait for jobs to complete before forcefully removing workers
               (and potentially interrupting jobs). Only applicable to downscaling operations.
@@ -238,7 +246,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] basic_algorithm: Basic algorithm for autoscaling.  Structure is documented below.
+        :param pulumi.Input[dict] basic_algorithm: Basic algorithm for autoscaling.
+               Structure is documented below.
         :param pulumi.Input[str] location: The  location where the autoscaling poicy should reside.
                The default value is `global`.
         :param pulumi.Input[str] name: The "resource name" of the autoscaling policy.
@@ -247,15 +256,18 @@ class AutoscalingPolicy(pulumi.CustomResource):
                3 and 50 characters.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
-        :param pulumi.Input[dict] worker_config: Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+        :param pulumi.Input[dict] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
+               Structure is documented below.
+        :param pulumi.Input[dict] worker_config: Describes how the autoscaler will operate for primary workers.
+               Structure is documented below.
 
         The **basic_algorithm** object supports the following:
 
           * `cooldownPeriod` (`pulumi.Input[str]`) - Duration between scaling events. A scaling period starts after the
             update operation from the previous event has completed.
             Bounds: [2m, 1d]. Default: 2m.
-          * `yarnConfig` (`pulumi.Input[dict]`) - YARN autoscaling configuration.  Structure is documented below.
+          * `yarnConfig` (`pulumi.Input[dict]`) - YARN autoscaling configuration.
+            Structure is documented below.
             * `gracefulDecommissionTimeout` (`pulumi.Input[str]`) - Timeout for YARN graceful decommissioning of Node Managers. Specifies the
               duration to wait for jobs to complete before forcefully removing workers
               (and potentially interrupting jobs). Only applicable to downscaling operations.

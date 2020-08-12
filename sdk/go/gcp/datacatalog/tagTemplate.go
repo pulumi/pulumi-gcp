@@ -25,7 +25,8 @@ type TagTemplate struct {
 
 	// The display name for this template.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+	// Structure is documented below.
 	Fields TagTemplateFieldArrayOutput `pulumi:"fields"`
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
@@ -77,7 +78,8 @@ func GetTagTemplate(ctx *pulumi.Context,
 type tagTemplateState struct {
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
-	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+	// Structure is documented below.
 	Fields []TagTemplateField `pulumi:"fields"`
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete *bool `pulumi:"forceDelete"`
@@ -96,7 +98,8 @@ type tagTemplateState struct {
 type TagTemplateState struct {
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput
-	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+	// Structure is documented below.
 	Fields TagTemplateFieldArrayInput
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete pulumi.BoolPtrInput
@@ -119,7 +122,8 @@ func (TagTemplateState) ElementType() reflect.Type {
 type tagTemplateArgs struct {
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
-	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+	// Structure is documented below.
 	Fields []TagTemplateField `pulumi:"fields"`
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete *bool `pulumi:"forceDelete"`
@@ -136,7 +140,8 @@ type tagTemplateArgs struct {
 type TagTemplateArgs struct {
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput
-	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+	// Structure is documented below.
 	Fields TagTemplateFieldArrayInput
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete pulumi.BoolPtrInput

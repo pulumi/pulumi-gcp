@@ -37,7 +37,8 @@ namespace Pulumi.Gcp.Memcache
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// User-specified parameters for this memcache instance.  Structure is documented below.
+        /// User-specified parameters for this memcache instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("memcacheParameters")]
         public Output<Outputs.InstanceMemcacheParameters?> MemcacheParameters { get; private set; } = null!;
@@ -49,7 +50,8 @@ namespace Pulumi.Gcp.Memcache
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for memcache nodes.  Structure is documented below.
+        /// Configuration for memcache nodes.
+        /// Structure is documented below.
         /// </summary>
         [Output("nodeConfig")]
         public Output<Outputs.InstanceNodeConfig> NodeConfig { get; private set; } = null!;
@@ -152,7 +154,8 @@ namespace Pulumi.Gcp.Memcache
         }
 
         /// <summary>
-        /// User-specified parameters for this memcache instance.  Structure is documented below.
+        /// User-specified parameters for this memcache instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("memcacheParameters")]
         public Input<Inputs.InstanceMemcacheParametersArgs>? MemcacheParameters { get; set; }
@@ -164,7 +167,8 @@ namespace Pulumi.Gcp.Memcache
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Configuration for memcache nodes.  Structure is documented below.
+        /// Configuration for memcache nodes.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeConfig", required: true)]
         public Input<Inputs.InstanceNodeConfigArgs> NodeConfig { get; set; } = null!;
@@ -240,7 +244,8 @@ namespace Pulumi.Gcp.Memcache
         }
 
         /// <summary>
-        /// User-specified parameters for this memcache instance.  Structure is documented below.
+        /// User-specified parameters for this memcache instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("memcacheParameters")]
         public Input<Inputs.InstanceMemcacheParametersGetArgs>? MemcacheParameters { get; set; }
@@ -252,7 +257,8 @@ namespace Pulumi.Gcp.Memcache
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Configuration for memcache nodes.  Structure is documented below.
+        /// Configuration for memcache nodes.
+        /// Structure is documented below.
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.InstanceNodeConfigGetArgs>? NodeConfig { get; set; }

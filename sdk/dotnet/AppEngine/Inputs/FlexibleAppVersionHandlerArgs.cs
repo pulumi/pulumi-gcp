@@ -14,18 +14,23 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     {
         /// <summary>
         /// Action to take when users access resources that require authentication.
+        /// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+        /// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         /// </summary>
         [Input("authFailAction")]
         public Input<string>? AuthFailAction { get; set; }
 
         /// <summary>
         /// Level of login required to access this resource.
+        /// Default value is `LOGIN_OPTIONAL`.
+        /// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
         /// </summary>
         [Input("login")]
         public Input<string>? Login { get; set; }
 
         /// <summary>
         /// 30x code to use when performing redirects for the secure field.
+        /// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
         /// </summary>
         [Input("redirectHttpResponseCode")]
         public Input<string>? RedirectHttpResponseCode { get; set; }
@@ -38,13 +43,15 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
         /// <summary>
         /// Security (HTTPS) enforcement for this URL.
+        /// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
         /// <summary>
         /// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
-        /// Static file handlers describe which files in the application directory are static files, and which URLs serve them.  Structure is documented below.
+        /// Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+        /// Structure is documented below.
         /// </summary>
         [Input("staticFiles")]
         public Input<Inputs.FlexibleAppVersionHandlerStaticFilesArgs>? StaticFiles { get; set; }

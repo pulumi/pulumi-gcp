@@ -14,14 +14,17 @@ type ManagedZoneDnssecConfig struct {
 	// Specifies parameters that will be used for generating initial DnsKeys
 	// for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
 	// you must also provide one for the other.
-	// defaultKeySpecs can only be updated when the state is `off`.  Structure is documented below.
+	// defaultKeySpecs can only be updated when the state is `off`.
+	// Structure is documented below.
 	DefaultKeySpecs []ManagedZoneDnssecConfigDefaultKeySpec `pulumi:"defaultKeySpecs"`
 	// Identifies what kind of resource this is
 	Kind *string `pulumi:"kind"`
 	// Specifies the mechanism used to provide authenticated denial-of-existence responses.
 	// nonExistence can only be updated when the state is `off`.
+	// Possible values are `nsec` and `nsec3`.
 	NonExistence *string `pulumi:"nonExistence"`
 	// Specifies whether DNSSEC is enabled, and what mode it is in
+	// Possible values are `off`, `on`, and `transfer`.
 	State *string `pulumi:"state"`
 }
 
@@ -40,14 +43,17 @@ type ManagedZoneDnssecConfigArgs struct {
 	// Specifies parameters that will be used for generating initial DnsKeys
 	// for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
 	// you must also provide one for the other.
-	// defaultKeySpecs can only be updated when the state is `off`.  Structure is documented below.
+	// defaultKeySpecs can only be updated when the state is `off`.
+	// Structure is documented below.
 	DefaultKeySpecs ManagedZoneDnssecConfigDefaultKeySpecArrayInput `pulumi:"defaultKeySpecs"`
 	// Identifies what kind of resource this is
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Specifies the mechanism used to provide authenticated denial-of-existence responses.
 	// nonExistence can only be updated when the state is `off`.
+	// Possible values are `nsec` and `nsec3`.
 	NonExistence pulumi.StringPtrInput `pulumi:"nonExistence"`
 	// Specifies whether DNSSEC is enabled, and what mode it is in
+	// Possible values are `off`, `on`, and `transfer`.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -131,7 +137,8 @@ func (o ManagedZoneDnssecConfigOutput) ToManagedZoneDnssecConfigPtrOutputWithCon
 // Specifies parameters that will be used for generating initial DnsKeys
 // for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
 // you must also provide one for the other.
-// defaultKeySpecs can only be updated when the state is `off`.  Structure is documented below.
+// defaultKeySpecs can only be updated when the state is `off`.
+// Structure is documented below.
 func (o ManagedZoneDnssecConfigOutput) DefaultKeySpecs() ManagedZoneDnssecConfigDefaultKeySpecArrayOutput {
 	return o.ApplyT(func(v ManagedZoneDnssecConfig) []ManagedZoneDnssecConfigDefaultKeySpec { return v.DefaultKeySpecs }).(ManagedZoneDnssecConfigDefaultKeySpecArrayOutput)
 }
@@ -143,11 +150,13 @@ func (o ManagedZoneDnssecConfigOutput) Kind() pulumi.StringPtrOutput {
 
 // Specifies the mechanism used to provide authenticated denial-of-existence responses.
 // nonExistence can only be updated when the state is `off`.
+// Possible values are `nsec` and `nsec3`.
 func (o ManagedZoneDnssecConfigOutput) NonExistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneDnssecConfig) *string { return v.NonExistence }).(pulumi.StringPtrOutput)
 }
 
 // Specifies whether DNSSEC is enabled, and what mode it is in
+// Possible values are `off`, `on`, and `transfer`.
 func (o ManagedZoneDnssecConfigOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneDnssecConfig) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -173,7 +182,8 @@ func (o ManagedZoneDnssecConfigPtrOutput) Elem() ManagedZoneDnssecConfigOutput {
 // Specifies parameters that will be used for generating initial DnsKeys
 // for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
 // you must also provide one for the other.
-// defaultKeySpecs can only be updated when the state is `off`.  Structure is documented below.
+// defaultKeySpecs can only be updated when the state is `off`.
+// Structure is documented below.
 func (o ManagedZoneDnssecConfigPtrOutput) DefaultKeySpecs() ManagedZoneDnssecConfigDefaultKeySpecArrayOutput {
 	return o.ApplyT(func(v *ManagedZoneDnssecConfig) []ManagedZoneDnssecConfigDefaultKeySpec {
 		if v == nil {
@@ -195,6 +205,7 @@ func (o ManagedZoneDnssecConfigPtrOutput) Kind() pulumi.StringPtrOutput {
 
 // Specifies the mechanism used to provide authenticated denial-of-existence responses.
 // nonExistence can only be updated when the state is `off`.
+// Possible values are `nsec` and `nsec3`.
 func (o ManagedZoneDnssecConfigPtrOutput) NonExistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedZoneDnssecConfig) *string {
 		if v == nil {
@@ -205,6 +216,7 @@ func (o ManagedZoneDnssecConfigPtrOutput) NonExistence() pulumi.StringPtrOutput 
 }
 
 // Specifies whether DNSSEC is enabled, and what mode it is in
+// Possible values are `off`, `on`, and `transfer`.
 func (o ManagedZoneDnssecConfigPtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedZoneDnssecConfig) *string {
 		if v == nil {
@@ -216,6 +228,7 @@ func (o ManagedZoneDnssecConfigPtrOutput) State() pulumi.StringPtrOutput {
 
 type ManagedZoneDnssecConfigDefaultKeySpec struct {
 	// String mnemonic specifying the DNSSEC algorithm of this key
+	// Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
 	Algorithm *string `pulumi:"algorithm"`
 	// Length of the keys in bits
 	KeyLength *int `pulumi:"keyLength"`
@@ -225,6 +238,7 @@ type ManagedZoneDnssecConfigDefaultKeySpec struct {
 	// resource record sets of type DNSKEY. Zone signing keys do
 	// not have the Secure Entry Point flag set and will be used
 	// to sign all other types of resource record sets.
+	// Possible values are `keySigning` and `zoneSigning`.
 	KeyType *string `pulumi:"keyType"`
 	// Identifies what kind of resource this is
 	Kind *string `pulumi:"kind"`
@@ -243,6 +257,7 @@ type ManagedZoneDnssecConfigDefaultKeySpecInput interface {
 
 type ManagedZoneDnssecConfigDefaultKeySpecArgs struct {
 	// String mnemonic specifying the DNSSEC algorithm of this key
+	// Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// Length of the keys in bits
 	KeyLength pulumi.IntPtrInput `pulumi:"keyLength"`
@@ -252,6 +267,7 @@ type ManagedZoneDnssecConfigDefaultKeySpecArgs struct {
 	// resource record sets of type DNSKEY. Zone signing keys do
 	// not have the Secure Entry Point flag set and will be used
 	// to sign all other types of resource record sets.
+	// Possible values are `keySigning` and `zoneSigning`.
 	KeyType pulumi.StringPtrInput `pulumi:"keyType"`
 	// Identifies what kind of resource this is
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
@@ -309,6 +325,7 @@ func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) ToManagedZoneDnssecConfigDe
 }
 
 // String mnemonic specifying the DNSSEC algorithm of this key
+// Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
 func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneDnssecConfigDefaultKeySpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
@@ -324,6 +341,7 @@ func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) KeyLength() pulumi.IntPtrOu
 // resource record sets of type DNSKEY. Zone signing keys do
 // not have the Secure Entry Point flag set and will be used
 // to sign all other types of resource record sets.
+// Possible values are `keySigning` and `zoneSigning`.
 func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) KeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneDnssecConfigDefaultKeySpec) *string { return v.KeyType }).(pulumi.StringPtrOutput)
 }
@@ -356,7 +374,8 @@ func (o ManagedZoneDnssecConfigDefaultKeySpecArrayOutput) Index(i pulumi.IntInpu
 type ManagedZoneForwardingConfig struct {
 	// List of target name servers to forward to. Cloud DNS will
 	// select the best available name server if more than
-	// one target is given.  Structure is documented below.
+	// one target is given.
+	// Structure is documented below.
 	TargetNameServers []ManagedZoneForwardingConfigTargetNameServer `pulumi:"targetNameServers"`
 }
 
@@ -374,7 +393,8 @@ type ManagedZoneForwardingConfigInput interface {
 type ManagedZoneForwardingConfigArgs struct {
 	// List of target name servers to forward to. Cloud DNS will
 	// select the best available name server if more than
-	// one target is given.  Structure is documented below.
+	// one target is given.
+	// Structure is documented below.
 	TargetNameServers ManagedZoneForwardingConfigTargetNameServerArrayInput `pulumi:"targetNameServers"`
 }
 
@@ -457,7 +477,8 @@ func (o ManagedZoneForwardingConfigOutput) ToManagedZoneForwardingConfigPtrOutpu
 
 // List of target name servers to forward to. Cloud DNS will
 // select the best available name server if more than
-// one target is given.  Structure is documented below.
+// one target is given.
+// Structure is documented below.
 func (o ManagedZoneForwardingConfigOutput) TargetNameServers() ManagedZoneForwardingConfigTargetNameServerArrayOutput {
 	return o.ApplyT(func(v ManagedZoneForwardingConfig) []ManagedZoneForwardingConfigTargetNameServer {
 		return v.TargetNameServers
@@ -484,7 +505,8 @@ func (o ManagedZoneForwardingConfigPtrOutput) Elem() ManagedZoneForwardingConfig
 
 // List of target name servers to forward to. Cloud DNS will
 // select the best available name server if more than
-// one target is given.  Structure is documented below.
+// one target is given.
+// Structure is documented below.
 func (o ManagedZoneForwardingConfigPtrOutput) TargetNameServers() ManagedZoneForwardingConfigTargetNameServerArrayOutput {
 	return o.ApplyT(func(v *ManagedZoneForwardingConfig) []ManagedZoneForwardingConfigTargetNameServer {
 		if v == nil {
@@ -498,6 +520,7 @@ type ManagedZoneForwardingConfigTargetNameServer struct {
 	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+	// Possible values are `default` and `private`.
 	ForwardingPath *string `pulumi:"forwardingPath"`
 	// IPv4 address of a target name server.
 	Ipv4Address string `pulumi:"ipv4Address"`
@@ -518,6 +541,7 @@ type ManagedZoneForwardingConfigTargetNameServerArgs struct {
 	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+	// Possible values are `default` and `private`.
 	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
 	// IPv4 address of a target name server.
 	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
@@ -577,6 +601,7 @@ func (o ManagedZoneForwardingConfigTargetNameServerOutput) ToManagedZoneForwardi
 // Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 // decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 // to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+// Possible values are `default` and `private`.
 func (o ManagedZoneForwardingConfigTargetNameServerOutput) ForwardingPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneForwardingConfigTargetNameServer) *string { return v.ForwardingPath }).(pulumi.StringPtrOutput)
 }
@@ -607,7 +632,8 @@ func (o ManagedZoneForwardingConfigTargetNameServerArrayOutput) Index(i pulumi.I
 }
 
 type ManagedZonePeeringConfig struct {
-	// The network with which to peer.  Structure is documented below.
+	// The network with which to peer.
+	// Structure is documented below.
 	TargetNetwork ManagedZonePeeringConfigTargetNetwork `pulumi:"targetNetwork"`
 }
 
@@ -623,7 +649,8 @@ type ManagedZonePeeringConfigInput interface {
 }
 
 type ManagedZonePeeringConfigArgs struct {
-	// The network with which to peer.  Structure is documented below.
+	// The network with which to peer.
+	// Structure is documented below.
 	TargetNetwork ManagedZonePeeringConfigTargetNetworkInput `pulumi:"targetNetwork"`
 }
 
@@ -704,7 +731,8 @@ func (o ManagedZonePeeringConfigOutput) ToManagedZonePeeringConfigPtrOutputWithC
 	}).(ManagedZonePeeringConfigPtrOutput)
 }
 
-// The network with which to peer.  Structure is documented below.
+// The network with which to peer.
+// Structure is documented below.
 func (o ManagedZonePeeringConfigOutput) TargetNetwork() ManagedZonePeeringConfigTargetNetworkOutput {
 	return o.ApplyT(func(v ManagedZonePeeringConfig) ManagedZonePeeringConfigTargetNetwork { return v.TargetNetwork }).(ManagedZonePeeringConfigTargetNetworkOutput)
 }
@@ -727,7 +755,8 @@ func (o ManagedZonePeeringConfigPtrOutput) Elem() ManagedZonePeeringConfigOutput
 	return o.ApplyT(func(v *ManagedZonePeeringConfig) ManagedZonePeeringConfig { return *v }).(ManagedZonePeeringConfigOutput)
 }
 
-// The network with which to peer.  Structure is documented below.
+// The network with which to peer.
+// Structure is documented below.
 func (o ManagedZonePeeringConfigPtrOutput) TargetNetwork() ManagedZonePeeringConfigTargetNetworkPtrOutput {
 	return o.ApplyT(func(v *ManagedZonePeeringConfig) *ManagedZonePeeringConfigTargetNetwork {
 		if v == nil {
@@ -1113,7 +1142,8 @@ func (o ManagedZonePrivateVisibilityConfigNetworkArrayOutput) Index(i pulumi.Int
 }
 
 type ManagedZoneServiceDirectoryConfig struct {
-	// The namespace associated with the zone.  Structure is documented below.
+	// The namespace associated with the zone.
+	// Structure is documented below.
 	Namespace ManagedZoneServiceDirectoryConfigNamespace `pulumi:"namespace"`
 }
 
@@ -1129,7 +1159,8 @@ type ManagedZoneServiceDirectoryConfigInput interface {
 }
 
 type ManagedZoneServiceDirectoryConfigArgs struct {
-	// The namespace associated with the zone.  Structure is documented below.
+	// The namespace associated with the zone.
+	// Structure is documented below.
 	Namespace ManagedZoneServiceDirectoryConfigNamespaceInput `pulumi:"namespace"`
 }
 
@@ -1210,7 +1241,8 @@ func (o ManagedZoneServiceDirectoryConfigOutput) ToManagedZoneServiceDirectoryCo
 	}).(ManagedZoneServiceDirectoryConfigPtrOutput)
 }
 
-// The namespace associated with the zone.  Structure is documented below.
+// The namespace associated with the zone.
+// Structure is documented below.
 func (o ManagedZoneServiceDirectoryConfigOutput) Namespace() ManagedZoneServiceDirectoryConfigNamespaceOutput {
 	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfig) ManagedZoneServiceDirectoryConfigNamespace {
 		return v.Namespace
@@ -1235,7 +1267,8 @@ func (o ManagedZoneServiceDirectoryConfigPtrOutput) Elem() ManagedZoneServiceDir
 	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfig) ManagedZoneServiceDirectoryConfig { return *v }).(ManagedZoneServiceDirectoryConfigOutput)
 }
 
-// The namespace associated with the zone.  Structure is documented below.
+// The namespace associated with the zone.
+// Structure is documented below.
 func (o ManagedZoneServiceDirectoryConfigPtrOutput) Namespace() ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
 	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfig) *ManagedZoneServiceDirectoryConfigNamespace {
 		if v == nil {
@@ -1397,7 +1430,8 @@ func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) NamespaceUrl() pulu
 type PolicyAlternativeNameServerConfig struct {
 	// Sets an alternative name server for the associated networks. When specified,
 	// all DNS queries are forwarded to a name server that you choose. Names such as .internal
-	// are not available when an alternative name server is specified.  Structure is documented below.
+	// are not available when an alternative name server is specified.
+	// Structure is documented below.
 	TargetNameServers []PolicyAlternativeNameServerConfigTargetNameServer `pulumi:"targetNameServers"`
 }
 
@@ -1415,7 +1449,8 @@ type PolicyAlternativeNameServerConfigInput interface {
 type PolicyAlternativeNameServerConfigArgs struct {
 	// Sets an alternative name server for the associated networks. When specified,
 	// all DNS queries are forwarded to a name server that you choose. Names such as .internal
-	// are not available when an alternative name server is specified.  Structure is documented below.
+	// are not available when an alternative name server is specified.
+	// Structure is documented below.
 	TargetNameServers PolicyAlternativeNameServerConfigTargetNameServerArrayInput `pulumi:"targetNameServers"`
 }
 
@@ -1498,7 +1533,8 @@ func (o PolicyAlternativeNameServerConfigOutput) ToPolicyAlternativeNameServerCo
 
 // Sets an alternative name server for the associated networks. When specified,
 // all DNS queries are forwarded to a name server that you choose. Names such as .internal
-// are not available when an alternative name server is specified.  Structure is documented below.
+// are not available when an alternative name server is specified.
+// Structure is documented below.
 func (o PolicyAlternativeNameServerConfigOutput) TargetNameServers() PolicyAlternativeNameServerConfigTargetNameServerArrayOutput {
 	return o.ApplyT(func(v PolicyAlternativeNameServerConfig) []PolicyAlternativeNameServerConfigTargetNameServer {
 		return v.TargetNameServers
@@ -1525,7 +1561,8 @@ func (o PolicyAlternativeNameServerConfigPtrOutput) Elem() PolicyAlternativeName
 
 // Sets an alternative name server for the associated networks. When specified,
 // all DNS queries are forwarded to a name server that you choose. Names such as .internal
-// are not available when an alternative name server is specified.  Structure is documented below.
+// are not available when an alternative name server is specified.
+// Structure is documented below.
 func (o PolicyAlternativeNameServerConfigPtrOutput) TargetNameServers() PolicyAlternativeNameServerConfigTargetNameServerArrayOutput {
 	return o.ApplyT(func(v *PolicyAlternativeNameServerConfig) []PolicyAlternativeNameServerConfigTargetNameServer {
 		if v == nil {

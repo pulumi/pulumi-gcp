@@ -39,6 +39,8 @@ type BucketObject struct {
 	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash pulumi.StringOutput `pulumi:"md5hash"`
+	// (Computed) A url reference to download this object.
+	MediaLink pulumi.StringOutput `pulumi:"mediaLink"`
 	// User-provided metadata, in key/value pairs.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
@@ -108,6 +110,8 @@ type bucketObjectState struct {
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash *string `pulumi:"md5hash"`
+	// (Computed) A url reference to download this object.
+	MediaLink *string `pulumi:"mediaLink"`
 	// User-provided metadata, in key/value pairs.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
@@ -147,6 +151,8 @@ type BucketObjectState struct {
 	DetectMd5hash pulumi.StringPtrInput
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash pulumi.StringPtrInput
+	// (Computed) A url reference to download this object.
+	MediaLink pulumi.StringPtrInput
 	// User-provided metadata, in key/value pairs.
 	Metadata pulumi.StringMapInput
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.

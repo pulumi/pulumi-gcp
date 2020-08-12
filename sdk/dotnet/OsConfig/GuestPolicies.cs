@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.OsConfig
         /// At the same level in the resource hierarchy (that is within a project), the service prevents
         /// the creation of multiple policies that conflict with each other.
         /// For more information, see how the service
-        /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+        /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        /// Structure is documented below.
         /// </summary>
         [Output("assignment")]
         public Output<Outputs.GuestPoliciesAssignment> Assignment { get; private set; } = null!;
@@ -65,13 +66,15 @@ namespace Pulumi.Gcp.OsConfig
         /// <summary>
         /// A list of package repositories to configure on the VM instance.
         /// This is done before any other configs are applied so they can use these repos.
-        /// Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+        /// Package repositories are only configured if the corresponding package manager(s) are available.
+        /// Structure is documented below.
         /// </summary>
         [Output("packageRepositories")]
         public Output<ImmutableArray<Outputs.GuestPoliciesPackageRepository>> PackageRepositories { get; private set; } = null!;
 
         /// <summary>
-        /// The software packages to be managed by this policy.  Structure is documented below.
+        /// The software packages to be managed by this policy.
+        /// Structure is documented below.
         /// </summary>
         [Output("packages")]
         public Output<ImmutableArray<Outputs.GuestPoliciesPackage>> Packages { get; private set; } = null!;
@@ -84,7 +87,8 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Recipes to install on the VM instance.  Structure is documented below.
+        /// A list of Recipes to install on the VM instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("recipes")]
         public Output<ImmutableArray<Outputs.GuestPoliciesRecipe>> Recipes { get; private set; } = null!;
@@ -149,7 +153,8 @@ namespace Pulumi.Gcp.OsConfig
         /// At the same level in the resource hierarchy (that is within a project), the service prevents
         /// the creation of multiple policies that conflict with each other.
         /// For more information, see how the service
-        /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+        /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        /// Structure is documented below.
         /// </summary>
         [Input("assignment", required: true)]
         public Input<Inputs.GuestPoliciesAssignmentArgs> Assignment { get; set; } = null!;
@@ -183,7 +188,8 @@ namespace Pulumi.Gcp.OsConfig
         /// <summary>
         /// A list of package repositories to configure on the VM instance.
         /// This is done before any other configs are applied so they can use these repos.
-        /// Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+        /// Package repositories are only configured if the corresponding package manager(s) are available.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesPackageRepositoryArgs> PackageRepositories
         {
@@ -195,7 +201,8 @@ namespace Pulumi.Gcp.OsConfig
         private InputList<Inputs.GuestPoliciesPackageArgs>? _packages;
 
         /// <summary>
-        /// The software packages to be managed by this policy.  Structure is documented below.
+        /// The software packages to be managed by this policy.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesPackageArgs> Packages
         {
@@ -214,7 +221,8 @@ namespace Pulumi.Gcp.OsConfig
         private InputList<Inputs.GuestPoliciesRecipeArgs>? _recipes;
 
         /// <summary>
-        /// A list of Recipes to install on the VM instance.  Structure is documented below.
+        /// A list of Recipes to install on the VM instance.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesRecipeArgs> Recipes
         {
@@ -236,7 +244,8 @@ namespace Pulumi.Gcp.OsConfig
         /// At the same level in the resource hierarchy (that is within a project), the service prevents
         /// the creation of multiple policies that conflict with each other.
         /// For more information, see how the service
-        /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).  Structure is documented below.
+        /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        /// Structure is documented below.
         /// </summary>
         [Input("assignment")]
         public Input<Inputs.GuestPoliciesAssignmentGetArgs>? Assignment { get; set; }
@@ -286,7 +295,8 @@ namespace Pulumi.Gcp.OsConfig
         /// <summary>
         /// A list of package repositories to configure on the VM instance.
         /// This is done before any other configs are applied so they can use these repos.
-        /// Package repositories are only configured if the corresponding package manager(s) are available.  Structure is documented below.
+        /// Package repositories are only configured if the corresponding package manager(s) are available.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesPackageRepositoryGetArgs> PackageRepositories
         {
@@ -298,7 +308,8 @@ namespace Pulumi.Gcp.OsConfig
         private InputList<Inputs.GuestPoliciesPackageGetArgs>? _packages;
 
         /// <summary>
-        /// The software packages to be managed by this policy.  Structure is documented below.
+        /// The software packages to be managed by this policy.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesPackageGetArgs> Packages
         {
@@ -317,7 +328,8 @@ namespace Pulumi.Gcp.OsConfig
         private InputList<Inputs.GuestPoliciesRecipeGetArgs>? _recipes;
 
         /// <summary>
-        /// A list of Recipes to install on the VM instance.  Structure is documented below.
+        /// A list of Recipes to install on the VM instance.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GuestPoliciesRecipeGetArgs> Recipes
         {

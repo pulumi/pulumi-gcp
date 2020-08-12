@@ -38,10 +38,12 @@ type OrganizationFeed struct {
 	// enablement check, quota, and billing.
 	BillingProject pulumi.StringOutput `pulumi:"billingProject"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringOutput `pulumi:"feedId"`
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig OrganizationFeedFeedOutputConfigOutput `pulumi:"feedOutputConfig"`
 	// The format will be organizations/{organization_number}/feeds/{client-assigned_feed_identifier}.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -105,10 +107,12 @@ type organizationFeedState struct {
 	// enablement check, quota, and billing.
 	BillingProject *string `pulumi:"billingProject"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId *string `pulumi:"feedId"`
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig *OrganizationFeedFeedOutputConfig `pulumi:"feedOutputConfig"`
 	// The format will be organizations/{organization_number}/feeds/{client-assigned_feed_identifier}.
 	Name *string `pulumi:"name"`
@@ -133,10 +137,12 @@ type OrganizationFeedState struct {
 	// enablement check, quota, and billing.
 	BillingProject pulumi.StringPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringPtrInput
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig OrganizationFeedFeedOutputConfigPtrInput
 	// The format will be organizations/{organization_number}/feeds/{client-assigned_feed_identifier}.
 	Name pulumi.StringPtrInput
@@ -165,10 +171,12 @@ type organizationFeedArgs struct {
 	// enablement check, quota, and billing.
 	BillingProject string `pulumi:"billingProject"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId string `pulumi:"feedId"`
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig OrganizationFeedFeedOutputConfig `pulumi:"feedOutputConfig"`
 	// The organization this feed should be created in.
 	OrgId string `pulumi:"orgId"`
@@ -192,10 +200,12 @@ type OrganizationFeedArgs struct {
 	// enablement check, quota, and billing.
 	BillingProject pulumi.StringInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringInput
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig OrganizationFeedFeedOutputConfigInput
 	// The organization this feed should be created in.
 	OrgId pulumi.StringInput

@@ -14,13 +14,15 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     {
         /// <summary>
         /// Metadata associated with this Service, including name, namespace, labels,
-        /// and annotations.  Structure is documented below.
+        /// and annotations.
+        /// Structure is documented below.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.ServiceTemplateMetadataArgs>? Metadata { get; set; }
 
         /// <summary>
-        /// RevisionSpec holds the desired state of the Revision (from the client).  Structure is documented below.
+        /// RevisionSpec holds the desired state of the Revision (from the client).
+        /// Structure is documented below.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.ServiceTemplateSpecArgs>? Spec { get; set; }

@@ -46,13 +46,16 @@ class ServicePerimeter(pulumi.CustomResource):
     topologies with many independent perimeters that need to share some data
     with a common perimeter, but should not be able to share data among
     themselves.
+    Default value is `PERIMETER_TYPE_REGULAR`.
+    Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
     """
     spec: pulumi.Output[dict]
     """
     Proposed (or dry run) ServicePerimeter configuration.
     This configuration allows to specify and test ServicePerimeter configuration
     without enforcing actual access restrictions. Only allowed to be set when
-    the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+    the `useExplicitDryRunSpec` flag is set.
+    Structure is documented below.
 
       * `accessLevels` (`list`) - A list of AccessLevel resource names that allow resources within
         the ServicePerimeter to be accessed from the internet.
@@ -72,7 +75,8 @@ class ServicePerimeter(pulumi.CustomResource):
         buckets inside the perimeter must meet the perimeter's access
         restrictions.
       * `vpcAccessibleServices` (`dict`) - Specifies how APIs are allowed to communicate within the Service
-        Perimeter.  Structure is documented below.
+        Perimeter.
+        Structure is documented below.
         * `allowedServices` (`list`) - The list of APIs usable within the Service Perimeter.
           Must be empty unless `enableRestriction` is True.
         * `enableRestriction` (`bool`) - Whether to restrict API calls within the Service Perimeter to the
@@ -82,7 +86,8 @@ class ServicePerimeter(pulumi.CustomResource):
     """
     ServicePerimeter configuration. Specifies sets of resources,
     restricted services and access levels that determine
-    perimeter content and boundaries.  Structure is documented below.
+    perimeter content and boundaries.
+    Structure is documented below.
 
       * `accessLevels` (`list`) - A list of AccessLevel resource names that allow resources within
         the ServicePerimeter to be accessed from the internet.
@@ -102,7 +107,8 @@ class ServicePerimeter(pulumi.CustomResource):
         buckets inside the perimeter must meet the perimeter's access
         restrictions.
       * `vpcAccessibleServices` (`dict`) - Specifies how APIs are allowed to communicate within the Service
-        Perimeter.  Structure is documented below.
+        Perimeter.
+        Structure is documented below.
         * `allowedServices` (`list`) - The list of APIs usable within the Service Perimeter.
           Must be empty unless `enableRestriction` is True.
         * `enableRestriction` (`bool`) - Whether to restrict API calls within the Service Perimeter to the
@@ -171,13 +177,17 @@ class ServicePerimeter(pulumi.CustomResource):
                topologies with many independent perimeters that need to share some data
                with a common perimeter, but should not be able to share data among
                themselves.
+               Default value is `PERIMETER_TYPE_REGULAR`.
+               Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
         :param pulumi.Input[dict] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
-               the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+               the `useExplicitDryRunSpec` flag is set.
+               Structure is documented below.
         :param pulumi.Input[dict] status: ServicePerimeter configuration. Specifies sets of resources,
                restricted services and access levels that determine
-               perimeter content and boundaries.  Structure is documented below.
+               perimeter content and boundaries.
+               Structure is documented below.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         :param pulumi.Input[bool] use_explicit_dry_run_spec: Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
                for all Service Perimeters, and that spec is identical to the status for those
@@ -209,7 +219,8 @@ class ServicePerimeter(pulumi.CustomResource):
             buckets inside the perimeter must meet the perimeter's access
             restrictions.
           * `vpcAccessibleServices` (`pulumi.Input[dict]`) - Specifies how APIs are allowed to communicate within the Service
-            Perimeter.  Structure is documented below.
+            Perimeter.
+            Structure is documented below.
             * `allowedServices` (`pulumi.Input[list]`) - The list of APIs usable within the Service Perimeter.
               Must be empty unless `enableRestriction` is True.
             * `enableRestriction` (`pulumi.Input[bool]`) - Whether to restrict API calls within the Service Perimeter to the
@@ -235,7 +246,8 @@ class ServicePerimeter(pulumi.CustomResource):
             buckets inside the perimeter must meet the perimeter's access
             restrictions.
           * `vpcAccessibleServices` (`pulumi.Input[dict]`) - Specifies how APIs are allowed to communicate within the Service
-            Perimeter.  Structure is documented below.
+            Perimeter.
+            Structure is documented below.
             * `allowedServices` (`pulumi.Input[list]`) - The list of APIs usable within the Service Perimeter.
               Must be empty unless `enableRestriction` is True.
             * `enableRestriction` (`pulumi.Input[bool]`) - Whether to restrict API calls within the Service Perimeter to the
@@ -309,13 +321,17 @@ class ServicePerimeter(pulumi.CustomResource):
                topologies with many independent perimeters that need to share some data
                with a common perimeter, but should not be able to share data among
                themselves.
+               Default value is `PERIMETER_TYPE_REGULAR`.
+               Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
         :param pulumi.Input[dict] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
-               the `useExplicitDryRunSpec` flag is set.  Structure is documented below.
+               the `useExplicitDryRunSpec` flag is set.
+               Structure is documented below.
         :param pulumi.Input[dict] status: ServicePerimeter configuration. Specifies sets of resources,
                restricted services and access levels that determine
-               perimeter content and boundaries.  Structure is documented below.
+               perimeter content and boundaries.
+               Structure is documented below.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         :param pulumi.Input[bool] use_explicit_dry_run_spec: Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
@@ -348,7 +364,8 @@ class ServicePerimeter(pulumi.CustomResource):
             buckets inside the perimeter must meet the perimeter's access
             restrictions.
           * `vpcAccessibleServices` (`pulumi.Input[dict]`) - Specifies how APIs are allowed to communicate within the Service
-            Perimeter.  Structure is documented below.
+            Perimeter.
+            Structure is documented below.
             * `allowedServices` (`pulumi.Input[list]`) - The list of APIs usable within the Service Perimeter.
               Must be empty unless `enableRestriction` is True.
             * `enableRestriction` (`pulumi.Input[bool]`) - Whether to restrict API calls within the Service Perimeter to the
@@ -374,7 +391,8 @@ class ServicePerimeter(pulumi.CustomResource):
             buckets inside the perimeter must meet the perimeter's access
             restrictions.
           * `vpcAccessibleServices` (`pulumi.Input[dict]`) - Specifies how APIs are allowed to communicate within the Service
-            Perimeter.  Structure is documented below.
+            Perimeter.
+            Structure is documented below.
             * `allowedServices` (`pulumi.Input[list]`) - The list of APIs usable within the Service Perimeter.
               Must be empty unless `enableRestriction` is True.
             * `enableRestriction` (`pulumi.Input[bool]`) - Whether to restrict API calls within the Service Perimeter to the

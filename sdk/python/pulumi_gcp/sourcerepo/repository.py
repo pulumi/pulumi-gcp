@@ -23,11 +23,13 @@ class Repository(pulumi.CustomResource):
     pubsub_configs: pulumi.Output[list]
     """
     How this repository publishes a change in the repository through Cloud Pub/Sub.
-    Keyed by the topic names.  Structure is documented below.
+    Keyed by the topic names.
+    Structure is documented below.
 
       * `messageFormat` (`str`) - The format of the Cloud Pub/Sub messages.
         - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
         - JSON: The message payload is a JSON string of SourceRepoEvent.
+        Possible values are `PROTOBUF` and `JSON`.
       * `service_account_email` (`str`) - Email address of the service account used for publishing Cloud Pub/Sub messages.
         This service account needs to be in the same project as the PubsubConfig. When added,
         the caller needs to have iam.serviceAccounts.actAs permission on this service account.
@@ -61,13 +63,15 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[list] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
-               Keyed by the topic names.  Structure is documented below.
+               Keyed by the topic names.
+               Structure is documented below.
 
         The **pubsub_configs** object supports the following:
 
           * `messageFormat` (`pulumi.Input[str]`) - The format of the Cloud Pub/Sub messages.
             - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
             - JSON: The message payload is a JSON string of SourceRepoEvent.
+            Possible values are `PROTOBUF` and `JSON`.
           * `service_account_email` (`pulumi.Input[str]`) - Email address of the service account used for publishing Cloud Pub/Sub messages.
             This service account needs to be in the same project as the PubsubConfig. When added,
             the caller needs to have iam.serviceAccounts.actAs permission on this service account.
@@ -116,7 +120,8 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[list] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
-               Keyed by the topic names.  Structure is documented below.
+               Keyed by the topic names.
+               Structure is documented below.
         :param pulumi.Input[float] size: The disk usage of the repo, in bytes.
         :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories.
 
@@ -125,6 +130,7 @@ class Repository(pulumi.CustomResource):
           * `messageFormat` (`pulumi.Input[str]`) - The format of the Cloud Pub/Sub messages.
             - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
             - JSON: The message payload is a JSON string of SourceRepoEvent.
+            Possible values are `PROTOBUF` and `JSON`.
           * `service_account_email` (`pulumi.Input[str]`) - Email address of the service account used for publishing Cloud Pub/Sub messages.
             This service account needs to be in the same project as the PubsubConfig. When added,
             the caller needs to have iam.serviceAccounts.actAs permission on this service account.

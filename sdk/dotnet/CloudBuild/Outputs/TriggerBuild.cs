@@ -21,7 +21,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Images;
         /// <summary>
-        /// The operations to be performed on the workspace.  Structure is documented below.
+        /// The operations to be performed on the workspace.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.TriggerBuildStep> Steps;
         /// <summary>

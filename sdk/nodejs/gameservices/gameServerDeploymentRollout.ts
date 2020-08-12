@@ -60,7 +60,8 @@ export class GameServerDeploymentRollout extends pulumi.CustomResource {
      * The gameServerConfigOverrides contains the per game server config
      * overrides. The overrides are processed in the order they are listed. As
      * soon as a match is found for a cluster, the rest of the list is not
-     * processed.  Structure is documented below.
+     * processed.
+     * Structure is documented below.
      */
     public readonly gameServerConfigOverrides!: pulumi.Output<outputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverride[] | undefined>;
     /**
@@ -134,7 +135,8 @@ export interface GameServerDeploymentRolloutState {
      * The gameServerConfigOverrides contains the per game server config
      * overrides. The overrides are processed in the order they are listed. As
      * soon as a match is found for a cluster, the rest of the list is not
-     * processed.  Structure is documented below.
+     * processed.
+     * Structure is documented below.
      */
     readonly gameServerConfigOverrides?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverride>[]>;
     /**
@@ -167,7 +169,8 @@ export interface GameServerDeploymentRolloutArgs {
      * The gameServerConfigOverrides contains the per game server config
      * overrides. The overrides are processed in the order they are listed. As
      * soon as a match is found for a cluster, the rest of the list is not
-     * processed.  Structure is documented below.
+     * processed.
+     * Structure is documented below.
      */
     readonly gameServerConfigOverrides?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverride>[]>;
     /**

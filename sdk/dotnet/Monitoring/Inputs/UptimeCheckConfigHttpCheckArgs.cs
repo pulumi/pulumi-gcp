@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class UptimeCheckConfigHttpCheckArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
+        /// The authentication information. Optional when creating an HTTP check; defaults to empty.
+        /// Structure is documented below.
         /// </summary>
         [Input("authInfo")]
         public Input<Inputs.UptimeCheckConfigHttpCheckAuthInfoArgs>? AuthInfo { get; set; }
@@ -26,6 +27,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
 
         /// <summary>
         /// The content type to use for the check.
+        /// Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -62,6 +64,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
 
         /// <summary>
         /// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+        /// Default value is `GET`.
+        /// Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
         /// </summary>
         [Input("requestMethod")]
         public Input<string>? RequestMethod { get; set; }

@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
         /// <summary>
         /// By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
+        /// Possible values are `DIST` and `UPGRADE`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

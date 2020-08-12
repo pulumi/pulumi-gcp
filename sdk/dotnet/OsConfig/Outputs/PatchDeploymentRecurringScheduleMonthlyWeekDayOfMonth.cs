@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     {
         /// <summary>
         /// A day of the week.
+        /// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
         /// </summary>
         public readonly string DayOfWeek;
         /// <summary>

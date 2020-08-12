@@ -55,7 +55,7 @@ type ForwardingRule struct {
 	// forwarding rule. By default, if this field is empty, an ephemeral
 	// internal IP address will be automatically allocated from the IP range
 	// of the subnet or network configured for this forwarding rule.
-	// An address must be specified by a literal IP address. > **NOTE**: While
+	// An address must be specified by a literal IP address. > **NOTE:** While
 	// the API allows you to specify various resource paths for an address resource
 	// instead, this provider requires this to specifically be an IP address to
 	// avoid needing to fetching the IP address from resource paths on refresh
@@ -64,6 +64,7 @@ type ForwardingRule struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -83,6 +84,8 @@ type ForwardingRule struct {
 	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
 	// and internal TCP/UDP load balancers.
 	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -99,6 +102,7 @@ type ForwardingRule struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
+	// Possible values are `PREMIUM` and `STANDARD`.
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -219,7 +223,7 @@ type forwardingRuleState struct {
 	// forwarding rule. By default, if this field is empty, an ephemeral
 	// internal IP address will be automatically allocated from the IP range
 	// of the subnet or network configured for this forwarding rule.
-	// An address must be specified by a literal IP address. > **NOTE**: While
+	// An address must be specified by a literal IP address. > **NOTE:** While
 	// the API allows you to specify various resource paths for an address resource
 	// instead, this provider requires this to specifically be an IP address to
 	// avoid needing to fetching the IP address from resource paths on refresh
@@ -228,6 +232,7 @@ type forwardingRuleState struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -247,6 +252,8 @@ type forwardingRuleState struct {
 	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
 	// and internal TCP/UDP load balancers.
 	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -263,6 +270,7 @@ type forwardingRuleState struct {
 	Network *string `pulumi:"network"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
+	// Possible values are `PREMIUM` and `STANDARD`.
 	NetworkTier *string `pulumi:"networkTier"`
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -356,7 +364,7 @@ type ForwardingRuleState struct {
 	// forwarding rule. By default, if this field is empty, an ephemeral
 	// internal IP address will be automatically allocated from the IP range
 	// of the subnet or network configured for this forwarding rule.
-	// An address must be specified by a literal IP address. > **NOTE**: While
+	// An address must be specified by a literal IP address. > **NOTE:** While
 	// the API allows you to specify various resource paths for an address resource
 	// instead, this provider requires this to specifically be an IP address to
 	// avoid needing to fetching the IP address from resource paths on refresh
@@ -365,6 +373,7 @@ type ForwardingRuleState struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
 	IpProtocol pulumi.StringPtrInput
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -384,6 +393,8 @@ type ForwardingRuleState struct {
 	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
 	// and internal TCP/UDP load balancers.
 	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -400,6 +411,7 @@ type ForwardingRuleState struct {
 	Network pulumi.StringPtrInput
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
+	// Possible values are `PREMIUM` and `STANDARD`.
 	NetworkTier pulumi.StringPtrInput
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -495,7 +507,7 @@ type forwardingRuleArgs struct {
 	// forwarding rule. By default, if this field is empty, an ephemeral
 	// internal IP address will be automatically allocated from the IP range
 	// of the subnet or network configured for this forwarding rule.
-	// An address must be specified by a literal IP address. > **NOTE**: While
+	// An address must be specified by a literal IP address. > **NOTE:** While
 	// the API allows you to specify various resource paths for an address resource
 	// instead, this provider requires this to specifically be an IP address to
 	// avoid needing to fetching the IP address from resource paths on refresh
@@ -504,6 +516,7 @@ type forwardingRuleArgs struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -521,6 +534,8 @@ type forwardingRuleArgs struct {
 	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
 	// and internal TCP/UDP load balancers.
 	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -537,6 +552,7 @@ type forwardingRuleArgs struct {
 	Network *string `pulumi:"network"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
+	// Possible values are `PREMIUM` and `STANDARD`.
 	NetworkTier *string `pulumi:"networkTier"`
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -625,7 +641,7 @@ type ForwardingRuleArgs struct {
 	// forwarding rule. By default, if this field is empty, an ephemeral
 	// internal IP address will be automatically allocated from the IP range
 	// of the subnet or network configured for this forwarding rule.
-	// An address must be specified by a literal IP address. > **NOTE**: While
+	// An address must be specified by a literal IP address. > **NOTE:** While
 	// the API allows you to specify various resource paths for an address resource
 	// instead, this provider requires this to specifically be an IP address to
 	// avoid needing to fetching the IP address from resource paths on refresh
@@ -634,6 +650,7 @@ type ForwardingRuleArgs struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
+	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
 	IpProtocol pulumi.StringPtrInput
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -651,6 +668,8 @@ type ForwardingRuleArgs struct {
 	// INTERNAL is used for protocol forwarding to VMs from an internal IP address,
 	// and internal TCP/UDP load balancers.
 	// INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
+	// Default value is `EXTERNAL`.
+	// Possible values are `EXTERNAL`, `INTERNAL`, and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -667,6 +686,7 @@ type ForwardingRuleArgs struct {
 	Network pulumi.StringPtrInput
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
+	// Possible values are `PREMIUM` and `STANDARD`.
 	NetworkTier pulumi.StringPtrInput
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,

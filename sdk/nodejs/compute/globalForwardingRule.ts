@@ -76,10 +76,12 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     /**
      * The IP protocol to which this rule applies. When the load balancing scheme is
      * INTERNAL_SELF_MANAGED, only TCP is valid.
+     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
+     * Possible values are `IPV4` and `IPV6`.
      */
     public readonly ipVersion!: pulumi.Output<string | undefined>;
     /**
@@ -98,6 +100,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * External TCP/UDP LB, SSL Proxy)
      * NOTE: Currently global forwarding rules cannot be used for INTERNAL
      * load balancing.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -114,7 +118,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * metadataFilters specified here can be overridden by those specified in
      * the UrlMap that this ForwardingRule references.
      * metadataFilters only applies to Loadbalancers that have their
-     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     public readonly metadataFilters!: pulumi.Output<outputs.compute.GlobalForwardingRuleMetadataFilter[] | undefined>;
     /**
@@ -258,10 +263,12 @@ export interface GlobalForwardingRuleState {
     /**
      * The IP protocol to which this rule applies. When the load balancing scheme is
      * INTERNAL_SELF_MANAGED, only TCP is valid.
+     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
      */
     readonly ipProtocol?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
+     * Possible values are `IPV4` and `IPV6`.
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**
@@ -280,6 +287,8 @@ export interface GlobalForwardingRuleState {
      * External TCP/UDP LB, SSL Proxy)
      * NOTE: Currently global forwarding rules cannot be used for INTERNAL
      * load balancing.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -296,7 +305,8 @@ export interface GlobalForwardingRuleState {
      * metadataFilters specified here can be overridden by those specified in
      * the UrlMap that this ForwardingRule references.
      * metadataFilters only applies to Loadbalancers that have their
-     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     readonly metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[]>;
     /**
@@ -384,10 +394,12 @@ export interface GlobalForwardingRuleArgs {
     /**
      * The IP protocol to which this rule applies. When the load balancing scheme is
      * INTERNAL_SELF_MANAGED, only TCP is valid.
+     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
      */
     readonly ipProtocol?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
+     * Possible values are `IPV4` and `IPV6`.
      */
     readonly ipVersion?: pulumi.Input<string>;
     /**
@@ -402,6 +414,8 @@ export interface GlobalForwardingRuleArgs {
      * External TCP/UDP LB, SSL Proxy)
      * NOTE: Currently global forwarding rules cannot be used for INTERNAL
      * load balancing.
+     * Default value is `EXTERNAL`.
+     * Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
      */
     readonly loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -418,7 +432,8 @@ export interface GlobalForwardingRuleArgs {
      * metadataFilters specified here can be overridden by those specified in
      * the UrlMap that this ForwardingRule references.
      * metadataFilters only applies to Loadbalancers that have their
-     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.  Structure is documented below.
+     * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     * Structure is documented below.
      */
     readonly metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[]>;
     /**

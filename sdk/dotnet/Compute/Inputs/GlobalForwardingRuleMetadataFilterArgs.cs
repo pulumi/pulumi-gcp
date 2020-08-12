@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// The list of label value pairs that must match labels in the
         /// provided metadata based on filterMatchCriteria
-        /// This list must not be empty and can have at the most 64 entries.  Structure is documented below.
+        /// This list must not be empty and can have at the most 64 entries.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GlobalForwardingRuleMetadataFilterFilterLabelArgs> FilterLabels
         {
@@ -33,6 +34,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// label in the provided metadata.
         /// MATCH_ALL - All filterLabels must have matching labels in the
         /// provided metadata.
+        /// Possible values are `MATCH_ANY` and `MATCH_ALL`.
         /// </summary>
         [Input("filterMatchCriteria", required: true)]
         public Input<string> FilterMatchCriteria { get; set; } = null!;

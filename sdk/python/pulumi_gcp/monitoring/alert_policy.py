@@ -14,16 +14,19 @@ class AlertPolicy(pulumi.CustomResource):
     """
     How to combine the results of multiple conditions to
     determine if an incident should be opened.
+    Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
     """
     conditions: pulumi.Output[list]
     """
     A list of conditions for the policy. The conditions are combined by
     AND or OR according to the combiner field. If the combined conditions
     evaluate to true, then an incident is created. A policy can have from
-    one to six conditions.  Structure is documented below.
+    one to six conditions.
+    Structure is documented below.
 
       * `conditionAbsent` (`dict`) - A condition that checks that a time series
-        continues to receive new data points.  Structure is documented below.
+        continues to receive new data points.
+        Structure is documented below.
         * `aggregations` (`list`) - Specifies the alignment of data points in
           individual time series as well as how to
           combine the retrieved time series together
@@ -36,7 +39,8 @@ class AlertPolicy(pulumi.CustomResource):
           one in the MetricService.ListTimeSeries
           request. It is advisable to use the
           ListTimeSeries method when debugging this
-          field.  Structure is documented below.
+          field.
+          Structure is documented below.
           * `alignmentPeriod` (`str`) - The alignment period for per-time
             series alignment. If present,
             alignmentPeriod must be at least
@@ -68,6 +72,7 @@ class AlertPolicy(pulumi.CustomResource):
             and alignmentPeriod must be
             specified; otherwise, an error is
             returned.
+            Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
           * `groupByFields` (`list`) - The set of fields to preserve when
             crossSeriesReducer is specified.
             The groupByFields determine how
@@ -110,6 +115,7 @@ class AlertPolicy(pulumi.CustomResource):
             and alignmentPeriod must be
             specified; otherwise, an error is
             returned.
+            Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 
         * `duration` (`str`) - The amount of time that a time series must
           violate the threshold to be considered
@@ -145,7 +151,8 @@ class AlertPolicy(pulumi.CustomResource):
           is true for any of the time series that have
           been identified by filter and aggregations,
           or by the ratio, if denominator_filter and
-          denominator_aggregations are specified.  Structure is documented below.
+          denominator_aggregations are specified.
+          Structure is documented below.
           * `count` (`float`) - The absolute number of time series
             that must fail the predicate for the
             condition to be triggered.
@@ -154,7 +161,8 @@ class AlertPolicy(pulumi.CustomResource):
             condition to be triggered.
 
       * `conditionThreshold` (`dict`) - A condition that compares a time series against a
-        threshold.  Structure is documented below.
+        threshold.
+        Structure is documented below.
         * `aggregations` (`list`) - Specifies the alignment of data points in
           individual time series as well as how to
           combine the retrieved time series together
@@ -167,7 +175,8 @@ class AlertPolicy(pulumi.CustomResource):
           one in the MetricService.ListTimeSeries
           request. It is advisable to use the
           ListTimeSeries method when debugging this
-          field.  Structure is documented below.
+          field.
+          Structure is documented below.
           * `alignmentPeriod` (`str`) - The alignment period for per-time
             series alignment. If present,
             alignmentPeriod must be at least
@@ -199,6 +208,7 @@ class AlertPolicy(pulumi.CustomResource):
             and alignmentPeriod must be
             specified; otherwise, an error is
             returned.
+            Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
           * `groupByFields` (`list`) - The set of fields to preserve when
             crossSeriesReducer is specified.
             The groupByFields determine how
@@ -241,6 +251,7 @@ class AlertPolicy(pulumi.CustomResource):
             and alignmentPeriod must be
             specified; otherwise, an error is
             returned.
+            Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 
         * `comparison` (`str`) - The comparison to apply between the time
           series (indicated by filter and aggregation)
@@ -250,6 +261,7 @@ class AlertPolicy(pulumi.CustomResource):
           the left-hand side and the threshold on the
           right-hand side. Only COMPARISON_LT and
           COMPARISON_GT are supported currently.
+          Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
         * `denominatorAggregations` (`list`) - Specifies the alignment of data points in
           individual time series selected by
           denominatorFilter as well as how to combine
@@ -265,7 +277,8 @@ class AlertPolicy(pulumi.CustomResource):
           labels.This field is similar to the one in
           the MetricService.ListTimeSeries request. It
           is advisable to use the ListTimeSeries
-          method when debugging this field.  Structure is documented below.
+          method when debugging this field.
+          Structure is documented below.
           * `alignmentPeriod` (`str`) - The alignment period for per-time
             series alignment. If present,
             alignmentPeriod must be at least
@@ -297,6 +310,7 @@ class AlertPolicy(pulumi.CustomResource):
             and alignmentPeriod must be
             specified; otherwise, an error is
             returned.
+            Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
           * `groupByFields` (`list`) - The set of fields to preserve when
             crossSeriesReducer is specified.
             The groupByFields determine how
@@ -339,6 +353,7 @@ class AlertPolicy(pulumi.CustomResource):
             and alignmentPeriod must be
             specified; otherwise, an error is
             returned.
+            Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 
         * `denominatorFilter` (`str`) - A filter that identifies a time series that
           should be used as the denominator of a ratio
@@ -391,7 +406,8 @@ class AlertPolicy(pulumi.CustomResource):
           is true for any of the time series that have
           been identified by filter and aggregations,
           or by the ratio, if denominator_filter and
-          denominator_aggregations are specified.  Structure is documented below.
+          denominator_aggregations are specified.
+          Structure is documented below.
           * `count` (`float`) - The absolute number of time series
             that must fail the predicate for the
             condition to be triggered.
@@ -433,7 +449,8 @@ class AlertPolicy(pulumi.CustomResource):
     A short name or phrase used to identify the policy in dashboards,
     notifications, and incidents. To avoid confusion, don't use the same
     display name for multiple policies in the same project. The name is
-    limited to 512 Unicode characters.  Structure is documented below.
+    limited to 512 Unicode characters.
+    Structure is documented below.
 
       * `content` (`str`) - The text of the documentation, interpreted according to mimeType.
         The content may not exceed 8,192 Unicode characters and may not
@@ -497,10 +514,12 @@ class AlertPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
+               Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
         :param pulumi.Input[list] conditions: A list of conditions for the policy. The conditions are combined by
                AND or OR according to the combiner field. If the combined conditions
                evaluate to true, then an incident is created. A policy can have from
-               one to six conditions.  Structure is documented below.
+               one to six conditions.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the
                condition in dashboards, notifications, and
                incidents. To avoid confusion, don't use the same
@@ -509,7 +528,8 @@ class AlertPolicy(pulumi.CustomResource):
         :param pulumi.Input[dict] documentation: A short name or phrase used to identify the policy in dashboards,
                notifications, and incidents. To avoid confusion, don't use the same
                display name for multiple policies in the same project. The name is
-               limited to 512 Unicode characters.  Structure is documented below.
+               limited to 512 Unicode characters.
+               Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
         :param pulumi.Input[list] notification_channels: Identifies the notification channels to which notifications should be
                sent when incidents are opened or closed or when new violations occur
@@ -529,7 +549,8 @@ class AlertPolicy(pulumi.CustomResource):
         The **conditions** object supports the following:
 
           * `conditionAbsent` (`pulumi.Input[dict]`) - A condition that checks that a time series
-            continues to receive new data points.  Structure is documented below.
+            continues to receive new data points.
+            Structure is documented below.
             * `aggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
               individual time series as well as how to
               combine the retrieved time series together
@@ -542,7 +563,8 @@ class AlertPolicy(pulumi.CustomResource):
               one in the MetricService.ListTimeSeries
               request. It is advisable to use the
               ListTimeSeries method when debugging this
-              field.  Structure is documented below.
+              field.
+              Structure is documented below.
               * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
                 series alignment. If present,
                 alignmentPeriod must be at least
@@ -574,6 +596,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
               * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
                 crossSeriesReducer is specified.
                 The groupByFields determine how
@@ -616,6 +639,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 
             * `duration` (`pulumi.Input[str]`) - The amount of time that a time series must
               violate the threshold to be considered
@@ -651,7 +675,8 @@ class AlertPolicy(pulumi.CustomResource):
               is true for any of the time series that have
               been identified by filter and aggregations,
               or by the ratio, if denominator_filter and
-              denominator_aggregations are specified.  Structure is documented below.
+              denominator_aggregations are specified.
+              Structure is documented below.
               * `count` (`pulumi.Input[float]`) - The absolute number of time series
                 that must fail the predicate for the
                 condition to be triggered.
@@ -660,7 +685,8 @@ class AlertPolicy(pulumi.CustomResource):
                 condition to be triggered.
 
           * `conditionThreshold` (`pulumi.Input[dict]`) - A condition that compares a time series against a
-            threshold.  Structure is documented below.
+            threshold.
+            Structure is documented below.
             * `aggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
               individual time series as well as how to
               combine the retrieved time series together
@@ -673,7 +699,8 @@ class AlertPolicy(pulumi.CustomResource):
               one in the MetricService.ListTimeSeries
               request. It is advisable to use the
               ListTimeSeries method when debugging this
-              field.  Structure is documented below.
+              field.
+              Structure is documented below.
               * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
                 series alignment. If present,
                 alignmentPeriod must be at least
@@ -705,6 +732,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
               * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
                 crossSeriesReducer is specified.
                 The groupByFields determine how
@@ -747,6 +775,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 
             * `comparison` (`pulumi.Input[str]`) - The comparison to apply between the time
               series (indicated by filter and aggregation)
@@ -756,6 +785,7 @@ class AlertPolicy(pulumi.CustomResource):
               the left-hand side and the threshold on the
               right-hand side. Only COMPARISON_LT and
               COMPARISON_GT are supported currently.
+              Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
             * `denominatorAggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
               individual time series selected by
               denominatorFilter as well as how to combine
@@ -771,7 +801,8 @@ class AlertPolicy(pulumi.CustomResource):
               labels.This field is similar to the one in
               the MetricService.ListTimeSeries request. It
               is advisable to use the ListTimeSeries
-              method when debugging this field.  Structure is documented below.
+              method when debugging this field.
+              Structure is documented below.
               * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
                 series alignment. If present,
                 alignmentPeriod must be at least
@@ -803,6 +834,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
               * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
                 crossSeriesReducer is specified.
                 The groupByFields determine how
@@ -845,6 +877,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 
             * `denominatorFilter` (`pulumi.Input[str]`) - A filter that identifies a time series that
               should be used as the denominator of a ratio
@@ -897,7 +930,8 @@ class AlertPolicy(pulumi.CustomResource):
               is true for any of the time series that have
               been identified by filter and aggregations,
               or by the ratio, if denominator_filter and
-              denominator_aggregations are specified.  Structure is documented below.
+              denominator_aggregations are specified.
+              Structure is documented below.
               * `count` (`pulumi.Input[float]`) - The absolute number of time series
                 that must fail the predicate for the
                 condition to be triggered.
@@ -977,10 +1011,12 @@ class AlertPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
+               Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
         :param pulumi.Input[list] conditions: A list of conditions for the policy. The conditions are combined by
                AND or OR according to the combiner field. If the combined conditions
                evaluate to true, then an incident is created. A policy can have from
-               one to six conditions.  Structure is documented below.
+               one to six conditions.
+               Structure is documented below.
         :param pulumi.Input[dict] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
                ignored.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the
@@ -991,7 +1027,8 @@ class AlertPolicy(pulumi.CustomResource):
         :param pulumi.Input[dict] documentation: A short name or phrase used to identify the policy in dashboards,
                notifications, and incidents. To avoid confusion, don't use the same
                display name for multiple policies in the same project. The name is
-               limited to 512 Unicode characters.  Structure is documented below.
+               limited to 512 Unicode characters.
+               Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
         :param pulumi.Input[str] name: -
                The unique resource name for this condition.
@@ -1018,7 +1055,8 @@ class AlertPolicy(pulumi.CustomResource):
         The **conditions** object supports the following:
 
           * `conditionAbsent` (`pulumi.Input[dict]`) - A condition that checks that a time series
-            continues to receive new data points.  Structure is documented below.
+            continues to receive new data points.
+            Structure is documented below.
             * `aggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
               individual time series as well as how to
               combine the retrieved time series together
@@ -1031,7 +1069,8 @@ class AlertPolicy(pulumi.CustomResource):
               one in the MetricService.ListTimeSeries
               request. It is advisable to use the
               ListTimeSeries method when debugging this
-              field.  Structure is documented below.
+              field.
+              Structure is documented below.
               * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
                 series alignment. If present,
                 alignmentPeriod must be at least
@@ -1063,6 +1102,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
               * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
                 crossSeriesReducer is specified.
                 The groupByFields determine how
@@ -1105,6 +1145,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 
             * `duration` (`pulumi.Input[str]`) - The amount of time that a time series must
               violate the threshold to be considered
@@ -1140,7 +1181,8 @@ class AlertPolicy(pulumi.CustomResource):
               is true for any of the time series that have
               been identified by filter and aggregations,
               or by the ratio, if denominator_filter and
-              denominator_aggregations are specified.  Structure is documented below.
+              denominator_aggregations are specified.
+              Structure is documented below.
               * `count` (`pulumi.Input[float]`) - The absolute number of time series
                 that must fail the predicate for the
                 condition to be triggered.
@@ -1149,7 +1191,8 @@ class AlertPolicy(pulumi.CustomResource):
                 condition to be triggered.
 
           * `conditionThreshold` (`pulumi.Input[dict]`) - A condition that compares a time series against a
-            threshold.  Structure is documented below.
+            threshold.
+            Structure is documented below.
             * `aggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
               individual time series as well as how to
               combine the retrieved time series together
@@ -1162,7 +1205,8 @@ class AlertPolicy(pulumi.CustomResource):
               one in the MetricService.ListTimeSeries
               request. It is advisable to use the
               ListTimeSeries method when debugging this
-              field.  Structure is documented below.
+              field.
+              Structure is documented below.
               * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
                 series alignment. If present,
                 alignmentPeriod must be at least
@@ -1194,6 +1238,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
               * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
                 crossSeriesReducer is specified.
                 The groupByFields determine how
@@ -1236,6 +1281,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 
             * `comparison` (`pulumi.Input[str]`) - The comparison to apply between the time
               series (indicated by filter and aggregation)
@@ -1245,6 +1291,7 @@ class AlertPolicy(pulumi.CustomResource):
               the left-hand side and the threshold on the
               right-hand side. Only COMPARISON_LT and
               COMPARISON_GT are supported currently.
+              Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
             * `denominatorAggregations` (`pulumi.Input[list]`) - Specifies the alignment of data points in
               individual time series selected by
               denominatorFilter as well as how to combine
@@ -1260,7 +1307,8 @@ class AlertPolicy(pulumi.CustomResource):
               labels.This field is similar to the one in
               the MetricService.ListTimeSeries request. It
               is advisable to use the ListTimeSeries
-              method when debugging this field.  Structure is documented below.
+              method when debugging this field.
+              Structure is documented below.
               * `alignmentPeriod` (`pulumi.Input[str]`) - The alignment period for per-time
                 series alignment. If present,
                 alignmentPeriod must be at least
@@ -1292,6 +1340,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
               * `groupByFields` (`pulumi.Input[list]`) - The set of fields to preserve when
                 crossSeriesReducer is specified.
                 The groupByFields determine how
@@ -1334,6 +1383,7 @@ class AlertPolicy(pulumi.CustomResource):
                 and alignmentPeriod must be
                 specified; otherwise, an error is
                 returned.
+                Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
 
             * `denominatorFilter` (`pulumi.Input[str]`) - A filter that identifies a time series that
               should be used as the denominator of a ratio
@@ -1386,7 +1436,8 @@ class AlertPolicy(pulumi.CustomResource):
               is true for any of the time series that have
               been identified by filter and aggregations,
               or by the ratio, if denominator_filter and
-              denominator_aggregations are specified.  Structure is documented below.
+              denominator_aggregations are specified.
+              Structure is documented below.
               * `count` (`pulumi.Input[float]`) - The absolute number of time series
                 that must fail the predicate for the
                 condition to be triggered.

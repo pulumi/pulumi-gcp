@@ -54,19 +54,23 @@ export class MetricDescriptor extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+     * The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+     * Structure is documented below.
      */
     public readonly labels!: pulumi.Output<outputs.monitoring.MetricDescriptorLabel[] | undefined>;
     /**
      * The launch stage of the metric definition.
+     * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
      */
     public readonly launchStage!: pulumi.Output<string | undefined>;
     /**
-     * Metadata which can be used to guide usage of the metric.  Structure is documented below.
+     * Metadata which can be used to guide usage of the metric.
+     * Structure is documented below.
      */
     public readonly metadata!: pulumi.Output<outputs.monitoring.MetricDescriptorMetadata | undefined>;
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
      */
     public readonly metricKind!: pulumi.Output<string>;
     /**
@@ -111,6 +115,8 @@ export class MetricDescriptor extends pulumi.CustomResource {
     public readonly unit!: pulumi.Output<string | undefined>;
     /**
      * The type of data that can be assigned to the label.
+     * Default value is `STRING`.
+     * Possible values are `STRING`, `BOOL`, and `INT64`.
      */
     public readonly valueType!: pulumi.Output<string>;
 
@@ -192,19 +198,23 @@ export interface MetricDescriptorState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+     * The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+     * Structure is documented below.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.monitoring.MetricDescriptorLabel>[]>;
     /**
      * The launch stage of the metric definition.
+     * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
      */
     readonly launchStage?: pulumi.Input<string>;
     /**
-     * Metadata which can be used to guide usage of the metric.  Structure is documented below.
+     * Metadata which can be used to guide usage of the metric.
+     * Structure is documented below.
      */
     readonly metadata?: pulumi.Input<inputs.monitoring.MetricDescriptorMetadata>;
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
      */
     readonly metricKind?: pulumi.Input<string>;
     /**
@@ -249,6 +259,8 @@ export interface MetricDescriptorState {
     readonly unit?: pulumi.Input<string>;
     /**
      * The type of data that can be assigned to the label.
+     * Default value is `STRING`.
+     * Possible values are `STRING`, `BOOL`, and `INT64`.
      */
     readonly valueType?: pulumi.Input<string>;
 }
@@ -266,19 +278,23 @@ export interface MetricDescriptorArgs {
      */
     readonly displayName: pulumi.Input<string>;
     /**
-     * The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.  Structure is documented below.
+     * The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
+     * Structure is documented below.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.monitoring.MetricDescriptorLabel>[]>;
     /**
      * The launch stage of the metric definition.
+     * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
      */
     readonly launchStage?: pulumi.Input<string>;
     /**
-     * Metadata which can be used to guide usage of the metric.  Structure is documented below.
+     * Metadata which can be used to guide usage of the metric.
+     * Structure is documented below.
      */
     readonly metadata?: pulumi.Input<inputs.monitoring.MetricDescriptorMetadata>;
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
      */
     readonly metricKind: pulumi.Input<string>;
     /**
@@ -312,6 +328,8 @@ export interface MetricDescriptorArgs {
     readonly unit?: pulumi.Input<string>;
     /**
      * The type of data that can be assigned to the label.
+     * Default value is `STRING`.
+     * Possible values are `STRING`, `BOOL`, and `INT64`.
      */
     readonly valueType: pulumi.Input<string>;
 }

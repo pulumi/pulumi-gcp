@@ -75,15 +75,18 @@ export class HealthCheck extends pulumi.CustomResource {
      */
     public readonly healthyThreshold!: pulumi.Output<number | undefined>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     public readonly http2HealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttp2HealthCheck | undefined>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     public readonly httpHealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttpHealthCheck | undefined>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     public readonly httpsHealthCheck!: pulumi.Output<outputs.compute.HealthCheckHttpsHealthCheck | undefined>;
     /**
@@ -110,11 +113,13 @@ export class HealthCheck extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     public readonly sslHealthCheck!: pulumi.Output<outputs.compute.HealthCheckSslHealthCheck | undefined>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     public readonly tcpHealthCheck!: pulumi.Output<outputs.compute.HealthCheckTcpHealthCheck | undefined>;
     /**
@@ -215,15 +220,18 @@ export interface HealthCheckState {
      */
     readonly healthyThreshold?: pulumi.Input<number>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly http2HealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttp2HealthCheck>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly httpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpHealthCheck>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck>;
     /**
@@ -250,11 +258,13 @@ export interface HealthCheckState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly sslHealthCheck?: pulumi.Input<inputs.compute.HealthCheckSslHealthCheck>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly tcpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckTcpHealthCheck>;
     /**
@@ -294,15 +304,18 @@ export interface HealthCheckArgs {
      */
     readonly healthyThreshold?: pulumi.Input<number>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly http2HealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttp2HealthCheck>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly httpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpHealthCheck>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck>;
     /**
@@ -325,11 +338,13 @@ export interface HealthCheckArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly sslHealthCheck?: pulumi.Input<inputs.compute.HealthCheckSslHealthCheck>;
     /**
-     * A nested object resource  Structure is documented below.
+     * A nested object resource
+     * Structure is documented below.
      */
     readonly tcpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckTcpHealthCheck>;
     /**

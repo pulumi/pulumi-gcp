@@ -38,18 +38,22 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
         /// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
         /// Creation, truncation and append actions occur as one atomic update upon job completion
+        /// Default value is `CREATE_IF_NEEDED`.
+        /// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
         /// </summary>
         [Input("createDisposition")]
         public Input<string>? CreateDisposition { get; set; }
 
         /// <summary>
-        /// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+        /// Custom encryption configuration (e.g., Cloud KMS keys)
+        /// Structure is documented below.
         /// </summary>
         [Input("destinationEncryptionConfiguration")]
         public Input<Inputs.JobLoadDestinationEncryptionConfigurationGetArgs>? DestinationEncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// The destination table.  Structure is documented below.
+        /// The destination table.
+        /// Structure is documented below.
         /// </summary>
         [Input("destinationTable", required: true)]
         public Input<Inputs.JobLoadDestinationTableGetArgs> DestinationTable { get; set; } = null!;
@@ -175,7 +179,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         }
 
         /// <summary>
-        /// Time-based partitioning specification for the destination table.  Structure is documented below.
+        /// Time-based partitioning specification for the destination table.
+        /// Structure is documented below.
         /// </summary>
         [Input("timePartitioning")]
         public Input<Inputs.JobLoadTimePartitioningGetArgs>? TimePartitioning { get; set; }
@@ -187,6 +192,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
         /// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
         /// Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// Default value is `WRITE_EMPTY`.
+        /// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
         /// </summary>
         [Input("writeDisposition")]
         public Input<string>? WriteDisposition { get; set; }

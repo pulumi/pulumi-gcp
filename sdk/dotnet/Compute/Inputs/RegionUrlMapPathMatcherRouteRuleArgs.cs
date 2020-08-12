@@ -15,7 +15,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
         /// the selected backendService. headerAction specified here take effect before
-        /// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+        /// headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+        /// Structure is documented below.
         /// </summary>
         [Input("headerAction")]
         public Input<Inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs>? HeaderAction { get; set; }
@@ -24,7 +25,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs>? _matchRules;
 
         /// <summary>
-        /// The rules for determining a match.  Structure is documented below.
+        /// The rules for determining a match.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs> MatchRules
         {
@@ -56,7 +58,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// request to the selected backend. If routeAction specifies any
         /// weightedBackendServices, service must not be set. Conversely if service is set,
         /// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-        /// or urlRedirect must be set.  Structure is documented below.
+        /// or urlRedirect must be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("routeAction")]
         public Input<Inputs.RegionUrlMapPathMatcherRouteRuleRouteActionArgs>? RouteAction { get; set; }
@@ -70,7 +73,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// When a path pattern is matched, the request is redirected to a URL specified
         /// by urlRedirect. If urlRedirect is specified, service or routeAction must not
-        /// be set.  Structure is documented below.
+        /// be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("urlRedirect")]
         public Input<Inputs.RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs>? UrlRedirect { get; set; }

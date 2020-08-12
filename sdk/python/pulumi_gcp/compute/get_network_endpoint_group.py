@@ -85,7 +85,7 @@ class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
             subnetwork=self.subnetwork,
             zone=self.zone)
 
-def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
+def get_network_endpoint_group(name=None,project=None,self_link=None,zone=None,opts=None):
     """
     Use this data source to access a Network Endpoint Group's attributes.
 
@@ -94,6 +94,8 @@ def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
 
     :param str name: The Network Endpoint Group name.
            Provide either this or a `self_link`.
+    :param str project: The ID of the project to list versions in.
+           If it is not provided, the provider project is used.
     :param str self_link: The Network Endpoint Group self\_link.
     :param str zone: The Network Endpoint Group availability zone.
     """
@@ -101,6 +103,7 @@ def get_network_endpoint_group(name=None,self_link=None,zone=None,opts=None):
 
 
     __args__['name'] = name
+    __args__['project'] = project
     __args__['selfLink'] = self_link
     __args__['zone'] = zone
     if opts is None:

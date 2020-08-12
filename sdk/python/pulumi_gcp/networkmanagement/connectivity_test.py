@@ -30,7 +30,8 @@ class ConnectivityTest(pulumi.CustomResource):
     interface.
     A reachability analysis proceeds even if the destination location
     is ambiguous. However, the result can include endpoints that you
-    don't intend to test.  Structure is documented below.
+    don't intend to test.
+    Structure is documented below.
 
       * `instance` (`str`) - A Compute Engine instance URI.
       * `ip_address` (`str`) - The IP address of the endpoint, which can be an external or
@@ -90,7 +91,8 @@ class ConnectivityTest(pulumi.CustomResource):
     address or VPC network.
     A reachability analysis proceeds even if the source location is
     ambiguous. However, the test result may include endpoints that
-    you don't intend to test.  Structure is documented below.
+    you don't intend to test.
+    Structure is documented below.
 
       * `instance` (`str`) - A Compute Engine instance URI.
       * `ip_address` (`str`) - The IP address of the endpoint, which can be an external or
@@ -98,6 +100,7 @@ class ConnectivityTest(pulumi.CustomResource):
         destination is a global load balancer VIP.
       * `network` (`str`) - A Compute Engine network URI.
       * `networkType` (`str`) - Type of the network where the endpoint is located.
+        Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
       * `port` (`float`) - The IP protocol port of the endpoint. Only applicable when
         protocol is TCP or UDP.
       * `project_id` (`str`) - Project ID where the endpoint is located. The Project ID can be
@@ -140,7 +143,8 @@ class ConnectivityTest(pulumi.CustomResource):
                interface.
                A reachability analysis proceeds even if the destination location
                is ambiguous. However, the result can include endpoints that you
-               don't intend to test.  Structure is documented below.
+               don't intend to test.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: Unique name for the connectivity test.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -166,7 +170,8 @@ class ConnectivityTest(pulumi.CustomResource):
                address or VPC network.
                A reachability analysis proceeds even if the source location is
                ambiguous. However, the test result may include endpoints that
-               you don't intend to test.  Structure is documented below.
+               you don't intend to test.
+               Structure is documented below.
 
         The **destination** object supports the following:
 
@@ -194,6 +199,7 @@ class ConnectivityTest(pulumi.CustomResource):
             destination is a global load balancer VIP.
           * `network` (`pulumi.Input[str]`) - A Compute Engine network URI.
           * `networkType` (`pulumi.Input[str]`) - Type of the network where the endpoint is located.
+            Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
           * `port` (`pulumi.Input[float]`) - The IP protocol port of the endpoint. Only applicable when
             protocol is TCP or UDP.
           * `project_id` (`pulumi.Input[str]`) - Project ID where the endpoint is located. The Project ID can be
@@ -264,7 +270,8 @@ class ConnectivityTest(pulumi.CustomResource):
                interface.
                A reachability analysis proceeds even if the destination location
                is ambiguous. However, the result can include endpoints that you
-               don't intend to test.  Structure is documented below.
+               don't intend to test.
+               Structure is documented below.
         :param pulumi.Input[dict] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: Unique name for the connectivity test.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -290,7 +297,8 @@ class ConnectivityTest(pulumi.CustomResource):
                address or VPC network.
                A reachability analysis proceeds even if the source location is
                ambiguous. However, the test result may include endpoints that
-               you don't intend to test.  Structure is documented below.
+               you don't intend to test.
+               Structure is documented below.
 
         The **destination** object supports the following:
 
@@ -318,6 +326,7 @@ class ConnectivityTest(pulumi.CustomResource):
             destination is a global load balancer VIP.
           * `network` (`pulumi.Input[str]`) - A Compute Engine network URI.
           * `networkType` (`pulumi.Input[str]`) - Type of the network where the endpoint is located.
+            Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
           * `port` (`pulumi.Input[float]`) - The IP protocol port of the endpoint. Only applicable when
             protocol is TCP or UDP.
           * `project_id` (`pulumi.Input[str]`) - Project ID where the endpoint is located. The Project ID can be

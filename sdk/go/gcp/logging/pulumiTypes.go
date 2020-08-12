@@ -297,13 +297,16 @@ func (o FolderSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolPt
 }
 
 type MetricBucketOptions struct {
-	// Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+	// Specifies a set of buckets with arbitrary widths.
+	// Structure is documented below.
 	ExplicitBuckets *MetricBucketOptionsExplicitBuckets `pulumi:"explicitBuckets"`
 	// Specifies an exponential sequence of buckets that have a width that is proportional to the value of
-	// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
+	// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
+	// Structure is documented below.
 	ExponentialBuckets *MetricBucketOptionsExponentialBuckets `pulumi:"exponentialBuckets"`
 	// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
-	// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+	// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
+	// Structure is documented below.
 	LinearBuckets *MetricBucketOptionsLinearBuckets `pulumi:"linearBuckets"`
 }
 
@@ -319,13 +322,16 @@ type MetricBucketOptionsInput interface {
 }
 
 type MetricBucketOptionsArgs struct {
-	// Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+	// Specifies a set of buckets with arbitrary widths.
+	// Structure is documented below.
 	ExplicitBuckets MetricBucketOptionsExplicitBucketsPtrInput `pulumi:"explicitBuckets"`
 	// Specifies an exponential sequence of buckets that have a width that is proportional to the value of
-	// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
+	// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
+	// Structure is documented below.
 	ExponentialBuckets MetricBucketOptionsExponentialBucketsPtrInput `pulumi:"exponentialBuckets"`
 	// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
-	// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+	// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
+	// Structure is documented below.
 	LinearBuckets MetricBucketOptionsLinearBucketsPtrInput `pulumi:"linearBuckets"`
 }
 
@@ -406,19 +412,22 @@ func (o MetricBucketOptionsOutput) ToMetricBucketOptionsPtrOutputWithContext(ctx
 	}).(MetricBucketOptionsPtrOutput)
 }
 
-// Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+// Specifies a set of buckets with arbitrary widths.
+// Structure is documented below.
 func (o MetricBucketOptionsOutput) ExplicitBuckets() MetricBucketOptionsExplicitBucketsPtrOutput {
 	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsExplicitBuckets { return v.ExplicitBuckets }).(MetricBucketOptionsExplicitBucketsPtrOutput)
 }
 
 // Specifies an exponential sequence of buckets that have a width that is proportional to the value of
-// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
+// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
+// Structure is documented below.
 func (o MetricBucketOptionsOutput) ExponentialBuckets() MetricBucketOptionsExponentialBucketsPtrOutput {
 	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsExponentialBuckets { return v.ExponentialBuckets }).(MetricBucketOptionsExponentialBucketsPtrOutput)
 }
 
 // Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
-// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
+// Structure is documented below.
 func (o MetricBucketOptionsOutput) LinearBuckets() MetricBucketOptionsLinearBucketsPtrOutput {
 	return o.ApplyT(func(v MetricBucketOptions) *MetricBucketOptionsLinearBuckets { return v.LinearBuckets }).(MetricBucketOptionsLinearBucketsPtrOutput)
 }
@@ -441,7 +450,8 @@ func (o MetricBucketOptionsPtrOutput) Elem() MetricBucketOptionsOutput {
 	return o.ApplyT(func(v *MetricBucketOptions) MetricBucketOptions { return *v }).(MetricBucketOptionsOutput)
 }
 
-// Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+// Specifies a set of buckets with arbitrary widths.
+// Structure is documented below.
 func (o MetricBucketOptionsPtrOutput) ExplicitBuckets() MetricBucketOptionsExplicitBucketsPtrOutput {
 	return o.ApplyT(func(v *MetricBucketOptions) *MetricBucketOptionsExplicitBuckets {
 		if v == nil {
@@ -452,7 +462,8 @@ func (o MetricBucketOptionsPtrOutput) ExplicitBuckets() MetricBucketOptionsExpli
 }
 
 // Specifies an exponential sequence of buckets that have a width that is proportional to the value of
-// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
+// the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
+// Structure is documented below.
 func (o MetricBucketOptionsPtrOutput) ExponentialBuckets() MetricBucketOptionsExponentialBucketsPtrOutput {
 	return o.ApplyT(func(v *MetricBucketOptions) *MetricBucketOptionsExponentialBuckets {
 		if v == nil {
@@ -463,7 +474,8 @@ func (o MetricBucketOptionsPtrOutput) ExponentialBuckets() MetricBucketOptionsEx
 }
 
 // Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
-// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
+// Structure is documented below.
 func (o MetricBucketOptionsPtrOutput) LinearBuckets() MetricBucketOptionsLinearBucketsPtrOutput {
 	return o.ApplyT(func(v *MetricBucketOptions) *MetricBucketOptionsLinearBuckets {
 		if v == nil {
@@ -950,17 +962,21 @@ type MetricMetricDescriptor struct {
 	// The set of labels that can be used to describe a specific instance of this metric type. For
 	// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
 	// for the HTTP response code, response_code, so you can look at latencies for successful responses
-	// or just for responses that failed.  Structure is documented below.
+	// or just for responses that failed.
+	// Structure is documented below.
 	Labels []MetricMetricDescriptorLabel `pulumi:"labels"`
 	// Whether the metric records instantaneous values, changes to a value, etc.
 	// Some combinations of metricKind and valueType might not be supported.
 	// For counter metrics, set this to DELTA.
+	// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
 	MetricKind string `pulumi:"metricKind"`
 	// The unit in which the metric value is reported. It is only applicable if the valueType is
 	// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
 	// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
 	Unit *string `pulumi:"unit"`
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `BOOL`, `INT64`, and `STRING`.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -983,17 +999,21 @@ type MetricMetricDescriptorArgs struct {
 	// The set of labels that can be used to describe a specific instance of this metric type. For
 	// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
 	// for the HTTP response code, response_code, so you can look at latencies for successful responses
-	// or just for responses that failed.  Structure is documented below.
+	// or just for responses that failed.
+	// Structure is documented below.
 	Labels MetricMetricDescriptorLabelArrayInput `pulumi:"labels"`
 	// Whether the metric records instantaneous values, changes to a value, etc.
 	// Some combinations of metricKind and valueType might not be supported.
 	// For counter metrics, set this to DELTA.
+	// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
 	MetricKind pulumi.StringInput `pulumi:"metricKind"`
 	// The unit in which the metric value is reported. It is only applicable if the valueType is
 	// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
 	// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `BOOL`, `INT64`, and `STRING`.
 	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
@@ -1084,7 +1104,8 @@ func (o MetricMetricDescriptorOutput) DisplayName() pulumi.StringPtrOutput {
 // The set of labels that can be used to describe a specific instance of this metric type. For
 // example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
 // for the HTTP response code, response_code, so you can look at latencies for successful responses
-// or just for responses that failed.  Structure is documented below.
+// or just for responses that failed.
+// Structure is documented below.
 func (o MetricMetricDescriptorOutput) Labels() MetricMetricDescriptorLabelArrayOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) []MetricMetricDescriptorLabel { return v.Labels }).(MetricMetricDescriptorLabelArrayOutput)
 }
@@ -1092,6 +1113,7 @@ func (o MetricMetricDescriptorOutput) Labels() MetricMetricDescriptorLabelArrayO
 // Whether the metric records instantaneous values, changes to a value, etc.
 // Some combinations of metricKind and valueType might not be supported.
 // For counter metrics, set this to DELTA.
+// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
 func (o MetricMetricDescriptorOutput) MetricKind() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.MetricKind }).(pulumi.StringOutput)
 }
@@ -1104,6 +1126,8 @@ func (o MetricMetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // The type of data that can be assigned to the label.
+// Default value is `STRING`.
+// Possible values are `BOOL`, `INT64`, and `STRING`.
 func (o MetricMetricDescriptorOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.ValueType }).(pulumi.StringOutput)
 }
@@ -1141,7 +1165,8 @@ func (o MetricMetricDescriptorPtrOutput) DisplayName() pulumi.StringPtrOutput {
 // The set of labels that can be used to describe a specific instance of this metric type. For
 // example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
 // for the HTTP response code, response_code, so you can look at latencies for successful responses
-// or just for responses that failed.  Structure is documented below.
+// or just for responses that failed.
+// Structure is documented below.
 func (o MetricMetricDescriptorPtrOutput) Labels() MetricMetricDescriptorLabelArrayOutput {
 	return o.ApplyT(func(v *MetricMetricDescriptor) []MetricMetricDescriptorLabel {
 		if v == nil {
@@ -1154,6 +1179,7 @@ func (o MetricMetricDescriptorPtrOutput) Labels() MetricMetricDescriptorLabelArr
 // Whether the metric records instantaneous values, changes to a value, etc.
 // Some combinations of metricKind and valueType might not be supported.
 // For counter metrics, set this to DELTA.
+// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
 func (o MetricMetricDescriptorPtrOutput) MetricKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
 		if v == nil {
@@ -1176,6 +1202,8 @@ func (o MetricMetricDescriptorPtrOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // The type of data that can be assigned to the label.
+// Default value is `STRING`.
+// Possible values are `BOOL`, `INT64`, and `STRING`.
 func (o MetricMetricDescriptorPtrOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
 		if v == nil {
@@ -1192,6 +1220,8 @@ type MetricMetricDescriptorLabel struct {
 	// The label key.
 	Key string `pulumi:"key"`
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `BOOL`, `INT64`, and `STRING`.
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -1213,6 +1243,8 @@ type MetricMetricDescriptorLabelArgs struct {
 	// The label key.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The type of data that can be assigned to the label.
+	// Default value is `STRING`.
+	// Possible values are `BOOL`, `INT64`, and `STRING`.
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
@@ -1279,6 +1311,8 @@ func (o MetricMetricDescriptorLabelOutput) Key() pulumi.StringOutput {
 }
 
 // The type of data that can be assigned to the label.
+// Default value is `STRING`.
+// Possible values are `BOOL`, `INT64`, and `STRING`.
 func (o MetricMetricDescriptorLabelOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricMetricDescriptorLabel) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }

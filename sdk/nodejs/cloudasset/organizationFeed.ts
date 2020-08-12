@@ -68,6 +68,7 @@ export class OrganizationFeed extends pulumi.CustomResource {
     public readonly billingProject!: pulumi.Output<string>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
+     * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
      */
     public readonly contentType!: pulumi.Output<string | undefined>;
     /**
@@ -75,7 +76,8 @@ export class OrganizationFeed extends pulumi.CustomResource {
      */
     public readonly feedId!: pulumi.Output<string>;
     /**
-     * Output configuration for asset feed destination.  Structure is documented below.
+     * Output configuration for asset feed destination.
+     * Structure is documented below.
      */
     public readonly feedOutputConfig!: pulumi.Output<outputs.cloudasset.OrganizationFeedFeedOutputConfig>;
     /**
@@ -168,6 +170,7 @@ export interface OrganizationFeedState {
     readonly billingProject?: pulumi.Input<string>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
+     * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
      */
     readonly contentType?: pulumi.Input<string>;
     /**
@@ -175,7 +178,8 @@ export interface OrganizationFeedState {
      */
     readonly feedId?: pulumi.Input<string>;
     /**
-     * Output configuration for asset feed destination.  Structure is documented below.
+     * Output configuration for asset feed destination.
+     * Structure is documented below.
      */
     readonly feedOutputConfig?: pulumi.Input<inputs.cloudasset.OrganizationFeedFeedOutputConfig>;
     /**
@@ -215,6 +219,7 @@ export interface OrganizationFeedArgs {
     readonly billingProject: pulumi.Input<string>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
+     * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
      */
     readonly contentType?: pulumi.Input<string>;
     /**
@@ -222,7 +227,8 @@ export interface OrganizationFeedArgs {
      */
     readonly feedId: pulumi.Input<string>;
     /**
-     * Output configuration for asset feed destination.  Structure is documented below.
+     * Output configuration for asset feed destination.
+     * Structure is documented below.
      */
     readonly feedOutputConfig: pulumi.Input<inputs.cloudasset.OrganizationFeedFeedOutputConfig>;
     /**

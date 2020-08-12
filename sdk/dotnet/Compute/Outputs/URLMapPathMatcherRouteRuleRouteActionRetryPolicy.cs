@@ -20,7 +20,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Specifies a non-zero timeout per retry attempt.
         /// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-        /// will use the largest timeout among all backend services associated with the route.  Structure is documented below.
+        /// will use the largest timeout among all backend services associated with the route.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout? PerTryTimeout;
         /// <summary>

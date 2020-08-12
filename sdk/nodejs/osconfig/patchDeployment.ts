@@ -61,7 +61,8 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly duration!: pulumi.Output<string | undefined>;
     /**
-     * VM instances to patch.  Structure is documented below.
+     * VM instances to patch.
+     * Structure is documented below.
      */
     public readonly instanceFilter!: pulumi.Output<outputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
@@ -76,11 +77,13 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Schedule a one-time execution.  Structure is documented below.
+     * Schedule a one-time execution.
+     * Structure is documented below.
      */
     public readonly oneTimeSchedule!: pulumi.Output<outputs.osconfig.PatchDeploymentOneTimeSchedule | undefined>;
     /**
-     * Patch configuration that is applied.  Structure is documented below.
+     * Patch configuration that is applied.
+     * Structure is documented below.
      */
     public readonly patchConfig!: pulumi.Output<outputs.osconfig.PatchDeploymentPatchConfig | undefined>;
     /**
@@ -98,7 +101,8 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Schedule recurring executions.  Structure is documented below.
+     * Schedule recurring executions.
+     * Structure is documented below.
      */
     public readonly recurringSchedule!: pulumi.Output<outputs.osconfig.PatchDeploymentRecurringSchedule | undefined>;
     /**
@@ -182,7 +186,8 @@ export interface PatchDeploymentState {
      */
     readonly duration?: pulumi.Input<string>;
     /**
-     * VM instances to patch.  Structure is documented below.
+     * VM instances to patch.
+     * Structure is documented below.
      */
     readonly instanceFilter?: pulumi.Input<inputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
@@ -197,11 +202,13 @@ export interface PatchDeploymentState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Schedule a one-time execution.  Structure is documented below.
+     * Schedule a one-time execution.
+     * Structure is documented below.
      */
     readonly oneTimeSchedule?: pulumi.Input<inputs.osconfig.PatchDeploymentOneTimeSchedule>;
     /**
-     * Patch configuration that is applied.  Structure is documented below.
+     * Patch configuration that is applied.
+     * Structure is documented below.
      */
     readonly patchConfig?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfig>;
     /**
@@ -219,7 +226,8 @@ export interface PatchDeploymentState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Schedule recurring executions.  Structure is documented below.
+     * Schedule recurring executions.
+     * Structure is documented below.
      */
     readonly recurringSchedule?: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringSchedule>;
     /**
@@ -243,15 +251,18 @@ export interface PatchDeploymentArgs {
      */
     readonly duration?: pulumi.Input<string>;
     /**
-     * VM instances to patch.  Structure is documented below.
+     * VM instances to patch.
+     * Structure is documented below.
      */
     readonly instanceFilter: pulumi.Input<inputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
-     * Schedule a one-time execution.  Structure is documented below.
+     * Schedule a one-time execution.
+     * Structure is documented below.
      */
     readonly oneTimeSchedule?: pulumi.Input<inputs.osconfig.PatchDeploymentOneTimeSchedule>;
     /**
-     * Patch configuration that is applied.  Structure is documented below.
+     * Patch configuration that is applied.
+     * Structure is documented below.
      */
     readonly patchConfig?: pulumi.Input<inputs.osconfig.PatchDeploymentPatchConfig>;
     /**
@@ -269,7 +280,8 @@ export interface PatchDeploymentArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Schedule recurring executions.  Structure is documented below.
+     * Schedule recurring executions.
+     * Structure is documented below.
      */
     readonly recurringSchedule?: pulumi.Input<inputs.osconfig.PatchDeploymentRecurringSchedule>;
 }

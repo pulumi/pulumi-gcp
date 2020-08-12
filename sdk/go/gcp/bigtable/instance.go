@@ -17,7 +17,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+	// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+	// See structure below.
 	Clusters InstanceClusterArrayOutput `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -26,6 +27,8 @@ type Instance struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
+	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
@@ -61,7 +64,8 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+	// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+	// See structure below.
 	Clusters []InstanceCluster `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -70,6 +74,8 @@ type instanceState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	InstanceType *string `pulumi:"instanceType"`
+	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	Labels map[string]string `pulumi:"labels"`
 	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
@@ -78,7 +84,8 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+	// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+	// See structure below.
 	Clusters InstanceClusterArrayInput
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -87,6 +94,8 @@ type InstanceState struct {
 	DisplayName pulumi.StringPtrInput
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	InstanceType pulumi.StringPtrInput
+	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	Labels pulumi.StringMapInput
 	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
@@ -99,7 +108,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+	// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+	// See structure below.
 	Clusters []InstanceCluster `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -108,6 +118,8 @@ type instanceArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	InstanceType *string `pulumi:"instanceType"`
+	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	Labels map[string]string `pulumi:"labels"`
 	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
@@ -117,7 +129,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+	// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+	// See structure below.
 	Clusters InstanceClusterArrayInput
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -126,6 +139,8 @@ type InstanceArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	InstanceType pulumi.StringPtrInput
+	// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	Labels pulumi.StringMapInput
 	// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it

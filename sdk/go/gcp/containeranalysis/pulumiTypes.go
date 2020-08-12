@@ -18,7 +18,8 @@ type NoteAttestationAuthority struct {
 	// from "readable" names more suitable for debug output. Note that
 	// these hints should NOT be used to look up AttestationAuthorities
 	// in security sensitive contexts, such as when looking up
-	// Attestations to verify.  Structure is documented below.
+	// Attestations to verify.
+	// Structure is documented below.
 	Hint NoteAttestationAuthorityHint `pulumi:"hint"`
 }
 
@@ -41,7 +42,8 @@ type NoteAttestationAuthorityArgs struct {
 	// from "readable" names more suitable for debug output. Note that
 	// these hints should NOT be used to look up AttestationAuthorities
 	// in security sensitive contexts, such as when looking up
-	// Attestations to verify.  Structure is documented below.
+	// Attestations to verify.
+	// Structure is documented below.
 	Hint NoteAttestationAuthorityHintInput `pulumi:"hint"`
 }
 
@@ -129,7 +131,8 @@ func (o NoteAttestationAuthorityOutput) ToNoteAttestationAuthorityPtrOutputWithC
 // from "readable" names more suitable for debug output. Note that
 // these hints should NOT be used to look up AttestationAuthorities
 // in security sensitive contexts, such as when looking up
-// Attestations to verify.  Structure is documented below.
+// Attestations to verify.
+// Structure is documented below.
 func (o NoteAttestationAuthorityOutput) Hint() NoteAttestationAuthorityHintOutput {
 	return o.ApplyT(func(v NoteAttestationAuthority) NoteAttestationAuthorityHint { return v.Hint }).(NoteAttestationAuthorityHintOutput)
 }
@@ -159,7 +162,8 @@ func (o NoteAttestationAuthorityPtrOutput) Elem() NoteAttestationAuthorityOutput
 // from "readable" names more suitable for debug output. Note that
 // these hints should NOT be used to look up AttestationAuthorities
 // in security sensitive contexts, such as when looking up
-// Attestations to verify.  Structure is documented below.
+// Attestations to verify.
+// Structure is documented below.
 func (o NoteAttestationAuthorityPtrOutput) Hint() NoteAttestationAuthorityHintPtrOutput {
 	return o.ApplyT(func(v *NoteAttestationAuthority) *NoteAttestationAuthorityHint {
 		if v == nil {
@@ -418,7 +422,8 @@ type OccurenceAttestation struct {
 	// Verifier implementations should consider this attestation
 	// message verified if at least one signature verifies
 	// serializedPayload. See Signature in common.proto for more
-	// details on signature structure and verification.  Structure is documented below.
+	// details on signature structure and verification.
+	// Structure is documented below.
 	Signatures []OccurenceAttestationSignature `pulumi:"signatures"`
 }
 
@@ -441,7 +446,8 @@ type OccurenceAttestationArgs struct {
 	// Verifier implementations should consider this attestation
 	// message verified if at least one signature verifies
 	// serializedPayload. See Signature in common.proto for more
-	// details on signature structure and verification.  Structure is documented below.
+	// details on signature structure and verification.
+	// Structure is documented below.
 	Signatures OccurenceAttestationSignatureArrayInput `pulumi:"signatures"`
 }
 
@@ -532,7 +538,8 @@ func (o OccurenceAttestationOutput) SerializedPayload() pulumi.StringOutput {
 // Verifier implementations should consider this attestation
 // message verified if at least one signature verifies
 // serializedPayload. See Signature in common.proto for more
-// details on signature structure and verification.  Structure is documented below.
+// details on signature structure and verification.
+// Structure is documented below.
 func (o OccurenceAttestationOutput) Signatures() OccurenceAttestationSignatureArrayOutput {
 	return o.ApplyT(func(v OccurenceAttestation) []OccurenceAttestationSignature { return v.Signatures }).(OccurenceAttestationSignatureArrayOutput)
 }
@@ -570,7 +577,8 @@ func (o OccurenceAttestationPtrOutput) SerializedPayload() pulumi.StringPtrOutpu
 // Verifier implementations should consider this attestation
 // message verified if at least one signature verifies
 // serializedPayload. See Signature in common.proto for more
-// details on signature structure and verification.  Structure is documented below.
+// details on signature structure and verification.
+// Structure is documented below.
 func (o OccurenceAttestationPtrOutput) Signatures() OccurenceAttestationSignatureArrayOutput {
 	return o.ApplyT(func(v *OccurenceAttestation) []OccurenceAttestationSignature {
 		if v == nil {

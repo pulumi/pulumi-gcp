@@ -16,7 +16,8 @@ class Autoscaler(pulumi.CustomResource):
     define one or more of the policies for an autoscaler: cpuUtilization,
     customMetricUtilizations, and loadBalancingUtilization.
     If none of these are specified, the default will be to autoscale based
-    on cpuUtilization to 0.6 or 60%.  Structure is documented below.
+    on cpuUtilization to 0.6 or 60%.
+    Structure is documented below.
 
       * `cooldownPeriod` (`float`) - The number of seconds that the autoscaler should wait before it
         starts collecting information from a new instance. This prevents
@@ -29,12 +30,14 @@ class Autoscaler(pulumi.CustomResource):
         and time the startup process.
       * `cpuUtilization` (`dict`) - Defines the CPU utilization policy that allows the autoscaler to
         scale based on the average CPU utilization of a managed instance
-        group.  Structure is documented below.
+        group.
+        Structure is documented below.
         * `target` (`float`) - Fraction of backend capacity utilization (set in HTTP(s) load
           balancing configuration) that autoscaler should maintain. Must
           be a positive float value. If not defined, the default is 0.8.
 
-      * `loadBalancingUtilization` (`dict`) - Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+      * `loadBalancingUtilization` (`dict`) - Configuration parameters of autoscaling based on a load balancer.
+        Structure is documented below.
         * `target` (`float`) - Fraction of backend capacity utilization (set in HTTP(s) load
           balancing configuration) that autoscaler should maintain. Must
           be a positive float value. If not defined, the default is 0.8.
@@ -43,7 +46,8 @@ class Autoscaler(pulumi.CustomResource):
         to. This is required when creating or updating an autoscaler. The
         maximum number of replicas should not be lower than minimal number
         of replicas.
-      * `metrics` (`list`) - Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+      * `metrics` (`list`) - Configuration parameters of autoscaling based on a custom metric.
+        Structure is documented below.
         * `filter` (`str`) - A filter string to be used as the filter string for
           a Stackdriver Monitoring TimeSeries.list API call.
           This filter is used to select a specific TimeSeries for
@@ -93,14 +97,18 @@ class Autoscaler(pulumi.CustomResource):
           be a positive float value. If not defined, the default is 0.8.
         * `type` (`str`) - Defines how target utilization value is expressed for a
           Stackdriver Monitoring metric.
+          Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 
       * `minReplicas` (`float`) - The minimum number of replicas that the autoscaler can scale down
         to. This cannot be less than 0. If not provided, autoscaler will
         choose a default value depending on maximum number of instances
         allowed.
       * `mode` (`str`) - Defines operating mode for this policy.
+        Default value is `ON`.
+        Possible values are `OFF`, `ONLY_UP`, and `ON`.
       * `scaleDownControl` (`dict`)
-        * `maxScaledDownReplicas` (`dict`) - A nested object resource  Structure is documented below.
+        * `maxScaledDownReplicas` (`dict`) - A nested object resource
+          Structure is documented below.
           * `fixed` (`float`) - Specifies a fixed number of VM instances. This must be a positive
             integer.
           * `percent` (`float`) - Specifies a percentage of instances between 0 to 100%, inclusive.
@@ -164,7 +172,8 @@ class Autoscaler(pulumi.CustomResource):
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
-               on cpuUtilization to 0.6 or 60%.  Structure is documented below.
+               on cpuUtilization to 0.6 or 60%.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: The identifier (type) of the Stackdriver Monitoring metric.
                The metric cannot have negative values.
@@ -189,12 +198,14 @@ class Autoscaler(pulumi.CustomResource):
             and time the startup process.
           * `cpuUtilization` (`pulumi.Input[dict]`) - Defines the CPU utilization policy that allows the autoscaler to
             scale based on the average CPU utilization of a managed instance
-            group.  Structure is documented below.
+            group.
+            Structure is documented below.
             * `target` (`pulumi.Input[float]`) - Fraction of backend capacity utilization (set in HTTP(s) load
               balancing configuration) that autoscaler should maintain. Must
               be a positive float value. If not defined, the default is 0.8.
 
-          * `loadBalancingUtilization` (`pulumi.Input[dict]`) - Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+          * `loadBalancingUtilization` (`pulumi.Input[dict]`) - Configuration parameters of autoscaling based on a load balancer.
+            Structure is documented below.
             * `target` (`pulumi.Input[float]`) - Fraction of backend capacity utilization (set in HTTP(s) load
               balancing configuration) that autoscaler should maintain. Must
               be a positive float value. If not defined, the default is 0.8.
@@ -203,7 +214,8 @@ class Autoscaler(pulumi.CustomResource):
             to. This is required when creating or updating an autoscaler. The
             maximum number of replicas should not be lower than minimal number
             of replicas.
-          * `metrics` (`pulumi.Input[list]`) - Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+          * `metrics` (`pulumi.Input[list]`) - Configuration parameters of autoscaling based on a custom metric.
+            Structure is documented below.
             * `filter` (`pulumi.Input[str]`) - A filter string to be used as the filter string for
               a Stackdriver Monitoring TimeSeries.list API call.
               This filter is used to select a specific TimeSeries for
@@ -253,14 +265,18 @@ class Autoscaler(pulumi.CustomResource):
               be a positive float value. If not defined, the default is 0.8.
             * `type` (`pulumi.Input[str]`) - Defines how target utilization value is expressed for a
               Stackdriver Monitoring metric.
+              Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 
           * `minReplicas` (`pulumi.Input[float]`) - The minimum number of replicas that the autoscaler can scale down
             to. This cannot be less than 0. If not provided, autoscaler will
             choose a default value depending on maximum number of instances
             allowed.
           * `mode` (`pulumi.Input[str]`) - Defines operating mode for this policy.
+            Default value is `ON`.
+            Possible values are `OFF`, `ONLY_UP`, and `ON`.
           * `scaleDownControl` (`pulumi.Input[dict]`)
-            * `maxScaledDownReplicas` (`pulumi.Input[dict]`) - A nested object resource  Structure is documented below.
+            * `maxScaledDownReplicas` (`pulumi.Input[dict]`) - A nested object resource
+              Structure is documented below.
               * `fixed` (`pulumi.Input[float]`) - Specifies a fixed number of VM instances. This must be a positive
                 integer.
               * `percent` (`pulumi.Input[float]`) - Specifies a percentage of instances between 0 to 100%, inclusive.
@@ -319,7 +335,8 @@ class Autoscaler(pulumi.CustomResource):
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
-               on cpuUtilization to 0.6 or 60%.  Structure is documented below.
+               on cpuUtilization to 0.6 or 60%.
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: The identifier (type) of the Stackdriver Monitoring metric.
@@ -346,12 +363,14 @@ class Autoscaler(pulumi.CustomResource):
             and time the startup process.
           * `cpuUtilization` (`pulumi.Input[dict]`) - Defines the CPU utilization policy that allows the autoscaler to
             scale based on the average CPU utilization of a managed instance
-            group.  Structure is documented below.
+            group.
+            Structure is documented below.
             * `target` (`pulumi.Input[float]`) - Fraction of backend capacity utilization (set in HTTP(s) load
               balancing configuration) that autoscaler should maintain. Must
               be a positive float value. If not defined, the default is 0.8.
 
-          * `loadBalancingUtilization` (`pulumi.Input[dict]`) - Configuration parameters of autoscaling based on a load balancer.  Structure is documented below.
+          * `loadBalancingUtilization` (`pulumi.Input[dict]`) - Configuration parameters of autoscaling based on a load balancer.
+            Structure is documented below.
             * `target` (`pulumi.Input[float]`) - Fraction of backend capacity utilization (set in HTTP(s) load
               balancing configuration) that autoscaler should maintain. Must
               be a positive float value. If not defined, the default is 0.8.
@@ -360,7 +379,8 @@ class Autoscaler(pulumi.CustomResource):
             to. This is required when creating or updating an autoscaler. The
             maximum number of replicas should not be lower than minimal number
             of replicas.
-          * `metrics` (`pulumi.Input[list]`) - Configuration parameters of autoscaling based on a custom metric.  Structure is documented below.
+          * `metrics` (`pulumi.Input[list]`) - Configuration parameters of autoscaling based on a custom metric.
+            Structure is documented below.
             * `filter` (`pulumi.Input[str]`) - A filter string to be used as the filter string for
               a Stackdriver Monitoring TimeSeries.list API call.
               This filter is used to select a specific TimeSeries for
@@ -410,14 +430,18 @@ class Autoscaler(pulumi.CustomResource):
               be a positive float value. If not defined, the default is 0.8.
             * `type` (`pulumi.Input[str]`) - Defines how target utilization value is expressed for a
               Stackdriver Monitoring metric.
+              Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
 
           * `minReplicas` (`pulumi.Input[float]`) - The minimum number of replicas that the autoscaler can scale down
             to. This cannot be less than 0. If not provided, autoscaler will
             choose a default value depending on maximum number of instances
             allowed.
           * `mode` (`pulumi.Input[str]`) - Defines operating mode for this policy.
+            Default value is `ON`.
+            Possible values are `OFF`, `ONLY_UP`, and `ON`.
           * `scaleDownControl` (`pulumi.Input[dict]`)
-            * `maxScaledDownReplicas` (`pulumi.Input[dict]`) - A nested object resource  Structure is documented below.
+            * `maxScaledDownReplicas` (`pulumi.Input[dict]`) - A nested object resource
+              Structure is documented below.
               * `fixed` (`pulumi.Input[float]`) - Specifies a fixed number of VM instances. This must be a positive
                 integer.
               * `percent` (`pulumi.Input[float]`) - Specifies a percentage of instances between 0 to 100%, inclusive.

@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// The project ID to create the application under.
-        /// ~&gt;**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+        /// ~&gt;**NOTE:** GCP only accepts project ID, not project number. If you are using number,
         /// you may get a "Permission denied" error.
         /// </summary>
         [Output("project")]
@@ -188,7 +188,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// The project ID to create the application under.
-        /// ~&gt;**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+        /// ~&gt;**NOTE:** GCP only accepts project ID, not project number. If you are using number,
         /// you may get a "Permission denied" error.
         /// </summary>
         [Input("project")]
@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// The project ID to create the application under.
-        /// ~&gt;**NOTE**: GCP only accepts project ID, not project number. If you are using number,
+        /// ~&gt;**NOTE:** GCP only accepts project ID, not project number. If you are using number,
         /// you may get a "Permission denied" error.
         /// </summary>
         [Input("project")]

@@ -43,13 +43,16 @@ class Reservation(pulumi.CustomResource):
     """
     specific_reservation: pulumi.Output[dict]
     """
-    Reservation for instances with specific machine shapes.  Structure is documented below.
+    Reservation for instances with specific machine shapes.
+    Structure is documented below.
 
       * `count` (`float`) - The number of resources that are allocated.
       * `inUseCount` (`float`) - -
         How many instances are in use.
-      * `instanceProperties` (`dict`) - The instance properties for the reservation.  Structure is documented below.
-        * `guest_accelerators` (`list`) - Guest accelerator type and count.  Structure is documented below.
+      * `instanceProperties` (`dict`) - The instance properties for the reservation.
+        Structure is documented below.
+        * `guest_accelerators` (`list`) - Guest accelerator type and count.
+          Structure is documented below.
           * `acceleratorCount` (`float`) - The number of the guest accelerator cards exposed to
             this instance.
           * `accelerator_type` (`str`) - The full or partial URL of the accelerator type to
@@ -58,9 +61,12 @@ class Reservation(pulumi.CustomResource):
             If you are creating an instance template, specify only the accelerator name.
 
         * `localSsds` (`list`) - The amount of local ssd to reserve with each instance. This
-          reserves disks of type `local-ssd`.  Structure is documented below.
+          reserves disks of type `local-ssd`.
+          Structure is documented below.
           * `disk_size_gb` (`float`) - The size of the disk in base-2 GB.
           * `interface` (`str`) - The disk interface to use for attaching this disk.
+            Default value is `SCSI`.
+            Possible values are `SCSI` and `NVME`.
 
         * `machine_type` (`str`) - The name of the machine type to reserve.
         * `min_cpu_platform` (`str`) - The minimum CPU platform for the reservation. For example,
@@ -113,7 +119,8 @@ class Reservation(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] specific_reservation: Reservation for instances with specific machine shapes.  Structure is documented below.
+        :param pulumi.Input[dict] specific_reservation: Reservation for instances with specific machine shapes.
+               Structure is documented below.
         :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
                consume this reservation. Otherwise, it can be consumed by VMs with
                affinity for any reservation. Defaults to false.
@@ -124,8 +131,10 @@ class Reservation(pulumi.CustomResource):
           * `count` (`pulumi.Input[float]`) - The number of resources that are allocated.
           * `inUseCount` (`pulumi.Input[float]`) - -
             How many instances are in use.
-          * `instanceProperties` (`pulumi.Input[dict]`) - The instance properties for the reservation.  Structure is documented below.
-            * `guest_accelerators` (`pulumi.Input[list]`) - Guest accelerator type and count.  Structure is documented below.
+          * `instanceProperties` (`pulumi.Input[dict]`) - The instance properties for the reservation.
+            Structure is documented below.
+            * `guest_accelerators` (`pulumi.Input[list]`) - Guest accelerator type and count.
+              Structure is documented below.
               * `acceleratorCount` (`pulumi.Input[float]`) - The number of the guest accelerator cards exposed to
                 this instance.
               * `accelerator_type` (`pulumi.Input[str]`) - The full or partial URL of the accelerator type to
@@ -134,9 +143,12 @@ class Reservation(pulumi.CustomResource):
                 If you are creating an instance template, specify only the accelerator name.
 
             * `localSsds` (`pulumi.Input[list]`) - The amount of local ssd to reserve with each instance. This
-              reserves disks of type `local-ssd`.  Structure is documented below.
+              reserves disks of type `local-ssd`.
+              Structure is documented below.
               * `disk_size_gb` (`pulumi.Input[float]`) - The size of the disk in base-2 GB.
               * `interface` (`pulumi.Input[str]`) - The disk interface to use for attaching this disk.
+                Default value is `SCSI`.
+                Possible values are `SCSI` and `NVME`.
 
             * `machine_type` (`pulumi.Input[str]`) - The name of the machine type to reserve.
             * `min_cpu_platform` (`pulumi.Input[str]`) - The minimum CPU platform for the reservation. For example,
@@ -203,7 +215,8 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[dict] specific_reservation: Reservation for instances with specific machine shapes.  Structure is documented below.
+        :param pulumi.Input[dict] specific_reservation: Reservation for instances with specific machine shapes.
+               Structure is documented below.
         :param pulumi.Input[bool] specific_reservation_required: When set to true, only VMs that target this reservation by name can
                consume this reservation. Otherwise, it can be consumed by VMs with
                affinity for any reservation. Defaults to false.
@@ -215,8 +228,10 @@ class Reservation(pulumi.CustomResource):
           * `count` (`pulumi.Input[float]`) - The number of resources that are allocated.
           * `inUseCount` (`pulumi.Input[float]`) - -
             How many instances are in use.
-          * `instanceProperties` (`pulumi.Input[dict]`) - The instance properties for the reservation.  Structure is documented below.
-            * `guest_accelerators` (`pulumi.Input[list]`) - Guest accelerator type and count.  Structure is documented below.
+          * `instanceProperties` (`pulumi.Input[dict]`) - The instance properties for the reservation.
+            Structure is documented below.
+            * `guest_accelerators` (`pulumi.Input[list]`) - Guest accelerator type and count.
+              Structure is documented below.
               * `acceleratorCount` (`pulumi.Input[float]`) - The number of the guest accelerator cards exposed to
                 this instance.
               * `accelerator_type` (`pulumi.Input[str]`) - The full or partial URL of the accelerator type to
@@ -225,9 +240,12 @@ class Reservation(pulumi.CustomResource):
                 If you are creating an instance template, specify only the accelerator name.
 
             * `localSsds` (`pulumi.Input[list]`) - The amount of local ssd to reserve with each instance. This
-              reserves disks of type `local-ssd`.  Structure is documented below.
+              reserves disks of type `local-ssd`.
+              Structure is documented below.
               * `disk_size_gb` (`pulumi.Input[float]`) - The size of the disk in base-2 GB.
               * `interface` (`pulumi.Input[str]`) - The disk interface to use for attaching this disk.
+                Default value is `SCSI`.
+                Possible values are `SCSI` and `NVME`.
 
             * `machine_type` (`pulumi.Input[str]`) - The name of the machine type to reserve.
             * `min_cpu_platform` (`pulumi.Input[str]`) - The minimum CPU platform for the reservation. For example,

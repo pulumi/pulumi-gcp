@@ -12,7 +12,8 @@ from .. import utilities, tables
 class ApplicationUrlDispatchRules(pulumi.CustomResource):
     dispatch_rules: pulumi.Output[list]
     """
-    Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
+    Rules to match an HTTP request and dispatch that request to a service.
+    Structure is documented below.
 
       * `domain` (`str`) - Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
         Defaults to matching all domains: "*".
@@ -38,7 +39,8 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
+        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
@@ -87,7 +89,8 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.  Structure is documented below.
+        :param pulumi.Input[list] dispatch_rules: Rules to match an HTTP request and dispatch that request to a service.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 

@@ -82,6 +82,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Defines how target utilization value is expressed for a
         /// Stackdriver Monitoring metric.
+        /// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

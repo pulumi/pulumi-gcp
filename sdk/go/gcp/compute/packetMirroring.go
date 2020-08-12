@@ -27,19 +27,23 @@ type PacketMirroring struct {
 	// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
 	// that will be used as collector for mirrored traffic. The
 	// specified forwarding rule must have isMirroringCollector
-	// set to true.  Structure is documented below.
+	// set to true.
+	// Structure is documented below.
 	CollectorIlb PacketMirroringCollectorIlbOutput `pulumi:"collectorIlb"`
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
+	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
+	// Structure is documented below.
 	Filter PacketMirroringFilterPtrOutput `pulumi:"filter"`
-	// A means of specifying which resources to mirror.  Structure is documented below.
+	// A means of specifying which resources to mirror.
+	// Structure is documented below.
 	MirroredResources PacketMirroringMirroredResourcesOutput `pulumi:"mirroredResources"`
 	// The name of the packet mirroring rule
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the mirrored VPC network. Only packets in this network
 	// will be mirrored. All mirrored VMs should have a NIC in the given
-	// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+	// network. All mirrored subnetworks should belong to the given network.
+	// Structure is documented below.
 	Network PacketMirroringNetworkOutput `pulumi:"network"`
 	// Since only one rule can be active at a time, priority is
 	// used to break ties in the case of two rules that apply to
@@ -93,19 +97,23 @@ type packetMirroringState struct {
 	// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
 	// that will be used as collector for mirrored traffic. The
 	// specified forwarding rule must have isMirroringCollector
-	// set to true.  Structure is documented below.
+	// set to true.
+	// Structure is documented below.
 	CollectorIlb *PacketMirroringCollectorIlb `pulumi:"collectorIlb"`
 	// A human-readable description of the rule.
 	Description *string `pulumi:"description"`
-	// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
+	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
+	// Structure is documented below.
 	Filter *PacketMirroringFilter `pulumi:"filter"`
-	// A means of specifying which resources to mirror.  Structure is documented below.
+	// A means of specifying which resources to mirror.
+	// Structure is documented below.
 	MirroredResources *PacketMirroringMirroredResources `pulumi:"mirroredResources"`
 	// The name of the packet mirroring rule
 	Name *string `pulumi:"name"`
 	// Specifies the mirrored VPC network. Only packets in this network
 	// will be mirrored. All mirrored VMs should have a NIC in the given
-	// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+	// network. All mirrored subnetworks should belong to the given network.
+	// Structure is documented below.
 	Network *PacketMirroringNetwork `pulumi:"network"`
 	// Since only one rule can be active at a time, priority is
 	// used to break ties in the case of two rules that apply to
@@ -123,19 +131,23 @@ type PacketMirroringState struct {
 	// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
 	// that will be used as collector for mirrored traffic. The
 	// specified forwarding rule must have isMirroringCollector
-	// set to true.  Structure is documented below.
+	// set to true.
+	// Structure is documented below.
 	CollectorIlb PacketMirroringCollectorIlbPtrInput
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrInput
-	// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
+	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
+	// Structure is documented below.
 	Filter PacketMirroringFilterPtrInput
-	// A means of specifying which resources to mirror.  Structure is documented below.
+	// A means of specifying which resources to mirror.
+	// Structure is documented below.
 	MirroredResources PacketMirroringMirroredResourcesPtrInput
 	// The name of the packet mirroring rule
 	Name pulumi.StringPtrInput
 	// Specifies the mirrored VPC network. Only packets in this network
 	// will be mirrored. All mirrored VMs should have a NIC in the given
-	// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+	// network. All mirrored subnetworks should belong to the given network.
+	// Structure is documented below.
 	Network PacketMirroringNetworkPtrInput
 	// Since only one rule can be active at a time, priority is
 	// used to break ties in the case of two rules that apply to
@@ -157,19 +169,23 @@ type packetMirroringArgs struct {
 	// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
 	// that will be used as collector for mirrored traffic. The
 	// specified forwarding rule must have isMirroringCollector
-	// set to true.  Structure is documented below.
+	// set to true.
+	// Structure is documented below.
 	CollectorIlb PacketMirroringCollectorIlb `pulumi:"collectorIlb"`
 	// A human-readable description of the rule.
 	Description *string `pulumi:"description"`
-	// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
+	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
+	// Structure is documented below.
 	Filter *PacketMirroringFilter `pulumi:"filter"`
-	// A means of specifying which resources to mirror.  Structure is documented below.
+	// A means of specifying which resources to mirror.
+	// Structure is documented below.
 	MirroredResources PacketMirroringMirroredResources `pulumi:"mirroredResources"`
 	// The name of the packet mirroring rule
 	Name *string `pulumi:"name"`
 	// Specifies the mirrored VPC network. Only packets in this network
 	// will be mirrored. All mirrored VMs should have a NIC in the given
-	// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+	// network. All mirrored subnetworks should belong to the given network.
+	// Structure is documented below.
 	Network PacketMirroringNetwork `pulumi:"network"`
 	// Since only one rule can be active at a time, priority is
 	// used to break ties in the case of two rules that apply to
@@ -188,19 +204,23 @@ type PacketMirroringArgs struct {
 	// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
 	// that will be used as collector for mirrored traffic. The
 	// specified forwarding rule must have isMirroringCollector
-	// set to true.  Structure is documented below.
+	// set to true.
+	// Structure is documented below.
 	CollectorIlb PacketMirroringCollectorIlbInput
 	// A human-readable description of the rule.
 	Description pulumi.StringPtrInput
-	// A filter for mirrored traffic.  If unset, all traffic is mirrored.  Structure is documented below.
+	// A filter for mirrored traffic.  If unset, all traffic is mirrored.
+	// Structure is documented below.
 	Filter PacketMirroringFilterPtrInput
-	// A means of specifying which resources to mirror.  Structure is documented below.
+	// A means of specifying which resources to mirror.
+	// Structure is documented below.
 	MirroredResources PacketMirroringMirroredResourcesInput
 	// The name of the packet mirroring rule
 	Name pulumi.StringPtrInput
 	// Specifies the mirrored VPC network. Only packets in this network
 	// will be mirrored. All mirrored VMs should have a NIC in the given
-	// network. All mirrored subnetworks should belong to the given network.  Structure is documented below.
+	// network. All mirrored subnetworks should belong to the given network.
+	// Structure is documented below.
 	Network PacketMirroringNetworkInput
 	// Since only one rule can be active at a time, priority is
 	// used to break ties in the case of two rules that apply to

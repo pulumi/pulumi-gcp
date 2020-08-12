@@ -51,7 +51,8 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.DicomStoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
@@ -142,7 +143,8 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.DicomStoreNotificationConfigArgs>? NotificationConfig { get; set; }
@@ -188,7 +190,8 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.DicomStoreNotificationConfigGetArgs>? NotificationConfig { get; set; }

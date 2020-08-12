@@ -14,12 +14,14 @@ namespace Pulumi.Gcp.BinaryAuthorization.Inputs
     {
         /// <summary>
         /// The action when a pod creation is denied by the admission rule.
+        /// Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
         /// </summary>
         [Input("enforcementMode", required: true)]
         public Input<string> EnforcementMode { get; set; } = null!;
 
         /// <summary>
         /// How this admission rule will be evaluated.
+        /// Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
         /// </summary>
         [Input("evaluationMode", required: true)]
         public Input<string> EvaluationMode { get; set; } = null!;

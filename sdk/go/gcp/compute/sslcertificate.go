@@ -29,7 +29,8 @@ type SSLCertificate struct {
 
 	// The certificate in PEM format.
 	// The certificate chain must be no greater than 5 certs long.
-	// The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The chain must include at least one intermediate cert.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// The unique identifier for the resource.
 	CertificateId pulumi.IntOutput `pulumi:"certificateId"`
@@ -48,7 +49,8 @@ type SSLCertificate struct {
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
-	// The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The write-only private key in PEM format.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -93,7 +95,8 @@ func GetSSLCertificate(ctx *pulumi.Context,
 type sslcertificateState struct {
 	// The certificate in PEM format.
 	// The certificate chain must be no greater than 5 certs long.
-	// The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The chain must include at least one intermediate cert.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Certificate *string `pulumi:"certificate"`
 	// The unique identifier for the resource.
 	CertificateId *int `pulumi:"certificateId"`
@@ -112,7 +115,8 @@ type sslcertificateState struct {
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
-	// The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The write-only private key in PEM format.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PrivateKey *string `pulumi:"privateKey"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -124,7 +128,8 @@ type sslcertificateState struct {
 type SSLCertificateState struct {
 	// The certificate in PEM format.
 	// The certificate chain must be no greater than 5 certs long.
-	// The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The chain must include at least one intermediate cert.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Certificate pulumi.StringPtrInput
 	// The unique identifier for the resource.
 	CertificateId pulumi.IntPtrInput
@@ -143,7 +148,8 @@ type SSLCertificateState struct {
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
-	// The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The write-only private key in PEM format.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PrivateKey pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -159,7 +165,8 @@ func (SSLCertificateState) ElementType() reflect.Type {
 type sslcertificateArgs struct {
 	// The certificate in PEM format.
 	// The certificate chain must be no greater than 5 certs long.
-	// The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The chain must include at least one intermediate cert.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Certificate string `pulumi:"certificate"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -174,7 +181,8 @@ type sslcertificateArgs struct {
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
-	// The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The write-only private key in PEM format.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PrivateKey string `pulumi:"privateKey"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -185,7 +193,8 @@ type sslcertificateArgs struct {
 type SSLCertificateArgs struct {
 	// The certificate in PEM format.
 	// The certificate chain must be no greater than 5 certs long.
-	// The chain must include at least one intermediate cert.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The chain must include at least one intermediate cert.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Certificate pulumi.StringInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -200,7 +209,8 @@ type SSLCertificateArgs struct {
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
-	// The write-only private key in PEM format.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// The write-only private key in PEM format.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PrivateKey pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

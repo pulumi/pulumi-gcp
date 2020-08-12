@@ -49,7 +49,8 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
-     * Cloud SQL properties.  Structure is documented below.
+     * Cloud SQL properties.
+     * Structure is documented below.
      */
     public readonly cloudSql!: pulumi.Output<outputs.bigquery.ConnectionCloudSql>;
     /**
@@ -136,7 +137,8 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
-     * Cloud SQL properties.  Structure is documented below.
+     * Cloud SQL properties.
+     * Structure is documented below.
      */
     readonly cloudSql?: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
     /**
@@ -179,7 +181,8 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
-     * Cloud SQL properties.  Structure is documented below.
+     * Cloud SQL properties.
+     * Structure is documented below.
      */
     readonly cloudSql: pulumi.Input<inputs.bigquery.ConnectionCloudSql>;
     /**

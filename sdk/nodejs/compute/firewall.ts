@@ -59,7 +59,8 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * The list of ALLOW rules specified by this firewall. Each rule
      * specifies a protocol and port-range tuple that describes a permitted
-     * connection.  Structure is documented below.
+     * connection.
+     * Structure is documented below.
      */
     public readonly allows!: pulumi.Output<outputs.compute.FirewallAllow[] | undefined>;
     /**
@@ -68,7 +69,8 @@ export class Firewall extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies
-     * a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+     * a protocol and port-range tuple that describes a denied connection.
+     * Structure is documented below.
      */
     public readonly denies!: pulumi.Output<outputs.compute.FirewallDeny[] | undefined>;
     /**
@@ -87,6 +89,7 @@ export class Firewall extends pulumi.CustomResource {
      * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
      * sourceRanges OR sourceTags.
+     * Possible values are `INGRESS` and `EGRESS`.
      */
     public readonly direction!: pulumi.Output<string>;
     /**
@@ -105,7 +108,8 @@ export class Firewall extends pulumi.CustomResource {
     public readonly enableLogging!: pulumi.Output<boolean>;
     /**
      * This field denotes the logging options for a particular firewall rule.
-     * If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+     * If defined, logging is enabled, and logs will be exported to Cloud Logging.
+     * Structure is documented below.
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.FirewallLogConfig | undefined>;
     /**
@@ -268,7 +272,8 @@ export interface FirewallState {
     /**
      * The list of ALLOW rules specified by this firewall. Each rule
      * specifies a protocol and port-range tuple that describes a permitted
-     * connection.  Structure is documented below.
+     * connection.
+     * Structure is documented below.
      */
     readonly allows?: pulumi.Input<pulumi.Input<inputs.compute.FirewallAllow>[]>;
     /**
@@ -277,7 +282,8 @@ export interface FirewallState {
     readonly creationTimestamp?: pulumi.Input<string>;
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies
-     * a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+     * a protocol and port-range tuple that describes a denied connection.
+     * Structure is documented below.
      */
     readonly denies?: pulumi.Input<pulumi.Input<inputs.compute.FirewallDeny>[]>;
     /**
@@ -296,6 +302,7 @@ export interface FirewallState {
      * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
      * sourceRanges OR sourceTags.
+     * Possible values are `INGRESS` and `EGRESS`.
      */
     readonly direction?: pulumi.Input<string>;
     /**
@@ -314,7 +321,8 @@ export interface FirewallState {
     readonly enableLogging?: pulumi.Input<boolean>;
     /**
      * This field denotes the logging options for a particular firewall rule.
-     * If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+     * If defined, logging is enabled, and logs will be exported to Cloud Logging.
+     * Structure is documented below.
      */
     readonly logConfig?: pulumi.Input<inputs.compute.FirewallLogConfig>;
     /**
@@ -411,12 +419,14 @@ export interface FirewallArgs {
     /**
      * The list of ALLOW rules specified by this firewall. Each rule
      * specifies a protocol and port-range tuple that describes a permitted
-     * connection.  Structure is documented below.
+     * connection.
+     * Structure is documented below.
      */
     readonly allows?: pulumi.Input<pulumi.Input<inputs.compute.FirewallAllow>[]>;
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies
-     * a protocol and port-range tuple that describes a denied connection.  Structure is documented below.
+     * a protocol and port-range tuple that describes a denied connection.
+     * Structure is documented below.
      */
     readonly denies?: pulumi.Input<pulumi.Input<inputs.compute.FirewallDeny>[]>;
     /**
@@ -435,6 +445,7 @@ export interface FirewallArgs {
      * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
      * sourceRanges OR sourceTags.
+     * Possible values are `INGRESS` and `EGRESS`.
      */
     readonly direction?: pulumi.Input<string>;
     /**
@@ -453,7 +464,8 @@ export interface FirewallArgs {
     readonly enableLogging?: pulumi.Input<boolean>;
     /**
      * This field denotes the logging options for a particular firewall rule.
-     * If defined, logging is enabled, and logs will be exported to Cloud Logging.  Structure is documented below.
+     * If defined, logging is enabled, and logs will be exported to Cloud Logging.
+     * Structure is documented below.
      */
     readonly logConfig?: pulumi.Input<inputs.compute.FirewallLogConfig>;
     /**

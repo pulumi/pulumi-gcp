@@ -19,10 +19,13 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// conditions must be satisfied for the AccessLevel to be applied. If
         /// OR is used, at least one Condition in conditions must be satisfied
         /// for the AccessLevel to be applied.
+        /// Default value is `AND`.
+        /// Possible values are `AND` and `OR`.
         /// </summary>
         public readonly string? CombiningFunction;
         /// <summary>
-        /// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+        /// A set of requirements for the AccessLevel to be granted.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessLevelBasicCondition> Conditions;
 

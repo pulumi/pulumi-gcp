@@ -84,7 +84,8 @@ export class Reservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Reservation for instances with specific machine shapes.  Structure is documented below.
+     * Reservation for instances with specific machine shapes.
+     * Structure is documented below.
      */
     public readonly specificReservation!: pulumi.Output<outputs.compute.ReservationSpecificReservation>;
     /**
@@ -190,7 +191,8 @@ export interface ReservationState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * Reservation for instances with specific machine shapes.  Structure is documented below.
+     * Reservation for instances with specific machine shapes.
+     * Structure is documented below.
      */
     readonly specificReservation?: pulumi.Input<inputs.compute.ReservationSpecificReservation>;
     /**
@@ -233,7 +235,8 @@ export interface ReservationArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Reservation for instances with specific machine shapes.  Structure is documented below.
+     * Reservation for instances with specific machine shapes.
+     * Structure is documented below.
      */
     readonly specificReservation: pulumi.Input<inputs.compute.ReservationSpecificReservation>;
     /**

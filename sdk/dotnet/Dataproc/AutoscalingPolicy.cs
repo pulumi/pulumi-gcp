@@ -17,7 +17,8 @@ namespace Pulumi.Gcp.Dataproc
     public partial class AutoscalingPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// Basic algorithm for autoscaling.  Structure is documented below.
+        /// Basic algorithm for autoscaling.
+        /// Structure is documented below.
         /// </summary>
         [Output("basicAlgorithm")]
         public Output<Outputs.AutoscalingPolicyBasicAlgorithm?> BasicAlgorithm { get; private set; } = null!;
@@ -51,13 +52,15 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+        /// Describes how the autoscaler will operate for secondary workers.
+        /// Structure is documented below.
         /// </summary>
         [Output("secondaryWorkerConfig")]
         public Output<Outputs.AutoscalingPolicySecondaryWorkerConfig?> SecondaryWorkerConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+        /// Describes how the autoscaler will operate for primary workers.
+        /// Structure is documented below.
         /// </summary>
         [Output("workerConfig")]
         public Output<Outputs.AutoscalingPolicyWorkerConfig?> WorkerConfig { get; private set; } = null!;
@@ -109,7 +112,8 @@ namespace Pulumi.Gcp.Dataproc
     public sealed class AutoscalingPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Basic algorithm for autoscaling.  Structure is documented below.
+        /// Basic algorithm for autoscaling.
+        /// Structure is documented below.
         /// </summary>
         [Input("basicAlgorithm")]
         public Input<Inputs.AutoscalingPolicyBasicAlgorithmArgs>? BasicAlgorithm { get; set; }
@@ -137,13 +141,15 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+        /// Describes how the autoscaler will operate for secondary workers.
+        /// Structure is documented below.
         /// </summary>
         [Input("secondaryWorkerConfig")]
         public Input<Inputs.AutoscalingPolicySecondaryWorkerConfigArgs>? SecondaryWorkerConfig { get; set; }
 
         /// <summary>
-        /// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+        /// Describes how the autoscaler will operate for primary workers.
+        /// Structure is documented below.
         /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.AutoscalingPolicyWorkerConfigArgs>? WorkerConfig { get; set; }
@@ -156,7 +162,8 @@ namespace Pulumi.Gcp.Dataproc
     public sealed class AutoscalingPolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Basic algorithm for autoscaling.  Structure is documented below.
+        /// Basic algorithm for autoscaling.
+        /// Structure is documented below.
         /// </summary>
         [Input("basicAlgorithm")]
         public Input<Inputs.AutoscalingPolicyBasicAlgorithmGetArgs>? BasicAlgorithm { get; set; }
@@ -190,13 +197,15 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Describes how the autoscaler will operate for secondary workers.  Structure is documented below.
+        /// Describes how the autoscaler will operate for secondary workers.
+        /// Structure is documented below.
         /// </summary>
         [Input("secondaryWorkerConfig")]
         public Input<Inputs.AutoscalingPolicySecondaryWorkerConfigGetArgs>? SecondaryWorkerConfig { get; set; }
 
         /// <summary>
-        /// Describes how the autoscaler will operate for primary workers.  Structure is documented below.
+        /// Describes how the autoscaler will operate for primary workers.
+        /// Structure is documented below.
         /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.AutoscalingPolicyWorkerConfigGetArgs>? WorkerConfig { get; set; }

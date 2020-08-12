@@ -12,7 +12,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, memory_size_gb=None, name=None, port=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
+    def __init__(__self__, alternative_location_id=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, id=None, labels=None, location_id=None, memory_size_gb=None, name=None, persistence_iam_identity=None, port=None, project=None, redis_configs=None, redis_version=None, region=None, reserved_ip_range=None, tier=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         __self__.alternative_location_id = alternative_location_id
@@ -56,6 +56,9 @@ class GetInstanceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+        if persistence_iam_identity and not isinstance(persistence_iam_identity, str):
+            raise TypeError("Expected argument 'persistence_iam_identity' to be a str")
+        __self__.persistence_iam_identity = persistence_iam_identity
         if port and not isinstance(port, float):
             raise TypeError("Expected argument 'port' to be a float")
         __self__.port = port
@@ -98,6 +101,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             location_id=self.location_id,
             memory_size_gb=self.memory_size_gb,
             name=self.name,
+            persistence_iam_identity=self.persistence_iam_identity,
             port=self.port,
             project=self.project,
             redis_configs=self.redis_configs,
@@ -144,6 +148,7 @@ def get_instance(name=None,project=None,region=None,opts=None):
         location_id=__ret__.get('locationId'),
         memory_size_gb=__ret__.get('memorySizeGb'),
         name=__ret__.get('name'),
+        persistence_iam_identity=__ret__.get('persistenceIamIdentity'),
         port=__ret__.get('port'),
         project=__ret__.get('project'),
         redis_configs=__ret__.get('redisConfigs'),

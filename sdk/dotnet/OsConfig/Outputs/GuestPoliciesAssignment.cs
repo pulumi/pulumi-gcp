@@ -15,7 +15,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     {
         /// <summary>
         /// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
-        /// for example "env=prod or env=staging".  Structure is documented below.
+        /// for example "env=prod or env=staging".
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestPoliciesAssignmentGroupLabel> GroupLabels;
         /// <summary>
@@ -35,7 +36,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         public readonly ImmutableArray<string> Instances;
         /// <summary>
         /// Targets VM instances matching at least one of the following OS types.
-        /// VM instances must match all supplied criteria for a given OsType to be included.  Structure is documented below.
+        /// VM instances must match all supplied criteria for a given OsType to be included.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestPoliciesAssignmentOsType> OsTypes;
         /// <summary>

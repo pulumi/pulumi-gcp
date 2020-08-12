@@ -29,7 +29,8 @@ class Disk(pulumi.CustomResource):
     the disk.
     If you do not provide an encryption key when creating the disk, then
     the disk will be encrypted using an automatically generated key and
-    you do not need to provide a key to use the disk later.  Structure is documented below.
+    you do not need to provide a key to use the disk later.
+    Structure is documented below.
 
       * `kmsKeySelfLink` (`str`) - The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
         in the cloud console. Your project's Compute Engine System service account
@@ -128,7 +129,8 @@ class Disk(pulumi.CustomResource):
     source_image_encryption_key: pulumi.Output[dict]
     """
     The customer-supplied encryption key of the source image. Required if
-    the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+    the source image is protected by a customer-supplied encryption key.
+    Structure is documented below.
 
       * `kmsKeySelfLink` (`str`) - The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
         in the cloud console. Your project's Compute Engine System service account
@@ -151,7 +153,8 @@ class Disk(pulumi.CustomResource):
     """
     The customer-supplied encryption key of the source snapshot. Required
     if the source snapshot is protected by a customer-supplied encryption
-    key.  Structure is documented below.
+    key.
+    Structure is documented below.
 
       * `kmsKeySelfLink` (`str`) - The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
         in the cloud console. Your project's Compute Engine System service account
@@ -224,7 +227,8 @@ class Disk(pulumi.CustomResource):
                the disk.
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
-               you do not need to provide a key to use the disk later.  Structure is documented below.
+               you do not need to provide a key to use the disk later.
+               Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
                one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
                `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -269,10 +273,12 @@ class Disk(pulumi.CustomResource):
                * `global/snapshots/snapshot`
                * `snapshot`
         :param pulumi.Input[dict] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
-               the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[dict] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
-               key.  Structure is documented below.
+               key.
+               Structure is documented below.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
@@ -381,7 +387,8 @@ class Disk(pulumi.CustomResource):
                the disk.
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
-               you do not need to provide a key to use the disk later.  Structure is documented below.
+               you do not need to provide a key to use the disk later.
+               Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
                one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
                `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -430,13 +437,15 @@ class Disk(pulumi.CustomResource):
                * `global/snapshots/snapshot`
                * `snapshot`
         :param pulumi.Input[dict] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
-               the source image is protected by a customer-supplied encryption key.  Structure is documented below.
+               the source image is protected by a customer-supplied encryption key.
+               Structure is documented below.
         :param pulumi.Input[str] source_image_id: The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
                persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
                under the same name, the source image ID would identify the exact version of the image that was used.
         :param pulumi.Input[dict] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
-               key.  Structure is documented below.
+               key.
+               Structure is documented below.
         :param pulumi.Input[str] source_snapshot_id: The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
                this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
                recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.

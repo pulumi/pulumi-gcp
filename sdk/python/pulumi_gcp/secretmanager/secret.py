@@ -37,11 +37,14 @@ class Secret(pulumi.CustomResource):
     replication: pulumi.Output[dict]
     """
     The replication policy of the secret data attached to the Secret. It cannot be changed
-    after the Secret has been created.  Structure is documented below.
+    after the Secret has been created.
+    Structure is documented below.
 
       * `automatic` (`bool`) - The Secret will automatically be replicated without any restrictions.
-      * `userManaged` (`dict`) - The Secret will automatically be replicated without any restrictions.  Structure is documented below.
-        * `replicas` (`list`) - The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+      * `userManaged` (`dict`) - The Secret will automatically be replicated without any restrictions.
+        Structure is documented below.
+        * `replicas` (`list`) - The list of Replicas for this Secret. Cannot be empty.
+          Structure is documented below.
           * `location` (`str`) - The canonical IDs of the location to replicate data. For example: "us-east1".
     """
     secret_id: pulumi.Output[str]
@@ -71,14 +74,17 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
-               after the Secret has been created.  Structure is documented below.
+               after the Secret has been created.
+               Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
 
         The **replication** object supports the following:
 
           * `automatic` (`pulumi.Input[bool]`) - The Secret will automatically be replicated without any restrictions.
-          * `userManaged` (`pulumi.Input[dict]`) - The Secret will automatically be replicated without any restrictions.  Structure is documented below.
-            * `replicas` (`pulumi.Input[list]`) - The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+          * `userManaged` (`pulumi.Input[dict]`) - The Secret will automatically be replicated without any restrictions.
+            Structure is documented below.
+            * `replicas` (`pulumi.Input[list]`) - The list of Replicas for this Secret. Cannot be empty.
+              Structure is documented below.
               * `location` (`pulumi.Input[str]`) - The canonical IDs of the location to replicate data. For example: "us-east1".
         """
         if __name__ is not None:
@@ -136,14 +142,17 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[dict] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
-               after the Secret has been created.  Structure is documented below.
+               after the Secret has been created.
+               Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
 
         The **replication** object supports the following:
 
           * `automatic` (`pulumi.Input[bool]`) - The Secret will automatically be replicated without any restrictions.
-          * `userManaged` (`pulumi.Input[dict]`) - The Secret will automatically be replicated without any restrictions.  Structure is documented below.
-            * `replicas` (`pulumi.Input[list]`) - The list of Replicas for this Secret. Cannot be empty.  Structure is documented below.
+          * `userManaged` (`pulumi.Input[dict]`) - The Secret will automatically be replicated without any restrictions.
+            Structure is documented below.
+            * `replicas` (`pulumi.Input[list]`) - The list of Replicas for this Secret. Cannot be empty.
+              Structure is documented below.
               * `location` (`pulumi.Input[str]`) - The canonical IDs of the location to replicate data. For example: "us-east1".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

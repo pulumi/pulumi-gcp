@@ -87,7 +87,8 @@ namespace Pulumi.Gcp.Monitoring
         /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
         /// in the `labels` map in the api request.
         /// Credentials may not be specified in both locations and will cause an error. Changing from one location
-        /// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+        /// to a different credential configuration in the config will require an apply to update state.
+        /// Structure is documented below.
         /// </summary>
         [Output("sensitiveLabels")]
         public Output<Outputs.NotificationChannelSensitiveLabels?> SensitiveLabels { get; private set; } = null!;
@@ -210,7 +211,8 @@ namespace Pulumi.Gcp.Monitoring
         /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
         /// in the `labels` map in the api request.
         /// Credentials may not be specified in both locations and will cause an error. Changing from one location
-        /// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+        /// to a different credential configuration in the config will require an apply to update state.
+        /// Structure is documented below.
         /// </summary>
         [Input("sensitiveLabels")]
         public Input<Inputs.NotificationChannelSensitiveLabelsArgs>? SensitiveLabels { get; set; }
@@ -295,7 +297,8 @@ namespace Pulumi.Gcp.Monitoring
         /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
         /// in the `labels` map in the api request.
         /// Credentials may not be specified in both locations and will cause an error. Changing from one location
-        /// to a different credential configuration in the config will require an apply to update state.  Structure is documented below.
+        /// to a different credential configuration in the config will require an apply to update state.
+        /// Structure is documented below.
         /// </summary>
         [Input("sensitiveLabels")]
         public Input<Inputs.NotificationChannelSensitiveLabelsGetArgs>? SensitiveLabels { get; set; }

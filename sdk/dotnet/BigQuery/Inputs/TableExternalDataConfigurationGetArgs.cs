@@ -72,7 +72,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// A JSON schema for the external table. Schema is required
         /// for CSV and JSON formats if autodetect is not on. Schema is disallowed
         /// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-        /// ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the
+        /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
         /// string will create a diff, even if the JSON itself hasn't changed.
         /// Furthermore drift for this field cannot not be detected because BigQuery
         /// only uses this schema to compute the effective schema for the table, therefore

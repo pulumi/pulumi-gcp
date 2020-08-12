@@ -182,6 +182,8 @@ func (o InstanceFileSharesPtrOutput) NfsExportOptions() InstanceFileSharesNfsExp
 type InstanceFileSharesNfsExportOption struct {
 	// Either READ_ONLY, for allowing only read requests on the exported directory,
 	// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+	// Default value is `READ_WRITE`.
+	// Possible values are `READ_ONLY` and `READ_WRITE`.
 	AccessMode *string `pulumi:"accessMode"`
 	// An integer representing the anonymous group id with a default value of 65534.
 	// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
@@ -197,6 +199,8 @@ type InstanceFileSharesNfsExportOption struct {
 	IpRanges []string `pulumi:"ipRanges"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
 	// for not allowing root access. The default is NO_ROOT_SQUASH.
+	// Default value is `NO_ROOT_SQUASH`.
+	// Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
 	SquashMode *string `pulumi:"squashMode"`
 }
 
@@ -214,6 +218,8 @@ type InstanceFileSharesNfsExportOptionInput interface {
 type InstanceFileSharesNfsExportOptionArgs struct {
 	// Either READ_ONLY, for allowing only read requests on the exported directory,
 	// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+	// Default value is `READ_WRITE`.
+	// Possible values are `READ_ONLY` and `READ_WRITE`.
 	AccessMode pulumi.StringPtrInput `pulumi:"accessMode"`
 	// An integer representing the anonymous group id with a default value of 65534.
 	// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
@@ -229,6 +235,8 @@ type InstanceFileSharesNfsExportOptionArgs struct {
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
 	// for not allowing root access. The default is NO_ROOT_SQUASH.
+	// Default value is `NO_ROOT_SQUASH`.
+	// Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
 	SquashMode pulumi.StringPtrInput `pulumi:"squashMode"`
 }
 
@@ -285,6 +293,8 @@ func (o InstanceFileSharesNfsExportOptionOutput) ToInstanceFileSharesNfsExportOp
 
 // Either READ_ONLY, for allowing only read requests on the exported directory,
 // or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
+// Default value is `READ_WRITE`.
+// Possible values are `READ_ONLY` and `READ_WRITE`.
 func (o InstanceFileSharesNfsExportOptionOutput) AccessMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
 }
@@ -312,6 +322,8 @@ func (o InstanceFileSharesNfsExportOptionOutput) IpRanges() pulumi.StringArrayOu
 
 // Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
 // for not allowing root access. The default is NO_ROOT_SQUASH.
+// Default value is `NO_ROOT_SQUASH`.
+// Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
 func (o InstanceFileSharesNfsExportOptionOutput) SquashMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) *string { return v.SquashMode }).(pulumi.StringPtrOutput)
 }

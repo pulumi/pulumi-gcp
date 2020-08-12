@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Kms
     /// <summary>
     /// Encrypts secret data with Google Cloud KMS and provides access to the ciphertext.
     /// 
-    /// &gt; **NOTE**: Using this resource will allow you to conceal secret data within your
+    /// &gt; **NOTE:** Using this resource will allow you to conceal secret data within your
     /// resource definitions, but it does not take care of protecting that data in the
     /// logging output, plan output, or state output.  Please take care to secure your secret
     /// data outside of resource definitions.
@@ -31,7 +31,8 @@ namespace Pulumi.Gcp.Kms
     public partial class SecretCiphertext : Pulumi.CustomResource
     {
         /// <summary>
-        /// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The additional authenticated data used for integrity checks during encryption and decryption.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("additionalAuthenticatedData")]
         public Output<string?> AdditionalAuthenticatedData { get; private set; } = null!;
@@ -50,7 +51,8 @@ namespace Pulumi.Gcp.Kms
         public Output<string> CryptoKey { get; private set; } = null!;
 
         /// <summary>
-        /// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The plaintext to be encrypted.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("plaintext")]
         public Output<string> Plaintext { get; private set; } = null!;
@@ -102,7 +104,8 @@ namespace Pulumi.Gcp.Kms
     public sealed class SecretCiphertextArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The additional authenticated data used for integrity checks during encryption and decryption.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("additionalAuthenticatedData")]
         public Input<string>? AdditionalAuthenticatedData { get; set; }
@@ -115,7 +118,8 @@ namespace Pulumi.Gcp.Kms
         public Input<string> CryptoKey { get; set; } = null!;
 
         /// <summary>
-        /// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The plaintext to be encrypted.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("plaintext", required: true)]
         public Input<string> Plaintext { get; set; } = null!;
@@ -128,7 +132,8 @@ namespace Pulumi.Gcp.Kms
     public sealed class SecretCiphertextState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The additional authenticated data used for integrity checks during encryption and decryption.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The additional authenticated data used for integrity checks during encryption and decryption.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("additionalAuthenticatedData")]
         public Input<string>? AdditionalAuthenticatedData { get; set; }
@@ -147,7 +152,8 @@ namespace Pulumi.Gcp.Kms
         public Input<string>? CryptoKey { get; set; }
 
         /// <summary>
-        /// The plaintext to be encrypted.  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// The plaintext to be encrypted.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("plaintext")]
         public Input<string>? Plaintext { get; set; }

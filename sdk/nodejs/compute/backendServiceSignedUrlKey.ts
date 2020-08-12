@@ -52,7 +52,8 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
     public readonly backendService!: pulumi.Output<string>;
     /**
      * 128-bit key value used for signing the URL. The key value must be a
-     * valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
+     * valid RFC 4648 Section 5 base64url encoded string.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly keyValue!: pulumi.Output<string>;
     /**
@@ -115,7 +116,8 @@ export interface BackendServiceSignedUrlKeyState {
     readonly backendService?: pulumi.Input<string>;
     /**
      * 128-bit key value used for signing the URL. The key value must be a
-     * valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
+     * valid RFC 4648 Section 5 base64url encoded string.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly keyValue?: pulumi.Input<string>;
     /**
@@ -139,7 +141,8 @@ export interface BackendServiceSignedUrlKeyArgs {
     readonly backendService: pulumi.Input<string>;
     /**
      * 128-bit key value used for signing the URL. The key value must be a
-     * valid RFC 4648 Section 5 base64url encoded string.  **Note**: This property is sensitive and will not be displayed in the plan.
+     * valid RFC 4648 Section 5 base64url encoded string.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly keyValue: pulumi.Input<string>;
     /**

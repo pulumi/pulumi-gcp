@@ -24,6 +24,8 @@ namespace Pulumi.Gcp.Healthcare.Outputs
         /// Specifies the output schema type. Only ANALYTICS is supported at this time.
         /// * ANALYTICS: Analytics schema defined by the FHIR community.
         /// See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
+        /// Default value is `ANALYTICS`.
+        /// Possible values are `ANALYTICS`.
         /// </summary>
         public readonly string? SchemaType;
 

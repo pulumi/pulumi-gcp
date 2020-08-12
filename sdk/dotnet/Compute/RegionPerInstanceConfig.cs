@@ -53,7 +53,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The preserved state for this instance.  Structure is documented below.
+        /// The preserved state for this instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("preservedState")]
         public Output<Outputs.RegionPerInstanceConfigPreservedState?> PreservedState { get; private set; } = null!;
@@ -160,7 +161,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The preserved state for this instance.  Structure is documented below.
+        /// The preserved state for this instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("preservedState")]
         public Input<Inputs.RegionPerInstanceConfigPreservedStateArgs>? PreservedState { get; set; }
@@ -228,7 +230,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The preserved state for this instance.  Structure is documented below.
+        /// The preserved state for this instance.
+        /// Structure is documented below.
         /// </summary>
         [Input("preservedState")]
         public Input<Inputs.RegionPerInstanceConfigPreservedStateGetArgs>? PreservedState { get; set; }

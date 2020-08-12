@@ -267,6 +267,7 @@ type ConnectivityTestSource struct {
 	// A Compute Engine network URI.
 	Network *string `pulumi:"network"`
 	// Type of the network where the endpoint is located.
+	// Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
 	NetworkType *string `pulumi:"networkType"`
 	// The IP protocol port of the endpoint. Only applicable when
 	// protocol is TCP or UDP.
@@ -303,6 +304,7 @@ type ConnectivityTestSourceArgs struct {
 	// A Compute Engine network URI.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Type of the network where the endpoint is located.
+	// Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// The IP protocol port of the endpoint. Only applicable when
 	// protocol is TCP or UDP.
@@ -413,6 +415,7 @@ func (o ConnectivityTestSourceOutput) Network() pulumi.StringPtrOutput {
 }
 
 // Type of the network where the endpoint is located.
+// Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
 func (o ConnectivityTestSourceOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectivityTestSource) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
@@ -486,6 +489,7 @@ func (o ConnectivityTestSourcePtrOutput) Network() pulumi.StringPtrOutput {
 }
 
 // Type of the network where the endpoint is located.
+// Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
 func (o ConnectivityTestSourcePtrOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectivityTestSource) *string {
 		if v == nil {

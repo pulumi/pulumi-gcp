@@ -61,7 +61,8 @@ export class SecretVersion extends pulumi.CustomResource {
      */
     public readonly secret!: pulumi.Output<string>;
     /**
-     * The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public readonly secretData!: pulumi.Output<string | undefined>;
 
@@ -131,7 +132,8 @@ export interface SecretVersionState {
      */
     readonly secret?: pulumi.Input<string>;
     /**
-     * The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly secretData?: pulumi.Input<string>;
 }
@@ -149,7 +151,8 @@ export interface SecretVersionArgs {
      */
     readonly secret: pulumi.Input<string>;
     /**
-     * The secret data. Must be no larger than 64KiB.  **Note**: This property is sensitive and will not be displayed in the plan.
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     readonly secretData?: pulumi.Input<string>;
 }

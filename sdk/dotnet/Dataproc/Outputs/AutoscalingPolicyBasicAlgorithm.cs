@@ -20,7 +20,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? CooldownPeriod;
         /// <summary>
-        /// YARN autoscaling configuration.  Structure is documented below.
+        /// YARN autoscaling configuration.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AutoscalingPolicyBasicAlgorithmYarnConfig YarnConfig;
 

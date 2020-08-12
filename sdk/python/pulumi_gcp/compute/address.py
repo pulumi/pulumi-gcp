@@ -20,6 +20,8 @@ class Address(pulumi.CustomResource):
     address_type: pulumi.Output[str]
     """
     The type of address to reserve.
+    Default value is `EXTERNAL`.
+    Possible values are `INTERNAL` and `EXTERNAL`.
     """
     creation_timestamp: pulumi.Output[str]
     """
@@ -50,6 +52,7 @@ class Address(pulumi.CustomResource):
     """
     The networking tier used for configuring this address. If this field is not
     specified, it is assumed to be PREMIUM.
+    Possible values are `PREMIUM` and `STANDARD`.
     """
     project: pulumi.Output[str]
     """
@@ -62,6 +65,7 @@ class Address(pulumi.CustomResource):
     - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
     - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
     This should only be set when using an Internal address.
+    Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
     """
     region: pulumi.Output[str]
     """
@@ -115,6 +119,8 @@ class Address(pulumi.CustomResource):
                address types. The IP address must be inside the specified subnetwork,
                if any.
         :param pulumi.Input[str] address_type: The type of address to reserve.
+               Default value is `EXTERNAL`.
+               Possible values are `INTERNAL` and `EXTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[dict] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -125,12 +131,14 @@ class Address(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
+               Possible values are `PREMIUM` and `STANDARD`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
                - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
                - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
                This should only be set when using an Internal address.
+               Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP
@@ -189,6 +197,8 @@ class Address(pulumi.CustomResource):
                address types. The IP address must be inside the specified subnetwork,
                if any.
         :param pulumi.Input[str] address_type: The type of address to reserve.
+               Default value is `EXTERNAL`.
+               Possible values are `INTERNAL` and `EXTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
@@ -201,12 +211,14 @@ class Address(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
+               Possible values are `PREMIUM` and `STANDARD`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values:
                - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
                - SHARED_LOADBALANCER_VIP for an address that can be used by multiple internal load balancers
                This should only be set when using an Internal address.
+               Possible values are `GCE_ENDPOINT` and `SHARED_LOADBALANCER_VIP`.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.

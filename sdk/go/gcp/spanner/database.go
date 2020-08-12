@@ -10,15 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// A Cloud Spanner Database which is hosted on a Spanner instance.
-//
-// To get more information about Database, see:
-//
-// * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
-// * How-to Guides
-//     * [Official Documentation](https://cloud.google.com/spanner/)
-//
-// ## Example Usage
 type Database struct {
 	pulumi.CustomResourceState
 

@@ -11,7 +11,8 @@ import (
 )
 
 type FolderFeedFeedOutputConfig struct {
-	// Destination on Cloud Pubsub.  Structure is documented below.
+	// Destination on Cloud Pubsub.
+	// Structure is documented below.
 	PubsubDestination FolderFeedFeedOutputConfigPubsubDestination `pulumi:"pubsubDestination"`
 }
 
@@ -27,7 +28,8 @@ type FolderFeedFeedOutputConfigInput interface {
 }
 
 type FolderFeedFeedOutputConfigArgs struct {
-	// Destination on Cloud Pubsub.  Structure is documented below.
+	// Destination on Cloud Pubsub.
+	// Structure is documented below.
 	PubsubDestination FolderFeedFeedOutputConfigPubsubDestinationInput `pulumi:"pubsubDestination"`
 }
 
@@ -108,7 +110,8 @@ func (o FolderFeedFeedOutputConfigOutput) ToFolderFeedFeedOutputConfigPtrOutputW
 	}).(FolderFeedFeedOutputConfigPtrOutput)
 }
 
-// Destination on Cloud Pubsub.  Structure is documented below.
+// Destination on Cloud Pubsub.
+// Structure is documented below.
 func (o FolderFeedFeedOutputConfigOutput) PubsubDestination() FolderFeedFeedOutputConfigPubsubDestinationOutput {
 	return o.ApplyT(func(v FolderFeedFeedOutputConfig) FolderFeedFeedOutputConfigPubsubDestination {
 		return v.PubsubDestination
@@ -133,7 +136,8 @@ func (o FolderFeedFeedOutputConfigPtrOutput) Elem() FolderFeedFeedOutputConfigOu
 	return o.ApplyT(func(v *FolderFeedFeedOutputConfig) FolderFeedFeedOutputConfig { return *v }).(FolderFeedFeedOutputConfigOutput)
 }
 
-// Destination on Cloud Pubsub.  Structure is documented below.
+// Destination on Cloud Pubsub.
+// Structure is documented below.
 func (o FolderFeedFeedOutputConfigPtrOutput) PubsubDestination() FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
 	return o.ApplyT(func(v *FolderFeedFeedOutputConfig) *FolderFeedFeedOutputConfigPubsubDestination {
 		if v == nil {
@@ -277,7 +281,8 @@ func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulumi.Str
 }
 
 type OrganizationFeedFeedOutputConfig struct {
-	// Destination on Cloud Pubsub.  Structure is documented below.
+	// Destination on Cloud Pubsub.
+	// Structure is documented below.
 	PubsubDestination OrganizationFeedFeedOutputConfigPubsubDestination `pulumi:"pubsubDestination"`
 }
 
@@ -293,7 +298,8 @@ type OrganizationFeedFeedOutputConfigInput interface {
 }
 
 type OrganizationFeedFeedOutputConfigArgs struct {
-	// Destination on Cloud Pubsub.  Structure is documented below.
+	// Destination on Cloud Pubsub.
+	// Structure is documented below.
 	PubsubDestination OrganizationFeedFeedOutputConfigPubsubDestinationInput `pulumi:"pubsubDestination"`
 }
 
@@ -374,7 +380,8 @@ func (o OrganizationFeedFeedOutputConfigOutput) ToOrganizationFeedFeedOutputConf
 	}).(OrganizationFeedFeedOutputConfigPtrOutput)
 }
 
-// Destination on Cloud Pubsub.  Structure is documented below.
+// Destination on Cloud Pubsub.
+// Structure is documented below.
 func (o OrganizationFeedFeedOutputConfigOutput) PubsubDestination() OrganizationFeedFeedOutputConfigPubsubDestinationOutput {
 	return o.ApplyT(func(v OrganizationFeedFeedOutputConfig) OrganizationFeedFeedOutputConfigPubsubDestination {
 		return v.PubsubDestination
@@ -399,7 +406,8 @@ func (o OrganizationFeedFeedOutputConfigPtrOutput) Elem() OrganizationFeedFeedOu
 	return o.ApplyT(func(v *OrganizationFeedFeedOutputConfig) OrganizationFeedFeedOutputConfig { return *v }).(OrganizationFeedFeedOutputConfigOutput)
 }
 
-// Destination on Cloud Pubsub.  Structure is documented below.
+// Destination on Cloud Pubsub.
+// Structure is documented below.
 func (o OrganizationFeedFeedOutputConfigPtrOutput) PubsubDestination() OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
 	return o.ApplyT(func(v *OrganizationFeedFeedOutputConfig) *OrganizationFeedFeedOutputConfigPubsubDestination {
 		if v == nil {
@@ -543,7 +551,8 @@ func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) Topic() pulu
 }
 
 type ProjectFeedFeedOutputConfig struct {
-	// Destination on Cloud Pubsub.  Structure is documented below.
+	// Destination on Cloud Pubsub.
+	// Structure is documented below.
 	PubsubDestination ProjectFeedFeedOutputConfigPubsubDestination `pulumi:"pubsubDestination"`
 }
 
@@ -559,7 +568,8 @@ type ProjectFeedFeedOutputConfigInput interface {
 }
 
 type ProjectFeedFeedOutputConfigArgs struct {
-	// Destination on Cloud Pubsub.  Structure is documented below.
+	// Destination on Cloud Pubsub.
+	// Structure is documented below.
 	PubsubDestination ProjectFeedFeedOutputConfigPubsubDestinationInput `pulumi:"pubsubDestination"`
 }
 
@@ -640,7 +650,8 @@ func (o ProjectFeedFeedOutputConfigOutput) ToProjectFeedFeedOutputConfigPtrOutpu
 	}).(ProjectFeedFeedOutputConfigPtrOutput)
 }
 
-// Destination on Cloud Pubsub.  Structure is documented below.
+// Destination on Cloud Pubsub.
+// Structure is documented below.
 func (o ProjectFeedFeedOutputConfigOutput) PubsubDestination() ProjectFeedFeedOutputConfigPubsubDestinationOutput {
 	return o.ApplyT(func(v ProjectFeedFeedOutputConfig) ProjectFeedFeedOutputConfigPubsubDestination {
 		return v.PubsubDestination
@@ -665,7 +676,8 @@ func (o ProjectFeedFeedOutputConfigPtrOutput) Elem() ProjectFeedFeedOutputConfig
 	return o.ApplyT(func(v *ProjectFeedFeedOutputConfig) ProjectFeedFeedOutputConfig { return *v }).(ProjectFeedFeedOutputConfigOutput)
 }
 
-// Destination on Cloud Pubsub.  Structure is documented below.
+// Destination on Cloud Pubsub.
+// Structure is documented below.
 func (o ProjectFeedFeedOutputConfigPtrOutput) PubsubDestination() ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
 	return o.ApplyT(func(v *ProjectFeedFeedOutputConfig) *ProjectFeedFeedOutputConfigPubsubDestination {
 		if v == nil {

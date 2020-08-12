@@ -30,7 +30,8 @@ type BackendBucket struct {
 
 	// Cloud Storage bucket name.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
-	// Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+	// Cloud CDN configuration for this Backend Bucket.
+	// Structure is documented below.
 	CdnPolicy BackendBucketCdnPolicyOutput `pulumi:"cdnPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -87,7 +88,8 @@ func GetBackendBucket(ctx *pulumi.Context,
 type backendBucketState struct {
 	// Cloud Storage bucket name.
 	BucketName *string `pulumi:"bucketName"`
-	// Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+	// Cloud CDN configuration for this Backend Bucket.
+	// Structure is documented below.
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -114,7 +116,8 @@ type backendBucketState struct {
 type BackendBucketState struct {
 	// Cloud Storage bucket name.
 	BucketName pulumi.StringPtrInput
-	// Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+	// Cloud CDN configuration for this Backend Bucket.
+	// Structure is documented below.
 	CdnPolicy BackendBucketCdnPolicyPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -145,7 +148,8 @@ func (BackendBucketState) ElementType() reflect.Type {
 type backendBucketArgs struct {
 	// Cloud Storage bucket name.
 	BucketName string `pulumi:"bucketName"`
-	// Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+	// Cloud CDN configuration for this Backend Bucket.
+	// Structure is documented below.
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
@@ -169,7 +173,8 @@ type backendBucketArgs struct {
 type BackendBucketArgs struct {
 	// Cloud Storage bucket name.
 	BucketName pulumi.StringInput
-	// Cloud CDN configuration for this Backend Bucket.  Structure is documented below.
+	// Cloud CDN configuration for this Backend Bucket.
+	// Structure is documented below.
 	CdnPolicy BackendBucketCdnPolicyPtrInput
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.

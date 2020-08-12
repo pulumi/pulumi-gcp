@@ -688,6 +688,15 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_per_instance_config":        {Tok: gcpResource(gcpCompute, "PerInstanceConfig")},
 			"google_compute_region_per_instance_config": {Tok: gcpResource(gcpCompute, "RegionPerInstanceConfig")},
 			"google_compute_machine_image":              {Tok: gcpResource(gcpCompute, "MachineImage")},
+			"google_compute_organization_security_policy_rule": {
+				Tok: gcpResource(gcpCompute, "OrganizationSecurityPolicyRule"),
+			},
+			"google_compute_organization_security_policy_association": {
+				Tok: gcpResource(gcpCompute, "OrganizationSecurityPolicyAssociation"),
+			},
+			"google_compute_organization_security_policy": {
+				Tok: gcpResource(gcpCompute, "OrganizationSecurityPolicy"),
+			},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {

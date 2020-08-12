@@ -57,6 +57,8 @@ export class Deployment extends pulumi.CustomResource {
      * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
      * the deployment will fail. Note that updating this field does not
      * actually affect the deployment, just how it is updated.
+     * Default value is `CREATE_OR_ACQUIRE`.
+     * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
      */
     public readonly createPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -66,6 +68,8 @@ export class Deployment extends pulumi.CustomResource {
      * `ABANDON`, the resource is only removed from Deployment Manager
      * and is not actually deleted. Note that updating this field does not
      * actually change the deployment, just how it is updated.
+     * Default value is `DELETE`.
+     * Possible values are `ABANDON` and `DELETE`.
      */
     public readonly deletePolicy!: pulumi.Output<string | undefined>;
     /**
@@ -77,7 +81,8 @@ export class Deployment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Key-value pairs to apply to this labels.  Structure is documented below.
+     * Key-value pairs to apply to this labels.
+     * Structure is documented below.
      */
     public readonly labels!: pulumi.Output<outputs.deploymentmanager.DeploymentLabel[] | undefined>;
     /**
@@ -94,7 +99,7 @@ export class Deployment extends pulumi.CustomResource {
      * that are not actually instantiated. This allows you to preview a
      * deployment. It can be updated to false to actually deploy
      * with real resources.
-     * ~>**NOTE**: Deployment Manager does not allow update
+     * ~>**NOTE:** Deployment Manager does not allow update
      * of a deployment in preview (unless updating to preview=false). Thus,
      * the provider will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
@@ -111,7 +116,8 @@ export class Deployment extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * Parameters that define your deployment, including the deployment
-     * configuration and relevant templates.  Structure is documented below.
+     * configuration and relevant templates.
+     * Structure is documented below.
      */
     public readonly target!: pulumi.Output<outputs.deploymentmanager.DeploymentTarget>;
 
@@ -176,6 +182,8 @@ export interface DeploymentState {
      * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
      * the deployment will fail. Note that updating this field does not
      * actually affect the deployment, just how it is updated.
+     * Default value is `CREATE_OR_ACQUIRE`.
+     * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
      */
     readonly createPolicy?: pulumi.Input<string>;
     /**
@@ -185,6 +193,8 @@ export interface DeploymentState {
      * `ABANDON`, the resource is only removed from Deployment Manager
      * and is not actually deleted. Note that updating this field does not
      * actually change the deployment, just how it is updated.
+     * Default value is `DELETE`.
+     * Possible values are `ABANDON` and `DELETE`.
      */
     readonly deletePolicy?: pulumi.Input<string>;
     /**
@@ -196,7 +206,8 @@ export interface DeploymentState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Key-value pairs to apply to this labels.  Structure is documented below.
+     * Key-value pairs to apply to this labels.
+     * Structure is documented below.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[]>;
     /**
@@ -213,7 +224,7 @@ export interface DeploymentState {
      * that are not actually instantiated. This allows you to preview a
      * deployment. It can be updated to false to actually deploy
      * with real resources.
-     * ~>**NOTE**: Deployment Manager does not allow update
+     * ~>**NOTE:** Deployment Manager does not allow update
      * of a deployment in preview (unless updating to preview=false). Thus,
      * the provider will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
@@ -230,7 +241,8 @@ export interface DeploymentState {
     readonly selfLink?: pulumi.Input<string>;
     /**
      * Parameters that define your deployment, including the deployment
-     * configuration and relevant templates.  Structure is documented below.
+     * configuration and relevant templates.
+     * Structure is documented below.
      */
     readonly target?: pulumi.Input<inputs.deploymentmanager.DeploymentTarget>;
 }
@@ -245,6 +257,8 @@ export interface DeploymentArgs {
      * `ACQUIRE`. If set to `ACQUIRE` and resources do not already exist,
      * the deployment will fail. Note that updating this field does not
      * actually affect the deployment, just how it is updated.
+     * Default value is `CREATE_OR_ACQUIRE`.
+     * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
      */
     readonly createPolicy?: pulumi.Input<string>;
     /**
@@ -254,6 +268,8 @@ export interface DeploymentArgs {
      * `ABANDON`, the resource is only removed from Deployment Manager
      * and is not actually deleted. Note that updating this field does not
      * actually change the deployment, just how it is updated.
+     * Default value is `DELETE`.
+     * Possible values are `ABANDON` and `DELETE`.
      */
     readonly deletePolicy?: pulumi.Input<string>;
     /**
@@ -261,7 +277,8 @@ export interface DeploymentArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Key-value pairs to apply to this labels.  Structure is documented below.
+     * Key-value pairs to apply to this labels.
+     * Structure is documented below.
      */
     readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[]>;
     /**
@@ -274,7 +291,7 @@ export interface DeploymentArgs {
      * that are not actually instantiated. This allows you to preview a
      * deployment. It can be updated to false to actually deploy
      * with real resources.
-     * ~>**NOTE**: Deployment Manager does not allow update
+     * ~>**NOTE:** Deployment Manager does not allow update
      * of a deployment in preview (unless updating to preview=false). Thus,
      * the provider will force-recreate deployments if either preview is updated
      * to true or if other fields are updated while preview is true.
@@ -287,7 +304,8 @@ export interface DeploymentArgs {
     readonly project?: pulumi.Input<string>;
     /**
      * Parameters that define your deployment, including the deployment
-     * configuration and relevant templates.  Structure is documented below.
+     * configuration and relevant templates.
+     * Structure is documented below.
      */
     readonly target: pulumi.Input<inputs.deploymentmanager.DeploymentTarget>;
 }

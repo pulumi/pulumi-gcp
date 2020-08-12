@@ -13,19 +13,23 @@ class Metric(pulumi.CustomResource):
     bucket_options: pulumi.Output[dict]
     """
     The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-    describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+    describes the bucket boundaries used to create a histogram of the extracted values.
+    Structure is documented below.
 
-      * `explicitBuckets` (`dict`) - Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+      * `explicitBuckets` (`dict`) - Specifies a set of buckets with arbitrary widths.
+        Structure is documented below.
         * `bounds` (`list`) - The values must be monotonically increasing.
 
       * `exponentialBuckets` (`dict`) - Specifies an exponential sequence of buckets that have a width that is proportional to the value of
-        the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
+        the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
+        Structure is documented below.
         * `growthFactor` (`float`) - Must be greater than 1.
         * `numFiniteBuckets` (`float`) - Must be greater than 0.
         * `scale` (`float`) - Must be greater than 0.
 
       * `linearBuckets` (`dict`) - Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
-        Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+        Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
+        Structure is documented below.
         * `numFiniteBuckets` (`float`) - Must be greater than 0.
         * `offset` (`float`) - Lower bound of the first bucket.
         * `width` (`float`) - Must be greater than 0.
@@ -49,7 +53,8 @@ class Metric(pulumi.CustomResource):
     """
     metric_descriptor: pulumi.Output[dict]
     """
-    The metric descriptor associated with the logs-based metric.  Structure is documented below.
+    The metric descriptor associated with the logs-based metric.
+    Structure is documented below.
 
       * `display_name` (`str`) - A concise name for the metric, which can be displayed in user interfaces. Use sentence case
         without an ending period, for example "Request count". This field is optional but it is
@@ -57,19 +62,25 @@ class Metric(pulumi.CustomResource):
       * `labels` (`list`) - The set of labels that can be used to describe a specific instance of this metric type. For
         example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
         for the HTTP response code, response_code, so you can look at latencies for successful responses
-        or just for responses that failed.  Structure is documented below.
+        or just for responses that failed.
+        Structure is documented below.
         * `description` (`str`) - A description of this metric, which is used in documentation. The maximum length of the
           description is 8000 characters.
         * `key` (`str`) - The label key.
         * `value_type` (`str`) - The type of data that can be assigned to the label.
+          Default value is `STRING`.
+          Possible values are `BOOL`, `INT64`, and `STRING`.
 
       * `metric_kind` (`str`) - Whether the metric records instantaneous values, changes to a value, etc.
         Some combinations of metricKind and valueType might not be supported.
         For counter metrics, set this to DELTA.
+        Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
       * `unit` (`str`) - The unit in which the metric value is reported. It is only applicable if the valueType is
         `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
         [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
       * `value_type` (`str`) - The type of data that can be assigned to the label.
+        Default value is `STRING`.
+        Possible values are `BOOL`, `INT64`, and `STRING`.
     """
     name: pulumi.Output[str]
     """
@@ -111,7 +122,8 @@ class Metric(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-               describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+               describes the bucket boundaries used to create a histogram of the extracted values.
+               Structure is documented below.
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
@@ -120,7 +132,8 @@ class Metric(pulumi.CustomResource):
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
                the same as for the valueExtractor field.
-        :param pulumi.Input[dict] metric_descriptor: The metric descriptor associated with the logs-based metric.  Structure is documented below.
+        :param pulumi.Input[dict] metric_descriptor: The metric descriptor associated with the logs-based metric.
+               Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
                characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
@@ -138,17 +151,20 @@ class Metric(pulumi.CustomResource):
 
         The **bucket_options** object supports the following:
 
-          * `explicitBuckets` (`pulumi.Input[dict]`) - Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+          * `explicitBuckets` (`pulumi.Input[dict]`) - Specifies a set of buckets with arbitrary widths.
+            Structure is documented below.
             * `bounds` (`pulumi.Input[list]`) - The values must be monotonically increasing.
 
           * `exponentialBuckets` (`pulumi.Input[dict]`) - Specifies an exponential sequence of buckets that have a width that is proportional to the value of
-            the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
+            the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
+            Structure is documented below.
             * `growthFactor` (`pulumi.Input[float]`) - Must be greater than 1.
             * `numFiniteBuckets` (`pulumi.Input[float]`) - Must be greater than 0.
             * `scale` (`pulumi.Input[float]`) - Must be greater than 0.
 
           * `linearBuckets` (`pulumi.Input[dict]`) - Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
-            Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+            Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
+            Structure is documented below.
             * `numFiniteBuckets` (`pulumi.Input[float]`) - Must be greater than 0.
             * `offset` (`pulumi.Input[float]`) - Lower bound of the first bucket.
             * `width` (`pulumi.Input[float]`) - Must be greater than 0.
@@ -161,19 +177,25 @@ class Metric(pulumi.CustomResource):
           * `labels` (`pulumi.Input[list]`) - The set of labels that can be used to describe a specific instance of this metric type. For
             example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
             for the HTTP response code, response_code, so you can look at latencies for successful responses
-            or just for responses that failed.  Structure is documented below.
+            or just for responses that failed.
+            Structure is documented below.
             * `description` (`pulumi.Input[str]`) - A description of this metric, which is used in documentation. The maximum length of the
               description is 8000 characters.
             * `key` (`pulumi.Input[str]`) - The label key.
             * `value_type` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
+              Default value is `STRING`.
+              Possible values are `BOOL`, `INT64`, and `STRING`.
 
           * `metric_kind` (`pulumi.Input[str]`) - Whether the metric records instantaneous values, changes to a value, etc.
             Some combinations of metricKind and valueType might not be supported.
             For counter metrics, set this to DELTA.
+            Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
           * `unit` (`pulumi.Input[str]`) - The unit in which the metric value is reported. It is only applicable if the valueType is
             `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
             [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
           * `value_type` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
+            Default value is `STRING`.
+            Possible values are `BOOL`, `INT64`, and `STRING`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -220,7 +242,8 @@ class Metric(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
-               describes the bucket boundaries used to create a histogram of the extracted values.  Structure is documented below.
+               describes the bucket boundaries used to create a histogram of the extracted values.
+               Structure is documented below.
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
@@ -229,7 +252,8 @@ class Metric(pulumi.CustomResource):
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
                the same as for the valueExtractor field.
-        :param pulumi.Input[dict] metric_descriptor: The metric descriptor associated with the logs-based metric.  Structure is documented below.
+        :param pulumi.Input[dict] metric_descriptor: The metric descriptor associated with the logs-based metric.
+               Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
                characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
@@ -247,17 +271,20 @@ class Metric(pulumi.CustomResource):
 
         The **bucket_options** object supports the following:
 
-          * `explicitBuckets` (`pulumi.Input[dict]`) - Specifies a set of buckets with arbitrary widths.  Structure is documented below.
+          * `explicitBuckets` (`pulumi.Input[dict]`) - Specifies a set of buckets with arbitrary widths.
+            Structure is documented below.
             * `bounds` (`pulumi.Input[list]`) - The values must be monotonically increasing.
 
           * `exponentialBuckets` (`pulumi.Input[dict]`) - Specifies an exponential sequence of buckets that have a width that is proportional to the value of
-            the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.  Structure is documented below.
+            the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
+            Structure is documented below.
             * `growthFactor` (`pulumi.Input[float]`) - Must be greater than 1.
             * `numFiniteBuckets` (`pulumi.Input[float]`) - Must be greater than 0.
             * `scale` (`pulumi.Input[float]`) - Must be greater than 0.
 
           * `linearBuckets` (`pulumi.Input[dict]`) - Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
-            Each bucket represents a constant absolute uncertainty on the specific value in the bucket.  Structure is documented below.
+            Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
+            Structure is documented below.
             * `numFiniteBuckets` (`pulumi.Input[float]`) - Must be greater than 0.
             * `offset` (`pulumi.Input[float]`) - Lower bound of the first bucket.
             * `width` (`pulumi.Input[float]`) - Must be greater than 0.
@@ -270,19 +297,25 @@ class Metric(pulumi.CustomResource):
           * `labels` (`pulumi.Input[list]`) - The set of labels that can be used to describe a specific instance of this metric type. For
             example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
             for the HTTP response code, response_code, so you can look at latencies for successful responses
-            or just for responses that failed.  Structure is documented below.
+            or just for responses that failed.
+            Structure is documented below.
             * `description` (`pulumi.Input[str]`) - A description of this metric, which is used in documentation. The maximum length of the
               description is 8000 characters.
             * `key` (`pulumi.Input[str]`) - The label key.
             * `value_type` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
+              Default value is `STRING`.
+              Possible values are `BOOL`, `INT64`, and `STRING`.
 
           * `metric_kind` (`pulumi.Input[str]`) - Whether the metric records instantaneous values, changes to a value, etc.
             Some combinations of metricKind and valueType might not be supported.
             For counter metrics, set this to DELTA.
+            Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
           * `unit` (`pulumi.Input[str]`) - The unit in which the metric value is reported. It is only applicable if the valueType is
             `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
             [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
           * `value_type` (`pulumi.Input[str]`) - The type of data that can be assigned to the label.
+            Default value is `STRING`.
+            Possible values are `BOOL`, `INT64`, and `STRING`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

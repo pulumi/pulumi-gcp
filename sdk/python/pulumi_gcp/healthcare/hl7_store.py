@@ -35,7 +35,8 @@ class Hl7Store(pulumi.CustomResource):
     """
     -
     (Optional, Deprecated)
-    A nested object resource  Structure is documented below.
+    A nested object resource
+    Structure is documented below.
 
       * `pubsubTopic` (`str`) - The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
         PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -48,7 +49,8 @@ class Hl7Store(pulumi.CustomResource):
     """
     A list of notification configs. Each configuration uses a filter to determine whether to publish a
     message (both Ingest & Create) on the corresponding notification destination. Only the message name
-    is sent as part of the notification. Supplied by the client.  Structure is documented below.
+    is sent as part of the notification. Supplied by the client.
+    Structure is documented below.
 
       * `filter` (`str`) - Restricts notifications sent for messages matching a filter. If this is empty, all messages
         are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -68,7 +70,8 @@ class Hl7Store(pulumi.CustomResource):
     """
     parser_config: pulumi.Output[dict]
     """
-    A nested object resource  Structure is documented below.
+    A nested object resource
+    Structure is documented below.
 
       * `allowNullHeader` (`bool`) - Determines whether messages with no header are allowed.
       * `schema` (`str`) - JSON encoded string for schemas used to parse messages in this
@@ -109,11 +112,14 @@ class Hl7Store(pulumi.CustomResource):
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
         :param pulumi.Input[dict] notification_config: -
                (Optional, Deprecated)
-               A nested object resource  Structure is documented below.
+               A nested object resource
+               Structure is documented below.
         :param pulumi.Input[list] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
-               is sent as part of the notification. Supplied by the client.  Structure is documented below.
-        :param pulumi.Input[dict] parser_config: A nested object resource  Structure is documented below.
+               is sent as part of the notification. Supplied by the client.
+               Structure is documented below.
+        :param pulumi.Input[dict] parser_config: A nested object resource
+               Structure is documented below.
 
         The **notification_config** object supports the following:
 
@@ -208,11 +214,14 @@ class Hl7Store(pulumi.CustomResource):
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
         :param pulumi.Input[dict] notification_config: -
                (Optional, Deprecated)
-               A nested object resource  Structure is documented below.
+               A nested object resource
+               Structure is documented below.
         :param pulumi.Input[list] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
-               is sent as part of the notification. Supplied by the client.  Structure is documented below.
-        :param pulumi.Input[dict] parser_config: A nested object resource  Structure is documented below.
+               is sent as part of the notification. Supplied by the client.
+               Structure is documented below.
+        :param pulumi.Input[dict] parser_config: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
 
         The **notification_config** object supports the following:

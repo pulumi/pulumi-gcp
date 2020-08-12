@@ -53,7 +53,8 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// -
         /// (Optional, Deprecated)
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.Hl7StoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
@@ -61,13 +62,15 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// A list of notification configs. Each configuration uses a filter to determine whether to publish a
         /// message (both Ingest &amp; Create) on the corresponding notification destination. Only the message name
-        /// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+        /// is sent as part of the notification. Supplied by the client.
+        /// Structure is documented below.
         /// </summary>
         [Output("notificationConfigs")]
         public Output<ImmutableArray<Outputs.Hl7StoreNotificationConfigs>> NotificationConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("parserConfig")]
         public Output<Outputs.Hl7StoreParserConfig?> ParserConfig { get; private set; } = null!;
@@ -160,7 +163,8 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// -
         /// (Optional, Deprecated)
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.Hl7StoreNotificationConfigArgs>? NotificationConfig { get; set; }
@@ -171,7 +175,8 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// A list of notification configs. Each configuration uses a filter to determine whether to publish a
         /// message (both Ingest &amp; Create) on the corresponding notification destination. Only the message name
-        /// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+        /// is sent as part of the notification. Supplied by the client.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.Hl7StoreNotificationConfigsArgs> NotificationConfigs
         {
@@ -180,7 +185,8 @@ namespace Pulumi.Gcp.Healthcare
         }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("parserConfig")]
         public Input<Inputs.Hl7StoreParserConfigArgs>? ParserConfig { get; set; }
@@ -228,7 +234,8 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// -
         /// (Optional, Deprecated)
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.Hl7StoreNotificationConfigGetArgs>? NotificationConfig { get; set; }
@@ -239,7 +246,8 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// A list of notification configs. Each configuration uses a filter to determine whether to publish a
         /// message (both Ingest &amp; Create) on the corresponding notification destination. Only the message name
-        /// is sent as part of the notification. Supplied by the client.  Structure is documented below.
+        /// is sent as part of the notification. Supplied by the client.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.Hl7StoreNotificationConfigsGetArgs> NotificationConfigs
         {
@@ -248,7 +256,8 @@ namespace Pulumi.Gcp.Healthcare
         }
 
         /// <summary>
-        /// A nested object resource  Structure is documented below.
+        /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("parserConfig")]
         public Input<Inputs.Hl7StoreParserConfigGetArgs>? ParserConfig { get; set; }

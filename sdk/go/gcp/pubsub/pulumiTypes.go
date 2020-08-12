@@ -700,7 +700,8 @@ type SubscriptionPushConfig struct {
 	// - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
 	Attributes map[string]string `pulumi:"attributes"`
 	// If specified, Pub/Sub will generate and attach an OIDC JWT token as
-	// an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+	// an Authorization header in the HTTP request for every pushed message.
+	// Structure is documented below.
 	OidcToken *SubscriptionPushConfigOidcToken `pulumi:"oidcToken"`
 	// A URL locating the endpoint to which messages should be pushed.
 	// For example, a Webhook endpoint might use
@@ -740,7 +741,8 @@ type SubscriptionPushConfigArgs struct {
 	// - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
 	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// If specified, Pub/Sub will generate and attach an OIDC JWT token as
-	// an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+	// an Authorization header in the HTTP request for every pushed message.
+	// Structure is documented below.
 	OidcToken SubscriptionPushConfigOidcTokenPtrInput `pulumi:"oidcToken"`
 	// A URL locating the endpoint to which messages should be pushed.
 	// For example, a Webhook endpoint might use
@@ -848,7 +850,8 @@ func (o SubscriptionPushConfigOutput) Attributes() pulumi.StringMapOutput {
 }
 
 // If specified, Pub/Sub will generate and attach an OIDC JWT token as
-// an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+// an Authorization header in the HTTP request for every pushed message.
+// Structure is documented below.
 func (o SubscriptionPushConfigOutput) OidcToken() SubscriptionPushConfigOidcTokenPtrOutput {
 	return o.ApplyT(func(v SubscriptionPushConfig) *SubscriptionPushConfigOidcToken { return v.OidcToken }).(SubscriptionPushConfigOidcTokenPtrOutput)
 }
@@ -906,7 +909,8 @@ func (o SubscriptionPushConfigPtrOutput) Attributes() pulumi.StringMapOutput {
 }
 
 // If specified, Pub/Sub will generate and attach an OIDC JWT token as
-// an Authorization header in the HTTP request for every pushed message.  Structure is documented below.
+// an Authorization header in the HTTP request for every pushed message.
+// Structure is documented below.
 func (o SubscriptionPushConfigPtrOutput) OidcToken() SubscriptionPushConfigOidcTokenPtrOutput {
 	return o.ApplyT(func(v *SubscriptionPushConfig) *SubscriptionPushConfigOidcToken {
 		if v == nil {

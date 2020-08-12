@@ -86,6 +86,7 @@ export class Network extends pulumi.CustomResource {
      * of this network in the same region as the router. If set to `GLOBAL`,
      * this network's cloud routers will advertise routes with all
      * subnetworks of this network, across regions.
+     * Possible values are `REGIONAL` and `GLOBAL`.
      */
     public readonly routingMode!: pulumi.Output<string>;
     /**
@@ -182,6 +183,7 @@ export interface NetworkState {
      * of this network in the same region as the router. If set to `GLOBAL`,
      * this network's cloud routers will advertise routes with all
      * subnetworks of this network, across regions.
+     * Possible values are `REGIONAL` and `GLOBAL`.
      */
     readonly routingMode?: pulumi.Input<string>;
     /**
@@ -233,6 +235,7 @@ export interface NetworkArgs {
      * of this network in the same region as the router. If set to `GLOBAL`,
      * this network's cloud routers will advertise routes with all
      * subnetworks of this network, across regions.
+     * Possible values are `REGIONAL` and `GLOBAL`.
      */
     readonly routingMode?: pulumi.Input<string>;
 }

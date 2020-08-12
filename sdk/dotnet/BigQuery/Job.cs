@@ -18,13 +18,15 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
-        /// Copies a table.  Structure is documented below.
+        /// Copies a table.
+        /// Structure is documented below.
         /// </summary>
         [Output("copy")]
         public Output<Outputs.JobCopy?> Copy { get; private set; } = null!;
 
         /// <summary>
-        /// Configures an extract job.  Structure is documented below.
+        /// Configures an extract job.
+        /// Structure is documented below.
         /// </summary>
         [Output("extract")]
         public Output<Outputs.JobExtract?> Extract { get; private set; } = null!;
@@ -54,7 +56,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Configures a load job.  Structure is documented below.
+        /// Configures a load job.
+        /// Structure is documented below.
         /// </summary>
         [Output("load")]
         public Output<Outputs.JobLoad?> Load { get; private set; } = null!;
@@ -73,7 +76,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Configures a query job.  Structure is documented below.
+        /// Configures a query job.
+        /// Structure is documented below.
         /// </summary>
         [Output("query")]
         public Output<Outputs.JobQuery?> Query { get; private set; } = null!;
@@ -131,13 +135,15 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class JobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Copies a table.  Structure is documented below.
+        /// Copies a table.
+        /// Structure is documented below.
         /// </summary>
         [Input("copy")]
         public Input<Inputs.JobCopyArgs>? Copy { get; set; }
 
         /// <summary>
-        /// Configures an extract job.  Structure is documented below.
+        /// Configures an extract job.
+        /// Structure is documented below.
         /// </summary>
         [Input("extract")]
         public Input<Inputs.JobExtractArgs>? Extract { get; set; }
@@ -167,7 +173,8 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// Configures a load job.  Structure is documented below.
+        /// Configures a load job.
+        /// Structure is documented below.
         /// </summary>
         [Input("load")]
         public Input<Inputs.JobLoadArgs>? Load { get; set; }
@@ -186,7 +193,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Configures a query job.  Structure is documented below.
+        /// Configures a query job.
+        /// Structure is documented below.
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryArgs>? Query { get; set; }
@@ -199,13 +207,15 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class JobState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Copies a table.  Structure is documented below.
+        /// Copies a table.
+        /// Structure is documented below.
         /// </summary>
         [Input("copy")]
         public Input<Inputs.JobCopyGetArgs>? Copy { get; set; }
 
         /// <summary>
-        /// Configures an extract job.  Structure is documented below.
+        /// Configures an extract job.
+        /// Structure is documented below.
         /// </summary>
         [Input("extract")]
         public Input<Inputs.JobExtractGetArgs>? Extract { get; set; }
@@ -241,7 +251,8 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// Configures a load job.  Structure is documented below.
+        /// Configures a load job.
+        /// Structure is documented below.
         /// </summary>
         [Input("load")]
         public Input<Inputs.JobLoadGetArgs>? Load { get; set; }
@@ -260,7 +271,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Configures a query job.  Structure is documented below.
+        /// Configures a query job.
+        /// Structure is documented below.
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryGetArgs>? Query { get; set; }

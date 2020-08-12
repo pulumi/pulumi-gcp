@@ -31,7 +31,8 @@ namespace Pulumi.Gcp.CloudIdentity
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// EntityKey of the Group.  Structure is documented below.
+        /// EntityKey of the Group.
+        /// Structure is documented below.
         /// </summary>
         [Output("groupKey")]
         public Output<Outputs.GroupGroupKey> GroupKey { get; private set; } = null!;
@@ -126,7 +127,8 @@ namespace Pulumi.Gcp.CloudIdentity
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// EntityKey of the Group.  Structure is documented below.
+        /// EntityKey of the Group.
+        /// Structure is documented below.
         /// </summary>
         [Input("groupKey", required: true)]
         public Input<Inputs.GroupGroupKeyArgs> GroupKey { get; set; } = null!;
@@ -182,7 +184,8 @@ namespace Pulumi.Gcp.CloudIdentity
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// EntityKey of the Group.  Structure is documented below.
+        /// EntityKey of the Group.
+        /// Structure is documented below.
         /// </summary>
         [Input("groupKey")]
         public Input<Inputs.GroupGroupKeyGetArgs>? GroupKey { get; set; }

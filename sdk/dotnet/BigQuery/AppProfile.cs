@@ -63,7 +63,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Use a single-cluster routing policy.  Structure is documented below.
+        /// Use a single-cluster routing policy.
+        /// Structure is documented below.
         /// </summary>
         [Output("singleClusterRouting")]
         public Output<Outputs.AppProfileSingleClusterRouting?> SingleClusterRouting { get; private set; } = null!;
@@ -154,7 +155,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Use a single-cluster routing policy.  Structure is documented below.
+        /// Use a single-cluster routing policy.
+        /// Structure is documented below.
         /// </summary>
         [Input("singleClusterRouting")]
         public Input<Inputs.AppProfileSingleClusterRoutingArgs>? SingleClusterRouting { get; set; }
@@ -213,7 +215,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Use a single-cluster routing policy.  Structure is documented below.
+        /// Use a single-cluster routing policy.
+        /// Structure is documented below.
         /// </summary>
         [Input("singleClusterRouting")]
         public Input<Inputs.AppProfileSingleClusterRoutingGetArgs>? SingleClusterRouting { get; set; }

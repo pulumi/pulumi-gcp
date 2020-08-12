@@ -77,7 +77,8 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly entryId!: pulumi.Output<string>;
     /**
-     * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.  Structure is documented below.
+     * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+     * Structure is documented below.
      */
     public readonly gcsFilesetSpec!: pulumi.Output<outputs.datacatalog.EntryGcsFilesetSpec | undefined>;
     /**
@@ -109,6 +110,7 @@ export class Entry extends pulumi.CustomResource {
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+     * Possible values are `FILESET`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -217,7 +219,8 @@ export interface EntryState {
      */
     readonly entryId?: pulumi.Input<string>;
     /**
-     * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.  Structure is documented below.
+     * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+     * Structure is documented below.
      */
     readonly gcsFilesetSpec?: pulumi.Input<inputs.datacatalog.EntryGcsFilesetSpec>;
     /**
@@ -249,6 +252,7 @@ export interface EntryState {
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+     * Possible values are `FILESET`.
      */
     readonly type?: pulumi.Input<string>;
     /**
@@ -289,7 +293,8 @@ export interface EntryArgs {
      */
     readonly entryId: pulumi.Input<string>;
     /**
-     * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.  Structure is documented below.
+     * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+     * Structure is documented below.
      */
     readonly gcsFilesetSpec?: pulumi.Input<inputs.datacatalog.EntryGcsFilesetSpec>;
     /**
@@ -311,6 +316,7 @@ export interface EntryArgs {
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
+     * Possible values are `FILESET`.
      */
     readonly type?: pulumi.Input<string>;
     /**

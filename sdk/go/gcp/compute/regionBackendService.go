@@ -29,11 +29,13 @@ type RegionBackendService struct {
 	// maximum allowed value for TTL is one day.
 	// When the load balancing scheme is INTERNAL, this field is not used.
 	AffinityCookieTtlSec pulumi.IntPtrOutput `pulumi:"affinityCookieTtlSec"`
-	// The set of backends that serve this RegionBackendService.  Structure is documented below.
+	// The set of backends that serve this RegionBackendService.
+	// Structure is documented below.
 	Backends RegionBackendServiceBackendArrayOutput `pulumi:"backends"`
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Structure is documented below.
 	CircuitBreakers RegionBackendServiceCircuitBreakersPtrOutput `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
@@ -51,7 +53,8 @@ type RegionBackendService struct {
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Policy for failovers.  Structure is documented below.
+	// Policy for failovers.
+	// Structure is documented below.
 	FailoverPolicy RegionBackendServiceFailoverPolicyPtrOutput `pulumi:"failoverPolicy"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
@@ -62,6 +65,8 @@ type RegionBackendService struct {
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
+	// Default value is `INTERNAL`.
+	// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -85,9 +90,11 @@ type RegionBackendService struct {
 	// Maglev, refer to https://ai.google/research/pubs/pub44824
 	// This field is applicable only when the `loadBalancingScheme` is set to
 	// INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
 	LocalityLbPolicy pulumi.StringPtrOutput `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
-	// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+	// If logging is enabled, logs will be exported to Stackdriver.
+	// Structure is documented below.
 	LogConfig RegionBackendServiceLogConfigPtrOutput `pulumi:"logConfig"`
 	// Name of the cookie.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -96,7 +103,8 @@ type RegionBackendService struct {
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Structure is documented below.
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrOutput `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
@@ -112,6 +120,7 @@ type RegionBackendService struct {
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -120,6 +129,7 @@ type RegionBackendService struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
+	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
 	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -163,11 +173,13 @@ type regionBackendServiceState struct {
 	// maximum allowed value for TTL is one day.
 	// When the load balancing scheme is INTERNAL, this field is not used.
 	AffinityCookieTtlSec *int `pulumi:"affinityCookieTtlSec"`
-	// The set of backends that serve this RegionBackendService.  Structure is documented below.
+	// The set of backends that serve this RegionBackendService.
+	// Structure is documented below.
 	Backends []RegionBackendServiceBackend `pulumi:"backends"`
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Structure is documented below.
 	CircuitBreakers *RegionBackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
@@ -185,7 +197,8 @@ type regionBackendServiceState struct {
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Policy for failovers.  Structure is documented below.
+	// Policy for failovers.
+	// Structure is documented below.
 	FailoverPolicy *RegionBackendServiceFailoverPolicy `pulumi:"failoverPolicy"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint *string `pulumi:"fingerprint"`
@@ -196,6 +209,8 @@ type regionBackendServiceState struct {
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
+	// Default value is `INTERNAL`.
+	// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -219,9 +234,11 @@ type regionBackendServiceState struct {
 	// Maglev, refer to https://ai.google/research/pubs/pub44824
 	// This field is applicable only when the `loadBalancingScheme` is set to
 	// INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
-	// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+	// If logging is enabled, logs will be exported to Stackdriver.
+	// Structure is documented below.
 	LogConfig *RegionBackendServiceLogConfig `pulumi:"logConfig"`
 	// Name of the cookie.
 	Name *string `pulumi:"name"`
@@ -230,7 +247,8 @@ type regionBackendServiceState struct {
 	Network *string `pulumi:"network"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Structure is documented below.
 	OutlierDetection *RegionBackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
@@ -246,6 +264,7 @@ type regionBackendServiceState struct {
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
 	Protocol *string `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -254,6 +273,7 @@ type regionBackendServiceState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
+	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -267,11 +287,13 @@ type RegionBackendServiceState struct {
 	// maximum allowed value for TTL is one day.
 	// When the load balancing scheme is INTERNAL, this field is not used.
 	AffinityCookieTtlSec pulumi.IntPtrInput
-	// The set of backends that serve this RegionBackendService.  Structure is documented below.
+	// The set of backends that serve this RegionBackendService.
+	// Structure is documented below.
 	Backends RegionBackendServiceBackendArrayInput
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Structure is documented below.
 	CircuitBreakers RegionBackendServiceCircuitBreakersPtrInput
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
@@ -289,7 +311,8 @@ type RegionBackendServiceState struct {
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Policy for failovers.  Structure is documented below.
+	// Policy for failovers.
+	// Structure is documented below.
 	FailoverPolicy RegionBackendServiceFailoverPolicyPtrInput
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringPtrInput
@@ -300,6 +323,8 @@ type RegionBackendServiceState struct {
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
+	// Default value is `INTERNAL`.
+	// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -323,9 +348,11 @@ type RegionBackendServiceState struct {
 	// Maglev, refer to https://ai.google/research/pubs/pub44824
 	// This field is applicable only when the `loadBalancingScheme` is set to
 	// INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
 	LocalityLbPolicy pulumi.StringPtrInput
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
-	// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+	// If logging is enabled, logs will be exported to Stackdriver.
+	// Structure is documented below.
 	LogConfig RegionBackendServiceLogConfigPtrInput
 	// Name of the cookie.
 	Name pulumi.StringPtrInput
@@ -334,7 +361,8 @@ type RegionBackendServiceState struct {
 	Network pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Structure is documented below.
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrInput
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
@@ -350,6 +378,7 @@ type RegionBackendServiceState struct {
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
 	Protocol pulumi.StringPtrInput
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
@@ -358,6 +387,7 @@ type RegionBackendServiceState struct {
 	SelfLink pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
+	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
 	SessionAffinity pulumi.StringPtrInput
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -375,11 +405,13 @@ type regionBackendServiceArgs struct {
 	// maximum allowed value for TTL is one day.
 	// When the load balancing scheme is INTERNAL, this field is not used.
 	AffinityCookieTtlSec *int `pulumi:"affinityCookieTtlSec"`
-	// The set of backends that serve this RegionBackendService.  Structure is documented below.
+	// The set of backends that serve this RegionBackendService.
+	// Structure is documented below.
 	Backends []RegionBackendServiceBackend `pulumi:"backends"`
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Structure is documented below.
 	CircuitBreakers *RegionBackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
@@ -395,7 +427,8 @@ type regionBackendServiceArgs struct {
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Policy for failovers.  Structure is documented below.
+	// Policy for failovers.
+	// Structure is documented below.
 	FailoverPolicy *RegionBackendServiceFailoverPolicy `pulumi:"failoverPolicy"`
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
@@ -404,6 +437,8 @@ type regionBackendServiceArgs struct {
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
+	// Default value is `INTERNAL`.
+	// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -427,9 +462,11 @@ type regionBackendServiceArgs struct {
 	// Maglev, refer to https://ai.google/research/pubs/pub44824
 	// This field is applicable only when the `loadBalancingScheme` is set to
 	// INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
-	// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+	// If logging is enabled, logs will be exported to Stackdriver.
+	// Structure is documented below.
 	LogConfig *RegionBackendServiceLogConfig `pulumi:"logConfig"`
 	// Name of the cookie.
 	Name *string `pulumi:"name"`
@@ -438,7 +475,8 @@ type regionBackendServiceArgs struct {
 	Network *string `pulumi:"network"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Structure is documented below.
 	OutlierDetection *RegionBackendServiceOutlierDetection `pulumi:"outlierDetection"`
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
@@ -454,12 +492,14 @@ type regionBackendServiceArgs struct {
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
 	Protocol *string `pulumi:"protocol"`
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
+	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -474,11 +514,13 @@ type RegionBackendServiceArgs struct {
 	// maximum allowed value for TTL is one day.
 	// When the load balancing scheme is INTERNAL, this field is not used.
 	AffinityCookieTtlSec pulumi.IntPtrInput
-	// The set of backends that serve this RegionBackendService.  Structure is documented below.
+	// The set of backends that serve this RegionBackendService.
+	// Structure is documented below.
 	Backends RegionBackendServiceBackendArrayInput
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
-	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Structure is documented below.
 	CircuitBreakers RegionBackendServiceCircuitBreakersPtrInput
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
@@ -494,7 +536,8 @@ type RegionBackendServiceArgs struct {
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Policy for failovers.  Structure is documented below.
+	// Policy for failovers.
+	// Structure is documented below.
 	FailoverPolicy RegionBackendServiceFailoverPolicyPtrInput
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
@@ -503,6 +546,8 @@ type RegionBackendServiceArgs struct {
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s).
+	// Default value is `INTERNAL`.
+	// Possible values are `INTERNAL` and `INTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are -
@@ -526,9 +571,11 @@ type RegionBackendServiceArgs struct {
 	// Maglev, refer to https://ai.google/research/pubs/pub44824
 	// This field is applicable only when the `loadBalancingScheme` is set to
 	// INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Possible values are `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, and `MAGLEV`.
 	LocalityLbPolicy pulumi.StringPtrInput
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
-	// If logging is enabled, logs will be exported to Stackdriver.  Structure is documented below.
+	// If logging is enabled, logs will be exported to Stackdriver.
+	// Structure is documented below.
 	LogConfig RegionBackendServiceLogConfigPtrInput
 	// Name of the cookie.
 	Name pulumi.StringPtrInput
@@ -537,7 +584,8 @@ type RegionBackendServiceArgs struct {
 	Network pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the `loadBalancingScheme` is set
-	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.  Structure is documented below.
+	// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, or HTTP2.
+	// Structure is documented below.
 	OutlierDetection RegionBackendServiceOutlierDetectionPtrInput
 	// A named port on a backend instance group representing the port for
 	// communication to the backend VMs in that group. Required when the
@@ -553,12 +601,14 @@ type RegionBackendServiceArgs struct {
 	// The protocol this RegionBackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
+	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, and `UDP`.
 	Protocol pulumi.StringPtrInput
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
+	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
 	SessionAffinity pulumi.StringPtrInput
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].

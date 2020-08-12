@@ -21,7 +21,8 @@ import (
 type Trigger struct {
 	pulumi.CustomResourceState
 
-	// Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+	// Contents of the build template. Either a filename or build template must be provided.
+	// Structure is documented below.
 	Build TriggerBuildPtrOutput `pulumi:"build"`
 	// Time when the trigger was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -32,7 +33,8 @@ type Trigger struct {
 	// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
 	Filename pulumi.StringPtrOutput `pulumi:"filename"`
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-	// One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+	// One of `triggerTemplate` or `github` must be provided.
+	// Structure is documented below.
 	Github TriggerGithubPtrOutput `pulumi:"github"`
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
@@ -67,7 +69,8 @@ type Trigger struct {
 	// Branch and tag names in trigger templates are interpreted as regular
 	// expressions. Any branch or tag change that matches that regular
 	// expression will trigger a build.
-	// One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+	// One of `triggerTemplate` or `github` must be provided.
+	// Structure is documented below.
 	TriggerTemplate TriggerTriggerTemplatePtrOutput `pulumi:"triggerTemplate"`
 }
 
@@ -99,7 +102,8 @@ func GetTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Trigger resources.
 type triggerState struct {
-	// Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+	// Contents of the build template. Either a filename or build template must be provided.
+	// Structure is documented below.
 	Build *TriggerBuild `pulumi:"build"`
 	// Time when the trigger was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -110,7 +114,8 @@ type triggerState struct {
 	// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
 	Filename *string `pulumi:"filename"`
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-	// One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+	// One of `triggerTemplate` or `github` must be provided.
+	// Structure is documented below.
 	Github *TriggerGithub `pulumi:"github"`
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
@@ -145,12 +150,14 @@ type triggerState struct {
 	// Branch and tag names in trigger templates are interpreted as regular
 	// expressions. Any branch or tag change that matches that regular
 	// expression will trigger a build.
-	// One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+	// One of `triggerTemplate` or `github` must be provided.
+	// Structure is documented below.
 	TriggerTemplate *TriggerTriggerTemplate `pulumi:"triggerTemplate"`
 }
 
 type TriggerState struct {
-	// Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+	// Contents of the build template. Either a filename or build template must be provided.
+	// Structure is documented below.
 	Build TriggerBuildPtrInput
 	// Time when the trigger was created.
 	CreateTime pulumi.StringPtrInput
@@ -161,7 +168,8 @@ type TriggerState struct {
 	// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
 	Filename pulumi.StringPtrInput
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-	// One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+	// One of `triggerTemplate` or `github` must be provided.
+	// Structure is documented below.
 	Github TriggerGithubPtrInput
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
@@ -196,7 +204,8 @@ type TriggerState struct {
 	// Branch and tag names in trigger templates are interpreted as regular
 	// expressions. Any branch or tag change that matches that regular
 	// expression will trigger a build.
-	// One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+	// One of `triggerTemplate` or `github` must be provided.
+	// Structure is documented below.
 	TriggerTemplate TriggerTriggerTemplatePtrInput
 }
 
@@ -205,7 +214,8 @@ func (TriggerState) ElementType() reflect.Type {
 }
 
 type triggerArgs struct {
-	// Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+	// Contents of the build template. Either a filename or build template must be provided.
+	// Structure is documented below.
 	Build *TriggerBuild `pulumi:"build"`
 	// Human-readable description of the trigger.
 	Description *string `pulumi:"description"`
@@ -214,7 +224,8 @@ type triggerArgs struct {
 	// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
 	Filename *string `pulumi:"filename"`
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-	// One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+	// One of `triggerTemplate` or `github` must be provided.
+	// Structure is documented below.
 	Github *TriggerGithub `pulumi:"github"`
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
@@ -247,13 +258,15 @@ type triggerArgs struct {
 	// Branch and tag names in trigger templates are interpreted as regular
 	// expressions. Any branch or tag change that matches that regular
 	// expression will trigger a build.
-	// One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+	// One of `triggerTemplate` or `github` must be provided.
+	// Structure is documented below.
 	TriggerTemplate *TriggerTriggerTemplate `pulumi:"triggerTemplate"`
 }
 
 // The set of arguments for constructing a Trigger resource.
 type TriggerArgs struct {
-	// Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+	// Contents of the build template. Either a filename or build template must be provided.
+	// Structure is documented below.
 	Build TriggerBuildPtrInput
 	// Human-readable description of the trigger.
 	Description pulumi.StringPtrInput
@@ -262,7 +275,8 @@ type TriggerArgs struct {
 	// Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
 	Filename pulumi.StringPtrInput
 	// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-	// One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+	// One of `triggerTemplate` or `github` must be provided.
+	// Structure is documented below.
 	Github TriggerGithubPtrInput
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
@@ -295,7 +309,8 @@ type TriggerArgs struct {
 	// Branch and tag names in trigger templates are interpreted as regular
 	// expressions. Any branch or tag change that matches that regular
 	// expression will trigger a build.
-	// One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+	// One of `triggerTemplate` or `github` must be provided.
+	// Structure is documented below.
 	TriggerTemplate TriggerTriggerTemplatePtrInput
 }
 

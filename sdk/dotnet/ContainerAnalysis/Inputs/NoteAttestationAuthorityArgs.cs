@@ -20,7 +20,8 @@ namespace Pulumi.Gcp.ContainerAnalysis.Inputs
         /// from "readable" names more suitable for debug output. Note that
         /// these hints should NOT be used to look up AttestationAuthorities
         /// in security sensitive contexts, such as when looking up
-        /// Attestations to verify.  Structure is documented below.
+        /// Attestations to verify.
+        /// Structure is documented below.
         /// </summary>
         [Input("hint", required: true)]
         public Input<Inputs.NoteAttestationAuthorityHintArgs> Hint { get; set; } = null!;

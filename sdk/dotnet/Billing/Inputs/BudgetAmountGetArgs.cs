@@ -15,7 +15,8 @@ namespace Pulumi.Gcp.Billing.Inputs
         /// <summary>
         /// A specified amount to use as the budget. currencyCode is
         /// optional. If specified, it must match the currency of the
-        /// billing account. The currencyCode is provided on output.  Structure is documented below.
+        /// billing account. The currencyCode is provided on output.
+        /// Structure is documented below.
         /// </summary>
         [Input("specifiedAmount", required: true)]
         public Input<Inputs.BudgetAmountSpecifiedAmountGetArgs> SpecifiedAmount { get; set; } = null!;

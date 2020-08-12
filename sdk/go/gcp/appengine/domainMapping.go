@@ -28,6 +28,8 @@ type DomainMapping struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
+	// Default value is `STRICT`.
+	// Possible values are `STRICT` and `OVERRIDE`.
 	OverrideStrategy pulumi.StringPtrOutput `pulumi:"overrideStrategy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -35,7 +37,8 @@ type DomainMapping struct {
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
 	// configuration in order to serve the application via this domain mapping.
 	ResourceRecords DomainMappingResourceRecordArrayOutput `pulumi:"resourceRecords"`
-	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
+	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+	// Structure is documented below.
 	SslSettings DomainMappingSslSettingsPtrOutput `pulumi:"sslSettings"`
 }
 
@@ -76,6 +79,8 @@ type domainMappingState struct {
 	Name *string `pulumi:"name"`
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
+	// Default value is `STRICT`.
+	// Possible values are `STRICT` and `OVERRIDE`.
 	OverrideStrategy *string `pulumi:"overrideStrategy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -83,7 +88,8 @@ type domainMappingState struct {
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
 	// configuration in order to serve the application via this domain mapping.
 	ResourceRecords []DomainMappingResourceRecord `pulumi:"resourceRecords"`
-	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
+	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+	// Structure is documented below.
 	SslSettings *DomainMappingSslSettings `pulumi:"sslSettings"`
 }
 
@@ -94,6 +100,8 @@ type DomainMappingState struct {
 	Name pulumi.StringPtrInput
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
+	// Default value is `STRICT`.
+	// Possible values are `STRICT` and `OVERRIDE`.
 	OverrideStrategy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -101,7 +109,8 @@ type DomainMappingState struct {
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
 	// configuration in order to serve the application via this domain mapping.
 	ResourceRecords DomainMappingResourceRecordArrayInput
-	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
+	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+	// Structure is documented below.
 	SslSettings DomainMappingSslSettingsPtrInput
 }
 
@@ -114,11 +123,14 @@ type domainMappingArgs struct {
 	DomainName string `pulumi:"domainName"`
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
+	// Default value is `STRICT`.
+	// Possible values are `STRICT` and `OVERRIDE`.
 	OverrideStrategy *string `pulumi:"overrideStrategy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
+	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+	// Structure is documented below.
 	SslSettings *DomainMappingSslSettings `pulumi:"sslSettings"`
 }
 
@@ -128,11 +140,14 @@ type DomainMappingArgs struct {
 	DomainName pulumi.StringInput
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
+	// Default value is `STRICT`.
+	// Possible values are `STRICT` and `OVERRIDE`.
 	OverrideStrategy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.  Structure is documented below.
+	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+	// Structure is documented below.
 	SslSettings DomainMappingSslSettingsPtrInput
 }
 

@@ -26,11 +26,13 @@ type AlertPolicy struct {
 
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
+	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
 	Combiner pulumi.StringOutput `pulumi:"combiner"`
 	// A list of conditions for the policy. The conditions are combined by
 	// AND or OR according to the combiner field. If the combined conditions
 	// evaluate to true, then an incident is created. A policy can have from
-	// one to six conditions.  Structure is documented below.
+	// one to six conditions.
+	// Structure is documented below.
 	Conditions AlertPolicyConditionArrayOutput `pulumi:"conditions"`
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
 	// ignored.
@@ -44,7 +46,8 @@ type AlertPolicy struct {
 	// A short name or phrase used to identify the policy in dashboards,
 	// notifications, and incidents. To avoid confusion, don't use the same
 	// display name for multiple policies in the same project. The name is
-	// limited to 512 Unicode characters.  Structure is documented below.
+	// limited to 512 Unicode characters.
+	// Structure is documented below.
 	Documentation AlertPolicyDocumentationPtrOutput `pulumi:"documentation"`
 	// Whether or not the policy is enabled. The default is true.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -114,11 +117,13 @@ func GetAlertPolicy(ctx *pulumi.Context,
 type alertPolicyState struct {
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
+	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
 	Combiner *string `pulumi:"combiner"`
 	// A list of conditions for the policy. The conditions are combined by
 	// AND or OR according to the combiner field. If the combined conditions
 	// evaluate to true, then an incident is created. A policy can have from
-	// one to six conditions.  Structure is documented below.
+	// one to six conditions.
+	// Structure is documented below.
 	Conditions []AlertPolicyCondition `pulumi:"conditions"`
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
 	// ignored.
@@ -132,7 +137,8 @@ type alertPolicyState struct {
 	// A short name or phrase used to identify the policy in dashboards,
 	// notifications, and incidents. To avoid confusion, don't use the same
 	// display name for multiple policies in the same project. The name is
-	// limited to 512 Unicode characters.  Structure is documented below.
+	// limited to 512 Unicode characters.
+	// Structure is documented below.
 	Documentation *AlertPolicyDocumentation `pulumi:"documentation"`
 	// Whether or not the policy is enabled. The default is true.
 	Enabled *bool `pulumi:"enabled"`
@@ -166,11 +172,13 @@ type alertPolicyState struct {
 type AlertPolicyState struct {
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
+	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
 	Combiner pulumi.StringPtrInput
 	// A list of conditions for the policy. The conditions are combined by
 	// AND or OR according to the combiner field. If the combined conditions
 	// evaluate to true, then an incident is created. A policy can have from
-	// one to six conditions.  Structure is documented below.
+	// one to six conditions.
+	// Structure is documented below.
 	Conditions AlertPolicyConditionArrayInput
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
 	// ignored.
@@ -184,7 +192,8 @@ type AlertPolicyState struct {
 	// A short name or phrase used to identify the policy in dashboards,
 	// notifications, and incidents. To avoid confusion, don't use the same
 	// display name for multiple policies in the same project. The name is
-	// limited to 512 Unicode characters.  Structure is documented below.
+	// limited to 512 Unicode characters.
+	// Structure is documented below.
 	Documentation AlertPolicyDocumentationPtrInput
 	// Whether or not the policy is enabled. The default is true.
 	Enabled pulumi.BoolPtrInput
@@ -222,11 +231,13 @@ func (AlertPolicyState) ElementType() reflect.Type {
 type alertPolicyArgs struct {
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
+	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
 	Combiner string `pulumi:"combiner"`
 	// A list of conditions for the policy. The conditions are combined by
 	// AND or OR according to the combiner field. If the combined conditions
 	// evaluate to true, then an incident is created. A policy can have from
-	// one to six conditions.  Structure is documented below.
+	// one to six conditions.
+	// Structure is documented below.
 	Conditions []AlertPolicyCondition `pulumi:"conditions"`
 	// A short name or phrase used to identify the
 	// condition in dashboards, notifications, and
@@ -237,7 +248,8 @@ type alertPolicyArgs struct {
 	// A short name or phrase used to identify the policy in dashboards,
 	// notifications, and incidents. To avoid confusion, don't use the same
 	// display name for multiple policies in the same project. The name is
-	// limited to 512 Unicode characters.  Structure is documented below.
+	// limited to 512 Unicode characters.
+	// Structure is documented below.
 	Documentation *AlertPolicyDocumentation `pulumi:"documentation"`
 	// Whether or not the policy is enabled. The default is true.
 	Enabled *bool `pulumi:"enabled"`
@@ -264,11 +276,13 @@ type alertPolicyArgs struct {
 type AlertPolicyArgs struct {
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
+	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
 	Combiner pulumi.StringInput
 	// A list of conditions for the policy. The conditions are combined by
 	// AND or OR according to the combiner field. If the combined conditions
 	// evaluate to true, then an incident is created. A policy can have from
-	// one to six conditions.  Structure is documented below.
+	// one to six conditions.
+	// Structure is documented below.
 	Conditions AlertPolicyConditionArrayInput
 	// A short name or phrase used to identify the
 	// condition in dashboards, notifications, and
@@ -279,7 +293,8 @@ type AlertPolicyArgs struct {
 	// A short name or phrase used to identify the policy in dashboards,
 	// notifications, and incidents. To avoid confusion, don't use the same
 	// display name for multiple policies in the same project. The name is
-	// limited to 512 Unicode characters.  Structure is documented below.
+	// limited to 512 Unicode characters.
+	// Structure is documented below.
 	Documentation AlertPolicyDocumentationPtrInput
 	// Whether or not the policy is enabled. The default is true.
 	Enabled pulumi.BoolPtrInput

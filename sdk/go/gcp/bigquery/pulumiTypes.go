@@ -165,13 +165,15 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringPtrOut
 }
 
 type ConnectionCloudSql struct {
-	// Cloud SQL properties.  Structure is documented below.
+	// Cloud SQL properties.
+	// Structure is documented below.
 	Credential ConnectionCloudSqlCredential `pulumi:"credential"`
 	// Database name.
 	Database string `pulumi:"database"`
 	// Cloud SQL instance ID in the form project:location:instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Type of the Cloud SQL database.
+	// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
 	Type string `pulumi:"type"`
 }
 
@@ -187,13 +189,15 @@ type ConnectionCloudSqlInput interface {
 }
 
 type ConnectionCloudSqlArgs struct {
-	// Cloud SQL properties.  Structure is documented below.
+	// Cloud SQL properties.
+	// Structure is documented below.
 	Credential ConnectionCloudSqlCredentialInput `pulumi:"credential"`
 	// Database name.
 	Database pulumi.StringInput `pulumi:"database"`
 	// Cloud SQL instance ID in the form project:location:instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// Type of the Cloud SQL database.
+	// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -274,7 +278,8 @@ func (o ConnectionCloudSqlOutput) ToConnectionCloudSqlPtrOutputWithContext(ctx c
 	}).(ConnectionCloudSqlPtrOutput)
 }
 
-// Cloud SQL properties.  Structure is documented below.
+// Cloud SQL properties.
+// Structure is documented below.
 func (o ConnectionCloudSqlOutput) Credential() ConnectionCloudSqlCredentialOutput {
 	return o.ApplyT(func(v ConnectionCloudSql) ConnectionCloudSqlCredential { return v.Credential }).(ConnectionCloudSqlCredentialOutput)
 }
@@ -290,6 +295,7 @@ func (o ConnectionCloudSqlOutput) InstanceId() pulumi.StringOutput {
 }
 
 // Type of the Cloud SQL database.
+// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
 func (o ConnectionCloudSqlOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionCloudSql) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -312,7 +318,8 @@ func (o ConnectionCloudSqlPtrOutput) Elem() ConnectionCloudSqlOutput {
 	return o.ApplyT(func(v *ConnectionCloudSql) ConnectionCloudSql { return *v }).(ConnectionCloudSqlOutput)
 }
 
-// Cloud SQL properties.  Structure is documented below.
+// Cloud SQL properties.
+// Structure is documented below.
 func (o ConnectionCloudSqlPtrOutput) Credential() ConnectionCloudSqlCredentialPtrOutput {
 	return o.ApplyT(func(v *ConnectionCloudSql) *ConnectionCloudSqlCredential {
 		if v == nil {
@@ -343,6 +350,7 @@ func (o ConnectionCloudSqlPtrOutput) InstanceId() pulumi.StringPtrOutput {
 }
 
 // Type of the Cloud SQL database.
+// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
 func (o ConnectionCloudSqlPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionCloudSql) *string {
 		if v == nil {
@@ -353,7 +361,8 @@ func (o ConnectionCloudSqlPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ConnectionCloudSqlCredential struct {
-	// Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// Password for database.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password string `pulumi:"password"`
 	// Username for database.
 	Username string `pulumi:"username"`
@@ -371,7 +380,8 @@ type ConnectionCloudSqlCredentialInput interface {
 }
 
 type ConnectionCloudSqlCredentialArgs struct {
-	// Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+	// Password for database.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringInput `pulumi:"password"`
 	// Username for database.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -454,7 +464,8 @@ func (o ConnectionCloudSqlCredentialOutput) ToConnectionCloudSqlCredentialPtrOut
 	}).(ConnectionCloudSqlCredentialPtrOutput)
 }
 
-// Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+// Password for database.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionCloudSqlCredentialOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionCloudSqlCredential) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -482,7 +493,8 @@ func (o ConnectionCloudSqlCredentialPtrOutput) Elem() ConnectionCloudSqlCredenti
 	return o.ApplyT(func(v *ConnectionCloudSqlCredential) ConnectionCloudSqlCredential { return *v }).(ConnectionCloudSqlCredentialOutput)
 }
 
-// Password for database.  **Note**: This property is sensitive and will not be displayed in the plan.
+// Password for database.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionCloudSqlCredentialPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionCloudSqlCredential) *string {
 		if v == nil {
@@ -524,7 +536,8 @@ type DatasetAccessType struct {
 	// executed against that view will have read access to tables in
 	// this dataset. The role field is not required when this field is
 	// set. If that view is updated by any user, access to the view
-	// needs to be granted again via an update operation.  Structure is documented below.
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
 	View *DatasetAccessView `pulumi:"view"`
 }
 
@@ -561,7 +574,8 @@ type DatasetAccessTypeArgs struct {
 	// executed against that view will have read access to tables in
 	// this dataset. The role field is not required when this field is
 	// set. If that view is updated by any user, access to the view
-	// needs to be granted again via an update operation.  Structure is documented below.
+	// needs to be granted again via an update operation.
+	// Structure is documented below.
 	View DatasetAccessViewPtrInput `pulumi:"view"`
 }
 
@@ -652,7 +666,8 @@ func (o DatasetAccessTypeOutput) UserByEmail() pulumi.StringPtrOutput {
 // executed against that view will have read access to tables in
 // this dataset. The role field is not required when this field is
 // set. If that view is updated by any user, access to the view
-// needs to be granted again via an update operation.  Structure is documented below.
+// needs to be granted again via an update operation.
+// Structure is documented below.
 func (o DatasetAccessTypeOutput) View() DatasetAccessViewPtrOutput {
 	return o.ApplyT(func(v DatasetAccessType) *DatasetAccessView { return v.View }).(DatasetAccessViewPtrOutput)
 }
@@ -1310,12 +1325,17 @@ type JobCopy struct {
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
+	// Default value is `CREATE_IF_NEEDED`.
+	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 	CreateDisposition *string `pulumi:"createDisposition"`
-	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	// Custom encryption configuration (e.g., Cloud KMS keys)
+	// Structure is documented below.
 	DestinationEncryptionConfiguration *JobCopyDestinationEncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
-	// The destination table.  Structure is documented below.
+	// The destination table.
+	// Structure is documented below.
 	DestinationTable *JobCopyDestinationTable `pulumi:"destinationTable"`
-	// Source tables to copy.  Structure is documented below.
+	// Source tables to copy.
+	// Structure is documented below.
 	SourceTables []JobCopySourceTable `pulumi:"sourceTables"`
 	// Specifies the action that occurs if the destination table already exists. The following values are supported:
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -1323,6 +1343,8 @@ type JobCopy struct {
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	// Default value is `WRITE_EMPTY`.
+	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 	WriteDisposition *string `pulumi:"writeDisposition"`
 }
 
@@ -1342,12 +1364,17 @@ type JobCopyArgs struct {
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
+	// Default value is `CREATE_IF_NEEDED`.
+	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
-	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	// Custom encryption configuration (e.g., Cloud KMS keys)
+	// Structure is documented below.
 	DestinationEncryptionConfiguration JobCopyDestinationEncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
-	// The destination table.  Structure is documented below.
+	// The destination table.
+	// Structure is documented below.
 	DestinationTable JobCopyDestinationTablePtrInput `pulumi:"destinationTable"`
-	// Source tables to copy.  Structure is documented below.
+	// Source tables to copy.
+	// Structure is documented below.
 	SourceTables JobCopySourceTableArrayInput `pulumi:"sourceTables"`
 	// Specifies the action that occurs if the destination table already exists. The following values are supported:
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -1355,6 +1382,8 @@ type JobCopyArgs struct {
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	// Default value is `WRITE_EMPTY`.
+	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
 
@@ -1439,23 +1468,28 @@ func (o JobCopyOutput) ToJobCopyPtrOutputWithContext(ctx context.Context) JobCop
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
+// Default value is `CREATE_IF_NEEDED`.
+// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 func (o JobCopyOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopy) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
 }
 
-// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+// Custom encryption configuration (e.g., Cloud KMS keys)
+// Structure is documented below.
 func (o JobCopyOutput) DestinationEncryptionConfiguration() JobCopyDestinationEncryptionConfigurationPtrOutput {
 	return o.ApplyT(func(v JobCopy) *JobCopyDestinationEncryptionConfiguration {
 		return v.DestinationEncryptionConfiguration
 	}).(JobCopyDestinationEncryptionConfigurationPtrOutput)
 }
 
-// The destination table.  Structure is documented below.
+// The destination table.
+// Structure is documented below.
 func (o JobCopyOutput) DestinationTable() JobCopyDestinationTablePtrOutput {
 	return o.ApplyT(func(v JobCopy) *JobCopyDestinationTable { return v.DestinationTable }).(JobCopyDestinationTablePtrOutput)
 }
 
-// Source tables to copy.  Structure is documented below.
+// Source tables to copy.
+// Structure is documented below.
 func (o JobCopyOutput) SourceTables() JobCopySourceTableArrayOutput {
 	return o.ApplyT(func(v JobCopy) []JobCopySourceTable { return v.SourceTables }).(JobCopySourceTableArrayOutput)
 }
@@ -1466,6 +1500,8 @@ func (o JobCopyOutput) SourceTables() JobCopySourceTableArrayOutput {
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
+// Default value is `WRITE_EMPTY`.
+// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 func (o JobCopyOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopy) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
 }
@@ -1492,6 +1528,8 @@ func (o JobCopyPtrOutput) Elem() JobCopyOutput {
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
+// Default value is `CREATE_IF_NEEDED`.
+// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 func (o JobCopyPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopy) *string {
 		if v == nil {
@@ -1501,7 +1539,8 @@ func (o JobCopyPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+// Custom encryption configuration (e.g., Cloud KMS keys)
+// Structure is documented below.
 func (o JobCopyPtrOutput) DestinationEncryptionConfiguration() JobCopyDestinationEncryptionConfigurationPtrOutput {
 	return o.ApplyT(func(v *JobCopy) *JobCopyDestinationEncryptionConfiguration {
 		if v == nil {
@@ -1511,7 +1550,8 @@ func (o JobCopyPtrOutput) DestinationEncryptionConfiguration() JobCopyDestinatio
 	}).(JobCopyDestinationEncryptionConfigurationPtrOutput)
 }
 
-// The destination table.  Structure is documented below.
+// The destination table.
+// Structure is documented below.
 func (o JobCopyPtrOutput) DestinationTable() JobCopyDestinationTablePtrOutput {
 	return o.ApplyT(func(v *JobCopy) *JobCopyDestinationTable {
 		if v == nil {
@@ -1521,7 +1561,8 @@ func (o JobCopyPtrOutput) DestinationTable() JobCopyDestinationTablePtrOutput {
 	}).(JobCopyDestinationTablePtrOutput)
 }
 
-// Source tables to copy.  Structure is documented below.
+// Source tables to copy.
+// Structure is documented below.
 func (o JobCopyPtrOutput) SourceTables() JobCopySourceTableArrayOutput {
 	return o.ApplyT(func(v *JobCopy) []JobCopySourceTable {
 		if v == nil {
@@ -1537,6 +1578,8 @@ func (o JobCopyPtrOutput) SourceTables() JobCopySourceTableArrayOutput {
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
+// Default value is `WRITE_EMPTY`.
+// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 func (o JobCopyPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopy) *string {
 		if v == nil {
@@ -1989,9 +2032,11 @@ type JobExtract struct {
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
 	// Whether to print out a header row in the results. Default is true.
 	PrintHeader *bool `pulumi:"printHeader"`
-	// A reference to the model being exported.  Structure is documented below.
+	// A reference to the model being exported.
+	// Structure is documented below.
 	SourceModel *JobExtractSourceModel `pulumi:"sourceModel"`
-	// A reference to the table being exported.  Structure is documented below.
+	// A reference to the table being exported.
+	// Structure is documented below.
 	SourceTable *JobExtractSourceTable `pulumi:"sourceTable"`
 	// Whether to use logical types when extracting to AVRO format.
 	UseAvroLogicalTypes *bool `pulumi:"useAvroLogicalTypes"`
@@ -2023,9 +2068,11 @@ type JobExtractArgs struct {
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
 	// Whether to print out a header row in the results. Default is true.
 	PrintHeader pulumi.BoolPtrInput `pulumi:"printHeader"`
-	// A reference to the model being exported.  Structure is documented below.
+	// A reference to the model being exported.
+	// Structure is documented below.
 	SourceModel JobExtractSourceModelPtrInput `pulumi:"sourceModel"`
-	// A reference to the table being exported.  Structure is documented below.
+	// A reference to the table being exported.
+	// Structure is documented below.
 	SourceTable JobExtractSourceTablePtrInput `pulumi:"sourceTable"`
 	// Whether to use logical types when extracting to AVRO format.
 	UseAvroLogicalTypes pulumi.BoolPtrInput `pulumi:"useAvroLogicalTypes"`
@@ -2137,12 +2184,14 @@ func (o JobExtractOutput) PrintHeader() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobExtract) *bool { return v.PrintHeader }).(pulumi.BoolPtrOutput)
 }
 
-// A reference to the model being exported.  Structure is documented below.
+// A reference to the model being exported.
+// Structure is documented below.
 func (o JobExtractOutput) SourceModel() JobExtractSourceModelPtrOutput {
 	return o.ApplyT(func(v JobExtract) *JobExtractSourceModel { return v.SourceModel }).(JobExtractSourceModelPtrOutput)
 }
 
-// A reference to the table being exported.  Structure is documented below.
+// A reference to the table being exported.
+// Structure is documented below.
 func (o JobExtractOutput) SourceTable() JobExtractSourceTablePtrOutput {
 	return o.ApplyT(func(v JobExtract) *JobExtractSourceTable { return v.SourceTable }).(JobExtractSourceTablePtrOutput)
 }
@@ -2224,7 +2273,8 @@ func (o JobExtractPtrOutput) PrintHeader() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A reference to the model being exported.  Structure is documented below.
+// A reference to the model being exported.
+// Structure is documented below.
 func (o JobExtractPtrOutput) SourceModel() JobExtractSourceModelPtrOutput {
 	return o.ApplyT(func(v *JobExtract) *JobExtractSourceModel {
 		if v == nil {
@@ -2234,7 +2284,8 @@ func (o JobExtractPtrOutput) SourceModel() JobExtractSourceModelPtrOutput {
 	}).(JobExtractSourceModelPtrOutput)
 }
 
-// A reference to the table being exported.  Structure is documented below.
+// A reference to the table being exported.
+// Structure is documented below.
 func (o JobExtractPtrOutput) SourceTable() JobExtractSourceTablePtrOutput {
 	return o.ApplyT(func(v *JobExtract) *JobExtractSourceTable {
 		if v == nil {
@@ -2610,10 +2661,14 @@ type JobLoad struct {
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
+	// Default value is `CREATE_IF_NEEDED`.
+	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 	CreateDisposition *string `pulumi:"createDisposition"`
-	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	// Custom encryption configuration (e.g., Cloud KMS keys)
+	// Structure is documented below.
 	DestinationEncryptionConfiguration *JobLoadDestinationEncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
-	// The destination table.  Structure is documented below.
+	// The destination table.
+	// Structure is documented below.
 	DestinationTable JobLoadDestinationTable `pulumi:"destinationTable"`
 	// The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
 	// The default value is UTF-8. BigQuery decodes the data after the raw, binary data
@@ -2673,7 +2728,8 @@ type JobLoad struct {
 	// specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
 	// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
 	SourceUris []string `pulumi:"sourceUris"`
-	// Time-based partitioning specification for the destination table.  Structure is documented below.
+	// Time-based partitioning specification for the destination table.
+	// Structure is documented below.
 	TimePartitioning *JobLoadTimePartitioning `pulumi:"timePartitioning"`
 	// Specifies the action that occurs if the destination table already exists. The following values are supported:
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -2681,6 +2737,8 @@ type JobLoad struct {
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	// Default value is `WRITE_EMPTY`.
+	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 	WriteDisposition *string `pulumi:"writeDisposition"`
 }
 
@@ -2709,10 +2767,14 @@ type JobLoadArgs struct {
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
+	// Default value is `CREATE_IF_NEEDED`.
+	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
-	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	// Custom encryption configuration (e.g., Cloud KMS keys)
+	// Structure is documented below.
 	DestinationEncryptionConfiguration JobLoadDestinationEncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
-	// The destination table.  Structure is documented below.
+	// The destination table.
+	// Structure is documented below.
 	DestinationTable JobLoadDestinationTableInput `pulumi:"destinationTable"`
 	// The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
 	// The default value is UTF-8. BigQuery decodes the data after the raw, binary data
@@ -2772,7 +2834,8 @@ type JobLoadArgs struct {
 	// specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
 	// For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
 	SourceUris pulumi.StringArrayInput `pulumi:"sourceUris"`
-	// Time-based partitioning specification for the destination table.  Structure is documented below.
+	// Time-based partitioning specification for the destination table.
+	// Structure is documented below.
 	TimePartitioning JobLoadTimePartitioningPtrInput `pulumi:"timePartitioning"`
 	// Specifies the action that occurs if the destination table already exists. The following values are supported:
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -2780,6 +2843,8 @@ type JobLoadArgs struct {
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	// Default value is `WRITE_EMPTY`.
+	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
 
@@ -2882,18 +2947,22 @@ func (o JobLoadOutput) Autodetect() pulumi.BoolPtrOutput {
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
+// Default value is `CREATE_IF_NEEDED`.
+// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 func (o JobLoadOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoad) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
 }
 
-// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+// Custom encryption configuration (e.g., Cloud KMS keys)
+// Structure is documented below.
 func (o JobLoadOutput) DestinationEncryptionConfiguration() JobLoadDestinationEncryptionConfigurationPtrOutput {
 	return o.ApplyT(func(v JobLoad) *JobLoadDestinationEncryptionConfiguration {
 		return v.DestinationEncryptionConfiguration
 	}).(JobLoadDestinationEncryptionConfigurationPtrOutput)
 }
 
-// The destination table.  Structure is documented below.
+// The destination table.
+// Structure is documented below.
 func (o JobLoadOutput) DestinationTable() JobLoadDestinationTableOutput {
 	return o.ApplyT(func(v JobLoad) JobLoadDestinationTable { return v.DestinationTable }).(JobLoadDestinationTableOutput)
 }
@@ -2989,7 +3058,8 @@ func (o JobLoadOutput) SourceUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobLoad) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
 }
 
-// Time-based partitioning specification for the destination table.  Structure is documented below.
+// Time-based partitioning specification for the destination table.
+// Structure is documented below.
 func (o JobLoadOutput) TimePartitioning() JobLoadTimePartitioningPtrOutput {
 	return o.ApplyT(func(v JobLoad) *JobLoadTimePartitioning { return v.TimePartitioning }).(JobLoadTimePartitioningPtrOutput)
 }
@@ -3000,6 +3070,8 @@ func (o JobLoadOutput) TimePartitioning() JobLoadTimePartitioningPtrOutput {
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
+// Default value is `WRITE_EMPTY`.
+// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 func (o JobLoadOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoad) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
 }
@@ -3059,6 +3131,8 @@ func (o JobLoadPtrOutput) Autodetect() pulumi.BoolPtrOutput {
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
+// Default value is `CREATE_IF_NEEDED`.
+// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 func (o JobLoadPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoad) *string {
 		if v == nil {
@@ -3068,7 +3142,8 @@ func (o JobLoadPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+// Custom encryption configuration (e.g., Cloud KMS keys)
+// Structure is documented below.
 func (o JobLoadPtrOutput) DestinationEncryptionConfiguration() JobLoadDestinationEncryptionConfigurationPtrOutput {
 	return o.ApplyT(func(v *JobLoad) *JobLoadDestinationEncryptionConfiguration {
 		if v == nil {
@@ -3078,7 +3153,8 @@ func (o JobLoadPtrOutput) DestinationEncryptionConfiguration() JobLoadDestinatio
 	}).(JobLoadDestinationEncryptionConfigurationPtrOutput)
 }
 
-// The destination table.  Structure is documented below.
+// The destination table.
+// Structure is documented below.
 func (o JobLoadPtrOutput) DestinationTable() JobLoadDestinationTablePtrOutput {
 	return o.ApplyT(func(v *JobLoad) *JobLoadDestinationTable {
 		if v == nil {
@@ -3234,7 +3310,8 @@ func (o JobLoadPtrOutput) SourceUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Time-based partitioning specification for the destination table.  Structure is documented below.
+// Time-based partitioning specification for the destination table.
+// Structure is documented below.
 func (o JobLoadPtrOutput) TimePartitioning() JobLoadTimePartitioningPtrOutput {
 	return o.ApplyT(func(v *JobLoad) *JobLoadTimePartitioning {
 		if v == nil {
@@ -3250,6 +3327,8 @@ func (o JobLoadPtrOutput) TimePartitioning() JobLoadTimePartitioningPtrOutput {
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
+// Default value is `WRITE_EMPTY`.
+// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 func (o JobLoadPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoad) *string {
 		if v == nil {
@@ -3759,12 +3838,17 @@ type JobQuery struct {
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
+	// Default value is `CREATE_IF_NEEDED`.
+	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 	CreateDisposition *string `pulumi:"createDisposition"`
-	// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+	// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+	// Structure is documented below.
 	DefaultDataset *JobQueryDefaultDataset `pulumi:"defaultDataset"`
-	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	// Custom encryption configuration (e.g., Cloud KMS keys)
+	// Structure is documented below.
 	DestinationEncryptionConfiguration *JobQueryDestinationEncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
-	// The destination table.  Structure is documented below.
+	// The destination table.
+	// Structure is documented below.
 	DestinationTable *JobQueryDestinationTable `pulumi:"destinationTable"`
 	// If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
 	// allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
@@ -3778,8 +3862,11 @@ type JobQuery struct {
 	// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
 	ParameterMode *string `pulumi:"parameterMode"`
 	// Specifies a priority for the query.
+	// Default value is `INTERACTIVE`.
+	// Possible values are `INTERACTIVE` and `BATCH`.
 	Priority *string `pulumi:"priority"`
-	// Configures a query job.  Structure is documented below.
+	// Configures a query job.
+	// Structure is documented below.
 	Query string `pulumi:"query"`
 	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
 	// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -3788,7 +3875,8 @@ type JobQuery struct {
 	// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
 	// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions []string `pulumi:"schemaUpdateOptions"`
-	// Options controlling the execution of scripts.  Structure is documented below.
+	// Options controlling the execution of scripts.
+	// Structure is documented below.
 	ScriptOptions *JobQueryScriptOptions `pulumi:"scriptOptions"`
 	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
 	// If set to false, the query will use BigQuery's standard SQL.
@@ -3797,7 +3885,8 @@ type JobQuery struct {
 	// tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
 	// The default value is true.
 	UseQueryCache *bool `pulumi:"useQueryCache"`
-	// Describes user-defined function resources used in the query.  Structure is documented below.
+	// Describes user-defined function resources used in the query.
+	// Structure is documented below.
 	UserDefinedFunctionResources []JobQueryUserDefinedFunctionResource `pulumi:"userDefinedFunctionResources"`
 	// Specifies the action that occurs if the destination table already exists. The following values are supported:
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -3805,6 +3894,8 @@ type JobQuery struct {
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	// Default value is `WRITE_EMPTY`.
+	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 	WriteDisposition *string `pulumi:"writeDisposition"`
 }
 
@@ -3828,12 +3919,17 @@ type JobQueryArgs struct {
 	// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
+	// Default value is `CREATE_IF_NEEDED`.
+	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
-	// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+	// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+	// Structure is documented below.
 	DefaultDataset JobQueryDefaultDatasetPtrInput `pulumi:"defaultDataset"`
-	// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+	// Custom encryption configuration (e.g., Cloud KMS keys)
+	// Structure is documented below.
 	DestinationEncryptionConfiguration JobQueryDestinationEncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
-	// The destination table.  Structure is documented below.
+	// The destination table.
+	// Structure is documented below.
 	DestinationTable JobQueryDestinationTablePtrInput `pulumi:"destinationTable"`
 	// If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
 	// allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
@@ -3847,8 +3943,11 @@ type JobQueryArgs struct {
 	// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
 	ParameterMode pulumi.StringPtrInput `pulumi:"parameterMode"`
 	// Specifies a priority for the query.
+	// Default value is `INTERACTIVE`.
+	// Possible values are `INTERACTIVE` and `BATCH`.
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
-	// Configures a query job.  Structure is documented below.
+	// Configures a query job.
+	// Structure is documented below.
 	Query pulumi.StringInput `pulumi:"query"`
 	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
 	// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
@@ -3857,7 +3956,8 @@ type JobQueryArgs struct {
 	// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
 	// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions pulumi.StringArrayInput `pulumi:"schemaUpdateOptions"`
-	// Options controlling the execution of scripts.  Structure is documented below.
+	// Options controlling the execution of scripts.
+	// Structure is documented below.
 	ScriptOptions JobQueryScriptOptionsPtrInput `pulumi:"scriptOptions"`
 	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
 	// If set to false, the query will use BigQuery's standard SQL.
@@ -3866,7 +3966,8 @@ type JobQueryArgs struct {
 	// tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
 	// The default value is true.
 	UseQueryCache pulumi.BoolPtrInput `pulumi:"useQueryCache"`
-	// Describes user-defined function resources used in the query.  Structure is documented below.
+	// Describes user-defined function resources used in the query.
+	// Structure is documented below.
 	UserDefinedFunctionResources JobQueryUserDefinedFunctionResourceArrayInput `pulumi:"userDefinedFunctionResources"`
 	// Specifies the action that occurs if the destination table already exists. The following values are supported:
 	// WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result.
@@ -3874,6 +3975,8 @@ type JobQueryArgs struct {
 	// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
+	// Default value is `WRITE_EMPTY`.
+	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
 
@@ -3965,23 +4068,28 @@ func (o JobQueryOutput) AllowLargeResults() pulumi.BoolPtrOutput {
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
+// Default value is `CREATE_IF_NEEDED`.
+// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 func (o JobQueryOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+// Structure is documented below.
 func (o JobQueryOutput) DefaultDataset() JobQueryDefaultDatasetPtrOutput {
 	return o.ApplyT(func(v JobQuery) *JobQueryDefaultDataset { return v.DefaultDataset }).(JobQueryDefaultDatasetPtrOutput)
 }
 
-// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+// Custom encryption configuration (e.g., Cloud KMS keys)
+// Structure is documented below.
 func (o JobQueryOutput) DestinationEncryptionConfiguration() JobQueryDestinationEncryptionConfigurationPtrOutput {
 	return o.ApplyT(func(v JobQuery) *JobQueryDestinationEncryptionConfiguration {
 		return v.DestinationEncryptionConfiguration
 	}).(JobQueryDestinationEncryptionConfigurationPtrOutput)
 }
 
-// The destination table.  Structure is documented below.
+// The destination table.
+// Structure is documented below.
 func (o JobQueryOutput) DestinationTable() JobQueryDestinationTablePtrOutput {
 	return o.ApplyT(func(v JobQuery) *JobQueryDestinationTable { return v.DestinationTable }).(JobQueryDestinationTablePtrOutput)
 }
@@ -4010,11 +4118,14 @@ func (o JobQueryOutput) ParameterMode() pulumi.StringPtrOutput {
 }
 
 // Specifies a priority for the query.
+// Default value is `INTERACTIVE`.
+// Possible values are `INTERACTIVE` and `BATCH`.
 func (o JobQueryOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
 
-// Configures a query job.  Structure is documented below.
+// Configures a query job.
+// Structure is documented below.
 func (o JobQueryOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v JobQuery) string { return v.Query }).(pulumi.StringOutput)
 }
@@ -4029,7 +4140,8 @@ func (o JobQueryOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobQuery) []string { return v.SchemaUpdateOptions }).(pulumi.StringArrayOutput)
 }
 
-// Options controlling the execution of scripts.  Structure is documented below.
+// Options controlling the execution of scripts.
+// Structure is documented below.
 func (o JobQueryOutput) ScriptOptions() JobQueryScriptOptionsPtrOutput {
 	return o.ApplyT(func(v JobQuery) *JobQueryScriptOptions { return v.ScriptOptions }).(JobQueryScriptOptionsPtrOutput)
 }
@@ -4047,7 +4159,8 @@ func (o JobQueryOutput) UseQueryCache() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobQuery) *bool { return v.UseQueryCache }).(pulumi.BoolPtrOutput)
 }
 
-// Describes user-defined function resources used in the query.  Structure is documented below.
+// Describes user-defined function resources used in the query.
+// Structure is documented below.
 func (o JobQueryOutput) UserDefinedFunctionResources() JobQueryUserDefinedFunctionResourceArrayOutput {
 	return o.ApplyT(func(v JobQuery) []JobQueryUserDefinedFunctionResource { return v.UserDefinedFunctionResources }).(JobQueryUserDefinedFunctionResourceArrayOutput)
 }
@@ -4058,6 +4171,8 @@ func (o JobQueryOutput) UserDefinedFunctionResources() JobQueryUserDefinedFuncti
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
+// Default value is `WRITE_EMPTY`.
+// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 func (o JobQueryOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
 }
@@ -4096,6 +4211,8 @@ func (o JobQueryPtrOutput) AllowLargeResults() pulumi.BoolPtrOutput {
 // CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
+// Default value is `CREATE_IF_NEEDED`.
+// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
 func (o JobQueryPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
 		if v == nil {
@@ -4105,7 +4222,8 @@ func (o JobQueryPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.  Structure is documented below.
+// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+// Structure is documented below.
 func (o JobQueryPtrOutput) DefaultDataset() JobQueryDefaultDatasetPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *JobQueryDefaultDataset {
 		if v == nil {
@@ -4115,7 +4233,8 @@ func (o JobQueryPtrOutput) DefaultDataset() JobQueryDefaultDatasetPtrOutput {
 	}).(JobQueryDefaultDatasetPtrOutput)
 }
 
-// Custom encryption configuration (e.g., Cloud KMS keys)  Structure is documented below.
+// Custom encryption configuration (e.g., Cloud KMS keys)
+// Structure is documented below.
 func (o JobQueryPtrOutput) DestinationEncryptionConfiguration() JobQueryDestinationEncryptionConfigurationPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *JobQueryDestinationEncryptionConfiguration {
 		if v == nil {
@@ -4125,7 +4244,8 @@ func (o JobQueryPtrOutput) DestinationEncryptionConfiguration() JobQueryDestinat
 	}).(JobQueryDestinationEncryptionConfigurationPtrOutput)
 }
 
-// The destination table.  Structure is documented below.
+// The destination table.
+// Structure is documented below.
 func (o JobQueryPtrOutput) DestinationTable() JobQueryDestinationTablePtrOutput {
 	return o.ApplyT(func(v *JobQuery) *JobQueryDestinationTable {
 		if v == nil {
@@ -4179,6 +4299,8 @@ func (o JobQueryPtrOutput) ParameterMode() pulumi.StringPtrOutput {
 }
 
 // Specifies a priority for the query.
+// Default value is `INTERACTIVE`.
+// Possible values are `INTERACTIVE` and `BATCH`.
 func (o JobQueryPtrOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
 		if v == nil {
@@ -4188,7 +4310,8 @@ func (o JobQueryPtrOutput) Priority() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configures a query job.  Structure is documented below.
+// Configures a query job.
+// Structure is documented below.
 func (o JobQueryPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
 		if v == nil {
@@ -4213,7 +4336,8 @@ func (o JobQueryPtrOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Options controlling the execution of scripts.  Structure is documented below.
+// Options controlling the execution of scripts.
+// Structure is documented below.
 func (o JobQueryPtrOutput) ScriptOptions() JobQueryScriptOptionsPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *JobQueryScriptOptions {
 		if v == nil {
@@ -4246,7 +4370,8 @@ func (o JobQueryPtrOutput) UseQueryCache() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Describes user-defined function resources used in the query.  Structure is documented below.
+// Describes user-defined function resources used in the query.
+// Structure is documented below.
 func (o JobQueryPtrOutput) UserDefinedFunctionResources() JobQueryUserDefinedFunctionResourceArrayOutput {
 	return o.ApplyT(func(v *JobQuery) []JobQueryUserDefinedFunctionResource {
 		if v == nil {
@@ -4262,6 +4387,8 @@ func (o JobQueryPtrOutput) UserDefinedFunctionResources() JobQueryUserDefinedFun
 // WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result.
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
+// Default value is `WRITE_EMPTY`.
+// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
 func (o JobQueryPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
 		if v == nil {
@@ -4734,6 +4861,7 @@ func (o JobQueryDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
 type JobQueryScriptOptions struct {
 	// Determines which statement in the script represents the "key result",
 	// used to populate the schema and query results of the script job.
+	// Possible values are `LAST` and `FIRST_SELECT`.
 	KeyResultStatement *string `pulumi:"keyResultStatement"`
 	// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
 	StatementByteBudget *string `pulumi:"statementByteBudget"`
@@ -4755,6 +4883,7 @@ type JobQueryScriptOptionsInput interface {
 type JobQueryScriptOptionsArgs struct {
 	// Determines which statement in the script represents the "key result",
 	// used to populate the schema and query results of the script job.
+	// Possible values are `LAST` and `FIRST_SELECT`.
 	KeyResultStatement pulumi.StringPtrInput `pulumi:"keyResultStatement"`
 	// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
 	StatementByteBudget pulumi.StringPtrInput `pulumi:"statementByteBudget"`
@@ -4841,6 +4970,7 @@ func (o JobQueryScriptOptionsOutput) ToJobQueryScriptOptionsPtrOutputWithContext
 
 // Determines which statement in the script represents the "key result",
 // used to populate the schema and query results of the script job.
+// Possible values are `LAST` and `FIRST_SELECT`.
 func (o JobQueryScriptOptionsOutput) KeyResultStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQueryScriptOptions) *string { return v.KeyResultStatement }).(pulumi.StringPtrOutput)
 }
@@ -4875,6 +5005,7 @@ func (o JobQueryScriptOptionsPtrOutput) Elem() JobQueryScriptOptionsOutput {
 
 // Determines which statement in the script represents the "key result",
 // used to populate the schema and query results of the script job.
+// Possible values are `LAST` and `FIRST_SELECT`.
 func (o JobQueryScriptOptionsPtrOutput) KeyResultStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQueryScriptOptions) *string {
 		if v == nil {
@@ -5192,7 +5323,7 @@ type TableExternalDataConfiguration struct {
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-	// ~>**NOTE**: Because this field expects a JSON string, any changes to the
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
 	// string will create a diff, even if the JSON itself hasn't changed.
 	// Furthermore drift for this field cannot not be detected because BigQuery
 	// only uses this schema to compute the effective schema for the table, therefore
@@ -5255,7 +5386,7 @@ type TableExternalDataConfigurationArgs struct {
 	// A JSON schema for the external table. Schema is required
 	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
 	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-	// ~>**NOTE**: Because this field expects a JSON string, any changes to the
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
 	// string will create a diff, even if the JSON itself hasn't changed.
 	// Furthermore drift for this field cannot not be detected because BigQuery
 	// only uses this schema to compute the effective schema for the table, therefore
@@ -5408,7 +5539,7 @@ func (o TableExternalDataConfigurationOutput) MaxBadRecords() pulumi.IntPtrOutpu
 // A JSON schema for the external table. Schema is required
 // for CSV and JSON formats if autodetect is not on. Schema is disallowed
 // for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-// ~>**NOTE**: Because this field expects a JSON string, any changes to the
+// ~>**NOTE:** Because this field expects a JSON string, any changes to the
 // string will create a diff, even if the JSON itself hasn't changed.
 // Furthermore drift for this field cannot not be detected because BigQuery
 // only uses this schema to compute the effective schema for the table, therefore
@@ -5540,7 +5671,7 @@ func (o TableExternalDataConfigurationPtrOutput) MaxBadRecords() pulumi.IntPtrOu
 // A JSON schema for the external table. Schema is required
 // for CSV and JSON formats if autodetect is not on. Schema is disallowed
 // for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-// ~>**NOTE**: Because this field expects a JSON string, any changes to the
+// ~>**NOTE:** Because this field expects a JSON string, any changes to the
 // string will create a diff, even if the JSON itself hasn't changed.
 // Furthermore drift for this field cannot not be detected because BigQuery
 // only uses this schema to compute the effective schema for the table, therefore

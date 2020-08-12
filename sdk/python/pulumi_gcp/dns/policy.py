@@ -14,11 +14,13 @@ class Policy(pulumi.CustomResource):
     """
     Sets an alternative name server for the associated networks.
     When specified, all DNS queries are forwarded to a name server that you choose.
-    Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
+    Names such as .internal are not available when an alternative name server is specified.
+    Structure is documented below.
 
       * `targetNameServers` (`list`) - Sets an alternative name server for the associated networks. When specified,
         all DNS queries are forwarded to a name server that you choose. Names such as .internal
-        are not available when an alternative name server is specified.  Structure is documented below.
+        are not available when an alternative name server is specified.
+        Structure is documented below.
         * `ipv4Address` (`str`) - IPv4 address to forward to.
     """
     description: pulumi.Output[str]
@@ -43,7 +45,8 @@ class Policy(pulumi.CustomResource):
     """
     networks: pulumi.Output[list]
     """
-    List of network names specifying networks to which this policy is applied.  Structure is documented below.
+    List of network names specifying networks to which this policy is applied.
+    Structure is documented below.
 
       * `networkUrl` (`str`) - The id or fully qualified URL of the VPC network to forward queries to.
         This should be formatted like `projects/{project}/global/networks/{network}` or
@@ -71,7 +74,8 @@ class Policy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] alternative_name_server_config: Sets an alternative name server for the associated networks.
                When specified, all DNS queries are forwarded to a name server that you choose.
-               Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
+               Names such as .internal are not available when an alternative name server is specified.
+               Structure is documented below.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
                by VMs or applications over VPN connections. When enabled, a
@@ -80,7 +84,8 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
                Defaults to no logging if not set.
         :param pulumi.Input[str] name: User assigned name for this policy.
-        :param pulumi.Input[list] networks: List of network names specifying networks to which this policy is applied.  Structure is documented below.
+        :param pulumi.Input[list] networks: List of network names specifying networks to which this policy is applied.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
@@ -88,7 +93,8 @@ class Policy(pulumi.CustomResource):
 
           * `targetNameServers` (`pulumi.Input[list]`) - Sets an alternative name server for the associated networks. When specified,
             all DNS queries are forwarded to a name server that you choose. Names such as .internal
-            are not available when an alternative name server is specified.  Structure is documented below.
+            are not available when an alternative name server is specified.
+            Structure is documented below.
             * `ipv4Address` (`pulumi.Input[str]`) - IPv4 address to forward to.
 
         The **networks** object supports the following:
@@ -138,7 +144,8 @@ class Policy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] alternative_name_server_config: Sets an alternative name server for the associated networks.
                When specified, all DNS queries are forwarded to a name server that you choose.
-               Names such as .internal are not available when an alternative name server is specified.  Structure is documented below.
+               Names such as .internal are not available when an alternative name server is specified.
+               Structure is documented below.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent
                by VMs or applications over VPN connections. When enabled, a
@@ -147,7 +154,8 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
                Defaults to no logging if not set.
         :param pulumi.Input[str] name: User assigned name for this policy.
-        :param pulumi.Input[list] networks: List of network names specifying networks to which this policy is applied.  Structure is documented below.
+        :param pulumi.Input[list] networks: List of network names specifying networks to which this policy is applied.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
 
@@ -155,7 +163,8 @@ class Policy(pulumi.CustomResource):
 
           * `targetNameServers` (`pulumi.Input[list]`) - Sets an alternative name server for the associated networks. When specified,
             all DNS queries are forwarded to a name server that you choose. Names such as .internal
-            are not available when an alternative name server is specified.  Structure is documented below.
+            are not available when an alternative name server is specified.
+            Structure is documented below.
             * `ipv4Address` (`pulumi.Input[str]`) - IPv4 address to forward to.
 
         The **networks** object supports the following:

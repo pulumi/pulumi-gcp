@@ -12,13 +12,15 @@ from .. import utilities, tables
 class Trigger(pulumi.CustomResource):
     build: pulumi.Output[dict]
     """
-    Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+    Contents of the build template. Either a filename or build template must be provided.
+    Structure is documented below.
 
       * `images` (`list`) - A list of images to be pushed upon the successful completion of all build steps.
         The images are pushed using the builder service account's credentials.
         The digests of the pushed images will be stored in the Build resource's results field.
         If any of the images fail to be pushed, the build status is marked FAILURE.
-      * `steps` (`list`) - The operations to be performed on the workspace.  Structure is documented below.
+      * `steps` (`list`) - The operations to be performed on the workspace.
+        Structure is documented below.
         * `args` (`list`) - A list of arguments that will be presented to the step when it is started.
           If the image used to run the step's container has an entrypoint, the args
           are used as arguments to that entrypoint. If the image does not define an
@@ -60,7 +62,8 @@ class Trigger(pulumi.CustomResource):
           build step. Upon completion of the build, volumes and their contents
           are discarded.
           Using a named volume in only one step is not valid as it is
-          indicative of a build request with an incorrect configuration.  Structure is documented below.
+          indicative of a build request with an incorrect configuration.
+          Structure is documented below.
           * `name` (`str`) - Name of the volume to mount.
             Volume names must be unique per build step and must be valid names for
             Docker volumes. Each named volume must be used by at least two build steps.
@@ -99,19 +102,23 @@ class Trigger(pulumi.CustomResource):
     github: pulumi.Output[dict]
     """
     Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-    One of `trigger_template` or `github` must be provided.  Structure is documented below.
+    One of `trigger_template` or `github` must be provided.
+    Structure is documented below.
 
       * `name` (`str`) - Name of the volume to mount.
         Volume names must be unique per build step and must be valid names for
         Docker volumes. Each named volume must be used by at least two build steps.
       * `owner` (`str`) - Owner of the repository. For example: The owner for
         https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
-      * `pullRequest` (`dict`) - filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
+      * `pullRequest` (`dict`) - filter to match changes in pull requests.  Specify only one of pullRequest or push.
+        Structure is documented below.
         * `branch` (`str`) - Regex of branches to match.  Specify only one of branch or tag.
         * `commentControl` (`str`) - Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+          Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
         * `invertRegex` (`bool`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
 
-      * `push` (`dict`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
+      * `push` (`dict`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+        Structure is documented below.
         * `branch` (`str`) - Regex of branches to match.  Specify only one of branch or tag.
         * `invertRegex` (`bool`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
         * `tag` (`str`) - Regex of tags to match.  Specify only one of branch or tag.
@@ -163,7 +170,8 @@ class Trigger(pulumi.CustomResource):
     Branch and tag names in trigger templates are interpreted as regular
     expressions. Any branch or tag change that matches that regular
     expression will trigger a build.
-    One of `trigger_template` or `github` must be provided.  Structure is documented below.
+    One of `trigger_template` or `github` must be provided.
+    Structure is documented below.
 
       * `branchName` (`str`) - Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
         This field is a regular expression.
@@ -198,12 +206,14 @@ class Trigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] build: Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+        :param pulumi.Input[dict] build: Contents of the build template. Either a filename or build template must be provided.
+               Structure is documented below.
         :param pulumi.Input[str] description: Human-readable description of the trigger.
         :param pulumi.Input[bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
         :param pulumi.Input[str] filename: Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
         :param pulumi.Input[dict] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-               One of `trigger_template` or `github` must be provided.  Structure is documented below.
+               One of `trigger_template` or `github` must be provided.
+               Structure is documented below.
         :param pulumi.Input[list] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If ignoredFiles and changed files are both empty, then they are not
@@ -230,7 +240,8 @@ class Trigger(pulumi.CustomResource):
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
                expression will trigger a build.
-               One of `trigger_template` or `github` must be provided.  Structure is documented below.
+               One of `trigger_template` or `github` must be provided.
+               Structure is documented below.
 
         The **build** object supports the following:
 
@@ -238,7 +249,8 @@ class Trigger(pulumi.CustomResource):
             The images are pushed using the builder service account's credentials.
             The digests of the pushed images will be stored in the Build resource's results field.
             If any of the images fail to be pushed, the build status is marked FAILURE.
-          * `steps` (`pulumi.Input[list]`) - The operations to be performed on the workspace.  Structure is documented below.
+          * `steps` (`pulumi.Input[list]`) - The operations to be performed on the workspace.
+            Structure is documented below.
             * `args` (`pulumi.Input[list]`) - A list of arguments that will be presented to the step when it is started.
               If the image used to run the step's container has an entrypoint, the args
               are used as arguments to that entrypoint. If the image does not define an
@@ -280,7 +292,8 @@ class Trigger(pulumi.CustomResource):
               build step. Upon completion of the build, volumes and their contents
               are discarded.
               Using a named volume in only one step is not valid as it is
-              indicative of a build request with an incorrect configuration.  Structure is documented below.
+              indicative of a build request with an incorrect configuration.
+              Structure is documented below.
               * `name` (`pulumi.Input[str]`) - Name of the volume to mount.
                 Volume names must be unique per build step and must be valid names for
                 Docker volumes. Each named volume must be used by at least two build steps.
@@ -307,12 +320,15 @@ class Trigger(pulumi.CustomResource):
             Docker volumes. Each named volume must be used by at least two build steps.
           * `owner` (`pulumi.Input[str]`) - Owner of the repository. For example: The owner for
             https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
-          * `pullRequest` (`pulumi.Input[dict]`) - filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
+          * `pullRequest` (`pulumi.Input[dict]`) - filter to match changes in pull requests.  Specify only one of pullRequest or push.
+            Structure is documented below.
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
             * `commentControl` (`pulumi.Input[str]`) - Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+              Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
             * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
 
-          * `push` (`pulumi.Input[dict]`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
+          * `push` (`pulumi.Input[dict]`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+            Structure is documented below.
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
             * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
             * `tag` (`pulumi.Input[str]`) - Regex of tags to match.  Specify only one of branch or tag.
@@ -383,13 +399,15 @@ class Trigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] build: Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+        :param pulumi.Input[dict] build: Contents of the build template. Either a filename or build template must be provided.
+               Structure is documented below.
         :param pulumi.Input[str] create_time: Time when the trigger was created.
         :param pulumi.Input[str] description: Human-readable description of the trigger.
         :param pulumi.Input[bool] disabled: Whether the trigger is disabled or not. If true, the trigger will never result in a build.
         :param pulumi.Input[str] filename: Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided.
         :param pulumi.Input[dict] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-               One of `trigger_template` or `github` must be provided.  Structure is documented below.
+               One of `trigger_template` or `github` must be provided.
+               Structure is documented below.
         :param pulumi.Input[list] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If ignoredFiles and changed files are both empty, then they are not
@@ -417,7 +435,8 @@ class Trigger(pulumi.CustomResource):
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
                expression will trigger a build.
-               One of `trigger_template` or `github` must be provided.  Structure is documented below.
+               One of `trigger_template` or `github` must be provided.
+               Structure is documented below.
 
         The **build** object supports the following:
 
@@ -425,7 +444,8 @@ class Trigger(pulumi.CustomResource):
             The images are pushed using the builder service account's credentials.
             The digests of the pushed images will be stored in the Build resource's results field.
             If any of the images fail to be pushed, the build status is marked FAILURE.
-          * `steps` (`pulumi.Input[list]`) - The operations to be performed on the workspace.  Structure is documented below.
+          * `steps` (`pulumi.Input[list]`) - The operations to be performed on the workspace.
+            Structure is documented below.
             * `args` (`pulumi.Input[list]`) - A list of arguments that will be presented to the step when it is started.
               If the image used to run the step's container has an entrypoint, the args
               are used as arguments to that entrypoint. If the image does not define an
@@ -467,7 +487,8 @@ class Trigger(pulumi.CustomResource):
               build step. Upon completion of the build, volumes and their contents
               are discarded.
               Using a named volume in only one step is not valid as it is
-              indicative of a build request with an incorrect configuration.  Structure is documented below.
+              indicative of a build request with an incorrect configuration.
+              Structure is documented below.
               * `name` (`pulumi.Input[str]`) - Name of the volume to mount.
                 Volume names must be unique per build step and must be valid names for
                 Docker volumes. Each named volume must be used by at least two build steps.
@@ -494,12 +515,15 @@ class Trigger(pulumi.CustomResource):
             Docker volumes. Each named volume must be used by at least two build steps.
           * `owner` (`pulumi.Input[str]`) - Owner of the repository. For example: The owner for
             https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
-          * `pullRequest` (`pulumi.Input[dict]`) - filter to match changes in pull requests.  Specify only one of pullRequest or push.  Structure is documented below.
+          * `pullRequest` (`pulumi.Input[dict]`) - filter to match changes in pull requests.  Specify only one of pullRequest or push.
+            Structure is documented below.
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
             * `commentControl` (`pulumi.Input[str]`) - Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
+              Possible values are `COMMENTS_DISABLED` and `COMMENTS_ENABLED`.
             * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
 
-          * `push` (`pulumi.Input[dict]`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.  Structure is documented below.
+          * `push` (`pulumi.Input[dict]`) - filter to match changes in refs, like branches or tags.  Specify only one of pullRequest or push.
+            Structure is documented below.
             * `branch` (`pulumi.Input[str]`) - Regex of branches to match.  Specify only one of branch or tag.
             * `invertRegex` (`pulumi.Input[bool]`) - When true, only trigger a build if the revision regex does NOT match the git_ref regex.
             * `tag` (`pulumi.Input[str]`) - Regex of tags to match.  Specify only one of branch or tag.

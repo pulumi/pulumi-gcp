@@ -37,7 +37,8 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The hardware accelerator used on this instance. If you use accelerators,
      * make sure that your configuration has enough vCPUs and memory to support the
-     * machineType you have selected.  Structure is documented below.
+     * machineType you have selected.
+     * Structure is documented below.
      */
     public readonly acceleratorConfig!: pulumi.Output<outputs.notebooks.InstanceAcceleratorConfig | undefined>;
     /**
@@ -48,10 +49,12 @@ export class Instance extends pulumi.CustomResource {
     public readonly bootDiskSizeGb!: pulumi.Output<number | undefined>;
     /**
      * Possible disk types for notebook instances.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
      */
     public readonly bootDiskType!: pulumi.Output<string | undefined>;
     /**
-     * Use a container image to start the notebook instance.  Structure is documented below.
+     * Use a container image to start the notebook instance.
+     * Structure is documented below.
      */
     public readonly containerImage!: pulumi.Output<outputs.notebooks.InstanceContainerImage | undefined>;
     /**
@@ -72,10 +75,12 @@ export class Instance extends pulumi.CustomResource {
     public readonly dataDiskSizeGb!: pulumi.Output<number | undefined>;
     /**
      * Possible disk types for notebook instances.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
      */
     public readonly dataDiskType!: pulumi.Output<string | undefined>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
+     * Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
      */
     public readonly diskEncryption!: pulumi.Output<string | undefined>;
     /**
@@ -172,7 +177,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly updateTime!: pulumi.Output<string>;
     /**
-     * Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+     * Use a Compute Engine VM image to start the notebook instance.
+     * Structure is documented below.
      */
     public readonly vmImage!: pulumi.Output<outputs.notebooks.InstanceVmImage | undefined>;
 
@@ -273,7 +279,8 @@ export interface InstanceState {
     /**
      * The hardware accelerator used on this instance. If you use accelerators,
      * make sure that your configuration has enough vCPUs and memory to support the
-     * machineType you have selected.  Structure is documented below.
+     * machineType you have selected.
+     * Structure is documented below.
      */
     readonly acceleratorConfig?: pulumi.Input<inputs.notebooks.InstanceAcceleratorConfig>;
     /**
@@ -284,10 +291,12 @@ export interface InstanceState {
     readonly bootDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
      */
     readonly bootDiskType?: pulumi.Input<string>;
     /**
-     * Use a container image to start the notebook instance.  Structure is documented below.
+     * Use a container image to start the notebook instance.
+     * Structure is documented below.
      */
     readonly containerImage?: pulumi.Input<inputs.notebooks.InstanceContainerImage>;
     /**
@@ -308,10 +317,12 @@ export interface InstanceState {
     readonly dataDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
      */
     readonly dataDiskType?: pulumi.Input<string>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
+     * Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
      */
     readonly diskEncryption?: pulumi.Input<string>;
     /**
@@ -408,7 +419,8 @@ export interface InstanceState {
      */
     readonly updateTime?: pulumi.Input<string>;
     /**
-     * Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+     * Use a Compute Engine VM image to start the notebook instance.
+     * Structure is documented below.
      */
     readonly vmImage?: pulumi.Input<inputs.notebooks.InstanceVmImage>;
 }
@@ -420,7 +432,8 @@ export interface InstanceArgs {
     /**
      * The hardware accelerator used on this instance. If you use accelerators,
      * make sure that your configuration has enough vCPUs and memory to support the
-     * machineType you have selected.  Structure is documented below.
+     * machineType you have selected.
+     * Structure is documented below.
      */
     readonly acceleratorConfig?: pulumi.Input<inputs.notebooks.InstanceAcceleratorConfig>;
     /**
@@ -431,10 +444,12 @@ export interface InstanceArgs {
     readonly bootDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
      */
     readonly bootDiskType?: pulumi.Input<string>;
     /**
-     * Use a container image to start the notebook instance.  Structure is documented below.
+     * Use a container image to start the notebook instance.
+     * Structure is documented below.
      */
     readonly containerImage?: pulumi.Input<inputs.notebooks.InstanceContainerImage>;
     /**
@@ -455,10 +470,12 @@ export interface InstanceArgs {
     readonly dataDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
+     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, and `PD_SSD`.
      */
     readonly dataDiskType?: pulumi.Input<string>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
+     * Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
      */
     readonly diskEncryption?: pulumi.Input<string>;
     /**
@@ -547,7 +564,8 @@ export interface InstanceArgs {
      */
     readonly updateTime?: pulumi.Input<string>;
     /**
-     * Use a Compute Engine VM image to start the notebook instance.  Structure is documented below.
+     * Use a Compute Engine VM image to start the notebook instance.
+     * Structure is documented below.
      */
     readonly vmImage?: pulumi.Input<inputs.notebooks.InstanceVmImage>;
 }

@@ -12,10 +12,13 @@ from .. import utilities, tables
 class UptimeCheckConfig(pulumi.CustomResource):
     content_matchers: pulumi.Output[list]
     """
-    The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+    The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+    Structure is documented below.
 
       * `content` (`str`) - String or regex content to match (max 1024 bytes)
       * `matcher` (`str`) - The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+        Default value is `CONTAINS_STRING`.
+        Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
     """
     display_name: pulumi.Output[str]
     """
@@ -23,25 +26,32 @@ class UptimeCheckConfig(pulumi.CustomResource):
     """
     http_check: pulumi.Output[dict]
     """
-    Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
+    Contains information needed to make an HTTP or HTTPS check.
+    Structure is documented below.
 
-      * `authInfo` (`dict`) - The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
-        * `password` (`str`) - The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
+      * `authInfo` (`dict`) - The authentication information. Optional when creating an HTTP check; defaults to empty.
+        Structure is documented below.
+        * `password` (`str`) - The password to authenticate.
+          **Note**: This property is sensitive and will not be displayed in the plan.
         * `username` (`str`) - The username to authenticate.
 
       * `body` (`str`) - The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
       * `content_type` (`str`) - The content type to use for the check.
+        Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
       * `headers` (`dict`) - The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
       * `maskHeaders` (`bool`) - Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.
       * `path` (`str`) - The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
       * `port` (`float`) - The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
       * `requestMethod` (`str`) - The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+        Default value is `GET`.
+        Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
       * `useSsl` (`bool`) - If true, use HTTPS instead of HTTP to run the check.
       * `validateSsl` (`bool`) - Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
     """
     monitored_resource: pulumi.Output[dict]
     """
-    The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer  Structure is documented below.
+    The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
+    Structure is documented below.
 
       * `labels` (`dict`) - Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
       * `type` (`str`) - The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
@@ -62,10 +72,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
     """
     resource_group: pulumi.Output[dict]
     """
-    The group resource associated with the configuration.  Structure is documented below.
+    The group resource associated with the configuration.
+    Structure is documented below.
 
       * `groupId` (`str`) - The group of resources being monitored. Should be the `name` of a group
       * `resourceType` (`str`) - The resource type of the group members.
+        Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
     """
     selected_regions: pulumi.Output[list]
     """
@@ -73,7 +85,8 @@ class UptimeCheckConfig(pulumi.CustomResource):
     """
     tcp_check: pulumi.Output[dict]
     """
-    Contains information needed to make a TCP check.  Structure is documented below.
+    Contains information needed to make a TCP check.
+    Structure is documented below.
 
       * `port` (`float`) - The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
     """
@@ -102,36 +115,48 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+        :param pulumi.Input[list] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
-        :param pulumi.Input[dict] http_check: Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
-        :param pulumi.Input[dict] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer  Structure is documented below.
+        :param pulumi.Input[dict] http_check: Contains information needed to make an HTTP or HTTPS check.
+               Structure is documented below.
+        :param pulumi.Input[dict] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
+               Structure is documented below.
         :param pulumi.Input[str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] resource_group: The group resource associated with the configuration.  Structure is documented below.
+        :param pulumi.Input[dict] resource_group: The group resource associated with the configuration.
+               Structure is documented below.
         :param pulumi.Input[list] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
-        :param pulumi.Input[dict] tcp_check: Contains information needed to make a TCP check.  Structure is documented below.
+        :param pulumi.Input[dict] tcp_check: Contains information needed to make a TCP check.
+               Structure is documented below.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
 
         The **content_matchers** object supports the following:
 
           * `content` (`pulumi.Input[str]`) - String or regex content to match (max 1024 bytes)
           * `matcher` (`pulumi.Input[str]`) - The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+            Default value is `CONTAINS_STRING`.
+            Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
 
         The **http_check** object supports the following:
 
-          * `authInfo` (`pulumi.Input[dict]`) - The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
-            * `password` (`pulumi.Input[str]`) - The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
+          * `authInfo` (`pulumi.Input[dict]`) - The authentication information. Optional when creating an HTTP check; defaults to empty.
+            Structure is documented below.
+            * `password` (`pulumi.Input[str]`) - The password to authenticate.
+              **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The username to authenticate.
 
           * `body` (`pulumi.Input[str]`) - The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
           * `content_type` (`pulumi.Input[str]`) - The content type to use for the check.
+            Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
           * `headers` (`pulumi.Input[dict]`) - The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
           * `maskHeaders` (`pulumi.Input[bool]`) - Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.
           * `path` (`pulumi.Input[str]`) - The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
           * `port` (`pulumi.Input[float]`) - The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
           * `requestMethod` (`pulumi.Input[str]`) - The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+            Default value is `GET`.
+            Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
           * `useSsl` (`pulumi.Input[bool]`) - If true, use HTTPS instead of HTTP to run the check.
           * `validateSsl` (`pulumi.Input[bool]`) - Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
 
@@ -144,6 +169,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
           * `groupId` (`pulumi.Input[str]`) - The group of resources being monitored. Should be the `name` of a group
           * `resourceType` (`pulumi.Input[str]`) - The resource type of the group members.
+            Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
 
         The **tcp_check** object supports the following:
 
@@ -197,18 +223,23 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.  Structure is documented below.
+        :param pulumi.Input[list] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
-        :param pulumi.Input[dict] http_check: Contains information needed to make an HTTP or HTTPS check.  Structure is documented below.
-        :param pulumi.Input[dict] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer  Structure is documented below.
+        :param pulumi.Input[dict] http_check: Contains information needed to make an HTTP or HTTPS check.
+               Structure is documented below.
+        :param pulumi.Input[dict] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance  aws_elb_load_balancer
+               Structure is documented below.
         :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is
                projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
         :param pulumi.Input[str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[dict] resource_group: The group resource associated with the configuration.  Structure is documented below.
+        :param pulumi.Input[dict] resource_group: The group resource associated with the configuration.
+               Structure is documented below.
         :param pulumi.Input[list] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
-        :param pulumi.Input[dict] tcp_check: Contains information needed to make a TCP check.  Structure is documented below.
+        :param pulumi.Input[dict] tcp_check: Contains information needed to make a TCP check.
+               Structure is documented below.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
         :param pulumi.Input[str] uptime_check_id: The id of the uptime check
 
@@ -216,20 +247,27 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
           * `content` (`pulumi.Input[str]`) - String or regex content to match (max 1024 bytes)
           * `matcher` (`pulumi.Input[str]`) - The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+            Default value is `CONTAINS_STRING`.
+            Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, and `NON_MATCHES_REGEX`.
 
         The **http_check** object supports the following:
 
-          * `authInfo` (`pulumi.Input[dict]`) - The authentication information. Optional when creating an HTTP check; defaults to empty.  Structure is documented below.
-            * `password` (`pulumi.Input[str]`) - The password to authenticate.  **Note**: This property is sensitive and will not be displayed in the plan.
+          * `authInfo` (`pulumi.Input[dict]`) - The authentication information. Optional when creating an HTTP check; defaults to empty.
+            Structure is documented below.
+            * `password` (`pulumi.Input[str]`) - The password to authenticate.
+              **Note**: This property is sensitive and will not be displayed in the plan.
             * `username` (`pulumi.Input[str]`) - The username to authenticate.
 
           * `body` (`pulumi.Input[str]`) - The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
           * `content_type` (`pulumi.Input[str]`) - The content type to use for the check.
+            Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
           * `headers` (`pulumi.Input[dict]`) - The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
           * `maskHeaders` (`pulumi.Input[bool]`) - Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.
           * `path` (`pulumi.Input[str]`) - The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. Optional (defaults to "/").
           * `port` (`pulumi.Input[float]`) - The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
           * `requestMethod` (`pulumi.Input[str]`) - The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+            Default value is `GET`.
+            Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
           * `useSsl` (`pulumi.Input[bool]`) - If true, use HTTPS instead of HTTP to run the check.
           * `validateSsl` (`pulumi.Input[bool]`) - Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
 
@@ -242,6 +280,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
           * `groupId` (`pulumi.Input[str]`) - The group of resources being monitored. Should be the `name` of a group
           * `resourceType` (`pulumi.Input[str]`) - The resource type of the group members.
+            Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
 
         The **tcp_check** object supports the following:
 

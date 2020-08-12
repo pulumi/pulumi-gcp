@@ -23,7 +23,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? InUseCount;
         /// <summary>
-        /// The instance properties for the reservation.  Structure is documented below.
+        /// The instance properties for the reservation.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ReservationSpecificReservationInstanceProperties InstanceProperties;
 

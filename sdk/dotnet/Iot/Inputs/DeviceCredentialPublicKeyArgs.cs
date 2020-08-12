@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Iot.Inputs
     {
         /// <summary>
         /// The format of the key.
+        /// Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;

@@ -12,7 +12,8 @@ from .. import utilities, tables
 class ResourcePolicy(pulumi.CustomResource):
     group_placement_policy: pulumi.Output[dict]
     """
-    Policy for creating snapshots of persistent disks.  Structure is documented below.
+    Policy for creating snapshots of persistent disks.
+    Structure is documented below.
 
       * `availabilityDomainCount` (`float`) - The number of availability domains instances will be spread across. If two instances are in different
         availability domain, they will not be put in the same low latency network
@@ -20,6 +21,7 @@ class ResourcePolicy(pulumi.CustomResource):
         Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
         with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
         attached.
+        Possible values are `COLLOCATED`.
       * `vmCount` (`float`) - Number of vms in this placement group.
     """
     name: pulumi.Output[str]
@@ -47,31 +49,42 @@ class ResourcePolicy(pulumi.CustomResource):
     """
     snapshot_schedule_policy: pulumi.Output[dict]
     """
-    Policy for creating snapshots of persistent disks.  Structure is documented below.
+    Policy for creating snapshots of persistent disks.
+    Structure is documented below.
 
-      * `retention_policy` (`dict`) - Retention policy applied to snapshots created by this resource policy.  Structure is documented below.
+      * `retention_policy` (`dict`) - Retention policy applied to snapshots created by this resource policy.
+        Structure is documented below.
         * `maxRetentionDays` (`float`) - Maximum age of the snapshot that is allowed to be kept.
         * `onSourceDiskDelete` (`str`) - Specifies the behavior to apply to scheduled snapshots when
           the source disk is deleted.
+          Default value is `KEEP_AUTO_SNAPSHOTS`.
+          Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
 
-      * `schedule` (`dict`) - Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
-        * `dailySchedule` (`dict`) - The policy will execute every nth day at the specified time.  Structure is documented below.
+      * `schedule` (`dict`) - Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+        Structure is documented below.
+        * `dailySchedule` (`dict`) - The policy will execute every nth day at the specified time.
+          Structure is documented below.
           * `daysInCycle` (`float`) - The number of days between snapshots.
           * `startTime` (`str`) - Time within the window to start the operations.
             It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 
-        * `hourlySchedule` (`dict`) - The policy will execute every nth hour starting at the specified time.  Structure is documented below.
+        * `hourlySchedule` (`dict`) - The policy will execute every nth hour starting at the specified time.
+          Structure is documented below.
           * `hoursInCycle` (`float`) - The number of hours between snapshots.
           * `startTime` (`str`) - Time within the window to start the operations.
             It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 
-        * `weeklySchedule` (`dict`) - Allows specifying a snapshot time for each day of the week.  Structure is documented below.
-          * `dayOfWeeks` (`list`) - May contain up to seven (one for each day of the week) snapshot times.  Structure is documented below.
+        * `weeklySchedule` (`dict`) - Allows specifying a snapshot time for each day of the week.
+          Structure is documented below.
+          * `dayOfWeeks` (`list`) - May contain up to seven (one for each day of the week) snapshot times.
+            Structure is documented below.
             * `day` (`str`) - The day of the week to create the snapshot. e.g. MONDAY
+              Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
             * `startTime` (`str`) - Time within the window to start the operations.
               It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 
-      * `snapshotProperties` (`dict`) - Properties with which the snapshots are created, such as labels.  Structure is documented below.
+      * `snapshotProperties` (`dict`) - Properties with which the snapshots are created, such as labels.
+        Structure is documented below.
         * `guestFlush` (`bool`) - Whether to perform a 'guest aware' snapshot.
         * `labels` (`dict`) - A set of key-value pairs.
         * `storageLocations` (`str`) - Cloud Storage bucket location to store the auto snapshot
@@ -85,7 +98,8 @@ class ResourcePolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] group_placement_policy: Policy for creating snapshots of persistent disks.  Structure is documented below.
+        :param pulumi.Input[dict] group_placement_policy: Policy for creating snapshots of persistent disks.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
                with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -96,7 +110,8 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
-        :param pulumi.Input[dict] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.  Structure is documented below.
+        :param pulumi.Input[dict] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
+               Structure is documented below.
 
         The **group_placement_policy** object supports the following:
 
@@ -106,33 +121,44 @@ class ResourcePolicy(pulumi.CustomResource):
             Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
             with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
             attached.
+            Possible values are `COLLOCATED`.
           * `vmCount` (`pulumi.Input[float]`) - Number of vms in this placement group.
 
         The **snapshot_schedule_policy** object supports the following:
 
-          * `retention_policy` (`pulumi.Input[dict]`) - Retention policy applied to snapshots created by this resource policy.  Structure is documented below.
+          * `retention_policy` (`pulumi.Input[dict]`) - Retention policy applied to snapshots created by this resource policy.
+            Structure is documented below.
             * `maxRetentionDays` (`pulumi.Input[float]`) - Maximum age of the snapshot that is allowed to be kept.
             * `onSourceDiskDelete` (`pulumi.Input[str]`) - Specifies the behavior to apply to scheduled snapshots when
               the source disk is deleted.
+              Default value is `KEEP_AUTO_SNAPSHOTS`.
+              Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
 
-          * `schedule` (`pulumi.Input[dict]`) - Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
-            * `dailySchedule` (`pulumi.Input[dict]`) - The policy will execute every nth day at the specified time.  Structure is documented below.
+          * `schedule` (`pulumi.Input[dict]`) - Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+            Structure is documented below.
+            * `dailySchedule` (`pulumi.Input[dict]`) - The policy will execute every nth day at the specified time.
+              Structure is documented below.
               * `daysInCycle` (`pulumi.Input[float]`) - The number of days between snapshots.
               * `startTime` (`pulumi.Input[str]`) - Time within the window to start the operations.
                 It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 
-            * `hourlySchedule` (`pulumi.Input[dict]`) - The policy will execute every nth hour starting at the specified time.  Structure is documented below.
+            * `hourlySchedule` (`pulumi.Input[dict]`) - The policy will execute every nth hour starting at the specified time.
+              Structure is documented below.
               * `hoursInCycle` (`pulumi.Input[float]`) - The number of hours between snapshots.
               * `startTime` (`pulumi.Input[str]`) - Time within the window to start the operations.
                 It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 
-            * `weeklySchedule` (`pulumi.Input[dict]`) - Allows specifying a snapshot time for each day of the week.  Structure is documented below.
-              * `dayOfWeeks` (`pulumi.Input[list]`) - May contain up to seven (one for each day of the week) snapshot times.  Structure is documented below.
+            * `weeklySchedule` (`pulumi.Input[dict]`) - Allows specifying a snapshot time for each day of the week.
+              Structure is documented below.
+              * `dayOfWeeks` (`pulumi.Input[list]`) - May contain up to seven (one for each day of the week) snapshot times.
+                Structure is documented below.
                 * `day` (`pulumi.Input[str]`) - The day of the week to create the snapshot. e.g. MONDAY
+                  Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
                 * `startTime` (`pulumi.Input[str]`) - Time within the window to start the operations.
                   It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 
-          * `snapshotProperties` (`pulumi.Input[dict]`) - Properties with which the snapshots are created, such as labels.  Structure is documented below.
+          * `snapshotProperties` (`pulumi.Input[dict]`) - Properties with which the snapshots are created, such as labels.
+            Structure is documented below.
             * `guestFlush` (`pulumi.Input[bool]`) - Whether to perform a 'guest aware' snapshot.
             * `labels` (`pulumi.Input[dict]`) - A set of key-value pairs.
             * `storageLocations` (`pulumi.Input[str]`) - Cloud Storage bucket location to store the auto snapshot
@@ -176,7 +202,8 @@ class ResourcePolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] group_placement_policy: Policy for creating snapshots of persistent disks.  Structure is documented below.
+        :param pulumi.Input[dict] group_placement_policy: Policy for creating snapshots of persistent disks.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
                with RFC1035. Specifically, the name must be 1-63 characters long and
@@ -188,7 +215,8 @@ class ResourcePolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[dict] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.  Structure is documented below.
+        :param pulumi.Input[dict] snapshot_schedule_policy: Policy for creating snapshots of persistent disks.
+               Structure is documented below.
 
         The **group_placement_policy** object supports the following:
 
@@ -198,33 +226,44 @@ class ResourcePolicy(pulumi.CustomResource):
             Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
             with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
             attached.
+            Possible values are `COLLOCATED`.
           * `vmCount` (`pulumi.Input[float]`) - Number of vms in this placement group.
 
         The **snapshot_schedule_policy** object supports the following:
 
-          * `retention_policy` (`pulumi.Input[dict]`) - Retention policy applied to snapshots created by this resource policy.  Structure is documented below.
+          * `retention_policy` (`pulumi.Input[dict]`) - Retention policy applied to snapshots created by this resource policy.
+            Structure is documented below.
             * `maxRetentionDays` (`pulumi.Input[float]`) - Maximum age of the snapshot that is allowed to be kept.
             * `onSourceDiskDelete` (`pulumi.Input[str]`) - Specifies the behavior to apply to scheduled snapshots when
               the source disk is deleted.
+              Default value is `KEEP_AUTO_SNAPSHOTS`.
+              Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
 
-          * `schedule` (`pulumi.Input[dict]`) - Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.  Structure is documented below.
-            * `dailySchedule` (`pulumi.Input[dict]`) - The policy will execute every nth day at the specified time.  Structure is documented below.
+          * `schedule` (`pulumi.Input[dict]`) - Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+            Structure is documented below.
+            * `dailySchedule` (`pulumi.Input[dict]`) - The policy will execute every nth day at the specified time.
+              Structure is documented below.
               * `daysInCycle` (`pulumi.Input[float]`) - The number of days between snapshots.
               * `startTime` (`pulumi.Input[str]`) - Time within the window to start the operations.
                 It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 
-            * `hourlySchedule` (`pulumi.Input[dict]`) - The policy will execute every nth hour starting at the specified time.  Structure is documented below.
+            * `hourlySchedule` (`pulumi.Input[dict]`) - The policy will execute every nth hour starting at the specified time.
+              Structure is documented below.
               * `hoursInCycle` (`pulumi.Input[float]`) - The number of hours between snapshots.
               * `startTime` (`pulumi.Input[str]`) - Time within the window to start the operations.
                 It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 
-            * `weeklySchedule` (`pulumi.Input[dict]`) - Allows specifying a snapshot time for each day of the week.  Structure is documented below.
-              * `dayOfWeeks` (`pulumi.Input[list]`) - May contain up to seven (one for each day of the week) snapshot times.  Structure is documented below.
+            * `weeklySchedule` (`pulumi.Input[dict]`) - Allows specifying a snapshot time for each day of the week.
+              Structure is documented below.
+              * `dayOfWeeks` (`pulumi.Input[list]`) - May contain up to seven (one for each day of the week) snapshot times.
+                Structure is documented below.
                 * `day` (`pulumi.Input[str]`) - The day of the week to create the snapshot. e.g. MONDAY
+                  Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
                 * `startTime` (`pulumi.Input[str]`) - Time within the window to start the operations.
                   It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 
-          * `snapshotProperties` (`pulumi.Input[dict]`) - Properties with which the snapshots are created, such as labels.  Structure is documented below.
+          * `snapshotProperties` (`pulumi.Input[dict]`) - Properties with which the snapshots are created, such as labels.
+            Structure is documented below.
             * `guestFlush` (`pulumi.Input[bool]`) - Whether to perform a 'guest aware' snapshot.
             * `labels` (`pulumi.Input[dict]`) - A set of key-value pairs.
             * `storageLocations` (`pulumi.Input[str]`) - Cloud Storage bucket location to store the auto snapshot

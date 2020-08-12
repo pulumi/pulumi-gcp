@@ -46,7 +46,8 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public Input<int>? Order { get; set; }
 
         /// <summary>
-        /// The type of value this tag field can contain.  Structure is documented below.
+        /// The type of value this tag field can contain.
+        /// Structure is documented below.
         /// </summary>
         [Input("type", required: true)]
         public Input<Inputs.TagTemplateFieldTypeArgs> Type { get; set; } = null!;

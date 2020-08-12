@@ -58,12 +58,14 @@ export class Slo extends pulumi.CustomResource {
      * SLIs are used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
+     * Structure is documented below.
      */
     public readonly basicSli!: pulumi.Output<outputs.monitoring.SloBasicSli | undefined>;
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
+     * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
      */
     public readonly calendarPeriod!: pulumi.Output<string | undefined>;
     /**
@@ -92,7 +94,8 @@ export class Slo extends pulumi.CustomResource {
      * It is used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
+     * Structure is documented below.
      */
     public readonly requestBasedSli!: pulumi.Output<outputs.monitoring.SloRequestBasedSli | undefined>;
     /**
@@ -116,7 +119,8 @@ export class Slo extends pulumi.CustomResource {
      * the quality of the Service's performance with respect to a single
      * aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
+     * Structure is documented below.
      */
     public readonly windowsBasedSli!: pulumi.Output<outputs.monitoring.SloWindowsBasedSli | undefined>;
 
@@ -184,12 +188,14 @@ export interface SloState {
      * SLIs are used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
+     * Structure is documented below.
      */
     readonly basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
+     * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
      */
     readonly calendarPeriod?: pulumi.Input<string>;
     /**
@@ -218,7 +224,8 @@ export interface SloState {
      * It is used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
+     * Structure is documented below.
      */
     readonly requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
     /**
@@ -242,7 +249,8 @@ export interface SloState {
      * the quality of the Service's performance with respect to a single
      * aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
+     * Structure is documented below.
      */
     readonly windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli>;
 }
@@ -257,12 +265,14 @@ export interface SloArgs {
      * SLIs are used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
+     * Structure is documented below.
      */
     readonly basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
+     * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
      */
     readonly calendarPeriod?: pulumi.Input<string>;
     /**
@@ -286,7 +296,8 @@ export interface SloArgs {
      * It is used to measure and calculate the quality of the Service's
      * performance with respect to a single aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
+     * Structure is documented below.
      */
     readonly requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
     /**
@@ -310,7 +321,8 @@ export interface SloArgs {
      * the quality of the Service's performance with respect to a single
      * aspect of service quality.
      * Exactly one of the following must be set:
-     * `basicSli`, `requestBasedSli`, `windowsBasedSli`  Structure is documented below.
+     * `basicSli`, `requestBasedSli`, `windowsBasedSli`
+     * Structure is documented below.
      */
     readonly windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli>;
 }

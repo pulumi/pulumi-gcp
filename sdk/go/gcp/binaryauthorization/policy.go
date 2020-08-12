@@ -24,7 +24,8 @@ type Policy struct {
 
 	// A whitelist of image patterns to exclude from admission rules. If an
 	// image's name matches a whitelist pattern, the image's admission
-	// requests will always be permitted regardless of your admission rules.  Structure is documented below.
+	// requests will always be permitted regardless of your admission rules.
+	// Structure is documented below.
 	AdmissionWhitelistPatterns PolicyAdmissionWhitelistPatternArrayOutput `pulumi:"admissionWhitelistPatterns"`
 	// Per-cluster admission rules. An admission rule specifies either that
 	// all container images used in a pod creation request must be attested
@@ -33,13 +34,15 @@ type Policy struct {
 	// admission rule per cluster spec.
 	ClusterAdmissionRules PolicyClusterAdmissionRuleArrayOutput `pulumi:"clusterAdmissionRules"`
 	// Default admission rule for a cluster without a per-cluster admission
-	// rule.  Structure is documented below.
+	// rule.
+	// Structure is documented below.
 	DefaultAdmissionRule PolicyDefaultAdmissionRuleOutput `pulumi:"defaultAdmissionRule"`
 	// A descriptive comment.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Controls the evaluation of a Google-maintained global admission policy
 	// for common system-level images. Images not covered by the global
 	// policy will be subject to the project admission policy.
+	// Possible values are `ENABLE` and `DISABLE`.
 	GlobalPolicyEvaluationMode pulumi.StringOutput `pulumi:"globalPolicyEvaluationMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -79,7 +82,8 @@ func GetPolicy(ctx *pulumi.Context,
 type policyState struct {
 	// A whitelist of image patterns to exclude from admission rules. If an
 	// image's name matches a whitelist pattern, the image's admission
-	// requests will always be permitted regardless of your admission rules.  Structure is documented below.
+	// requests will always be permitted regardless of your admission rules.
+	// Structure is documented below.
 	AdmissionWhitelistPatterns []PolicyAdmissionWhitelistPattern `pulumi:"admissionWhitelistPatterns"`
 	// Per-cluster admission rules. An admission rule specifies either that
 	// all container images used in a pod creation request must be attested
@@ -88,13 +92,15 @@ type policyState struct {
 	// admission rule per cluster spec.
 	ClusterAdmissionRules []PolicyClusterAdmissionRule `pulumi:"clusterAdmissionRules"`
 	// Default admission rule for a cluster without a per-cluster admission
-	// rule.  Structure is documented below.
+	// rule.
+	// Structure is documented below.
 	DefaultAdmissionRule *PolicyDefaultAdmissionRule `pulumi:"defaultAdmissionRule"`
 	// A descriptive comment.
 	Description *string `pulumi:"description"`
 	// Controls the evaluation of a Google-maintained global admission policy
 	// for common system-level images. Images not covered by the global
 	// policy will be subject to the project admission policy.
+	// Possible values are `ENABLE` and `DISABLE`.
 	GlobalPolicyEvaluationMode *string `pulumi:"globalPolicyEvaluationMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -104,7 +110,8 @@ type policyState struct {
 type PolicyState struct {
 	// A whitelist of image patterns to exclude from admission rules. If an
 	// image's name matches a whitelist pattern, the image's admission
-	// requests will always be permitted regardless of your admission rules.  Structure is documented below.
+	// requests will always be permitted regardless of your admission rules.
+	// Structure is documented below.
 	AdmissionWhitelistPatterns PolicyAdmissionWhitelistPatternArrayInput
 	// Per-cluster admission rules. An admission rule specifies either that
 	// all container images used in a pod creation request must be attested
@@ -113,13 +120,15 @@ type PolicyState struct {
 	// admission rule per cluster spec.
 	ClusterAdmissionRules PolicyClusterAdmissionRuleArrayInput
 	// Default admission rule for a cluster without a per-cluster admission
-	// rule.  Structure is documented below.
+	// rule.
+	// Structure is documented below.
 	DefaultAdmissionRule PolicyDefaultAdmissionRulePtrInput
 	// A descriptive comment.
 	Description pulumi.StringPtrInput
 	// Controls the evaluation of a Google-maintained global admission policy
 	// for common system-level images. Images not covered by the global
 	// policy will be subject to the project admission policy.
+	// Possible values are `ENABLE` and `DISABLE`.
 	GlobalPolicyEvaluationMode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -133,7 +142,8 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// A whitelist of image patterns to exclude from admission rules. If an
 	// image's name matches a whitelist pattern, the image's admission
-	// requests will always be permitted regardless of your admission rules.  Structure is documented below.
+	// requests will always be permitted regardless of your admission rules.
+	// Structure is documented below.
 	AdmissionWhitelistPatterns []PolicyAdmissionWhitelistPattern `pulumi:"admissionWhitelistPatterns"`
 	// Per-cluster admission rules. An admission rule specifies either that
 	// all container images used in a pod creation request must be attested
@@ -142,13 +152,15 @@ type policyArgs struct {
 	// admission rule per cluster spec.
 	ClusterAdmissionRules []PolicyClusterAdmissionRule `pulumi:"clusterAdmissionRules"`
 	// Default admission rule for a cluster without a per-cluster admission
-	// rule.  Structure is documented below.
+	// rule.
+	// Structure is documented below.
 	DefaultAdmissionRule PolicyDefaultAdmissionRule `pulumi:"defaultAdmissionRule"`
 	// A descriptive comment.
 	Description *string `pulumi:"description"`
 	// Controls the evaluation of a Google-maintained global admission policy
 	// for common system-level images. Images not covered by the global
 	// policy will be subject to the project admission policy.
+	// Possible values are `ENABLE` and `DISABLE`.
 	GlobalPolicyEvaluationMode *string `pulumi:"globalPolicyEvaluationMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -159,7 +171,8 @@ type policyArgs struct {
 type PolicyArgs struct {
 	// A whitelist of image patterns to exclude from admission rules. If an
 	// image's name matches a whitelist pattern, the image's admission
-	// requests will always be permitted regardless of your admission rules.  Structure is documented below.
+	// requests will always be permitted regardless of your admission rules.
+	// Structure is documented below.
 	AdmissionWhitelistPatterns PolicyAdmissionWhitelistPatternArrayInput
 	// Per-cluster admission rules. An admission rule specifies either that
 	// all container images used in a pod creation request must be attested
@@ -168,13 +181,15 @@ type PolicyArgs struct {
 	// admission rule per cluster spec.
 	ClusterAdmissionRules PolicyClusterAdmissionRuleArrayInput
 	// Default admission rule for a cluster without a per-cluster admission
-	// rule.  Structure is documented below.
+	// rule.
+	// Structure is documented below.
 	DefaultAdmissionRule PolicyDefaultAdmissionRuleInput
 	// A descriptive comment.
 	Description pulumi.StringPtrInput
 	// Controls the evaluation of a Google-maintained global admission policy
 	// for common system-level images. Images not covered by the global
 	// policy will be subject to the project admission policy.
+	// Possible values are `ENABLE` and `DISABLE`.
 	GlobalPolicyEvaluationMode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

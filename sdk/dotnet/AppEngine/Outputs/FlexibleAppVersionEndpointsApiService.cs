@@ -32,6 +32,8 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         public readonly string Name;
         /// <summary>
         /// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
+        /// Default value is `FIXED`.
+        /// Possible values are `FIXED` and `MANAGED`.
         /// </summary>
         public readonly string? RolloutStrategy;
 

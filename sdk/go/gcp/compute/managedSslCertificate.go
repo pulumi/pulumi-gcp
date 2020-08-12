@@ -48,7 +48,8 @@ type ManagedSslCertificate struct {
 	// Expire time of the certificate.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// Properties relevant to a managed certificate.  These will be used if the
-	// certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+	// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+	// Structure is documented below.
 	Managed ManagedSslCertificateManagedPtrOutput `pulumi:"managed"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -67,6 +68,8 @@ type ManagedSslCertificate struct {
 	SubjectAlternativeNames pulumi.StringArrayOutput `pulumi:"subjectAlternativeNames"`
 	// Enum field whose value is always `MANAGED` - used to signal to the API
 	// which type this is.
+	// Default value is `MANAGED`.
+	// Possible values are `MANAGED`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -113,7 +116,8 @@ type managedSslCertificateState struct {
 	// Expire time of the certificate.
 	ExpireTime *string `pulumi:"expireTime"`
 	// Properties relevant to a managed certificate.  These will be used if the
-	// certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+	// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+	// Structure is documented below.
 	Managed *ManagedSslCertificateManaged `pulumi:"managed"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -132,6 +136,8 @@ type managedSslCertificateState struct {
 	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
 	// Enum field whose value is always `MANAGED` - used to signal to the API
 	// which type this is.
+	// Default value is `MANAGED`.
+	// Possible values are `MANAGED`.
 	Type *string `pulumi:"type"`
 }
 
@@ -145,7 +151,8 @@ type ManagedSslCertificateState struct {
 	// Expire time of the certificate.
 	ExpireTime pulumi.StringPtrInput
 	// Properties relevant to a managed certificate.  These will be used if the
-	// certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+	// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+	// Structure is documented below.
 	Managed ManagedSslCertificateManagedPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -164,6 +171,8 @@ type ManagedSslCertificateState struct {
 	SubjectAlternativeNames pulumi.StringArrayInput
 	// Enum field whose value is always `MANAGED` - used to signal to the API
 	// which type this is.
+	// Default value is `MANAGED`.
+	// Possible values are `MANAGED`.
 	Type pulumi.StringPtrInput
 }
 
@@ -177,7 +186,8 @@ type managedSslCertificateArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Properties relevant to a managed certificate.  These will be used if the
-	// certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+	// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+	// Structure is documented below.
 	Managed *ManagedSslCertificateManaged `pulumi:"managed"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -192,6 +202,8 @@ type managedSslCertificateArgs struct {
 	Project *string `pulumi:"project"`
 	// Enum field whose value is always `MANAGED` - used to signal to the API
 	// which type this is.
+	// Default value is `MANAGED`.
+	// Possible values are `MANAGED`.
 	Type *string `pulumi:"type"`
 }
 
@@ -202,7 +214,8 @@ type ManagedSslCertificateArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Properties relevant to a managed certificate.  These will be used if the
-	// certificate is managed (as indicated by a value of `MANAGED` in `type`).  Structure is documented below.
+	// certificate is managed (as indicated by a value of `MANAGED` in `type`).
+	// Structure is documented below.
 	Managed ManagedSslCertificateManagedPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -217,6 +230,8 @@ type ManagedSslCertificateArgs struct {
 	Project pulumi.StringPtrInput
 	// Enum field whose value is always `MANAGED` - used to signal to the API
 	// which type this is.
+	// Default value is `MANAGED`.
+	// Possible values are `MANAGED`.
 	Type pulumi.StringPtrInput
 }
 

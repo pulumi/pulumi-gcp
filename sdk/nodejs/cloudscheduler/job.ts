@@ -53,7 +53,8 @@ export class Job extends pulumi.CustomResource {
     /**
      * App Engine HTTP target.
      * If the job providers a App Engine HTTP target the cron will
-     * send a request to the service instance  Structure is documented below.
+     * send a request to the service instance
+     * Structure is documented below.
      */
     public readonly appEngineHttpTarget!: pulumi.Output<outputs.cloudscheduler.JobAppEngineHttpTarget | undefined>;
     /**
@@ -74,7 +75,8 @@ export class Job extends pulumi.CustomResource {
     /**
      * HTTP target.
      * If the job providers a httpTarget the cron will
-     * send a request to the targeted url  Structure is documented below.
+     * send a request to the targeted url
+     * Structure is documented below.
      */
     public readonly httpTarget!: pulumi.Output<outputs.cloudscheduler.JobHttpTarget | undefined>;
     /**
@@ -89,7 +91,8 @@ export class Job extends pulumi.CustomResource {
     /**
      * Pub/Sub target
      * If the job providers a Pub/Sub target the cron will publish
-     * a message to the provided topic  Structure is documented below.
+     * a message to the provided topic
+     * Structure is documented below.
      */
     public readonly pubsubTarget!: pulumi.Output<outputs.cloudscheduler.JobPubsubTarget | undefined>;
     /**
@@ -99,7 +102,8 @@ export class Job extends pulumi.CustomResource {
     /**
      * By default, if a job does not complete successfully,
      * meaning that an acknowledgement is not received from the handler,
-     * then it will be retried with exponential backoff according to the settings  Structure is documented below.
+     * then it will be retried with exponential backoff according to the settings
+     * Structure is documented below.
      */
     public readonly retryConfig!: pulumi.Output<outputs.cloudscheduler.JobRetryConfig | undefined>;
     /**
@@ -167,7 +171,8 @@ export interface JobState {
     /**
      * App Engine HTTP target.
      * If the job providers a App Engine HTTP target the cron will
-     * send a request to the service instance  Structure is documented below.
+     * send a request to the service instance
+     * Structure is documented below.
      */
     readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTarget>;
     /**
@@ -188,7 +193,8 @@ export interface JobState {
     /**
      * HTTP target.
      * If the job providers a httpTarget the cron will
-     * send a request to the targeted url  Structure is documented below.
+     * send a request to the targeted url
+     * Structure is documented below.
      */
     readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     /**
@@ -203,7 +209,8 @@ export interface JobState {
     /**
      * Pub/Sub target
      * If the job providers a Pub/Sub target the cron will publish
-     * a message to the provided topic  Structure is documented below.
+     * a message to the provided topic
+     * Structure is documented below.
      */
     readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
     /**
@@ -213,7 +220,8 @@ export interface JobState {
     /**
      * By default, if a job does not complete successfully,
      * meaning that an acknowledgement is not received from the handler,
-     * then it will be retried with exponential backoff according to the settings  Structure is documented below.
+     * then it will be retried with exponential backoff according to the settings
+     * Structure is documented below.
      */
     readonly retryConfig?: pulumi.Input<inputs.cloudscheduler.JobRetryConfig>;
     /**
@@ -234,7 +242,8 @@ export interface JobArgs {
     /**
      * App Engine HTTP target.
      * If the job providers a App Engine HTTP target the cron will
-     * send a request to the service instance  Structure is documented below.
+     * send a request to the service instance
+     * Structure is documented below.
      */
     readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.JobAppEngineHttpTarget>;
     /**
@@ -255,7 +264,8 @@ export interface JobArgs {
     /**
      * HTTP target.
      * If the job providers a httpTarget the cron will
-     * send a request to the targeted url  Structure is documented below.
+     * send a request to the targeted url
+     * Structure is documented below.
      */
     readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     /**
@@ -270,7 +280,8 @@ export interface JobArgs {
     /**
      * Pub/Sub target
      * If the job providers a Pub/Sub target the cron will publish
-     * a message to the provided topic  Structure is documented below.
+     * a message to the provided topic
+     * Structure is documented below.
      */
     readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.JobPubsubTarget>;
     /**
@@ -280,7 +291,8 @@ export interface JobArgs {
     /**
      * By default, if a job does not complete successfully,
      * meaning that an acknowledgement is not received from the handler,
-     * then it will be retried with exponential backoff according to the settings  Structure is documented below.
+     * then it will be retried with exponential backoff according to the settings
+     * Structure is documented below.
      */
     readonly retryConfig?: pulumi.Input<inputs.cloudscheduler.JobRetryConfig>;
     /**

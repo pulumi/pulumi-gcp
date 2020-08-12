@@ -49,11 +49,13 @@ export class StandardAppVersion extends pulumi.CustomResource {
     }
 
     /**
-     * Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+     * Automatic scaling is based on request rate, response latencies, and other application metrics.
+     * Structure is documented below.
      */
     public readonly automaticScaling!: pulumi.Output<outputs.appengine.StandardAppVersionAutomaticScaling | undefined>;
     /**
-     * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+     * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+     * Structure is documented below.
      */
     public readonly basicScaling!: pulumi.Output<outputs.appengine.StandardAppVersionBasicScaling | undefined>;
     /**
@@ -61,11 +63,13 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     public readonly deleteServiceOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
-     * Code and application artifacts that make up this version.  Structure is documented below.
+     * Code and application artifacts that make up this version.
+     * Structure is documented below.
      */
     public readonly deployment!: pulumi.Output<outputs.appengine.StandardAppVersionDeployment>;
     /**
-     * The entrypoint for the application.  Structure is documented below.
+     * The entrypoint for the application.
+     * Structure is documented below.
      */
     public readonly entrypoint!: pulumi.Output<outputs.appengine.StandardAppVersionEntrypoint | undefined>;
     /**
@@ -74,7 +78,8 @@ export class StandardAppVersion extends pulumi.CustomResource {
     public readonly envVariables!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests.
-     * The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+     * The first matching URL handles the request and other request handlers are not attempted.
+     * Structure is documented below.
      */
     public readonly handlers!: pulumi.Output<outputs.appengine.StandardAppVersionHandler[]>;
     /**
@@ -89,11 +94,13 @@ export class StandardAppVersion extends pulumi.CustomResource {
      */
     public readonly instanceClass!: pulumi.Output<string>;
     /**
-     * Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
+     * Configuration for third-party Python runtime libraries that are required by the application.
+     * Structure is documented below.
      */
     public readonly libraries!: pulumi.Output<outputs.appengine.StandardAppVersionLibrary[] | undefined>;
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+     * Structure is documented below.
      */
     public readonly manualScaling!: pulumi.Output<outputs.appengine.StandardAppVersionManualScaling | undefined>;
     /**
@@ -209,11 +216,13 @@ export class StandardAppVersion extends pulumi.CustomResource {
  */
 export interface StandardAppVersionState {
     /**
-     * Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+     * Automatic scaling is based on request rate, response latencies, and other application metrics.
+     * Structure is documented below.
      */
     readonly automaticScaling?: pulumi.Input<inputs.appengine.StandardAppVersionAutomaticScaling>;
     /**
-     * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+     * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+     * Structure is documented below.
      */
     readonly basicScaling?: pulumi.Input<inputs.appengine.StandardAppVersionBasicScaling>;
     /**
@@ -221,11 +230,13 @@ export interface StandardAppVersionState {
      */
     readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
     /**
-     * Code and application artifacts that make up this version.  Structure is documented below.
+     * Code and application artifacts that make up this version.
+     * Structure is documented below.
      */
     readonly deployment?: pulumi.Input<inputs.appengine.StandardAppVersionDeployment>;
     /**
-     * The entrypoint for the application.  Structure is documented below.
+     * The entrypoint for the application.
+     * Structure is documented below.
      */
     readonly entrypoint?: pulumi.Input<inputs.appengine.StandardAppVersionEntrypoint>;
     /**
@@ -234,7 +245,8 @@ export interface StandardAppVersionState {
     readonly envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests.
-     * The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+     * The first matching URL handles the request and other request handlers are not attempted.
+     * Structure is documented below.
      */
     readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionHandler>[]>;
     /**
@@ -249,11 +261,13 @@ export interface StandardAppVersionState {
      */
     readonly instanceClass?: pulumi.Input<string>;
     /**
-     * Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
+     * Configuration for third-party Python runtime libraries that are required by the application.
+     * Structure is documented below.
      */
     readonly libraries?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionLibrary>[]>;
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+     * Structure is documented below.
      */
     readonly manualScaling?: pulumi.Input<inputs.appengine.StandardAppVersionManualScaling>;
     /**
@@ -297,11 +311,13 @@ export interface StandardAppVersionState {
  */
 export interface StandardAppVersionArgs {
     /**
-     * Automatic scaling is based on request rate, response latencies, and other application metrics.  Structure is documented below.
+     * Automatic scaling is based on request rate, response latencies, and other application metrics.
+     * Structure is documented below.
      */
     readonly automaticScaling?: pulumi.Input<inputs.appengine.StandardAppVersionAutomaticScaling>;
     /**
-     * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.  Structure is documented below.
+     * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+     * Structure is documented below.
      */
     readonly basicScaling?: pulumi.Input<inputs.appengine.StandardAppVersionBasicScaling>;
     /**
@@ -309,11 +325,13 @@ export interface StandardAppVersionArgs {
      */
     readonly deleteServiceOnDestroy?: pulumi.Input<boolean>;
     /**
-     * Code and application artifacts that make up this version.  Structure is documented below.
+     * Code and application artifacts that make up this version.
+     * Structure is documented below.
      */
     readonly deployment: pulumi.Input<inputs.appengine.StandardAppVersionDeployment>;
     /**
-     * The entrypoint for the application.  Structure is documented below.
+     * The entrypoint for the application.
+     * Structure is documented below.
      */
     readonly entrypoint?: pulumi.Input<inputs.appengine.StandardAppVersionEntrypoint>;
     /**
@@ -322,7 +340,8 @@ export interface StandardAppVersionArgs {
     readonly envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests.
-     * The first matching URL handles the request and other request handlers are not attempted.  Structure is documented below.
+     * The first matching URL handles the request and other request handlers are not attempted.
+     * Structure is documented below.
      */
     readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionHandler>[]>;
     /**
@@ -337,11 +356,13 @@ export interface StandardAppVersionArgs {
      */
     readonly instanceClass?: pulumi.Input<string>;
     /**
-     * Configuration for third-party Python runtime libraries that are required by the application.  Structure is documented below.
+     * Configuration for third-party Python runtime libraries that are required by the application.
+     * Structure is documented below.
      */
     readonly libraries?: pulumi.Input<pulumi.Input<inputs.appengine.StandardAppVersionLibrary>[]>;
     /**
-     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.  Structure is documented below.
+     * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+     * Structure is documented below.
      */
     readonly manualScaling?: pulumi.Input<inputs.appengine.StandardAppVersionManualScaling>;
     /**

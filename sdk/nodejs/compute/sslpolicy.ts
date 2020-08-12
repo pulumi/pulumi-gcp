@@ -75,6 +75,8 @@ export class SSLPolicy extends pulumi.CustomResource {
     /**
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
+     * Default value is `TLS_1_0`.
+     * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
      */
     public readonly minTlsVersion!: pulumi.Output<string | undefined>;
     /**
@@ -95,6 +97,8 @@ export class SSLPolicy extends pulumi.CustomResource {
      * See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+     * Default value is `COMPATIBLE`.
+     * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
      */
     public readonly profile!: pulumi.Output<string | undefined>;
     /**
@@ -188,6 +192,8 @@ export interface SSLPolicyState {
     /**
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
+     * Default value is `TLS_1_0`.
+     * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
      */
     readonly minTlsVersion?: pulumi.Input<string>;
     /**
@@ -208,6 +214,8 @@ export interface SSLPolicyState {
      * See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+     * Default value is `COMPATIBLE`.
+     * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
      */
     readonly profile?: pulumi.Input<string>;
     /**
@@ -244,6 +252,8 @@ export interface SSLPolicyArgs {
     /**
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
+     * Default value is `TLS_1_0`.
+     * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
      */
     readonly minTlsVersion?: pulumi.Input<string>;
     /**
@@ -264,6 +274,8 @@ export interface SSLPolicyArgs {
      * See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+     * Default value is `COMPATIBLE`.
+     * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
      */
     readonly profile?: pulumi.Input<string>;
     /**

@@ -25,7 +25,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// <summary>
         /// A whitelist of image patterns to exclude from admission rules. If an
         /// image's name matches a whitelist pattern, the image's admission
-        /// requests will always be permitted regardless of your admission rules.  Structure is documented below.
+        /// requests will always be permitted regardless of your admission rules.
+        /// Structure is documented below.
         /// </summary>
         [Output("admissionWhitelistPatterns")]
         public Output<ImmutableArray<Outputs.PolicyAdmissionWhitelistPattern>> AdmissionWhitelistPatterns { get; private set; } = null!;
@@ -42,7 +43,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
 
         /// <summary>
         /// Default admission rule for a cluster without a per-cluster admission
-        /// rule.  Structure is documented below.
+        /// rule.
+        /// Structure is documented below.
         /// </summary>
         [Output("defaultAdmissionRule")]
         public Output<Outputs.PolicyDefaultAdmissionRule> DefaultAdmissionRule { get; private set; } = null!;
@@ -57,6 +59,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// Controls the evaluation of a Google-maintained global admission policy
         /// for common system-level images. Images not covered by the global
         /// policy will be subject to the project admission policy.
+        /// Possible values are `ENABLE` and `DISABLE`.
         /// </summary>
         [Output("globalPolicyEvaluationMode")]
         public Output<string> GlobalPolicyEvaluationMode { get; private set; } = null!;
@@ -120,7 +123,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// <summary>
         /// A whitelist of image patterns to exclude from admission rules. If an
         /// image's name matches a whitelist pattern, the image's admission
-        /// requests will always be permitted regardless of your admission rules.  Structure is documented below.
+        /// requests will always be permitted regardless of your admission rules.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PolicyAdmissionWhitelistPatternArgs> AdmissionWhitelistPatterns
         {
@@ -146,7 +150,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
 
         /// <summary>
         /// Default admission rule for a cluster without a per-cluster admission
-        /// rule.  Structure is documented below.
+        /// rule.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultAdmissionRule", required: true)]
         public Input<Inputs.PolicyDefaultAdmissionRuleArgs> DefaultAdmissionRule { get; set; } = null!;
@@ -161,6 +166,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// Controls the evaluation of a Google-maintained global admission policy
         /// for common system-level images. Images not covered by the global
         /// policy will be subject to the project admission policy.
+        /// Possible values are `ENABLE` and `DISABLE`.
         /// </summary>
         [Input("globalPolicyEvaluationMode")]
         public Input<string>? GlobalPolicyEvaluationMode { get; set; }
@@ -185,7 +191,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// <summary>
         /// A whitelist of image patterns to exclude from admission rules. If an
         /// image's name matches a whitelist pattern, the image's admission
-        /// requests will always be permitted regardless of your admission rules.  Structure is documented below.
+        /// requests will always be permitted regardless of your admission rules.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PolicyAdmissionWhitelistPatternGetArgs> AdmissionWhitelistPatterns
         {
@@ -211,7 +218,8 @@ namespace Pulumi.Gcp.BinaryAuthorization
 
         /// <summary>
         /// Default admission rule for a cluster without a per-cluster admission
-        /// rule.  Structure is documented below.
+        /// rule.
+        /// Structure is documented below.
         /// </summary>
         [Input("defaultAdmissionRule")]
         public Input<Inputs.PolicyDefaultAdmissionRuleGetArgs>? DefaultAdmissionRule { get; set; }
@@ -226,6 +234,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// Controls the evaluation of a Google-maintained global admission policy
         /// for common system-level images. Images not covered by the global
         /// policy will be subject to the project admission policy.
+        /// Possible values are `ENABLE` and `DISABLE`.
         /// </summary>
         [Input("globalPolicyEvaluationMode")]
         public Input<string>? GlobalPolicyEvaluationMode { get; set; }

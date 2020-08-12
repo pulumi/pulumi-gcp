@@ -83,6 +83,9 @@ export interface GetFunctionResult {
      * A map of labels applied to this function.
      */
     readonly labels: {[key: string]: any};
+    /**
+     * The limit on the maximum number of function instances that may coexist at a given time.
+     */
     readonly maxInstances: number;
     /**
      * The name of the Cloud Function.
@@ -106,6 +109,9 @@ export interface GetFunctionResult {
      * The source archive object (file) in archive bucket.
      */
     readonly sourceArchiveObject: string;
+    /**
+     * The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
+     */
     readonly sourceRepositories: outputs.cloudfunctions.GetFunctionSourceRepository[];
     /**
      * Function execution timeout (in seconds).

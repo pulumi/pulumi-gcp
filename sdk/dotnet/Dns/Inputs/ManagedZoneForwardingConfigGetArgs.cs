@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.Dns.Inputs
         /// <summary>
         /// List of target name servers to forward to. Cloud DNS will
         /// select the best available name server if more than
-        /// one target is given.  Structure is documented below.
+        /// one target is given.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ManagedZoneForwardingConfigTargetNameServerGetArgs> TargetNameServers
         {

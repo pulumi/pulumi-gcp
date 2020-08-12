@@ -16,7 +16,8 @@ class TagTemplate(pulumi.CustomResource):
     """
     fields: pulumi.Output[list]
     """
-    Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+    Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+    Structure is documented below.
 
       * `display_name` (`str`) - The display name for this template.
       * `fieldId` (`str`) - The identifier for this object. Format specified above.
@@ -26,18 +27,22 @@ class TagTemplate(pulumi.CustomResource):
       * `order` (`float`) - The order of this field with respect to other fields in this tag template.
         A higher value indicates a more important field. The value can be negative.
         Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
-      * `type` (`dict`) - The type of value this tag field can contain.  Structure is documented below.
+      * `type` (`dict`) - The type of value this tag field can contain.
+        Structure is documented below.
         * `enumType` (`dict`) - Represents an enum type.
-          Exactly one of `primitive_type` or `enum_type` must be set  Structure is documented below.
+          Exactly one of `primitive_type` or `enum_type` must be set
+          Structure is documented below.
           * `allowedValues` (`list`) - The set of allowed values for this enum. The display names of the
             values must be case-insensitively unique within this set. Currently,
             enum values can only be added to the list of allowed values. Deletion
             and renaming of enum values are not supported.
-            Can have up to 500 allowed values.  Structure is documented below.
+            Can have up to 500 allowed values.
+            Structure is documented below.
             * `display_name` (`str`) - The display name for this template.
 
         * `primitiveType` (`str`) - Represents primitive types - string, bool etc.
           Exactly one of `primitive_type` or `enum_type` must be set
+          Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
     """
     force_delete: pulumi.Output[bool]
     """
@@ -77,7 +82,8 @@ class TagTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name for this template.
-        :param pulumi.Input[list] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+        :param pulumi.Input[list] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+               Structure is documented below.
         :param pulumi.Input[bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -94,18 +100,22 @@ class TagTemplate(pulumi.CustomResource):
           * `order` (`pulumi.Input[float]`) - The order of this field with respect to other fields in this tag template.
             A higher value indicates a more important field. The value can be negative.
             Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
-          * `type` (`pulumi.Input[dict]`) - The type of value this tag field can contain.  Structure is documented below.
+          * `type` (`pulumi.Input[dict]`) - The type of value this tag field can contain.
+            Structure is documented below.
             * `enumType` (`pulumi.Input[dict]`) - Represents an enum type.
-              Exactly one of `primitive_type` or `enum_type` must be set  Structure is documented below.
+              Exactly one of `primitive_type` or `enum_type` must be set
+              Structure is documented below.
               * `allowedValues` (`pulumi.Input[list]`) - The set of allowed values for this enum. The display names of the
                 values must be case-insensitively unique within this set. Currently,
                 enum values can only be added to the list of allowed values. Deletion
                 and renaming of enum values are not supported.
-                Can have up to 500 allowed values.  Structure is documented below.
+                Can have up to 500 allowed values.
+                Structure is documented below.
                 * `display_name` (`pulumi.Input[str]`) - The display name for this template.
 
             * `primitiveType` (`pulumi.Input[str]`) - Represents primitive types - string, bool etc.
               Exactly one of `primitive_type` or `enum_type` must be set
+              Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -151,7 +161,8 @@ class TagTemplate(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name for this template.
-        :param pulumi.Input[list] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.  Structure is documented below.
+        :param pulumi.Input[list] fields: Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+               Structure is documented below.
         :param pulumi.Input[bool] force_delete: This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
         :param pulumi.Input[str] name: -
                The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
@@ -170,18 +181,22 @@ class TagTemplate(pulumi.CustomResource):
           * `order` (`pulumi.Input[float]`) - The order of this field with respect to other fields in this tag template.
             A higher value indicates a more important field. The value can be negative.
             Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
-          * `type` (`pulumi.Input[dict]`) - The type of value this tag field can contain.  Structure is documented below.
+          * `type` (`pulumi.Input[dict]`) - The type of value this tag field can contain.
+            Structure is documented below.
             * `enumType` (`pulumi.Input[dict]`) - Represents an enum type.
-              Exactly one of `primitive_type` or `enum_type` must be set  Structure is documented below.
+              Exactly one of `primitive_type` or `enum_type` must be set
+              Structure is documented below.
               * `allowedValues` (`pulumi.Input[list]`) - The set of allowed values for this enum. The display names of the
                 values must be case-insensitively unique within this set. Currently,
                 enum values can only be added to the list of allowed values. Deletion
                 and renaming of enum values are not supported.
-                Can have up to 500 allowed values.  Structure is documented below.
+                Can have up to 500 allowed values.
+                Structure is documented below.
                 * `display_name` (`pulumi.Input[str]`) - The display name for this template.
 
             * `primitiveType` (`pulumi.Input[str]`) - Represents primitive types - string, bool etc.
               Exactly one of `primitive_type` or `enum_type` must be set
+              Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

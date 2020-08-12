@@ -14,12 +14,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class ReservationSpecificReservationInstanceProperties
     {
         /// <summary>
-        /// Guest accelerator type and count.  Structure is documented below.
+        /// Guest accelerator type and count.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ReservationSpecificReservationInstancePropertiesGuestAccelerator> GuestAccelerators;
         /// <summary>
         /// The amount of local ssd to reserve with each instance. This
-        /// reserves disks of type `local-ssd`.  Structure is documented below.
+        /// reserves disks of type `local-ssd`.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ReservationSpecificReservationInstancePropertiesLocalSsd> LocalSsds;
         /// <summary>

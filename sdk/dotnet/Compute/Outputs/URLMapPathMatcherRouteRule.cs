@@ -17,11 +17,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Specifies changes to request and response headers that need to take effect for
         /// the selected backendService.
         /// headerAction specified here take effect before headerAction in the enclosing
-        /// HttpRouteRule, PathMatcher and UrlMap.  Structure is documented below.
+        /// HttpRouteRule, PathMatcher and UrlMap.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherRouteRuleHeaderAction? HeaderAction;
         /// <summary>
-        /// The rules for determining a match.  Structure is documented below.
+        /// The rules for determining a match.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRule> MatchRules;
         /// <summary>
@@ -46,7 +48,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// request to the selected backend. If  routeAction specifies any
         /// weightedBackendServices, service must not be set. Conversely if service is set,
         /// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-        /// or urlRedirect must be set.  Structure is documented below.
+        /// or urlRedirect must be set.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherRouteRuleRouteAction? RouteAction;
         /// <summary>
@@ -56,7 +59,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// When this rule is matched, the request is redirected to a URL specified by
         /// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-        /// set.  Structure is documented below.
+        /// set.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherRouteRuleUrlRedirect? UrlRedirect;
 

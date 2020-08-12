@@ -82,7 +82,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// build step. Upon completion of the build, volumes and their contents
         /// are discarded.
         /// Using a named volume in only one step is not valid as it is
-        /// indicative of a build request with an incorrect configuration.  Structure is documented below.
+        /// indicative of a build request with an incorrect configuration.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.TriggerBuildStepVolume> Volumes;
         /// <summary>

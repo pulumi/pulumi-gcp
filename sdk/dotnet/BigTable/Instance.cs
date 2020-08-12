@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.BigTable
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+        /// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+        /// See structure below.
         /// </summary>
         [Output("clusters")]
         public Output<ImmutableArray<Outputs.InstanceCluster>> Clusters { get; private set; } = null!;
@@ -42,6 +43,12 @@ namespace Pulumi.Gcp.BigTable
         /// </summary>
         [Output("instanceType")]
         public Output<string?> InstanceType { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
@@ -106,7 +113,8 @@ namespace Pulumi.Gcp.BigTable
         private InputList<Inputs.InstanceClusterArgs>? _clusters;
 
         /// <summary>
-        /// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+        /// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+        /// See structure below.
         /// </summary>
         public InputList<Inputs.InstanceClusterArgs> Clusters
         {
@@ -133,6 +141,18 @@ namespace Pulumi.Gcp.BigTable
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
         /// </summary>
@@ -157,7 +177,8 @@ namespace Pulumi.Gcp.BigTable
         private InputList<Inputs.InstanceClusterGetArgs>? _clusters;
 
         /// <summary>
-        /// A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+        /// A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+        /// See structure below.
         /// </summary>
         public InputList<Inputs.InstanceClusterGetArgs> Clusters
         {
@@ -183,6 +204,18 @@ namespace Pulumi.Gcp.BigTable
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.

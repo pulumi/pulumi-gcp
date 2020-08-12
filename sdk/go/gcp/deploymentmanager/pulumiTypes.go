@@ -117,11 +117,13 @@ func (o DeploymentLabelArrayOutput) Index(i pulumi.IntInput) DeploymentLabelOutp
 }
 
 type DeploymentTarget struct {
-	// The root configuration file to use for this deployment.  Structure is documented below.
+	// The root configuration file to use for this deployment.
+	// Structure is documented below.
 	Config DeploymentTargetConfig `pulumi:"config"`
 	// Specifies import files for this configuration. This can be
 	// used to import templates or other files. For example, you might
-	// import a text file in order to use the file in a template.  Structure is documented below.
+	// import a text file in order to use the file in a template.
+	// Structure is documented below.
 	Imports []DeploymentTargetImport `pulumi:"imports"`
 }
 
@@ -137,11 +139,13 @@ type DeploymentTargetInput interface {
 }
 
 type DeploymentTargetArgs struct {
-	// The root configuration file to use for this deployment.  Structure is documented below.
+	// The root configuration file to use for this deployment.
+	// Structure is documented below.
 	Config DeploymentTargetConfigInput `pulumi:"config"`
 	// Specifies import files for this configuration. This can be
 	// used to import templates or other files. For example, you might
-	// import a text file in order to use the file in a template.  Structure is documented below.
+	// import a text file in order to use the file in a template.
+	// Structure is documented below.
 	Imports DeploymentTargetImportArrayInput `pulumi:"imports"`
 }
 
@@ -222,14 +226,16 @@ func (o DeploymentTargetOutput) ToDeploymentTargetPtrOutputWithContext(ctx conte
 	}).(DeploymentTargetPtrOutput)
 }
 
-// The root configuration file to use for this deployment.  Structure is documented below.
+// The root configuration file to use for this deployment.
+// Structure is documented below.
 func (o DeploymentTargetOutput) Config() DeploymentTargetConfigOutput {
 	return o.ApplyT(func(v DeploymentTarget) DeploymentTargetConfig { return v.Config }).(DeploymentTargetConfigOutput)
 }
 
 // Specifies import files for this configuration. This can be
 // used to import templates or other files. For example, you might
-// import a text file in order to use the file in a template.  Structure is documented below.
+// import a text file in order to use the file in a template.
+// Structure is documented below.
 func (o DeploymentTargetOutput) Imports() DeploymentTargetImportArrayOutput {
 	return o.ApplyT(func(v DeploymentTarget) []DeploymentTargetImport { return v.Imports }).(DeploymentTargetImportArrayOutput)
 }
@@ -252,7 +258,8 @@ func (o DeploymentTargetPtrOutput) Elem() DeploymentTargetOutput {
 	return o.ApplyT(func(v *DeploymentTarget) DeploymentTarget { return *v }).(DeploymentTargetOutput)
 }
 
-// The root configuration file to use for this deployment.  Structure is documented below.
+// The root configuration file to use for this deployment.
+// Structure is documented below.
 func (o DeploymentTargetPtrOutput) Config() DeploymentTargetConfigPtrOutput {
 	return o.ApplyT(func(v *DeploymentTarget) *DeploymentTargetConfig {
 		if v == nil {
@@ -264,7 +271,8 @@ func (o DeploymentTargetPtrOutput) Config() DeploymentTargetConfigPtrOutput {
 
 // Specifies import files for this configuration. This can be
 // used to import templates or other files. For example, you might
-// import a text file in order to use the file in a template.  Structure is documented below.
+// import a text file in order to use the file in a template.
+// Structure is documented below.
 func (o DeploymentTargetPtrOutput) Imports() DeploymentTargetImportArrayOutput {
 	return o.ApplyT(func(v *DeploymentTarget) []DeploymentTargetImport {
 		if v == nil {

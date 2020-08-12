@@ -16,8 +16,11 @@ type AccessLevelBasic struct {
 	// conditions must be satisfied for the AccessLevel to be applied. If
 	// OR is used, at least one Condition in conditions must be satisfied
 	// for the AccessLevel to be applied.
+	// Default value is `AND`.
+	// Possible values are `AND` and `OR`.
 	CombiningFunction *string `pulumi:"combiningFunction"`
-	// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+	// A set of requirements for the AccessLevel to be granted.
+	// Structure is documented below.
 	Conditions []AccessLevelBasicCondition `pulumi:"conditions"`
 }
 
@@ -38,8 +41,11 @@ type AccessLevelBasicArgs struct {
 	// conditions must be satisfied for the AccessLevel to be applied. If
 	// OR is used, at least one Condition in conditions must be satisfied
 	// for the AccessLevel to be applied.
+	// Default value is `AND`.
+	// Possible values are `AND` and `OR`.
 	CombiningFunction pulumi.StringPtrInput `pulumi:"combiningFunction"`
-	// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+	// A set of requirements for the AccessLevel to be granted.
+	// Structure is documented below.
 	Conditions AccessLevelBasicConditionArrayInput `pulumi:"conditions"`
 }
 
@@ -125,11 +131,14 @@ func (o AccessLevelBasicOutput) ToAccessLevelBasicPtrOutputWithContext(ctx conte
 // conditions must be satisfied for the AccessLevel to be applied. If
 // OR is used, at least one Condition in conditions must be satisfied
 // for the AccessLevel to be applied.
+// Default value is `AND`.
+// Possible values are `AND` and `OR`.
 func (o AccessLevelBasicOutput) CombiningFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
 }
 
-// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+// A set of requirements for the AccessLevel to be granted.
+// Structure is documented below.
 func (o AccessLevelBasicOutput) Conditions() AccessLevelBasicConditionArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasic) []AccessLevelBasicCondition { return v.Conditions }).(AccessLevelBasicConditionArrayOutput)
 }
@@ -157,6 +166,8 @@ func (o AccessLevelBasicPtrOutput) Elem() AccessLevelBasicOutput {
 // conditions must be satisfied for the AccessLevel to be applied. If
 // OR is used, at least one Condition in conditions must be satisfied
 // for the AccessLevel to be applied.
+// Default value is `AND`.
+// Possible values are `AND` and `OR`.
 func (o AccessLevelBasicPtrOutput) CombiningFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessLevelBasic) *string {
 		if v == nil {
@@ -166,7 +177,8 @@ func (o AccessLevelBasicPtrOutput) CombiningFunction() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A set of requirements for the AccessLevel to be granted.  Structure is documented below.
+// A set of requirements for the AccessLevel to be granted.
+// Structure is documented below.
 func (o AccessLevelBasicPtrOutput) Conditions() AccessLevelBasicConditionArrayOutput {
 	return o.ApplyT(func(v *AccessLevelBasic) []AccessLevelBasicCondition {
 		if v == nil {
@@ -179,7 +191,8 @@ func (o AccessLevelBasicPtrOutput) Conditions() AccessLevelBasicConditionArrayOu
 type AccessLevelBasicCondition struct {
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
-	// allowed.  Structure is documented below.
+	// allowed.
+	// Structure is documented below.
 	DevicePolicy *AccessLevelBasicConditionDevicePolicy `pulumi:"devicePolicy"`
 	// A list of CIDR block IP subnetwork specification. May be IPv4
 	// or IPv6.
@@ -230,7 +243,8 @@ type AccessLevelBasicConditionInput interface {
 type AccessLevelBasicConditionArgs struct {
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
-	// allowed.  Structure is documented below.
+	// allowed.
+	// Structure is documented below.
 	DevicePolicy AccessLevelBasicConditionDevicePolicyPtrInput `pulumi:"devicePolicy"`
 	// A list of CIDR block IP subnetwork specification. May be IPv4
 	// or IPv6.
@@ -320,7 +334,8 @@ func (o AccessLevelBasicConditionOutput) ToAccessLevelBasicConditionOutputWithCo
 
 // Device specific restrictions, all restrictions must hold for
 // the Condition to be true. If not specified, all devices are
-// allowed.  Structure is documented below.
+// allowed.
+// Structure is documented below.
 func (o AccessLevelBasicConditionOutput) DevicePolicy() AccessLevelBasicConditionDevicePolicyPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasicCondition) *AccessLevelBasicConditionDevicePolicy { return v.DevicePolicy }).(AccessLevelBasicConditionDevicePolicyPtrOutput)
 }
@@ -401,7 +416,8 @@ type AccessLevelBasicConditionDevicePolicy struct {
 	// An empty list allows all statuses.
 	AllowedEncryptionStatuses []string `pulumi:"allowedEncryptionStatuses"`
 	// A list of allowed OS versions.
-	// An empty list allows all types and all versions.  Structure is documented below.
+	// An empty list allows all types and all versions.
+	// Structure is documented below.
 	OsConstraints []AccessLevelBasicConditionDevicePolicyOsConstraint `pulumi:"osConstraints"`
 	// Whether the device needs to be approved by the customer admin.
 	RequireAdminApproval *bool `pulumi:"requireAdminApproval"`
@@ -431,7 +447,8 @@ type AccessLevelBasicConditionDevicePolicyArgs struct {
 	// An empty list allows all statuses.
 	AllowedEncryptionStatuses pulumi.StringArrayInput `pulumi:"allowedEncryptionStatuses"`
 	// A list of allowed OS versions.
-	// An empty list allows all types and all versions.  Structure is documented below.
+	// An empty list allows all types and all versions.
+	// Structure is documented below.
 	OsConstraints AccessLevelBasicConditionDevicePolicyOsConstraintArrayInput `pulumi:"osConstraints"`
 	// Whether the device needs to be approved by the customer admin.
 	RequireAdminApproval pulumi.BoolPtrInput `pulumi:"requireAdminApproval"`
@@ -532,7 +549,8 @@ func (o AccessLevelBasicConditionDevicePolicyOutput) AllowedEncryptionStatuses()
 }
 
 // A list of allowed OS versions.
-// An empty list allows all types and all versions.  Structure is documented below.
+// An empty list allows all types and all versions.
+// Structure is documented below.
 func (o AccessLevelBasicConditionDevicePolicyOutput) OsConstraints() AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []AccessLevelBasicConditionDevicePolicyOsConstraint {
 		return v.OsConstraints
@@ -596,7 +614,8 @@ func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedEncryptionStatuse
 }
 
 // A list of allowed OS versions.
-// An empty list allows all types and all versions.  Structure is documented below.
+// An empty list allows all types and all versions.
+// Structure is documented below.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) OsConstraints() AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput {
 	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) []AccessLevelBasicConditionDevicePolicyOsConstraint {
 		if v == nil {
@@ -643,6 +662,7 @@ type AccessLevelBasicConditionDevicePolicyOsConstraint struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion *string `pulumi:"minimumVersion"`
 	// The operating system type of the device.
+	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
 	OsType string `pulumi:"osType"`
 }
 
@@ -663,6 +683,7 @@ type AccessLevelBasicConditionDevicePolicyOsConstraintArgs struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
 	// The operating system type of the device.
+	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
 	OsType pulumi.StringInput `pulumi:"osType"`
 }
 
@@ -725,6 +746,7 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) MinimumVersion(
 }
 
 // The operating system type of the device.
+// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, and `DESKTOP_CHROME_OS`.
 func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
 }
@@ -752,7 +774,8 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) Index(i pu
 type AccessLevelCustom struct {
 	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// Structure is documented below.
 	Expr AccessLevelCustomExpr `pulumi:"expr"`
 }
 
@@ -770,7 +793,8 @@ type AccessLevelCustomInput interface {
 type AccessLevelCustomArgs struct {
 	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// Structure is documented below.
 	Expr AccessLevelCustomExprInput `pulumi:"expr"`
 }
 
@@ -853,7 +877,8 @@ func (o AccessLevelCustomOutput) ToAccessLevelCustomPtrOutputWithContext(ctx con
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 // This page details the objects and attributes that are used to the build the CEL expressions for
-// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// Structure is documented below.
 func (o AccessLevelCustomOutput) Expr() AccessLevelCustomExprOutput {
 	return o.ApplyT(func(v AccessLevelCustom) AccessLevelCustomExpr { return v.Expr }).(AccessLevelCustomExprOutput)
 }
@@ -878,7 +903,8 @@ func (o AccessLevelCustomPtrOutput) Elem() AccessLevelCustomOutput {
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
 // This page details the objects and attributes that are used to the build the CEL expressions for
-// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.  Structure is documented below.
+// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// Structure is documented below.
 func (o AccessLevelCustomPtrOutput) Expr() AccessLevelCustomExprPtrOutput {
 	return o.ApplyT(func(v *AccessLevelCustom) *AccessLevelCustomExpr {
 		if v == nil {
@@ -1098,7 +1124,8 @@ type ServicePerimeterSpec struct {
 	// restrictions.
 	RestrictedServices []string `pulumi:"restrictedServices"`
 	// Specifies how APIs are allowed to communicate within the Service
-	// Perimeter.  Structure is documented below.
+	// Perimeter.
+	// Structure is documented below.
 	VpcAccessibleServices *ServicePerimeterSpecVpcAccessibleServices `pulumi:"vpcAccessibleServices"`
 }
 
@@ -1135,7 +1162,8 @@ type ServicePerimeterSpecArgs struct {
 	// restrictions.
 	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
 	// Specifies how APIs are allowed to communicate within the Service
-	// Perimeter.  Structure is documented below.
+	// Perimeter.
+	// Structure is documented below.
 	VpcAccessibleServices ServicePerimeterSpecVpcAccessibleServicesPtrInput `pulumi:"vpcAccessibleServices"`
 }
 
@@ -1246,7 +1274,8 @@ func (o ServicePerimeterSpecOutput) RestrictedServices() pulumi.StringArrayOutpu
 }
 
 // Specifies how APIs are allowed to communicate within the Service
-// Perimeter.  Structure is documented below.
+// Perimeter.
+// Structure is documented below.
 func (o ServicePerimeterSpecOutput) VpcAccessibleServices() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) *ServicePerimeterSpecVpcAccessibleServices {
 		return v.VpcAccessibleServices
@@ -1316,7 +1345,8 @@ func (o ServicePerimeterSpecPtrOutput) RestrictedServices() pulumi.StringArrayOu
 }
 
 // Specifies how APIs are allowed to communicate within the Service
-// Perimeter.  Structure is documented below.
+// Perimeter.
+// Structure is documented below.
 func (o ServicePerimeterSpecPtrOutput) VpcAccessibleServices() ServicePerimeterSpecVpcAccessibleServicesPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpec) *ServicePerimeterSpecVpcAccessibleServices {
 		if v == nil {
@@ -1508,7 +1538,8 @@ type ServicePerimeterStatus struct {
 	// restrictions.
 	RestrictedServices []string `pulumi:"restrictedServices"`
 	// Specifies how APIs are allowed to communicate within the Service
-	// Perimeter.  Structure is documented below.
+	// Perimeter.
+	// Structure is documented below.
 	VpcAccessibleServices *ServicePerimeterStatusVpcAccessibleServices `pulumi:"vpcAccessibleServices"`
 }
 
@@ -1545,7 +1576,8 @@ type ServicePerimeterStatusArgs struct {
 	// restrictions.
 	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
 	// Specifies how APIs are allowed to communicate within the Service
-	// Perimeter.  Structure is documented below.
+	// Perimeter.
+	// Structure is documented below.
 	VpcAccessibleServices ServicePerimeterStatusVpcAccessibleServicesPtrInput `pulumi:"vpcAccessibleServices"`
 }
 
@@ -1656,7 +1688,8 @@ func (o ServicePerimeterStatusOutput) RestrictedServices() pulumi.StringArrayOut
 }
 
 // Specifies how APIs are allowed to communicate within the Service
-// Perimeter.  Structure is documented below.
+// Perimeter.
+// Structure is documented below.
 func (o ServicePerimeterStatusOutput) VpcAccessibleServices() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) *ServicePerimeterStatusVpcAccessibleServices {
 		return v.VpcAccessibleServices
@@ -1726,7 +1759,8 @@ func (o ServicePerimeterStatusPtrOutput) RestrictedServices() pulumi.StringArray
 }
 
 // Specifies how APIs are allowed to communicate within the Service
-// Perimeter.  Structure is documented below.
+// Perimeter.
+// Structure is documented below.
 func (o ServicePerimeterStatusPtrOutput) VpcAccessibleServices() ServicePerimeterStatusVpcAccessibleServicesPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatus) *ServicePerimeterStatusVpcAccessibleServices {
 		if v == nil {

@@ -35,7 +35,8 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// This maps the ID of a tag field to the value of and additional information about that field.
-        /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+        /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+        /// Structure is documented below.
         /// </summary>
         [Output("fields")]
         public Output<ImmutableArray<Outputs.TagField>> Fields { get; private set; } = null!;
@@ -130,7 +131,8 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// This maps the ID of a tag field to the value of and additional information about that field.
-        /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+        /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.TagFieldArgs> Fields
         {
@@ -174,7 +176,8 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// This maps the ID of a tag field to the value of and additional information about that field.
-        /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.  Structure is documented below.
+        /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.TagFieldGetArgs> Fields
         {

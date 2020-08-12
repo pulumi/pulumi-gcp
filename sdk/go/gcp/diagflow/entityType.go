@@ -26,13 +26,15 @@ type EntityType struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolPtrOutput `pulumi:"enableFuzzyExtraction"`
-	// The collection of entity entries associated with the entity type.  Structure is documented below.
+	// The collection of entity entries associated with the entity type.
+	// Structure is documented below.
 	Entities EntityTypeEntityArrayOutput `pulumi:"entities"`
 	// Indicates the kind of entity type.
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
 	//   types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -79,13 +81,15 @@ type entityTypeState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction *bool `pulumi:"enableFuzzyExtraction"`
-	// The collection of entity entries associated with the entity type.  Structure is documented below.
+	// The collection of entity entries associated with the entity type.
+	// Structure is documented below.
 	Entities []EntityTypeEntity `pulumi:"entities"`
 	// Indicates the kind of entity type.
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
 	//   types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind *string `pulumi:"kind"`
 	// The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 	Name *string `pulumi:"name"`
@@ -99,13 +103,15 @@ type EntityTypeState struct {
 	DisplayName pulumi.StringPtrInput
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolPtrInput
-	// The collection of entity entries associated with the entity type.  Structure is documented below.
+	// The collection of entity entries associated with the entity type.
+	// Structure is documented below.
 	Entities EntityTypeEntityArrayInput
 	// Indicates the kind of entity type.
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
 	//   types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind pulumi.StringPtrInput
 	// The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 	Name pulumi.StringPtrInput
@@ -123,13 +129,15 @@ type entityTypeArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction *bool `pulumi:"enableFuzzyExtraction"`
-	// The collection of entity entries associated with the entity type.  Structure is documented below.
+	// The collection of entity entries associated with the entity type.
+	// Structure is documented below.
 	Entities []EntityTypeEntity `pulumi:"entities"`
 	// Indicates the kind of entity type.
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
 	//   types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind string `pulumi:"kind"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -142,13 +150,15 @@ type EntityTypeArgs struct {
 	DisplayName pulumi.StringInput
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolPtrInput
-	// The collection of entity entries associated with the entity type.  Structure is documented below.
+	// The collection of entity entries associated with the entity type.
+	// Structure is documented below.
 	Entities EntityTypeEntityArrayInput
 	// Indicates the kind of entity type.
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
 	//   types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
+	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

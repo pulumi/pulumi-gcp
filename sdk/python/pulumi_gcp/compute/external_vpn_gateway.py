@@ -16,7 +16,8 @@ class ExternalVpnGateway(pulumi.CustomResource):
     """
     interfaces: pulumi.Output[list]
     """
-    A list of interfaces on this external VPN gateway.  Structure is documented below.
+    A list of interfaces on this external VPN gateway.
+    Structure is documented below.
 
       * `id` (`float`) - The numberic ID for this interface. Allowed values are based on the redundancy type
         of this external VPN gateway
@@ -46,6 +47,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
     redundancy_type: pulumi.Output[str]
     """
     Indicates the redundancy type of this external VPN gateway
+    Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
     """
     self_link: pulumi.Output[str]
     """
@@ -64,7 +66,8 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[list] interfaces: A list of interfaces on this external VPN gateway.  Structure is documented below.
+        :param pulumi.Input[list] interfaces: A list of interfaces on this external VPN gateway.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -75,6 +78,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
+               Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
 
         The **interfaces** object supports the following:
 
@@ -127,7 +131,8 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[list] interfaces: A list of interfaces on this external VPN gateway.  Structure is documented below.
+        :param pulumi.Input[list] interfaces: A list of interfaces on this external VPN gateway.
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -138,6 +143,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
+               Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
 
         The **interfaces** object supports the following:

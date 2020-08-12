@@ -40,7 +40,8 @@ export class ResourcePolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Policy for creating snapshots of persistent disks.  Structure is documented below.
+     * Policy for creating snapshots of persistent disks.
+     * Structure is documented below.
      */
     public readonly groupPlacementPolicy!: pulumi.Output<outputs.compute.ResourcePolicyGroupPlacementPolicy | undefined>;
     /**
@@ -67,7 +68,8 @@ export class ResourcePolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Policy for creating snapshots of persistent disks.  Structure is documented below.
+     * Policy for creating snapshots of persistent disks.
+     * Structure is documented below.
      */
     public readonly snapshotSchedulePolicy!: pulumi.Output<outputs.compute.ResourcePolicySnapshotSchedulePolicy | undefined>;
 
@@ -114,7 +116,8 @@ export class ResourcePolicy extends pulumi.CustomResource {
  */
 export interface ResourcePolicyState {
     /**
-     * Policy for creating snapshots of persistent disks.  Structure is documented below.
+     * Policy for creating snapshots of persistent disks.
+     * Structure is documented below.
      */
     readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
     /**
@@ -141,7 +144,8 @@ export interface ResourcePolicyState {
      */
     readonly selfLink?: pulumi.Input<string>;
     /**
-     * Policy for creating snapshots of persistent disks.  Structure is documented below.
+     * Policy for creating snapshots of persistent disks.
+     * Structure is documented below.
      */
     readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
 }
@@ -151,7 +155,8 @@ export interface ResourcePolicyState {
  */
 export interface ResourcePolicyArgs {
     /**
-     * Policy for creating snapshots of persistent disks.  Structure is documented below.
+     * Policy for creating snapshots of persistent disks.
+     * Structure is documented below.
      */
     readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
     /**
@@ -174,7 +179,8 @@ export interface ResourcePolicyArgs {
      */
     readonly region?: pulumi.Input<string>;
     /**
-     * Policy for creating snapshots of persistent disks.  Structure is documented below.
+     * Policy for creating snapshots of persistent disks.
+     * Structure is documented below.
      */
     readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
 }

@@ -42,7 +42,8 @@ namespace Pulumi.Gcp.Firestore
         /// specified as the last field, it will be added automatically with the
         /// same direction as that of the last field defined. If the final field
         /// in a composite index is not directional, the `__name__` will be
-        /// ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
+        /// ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        /// Structure is documented below.
         /// </summary>
         [Output("fields")]
         public Output<ImmutableArray<Outputs.IndexField>> Fields { get; private set; } = null!;
@@ -63,6 +64,8 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The scope at which a query is run.
+        /// Default value is `COLLECTION`.
+        /// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
         /// </summary>
         [Output("queryScope")]
         public Output<string?> QueryScope { get; private set; } = null!;
@@ -134,7 +137,8 @@ namespace Pulumi.Gcp.Firestore
         /// specified as the last field, it will be added automatically with the
         /// same direction as that of the last field defined. If the final field
         /// in a composite index is not directional, the `__name__` will be
-        /// ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
+        /// ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.IndexFieldArgs> Fields
         {
@@ -151,6 +155,8 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The scope at which a query is run.
+        /// Default value is `COLLECTION`.
+        /// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
@@ -183,7 +189,8 @@ namespace Pulumi.Gcp.Firestore
         /// specified as the last field, it will be added automatically with the
         /// same direction as that of the last field defined. If the final field
         /// in a composite index is not directional, the `__name__` will be
-        /// ordered `"ASCENDING"` (unless explicitly specified otherwise).  Structure is documented below.
+        /// ordered `"ASCENDING"` (unless explicitly specified otherwise).
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.IndexFieldGetArgs> Fields
         {
@@ -207,6 +214,8 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The scope at which a query is run.
+        /// Default value is `COLLECTION`.
+        /// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }

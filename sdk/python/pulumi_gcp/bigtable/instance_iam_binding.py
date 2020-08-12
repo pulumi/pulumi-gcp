@@ -29,7 +29,7 @@ class InstanceIamBinding(pulumi.CustomResource):
     """
     The role that should be applied. Only one
     `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-    `[projects|organizations]/{parent-name}/roles/{role-name}`.
+    `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
     """
     def __init__(__self__, resource_name, opts=None, condition=None, instance=None, members=None, project=None, role=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -50,7 +50,7 @@ class InstanceIamBinding(pulumi.CustomResource):
                is not provided, a default will be supplied.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+               `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
 
         The **condition** object supports the following:
 
@@ -108,7 +108,7 @@ class InstanceIamBinding(pulumi.CustomResource):
                is not provided, a default will be supplied.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
-               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+               `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
 
         The **condition** object supports the following:
 

@@ -17,7 +17,8 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         /// The output is organized in one table per resource type. The server reuses the existing tables (if any) that
         /// are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
         /// resource type, the server attempts to create one.
-        /// See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.  Structure is documented below.
+        /// See the [streaming config reference](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#streamconfig) for more details.
+        /// Structure is documented below.
         /// </summary>
         [Input("bigqueryDestination", required: true)]
         public Input<Inputs.FhirStoreStreamConfigBigqueryDestinationGetArgs> BigqueryDestination { get; set; } = null!;

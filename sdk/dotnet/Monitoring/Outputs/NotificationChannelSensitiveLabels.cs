@@ -14,15 +14,18 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class NotificationChannelSensitiveLabels
     {
         /// <summary>
-        /// An authorization token for a notification channel. Channel types that support this field include: slack  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// An authorization token for a notification channel. Channel types that support this field include: slack
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? AuthToken;
         /// <summary>
-        /// An password for a notification channel. Channel types that support this field include: webhook_basicauth  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty  **Note**: This property is sensitive and will not be displayed in the plan.
+        /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? ServiceKey;
 

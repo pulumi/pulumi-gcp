@@ -38,10 +38,12 @@ type FolderFeed struct {
 	// enablement check, quota, and billing.
 	BillingProject pulumi.StringOutput `pulumi:"billingProject"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringOutput `pulumi:"feedId"`
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig FolderFeedFeedOutputConfigOutput `pulumi:"feedOutputConfig"`
 	// The folder this feed should be created in.
 	Folder pulumi.StringOutput `pulumi:"folder"`
@@ -107,10 +109,12 @@ type folderFeedState struct {
 	// enablement check, quota, and billing.
 	BillingProject *string `pulumi:"billingProject"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId *string `pulumi:"feedId"`
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig *FolderFeedFeedOutputConfig `pulumi:"feedOutputConfig"`
 	// The folder this feed should be created in.
 	Folder *string `pulumi:"folder"`
@@ -137,10 +141,12 @@ type FolderFeedState struct {
 	// enablement check, quota, and billing.
 	BillingProject pulumi.StringPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringPtrInput
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig FolderFeedFeedOutputConfigPtrInput
 	// The folder this feed should be created in.
 	Folder pulumi.StringPtrInput
@@ -171,10 +177,12 @@ type folderFeedArgs struct {
 	// enablement check, quota, and billing.
 	BillingProject string `pulumi:"billingProject"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId string `pulumi:"feedId"`
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig FolderFeedFeedOutputConfig `pulumi:"feedOutputConfig"`
 	// The folder this feed should be created in.
 	Folder string `pulumi:"folder"`
@@ -198,10 +206,12 @@ type FolderFeedArgs struct {
 	// enablement check, quota, and billing.
 	BillingProject pulumi.StringInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringInput
-	// Output configuration for asset feed destination.  Structure is documented below.
+	// Output configuration for asset feed destination.
+	// Structure is documented below.
 	FeedOutputConfig FolderFeedFeedOutputConfigInput
 	// The folder this feed should be created in.
 	Folder pulumi.StringInput

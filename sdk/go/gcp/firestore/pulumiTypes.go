@@ -13,11 +13,13 @@ import (
 type IndexField struct {
 	// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
 	// be specified.
+	// Possible values are `CONTAINS`.
 	ArrayConfig *string `pulumi:"arrayConfig"`
 	// Name of the field.
 	FieldPath *string `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
 	// Only one of `order` and `arrayConfig` can be specified.
+	// Possible values are `ASCENDING` and `DESCENDING`.
 	Order *string `pulumi:"order"`
 }
 
@@ -35,11 +37,13 @@ type IndexFieldInput interface {
 type IndexFieldArgs struct {
 	// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
 	// be specified.
+	// Possible values are `CONTAINS`.
 	ArrayConfig pulumi.StringPtrInput `pulumi:"arrayConfig"`
 	// Name of the field.
 	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
 	// Only one of `order` and `arrayConfig` can be specified.
+	// Possible values are `ASCENDING` and `DESCENDING`.
 	Order pulumi.StringPtrInput `pulumi:"order"`
 }
 
@@ -96,6 +100,7 @@ func (o IndexFieldOutput) ToIndexFieldOutputWithContext(ctx context.Context) Ind
 
 // Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
 // be specified.
+// Possible values are `CONTAINS`.
 func (o IndexFieldOutput) ArrayConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IndexField) *string { return v.ArrayConfig }).(pulumi.StringPtrOutput)
 }
@@ -107,6 +112,7 @@ func (o IndexFieldOutput) FieldPath() pulumi.StringPtrOutput {
 
 // Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
 // Only one of `order` and `arrayConfig` can be specified.
+// Possible values are `ASCENDING` and `DESCENDING`.
 func (o IndexFieldOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IndexField) *string { return v.Order }).(pulumi.StringPtrOutput)
 }

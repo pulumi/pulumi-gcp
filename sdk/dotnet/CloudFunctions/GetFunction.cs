@@ -85,6 +85,9 @@ namespace Pulumi.Gcp.CloudFunctions
         /// A map of labels applied to this function.
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
+        /// <summary>
+        /// The limit on the maximum number of function instances that may coexist at a given time.
+        /// </summary>
         public readonly int MaxInstances;
         /// <summary>
         /// The name of the Cloud Function.
@@ -108,6 +111,9 @@ namespace Pulumi.Gcp.CloudFunctions
         /// The source archive object (file) in archive bucket.
         /// </summary>
         public readonly string SourceArchiveObject;
+        /// <summary>
+        /// The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionSourceRepositoryResult> SourceRepositories;
         /// <summary>
         /// Function execution timeout (in seconds).

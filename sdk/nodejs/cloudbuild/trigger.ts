@@ -46,7 +46,8 @@ export class Trigger extends pulumi.CustomResource {
     }
 
     /**
-     * Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+     * Contents of the build template. Either a filename or build template must be provided.
+     * Structure is documented below.
      */
     public readonly build!: pulumi.Output<outputs.cloudbuild.TriggerBuild | undefined>;
     /**
@@ -67,7 +68,8 @@ export class Trigger extends pulumi.CustomResource {
     public readonly filename!: pulumi.Output<string | undefined>;
     /**
      * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-     * One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+     * One of `triggerTemplate` or `github` must be provided.
+     * Structure is documented below.
      */
     public readonly github!: pulumi.Output<outputs.cloudbuild.TriggerGithub | undefined>;
     /**
@@ -116,7 +118,8 @@ export class Trigger extends pulumi.CustomResource {
      * Branch and tag names in trigger templates are interpreted as regular
      * expressions. Any branch or tag change that matches that regular
      * expression will trigger a build.
-     * One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+     * One of `triggerTemplate` or `github` must be provided.
+     * Structure is documented below.
      */
     public readonly triggerTemplate!: pulumi.Output<outputs.cloudbuild.TriggerTriggerTemplate | undefined>;
 
@@ -177,7 +180,8 @@ export class Trigger extends pulumi.CustomResource {
  */
 export interface TriggerState {
     /**
-     * Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+     * Contents of the build template. Either a filename or build template must be provided.
+     * Structure is documented below.
      */
     readonly build?: pulumi.Input<inputs.cloudbuild.TriggerBuild>;
     /**
@@ -198,7 +202,8 @@ export interface TriggerState {
     readonly filename?: pulumi.Input<string>;
     /**
      * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-     * One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+     * One of `triggerTemplate` or `github` must be provided.
+     * Structure is documented below.
      */
     readonly github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     /**
@@ -247,7 +252,8 @@ export interface TriggerState {
      * Branch and tag names in trigger templates are interpreted as regular
      * expressions. Any branch or tag change that matches that regular
      * expression will trigger a build.
-     * One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+     * One of `triggerTemplate` or `github` must be provided.
+     * Structure is documented below.
      */
     readonly triggerTemplate?: pulumi.Input<inputs.cloudbuild.TriggerTriggerTemplate>;
 }
@@ -257,7 +263,8 @@ export interface TriggerState {
  */
 export interface TriggerArgs {
     /**
-     * Contents of the build template. Either a filename or build template must be provided.  Structure is documented below.
+     * Contents of the build template. Either a filename or build template must be provided.
+     * Structure is documented below.
      */
     readonly build?: pulumi.Input<inputs.cloudbuild.TriggerBuild>;
     /**
@@ -274,7 +281,8 @@ export interface TriggerArgs {
     readonly filename?: pulumi.Input<string>;
     /**
      * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-     * One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+     * One of `triggerTemplate` or `github` must be provided.
+     * Structure is documented below.
      */
     readonly github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
     /**
@@ -319,7 +327,8 @@ export interface TriggerArgs {
      * Branch and tag names in trigger templates are interpreted as regular
      * expressions. Any branch or tag change that matches that regular
      * expression will trigger a build.
-     * One of `triggerTemplate` or `github` must be provided.  Structure is documented below.
+     * One of `triggerTemplate` or `github` must be provided.
+     * Structure is documented below.
      */
     readonly triggerTemplate?: pulumi.Input<inputs.cloudbuild.TriggerTriggerTemplate>;
 }

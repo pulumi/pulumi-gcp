@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// request to the selected backend. If routeAction specifies any
         /// weightedBackendServices, service must not be set. Conversely if service is set,
         /// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-        /// or urlRedirect must be set.  Structure is documented below.
+        /// or urlRedirect must be set.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherPathRuleRouteAction? RouteAction;
         /// <summary>
@@ -36,7 +37,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// When a path pattern is matched, the request is redirected to a URL specified
         /// by urlRedirect. If urlRedirect is specified, service or routeAction must not
-        /// be set.  Structure is documented below.
+        /// be set.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherPathRuleUrlRedirect? UrlRedirect;
 

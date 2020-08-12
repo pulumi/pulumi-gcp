@@ -21,6 +21,8 @@ namespace Pulumi.Gcp.Kms.Inputs
 
         /// <summary>
         /// The protection level to use when creating a version based on this template.
+        /// Default value is `SOFTWARE`.
+        /// Possible values are `SOFTWARE` and `HSM`.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }

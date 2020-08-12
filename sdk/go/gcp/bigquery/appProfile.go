@@ -34,7 +34,8 @@ type AppProfile struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Use a single-cluster routing policy.  Structure is documented below.
+	// Use a single-cluster routing policy.
+	// Structure is documented below.
 	SingleClusterRouting AppProfileSingleClusterRoutingPtrOutput `pulumi:"singleClusterRouting"`
 }
 
@@ -87,7 +88,8 @@ type appProfileState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Use a single-cluster routing policy.  Structure is documented below.
+	// Use a single-cluster routing policy.
+	// Structure is documented below.
 	SingleClusterRouting *AppProfileSingleClusterRouting `pulumi:"singleClusterRouting"`
 }
 
@@ -110,7 +112,8 @@ type AppProfileState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Use a single-cluster routing policy.  Structure is documented below.
+	// Use a single-cluster routing policy.
+	// Structure is documented below.
 	SingleClusterRouting AppProfileSingleClusterRoutingPtrInput
 }
 
@@ -134,7 +137,8 @@ type appProfileArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Use a single-cluster routing policy.  Structure is documented below.
+	// Use a single-cluster routing policy.
+	// Structure is documented below.
 	SingleClusterRouting *AppProfileSingleClusterRouting `pulumi:"singleClusterRouting"`
 }
 
@@ -155,7 +159,8 @@ type AppProfileArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Use a single-cluster routing policy.  Structure is documented below.
+	// Use a single-cluster routing policy.
+	// Structure is documented below.
 	SingleClusterRouting AppProfileSingleClusterRoutingPtrInput
 }
 

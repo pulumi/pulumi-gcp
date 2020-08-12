@@ -12,7 +12,8 @@ from .. import utilities, tables
 class Instance(pulumi.CustomResource):
     clusters: pulumi.Output[list]
     """
-    A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+    A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+    See structure below.
 
       * `cluster_id` (`str`) - The ID of the Cloud Bigtable cluster.
       * `num_nodes` (`float`) - The number of nodes in your Cloud Bigtable cluster.
@@ -37,6 +38,10 @@ class Instance(pulumi.CustomResource):
     """
     The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
     """
+    labels: pulumi.Output[dict]
+    """
+    A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+    """
     name: pulumi.Output[str]
     """
     The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
@@ -46,7 +51,7 @@ class Instance(pulumi.CustomResource):
     The ID of the project in which the resource belongs. If it
     is not provided, the provider project is used.
     """
-    def __init__(__self__, resource_name, opts=None, clusters=None, deletion_protection=None, display_name=None, instance_type=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, clusters=None, deletion_protection=None, display_name=None, instance_type=None, labels=None, name=None, project=None, __props__=None, __name__=None, __opts__=None):
         """
         Creates a Google Bigtable instance. For more information see
         [the official documentation](https://cloud.google.com/bigtable/) and
@@ -56,11 +61,13 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+        :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+               See structure below.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         :param pulumi.Input[str] name: The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -98,6 +105,7 @@ class Instance(pulumi.CustomResource):
             __props__['deletion_protection'] = deletion_protection
             __props__['display_name'] = display_name
             __props__['instance_type'] = instance_type
+            __props__['labels'] = labels
             __props__['name'] = name
             __props__['project'] = project
         super(Instance, __self__).__init__(
@@ -107,7 +115,7 @@ class Instance(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, clusters=None, deletion_protection=None, display_name=None, instance_type=None, name=None, project=None):
+    def get(resource_name, id, opts=None, clusters=None, deletion_protection=None, display_name=None, instance_type=None, labels=None, name=None, project=None):
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -115,11 +123,13 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified 1 or 2 times. See structure below.
+        :param pulumi.Input[list] clusters: A block of cluster configuration options. This can be specified at least once, and up to 4 times.
+               See structure below.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
+        :param pulumi.Input[dict] labels: A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         :param pulumi.Input[str] name: The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -144,6 +154,7 @@ class Instance(pulumi.CustomResource):
         __props__["deletion_protection"] = deletion_protection
         __props__["display_name"] = display_name
         __props__["instance_type"] = instance_type
+        __props__["labels"] = labels
         __props__["name"] = name
         __props__["project"] = project
         return Instance(resource_name, opts=opts, __props__=__props__)

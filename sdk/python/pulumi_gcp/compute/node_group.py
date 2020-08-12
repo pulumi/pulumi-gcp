@@ -14,7 +14,8 @@ class NodeGroup(pulumi.CustomResource):
     """
     -
     If you use sole-tenant nodes for your workloads, you can use the node
-    group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+    group autoscaler to automatically manage the sizes of your node groups.
+    Structure is documented below.
 
       * `maxNodes` (`float`) - Maximum size of the node group. Set to a value less than or equal
         to 100 and greater than or equal to min-nodes.
@@ -26,6 +27,7 @@ class NodeGroup(pulumi.CustomResource):
         - ONLY_SCALE_OUT: Enables only scaling out.
         You must use this mode if your node groups are configured to
         restart their hosted VMs on minimal servers.
+        Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
     """
     creation_timestamp: pulumi.Output[str]
     """
@@ -81,7 +83,8 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling_policy: -
                If you use sole-tenant nodes for your workloads, you can use the node
-               group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+               group autoscaler to automatically manage the sizes of your node groups.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
@@ -102,6 +105,7 @@ class NodeGroup(pulumi.CustomResource):
             - ONLY_SCALE_OUT: Enables only scaling out.
             You must use this mode if your node groups are configured to
             restart their hosted VMs on minimal servers.
+            Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -150,7 +154,8 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] autoscaling_policy: -
                If you use sole-tenant nodes for your workloads, you can use the node
-               group autoscaler to automatically manage the sizes of your node groups.  Structure is documented below.
+               group autoscaler to automatically manage the sizes of your node groups.
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -173,6 +178,7 @@ class NodeGroup(pulumi.CustomResource):
             - ONLY_SCALE_OUT: Enables only scaling out.
             You must use this mode if your node groups are configured to
             restart their hosted VMs on minimal servers.
+            Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -74,7 +74,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of features to enable on the guest operating system.
-        /// Applicable only for bootable images.  Structure is documented below.
+        /// Applicable only for bootable images.
+        /// Structure is documented below.
         /// </summary>
         [Output("guestOsFeatures")]
         public Output<ImmutableArray<Outputs.ImageGuestOsFeature>> GuestOsFeatures { get; private set; } = null!;
@@ -117,7 +118,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The parameters of the raw disk image.  Structure is documented below.
+        /// The parameters of the raw disk image.
+        /// Structure is documented below.
         /// </summary>
         [Output("rawDisk")]
         public Output<Outputs.ImageRawDisk?> RawDisk { get; private set; } = null!;
@@ -210,7 +212,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of features to enable on the guest operating system.
-        /// Applicable only for bootable images.  Structure is documented below.
+        /// Applicable only for bootable images.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ImageGuestOsFeatureArgs> GuestOsFeatures
         {
@@ -262,7 +265,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The parameters of the raw disk image.  Structure is documented below.
+        /// The parameters of the raw disk image.
+        /// Structure is documented below.
         /// </summary>
         [Input("rawDisk")]
         public Input<Inputs.ImageRawDiskArgs>? RawDisk { get; set; }
@@ -322,7 +326,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of features to enable on the guest operating system.
-        /// Applicable only for bootable images.  Structure is documented below.
+        /// Applicable only for bootable images.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ImageGuestOsFeatureGetArgs> GuestOsFeatures
         {
@@ -380,7 +385,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The parameters of the raw disk image.  Structure is documented below.
+        /// The parameters of the raw disk image.
+        /// Structure is documented below.
         /// </summary>
         [Input("rawDisk")]
         public Input<Inputs.ImageRawDiskGetArgs>? RawDisk { get; set; }
